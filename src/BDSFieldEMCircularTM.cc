@@ -53,10 +53,10 @@ G4double BesselJ(G4int n, G4double x) {
     return TMath::BesselJ1(x);
   }
   else if (n>1) {
-    return 2*n/x*BesselJ(n-1,x) - BesselJ(n-2,x);
+    return 2*(n-1)/x*BesselJ(n-1,x) - BesselJ(n-2,x);
   }
   else if(n<0) {
-    return 2*n/x*BesselJ(n+1,x) - BesselJ(n+2,x);
+    return 2*(n+1)/x*BesselJ(n+1,x) - BesselJ(n+2,x);
   }
 }
 
@@ -122,27 +122,34 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   G4double r   = std::hypot(position.x(),position.y());
   G4double z   = position.z();
 
+  // divergences @ r=0, so avoid a little
   if(r == 0) {
     r = 1e-15;
   }
 
-  G4double tmod = sin(omega*(t - synchronousT) + tphase);
+  // t phase
+  //G4double tmod = sin(omega*(t - synchronousT) + tphase);
+  G4double tmod = 1;
 
+  // electric field
   G4double Er = tmod * p*M_PI/length * radius/JNsZeros[m][n-1] * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * sin(p*M_PI*z/length + zphase);
   G4double Et = tmod * p*M_PI/length*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r * eFieldMax * BesselJDeriv(m, kmn*r) * sin(m*phi) * sin(p*M_PI*z/length + zphase)  ;
   G4double Ez = tmod * eFieldMax * BesselJ(m, kmn*r) * cos(m*phi) * cos(p*M_PI*z/length + zphase);
 
+  // magnetic field
   G4double Br = tmod * omega*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r/pow(CLHEP::c_light,2) * eFieldMax * BesselJ(m,kmn*r) * sin(m*phi) * cos(p*M_PI*z/length + zphase);
   G4double Bt = tmod * omega*radius/JNsZeros[m][n-1]/pow(CLHEP::c_light,2) * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * cos(p*M_PI*z/length + zphase);
   G4double Bz = tmod * 0;
 
+  // E transform to cartestian
   G4double Ex = Er * cos(phi) - Et * sin(phi);
   G4double Ey = Er * sin(phi) + Et * cos(phi);
 
+  // B transform to cartestian
   G4double Bx = Br * cos(phi) - Bt * sin(phi);
   G4double By = Br * sin(phi) + Bt * cos(phi);
 
-  // Local B and E fields:
+  // Local B and E field vectors
   G4ThreeVector LocalB = G4ThreeVector(Bx, By, Bz);
   G4ThreeVector LocalE = G4ThreeVector(Ex, Ey, Ez);
 
