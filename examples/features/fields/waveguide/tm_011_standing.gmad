@@ -1,0 +1,13 @@
+tm_011_standing: field, type="transversemagnetic", fieldParameters="cavity_m=0 cavity_n=1 cavity_p=1 cavity_zphase=90 cavity_tphase=0 cavity_radius=0.3*m cavity_length=1.0*m";
+
+d1 : drift, l=1.0*m, aper1=0.1*m;
+rf1 : drift, l=1.0*m, aper1=0.3*m, fieldAll="tm_011_standing";
+d2 : drift, l=1.0*m, aper1=0.1*m;
+
+l1: line = (d1,rf1,d2);
+use, l1;
+
+beam, particle="electron",
+      energy = 1.0 * GeV;
+
+sample, all;
