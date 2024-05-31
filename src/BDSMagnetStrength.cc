@@ -88,7 +88,15 @@ const std::vector<G4String> BDSMagnetStrength::keys = {
   "rmat41",
   "rmat42",
   "rmat43",
-  "rmat44"
+  "rmat44",
+  "cavity_travelling",
+  "cavity_radius",
+  "cavity_length",
+  "cavity_m",
+  "cavity_n",
+  "cavity_p",
+  "cavity_tphase",
+  "cavity_zphase"
 };
 
 const std::map<G4String, BDSMagnetStrength::unitsFactors> BDSMagnetStrength::unitsFactorsMap = {
@@ -168,6 +176,15 @@ const std::map<G4String, BDSMagnetStrength::unitsFactors> BDSMagnetStrength::uni
     {"rmat41"        , {"",    1.0}},
     {"rmat42"        , {"",    1.0}},
     {"rmat43"        , {"",    1.0}},
+    {"rmat44"        , {"",    1.0}},
+    {"cavity_travelling", {"",    1.0}},
+    {"cavity_radius"    , {"",    CLHEP::m}},
+    {"cavity_length"    , {"",    CLHEP::m}},
+    {"cavity_m"      , {"",    1.0}},
+    {"cavity_n"     , {"",    1.0}},
+    {"cavity_p"     , {"",    1.0}},
+    {"cavity_tphase", {"",    1.0}},
+    {"cavity_zphase", {"",    1.0}},
     {"rmat44"        , {"",    1.0}},
     {"coilRadialThickness", {"m", CLHEP::m}}
 };
