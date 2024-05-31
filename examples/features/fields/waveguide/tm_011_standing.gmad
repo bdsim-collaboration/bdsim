@@ -14,8 +14,8 @@ sample, all;
 
 querye : query, nx=51, xmin=-31*cm, xmax=31*cm,
                 ny=51, ymin=-31*cm, ymax=31*cm,
-		nz=51, zmin=-50*cm, zmax=50*cm,
-	        queryElectricField=1,
-	        outfileElectric="query_3d_efield_xyz.dat",
+                nz=51, zmin=-50*cm, zmax=50*cm,
+                queryElectricField=1,
+                outfileElectric="query_3d_efield_xyz.dat",
                 z=1.5*m,
                 overwriteExistingFiles=1;
