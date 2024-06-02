@@ -60,9 +60,12 @@ public:
                                                            const G4double       t) const;
   
   virtual G4bool TimeVarying() const {return true;}
-  
-  /// General function put here as it represents the equations in this class.
-  G4double TransitTimeFactor();
+
+  /// Calculate energy gain
+  G4double Gain(G4int nSteps = 200);
+
+  /// Calculate transit time
+  G4double TransitTimeFactor(G4double beta = 1, G4int nSteps = 200);
   
 private:
   G4double eFieldMax;     ///< Maximum field in V/m.
@@ -80,6 +83,9 @@ private:
   G4double kmn;
   G4double kz;
   G4double omega;
+
+  G4double gain;
+  G4double ttFactor;
 
   static const G4double JNsZeros[10][10]; ///< X coordinate of first 0 point for bessel J0.
   static const G4double Z0; ///< Impedance of free space.
