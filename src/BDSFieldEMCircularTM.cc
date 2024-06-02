@@ -115,7 +115,7 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
 std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4ThreeVector& position,
                                                                        const G4double       t) const
 {
-  G4cout << "position,time> " << position << " " << t << G4endl;
+  // G4cout << "position,time> " << position << " " << t << G4endl;
 
   // Converting from Local Cartesian to Local Cylindrical
   G4double phi = std::atan2(position.y(),position.x());
@@ -131,7 +131,7 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   G4double tmodE = cos(omega*(t - synchronousT) + tphase);
   G4double tmodB = sin(omega*(t - synchronousT) + tphase);
 
-  G4cout << "time> " << t << " " << synchronousT << " " << tphase << " " << tmodE << " " << tmodB << G4endl;
+  // G4cout << "time> " << t << " " << synchronousT << " " << tphase << " " << tmodE << " " << tmodB << G4endl;
 
   //G4double tmod = 1;
 
@@ -157,7 +157,7 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   G4ThreeVector LocalB = G4ThreeVector(Bx, By, Bz);
   G4ThreeVector LocalE = G4ThreeVector(Ex, Ey, Ez);
 
-  G4cout << "field> " << LocalB << " " << LocalE << G4endl;
+  // G4cout << "field> " << LocalB << " " << LocalE << G4endl;
   auto result = std::make_pair(LocalB, LocalE);
   return result;
 }
