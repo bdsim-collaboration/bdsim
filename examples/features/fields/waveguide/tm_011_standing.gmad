@@ -1,4 +1,4 @@
-tm_011_standing: field, type="transversemagnetic", fieldParameters="efield=1 cavity_m=0 cavity_n=1 cavity_p=1 cavity_zphase=0.0 cavity_tphase=0.0 cavity_radius=0.3*m cavity_length=0.20*m";
+tm_011_standing: field, type="transversemagnetic", fieldParameters="efield=1 cavity_m=0 cavity_n=1 cavity_p=1 cavity_zphase=0.0 cavity_tphase=0.0 cavity_radius=0.3*m cavity_length=1.0*m";
 
 d1 : drift, l=1.0*m, aper1=0.1*m;
 rf1 : drift, l=1.0*m, aper1=0.3*m, fieldAll="tm_011_standing";
@@ -15,6 +15,7 @@ sample, all;
 querye : query, nx=51, xmin=-31*cm, xmax=31*cm,
                 ny=51, ymin=-31*cm, ymax=31*cm,
                 nz=51, zmin=-49*cm, zmax=49*cm,
+!               nt=40, tmin=-1, tmax=1,
                 queryElectricField=1,
                 outfileElectric="query_3d_efield_xyz.dat",
                 z=1.5*m,
@@ -23,6 +24,7 @@ querye : query, nx=51, xmin=-31*cm, xmax=31*cm,
 queryb : query, nx=51, xmin=-31*cm, xmax=31*cm,
                 ny=51, ymin=-31*cm, ymax=31*cm,
                 nz=51, zmin=-49*cm, zmax=49*cm,
+!               nt=40, tmin=-1*ns, tmax=1*ns,
                 queryMagneticField=1,
                 outfileMagnetic="query_3d_bfield_xyz.dat",
                 z=1.5*m,
