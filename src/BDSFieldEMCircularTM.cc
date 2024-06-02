@@ -55,7 +55,7 @@ G4double BesselJ(G4int n, G4double x) {
   else if (n>1) {
     return 2*(n-1)/x*BesselJ(n-1,x) - BesselJ(n-2,x);
   }
-  else if(n<0) {
+  else {
     return 2*(n+1)/x*BesselJ(n+1,x) - BesselJ(n+2,x);
   }
 }
@@ -110,6 +110,9 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
   else {
     omega = 2 * M_PI * frequency;
   }
+
+  gain = Gain();
+  ttFactor = TransitTimeFactor();
 }
 
 std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4ThreeVector& position,
@@ -162,7 +165,79 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   return result;
 }
 
-G4double BDSFieldEMCircularTM::TransitTimeFactor()
+G4double BDSFieldEMCircularTM::Gain(G4int nSteps)
 {
+  G4cout << "BDSFieldEMCircularTM::Gain" << G4endl;
+
+  // save variables for reinstating later
+  G4double tphase_old = tphase;
+  G4double synchronousT_old = synchronousT;
+
+  // set to approriate values
+  tphase = 0.0;
+  synchronousT_old = 0.0;
+
+  std::vector<G4double> zV;
+  std::vector<G4double> EzV;
+
+  // compute fields
+  for(int i=0;i<=nSteps;i++) {
+    G4double z = (i*length)/nSteps - length/2.0;
+    auto field = GetField(G4ThreeVector(0,0,z),0);
+    zV.push_back(z);
+    EzV.push_back(field.second.getZ());
+  }
+
+  // simpson's rule
+  G4double simpIntegral = 0;
+  for(int i=0;i<=nSteps-2;i+=2) {
+    simpIntegral += (zV[i+2]-zV[i])/6*(EzV[i] + 4*EzV[i+1] + EzV[i+2]);
+  }
+
+  G4cout << "Gain> " << simpIntegral << G4endl;
+
+  // reset variables
+  tphase = tphase_old;
+  synchronousT = synchronousT_old;
+
+  return simpIntegral;
+}
+
+G4double BDSFieldEMCircularTM::TransitTimeFactor(G4double beta, G4int nSteps)
+{
+  G4cout << "BDSFieldEMCircularTM::TransitTimeFactor" << G4endl;
+
+  gain = Gain(nSteps);
+  // save variables for reinstating later
+  G4double tphase_old = tphase;
+  G4double synchronousT_old = synchronousT;
+
+  // set to approriate values
+  tphase = 0.0;
+  synchronousT_old = 0.0;
+
+  std::vector<G4double> zV;
+  std::vector<G4double> EzV;
+
+  // compute fields
+  for(int i=0;i<=nSteps;i++) {
+    G4double z = (i*length)/nSteps - length/2.0;
+    auto field = GetField(G4ThreeVector(0,0,z),0);
+    zV.push_back(z);
+    EzV.push_back(field.second.getZ()*cos(omega*z/beta/CLHEP::c_light));
+  }
+
+  // simpson's rule
+  G4double simpIntegral = 0;
+  for(int i=0;i<=nSteps-2;i+=2) {
+    simpIntegral += (zV[i+2]-zV[i])/6*(EzV[i] + 4*EzV[i+1] + EzV[i+2]);
+  }
+
+  G4cout << "TransitTimeFactor> " << simpIntegral/gain << G4endl;
+
+  // reset variables
+  tphase = tphase_old;
+  synchronousT = synchronousT_old;
+
   return 0;
 }
