@@ -165,6 +165,10 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   return result;
 }
 
+G4double BDSFieldEMCircularTM::Frequency() {
+  return frequency;
+}
+
 G4double BDSFieldEMCircularTM::Gain(G4int nSteps)
 {
   G4cout << "BDSFieldEMCircularTM::Gain" << G4endl;
