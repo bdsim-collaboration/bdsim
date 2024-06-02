@@ -12,20 +12,20 @@ beam, particle="electron",
 
 sample, all;
 
-querye : query, nx=51, xmin=-31*cm, xmax=31*cm,
-                ny=51, ymin=-31*cm, ymax=31*cm,
+querye : query, nx=49, xmin=-31*cm, xmax=31*cm,
+                ny=50, ymin=-31*cm, ymax=31*cm,
                 nz=51, zmin=-49*cm, zmax=49*cm,
-!               nt=40, tmin=-1, tmax=1,
+!                nt=40, tmin=-1, tmax=1,
                 queryElectricField=1,
-                outfileElectric="query_3d_efield_xyz.dat",
+                outfileElectric="query_3d_efield_xyzt.dat",
                 z=1.5*m,
                 overwriteExistingFiles=1;
 
-queryb : query, nx=51, xmin=-31*cm, xmax=31*cm,
-                ny=51, ymin=-31*cm, ymax=31*cm,
+queryb : query, nx=49, xmin=-31*cm, xmax=31*cm,
+                ny=50, ymin=-31*cm, ymax=31*cm,
                 nz=51, zmin=-49*cm, zmax=49*cm,
-!               nt=40, tmin=-1*ns, tmax=1*ns,
+!                nt=40, tmin=-1, tmax=1,
                 queryMagneticField=1,
-                outfileMagnetic="query_3d_bfield_xyz.dat",
+                outfileMagnetic="query_3d_bfield_xyzt.dat",
                 z=1.5*m,
                 overwriteExistingFiles=1;
