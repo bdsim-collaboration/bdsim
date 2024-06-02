@@ -61,6 +61,9 @@ public:
   
   virtual G4bool TimeVarying() const {return true;}
 
+  /// Get frequency
+  G4double Frequency();
+
   /// Calculate energy gain
   G4double Gain(G4int nSteps = 200);
 
