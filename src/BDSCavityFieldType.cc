@@ -41,6 +41,7 @@ BDSCavityFieldType BDS::DetermineCavityFieldType(G4String cavityFieldType)
   std::map<G4String, BDSCavityFieldType> types;
   types["constantinz"]   = BDSCavityFieldType::constantinz;
   types["pillbox"]       = BDSCavityFieldType::pillbox;
+  types["transversemagnetic"] = BDSCavityFieldType ::transversemagnetic;
 
   cavityFieldType = BDS::LowerCase(cavityFieldType);
 
