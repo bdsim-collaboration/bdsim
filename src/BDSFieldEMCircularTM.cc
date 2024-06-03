@@ -179,7 +179,7 @@ G4double BDSFieldEMCircularTM::Voltage(G4int nSteps)
 
   // set to approriate values
   tphase = 0.0;
-  synchronousT_old = 0.0;
+  synchronousT = 0.0;
 
   std::vector<G4double> zV;
   std::vector<G4double> EzV;
@@ -218,7 +218,7 @@ G4double BDSFieldEMCircularTM::TransitTimeFactor(G4double beta, G4int nSteps)
 
   // set to approriate values
   tphase = 0.0;
-  synchronousT_old = 0.0;
+  synchronousT = 0.0;
 
   std::vector<G4double> zV;
   std::vector<G4double> EzV;
