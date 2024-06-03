@@ -102,10 +102,14 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
                                                                       synchronousT(synchronousTIn)
 {
   if (! travelling) {
+    G4cout << "BDSFieldEMCircularTM::BDSFieldEMCircularTM> set frequency=" << frequency << G4endl;
     kmn = JNsZeros[m][n - 1]/ radius;
     kz = p * M_PI / length;
     omega = sqrt(pow(CLHEP::c_light,2) * (pow(kmn,2) + pow(kz,2)));
-    frequency = omega/(2*M_PI);
+    if(frequency ==0) { // if there is a set frequency use that
+      frequency = omega/(2*M_PI);
+      G4cout << "BDSFieldEMCircularTM::BDSFieldEMCircularTM> frequency is zero, calculating frequency=" << frequency << G4endl;
+    }
   }
   else {
     omega = 2 * M_PI * frequency;
@@ -118,8 +122,6 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
 std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4ThreeVector& position,
                                                                        const G4double       t) const
 {
-  // G4cout << "position,time> " << position << " " << t << G4endl;
-
   // Converting from Local Cartesian to Local Cylindrical
   G4double phi = std::atan2(position.y(),position.x());
   G4double r   = std::hypot(position.x(),position.y());
@@ -134,7 +136,9 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   G4double tmodE = cos(omega*(t - synchronousT) + tphase);
   G4double tmodB = sin(omega*(t - synchronousT) + tphase);
 
-  // G4cout << "time> " << t << " " << synchronousT << " " << tphase << " " << tmodE << " " << tmodB << G4endl;
+  //G4cout << "position,time> " << position << " " << t << " " << tphase << " " << tmodE << " " << tmodB << G4endl;
+  //G4cout << t << " " << position << G4endl;
+  //G4cout << "time> " << t << " " << synchronousT << " " << tphase << " " << tmodE << " " << tmodB << G4endl;
 
   //G4double tmod = 1;
 
@@ -165,9 +169,14 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   return result;
 }
 
-G4double BDSFieldEMCircularTM::Frequency() {
+G4double BDSFieldEMCircularTM::GetFrequency() {
   return frequency;
 }
+
+void BDSFieldEMCircularTM::SetMaxEField(G4double eFieldMaxIn) {
+  eFieldMax = eFieldMaxIn;
+}
+
 
 G4double BDSFieldEMCircularTM::Voltage(G4int nSteps)
 {

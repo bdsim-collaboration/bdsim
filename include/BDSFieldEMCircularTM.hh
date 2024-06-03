@@ -62,7 +62,10 @@ public:
   virtual G4bool TimeVarying() const {return true;}
 
   /// Get frequency
-  G4double Frequency();
+  G4double GetFrequency();
+
+  /// Set Maximum E field
+  void SetMaxEField(G4double);
 
   /// Calculate energy gain
   G4double Voltage(G4int nSteps = 200);
