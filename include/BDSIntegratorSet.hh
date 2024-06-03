@@ -59,6 +59,7 @@ public:
 		   BDSIntegratorType multipoleThickIn,
 		   BDSIntegratorType muonSpoilerIn,
 		   BDSIntegratorType rfpillboxIn,
+                   BDSIntegratorType transversemagneticIn,
 		   BDSIntegratorType rfconstantinxIn,
                    BDSIntegratorType rfconstantinyIn,
                    BDSIntegratorType rfconstantinzIn,
@@ -89,6 +90,7 @@ public:
   BDSIntegratorType multipoleThick;
   BDSIntegratorType muonSpoiler;
   BDSIntegratorType rfpillbox;
+  BDSIntegratorType transversemagnetic;
   BDSIntegratorType rfconstantinx;
   BDSIntegratorType rfconstantiny;
   BDSIntegratorType rfconstantinz;
