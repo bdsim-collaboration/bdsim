@@ -2871,7 +2871,7 @@ BDSCavityInfo* BDSComponentFactory::PrepareCavityModelInfoForElement(Element con
   // frequency can be zero in which case only build 1 cell
   if (BDS::IsFinite(frequency))
     {
-      cellLength = 2*CLHEP::c_light / frequency; // half wavelength
+      cellLength = CLHEP::c_light / (2*frequency); // half wavelength
       G4double nCavities  = length / cellLength;
       nCells = G4int(std::floor(nCavities));
     }
