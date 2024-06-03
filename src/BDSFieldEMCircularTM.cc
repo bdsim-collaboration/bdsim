@@ -104,15 +104,15 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
   if (! travelling) {
     G4cout << "BDSFieldEMCircularTM::BDSFieldEMCircularTM> set frequency=" << frequency << G4endl;
     kmn = JNsZeros[m][n - 1]/ radius;
-    kz = p * M_PI / length;
+    kz = p * CLHEP::pi / length;
     omega = sqrt(pow(CLHEP::c_light,2) * (pow(kmn,2) + pow(kz,2)));
     if(frequency ==0) { // if there is a set frequency use that
-      frequency = omega/(2*M_PI);
+      frequency = omega/CLHEP::twopi;
       G4cout << "BDSFieldEMCircularTM::BDSFieldEMCircularTM> frequency is zero, calculating frequency=" << frequency << G4endl;
     }
   }
   else {
-    omega = 2 * M_PI * frequency;
+    omega = CLHEP::twopi * frequency;
   }
 
   voltage = Voltage();
@@ -143,14 +143,14 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   //G4double tmod = 1;
 
   // electric field
-  G4double Ez = tmodE * eFieldMax * BesselJ(m, kmn*r) * cos(m*phi) * cos(p*M_PI*z/length + zphase);
-  G4double Er = -tmodE * p*M_PI/length * radius/JNsZeros[m][n-1] * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * sin(p*M_PI*z/length + zphase);
-  G4double Et = -tmodE * p*M_PI/length*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r * eFieldMax * BesselJ(m, kmn*r) * sin(m*phi) * sin(p*M_PI*z/length + zphase)  ;
+  G4double Ez = tmodE * eFieldMax * BesselJ(m, kmn*r) * cos(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
+  G4double Er = -tmodE * p*CLHEP::pi/length * radius/JNsZeros[m][n-1] * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * sin(p*CLHEP::pi*z/length + zphase);
+  G4double Et = -tmodE * p*CLHEP::pi/length*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r * eFieldMax * BesselJ(m, kmn*r) * sin(m*phi) * sin(p*CLHEP::pi*z/length + zphase)  ;
 
   // magnetic field
   G4double Bz = tmodB * 0;
-  G4double Br = tmodB * omega*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r/pow(CLHEP::c_light,2) * eFieldMax * BesselJ(m,kmn*r) * sin(m*phi) * cos(p*M_PI*z/length + zphase);
-  G4double Bt = tmodB * omega*radius/JNsZeros[m][n-1]/pow(CLHEP::c_light,2) * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * cos(p*M_PI*z/length + zphase);
+  G4double Br = tmodB * omega*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r/pow(CLHEP::c_light,2) * eFieldMax * BesselJ(m,kmn*r) * sin(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
+  G4double Bt = tmodB * omega*radius/JNsZeros[m][n-1]/pow(CLHEP::c_light,2) * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
 
   // E transform to cartestian
   G4double Ex = Er * cos(phi) - Et * sin(phi);
