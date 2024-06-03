@@ -31,7 +31,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 struct cavityfieldtypes_def
 {
-  enum type {constantinz, pillbox};
+  enum type {constantinz, pillbox, transversemagnetic};
 };
 
 typedef BDSTypeSafeEnum<cavityfieldtypes_def,int> BDSCavityFieldType;

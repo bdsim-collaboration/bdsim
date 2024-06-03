@@ -65,7 +65,7 @@ public:
   G4double Frequency();
 
   /// Calculate energy gain
-  G4double Gain(G4int nSteps = 200);
+  G4double Voltage(G4int nSteps = 200);
 
   /// Calculate transit time
   G4double TransitTimeFactor(G4double beta = 1, G4int nSteps = 200);
@@ -87,7 +87,7 @@ private:
   G4double kz;
   G4double omega;
 
-  G4double gain;
+  G4double voltage;
   G4double ttFactor;
 
   static const G4double JNsZeros[10][10]; ///< X coordinate of first 0 point for bessel J0.

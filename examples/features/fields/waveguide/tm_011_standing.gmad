@@ -1,7 +1,9 @@
 tm_011_standing: field, type="transversemagnetic", fieldParameters="efield=1 cavity_m=0 cavity_n=1 cavity_p=1 cavity_zphase=0.0 cavity_tphase=0.0 cavity_radius=0.3*m cavity_length=1.0*m";
+pb: field, type="rfpillbox";
 
 d1 : drift, l=1.0*m, aper1=0.1*m;
-rf1 : drift, l=1.0*m, aper1=0.3*m, fieldAll="tm_011_standing";
+rf1 : rfcavity, l=1.0*m, aper1=0.3*m, fieldAll="tm_011_standing";
+!rf1: rfcavity, l=1.0*m, phase=0, E=5.0*MV/0.8870637930591838, frequency=800*MHz, fieldVacuum="pb";
 d2 : drift, l=1.0*m, aper1=0.1*m;
 
 l1: line = (d1,rf1,d2);
