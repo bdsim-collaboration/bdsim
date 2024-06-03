@@ -111,7 +111,7 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
     omega = 2 * M_PI * frequency;
   }
 
-  gain = Gain();
+  voltage = Voltage();
   ttFactor = TransitTimeFactor();
 }
 
@@ -169,7 +169,7 @@ G4double BDSFieldEMCircularTM::Frequency() {
   return frequency;
 }
 
-G4double BDSFieldEMCircularTM::Gain(G4int nSteps)
+G4double BDSFieldEMCircularTM::Voltage(G4int nSteps)
 {
   G4cout << "BDSFieldEMCircularTM::Gain" << G4endl;
 
@@ -211,7 +211,7 @@ G4double BDSFieldEMCircularTM::TransitTimeFactor(G4double beta, G4int nSteps)
 {
   G4cout << "BDSFieldEMCircularTM::TransitTimeFactor" << G4endl;
 
-  gain = Gain(nSteps);
+  voltage = Voltage(nSteps);
   // save variables for reinstating later
   G4double tphase_old = tphase;
   G4double synchronousT_old = synchronousT;
@@ -237,11 +237,11 @@ G4double BDSFieldEMCircularTM::TransitTimeFactor(G4double beta, G4int nSteps)
     simpIntegral += (zV[i+2]-zV[i])/6*(EzV[i] + 4*EzV[i+1] + EzV[i+2]);
   }
 
-  G4cout << "TransitTimeFactor> " << simpIntegral/gain << G4endl;
+  G4cout << "TransitTimeFactor> " << simpIntegral/voltage << G4endl;
 
   // reset variables
   tphase = tphase_old;
   synchronousT = synchronousT_old;
 
-  return 0;
+  return simpIntegral/voltage;
 }
