@@ -71,7 +71,7 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(BDSMagnetStrength const* strength):
                        (*strength)["cavity_m"],
                        (*strength)["cavity_n"],
                        (*strength)["cavity_p"],
-                       (*strength)["phase"],
+                       (*strength)["cavity_tphase"],
                        (*strength)["cavity_zphase"],
                        (*strength)["cavity_travelling"],
                        (*strength)["frequency"],
@@ -84,7 +84,7 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
                                            G4int    mIn,
                                            G4int    nIn,
                                            G4int    pIn,
-                                           G4double phase,
+                                           G4double tphaseIn,
                                            G4double zphaseIn,
                                            G4bool   travellingIn,
                                            G4double frequencyIn,
@@ -95,7 +95,7 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
                                                                       m(mIn),
                                                                       n(nIn),
                                                                       p(pIn),
-                                                                      tphase(phase),
+                                                                      tphase(tphaseIn),
                                                                       zphase(zphaseIn),
                                                                       travelling(travellingIn),
                                                                       frequency(frequencyIn),
@@ -148,9 +148,9 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   G4double Et = -tmodE * p*CLHEP::pi/length*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r * eFieldMax * BesselJ(m, kmn*r) * sin(m*phi) * sin(p*CLHEP::pi*z/length + zphase)  ;
 
   // magnetic field
-  G4double Bz = tmodB * 0;
-  G4double Br = tmodB * omega*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r/pow(CLHEP::c_light,2) * eFieldMax * BesselJ(m,kmn*r) * sin(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
-  G4double Bt = tmodB * omega*radius/JNsZeros[m][n-1]/pow(CLHEP::c_light,2) * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
+  G4double Bz = CLHEP::tesla * tmodB * 0;
+  G4double Br = CLHEP::tesla * tmodB * omega*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r/pow(CLHEP::c_light,2) * eFieldMax * BesselJ(m,kmn*r) * sin(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
+  G4double Bt = CLHEP::tesla * tmodB * omega*radius/JNsZeros[m][n-1]/pow(CLHEP::c_light,2) * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
 
   // E transform to cartestian
   G4double Ex = Er * cos(phi) - Et * sin(phi);
