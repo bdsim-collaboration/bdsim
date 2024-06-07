@@ -1,8 +1,8 @@
-tm_011_standing: field, type="transversemagnetic", fieldParameters="efield=1 cavity_m=0 cavity_n=1 cavity_p=0 cavity_zphase=0.0 cavity_tphase=2.3 cavity_radius=0.3*m cavity_length=0.2*m";
+tm_011_standing: field, type="transversemagnetic", fieldParameters="cavity_efield=0.01 cavity_m=0 cavity_n=1 cavity_p=0 cavity_zphase=0.0 cavity_tphase=3.14159 cavity_radius=0.3*m cavity_length=0.2*m";
 pb: field, type="rfpillbox";
 
 d1 : drift, l=1.0*mm, aper1=0.1*m;
-rf1 : rfcavity, l=0.2*m, E=10*MV, fieldAll="tm_011_standing"; 
+rf1 : rfcavity, l=0.2*m, E=10*MV, cavityFieldType="transversemagnetic", fieldVacuum="tm_011_standing";
 !rf1: rfcavity, l=1.0*m, phase=0, E=5.0*MV/0.8870637930591838, frequency=800*MHz, fieldVacuum="pb";
 d2 : drift, l=1.0*mm, aper1=0.1*m;
 
@@ -10,7 +10,7 @@ l1: line = (d1,rf1,d2);
 use, l1;
 
 beam, particle="electron",
-      energy = 1.0 * GeV,
+      energy = 10 * MeV,
       X0=0.0*m,
       Xp0=0.0,
       Y0=0.0*m,
@@ -23,8 +23,8 @@ beam, particle="electron",
       dispxp=0.0,
       dispy=0.0*m,
       dispyp=0.0,
-!      distrType="gausstwiss",
-      distrType="reference",
+      distrType="gausstwiss",
+!      distrType="reference",
       emitx=4.379991429e-7*m,
       emity=4.379991429e-7*m,
       sigmaE=0.0001;
@@ -33,14 +33,22 @@ sample, all;
 
 option, includeFringeFieldsCavities=0;
 
-!querye : query, nx=49, xmin=-31*cm, xmax=31*cm,
+!queryet : query, nx=49, xmin=-31*cm, xmax=31*cm,
 !                ny=50, ymin=-31*cm, ymax=31*cm,
 !                nz=51, zmin=-49*cm, zmax=49*cm,
 !                nt=40, tmin=-1, tmax=1,
 !                queryElectricField=1,
-!                outfileElectric="query_3d_efield_xyzt.dat",
+!                outfileElectric="query_4d_efield_xyzt.dat",
 !                z=1.5*m,
-                overwriteExistingFiles=1;
+!                overwriteExistingFiles=1;
+
+!querye : query, nx=49, xmin=-31*cm, xmax=31*cm,
+!                ny=50, ymin=-31*cm, ymax=31*cm,
+!                nz=51, zmin=-49*cm, zmax=49*cm,
+!                queryElectricField=1,
+!                outfileElectric="query_3d_efield_xyz.dat",
+!                z=1.5*m,
+!                overwriteExistingFiles=1;
 
 !queryb : query, nx=49, xmin=-31*cm, xmax=31*cm,
 !                ny=50, ymin=-31*cm, ymax=31*cm,
