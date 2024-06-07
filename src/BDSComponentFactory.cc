@@ -3020,6 +3020,19 @@ BDSMagnetStrength* BDSComponentFactory::PrepareCavityStrength(Element const*    
       {(*st)["ex"] = 1.0; break;}
     case BDSFieldType::rfconstantiny:
       {(*st)["ey"] = 1.0; break;}
+    case BDSFieldType::transversemagnetic:
+      {
+        BDSFieldInfo* field = BDSFieldFactory::Instance()->GetDefinition(element->fieldVacuum);
+        auto magStrength = field->MagnetStrength();
+        ((*st))["cavity_efield"] = (*magStrength)["cavity_efield"];
+        ((*st))["cavity_m"] = (*magStrength)["cavity_m"];
+        ((*st))["cavity_n"] = (*magStrength)["cavity_n"];
+        ((*st))["cavity_p"] = (*magStrength)["cavity_p"];
+        ((*st))["cavity_zphase"] = (*magStrength)["cavity_zphase"];
+        ((*st))["cavity_tphase"] = (*magStrength)["cavity_tphase"];
+        ((*st))["cavity_radius"] = (*magStrength)["cavity_radius"];
+        ((*st))["cavity_length"] = (*magStrength)["cavity_length"];
+        break;}
     default:
       {(*st)["ez"] = 1.0; break;}
     }
