@@ -1,10 +1,8 @@
-! tm_011_standing: field, type="transversemagnetic", fieldParameters="cavity_efield=0.2032898097953903 cavity_m=0 cavity_n=1 cavity_p=1 cavity_zphase=0.0 cavity_tphase=3.14159 cavity_radius=0.3*m cavity_length=0.1*m";
-tm_011_standing: field, type="transversemagnetic", fieldParameters="cavity_efield=0.2032898097953903 cavity_m=0 cavity_n=1 cavity_p=0 cavity_zphase=0.0 cavity_tphase=3.14159 cavity_radius=0.3*m cavity_length=0.1*m";
-
+tm_011_standing: field, type="transversemagnetic", fieldParameters="cavity_efield=4.016538561700387 cavity_m=0 cavity_n=1 cavity_p=1 cavity_zphase=0.0 cavity_tphase=3.14159 cavity_radius=0.3*m cavity_length=0.05*m";
 pb: field, type="rfpillbox";
 
 d1 : drift, l=1.0*mm, aper1=0.1*m;
-rf1 : rfcavity, l=0.1*m, E=10*MV, cavityFieldType="transversemagnetic", fieldVacuum="tm_011_standing";
+rf1 : rfcavity, l=0.05*m, E=10*MV, cavityFieldType="transversemagnetic", fieldVacuum="tm_011_standing";
 !rf1: rfcavity, l=1.0*m, phase=0, E=5.0*MV/0.8870637930591838, frequency=800*MHz, fieldVacuum="pb";
 d2 : drift, l=1.0*mm, aper1=0.1*m;
 
