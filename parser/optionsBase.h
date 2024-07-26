@@ -393,6 +393,8 @@ namespace GMAD
     
     bool        storeModel;
 
+    bool        storePerEventHistos;
+
     int         samplersSplitLevel;
     int         modelSplitLevel;
     int         uprootCompatible;

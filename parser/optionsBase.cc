@@ -353,6 +353,8 @@ OptionsBase::OptionsBase()
   
   storeModel               = true;
 
+  storePerEventHistos      = true;
+
   samplersSplitLevel       = 0;
   modelSplitLevel          = 1;
   uprootCompatible         = 0;
