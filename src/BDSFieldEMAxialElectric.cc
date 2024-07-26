@@ -19,7 +19,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSCavityInfo.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
-#include "BDSFieldEMCircularTM.hh"
+#include "BDSFieldEMAxialElectric.hh"
 #include "BDSMagnetStrength.hh"
 #include "BDSUtilities.hh"
 
@@ -32,40 +32,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 #include <utility>
 
-const G4double BDSFieldEMCircularTM::Z0 = CLHEP::mu0 * CLHEP::c_light;
+const G4double BDSFieldEMAxialElectric::Z0 = CLHEP::mu0 * CLHEP::c_light;
 
-const G4double BDSFieldEMCircularTM::JNsZeros[10][10] = {{2.40482556,  5.52007811,  8.65372791, 11.79153444, 14.93091771, 18.07106397, 21.21163663, 24.35247153, 27.49347913, 30.63460647},
-                                                         {3.83170597,  7.01558667, 10.17346814, 13.32369194, 16.47063005, 19.61585851, 22.76008438, 25.90367209, 29.04682853, 32.18967991},
-                                                         {5.1356223 ,  8.41724414, 11.61984117, 14.79595178, 17.95981949, 21.11699705, 24.27011231, 27.42057355, 30.5692045 , 33.71651951},
-                                                         {6.3801619 ,  9.76102313, 13.01520072, 16.22346616, 19.40941523, 22.58272959, 25.7481667 , 28.90835078, 32.06485241, 35.21867074},
-                                                         {7.58834243, 11.06470949, 14.37253667, 17.61596605, 20.82693296, 24.01901952, 27.19908777, 30.37100767, 33.53713771, 36.69900113},
-                                                         {8.77148382, 12.3386042 , 15.70017408, 18.98013388, 22.2177999,  25.43034115, 28.62661831, 31.81171672, 34.98878129, 38.15986856},
-                                                         {9.93610952, 13.58929017, 17.00381967, 20.32078921, 23.58608444, 26.82015198, 30.03372239, 33.23304176, 36.42201967, 39.60323942},
-                                                         {11.08637002, 14.82126873, 18.28758283, 21.64154102, 24.93492789,28.19118846, 31.42279419, 34.63708935, 37.83871738, 41.03077369},
-                                                         {12.22509226, 16.03777419, 19.55453643, 22.94517313, 26.26681464,29.54565967, 32.79580004, 36.02561506, 39.240448  , 42.44388774},
-                                                         {13.35430048, 17.24122038, 20.80704779, 24.23388526, 27.58374896,30.88537897, 34.15437792, 37.40009998, 40.62855372, 43.84380142}};
-
-G4double BesselJ(G4int n, G4double x) {
-  if(n == 0) {
-    return TMath::BesselJ0(x);
-  }
-  else if(n==1) {
-    return TMath::BesselJ1(x);
-  }
-  else if (n>1) {
-    return 2*(n-1)/x*BesselJ(n-1,x) - BesselJ(n-2,x);
-  }
-  else {
-    return 2*(n+1)/x*BesselJ(n+1,x) - BesselJ(n+2,x);
-  }
-}
-
-G4double BesselJDeriv(G4int n, G4double x) {
-  return -(BesselJ(n+1,x) - BesselJ(n-1,x))/2;
-}
-
-BDSFieldEMCircularTM::BDSFieldEMCircularTM(BDSMagnetStrength const* strength):
-  BDSFieldEMCircularTM((*strength)["cavity_efield"],
+BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(BDSMagnetStrength const* strength):
+  BDSFieldEMAxialElectric((*strength)["cavity_efield"],
                        (*strength)["cavity_radius"],
                        (*strength)["cavity_length"],
                        (*strength)["cavity_m"],
@@ -78,7 +48,7 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(BDSMagnetStrength const* strength):
                        (*strength)["synchronousT0"])
 {;}
 
-BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
+BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(G4double eFieldMaxIn,
                                            G4double radiusIn,
                                            G4double lengthIn,
                                            G4int    mIn,
@@ -102,13 +72,14 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
                                                                       synchronousT(synchronousTIn)
 {
   if (! travelling) {
-    G4cout << "BDSFieldEMCircularTM::BDSFieldEMCircularTM> set frequency=" << frequency << G4endl;
-    kmn = JNsZeros[m][n - 1]/ radius;
+    G4cout << "BDSFieldEMAxialElectric::BDSFieldEMAxialElectric> set frequency=" << frequency << G4endl;
+    //kmn = JNsZeros[m][n - 1]/ radius;
+    kmn = 0.0;
     kz = p * CLHEP::pi / length;
     omega = sqrt(pow(CLHEP::c_light,2) * (pow(kmn,2) + pow(kz,2)));
     if(frequency ==0) { // if there is a set frequency use that
       frequency = omega/CLHEP::twopi;
-      G4cout << "BDSFieldEMCircularTM::BDSFieldEMCircularTM> frequency is zero, calculating frequency=" << frequency << G4endl;
+      G4cout << "BDSFieldEMAxialElectric::BDSFieldEMAxialElectric> frequency is zero, calculating frequency=" << frequency << G4endl;
     }
   }
   else {
@@ -119,7 +90,7 @@ BDSFieldEMCircularTM::BDSFieldEMCircularTM(G4double eFieldMaxIn,
   ttFactor = TransitTimeFactor();
 }
 
-std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4ThreeVector& position,
+std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMAxialElectric::GetField(const G4ThreeVector& position,
                                                                        const G4double       t) const
 {
   // Converting from Local Cartesian to Local Cylindrical
@@ -144,27 +115,21 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
 
   // electric field
   //G4double Ez = tmodE * eFieldMax * BesselJ(m, kmn*r) * cos(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
-  //G4double Er = -tmodE * p*CLHEP::pi/length * radius/JNsZeros[m][n-1] * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * sin(p*CLHEP::pi*z/length + zphase);
-  //G4double Et = -tmodE * p*CLHEP::pi/length*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r * eFieldMax * BesselJ(m, kmn*r) * sin(m*phi) * sin(p*CLHEP::pi*z/length + zphase)  ;
+  //G4double Er = -1.22 *tmodE * p*CLHEP::pi/length * radius/JNsZeros[m][n-1] * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * sin(p*CLHEP::pi*z/length + zphase);
+  //G4double Et = -1.22 *tmodE * p*CLHEP::pi/length*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r * eFieldMax * BesselJ(m, kmn*r) * sin(m*phi) * sin(p*CLHEP::pi*z/length + zphase)  ;
+
+  G4double Ez = 0;
+  G4double Er = 0;
+  G4double Et = 0;
 
   // magnetic field
   //G4double Bz = CLHEP::tesla * tmodB * 0;
   //G4double Br = CLHEP::tesla * tmodB * omega*m*pow(radius,2)/pow(JNsZeros[m][n-1],2)/r/pow(CLHEP::c_light,2) * eFieldMax * BesselJ(m,kmn*r) * sin(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
   //G4double Bt = CLHEP::tesla * tmodB * omega*radius/JNsZeros[m][n-1]/pow(CLHEP::c_light,2) * eFieldMax * BesselJDeriv(m, kmn*r) * cos(m*phi) * cos(p*CLHEP::pi*z/length + zphase);
 
-  G4double Ez =  tmodE * eFieldMax *  cos(p*CLHEP::pi*z/length + zphase);
-  G4double Er =  tmodE/10000 * r/2 * CLHEP::pi/length  * eFieldMax * sin(p*CLHEP::pi*z/length + zphase);
-  G4double Et =  0;
-  G4double Bz =  0;
-  G4double Br =  0;
-  G4double Bt = -tmodB/10000 * r/CLHEP::c_light/2 * eFieldMax * cos(p*CLHEP::pi*z/length);
-
-  //G4double Ez =  tmodE * eFieldMax *  cos(p*CLHEP::pi*z/length + zphase);
-  //G4double Er = -tmodE/10000 * r/2 * CLHEP::pi/length  * eFieldMax * sin(p*CLHEP::pi*z/length + zphase);
-  //G4double Et =  0;
-  //G4double Bz =  0;
-  //G4double Br =  0;
-  //G4double Bt =  tmodB/10000 * r/CLHEP::c_light/2 * eFieldMax * sin(p*CLHEP::pi*z/length);
+  G4double Bz = 0;
+  G4double Br = 0;
+  G4double Bt = 0;
 
   // E transform to cartestian
   G4double Ex = Er * cos(phi) - Et * sin(phi);
@@ -183,18 +148,18 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMCircularTM::GetField(const G4T
   return result;
 }
 
-G4double BDSFieldEMCircularTM::GetFrequency() {
+G4double BDSFieldEMAxialElectric::GetFrequency() {
   return frequency;
 }
 
-void BDSFieldEMCircularTM::SetMaxEField(G4double eFieldMaxIn) {
+void BDSFieldEMAxialElectric::SetMaxEField(G4double eFieldMaxIn) {
   eFieldMax = eFieldMaxIn;
 }
 
 
-G4double BDSFieldEMCircularTM::Voltage(G4int nSteps)
+G4double BDSFieldEMAxialElectric::Voltage(G4int nSteps)
 {
-  G4cout << "BDSFieldEMCircularTM::Gain" << G4endl;
+  G4cout << "BDSFieldEMAxialElectric::Gain" << G4endl;
 
   // save variables for reinstating later
   G4double tphase_old = tphase;
@@ -230,9 +195,9 @@ G4double BDSFieldEMCircularTM::Voltage(G4int nSteps)
   return simpIntegral;
 }
 
-G4double BDSFieldEMCircularTM::TransitTimeFactor(G4double beta, G4int nSteps)
+G4double BDSFieldEMAxialElectric::TransitTimeFactor(G4double beta, G4int nSteps)
 {
-  G4cout << "BDSFieldEMCircularTM::TransitTimeFactor" << G4endl;
+  G4cout << "BDSFieldEMAxialElectric::TransitTimeFactor" << G4endl;
 
   voltage = Voltage(nSteps);
   // save variables for reinstating later
