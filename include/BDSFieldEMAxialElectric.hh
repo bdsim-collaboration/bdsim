@@ -19,7 +19,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSFIELDEMAXIALELECTRIC_H
 #define BDSFIELDEMAXIALELECTRIC_H
 
-#include "BDSFieldEM.hh"
+#include "BDSFieldEMAcceleration.hh"
 
 #include "globals.hh"
 #include "G4ThreeVector.hh"
@@ -35,7 +35,7 @@ class BDSMagnetStrength;
  * @author Stewart Boogert / Lode Vanhecke
  */
 
-class BDSFieldEMAxialElectric: public BDSFieldEM
+class BDSFieldEMAxialElectric: public BDSFieldEMAcceleration
 {
 public:
   BDSFieldEMAxialElectric() = delete;
@@ -61,17 +61,8 @@ public:
   
   virtual G4bool TimeVarying() const {return true;}
 
-  /// Get frequency
-  G4double GetFrequency();
-
   /// Set Maximum E field
   void SetMaxEField(G4double);
-
-  /// Calculate energy gain
-  G4double Voltage(G4int nSteps = 200);
-
-  /// Calculate transit time
-  G4double TransitTimeFactor(G4double beta = 1, G4int nSteps = 200);
   
 private:
   G4double eFieldMax;     ///< Maximum field in V/m.
@@ -86,14 +77,10 @@ private:
   G4double frequency;     ///< Cavity frequency  (only required for travelling wave cavity)
   G4double synchronousT;
 
-  G4double kmn;
-  G4double kz;
-  G4double omega;
 
   G4double voltage;
   G4double ttFactor;
 
-  static const G4double JNsZeros[10][10]; ///< X coordinate of first 0 point for bessel J0.
   static const G4double Z0; ///< Impedance of free space.
 };
 
