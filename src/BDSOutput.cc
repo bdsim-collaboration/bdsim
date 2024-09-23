@@ -131,8 +131,8 @@ BDSOutput::BDSOutput(const G4String& baseFileNameIn,
 
   createCollimatorOutputStructures = storeCollimatorInfo || storeCollimatorHits;
 
+  // if we store the eloss hits, then the eloss histograms per event are negligible
   storeELoss                 = g->StoreELoss();
-  // store histograms if storing general energy deposition as negligible in size
   storeELossHistograms       = g->StoreELossHistograms() || storeELoss;
   storeELossTunnel           = g->StoreELossTunnel();
   storeELossTunnelHistograms = g->StoreELossTunnelHistograms() || storeELossTunnel;

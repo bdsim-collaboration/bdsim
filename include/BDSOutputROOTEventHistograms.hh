@@ -95,20 +95,20 @@ public:
   
   /// Set the value of a bin by (ROOT!!) global bin index. Note the TH3 function should
   /// be used to get ROOT's idea of a global bin index.
-  void Set3DHistogramBinContent(G4int    histoId,
-				G4int    globalBinID,
-				G4double value);
+  void Set3DHistogramBinContent(G4int histoId,
+                                G4int globalBinID,
+                                G4double value);
 
-  void Set4DHistogramBinContent(G4int   histoId,
-                G4int    x,
-                G4int    y,
-                G4int    z,
-                G4int    e,
-                G4double value);
+  void Set4DHistogramBinContent(G4int histoId,
+                                G4int x,
+                                G4int y,
+                                G4int z,
+                                G4int e,
+                                G4double value);
   
   /// Add the values from one supplied 3D histogram to another. Uses TH3-Add().
   void AccumulateHistogram3D(G4int histoId,
-			     TH3D* otherHistogram);
+                             TH3D* otherHistogram);
   void AccumulateHistogram4D(G4int histoId,
                              BDSBH4DBase* otherHistogram);
 #endif
