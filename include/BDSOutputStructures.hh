@@ -106,28 +106,28 @@ protected:
   /// Clear the local structures in this class in preparation for a new run.
   void ClearStructuresRunLevel();
   
-  ///@{ Create histograms for both evtHistos and runHistos. Return index from evtHistos.
-  G4int Create1DHistogram(G4String name,
-			  G4String title,
-			  G4int    nbins,
-			  G4double xmin,
-			  G4double xmax);
-  G4int Create1DHistogram(G4String name,
-			  G4String title,
-			  std::vector<double>& edges);
-  G4int Create3DHistogram(G4String name,
-			  G4String title,
-			  G4int    nBinsX, G4double xMin, G4double xMax,
-			  G4int    nBinsY, G4double yMin, G4double yMax,
-			  G4int    nBinsZ, G4double zMin, G4double zMax);
+  ///@{ Create histograms in evtHistos and create a per-run accumulator. Return index from evtHistos.
+  G4int Create1DHistogram(const G4String& name,
+                          const G4String& title,
+                          G4int nbins,
+                          G4double xmin,
+                          G4double xmax);
+  G4int Create1DHistogram(const G4String& name,
+                          const G4String& title,
+                          const std::vector<double>& edges);
+  G4int Create3DHistogram(const G4String& name,
+                          const G4String& title,
+                          G4int nBinsX, G4double xMin, G4double xMax,
+                          G4int nBinsY, G4double yMin, G4double yMax,
+                          G4int nBinsZ, G4double zMin, G4double zMax);
   G4int Create4DHistogram(const G4String& name,
-			  const G4String& title,
-			  const G4String& eScale,
-			  const std::vector<double>& eBinsEdges,
-			  G4int    nBinsX, G4double xMin, G4double xMax,
-			  G4int    nBinsY, G4double yMin, G4double yMax,
-			  G4int    nBinsZ, G4double zMin, G4double zMax,
-			  G4int    nBinsE, G4double eMin, G4double eMax);
+                          const G4String& title,
+                          const G4String& eScale,
+                          const std::vector<double>& eBinsEdges,
+                          G4int nBinsX, G4double xMin, G4double xMax,
+                          G4int nBinsY, G4double yMin, G4double yMax,
+                          G4int nBinsZ, G4double zMin, G4double zMax,
+                          G4int nBinsE, G4double eMin, G4double eMax);
   ///@}
 
   BDSOutputROOTParticleData* particleDataOutput; ///< Geant4 information / particle tables.
