@@ -57,32 +57,32 @@ public:
   virtual ~BDSOutputROOTEventHistograms();
 
   /// Interface function to create a 1D histogram using only standard types.
-  int Create1DHistogramSTD(std::string name, std::string title,
-			   int nbins, double xmin, double xmax);
+  int Create1DHistogramSTD(const std::string& name, const std::string& title,
+                           int nbins, double xmin, double xmax);
 
 #ifndef __ROOTBUILD__
-  G4int Create1DHistogram(G4String name, G4String title,
+  G4int Create1DHistogram(const G4String& name, const G4String& title,
                           G4int nbins, G4double xmin, G4double xmax);
-  G4int Create1DHistogram(G4String name, G4String title,
-                          std::vector<double>& edges);
-  G4int Create2DHistogram(G4String name, G4String title,
+  G4int Create1DHistogram(const G4String& name, const G4String& title,
+                          const std::vector<double>& edges);
+  G4int Create2DHistogram(const G4String& name, const G4String& title,
                           G4int nxbins, G4double xmin, G4double xmax,
                           G4int nybins, G4double ymin, G4double ymax);
-  G4int Create2DHistogram(G4String name, G4String title,
-                          std::vector<double>& xedges,
-                          std::vector<double>& yedges);
-  G4int Create3DHistogram(G4String name, G4String title,
-			  G4int nxbins, G4double xmin, G4double xmax,
-			  G4int nybins, G4double ymin, G4double ymax,
-			  G4int nzbins, G4double zmin, G4double zmax);
-  G4int Create3DHistogram(G4String name, G4String title,
-			  std::vector<double>& xedges,
-			  std::vector<double>& yedges,
-			  std::vector<double>& zedges);
+  G4int Create2DHistogram(const G4String& name, const G4String& title,
+                          const std::vector<double>& xedges,
+                          const std::vector<double>& yedges);
+  G4int Create3DHistogram(const G4String& name, const G4String& title,
+                          G4int nxbins, G4double xmin, G4double xmax,
+                          G4int nybins, G4double ymin, G4double ymax,
+                          G4int nzbins, G4double zmin, G4double zmax);
+  G4int Create3DHistogram(const G4String& name, const G4String& title,
+                          const std::vector<double>& xedges,
+                          const std::vector<double>& yedges,
+                          const std::vector<double>& zedges);
   G4int Create4DHistogram(const G4String& name,
-			  const G4String& title,
-			  const G4String& eScale,
-			  const std::vector<double>& eBinsEdges,
+                          const G4String& title,
+                          const G4String& eScale,
+                          const std::vector<double>& eBinsEdges,
                           unsigned int nxbins, G4double xmin, G4double xmax,
                           unsigned int nybins, G4double ymin, G4double ymax,
                           unsigned int nzbins, G4double zmin, G4double zmax,

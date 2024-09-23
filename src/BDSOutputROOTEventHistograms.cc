@@ -88,7 +88,7 @@ void BDSOutputROOTEventHistograms::Fill(const BDSOutputROOTEventHistograms* rhs)
 
 }
 
-int BDSOutputROOTEventHistograms::Create1DHistogramSTD(std::string name, std::string title,
+int BDSOutputROOTEventHistograms::Create1DHistogramSTD(const std::string& name, const std::string& title,
                                                        int nbins, double xmin, double xmax)
 {
   histograms1D.push_back(new TH1D(name.c_str(),title.c_str(), nbins, xmin, xmax));
@@ -97,22 +97,22 @@ int BDSOutputROOTEventHistograms::Create1DHistogramSTD(std::string name, std::st
 
 #ifndef __ROOTBUILD__
 
-G4int BDSOutputROOTEventHistograms::Create1DHistogram(G4String name, G4String title,
+G4int BDSOutputROOTEventHistograms::Create1DHistogram(const G4String& name, const G4String& title,
                                                       G4int nbins, G4double xmin, G4double xmax)
 {
   histograms1D.push_back(new TH1D(name,title, nbins, xmin, xmax));
   return (G4int)histograms1D.size() - 1;
 }
 
-G4int BDSOutputROOTEventHistograms::Create1DHistogram(G4String name,
-                                                      G4String title,
-                                                      std::vector<double>& edges)
+G4int BDSOutputROOTEventHistograms::Create1DHistogram(const G4String& name,
+                                                      const G4String& title,
+                                                      const std::vector<double>& edges)
 {
   histograms1D.push_back(new TH1D(name, title, (Int_t)edges.size()-1, edges.data()));
   return (G4int)histograms1D.size() - 1;
 }
 
-G4int BDSOutputROOTEventHistograms::Create2DHistogram(G4String name, G4String title,
+G4int BDSOutputROOTEventHistograms::Create2DHistogram(const G4String& name, const G4String& title,
                                                       G4int nxbins, G4double xmin, G4double xmax,
                                                       G4int nybins, G4double ymin, G4double ymax)
 {
@@ -120,9 +120,9 @@ G4int BDSOutputROOTEventHistograms::Create2DHistogram(G4String name, G4String ti
   return (G4int)histograms2D.size() - 1;
 }
 
-G4int BDSOutputROOTEventHistograms::Create2DHistogram(G4String name, G4String title,
-                                                      std::vector<double>& xedges,
-                                                      std::vector<double>& yedges)
+G4int BDSOutputROOTEventHistograms::Create2DHistogram(const G4String& name, const G4String& title,
+                                                      const std::vector<double>& xedges,
+                                                      const std::vector<double>& yedges)
 {
   histograms2D.push_back(new TH2D(name.data(),title.data(),
                                   (Int_t)xedges.size()-1, xedges.data(),
@@ -130,7 +130,7 @@ G4int BDSOutputROOTEventHistograms::Create2DHistogram(G4String name, G4String ti
   return (G4int)histograms2D.size() - 1;
 }
 
-G4int BDSOutputROOTEventHistograms::Create3DHistogram(G4String name, G4String title,
+G4int BDSOutputROOTEventHistograms::Create3DHistogram(const G4String& name, const G4String& title,
                                                       G4int nxbins, G4double xmin, G4double xmax,
                                                       G4int nybins, G4double ymin, G4double ymax,
                                                       G4int nzbins, G4double zmin, G4double zmax)
@@ -142,10 +142,10 @@ G4int BDSOutputROOTEventHistograms::Create3DHistogram(G4String name, G4String ti
   return (G4int)histograms3D.size() - 1;
 }
 
-G4int BDSOutputROOTEventHistograms::Create3DHistogram(G4String name, G4String title,
-                                                      std::vector<double>& xedges,
-                                                      std::vector<double>& yedges,
-                                                      std::vector<double>& zedges)
+G4int BDSOutputROOTEventHistograms::Create3DHistogram(const G4String& name, const G4String& title,
+                                                      const std::vector<double>& xedges,
+                                                      const std::vector<double>& yedges,
+                                                      const std::vector<double>& zedges)
 {
   histograms3D.push_back(new TH3D(name.data(),title.data(),
                                   (Int_t)xedges.size()-1, xedges.data(),
