@@ -366,7 +366,8 @@ void BDSOutput::FillEvent(const BDSEventInfo*                            info,
   // interacted with counted
   if (info)
     {FillEventInfo(info);}
-  
+
+  HistogramMarkEndOfEvent();
   WriteFileEventLevel();
   ClearStructuresEventLevel();
 }
@@ -386,6 +387,7 @@ void BDSOutput::FillRun(const BDSEventInfo* info,
                         unsigned long long int nEventsDistrFileSkippedIn,
                         unsigned int distrFileLoopNTimesIn)
 {
+  TerminateRunHistogramAccumulators();
   FillRunInfoAndUpdateHeader(info, nOriginalEventsIn, nEventsRequestedIn, nEventsInOriginalDistrFileIn, nEventsDistrFileSkippedIn, distrFileLoopNTimesIn);
   WriteFileRunLevel();
   WriteHeaderEndOfFile();
@@ -914,10 +916,8 @@ void BDSOutput::FillEnergyLoss(const BDSHitsCollectionEnergyDeposition* hits,
               {eLoss->Fill(hit);}
             if (storeELossHistograms)
               {
-                runHistos->Fill1DHistogram(indELoss, sHit, eW);
-                evtHistos->Fill1DHistogram(indELoss, sHit, eW);
-                runHistos->Fill1DHistogram(indELossPE, sHit, eW);
-                evtHistos->Fill1DHistogram(indELossPE, sHit, eW);
+                Fill1DHistogram(indELoss, sHit, eW);
+                Fill1DHistogram(indELossPE, sHit, eW);
               }
           }
         break;
@@ -936,8 +936,8 @@ void BDSOutput::FillEnergyLoss(const BDSHitsCollectionEnergyDeposition* hits,
               {eLossVacuum->Fill(hit);}
             if (storeELossVacuumHistograms)
               {
-                evtHistos->Fill1DHistogram(indELossVacuum, sHit, eW);
-                runHistos->Fill1DHistogram(indELossVacuumPE, sHit, eW);
+                Fill1DHistogram(indELossVacuum, sHit, eW);
+                Fill1DHistogram(indELossVacuumPE, sHit, eW);
               }
           }
         break;
@@ -956,10 +956,8 @@ void BDSOutput::FillEnergyLoss(const BDSHitsCollectionEnergyDeposition* hits,
               {eLossTunnel->Fill(hit);}
             if (storeELossTunnelHistograms)
               {
-                runHistos->Fill1DHistogram(indELossTunnel, sHit, eW);
-                evtHistos->Fill1DHistogram(indELossTunnel, sHit, eW);
-                runHistos->Fill1DHistogram(indELossTunnelPE, sHit, eW);
-                evtHistos->Fill1DHistogram(indELossTunnelPE, sHit, eW);
+                Fill1DHistogram(indELossTunnel, sHit, eW);
+                Fill1DHistogram(indELossTunnelPE, sHit, eW);
               }
           }
       }
@@ -977,8 +975,7 @@ void BDSOutput::FillEnergyLoss(const BDSHitsCollectionEnergyDeposition* hits,
           G4double eW = hit->GetEnergyWeighted() / CLHEP::GeV;
           G4double x = hit->Getx() / CLHEP::m;
           G4double y = hit->Gety() / CLHEP::m;
-          evtHistos->Fill3DHistogram(indScoringMap, x, y, sHit, eW);
-          runHistos->Fill3DHistogram(indScoringMap, x, y, sHit, eW);
+          Fill3DHistogram(indScoringMap, x, y, sHit, eW);
         }
     }
 
@@ -999,10 +996,8 @@ void BDSOutput::FillPrimaryHit(const std::vector<const BDSTrajectoryPointHit*>& 
       const G4double preStepSPosition = phit->point->GetPreS() / CLHEP::m;
       if (storePrimaryHistograms)
         {
-          runHistos->Fill1DHistogram(histIndices1D["Phits"], preStepSPosition);
-          evtHistos->Fill1DHistogram(histIndices1D["Phits"], preStepSPosition);
-          runHistos->Fill1DHistogram(histIndices1D["PhitsPE"], preStepSPosition);
-          evtHistos->Fill1DHistogram(histIndices1D["PhitsPE"], preStepSPosition);
+          Fill1DHistogram(histIndices1D["Phits"], preStepSPosition);
+          Fill1DHistogram(histIndices1D["PhitsPE"], preStepSPosition);
           
           if (storeCollimatorInfo && nCollimators > 0)
             {CopyFromHistToHist1D("PhitsPE", "CollPhitsPE", collimatorIndices);}
@@ -1020,10 +1015,8 @@ void BDSOutput::FillPrimaryLoss(const std::vector<const BDSTrajectoryPointHit*>&
       const G4double postStepSPosition = ploss->point->GetPostS() / CLHEP::m;
       if (storePrimaryHistograms)
         {
-          runHistos->Fill1DHistogram(histIndices1D["Ploss"], postStepSPosition);
-          evtHistos->Fill1DHistogram(histIndices1D["Ploss"], postStepSPosition);
-          runHistos->Fill1DHistogram(histIndices1D["PlossPE"], postStepSPosition);
-          evtHistos->Fill1DHistogram(histIndices1D["PlossPE"], postStepSPosition);
+          Fill1DHistogram(histIndices1D["Ploss"], postStepSPosition);
+          Fill1DHistogram(histIndices1D["PlossPE"], postStepSPosition);
           
           if (storeCollimatorInfo && nCollimators > 0)
             {CopyFromHistToHist1D("PlossPE", "CollPlossPE", collimatorIndices);}
@@ -1085,7 +1078,7 @@ void BDSOutput::FillCollimatorHits(const BDSHitsCollectionCollimator* hits,
   // interacted in a histogram
   G4int histIndex = histIndices1D["CollPInteractedPE"];
   for (G4int i = 0; i < (G4int)collimators.size(); i++)
-    {evtHistos->Fill1DHistogram(histIndex, i, (int)collimators[i]->primaryInteracted);}
+    {Fill1DHistogram(histIndex, i, (int)collimators[i]->primaryInteracted);}
 
 
   // loop over collimators and count the number that were interacted with in this event
@@ -1115,7 +1108,7 @@ void BDSOutput::FillApertureImpacts(const BDSHitsCollectionApertureImpacts* hits
           nPrimaryImpacts += 1;
           // only store one primary aperture hit in this histogram even if they were multiple
           if (storeApertureImpactsHistograms && nPrimaryImpacts == 1)
-            {evtHistos->Fill1DHistogram(histIndex, hit->S / CLHEP::m);}
+            {Fill1DHistogram(histIndex, hit->S / CLHEP::m);}
         }
       // hits are generated in order as the particle progresses
       // through the model, so the first one in the collection
@@ -1167,8 +1160,8 @@ void BDSOutput::FillScorerHitsIndividual(const G4String& histogramDefName,
           mapper.IJKLFromGlobal(hit.first, x,y,z,e);
           G4int rootGlobalIndex = (hist->GetBin(x + 1, y + 1, z + 1)); // convert to root system (add 1 to avoid underflow bin)
           evtHistos->Set3DHistogramBinContent(histIndex, rootGlobalIndex, *hit.second / unit);
+          eventAndRunHistos3D[histIndex].binsFilledThisEvent.insert(rootGlobalIndex);
         }
-      runHistos->AccumulateHistogram3D(histIndex, evtHistos->Get3DHistogram(histIndex));
     }
   
   if (!(histIndices4D.find(histogramDefName) == histIndices4D.end()))
@@ -1187,8 +1180,8 @@ void BDSOutput::FillScorerHitsIndividual(const G4String& histogramDefName,
           // convert from scorer global index to 4d i,j,k,e index of 4d scorer
           mapper.IJKLFromGlobal(hit.first, x,y,z,e);
           evtHistos->Set4DHistogramBinContent(histIndex, x, y, z, e - 1, *hit.second / unit); // - 1 to go back to the Boost Histogram indexing (-1 for the underflow bin)
+          eventAndRunHistos4D[histIndex].binsFilledThisEvent.insert(hit.first);
         }
-      runHistos->AccumulateHistogram4D(histIndex, evtHistos->Get4DHistogram(histIndex));
     }
 }
 
@@ -1206,8 +1199,7 @@ void BDSOutput::FillScorerHitsIndividualBLM(const G4String& histogramDefName,
       G4cout << "Filling hist " << histIndex << ", bin: " << hit.first+1 << " value: " << *hit.second << G4endl;
 #endif
       G4double unit = BDS::MapGetWithDefault(histIndexToUnits1D, histIndex, 1.0);
-      evtHistos->Fill1DHistogram(histIndex,hit.first, *hit.second / unit);
-      runHistos->Fill1DHistogram(histIndex,hit.first, *hit.second / unit);
+      Fill1DHistogram(histIndex, hit.first, *hit.second / unit);
     }
 }
 

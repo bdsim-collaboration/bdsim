@@ -22,9 +22,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "globals.hh"
 
 #include <map>
+#include <set>
 #include <string>
 #include <utility>
 #include <vector>
+
+#include "Rtypes.h"
 
 // forward declarations
 class BDSGlobalConstants;
@@ -48,6 +51,8 @@ class BDSOutputROOTEventSamplerS;
 class BDSOutputROOTEventTrajectory;
 class BDSOutputROOTParticleData;
 class G4Material;
+class HistogramAccumulatorFast;
+class TH1;
 
 /**
  * @brief Holder for output information.
@@ -130,6 +135,30 @@ protected:
                           G4int nBinsE, G4double eMin, G4double eMax);
   ///@}
 
+  /// Fill the appropriate histogram in the event vector of histograms, but
+  /// also cache which bin was filled in a set here, for efficient
+  /// accumulation at the end of event.
+  void Fill1DHistogram(G4int    histoId,
+                       G4double value,
+                       G4double weight = 1.0);
+
+  /// Fill the appropriate histogram in the event vector of histograms, but
+  /// also cache which bin was filled in a set here, for efficient
+  /// accumulation at the end of event.
+  void Fill3DHistogram(G4int    histoId,
+                       G4double x,
+                       G4double y,
+                       G4double z,
+                       G4double weight = 1.0);
+
+  /// For accumulation purposes, accumulate this event onto the rolling
+  /// mean for the corresponding run histograms.
+  void HistogramMarkEndOfEvent();
+
+  /// At the end of the run, finalise the per-run histograms and put them
+  /// in the output vector of run histograms.
+  void TerminateRunHistogramAccumulators();
+
   BDSOutputROOTParticleData* particleDataOutput; ///< Geant4 information / particle tables.
   BDSOutputROOTEventHeader*  headerOutput;     ///< Information about the file.
   BDSOutputROOTEventBeam*    beamOutput;       ///< Beam output.
@@ -193,6 +222,22 @@ protected:
 
   std::map<G4Material*, short int> materialToID;
   std::map<short int, G4String>    materialIDToNameUnique;
+
+  /// Holder for the pointer to the specific per-event histogram, a
+  /// set of the global bin indices filled this event and the run
+  /// accumulator.
+  struct EventRunHist
+  {
+    TH1* eventHist;
+    std::set<Int_t> binsFilledThisEvent;
+    HistogramAccumulatorFast* runAccumulator;
+  };
+
+  /// @{ Cache of run accumulators linked to per-event histograms.
+  std::vector<EventRunHist> eventAndRunHistos1D;
+  std::vector<EventRunHist> eventAndRunHistos3D;
+  std::vector<EventRunHist> eventAndRunHistos4D;
+  /// @}
   
 private:
   /// Whether we've set up the member vector of samplers. Can only be done once the geometry
