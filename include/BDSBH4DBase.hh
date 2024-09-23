@@ -71,11 +71,14 @@ public:
   virtual BDSBH4DBase& operator+=(const BDSBH4DBase& other) = 0;
   virtual void Reset_BDSBH4D() = 0;
   BDSBH4DBase* Clone(const char*) const override = 0;
-  virtual void Fill_BDSBH4D(double, double, double, double) = 0;
+  virtual int Fill_BDSBH4D(double, double, double, double) = 0;
   virtual void Set_BDSBH4D(int, int, int, int, double) = 0;
+  virtual void Set_BDSBH4D(int global, double value) = 0;
   virtual void SetError_BDSBH4D(int, int, int, int, double) = 0;
+  virtual void SetError_BDSBH4D(int global, double value) = 0;
   virtual void Add_BDSBH4D(BDSBH4DBase*) = 0;
   virtual double At(int, int, int, int) = 0;
+  virtual double At(int) = 0; ///< Global index access.
   virtual double AtError(int, int, int, int) = 0;
   virtual double LowBinEdgeAt(int, int, int, int) = 0;
   virtual double HighBinEdgeAt(int, int, int, int) = 0;

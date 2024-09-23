@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSBH4D.hh"
+#include "BDSHistBinMapper.hh"
 
 #include "TFile.h"
 
@@ -37,6 +38,9 @@ templateClassImp(BDSBH4D)
 template <>
 BDSBH4D<boost_histogram_linear>::BDSBH4D():
   BDSBH4DBase(3,3,3,3, 0,1, 0,1, 0,1, 0.1,0.230, "BDSBH4D","BDSBH4D","linear")
+#ifndef __ROOTBUILD__
+  ,mapper(3,3,3,3)
+#endif
 {
   h = boost::histogram::make_histogram_with(std::vector<double>(),
 					    boost::histogram::axis::regular<double> {3, 0.0, 1.0, "x"},
@@ -54,6 +58,9 @@ BDSBH4D<boost_histogram_linear>::BDSBH4D():
 template <>
 BDSBH4D<boost_histogram_log>::BDSBH4D():
   BDSBH4DBase(3,3,3,3, 0,1, 0,1, 0,1, 0.1,0.230, "BDSBH4D","BDSBH4D","log")
+#ifndef __ROOTBUILD__
+  ,mapper(3,3,3,3)
+#endif
 {
   h = boost::histogram::make_histogram_with(std::vector<double>(),
 					    boost::histogram::axis::regular<double> {3, 0.0, 1.0, "x"},
@@ -71,6 +78,9 @@ BDSBH4D<boost_histogram_log>::BDSBH4D():
 template <>
 BDSBH4D<boost_histogram_variable>::BDSBH4D():
   BDSBH4DBase(3,3,3,0,1, 0,1, 0,1, "BDSBH4D","BDSBH4D","user",std::vector<double>{0.001,0.1,0.230})
+#ifndef __ROOTBUILD__
+  ,mapper(3,3,3,0)
+#endif
 {
   h = boost::histogram::make_histogram_with(std::vector<double>(),
 					    boost::histogram::axis::regular<double> {3, 0.0, 1.0, "x"},
@@ -94,6 +104,9 @@ BDSBH4D<boost_histogram_linear>::BDSBH4D(std::string& name, std::string& title, 
   BDSBH4DBase(nxbins, nybins, nzbins, nebins,
 	      xmin, xmax, ymin, ymax, zmin, zmax, emin, emax,
 	      name, title, eScale)
+#ifndef __ROOTBUILD__
+  ,mapper(nxbins, nybins, nzbins, nebins)
+#endif
 {
   h = boost::histogram::make_histogram_with(std::vector<double>(),
 					    boost::histogram::axis::regular<double> {nxbins, xmin, xmax, "x"},
@@ -117,6 +130,9 @@ BDSBH4D<boost_histogram_log>::BDSBH4D(std::string& name, std::string& title, con
   BDSBH4DBase(nxbins, nybins, nzbins, nebins,
 	      xmin, xmax, ymin, ymax, zmin, zmax, emin, emax,
 	      name, title, eScale)
+#ifndef __ROOTBUILD__
+  ,mapper(nxbins, nybins, nzbins, nebins)
+#endif
 {
   h = boost::histogram::make_histogram_with(std::vector<double>(),
 					    boost::histogram::axis::regular<double> {nxbins, xmin, xmax, "x"},
@@ -138,6 +154,9 @@ BDSBH4D<boost_histogram_variable>::BDSBH4D(std::string& name, std::string& title
 					   unsigned int nybins, double ymin, double ymax,
 					   unsigned int nzbins, double zmin, double zmax):
   BDSBH4DBase(nxbins, nybins, nzbins, xmin, xmax, ymin, ymax, zmin, zmax, name, title, eScale, eBinEdgesIn)
+#ifndef __ROOTBUILD__
+  ,mapper(nxbins, nybins, nzbins, eBinEdgesIn.size())
+#endif
 {
   h = boost::histogram::make_histogram_with(std::vector<double>(),
 					    boost::histogram::axis::regular<double> {nxbins, xmin, xmax, "x"},
@@ -172,12 +191,21 @@ BDSBH4D<T>* BDSBH4D<T>::Clone(const char* newname) const
 }
 
 template <class T>
-void BDSBH4D<T>::Fill_BDSBH4D(double xValue,
+int BDSBH4D<T>::Fill_BDSBH4D(double xValue,
 			      double yValue,
 			      double zValue,
 			      double eValue)
 {
   h(xValue, yValue, zValue, eValue);
+#ifndef __ROOTBUILD__
+  int i = h.axis(0).index(xValue);
+  int j = h.axis(1).index(yValue);
+  int k = h.axis(2).index(zValue);
+  int l = h.axis(3).index(eValue);
+  return mapper.GlobalFromIJKLIndex(i, j, k, l);
+#else
+  return 0;
+#endif
 }
 
 template <class T>
@@ -188,6 +216,20 @@ void BDSBH4D<T>::Set_BDSBH4D(int x,
 			     double value)
 {
   h.at(x, y, z, e) = value;
+}
+
+
+template <class T>
+#ifndef __ROOTBUILD__
+void BDSBH4D<T>::Set_BDSBH4D(int global,
+                             double value)
+{
+  int x,y,z,e;
+  mapper.IJKLFromGlobal(global, x, y, z, e);
+  h.at(x, y, z, e) = value;
+#else
+void BDSBH4D<T>::Set_BDSBH4D(int, double){
+#endif
 }
 
 template <class T>
@@ -201,6 +243,19 @@ void BDSBH4D<T>::SetError_BDSBH4D(int x,
 }
 
 template <class T>
+#ifndef __ROOTBUILD__
+void BDSBH4D<T>::SetError_BDSBH4D(int global,
+                                  double value)
+{
+  int x,y,z,e;
+  mapper.IJKLFromGlobal(global, x, y, z, e);
+  h_err.at(x, y, z, e) = value;
+#else
+  void BDSBH4D<T>::SetError_BDSBH4D(int, double){
+#endif
+}
+
+template <class T>
 void BDSBH4D<T>::Add_BDSBH4D(BDSBH4DBase* otherHistogram)
 {
   auto tmp = dynamic_cast<BDSBH4D<T>*>(otherHistogram);
@@ -211,6 +266,18 @@ template <class T>
 double BDSBH4D<T>::At(int x, int y, int z, int e)
 {
   return h.at(x, y, z, e);
+}
+
+template <class T>
+#ifndef __ROOTBUILD__
+double BDSBH4D<T>::At(int global)
+{
+  int x,y,z,e;
+  mapper.IJKLFromGlobal(global, x, y, z, e);
+  return h.at(x, y, z, e);
+#else
+double BDSBH4D<T>::At(int){return 0;
+#endif
 }
 
 template <class T>
