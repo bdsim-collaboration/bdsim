@@ -98,6 +98,9 @@ public:
   /// Access currently accumulated number of entries.
   inline unsigned long N() const {return n;}
 
+  /// Empty all contents.
+  virtual void Flush();
+
 protected:
   /// Accumulate a single value into the online mean and variance histograms.
   /// This by default accumulates the mean and variance with a new value x.

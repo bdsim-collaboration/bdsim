@@ -352,3 +352,12 @@ void HistogramAccumulator::AccumulateSingleValue(double         oldMean,
   newMean = oldMean + ((x - oldMean) / (double)nEntriesAccumulated);
   newVari = oldVari + ((x - oldMean) * (x - newMean));
 }
+
+void HistogramAccumulator::Flush()
+{
+  mean->Reset();
+  variance->Reset();
+  result->Reset();
+  n = 0;
+  terminated = false;
+}
