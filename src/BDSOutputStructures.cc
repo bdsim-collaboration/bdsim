@@ -45,6 +45,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSSamplerRegistry.hh"
 #include "BDSTrajectoryPoint.hh"
 
+#include "analysis/HistogramAccumulatorFast.hh"
+
 #include "globals.hh"
 #include "G4Material.hh"
 #include "G4MaterialTable.hh"
@@ -53,9 +55,14 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <algorithm>
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 #include <utility>
+
+#include "TH1.h"
+#include "TH3.h"
+
 
 BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
   nCollimators(0),
@@ -152,8 +159,10 @@ G4int BDSOutputStructures::Create1DHistogram(const G4String& name, const G4Strin
                                              G4int nbins, G4double xmin, G4double xmax)
 {
   G4int result = evtHistos->Create1DHistogram(name, title, nbins, xmin, xmax);
-  // index from runHistos will be the same as used only through interfaces in this class
-  runHistos->Create1DHistogram(name, title, nbins, xmin, xmax);
+  TH1* eh = evtHistos->Get1DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos1D.push_back(erh);
   return result;
 }
 
@@ -161,11 +170,21 @@ G4int BDSOutputStructures::Create1DHistogram(const G4String& name,
                                              const G4String& title,
                                              const std::vector<double>& edges)
 {
-  G4int result = evtHistos->Create1DHistogram(name,title,edges);
-  runHistos->Create1DHistogram(name,title,edges);
+  G4int result = evtHistos->Create1DHistogram(name, title, edges);
+  TH1* eh = evtHistos->Get1DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos1D.push_back(erh);
   return result;
 }
 
+void BDSOutputStructures::Fill1DHistogram(G4int histoId,
+                                          G4double value,
+                                          G4double weight)
+{
+  Int_t globalBinFilled = evtHistos->histograms1D[histoId]->Fill(value, weight);
+  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
+}
 
 G4int BDSOutputStructures::Create3DHistogram(const G4String& name,
                                              const G4String& title,
@@ -174,15 +193,24 @@ G4int BDSOutputStructures::Create3DHistogram(const G4String& name,
                                              G4int nBinsZ, G4double zMin, G4double zMax)
 {
   G4int result = evtHistos->Create3DHistogram(name, title,
-					      nBinsX, xMin, xMax,
-					      nBinsY, yMin, yMax,
-					      nBinsZ, zMin, zMax);
-  // index from runHistos will be the same as used only through interfaces in this class
-  runHistos->Create3DHistogram(name, title,
-			       nBinsX, xMin, xMax,
-			       nBinsY, yMin, yMax,
-			       nBinsZ, zMin, zMax);
+                                              nBinsX, xMin, xMax,
+                                              nBinsY, yMin, yMax,
+                                              nBinsZ, zMin, zMax);
+  TH1* eh = evtHistos->Get3DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos3D.push_back(erh);
   return result;
+}
+
+void BDSOutputStructures::Fill3DHistogram(G4int    histoId,
+                                          G4double x,
+                                          G4double y,
+                                          G4double z,
+                                          G4double weight)
+{
+  Int_t globalBinFilled = evtHistos->histograms3D[histoId]->Fill(x, y, z, weight);
+  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 
 G4int BDSOutputStructures::Create4DHistogram(const G4String& name,
@@ -199,14 +227,38 @@ G4int BDSOutputStructures::Create4DHistogram(const G4String& name,
 					      nBinsY, yMin, yMax,
 					      nBinsZ, zMin, zMax,
 					      nBinsE, eMin, eMax);
-  
-  runHistos->Create4DHistogram(name, title, eScale, eBinsEdges,
-			       nBinsX, xMin, xMax,
-			       nBinsY, yMin, yMax,
-			       nBinsZ, zMin, zMax,
-			       nBinsE, eMin, eMax);
+  TH1* eh = evtHistos->Get4DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos4D.push_back(erh);
   return result;
 }
+
+void BDSOutputStructures::HistogramMarkEndOfEvent()
+{
+  for (auto& erh : eventAndRunHistos1D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+  for (auto& erh : eventAndRunHistos3D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+  for (auto& erh : eventAndRunHistos4D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+}
+
+void BDSOutputStructures::TerminateRunHistogramAccumulators()
+{
+  for (G4int i = 0; i < (G4int)eventAndRunHistos1D.size(); i++)
+    {
+       auto h = evtHistos->histograms1D[i];
+       for (auto j = 0; j < h->GetNcells(); j++)
+       {G4cout << h->GetBinContent(j) << " ";}
+       G4cout << G4endl;
+
+    runHistos->histograms1D.push_back(dynamic_cast<TH1D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
+  for (G4int i = 0; i < (G4int)eventAndRunHistos3D.size(); i++)
+    {runHistos->histograms3D.push_back(dynamic_cast<TH3D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
+  for (G4int i = 0; i < (G4int)eventAndRunHistos4D.size(); i++)
+    {runHistos->histograms4D.push_back(dynamic_cast<BDSBH4DBase*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
+};
 
 void BDSOutputStructures::InitialiseSamplers()
 {
@@ -466,9 +518,25 @@ void BDSOutputStructures::ClearStructuresEventLevel()
   traj->Flush();
   evtHistos->Flush();
   evtInfo->Flush();
+  for (auto& erh : eventAndRunHistos1D)
+    {erh.binsFilledThisEvent.clear();}
+  for (auto& erh : eventAndRunHistos3D)
+    {erh.binsFilledThisEvent.clear();}
+  for (auto& erh : eventAndRunHistos4D)
+    {erh.binsFilledThisEvent.clear();}
 }
 
 void BDSOutputStructures::ClearStructuresRunLevel()
 {
   runInfo->Flush();
+  // Even though we flush the accumulation would overwrite these objects
+  // if we were to have another run and therefore leak the first set of histograms.
+  // However, can't delete theme as root would then have trouble writing after this.
+  runHistos->Flush();
+  for (auto& erh : eventAndRunHistos1D)
+    {erh.runAccumulator->Flush();}
+  for (auto& erh : eventAndRunHistos3D)
+    {erh.runAccumulator->Flush();}
+  for (auto& erh : eventAndRunHistos4D)
+    {erh.runAccumulator->Flush();}
 }

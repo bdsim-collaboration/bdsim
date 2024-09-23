@@ -47,6 +47,7 @@ class TH3D;
 class BDSOutputROOTEventHistograms: public TObject
 {
 public:
+  friend class BDSOutputStructures;
   BDSOutputROOTEventHistograms();
   BDSOutputROOTEventHistograms(const BDSOutputROOTEventHistograms &h);
   BDSOutputROOTEventHistograms& operator=(const BDSOutputROOTEventHistograms&) = delete;
