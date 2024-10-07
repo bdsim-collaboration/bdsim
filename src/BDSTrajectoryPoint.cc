@@ -106,8 +106,8 @@ BDSTrajectoryPoint::BDSTrajectoryPoint(const G4Track* track,
   if (info)
     {
       G4double sCentre = info->GetSPos();
-      preS             = sCentre + localPosition.PreStepPoint().z();
-      postS            = sCentre + localPosition.PostStepPoint().z();
+      preS             = sCentre + localPosMom.PreStepPoint().z();
+      postS            = preS; // no step length yet
       beamlineIndex    = info->GetBeamlineMassWorldIndex();
       beamline         = info->GetBeamlineMassWorld();
     }
