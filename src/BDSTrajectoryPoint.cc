@@ -96,13 +96,13 @@ BDSTrajectoryPoint::BDSTrajectoryPoint(const G4Track* track,
   
   // s position for pre and post step point
   // with a track, we're at the start and have no step - use 1nm for step to aid geometrical lookup
-  BDSStep localPosition = auxNavigator->ConvertToLocal(track->GetPosition(),
-						       track->GetMomentumDirection(),
-						       1*CLHEP::nm,
-						       true);
-  prePosLocal = localPosition.PreStepPoint();
+  BDSStep localPosMom = auxNavigator->ConvertToLocal(track->GetPosition(),
+                                                     track->GetMomentum(),
+                                                     1*CLHEP::nm,
+                                                     true);
+  prePosLocal = localPosMom.PreStepPoint();
   postPosLocal = prePosLocal;
-  BDSPhysicalVolumeInfo* info = BDSPhysicalVolumeInfoRegistry::Instance()->GetInfo(localPosition.VolumeForTransform());
+  BDSPhysicalVolumeInfo* info = BDSPhysicalVolumeInfoRegistry::Instance()->GetInfo(localPosMom.VolumeForTransform());
   if (info)
     {
       G4double sCentre = info->GetSPos();
@@ -113,7 +113,7 @@ BDSTrajectoryPoint::BDSTrajectoryPoint(const G4Track* track,
     }
 
   if (storeExtrasLocal)
-    {extraLocal = new BDSTrajectoryPointLocal(prePosLocal, localPosition.PostStepPoint());}
+    {extraLocal = new BDSTrajectoryPointLocal(prePosLocal, localPosMom.PostStepPoint());} // "post step point" is momentum
   
   if (storeExtrasLink)
     {StoreExtrasLink(track);}
@@ -176,7 +176,10 @@ BDSTrajectoryPoint::BDSTrajectoryPoint(const G4Step* step,
     }
 
   if (storeExtrasLocal)
-    {extraLocal = new BDSTrajectoryPointLocal(prePosLocal, localPosition.PostStepPoint());}
+    {
+      G4ThreeVector postLocalMom = auxNavigator->ConvertAxisToLocal(postMomentum); // uses cached transform
+      extraLocal = new BDSTrajectoryPointLocal(prePosLocal, postLocalMom);
+    }
 
   G4Track* track = step->GetTrack();
   if (storeExtrasLink)
