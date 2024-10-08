@@ -29,6 +29,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSCollimatorJaw.hh"
 #include "BDSCollimatorTipJaw.hh"
 #include "BDSCollimatorRectangular.hh"
+#include "BDSCollimatorBeamMask.hh"
 #include "BDSColours.hh"
 #include "BDSColourFromMaterial.hh"
 #include "BDSComponentFactoryUser.hh"
@@ -364,6 +365,8 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateComponent(Element const* ele
       {component = CreateEllipticalCollimator(); break;}
     case ElementType::_RCOL:
       {component = CreateRectangularCollimator(); break;}
+      case ElementType::_BMCOL:
+      {component = CreateBeamMaskCollimator(); break;}
     case ElementType::_TARGET:
       {component = CreateTarget(); break;}
     case ElementType::_JCOL:
@@ -1459,6 +1462,27 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateRectangularCollimator()
 				      element->ysizeOut*CLHEP::m,
 				      PrepareColour(element, material),
 				      circularOuter);
+}
+
+BDSAcceleratorComponent* BDSComponentFactory::CreateBeamMaskCollimator()
+{
+  if (!HasSufficientMinimumLength(element))
+  {return nullptr;}
+  G4bool circularOuter = false;
+  G4String apertureType = G4String(element->apertureType);
+  if (apertureType == "circular")
+  {circularOuter = true;}
+  return new BDSCollimatorBeamMask(elementName,
+                                      element->l*CLHEP::m,
+                                      PrepareHorizontalWidth(element),
+                                      PrepareMaterial(element),
+                                      PrepareVacuumMaterial(element),
+                                      element->xsize*CLHEP::m,
+                                      element->ysize*CLHEP::m,
+                                      element->xsizeOut*CLHEP::m,
+                                      element->ysizeOut*CLHEP::m,
+                                      PrepareColour(element),
+                                      circularOuter);
 }
 
 BDSAcceleratorComponent* BDSComponentFactory::CreateTarget()
