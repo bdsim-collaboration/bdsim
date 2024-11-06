@@ -102,6 +102,7 @@ public:
   inline std::vector<GMAD::CoolingChannel> GetCoolingChannels() const {return coolingchannel_list.getVector();}
   inline std::map<std::string, GMAD::CoolingChannel> GetCoolingChannelMap() const {return coolingchannel_list.getMap();}
   inline std::vector<GMAD::Field> GetFields() const {return field_list.getVector();}
+  inline std::vector<GMAD::Laser>GetLasers() const {return laser_list.getVector();}
   inline std::vector<GMAD::Material> GetMaterials() const {return material_list.getVector();}
   inline std::vector<GMAD::Placement> GetPlacements() const {return placement_list.getVector();}
   inline std::vector<GMAD::Query> GetQuery() const {return query_list.getVector();}
@@ -117,7 +118,7 @@ public:
   /// Return a cooling channel object by name. Throws an exception if it doesn't exist.
   GMAD::CoolingChannel GetCoolingChannel(const std::string& objectName);
 
-  
+
 protected:
   /// Constructor from filename.
   explicit BDSParser(const std::string& filename);

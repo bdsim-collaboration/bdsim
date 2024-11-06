@@ -191,6 +191,11 @@ private:
   void IonINCLXX();
   void Ionisation();
   void LaserWire();
+  void LaserPhotoDetachment();
+  void LaserComptonScattering();
+  void LaserCumulativePhotoDetachment();
+  void LaserCumulativeCompton();
+  void LaserIonExcitation();
   void Muon();
   void MuonInelastic();
   void NeutronTrackingCut();

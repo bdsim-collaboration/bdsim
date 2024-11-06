@@ -158,4 +158,9 @@ BeamBase::BeamBase()
   dTStop = 0;
   dPStart = 0;
   dPStop = 0;
+
+  polarization1 = 0;
+  polarization2 = 0;
+  polarization3 = 0;
+
 }
