@@ -2262,6 +2262,34 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateLaserwire(G4double syncrhono
 			      BDSColours::Instance()->GetColour(colour)));
 }
 
+BDSAcceleratorComponent* BDSComponentFactory::CreateLaserwire(G4double currentArcLength)
+{
+  if(!HasSufficientMinimumLength(element))
+    {return nullptr;}
+
+  BDSLaser* laser = PrepareLaser(element);
+  G4double beta0 = integralUpToThisComponent->designParticle.Beta();
+  laser->SetT0((currentArcLength+((0.5*element->l)+element->laserOffsetZ)*CLHEP::meter)/(beta0*CLHEP::c_light));
+
+
+  G4ThreeVector laserOffset = G4ThreeVector(element->laserOffsetX * CLHEP::m,
+					    element->laserOffsetY * CLHEP::m,
+					    element->laserOffsetZ * CLHEP::m);
+  G4String colour = laser->GetLaserColour();
+
+
+    return (new BDSLaserWireNew(elementName,
+			      element->l*CLHEP::m,
+			      PrepareBeamPipeInfo(element),
+			      laser,
+			      30.0*laser->Sigma0(),
+			      element->wireLength*CLHEP::m,
+			      element->laserOffsetTheta*CLHEP::rad,
+			      element->laserOffsetPhi*CLHEP::rad,
+			      laserOffset,
+			      BDSColours::Instance()->GetColour(colour)));
+}
+
 BDSMagnet* BDSComponentFactory::CreateMagnet(const GMAD::Element* el,
 					     BDSMagnetStrength*   st,
 					     BDSFieldType         fieldType,
