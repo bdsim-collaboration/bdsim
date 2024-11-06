@@ -1,4 +1,4 @@
-# /*
+/*
 Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway,
 University of London 2001 - 2024.
 
@@ -47,7 +47,6 @@ void BDSComptonScatteringEngine::SetParticle(G4int partIDIn)
   // else particle mass just left as whatever it was before?
   particleRadius = (CLHEP::e_squared) / (4 * CLHEP::pi * CLHEP::epsilon0 * particleMass);
 }
-
 
 G4double BDSComptonScatteringEngine::CrossSection(G4double photonEnergyIn, G4int partIn)
 {

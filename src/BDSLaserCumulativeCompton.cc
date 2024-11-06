@@ -75,11 +75,11 @@ G4double BDSLaserCumulativeCompton::GetMeanFreePath(const G4Track& track,
 
   G4LogicalVolume* lv = track.GetVolume()->GetLogicalVolume();
   if (!lv->IsExtended()) // not extended so can't be a laser logical volume
-    {return std::numeric_limits<double>::max();}
+  {return std::numeric_limits<double>::max();}
 
   BDSLogicalVolumeLaser* lvv = dynamic_cast<BDSLogicalVolumeLaser*>(lv);
   if (!lvv) // it's an extended volume but not ours (could be a crystal)
-    {return std::numeric_limits<double>::max();}
+  {return std::numeric_limits<double>::max();}
 
   *forceCondition = Forced;
 

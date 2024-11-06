@@ -1928,7 +1928,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateLaser()
   if (!HasSufficientMinimumLength(element))
     {return nullptr;}
 
-  BDSLaser* laser = new BDSLaser(element->waveLength);
+  BDSLaser* laser = PrepareLaser(element);
   G4double length = element->l*CLHEP::m;
   G4double lambda = laser->Wavelength()*CLHEP::m;
 
@@ -2243,6 +2243,34 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateLaserwire(G4double syncrhono
     BDSLaser* laser = PrepareLaser(element);
     laser->SetT0(syncrhonousTime);
 
+
+
+  G4ThreeVector laserOffset = G4ThreeVector(element->laserOffsetX * CLHEP::m,
+					    element->laserOffsetY * CLHEP::m,
+					    element->laserOffsetZ * CLHEP::m);
+  G4String colour = laser->GetLaserColour();
+
+
+    return (new BDSLaserWireNew(elementName,
+			      element->l*CLHEP::m,
+			      PrepareBeamPipeInfo(element),
+			      laser,
+			      30.0*laser->Sigma0(),
+			      element->wireLength*CLHEP::m,
+			      element->laserOffsetTheta*CLHEP::rad,
+			      element->laserOffsetPhi*CLHEP::rad,
+			      laserOffset,
+			      BDSColours::Instance()->GetColour(colour)));
+}
+
+BDSAcceleratorComponent* BDSComponentFactory::CreateLaserwire(G4double currentArcLength)
+{
+  if(!HasSufficientMinimumLength(element))
+    {return nullptr;}
+
+  BDSLaser* laser = PrepareLaser(element);
+  G4double beta0 = integralUpToThisComponent->designParticle.Beta();
+  laser->SetT0((currentArcLength+((0.5*element->l)+element->laserOffsetZ)*CLHEP::meter)/(beta0*CLHEP::c_light));
 
 
   G4ThreeVector laserOffset = G4ThreeVector(element->laserOffsetX * CLHEP::m,
