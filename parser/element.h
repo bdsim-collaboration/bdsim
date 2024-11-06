@@ -164,7 +164,7 @@ namespace GMAD
     double ydir;
     double zdir;
     ///@}
-    double waveLength; ///< for laser wire and 3d transforms
+
     double phi, theta, psi; ///< for 3d transforms
     double axisX, axisY, axisZ;
     bool   axisAngle;
