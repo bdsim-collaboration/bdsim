@@ -119,7 +119,7 @@ Parameters::Parameters()
   setMap["offsetY2"]           = false;
   setMap["tilt2"]              = false;
   setMap["outerShape"]         = false;
-  
+
   setMap["tscint"]             = false;
   setMap["twindow"]            = false;
   setMap["tmount"]             = false;
@@ -142,7 +142,7 @@ Parameters::Parameters()
   setMap["xdir"]               = false;
   setMap["ydir"]               = false;
   setMap["zdir"]               = false; 
-  setMap["waveLength"]         = false;
+  setMap["gradient"]           = false;
   setMap["phi"]                = false;
   setMap["theta"]              = false;
   setMap["psi"]                = false;
@@ -156,6 +156,13 @@ Parameters::Parameters()
   setMap["degraderHeight"]    = false;
   setMap["materialThickness"] = false;
   setMap["degraderOffset"]    = false;
+
+  setMap["laserBeam"]         = false;
+  setMap["laserOffsetTheta"]  = false;
+  setMap["laserOffsetPhi"]    = false;
+  setMap["laserOffsetX"]      = false;
+  setMap["laserOffsetY"]      = false;
+  setMap["laserOffsetZ"]      = false;
 
   setMap["wireDiameter"]      = false;
   setMap["wireLength"]        = false;
@@ -172,7 +179,7 @@ Parameters::Parameters()
   setMap["biasMaterial"]         = false;
   setMap["biasVacuum"]           = false;
   setMap["biasMaterialLV"]         = false;
-  
+
   setMap["minimumKineticEnergy"] = false;
   
   setMap["samplerName"]          = false;

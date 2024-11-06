@@ -193,7 +193,6 @@ void Element::PublishMembers()
   publish("xdir",        &Element::xdir);
   publish("ydir",        &Element::ydir);
   publish("zdir",        &Element::zdir);
-  publish("waveLength",  &Element::waveLength);
   publish("phi",         &Element::phi);
   publish("theta",       &Element::theta);
   publish("psi",         &Element::psi);
@@ -208,6 +207,17 @@ void Element::PublishMembers()
   publish("degraderHeight",    &Element::degraderHeight);
   publish("materialThickness", &Element::materialThickness);
   publish("degraderOffset",    &Element::degraderOffset);
+
+  publish("laserBeam",         &Element::laserBeam);
+  publish("laserOffsetTheta",  &Element::laserOffsetTheta);
+  publish("laserOffsetPhi",    &Element::laserOffsetPhi);
+  publish("laserOffsetX",      &Element::laserOffsetX);
+  publish("laserOffsetY",      &Element::laserOffsetY);
+  publish("laserOffsetZ",      &Element::laserOffsetZ);
+
+  publish("undulatorPeriod",       &Element::undulatorPeriod);
+  publish("undulatorGap",          &Element::undulatorGap);
+  publish("undulatorMagnetHeight", &Element::undulatorMagnetHeight);
 
   // for wirescanner
   publish("wireDiameter",      &Element::wireDiameter);
@@ -399,10 +409,9 @@ void Element::print(int ident) const
                   << "scintmaterial   = " << scintmaterial       << std::endl;
         break;
       }
-    case ElementType::_LASER:
+    case ElementType::_LASERWIREOLD:
       {
-        std::cout << "lambda= " << waveLength << "m" << std::endl
-                  << "xSigma= " << xsize << "m" << std::endl
+        std::cout << "xSigma= " << xsize << "m" << std::endl
                   << "ySigma= " << ysize << "m" << std::endl
                   << "xdir= "   << xdir << std::endl
                   << "ydir= "   << ydir << std::endl
@@ -593,7 +602,6 @@ void Element::flush()
   xdir = 0;
   ydir = 0;
   zdir = 0;
-  waveLength = 0;
   gradient = 0;
   phi = 0;
   theta = 0;
@@ -609,6 +617,14 @@ void Element::flush()
   degraderHeight = 0;
   materialThickness = 0;
   degraderOffset = 0;
+
+  // laserwire
+  laserBeam        = "";
+  laserOffsetTheta = 0;
+  laserOffsetPhi   = 0;
+  laserOffsetX     = 0;
+  laserOffsetY     = 0;
+  laserOffsetZ     = 0;
 
   // for wirescanner
   wireDiameter = 0;
@@ -631,7 +647,7 @@ void Element::flush()
   biasMaterialList.clear();
   biasVacuumList.clear();
   biasMaterialLVList.clear();
-  
+
   minimumKineticEnergy = 0;
 
   samplerName = "";
