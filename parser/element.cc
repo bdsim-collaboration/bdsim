@@ -450,6 +450,12 @@ void Element::print(int ident) const
                   << "kg=  " << kg  << std::endl;
         break;
       }
+    case ElementType::_GABORLENS:
+      {
+        std::cout << "b=  " << B  << "T" << std::endl
+                  << "kg=  " << kg  << std::endl;
+        break;
+      }
     default:
       {break;}
     }
