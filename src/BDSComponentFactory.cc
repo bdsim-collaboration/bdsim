@@ -2346,7 +2346,7 @@ G4bool BDSComponentFactory::YokeOnLeft(const Element*           element,
     {return true;} // active beam pipe is right and yoke is on the left
   if (mgt == BDSMagnetGeometryType::lhcright)
     {return false;}
-
+  
   G4double angle    = (*st)["angle"];
   G4double hkickAng = -(*st)["hkick"]; // not really angle but proportional in the right direction
   G4double vkickAng = -(*st)["vkick"];
@@ -2552,7 +2552,7 @@ BDSMagnetOuterInfo* BDSComponentFactory::PrepareMagnetOuterInfo(const G4String& 
 
   info->colour = PrepareColour(el);
   info->autoColour = el->autoColour;
-
+  
   return info;
 }
 

@@ -429,7 +429,7 @@ component : DRIFT       {$$=static_cast<int>(ElementType::_DRIFT);}
           | RFY         {$$=static_cast<int>(ElementType::_RFY);}
           | JCOLTIP     {$$=static_cast<int>(ElementType::_JCOLTIP);}
           | GABORLENS   {$$=static_cast<int>(ElementType::_GABORLENS);}
-          | LASERWIRE   {$$=static_cast<int>(ElementType:: _LASERWIRE);}
+          | LASERWIRE   {$$=static_cast<int>(ElementType::_LASERWIRE);}
 
 atom        : ATOM        ',' atom_options
 material    : MATERIAL    ',' material_options
