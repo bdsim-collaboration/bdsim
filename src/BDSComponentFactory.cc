@@ -697,7 +697,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateRF(RFFieldDirection directio
     }
 
   BDSLine* cavityLine = new BDSLine(elementName);
-  
+
   if (buildIncomingFringe)
     {
       //BDSMagnetStrength* stIn = PrepareCavityFringeStrength(element, cavityLength, currentArcLength, true);
