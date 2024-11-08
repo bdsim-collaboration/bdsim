@@ -77,6 +77,7 @@ namespace GMAD
     double phase;     ///< phase of rf cavity (rad)
     double tOffset;   ///< time offset used for phase calculation (ns)
     std::string fieldModulator;
+    double kg; ///< gabor lens
 
     ///@{ rmatrix elements, only 4x4
     double kick1;
@@ -200,11 +201,21 @@ namespace GMAD
     double undulatorMagnetHeight;
     ///@}
 
+    ///@{ for gabor lens
+    double anodeLength;
+    double anodeRadius;
+    double anodeThickness;
+    double electrodeLength;
+    double electrodeRadius;
+    double electrodeThickness;
+    ///@}
+
+
     ///@{ for jaw collimator with tip
     double tipThickness; ///< tip thickness
     std::string tipMaterial; ///< tip material
     ///@}
-  
+
     ///@{ temporary string for bias setting
     std::string bias;
     std::string biasMaterial;
@@ -258,10 +269,10 @@ namespace GMAD
     std::string crystalBoth;
     double      crystalAngleYAxisLeft;
     double      crystalAngleYAxisRight;
-    
+
     /// For muon cooler
     std::string coolingDefinition;
-  
+
     /// Whether the angle was set. Unique as we may technically have 0 angle but a finite
     /// field. This allows us to distinguish later on.
     /// NOTE: this is not used in Params.

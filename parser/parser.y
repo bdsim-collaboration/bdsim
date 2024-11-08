@@ -91,7 +91,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 %token <str> STR VARIABLE
 %token <ival> MARKER ELEMENT DRIFT RF RBEND SBEND QUADRUPOLE SEXTUPOLE OCTUPOLE
 %token <ival> DECAPOLE MULTIPOLE SCREEN AWAKESCREEN AWAKESPECTROMETER THINMULT
-%token <ival> SOLENOID RCOL JCOL JCOLTIP ECOL BMCOL GASCAP GASJET LINE LASERWIREOLD TRANSFORM3D MUONSPOILER MUSPOILER
+%token <ival> SOLENOID RCOL JCOL JCOLTIP ECOL BMCOL GASCAP GASJET LINE LASERWIREOLD
+%token <ival> TRANSFORM3D MUONSPOILER MUSPOILER GABORLENS
 %token <ival> SHIELD DEGRADER GAP CRYSTALCOL WIRESCANNER
 %token <ival> VKICKER HKICKER KICKER TKICKER THINRMATRIX PARALLELTRANSPORTER
 %token <ival> RMATRIX UNDULATOR USERCOMPONENT DUMP CT TARGET RFX RFY MUONCOOLER LASERWIRE
@@ -427,6 +428,7 @@ component : DRIFT       {$$=static_cast<int>(ElementType::_DRIFT);}
           | RFX         {$$=static_cast<int>(ElementType::_RFX);}
           | RFY         {$$=static_cast<int>(ElementType::_RFY);}
           | JCOLTIP     {$$=static_cast<int>(ElementType::_JCOLTIP);}
+          | GABORLENS   {$$=static_cast<int>(ElementType::_GABORLENS);}
           | LASERWIRE   {$$=static_cast<int>(ElementType:: _LASERWIRE);}
 
 atom        : ATOM        ',' atom_options
