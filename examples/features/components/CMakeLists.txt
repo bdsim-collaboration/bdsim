@@ -11,6 +11,7 @@ simple_testing(component-drift               "--file=drift.gmad"           ${OVE
 simple_testing(component-dump                "--file=dump.gmad"            ${OVERLAP_CHECK})
 simple_testing(component-ecol                "--file=ecol.gmad"            ${OVERLAP_CHECK})
 # (REMOVED) simple_testing(component-ecol-tapered        "--file=ecol_tapered.gmad"    ${OVERLAP_CHECK})
+simple_testing(component-gaborlens           "--file=gaborlens.gmad"       ${OVERLAP_CHECK})
 simple_testing(component-gap                 "--file=gap.gmad"             ${OVERLAP_CHECK})
 simple_testing(component-gas-capillary       "--file=gas-capillary.gmad"   ${OVERLAP_CHECK})
 simple_testing(component-gas-jet             "--file=gas-jet.gmad"         ${OVERLAP_CHECK})

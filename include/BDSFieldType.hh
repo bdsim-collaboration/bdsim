@@ -49,7 +49,7 @@ struct fieldtypes_def
 	     octupole, decapole, multipole, muonspoiler, muoncooler,
              skewquadrupole, skewsextupole, skewoctupole, skewdecapole,
 	     rfpillbox, rfconstantinx, rfconstantiny, rfconstantinz, cavityfringe,
-	     rmatrix, paralleltransporter, undulator,
+	     rmatrix, paralleltransporter, undulator, gaborlens,
              dipole3d,
 	     multipoleouterdipole, multipoleouterquadrupole,
 	     multipoleoutersextupole, multipoleouteroctupole,

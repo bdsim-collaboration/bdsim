@@ -85,6 +85,7 @@ void Element::PublishMembers()
   publish("phase",     &Element::phase);
   publish("tOffset",   &Element::tOffset);
   publish("fieldModulator", &Element::fieldModulator);
+  publish("kg",        &Element::kg);
 
   // rmatrix elements, only 4x4
   publish("kick1",     &Element::kick1);
@@ -221,6 +222,14 @@ void Element::PublishMembers()
   publish("undulatorPeriod",       &Element::undulatorPeriod);
   publish("undulatorGap",          &Element::undulatorGap);
   publish("undulatorMagnetHeight", &Element::undulatorMagnetHeight);
+
+  // for gabor lens
+  publish("anodeRadius",         &Element::anodeRadius);
+  publish("anodeLength",         &Element::anodeLength);
+  publish("anodeThickness",      &Element::anodeThickness);
+  publish("electrodeRadius",     &Element::electrodeRadius);
+  publish("electrodeLength",     &Element::electrodeLength);
+  publish("electrodeThickness",  &Element::electrodeThickness);
 
   // for jaw collimator with tip
   publish("tipThickness",     &Element::tipThickness);
@@ -424,6 +433,12 @@ void Element::print(int ident) const
                   << "psi=   " << psi   << "rad" << std::endl;
         break;
       }
+    case ElementType::_GABORLENS:
+      {
+        std::cout << "b=  " << B  << "T" << std::endl
+                  << "kg=  " << kg  << std::endl;
+        break;
+      }
     default:
       {break;}
     }
@@ -506,6 +521,7 @@ void Element::flush()
   phase     = 0;
   tOffset   = 0;
   fieldModulator = "";
+  kg = 0;
 
   // rmatrix
   kick1 = 0;
@@ -623,6 +639,14 @@ void Element::flush()
   undulatorGap = 0;
   undulatorMagnetHeight = 0;
 
+  // gabor lens
+  anodeLength = 0;
+  anodeRadius = 0;
+  anodeThickness = 0;
+  electrodeLength = 0;
+  electrodeRadius = 0;
+  electrodeThickness = 0;
+
   // bias
   bias         = "";
   biasMaterial = "";
@@ -631,7 +655,7 @@ void Element::flush()
   biasMaterialList.clear();
   biasVacuumList.clear();
   biasMaterialLVList.clear();
-  
+
   minimumKineticEnergy = 0;
 
   samplerName = "";
@@ -667,7 +691,7 @@ void Element::flush()
   crystalAngleYAxisRight = 0;
 
   coolingDefinition = "";
-  
+
   angleSet = false;
   scalingFieldOuterSet = false;
 

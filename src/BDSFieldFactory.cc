@@ -38,6 +38,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSFieldEMRFCavity.hh"
 #include "BDSFieldEMZero.hh"
 #include "BDSFieldFactory.hh"
+#include "BDSFieldGaborLens.hh"
 #include "BDSFieldInfo.hh"
 #include "BDSFieldInfoExtra.hh"
 #include "BDSFieldLoader.hh"
@@ -892,6 +893,8 @@ BDSFieldObjects* BDSFieldFactory::CreateFieldEM(const BDSFieldInfo& info)
       }
     case BDSFieldType::ebfieldzero:
       {field = new BDSFieldEMZero(); break;}
+    case BDSFieldType::gaborlens:
+      {field = new BDSFieldGaborLens(info.MagnetStrength()); break;}
     case BDSFieldType::muoncooler:
       {field = CreateMuonCoolerField(info, brho); break;}
     default:
@@ -1301,7 +1304,7 @@ BDSFieldEM* BDSFieldFactory::CreateMuonCoolerField(const BDSFieldInfo& info,
   BDSFieldInfoExtraMuonCooler* mcExtraInfo = dynamic_cast<BDSFieldInfoExtraMuonCooler*>(extraInfo);
   if (!mcExtraInfo) // shouldn't happen, but just for safety
     {throw BDSException(__METHOD_NAME__, "no muon cooler extra definitions for field definition: " + info.NameOfParserDefinition());}
-  
+
   BDSFieldEM* result = new BDSFieldEMMuonCooler(mcExtraInfo, brho);
   return result;
 }
