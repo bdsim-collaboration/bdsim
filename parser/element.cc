@@ -194,6 +194,7 @@ void Element::PublishMembers()
   publish("xdir",        &Element::xdir);
   publish("ydir",        &Element::ydir);
   publish("zdir",        &Element::zdir);
+  publish("waveLength",  &Element::waveLength);
   publish("phi",         &Element::phi);
   publish("theta",       &Element::theta);
   publish("psi",         &Element::psi);
@@ -420,7 +421,8 @@ void Element::print(int ident) const
       }
     case ElementType::_LASERWIREOLD:
       {
-        std::cout << "xSigma= " << xsize << "m" << std::endl
+          std::cout << "lambda= " << waveLength << "m" << std::endl
+                  <<  "xSigma= " << xsize << "m" << std::endl
                   << "ySigma= " << ysize << "m" << std::endl
                   << "xdir= "   << xdir << std::endl
                   << "ydir= "   << ydir << std::endl
@@ -618,6 +620,7 @@ void Element::flush()
   xdir = 0;
   ydir = 0;
   zdir = 0;
+  waveLength = 0;
   gradient = 0;
   phi = 0;
   theta = 0;
@@ -633,14 +636,6 @@ void Element::flush()
   degraderHeight = 0;
   materialThickness = 0;
   degraderOffset = 0;
-
-  // laserwire
-  laserBeam        = "";
-  laserOffsetTheta = 0;
-  laserOffsetPhi   = 0;
-  laserOffsetX     = 0;
-  laserOffsetY     = 0;
-  laserOffsetZ     = 0;
 
   // for wirescanner
   wireDiameter = 0;

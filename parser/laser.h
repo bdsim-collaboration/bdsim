@@ -36,17 +36,17 @@ namespace GMAD {
   {
   public:
     std::string name;         ///< Name of this laser.
-    double wavelength;
-    double m2;
-    double pulseEnergy;
-    double pulseDuration;
-    double w0;
-    double sigma0;
-    double laserArrivalTime;
-    double laserPolarization1;
-    double laserPolarization2;
-    double laserPolarization3;
-    bool   ignoreRayleighRange;
+    double wavelength{};
+    double m2{};
+    double pulseEnergy{};
+    double pulseDuration{};
+    double w0{};
+    double sigma0{};
+    double laserArrivalTime{};
+    double laserPolarization1{};
+    double laserPolarization2{};
+    double laserPolarization3{};
+    bool   ignoreRayleighRange{};
 
     
     /// constructor

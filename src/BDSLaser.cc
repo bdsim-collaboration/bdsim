@@ -75,6 +75,16 @@ BDSLaser::BDSLaser(G4double wavelengthIn,
   rayleighRange = (CLHEP::pi * (2.0*sigma0)*(2.0*sigma0)) / (wavelength * m2);
 }
 
+BDSLaser::BDSLaser(G4double wavelengthIn):   wavelength(wavelengthIn),
+                                             m2(0),
+                                             pulseDuration(0),
+                                             pulseEnergy(0),
+                                             sigma0(0),
+                                             laserArrivalTime(0),
+                                             T0(0),
+                                             polarization(0),
+                                             ignoreRayleighRange(0) {}
+
 BDSLaser::~BDSLaser()
 {;}
 
