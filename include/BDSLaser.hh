@@ -44,6 +44,7 @@ public:
        G4double T0In,
        G4ThreeVector polarizationIn,
        G4bool   ignoreRayleighRangeIn = false);
+  BDSLaser(G4double wavelengthIn);
   ~BDSLaser();
   
   //this needs to be called based upon particle coordinates

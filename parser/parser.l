@@ -123,7 +123,7 @@ screen { return SCREEN; }
 awakescreen { return AWAKESCREEN; }
 awakespectrometer { return AWAKESPECTROMETER; }
 transform3d { return TRANSFORM3D ; }
-laserwireold { return LASERWIREOLD; }
+laser { return LASERWIREOLD; }
 degrader { return DEGRADER;}
 gap { return GAP;}
 thinrmatrix { return THINRMATRIX;}
@@ -146,7 +146,7 @@ coolingchannel { return COOLINGCHANNEL; }
 crystal { return CRYSTAL; }
 field { return FIELD; }
 placement { return PLACEMENT; }
-laser   {return LASER; }
+laserFlux   {return LASER; }
 query { return QUERY; }
 samplerplacement { return SAMPLERPLACEMENT; }
 scorer { return SCORER; }
