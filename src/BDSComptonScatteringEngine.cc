@@ -1,14 +1,14 @@
-/* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
+# /*
+Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway,
 University of London 2001 - 2024.
 
 This file is part of BDSIM.
 
-BDSIM is free software: you can redistribute it and/or modify 
-it under the terms of the GNU General Public License as published 
+BDSIM is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published
 by the Free Software Foundation version 3 of the License.
 
-BDSIM is distributed in the hope that it will be useful, but 
+BDSIM is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -73,7 +73,12 @@ void BDSComptonScatteringEngine::PerformCompton(const G4ThreeVector& boost,G4int
   G4ThreeVector scatteredGammaUnitVector(std::sin(theta)*std::cos(phi), std::sin(theta)*std::sin(phi), std::cos(theta));
   if(incomingGamma.x()<=1e9&&incomingGamma.y()<=1e9)
   {
-      scatteredGammaUnitVector.rotateUz(incomingGamma.vect().unit());
+      scatteredGammaUnitVector.rotate(0,CLHEP::pi,0);
+      //rotateUz(incomingGamma.vect().unit());
+      //theta -=CLHEP::pi;
+      //scatteredGammaUnitVector.setX(std::sin(theta)*std::cos(phi));
+      //scatteredGammaUnitVector.setY(std::sin(theta)*std::sin(phi));
+      //scatteredGammaUnitVector.setZ(std::cos(theta));
   }
   else{
       G4RotationMatrix* rot = CalculateRotation();
@@ -149,17 +154,23 @@ G4double BDSComptonScatteringEngine::PolarizationCrossSectionPhi(G4double theta,
     G4double constants = ((particleRadius*particleRadius)/2.0)*(Ep/E0)*(Ep/E0);
     G4double first = 1.0+std::cos(theta)*std::cos(theta)+(E0-Ep)*(1.0-std::cos(theta));
     G4double second = std::sin(theta)*std::sin(theta)*(incomingGammaPolarization.p1()*std::cos(phi)+incomingGammaPolarization.p2()*std::sin(phi));
-    G4double third = -1.0*incomingGammaPolarization.p3()*(1.0-std::cos(theta))*(Ep*std::sin(theta)*
-            (incomingElectronPolarization.p1()*std::cos(phi)+incomingElectronPolarization.p2()*std::sin(phi))
-            +incomingElectronPolarization.p3()*std::cos(theta)*(Ep*std::sin(theta)+E0));
+    G4double third = -1.0*incomingGammaPolarization.p3()*(1.0-std::cos(theta))*
+        (Ep*std::sin(theta)*(incomingElectronPolarization.p1()*std::cos(phi)+incomingElectronPolarization.p2()*std::sin(phi))
+        +incomingElectronPolarization.p3()*std::cos(theta)*(E0+Ep));
     return constants*(first+second+third);
+
 }
 
 G4double BDSComptonScatteringEngine::PolarizationCrossSectionMaxPhi(G4double theta ,G4double Ep)
 {
-    G4double numer = incomingGammaPolarization.p2()*std::sin(theta)*std::sin(theta)+incomingGammaPolarization.p3()*incomingElectronPolarization.p1()*Ep*std::sin(theta)*(1.0-std::cos(theta));
+    //G4double numer = incomingGammaPolarization.p2()*std::sin(theta)*std::sin(theta)+incomingGammaPolarization.p3()*incomingElectronPolarization.p1()*Ep*std::sin(theta)*(1.0-std::cos(theta));
 
-    G4double denom = -1*incomingGammaPolarization.p3()*incomingElectronPolarization.p2()*Ep*std::sin(theta)*(1.0-std::cos(theta))+incomingGammaPolarization.p1()*std::sin(theta)*std::sin(theta);
+    //G4double denom = -1*incomingGammaPolarization.p3()*incomingElectronPolarization.p2()*Ep*std::sin(theta)*(1.0-std::cos(theta))+incomingGammaPolarization.p1()*std::sin(theta)*std::sin(theta);
+
+    G4double numer = -incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep*std::sin(theta)*incomingElectronPolarization.p2() -
+                        std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p2();
+    G4double denom = std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p1()+
+                    incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep*std::sin(theta)*incomingElectronPolarization.p1();
     G4double phiVal = std::atan(numer/denom);
     if(phiVal<0)
     {phiVal+=CLHEP::pi;}
@@ -170,4 +181,6 @@ G4double BDSComptonScatteringEngine::PolarizationCrossSectionMaxPhi(G4double the
     else
     {return phiVal;}
 }
+
+
 
