@@ -52,10 +52,10 @@ BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(G4double eFieldMaxIn,
 
   while(ifstr)
   {
-    ifstr >> Ez >> z;
+    ifstr >> z >> Ez;
     G4cout << "z: " << z << " Ez: " << Ez << G4endl;
     Ez_vector.push_back(Ez);
-    z_vector.push_back(z);
+    z_vector.push_back(z/1000);
   }
 
   //voltage = Voltage();
@@ -65,42 +65,34 @@ BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(G4double eFieldMaxIn,
 std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMAxialElectric::GetField(const G4ThreeVector& position,
                                                                        const G4double       t) const
 {
-  // Converting from Local Cartesian to Local Cylindrical
-  G4double phi = std::atan2(position.y(),position.x());
-  G4double r   = std::hypot(position.x(),position.y());
-  G4double z   = position.z();
 
-  // divergences @ r=0, so avoid a little
-  if(r == 0) {
-    r = 1e-15;
+  G4double Ez_temp = 0;
+
+  if(position.z() < z_vector[0])
+  {
+    Ez_temp =  Ez_vector[0];
   }
 
-  // t phase
-  //G4double tmodE = cos(omega*(t - synchronousT) + tphase);
-  //G4double tmodB = sin(omega*(t - synchronousT) + tphase);
+  if(position.z() > z_vector[z_vector.size()-1])
+  {
+    Ez_temp =  Ez_vector[z_vector.size()-1];
+  }
 
-  G4double Ez = 0;
-  G4double Er = 0;
-  G4double Et = 0;
+  for (int i = 1; i < z_vector.size(); i++)
+  {
+    if (position.z() > z_vector[i-1] && position.z() < z_vector[i])
+    { // Local B and E field vectors
+      G4cout << "i: " << i << " " << z_vector[i-1] << " " << z_vector[i] << " " <<  position.z() << G4endl;
+      Ez_temp = std::max(Ez_vector[i], Ez_vector[i-1]);
+      break;
+    }
+  }
 
-  G4double Bz = 0;
-  G4double Br = 0;
-  G4double Bt = 0;
+  G4ThreeVector LocalB = G4ThreeVector(0, 0, 0);
+  G4ThreeVector LocalE = G4ThreeVector(0, 0, Ez_temp);
 
-  // E transform to cartestian
-  G4double Ex = Er * cos(phi) - Et * sin(phi);
-  G4double Ey = Er * sin(phi) + Et * cos(phi);
-
-  // B transform to cartestian
-  G4double Bx = Br * cos(phi) - Bt * sin(phi);
-  G4double By = Br * sin(phi) + Bt * cos(phi);
-
-  // Local B and E field vectors
-  G4ThreeVector LocalB = G4ThreeVector(Bx, By, Bz);
-  G4ThreeVector LocalE = G4ThreeVector(Ex, Ey, Ez);
-
-  // G4cout << "field> " << LocalB << " " << LocalE << G4endl;
   auto result = std::make_pair(LocalB, LocalE);
+
   return result;
 }
 

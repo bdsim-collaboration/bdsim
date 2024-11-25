@@ -57,14 +57,52 @@ G4double BDSFieldEMAcceleration::TransitTimeFactor(G4double omega, G4double leng
   return simpIntegral/voltage;
 }
 
-/*
-G4double BDSFieldEMAcceleration::MaxE(std::vector<G4double> Ez_vector)
+
+G4double BDSFieldEMAcceleration::MaxE(G4double length, G4int nSteps)
 {
-  std::max_element(Ez_vector);
+  // compute fields
+  G4double MaxE = -1e99;
+
+  for(int i=0;i<=nSteps;i++) {
+    G4double z = (i*length)/nSteps - length/2.0;
+    auto field = GetField(G4ThreeVector(0,0,z),0);
+    if (field.second.getZ() > MaxE)
+    {
+      MaxE = field.second.getZ();
+    }
+  }
+  return MaxE;
 }
 
-G4double BDSFieldEMAcceleration::CellLength()
+G4double BDSFieldEMAcceleration::MinE(G4double length, G4int nSteps)
 {
+  // compute fields
+  G4double MinE = 1e99;
 
+  for(int i=0;i<=nSteps;i++) {
+    G4double z = (i*length)/nSteps - length/2.0;
+    auto field = GetField(G4ThreeVector(0,0,z),0);
+    if (field.second.getZ() < MinE)
+    {
+      MinE = field.second.getZ();
+    }
+  }
+  return MinE;
+}
+
+/*
+G4double BDSFieldEMAcceleration::CellLength(G4double length, G4int nSteps)
+{
+  G4double CellLength = 0;
+
+  std::vector<G4double> z_temp_vector;
+
+  for(int i=0;i<=nSteps;i++) {
+    G4double z = (i*length)/nSteps - length/2.0;
+    auto field = GetField(G4ThreeVector(0,0,z),0);
+    z_temp_vector.push_back(z);
+
+  }
+  return CellLength;
 }
 */
