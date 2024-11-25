@@ -9,6 +9,7 @@
 #include "globals.hh"
 #include "G4ThreeVector.hh"
 
+#include <fstream>
 #include "TMath.h"
 
 #include <cmath>
@@ -43,11 +44,22 @@ BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(G4double eFieldMaxIn,
                                                                       frequency(frequencyIn),
                                                                       synchronousT(synchronousTIn)
 {
-  // load axial field
 
+  std::ifstream ifstr("/Users/lode/Documents/Work/BDSIM/fields/Ez_field_PERLE_5_cell.txt",std::ios::in);
+  // make arrays x, Ez
 
-  // voltage = Voltage();
-  // ttFactor = TransitTimeFactor();
+  G4double Ez, z;
+
+  while(ifstr)
+  {
+    ifstr >> Ez >> z;
+    G4cout << "z: " << z << " Ez: " << Ez << G4endl;
+    Ez_vector.push_back(Ez);
+    z_vector.push_back(z);
+  }
+
+  //voltage = Voltage();
+  //ttFactor = TransitTimeFactor();
 }
 
 std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMAxialElectric::GetField(const G4ThreeVector& position,
