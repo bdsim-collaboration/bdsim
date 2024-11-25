@@ -1,4 +1,4 @@
-#include "BDSCavityInfo.hh"
+#include  "BDSCavityInfo.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
 #include "BDSFieldEMAxialElectric.hh"
@@ -16,12 +16,9 @@
 
 
 BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(BDSMagnetStrength const* strength):
-  BDSFieldEMAxialElectric((*strength)["cavity_efield"],
+BDSFieldEMAxialElectric((*strength)["cavity_efield"],
                        (*strength)["cavity_radius"],
                        (*strength)["cavity_length"],
-                       (*strength)["cavity_m"],
-                       (*strength)["cavity_n"],
-                       (*strength)["cavity_p"],
                        (*strength)["cavity_tphase"],
                        (*strength)["cavity_zphase"],
                        (*strength)["cavity_travelling"],
@@ -32,9 +29,6 @@ BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(BDSMagnetStrength const* streng
 BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(G4double eFieldMaxIn,
                                            G4double radiusIn,
                                            G4double lengthIn,
-                                           G4int    mIn,
-                                           G4int    nIn,
-                                           G4int    pIn,
                                            G4double tphaseIn,
                                            G4double zphaseIn,
                                            G4bool   travellingIn,
@@ -43,17 +37,17 @@ BDSFieldEMAxialElectric::BDSFieldEMAxialElectric(G4double eFieldMaxIn,
                                                                       eFieldMax(eFieldMaxIn),
                                                                       radius(radiusIn),
                                                                       length(lengthIn),
-                                                                      m(mIn),
-                                                                      n(nIn),
-                                                                      p(pIn),
                                                                       tphase(tphaseIn),
                                                                       zphase(zphaseIn),
                                                                       travelling(travellingIn),
                                                                       frequency(frequencyIn),
                                                                       synchronousT(synchronousTIn)
 {
-  //voltage = Voltage();
-  //ttFactor = TransitTimeFactor();
+  // load axial field
+
+
+  // voltage = Voltage();
+  // ttFactor = TransitTimeFactor();
 }
 
 std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMAxialElectric::GetField(const G4ThreeVector& position,
