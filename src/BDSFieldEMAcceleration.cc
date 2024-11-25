@@ -56,3 +56,15 @@ G4double BDSFieldEMAcceleration::TransitTimeFactor(G4double omega, G4double leng
 
   return simpIntegral/voltage;
 }
+
+/*
+G4double BDSFieldEMAcceleration::MaxE(std::vector<G4double> Ez_vector)
+{
+  std::max_element(Ez_vector);
+}
+
+G4double BDSFieldEMAcceleration::CellLength()
+{
+
+}
+*/
