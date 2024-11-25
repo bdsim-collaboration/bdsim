@@ -42,16 +42,13 @@ public:
   explicit BDSFieldEMAxialElectric(BDSMagnetStrength const* strength);
   
   BDSFieldEMAxialElectric(G4double eFieldAmplitude,
-                       G4double radius,
-                       G4double length,
-                       G4int    m,
-                       G4int    n,
-                       G4int    p,
-                       G4double tphase,
-                       G4double zphase,
-                       G4bool   travelling,
-                       G4double frequency,
-                       G4double synchronousTIn);
+                          G4double radius,
+                          G4double length,
+                          G4double tphase,
+                          G4double zphase,
+                          G4bool   travelling,
+                          G4double frequency,
+                          G4double synchronousTIn);
   
   virtual ~BDSFieldEMAxialElectric(){;}
 
@@ -68,20 +65,15 @@ private:
   G4double eFieldMax;     ///< Maximum field in V/m.
   G4double radius;        ///< Radius a of cavity.
   G4double length;        ///< Length of cavity
-  G4int    m;             ///< Azimuthal mode number
-  G4int    n;             ///< Radial mode number
-  G4int    p;             ///< Longitudinal mode number
   G4double tphase;        ///< Time oscillator phase
   G4double zphase;        ///< Z position phase offset
   G4bool travelling;      ///< Flag for travelling wave field
   G4double frequency;     ///< Cavity frequency  (only required for travelling wave cavity)
   G4double synchronousT;
 
-
   G4double voltage;
   G4double ttFactor;
 
-  static const G4double Z0; ///< Impedance of free space.
 };
 
 #endif
