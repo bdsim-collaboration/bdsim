@@ -59,7 +59,9 @@ public:
   virtual G4bool TimeVarying() const {return true;}
 
   /// Set Maximum E field
-  void SetMaxEField(G4double);
+  void SetMaxEField();
+
+    void SetMaxEField(G4double eFieldMaxIn);
   
 private:
   G4double eFieldMax;     ///< Maximum field in V/m.
@@ -75,7 +77,6 @@ private:
   G4double ttFactor;
 
   static const G4double Z0; ///< Impedance of free space.
-
 
   std::vector<G4double> Ez_vector;
     std::vector<G4double> z_vector;
