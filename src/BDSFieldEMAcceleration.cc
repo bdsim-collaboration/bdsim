@@ -60,7 +60,6 @@ G4double BDSFieldEMAcceleration::TransitTimeFactor(G4double omega, G4double leng
 
 G4double BDSFieldEMAcceleration::MaxE(G4double length, G4int nSteps)
 {
-  // compute fields
   G4double MaxE = -1e99;
 
   for(int i=0;i<=nSteps;i++) {
@@ -76,7 +75,6 @@ G4double BDSFieldEMAcceleration::MaxE(G4double length, G4int nSteps)
 
 G4double BDSFieldEMAcceleration::MinE(G4double length, G4int nSteps)
 {
-  // compute fields
   G4double MinE = 1e99;
 
   for(int i=0;i<=nSteps;i++) {
@@ -88,6 +86,23 @@ G4double BDSFieldEMAcceleration::MinE(G4double length, G4int nSteps)
     }
   }
   return MinE;
+}
+
+std::vector<G4double> BDSFieldEMAcceleration::Zeroes(G4double length, G4int nSteps)
+{
+  std::vector<G4double> Zeroes;
+
+  for(int i=0;i<=nSteps-1;i++) {
+    G4double z = (i*length)/nSteps - length/2.0;
+    G4double z_next = ((i+1)*length)/nSteps - length/2.0;
+    auto field_z = GetField(G4ThreeVector(0,0,z),0).second.getZ();
+    auto field_z_next = GetField(G4ThreeVector(0,0,z_next),0).second.getZ();
+    G4cout << "field_z: " << field_z << "z: " << z << G4endl;
+    if ((field_z < 0 && field_z_next > 0) || (field_z > 0 && field_z_next < 0)) {
+      Zeroes.push_back((z + ((field_z + (field_z_next - field_z)/2) - field_z ) * (z_next - z) / (field_z_next - field_z)));
+    }
+  }
+  return Zeroes;
 }
 
 /*
