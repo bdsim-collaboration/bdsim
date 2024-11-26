@@ -8,10 +8,10 @@
 
 BDSFieldEMAxialStandingApprox::BDSFieldEMAxialStandingApprox(BDSMagnetStrength const* strength):
     BDSFieldEMAxialStandingApprox((*strength)["cavity_voltage"],
-                                  (*strength)["cavity_phase"],
-                                  (*strength)["cavity_ncell"],
-                                  (*strength)["cavity_cellphase"],
-                                  (*strength)["cavity_celllength"],
+                                  (*strength)["cavity_zphase"],
+                                  (*strength)["cavity_ncells"],
+                                  (*strength)["cavity_phase_advance"],
+                                  (*strength)["cavity_cell_length"],
                                   (*strength)["synchronousT0"])
 {;}
 
@@ -35,18 +35,22 @@ BDSFieldEMAxialStandingApprox::BDSFieldEMAxialStandingApprox(G4double voltageIn,
   eFieldAmplitude = 1.0;
   eFieldAmplitude = voltage/this->Voltage(cellLength,nStep);
   transitTime = this->TransitTimeFactor(2*M_PI*frequency,cellLength,beta,nStep);
-  zeroes = Zeroes(totalFieldLength,nStep);
+  //zeroes = Zeroes(totalFieldLength,nStep);
+  //cellL = CellLength(zeroes);
   std::cout << "frequency       =" << frequency << std::endl;
-  std::cout << "totalFieldLength=" << totalFieldLength << std::endl;
+  std::cout << "cellLength=" << cellLength << std::endl;
+  std::cout << "frequency       =" << frequency << std::endl;
   std::cout << "transitTime     =" << transitTime << std::endl;
   std::cout << "eFieldAmplitude =" << eFieldAmplitude << std::endl;
+/*
   std::cout << "Zeroes = ";
   for (const auto& val : zeroes) {
     std::cout << val << " ";
   }
   std::cout << std::endl;
+  std::cout << "cellL=" << cellL << std::endl;
+*/
 }
-
 G4double BDSFieldEMAxialStandingApprox::GetEz(G4double z, G4double t) const {
   // compute spatial phase
   G4double zphase = z/cellLength*cellPhaseAdvance;

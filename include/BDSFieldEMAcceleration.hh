@@ -14,8 +14,8 @@ public:
   G4double TransitTimeFactor(G4double length, G4double omega, G4double beta = 1 , G4int nSteps = 200);
   G4double MaxE(G4double length, G4int nSteps = 200);
   G4double MinE(G4double length, G4int nSteps = 200);
-  std::vector<G4double> Zeroes(G4double length, G4int nSteps = 200);
-  G4double CellLength(G4double length, G4int nSteps = 200);
+  //std::vector<G4double> Zeroes(G4double length, G4int nSteps = 200);
+  //G4double CellLength(std::vector<G4double> zeroes);
 /*
   G4double CavityLength();
   G4double CellLength();

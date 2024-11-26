@@ -58,7 +58,8 @@ struct fieldtypes_def
 	     multipoleouterdipole3d,
 	     multipoleouterdipolelhc, multipoleouterquadrupolelhc,
 	     multipoleoutersextupolelhc,
-             transversemagnetic
+  	     transversemagnetic,
+  	     axialstandingapprox
   };
 };
 
