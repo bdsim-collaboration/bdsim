@@ -70,6 +70,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSFieldObjects.hh"
 #include "BDSFieldType.hh"
 #include "BDSFieldEMCircularTM.hh"
+#include "BDSFieldEMAxialStandingApprox.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSIntegratorCavityFringe.hh"
 #include "BDSIntegratorDecapole.hh"
@@ -901,6 +902,11 @@ BDSFieldObjects* BDSFieldFactory::CreateFieldEM(const BDSFieldInfo& info)
     case BDSFieldType::transversemagnetic:
       {
         field = new BDSFieldEMCircularTM(info.MagnetStrength());
+        break;
+      }
+    case BDSFieldType::axialstandingapprox:
+      {
+        field = new BDSFieldEMAxialStandingApprox(info.MagnetStrength());
         break;
       }
     default:

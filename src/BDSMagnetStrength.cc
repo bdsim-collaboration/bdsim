@@ -97,7 +97,11 @@ const std::vector<G4String> BDSMagnetStrength::keys = {
   "cavity_n",
   "cavity_p",
   "cavity_tphase",
-  "cavity_zphase"
+  "cavity_zphase",
+  "cavity_cell_length",
+  "cavity_ncells",
+  "cavity_phase_advance",
+  "cavity_voltage"
 };
 
 const std::map<G4String, BDSMagnetStrength::unitsFactors> BDSMagnetStrength::unitsFactorsMap = {
@@ -189,6 +193,11 @@ const std::map<G4String, BDSMagnetStrength::unitsFactors> BDSMagnetStrength::uni
     {"cavity_zphase", {"",    1.0}},
     {"rmat44"        , {"",    1.0}},
     {"coilRadialThickness", {"m", CLHEP::m}}
+    {"cavity_zphase", {"",    1.0}},
+    {"cavity_cell_length", {"",    1.0}},
+    {"cavity_voltage", {"",    1.0}},
+    {"cavity_ncells", {"",    1.0}},
+    {"cavity_phase_advance", {"",    1.0}},
 };
 
 const std::vector<G4String> BDSMagnetStrength::normalComponentKeys = {
