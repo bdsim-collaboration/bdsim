@@ -75,6 +75,7 @@ private:
 
   G4double voltage;
   G4double ttFactor;
+    std::vector<G4double> Zeroes;
 
   static const G4double Z0; ///< Impedance of free space.
 
