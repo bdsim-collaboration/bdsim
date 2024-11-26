@@ -30,7 +30,7 @@ G4double BDSFieldEMAcceleration::Voltage(G4double length, G4int nSteps)
 
 G4double BDSFieldEMAcceleration::TransitTimeFactor(G4double omega, G4double length, G4double beta, G4int nSteps)
 {
-  G4cout << "BDSFieldEMCircularTM::TransitTimeFactor>" << G4endl;
+  G4cout << "BDSFieldEMAcceleration::TransitTimeFactor>" << G4endl;
 
   auto voltage = Voltage(length, nSteps);
 
