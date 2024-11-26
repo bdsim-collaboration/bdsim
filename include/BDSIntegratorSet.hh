@@ -60,10 +60,11 @@ public:
 		   BDSIntegratorType multipoleThickIn,
 		   BDSIntegratorType muonSpoilerIn,
 		   BDSIntegratorType rfpillboxIn,
-                   BDSIntegratorType transversemagneticIn,
+		   BDSIntegratorType transversemagneticIn,
+		   BDSIntegratorType axialstandingapproxIn,
 		   BDSIntegratorType rfconstantinxIn,
-                   BDSIntegratorType rfconstantinyIn,
-                   BDSIntegratorType rfconstantinzIn,
+		   BDSIntegratorType rfconstantinyIn,
+		   BDSIntegratorType rfconstantinzIn,
 		   BDSIntegratorType generalIn,
 		   BDSIntegratorType skewQuadrupoleIn,
 		   BDSIntegratorType skewSextupoleIn,
@@ -92,6 +93,7 @@ public:
   BDSIntegratorType muonSpoiler;
   BDSIntegratorType rfpillbox;
   BDSIntegratorType transversemagnetic;
+  BDSIntegratorType axialstandingapprox;
   BDSIntegratorType rfconstantinx;
   BDSIntegratorType rfconstantiny;
   BDSIntegratorType rfconstantinz;

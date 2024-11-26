@@ -88,6 +88,7 @@ G4double BDSFieldEMAcceleration::MinE(G4double length, G4int nSteps)
   return MinE;
 }
 
+/*
 std::vector<G4double> BDSFieldEMAcceleration::Zeroes(G4double length, G4int nSteps)
 {
   std::vector<G4double> Zeroes;
@@ -97,7 +98,7 @@ std::vector<G4double> BDSFieldEMAcceleration::Zeroes(G4double length, G4int nSte
     G4double z_next = ((i+1)*length)/nSteps - length/2.0;
     auto field_z = GetField(G4ThreeVector(0,0,z),0).second.getZ();
     auto field_z_next = GetField(G4ThreeVector(0,0,z_next),0).second.getZ();
-    G4cout << "field_z: " << field_z << "z: " << z << G4endl;
+    // G4cout << "field_z: " << field_z << "z: " << z << G4endl;
     if ((field_z < 0 && field_z_next > 0) || (field_z > 0 && field_z_next < 0)) {
       Zeroes.push_back((z + ((field_z + (field_z_next - field_z)/2) - field_z ) * (z_next - z) / (field_z_next - field_z)));
     }
@@ -105,19 +106,22 @@ std::vector<G4double> BDSFieldEMAcceleration::Zeroes(G4double length, G4int nSte
   return Zeroes;
 }
 
-/*
-G4double BDSFieldEMAcceleration::CellLength(G4double length, G4int nSteps)
+G4double BDSFieldEMAcceleration::CellLength(std::vector<G4double> zeroes)
 {
-  G4double CellLength = 0;
+  G4double CellLength, first_central_index, second_central_index;
 
-  std::vector<G4double> z_temp_vector;
-
-  for(int i=0;i<=nSteps;i++) {
-    G4double z = (i*length)/nSteps - length/2.0;
-    auto field = GetField(G4ThreeVector(0,0,z),0);
-    z_temp_vector.push_back(z);
-
-  }
+  first_central_index = std::floor(zeroes.size()/2);
+  second_central_index = first_central_index + 1;
+  CellLength = zeroes.at(second_central_index) - zeroes.at(first_central_index);
   return CellLength;
+}
+
+
+G4double BDSFieldEMAcceleration::NCells(G4double CellLength)
+{
+  G4double NCells;
+
+  CellLength =
+  return NCells;
 }
 */

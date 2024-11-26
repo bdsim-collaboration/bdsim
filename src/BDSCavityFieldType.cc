@@ -34,7 +34,8 @@ std::map<BDSCavityFieldType, std::string>* BDSCavityFieldType::dictionary =
   new std::map<BDSCavityFieldType, std::string> ({
   {BDSCavityFieldType::constantinz, "constantinz"},
   {BDSCavityFieldType::pillbox,     "pillbox"},
-  {BDSCavityFieldType::transversemagnetic,     "transversemagnetic"}
+  {BDSCavityFieldType::transversemagnetic,     "transversemagnetic"},
+  {BDSCavityFieldType::axialstandingapprox,     "axialstandingapprox"}
 });
 
 BDSCavityFieldType BDS::DetermineCavityFieldType(G4String cavityFieldType)
@@ -43,6 +44,7 @@ BDSCavityFieldType BDS::DetermineCavityFieldType(G4String cavityFieldType)
   types["constantinz"]   = BDSCavityFieldType::constantinz;
   types["pillbox"]       = BDSCavityFieldType::pillbox;
   types["transversemagnetic"] = BDSCavityFieldType ::transversemagnetic;
+  types["axialstandingapprox"] = BDSCavityFieldType ::axialstandingapprox;
 
   cavityFieldType = BDS::LowerCase(cavityFieldType);
 
@@ -73,6 +75,8 @@ BDSFieldType BDS::FieldTypeFromCavityFieldType(BDSCavityFieldType cavityFieldTyp
       {result = BDSFieldType::rfpillbox; break;}
     case BDSCavityFieldType::transversemagnetic:
       {result = BDSFieldType::transversemagnetic; break;}
+    case BDSCavityFieldType::axialstandingapprox:
+      {result = BDSFieldType::axialstandingapprox; break;}
     }
   return result;
 }

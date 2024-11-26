@@ -35,6 +35,7 @@ BDSIntegratorSet::BDSIntegratorSet(BDSIntegratorType solenoidIn,
                                    BDSIntegratorType muonSpoilerIn,
                                    BDSIntegratorType rfpillboxIn,
                                    BDSIntegratorType transversemagneticIn,
+                                   BDSIntegratorType axialstandingapproxIn,
                                    BDSIntegratorType rfconstantinxIn,
                                    BDSIntegratorType rfconstantinyIn,
                                    BDSIntegratorType rfconstantinzIn,
@@ -62,6 +63,7 @@ BDSIntegratorSet::BDSIntegratorSet(BDSIntegratorType solenoidIn,
   muonSpoiler(muonSpoilerIn),
   rfpillbox(rfpillboxIn),
   transversemagnetic(transversemagneticIn),
+  axialstandingapprox(axialstandingapproxIn),
   rfconstantinx(rfconstantinxIn),
   rfconstantiny(rfconstantinyIn),
   rfconstantinz(rfconstantinzIn),
@@ -100,6 +102,7 @@ namespace BDS
                          BDSIntegratorType::g4classicalrk4,   // muon spoiler
                          BDSIntegratorType::g4classicalrk4,   // rfpillbox
                          BDSIntegratorType::g4classicalrk4,   // transversemagnetic
+                         BDSIntegratorType::g4classicalrk4,   // axialstandingapprox
                          BDSIntegratorType::g4classicalrk4,   // rfconstantinx
                          BDSIntegratorType::g4classicalrk4,   // rfconstantiny
                          BDSIntegratorType::g4classicalrk4,   // rfconstantinz
@@ -129,6 +132,7 @@ namespace BDS
                          BDSIntegratorType::g4classicalrk4,   // muonspoiler
                          BDSIntegratorType::g4classicalrk4,   // rfpillbox
                          BDSIntegratorType::g4classicalrk4,   // transversemagnetic
+                         BDSIntegratorType::g4classicalrk4,   // axialstandingapprox
                          BDSIntegratorType::g4classicalrk4,   // rfconstantinx
                          BDSIntegratorType::g4classicalrk4,   // rfconstantiny
                          BDSIntegratorType::g4classicalrk4,   // rfconstantinz
@@ -158,6 +162,7 @@ namespace BDS
                          BDSIntegratorType::g4classicalrk4,      // muon spoiler
                          BDSIntegratorType::g4classicalrk4,      // rfpillbox
                          BDSIntegratorType::g4classicalrk4,      // transversemagnetic
+                         BDSIntegratorType::g4classicalrk4,      // axialstandingapprox
                          BDSIntegratorType::g4classicalrk4,      // rfconstantinx
                          BDSIntegratorType::g4classicalrk4,      // rfconstantiny
                          BDSIntegratorType::g4classicalrk4,      // rfconstantinz
@@ -186,6 +191,7 @@ namespace BDS
                          BDSIntegratorType::g4classicalrk4,      // muon spoiler
                          BDSIntegratorType::g4classicalrk4,      // rfpillbox
                          BDSIntegratorType::g4classicalrk4,      // transversemagnetic
+                         BDSIntegratorType::g4classicalrk4,      // axialstandingapprox
                          BDSIntegratorType::g4classicalrk4,      // rfconstantinz
                          BDSIntegratorType::g4classicalrk4,      // rfconstantiny
                          BDSIntegratorType::g4classicalrk4,      // rfconstantinz
@@ -214,6 +220,7 @@ namespace BDS
                          BDSIntegratorType::g4classicalrk4,    // muon spoiler
                          BDSIntegratorType::g4classicalrk4,    // rfpillbox
                          BDSIntegratorType::g4classicalrk4,    // transversemagnetic
+                         BDSIntegratorType::g4classicalrk4,    // axialstandingapprox
                          BDSIntegratorType::g4classicalrk4,    // rfconstantinx
                          BDSIntegratorType::g4classicalrk4,    // rfconstantiny
                          BDSIntegratorType::g4classicalrk4,    // rfconstantinz
@@ -243,6 +250,7 @@ namespace BDS
                          BDSIntegratorType::g4dormandprince745, // muon spoiler
                          BDSIntegratorType::g4dormandprince745, // rfpillbox
                          BDSIntegratorType::g4dormandprince745, // transversemagnetic
+                         BDSIntegratorType::g4dormandprince745, // axialstandingapprox
                          BDSIntegratorType::g4dormandprince745, // rfconstantinx
                          BDSIntegratorType::g4dormandprince745, // rfconstantiny
                          BDSIntegratorType::g4dormandprince745, // rfconstantinz
@@ -344,6 +352,8 @@ BDSIntegratorType BDSIntegratorSet::Integrator(const BDSFieldType field) const
       {return rfpillbox;        break;}
     case BDSFieldType::transversemagnetic:
       {return transversemagnetic;        break;}
+    case BDSFieldType::axialstandingapprox:
+      {return axialstandingapprox;        break;}
     case BDSFieldType::rfconstantinx:
       {return rfconstantinx;    break;}
     case BDSFieldType::rfconstantiny:

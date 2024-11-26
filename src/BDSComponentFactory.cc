@@ -3045,6 +3045,17 @@ BDSMagnetStrength* BDSComponentFactory::PrepareCavityStrength(Element const*    
         ((*st))["cavity_radius"] = (*magStrength)["cavity_radius"];
         ((*st))["cavity_length"] = (*magStrength)["cavity_length"];
         break;}
+  case BDSFieldType::axialstandingapprox:
+        {
+            BDSFieldInfo* field = BDSFieldFactory::Instance()->GetDefinition(element->fieldVacuum);
+            auto magStrength = field->MagnetStrength();
+            ((*st))["cavity_voltage"] = (*magStrength)["cavity_voltage"];
+            ((*st))["cavity_zphase"] = (*magStrength)["cavity_zphase"];
+            ((*st))["cavity_ncells"] = (*magStrength)["cavity_ncells"];
+            ((*st))["cavity_phase_advance"] = (*magStrength)["cavity_phase_advance"];
+            ((*st))["cavity_cell_length"] = (*magStrength)["cavity_cell_length"];
+            ((*st))["cavity_ncells"] = (*magStrength)["cavity_ncells"];
+            break;}
     default:
       {(*st)["ez"] = 1.0; break;}
     }
