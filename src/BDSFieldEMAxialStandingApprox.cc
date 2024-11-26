@@ -33,10 +33,13 @@ BDSFieldEMAxialStandingApprox::BDSFieldEMAxialStandingApprox(G4double voltageIn,
   totalFieldLength = nCell*cellLength;
   frequency = cellPhaseAdvance/(cellLength/CLHEP::c_light)/2./M_PI;
   eFieldAmplitude = 1.0;
+  G4double synchronousT_old = synchronousT;
+  synchronousT = 0.0;
   eFieldAmplitude = voltage/this->Voltage(cellLength,nStep);
   transitTime = this->TransitTimeFactor(2*M_PI*frequency,cellLength,beta,nStep);
   //zeroes = Zeroes(totalFieldLength,nStep);
   //cellL = CellLength(zeroes);
+  synchronousT = synchronousT_old;
   std::cout << "frequency       =" << frequency << std::endl;
   std::cout << "cellLength=" << cellLength << std::endl;
   std::cout << "frequency       =" << frequency << std::endl;
