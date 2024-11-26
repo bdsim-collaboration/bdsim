@@ -78,8 +78,10 @@ private:
 
   static const G4double Z0; ///< Impedance of free space.
 
+
   std::vector<G4double> Ez_vector;
     std::vector<G4double> z_vector;
+
 };
 
 #endif
