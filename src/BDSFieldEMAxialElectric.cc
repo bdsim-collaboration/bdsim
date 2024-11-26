@@ -82,7 +82,7 @@ std::pair<G4ThreeVector, G4ThreeVector> BDSFieldEMAxialElectric::GetField(const 
   {
     if (position.z() > z_vector[i-1] && position.z() < z_vector[i])
     { // Local B and E field vectors
-      G4cout << "i: " << i << " " << z_vector[i-1] << " " << z_vector[i] << " " <<  position.z() << G4endl;
+      // G4cout << "i: " << i << " " << z_vector[i-1] << " " << z_vector[i] << " " <<  position.z() << G4endl;
       Ez_temp = std::max(Ez_vector[i], Ez_vector[i-1]);
       break;
     }

@@ -23,6 +23,7 @@ public:
                                 G4double synchronousT);
 
   G4double GetEz(G4double z, G4double t) const;
+  G4double GetEz_tderiv(G4double z, G4double t) const;
   virtual std::pair<G4ThreeVector, G4ThreeVector> GetField(const G4ThreeVector& position,
                                                            const G4double       t) const;
 
@@ -41,6 +42,7 @@ private:
   G4double totalFieldLength = 0;
   G4double frequency = 0;
   G4double transitTime = 0;
+  std::vector<G4double> zeroes;
 
 };
 #endif //BDSIM_BDSFIELDEMSTANDINGAXIALAPPROX_HH
