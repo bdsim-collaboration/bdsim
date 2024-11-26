@@ -43,6 +43,6 @@ private:
   G4double frequency = 0;
   G4double transitTime = 0;
   std::vector<G4double> zeroes;
-
+  G4double cellL;
 };
 #endif //BDSIM_BDSFIELDEMSTANDINGAXIALAPPROX_HH
