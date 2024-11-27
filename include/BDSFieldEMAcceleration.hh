@@ -14,13 +14,10 @@ public:
   G4double TransitTimeFactor(G4double length, G4double omega, G4double beta = 1 , G4int nSteps = 200);
   G4double MaxE(G4double length, G4int nSteps = 200);
   G4double MinE(G4double length, G4int nSteps = 200);
-  //std::vector<G4double> Zeroes(G4double length, G4int nSteps = 200);
-  //G4double CellLength(std::vector<G4double> zeroes);
+  //std::vector<G4double> Cavity_zeroes(G4double length, G4int nSteps = 200);
 /*
-  G4double CavityLength();
-  G4double CellLength();
-  G4double nCells();
-  G4double Freq();
+  G4double Cell_length(std::vector<G4double> Cavity_zeroes);
+  G4double Cell_length(G4Double Cell_length);
 */
 
   static const G4double Z0; ///< Impedance of free space.
