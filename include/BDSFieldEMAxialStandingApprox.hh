@@ -15,11 +15,11 @@ public:
 
   explicit BDSFieldEMAxialStandingApprox(BDSMagnetStrength const *strength);
 
-  BDSFieldEMAxialStandingApprox(G4double voltage,
-                                G4double cavityPhase,
-                                G4int nCell,
-                                G4double cellPhaseAdvance,
-                                G4double cellLength,
+  BDSFieldEMAxialStandingApprox(G4double cavity_cell_length,
+                                G4double cavity_cell_voltage,
+                                G4int cavity_cell_number,
+                                G4double cavity_cell_phase_advance,
+                                G4double cavity_phase,
                                 G4double synchronousT);
 
   G4double GetEz(G4double z, G4double t) const;
@@ -30,19 +30,19 @@ public:
   virtual G4bool TimeVarying() const {return true;}
 
 private:
-  G4double voltage;
-  G4double cavityPhase;
-  G4int nCell;
-  G4double cellPhaseAdvance;
-  G4double cellLength;
+  G4double cavity_cell_voltage;
+  G4double cavity_phase;
+  G4int cavity_cell_number;
+  G4double cavity_cell_phase_advance;
+  G4double cavity_cell_length;
   G4double synchronousT;
 
   // calculated from input
   G4double eFieldAmplitude = 0;
-  G4double totalFieldLength = 0;
+  G4double cavity_length = 0;
   G4double frequency = 0;
   G4double transitTime = 0;
-  std::vector<G4double> zeroes;
-  G4double cellL;
+  std::vector<G4double> cavity_zeroes;
+  G4double cell_length;
 };
 #endif //BDSIM_BDSFIELDEMSTANDINGAXIALAPPROX_HH
