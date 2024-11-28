@@ -60,7 +60,7 @@ G4double BDSFieldEMAxialStandingApprox::GetEz(G4double z, G4double t) const {
   G4double zphase = z/cavity_cell_length*cavity_cell_phase_advance;
 
   // compute time phase
-  G4double tphase = 2*M_PI*frequency*(t-synchronousT);
+  G4double tphase = 2*M_PI*frequency*(t-synchronousT-cavity_phase);
 
   // compute Ez
   G4double Ez = eFieldAmplitude*cos(zphase)*cos(tphase);
@@ -76,7 +76,7 @@ G4double BDSFieldEMAxialStandingApprox::GetEz_tderiv(G4double z, G4double t) con
   G4double zphase = z/cavity_cell_length*cavity_cell_phase_advance;
 
   // compute time phase
-  G4double tphase = 2*M_PI*frequency*(t-synchronousT);
+  G4double tphase = 2*M_PI*frequency*(t-synchronousT-cavity_phase);
 
   // compute Ez
   G4double Ez_tderiv = -eFieldAmplitude * (2*M_PI) * frequency * cos(zphase) * sin(tphase);
