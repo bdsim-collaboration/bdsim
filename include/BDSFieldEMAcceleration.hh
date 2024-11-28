@@ -5,6 +5,7 @@
 #ifndef BDSIM_BDSFIELDEMACCELERATION_HH
 #define BDSIM_BDSFIELDEMACCELERATION_HH
 
+#include <vector>
 #include "BDSFieldEM.hh"
 
 class BDSFieldEMAcceleration : public BDSFieldEM
