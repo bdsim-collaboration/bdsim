@@ -22,7 +22,6 @@ beam, particle="electron",
       dispy=0.0*m,
       dispyp=0.0,
       distrType="gausstwiss",
-!      distrType="reference",
       emitx=4.379991429e-7*m,
       emity=4.379991429e-7*m,
       sigmaE=0.0001;
