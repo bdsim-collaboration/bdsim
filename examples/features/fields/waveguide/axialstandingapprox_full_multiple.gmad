@@ -1,7 +1,7 @@
 approx: field, type="axialstandingapprox", fieldParameters="cavity_cell_length=0.18700096 cavity_cell_voltage=-5.23 cavity_cell_number=5 cavity_cell_phase_advance=3.141592653589793 cavity_phase=0";
 
 d1 : drift, l=1.0*mm, aper1=0.1*m;
-rf1 : rfcavity, l=5*0.18700096*m, E=10*MV, cavityFieldType="axialstandingapprox", fieldVacuum="approx";
+rf1 : rfcavity, l=5*0.18700096*m, fieldVacuum="approx";
 d2 : drift, l=1.0*mm, aper1=0.1*m;
 
 l1: line = (d1,rf1,d1,rf1,d1,rf1,d1,rf1,d1,rf1,d2);
