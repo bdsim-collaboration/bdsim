@@ -29,12 +29,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * version @BDSIM_VERSION@
  */
 
-#include <BDSFieldEMAxialElectric.hh>
-
 #include "BDSIMClass.hh"
 #include "BDSException.hh"
-
-#include "BDSFieldEMAxialStandingApprox.hh"
 
 #include <iostream>
 
