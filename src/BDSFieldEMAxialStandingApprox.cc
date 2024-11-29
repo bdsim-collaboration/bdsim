@@ -29,18 +29,20 @@ BDSFieldEMAxialStandingApprox::BDSFieldEMAxialStandingApprox(G4double cavity_cel
                                                              synchronousT(synchronousTIn) {
   G4int nStep = 200;
   G4double beta = 1;
+
   cavity_cell_length = cavity_cell_length*CLHEP::m;
   cavity_length = cavity_cell_number*cavity_cell_length;
   frequency = cavity_cell_phase_advance/(cavity_cell_length/CLHEP::c_light)/2./M_PI;
+
   eFieldAmplitude = 1.0;
   G4double synchronousT_old = synchronousT;
   synchronousT = 0.0;
-  eFieldAmplitude = cavity_cell_voltage/this->Voltage(cavity_cell_length,nStep);
   transitTime = this->TransitTimeFactor(2*M_PI*frequency,cavity_cell_length,beta,nStep);
+  eFieldAmplitude = (cavity_cell_voltage/transitTime)/this->Voltage(cavity_cell_length,nStep);
+  synchronousT = synchronousT_old;
 
   //zeroes = Zeroes(totalFieldLength,nStep);
   //cellL = CellLength(zeroes);
-  synchronousT = synchronousT_old;
 
   /*
   std::cout << "frequency       =" << frequency << std::endl;
