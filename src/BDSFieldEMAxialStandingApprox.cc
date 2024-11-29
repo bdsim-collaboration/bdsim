@@ -41,18 +41,20 @@ BDSFieldEMAxialStandingApprox::BDSFieldEMAxialStandingApprox(G4double cavity_cel
   //zeroes = Zeroes(totalFieldLength,nStep);
   //cellL = CellLength(zeroes);
   synchronousT = synchronousT_old;
+
+  /*
   std::cout << "frequency       =" << frequency << std::endl;
-  std::cout << "cellLength=" << cavity_cell_length << std::endl;
+  std::cout << "cellLength      =" << cavity_cell_length << std::endl;
   std::cout << "transitTime     =" << transitTime << std::endl;
   std::cout << "eFieldAmplitude =" << eFieldAmplitude << std::endl;
-/*
+
   std::cout << "Zeroes = ";
   for (const auto& val : zeroes) {
     std::cout << val << " ";
   }
   std::cout << std::endl;
   std::cout << "cellL=" << cellL << std::endl;
-*/
+  */
 }
 G4double BDSFieldEMAxialStandingApprox::GetEz(G4double z, G4double t) const {
 
@@ -64,8 +66,6 @@ G4double BDSFieldEMAxialStandingApprox::GetEz(G4double z, G4double t) const {
 
   // compute Ez
   G4double Ez = eFieldAmplitude*cos(zphase)*cos(tphase);
-
-  //G4cout << z << " " << zphase << " " << t << " " << synchronousT << " " << tphase << " " << G4endl;
 
   return Ez;
 }
