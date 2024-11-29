@@ -4,7 +4,7 @@ const G4double BDSFieldEMAcceleration::Z0 = CLHEP::mu0 * CLHEP::c_light;
 
 G4double BDSFieldEMAcceleration::Voltage(G4double length, G4int nSteps)
 {
-  G4cout << "BDSFieldEMAcceleration::Voltage" << G4endl;
+  // G4cout << "BDSFieldEMAcceleration::Voltage" << G4endl;
 
   std::vector<G4double> zV;
   std::vector<G4double> EzV;
@@ -23,14 +23,14 @@ G4double BDSFieldEMAcceleration::Voltage(G4double length, G4int nSteps)
     simpIntegral += (zV[i+2]-zV[i])/6*(EzV[i] + 4*EzV[i+1] + EzV[i+2]);
   }
 
-  G4cout << "BDSFieldEMAcceleration::Voltage> " << simpIntegral << G4endl;
+  // G4cout << "BDSFieldEMAcceleration::Voltage> " << simpIntegral << G4endl;
 
   return simpIntegral;
 }
 
 G4double BDSFieldEMAcceleration::TransitTimeFactor(G4double omega, G4double length, G4double beta, G4int nSteps)
 {
-  G4cout << "BDSFieldEMAcceleration::TransitTimeFactor>" << G4endl;
+  // G4cout << "BDSFieldEMAcceleration::TransitTimeFactor>" << G4endl;
 
   auto voltage = Voltage(length, nSteps);
 
@@ -52,7 +52,7 @@ G4double BDSFieldEMAcceleration::TransitTimeFactor(G4double omega, G4double leng
     simpIntegral += (zV[i+2]-zV[i])/6*(EzV[i] + 4*EzV[i+1] + EzV[i+2]);
   }
 
-  G4cout << "BDSFieldEMCircularTM::TransitTimeFactor> " << simpIntegral/voltage << G4endl;
+  // G4cout << "BDSFieldEMCircularTM::TransitTimeFactor> " << simpIntegral/voltage << G4endl;
 
   return simpIntegral/voltage;
 }
