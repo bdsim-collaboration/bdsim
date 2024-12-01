@@ -60,7 +60,8 @@ struct fieldtypes_def
 	     multipoleouterdipolelhc, multipoleouterquadrupolelhc,
 	     multipoleoutersextupolelhc,
   	     transversemagnetic,
-  	     axialstandingapprox
+  	     axialstandingapprox,
+           axialfloquetapprox
   };
 };
 
