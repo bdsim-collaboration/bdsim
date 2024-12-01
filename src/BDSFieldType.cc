@@ -91,7 +91,8 @@ std::map<BDSFieldType, std::string>* BDSFieldType::dictionary =
       {BDSFieldType::multipoleouterquadrupolelhc,  "multipoleouterquadrupolelhc"},
       {BDSFieldType::multipoleoutersextupolelhc,   "multipoleoutersextupolelhc"},
       {BDSFieldType::transversemagnetic,           "transversemagnetic"},
-      {BDSFieldType::axialstandingapprox,          "axialstandingapprox"}
+      {BDSFieldType::axialstandingapprox,          "axialstandingapprox"},
+      {BDSFieldType::axialfloquetapprox,           "axialsfloquetapprox"}
 });
 
 BDSFieldType BDS::DetermineFieldType(G4String bType)
