@@ -61,6 +61,7 @@ public:
 		   BDSIntegratorType rfpillboxIn,
 		   BDSIntegratorType transversemagneticIn,
 		   BDSIntegratorType axialstandingapproxIn,
+               BDSIntegratorType axialfloquetapproxIn,
 		   BDSIntegratorType rfconstantinxIn,
 		   BDSIntegratorType rfconstantinyIn,
 		   BDSIntegratorType rfconstantinzIn,
@@ -93,6 +94,7 @@ public:
   BDSIntegratorType rfpillbox;
   BDSIntegratorType transversemagnetic;
   BDSIntegratorType axialstandingapprox;
+  BDSIntegratorType axialfloquetapprox;
   BDSIntegratorType rfconstantinx;
   BDSIntegratorType rfconstantiny;
   BDSIntegratorType rfconstantinz;
