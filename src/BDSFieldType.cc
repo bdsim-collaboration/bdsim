@@ -158,8 +158,8 @@ BDSFieldType BDS::DetermineFieldType(G4String bType)
   types["multipoleouterquadrupolelhc"]  = BDSFieldType::multipoleouterquadrupolelhc;
   types["multipoleoutersextupolelhc"]   = BDSFieldType::multipoleoutersextupolelhc;
   types["transversemagnetic"]           = BDSFieldType::transversemagnetic;
-  types["axialstandingapprox"]           = BDSFieldType::axialstandingapprox;
-
+  types["axialstandingapprox"]          = BDSFieldType::axialstandingapprox;
+  types["axialfloquetapprox"]           = BDSFieldType::axialfloquetapprox;
 
   bType = BDS::LowerCase(bType);
 

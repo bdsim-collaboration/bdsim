@@ -359,9 +359,9 @@ BDSIntegratorType BDSIntegratorSet::Integrator(const BDSFieldType field) const
     case BDSFieldType::rfpillbox:
       {return rfpillbox;        break;}
     case BDSFieldType::transversemagnetic:
-      {return transversemagnetic;        break;}
+      {return transversemagnetic; break;}
     case BDSFieldType::axialstandingapprox:
-      {return axialstandingapprox;        break;}
+      {return axialstandingapprox; break;}
     case BDSFieldType::rfconstantinx:
       {return rfconstantinx;    break;}
     case BDSFieldType::rfconstantiny:
