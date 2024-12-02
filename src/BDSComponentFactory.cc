@@ -3044,16 +3044,18 @@ BDSMagnetStrength* BDSComponentFactory::PrepareCavityStrength(Element const*    
         ((*st))["cavity_tphase"] = (*magStrength)["cavity_tphase"];
         ((*st))["cavity_radius"] = (*magStrength)["cavity_radius"];
         ((*st))["cavity_length"] = (*magStrength)["cavity_length"];
-        break;}
+        break;
+      }
   case BDSFieldType::axialstandingapprox:
-        {
-            BDSFieldInfo* field = BDSFieldFactory::Instance()->GetDefinition(element->fieldVacuum);
-            auto magStrength = field->MagnetStrength();
-            ((*st))["cavity_cell_length"] = (*magStrength)["cavity_cell_length"];
-            ((*st))["cavity_cell_voltage"] = (*magStrength)["cavity_cell_voltage"];
-            ((*st))["cavity_cell_phase_advance"] = (*magStrength)["cavity_cell_phase_advance"];
-            ((*st))["cavity_phase"] = (*magStrength)["cavity_phase"];
-            break;}
+      {
+        BDSFieldInfo* field = BDSFieldFactory::Instance()->GetDefinition(element->fieldVacuum);
+        auto magStrength = field->MagnetStrength();
+        ((*st))["cavity_cell_length"] = (*magStrength)["cavity_cell_length"];
+        ((*st))["cavity_cell_voltage"] = (*magStrength)["cavity_cell_voltage"];
+        ((*st))["cavity_cell_phase_advance"] = (*magStrength)["cavity_cell_phase_advance"];
+        ((*st))["cavity_phase"] = (*magStrength)["cavity_phase"];
+        break;
+      }
     default:
       {(*st)["ez"] = 1.0; break;}
     }
