@@ -66,11 +66,6 @@ void HistogramAccumulatorFast::AccumulateBinsThatWereFilledOnly(TH1* newValue, c
 
   n++; // must always count even if nothing to add up
 
-  std::cout << newValue->GetTitle() << " bins filled ";
-  for (auto f : binsFilled)
-  {std::cout << f << " ";}
-  std::cout << std::endl;
-
   switch (nDimensions)
   {
     case 1:
@@ -127,21 +122,6 @@ TH1* HistogramAccumulatorFast::Terminate()
   double var2 = 0;
   double err2 = 0; // temporary variable for standard error on mean
 
-  for (int j = 0; j < (int)binEventCount.size(); j++)
-  {std::cout << binEventCount[j] << " ";}
-  std::cout << std::endl;
-  for (int j = 0; j < (int)binEventCount.size(); j++)
-  {
-    mn = mean->GetBinContent(j);
-    std::cout << mn << " ";
-  }
-  std::cout << std::endl;
-  for (int j = 0; j < (int)binEventCount.size(); j++)
-  {
-    var = variance->GetBinContent(j);
-    std::cout << var << " ";
-  }
-  std::cout << std::endl;
   // note here we set the std to 0 if there's only one entry (ie n = 1) to avoid
   // division by zero and nans
   switch (nDimensions)
