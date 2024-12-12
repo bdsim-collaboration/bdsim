@@ -1477,8 +1477,8 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateBeamMaskCollimator()
   if (!HasSufficientMinimumLength(element))
   {return nullptr;}
   G4bool circularOuter = false;
-  G4String cavityModel = G4String(element->cavityModel);
-  if (cavityModel == "circular")
+  G4String outerShape = G4String(element->outerShape);
+  if (outerShape == "circular")
   {circularOuter = true;}
   return new BDSCollimatorBeamMask(elementName,
                                    element->l*CLHEP::m,
@@ -1505,8 +1505,8 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateGasCapillary()
   {return nullptr;}
 
   G4bool circularOuter = false;
-  G4String cavityModel = G4String(element->cavityModel);
-  if (cavityModel == "circular")
+  G4String outerShape = G4String(element->outerShape);
+  if (outerShape == "circular")
   {circularOuter = true;}
 
   std::vector<std::string> materials{ element->layerMaterials.begin(), element->layerMaterials.end() };
