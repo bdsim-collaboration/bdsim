@@ -60,9 +60,11 @@ public:
 		   BDSIntegratorType multipoleThickIn,
 		   BDSIntegratorType muonSpoilerIn,
 		   BDSIntegratorType rfpillboxIn,
+		   BDSIntegratorType transversemagneticIn,
+		   BDSIntegratorType axialstandingapproxIn,
 		   BDSIntegratorType rfconstantinxIn,
-                   BDSIntegratorType rfconstantinyIn,
-                   BDSIntegratorType rfconstantinzIn,
+		   BDSIntegratorType rfconstantinyIn,
+		   BDSIntegratorType rfconstantinzIn,
 		   BDSIntegratorType generalIn,
 		   BDSIntegratorType skewQuadrupoleIn,
 		   BDSIntegratorType skewSextupoleIn,
@@ -74,7 +76,7 @@ public:
 		   BDSIntegratorType rmatrixThinIn,
 		   BDSIntegratorType parallelTransporterIn,
 		   BDSIntegratorType undulator,
-                   BDSIntegratorType cavityFringeIn);
+		   BDSIntegratorType cavityFringeIn);
 
   /// Get appropriate integrator based on the field type.
   BDSIntegratorType Integrator(const BDSFieldType field) const;
@@ -89,6 +91,8 @@ public:
   BDSIntegratorType multipoleThick;
   BDSIntegratorType muonSpoiler;
   BDSIntegratorType rfpillbox;
+  BDSIntegratorType transversemagnetic;
+  BDSIntegratorType axialstandingapprox;
   BDSIntegratorType rfconstantinx;
   BDSIntegratorType rfconstantiny;
   BDSIntegratorType rfconstantinz;
