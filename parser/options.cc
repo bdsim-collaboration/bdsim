@@ -456,6 +456,8 @@ void Options::PublishMembers()
   publish("storeELossModelID",              &Options::storeElossModelID);
   publish("storeElossPhysicsProcesses",     &Options::storeElossPhysicsProcesses);
   publish("storeELossPhysicsProcesses",     &Options::storeElossPhysicsProcesses);
+  publish("storeEventLevelHistograms",      &Options::storeEventLevelHistograms);
+  publish("storeEventLevelMeshes",          &Options::storeEventLevelMeshes);
   publish("storeParticleData",              &Options::storeParticleData);
   publish("storeGeant4Data",                &Options::storeParticleData); // backwards compatibility
   publish("storePrimaries",                 &Options::storePrimaries);

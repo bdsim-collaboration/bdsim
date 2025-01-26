@@ -259,6 +259,8 @@ public:
   inline G4bool   StoreELossPreStepKineticEnergy() const {return G4bool (options.storeElossPreStepKineticEnergy);}
   inline G4bool   StoreELossModelID()        const {return G4bool  (options.storeElossModelID);}
   inline G4bool   StoreELossPhysicsProcesses()const{return G4bool  (options.storeElossPhysicsProcesses);}
+  inline G4bool   StoreEventLevelHistograms()const {return G4bool  (options.storeEventLevelHistograms);}
+  inline G4bool   StoreEventLevelMeshes()    const {return G4bool  (options.storeEventLevelMeshes);}
   inline G4bool   StoreParticleData()        const {return G4bool  (options.storeParticleData);}
   inline G4bool   StoreTrajectory()          const {return G4bool  (options.storeTrajectory);}
   inline G4bool   StoreTrajectoryAll()       const {return          options.storeTrajectoryDepth == -1;}
