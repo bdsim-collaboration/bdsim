@@ -69,6 +69,22 @@ void BDSOutputROOTEventHistograms::FillSimple(const BDSOutputROOTEventHistograms
   histograms4D = rhs->histograms4D;
 }
 
+void BDSOutputROOTEventHistograms::CopyPointersOnly(BDSOutputROOTEventHistograms* other,
+                                                    bool copy1D,
+                                                    bool copy2D,
+                                                    bool copy3D,
+                                                    bool copy4D)
+{
+  if (copy1D)
+    {histograms1D = other->histograms1D;}
+  if (copy2D)
+    {histograms2D = other->histograms2D;}
+  if (copy3D)
+    {histograms3D = other->histograms3D;}
+  if (copy4D)
+    {histograms4D = other->histograms4D;}
+}
+
 void BDSOutputROOTEventHistograms::Fill(const BDSOutputROOTEventHistograms* rhs)
 {
   if (!rhs)
