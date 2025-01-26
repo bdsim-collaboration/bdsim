@@ -332,7 +332,7 @@ TH1* HistogramAccumulator::Terminate()
     default:
       {break;}
     }
-  if(nDimensions==4)
+  if (nDimensions == 4)
     {dynamic_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
   else
     {result->SetEntries((double)n);}
