@@ -61,6 +61,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <utility>
 
 #include "TH1.h"
+#include "TH2.h"
 #include "TH3.h"
 
 
@@ -186,6 +187,30 @@ void BDSOutputStructures::Fill1DHistogram(G4int histoId,
   eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 
+G4int BDSOutputStructures::Create2DHistogram(const G4String& name,
+                                             const G4String& title,
+                                             G4int nBinsX, G4double xMin, G4double xMax,
+                                             G4int nBinsY, G4double yMin, G4double yMax)
+{
+  G4int result = evtHistos->Create2DHistogram(name, title,
+                                              nBinsX, xMin, xMax,
+                                              nBinsY, yMin, yMax);
+  TH1* eh = evtHistos->Get2DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos2D.push_back(erh);
+  return result;
+}
+
+void BDSOutputStructures::Fill2DHistogram(G4int histoId,
+                                          G4double x,
+                                          G4double y,
+                                          G4double weight)
+{
+  Int_t globalBinFilled = evtHistos->histograms2D[histoId]->Fill(x, y, weight);
+  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
+}
+
 G4int BDSOutputStructures::Create3DHistogram(const G4String& name,
                                              const G4String& title,
                                              G4int nBinsX, G4double xMin, G4double xMax,
@@ -238,6 +263,8 @@ void BDSOutputStructures::HistogramMarkEndOfEvent()
 {
   for (auto& erh : eventAndRunHistos1D)
     {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+  for (auto& erh : eventAndRunHistos2D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
   for (auto& erh : eventAndRunHistos3D)
     {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
   for (auto& erh : eventAndRunHistos4D)
@@ -248,12 +275,15 @@ void BDSOutputStructures::TerminateRunHistogramAccumulators()
 {
   for (G4int i = 0; i < (G4int)eventAndRunHistos1D.size(); i++)
     {
+    // TO REMOVE
        auto h = evtHistos->histograms1D[i];
        for (auto j = 0; j < h->GetNcells(); j++)
        {G4cout << h->GetBinContent(j) << " ";}
        G4cout << G4endl;
-
+    // TO HERE
     runHistos->histograms1D.push_back(dynamic_cast<TH1D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
+  for (G4int i = 0; i < (G4int)eventAndRunHistos2D.size(); i++)
+    {runHistos->histograms2D.push_back(dynamic_cast<TH2D*>(eventAndRunHistos2D[i].runAccumulator->Terminate()));}
   for (G4int i = 0; i < (G4int)eventAndRunHistos3D.size(); i++)
     {runHistos->histograms3D.push_back(dynamic_cast<TH3D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
   for (G4int i = 0; i < (G4int)eventAndRunHistos4D.size(); i++)
@@ -534,6 +564,8 @@ void BDSOutputStructures::ClearStructuresRunLevel()
   // However, can't delete theme as root would then have trouble writing after this.
   runHistos->Flush();
   for (auto& erh : eventAndRunHistos1D)
+    {erh.runAccumulator->Flush();}
+  for (auto& erh : eventAndRunHistos2D)
     {erh.runAccumulator->Flush();}
   for (auto& erh : eventAndRunHistos3D)
     {erh.runAccumulator->Flush();}
