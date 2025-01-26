@@ -167,8 +167,10 @@ BDSGlobalConstants::BDSGlobalConstants(const GMAD::Options& opt):
         {"storeCollimatorHitsAll",             &o.storeCollimatorHitsAll},
         {"storePrimaryHistograms",             &o.storePrimaryHistograms},
         {"storeTrajectoryTransportationSteps", &o.storeTrajectoryTransportationSteps},
-        {"storeModel",                         &o.storeModel}
-      };
+        {"storeModel",                         &o.storeModel},
+        {"storeEventLevelHistograms",          &o.storeEventLevelHistograms},
+        {"storeEventLevelMeshes",              &o.storeEventLevelMeshes}
+        };
       for (auto& no : otc)
 	{
 	  if (!options.HasBeenSet(no.first))
