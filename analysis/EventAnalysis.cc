@@ -129,7 +129,8 @@ void EventAnalysis::Execute()
       BDSBH4DBase::AddDirectory(kTRUE);
       PreparePerEntryHistograms();
       PreparePerEntryHistogramSets();
-      Process();
+      if (nPerEntryHistoDefinitions > 0 || processSamplers) // avoid a useless data-loading loop
+        {Process();}
     }
   SimpleHistograms();
   Terminate();
@@ -386,6 +387,7 @@ void EventAnalysis::PreparePerEntryHistogramSets()
   if (c)
     {
       auto setDefinitions  = c->EventHistogramSetDefinitionsPerEntry();
+      nPerEntryHistoDefinitions += (int)setDefinitions.size();
       for (const auto& def : setDefinitions)
         {perEntryHistogramSets.push_back(ConstructPerEntryHistogramSet(def, event, chain));}
     }
