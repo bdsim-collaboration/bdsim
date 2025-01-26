@@ -111,6 +111,9 @@ BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
   
   traj       = new BDSOutputROOTEventTrajectory();
   evtHistos  = new BDSOutputROOTEventHistograms();
+  evtHistosOnly = new BDSOutputROOTEventHistograms();
+  evtHistosMeshesOnly = new BDSOutputROOTEventHistograms();
+  evtHistosNone = new BDSOutputROOTEventHistograms();
   evtInfo    = new BDSOutputROOTEventInfo();
   runHistos  = new BDSOutputROOTEventHistograms();
   runInfo    = new BDSOutputROOTEventRunInfo();
@@ -142,6 +145,9 @@ BDSOutputStructures::~BDSOutputStructures()
   delete apertureImpacts;
   delete traj;
   delete evtHistos;
+  delete evtHistosOnly;
+  delete evtHistosMeshesOnly;
+  delete evtHistosNone;
   delete evtInfo;
   delete runHistos;
   delete runInfo;

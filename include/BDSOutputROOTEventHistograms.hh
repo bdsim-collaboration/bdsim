@@ -52,9 +52,9 @@ public:
   BDSOutputROOTEventHistograms(const BDSOutputROOTEventHistograms &h);
   BDSOutputROOTEventHistograms& operator=(const BDSOutputROOTEventHistograms&) = delete;
   BDSOutputROOTEventHistograms(std::vector<TH1D*>& histogram1DIn,
-			       std::vector<TH2D*>& histogram2DIn,
-			       std::vector<TH3D*>& histogram3DIn,
-			       std::vector<BDSBH4DBase*>& histograms4DIn);
+                               std::vector<TH2D*>& histogram2DIn,
+                               std::vector<TH3D*>& histogram3DIn,
+                               std::vector<BDSBH4DBase*>& histograms4DIn);
   virtual ~BDSOutputROOTEventHistograms();
 
   /// Interface function to create a 1D histogram using only standard types.
@@ -121,6 +121,13 @@ public:
 
   /// Copy (without using the TH->Clone) method from another instance. (Quicker).
   void FillSimple(const BDSOutputROOTEventHistograms* rhs);
+
+  /// Copy the pointers from another instance for filling purposes. Doesn't own the histograms.
+  void CopyPointersOnly(BDSOutputROOTEventHistograms* other,
+                        bool copy1D = false,
+                        bool copy2D = false,
+                        bool copy3D = false,
+                        bool copy4D = false);
 
   /// @{ Accessors.
   std::vector<TH1D*>& Get1DHistograms() {return histograms1D;}

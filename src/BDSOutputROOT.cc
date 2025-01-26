@@ -132,8 +132,16 @@ void BDSOutputROOT::NewFile()
   if (storeTrajectory)
     {theEventOutputTree->Branch("Trajectory.", "BDSOutputROOTEventTrajectory", traj, 4000,  2);}
 
-  // Build event histograms
-  theEventOutputTree->Branch("Histos.",     "BDSOutputROOTEventHistograms", evtHistos, 32000, 1);
+  // Build event histograms - link to the appropriate selection of histograms. "evtHistos" is the
+  // main one that is really filled - the others just have copys of pointers.
+  if (storeEventLevelHistograms && storeEventLevelMeshes)
+    {theEventOutputTree->Branch("Histos.", "BDSOutputROOTEventHistograms", evtHistos, 32000, 1);}
+  else if (storeEventLevelHistograms)
+    {theEventOutputTree->Branch("Histos.", "BDSOutputROOTEventHistograms", evtHistosOnly, 32000, 1);}
+  else if (storeEventLevelMeshes)
+    {theEventOutputTree->Branch("Histos.", "BDSOutputROOTEventHistograms", evtHistosMeshesOnly, 32000, 1);}
+  else
+    {theEventOutputTree->Branch("Histos.", "BDSOutputROOTEventHistograms", evtHistosNone, 32000, 1);}
 
   // build sampler structures
   for (G4int i = 0; i < (G4int)samplerTrees.size(); ++i)

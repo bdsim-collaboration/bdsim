@@ -206,7 +206,10 @@ protected:
   BDSOutputROOTEventLossWorld*  eLossWorldContents; ///< Externally supplied world contents hits.
   BDSOutputROOTEventAperture*   apertureImpacts;    ///< Impacts on the aperture.
   BDSOutputROOTEventTrajectory* traj;               ///< Trajectories.
-  BDSOutputROOTEventHistograms* evtHistos;          ///< Event level histograms.
+  BDSOutputROOTEventHistograms* evtHistos;          ///< All event level histograms - for use in accumulation.
+  BDSOutputROOTEventHistograms* evtHistosOnly;      ///< Copy of pointers for all but 3d mesh histograms.
+  BDSOutputROOTEventHistograms* evtHistosMeshesOnly; ///< Copy of pointers for only 3d mesh histograms and no regular ones.
+  BDSOutputROOTEventHistograms* evtHistosNone;      ///< Always empty set of histograms to link to but avoid writing.
   BDSOutputROOTEventInfo*       evtInfo;            ///< Event information.
 
   // collimator specific output

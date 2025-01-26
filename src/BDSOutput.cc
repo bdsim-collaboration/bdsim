@@ -140,6 +140,8 @@ BDSOutput::BDSOutput(const G4String& baseFileNameIn,
   storeELossVacuumHistograms = g->StoreELossVacuumHistograms() || storeELossVacuum;
   storeELossWorld            = g->StoreELossWorld();
   storeELossWorldContents    = g->StoreELossWorldContents() || g->UseImportanceSampling();
+  storeEventLevelHistograms  = g->StoreEventLevelHistograms();
+  storeEventLevelMeshes      = g->StoreEventLevelMeshes();
   storeParticleData          = g->StoreParticleData();
   storeModel                 = g->StoreModel();
   storePrimaries             = g->StorePrimaries();
@@ -684,6 +686,9 @@ void BDSOutput::CreateHistograms()
             }
         }
     }
+
+  evtHistosMeshesOnly->CopyPointersOnly(evtHistos, false, false, true, true);
+  evtHistosOnly->CopyPointersOnly(evtHistos, true, true, false, false);
 }
 
 void BDSOutput::FillEventInfo(const BDSEventInfo* info)
