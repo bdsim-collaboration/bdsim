@@ -36,6 +36,7 @@ class Options;
 class Model;
 class Run;
 class TChain;
+class TFile;
 
 /**
  * @brief Loader for a ROOT file using classes used to generate the file.
@@ -77,6 +78,10 @@ public:
                         const RBDS::BranchMap* bToTurnOn = nullptr);
 
   inline int DataVersion() const {return dataVersion;}
+
+  /// Combine multiple run histograms and copy the combined average to
+  /// the output file under "Event/MergedHistograms".
+  void CombineRunHistogramsAndCopyToEventMerged(TFile* outputFile);
 
   /// @{ Accessor
   std::vector<std::string>   GetFileNames()      {return fileNames;}

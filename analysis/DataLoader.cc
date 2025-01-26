@@ -20,10 +20,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "Beam.hh"
 #include "Event.hh"
 #include "FileMapper.hh"
-#include "ParticleData.hh"
+#include "HistogramCombineFromFile.hh"
 #include "Header.hh"
 #include "Model.hh"
 #include "Options.hh"
+#include "ParticleData.hh"
 #include "RBDSException.hh"
 #include "RebdsimTypes.hh"
 #include "Run.hh"
@@ -31,11 +32,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSDebug.hh"
 #include "BDSOutputROOTEventAperture.hh"
 #include "BDSOutputROOTEventCollimator.hh"
+#include "BDSOutputROOTEventHistograms.hh"
 #include "BDSOutputROOTEventSampler.hh"
 #include "BDSVersionData.hh"
 
 #include "TChain.h"
 #include "TFile.h"
+#include "TH1.h"
+#include "TH2.h"
+#include "TH3.h"
 
 #include <algorithm>
 #include <cmath>
@@ -341,4 +346,46 @@ void DataLoader::SetBranchAddress(bool allOn,
         {runBranches = &(*bToTurnOn).at("Run.");}
     }
   run->SetBranchAddress(runChain, allOn, runBranches);
+}
+
+void DataLoader::CombineRunHistogramsAndCopyToEventMerged(TFile* outputFile)
+{
+  TDirectory* dir = outputFile->GetDirectory("Event/MergedHistograms");
+  dir->cd();
+  if (runChain->GetEntries() == 1)
+    {
+      runChain->GetEntry(0);
+      for (auto hist: run->Histos->Get1DHistograms())
+        {
+          dir->Add(hist);
+          hist->Write();
+        }
+      for (auto hist: run->Histos->Get2DHistograms())
+        {
+          dir->Add(hist);
+          hist->Write();
+        }
+      for (auto hist: run->Histos->Get3DHistograms())
+        {
+          dir->Add(hist);
+          hist->Write();
+        }
+      for (auto hist: run->Histos->Get4DHistograms())
+        {
+          dir->Add(hist);
+          hist->Write();
+        }
+    }
+  else
+    {
+      runChain->GetEntry(0);
+      auto* accumulator = new HistogramCombineFromFile(run->Histos);
+      for (int i = 1; i < (int)runChain->GetEntries(); i++)
+        {
+          runChain->GetEntry(i);
+          accumulator->Accumulate(run->Histos);
+        }
+      accumulator->Terminate();
+      accumulator->Write(dir);
+    }
 }
