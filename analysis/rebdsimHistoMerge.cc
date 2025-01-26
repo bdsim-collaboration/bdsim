@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
   // check input
   if (argc < 2 || argc > 3)
     {
-      std::cout << "usage: rebdsim <datafile> (<outputFile>)" << std::endl;
+      std::cout << "usage: rebdsimHistoMerge <datafile> (<outputFile>)" << std::endl;
       std::cout << " <datafile> - root file to operate on" << std::endl;
       std::cout << " <outputfile> - output file name for analysis" << std::endl;
       std::cout << " <outputfile> is optional - default is <datafile>_histos.root" << std::endl;
