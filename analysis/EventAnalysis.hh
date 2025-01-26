@@ -51,6 +51,7 @@ public:
                 TChain*  chain,
                 bool     perEntryAnalysis    = true,
                 bool     processSamplersIn   = true,
+                bool     calculateEventMeanHistosIn = false,
                 bool     debugIn             = false,
                 bool     printOutIn          = true,
                 double   printModuloFraction = 0.01,
@@ -111,6 +112,7 @@ private:
   int  printModulo;       ///< Cache of print modulo fraction
   bool processSamplers;   ///< Whether to process samplers.
   bool emittanceOnTheFly; ///< Whether to calculate emittance fresh at each sampler.
+  bool calculateEventMeanHistos; ///< Whether to calculate from each event histo the mean.
   long int eventStart;    ///< Event index to start analysis from.
   long int eventEnd;      ///< Event index to end analysis at.
   long int nEventsToProcess; ///< Difference between start and stop.

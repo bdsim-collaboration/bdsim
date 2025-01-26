@@ -85,6 +85,7 @@ int main(int argc, char *argv[])
                                                      dl->GetEventTree(),
                                                      config->PerEntryEvent(),
                                                      config->ProcessSamplers(),
+                                                     dl->DataVersion() < 10,
                                                      debug,
                                                      config->PrintOut(),
                                                      config->PrintModuloFraction(),
