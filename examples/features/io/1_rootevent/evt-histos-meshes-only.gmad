@@ -1,4 +1,4 @@
-include evt-level-common.gmad;
+include evt-histos-common.gmad;
 
 ! explicitly turn off event-level histograms to give only run-level histograms.
 option, storeEventLevelHistograms=0,
