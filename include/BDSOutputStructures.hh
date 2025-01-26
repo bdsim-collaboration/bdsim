@@ -120,6 +120,10 @@ protected:
   G4int Create1DHistogram(const G4String& name,
                           const G4String& title,
                           const std::vector<double>& edges);
+  G4int Create2DHistogram(const G4String& name,
+                          const G4String& title,
+                          G4int nBinsX, G4double xMin, G4double xMax,
+                          G4int nBinsY, G4double yMin, G4double yMax);
   G4int Create3DHistogram(const G4String& name,
                           const G4String& title,
                           G4int nBinsX, G4double xMin, G4double xMax,
@@ -135,21 +139,24 @@ protected:
                           G4int nBinsE, G4double eMin, G4double eMax);
   ///@}
 
-  /// Fill the appropriate histogram in the event vector of histograms, but
+  /// @{ Fill the appropriate histogram in the event vector of histograms, but
   /// also cache which bin was filled in a set here, for efficient
   /// accumulation at the end of event.
   void Fill1DHistogram(G4int    histoId,
                        G4double value,
                        G4double weight = 1.0);
 
-  /// Fill the appropriate histogram in the event vector of histograms, but
-  /// also cache which bin was filled in a set here, for efficient
-  /// accumulation at the end of event.
+  void Fill2DHistogram(G4int    histoId,
+                       G4double x,
+                       G4double y,
+                       G4double weight = 1.0);
+
   void Fill3DHistogram(G4int    histoId,
                        G4double x,
                        G4double y,
                        G4double z,
                        G4double weight = 1.0);
+  /// @}
 
   /// For accumulation purposes, accumulate this event onto the rolling
   /// mean for the corresponding run histograms.
@@ -235,6 +242,7 @@ protected:
 
   /// @{ Cache of run accumulators linked to per-event histograms.
   std::vector<EventRunHist> eventAndRunHistos1D;
+  std::vector<EventRunHist> eventAndRunHistos2D;
   std::vector<EventRunHist> eventAndRunHistos3D;
   std::vector<EventRunHist> eventAndRunHistos4D;
   /// @}
