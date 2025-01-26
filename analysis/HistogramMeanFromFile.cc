@@ -118,13 +118,13 @@ void HistogramMeanFromFile::Write(TDirectory* dir)
   if (dir)
     {// move to directory in output file
       for (auto& h : histograms1d)
-	{dir->Add(h->Result());}
+        {dir->Add(h->Result());}
       for (auto& h : histograms2d)
-	{dir->Add(h->Result());}
+        {dir->Add(h->Result());}
       for (auto& h : histograms3d)
-	{dir->Add(h->Result());}
+        {dir->Add(h->Result());}
       for (auto& h : histograms4d)
-	{dir->Add(h->Result());}
+        {dir->Add(h->Result());}
     }
 
   // write to currently open file.

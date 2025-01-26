@@ -41,7 +41,7 @@ class TDirectory;
 class HistogramMeanFromFile
 {
 public:
-  /// Public constructor only for compatibility with ROOT - not indended for use.
+  /// Public constructor only for compatibility with ROOT - not intended for use.
   HistogramMeanFromFile();
 
   /// Use this constructor.

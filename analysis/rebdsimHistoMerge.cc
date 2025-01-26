@@ -92,13 +92,15 @@ int main(int argc, char *argv[])
                                                      config->GetOptionBool("emittanceonthefly"));
       
       RunAnalysis* runAnalysis = new RunAnalysis(dl->GetRun(),
-						 dl->GetRunTree(),
-						 config->PerEntryRun(),
-						 debug);
+                                                 dl->GetRunTree(),
+                                                 config->PerEntryRun(),
+                                                 debug);
+
       OptionsAnalysis* optAnalysis = new OptionsAnalysis(dl->GetOptions(),
                                                          dl->GetOptionsTree(),
                                                          config->PerEntryOption(),
                                                          debug);
+
       ModelAnalysis*   modAnalysis = new ModelAnalysis(dl->GetModel(),
                                                        dl->GetModelTree(),
                                                        config->PerEntryModel(),
