@@ -143,6 +143,8 @@ When using the option :code:`storeMinimalData=1`, the following options are turn
 * storePrimaryHistograms
 * storeTrajectory
 * storeModel
+* storeEventLevelHistograms
+* storeEventLevelMeshes
 
 .. warning:: Note, this won't respect alternative versions of these options such as "storeTrajectories".
 

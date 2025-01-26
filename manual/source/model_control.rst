@@ -3705,6 +3705,13 @@ with the following options.
 |                                    | as taken from the beginning of the step before it made it. Default |
 |                                    | off.                                                               |
 +------------------------------------+--------------------------------------------------------------------+
+| storeEventLevelHistograms          | Default on. If on, 1D and 2D histograms are stored with each       |
+|                                    | event with that event data only. Applies to all possible 1D and 2D |
+|                                    | histograms.                                                        |
++------------------------------------+--------------------------------------------------------------------+
+| storeEventLevelMeshes              | Default off. If on, 3D and 4D meshes are stored with each event    |
+|                                    | with that event data only. Incurs a very large file size.          |
++------------------------------------+--------------------------------------------------------------------+
 | storeMinimalData                   | When used, all optional parts of the data are turned off. Any bits |
 |                                    | specifically turned on with other options will be respected.       |
 +------------------------------------+--------------------------------------------------------------------+
