@@ -32,11 +32,15 @@ public:
   virtual ~BDSUserTrackInformation();
   BDSElectronOccupancy* GetElectronOccupancy();
   BDSPolarizationState* GetPolarizationState();
+  G4bool inline GetComptonScattered() {return comptonScattered;};
+  void inline setComptonScatteredTrue() {comptonScattered = true;};
+  void inline setComptonScatteredFalse() {comptonScattered = false;};
 
 private:
   G4int totalElectrons;
   BDSElectronOccupancy* electronOccupancy;
   BDSPolarizationState* polarizationState;
+  G4bool comptonScattered;
 };
 
 #endif
