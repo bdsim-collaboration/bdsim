@@ -100,7 +100,7 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
 
   /////////////////////////////// Get Particle Info //////////////////////////
   BDSUserTrackInformation* trackInfo = dynamic_cast<BDSUserTrackInformation*>(track.GetUserInformation());
-  if (!trackInfo->GetComptonScattered())
+  if (trackInfo->GetComptonScattered())
     {return pParticleChange;}
   else {
     G4ThreeVector particlePolarization = trackInfo->GetPolarizationState()->GetPolarization();
