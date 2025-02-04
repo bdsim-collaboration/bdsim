@@ -68,6 +68,7 @@ BDSUserTrackInformation::BDSUserTrackInformation(const G4DynamicParticle* partic
 	  electronOccupancy->PopulateLevels();
         }
     }
+	comptonScattered=false;
 }
 
 
