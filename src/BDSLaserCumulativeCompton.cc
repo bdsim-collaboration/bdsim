@@ -193,7 +193,7 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
   aParticleChange.ProposeEnergy(particleLorentz.e());
   aParticleChange.ProposeMomentumDirection(particleLorentz.getX(),particleLorentz.getY(),particleLorentz.getZ());
   G4ThreeVector proposedStep = currentParticlePositionGlobal-proposedPositionGlobal;
-  aParticleChange.ProposePosition(particleLorentz.vect()*proposedStep.mag());
+  aParticleChange.ProposePosition(particlePositionGlobal + particleLorentz.vect()*proposedStep.mag());
 
   return G4VDiscreteProcess::PostStepDoIt(track, step);
 
