@@ -7,7 +7,7 @@
 #rm /usr/local/bin/python3.13
 #rm /usr/local/bin/python3.13-config
 
-# brew update
+brew update
 
 # explicitly remove all conflicting python3.13 files
 # brew unlink python@3.13
