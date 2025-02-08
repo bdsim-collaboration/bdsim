@@ -1,13 +1,10 @@
 #!/bin/bash
 
 brew update
-brew upgrade
+brew upgrade --force
 
 # install non ROOT deps
-brew install wget clhep bison xerces-c
-
-# install root
-brew insstall --force root
+brew install wget clhep bison xerces-c root
 
 # explicitly remove all conflicting python3.13 files
 # rm /usr/local/bin/idle3
