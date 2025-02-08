@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# explicitly remove all conflicting python3.13 files
-brew unlink python@3.13
-
 #rm /usr/local/bin/idle3
 #rm /usr/local/bin/pydoc3.13
 #rm /usr/local/bin/python3
@@ -11,6 +8,10 @@ brew unlink python@3.13
 #rm /usr/local/bin/python3.13-config
 
 brew update
+
+# explicitly remove all conflicting python3.13 files
+brew unlink python@3.13
+
 brew upgrade
 
 # install non ROOT deps
