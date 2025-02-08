@@ -10,7 +10,8 @@
 brew update
 
 # explicitly remove all conflicting python3.13 files
-brew unlink python@3.13
+# brew unlink python@3.13
+brew install python@3.13 --force-bottle
 
 brew upgrade
 
