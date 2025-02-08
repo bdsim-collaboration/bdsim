@@ -3,6 +3,9 @@
 brew update
 brew upgrade
 
+brew uninstall python@3.12
+brew uninstall python@3.13
+
 # install non ROOT deps
 brew install wget clhep bison xerces-c root
 
