@@ -2,6 +2,11 @@
 
 const G4double BDSFieldEMAcceleration::Z0 = CLHEP::mu0 * CLHEP::c_light;
 
+BDSFieldEMAcceleration::BDSFieldEMAcceleration() {
+}
+
+BDSFieldEMAcceleration::~BDSFieldEMAcceleration() {}
+
 G4double BDSFieldEMAcceleration::Voltage(G4double length, G4int nSteps)
 {
   // G4cout << "BDSFieldEMAcceleration::Voltage" << G4endl;
