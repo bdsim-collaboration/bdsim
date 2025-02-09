@@ -1,9 +1,24 @@
-//
-// Created by Boogert Stewart on 25/11/2024.
-//
+/*
+Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway,
+University of London 2001 - 2024.
 
-#ifndef BDSIM_BDSFIELDEMSTANDINGAXIALAPPROX_HH
-#define BDSIM_BDSFIELDEMSTANDINGAXIALAPPROX_HH
+This file is part of BDSIM.
+
+BDSIM is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published
+by the Free Software Foundation version 3 of the License.
+
+BDSIM is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#ifndef BDSFIELDEMSTANDINGAXIALAPPROX_H
+#define BDSFIELDEMSTANDINGAXIALAPPROX_H
 
 #include "BDSFieldEMAcceleration.hh"
 
@@ -38,11 +53,11 @@ private:
   G4double synchronousT;
 
   // calculated from input
-  G4double eFieldAmplitude = 0;
-  G4double cavity_length = 0;
-  G4double frequency = 0;
-  G4double transitTime = 0;
+  G4double eFieldAmplitude;
+  G4double cavity_length;
+  G4double frequency;
+  G4double transitTime;
   std::vector<G4double> cavity_zeroes;
   G4double cell_length;
 };
-#endif //BDSIM_BDSFIELDEMSTANDINGAXIALAPPROX_HH
+#endif
