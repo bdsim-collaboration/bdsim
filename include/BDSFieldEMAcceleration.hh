@@ -1,16 +1,35 @@
-//
-// Created by Boogert Stewart on 16/08/2024.
-//
+/*
+Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway,
+University of London 2001 - 2024.
 
-#ifndef BDSIM_BDSFIELDEMACCELERATION_HH
-#define BDSIM_BDSFIELDEMACCELERATION_HH
+This file is part of BDSIM.
+
+BDSIM is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published
+by the Free Software Foundation version 3 of the License.
+
+BDSIM is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#ifndef BDSFIELDEMACCELERATION_H
+#define BDSFIELDEMACCELERATION_H
+
+#include "BDSFieldEM.hh"
 
 #include <vector>
-#include "BDSFieldEM.hh"
+
 
 class BDSFieldEMAcceleration : public BDSFieldEM
 {
 public:
+  BDSFieldEMAcceleration();
+  ~BDSFieldEMAcceleration();
   G4double Voltage(G4double length, G4int nSteps = 200);
   G4double TransitTimeFactor(G4double length, G4double omega, G4double beta = 1 , G4int nSteps = 200);
   G4double MaxE(G4double length, G4int nSteps = 200);
@@ -21,8 +40,9 @@ public:
   G4double Cell_length(G4Double Cell_length);
 */
 
+private:
   static const G4double Z0; ///< Impedance of free space.
 
 };
 
-#endif // BDSIM_BDSFIELDEMACCELERATION_HH
+#endif // BDSFIELDEMACCELERATION_H
