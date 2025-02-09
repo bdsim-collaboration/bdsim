@@ -16,6 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 #ifndef BDSFIELDEMCIRCULARTM_H
 #define BDSFIELDEMCIRCULARTM_H
 
