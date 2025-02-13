@@ -1013,7 +1013,7 @@ void BDSMaterials::AddMaterial(G4String name,
   // Recursive check on the components of a gas material to check if the ideal gas equation is respected
   if(state == G4State::kStateGas && instance != nullptr)
   {
-    BDSIdealGas::CheckGasLaw(temperature, pressure, density, components, componentFractions);
+    BDSIdealGas::CheckGasLaw(name,temperature, pressure, density, components, componentFractions);
   }
   
   G4Material* tmpMaterial = new G4Material(name,

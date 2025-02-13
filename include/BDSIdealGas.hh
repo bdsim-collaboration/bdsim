@@ -37,6 +37,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * @author Marin Deniaud
  */
 
+G4double R = CLHEP::Avogadro * CLHEP::k_Boltzmann / CLHEP::joule * 10;
+
 class BDSIdealGas{
 public:
     template <typename Type>
@@ -46,9 +48,9 @@ public:
                                                             G4double temperature) {
 
       G4double averageMolarMass = CalculateAverageMolarMass(components, componentFractions);
-      G4double density = (pressure*averageMolarMass)/(CLHEP::Avogadro*CLHEP::k_Boltzmann*temperature);
+      G4double density = (pressure*averageMolarMass)/(R*temperature);
 
-      return density/1000; //convert kg.m-3 to g.cm-3
+      return density;
     }
 
     template <typename Type>
@@ -58,7 +60,7 @@ public:
                                                             G4double density) {
 
       G4double averageMolarMass = CalculateAverageMolarMass(components, componentFractions);
-      G4double temperature = (pressure*averageMolarMass)/(CLHEP::Avogadro*CLHEP::k_Boltzmann*(density/1000));
+      G4double temperature = (pressure*averageMolarMass)/(R*density);
 
       return temperature;
     }
@@ -70,7 +72,7 @@ public:
                                                      G4double density) {
 
       G4double averageMolarMass = CalculateAverageMolarMass(components, componentFractions);
-      G4double pressure = ((density/1000)*CLHEP::Avogadro*CLHEP::k_Boltzmann*temperature)/(averageMolarMass);
+      G4double pressure = (density*R*temperature)/(averageMolarMass);
 
       return pressure;
     }
@@ -83,7 +85,7 @@ public:
       G4double averageMolarMass = CalculateAverageMolarMass(components, componentFractions);
       G4double density = numberDensity*averageMolarMass/CLHEP::Avogadro;
 
-      return density/1000;
+      return density;
     }
 
     template <typename Type>
@@ -94,7 +96,7 @@ public:
       G4double averageMolarMass = CalculateAverageMolarMass(components, componentFractions);
       G4double density = molarDensity*averageMolarMass;
 
-      return density/1000;
+      return density;
     }
 
     template <typename Type>
@@ -143,21 +145,57 @@ public:
 
 
     template <typename Type>
-    static void CheckGasLaw(G4double &temperature, G4double &pressure, G4double &density,
+    static void CheckGasLaw(G4String name,
+                            G4double &temperature,
+                            G4double &pressure,
+                            G4double &density,
                             const std::list<G4String>& components,
                             const std::list<Type>& componentFractions) {
 
 #ifdef BDSDEBUG
       G4cout << "BDSIdealGas::CheckGasLaw: " << G4endl;
 #endif
-      G4double calcDensity = CalculateDensityFromPressureTemperature(components, componentFractions, pressure, temperature);
-      if(density != calcDensity)
+      if (density != 0 and pressure == 0)
       {
-        G4String msg = "Ideal gas density calculated from pressure and temperature doesn't match given density\n";
-        msg += "Assuming temperature of 300K and computing correct pressure for this density";
+        G4double calcPressure = CalculatePressureFromTemperatureDensity(components, componentFractions,
+                                                                        temperature, density);
+        pressure = calcPressure;
+        G4String msg = "BDSIdealGas :: Computing pressure " + std::to_string(calcPressure);
+        msg += " atmosphere for material " + name;
         BDS::Warning(msg);
-        temperature = 300;
-        pressure = CalculatePressureFromTemperatureDensity(components, componentFractions, temperature, density);
+      }
+
+      else if (density !=0 and pressure !=0 and temperature == 300)
+      {
+        G4double calcTemp = CalculateTemperatureFromPressureDensity(components, componentFractions,
+                                                                    pressure, density);
+        temperature = calcTemp;
+        G4String msg = "BDSIdealGas :: Computing temperature " + std::to_string(calcTemp);
+        msg += " kelvin for material " + name;
+        BDS::Warning(msg);
+      }
+
+      else if (density == 0 and pressure !=0)
+      {
+        G4double calcDens = CalculateDensityFromPressureTemperature(components, componentFractions,
+                                                                    pressure, temperature);
+        density = calcDens;
+        G4String msg = "BDSIdealGas :: Computing density " + std::to_string(calcDens);
+        msg += " g.cm-3 for material " + name;
+        BDS::Warning(msg);
+      }
+
+      else if (density !=0 and pressure !=0 and temperature != 300)
+      {
+        G4double calcDensity = CalculateDensityFromPressureTemperature(components, componentFractions, pressure, temperature);
+        if(density != calcDensity)
+        {
+          G4String msg = "Ideal gas density calculated from pressure and temperature doesn't match given density\n";
+          msg += "Assuming temperature of 300K and computing correct pressure for this density";
+          BDS::Warning(msg);
+          temperature = 300;
+          pressure = CalculatePressureFromTemperatureDensity(components, componentFractions, temperature, density);
+        }
       }
     }
 };
