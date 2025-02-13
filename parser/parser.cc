@@ -263,6 +263,15 @@ void Parser::Initialise()
 
   add_var("clight",2.99792458e+8,reserved);
 
+  add_var("kg_per_cubic_m", 1e-3, reserved);
+  add_var("g_per_cubic_m", 1e-6, reserved);
+  add_var("g_per_cubic_cm", 1, reserved);
+
+  add_var("pascal", 1/101324.99987983676, reserved);
+  add_var("bar", 1/1.0132499987983676, reserved);
+  add_var("torr", 0.00131579, reserved);
+  add_var("atmosphere", 1, reserved);
+
   params.flush();
 }
 
