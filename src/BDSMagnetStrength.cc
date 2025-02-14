@@ -213,8 +213,7 @@ const std::map<G4String, BDSMagnetStrength::unitsFactors> BDSMagnetStrength::uni
     {"cavity_p"     , {"",    1.0}},
     {"cavity_tphase", {"",    1.0}},
     {"cavity_zphase", {"",    1.0}},
-    {"rmat44"        , {"",    1.0}},
-    {"coilRadialThickness", {"m", CLHEP::m}}
+    {"coilRadialThickness", {"m", CLHEP::m}},
     {"cavity_zphase", {"",    1.0}},
     {"cavity_cell_length", {"",    1.0}},
     {"cavity_cell_voltage", {"",    1.0}},
