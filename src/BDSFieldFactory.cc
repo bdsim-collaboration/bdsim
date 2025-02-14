@@ -89,6 +89,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSMagnetType.hh"
 #include "BDSModulator.hh"
 #include "BDSModulatorInfo.hh"
+#include "BDSModulatorLinearT.hh"
 #include "BDSModulatorSinT.hh"
 #include "BDSModulatorTopHatT.hh"
 #include "BDSModulatorType.hh"
@@ -1291,6 +1292,14 @@ BDSModulator* BDSFieldFactory::CreateModulator(const BDSModulatorInfo* modulator
     {
       switch (modulatorRecipe->modulatorType.underlying())
         {
+        case BDSModulatorType::lineart:
+          {
+            result = new BDSModulatorLinearT(modulatorRecipe->T0,
+                                             modulatorRecipe->T1,
+                                             modulatorRecipe->scale,
+                                             modulatorRecipe->amplitudeOffset);
+            break;
+          }
         case BDSModulatorType::sint:
           {
             result = new BDSModulatorSinT(modulatorRecipe->frequency,

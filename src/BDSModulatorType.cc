@@ -30,6 +30,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 template<>
 std::map<BDSModulatorType, std::string>* BDSModulatorType::dictionary =
   new std::map<BDSModulatorType, std::string> ({
+                                                {BDSModulatorType::lineart,           "lineart"},
                                                 {BDSModulatorType::none,              "none"},
                                                 {BDSModulatorType::sint,              "sint"},
                                                 {BDSModulatorType::singlobalt,        "singlobalt"},
@@ -39,6 +40,7 @@ std::map<BDSModulatorType, std::string>* BDSModulatorType::dictionary =
 BDSModulatorType BDS::DetermineModulatorType(G4String mType)
 {
   std::map<G4String, BDSModulatorType> types;
+  types["lineart"]          = BDSModulatorType::lineart;
   types["none"]             = BDSModulatorType::none;
   types["sint"]             = BDSModulatorType::sint;
   types["singlobalt"]       = BDSModulatorType::singlobalt;

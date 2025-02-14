@@ -31,7 +31,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 struct modulatortypes_def
 {
-  enum type {none,
+  enum type {lineart,
+         none,
 	     sint,
 	     singlobalt,
 	     tophatt};
