@@ -12,4 +12,4 @@ beam, particle="e-", energy=1*GeV;
 ! Pressure in atmosphere, density in g.cm-3 and temperature in kelvin
 gas: matdef, P=1*atmosphere, density=0.00160153*g_per_cubic_cm, state="gas", componentsFractions={1}, components={ "Ar" };
 
-! Density value should compute to around 300 K
+! Temperature value should compute to around 300 K
