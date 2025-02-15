@@ -22,6 +22,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "G4String.hh"
 
+#include "CLHEP/Units/SystemOfUnits.h"
+
 #include <string>
 
 BDSModulatorLinearT::BDSModulatorLinearT(G4double T0In,
@@ -30,7 +32,7 @@ BDSModulatorLinearT::BDSModulatorLinearT(G4double T0In,
                                          G4double yInterceptIn):
   T0(T0In),
   T1(T1In),
-  slope(slopeIn),
+  slope(slopeIn / CLHEP::s),
   yIntercept(yInterceptIn)
 {
   if (T1 < T0)
