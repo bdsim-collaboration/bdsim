@@ -55,38 +55,39 @@ namespace GMAD
 
     /// Set method by property name and value
     template <typename T>
-    void set_value(std::string property, T value);
+    void set_value(std::string property, T value, bool bExit = true);
 
     /// Constructor
     Parameters();
   };
 
   template <typename T>
-    void Parameters::set_value(std::string property, T value)
-    {
+  void Parameters::set_value(std::string property, T value, bool bExit)
+  {
 #ifdef BDSDEBUG
-      std::cout << "element> Setting value " << std::setw(25) << std::left << property << value << std::endl;
+    std::cout << "element> Setting value " << std::setw(25) << std::left << property << value << std::endl;
 #endif
-      // member method can throw runtime_error, catch and exit gracefully
-      try {
-	Published<Element>::set(this,property,value);
+    // member method can throw runtime_error, catch and exit gracefully
+    try
+      {
+        Published<Element>::set(this,property,value);
       }
-      catch(const std::runtime_error&) {
-	// not implemented mad parameters will be ignored
-	if (property == "harmon" || property == "lag" || property == "volt")
-	  {return;}
-	
-	std::cerr << "Error: element> unknown parameter \"" << property << "\" with value " << value  << std::endl;
-	// don't exit here, but flag willExit instead
-	//exit(1);
-	willExit = true;
-	return;
+    catch(const std::runtime_error&)
+      {
+        // not implemented mad parameters will be ignored
+        if (property == "harmon" || property == "lag" || property == "volt")
+          {return;}
+        
+        std::cerr << "Error: element> unknown parameter \"" << property << "\" with value " << value  << std::endl;
+
+        willExit = bExit;
+        return;
       }
-      // record property set
-      // property name can be different, so look up in alternate names
-      std::string publishedName = getPublishedName(property);
-      setMap.at(publishedName) = true;
-    }
+    // record property set
+    // property name can be different, so look up in alternate names
+    std::string publishedName = getPublishedName(property);
+    setMap.at(publishedName) = true;
+  }
 }
 
 #endif

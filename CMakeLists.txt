@@ -204,6 +204,9 @@ endif()
 add_subdirectory(parser)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/parser)
 
+# python binding
+add_subdirectory(python)
+
 # TBC - don't think is needed...
 # include current directory for parser includes
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

@@ -19,10 +19,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
+#include <exception>
 #include <iomanip>
 #include <iostream>
 #include <list>
 #include <map>
+#include <sstream>
 #include <string>
 
 #include "published.h"
@@ -307,7 +309,7 @@ namespace GMAD
     ///@}
     /// Set methods by property name and value
     template <typename T>
-    void set_value(std::string property, T value);
+    void set_value(std::string property, T value, bool exceptionSafe = false);
  
     /// constructor
     Element();
@@ -324,20 +326,25 @@ namespace GMAD
   };
 
   template <typename T>
-  void Element::set_value(std::string property, T value)
-    {
+  void Element::set_value(std::string property, T value, bool exceptionSafe)
+  {
 #ifdef BDSDEBUG
-      std::cout << "element> Setting value " << std::setw(25) << std::left << property << value << std::endl;
+    std::cout << "element> Setting value " << std::setw(25) << std::left << property << value << std::endl;
 #endif
-      // member method can throw runtime_error, catch and exit gracefully
-      try
-	{Published<Element>::set(this,property,value);}
-      catch(const std::runtime_error&)
-	{
-	  std::cerr << "Error: element> unknown property \"" << property << "\" with value \"" << value << "\"" << std::endl;
-	  exit(1);
-	}
-    }
+    // member method can throw runtime_error, catch and exit gracefully
+    try
+      {Published<Element>::set(this, property, value);}
+    catch(const std::runtime_error&)
+      {
+        std::stringstream ss;
+        ss << "Error: element> unknown property \"" << property
+           << "\" with value \"" << value << "\" in definition \"" << this->name << "\"";
+        if (!exceptionSafe)
+          {throw std::invalid_argument(ss.str());}
+        else
+          {std::cerr << ss.str() << std::endl;}
+      }
+  }
 }
- 
+
 #endif

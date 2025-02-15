@@ -80,6 +80,11 @@ macro(bdsim_install_gdml)
         DESTINATION share/bdsim/gdml/schema
         COMPONENT GDML)
 endmacro()
+macro(bdsim_install_python)
+    install(TARGETS ${ARGN}
+            DESTINATION lib/python/bdsim
+            COMPONENT python)
+endmacro()
 
 # This macro fixes the MACOSX_BUNDLES
 # since we do not make a "traditional app"

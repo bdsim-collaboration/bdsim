@@ -55,7 +55,7 @@ namespace GMAD
     void print()const;
     /// Set methods by property name and value
     template <typename T>
-    void set_value(std::string property, T value);
+    void set_value(std::string property, T value, bool bExit = true);
 
   private:
     /// publish members
@@ -63,7 +63,7 @@ namespace GMAD
   };
   
   template <typename T>
-  void Modulator::set_value(std::string property, T value)
+  void Modulator::set_value(std::string property, T value, bool bExit)
   {
 #ifdef BDSDEBUG
     std::cout << "modulator> setting value " << std::setw(25) << std::left << property << value << std::endl;
@@ -74,7 +74,10 @@ namespace GMAD
     catch(const std::runtime_error&)
       {
         std::cerr << "Error: modulator> unknown parameter \"" << property << "\" with value " << value  << std::endl;
-        exit(1);
+        if (bExit)
+          {exit(1);}
+        else
+          {std::rethrow_exception(std::current_exception());} // to be caught by python
       }
   }
 }

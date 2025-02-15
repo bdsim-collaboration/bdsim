@@ -54,6 +54,10 @@ public:
   /// arguments argc and arv
   BDSIM();
 
+  /// Construct an instance with a parser. Only useful for the python interface
+  /// to BDSIM
+  BDSIM(BDSParser* parser);
+
   /// Initialise everything given these arguments.
   int Initialise(int argc, char** argv, bool usualPrintOut=true);
 
