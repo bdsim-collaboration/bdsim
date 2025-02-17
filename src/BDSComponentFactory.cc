@@ -2826,17 +2826,6 @@ G4Colour* BDSComponentFactory::PrepareColour(Element const* el, const G4Material
     {return BDSColours::Instance()->GetColour(colour);}
 }
 
-G4Colour* BDSComponentFactory::PrepareColour(Element const* el, const G4Material* material)
-{
-  G4String colour = el->colour;
-  if (material && el->autoColour)
-    {return BDSColourFromMaterial::Instance()->GetColour(material);}
-  else if (colour.empty())
-    {return BDSColours::Instance()->GetColour(GMAD::typestr(el->type));}
-  else
-    {return BDSColours::Instance()->GetColour(colour);}
-}
-
 G4Material* BDSComponentFactory::PrepareMaterial(Element const* el,
                                                  const G4String& defaultMaterialName)
 {
