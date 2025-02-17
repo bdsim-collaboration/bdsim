@@ -382,7 +382,6 @@ component : DRIFT       {$$=static_cast<int>(ElementType::_DRIFT);}
           | SOLENOID    {$$=static_cast<int>(ElementType::_SOLENOID);}
           | ECOL        {$$=static_cast<int>(ElementType::_ECOL);}
           | JCOL        {$$=static_cast<int>(ElementType::_JCOL);}
-          | TIPJCOL     {$$=static_cast<int>(ElementType::_TIPJCOL);}
           | RCOL        {$$=static_cast<int>(ElementType::_RCOL);}
           | MUONSPOILER {$$=static_cast<int>(ElementType::_MUONSPOILER);}
           | MUSPOILER   {$$=static_cast<int>(ElementType::_MUONSPOILER);}
@@ -407,6 +406,7 @@ component : DRIFT       {$$=static_cast<int>(ElementType::_DRIFT);}
           | TARGET      {$$=static_cast<int>(ElementType::_TARGET);}
           | RFX         {$$=static_cast<int>(ElementType::_RFX);}
           | RFY         {$$=static_cast<int>(ElementType::_RFY);}
+          | TIPJCOL     {$$=static_cast<int>(ElementType::_TIPJCOL);}
 
 atom        : ATOM        ',' atom_options
 material    : MATERIAL    ',' material_options
