@@ -28,7 +28,7 @@ class G4UserLimits;
 class G4VSolid;
 
 /**
- * @brief Base class for collimators with a tip material in addition to the main material.
+ * @brief Base class for collimators with a bulk material and a tip of a different material.
  * 
  * @author Giacomo Broggi
  */
