@@ -64,6 +64,7 @@ BDSTipCollimator(nameIn, lengthIn, horizontalWidthIn, "tipjcol", collimatorMater
   xHalfGap(xHalfGapIn),
   jawTiltLeft(leftJawTiltIn),
   jawTiltRight(rightJawTiltIn),
+  tipThickness(tipThicknessIn),
   jawHalfWidth(0),
   yHalfHeight(yHalfHeightIn),
   buildLeftJaw(buildLeftJawIn),

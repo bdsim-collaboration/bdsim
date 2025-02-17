@@ -184,6 +184,11 @@ namespace GMAD
     double undulatorGap;
     double undulatorMagnetHeight;
     ///@}
+
+    ///@{ for jaw collimator with tip
+    double tipThickness; ///< tip thickness
+    std::string tipMaterial; ///< tip material
+    ///@}
   
     ///@{ temporary string for bias setting
     std::string bias;

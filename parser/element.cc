@@ -214,6 +214,10 @@ void Element::PublishMembers()
   publish("undulatorGap",          &Element::undulatorGap);
   publish("undulatorMagnetHeight", &Element::undulatorMagnetHeight);
 
+  // for jaw collimator with tip
+  publish("tipThickness",     &Element::tipThickness);
+  publish("tipMaterial",     &Element::tipMaterial);
+
   // bias
   publish("bias",                &Element::bias);
   publish("biasMaterial",        &Element::biasMaterial);
@@ -536,6 +540,7 @@ void Element::flush()
   offsetY = 0;
   jawTiltLeft = 0;
   jawTiltRight = 0;
+  tipThickness = 0;
 
   // screen parameters
   tscint = 0.0003;
