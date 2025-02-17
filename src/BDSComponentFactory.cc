@@ -1523,7 +1523,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateTipJawCollimator()
   if (!HasSufficientMinimumLength(element))
     {return nullptr;}
   auto collimatorMaterial = PrepareMaterial(element);
-  auto collimatorTipMaterial = PrepareMaterial(element);
+  auto collimatorTipMaterial = PrepareTipMaterial(element);
   return new BDSTipCollimatorJaw(elementName,
 				 element->l*CLHEP::m,
 				 PrepareHorizontalWidth(element),
@@ -2826,6 +2826,17 @@ G4Colour* BDSComponentFactory::PrepareColour(Element const* el, const G4Material
     {return BDSColours::Instance()->GetColour(colour);}
 }
 
+G4Colour* BDSComponentFactory::PrepareColour(Element const* el, const G4Material* material)
+{
+  G4String colour = el->colour;
+  if (material && el->autoColour)
+    {return BDSColourFromMaterial::Instance()->GetColour(material);}
+  else if (colour.empty())
+    {return BDSColours::Instance()->GetColour(GMAD::typestr(el->type));}
+  else
+    {return BDSColours::Instance()->GetColour(colour);}
+}
+
 G4Material* BDSComponentFactory::PrepareMaterial(Element const* el,
                                                  const G4String& defaultMaterialName)
 {
@@ -2841,6 +2852,25 @@ G4Material* BDSComponentFactory::PrepareMaterial(Element const* el)
   G4String materialName = el->material;
   if (materialName.empty())
     {throw BDSException(__METHOD_NAME__, "element \"" + el->name + "\" has no material specified.");}
+  else
+    {return BDSMaterials::Instance()->GetMaterial(materialName);}
+}
+
+G4Material* BDSComponentFactory::PrepareTipMaterial(Element const* el,
+                                                    const G4String& defaultMaterialName)
+{
+  G4String materialName = el->tipMaterial;
+  if (materialName.empty())
+    {return BDSMaterials::Instance()->GetMaterial(defaultMaterialName);}
+  else
+    {return BDSMaterials::Instance()->GetMaterial(materialName);}
+}
+
+G4Material* BDSComponentFactory::PrepareTipMaterial(Element const* el)
+{
+  G4String materialName = el->tipMaterial;
+  if (materialName.empty())
+    {throw BDSException(__METHOD_NAME__, "element \"" + el->name + "\" has no tip material specified.");}
   else
     {return BDSMaterials::Instance()->GetMaterial(materialName);}
 }
