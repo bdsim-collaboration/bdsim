@@ -203,6 +203,8 @@ Parameters::Parameters()
   setMap["crystalBoth"]            = false;
   setMap["crystalAngleYAxisLeft"]  = false;
   setMap["crystalAngleYAxisRight"] = false;
+
+  setMap["coolingDefinition"] = false;
 }
 
 void Parameters::flush()

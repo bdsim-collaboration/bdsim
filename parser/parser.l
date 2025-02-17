@@ -131,12 +131,14 @@ wirescanner { return WIRESCANNER; }
 undulator { return UNDULATOR; }
 usercomponent { return USERCOMPONENT; }
 dump { return DUMP; }
+muoncooler { return MUONCOOLER; }
 ct { return CT; }
 target { return TARGET; }
 
 cavitymodel {return CAVITYMODEL; }
 cutsregion { return REGION; }
 newcolour { return NEWCOLOUR; }
+coolingchannel { return COOLINGCHANNEL; }
 crystal { return CRYSTAL; }
 field { return FIELD; }
 placement { return PLACEMENT; }

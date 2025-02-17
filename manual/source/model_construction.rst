@@ -223,6 +223,7 @@ The following elements may be defined
 * `marker`_
 * `wirescanner`_
 * `ct`_
+* `muoncooler`_
 
 .. TODO add screen, awakescreen
 
@@ -2091,6 +2092,169 @@ Examples: ::
 | `dicomDataPath`         | Path to the colourMap.dat file. During the conversion of the CT    |
 |                         | image, the temporary .g4dcm file will also be stored in this path. |
 +-------------------------+--------------------------------------------------------------------+
+
+muoncooler
+^^^^^^^^^^^^
+
+.. figure:: figures/muoncooler.png
+	    :width: 70%
+	    :align: center
+
+
+`muoncooler` defines a **complete** 6D muon cooling lattice. Upon instantiation, a logical volume 
+with the specified horizontal width and length is generated, providing space for the 
+placement of the main 6D ionisation cooling beamline elements: solenoids, dipoles, RF cavities, and absorbers. 
+The element ensures that fringe effects from all magnets are accounted for and 
+allowing for accurate summation of the electric and magnetic field contributions across the entire 
+lattice.
+
+In the current 6D cooling implementation, the cooling channel can include:  
+
+- **Solenoids (coils)**  
+- **Dipoles (field only, no physical magnet)** 
+- **RF cavities**  
+- **Absorbers**  
+
+Parameters for these components can be specified as either:  
+
+- A **single value**, applying uniformly across all instances of that component  
+- A **list of values**, where each value corresponds to the respective component's position in the cooling channel  
+
+**Electric and Magnetic Field Models**
+
+- The **solenoid field model** can be either a **sheet model** (`solenoidsheet`) or a **block model** (`solenoidblock`). 
+- For dipoles, two models exist currently: `dipole` and `dipoleenge`. The `dipole` model is a simple hard-edge dipole field, while the `dipoleenge` model includes Enge-type fringe fields and follows the treatment outlined in: Muratori, B.D. et al (2015) ‘Analytical expressions for fringe fields in multipole magnets’, *Physical Review Special Topics - Accelerators and Beams*, 18(6). https://doi.org/10.1103/physrevstab.18.064001   
+- For the RF cavities, a simple RF pillbox (`rfpillbox`) model has been implemented.
+
+
+**Table of Parameters**
+
+
++------------------------------+-------------------------------+--------------+
+| **Parameter**                | **Description**               | **Type**     |
++==============================+===============================+==============+
+| `nCoils`                     | Number of solenoid coils in   | Integer      |
+|                              | the cooling channel           |              |
++------------------------------+-------------------------------+--------------+
+| `coilInnerRadius`            | Inner radii of coils [m]      | List[Float]  |
++------------------------------+-------------------------------+--------------+
+| `coilRadialThickness`        | Radial thicknesses of coils   | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `coilLengthZ`                | Lengths of coils along Z [m]  | List[Float]  |
++------------------------------+-------------------------------+--------------+
+| `coilOffsetZ`                | Z-positions of coil centers   | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `coilCurrent`                | Currents in [A] (sheet model) | List[Float]  |
+|                              | or densities                  |              |
+|                              | [A/m^2] (block model)         |              |
++------------------------------+-------------------------------+--------------+
+| `coilMaterial`               | Materials of coils            | List[String] |
++------------------------------+-------------------------------+--------------+
+| `onAxisTolerance`            | on-axis Tolerance for         | Float        |
+|                              | CEL integral calculation [T]  |              |
++------------------------------+-------------------------------+--------------+
+| `nDipoles`                   | Number of dipoles             | Integer      |
++------------------------------+-------------------------------+--------------+
+| `dipoleAperture`             |Aperture radii of dipoles [m]  | List[Float]  |
++------------------------------+-------------------------------+--------------+
+| `dipoleLengthZ`              | Lengths of dipoles along Z [m]| List[Float]  |
++------------------------------+-------------------------------+--------------+
+| `dipoleFieldStrength`        | Peak magnetic field strengths | List[Float]  |
+|                              | of dipoles [T]                |              |
++------------------------------+-------------------------------+--------------+
+| `dipoleEngeCoefficient`      | C1 Enge coefficients of       | List[Float]  |
+|                              | dipoles                       |              |
++------------------------------+-------------------------------+--------------+
+| `dipoleOffsetZ`              | Z-positions of dipoles [m]    | List[Float]  |
++------------------------------+-------------------------------+--------------+
+| `dipoleTolerance`            | Tolerance for dipole          | Float        |
+|                              | bounding box calculations [T] |              |
++------------------------------+-------------------------------+--------------+
+| `nAbsorbers`                 | Number of absorbers           | Integer      |
++------------------------------+-------------------------------+--------------+
+| `absorberType`               | Types of absorbers            | List[String] |
+|                              | ("cylinder" or "wedge")       |              |
++------------------------------+-------------------------------+--------------+
+| `absorberMaterial`           | Materials of absorbers        | List[String] |
++------------------------------+-------------------------------+--------------+
+| `absorberOffsetZ`            | Z-positions of absorbers [m]  | List[Float]  |
++------------------------------+-------------------------------+--------------+
+| `absorberCylinderLength`     | Lengths of cylindrical        | List[Float]  |
+|                              | absorbers [m]                 |              |
++------------------------------+-------------------------------+--------------+
+| `absorberCylinderRadius`     | Radii of cylindrical          | List[Float]  |
+|                              | absorbers [m]                 |              |
++------------------------------+-------------------------------+--------------+
+| `absorberWedgeOpeningAngle`  | Opening angles of wedge       |List[Float]   |
+|                              | absorbers [rad]               |              |
++------------------------------+-------------------------------+--------------+
+| `absorberWedgeHeight`        | Heights of wedge              | List[Float]  |
+|                              | absorbers [m]                 |              |
++------------------------------+-------------------------------+--------------+
+| `absorberWedgeRotationAngle` | Rotation angles of            | List[Float]  |
+|                              | wedge absorbers [rad]         |              |
++------------------------------+-------------------------------+--------------+
+| `absorberWedgeOffsetX`       | X-offsets of wedge            | List[Float]  |
+|                              | absorbers [m]                 |              |
++------------------------------+-------------------------------+--------------+
+| `absorberWedgeOffsetY`       | Y-offsets of wedge            | List[Float]  |
+|                              | absorbers [m]                 |              |
++------------------------------+-------------------------------+--------------+
+| `absorberWedgeApexToBase`    | Apex-to-base lengths          | List[Float]  |
+|                              | of wedge absorbers [m]        |              |
++------------------------------+-------------------------------+--------------+
+| `nRFCavities`                | Number of RF cavities         | Integer      |
++------------------------------+-------------------------------+--------------+
+| `rfOffsetZ`                  | Z-positions of RF cavities    | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `rfTimeOffset`               | Time offsets for RF cavities  | List[Float]  |
+|                              | [ns]                          |              |
++------------------------------+-------------------------------+--------------+
+| `rfLength`                   | Inner lengths of RF cavities  | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `rfVoltage`                  | Peak E-Field of RF cavities   | List[Float]  |
+|                              | [MV/m]                        |              |
++------------------------------+-------------------------------+--------------+
+| `rfPhase`                    | Phases of RF cavities         | List[Float]  |
+|                              | [rad]                         |              |
++------------------------------+-------------------------------+--------------+
+| `rfFrequency`                | Frequencies of RF cavities    | List[Float]  |
+|                              | [Hz]                          |              |
++------------------------------+-------------------------------+--------------+
+| `rfWindowThickness`          | Thickness of the RF window    | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `rfWindowMaterial`           | RF Window Material            | List[String] |
++------------------------------+-------------------------------+--------------+
+| `rfWindowRadius`             | Radii of RF cavities          | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `rfCavityMaterial`           | RF cavity materials           | List[String] |
+|                              |                               |              |
++------------------------------+-------------------------------+--------------+
+| `rfCavityVacuumMaterial`     | RF cavity vacuum material     | List[String] |
++------------------------------+-------------------------------+--------------+
+| `rfCavityThickness`          | Thickness of RF cavities      | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `magneticFieldModel`         | Model for solenoid field      | String       |
++------------------------------+-------------------------------+--------------+
+| `dipoleFieldModel`           | Model for dipole field        | String       |
++------------------------------+-------------------------------+--------------+
+| `electricFieldModel`         | Model for RF electric field   | String       |
++------------------------------+-------------------------------+--------------+
+| `l`                          | Length of the cooling channel | Float        |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `horizontalWidth`            | Width of the cooling channel  | Float        |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+
+An example of a cooling channel has been provided in `/examples/components/muoncooler.gmad`, and can be used as a template for development.  
 
 
 .. _offsets-and-tilts:

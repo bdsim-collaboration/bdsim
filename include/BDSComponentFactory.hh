@@ -280,6 +280,7 @@ private:
   BDSAcceleratorComponent* CreateEllipticalCollimator();
   BDSAcceleratorComponent* CreateJawCollimator();
   BDSAcceleratorComponent* CreateTipJawCollimator();
+  BDSAcceleratorComponent* CreateMuonCooler();
   BDSAcceleratorComponent* CreateMuonSpoiler();
   BDSAcceleratorComponent* CreateShield();
   BDSAcceleratorComponent* CreateDegrader();
