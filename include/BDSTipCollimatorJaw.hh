@@ -28,7 +28,7 @@ class G4Colour;
 class G4VSolid;
 
 /**
- * @brief Collimator with jaws having two materials: a tip material and a main material.
+ * @brief Collimator with jaws having a bulk material and a tip of a different material.
  *
  * @autor Giacomo Broggi
  */
