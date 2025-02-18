@@ -372,6 +372,9 @@ G4int BDSLinkDetectorConstruction::AddLinkTipCollimatorJaw(const std::string& co
         integral = new BDSBeamlineIntegral(*designParticle);
     }
     
+    std::string g4material = materialName;
+    std::string g4tipMaterial = tipMaterialName;
+
     // Create the element definition
     GMAD::Element el;
     el.type     = GMAD::ElementType::_TIPJCOL;
