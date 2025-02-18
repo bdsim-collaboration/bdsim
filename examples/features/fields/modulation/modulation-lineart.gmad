@@ -1,0 +1,20 @@
+m1: modulator, type="lineart", T0=-0.5*s, T1=0.5*s, amplitudeScale=5.0, amplitudeOffset=2.0;
+
+time_varying_field: field, type="emap2d",
+        electricFile="bdsim2d:e-field.dat.gz",
+		fieldModulator="m1",
+		eScaling=1e4;
+
+time_varying_drift: drift, l=3.0*m, aper1=1.0*m, fieldAll="time_varying_field";
+
+l1: line = (time_varying_drift);
+use, l1;
+
+beam, particle="proton",
+	momentum = 1.0 * GeV,
+	distrType = "square",
+	envelopeT = 1.0*s,
+	envelopeZ = 0;
+! force uncorrelated z/t beam by specifing envelopeZ=0
+
+sample, all;
