@@ -21,6 +21,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamlineIntegral.hh"
 #include "BDSCollimatorJaw.hh"
+#include "BDSTipCollimatorJaw.hh"
 #include "BDSComponentFactory.hh"
 #include "BDSCrystalInfo.hh"
 #include "BDSDebug.hh"
@@ -344,6 +345,98 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
   BuildPhysicsBias();
   
   return linkID;
+}
+
+G4int BDSLinkDetectorConstruction::AddLinkTipCollimatorJaw(const std::string& collimatorName,
+                                                          const std::string& materialName,
+                                                          const std::string& tipMaterialName,
+                                                          G4double length,
+                                                          G4double halfApertureLeft,
+                                                          G4double halfApertureRight,
+                                                          G4double rotation,
+                                                          G4double xOffset,
+                                                          G4double yOffset,
+                                                          G4double jawTiltLeft,
+                                                          G4double jawTiltRight,
+                                                          G4double tipThickness,
+                                                          G4bool   buildLeftJaw,
+                                                          G4bool   buildRightJaw)
+{
+    auto componentFactory = new BDSComponentFactory(nullptr, false);
+    if (!integral)
+    {
+        if (!designParticle)
+        {
+            throw BDSException(__METHOD_NAME__, "designParticle must be set first");
+        }
+        integral = new BDSBeamlineIntegral(*designParticle);
+    }
+    
+    // Create the element definition
+    GMAD::Element el;
+    el.type     = GMAD::ElementType::_TIPJCOL;
+    el.name     = collimatorName;
+    el.material = g4material;
+    el.tipMaterial = g4tipMaterial;
+    el.l        = length / CLHEP::m;
+    el.xsizeLeft  = halfApertureLeft / CLHEP::m;
+    el.xsizeRight = halfApertureRight / CLHEP::m;
+    el.ysize    = 0.2; // half height
+    el.tilt     = rotation / CLHEP::rad;
+    el.offsetX  = xOffset / CLHEP::m;
+    el.offsetY  = yOffset / CLHEP::m;
+    el.horizontalWidth = 2.0; // m
+    el.jawTiltLeft  = jawTiltLeft; // rad
+    el.jawTiltRight = jawTiltRight; // rad
+    el.tipThickness = tipThickness / CLHEP::m;
+
+    if (!buildLeftJaw)
+    {
+        el.xsizeLeft = el.horizontalWidth * 1.2;
+    }
+    if (!buildRightJaw)
+    {
+        el.xsizeRight = el.horizontalWidth * 1.2;
+    }
+    
+    el.region = "r1"; // stricter range cuts for default collimators
+    
+    // Create the component
+    BDSAcceleratorComponent* component = nullptr;
+    try
+    {
+        component = componentFactory->CreateComponent(&el, nullptr, nullptr, *integral);
+    }
+    catch (const BDSException& e)
+    {
+        G4cout << e.what() << G4endl;
+        G4cout << "Replacing component " << el.name << " with drift" << G4endl;
+        el.type = GMAD::ElementType::_DRIFT;
+        el.apertureType = "circularvacuum";
+        component = componentFactory->CreateComponent(&el, nullptr, nullptr, *integral);
+    }
+    
+    // Wrap in box
+    BDSTiltOffset* to = new BDSTiltOffset(el.offsetX * CLHEP::m, el.offsetY * CLHEP::m, el.tilt * CLHEP::rad);
+    auto extentTiltOffset = component->GetExtent().TiltOffset(to);
+    G4double encompassingRadius = extentTiltOffset.TransverseBoundingRadius();
+    BDSLinkOpaqueBox* opaqueBox = new BDSLinkOpaqueBox(component, to, encompassingRadius);
+    
+    // Add to beamline
+    BDSLinkComponent* comp = new BDSLinkComponent(opaqueBox->GetName(), opaqueBox, opaqueBox->GetExtent().DZ());
+    BDSAcceleratorModel::Instance()->RegisterLinkComponent(comp);
+    BDSSamplerInfo* samplerInfo = new BDSSamplerInfo(comp->GetName() + "_out", BDSSamplerType::plane);
+    linkBeamline->AddComponent(comp, nullptr, samplerInfo);
+    
+    // Update world extents and solid
+    UpdateWorldSolid();
+    
+    // Place the new component
+    G4int linkID = PlaceOneComponent(linkBeamline->back(), collimatorName);
+    nameToElementIndex[collimatorName] = linkID;
+    linkIDToBeamlineIndex[linkID] = (G4int)linkBeamline->size() - 1;
+    
+    return linkID;
 }
 
 void BDSLinkDetectorConstruction::UpdateWorldSolid()
