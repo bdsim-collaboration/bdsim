@@ -40,14 +40,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 BDSFieldMagDipoleEnge::BDSFieldMagDipoleEnge(G4double strength,                                             
                                              G4double apertureRadius,
                                              G4double coilLength,
-                                             G4double engeCoefficient,
-                                             G4double toleranceIn
-                                             ):
+                                             G4double engeCoefficient):
   D(2*apertureRadius),
   halfLength(0.5*coilLength),
   B0(strength),
-  engeCoeff(engeCoefficient),
-  coilTolerance(toleranceIn)
+  engeCoeff(engeCoefficient)
   {;}
 
 G4ThreeVector BDSFieldMagDipoleEnge::GetField(const G4ThreeVector& position,

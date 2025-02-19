@@ -50,9 +50,7 @@ public:
   BDSFieldMagDipoleEnge(G4double strength,
                         G4double apertureRadius,
                         G4double coilLength,
-                        G4double engeCoefficient,
-                        G4double toleranceIn = 0.0
-                        );
+                        G4double engeCoefficient);
 
   virtual ~BDSFieldMagDipoleEnge(){;}
 
@@ -73,7 +71,6 @@ private:
   G4double halfLength;
   G4double B0;
   G4double engeCoeff;
-  G4double coilTolerance;
 };
 
 #endif

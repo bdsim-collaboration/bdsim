@@ -145,8 +145,7 @@ void BDSFieldEMMuonCooler::BuildDipoles(const BDSFieldInfoExtraMuonCooler* info)
             fields.push_back(new BDSFieldMagDipoleEnge(di.fieldStrength,
                                                        di.apertureRadius,
                                                        di.fullLengthZ,
-                                                       di.engeCoefficient,
-                                                       di.onAxisTolerance));
+                                                       di.engeCoefficient));
             fieldOffsets.emplace_back(0,0,di.offsetZ);
           }
         dipoleField = new BDSFieldMagVectorSum(fields, fieldOffsets);

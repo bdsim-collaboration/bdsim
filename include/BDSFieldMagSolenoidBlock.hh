@@ -67,13 +67,11 @@ public:
   /// @}
 
 private:
-  
   G4double a;
   G4double radialThickness;
   G4double fullLengthZ;
   G4double B0;
   G4double I;
-  G4double spatialLimit;
   G4double coilTolerance;
   G4int    nSheetsBlock;
   G4double currentDensity;

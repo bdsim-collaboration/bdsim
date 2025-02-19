@@ -51,7 +51,6 @@ BDSFieldMagSolenoidBlock::BDSFieldMagSolenoidBlock(G4double strength,
   fullLengthZ(fullLengthZIn),
   B0(0),
   I(0),
-  spatialLimit(1e-6*innerRadiusIn),
   coilTolerance(toleranceIn/(nSheetsIn*2)), //double the tolerance for each sheet
   nSheetsBlock(nSheetsIn)
 {
