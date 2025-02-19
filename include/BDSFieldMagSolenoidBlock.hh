@@ -34,8 +34,7 @@ class BDSMagnetStrength;
  * There is a +- this in r with the top one being the sign of the strength and the bottom one
  * being the return of the annulus with current in the opposite direction. In phi, it is circular.
  *
- * MUONTBC
- * @author MUONTBC
+ * @author Rohan Kamath, Paul Bogdan Jurj
  */
 
 class BDSFieldMagSolenoidBlock: public BDSFieldMag
@@ -55,7 +54,7 @@ public:
   /// and length from the strength instance.
   BDSFieldMagSolenoidBlock(const BDSMagnetStrength* st,
                            G4double innerRadiusIn);
-  virtual ~BDSFieldMagSolenoidBlock(){;}
+  virtual ~BDSFieldMagSolenoidBlock() = default;
 
   /// Calculate the field value.
   virtual G4ThreeVector GetField(const G4ThreeVector& position,

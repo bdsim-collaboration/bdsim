@@ -23,7 +23,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSFieldMagSolenoidBlock.hh"
 #include "BDSFieldMagSolenoidSheet.hh"
 #include "BDSFieldMagSolenoidLoop.hh"
-#include "BDSFieldMagDipole.hh"
 #include "BDSFieldMagDipoleEnge.hh"
 #include "BDSFieldMagDipoleHardEdgeMuonCooler.hh"
 #include "BDSFieldMagVectorSum.hh"
@@ -31,10 +30,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSFieldEMVectorSum.hh"
 #include "BDSFieldEMRFCavity.hh"
 #include "BDSFieldType.hh"
-#include "BDSMuonCoolerStructs.hh"
-#include "BDSUtilities.hh"
 
-#include "CLHEP/Units/PhysicalConstants.h"
 #include "G4ThreeVector.hh"
 #include "G4Types.hh"
 

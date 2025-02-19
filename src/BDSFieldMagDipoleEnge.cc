@@ -16,19 +16,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "BDSDebug.hh"
 #include "BDSFieldMagDipoleEnge.hh"
-#include "BDSMagnetStrength.hh"
-#include "BDSUtilities.hh"
 
 #include "globals.hh"
 #include "G4ThreeVector.hh"
 #include "G4Types.hh"
 
-#include "CLHEP/Units/PhysicalConstants.h"
-#include "CLHEP/Units/SystemOfUnits.h"
-
-#include <algorithm>
 #include <cmath>
 
 //BDSFieldMagDipoleEnge::BDSFieldMagDipoleEnge(BDSMagnetStrength const* strength,
