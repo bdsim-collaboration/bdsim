@@ -56,15 +56,11 @@ public:
 
   /// Calculate the field value.
   virtual G4ThreeVector GetField(const G4ThreeVector& position,
-				                 const G4double       t = 0) const;
+                                 const G4double       t = 0) const;
 
-  /// @{ Accessor.
-  inline G4double GetB0() const {return B0;}
-  /// @}
+  inline G4double GetB0() const {return B0;} ///< Accessor.
 
 private:
-  /// Private default constructor to ensure use of supplied constructor
-  
   G4ThreeVector QueryField(G4double y, G4double z) const;
 
   G4double D;
