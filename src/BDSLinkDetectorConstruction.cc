@@ -21,7 +21,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamlineIntegral.hh"
 #include "BDSCollimatorJaw.hh"
-#include "BDSTipCollimatorJaw.hh"
+#include "BDSCollimatorTipJaw.hh"
 #include "BDSComponentFactory.hh"
 #include "BDSCrystalInfo.hh"
 #include "BDSDebug.hh"
@@ -347,7 +347,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
   return linkID;
 }
 
-G4int BDSLinkDetectorConstruction::AddLinkTipCollimatorJaw(const std::string& collimatorName,
+G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                                           const std::string& materialName,
                                                           const std::string& tipMaterialName,
                                                           G4double length,
@@ -377,7 +377,7 @@ G4int BDSLinkDetectorConstruction::AddLinkTipCollimatorJaw(const std::string& co
 
     // Create the element definition
     GMAD::Element el;
-    el.type     = GMAD::ElementType::_TIPJCOL;
+    el.type     = GMAD::ElementType::_JCOLTIP;
     el.name     = collimatorName;
     el.material = g4material;
     el.tipMaterial = g4tipMaterial;

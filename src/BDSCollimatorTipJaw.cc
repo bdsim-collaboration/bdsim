@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorModel.hh"
-#include "BDSTipCollimatorJaw.hh"
+#include "BDSCollimatorTipJaw.hh"
 #include "BDSBeamPipeInfo.hh"
 #include "BDSColours.hh"
 #include "BDSDebug.hh"
@@ -39,7 +39,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <map>
 #include <set>
 
-BDSTipCollimatorJaw::BDSTipCollimatorJaw(const G4String&    nameIn,
+BDSCollimatorTipJaw::BDSCollimatorTipJaw(const G4String&    nameIn,
                                          G4double    lengthIn,
                                          G4double    horizontalWidthIn,
                                          G4double    xHalfGapIn,
@@ -56,7 +56,7 @@ BDSTipCollimatorJaw::BDSTipCollimatorJaw(const G4String&    nameIn,
                                          G4Material* vacuumMaterialIn,
                                          G4Colour*   colourIn,
                                          G4Colour*   tipColourIn):
-BDSTipCollimator(nameIn, lengthIn, horizontalWidthIn, "tipjcol", collimatorMaterialIn, collimatorTipMaterialIn, vacuumMaterialIn,
+BDSTipCollimator(nameIn, lengthIn, horizontalWidthIn, "jcoltip", collimatorMaterialIn, collimatorTipMaterialIn, vacuumMaterialIn,
               xHalfGapIn, yHalfHeightIn, xHalfGapIn, yHalfHeightIn, colourIn, tipColourIn, tipThicknessIn),
   jawSolid(nullptr),
   xSizeLeft(xSizeLeftIn),
@@ -74,10 +74,10 @@ BDSTipCollimator(nameIn, lengthIn, horizontalWidthIn, "tipjcol", collimatorMater
   jawHalfWidth = 0.5 * (0.5*horizontalWidth - lengthSafetyLarge - xHalfGap);
 }
 
-BDSTipCollimatorJaw::~BDSTipCollimatorJaw()
+BDSCollimatorTipJaw::~BDSCollimatorTipJaw()
 {;}
 
-void BDSTipCollimatorJaw::CheckParameters()
+void BDSCollimatorTipJaw::CheckParameters()
 {
   if (!colour)
     {colour = BDSColours::Instance()->GetColour("collimator");}
@@ -85,33 +85,33 @@ void BDSTipCollimatorJaw::CheckParameters()
     {tipColour = BDSColours::Instance()->GetColour("collimatorTip");}
   
   if (jawHalfWidth < 1e-3) // 1um minimum, could also be negative
-    {throw BDSException(__METHOD_NAME__, "horizontalWidth insufficient given xsize of tipjcol \"" + name + "\"");}
+    {throw BDSException(__METHOD_NAME__, "horizontalWidth insufficient given xsize of jcoltip \"" + name + "\"");}
 
   // set half height to half horizontal width if zero - finite height required.
   if (!BDS::IsFinite(yHalfHeight))
     {yHalfHeight = 0.5*horizontalWidth;}
 
   if (BDS::IsFinite(yHalfHeight) && (yHalfHeight < 1e-3)) // 1um minimum
-    {throw BDSException(__METHOD_NAME__, "insufficient ysize for tipjcol \"" + name + "\"");}
+    {throw BDSException(__METHOD_NAME__, "insufficient ysize for jcoltip \"" + name + "\"");}
 
   if ((yHalfHeight < 0) || ((yHalfHeight > 0) && (yHalfHeight < 1e-3))) // 1um minimum and not negative
-    {throw BDSException(__METHOD_NAME__, "insufficient ysize for tipjcol \"" + name + "\"");}
+    {throw BDSException(__METHOD_NAME__, "insufficient ysize for jcoltip \"" + name + "\"");}
 
   if (xSizeLeft < 0)
-    {throw BDSException(__METHOD_NAME__, "left tipjcol jaw cannot have negative half aperture size: \"" + name + "\"");}
+    {throw BDSException(__METHOD_NAME__, "left jcoltip jaw cannot have negative half aperture size: \"" + name + "\"");}
   if (xSizeRight < 0)
-    {throw BDSException(__METHOD_NAME__, "left tipjcol jaw cannot have negative half aperture size: \"" + name + "\"");}
+    {throw BDSException(__METHOD_NAME__, "left jcoltip jaw cannot have negative half aperture size: \"" + name + "\"");}
 
   if (std::abs(xSizeLeft) > 0.5*horizontalWidth)
     {
-      G4cerr << __METHOD_NAME__ << "tipjcol \"" << name
+      G4cerr << __METHOD_NAME__ << "jcoltip \"" << name
              << "\" left jaw offset is greater the element half width, jaw "
              << "will not be constructed" << G4endl;
       buildLeftJaw = false;
     }
   if (std::abs(xSizeRight) > 0.5*horizontalWidth)
     {
-      G4cerr << __METHOD_NAME__ << "tipjcol \"" << name
+      G4cerr << __METHOD_NAME__ << "jcoltip \"" << name
              << "\" right jaw offset is greater the element half width, jaw "
              << "will not be constructed" << G4endl;
       buildRightJaw = false;
@@ -130,7 +130,7 @@ void BDSTipCollimatorJaw::CheckParameters()
     {buildAperture = false;}
 }
 
-void BDSTipCollimatorJaw::BuildContainerLogicalVolume()
+void BDSCollimatorTipJaw::BuildContainerLogicalVolume()
 {
   G4double horizontalHalfWidth = horizontalWidth * 0.5;
   if (jawTiltLeft != 0 || jawTiltRight != 0)
@@ -153,7 +153,7 @@ void BDSTipCollimatorJaw::BuildContainerLogicalVolume()
   SetExtent(ext);
 }
 
-void BDSTipCollimatorJaw::Build()
+void BDSCollimatorTipJaw::Build()
 {
   CheckParameters();
   BDSAcceleratorComponent::Build();

@@ -106,8 +106,8 @@ std::string GMAD::typestr(ElementType type)
       {return "undulator";           break;}
     case ElementType::_JCOL:
       {return "jcol";                break;}
-    case ElementType::_TIPJCOL:
-      {return "tipjcol";             break;}
+    case ElementType::_JCOLTIP:
+      {return "jcoltip";             break;}
     case ElementType::_USERCOMPONENT:
       {return "usercomponent";       break;}
     case ElementType::_DUMP:

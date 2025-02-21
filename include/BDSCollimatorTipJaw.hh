@@ -16,8 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSTIPCOLLIMATORJAW_H
-#define BDSTIPCOLLIMATORJAW_H
+#ifndef BDSCOLLIMATORTIPJAW_H
+#define BDSCOLLIMATORTIPJAW_H
 
 #include "BDSTipCollimator.hh"
 
@@ -33,10 +33,10 @@ class G4VSolid;
  * @autor Giacomo Broggi
  */
 
-class BDSTipCollimatorJaw: public BDSTipCollimator
+class BDSCollimatorTipJaw: public BDSTipCollimator
 {
 public:
-  BDSTipCollimatorJaw(const G4String& nameIn,
+  BDSCollimatorTipJaw(const G4String& nameIn,
                       G4double    lengthIn,
                       G4double    horizontalWidthIn,
                       G4double    xHalfGapIn,
@@ -53,7 +53,7 @@ public:
                       G4Material* vacuumMaterialIn,
                       G4Colour*   colourIn = nullptr,
                       G4Colour*   tipColourIn = nullptr);
-  virtual ~BDSTipCollimatorJaw();
+  virtual ~BDSCollimatorTipJaw();
 
   inline G4double GetJawTiltLeft() const {return jawTiltLeft;}
   inline G4double GetJawTiltRight() const {return jawTiltRight;}
@@ -87,11 +87,11 @@ protected:
 
 private:
   /// Private default constructor to force the use of the supplied one.
-  BDSTipCollimatorJaw() = delete;
+  BDSCollimatorTipJaw() = delete;
 
   /// @{ Assignment and copy constructor not implemented nor used
-  BDSTipCollimatorJaw& operator=(const BDSTipCollimatorJaw&) = delete;
-  BDSTipCollimatorJaw(BDSTipCollimatorJaw&) = delete;
+  BDSCollimatorTipJaw& operator=(const BDSCollimatorTipJaw&) = delete;
+  BDSCollimatorTipJaw(BDSCollimatorTipJaw&) = delete;
   /// @}
 };
 

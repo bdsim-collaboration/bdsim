@@ -336,7 +336,7 @@ void Element::print(int ident) const
     case ElementType::_ECOL:
     case ElementType::_RCOL:
     case ElementType::_JCOL:
-    case ElementType::_TIPJCOL:
+    case ElementType::_JCOLTIP:
       {
         std::cout << "x half aperture = " << xsize <<" m" << std::endl
                   << "y half aperture = " << ysize <<" m" << std::endl

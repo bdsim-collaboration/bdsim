@@ -27,7 +27,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSCollimatorCrystal.hh"
 #include "BDSCollimatorElliptical.hh"
 #include "BDSCollimatorJaw.hh"
-#include "BDSTipCollimatorJaw.hh"
+#include "BDSCollimatorTipJaw.hh"
 #include "BDSCollimatorRectangular.hh"
 #include "BDSColours.hh"
 #include "BDSColourFromMaterial.hh"
@@ -368,7 +368,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateComponent(Element const* ele
       {component = CreateTarget(); break;}
     case ElementType::_JCOL:
       {component = CreateJawCollimator(); break;}
-    case ElementType::_TIPJCOL:
+    case ElementType::_JCOLTIP:
       {component = CreateTipJawCollimator(); break;}
     case ElementType::_MUONCOOLER:
       {component = CreateMuonCooler(); break;}
@@ -471,7 +471,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateComponent(Element const* ele
 	case ElementType::_ECOL:
 	case ElementType::_RCOL:
 	case ElementType::_JCOL:
-  case ElementType::_TIPJCOL:
+  case ElementType::_JCOLTIP:
 	  {
 	    if (BDSGlobalConstants::Instance()->CollimatorsAreInfiniteAbsorbers())
 	      {component->SetMinimumKineticEnergy(std::numeric_limits<double>::max());}
@@ -1528,7 +1528,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateTipJawCollimator()
     {return nullptr;}
   auto collimatorMaterial = PrepareMaterial(element);
   auto collimatorTipMaterial = PrepareTipMaterial(element);
-  return new BDSTipCollimatorJaw(elementName,
+  return new BDSCollimatorTipJaw(elementName,
 				 element->l*CLHEP::m,
 				 PrepareHorizontalWidth(element),
                                  element->xsize*CLHEP::m,

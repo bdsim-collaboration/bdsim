@@ -75,7 +75,7 @@ namespace GMAD
     _RFX           = 77,
     _RFY           = 78,
     _MUONCOOLER    = 79,
-    _TIPJCOL       = 80
+    _JCOLTIP       = 80
   };
 
   /// conversion from enum to string
