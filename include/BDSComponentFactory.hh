@@ -188,6 +188,13 @@ public:
   /// Try and get a material and exit if no such material.
   static G4Material* PrepareMaterial(GMAD::Element const* element);
 
+  /// Checks if a material is named in Element::tipMaterial, else uses the supplied default.
+  static G4Material* PrepareTipMaterial(GMAD::Element const* element,
+				     const G4String& defaultMaterialName);
+
+  /// Try and get a tipmaterial and exit if no such material.
+  static G4Material* PrepareTipMaterial(GMAD::Element const* element);
+
   /// Utility function to check if the combination of horizontal width, angle and length
   /// will result in overlapping entrance and exit faces and therefore whether to abort.
   static void CheckBendLengthAngleWidthCombo(G4double arcLength,
@@ -272,6 +279,7 @@ private:
   BDSAcceleratorComponent* CreateTarget();
   BDSAcceleratorComponent* CreateEllipticalCollimator();
   BDSAcceleratorComponent* CreateJawCollimator();
+  BDSAcceleratorComponent* CreateTipJawCollimator();
   BDSAcceleratorComponent* CreateMuonCooler();
   BDSAcceleratorComponent* CreateMuonSpoiler();
   BDSAcceleratorComponent* CreateShield();

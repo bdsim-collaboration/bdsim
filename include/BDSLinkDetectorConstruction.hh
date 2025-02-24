@@ -20,6 +20,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #define BDSLINKDETECTORCONSTRUCTION_H
 #include "BDSBeamline.hh"
 #include "BDSCollimatorJaw.hh"
+#include "BDSCollimatorTipJaw.hh"
 #include "BDSExtent.hh"
 
 #include "G4ThreeVector.hh"
@@ -70,6 +71,22 @@ public:
 			     G4bool   isACrystal    = false,
 			     G4double crystalAngle  = 0,
 			     G4bool   sampleIn      = false);
+
+  /// Interface to append a tip collimator jaw to the linking.
+  G4int AddLinkCollimatorTipJaw(const std::string& collimatorName,
+                                const std::string& materialName,
+                                const std::string& tipMaterialName,
+                                G4double length,
+                                G4double halfApertureLeft,
+                                G4double halfApertureRight,
+                                G4double rotation,
+                                G4double xOffset,
+                                G4double yOffset,
+                                G4double jawTiltLeft = 0.0,
+                                G4double jawTiltRight = 0.0,
+                                G4double tipThickness = 0.0,
+                                G4bool   buildLeftJaw  = true,
+                                G4bool   buildRightJaw = true);
   
   /// Set the design particle definition.
   inline void SetDesignParticle(const BDSParticleDefinition* defIn) {designParticle = defIn;}

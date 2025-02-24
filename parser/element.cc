@@ -214,6 +214,10 @@ void Element::PublishMembers()
   publish("undulatorGap",          &Element::undulatorGap);
   publish("undulatorMagnetHeight", &Element::undulatorMagnetHeight);
 
+  // for jaw collimator with tip
+  publish("tipThickness",     &Element::tipThickness);
+  publish("tipMaterial",     &Element::tipMaterial);
+
   // bias
   publish("bias",                &Element::bias);
   publish("biasMaterial",        &Element::biasMaterial);
@@ -332,6 +336,7 @@ void Element::print(int ident) const
     case ElementType::_ECOL:
     case ElementType::_RCOL:
     case ElementType::_JCOL:
+    case ElementType::_JCOLTIP:
       {
         std::cout << "x half aperture = " << xsize <<" m" << std::endl
                   << "y half aperture = " << ysize <<" m" << std::endl
@@ -543,6 +548,7 @@ void Element::flush()
   offsetY = 0;
   jawTiltLeft = 0;
   jawTiltRight = 0;
+  tipThickness = 0;
 
   // screen parameters
   tscint = 0.0003;
