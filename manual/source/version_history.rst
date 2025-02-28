@@ -29,6 +29,11 @@ to maintain the expected high quality of the code.
 New Features
 ------------
 
+**Analysis**
+
+* New :code:`CreateEmptyBdskimFile` in the :code:`DataDummyClass` to give this function in pybdsim
+  for easy customised skimming in Python.
+
 **Fields**
 
 * The `rf` beamline element now has the parameter :code:`cavityFieldType` to specify which
