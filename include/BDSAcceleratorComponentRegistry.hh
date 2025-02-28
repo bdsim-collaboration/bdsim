@@ -67,7 +67,7 @@ namespace std
     {
       std::size_t h1 = std::hash<std::string>()(k.componentName);
       std::size_t h2 = std::hash<double>()(k.rigidity);
-      std::size_t ht = h1 ^ h2 + 0x9e3779b9 + (h1<<6) + (h1>>2); ///< Boost's algorithm.
+      std::size_t ht = h1 ^ (h2 + 0x9e3779b9 + (h1<<6) + (h1>>2)); ///< Boost's algorithm.
       return ht;
     }
   };
