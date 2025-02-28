@@ -26,6 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 class TDirectory;
 class TFile;
+class TTree;
 
 /**
  * @brief Utility functions for data files.
@@ -37,7 +38,14 @@ namespace RBDS
 {  
   /// Create a new TFile and add a header to it. The header object is filled and written.
   TFile* CreateEmptyRebdsimFile(const std::string& fileName,
-				unsigned long long int nOriginalEventsIn = 1);
+                                unsigned long long int nOriginalEventsIn = 1);
+
+  /// Create a new TFile and add a header to it. The header object if filled and written.
+  TFile* CreateEmptyBdskimFile(const std::string& originalFileName,
+                               const std::string& newOutputFileName);
+
+  TFile* CreateEmptyBdskimFile(TFile* originalFile,
+                               const std::string& newOutputFileName);
 
   /// Add the treeName minus the last character (expected to be a '.') to the
   /// output file then inside that directory, add PerEntryHistograms, SimpleHistograms,
@@ -59,10 +67,13 @@ public:
   virtual ~DataDummyClass();
 
   TFile* CreateEmptyRebdsimFile(const std::string& fileName,
-				unsigned long long int nOriginalEventsIn = 1);
+                                unsigned long long int nOriginalEventsIn = 1);
+
+  TFile* CreateEmptyBdskimFile(const std::string& originalFileName,
+                               const std::string& newOutputFileName);
 
   std::map<std::string, TDirectory*> CreateDirectories(TFile* outputFile,
-						       std::string treeName);
+                                                       std::string treeName);
   ClassDef(DataDummyClass,1);
 };
 
