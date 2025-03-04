@@ -2251,9 +2251,6 @@ Parameters for these components can be specified as either:
 +------------------------------+-------------------------------+--------------+
 | `dipoleOffsetZ`              | Z-positions of dipoles [m]    | List[Float]  |
 +------------------------------+-------------------------------+--------------+
-| `dipoleTolerance`            | Tolerance for dipole          | Float        |
-|                              | bounding box calculations [T] |              |
-+------------------------------+-------------------------------+--------------+
 | `nAbsorbers`                 | Number of absorbers           | Integer      |
 +------------------------------+-------------------------------+--------------+
 | `absorberType`               | Types of absorbers            | List[String] |
