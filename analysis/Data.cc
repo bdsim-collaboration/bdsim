@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "Data.hh"
+#include "FileMapper.hh"
+#include "Header.hh"
 
 #include "Rtypes.h"
 #include "TDirectory.h"
@@ -25,6 +27,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "BDSOutputROOTEventHeader.hh"
 
+#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
@@ -41,6 +44,12 @@ TFile* DataDummyClass::CreateEmptyRebdsimFile(const std::string& fileName,
 					      unsigned long long int nOriginalEventsIn)
 {
   return RBDS::CreateEmptyRebdsimFile(fileName, nOriginalEventsIn);
+}
+
+TFile* DataDummyClass::CreateEmptyBdskimFile(const std::string& originalFileName,
+                                             const std::string& newOutputFileName)
+{
+  return RBDS::CreateEmptyBdskimFile(originalFileName, newOutputFileName);
 }
 
 std::map<std::string, TDirectory*> DataDummyClass::CreateDirectories(TFile* outputFile,
@@ -71,9 +80,64 @@ TFile* RBDS::CreateEmptyRebdsimFile(const std::string& fileName,
                                             "Options.",
                                             "Model."};
   for (const auto& treeName : expectedTrees)
-  {RBDS::CreateDirectories(outputFile, treeName);}
+    {RBDS::CreateDirectories(outputFile, treeName);}
   
   return outputFile;
+}
+
+TFile* RBDS::CreateEmptyBdskimFile(const std::string& originalFileName,
+                                   const std::string& newOutputFileName)
+{
+  TFile* original = new TFile(originalFileName.c_str(), "READ");
+  if (!RBDS::IsBDSIMOutputFile(originalFileName))
+    {
+      std::cerr << originalFileName << " is not a BDSIM output file" << std::endl;
+      delete original;
+      return nullptr;
+    }
+  return CreateEmptyBdskimFile(original, newOutputFileName);
+}
+
+TFile* RBDS::CreateEmptyBdskimFile(TFile* originalFile,
+                                   const std::string& newOutputFileName)
+{
+  TTree* headerTree = dynamic_cast<TTree*>(originalFile->Get("Header")); // should be safe given check we've just done
+  if (!headerTree)
+    {std::cerr << "Error with header" << std::endl; return nullptr;}
+
+  auto headerLocal = new Header();
+  headerLocal->SetBranchAddress(headerTree);
+  Long64_t nEntriesHeader = headerTree->GetEntries();
+  headerTree->GetEntry(nEntriesHeader - 1); // get the last entry (2nd is more up to date if it exists)
+  // We also want to explicitly copy the skim variables that might only be known in the 2nd instance.
+  BDSOutputROOTEventHeader* headerOut = new BDSOutputROOTEventHeader(*(headerLocal->header));
+  headerOut->skimmedFile = true;
+
+  TFile* output = new TFile(newOutputFileName.c_str(), "RECREATE");
+  if (output->IsZombie())
+    {std::cerr << "Couldn't open output file " << newOutputFileName << std::endl; return nullptr;}
+  output->cd();
+  TTree* outputHeaderTree = new TTree("Header", "BDSIM Header");
+  outputHeaderTree->Branch("Header.", "BDSOutputROOTEventHeader", headerOut);
+  outputHeaderTree->Fill();
+
+  // Setup clones of other trees in the new output file
+  std::vector<std::string> treeNames = {"ParticleData", "Beam", "Options", "Model", "Run"};
+  for (const auto& tn : treeNames)
+  {
+    TTree* original = dynamic_cast<TTree*>(originalFile->Get(tn.c_str()));
+    if (!original)
+      {
+        std::cerr << "Failed to load Tree named " << tn << std::endl;
+        delete output;
+        delete originalFile;
+        return nullptr;
+      }
+    auto clone = original->CloneTree();
+    clone->AutoSave();
+  }
+
+  return output;
 }
 
 std::map<std::string, TDirectory*> RBDS::CreateDirectories(TFile* outputFile,
