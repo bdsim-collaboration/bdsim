@@ -359,7 +359,6 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
                                                           G4double yOffset,
                                                           G4double jawTiltLeft,
                                                           G4double jawTiltRight,
-                                                          G4double tipThickness,
                                                           G4bool   buildLeftJaw,
                                                           G4bool   buildRightJaw)
 {
