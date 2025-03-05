@@ -385,7 +385,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     el.l        = length / CLHEP::m;
     el.xsizeLeft  = halfApertureLeft / CLHEP::m;
     el.xsizeRight = halfApertureRight / CLHEP::m;
-    el.ysize    = 0.2; // half height
+    el.ysize    = 0.006; // half height
     el.tilt     = rotation / CLHEP::rad;
     el.offsetX  = xOffset / CLHEP::m;
     el.offsetY  = yOffset / CLHEP::m;
