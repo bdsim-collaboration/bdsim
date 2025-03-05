@@ -16,19 +16,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "BDSDebug.hh"
 #include "BDSFieldMagDipoleEnge.hh"
-#include "BDSMagnetStrength.hh"
-#include "BDSUtilities.hh"
 
 #include "globals.hh"
 #include "G4ThreeVector.hh"
 #include "G4Types.hh"
 
-#include "CLHEP/Units/PhysicalConstants.h"
-#include "CLHEP/Units/SystemOfUnits.h"
-
-#include <algorithm>
 #include <cmath>
 
 //BDSFieldMagDipoleEnge::BDSFieldMagDipoleEnge(BDSMagnetStrength const* strength,
@@ -40,18 +33,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 BDSFieldMagDipoleEnge::BDSFieldMagDipoleEnge(G4double strength,                                             
                                              G4double apertureRadius,
                                              G4double coilLength,
-                                             G4double engeCoefficient,
-                                             G4double toleranceIn
-                                             ):
+                                             G4double engeCoefficient):
   D(2*apertureRadius),
   halfLength(0.5*coilLength),
   B0(strength),
-  engeCoeff(engeCoefficient),
-  coilTolerance(toleranceIn)
+  engeCoeff(engeCoefficient)
   {;}
 
 G4ThreeVector BDSFieldMagDipoleEnge::GetField(const G4ThreeVector& position,
-					                          const G4double       /*t*/) const
+                                              const G4double       /*t*/) const
 {
   G4double z = position.z();
   G4double y = position.y();
@@ -64,10 +54,9 @@ G4ThreeVector BDSFieldMagDipoleEnge::GetField(const G4ThreeVector& position,
   G4double Bz = 0;
     
   if (rho > D*0.5)  // Further improvement: apply longitudinal bounding box / tolerance cut
-    { return G4ThreeVector();}
+    {return G4ThreeVector();}
   else
     {
-
       G4double By_left = (1 + std::exp(-zleft*engeCoeff/D) * std::cos(y*engeCoeff/D)) / (1 + 2*std::exp(-zleft*engeCoeff/D) * std::cos(y*engeCoeff/D) + std::exp(-2*zleft*engeCoeff/D));
       G4double By_right = (1 + std::exp(zright*engeCoeff/D) * std::cos(y*engeCoeff/D)) / (1 + 2*std::exp(zright*engeCoeff/D) * std::cos(y*engeCoeff/D) + std::exp(2*zright*engeCoeff/D));
 
@@ -82,7 +71,6 @@ G4ThreeVector BDSFieldMagDipoleEnge::GetField(const G4ThreeVector& position,
 
       By *= normalisation;
       Bz *= normalisation;
-
     }
 
   G4ThreeVector result = G4ThreeVector(0,By,Bz);

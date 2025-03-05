@@ -48,7 +48,7 @@ New Features
 
 * :code:`autoColour=1` now works for all collimators and target elements. If turned on, the
   colour of the element in the visualiser will be given by the material.
-* GDML exports from BDSIM now include auxliary colour information that can be handled by
+* GDML exports from BDSIM now include auxiliary colour information that can be handled by
   pyg4ometry and also be BDSIM if the same file is loaded in again.
 
 **Physics**
@@ -102,6 +102,8 @@ Bug Fixes
 * :code:`--exportGeometryTo` executable option used to build up relative paths with respect to the
   input file and not the executable location. This has been fixed to be relative to the executable
   location. Noticeable if executing BDSIM from a different directory from the main input file.
+* Fixed the loading of samplers with DataLoader (used when using :code:`pybdsim.Data.Load`) when
+  no model tree was stored. The samplers would not be identified in the past.
 
 
 Output Changes
