@@ -86,6 +86,10 @@ General Updates
   is different and so the component must be uniquely constructed to have a different field.
 * The time coordinate is now loaded and applied to each particle when loading a bdsim output
   sampler as a distribution.
+* An exception will now be thrown if a field map is loaded containing NAN or +-INF values. In
+  the past, these would be simply loaded and propagated through to tracking resulting in a stuck
+  particle in Geant4.
+
 
 Bug Fixes
 ---------
