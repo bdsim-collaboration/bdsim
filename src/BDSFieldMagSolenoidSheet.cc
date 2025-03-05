@@ -40,8 +40,7 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
                                                    G4bool   strengthIsCurrent,
                                                    G4double sheetRadius,
                                                    G4double fullLength,
-                                                   G4double toleranceIn
-                                                   ):
+                                                   G4double toleranceIn):
   a(sheetRadius),
   halfLength(0.5*fullLength),
   B0(0.0),
@@ -83,22 +82,18 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
     {return G4ThreeVector();} // close to radius and inside +- z
   G4double zp = z + halfLength;
   G4double zm = z - halfLength;
-  
 
   G4double Brho = 0;
   G4double Bz   = 0;
 
-
   // approximation for on-axis
-
   if (std::abs(OnAxisBz(zp, zm))< coilTolerance)
     { 
       Brho = 0.0;
       Bz = 0.0;
     }
-   else if (std::abs(rho) < spatialLimit)
-    {Bz = OnAxisBz(zp, zm);
-}
+  else if (std::abs(rho) < spatialLimit)
+    {Bz = OnAxisBz(zp, zm);}
   else
     {
       G4double zpSq = zp*zp;

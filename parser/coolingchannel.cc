@@ -51,7 +51,6 @@ void CoolingChannel::clear()
   dipoleFieldStrength.clear();
   dipoleEngeCoefficient.clear();
   dipoleOffsetZ.clear();
-  dipoleTolerance.clear();
 
   nAbsorbers = 0;
   absorberType.clear();
@@ -112,7 +111,6 @@ void CoolingChannel::PublishMembers()
   publish("dipoleFieldStrength",  &CoolingChannel::dipoleFieldStrength);
   publish("dipoleEngeCoefficient",&CoolingChannel::dipoleEngeCoefficient);
   publish("dipoleOffsetZ",        &CoolingChannel::dipoleOffsetZ);
-  publish("dipoleTolerance",      &CoolingChannel::dipoleTolerance);
 
   publish("nAbsorbers",                 &CoolingChannel::nAbsorbers);
   publish("absorberType",               &CoolingChannel::absorberType);
@@ -158,7 +156,6 @@ void CoolingChannel::PublishMembers()
   attribute_map_list_double["dipoleFieldStrength"] = &dipoleFieldStrength;
   attribute_map_list_double["dipoleEngeCoefficient"] = &dipoleEngeCoefficient;
   attribute_map_list_double["dipoleOffsetZ"]       = &dipoleOffsetZ;
-  attribute_map_list_double["dipoleTolerance"]     = &dipoleTolerance;
   attribute_map_list_string["absorberType"]        = &absorberType;
   attribute_map_list_string["absorberMaterial"]    = &absorberMaterial;
   attribute_map_list_double["absorberOffsetZ"]     = &absorberOffsetZ;
@@ -212,7 +209,6 @@ void CoolingChannel::print()const
             << "dipoleFieldStrength "        << dipoleFieldStrength        << std::endl
             << "dipoleEngeCoefficient "      << dipoleEngeCoefficient      << std::endl
             << "dipoleOffsetZ "              << dipoleOffsetZ              << std::endl
-            << "dipoleTolerance "            << dipoleTolerance            << std::endl
             << "nAbsorbers "                 << nAbsorbers                 << std::endl
             << "absorberType "               << absorberType               << std::endl
             << "absorberMaterial "           << absorberMaterial           << std::endl
