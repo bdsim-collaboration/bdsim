@@ -48,7 +48,6 @@ namespace BDS
     G4double fieldStrength;
     G4double engeCoefficient;
     G4double offsetZ;
-    G4double onAxisTolerance;
   };
 
   struct MuonCoolerCavityInfo

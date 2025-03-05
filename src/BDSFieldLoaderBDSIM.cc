@@ -375,7 +375,7 @@ void BDSFieldLoaderBDSIM<T>::Load(const G4String& fileName,
                       currentLineNumber++;
                       if (std::all_of(line.begin(), line.end(), isspace))
                         {continue;}
-                      ProcessData(line, xIndex, yIndex, zIndex); // changes member fv
+                      ProcessData(line, xIndex, yIndex, zIndex, currentLineNumber); // changes member fv
                       (*result)(i, j, k, l) = fv;
                       float mag = fv.mag();
                       maximumFieldValue = std::max(maximumFieldValue, mag);
@@ -400,7 +400,7 @@ void BDSFieldLoaderBDSIM<T>::Load(const G4String& fileName,
                       currentLineNumber++;
                       if (std::all_of(line.begin(), line.end(), isspace))
                         {continue;}
-                      ProcessData(line, xIndex, yIndex, zIndex); // changes member fv
+                      ProcessData(line, xIndex, yIndex, zIndex, currentLineNumber); // changes member fv
                       (*result)(i, j, k, l) = fv;
                       float mag = fv.mag();
                       maximumFieldValue = std::max(maximumFieldValue, mag);
@@ -420,7 +420,8 @@ template <class T>
 void BDSFieldLoaderBDSIM<T>::ProcessData(const std::string& line,
                                          const unsigned long xIndex,
                                          const unsigned long yIndex,
-                                         const unsigned long zIndex)
+                                         const unsigned long zIndex,
+                                         unsigned long long currentLineNumber)
 {
   std::istringstream liness(line);
   G4float value = 0;
@@ -432,6 +433,8 @@ void BDSFieldLoaderBDSIM<T>::ProcessData(const std::string& line,
       liness >> value;
       if (i < indexOfFirstFieldValue)// coordinates before this index
         {value *= CLHEP::cm;}
+      if (!std::isfinite(value))
+        {throw BDSException("BDSFieldLoaderBDSIM>", "a not-finite value was found on line " + std::to_string(currentLineNumber));}
       lineData[i] = value;
     }
   

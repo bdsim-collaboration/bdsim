@@ -212,7 +212,7 @@ void DataLoader::BuildEventBranchNameList()
     }
   
   if (mt->GetEntries() == 0)
-    {// no model tree was stored, so we don't know which branches are which type of smaplers
+    {// no model tree was stored, so we don't know which branches are which type of samplers
       // alternatively, inspect the branches of the event tree and get their class names.
       TTree* et = (TTree*)f->Get("Event");
       if (!et)
@@ -221,9 +221,15 @@ void DataLoader::BuildEventBranchNameList()
           delete f;
           throw RBDSException(__METHOD_NAME__, "No Event tree in file - likely a corrupted file.");
         }
-      const std::set<std::string> samplerClasses = {"BDSOutputROOTEventSampler", "BDSOutputROOTEventSamplerC", "BDSOutputROOTEventSamplerS"};
+      const std::set<std::string> samplerClasses = {"BDSOutputROOTEventSampler",
+                                                    "BDSOutputROOTEventSampler<float>",
+                                                    "BDSOutputROOTEventSampler<double>",
+                                                    "BDSOutputROOTEventSamplerC",
+                                                    "BDSOutputROOTEventSamplerS"};
       std::map<std::string, std::vector<std::string>*> vectors = {
         {"BDSOutputROOTEventSampler", &allSamplerNames},
+        {"BDSOutputROOTEventSampler<float>", &allSamplerNames},
+        {"BDSOutputROOTEventSampler<double>", &allSamplerNames},
         {"BDSOutputROOTEventSamplerC", &allCSamplerNames},
         {"BDSOutputROOTEventSamplerS", &allSSamplerNames},
       };

@@ -29,6 +29,11 @@ to maintain the expected high quality of the code.
 New Features
 ------------
 
+**Analysis**
+
+* New :code:`CreateEmptyBdskimFile` in the :code:`DataDummyClass` to give this function in pybdsim
+  for easy customised skimming in Python.
+
 **Fields**
 
 * The `rf` beamline element now has the parameter :code:`cavityFieldType` to specify which
@@ -43,7 +48,7 @@ New Features
 
 * :code:`autoColour=1` now works for all collimators and target elements. If turned on, the
   colour of the element in the visualiser will be given by the material.
-* GDML exports from BDSIM now include auxliary colour information that can be handled by
+* GDML exports from BDSIM now include auxiliary colour information that can be handled by
   pyg4ometry and also be BDSIM if the same file is loaded in again.
 
 **Physics**
@@ -81,6 +86,10 @@ General Updates
   is different and so the component must be uniquely constructed to have a different field.
 * The time coordinate is now loaded and applied to each particle when loading a bdsim output
   sampler as a distribution.
+* An exception will now be thrown if a field map is loaded containing NAN or +-INF values. In
+  the past, these would be simply loaded and propagated through to tracking resulting in a stuck
+  particle in Geant4.
+
 
 Bug Fixes
 ---------
@@ -93,6 +102,8 @@ Bug Fixes
 * :code:`--exportGeometryTo` executable option used to build up relative paths with respect to the
   input file and not the executable location. This has been fixed to be relative to the executable
   location. Noticeable if executing BDSIM from a different directory from the main input file.
+* Fixed the loading of samplers with DataLoader (used when using :code:`pybdsim.Data.Load`) when
+  no model tree was stored. The samplers would not be identified in the past.
 
 
 Output Changes

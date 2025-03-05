@@ -76,9 +76,10 @@ private:
   /// Process on line of data. Index of 0 corresponds to a default value of field of 0.
   /// This allows various dimensional loading to use the same function.
   void ProcessData(const std::string& line,
-		   const unsigned long xIndex,
-		   const unsigned long yIndex = 0,
-		   const unsigned long zIndex = 0);
+                   const unsigned long xIndex,
+                   const unsigned long yIndex,
+                   const unsigned long zIndex,
+                   unsigned long long currentLineNumber);
 
   /// Templated iostream for std::ifstream and gzstream as well
   T file;
