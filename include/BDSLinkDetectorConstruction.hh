@@ -76,6 +76,7 @@ public:
   G4int AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                 const std::string& materialName,
                                 const std::string& tipMaterialName,
+                                G4double tipThickness,
                                 G4double length,
                                 G4double halfApertureLeft,
                                 G4double halfApertureRight,
