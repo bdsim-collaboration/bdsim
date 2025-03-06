@@ -76,6 +76,7 @@ public:
   G4int AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                 const std::string& materialName,
                                 const std::string& tipMaterialName,
+                                G4double tipThickness,
                                 G4double length,
                                 G4double halfApertureLeft,
                                 G4double halfApertureRight,
@@ -84,7 +85,6 @@ public:
                                 G4double yOffset,
                                 G4double jawTiltLeft = 0.0,
                                 G4double jawTiltRight = 0.0,
-                                G4double tipThickness = 0.0,
                                 G4bool   buildLeftJaw  = true,
                                 G4bool   buildRightJaw = true);
   
