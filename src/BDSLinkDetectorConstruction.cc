@@ -350,6 +350,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
 G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                                           const std::string& materialName,
                                                           const std::string& tipMaterialName,
+                                                          G4double tipThickness,
                                                           G4double length,
                                                           G4double halfApertureLeft,
                                                           G4double halfApertureRight,
@@ -358,7 +359,6 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
                                                           G4double yOffset,
                                                           G4double jawTiltLeft,
                                                           G4double jawTiltRight,
-                                                          G4double tipThickness,
                                                           G4bool   buildLeftJaw,
                                                           G4bool   buildRightJaw)
 {
@@ -384,7 +384,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     el.l        = length / CLHEP::m;
     el.xsizeLeft  = halfApertureLeft / CLHEP::m;
     el.xsizeRight = halfApertureRight / CLHEP::m;
-    el.ysize    = 0.2; // half height
+    el.ysize    = 0.006; // half height
     el.tilt     = rotation / CLHEP::rad;
     el.offsetX  = xOffset / CLHEP::m;
     el.offsetY  = yOffset / CLHEP::m;
