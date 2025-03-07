@@ -533,4 +533,10 @@ void Options::PublishMembers()
   publish("emin", &Options::emin);
   publish("emax", &Options::emax);
   publish("useScoringMap", &Options::useScoringMap);
+
+  // millicharged
+  publish("enableMillicharge",   &Options::enableMillicharge);
+  publish("millichargeID",       &Options::millichargeID);
+  publish("millichargeMass",     &Options::millichargeMass);
+  publish("millichargeCharge" ,  &Options::millichargeCharge);
 }

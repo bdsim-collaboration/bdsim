@@ -357,6 +357,12 @@ public:
   inline G4String PTCOneTurnMapFileName()    const {return G4String (options.ptcOneTurnMapFileName);}
   inline G4double BackupStepperMomLimit()    const {return G4double(options.backupStepperMomLimit)*CLHEP::rad;}
 
+  // millicharge options
+  inline G4bool enableMillicharge()          const {return G4bool  (options.enableMillicharge);}
+  inline G4int millichargeID()               const {return G4int   (options.millichargeID);}
+  inline G4double millichargeMass()          const {return G4double(options.millichargeMass*CLHEP::GeV);}
+  inline G4double millichargeCharge()        const {return G4double(options.millichargeCharge);}
+
   /// @{ options that require some implementation.
   G4bool StoreTrajectoryTransportationSteps() const;
   BDS::TrajectoryOptions StoreTrajectoryOptions() const;
