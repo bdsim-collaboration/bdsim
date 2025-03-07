@@ -422,6 +422,12 @@ namespace GMAD
     double emax;
     bool   useScoringMap;
 
+    // millicharge options
+    bool enableMillicharge;
+    int millichargeID;
+    double millichargeMass;
+    double millichargeCharge;
+
     /// print some properties
     void print() const;
   

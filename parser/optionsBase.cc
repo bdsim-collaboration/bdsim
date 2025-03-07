@@ -381,6 +381,12 @@ OptionsBase::OptionsBase()
   emin   = 1e-12;
   emax   = 1e4;
   useScoringMap = false;
+
+  // millicharge options
+  enableMillicharge = false;
+  millichargeID = 411000; // check this pdgID is not in use
+  millichargeMass = 100;
+  millichargeCharge = 0.1;
 }
 
 
