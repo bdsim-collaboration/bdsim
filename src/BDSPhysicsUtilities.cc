@@ -328,6 +328,14 @@ BDSParticleDefinition* BDS::ConstructParticleDefinition(const G4String& particle
                                                totalEnergyIn, kineticEnergyIn, momentumIn, ffact, ionDef, ionPDGID);
       delete ionDef;
     }
+  else if (particleName == "millicharged") // BDSGlobalConstants::Instance()->millichargeName()
+    {
+      G4cout << "Beam particle is millicharged" << G4endl;
+      particleDefB = new BDSParticleDefinition("millicharged",
+                                               BDSGlobalConstants::Instance()->millichargeMass(),
+                                               BDSGlobalConstants::Instance()->millichargeCharge(),
+                                               totalEnergyIn, kineticEnergyIn, momentumIn, ffact);
+    }
   else
     {
       // swap out some common name substitutions for Geant4 ones
