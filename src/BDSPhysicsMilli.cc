@@ -24,6 +24,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleDefinition.hh"
+#include "G4ParticleTable.hh"
 #include "G4LossTableManager.hh"
 #include "G4EmParameters.hh"
 #include "G4PhysicsListHelper.hh"
