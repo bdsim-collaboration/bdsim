@@ -19,12 +19,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "BDSDebug.hh"
 #include "BDSGlobalConstants.hh"
+#include "BDSParticleMilli.hh"
 #include "BDSPhysicsMilli.hh"
-#include "BDSParticleDefinition.hh"
-#include "globals.hh"
 
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleDefinition.hh"
+#include "G4ParticleTable.hh"
 #include "G4LossTableManager.hh"
 #include "G4EmParameters.hh"
 #include "G4PhysicsListHelper.hh"
@@ -56,13 +56,7 @@ BDSPhysicsMilli::~BDSPhysicsMilli()
 
 void BDSPhysicsMilli::ConstructParticle()
 {
-    // construct millicharged here?
-    BDSParticleDefinition* theMilliCharged = nullptr;
-    theMilliCharged = new BDSParticleDefinition("millicharged",
-                                                BDSGlobalConstants::Instance()->millichargeMass(),
-                                                BDSGlobalConstants::Instance()->millichargeCharge(),
-                                                0, 100*GeV, 0,
-                                                BDSGlobalConstants::Instance()->FFact());
+    ParticleMilli::MillichargeDefinition();
 }
 
 void BDSPhysicsMilli::ConstructProcess()
@@ -83,7 +77,7 @@ void BDSPhysicsMilli::ConstructProcess()
         G4ParticleDefinition* particle = aParticleIterator->value();
         G4String particleName = particle->GetParticleName();
 
-        if(particleName == "millicharged")
+        if(particleName == BDSGlobalConstants::Instance()->millichargeName())
         {
             ph->RegisterProcess(eIoni, particle);
             continue;

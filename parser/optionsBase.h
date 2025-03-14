@@ -424,9 +424,10 @@ namespace GMAD
 
     // millicharge options
     bool enableMillicharge;
-    int millichargeID;
+    std::string millichargeName;
     double millichargeMass;
     double millichargeCharge;
+    int millichargeID;
 
     /// print some properties
     void print() const;
