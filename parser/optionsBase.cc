@@ -384,9 +384,10 @@ OptionsBase::OptionsBase()
 
   // millicharge options
   enableMillicharge = false;
-  millichargeID = 411000; // check this pdgID is not in use
+  millichargeName = "millicharged";
   millichargeMass = 100;
   millichargeCharge = 0.1;
+  millichargeID = 411000; // check this pdgID is not in use
 }
 
 

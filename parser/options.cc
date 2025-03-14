@@ -536,7 +536,8 @@ void Options::PublishMembers()
 
   // millicharged
   publish("enableMillicharge",   &Options::enableMillicharge);
-  publish("millichargeID",       &Options::millichargeID);
+  publish("millichargeName",     &Options::millichargeName);
   publish("millichargeMass",     &Options::millichargeMass);
   publish("millichargeCharge" ,  &Options::millichargeCharge);
+  publish("millichargeID",       &Options::millichargeID);
 }
