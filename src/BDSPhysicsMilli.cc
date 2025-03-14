@@ -59,7 +59,6 @@ BDSPhysicsMilli::~BDSPhysicsMilli()
 
 void BDSPhysicsMilli::ConstructParticle()
 {
-    // millicharged
     ParticleMilli::MillichargeDefinition();
 }
 
