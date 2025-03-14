@@ -24,7 +24,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleDefinition.hh"
-#include "G4ParticleTable.hh"
 #include "G4LossTableManager.hh"
 #include "G4EmParameters.hh"
 #include "G4PhysicsListHelper.hh"
@@ -33,6 +32,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4BuilderType.hh"
 
 #include "G4eIonisation.hh"
+#include "G4eBremsstrahlung.hh"
+#include "G4eMultipleScattering.hh"
+#include "G4CoulombScattering.hh"
 
 BDSPhysicsMilli::BDSPhysicsMilli(const G4String&, G4int ver): G4VPhysicsConstructor("G4millicharged"), verbose(ver)
 {
@@ -56,6 +58,7 @@ BDSPhysicsMilli::~BDSPhysicsMilli()
 
 void BDSPhysicsMilli::ConstructParticle()
 {
+    // millicharged
     ParticleMilli::MillichargeDefinition();
 }
 
@@ -64,6 +67,14 @@ void BDSPhysicsMilli::ConstructProcess()
     G4eIonisation* eIoni = nullptr;
     eIoni = new G4eIonisation();
     G4AutoDelete::Register(eIoni);
+
+    G4eBremsstrahlung* eBrem = nullptr;
+    eBrem = new G4eBremsstrahlung();
+    G4AutoDelete::Register(eBrem);
+
+    G4eMultipleScattering* eMult = nullptr;
+    eMult = new G4eMultipleScattering();
+    G4AutoDelete::Register(eMult);
 
     G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
 
@@ -80,6 +91,8 @@ void BDSPhysicsMilli::ConstructProcess()
         if(particleName == BDSGlobalConstants::Instance()->millichargeName())
         {
             ph->RegisterProcess(eIoni, particle);
+            ph->RegisterProcess(eBrem, particle);
+            ph->RegisterProcess(eMult, particle);
             continue;
         }
     }

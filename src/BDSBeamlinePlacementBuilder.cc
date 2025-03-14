@@ -87,12 +87,12 @@ BDSBeamline* BDS::BuildPlacementGeometry(const std::vector<GMAD::Placement>& pla
       G4bool geometrySpecified = !placement.geometryFile.empty();
       if (elementSpecified && geometrySpecified)
         {
-          G4String msg = "only one of \"geometryFile\" or \"bdsimElemenet\" can be specified in placement \"" + placement.name + "\"";
+          G4String msg = "only one of \"geometryFile\" or \"bdsimElement\" can be specified in placement \"" + placement.name + "\"";
           throw BDSException(__METHOD_NAME__, msg);
         }
       else if (!elementSpecified && !geometrySpecified)
         {
-          G4String msg = "at least one of \"geometryFile\" or \"bdsimElemenet\" must be specified in placement \"" + placement.name + "\"";
+          G4String msg = "at least one of \"geometryFile\" or \"bdsimElement\" must be specified in placement \"" + placement.name + "\"";
           throw BDSException(__METHOD_NAME__, msg);
         }
       
