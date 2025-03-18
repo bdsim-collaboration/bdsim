@@ -31,25 +31,26 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4Version.hh"
 #include "G4BuilderType.hh"
 
-#include "G4eIonisation.hh"
-#include "G4eBremsstrahlung.hh"
-#include "G4eMultipleScattering.hh"
-#include "G4CoulombScattering.hh"
+#include "G4hIonisation.hh"
+#include "G4hMultipleScattering.hh"
+#include "G4WentzelVIModel.hh"
+#include "G4ProcessManager.hh"
+#include "G4StepLimiter.hh"
 
 BDSPhysicsMilli::BDSPhysicsMilli(const G4String&, G4int ver): G4VPhysicsConstructor("G4millicharged"), verbose(ver)
 {
     G4EmParameters* param = G4EmParameters::Instance();
-    param->SetDefaults();
+    //param->SetDefaults();
     param->SetVerbose(verbose);
-    param->SetMinEnergy(100*eV);
-    param->SetMaxEnergy(10*TeV);
-    param->SetLowestElectronEnergy(10*eV);
-    param->SetNumberOfBinsPerDecade(20);
-    param->ActivateAngularGeneratorForIonisation(true);
-    param->SetMscThetaLimit(0.0);
-    param->SetFluo(true);
-    param->SetAuger(true);
-    param->SetPixe(true);
+    //param->SetMinEnergy(100*eV);
+    //param->SetMaxEnergy(10*TeV);
+    //param->SetLowestElectronEnergy(10*eV);
+    //param->SetNumberOfBinsPerDecade(20);
+    //param->ActivateAngularGeneratorForIonisation(true);
+    //param->SetMscThetaLimit(0.0);
+    //param->SetFluo(true);
+    //param->SetAuger(true);
+    //param->SetPixe(true);
     SetPhysicsType(bElectromagnetic);
 }
 
@@ -64,17 +65,27 @@ void BDSPhysicsMilli::ConstructParticle()
 
 void BDSPhysicsMilli::ConstructProcess()
 {
-    G4eIonisation* eIoni = nullptr;
-    eIoni = new G4eIonisation();
-    G4AutoDelete::Register(eIoni);
+    G4double mass = BDSGlobalConstants::Instance()->millichargeMass();
+    G4double emin = mass/20000.;
+    if(emin < keV) { emin = keV; }
+    G4double emax = std::max(10.*TeV, mass*100);
+    G4int nbin = G4lrint(10*std::log10(emax/emin));
+    G4double energyLimit = 1.*MeV;
 
-    G4eBremsstrahlung* eBrem = nullptr;
-    eBrem = new G4eBremsstrahlung();
-    G4AutoDelete::Register(eBrem);
+    G4hIonisation* hIoni = nullptr;
+    hIoni = new G4hIonisation();
+    hIoni->SetDEDXBinning(nbin);
+    hIoni->SetMinKinEnergy(emin);
+    hIoni->SetMaxKinEnergy(emax);
+    G4AutoDelete::Register(hIoni);
 
-    G4eMultipleScattering* eMult = nullptr;
-    eMult = new G4eMultipleScattering();
-    G4AutoDelete::Register(eMult);
+    G4hMultipleScattering* hMpl = nullptr;
+    hMpl = new G4hMultipleScattering();
+
+    G4WentzelVIModel* modelmpl = nullptr;
+    modelmpl = new G4WentzelVIModel();
+    modelmpl->SetActivationLowEnergyLimit(energyLimit);
+    hMpl->SetEmModel(modelmpl, 1);
 
     G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
 
@@ -88,11 +99,15 @@ void BDSPhysicsMilli::ConstructProcess()
         G4ParticleDefinition* particle = aParticleIterator->value();
         G4String particleName = particle->GetParticleName();
 
-        if(particleName == BDSGlobalConstants::Instance()->millichargeName())
+        if(particleName == "e+")
+        //if(particleName == BDSGlobalConstants::Instance()->millichargeName())
         {
-            ph->RegisterProcess(eIoni, particle);
-            ph->RegisterProcess(eBrem, particle);
-            ph->RegisterProcess(eMult, particle);
+            ph->RegisterProcess(hIoni, particle);
+            G4ProcessManager* pManager = particle->GetProcessManager();
+            pManager->AddProcess(hIoni,-1,2,2);
+
+            ph->RegisterProcess(hMpl, particle);
+            ph->RegisterProcess(new G4StepLimiter(), particle);
             continue;
         }
     }

@@ -52,18 +52,16 @@ ParticleMilli* ParticleMilli::Definition()
         //             stable         lifetime    decay table
         //             shortlived      subType    anti_encoding
 
-        // use constants in CLHEP
-        //  static const double electron_mass_c2 = 0.51099906 * MeV;
-
         anInstance = new G4ParticleDefinition(
                 name,       mass*MeV,     0.0*MeV,    charge*eplus,
-                1,            0,           0,
+                0,            0,           0,
                 0,          0,         0,
-                "lepton",    1,           0,         pdgID,
+                "fermion",    0,           0,         pdgID,
                 true,        -1.0,       NULL,
-                false,    "milli"
+                false,    "none"
         );
 
+        anInstance->SetPDGMagneticMoment(0);
     }
     theInstance = reinterpret_cast<ParticleMilli*>(anInstance);
     return theInstance;
