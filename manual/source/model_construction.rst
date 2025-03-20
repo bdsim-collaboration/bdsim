@@ -206,6 +206,7 @@ The following elements may be defined
 * `target`_
 * `rcol`_
 * `jcol`_
+* `jcoltip`_
 * `ecol`_
 * `degrader`_
 * `muspoiler`_
@@ -1341,6 +1342,87 @@ Examples: ::
    j2: jcol, l=0.9*m, horizontalWidth=1*m, material="Cu", xsizeLeft=1*cm, xsizeRight=2*m;
 
 
+jcoltip
+^^^^^^^
+
+.. figure:: figures/jcoltip.png
+    :width: 40%
+    :align: center
+
+`jcoltip` defines a jaw collimator with an additional tip material. It consists of two square blocks on either side in the horizontal plane, similar to `jcol`, but with a tip of a different material. If a vertical `jcoltip` is required, the `tilt` parameter should be used to rotate it by :math:`\pi/2`. The horizontal position of each jaw can be set separately with the `xsizeLeft` and `xsizeRight` apertures, which are the distances from the centre of the element to the left and right jaws, respectively.
+
+The tip thickness and material are defined using `tipThickness` and `tipMaterial`. The collimator jaws can be individually tilted in a plane perpendicular to the jaw opening plane with the `jawTiltLeft` and `jawTiltRight` arguments. In this case, the set aperture is in the middle of the collimator. This feature can be useful for example in aligning the jaws to the beam envelope.
+
+.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
+
++------------------------+-----------------------------------+----------------+---------------+
+| **Parameter**          | **Description**                   | **Default**    | **Required**  |
++========================+===================================+================+===============+
+| `l`                    | Length [m]                        | 0              | Yes           |
++------------------------+-----------------------------------+----------------+---------------+
+| `xsize`                | Horizontal half aperture [m]      | 0              | Yes           |
++------------------------+-----------------------------------+----------------+---------------+
+| `ysize`                | Half height of jaws [m]           | 0              | Yes           |
++------------------------+-----------------------------------+----------------+---------------+
+| `material`             | Bulk material of the jaw          | None           | Yes           |
++------------------------+-----------------------------------+----------------+---------------+
+| `tipMaterial`          | Material of the jaw tip           | None           | Yes           |
++------------------------+-----------------------------------+----------------+---------------+
+| `tipThickness`         | Thickness of the tip [m]          | 0              | Yes           |
++------------------------+-----------------------------------+----------------+---------------+
+| `xsizeLeft`            | Left jaw aperture [m]             | 0              | No            |
++------------------------+-----------------------------------+----------------+---------------+
+| `xsizeRight`           | Right jaw aperture [m]            | 0              | No            |
++------------------------+-----------------------------------+----------------+---------------+
+| `jawTiltLeft`          | Left jaw tilt angle [rad]         | 0              | No            |
++------------------------+-----------------------------------+----------------+---------------+
+| `jawTiltRight`         | Right jaw tilt angle [rad]        | 0              | No            |
++------------------------+-----------------------------------+----------------+---------------+
+| `horizontalWidth`      | Outer full width [m]              | 0.5 m          | No            |
++------------------------+-----------------------------------+----------------+---------------+
+| `colour`               | Name of colour desired for        | ""             | No            |
+|                        | block. See :ref:`colours`.        |                |               |
++------------------------+-----------------------------------+----------------+---------------+
+| `minimumKineticEnergy` | Minimum kinetic energy below      | 0              | No            |
+|                        | which to artificially kill        |                |               |
+|                        | particles in this collimator only |                |               |
++------------------------+-----------------------------------+----------------+---------------+
+
+Notes: 
+
+* The `horizontalWidth` must be greater than 2x `xsize`.
+* To prevent the jaws overlapping with one another, a jaw cannot be constructed that crosses the
+  X axis of the element (i.e supplying a negative `xsizeLeft` or `xsizeRight` will not work). Should
+  you require this, please offset the element using the element parameters `offsetX` and `offsetY` instead.
+* To construct a collimator jaws with one jaw closed (i.e. an offset of 0), the horizontal half aperture
+  must be set to 0, with the other jaws half aperture set as appropriate.
+* If `xsize`, `xsizeLeft` and `xsizeRight` are not specified, the collimator will be constructed
+  as a box with no aperture.
+* For **only one jaw**, specifying a jaw aperture which is larger than half the `horizontalWidth` value
+  will result in that jaw not being constructed. If both jaw apertures are greater than
+  half the `horizontalWidth`, no jaws will be built and BDSIM will exit.
+* To preserve the longitudinal dimensions, jaw tilt specified with `jawTiltLeft` or `jawTiltRight` and `xsizeRight`
+  uses parallelepipeds instead of boxes for the collimator jaws. Relative to using angled boxes, this can introduce and
+  error in the material traversed by incident particles, which scales as $b\tan(\alpha)$, where b is
+  the impact parameter (depth of impact) and $\alpha$ is the jaw tilt angle.
+* The parameter `minimumKineticEnergy` (GeV by default) may be specified to artificially kill
+  particles below this kinetic energy in the collimator. This is useful to match other simulations
+  where collimators can be assumed to be infinite absorbers. If this behaviour is required, the
+  user should specify an energy greater than the total beam energy.
+* All collimators can be made infinite absorbers with the general option
+  :code:`collimatorsAreInfiniteAbsorbers` (see :ref:`options-tracking`).
+
+Examples: ::
+
+   ! standard
+   col: jcoltip, l=1.22*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsize=0.1*cm, ysize=5*cm;
+
+   ! two separately specified jaws with tip material
+   j1: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=1.5*cm;
+
+   ! only left jaw with tip
+   j2: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=2*m;
+
 
 degrader
 ^^^^^^^^
@@ -2168,9 +2250,6 @@ Parameters for these components can be specified as either:
 |                              | dipoles                       |              |
 +------------------------------+-------------------------------+--------------+
 | `dipoleOffsetZ`              | Z-positions of dipoles [m]    | List[Float]  |
-+------------------------------+-------------------------------+--------------+
-| `dipoleTolerance`            | Tolerance for dipole          | Float        |
-|                              | bounding box calculations [T] |              |
 +------------------------------+-------------------------------+--------------+
 | `nAbsorbers`                 | Number of absorbers           | Integer      |
 +------------------------------+-------------------------------+--------------+

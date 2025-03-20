@@ -62,7 +62,6 @@ namespace GMAD
     std::list<double>      dipoleFieldStrength;
     std::list<double>      dipoleEngeCoefficient;
     std::list<double>      dipoleOffsetZ;
-    std::list<double>      dipoleTolerance;
 
     int                    nAbsorbers;
     std::list<std::string> absorberType;

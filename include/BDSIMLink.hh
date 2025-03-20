@@ -105,6 +105,21 @@ public:
                            double crystalAngle  = 0,
 			   bool   sampleIn      = false);
 
+    int AddLinkCollimatorTipJaw(const std::string& collimatorName,
+                                const std::string& materialName,
+                                const std::string& tipMaterialName,
+                                double tipThickness,
+                                double length,
+                                double halfApertureLeft,
+                                double halfApertureRight,
+                                double rotation,
+                                double xOffset,
+                                double yOffset,
+                                double jawTiltLeft = 0.0,
+                                double jawTiltRight = 0.0,
+                                bool   buildLeftJaw  = true,
+                                bool   buildRightJaw = true);
+
   BDSHitsCollectionSamplerLink* SamplerHits() const;
   void ClearSamplerHits() {runAction->ClearSamplerHits();}
   

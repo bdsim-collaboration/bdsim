@@ -45,9 +45,9 @@ public:
                        G4double brho);
   virtual ~BDSFieldEMMuonCooler();
 
-  virtual void BuildMagnets(const BDSFieldInfoExtraMuonCooler* info);
-  virtual void BuildDipoles(const BDSFieldInfoExtraMuonCooler* info);
-  virtual void BuildRF(const BDSFieldInfoExtraMuonCooler* info);
+  void BuildMagnets(const BDSFieldInfoExtraMuonCooler* info);
+  void BuildDipoles(const BDSFieldInfoExtraMuonCooler* info);
+  void BuildRF(const BDSFieldInfoExtraMuonCooler* info);
 
   /// Function to get B and E field.
   virtual std::pair<G4ThreeVector, G4ThreeVector> GetField(const G4ThreeVector& position,

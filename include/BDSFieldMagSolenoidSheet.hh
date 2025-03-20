@@ -56,9 +56,7 @@ public:
                            G4bool   strengthIsCurrent,
                            G4double sheetRadius,
                            G4double fullLength,
-                           G4double toleranceIn = 0.0
-                           );
-
+                           G4double toleranceIn = 0.0);
   virtual ~BDSFieldMagSolenoidSheet(){;}
 
   /// Calculate the field value.

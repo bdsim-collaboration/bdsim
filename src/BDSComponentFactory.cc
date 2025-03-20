@@ -27,6 +27,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSCollimatorCrystal.hh"
 #include "BDSCollimatorElliptical.hh"
 #include "BDSCollimatorJaw.hh"
+#include "BDSCollimatorTipJaw.hh"
 #include "BDSCollimatorRectangular.hh"
 #include "BDSColours.hh"
 #include "BDSColourFromMaterial.hh"
@@ -367,6 +368,8 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateComponent(Element const* ele
       {component = CreateTarget(); break;}
     case ElementType::_JCOL:
       {component = CreateJawCollimator(); break;}
+    case ElementType::_JCOLTIP:
+      {component = CreateTipJawCollimator(); break;}
     case ElementType::_MUONCOOLER:
       {component = CreateMuonCooler(); break;}
     case ElementType::_MUONSPOILER:
@@ -468,6 +471,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateComponent(Element const* ele
 	case ElementType::_ECOL:
 	case ElementType::_RCOL:
 	case ElementType::_JCOL:
+  case ElementType::_JCOLTIP:
 	  {
 	    if (BDSGlobalConstants::Instance()->CollimatorsAreInfiniteAbsorbers())
 	      {component->SetMinimumKineticEnergy(std::numeric_limits<double>::max());}
@@ -1516,6 +1520,31 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateJawCollimator()
 			      material,
 			      PrepareVacuumMaterial(element),
 			      PrepareColour(element, material));
+}
+
+BDSAcceleratorComponent* BDSComponentFactory::CreateTipJawCollimator()
+{
+  if (!HasSufficientMinimumLength(element))
+    {return nullptr;}
+  auto collimatorMaterial = PrepareMaterial(element);
+  auto collimatorTipMaterial = PrepareTipMaterial(element);
+  return new BDSCollimatorTipJaw(elementName,
+				 element->l*CLHEP::m,
+				 PrepareHorizontalWidth(element),
+                                 element->xsize*CLHEP::m,
+                                 element->ysize*CLHEP::m,
+                                 element->xsizeLeft*CLHEP::m,
+                                 element->xsizeRight*CLHEP::m,
+                                 element->jawTiltLeft*CLHEP::rad,
+                                 element->jawTiltRight*CLHEP::rad,
+                                 element->tipThickness*CLHEP::m,
+				 true,
+				 true,
+				 collimatorMaterial,
+				 collimatorTipMaterial,
+				 PrepareVacuumMaterial(element),
+				 PrepareColour(element, collimatorMaterial),
+				 PrepareColour(element, collimatorTipMaterial));
 }
 
 BDSAcceleratorComponent* BDSComponentFactory::CreateMuonSpoiler()
@@ -2832,6 +2861,25 @@ G4Material* BDSComponentFactory::PrepareMaterial(Element const* el)
   G4String materialName = el->material;
   if (materialName.empty())
     {throw BDSException(__METHOD_NAME__, "element \"" + el->name + "\" has no material specified.");}
+  else
+    {return BDSMaterials::Instance()->GetMaterial(materialName);}
+}
+
+G4Material* BDSComponentFactory::PrepareTipMaterial(Element const* el,
+                                                    const G4String& defaultMaterialName)
+{
+  G4String materialName = el->tipMaterial;
+  if (materialName.empty())
+    {return BDSMaterials::Instance()->GetMaterial(defaultMaterialName);}
+  else
+    {return BDSMaterials::Instance()->GetMaterial(materialName);}
+}
+
+G4Material* BDSComponentFactory::PrepareTipMaterial(Element const* el)
+{
+  G4String materialName = el->tipMaterial;
+  if (materialName.empty())
+    {throw BDSException(__METHOD_NAME__, "element \"" + el->name + "\" has no tip material specified.");}
   else
     {return BDSMaterials::Instance()->GetMaterial(materialName);}
 }
