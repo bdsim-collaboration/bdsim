@@ -532,6 +532,7 @@ The function is described by the :code:`type` parameter which can be one of the 
 * :code:`sint` - sinusoid as a function of (local) time
 * :code:`singlobal` - sinusoid as a function of (global) time with no synchronous offset in time
 * :code:`tophatt` - a top hat function as a function of time
+* :code:`lineart` - similar to top hat but function depends linearly on time
 
 Each is described below.
 
@@ -594,6 +595,31 @@ It is described by the equation:
 | `T1`               | Global time for 'off'                    | Yes           | 0            | s          |
 +--------------------+------------------------------------------+---------------+--------------+------------+
 | `amplitudeScale`   | Multiplier of scale                      | No            | 1            | None       |
++--------------------+------------------------------------------+---------------+--------------+------------+
+
+
+**lineart**
+
+A function that depends linearly on time inside a time window and is 0 everywhere else in time.
+It is described by the equation:
+
+.. math::
+
+    factor &= \textrm{amplitudeScale} * t + \textrm{amplitudeOffset} \quad \textrm{if} \quad T0 <= T <= T1 \\
+    factor &= 0 \quad \textrm{otherwise} \\
+
+
+
++--------------------+------------------------------------------+---------------+--------------+------------+
+| **Parameter**      | **Description**                          | **Required**  | **Default**  | **Units**  |
++====================+==========================================+===============+==============+============+
+| `T0`               | Global starting time for 'on'            | Yes           | 0            | s          |
++--------------------+------------------------------------------+---------------+--------------+------------+
+| `T1`               | Global time for 'off'                    | Yes           | 0            | s          |
++--------------------+------------------------------------------+---------------+--------------+------------+
+| `amplitudeScale`   | Multiplier of scale                      | No            | 0            | 1/s        |
++--------------------+------------------------------------------+---------------+--------------+------------+
+| `amplitudeOffset`  | Offset of numerical factor               | No            | 1            | None       |
 +--------------------+------------------------------------------+---------------+--------------+------------+
 
 

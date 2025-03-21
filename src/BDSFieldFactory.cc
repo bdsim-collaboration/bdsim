@@ -93,6 +93,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSMagnetType.hh"
 #include "BDSModulator.hh"
 #include "BDSModulatorInfo.hh"
+#include "BDSModulatorLinearT.hh"
 #include "BDSModulatorSinT.hh"
 #include "BDSModulatorTopHatT.hh"
 #include "BDSModulatorType.hh"
@@ -409,10 +410,11 @@ void BDSFieldFactory::PrepareModulatorDefinitions(const std::vector<GMAD::Modula
       BDSModulatorInfo* info = new BDSModulatorInfo(modulatorType,
                                                     frequency,
                                                     phase,
+                                                    definition.tOffset * CLHEP::s,
                                                     definition.amplitudeScale,
                                                     definition.amplitudeOffset,
-                                                    definition.T0,
-                                                    definition.T1);
+                                                    definition.T0 * CLHEP::s,
+                                                    definition.T1 * CLHEP::s);
       info->nameOfParserDefinition = definition.name;
       parserModulatorDefinitions[G4String(definition.name)] = info;
     }
@@ -1313,6 +1315,14 @@ BDSModulator* BDSFieldFactory::CreateModulator(const BDSModulatorInfo* modulator
     {
       switch (modulatorRecipe->modulatorType.underlying())
         {
+        case BDSModulatorType::lineart:
+          {
+            result = new BDSModulatorLinearT(modulatorRecipe->T0,
+                                             modulatorRecipe->T1,
+                                             modulatorRecipe->scale,
+                                             modulatorRecipe->amplitudeOffset);
+            break;
+          }
         case BDSModulatorType::sint:
           {
             result = new BDSModulatorSinT(modulatorRecipe->frequency,
