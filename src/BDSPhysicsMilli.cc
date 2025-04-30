@@ -27,11 +27,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4LossTableManager.hh"
 #include "G4EmParameters.hh"
 #include "G4PhysicsListHelper.hh"
-#include "G4AutoDelete.hh"
 #include "G4Version.hh"
 #include "G4BuilderType.hh"
 
-#include "G4hIonisation.hh"
+//#include "G4CoulombScattering.hh"
 #include "G4hMultipleScattering.hh"
 #include "G4WentzelVIModel.hh"
 #include "G4ProcessManager.hh"
@@ -40,10 +39,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 BDSPhysicsMilli::BDSPhysicsMilli(const G4String&, G4int ver): G4VPhysicsConstructor("G4millicharged"), verbose(ver)
 {
     G4EmParameters* param = G4EmParameters::Instance();
-    //param->SetDefaults();
+    param->SetDefaults();
     param->SetVerbose(verbose);
-    //param->SetMinEnergy(100*eV);
-    //param->SetMaxEnergy(10*TeV);
+    param->SetMinEnergy(100*eV);
+    param->SetMaxEnergy(10*TeV);
     //param->SetLowestElectronEnergy(10*eV);
     //param->SetNumberOfBinsPerDecade(20);
     //param->ActivateAngularGeneratorForIonisation(true);
@@ -65,26 +64,14 @@ void BDSPhysicsMilli::ConstructParticle()
 
 void BDSPhysicsMilli::ConstructProcess()
 {
-    G4double mass = BDSGlobalConstants::Instance()->millichargeMass();
-    G4double emin = mass/20000.;
-    if(emin < keV) { emin = keV; }
-    G4double emax = std::max(10.*TeV, mass*100);
-    G4int nbin = G4lrint(10*std::log10(emax/emin));
-    G4double energyLimit = 1.*MeV;
-
-    G4hIonisation* hIoni = nullptr;
-    hIoni = new G4hIonisation();
-    hIoni->SetDEDXBinning(nbin);
-    hIoni->SetMinKinEnergy(emin);
-    hIoni->SetMaxKinEnergy(emax);
-    G4AutoDelete::Register(hIoni);
+    //G4CoulombScattering* hCoul = nullptr;
+    //hCoul = new G4CoulombScattering();
 
     G4hMultipleScattering* hMpl = nullptr;
     hMpl = new G4hMultipleScattering();
-
     G4WentzelVIModel* modelmpl = nullptr;
     modelmpl = new G4WentzelVIModel();
-    modelmpl->SetActivationLowEnergyLimit(energyLimit);
+    modelmpl->SetActivationLowEnergyLimit(1.*MeV);
     hMpl->SetEmModel(modelmpl, 1);
 
     G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
@@ -99,13 +86,9 @@ void BDSPhysicsMilli::ConstructProcess()
         G4ParticleDefinition* particle = aParticleIterator->value();
         G4String particleName = particle->GetParticleName();
 
-        if(particleName == "e+")
-        //if(particleName == BDSGlobalConstants::Instance()->millichargeName())
+        if(particleName == BDSGlobalConstants::Instance()->millichargeName())
         {
-            ph->RegisterProcess(hIoni, particle);
-            G4ProcessManager* pManager = particle->GetProcessManager();
-            pManager->AddProcess(hIoni,-1,2,2);
-
+            //ph->RegisterProcess(hCoul, particle);
             ph->RegisterProcess(hMpl, particle);
             ph->RegisterProcess(new G4StepLimiter(), particle);
             continue;

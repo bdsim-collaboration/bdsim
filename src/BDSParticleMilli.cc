@@ -54,14 +54,16 @@ ParticleMilli* ParticleMilli::Definition()
 
         anInstance = new G4ParticleDefinition(
                 name,       mass*MeV,     0.0*MeV,    charge*eplus,
-                0,            0,           0,
+                1,            0,           0,
                 0,          0,         0,
                 "fermion",    0,           0,         pdgID,
                 true,        -1.0,       NULL,
                 false,    "none"
         );
 
-        anInstance->SetPDGMagneticMoment(0);
+        // mag_moment = 0.5 * g * q * h_bar * spin / m_q
+        //G4double muB =  0.5 * 2.0023 * charge * eplus * CLHEP::hbar_Planck * CLHEP::c_squared/mass*MeV;
+        //anInstance->SetPDGMagneticMoment(muB);
     }
     theInstance = reinterpret_cast<ParticleMilli*>(anInstance);
     return theInstance;
