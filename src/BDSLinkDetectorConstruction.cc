@@ -122,7 +122,7 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 						   GMAD::ElementType::_ELEMENT};
       auto search = acceptedTypes.find(eType);
       if (search == acceptedTypes.end())
-	{throw BDSException(G4String("Unsupported element type for link = " + GMAD::typestr(eType)));}
+        {throw BDSException(G4String("Unsupported element type for link = " + GMAD::typestr(eType)));}
 
       // Only need first argument, the rest pertain to beamlines.
       BDSAcceleratorComponent* component = componentFactory->CreateComponent(&element,
