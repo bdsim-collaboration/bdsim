@@ -24,6 +24,10 @@ to maintain the expected high quality of the code.
 
 * For models with acceleration, the rigidity and synchronous time are now calculated
   along the beamline and pre-calculated **scaling factors are no longer needed**.
+* For any linked code, using the BDSIMLink interface, all particles are now accepted
+  into the simulation and all particles are sent back. The :code:`protonsAndIonsOnly`
+  Boolean flag still works, but by default is false. Any linked tracking code must now
+  filter the particles they can handle themselves.
 
 
 New Features
