@@ -224,7 +224,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
   G4bool isACrystal = searchC != collimatorToCrystal.end();
   if (!isACrystal && isACrystalIn)
     {throw BDSException("BDSLinkDetectorConstruction", "no matching crystal name found but it is flagged as a crystal in input");}
-  G4cout << "XYZ isACrystal " << isACrystal << G4endl;
+  //G4cout << "XYZ isACrystal " << isACrystal << G4endl;
   if (isACrystal)
     {G4cout << "crystal name " << searchC->first << " " << searchC->second << G4endl;}
 
@@ -293,7 +293,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
           el.crystalAngleYAxisRight = crystalAngle + 0.5 * ci->bendingAngleYAxis;
         }
       
-      G4cout << "XYZKEY Crystal angle " << crystalAngle << G4endl;
+      G4cout << "Crystal angle " << crystalAngle << G4endl;
       G4cout << "xsizeLeft     " << el.xsizeLeft << G4endl;
       G4cout << "xsizeRight    " << el.xsizeRight << G4endl;
       G4cout << "l crystal angle " << el.crystalAngleYAxisLeft << G4endl;
