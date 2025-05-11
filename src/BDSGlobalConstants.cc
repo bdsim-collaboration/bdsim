@@ -153,7 +153,7 @@ BDSGlobalConstants::BDSGlobalConstants(const GMAD::Options& opt):
   if (StoreMinimalData())
     {
       G4cout << "\nGlobal option> storing minimal data\n" << G4endl;
-      // these options are made with respect to the defaults in parser/optionsBase.cc - i.e. no need ot set false
+      // these options are made with respect to the defaults in parser/optionsBase.cc - i.e. no need to set false
       // for a default that is false -> saves code
       // the one on the right MUST be the one returned by this class in the getter function in the header
       auto& o = options;
@@ -172,10 +172,10 @@ BDSGlobalConstants::BDSGlobalConstants(const GMAD::Options& opt):
         {"storeEventLevelMeshes",              &o.storeEventLevelMeshes}
         };
       for (auto& no : otc)
-	{
-	  if (!options.HasBeenSet(no.first))
-	    {*no.second = false;}
-	}
+        {
+          if (!options.HasBeenSet(no.first))
+            {*no.second = false;}
+        }
       // try again for options that have multiple versions and check if any are set
       // even though there's only one member bool we turn on / off in the options
       std::map<std::set<std::string>, bool*> otcMultiple = {
@@ -187,13 +187,13 @@ BDSGlobalConstants::BDSGlobalConstants(const GMAD::Options& opt):
         {{"storePrimaries", "writePrimaries"},             &o.storePrimaries},
       };
       for (auto& no : otcMultiple)
-	{
-	  bool hasBeenSet = false;
-	  for (auto& op : no.first)
-	    {hasBeenSet = hasBeenSet || options.HasBeenSet(op);}
-	  if (!hasBeenSet)
-	    {*no.second = false;}
-	}
+        {
+          bool hasBeenSet = false;
+          for (auto& op : no.first)
+            {hasBeenSet = hasBeenSet || options.HasBeenSet(op);}
+          if (!hasBeenSet)
+            {*no.second = false;}
+        }
     }
   
   // TBC
