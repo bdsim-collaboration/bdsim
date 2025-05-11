@@ -55,7 +55,33 @@ These are discussed each in:
 See :ref:`basic-data-inspection` for how to view the data and make the most basic
 on-the-fly histograms.
 
-Strategies on the workflow and use of the tools is discussed in :ref:`output-analysis-efficiency`.
+The typical workflow is shown in the following section. Strategies on parallelising the workflow and use of the
+tools is discussed in :ref:`output-analysis-efficiency`.
+
+
+Typical Workflow
+================
+
+The basic workflow of using BDSIM and tools is shown in the figure below.
+
+.. figure:: figures/workflow.pdf
+            :width: 100%
+            :align: center
+
+            Schematic of typical workflow using BDSIM. The top version shows generating
+            a raw output file and then analysing it with rebdsim. The bottom version shows
+            the simpler version where only pre-made histograms in the raw file are merged.
+
+The most common workflow is:
+
+1) Prepare input model in gmad text file.
+2) Run BDSIM with the gmad file, which produces a ROOT output file with the 'raw' layout.
+3) Write an analysis.txt file for REBDSIM that specifies which histograms to make
+4) Run REBDSIM on the raw data using the analysis.txt
+5) Load the histograms in ipython using our pybdsim library and make plots with matplotlib.
+
+Optionally, just the pre-made histograms can be merged and viewed.
+
 
 .. _output-analysis-setup:
 
