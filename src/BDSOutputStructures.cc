@@ -92,14 +92,14 @@ BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
   modelOutput   = new BDSOutputROOTEventModel(storeCollimatorInfo, storeCavityInfo);
 
   eLoss       = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
-					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+                                           storeGlobal, storeTime, storeStepLength,
+                                           storePreStepKineticEnergy, storeELPhysics);
   eLossVacuum = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
-					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+                                           storeGlobal, storeTime, storeStepLength,
+                                           storePreStepKineticEnergy, storeELPhysics);
   eLossTunnel = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
-					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+                                           storeGlobal, storeTime, storeStepLength,
+                                           storePreStepKineticEnergy, storeELPhysics);
   eLossWorld         = new BDSOutputROOTEventLossWorld();
   eLossWorldExit     = new BDSOutputROOTEventLossWorld();
   eLossWorldContents = new BDSOutputROOTEventLossWorld();
@@ -245,19 +245,19 @@ void BDSOutputStructures::Fill3DHistogram(G4int    histoId,
 }
 
 G4int BDSOutputStructures::Create4DHistogram(const G4String& name,
-					     const G4String& title,
-					     const G4String& eScale,
-					     const std::vector<double>& eBinsEdges,
-					     G4int nBinsX, G4double xMin, G4double xMax,
-					     G4int nBinsY, G4double yMin, G4double yMax,
-					     G4int nBinsZ, G4double zMin, G4double zMax,
-					     G4int nBinsE, G4double eMin, G4double eMax)
+                                             const G4String& title,
+                                             const G4String& eScale,
+                                             const std::vector<double>& eBinsEdges,
+                                             G4int nBinsX, G4double xMin, G4double xMax,
+                                             G4int nBinsY, G4double yMin, G4double yMax,
+                                             G4int nBinsZ, G4double zMin, G4double zMax,
+                                             G4int nBinsE, G4double eMin, G4double eMax)
 {
   G4int result = evtHistos->Create4DHistogram(name, title, eScale, eBinsEdges,
-					      nBinsX, xMin, xMax,
-					      nBinsY, yMin, yMax,
-					      nBinsZ, zMin, zMax,
-					      nBinsE, eMin, eMax);
+                                              nBinsX, xMin, xMax,
+                                              nBinsY, yMin, yMax,
+                                              nBinsZ, zMin, zMax,
+                                              nBinsE, eMin, eMax);
   TH1* eh = evtHistos->Get4DHistogram(result);
   HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
   EventRunHist erh = {eh, {}, acc};
@@ -312,43 +312,43 @@ void BDSOutputStructures::InitialiseSamplers()
       for (const auto& samplerName : sNames)
         {
 #ifndef __ROOTDOUBLE__
-	  BDSOutputROOTEventSampler<float>*  res = new BDSOutputROOTEventSampler<float>(samplerName);
+          BDSOutputROOTEventSampler<float>*  res = new BDSOutputROOTEventSampler<float>(samplerName);
 #else
-	  BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
+          BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
 #endif
-	  samplerTrees.push_back(res);
-	  samplerNames.push_back(samplerName);
+          samplerTrees.push_back(res);
+          samplerNames.push_back(samplerName);
         }
       const auto planeIDs = samplerRegistry->GetSamplerIDsPlane();
       G4int i = 0;
       for (const auto& ID : planeIDs)
-	{samplerIDToIndexPlane[ID] = i; i++;}
+        {samplerIDToIndexPlane[ID] = i; i++;}
       
       // cylindrical samplers
       const auto scNames = samplerRegistry->GetUniqueNamesCylinder();
       samplerCTrees.reserve(scNames.size());
       for (const auto& samplerName : scNames)
         {
-	  samplerCTrees.emplace_back(new BDSOutputROOTEventSamplerC(samplerName));
-	  samplerCNames.emplace_back(samplerName);
+          samplerCTrees.emplace_back(new BDSOutputROOTEventSamplerC(samplerName));
+          samplerCNames.emplace_back(samplerName);
         }
       const auto cylinderIDs = samplerRegistry->GetSamplerIDsCylinder();
       i = 0;
       for (const auto& ID : cylinderIDs)
-	{samplerIDToIndexCylinder[ID] = i; i++;}
+        {samplerIDToIndexCylinder[ID] = i; i++;}
       
       // spherical samplers
       const auto ssNames = samplerRegistry->GetUniqueNamesSphere();
       samplerSTrees.reserve(ssNames.size());
       for (const auto& samplerName : ssNames)
         {
-	  samplerSTrees.emplace_back(new BDSOutputROOTEventSamplerS(samplerName));
-	  samplerSNames.emplace_back(samplerName);
+          samplerSTrees.emplace_back(new BDSOutputROOTEventSamplerS(samplerName));
+          samplerSNames.emplace_back(samplerName);
         }
       const auto sphereIDs = samplerRegistry->GetSamplerIDsSphere();
       i = 0;
       for (const auto& ID : sphereIDs)
-	{samplerIDToIndexSphere[ID] = i; i++;}
+        {samplerIDToIndexSphere[ID] = i; i++;}
     }
 }
 
@@ -385,16 +385,16 @@ void BDSOutputStructures::InitialiseMaterialMap()
       
       auto search = nameCount.find(matName);
       if (search != nameCount.end())
-	{
-	  search->second += 1;
-	  matNameUnique = matName + std::to_string(search->second);
-	  matToUniqueName[mat] = matNameUnique;
-	}
+        {
+          search->second += 1;
+          matNameUnique = matName + std::to_string(search->second);
+          matToUniqueName[mat] = matNameUnique;
+        }
       else
-	{
-	  nameCount[matName] = 0;
-	  matToUniqueName[mat] = matName;
-	}
+        {
+          nameCount[matName] = 0;
+          matToUniqueName[mat] = matName;
+        }
       sortingMap[std::make_pair(matNameUnique, mat->GetDensity())] = mat;
     }
   
@@ -413,16 +413,16 @@ G4int BDSOutputStructures::UpdateSamplerStructures()
   for (auto const& samplerName : BDSSamplerRegistry::Instance()->GetUniqueNames())
     {// only put it in if it doesn't exist already
       if (std::find(samplerNames.begin(), samplerNames.end(), samplerName) == samplerNames.end())
-	{
-	  result++;
+        {
+          result++;
 #ifndef __ROOTDOUBLE__
-	  BDSOutputROOTEventSampler<float>* res = new BDSOutputROOTEventSampler<float>(samplerName);
+          BDSOutputROOTEventSampler<float>* res = new BDSOutputROOTEventSampler<float>(samplerName);
 #else
-	  BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
+          BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
 #endif
-	  samplerTrees.push_back(res);
-	  samplerNames.push_back(samplerName);
-	}
+          samplerTrees.push_back(res);
+          samplerNames.push_back(samplerName);
+        }
     }
   /// TBC - does not do cylinder or spheres
   return result;
@@ -494,7 +494,7 @@ void BDSOutputStructures::InitialiseCollimators()
     {
       localCollimatorsInitialised = true;
       for (int i = 0; i < (int)collimatorIndices.size(); i++)
-	{collimators.push_back(new BDSOutputROOTEventCollimator());}
+        {collimators.push_back(new BDSOutputROOTEventCollimator());}
     }
 }
 
