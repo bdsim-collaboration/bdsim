@@ -280,14 +280,7 @@ void BDSOutputStructures::HistogramMarkEndOfEvent()
 void BDSOutputStructures::TerminateRunHistogramAccumulators()
 {
   for (G4int i = 0; i < (G4int)eventAndRunHistos1D.size(); i++)
-    {
-    // TO REMOVE
-       auto h = evtHistos->histograms1D[i];
-       for (auto j = 0; j < h->GetNcells(); j++)
-       {G4cout << h->GetBinContent(j) << " ";}
-       G4cout << G4endl;
-    // TO HERE
-    runHistos->histograms1D.push_back(dynamic_cast<TH1D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
+    {runHistos->histograms1D.push_back(dynamic_cast<TH1D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
   for (G4int i = 0; i < (G4int)eventAndRunHistos2D.size(); i++)
     {runHistos->histograms2D.push_back(dynamic_cast<TH2D*>(eventAndRunHistos2D[i].runAccumulator->Terminate()));}
   for (G4int i = 0; i < (G4int)eventAndRunHistos3D.size(); i++)
