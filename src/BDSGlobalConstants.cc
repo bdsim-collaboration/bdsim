@@ -153,9 +153,8 @@ BDSGlobalConstants::BDSGlobalConstants(const GMAD::Options& opt):
   if (StoreMinimalData())
     {
       G4cout << "\nGlobal option> storing minimal data\n" << G4endl;
-      // these options are made with respect to the defaults in parser/optionsBase.cc - i.e. no need to set false
-      // for a default that is false -> saves code
-      // the one on the right MUST be the one returned by this class in the getter function in the header
+      // only set to false options that are not already false by default in optionsBase.cc
+      // the variable on the right MUST be the one returned by this class in the getter function in the header
       auto& o = options;
       std::map<std::string, bool*> otc = {
         {"storeApertureImpacts",               &o.storeApertureImpacts},
