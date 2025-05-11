@@ -655,7 +655,7 @@ Variable bin widths in histograms may also be used. These may be used in one or 
 in combination with logarithmic binning. Uneven binning is specified by supplying a text file
 with a single column of **bin edges** per dimension. These are the lower bin edges as well as the
 upper most one. Therefore, at least **2** bin edges are required to define the minimum 1 bin. e.g.
-a histogram with 1 single bin of width 2 centred at 3 would be defined by a text file containing
+a histogram with 1 single bin of width 2 centered at 3 would be defined by a text file containing
 the 2 lines: ::
 
   1.0
@@ -1639,3 +1639,48 @@ The mean is calculated as:
 .. math::
 
    \mathrm{for}~ i~ [1\, ... \,n_{rebdsim\, files}]
+
+
+
+On-The-Fly Averaging of Histograms
+----------------------------------
+
+BDSIM, by default, does not store the per-event 3D mesh histograms as they use a lot of disk space.
+Additionally, the per-event mean of any 1D, 2D, and 3D histograms that are pre-made by BDSIM are
+calculated during the simulation run. The "run" histogram at the end is the average across all
+events.
+
+For efficiency, only the bins that were filled during that event are accumulated. For 2D and 3D
+histograms (i.e. scoring meshes), only a small fraction of the bins are filled and this gives a
+significant performance improvement. At the end of the run, each bin is averaged with N zero entries
+for the events that bin was not filled. This gives a numerically identical result for the mean and
+variance of a given bin across all events as if they were accumulated (even if zero contents).
+
+Practically, two features are implemented to do this. Firstly, when each ROOT histogram is filled,
+the global bin index (in ROOT's numbering scheme) is recorded in a set, which avoids repeated
+bin indices. These are the then the only bins that will be accumulated into the run average at
+the end of the event. Secondly, a duplicate histogram is created where either a 1 or a 0 is filled for the
+whole event marking it was filled at all or not (even if multiple entries). At the end of the run
+the number of event zeros to average into that bin is :math:`N_{\mathrm{events}} - N_{\mathrm{events~filled}}`.
+
+The final mean and variance are calculated using a modified version of the above merging algorithm.
+
+.. math::
+   
+   \delta &= 0 - \bar{x}_{\mathrm{filled~only}}\\
+   \bar{x}_{\mathrm{final}} &= \bar{x}_{\mathrm{filled~only}} + n_{zeros}\frac{\delta}{n_{\mathrm{filled~only}} + n_{\mathrm{zeros}}}
+
+
+.. math::
+   
+   Var\,(x)_{\mathrm{final}} = Var\,(x)_{\mathrm{filled~only}} + 0 + (n_{\mathrm{filled~only}}\,n_{\mathrm{zeros}} \frac{\delta^{2}}{n_{\mathrm{filled~only}} + n_{\mathrm{zeros}}})
+
+
+In the traditional analysis, every bin must be accumulated for every event meaning a lot of repeated looping
+over the bins, which is time consuming. Doing this on-the-fly reduces the computation time and we can
+afford to not store by default the per-event histograms, saving disk space. All whilst giving a numerically
+identical result.
+
+It is not possible to do this for user-supplied histogram definitions such as those given to rebdsim as
+we require ROOT's ability to loop over the stored data in an event as read from the TTree. This is not
+possible do without first writing the tree then reading it again.
