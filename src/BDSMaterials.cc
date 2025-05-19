@@ -1263,6 +1263,13 @@ void BDSMaterials::ListMaterials() const
   G4cout << G4endl;
   G4cout << "Available NIST materials are:" << G4endl;
   G4NistManager::Instance()->ListMaterials("all");
+
+  if (!externalMaterialNames.empty())
+    {
+      G4cout << "Loaded materials from external geometry:" << G4endl;
+      for (auto &mat: externalMaterialNames)
+        {G4cout << mat << G4endl;}
+    }
   G4cout.flags(flagsCache);
 }
 
