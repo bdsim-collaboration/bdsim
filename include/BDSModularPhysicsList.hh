@@ -201,6 +201,7 @@ private:
   void SynchRad();
 #if G4VERSION_NUMBER > 1019
   void EmGS();
+  void DNAChemistry();
 #endif
 #if G4VERSION_NUMBER > 1020
   void DecaySpin();

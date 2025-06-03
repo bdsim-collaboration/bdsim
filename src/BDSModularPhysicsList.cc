@@ -94,6 +94,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #if G4VERSION_NUMBER > 1019
 #include "G4EmStandardPhysicsGS.hh"
+#include "G4EmDNAChemistry.hh"
 #endif
 
 #if G4VERSION_NUMBER > 1020
@@ -222,6 +223,7 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   physicsConstructors.insert(std::make_pair("synch_rad",              &BDSModularPhysicsList::SynchRad));
 #if G4VERSION_NUMBER > 1019
   physicsConstructors.insert(std::make_pair("em_gs",                  &BDSModularPhysicsList::EmGS));
+  physicsConstructors.insert(std::make_pair("dna_chemistry",          &BDSModularPhysicsList::DNAChemistry));
 #endif
 #if G4VERSION_NUMBER > 1020
   physicsConstructors.insert(std::make_pair("decay_spin",             &BDSModularPhysicsList::DecaySpin));
@@ -1062,6 +1064,16 @@ void BDSModularPhysicsList::EmGS()
       constructors.push_back(new G4EmStandardPhysicsGS());
       physicsActivated["em_gs"] = true;
     }
+}
+
+void BDSModularPhysicsList::DNAChemistry()
+{
+  ConstructAllLeptons();
+  if (!physicsActivated["dna_chemistry"])
+  {
+    constructors.push_back(new G4EmDNAChemistry());
+    physicsActivated["em_gs"] = true;
+  }
 }
 #endif
 
