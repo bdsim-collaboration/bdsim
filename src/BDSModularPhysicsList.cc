@@ -282,6 +282,10 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["annihi_to_mumu"] = {"em_extra"};
   incompatible["muon"] = {"em_extra"};
   incompatible["muon_inelastic"] = {"em_extra", "muon"};
+  incompatible["dna_chemistry"]    = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_chemistry_1"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry",   "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_chemistry_2"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry",   "dna_chemistry_3"};
+  incompatible["dna_chemistry_3"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry"};
   incompatible["em"]     = {"em_ss", "em_wvi", "em_1",   "em_2", "em_3", "em_4"};
   incompatible["em_ss"]  = {"em",    "em_wvi", "em_1",   "em_2", "em_3", "em_4"};
   incompatible["em_wvi"] = {"em",    "em_ss",  "em_1",   "em_2", "em_3", "em_4"};
@@ -1080,12 +1084,21 @@ void BDSModularPhysicsList::EmGS()
 
 void BDSModularPhysicsList::DNAChemistry()
 {
-  ConstructAllLeptons();
   if (!physicsActivated["dna_chemistry"])
-  {
-    constructors.push_back(new G4EmDNAChemistry());
-    physicsActivated["em_gs"] = true;
-  }
+    {
+      // only one DNA chemistry physics list possible
+      if (temporaryName == "dna_chemistry")
+        {constructors.push_back(new G4EmDNAChemistry());}
+#if G4VERSION_NUMBER > 1069
+      else if (temporaryName == "dna_chemistry_1")
+        {constructors.push_back(new G4EmDNAChemistry_option1());}
+      else if (temporaryName == "dna_chemistry_2")
+        {constructors.push_back(new G4EmDNAChemistry_option2());}
+      else if (temporaryName == "dna_chemistry_3")
+        {constructors.push_back(new G4EmDNAChemistry_option3());}
+#endif
+      physicsActivated["dna_chemistry"] = true;
+    }
 }
 #endif
 

@@ -1,0 +1,12 @@
+c1: rcol, l=20*cm, outerDiameter=20*cm, material="water";
+
+l1: line = (c1);
+
+use, l1;
+
+option, physicsList="dna_chemistry";
+
+option, checkOverlaps=1;
+
+beam, particle="e-",
+      energy=520*keV;
