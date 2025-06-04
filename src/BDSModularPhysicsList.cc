@@ -789,6 +789,7 @@ void BDSModularPhysicsList::FTFPBERTHP()
 
 void BDSModularPhysicsList::FTFBIC()
 {
+  ConstructAllLeptons();
   if (!physicsActivated["ftf_bic"])
   {
     constructors.push_back(new G4HadronPhysicsFTF_BIC());
@@ -1158,6 +1159,8 @@ void BDSModularPhysicsList::IonPHP()
 void BDSModularPhysicsList::DecayMuonicAtom()
 {
   ConstructAllLeptons();
+  ConstructAllBaryons();
+  ConstructAllMesons();
 #if G4VERSION_NUMBER > 1059
   ConstructAllIons();
 #endif
