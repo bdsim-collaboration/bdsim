@@ -19,6 +19,7 @@ simple_testing(physics-em-3                   "--file=em_3.gmad"                
 simple_testing(physics-em-4                   "--file=em_4.gmad"                   ${OVERLAP_CHECK})
 simple_testing(physics-ftfp-bert              "--file=ftfp_bert.gmad"              ${OVERLAP_CHECK})
 simple_testing_long(physics-ftfpberthp        "--file=ftfp_bert_hp.gmad"           ${OVERLAP_CHECK})
+simple_testing(physics-ftf-bic                "--file=ftf_bic.gmad"                ${OVERLAP_CHECK})
 simple_testing(physics-g4-ftfp-bert           "--file=g4FTFP_BERT.gmad"            ${OVERLAP_CHECK})
 simple_testing(physics-g4-qbbc                "--file=g4QBBC.gmad"                 ${OVERLAP_CHECK})
 simple_testing(physics-gamma-to-mumu          "--file=gamma_to_mumu.gmad"          ${OVERLAP_CHECK})

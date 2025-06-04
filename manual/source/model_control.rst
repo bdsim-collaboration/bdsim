@@ -1869,6 +1869,10 @@ Examples: ::
 | ftfp_bert_hp                 | Similar to `FTFP_BERT`, but with the high precision neutron package.   |
 |                              | This is provided by `G4HadronPhysicsFTFP_BERT_HP`.                     |
 +------------------------------+------------------------------------------------------------------------+
+| ftf_bic                      | Similar to `ftfp_bert`, but with the binary cascade for various        |
+|                              | particles - see Geant4 for which particles and which transition        |
+|                              | energies. Uses `G4HadronPhysicsFTF_BIC`.                               |
++------------------------------+------------------------------------------------------------------------+
 | gamma_to_mumu                | Only gamma to a muon pair for gammas is registered.                    |
 +------------------------------+------------------------------------------------------------------------+
 | hadronic_elastic             | Elastic hadronic processes. This is provided by                        |

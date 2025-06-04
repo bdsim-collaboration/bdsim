@@ -71,6 +71,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4HadronHElasticPhysics.hh"
 #include "G4HadronPhysicsFTFP_BERT.hh"
 #include "G4HadronPhysicsFTFP_BERT_HP.hh"
+#include "G4HadronPhysicsFTF_BIC.hh"
 #include "G4HadronPhysicsQGSP_BERT.hh"
 #include "G4HadronPhysicsQGSP_BERT_HP.hh"
 #include "G4HadronPhysicsQGSP_BIC.hh"
@@ -195,6 +196,7 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   physicsConstructors.insert(std::make_pair("em_4",                   &BDSModularPhysicsList::Em4));
   physicsConstructors.insert(std::make_pair("ftfp_bert",              &BDSModularPhysicsList::FTFPBERT));
   physicsConstructors.insert(std::make_pair("ftfp_bert_hp",           &BDSModularPhysicsList::FTFPBERTHP));
+  physicsConstructors.insert(std::make_pair("ftf_bic",                &BDSModularPhysicsList::FTFBIC));
   physicsConstructors.insert(std::make_pair("gamma_to_mumu",          &BDSModularPhysicsList::GammaToMuMu));
   physicsConstructors.insert(std::make_pair("hadronic_elastic",       &BDSModularPhysicsList::HadronicElastic));
   physicsConstructors.insert(std::make_pair("hadronic_elastic_d",     &BDSModularPhysicsList::HadronicElasticD));
@@ -289,8 +291,9 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["em_4"]   = {"em",    "em_ss",  "em_wvi", "em_1", "em_2", "em_3"};
   incompatible["em_livermore"] = {"em_livermore_polarised"};
   incompatible["em_extra"] = {"muon", "muon_inelastic"};
-  incompatible["ftfp_bert"]    = {"ftfp_bert_hp", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
-  incompatible["ftfp_bert_hp"] = {"ftfp_bert",    "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
+  incompatible["ftfp_bert"]    = {"ftfp_bert_hp", "ftf_bic", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
+  incompatible["ftfp_bert_hp"] = {"ftfp_bert",    "ftf_bic", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
+  incompatible["ftf_bic"]      = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
   incompatible["gamma_to_mumu"] = {"em_extra"};
   incompatible["hadronic_elastic"]      = {"hadronic_elastic_d", "hadronic_elastic_h", "hadronic_elastic_hp", "hadronic_elastic_lend", "hadronic_elastic_xs"};
   incompatible["hadronic_elastic_d"]    = {"hadronic_elastic",   "hadronic_elastic_h", "hadronic_elastic_hp", "hadronic_elastic_lend", "hadronic_elastic_xs"};
@@ -300,10 +303,10 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["hadronic_elastic_xs"]   = {"hadronic_elastic",   "hadronic_elastic_d", "hadronic_elastic_h",  "hadronic_elastic_hp",   "hadronic_elastic_lend"};
   incompatible["ion_elastic"] = {"ion_elastic_qmd"};
   incompatible["ionisation"] = {"em", "em_ss", "em_1", "em_2", "em_3", "em_4", "em_livermore"};
-  incompatible["qgsp_bert"]    = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert_hp", "qgsp_bic",     "qgsp_bic_hp"};
-  incompatible["qgsp_bert_hp"] = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert",    "qgsp_bic",     "qgsp_bic_hp"};
-  incompatible["qgsp_bic"]     = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic_hp"};
-  incompatible["qgsp_bic_hp"]  = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic"};
+  incompatible["qgsp_bert"]    = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert_hp", "qgsp_bic",     "qgsp_bic_hp"};
+  incompatible["qgsp_bert_hp"] = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bic",     "qgsp_bic_hp"};
+  incompatible["qgsp_bic"]     = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic_hp"};
+  incompatible["qgsp_bic_hp"]  = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic"};
 
 #if G4VERSION_NUMBER > 1019
   for (const auto& name : {"em", "em_ss", "em_wvi", "em_1", "em_2", "em_3", "em_4"})
@@ -755,6 +758,15 @@ void BDSModularPhysicsList::FTFPBERTHP()
       constructors.push_back(new G4HadronPhysicsFTFP_BERT_HP());
       physicsActivated["ftfp_bert_hp"] = true;
     }
+}
+
+void BDSModularPhysicsList::FTFBIC()
+{
+  if (!physicsActivated["ftf_bic"])
+  {
+    constructors.push_back(new G4HadronPhysicsFTF_BIC());
+    physicsActivated["ftf_bic"] = true;
+  }
 }
 
 void BDSModularPhysicsList::GammaToMuMu()

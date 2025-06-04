@@ -173,6 +173,7 @@ private:
   void Em4();
   void FTFPBERT();
   void FTFPBERTHP();
+  void FTFBIC();
   void GammaToMuMu();
   void HadronicElastic();
   void HadronicElasticD();
