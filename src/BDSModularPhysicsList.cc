@@ -130,6 +130,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4OpticalParameters.hh"
 #endif
 
+#if G4VERSION_NUMBER > 1069
+#include "G4EmDNAChemistry_option1.hh"
+#include "G4EmDNAChemistry_option2.hh"
+#include "G4EmDNAChemistry_option3.hh"
+#endif
+
 #if G4VERSION_NUMBER > 1119
 #include "BDSPhysicsXrayReflection.hh"
 #endif
@@ -249,6 +255,11 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   physicsConstructors.insert(std::make_pair("radioactivation",        &BDSModularPhysicsList::Radioactivation));
   physicsConstructors.insert(std::make_pair("shielding_lend",         &BDSModularPhysicsList::ShieldingLEND));
 #endif
+#if G4VERSION_NUMBER > 1069
+  physicsConstructors.insert(std::make_pair("dna_chemistry_1",        &BDSModularPhysicsList::DNAChemistry));
+  physicsConstructors.insert(std::make_pair("dna_chemistry_2",        &BDSModularPhysicsList::DNAChemistry));
+  physicsConstructors.insert(std::make_pair("dna_chemistry_3",        &BDSModularPhysicsList::DNAChemistry));
+#endif
 #if G4VERSION_NUMBER > 1119
   physicsConstructors.insert(std::make_pair("xray_reflection",        &BDSModularPhysicsList::XrayReflection));
 #endif
@@ -282,6 +293,14 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["annihi_to_mumu"] = {"em_extra"};
   incompatible["muon"] = {"em_extra"};
   incompatible["muon_inelastic"] = {"em_extra", "muon"};
+  incompatible["dna"]    = {"dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_1"]  = {"dna",   "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_2"]  = {"dna_1", "dna",   "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_3"]  = {"dna_1", "dna_2", "dna",   "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_4"]  = {"dna_1", "dna_2", "dna_3", "dna",   "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_5"]  = {"dna_1", "dna_2", "dna_3", "dna_4", "dna",   "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_6"]  = {"dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna",   "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_7"]  = {"dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna",   "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
   incompatible["dna_chemistry"]    = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
   incompatible["dna_chemistry_1"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry",   "dna_chemistry_2", "dna_chemistry_3"};
   incompatible["dna_chemistry_2"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry",   "dna_chemistry_3"};
@@ -1151,27 +1170,22 @@ void BDSModularPhysicsList::DNA()
 {
   if (!physicsActivated["dna"])
     {
-      // only one DNA physics list possible
-      if (BDS::StrContains(temporaryName, "option"))
-        {
-          if (BDS::StrContains(temporaryName, "1"))
-            {constructors.push_back(new G4EmDNAPhysics_option1());}
-          if (BDS::StrContains(temporaryName, "2"))
-            {constructors.push_back(new G4EmDNAPhysics_option2());}
-          if (BDS::StrContains(temporaryName, "3"))
-            {constructors.push_back(new G4EmDNAPhysics_option3());}
-          if (BDS::StrContains(temporaryName, "4"))
-            {constructors.push_back(new G4EmDNAPhysics_option4());}
-          if (BDS::StrContains(temporaryName, "5"))
-            {constructors.push_back(new G4EmDNAPhysics_option5());}
-          if (BDS::StrContains(temporaryName, "6"))
-            {constructors.push_back(new G4EmDNAPhysics_option6());}
-          if (BDS::StrContains(temporaryName, "7"))
-            {constructors.push_back(new G4EmDNAPhysics_option7());}
-        }
-      else
+      if (temporaryName == "dna")
         {constructors.push_back(new G4EmDNAPhysics());}
-      
+      else if (temporaryName == "dna_1")
+        {constructors.push_back(new G4EmDNAPhysics_option1());}
+      else if (temporaryName == "dna_2")
+        {constructors.push_back(new G4EmDNAPhysics_option2());}
+      else if (temporaryName == "dna_3")
+        {constructors.push_back(new G4EmDNAPhysics_option3());}
+      else if (temporaryName == "dna_4")
+        {constructors.push_back(new G4EmDNAPhysics_option4());}
+      else if (temporaryName == "dna_5")
+        {constructors.push_back(new G4EmDNAPhysics_option5());}
+      else if (temporaryName == "dna_6")
+        {constructors.push_back(new G4EmDNAPhysics_option6());}
+      else if (temporaryName == "dna_7")
+        {constructors.push_back(new G4EmDNAPhysics_option7());}
       physicsActivated["dna"] = true;
     }
 }
