@@ -29,7 +29,6 @@ to maintain the expected high quality of the code.
   Boolean flag still works, but by default is false. Any linked tracking code must now
   filter the particles they can handle themselves.
 
-
 New Features
 ------------
 
@@ -47,7 +46,6 @@ New Features
   elements.
 * The "rfcavity" field is now "rfpillbox".
 
-
 **General**
 
 * :code:`autoColour=1` now works for all collimators and target elements. If turned on, the
@@ -59,7 +57,6 @@ New Features
 
 * New :code:`ionisation` modular physics list for only the ionisation process for the most
   common particles.
-
 
 
 New Options
@@ -82,6 +79,7 @@ New Options
 General Updates
 ---------------
 
+* Build configuration now requires CMake 3.7 or greater.
 * The interface for custom components has changed due to the new beamline integral class and object.
   The example has been updated accordingly.
 * Internally, beamline elements are now cached based on both their name (basic reuse of components)
