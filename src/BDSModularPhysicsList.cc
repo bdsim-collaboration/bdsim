@@ -175,7 +175,8 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   temporaryName(""),
   opticalPhysics(nullptr),
   emWillBeUsed(false),
-  usingIons(false)
+  usingIons(false),
+  particlesConstructed(false)
 {
   globals = BDSGlobalConstants::Instance();
   
@@ -365,8 +366,11 @@ BDSModularPhysicsList::~BDSModularPhysicsList()
 
 void BDSModularPhysicsList::ConstructParticle()
 {
+  if (particlesConstructed)
+    {return;}
   BDS::ConstructMinimumParticleSet();
   G4VModularPhysicsList::ConstructParticle();
+  particlesConstructed = true;
 }
 
 void BDSModularPhysicsList::ConstructProcess()
