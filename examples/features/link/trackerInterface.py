@@ -28,7 +28,7 @@ class TrackerInterface :
             relativeEnergyCut = 1.0
         minimumKineticEnergy = relativeEnergyCut * referenceKineticEnergy
 
-        self._bds_link.Initialise(py_argv = bdsim_args,
+        self._bds_link.Initialise(argv = bdsim_args,
                                   usualPrintOut = True,
                                   minimumKineticEnergy = minimumKineticEnergy,
                                   protonsAndIonsOnly = False)
@@ -42,7 +42,7 @@ class TrackerInterface :
         particleDefGeant = None
         particleDefintion = None
 
-        if pdf < 1000000000 : # Not an ion
+        if pdg < 1000000000 : # Not an ion
             particleDefGeant = self._particle_table.FindParticle(pdg)
             particleDefinition = bdsim.BDSParticleDefinition(particleDefGeant, 0,
                                                              kineticEnergy, momentum, 1, None);
