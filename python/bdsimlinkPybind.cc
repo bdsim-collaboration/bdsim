@@ -41,7 +41,11 @@ PYBIND11_MODULE(bdsimlink, m) {
                                   usualPrintOut,
                                   minimumKineticEnergy,
                                   protonsAndIonsOnly);
-        })
+        },
+        py::arg("py_argv"),
+        py::arg("usualPrintOut") = TRUE,
+        py::arg("minimumKineticEnergy") = 0,
+        py::arg("protonsAndIonsOnly") = true)
       .def(py::init([](py::list py_argv) {
         auto argc = py_argv.size();
 
