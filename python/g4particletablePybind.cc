@@ -21,6 +21,8 @@ PYBIND11_MODULE(g4particletable, m) {
     .def("contains", [](G4ParticleTable *pt, std::string name) { return pt->contains(name);})
     .def("entries", &G4ParticleTable::entries)
     .def("size", &G4ParticleTable::size)
+    .def("FindParticle", [](G4ParticleTable *pt, G4int pdg) {return pt->FindParticle(pdg);},
+         py::return_value_policy::reference)
     .def("DumpTable", [](G4ParticleTable *pt, std::string particle) {pt->DumpTable(particle);},
          py::arg("particle") = "ALL")
     .def("GetIonTable", &G4ParticleTable::GetIonTable, py::return_value_policy::reference)

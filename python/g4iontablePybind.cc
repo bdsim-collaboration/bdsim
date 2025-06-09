@@ -31,6 +31,11 @@ PYBIND11_MODULE(g4iontable, m) {
          py::arg("pdf"),
          py::return_value_policy::reference)
     .def("Entries", &G4IonTable::Entries)
+    .def("GetIonMass", &G4IonTable::GetIonMass,
+         py::arg("Z"),
+         py::arg("A"),
+         py::arg("nL") = 0,
+         py::arg("lvl") = 0)
     .def("DumpTable", [](G4IonTable *pt, std::string particle) {pt->DumpTable(particle);},
          py::arg("particle") = "ALL");
 }
