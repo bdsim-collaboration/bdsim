@@ -12,6 +12,8 @@ from .bdsexecoptions import *
 from .bdsimclass import *
 from .bdsimlink import *
 from .bdsoutputrooteventsampler import *
+from .bdsparticlecoords import *
+from .bdsparticlecoordsfull import *
 from .bdsparser import *
 from .bdsparticledefinition import *
 from .bdsiondefinition import *
