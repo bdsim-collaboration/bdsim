@@ -18,7 +18,9 @@ list(APPEND pythonBindingSrcs
         sym_table tunnel)
 
 list(APPEND rootBindingSrcs
-        bdsimclass bdsexecoptions bdsparser bdsoutputrooteventsampler)
+        bdsimclass bdsimlink bdsexecoptions bdsparser bdsoutputrooteventsampler
+        bdsbunch bdsbunchsixtracklink bdsparticledefinition bdsiondefinition
+        bdsexception g4particledefinition g4particletable g4iontable)
 
 foreach(pythonBindingSrc IN ZIP_LISTS pythonBindingSrcs)
     # MESSAGE(STATUS ${pythonBindingSrc_0})
