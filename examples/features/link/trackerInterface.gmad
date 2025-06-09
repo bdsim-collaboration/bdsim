@@ -1,0 +1,3 @@
+beam, particle="e+", momentum=182.5*GeV;
+option, physicsList = "em";
+option, collimatorsAreInfiniteAbsorbers=1;
