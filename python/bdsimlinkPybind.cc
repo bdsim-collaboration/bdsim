@@ -42,7 +42,7 @@ PYBIND11_MODULE(bdsimlink, m) {
                                   minimumKineticEnergy,
                                   protonsAndIonsOnly);
         },
-        py::arg("py_argv"),
+        py::arg("argv"),
         py::arg("usualPrintOut") = TRUE,
         py::arg("minimumKineticEnergy") = 0,
         py::arg("protonsAndIonsOnly") = true)
