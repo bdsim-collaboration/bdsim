@@ -103,7 +103,7 @@ public:
                            bool   buildRightJaw = true,
                            bool   isACrystal    = false,
                            double crystalAngle  = 0,
-			   bool   sampleIn      = false);
+                           bool   sampleIn      = false);
 
     int AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                 const std::string& materialName,

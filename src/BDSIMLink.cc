@@ -524,21 +524,22 @@ int BDSIMLink::AddLinkCollimatorJaw(const std::string& collimatorName,
   if (gm->IsGeometryClosed())
     {gm->OpenGeometry();}
 
-  G4int linkID = construction->AddLinkCollimatorJaw(collimatorName,
-				     materialName,
-				     length,
-				     halfApertureLeft,
-				     halfApertureRight,
-				     rotation,
-				     xOffset,
-				     yOffset,
-                     jawTiltLeft,
-                     jawTiltRight,
-				     buildLeftJaw,
-				     buildRightJaw,
-				     isACrystal,
-				     crystalAngle,
-				     sampleIn);
+  G4int linkID = construction->AddLinkCollimatorJaw(
+                             collimatorName,
+                             materialName,
+                             length,
+                             halfApertureLeft,
+                             halfApertureRight,
+                             rotation,
+                             xOffset,
+                             yOffset,
+                             jawTiltLeft,
+                             jawTiltRight,
+                             buildLeftJaw,
+                             buildRightJaw,
+                             isACrystal,
+                             crystalAngle,
+                             sampleIn);
   // update this class's nameToElementIndex map
   nameToElementIndex = construction->NameToElementIndex();
   linkIDToBeamlineIndex = construction->LinkIDToBeamlineIndex();
@@ -554,38 +555,38 @@ int BDSIMLink::AddLinkCollimatorJaw(const std::string& collimatorName,
 }
 
 int BDSIMLink::AddLinkCollimatorTipJaw(const std::string& collimatorName,
-				     const std::string& materialName,
-             const std::string& tipMaterialName,
-             double tipThickness,
-				     double length,
-				     double halfApertureLeft,
-				     double halfApertureRight,
-				     double rotation,
-				     double xOffset,
-				     double yOffset,
-                     double jawTiltLeft,
-                     double jawTiltRight,
-				     bool   buildLeftJaw,
-				     bool   buildRightJaw)
+                                       const std::string& materialName,
+                                       const std::string& tipMaterialName,
+                                       double tipThickness,
+                                       double length,
+                                       double halfApertureLeft,
+                                       double halfApertureRight,
+                                       double rotation,
+                                       double xOffset,
+                                       double yOffset,
+                                       double jawTiltLeft,
+                                       double jawTiltRight,
+                                       bool   buildLeftJaw,
+                                       bool   buildRightJaw)
 {
   G4GeometryManager* gm = G4GeometryManager::GetInstance();
   if (gm->IsGeometryClosed())
     {gm->OpenGeometry();}
 
   G4int linkID = construction->AddLinkCollimatorTipJaw(collimatorName,
-				     materialName,
-             tipMaterialName,
-             tipThickness,
-				     length,
-				     halfApertureLeft,
-				     halfApertureRight,
-				     rotation,
-				     xOffset,
-				     yOffset,
-                     jawTiltLeft,
-                     jawTiltRight,
-				     buildLeftJaw,
-				     buildRightJaw);
+                                                       materialName,
+                                                       tipMaterialName,
+                                                       tipThickness,
+                                                       length,
+                                                       halfApertureLeft,
+                                                       halfApertureRight,
+                                                       rotation,
+                                                       xOffset,
+                                                       yOffset,
+                                                       jawTiltLeft,
+                                                       jawTiltRight,
+                                                       buildLeftJaw,
+                                                       buildRightJaw);
   // update this class's nameToElementIndex map
   nameToElementIndex = construction->NameToElementIndex();
   linkIDToBeamlineIndex = construction->LinkIDToBeamlineIndex();

@@ -57,20 +57,20 @@ public:
 
   /// Interface to append a collimator of jaw style to the linking.
   G4int AddLinkCollimatorJaw(const std::string& collimatorName,
-			     const std::string& materialName,
-			     G4double length,
-			     G4double halfApertureLeft,
-			     G4double halfApertureRight,
-			     G4double rotation,
-			     G4double xOffset,
-			     G4double yOffset,
-                 G4double jawTiltLeft = 0.0,
-                 G4double jawTiltRight = 0.0,
-			     G4bool   buildLeftJaw  = true,
-			     G4bool   buildRightJaw = true,
-			     G4bool   isACrystal    = false,
-			     G4double crystalAngle  = 0,
-			     G4bool   sampleIn      = false);
+                             const std::string& materialName,
+                             G4double length,
+                             G4double halfApertureLeft,
+                             G4double halfApertureRight,
+                             G4double rotation,
+                             G4double xOffset,
+                             G4double yOffset,
+                             G4double jawTiltLeft = 0.0,
+                             G4double jawTiltRight = 0.0,
+                             G4bool   buildLeftJaw  = true,
+                             G4bool   buildRightJaw = true,
+                             G4bool   isACrystal    = false,
+                             G4double crystalAngle  = 0,
+                             G4bool   sampleIn      = false);
 
   /// Interface to append a tip collimator jaw to the linking.
   G4int AddLinkCollimatorTipJaw(const std::string& collimatorName,
