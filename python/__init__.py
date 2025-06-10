@@ -1,6 +1,7 @@
 from .g4particledefinition import *
 from .g4particletable import *
 from .g4iontable import *
+from . import clhep
 
 from .bdsexception import *
 from .aperture import *
