@@ -505,20 +505,20 @@ void BDSIMLink::SelectLinkElement(int index, G4bool debug)
 }
 
 int BDSIMLink::AddLinkCollimatorJaw(const std::string& collimatorName,
-				     const std::string& materialName,
-				     double length,
-				     double halfApertureLeft,
-				     double halfApertureRight,
-				     double rotation,
-				     double xOffset,
-				     double yOffset,
-                     double jawTiltLeft,
-                     double jawTiltRight,
-				     bool   buildLeftJaw,
-				     bool   buildRightJaw,
-				     bool   isACrystal,
-				     double crystalAngle,
-				     bool   sampleIn)
+                                    const std::string& materialName,
+                                    double length,
+                                    double halfApertureLeft,
+                                    double halfApertureRight,
+                                    double rotation,
+                                    double xOffset,
+                                    double yOffset,
+                                    double jawTiltLeft,
+                                    double jawTiltRight,
+                                    bool   buildLeftJaw,
+                                    bool   buildRightJaw,
+                                    bool   isACrystal,
+                                    double crystalAngle,
+                                    bool   sampleIn)
 {
   G4GeometryManager* gm = G4GeometryManager::GetInstance();
   if (gm->IsGeometryClosed())
