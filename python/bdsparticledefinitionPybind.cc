@@ -18,7 +18,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(bdsparticledefinition, m) {
     py::class_<BDSParticleDefinition>(m, "BDSParticleDefinition")
-      .def(py::init<G4ParticleDefinition*, G4double, G4double, G4double, G4double,BDSIonDefinition*, G4int>(),
+      .def(py::init<G4ParticleDefinition *, G4double, G4double, G4double, G4double, BDSIonDefinition*, G4int>(),
                     py::arg("particleIn"),
                     py::arg("totalEnergyIn"),
                     py::arg("kineticEnergyIn"),

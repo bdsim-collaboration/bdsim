@@ -16,7 +16,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(g4iontable, m) {
   py::class_<G4IonTable>(m, "G4IonTable")
-    .def("GetIonTable", &G4IonTable::GetIonTable, py::return_value_policy::reference)
+    .def_static("GetIonTable", &G4IonTable::GetIonTable, py::return_value_policy::reference)
     .def("GetNumberOfElements", &G4IonTable::GetNumberOfElements)
     .def("CreateAllIon", &G4IonTable::CreateAllIon)
     .def("CreateAllIsomer", &G4IonTable::CreateAllIsomer)
@@ -26,10 +26,10 @@ PYBIND11_MODULE(g4iontable, m) {
          py::arg("Z"),
          py::arg("A"),
          py::arg("lvl") = 0,
-         py::return_value_policy::reference)
+         py::return_value_policy::reference_internal)
     .def("GetIon", [](G4IonTable *it, G4int pdg) { return it->GetIon(pdg); },
          py::arg("pdf"),
-         py::return_value_policy::reference)
+         py::return_value_policy::reference_internal)
     .def("Entries", &G4IonTable::Entries)
     .def("GetIonMass", &G4IonTable::GetIonMass,
          py::arg("Z"),

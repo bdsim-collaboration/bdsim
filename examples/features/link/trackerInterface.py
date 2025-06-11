@@ -4,7 +4,7 @@ class TrackerInterface :
     def __init__(self,
                  bdsimConfigFile="trackerInterface.gmad",
                  referenceParticlePDG = 11,
-                 referenceKineticEnergy = 100,
+                 referenceKineticEnergy = 100*bdsim.clhep.GeV,
                  relativeEnergyCut = 0.8,
                  seed = 12345,
                  referenceIonCharge = 1,
@@ -69,6 +69,7 @@ class TrackerInterface :
             particleDefinition = bdsim.BDSParticleDefinition(bdsimPartName, mass, charge, 0,
                                                              kineticEnergy, momentum, 1, ionDef, pdg)
 
+
         return particleDefinition
 
     @property
@@ -126,8 +127,7 @@ class TrackerInterface :
                                              partDef.TotalEnergy(),
                                              1)
 
-        self._stp_link.AddParticle(partDef, coords, trackid, trackid)
-
+        return self._stp_link.AddParticle(partDef, coords, trackid, trackid)
     def addParticlesPython(self, pdgIn = [],
                            xIn = [], yIn = [],
                            xpIn = [], ypIn = [],
@@ -145,15 +145,25 @@ def test_TrackerInterface() :
     ti = TrackerInterface()
 
     # test electron
-    electron = ti.prepareBDSParticleDefition(11, 100, 0, 0)
+    electron = ti.prepareBDSParticleDefition(11, 100*bdsim.clhep.GeV, 0, 0)
 
     # test ion
-    ion  = ti.prepareBDSParticleDefition(1000501000,100, 0, 0)
+    #ion  = ti.prepareBDSParticleDefition(1000501000,100, 0, 0)
+
+
+    iCol = ti.bds_link.AddLinkCollimatorJaw("test",
+                                            "G4_Fe",
+                                            1*bdsim.clhep.m,
+                                            0*bdsim.clhep.m,
+                                            0*bdsim.clhep.m,
+                                            0,
+                                            0,
+                                            0)
 
     # add single particle
-    ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1 ,
-                         chargeRatio =1 , s= 0,
-                         trackid = 1 , pdgID=11)
+    pd = ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1 ,
+                              chargeRatio=1 , s=0,
+                              trackid=1 , pdgID=11)
 
     #ti.addParticlesPython(pdgIn=[11], xIn=[0], yIn=[0], xpIn=[0], ypIn=[0],
     #                      zIn=[0], tIn=[0], sIn=[0], totalEnergyIn=[100], weightIn=[1])
