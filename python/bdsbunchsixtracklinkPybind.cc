@@ -18,7 +18,7 @@ PYBIND11_MODULE(bdsbunchsixtracklink, m) {
   py::class_<BDSBunchSixTrackLink, BDSBunch>(m, "BDSBunchSixTrackLink")
     .def(py::init<>())
     .def("GetNextParticleLocal", &BDSBunchSixTrackLink::GetNextParticleLocal)
-    .def("AddParticle", &BDSBunchSixTrackLink::AddParticle)
+    .def("AddParticle", &BDSBunchSixTrackLink::AddParticle, py::keep_alive<1, 2>())
     .def("ClearParticles", &BDSBunchSixTrackLink::ClearParticles)
     .def("Size", &BDSBunchSixTrackLink::Size)
     .def("CurrentExternalParticleID", &BDSBunchSixTrackLink::CurrentExternalParticleID)
