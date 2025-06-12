@@ -92,7 +92,7 @@ namespace GMAD {
   template void Parser::Add<Modulator, FastList<Modulator> >(bool unique, const std::string& className);
   template void Parser::Add<NewColour, FastList<NewColour> >(bool unique, const std::string& className);
   template void Parser::Add<PhysicsBiasing, FastList<PhysicsBiasing> >(bool unique, const std::string& className);
-  template void Parser::Add<Placement, FastList<Placement> >(bool unique, const std::string& className);
+  template void Parser::Add<Placement, FastList<Placement>(bool unique, const std::string& className);
   template void Parser::Add<Query, FastList<Query> >(bool unique, const std::string& className);
   template void Parser::Add<Region, FastList<Region> >(bool unique, const std::string& className);
   template void Parser::Add<SamplerPlacement, FastList<SamplerPlacement> >(bool unique, const std::string& className);
