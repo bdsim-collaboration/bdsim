@@ -116,7 +116,14 @@ int BDSIMLink::Initialise(int argc,
     bool   protonsAndIonsOnly)
 {
   argcCache = argc;
-  argvCache = argv;
+  argvCache = new char*[argc + 1];  // +1 for null termination (optional)
+  for (int i = 0; i < argc; ++i) {
+    size_t len = std::strlen(argv[i]) + 1;  // +1 for null terminator
+    argvCache[i] = new char[len];
+    std::strcpy(argvCache[i], argv[i]);     // deep copy the string
+  }
+  argvCache[argc] = nullptr;  // optional: null-terminate array like execv expects
+
   usualPrintOut = usualPrintOutIn;
   initialisationResult = Initialise(minimumKineticEnergy, protonsAndIonsOnly);
   return initialisationResult;
