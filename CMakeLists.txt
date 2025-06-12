@@ -205,7 +205,10 @@ add_subdirectory(parser)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/parser)
 
 # python binding
-add_subdirectory(python)
+option( USE_PYTHON_BINDINGS "Build pybind11 bindings"  OFF )
+if (USE_PYTHON_BINDINGS)
+  add_subdirectory(python)
+endif()
 
 # TBC - don't think is needed...
 # include current directory for parser includes
