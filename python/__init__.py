@@ -10,6 +10,9 @@ from .atom import *
 from .bdsbunch import *
 from .bdsbunchsixtracklink import *
 from .bdsexecoptions import *
+from .bdshitsampler import *
+from .bdshitsamplerlink import *
+from .bdshitscollectionsamplerlink import *
 from .bdsimclass import *
 from .bdsimlink import *
 from .bdsoutputrooteventsampler import *
