@@ -40,6 +40,9 @@ class G4Box;
 class G4ChannelingOptrMultiParticleChangeCrossSection;
 class G4VPhysicalVolume;
 
+#include "parser/element.h"
+#include "parser/elementtype.h"
+
 /**
  * @brief Construction of the geometry in the case of a link model.
  *
@@ -87,7 +90,9 @@ public:
                                 G4double jawTiltRight = 0.0,
                                 G4bool   buildLeftJaw  = true,
                                 G4bool   buildRightJaw = true);
-  
+  /// Interface to append an element
+  G4int AddLinkElement(GMAD::Element el);
+
   /// Set the design particle definition.
   inline void SetDesignParticle(const BDSParticleDefinition* defIn) {designParticle = defIn;}
   inline void SetPrimaryGeneratorAction(BDSLinkPrimaryGeneratorAction* pgIn) {primaryGeneratorAction = pgIn;}
