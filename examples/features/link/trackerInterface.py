@@ -9,7 +9,7 @@ class TrackerInterface :
                  relativeEnergyCut = 0.01,
                  seed = 12345,
                  referenceIonCharge = 1,
-                 batchMode = True):
+                 batchMode = False):
 
         self._particle_table = bdsim.G4ParticleTable.GetParticleTable()
         self._ion_table = self._particle_table.GetIonTable()
@@ -24,6 +24,8 @@ class TrackerInterface :
 
         if batchMode :
             bdsim_args.append("--batch")
+        else :
+            bdsim_args.append("--vis_mac=vis.mac")
 
         referenceKineticEnergy = referenceKineticEnergy
 
@@ -129,16 +131,6 @@ class TrackerInterface :
                                              partDef.TotalEnergy(),
                                              1)
 
-        print("charge=",q)
-        print("mass_ratio=",mass_ratio)
-        print("p=",p)
-        print("x=",x)
-        print("y=",y)
-        print("xp=",xp)
-        print("yp=",yp)
-        print("zp=",zp)
-        print("Etot=", partDef.TotalEnergy())
-
         return self._stp_link.AddParticle(partDef, coords, trackid, trackid)
     def addParticlesPython(self, pdgIn = [],
                            xIn = [], yIn = [],
@@ -163,14 +155,31 @@ def test_TrackerInterface() :
     ion  = ti.prepareBDSParticleDefition(1000501000,100, 0, 0)
 
 
-    iCol = ti.bds_link.AddLinkCollimatorJaw("test",
-                                            "G4_Fe",
-                                            0.04*bdsim.clhep.m,
-                                            0.0*bdsim.clhep.m,
-                                            0.0*bdsim.clhep.m,
-                                            0,
-                                            0,
-                                            0)
+    icol1 = ti.bds_link.AddLinkCollimatorJaw("col1",
+                                             "G4_Fe",
+                                             0.25*bdsim.clhep.m,
+                                             0.0*bdsim.clhep.m,
+                                             0.0*bdsim.clhep.m,
+                                             0,
+                                             0,
+                                             0)
+
+
+    iCol2 = ti.bds_link.AddLinkCollimatorJaw("col2",
+                                             "G4_Fe",
+                                             1.0*bdsim.clhep.m,
+                                             0.0*bdsim.clhep.m,
+                                             0.0*bdsim.clhep.m,
+                                             0,
+                                             0,
+                                             0)
+
+    e = bdsim.Element()
+    e.name = "drift1"
+    e.type = bdsim.elementtype.ElementType.DRIFT
+    e.l = 1.0
+
+    iDri1 = ti.bds_link.AddLinkElement(e)
 
     # add single particle
     pd = ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1,

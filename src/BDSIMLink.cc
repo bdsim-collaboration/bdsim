@@ -608,6 +608,28 @@ int BDSIMLink::AddLinkCollimatorTipJaw(const std::string& collimatorName,
   return (int)linkID;
 }
 
+
+int BDSIMLink::AddLinkElement(GMAD::Element &el) {
+  G4GeometryManager* gm = G4GeometryManager::GetInstance();
+  if (gm->IsGeometryClosed())
+  {gm->OpenGeometry();}
+
+  G4int linkID = construction->AddLinkElement(el);
+  // update this class's nameToElementIndex map
+  nameToElementIndex = construction->NameToElementIndex();
+  linkIDToBeamlineIndex = construction->LinkIDToBeamlineIndex();
+
+  if (bdsOutput)
+  {bdsOutput->UpdateSamplers();}
+
+  /// Close the geometry in preparation for running - everything is now fixed.
+  G4bool bCloseGeometry = gm->CloseGeometry();
+  if (!bCloseGeometry)
+  {throw BDSException(__METHOD_NAME__, "error - geometry not closed.");}
+  return (int)linkID;
+}
+
+
 BDSHitsCollectionSamplerLink* BDSIMLink::SamplerHits() const
 {
   return runAction ? runAction->SamplerHits() : nullptr;
