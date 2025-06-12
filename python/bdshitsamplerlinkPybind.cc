@@ -13,5 +13,5 @@ namespace py = pybind11;
 #include "BDSHitSamplerLink.hh"
 
 PYBIND11_MODULE(bdshitsamplerlink, m) {
-  py::class_<BDSHitSamplerLink>(m,"BDSHitSamplerLink");
+  py::class_<BDSHitSamplerLink, BDSHitSampler>(m,"BDSHitSamplerLink");
 }

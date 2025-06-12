@@ -1,11 +1,12 @@
 import bdsim
+import numpy as _np
 
 class TrackerInterface :
     def __init__(self,
                  bdsimConfigFile="trackerInterface.gmad",
                  referenceParticlePDG = 11,
-                 referenceKineticEnergy = 100*bdsim.clhep.GeV,
-                 relativeEnergyCut = 0.8,
+                 referenceKineticEnergy = 100,
+                 relativeEnergyCut = 0.01,
                  seed = 12345,
                  referenceIonCharge = 1,
                  batchMode = True):
@@ -13,8 +14,8 @@ class TrackerInterface :
         self._particle_table = bdsim.G4ParticleTable.GetParticleTable()
         self._ion_table = self._particle_table.GetIonTable()
 
-        self._stp_link = bdsim.BDSBunchSixTrackLink();
-        self._bds_link = bdsim.BDSIMLink(self._stp_link);
+        self._stp_link = bdsim.BDSBunchSixTrackLink()
+        self._bds_link = bdsim.BDSIMLink(self._stp_link)
 
         bdsim_args = ["bdsim",
                       "--file="+bdsimConfigFile,
@@ -24,12 +25,13 @@ class TrackerInterface :
         if batchMode :
             bdsim_args.append("--batch")
 
-        referenceKineticEnergy = referenceKineticEnergy * bdsim.clhep.GeV
+        referenceKineticEnergy = referenceKineticEnergy
 
         if relativeEnergyCut < 1e-6:
             relativeEnergyCut = 1.0
         minimumKineticEnergy = relativeEnergyCut * referenceKineticEnergy
 
+        print(referenceKineticEnergy, minimumKineticEnergy)
         self._bds_link.Initialise(argv = bdsim_args,
                                   usualPrintOut = True,
                                   minimumKineticEnergy = minimumKineticEnergy/bdsim.clhep.GeV,
@@ -37,7 +39,7 @@ class TrackerInterface :
 
         self._refParticleDefinition = self.prepareBDSParticleDefition(pdg = referenceParticlePDG,
                                                                       momentum = 0,
-                                                                      kineticEnergy = referenceKineticEnergy,
+                                                                      kineticEnergy = referenceKineticEnergy * bdsim.clhep.GeV,
                                                                       ionCharge = referenceIonCharge);
 
     def prepareBDSParticleDefition(self, pdg, momentum, kineticEnergy, ionCharge):
@@ -58,7 +60,7 @@ class TrackerInterface :
 
             ionDef = bdsim.BDSIonDefinition(particleDefGeant.GetAtomicMass(),
                                             particleDefGeant.GetAtomicNumber(),
-                                            ionCharge);
+                                            ionCharge)
             mass = self._ion_table.GetIonMass(ionDef.Z(), ionDef.A())
             charge = ionDef.Charge()
 
@@ -114,7 +116,7 @@ class TrackerInterface :
         oneplusdelta = (1 + deltap)
         xp = px / oneplusdelta
         yp = py / oneplusdelta
-        zp = 1 # TODO
+        zp = _np.sqrt(1 - xp**2 - yp**2)
 
         coords = bdsim.BDSParticleCoordsFull(x * bdsim.clhep.m,
                                              y * bdsim.clhep.m,
@@ -126,6 +128,16 @@ class TrackerInterface :
                                              0,
                                              partDef.TotalEnergy(),
                                              1)
+
+        print("charge=",q)
+        print("mass_ratio=",mass_ratio)
+        print("p=",p)
+        print("x=",x)
+        print("y=",y)
+        print("xp=",xp)
+        print("yp=",yp)
+        print("zp=",zp)
+        print("Etot=", partDef.TotalEnergy())
 
         return self._stp_link.AddParticle(partDef, coords, trackid, trackid)
     def addParticlesPython(self, pdgIn = [],
@@ -148,24 +160,33 @@ def test_TrackerInterface() :
     electron = ti.prepareBDSParticleDefition(11, 100*bdsim.clhep.GeV, 0, 0)
 
     # test ion
-    #ion  = ti.prepareBDSParticleDefition(1000501000,100, 0, 0)
+    ion  = ti.prepareBDSParticleDefition(1000501000,100, 0, 0)
 
 
     iCol = ti.bds_link.AddLinkCollimatorJaw("test",
                                             "G4_Fe",
-                                            1*bdsim.clhep.m,
-                                            0*bdsim.clhep.m,
-                                            0*bdsim.clhep.m,
+                                            0.04*bdsim.clhep.m,
+                                            0.0*bdsim.clhep.m,
+                                            0.0*bdsim.clhep.m,
                                             0,
                                             0,
                                             0)
 
     # add single particle
-    pd = ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1 ,
+    pd = ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1,
                               chargeRatio=1 , s=0,
                               trackid=1 , pdgID=11)
 
-    #ti.addParticlesPython(pdgIn=[11], xIn=[0], yIn=[0], xpIn=[0], ypIn=[0],
-    #                      zIn=[0], tIn=[0], sIn=[0], totalEnergyIn=[100], weightIn=[1])
+
+    ti.bds_link.SelectLinkElement(0)
+    ti.bds_link.BeamOn(1)
+
+    sh = ti.bds_link.SamplerHits()
+    print("number of sampler hits", sh.entries())
+    sh.PrintAllHits()
+
 
     return ti
+
+if __name__ == "__main__":
+    test_TrackerInterface()

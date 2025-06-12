@@ -17,5 +17,8 @@ namespace py = pybind11;
 PYBIND11_MODULE(bdshitscollectionsamplerlink, m) {
   py::class_<BDSHitsCollectionSamplerLink>(m,"BDSHitsCollectionSamplerLink")
     .def("PrintAllHits", &BDSHitsCollectionSamplerLink::PrintAllHits)
+    .def("__getitem__", [](const BDSHitsCollectionSamplerLink &self, size_t i) {
+      return self[i];
+    }, py::return_value_policy::reference_internal)
     .def("entries", &BDSHitsCollectionSamplerLink::entries);
 }

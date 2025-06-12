@@ -15,7 +15,7 @@ namespace py = pybind11;
 #include "BDSParticleCoords.hh"
 
 PYBIND11_MODULE(bdsparticlecoordsfull, m) {
-  py::class_<BDSParticleCoordsFull>(m,"BDSParticleCoordsFull")
+  py::class_<BDSParticleCoordsFull, BDSParticleCoords>(m,"BDSParticleCoordsFull")
     .def(py::init<>())
     .def(py::init<G4double,  G4double,  G4double,
                   G4double, G4double, G4double,
@@ -41,5 +41,9 @@ PYBIND11_MODULE(bdsparticlecoordsfull, m) {
        std::ostringstream oss;
        oss << self;
        return oss.str();
-     });
+     })
+     .def_readonly("s", &BDSParticleCoordsFull::s)
+     .def_readonly("totalEnergy", &BDSParticleCoordsFull::totalEnergy)
+     .def_readonly("weight", &BDSParticleCoordsFull::weight);
+
 }

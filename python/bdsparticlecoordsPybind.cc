@@ -54,5 +54,12 @@ PYBIND11_MODULE(bdsparticlecoords, m) {
       retval.append(mv[1]);
       retval.append(mv[2]);
       return retval;
-    });
+    })
+    .def_readonly("x", &BDSParticleCoords::x)
+    .def_readonly("y", &BDSParticleCoords::y)
+    .def_readonly("z", &BDSParticleCoords::z)
+    .def_readonly("xp", &BDSParticleCoords::xp)
+    .def_readonly("yp", &BDSParticleCoords::yp)
+    .def_readonly("zp", &BDSParticleCoords::zp)
+    .def_readonly("T", &BDSParticleCoords::T);
 }

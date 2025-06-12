@@ -119,7 +119,7 @@ PYBIND11_MODULE(bdsimlink, m) {
            py::arg("crystalAngle") = 0,
            py::arg("sampleIn") = false
            )
-      .def("SamplerHits", &BDSIMLink::SamplerHits)
+      .def("SamplerHits", &BDSIMLink::SamplerHits,py::return_value_policy::reference_internal)
       .def("ClearSamplerHits",&BDSIMLink::ClearSamplerHits)
       .def("GetCurrentMaximumSixTrackParticleID", &BDSIMLink::GetCurrentMaximumSixTrackParticleID)
       .def("SetCurrentMaximumExternalParticleID", &BDSIMLink::SetCurrentMaximumExternalParticleID)
