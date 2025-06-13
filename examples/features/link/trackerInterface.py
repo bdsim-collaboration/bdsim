@@ -9,7 +9,7 @@ class TrackerInterface :
                  relativeEnergyCut = 0.01,
                  seed = 12345,
                  referenceIonCharge = 1,
-                 batchMode = False):
+                 batchMode = True):
 
         self._particle_table = bdsim.G4ParticleTable.GetParticleTable()
         self._ion_table = self._particle_table.GetIonTable()
@@ -33,7 +33,6 @@ class TrackerInterface :
             relativeEnergyCut = 1.0
         minimumKineticEnergy = relativeEnergyCut * referenceKineticEnergy
 
-        print(referenceKineticEnergy, minimumKineticEnergy)
         self._bds_link.Initialise(argv = bdsim_args,
                                   usualPrintOut = True,
                                   minimumKineticEnergy = minimumKineticEnergy/bdsim.clhep.GeV,
@@ -165,7 +164,7 @@ def test_TrackerInterface() :
                                              0)
 
 
-    iCol2 = ti.bds_link.AddLinkCollimatorJaw("col2",
+    icol2 = ti.bds_link.AddLinkCollimatorJaw("col2",
                                              "G4_Fe",
                                              1.0*bdsim.clhep.m,
                                              0.0*bdsim.clhep.m,
@@ -174,13 +173,15 @@ def test_TrackerInterface() :
                                              0,
                                              0)
 
+
     e = bdsim.Element()
     e.name = "drift1"
     e.type = bdsim.elementtype.ElementType.DRIFT
     e.l = 1.0
 
-    iDri1 = ti.bds_link.AddLinkElement(e)
+    idri1 = ti.bds_link.AddLinkElement(e)
 
+    print(icol1, icol2, idri1)
     # add single particle
     pd = ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1,
                               chargeRatio=1 , s=0,
