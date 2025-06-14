@@ -6,10 +6,6 @@ on:
     branches:
       - 'develop'
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: write
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -19,6 +15,8 @@ jobs:
     name: build manual
     runs-on: ubuntu-latest
     container: bdsim/alma9-g4.11.2:latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout bdsim
@@ -57,22 +55,9 @@ jobs:
           name: manual
           path: /tmp/bdsim-build/manual/html
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-manual
-    permissions:
-      contents: write
-
-    steps:
-      - name: Download manual
-        uses: actions/download-artifact@v4
-        with:
-          name: manual
-          path: ./manual
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./manual
+          publish_dir: /tmp/bdsim-build/manual/html
 
