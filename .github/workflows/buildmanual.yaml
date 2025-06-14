@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  btlinux:
+  build-manual:
     name: build manual
     runs-on: ubuntu-latest
     container: bdsim/alma9-g4.11.2:latest
@@ -51,8 +51,28 @@ jobs:
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
           make manual
 
+      - name: Upload manual
+        uses: actions/upload-artifact@v4
+        with:
+          name: manual
+          path: /tmp/bdsim-build/manual/html
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-manual
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download manual
+        uses: actions/download-artifact@v4
+        with:
+          name: manual
+          path: ./manual
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /tmp/bdsim-build/manual/html
+          publish_dir: ./manual
+
