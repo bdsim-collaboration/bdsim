@@ -6,6 +6,10 @@ on:
     branches:
       - 'develop'
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -38,7 +42,7 @@ jobs:
           git config --global --add safe.directory $GITHUB_WORKSPACE
   
           # install sphinx and rtd theme 
-          pip3 install sphinx sphinx-rtd-theme
+          pip3 install sphinx sphinx-rtd-theme 
           
           # build
           mkdir /tmp/bdsim-build
@@ -46,3 +50,9 @@ jobs:
           cd /tmp/bdsim-build
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
           make manual
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/bdsim-build/manual/html
