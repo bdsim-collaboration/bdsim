@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   btlinux:
-    name: build manual
+    name: build-manual
     runs-on: ubuntu-latest
     container: bdsim/alma9-g4.11.2:latest
 
