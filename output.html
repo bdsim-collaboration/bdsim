@@ -1,0 +1,3028 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Output &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Output Analysis" href="output_analysis.html" />
+    <link rel="prev" title="External Geometry Formats" href="externalgeometry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#file-writing-policy">File Writing Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#units">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output-format">Output Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output-data-selection-reduction">Output Data Selection &amp; Reduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-data">Minimal Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#output-information">Output Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#samplers">1) Samplers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sampler-placements">2) Sampler Placements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#energy-deposition">3) Energy Deposition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trajectories">4) Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collimator-hits">5) Collimator Hits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aperture-impacts">6) Aperture Impacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-3d-energy-deposition-histogram">7) Single 3D Energy Deposition Histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scoring-meshes">8) Scoring Meshes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#particle-identification">Particle Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ion-identification">Ion Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-data-inspection">Basic Data Inspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-of-output">Structure Of Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#header-tree">Header Tree</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventheader">BDSOutputROOTEventHeader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#particledata-tree">ParticleData Tree</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#particleinfo-struct">ParticleInfo Struct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ioninfo-struct">IonInfo Struct</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#beam-tree">Beam Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options-tree">Options Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-tree">Model Tree</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventmodel">BDSOutputROOTEventModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventcollimatorinfo">BDSOutputROOTEventCollimatorInfo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-tree">Run Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-tree">Event Tree</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventaperture">BDSOutputROOTEventAperture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventinfo">BDSOutputROOTEventInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventloss">BDSOutputROOTEventLoss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventlossworld">BDSOutputROOTEventLossWorld</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventruninfo">BDSOutputROOTEventRunInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventtrajectory">BDSOutputROOTEventTrajectory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventsampler">BDSOutputROOTEventSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventsamplerc">BDSOutputROOTEventSamplerC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventsamplers">BDSOutputROOTEventSamplerS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventcoords">BDSOutputROOTEventCoords</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventhistograms">BDSOutputROOTEventHistograms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsoutputrooteventcollimator">BDSOutputROOTEventCollimator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#eventcombineinfo-tree">EventCombineInfo Tree</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geometry-export">Geometry Export</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Output</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/output.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="output">
+<span id="output-section"></span><h1>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h1>
+<p>By default, BDSIM writes an output file with a summary of the model created, the particle coordinates
+generated, the options used, and basic energy deposition histograms. This can be turned off by
+executing BDSIM with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">none</span>
+</pre></div>
+</div>
+<p>The output file name can be specified with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="s2">&quot;mydesiredname&quot;</span>
+</pre></div>
+</div>
+<p>with no extension.</p>
+<section id="file-writing-policy">
+<h2>File Writing Policy<a class="headerlink" href="#file-writing-policy" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The default file name is “output”.</p></li>
+<li><p>If no output file name is given and there is already a file called “output”, a suffix with an integer will
+be added, i.e. “output-1”.</p></li>
+<li><p>BDSIM will overwrite an output file if <cite>-\-outfile</cite> is supplied with the same name again.</p></li>
+<li><p>The behaviour is the same in both visualiser mode and batch mode.</p></li>
+<li><p>A new output file is created for each <code class="code docutils literal notranslate"><span class="pre">/run/beamOn</span></code> command in the visualiser.</p></li>
+</ul>
+</section>
+<section id="units">
+<h2>Units<a class="headerlink" href="#units" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Units, unless specified, are SI (i.e. m, rad).</p></li>
+<li><p>“energy” is in GeV and is the total energy of a particle unless labelled specifically (e.g. ‘kineticEnergy’).</p></li>
+<li><p>Time is measured in nanoseconds.</p></li>
+<li><p>Small letters denote local (to that object) coordinates, whereas capital letters represent global coordinates.</p></li>
+</ul>
+</section>
+<section id="output-format">
+<h2>Output Format<a class="headerlink" href="#output-format" title="Link to this heading"></a></h2>
+<p>The following output formats are provided:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Syntax</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>None</p></td>
+<td><p>--output=none</p></td>
+<td><p>No output is written</p></td>
+</tr>
+<tr class="row-odd"><td><p>ROOT Event (Default)</p></td>
+<td><p>--output=rootevent</p></td>
+<td><p>A ROOT file with details of the model built,
+options used, seed states, and event-by-event
+information (default and recommended).</p></td>
+</tr>
+</tbody>
+</table>
+<p>With the default output format <code class="code docutils literal notranslate"><span class="pre">rootevent</span></code>, data is written to a ROOT file. This format
+is preferred as it lends itself nicely to particle physics information as it’s space
+efficient (compressed binary), and can store and load complex custom structures. ROOT files
+generally can always be read at a later date with ROOT even if the original software used
+to create the files (BDSIM) is unavailable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>ASCII Data</strong> - In the past BDSIM had ASCII output as well as some functionality in
+the pybdsim Python utility to deal with this. This has been deprecated and removed
+because it is just not suitable for particle physics-style data and analysis. It
+is cumbersome, inefficient and vastly inferior in the data structure.
+We highly encourage use of the ROOT output (<cite>rootevent</cite> format.). It is easy to
+explore the data files (see <a class="reference internal" href="#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a>) and the included analysis
+tools (see <a class="reference internal" href="output_analysis.html#rebdsim-analysis-tool"><span class="std std-ref">rebdsim - General Analysis Tool</span></a>) and the supplied Python utilities
+(see <a class="reference internal" href="python_utilities.html#python-utilities"><span class="std std-ref">Python Utilities</span></a>, and pybdsim in particular) make the regular workflow
+very easy.</p>
+</div>
+<p>Not all information described may be written by default. Options described in
+<a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> allow control over what is stored. The default options
+give a detailed picture with an acceptable file size. The true amount of information
+produced in the simulation of every particle and the steps taken is tremendous
+and cannot be usefully stored.</p>
+<p>As a general guideline, the following naming conventions are used:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Short Name</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Phits</p></td>
+<td><p>Primary hits</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ploss</p></td>
+<td><p>Primary losses</p></td>
+</tr>
+<tr class="row-even"><td><p>Eloss</p></td>
+<td><p>Energy loss</p></td>
+</tr>
+<tr class="row-odd"><td><p>PE</p></td>
+<td><p>Per element</p></td>
+</tr>
+<tr class="row-even"><td><p>Coll</p></td>
+<td><p>Collimator</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A “hit” is the point of first contact, whereas a “loss” is the
+last point that particle existed - in the case of a primary it
+is where it stopped being a primary.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Energy loss is the energy deposited by particles along their step.</p>
+</div>
+</section>
+<section id="output-data-selection-reduction">
+<h2>Output Data Selection &amp; Reduction<a class="headerlink" href="#output-data-selection-reduction" title="Link to this heading"></a></h2>
+<p>Not all the variables in the output are filled by default. The default level of output is judged to be
+the most commonly useful for the purpose of BDSIM but there are many extra options to control
+the detail of the output as well as the ability to turn bits off. If certain optional data
+is turned off, the branches may be remove from the output Trees for efficiency.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeMinimalData=1</span></code> will reduce the data to an absolute minimum and other
+options can be used to restore data in an additive way. See below for more details.</p></li>
+</ul>
+<p>This granularity is very useful when you have made small studies with the options you
+desire and now want to scale up the simulation to large statistics and the size of the data
+may become difficult to deal with. At this point, the user can turn off any data they may
+not need to save space.</p>
+<p>If some output is not required, BDSIM will not generate the ‘hit’ information with sensitive
+detector classes automatically to improve computational speed and reduce memory usage during
+the simulation. This is handled automatically in BDSIM.</p>
+<p>It is thoroughly recommend to consult all the options at <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a>. However,
+consider the following points to reduce output data size:</p>
+<ul class="simple">
+<li><p>If energy loss hits are not required (e.g. maybe only the pre-made histograms will suffice),
+turn these off with the option <code class="code docutils literal notranslate"><span class="pre">storeELoss</span></code>.</p></li>
+<li><p>Eloss normally dominates the size of the output file as it has the largest number of hits with
+typically <span class="math notranslate nohighlight">\(10^4\)</span> energy deposition hits per primary.</p></li>
+<li><p>By default some basic information is store in “ParticleData” for all particles used
+in the simulation.
+For a big study, it is worth turning this off as it’s replicated in every file.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sample,</span> <span class="pre">all;</span></code> is convenient, especially at the start of a study, but you should only
+attach a sampler to specific places for a study with <code class="code docutils literal notranslate"><span class="pre">sample,</span> <span class="pre">range=NAMEOFELEMENT</span></code>.</p></li>
+</ul>
+<section id="minimal-data">
+<h3>Minimal Data<a class="headerlink" href="#minimal-data" title="Link to this heading"></a></h3>
+<p>When using the option <code class="code docutils literal notranslate"><span class="pre">storeMinimalData=1</span></code>, the following options are turned off:</p>
+<ul class="simple">
+<li><p>storeApertureImpacts</p></li>
+<li><p>storeApertureImpactsHistograms</p></li>
+<li><p>storeCollimatorInfo</p></li>
+<li><p>storeCollimatorHits</p></li>
+<li><p>storeELoss</p></li>
+<li><p>storeELossHistograms</p></li>
+<li><p>storeParticleData</p></li>
+<li><p>storePrimaries</p></li>
+<li><p>storePrimaryHistograms</p></li>
+<li><p>storeTrajectory</p></li>
+<li><p>storeModel</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note, this won’t respect alternative versions of these options such as “storeTrajectories”.</p>
+</div>
+<p>Therefore, there is no model (required for optics comparisons and loading samplers in analysis),
+no particle data, no energy deposition hits and 0 per-event histograms (primary hit, loss and
+energy deposition).</p>
+<p>If used in combination with other output options, the other options are respected. This is irrespective
+of the order the options are set in the input gmad files. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">storeMinimalData</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">storePrimaries</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Will turn off all the data, but restore the storage of the primary coordinates.</p>
+</section>
+</section>
+<section id="output-information">
+<h2>Output Information<a class="headerlink" href="#output-information" title="Link to this heading"></a></h2>
+<p>The following information is recorded by default.</p>
+<ul class="simple">
+<li><p>Header including software versions</p></li>
+<li><p>The options and beam parameters that were used</p></li>
+<li><p>A summary of the model</p></li>
+<li><p>Run level summary information and histograms</p></li>
+<li><p>Event level summary, primary coordinates, primary first hit (first physics point), last hit,
+energy deposition in the beam line, energy deposition histograms, and aperture impacts.</p></li>
+</ul>
+<p>Although recorded by default, the <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> allow control over these and parts
+can be turned off to reduce the output file size if required. The exact structure of the output
+is described in the following sections.</p>
+<p>The following extra information can be <strong>optionally</strong> recorded from a BDSIM simulation:</p>
+<ol class="arabic simple">
+<li><p>Particle coordinates at a plane after each element - ‘sampler’ information (see <a class="reference internal" href="model_control.html#sampler-output"><span class="std std-ref">Output at a Surface - Samplers</span></a>).</p></li>
+<li><p>Particle coordinates at a plane that is placed anywhere in the world by the user - ‘samplerplacement’ (see <a class="reference internal" href="model_control.html#user-sampler-placement"><span class="std std-ref">Output at an Arbitrary Plane - User Placed Sampler</span></a>).</p></li>
+<li><p>Energy deposition ‘hits’ from any component, the beam pipe vacuum, or the surrounding air.</p></li>
+<li><p>Trajectories of all or certain particles (optional - see <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a>).</p></li>
+<li><p>Detailed information from hits in a collimator - see <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a>.</p></li>
+<li><p>Aperture impacts of various particles including primaries.</p></li>
+<li><p>A single 3D histogram of any hits in the simulation (optional - see <a class="reference internal" href="model_control.html#scoring-map-description"><span class="std std-ref">Scoring Map</span></a>).</p></li>
+<li><p>Scoring meshes that limit the step, can overlap geometry and record multiple quantities.</p></li>
+</ol>
+<p>These are described in more detail below.</p>
+<section id="samplers">
+<h3>1) Samplers<a class="headerlink" href="#samplers" title="Link to this heading"></a></h3>
+<p>Samplers are ‘attached’ to a beam line element by using the sample command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="p">,</span> <span class="nb">range</span><span class="o">=&lt;</span><span class="n">element_name</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="model_control.html#sampler-output"><span class="std std-ref">Output at a Surface - Samplers</span></a> for more details.  Note they record the passage of particles both
+backwards and forwards through the plane and are effectively passive with no material.</p>
+</section>
+<section id="sampler-placements">
+<h3>2) Sampler Placements<a class="headerlink" href="#sampler-placements" title="Link to this heading"></a></h3>
+<p>These are the same as samplers but can be placed anywhere in the world and may overlap with
+any other geometry. Care however, should be taken to avoid co-planar faces as Geant4 cannot
+handle this type of overlap. See <a class="reference internal" href="model_control.html#user-sampler-placement"><span class="std std-ref">Output at an Arbitrary Plane - User Placed Sampler</span></a> for the syntax.</p>
+</section>
+<section id="energy-deposition">
+<h3>3) Energy Deposition<a class="headerlink" href="#energy-deposition" title="Link to this heading"></a></h3>
+<p>BDSIM by default records energy deposition from the beam pipe and magnet geometries. However,
+the energy deposition in the vacuum and surrounding air is not normally recorded to minimise
+the output file size. This can optionally be turned on. Note, the ‘vacuum’ is not a perfect
+vacuum as there is no such thing in Geant4. The vacuum in BDSIM is the typical vacuum of the
+warm section of the LHC at CERN.</p>
+<p>See <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> with options beginning with <code class="code docutils literal notranslate"><span class="pre">storeEloss</span></code>.</p>
+</section>
+<section id="trajectories">
+<h3>4) Trajectories<a class="headerlink" href="#trajectories" title="Link to this heading"></a></h3>
+<p>Trajectories are a list of all the steps of a particle along it’s path through the model. There
+is typically a step for every particle as it enters or leaves a boundary as well as where a physics
+process is invoked. At each trajectory step point, the coordinates, momentum, total energy, particle
+type and last physics process are recorded as a snapshot of the particle at that point.</p>
+<ul class="simple">
+<li><p>One “trajectory” is the record of one particle.</p></li>
+<li><p>A “parent” is the particle / track / trajectory that created the current one.</p></li>
+<li><p>A “daughter” particle / track / trajectory is one that came from another “parent” one.</p></li>
+<li><p>In reality this is a big tree of information, but in the output each particle / track / trajectory
+is stored one after another in a vector. Each has a unique index (ID). The parent index is recorded
+with each trajectory as well as its index in the output vector so we can effectively navigate the
+particle physics history tree from any particle up to the primary.</p></li>
+</ul>
+<p>We don’t store trajectory information by default because it is an <strong>incredible</strong> amount of information and
+hard to deal with sensibly. Turning on trajectory storage in the options will store by default,
+<strong>only</strong> the primary particle(s) trajectory(ies). We then use some options to specify (filter down to)
+a set of particles we’re interested in and also store the trajectories that connect these particles
+back to the primary. A set of subsequent options define which numbers will be stored for each trajectory
+and each point along the trajectory.</p>
+<ul class="simple">
+<li><p>Filtering options: <a class="reference internal" href="model_control.html#options-trajectory-filtering"><span class="std std-ref">Trajectory Filtering Options</span></a></p></li>
+<li><p>Storage options: <a class="reference internal" href="model_control.html#options-trajectory-storage"><span class="std std-ref">Trajectory Storage Options</span></a></p></li>
+<li><p>The trajectory filters are combined with a <strong>logical OR</strong>. So, if two filters are used, a trajectory
+will be stored if it matches either one OR the other. In analysis, the variable <cite>filters</cite> has
+Booleans stored for which filters a particular trajectory matched and can be used to disentangle
+them.</p></li>
+<li><p>This logic can be changed by specifying <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">trajectoryFilterLogicAND=1;</span></code> in the input
+GMAD where the more exclusive (i.e. less inclusive) AND logic will be applied. Therefore, only
+trajectories that meet all of the filters specified will be stored. This is useful to further
+reduce the data size and simplify analysis because the trajectories may not need to be filtered
+in analysis.</p></li>
+</ul>
+<p>This trajectory information is highly useful for more involved analyses. It can also answer relatively
+simple questions like, “where are muons produced that reach my detector (i.e. sampler)?”. This would correspond
+to storing muon trajectories with the option that links them to a particular sampler and we would
+histogram the first point in each trajectory afterwards.  e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">storeTrajectories</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">storeTrajectoryParticleID</span><span class="o">=</span><span class="s2">&quot;13 -13&quot;</span><span class="p">,</span>
+        <span class="n">storeTrajectorySamplerID</span><span class="o">=</span><span class="s2">&quot;samplername&quot;</span><span class="p">,</span>
+        <span class="n">trajectoryFilterLogicAND</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="collimator-hits">
+<h3>5) Collimator Hits<a class="headerlink" href="#collimator-hits" title="Link to this heading"></a></h3>
+<p>Several options exist to allow extra collimator-specific information to be stored. Why collimators?
+These are usually the devices intended to first intercept the beam so it is highly useful to
+understand the history of each event with respect to the collimators. By default no extra collimator
+information is stored. The options allow for increasingly detailed information to be stored. These
+are listed in increasing amount of data below.</p>
+<ol class="arabic" start="0">
+<li><p>No collimator information - the default option.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeCollimatorInfo=1;</span></code> is used. Collimator geometry information is stored in the Model
+tree of the output. Per-collimator structures are created in the Event tree with a Boolean flag
+called <cite>primaryInteracted</cite> and <cite>primaryStopped</cite> for that collimator for each event. Additionally,
+the <cite>totalEnergyDeposited</cite> for that collimator (including weights) is filled. The other variables
+in these structures are left empty. In the event summary, the <cite>nCollimatorsInteracted</cite>
+and <cite>primaryAbsorbedInCollimator</cite> variables are also filled. No collimator hits are stored. Extra
+histograms are stored in the vector of per-event histograms. These are:</p>
+<ul class="simple">
+<li><p><cite>CollPhitsPE</cite>: Primary hits but only for collimators (first physics processes for the primary).</p></li>
+<li><p><cite>CollPlossPE</cite>: Primary stopped in this element.</p></li>
+<li><p><cite>CollElossPE</cite>: Total energy deposition (per-event).</p></li>
+<li><p><cite>CollPInteractedPE</cite>: Boolean of whether primary passed through the collimator material on that event.</p></li>
+</ul>
+<p>These are done per element (“PE”) which means one number for the whole collimator (e.g. energy deposition
+is integrated across the whole geometry of that one collimator). The first three are simply individual
+bins copied out of the general <cite>PhitsPE</cite> <cite>PlossPE</cite> and <cite>ElossPE</cite> histograms. Each bin in these
+histograms is for one collimator in the order it appears in the beam line. The <code class="code docutils literal notranslate"><span class="pre">collimatorIndices</span></code>
+and <code class="code docutils literal notranslate"><span class="pre">collimatorIndicesByName</span></code> in the Model tree can be used to match the collimators to the
+information stored in the Model tree.</p>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeCollimatorInfo=1,</span> <span class="pre">storeCollimatorHits=1;</span></code> is used. Similar to scenario 1 but in
+addition ‘hits’ with the coordinates are created for each collimator for primary particles. Note,
+that a primary particle can create more than one hit (which is a snapshot of a step in the collimator)
+on a single pass, and in a circular model the primary may hit on many turns.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeCollimatorInfo=1,</span> <span class="pre">storeCollimatorHitsIons=1;</span></code> is used. Similar to scenario 2 but hits
+are generated for secondary ion fragments in addition to any primary particles. This is useful for
+ion collimation where ion fragments may carry significant energy.</p></li>
+<li><p>In combination with 1, 2 or 3, <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeCollimatorHitsLinks=1;</span></code> may be used that stores the extra
+variables <cite>charge</cite>, <cite>mass</cite>, <cite>rigidity</cite> and <cite>kineticEnergy</cite> per hit in the collimator. These are added
+for whatever collimator hits are generated according to the other options.</p></li>
+</ol>
+<p>Generally, store as little as is required. This is why several options are given. See
+<a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> with options beginning with <code class="code docutils literal notranslate"><span class="pre">storeCollimator</span></code> for more
+details.</p>
+</section>
+<section id="aperture-impacts">
+<h3>6) Aperture Impacts<a class="headerlink" href="#aperture-impacts" title="Link to this heading"></a></h3>
+<p>Aperture impacts are the location a particle hits the inside of the aperture (identified as a particle
+going away from the beam axis in the beam pipe). By default, this information is turned <strong>on</strong> and
+store in the Event tree as a branch called <code class="code docutils literal notranslate"><span class="pre">ApertureImpacts</span></code>. By default it only stores hits for
+the primary particle(s) as this is a relatively small but useful piece of information. A per-event
+histogram is also stored by default for the (unweighted) primary aperture impacts versus S.</p>
+<p>This information can be provided for not just the primary but for all ions with the option
+<code class="code docutils literal notranslate"><span class="pre">storeApertureImpactsIons=1</span></code>, or for all particles with the option <code class="code docutils literal notranslate"><span class="pre">storeApertureImpactsAll=1</span></code>.</p>
+<ul class="simple">
+<li><p>The aperture impacts can be turned off with <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeApertureImpacts=0;</span></code>.</p></li>
+<li><p>The aperture impacts histogram can be turned off with <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeApertureImpactsHistograms=0;</span></code>.</p></li>
+<li><p>There are currently no walls between beam pipes with large aperture changes so particles may
+not register as impacting here (being developed).</p></li>
+<li><p>Even for 1 primary particle, there may be <strong>more</strong> than 1 aperture impact (per event) because
+the primary may leave and re-enter the beam pipe.</p></li>
+<li><p>The option <code class="code docutils literal notranslate"><span class="pre">apertureImpactsMinimumKE</span></code> may be used to set a minimum kinetic energy required
+for an aperture hit to be generated. This is useful if you store aperture impacts for all particles
+but want to limit to a high energy case and avoid data inflation from the more numerous low energy
+particles. See <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> for more details.</p></li>
+</ul>
+</section>
+<section id="single-3d-energy-deposition-histogram">
+<h3>7) Single 3D Energy Deposition Histogram<a class="headerlink" href="#single-3d-energy-deposition-histogram" title="Link to this heading"></a></h3>
+<p>This is a single 3D histogram created from whatever energy deposition are generated according to
+the general options. This is historically called a “scoring map” but is not a scoring mesh or map
+in the usual Geant4 sense.</p>
+<p>See <a class="reference internal" href="model_control.html#scoring-map-description"><span class="std std-ref">Scoring Map</span></a> for syntax.</p>
+</section>
+<section id="scoring-meshes">
+<h3>8) Scoring Meshes<a class="headerlink" href="#scoring-meshes" title="Link to this heading"></a></h3>
+<p>Scoring meshes are 3D histograms that can be overlaid on the geometry (with out fear of overlaps
+or bad tracking) to score (integrate or record) a chosen quantity. For example, a 3D grid may
+be specified to record the dose due to protons.</p>
+<p>See <a class="reference internal" href="model_control.html#scoring"><span class="std std-ref">Scoring</span></a> for a complete description of how to specify this in BDSIM.</p>
+<p>There are many possible variations such as scoring only for certain particles, scoring
+multiple quantities on the same mesh, of scoring by material. Some example uses could be:</p>
+<ul class="simple">
+<li><p>Neutron dose in coils of magnet.</p></li>
+<li><p>Ambient dose in air.</p></li>
+<li><p>H10 dose calculation.</p></li>
+<li><p>Charge deposited in target.</p></li>
+</ul>
+</section>
+</section>
+<section id="particle-identification">
+<h2>Particle Identification<a class="headerlink" href="#particle-identification" title="Link to this heading"></a></h2>
+<p>BDSIM uses the standard Particle Data Group identification numbers for each particle type,
+similarly to Geant4. These are typically referred to as “partID”. A table of the particles
+and explanation of the numbering scheme can be found online:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pdg.lbl.gov/2021/web/viewer.html?file=%2F2021/reviews/rpp2020-rev-monte-carlo-numbering.pdf">https://pdg.lbl.gov/2021/web/viewer.html?file=%2F2021/reviews/rpp2020-rev-monte-carlo-numbering.pdf</a>.</p></li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>These are integers.</p></li>
+<li><p>A negative value represents the opposite charge from the definition of the particle, but
+which doesn’t necessarily mean it’s negatively charged.</p></li>
+</ul>
+<p>A table of common particles is listed below:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>PDG ID</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>proton</p></td>
+<td><p>2212</p></td>
+</tr>
+<tr class="row-odd"><td><p>electron</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>positron</p></td>
+<td><p>-11</p></td>
+</tr>
+<tr class="row-odd"><td><p>gamma or photon</p></td>
+<td><p>22</p></td>
+</tr>
+<tr class="row-even"><td><p>neutron</p></td>
+<td><p>2112</p></td>
+</tr>
+<tr class="row-odd"><td><p>pion positive</p></td>
+<td><p>211</p></td>
+</tr>
+<tr class="row-even"><td><p>pion negative</p></td>
+<td><p>-211</p></td>
+</tr>
+<tr class="row-odd"><td><p>pion zero</p></td>
+<td><p>111</p></td>
+</tr>
+<tr class="row-even"><td><p>muon negative</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>muon positive</p></td>
+<td><p>-13</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ion-identification">
+<h2>Ion Identification<a class="headerlink" href="#ion-identification" title="Link to this heading"></a></h2>
+<p>Several parts of BDSIM output (samplers, aperture impacts, trajectories) have the variable <cite>isIon</cite>,
+which is a Boolean to identify whether the hit is an ion or not. This is true for:</p>
+<ul class="simple">
+<li><p>All ions greater than Hydrogen</p></li>
+<li><p>A Hydrogen ion - i.e. a proton with 1 or more bound electron.</p></li>
+</ul>
+<p>This is <strong>note</strong> true for just a proton, which is considered a separate particle. In Geant4,
+a proton is both a particle and also considered an ion, however there are different physics
+processes for each.</p>
+</section>
+<section id="basic-data-inspection">
+<span id="id1"></span><h2>Basic Data Inspection<a class="headerlink" href="#basic-data-inspection" title="Link to this heading"></a></h2>
+<p>To view the data as shown here, we recommend using a ROOT tree browser - <cite>TBrowser</cite>. Start
+ROOT (optionally with the file path specified to put it at the top of the list).</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/starting_root.png"><img alt="_images/starting_root.png" src="_images/starting_root.png" style="width: 100%;" />
+</a>
+</figure>
+<ul class="simple">
+<li><p>The -l option stops the logo splash screen coming up and is slightly quicker.</p></li>
+</ul>
+<p>While in the ROOT interpreter, enter the following command to ‘construct’ a TBrowser object.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/starting_tree_browser.png"><img alt="_images/starting_tree_browser.png" src="_images/starting_tree_browser.png" style="width: 100%;" />
+</a>
+</figure>
+<p>Double-click the file and then the ‘Trees’ (small folders with green leaf on them)
+to explore the hierarchy of the file. Eventually, individual variables can be double-clicked on
+to give a preview histogram on-the-fly that is a histogram of all entries in the Tree (i.e.
+all events in the Event Tree). If the variable is a vector, each item in the vector is
+entered (‘filled’) into the histogram.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/root-tbrowser.png"><img alt="_images/root-tbrowser.png" src="_images/root-tbrowser.png" style="width: 100%;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a file is open in ROOT in a TBrowser but has been overwritten externally, it will
+not show the correct contents - close the TBrowser and ROOT and reopen it.</p>
+</div>
+</section>
+<section id="structure-of-output">
+<h2>Structure Of Output<a class="headerlink" href="#structure-of-output" title="Link to this heading"></a></h2>
+<p>BDSIM uses a series of classes to accumulate information about a Geant4 Run and Event.
+Instances of these classes are ‘filled’ with information during the simulation and copied
+to the output.</p>
+<p>In the case of the ROOT event output format, these classes are stored directly in the file
+so that the same classes can be used by the output analysis tool (rebdsim) to read
+and process the data. A BDSIM ROOT event file has the following structure:</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/rootevent_contents.png"><img alt="_images/rootevent_contents.png" src="_images/rootevent_contents.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Contents of a BDSIM ROOT Event format file.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The file consists of four ROOT ‘trees’ each with ‘branches’ that represent instances
+of the BDSIM classes.  The trees are:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tree Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Header</p></td>
+<td><p>Details about the file type and software versions</p></td>
+</tr>
+<tr class="row-odd"><td><p>ParticleData</p></td>
+<td><p>Information about all particles and ions used in the simulation</p></td>
+</tr>
+<tr class="row-even"><td><p>Beam</p></td>
+<td><p>A record of all options associated with the beam definition</p></td>
+</tr>
+<tr class="row-odd"><td><p>Options</p></td>
+<td><p>A record of all options used by BDSIM</p></td>
+</tr>
+<tr class="row-even"><td><p>Model</p></td>
+<td><p>A record of the lengths and placement transforms of every element
+built by BDSIM in the accelerator beam line suitable for recreating
+global coordinates or visualising trajectories</p></td>
+</tr>
+<tr class="row-odd"><td><p>Run</p></td>
+<td><p>Information collected per Run</p></td>
+</tr>
+<tr class="row-even"><td><p>Event</p></td>
+<td><p>Information collected per Event</p></td>
+</tr>
+</tbody>
+</table>
+<section id="header-tree">
+<span id="output-header-tree"></span><h3>Header Tree<a class="headerlink" href="#header-tree" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rootevent_header_tree.png"><img alt="_images/rootevent_header_tree.png" src="_images/rootevent_header_tree.png" style="width: 40%;" />
+</a>
+</figure>
+<p>The header tree contains a single branch called “Header.” (note the “.”). This branch
+represents a single instance of <code class="code docutils literal notranslate"><span class="pre">BDSOutputROOTEventHeader</span></code>. This stores the
+various software libraries BDSIM is compiled against, as well as the BDSIM version.
+It also stores the time the file was created and the file type, i.e. whether the file
+is from BDSIM, rebdsim or rebdsimCombine.</p>
+<section id="bdsoutputrooteventheader">
+<h4>BDSOutputROOTEventHeader<a class="headerlink" href="#bdsoutputrooteventheader" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bdsimVersion</p></td>
+<td><p>std::string</p></td>
+<td><p>Version of BDSIM used</p></td>
+</tr>
+<tr class="row-odd"><td><p>geant4Version</p></td>
+<td><p>std::string</p></td>
+<td><p>Version of Geant4 used</p></td>
+</tr>
+<tr class="row-even"><td><p>rootVersion</p></td>
+<td><p>std::string</p></td>
+<td><p>Version of ROOT used</p></td>
+</tr>
+<tr class="row-odd"><td><p>clhepVersion</p></td>
+<td><p>std::string</p></td>
+<td><p>Version of CLHEP used</p></td>
+</tr>
+<tr class="row-even"><td><p>timeStamp</p></td>
+<td><p>std::string</p></td>
+<td><p>Time and date file was created</p></td>
+</tr>
+<tr class="row-odd"><td><p>fileType</p></td>
+<td><p>std::string</p></td>
+<td><p>String describing what stage of
+simulation the file came from</p></td>
+</tr>
+<tr class="row-even"><td><p>dataVersion</p></td>
+<td><p>int</p></td>
+<td><p>BDSIM data format version</p></td>
+</tr>
+<tr class="row-odd"><td><p>doublePrecisionOutput</p></td>
+<td><p>bool</p></td>
+<td><p>Whether BDSIM was compiled with
+double precision for output</p></td>
+</tr>
+<tr class="row-even"><td><p>analysedFiles</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>List of files analysed in the case of
+rebdsim, rebdsimHistoMerge,
+rebdsimOptics and rebdsimOrbit</p></td>
+</tr>
+<tr class="row-odd"><td><p>combinedFiles</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>List of files combined together in
+rebdsimCombine</p></td>
+</tr>
+<tr class="row-even"><td><p>nTrajectoryFilters</p></td>
+<td><p>int</p></td>
+<td><p>The total number of trajectory filters
+and therefore the number of bits in
+Event.Trajectory.filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>trajectoryFilters</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>The name of each trajectory filter.</p></td>
+</tr>
+<tr class="row-even"><td><p>skimmedFile</p></td>
+<td><p>bool</p></td>
+<td><p>Whether this file’s Event tree is
+made of skimmed events.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nOriginalEvents (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>If a skimmed file, this is the number
+of events in the original file.</p></td>
+</tr>
+<tr class="row-even"><td><p>nEventsRequested (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>Number of events requested to be
+simulated from the file.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nEventsInFile (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>Number of events in the input
+distribution file.</p></td>
+</tr>
+<tr class="row-even"><td><p>nEventsInFileSkipped (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>Number of events from the
+distribution file that were skipped
+due to filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>distrFileLoopNTimes</p></td>
+<td><p>unsigned int</p></td>
+<td><p>Number of times to replay a given
+distribution file.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>(*) This variable may only be filled in the second entry of the tree as they are only
+available at the end of a run and ROOT does not permit overwriting an entry. The first entry
+to the header tree is written when the file is opened and must be there in case of a crash
+or the BDSIM instance was killed.</p></li>
+</ul>
+</section>
+</section>
+<section id="particledata-tree">
+<h3>ParticleData Tree<a class="headerlink" href="#particledata-tree" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rootevent_particledata.png"><img alt="_images/rootevent_particledata.png" src="_images/rootevent_particledata.png" style="width: 40%;" />
+</a>
+</figure>
+<p>The ParticleData tree contains a single branch called “ParticleData.” (note the “.”). This
+branch represents a single instance of <code class="code docutils literal notranslate"><span class="pre">BDSOutputROOTParticleData</span></code>. This stores
+two maps (like dictionaries) of the particle and ion information for each particle / ion
+used in the simulation (only, i.e. not all that Geant4 supports). The map goes from
+an integer, the Particle Data Group ID, to the particle or ion info that are stored
+in simple C++ structures called <code class="code docutils literal notranslate"><span class="pre">BDSOutputROOTParticleData::ParticleInfo</span></code> and
+<code class="code docutils literal notranslate"><span class="pre">BDSOutputROOTParticleData::IonInfo</span></code> respectively. These contain the name, charge,
+mass, and in the case of ions, additionally A and Z. The both have a function called
+<code class="code docutils literal notranslate"><span class="pre">rigidity</span></code> that can calculate the rigidity of the particle for a given total
+energy - this is used during the execution of BDSIM when rigidities are requested to
+be stored.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>particles</p></td>
+<td><p>std::map&lt;int, BDSOutputROOTParticleData::ParticleInfo&gt;</p></td>
+<td><p>Map of PDG ID to
+particle info.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ions</p></td>
+<td><p>std::map&lt;int, BDSOutputROOTParticleData::IonInfo&gt;</p></td>
+<td><p>Map of PDG ID to
+ion info.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="particleinfo-struct">
+<h4>ParticleInfo Struct<a class="headerlink" href="#particleinfo-struct" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>std::string</p></td>
+<td><p>Name of particle</p></td>
+</tr>
+<tr class="row-odd"><td><p>charge</p></td>
+<td><p>int</p></td>
+<td><p>Particle charge in units of <em>e</em></p></td>
+</tr>
+<tr class="row-even"><td><p>mass</p></td>
+<td><p>double</p></td>
+<td><p>Particle Data Group mass in GeV</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ioninfo-struct">
+<h4>IonInfo Struct<a class="headerlink" href="#ioninfo-struct" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>std::string</p></td>
+<td><p>Name of particle</p></td>
+</tr>
+<tr class="row-odd"><td><p>charge</p></td>
+<td><p>int</p></td>
+<td><p>Particle charge in units of <em>e</em></p></td>
+</tr>
+<tr class="row-even"><td><p>mass</p></td>
+<td><p>double</p></td>
+<td><p>Particle Data Group mass in GeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>a</p></td>
+<td><p>int</p></td>
+<td><p>Mass number - number of neutrons
+and protons together</p></td>
+</tr>
+<tr class="row-even"><td><p>z</p></td>
+<td><p>int</p></td>
+<td><p>Atomic number - number of protons</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="beam-tree">
+<span id="output-beam-tree"></span><h3>Beam Tree<a class="headerlink" href="#beam-tree" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rootevent_beam_tree.png"><img alt="_images/rootevent_beam_tree.png" src="_images/rootevent_beam_tree.png" style="width: 47%;" />
+</a>
+</figure>
+<p>The beam tree contains a single branch called “Beam.” (note the “.”). This branch
+represents an instance of <code class="code docutils literal notranslate"><span class="pre">parser/BeamBase.hh</span></code>. The tree typically contains one
+entry, as only one definition of the beam was used per execution of BDSIM.</p>
+</section>
+<section id="options-tree">
+<h3>Options Tree<a class="headerlink" href="#options-tree" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rootevent_options_tree.png"><img alt="_images/rootevent_options_tree.png" src="_images/rootevent_options_tree.png" style="width: 50%;" />
+</a>
+</figure>
+<p>The options tree contains a single branch called “Options.” (note the “.”). This branch
+represents an instance of <code class="code docutils literal notranslate"><span class="pre">parser/OptionsBase.hh</span></code>. The tree typically contains one
+entry, as only one set of options were used per execution of BDSIM.</p>
+</section>
+<section id="model-tree">
+<h3>Model Tree<a class="headerlink" href="#model-tree" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rootevent_model_tree.png"><img alt="_images/rootevent_model_tree.png" src="_images/rootevent_model_tree.png" style="width: 40%;" />
+</a>
+</figure>
+<p>This tree contains a single branch called “Model.”.  This branch represents an instance
+of <code class="code docutils literal notranslate"><span class="pre">include/BDSOutputROOTEventModel.hh</span></code>. There is also typically one entry, as there
+is one model. Note that some variables here appear as ‘leaf’ icons and some as ‘branch’ icons.
+This is because some of the variables are vectors.</p>
+<section id="bdsoutputrooteventmodel">
+<h4>BDSOutputROOTEventModel<a class="headerlink" href="#bdsoutputrooteventmodel" title="Link to this heading"></a></h4>
+<p>One entry in the model tree represents one beam line.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>samplerNamesUnique</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>The unique names of each of the plane samplers.  These
+are identical to the names of the sampler branches
+found in the Event tree.</p></td>
+</tr>
+<tr class="row-odd"><td><p>samplerCNamesUnique</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>The unique names of each of the cylindrical samplers.</p></td>
+</tr>
+<tr class="row-even"><td><p>samplerSNamesUnique</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>The unique names of each of the spherical samplers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>componentName</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>The beamline component names</p></td>
+</tr>
+<tr class="row-even"><td><p>placementName</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>Unique name for each placement</p></td>
+</tr>
+<tr class="row-odd"><td><p>componentType</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>Beamline component type; “drift”, “sbend”, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>length</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Component length (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>staPos</p></td>
+<td><p>std::vector&lt;TVector3&gt;</p></td>
+<td><p>Global coordinates of start of beamline element (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>midPos</p></td>
+<td><p>std::vector&lt;TVector3&gt;</p></td>
+<td><p>Global coordinates of middle of beamline element (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>endPos</p></td>
+<td><p>std::vector&lt;TVector3&gt;</p></td>
+<td><p>Global coordinates of end of beamline element (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>staRot</p></td>
+<td><p>std::vector&lt;TRotation&gt;</p></td>
+<td><p>Global rotation for the start of this beamline element</p></td>
+</tr>
+<tr class="row-odd"><td><p>midRot</p></td>
+<td><p>std::vector&lt;TRotation&gt;</p></td>
+<td><p>Global rotation for the middle of this beamline element</p></td>
+</tr>
+<tr class="row-even"><td><p>endRot</p></td>
+<td><p>std::vector&lt;TRotation&gt;</p></td>
+<td><p>Global rotation for the end of this beamline element</p></td>
+</tr>
+<tr class="row-odd"><td><p>staRefPos</p></td>
+<td><p>std::vector&lt;TVector3&gt;</p></td>
+<td><p>Global coordinates for the start of the beamline elements
+along the reference trajectory and without any tilt
+or rotation from the component</p></td>
+</tr>
+<tr class="row-even"><td><p>midRefPos</p></td>
+<td><p>std::vector&lt;TVector3&gt;</p></td>
+<td><p>Global coordinates for the middle of the beamline elements
+along the reference trajectory and without any tilt
+or rotation from the component</p></td>
+</tr>
+<tr class="row-odd"><td><p>endRefPos</p></td>
+<td><p>std::vector&lt;TVector3&gt;</p></td>
+<td><p>Global coordinates for the start of the beamline elements
+along the reference trajectory and without any tilt
+or rotation from the component</p></td>
+</tr>
+<tr class="row-even"><td><p>staRefRot</p></td>
+<td><p>std::vector&lt;TRotation&gt;</p></td>
+<td><p>Global rotation matrix for start of the beamline elements
+along the reference trajectory and without any tilt
+or rotation from the component</p></td>
+</tr>
+<tr class="row-odd"><td><p>midRefRot</p></td>
+<td><p>std::vector&lt;TRotation&gt;</p></td>
+<td><p>Global rotation matrix for middle of the beamline elements
+along the reference trajectory and without any tilt
+or rotation from the component</p></td>
+</tr>
+<tr class="row-even"><td><p>endRefRot</p></td>
+<td><p>std::vector&lt;TRotation&gt;</p></td>
+<td><p>Global rotation matrix for middle of the beamline elements
+along the reference trajectory and without any tilt
+or rotation from the component</p></td>
+</tr>
+<tr class="row-odd"><td><p>tilt</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Rotation in radians of the element when placed with respect
+to the curvilinear frame</p></td>
+</tr>
+<tr class="row-even"><td><p>offsetX</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Offset in metres of the element when placed with respect to
+the curvilinear frame - horizontal</p></td>
+</tr>
+<tr class="row-odd"><td><p>offsetY</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Offset in metres of the element when placed with respect to
+the curvilinear frame - verical</p></td>
+</tr>
+<tr class="row-even"><td><p>staS</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>S-position of start of start of element (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>midS</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>S-position of start of middle of element (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>endS</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>S-position of start of end of element (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>beamPipeType</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>Aperture type; “circular”, “lhc”, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>beamPipeAper1</p></td>
+<td><p>std::vector&lt;double&gt;</p></td>
+<td><p>Aperture aper1 (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>beamPipeAper2</p></td>
+<td><p>std::vector&lt;double&gt;</p></td>
+<td><p>Aperture aper2 (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>beamPipeAper3</p></td>
+<td><p>std::vector&lt;double&gt;</p></td>
+<td><p>Aperture aper3 (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>beamPipeAper4</p></td>
+<td><p>std::vector&lt;double&gt;</p></td>
+<td><p>Aperture aper4 (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>material</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>Main material associated with an element. For a drift, this
+is the beam pipe material; for a magnet, the yoke
+material; a collimator, the main material.</p></td>
+</tr>
+<tr class="row-odd"><td><p>k1 - k12</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Normalised magnet strength associated with element
+(1st - 12th order)</p></td>
+</tr>
+<tr class="row-even"><td><p>k12 - k122</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Normalised skew magnet strength associated with element
+(1st - 12th order)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ks</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Normalised solenoid strength</p></td>
+</tr>
+<tr class="row-even"><td><p>hkick</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Fractional momentum kick in horizontal direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>vkick</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Fractional momentum kick in vertical direction</p></td>
+</tr>
+<tr class="row-even"><td><p>bField</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Magnetic field magnitude (T)</p></td>
+</tr>
+<tr class="row-odd"><td><p>eField</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Electric field magnitude (MV)</p></td>
+</tr>
+<tr class="row-even"><td><p>e1</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Input pole face angle (note sbend / rbend convention) (rad)</p></td>
+</tr>
+<tr class="row-odd"><td><p>e2</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Output pole face angle (rad)</p></td>
+</tr>
+<tr class="row-even"><td><p>hgap</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Half-gap of pole tips for dipoles (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>fint</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Fringe-field integral</p></td>
+</tr>
+<tr class="row-even"><td><p>fintx</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Fringe-field integral for exit pole face</p></td>
+</tr>
+<tr class="row-odd"><td><p>fintk2</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>2nd fringe-field integral</p></td>
+</tr>
+<tr class="row-even"><td><p>fintxk2</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>2nd fringe-field integral for exit pole face</p></td>
+</tr>
+</tbody>
+</table>
+<p>Additionally:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>pvNames</p></td>
+<td><p>std::vector&lt;std::vector&lt;std::string&gt;</p></td>
+<td><p>Name of physical volume(s) placed in the world for
+a given beamline element</p></td>
+</tr>
+<tr class="row-even"><td><p>pvNamesWPointer</p></td>
+<td><p>std::vector&lt;std::vector&lt;std::string&gt;</p></td>
+<td><p>Same as pvNames but with the pointer appended to
+the name</p></td>
+</tr>
+<tr class="row-odd"><td><p>midT</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Synchronous time (s) from the start of the line to
+the middle of that element as calculated by BDSIM</p></td>
+</tr>
+<tr class="row-even"><td><p>staP</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>The calculated assumed momentum (GeV/c) at the
+start of the element as calculated by BDSIM</p></td>
+</tr>
+<tr class="row-odd"><td><p>staEk</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>The calculated assumed kinetic energy (GeV) at the
+start of the element as calculated by BDSIM</p></td>
+</tr>
+</tbody>
+</table>
+<p>Optional collimator information also store in the model.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>storeCollimatorInfo</p></td>
+<td><p>bool</p></td>
+<td><p>Whether the optional collimator information was stored.</p></td>
+</tr>
+<tr class="row-odd"><td><p>collimatorIndices</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Index of each collimator in this beam line. Optional.</p></td>
+</tr>
+<tr class="row-even"><td><p>collimatorIndicesByName</p></td>
+<td><p>std::map&lt;std::string, int&gt;</p></td>
+<td><p>Map of collimator names to beam line indices. Includes
+both the accelerator component name and the placement
+name which is unique.</p></td>
+</tr>
+<tr class="row-odd"><td><p>collimatorInfo</p></td>
+<td><p>std::vector&lt;Info&gt;</p></td>
+<td><p>“Info” = BDSOutputROOTEventCollimatorInfo. Select
+for collimators. Optional.</p></td>
+</tr>
+<tr class="row-even"><td><p>collimatorBranchNamesUnique</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>Name of branches in Event tree created specifically
+for collimator hits.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Information stored about any scoring meshes used.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>scoringMeshTranslation</p></td>
+<td><p>std::map&lt;std::string, TVector3&gt;</p></td>
+<td><p>Global translation of each scoring mesh by name (m).</p></td>
+</tr>
+<tr class="row-odd"><td><p>scoringMeshRotation</p></td>
+<td><p>std::map&lt;std::string, TRotation&gt;</p></td>
+<td><p>Global rotation of each scoring mesh by name.</p></td>
+</tr>
+<tr class="row-even"><td><p>scoringMeshName</p></td>
+<td><p>std::vector&lt;std::string&gt;</p></td>
+<td><p>All names of scoring meshes in the model.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Information stored about materials for trajectory storage.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>materialIDToName</p></td>
+<td><p>std::map&lt;short int, std::string&gt;</p></td>
+<td><p>A map of the bdsim-assigned integer material ID to
+its real name as defined in the input / code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>materialNameToID</p></td>
+<td><p>std::map&lt;std::string, short int&gt;</p></td>
+<td><p>The same map but the other way around.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Constant information stored about any cylindrical or spherical samplers.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>samplerCRadius</p></td>
+<td><p>std::map&lt;std::string, double&gt;</p></td>
+<td><p>A map of cylindrical sampler unique name to its
+radius in m.</p></td>
+</tr>
+<tr class="row-odd"><td><p>samplerSRadius</p></td>
+<td><p>std::map&lt;std::string, double&gt;</p></td>
+<td><p>A map of spherical sampler unique name to its
+radius in m.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdsoutputrooteventcollimatorinfo">
+<h4>BDSOutputROOTEventCollimatorInfo<a class="headerlink" href="#bdsoutputrooteventcollimatorinfo" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>componentName</p></td>
+<td><p>std::string</p></td>
+<td><p>Collimator name</p></td>
+</tr>
+<tr class="row-odd"><td><p>componentType</p></td>
+<td><p>std::string</p></td>
+<td><p>Type of collimator</p></td>
+</tr>
+<tr class="row-even"><td><p>length</p></td>
+<td><p>double</p></td>
+<td><p>Length (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>tilt</p></td>
+<td><p>double</p></td>
+<td><p>Tilt (rad)</p></td>
+</tr>
+<tr class="row-even"><td><p>offsetX</p></td>
+<td><p>offsetX</p></td>
+<td><p>Horizontal offset (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>offsetY</p></td>
+<td><p>offsetY</p></td>
+<td><p>Vertical offset (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>material</p></td>
+<td><p>std::string</p></td>
+<td><p>Collimator material</p></td>
+</tr>
+<tr class="row-odd"><td><p>xSizeIn</p></td>
+<td><p>double</p></td>
+<td><p>Horizontal half aperture at entrance (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>ySizeIn</p></td>
+<td><p>double</p></td>
+<td><p>Vertical half aperture at entrance (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>xSizeOut</p></td>
+<td><p>double</p></td>
+<td><p>Horizontal half aperture at exit (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>ySizeOut</p></td>
+<td><p>double</p></td>
+<td><p>Vertical half aperture at exit(m)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="run-tree">
+<span id="output-run-tree"></span><h3>Run Tree<a class="headerlink" href="#run-tree" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rootevent_run_tree.png"><img alt="_images/rootevent_run_tree.png" src="_images/rootevent_run_tree.png" style="width: 40%;" />
+</a>
+</figure>
+<p>This tree contains two branches called “Histos.” and “Summary.” which represent instances of
+<code class="code docutils literal notranslate"><span class="pre">include/BDSOutputROOTEventHistograms.hh</span></code> and <code class="code docutils literal notranslate"><span class="pre">include/BSOutputROOTRunInfo</span></code>,
+respectively. See:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#output-structure-run-info"><span class="std std-ref">BDSOutputROOTEventRunInfo</span></a></p></li>
+<li><p><a class="reference internal" href="#output-structure-histograms"><span class="std std-ref">BDSOutputROOTEventHistograms</span></a></p></li>
+</ul>
+<p>Histos contains vectors of any 1D, 2D and 3D histograms that are produced per run. Currently,
+these are ‘simple histograms’ and not the per-event average ones for the run.</p>
+</section>
+<section id="event-tree">
+<span id="output-event-tree"></span><h3>Event Tree<a class="headerlink" href="#event-tree" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rootevent_event_tree.png"><img alt="_images/rootevent_event_tree.png" src="_images/rootevent_event_tree.png" style="width: 40%;" />
+</a>
+</figure>
+<p>This tree contains information on a per-event basis.  Everything shown in the above tree has a
+different value per-event run in BDSIM.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Branch Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Summary (+)</p></td>
+<td><p>BDSOutputROOTEventInfo</p></td>
+<td><p>Per-event summary information.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Primary (*)</p></td>
+<td><p>BDSOutputROOTEventSampler&lt;float&gt;</p></td>
+<td><p>A record of the coordinates at the start of the
+simulation (before tracking). This includes all
+extra sampler variables irrespective of the
+options that control the optional variables.</p></td>
+</tr>
+<tr class="row-even"><td><p>PrimaryGlobal (*)</p></td>
+<td><p>BDSOutputROOTEventCoords</p></td>
+<td><p>Global Cartesian coordinates of the primary
+particle. These are the same as those in
+“Primary” unless <cite>S0</cite> is specified in the beam
+distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Eloss</p></td>
+<td><p>BDSOutputROOTEventLoss</p></td>
+<td><p>Coordinates of energy deposition in the
+accelerator material.</p></td>
+</tr>
+<tr class="row-even"><td><p>ElossVacuum (*)</p></td>
+<td><p>BDSOutputROOTEventLoss</p></td>
+<td><p>Coordinates of energy deposition in the
+accelerator vacuum only.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ElossTunnel (*)</p></td>
+<td><p>BDSOutputROOTEventLoss</p></td>
+<td><p>Coordinates of energy deposition in the tunnel
+material.</p></td>
+</tr>
+<tr class="row-even"><td><p>ElossWorld (*)</p></td>
+<td><p>BDSOutputROOTEventLoss</p></td>
+<td><p>Coordinates of energy deposition in the world
+volume - by default the air.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ElossWorldContents (*)</p></td>
+<td><p>BDSOutputROOTEventLossWorld</p></td>
+<td><p>Global coordinates of energy deposition in any
+volume supplied inside an externally supplied
+world volume.</p></td>
+</tr>
+<tr class="row-even"><td><p>ElossWorldExit (*)</p></td>
+<td><p>BDSOutputROOTEventLossWorld</p></td>
+<td><p>Global coordinates of the point any track exits
+the world volume and therefore the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PrimaryFirstHit</p></td>
+<td><p>BDSOutputROOTEventLoss</p></td>
+<td><p>Energy deposit ‘hit’ representing the first
+step on the primary trajectory that wasn’t due
+to tracking, i.e. the first interaction where a
+physics process was induced.</p></td>
+</tr>
+<tr class="row-even"><td><p>PrimaryLastHit</p></td>
+<td><p>BDSOutputROOTEventLoss</p></td>
+<td><p>The end point of the primary trajectory. If S
+is -1 (m) it means the particle finished away
+from the beam line where there was no
+curvilinear coordinate system present.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ApertureImpacts (*)</p></td>
+<td><p>BDSOutputROOTEventAperture</p></td>
+<td><p>The point in curvilinear coordinates where
+particles (primary only by default) exit the
+aperture of the machine. Note, the same particle
+can pass through the aperture multiple times.</p></td>
+</tr>
+<tr class="row-even"><td><p>Trajectory (*)</p></td>
+<td><p>BDSOutputROOTEventTrajectory</p></td>
+<td><p>A record of all the steps the primary particle
+took and the associated physics processes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Histos</p></td>
+<td><p>BDSOutputROOTEventHistograms</p></td>
+<td><p>Per-event histograms in vectors.</p></td>
+</tr>
+<tr class="row-even"><td><p>xxxxx</p></td>
+<td><p>BDSOutputROOTEventSampler&lt;float&gt;</p></td>
+<td><p>A dynamically generated branch created per
+sampler (here named ‘xxxxx’) that contains a
+record of all particles that passed through the
+sampler during the event. Note: this includes
+both primary and secondary particles.</p></td>
+</tr>
+<tr class="row-odd"><td><p>xxxxx</p></td>
+<td><p>BDSOutputROOTEventSamplerC</p></td>
+<td><p>A dynamically generated branch created per
+cylindrical sampler (here named ‘xxxxx’) that
+contains a record of all particles that passed
+through the cylindrical sampler during the
+event.</p></td>
+</tr>
+<tr class="row-even"><td><p>xxxxx</p></td>
+<td><p>BDSOutputROOTEventSamplerS</p></td>
+<td><p>A dynamically generated branch created per
+spherical sampler (here named ‘xxxxx’) that
+contains a record of all particles that passed
+through the spherical sampler during the
+event.</p></td>
+</tr>
+<tr class="row-odd"><td><p>COLL_xxxx (**)</p></td>
+<td><p>BDSOutputROOTEventCollimator</p></td>
+<td><p>A dynamically generated branch created per
+collimator when the <code class="code docutils literal notranslate"><span class="pre">storeCollimatorInfo</span></code>
+is used. Stores collimator hit information by
+default only for primary particle hits.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>(+) This was called “Info” in BDSIM before V1.3.</p></li>
+<li><p>(*) This is an optional branch that may not be present if its storage is turned off. See the option that
+matches the name of the branch.</p></li>
+<li><p>ElossWorldContents is only included if the option <code class="code docutils literal notranslate"><span class="pre">storeElossWorldContents</span></code> is turned on
+or importance sampling is used. It is possible to store only the integral in the Summary branch
+using the options <code class="code docutils literal notranslate"><span class="pre">storeElossWorldContentsIntegral</span></code> and <code class="code docutils literal notranslate"><span class="pre">storeElossWorldIntegral</span></code>
+without the corresponding options <code class="code docutils literal notranslate"><span class="pre">storeElossWorldContents</span></code> and <code class="code docutils literal notranslate"><span class="pre">storeElossWorld</span></code>,
+which avoids the large file size from the individual energy deposition hits.</p></li>
+<li><p>(**) COLL_xxxx is only added per collimator when one of the options <code class="code docutils literal notranslate"><span class="pre">storeCollimatorInfo</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">storeCollimatorHits</span></code>, <code class="code docutils literal notranslate"><span class="pre">storeCollimatorHitsIons</span></code>, <code class="code docutils literal notranslate"><span class="pre">storeCollimatorHitsAll</span></code> is used.</p></li>
+</ul>
+<p>The types and names of the contents of each class can be found in the header files in
+<code class="code docutils literal notranslate"><span class="pre">bdsim/include/BDSOutputROOTEvent*.hh</span></code>. The contents of the classes are described below.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For large <cite>S0</cite> in a large model, a large distance as compared to the size of the beam
+may displace the primary coordinates, e.g. 1km offset for 1um beam. For this reason
+the PrimaryGlobal structure always uses double precision numbers, unlike the Primary structure
+and the other samplers that use floating point precision numbers (unless the ROOTDOUBLE
+CMake option is used at compilation time for double precision in the samplers).</p>
+</div>
+<section id="bdsoutputrooteventaperture">
+<h4>BDSOutputROOTEventAperture<a class="headerlink" href="#bdsoutputrooteventaperture" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>The number of aperture impacts for this event.</p></td>
+</tr>
+<tr class="row-odd"><td><p>energy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>The total energy of each particle as it hit.</p></td>
+</tr>
+<tr class="row-even"><td><p>S</p></td>
+<td><p>std::vector&lt;double&gt;</p></td>
+<td><p>The (global) curvilinear S position (m) of the hit.</p></td>
+</tr>
+<tr class="row-odd"><td><p>weight</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>The associated statistical weight.</p></td>
+</tr>
+<tr class="row-even"><td><p>isPrimary</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Whether each hit for this event was caused by a primary.</p></td>
+</tr>
+<tr class="row-odd"><td><p>firstPrimaryImpact</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Whether the hit is the first primary one for this event.</p></td>
+</tr>
+<tr class="row-even"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>PDG particle ID of the particle.</p></td>
+</tr>
+<tr class="row-odd"><td><p>turn</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Turn number (1-counting) the hit happened on.</p></td>
+</tr>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Local x of hit (m).</p></td>
+</tr>
+<tr class="row-odd"><td><p>y</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Local y of hit (m).</p></td>
+</tr>
+<tr class="row-even"><td><p>xp</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Local xp of hit (x component of unit momentum vector).</p></td>
+</tr>
+<tr class="row-odd"><td><p>yp</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Local yp of hit (y component of unit momentum vector).</p></td>
+</tr>
+<tr class="row-even"><td><p>T</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Global time of hit (ns).</p></td>
+</tr>
+<tr class="row-odd"><td><p>kineticEnergy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Kinetic energy of particle as it hit.</p></td>
+</tr>
+<tr class="row-even"><td><p>isIon</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Whether the hit is caused by an ion.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ionA</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Ion atomic mass number.</p></td>
+</tr>
+<tr class="row-even"><td><p>ionZ</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Ion atomic number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nElectrons</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Number of bound electrons in case of an ion. 0 otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p>trackID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Track ID number of the particle that hit.</p></td>
+</tr>
+<tr class="row-odd"><td><p>parentID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Track ID number of the parent particle.</p></td>
+</tr>
+<tr class="row-even"><td><p>modelID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Index in beam line of component hit (0-counting).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdsoutputrooteventinfo">
+<h4>BDSOutputROOTEventInfo<a class="headerlink" href="#bdsoutputrooteventinfo" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>startTime</p></td>
+<td><p>time_t</p></td>
+<td><p>Time stamp at start of event</p></td>
+</tr>
+<tr class="row-odd"><td><p>stopTime</p></td>
+<td><p>time_t</p></td>
+<td><p>Time stamp at end of event</p></td>
+</tr>
+<tr class="row-even"><td><p>durationWall</p></td>
+<td><p>float</p></td>
+<td><p>Duration (wall time) of event in seconds</p></td>
+</tr>
+<tr class="row-odd"><td><p>durationCPU</p></td>
+<td><p>float</p></td>
+<td><p>Duration (CPU time) of event in seconds</p></td>
+</tr>
+<tr class="row-even"><td><p>seedStateAtStart</p></td>
+<td><p>std::string</p></td>
+<td><p>State of random number generator at the
+start of the event as provided by CLHEP</p></td>
+</tr>
+<tr class="row-odd"><td><p>index</p></td>
+<td><p>int</p></td>
+<td><p>Index of the event (0 counting)</p></td>
+</tr>
+<tr class="row-even"><td><p>aborted</p></td>
+<td><p>bool</p></td>
+<td><p>Whether event was aborted or not</p></td>
+</tr>
+<tr class="row-odd"><td><p>primaryHitMachine</p></td>
+<td><p>bool</p></td>
+<td><p>Whether the primary particle hit the
+machine. This is judged by whether there
+are any energy deposition hits or not. If
+no physics processes are registered this
+won’t work correctly.</p></td>
+</tr>
+<tr class="row-even"><td><p>primaryAbsorbedInCollimator</p></td>
+<td><p>bool</p></td>
+<td><p>Whether the primary particle stopped in a
+collimator or not.</p></td>
+</tr>
+<tr class="row-odd"><td><p>memoryUsageMb</p></td>
+<td><p>double</p></td>
+<td><p>Memory usage of the whole program at the
+the current event including the geometry.</p></td>
+</tr>
+<tr class="row-even"><td><p>energyDeposited</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated energy in Eloss including
+the statistical weights.</p></td>
+</tr>
+<tr class="row-odd"><td><p>energyDepositedVacuum</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated energy in ElossVacuum
+the statistical weights.</p></td>
+</tr>
+<tr class="row-even"><td><p>energyDepositedWorld</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated energy in the ElossWorld
+structure including the statistical weight.</p></td>
+</tr>
+<tr class="row-odd"><td><p>energyDepositedTunnel</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated energy in the ElossTunnel
+including the statistical weight.</p></td>
+</tr>
+<tr class="row-even"><td><p>energyWorldExit</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated energy of all particles
+including their rest mass leaving the
+world volume and therefore the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>energyWorldExitKinetic</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated kinetic energy of all
+particles leaving the world volume.</p></td>
+</tr>
+<tr class="row-even"><td><p>energyImpactingAperture</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated energy of all particles
+including their rest mass impacting the
+aperture and including their weight.</p></td>
+</tr>
+<tr class="row-odd"><td><p>energyImpactingApertureKinetic</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated kinetic energy of all
+particles impacting the aperture and
+including their weight.</p></td>
+</tr>
+<tr class="row-even"><td><p>energyKilled</p></td>
+<td><p>double</p></td>
+<td><p>(GeV) Integrated energy including their
+rest mass of any particles that were
+artificially killed in the stacking action.</p></td>
+</tr>
+<tr class="row-odd"><td><p>energyTotal</p></td>
+<td><p>double</p></td>
+<td><p>The sum of the above energies for the
+current event.</p></td>
+</tr>
+<tr class="row-even"><td><p>nCollimatorsInteracted</p></td>
+<td><p>int</p></td>
+<td><p>The number of collimators the primary
+particle interacted with.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nTracks</p></td>
+<td><p>long long int</p></td>
+<td><p>Number of tracks created in the event.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code docutils literal notranslate"><span class="pre">energyDepositedVacuum</span></code> will only be non-zero if the option <code class="code docutils literal notranslate"><span class="pre">storeElossVacuum</span></code>
+is on which is off by default.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code docutils literal notranslate"><span class="pre">energyDepositedWorld</span></code> will only be non-zero if <strong>either</strong> the options <code class="code docutils literal notranslate"><span class="pre">storeElossWorld</span></code>
+or <code class="code docutils literal notranslate"><span class="pre">storeElossWorldIntegral</span></code> are on which are off by default. If <code class="code docutils literal notranslate"><span class="pre">storeElossWorldIntegral</span></code>
+is used, the energy deposition hits will be generated but won’t be written to file to save space.
+Similarly, the option <code class="code docutils literal notranslate"><span class="pre">storeElossWorldContentsIntegral</span></code> can be used to store the integral
+only in the event summary of the energy deposition in the world daughter volumes when the
+an externally provided world volume is used.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code docutils literal notranslate"><span class="pre">energyWorldExit</span></code> will only be non-zero if Geant4.10.3 or later is used as well
+as the option <code class="code docutils literal notranslate"><span class="pre">storeElossWorld</span></code> is on that is off by default.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code docutils literal notranslate"><span class="pre">nCollimatorsInteracted</span></code> will only be non-zero if the option <code class="code docutils literal notranslate"><span class="pre">storeCollimatorInfo</span></code>
+is turned on which is off by default.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>One would expect the parameter <cite>energyTotal</cite> which is the sum of the energies
+to be equal to the incoming beam energy. This in reality depends on the physics
+list used as well as the production range cuts. Furthermore, ions from the accelerator
+material may be liberated leading to an inflated total energy as their rest mass
+is also counted. This is non-trivial to correct and this value is provided only
+as a guide. The physics library and BDSIM-provided tracking both conserve energy
+but it is highly non-trivial to ensure all changes are recorded.</p>
+</div>
+</section>
+<section id="bdsoutputrooteventloss">
+<h4>BDSOutputROOTEventLoss<a class="headerlink" href="#bdsoutputrooteventloss" title="Link to this heading"></a></h4>
+<p>Energy deposition hits are the most numerous, so not all information is recorded by default.
+Extra information can be recorded but this typically dominates the output file size.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>The number of energy deposition hits for this event</p></td>
+</tr>
+<tr class="row-odd"><td><p>energy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of energy of each piece of energy deposition</p></td>
+</tr>
+<tr class="row-even"><td><p>S</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Corresponding curvilinear S position (m) of energy deposition</p></td>
+</tr>
+<tr class="row-odd"><td><p>weight</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Corresponding weight</p></td>
+</tr>
+<tr class="row-even"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Particle ID of particle that caused energy deposition</p></td>
+</tr>
+<tr class="row-odd"><td><p>trackID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Track ID of particle that caused energy deposition</p></td>
+</tr>
+<tr class="row-even"><td><p>parentID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Track ID of the parent particle</p></td>
+</tr>
+<tr class="row-odd"><td><p>modelID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Index in model tree for where deposition occurred</p></td>
+</tr>
+<tr class="row-even"><td><p>turn</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Turn in circular machine on which hit occurred</p></td>
+</tr>
+<tr class="row-odd"><td><p>x</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Local X of energy deposition (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>y</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Local Y of energy deposition (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>z</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Local Z of energy deposition (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>X</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global X of energy deposition (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Y</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global Y of energy deposition (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>Z</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global Z of energy deposition (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>T</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global time-of-flight since beginning of event (ns)</p></td>
+</tr>
+<tr class="row-even"><td><p>stepLength</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Length of step that the energy deposition was
+produced in (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>preStepKineticEnergy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) The kinetic energy of the particle (any species)
+at the starting point of the step that the energy deposition
+was produced in</p></td>
+</tr>
+<tr class="row-even"><td><p>postStepProcessType</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Post step physics process ID in Geant4 notation</p></td>
+</tr>
+<tr class="row-odd"><td><p>postStepProcessSubType</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Post step physics process sub-ID in Geant4 notation</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdsoutputrooteventlossworld">
+<h4>BDSOutputROOTEventLossWorld<a class="headerlink" href="#bdsoutputrooteventlossworld" title="Link to this heading"></a></h4>
+<p>For the point where particles exit the world, there is no concept of a curvilinear coordinate
+system so there are only global coordinates recorded.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>The number of exits for this event</p></td>
+</tr>
+<tr class="row-odd"><td><p>totalEnergy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of total energy of each particle exiting</p></td>
+</tr>
+<tr class="row-even"><td><p>postStepKineticEnergy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>The kinetic energy of the particle (any species)
+at the end point as the particle exited.</p></td>
+</tr>
+<tr class="row-odd"><td><p>X</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global X of exit point (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>Y</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global Y of exit point (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Z</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global Z of exit point (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>T</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>(optional) Global time-of-flight since beginning of event (ns)</p></td>
+</tr>
+<tr class="row-odd"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Particle ID of particle</p></td>
+</tr>
+<tr class="row-even"><td><p>trackID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Track ID of particle</p></td>
+</tr>
+<tr class="row-odd"><td><p>parentID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Track ID of the parent particle</p></td>
+</tr>
+<tr class="row-even"><td><p>weight</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Corresponding weight</p></td>
+</tr>
+<tr class="row-odd"><td><p>turn</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>(optional) Turn in circular machine on loss</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdsoutputrooteventruninfo">
+<span id="output-structure-run-info"></span><h4>BDSOutputROOTEventRunInfo<a class="headerlink" href="#bdsoutputrooteventruninfo" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>startTime</p></td>
+<td><p>time_t</p></td>
+<td><p>Time stamp at start of run</p></td>
+</tr>
+<tr class="row-odd"><td><p>stopTime</p></td>
+<td><p>time_t</p></td>
+<td><p>Time stamp at end of run</p></td>
+</tr>
+<tr class="row-even"><td><p>durationWall</p></td>
+<td><p>float</p></td>
+<td><p>Duration (wall time) of run in seconds</p></td>
+</tr>
+<tr class="row-odd"><td><p>durationCPU</p></td>
+<td><p>float</p></td>
+<td><p>Duration (CPU time) of run in seconds</p></td>
+</tr>
+<tr class="row-even"><td><p>seedStateAtStart</p></td>
+<td><p>std::string</p></td>
+<td><p>State of random number generator at the
+start of the run as provided by CLHEP</p></td>
+</tr>
+<tr class="row-odd"><td><p>nEventsInFile</p></td>
+<td><p>long</p></td>
+<td><p>Number of events from input distribution
+file that were found. Excludes any ignored
+or skipped events, but includes all events
+after those irrespective of filters.</p></td>
+</tr>
+<tr class="row-even"><td><p>nEventsInFileSkipped</p></td>
+<td><p>long</p></td>
+<td><p>Number of events if any that were skipped
+from an input distribution given the
+filters used.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdsoutputrooteventtrajectory">
+<span id="output-structure-trajectory"></span><h4>BDSOutputROOTEventTrajectory<a class="headerlink" href="#bdsoutputrooteventtrajectory" title="Link to this heading"></a></h4>
+<p>By default, only the primary particle trajectory is stored - see <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> for
+which options to set to control the level of detail stored in the trajectories.</p>
+<p>Currently, some degenerate information is stored for completeness.  This may be removed in future
+versions (e.g. the pre-step point of the  part of the trajectory  is the same as the post-step point
+of the previous part of the trajectory).</p>
+<p>Each entry in the vectors in BDSOutputROOTEventTrajectory represents one step along the
+particle trajectory with a ‘pre-step’ and ‘post-step’ point - information associated with
+the start and end of that step.</p>
+<ul class="simple">
+<li><p>The outermost vector is a vector of trajectories for that event. i.e. a trajectory of a proton,
+next a trajectory of a gamma</p></li>
+<li><p>The innermost vector is a vector of the step points along that trajectory</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">energyDeposit</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>(above) This is the energy deposited along the first (0th) step of all trajectories in this event.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">energyDeposit</span><span class="p">[</span><span class="mi">0</span><span class="p">][]</span>
+</pre></div>
+</div>
+<p>This is the first (0th) trajectory for each event and the energy deposited of all steps of that trajectory.</p>
+<ul class="simple">
+<li><p>These are written in the ROOT TTree::Draw syntax that can be used with rebdsim for analysis. Here,
+<code class="code docutils literal notranslate"><span class="pre">[]</span></code> means <cite>all</cite>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both <code class="code docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code> and <code class="code docutils literal notranslate"><span class="pre">int</span></code> types are used here. The C++ standard dictates
+a minimum number of bits for these as 16 bits. This corresponds to a range of -32768 to
+32768 for a signed int and 0 to 65535 for the unsigned int. If storing track IDs beyond
+this, the track ID may wrap around to 0. However, this is expected to be very unlikely
+in practice. Also, in practice most compilers will use a larger bit depth by default as
+it is more optimal on most hardware.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>The number of trajectories stored for this event</p></td>
+</tr>
+<tr class="row-odd"><td><p>filters</p></td>
+<td><p>std::bitset&lt;10&gt;</p></td>
+<td><p>Bits (0 or 1) representing which filters this
+particular trajectory matched. See the header for their
+description.</p></td>
+</tr>
+<tr class="row-even"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>The PDG ID for the particle in each trajectory step</p></td>
+</tr>
+<tr class="row-odd"><td><p>trackID</p></td>
+<td><p>std::vector&lt;unsigned int&gt;</p></td>
+<td><p>The track ID for the particle in each trajectory step</p></td>
+</tr>
+<tr class="row-even"><td><p>parentID</p></td>
+<td><p>std::vector&lt;unsigned int&gt;</p></td>
+<td><p>The track ID of the parent particle for each trajectory
+step</p></td>
+</tr>
+<tr class="row-odd"><td><p>parentIndex</p></td>
+<td><p>std::vector&lt;unsigned int&gt;</p></td>
+<td><p>The index in the vectors of this class that correspond
+to parent particle (the one that lead to the creation
+of the particle in the current entry)</p></td>
+</tr>
+<tr class="row-even"><td><p>parentStepIndex</p></td>
+<td><p>std::vector&lt;unsigned int&gt;</p></td>
+<td><p>The index of the step along a given parent trajectory
+that this trajectory originated from</p></td>
+</tr>
+<tr class="row-odd"><td><p>primaryStepIndex</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>The index of the step along the primary trajectory that
+that this current trajectory ultimately traces back to</p></td>
+</tr>
+<tr class="row-even"><td><p>depth</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>The depth in the tree of the trajectory - i.e. the
+number of parent particles this one has.</p></td>
+</tr>
+<tr class="row-odd"><td><p>preProcessTypes (+)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Geant4 enum of pre-step physics process - general
+category</p></td>
+</tr>
+<tr class="row-even"><td><p>preProcessSubTypes (+)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Geant4 enum of pre-step physics process - specific
+process ID within category</p></td>
+</tr>
+<tr class="row-odd"><td><p>postProcessTypes (+)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Geant4 enum of post-step physics process - general
+category</p></td>
+</tr>
+<tr class="row-even"><td><p>postProcesssSubTypes(+)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Geant4 enum of post-step physics process - specific
+process ID within category</p></td>
+</tr>
+<tr class="row-odd"><td><p>preWeights</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Weighting associated with pre-step point</p></td>
+</tr>
+<tr class="row-even"><td><p>postWeights</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Weighting associated with post-step point</p></td>
+</tr>
+<tr class="row-odd"><td><p>energyDeposit</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Total energy deposit in the current step (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>XYZ</p></td>
+<td><p>std::vector&lt;std::vector&lt;TVector3&gt;&gt;</p></td>
+<td><p>The ‘position’ of the trajectory according to Geant4 -
+from G4Track-&gt;GetPosition() - global Cartesian (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>S</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Curvilinear pre-step S of the trajectory point (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>PXPYPZ (+)</p></td>
+<td><p>std::vector&lt;std::vector&lt;TVector3&gt;&gt;</p></td>
+<td><p>Momentum of the pre-step point - global Cartesian (GeV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>T (+)</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Global pres-step time of the trajectory point (ns)</p></td>
+</tr>
+<tr class="row-even"><td><p>xyz (*)</p></td>
+<td><p>std::vector&lt;std::vector&lt;TVector3&gt;&gt;</p></td>
+<td><p>The ‘position’ of the trajectory according to Geant4 -
+from G4Track-&gt;GetPosition() - local Cartesian (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>pxpypz (*)</p></td>
+<td><p>std::vector&lt;std::vector&lt;TVector3&gt;&gt;</p></td>
+<td><p>Local momentum of the track (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>charge (**)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Charge of particle (e)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kineticEnergy</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Kinetic energy of the particle at the pre-step point
+(GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>turnsTaken (**)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Number of turns taken at this step</p></td>
+</tr>
+<tr class="row-odd"><td><p>mass (**)</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Mass of particle (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>rigidity (**)</p></td>
+<td><p>std::vector&lt;std::vector&lt;double&gt;&gt;</p></td>
+<td><p>Rigidity of the particle (Tm)</p></td>
+</tr>
+<tr class="row-odd"><td><p>isIon (***)</p></td>
+<td><p>std::vector&lt;std::vector&lt;bool&gt;&gt;</p></td>
+<td><p>Whether it’s an ion or not</p></td>
+</tr>
+<tr class="row-even"><td><p>ionA (***)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Atomic mass number. 0 for non-nuclei</p></td>
+</tr>
+<tr class="row-odd"><td><p>ionZ (***)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Atomic number. 0 for non-nuclei</p></td>
+</tr>
+<tr class="row-even"><td><p>nElectrons (***)</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Number of bound electrons if an ion. 0 otherwise</p></td>
+</tr>
+<tr class="row-odd"><td><p>materialID (-)</p></td>
+<td><p>std::vector&lt;sd::vector&lt;short int&gt;&gt;</p></td>
+<td><p>Integer ID of material at that step point. See the
+Model tree for decoding this to material name.</p></td>
+</tr>
+<tr class="row-even"><td><p>modelIndicies</p></td>
+<td><p>std::vector&lt;std::vector&lt;int&gt;&gt;</p></td>
+<td><p>Index in beam line of which element the trajectory is in
+(-1 if not inside an accelerator component)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(*) These are not stored by default (i.e. the vectors exist but are empty). Use the option <cite>storeTrajectoryLocal=1;</cite>
+as described in <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a>. Note, these may have default value (0 or -1) in some cases where
+the curvilinear coordinate system is not available - e.g. typically greater than 2.5m from the beam line.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(**) These are not stored by default (i.e. the vectors exist but are empty). Use the option <cite>storeTrajectoryLinks=1;</cite>
+as described in <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(***) These are not stored by default (i.e. the vectors exist but are empty). Use the option <cite>storeTrajectoryIon=1;</cite>
+as described in <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(+) Not stored by default, but controlled by a specific option for this variable
+described in <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(-) Not stored by default, but controlled by the option <cite>storeTrajectoryMaterial</cite>.</p>
+</div>
+<p>In addition, some maps are stored to link the entries together conceptually.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>trackID_trackIndex</p></td>
+<td><p>std::map&lt;int, int&gt;</p></td>
+<td><p>A map of all trackIDs to the storage index in this class</p></td>
+</tr>
+</tbody>
+</table>
+<p>These are currently not implemented.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>trackIndex_trackProcess</p></td>
+<td><p>std::map&lt;int, std::pair&lt;int,int&gt;&gt;</p></td>
+<td><p>A map from the index in this class to track process</p></td>
+</tr>
+<tr class="row-even"><td><p>trackIndex_modelIndex</p></td>
+<td><p>std::map&lt;int, int&gt;</p></td>
+<td><p>A map from the index in this class to the model index</p></td>
+</tr>
+<tr class="row-odd"><td><p>modelIndex_trackIndex</p></td>
+<td><p>std::map&lt;int, std::vector&lt;int&gt;&gt;</p></td>
+<td><p>A map from the model index to the index in this class</p></td>
+</tr>
+</tbody>
+</table>
+<p>Functions are provided that allow exploration of the data through the connections stored.</p>
+<ul class="simple">
+<li><p>Using the shorthand <code class="code docutils literal notranslate"><span class="pre">TP</span></code> = <code class="code docutils literal notranslate"><span class="pre">BDSOutputROOTEventTrajectoryPoint</span></code> for readability.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Function</strong></p></th>
+<th class="head"><p><strong>Return Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>trackInteractions(int trackID)</p></td>
+<td><p>std::vector&lt;TP&gt;</p></td>
+<td><p>Return vector of points where this particle interacted
+all the way to the primary. Transportation steps are
+suppressed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>primaryProcessPoint(int trackID)</p></td>
+<td><p>TP</p></td>
+<td><p>For a given track ID, return the point on the primary
+trajectory where this track ultimately leads back to.
+Therefore, for a given trajectory, this function will
+recurse up the trajectory tree on to the primary one.</p></td>
+</tr>
+<tr class="row-even"><td><p>parentProcessPoint(int trackID)</p></td>
+<td><p>TP</p></td>
+<td><p>For a given track ID, return the point on the parent
+trajectory particle first interacted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>processHistory(int trackID)</p></td>
+<td><p>std::vector&lt;TP&gt;</p></td>
+<td><p>A full history up the trajectory table to the primary
+for a given track ID.</p></td>
+</tr>
+<tr class="row-even"><td><p>printTrajectoryByTrackID(int trackID)</p></td>
+<td><p>void</p></td>
+<td><p>Print information and history for a given track ID.</p></td>
+</tr>
+<tr class="row-odd"><td><p>printTrajectoryBy(int storageIndex)</p></td>
+<td><p>void</p></td>
+<td><p>Print information and history for a given storage index.</p></td>
+</tr>
+<tr class="row-even"><td><p>parentIsPrimary(int trackID)</p></td>
+<td><p>bool</p></td>
+<td><p>Whether the creator of this track is a primary particle
+This returns false for a primary itself.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdsoutputrooteventsampler">
+<h4>BDSOutputROOTEventSampler<a class="headerlink" href="#bdsoutputrooteventsampler" title="Link to this heading"></a></h4>
+<p>Note: the sampler structure, like everything else in the event tree, is stored
+per event.  However, for a given event, there may be multiple hits on a sampler, i.e.
+many secondary particles may have passed through a sampler. For this purpose, most
+variables are vectors of numbers, where the vector represents all the hits in that event.</p>
+<p>As the sampler is considered infinitely thin and always in the same place, there is no
+point in storing the z-location or the S-location for every particle hit. Therefore,
+these variables are only stored once as a single number per event.</p>
+<p>The class is templated to allow use of both double and float precision numbers. By default,
+T = float, i.e. float precision number is stored. BDSIM can be compiled with an option for
+double precision output (useful typically only for development or precision testing) but this
+doubles the output file size.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">T</span></code> is <code class="code docutils literal notranslate"><span class="pre">float</span></code> by default - optionally (at compile time) <code class="code docutils literal notranslate"><span class="pre">double</span></code>.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>The number in this event in this sampler</p></td>
+</tr>
+<tr class="row-odd"><td><p>energy</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the total energy (GeV) of each hit in this sampler</p></td>
+</tr>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the x-coordinate of each hit (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>y</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the y-coordinate of each hit (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>z</p></td>
+<td><p>T</p></td>
+<td><p>Single entry of z for this sampler (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>xp</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the fractional x transverse momentum</p></td>
+</tr>
+<tr class="row-even"><td><p>yp</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the fractional y transverse momentum</p></td>
+</tr>
+<tr class="row-odd"><td><p>zp</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the fractional forward momentum</p></td>
+</tr>
+<tr class="row-even"><td><p>p</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the momentum (magnitude) of the particle (GeV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>T</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the time-of-flight of the particle (ns)</p></td>
+</tr>
+<tr class="row-even"><td><p>weight</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the associated weights of the hits</p></td>
+</tr>
+<tr class="row-odd"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the PDG ID for the particle of each hit</p></td>
+</tr>
+<tr class="row-even"><td><p>parentID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the trackID of the progenitor of the particle that hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>trackID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the trackID of the particle that hit</p></td>
+</tr>
+<tr class="row-even"><td><p>modelID</p></td>
+<td><p>int</p></td>
+<td><p>The index to the BDSIM model of which element the sampler belonged to</p></td>
+</tr>
+<tr class="row-odd"><td><p>turnNumber</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the turn number of the particle that hit</p></td>
+</tr>
+<tr class="row-even"><td><p>S</p></td>
+<td><p>T</p></td>
+<td><p>S-position of the sampler (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>r (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the radius calculated from x and y (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>rp (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the radial fractional transverse momentum calculated from xp
+and yp</p></td>
+</tr>
+<tr class="row-odd"><td><p>phi (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of angle of x and y (calculated from arctan(y/x)</p></td>
+</tr>
+<tr class="row-even"><td><p>phip (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of angle of xp and yp (calculated from arctan(yp/xp)</p></td>
+</tr>
+<tr class="row-odd"><td><p>theta (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the angle of the particle from the local z axis (calculated
+from arctan(rp/zp)</p></td>
+</tr>
+<tr class="row-even"><td><p>charge (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the PDG charge of the particle for each hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>kineticEnergy (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the kinetic energy of the particle for each hit (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>mass (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the PDG mass of the particle for each hit (GeV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>rigidity (*)</p></td>
+<td><p>std::vector&lt;T&gt;</p></td>
+<td><p>Vector of the rigidity of the particle for each hit (Tm)</p></td>
+</tr>
+<tr class="row-even"><td><p>isIon (*)</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Vector of whether the particle is an ion or not</p></td>
+</tr>
+<tr class="row-odd"><td><p>ionA (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the atomic mass number. 0 for non-nuclei.</p></td>
+</tr>
+<tr class="row-even"><td><p>ionZ (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the atomic number. 0 for non-nuclei.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nElectrons(*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Number of bound electrons if an ion. 0 otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(*) These are not stored by default (i.e. the vectors exist but are empty). If these
+parameters are desired, please use the appropriate options to turn their storage on.
+See <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> for more details.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A common issue is that apparently half of the particles missing in the first sampler in
+the beam line. If a sampler is placed at the beginning of the beam line and a bunch
+distribution with a finite z-width is used, approximately half of the particles will
+start in front of the sampler, never pass through it and never be registered. For this
+reason, one should refrain from putting a sampler at the beginning of a beam line to avoid
+confusion. The primary output records all primary coordinates before they enter the tracking
+in the geometry, so it always contains all primary particles.</p>
+</div>
+</section>
+<section id="bdsoutputrooteventsamplerc">
+<h4>BDSOutputROOTEventSamplerC<a class="headerlink" href="#bdsoutputrooteventsamplerc" title="Link to this heading"></a></h4>
+<p>Hits for the <strong>cylindrical</strong> sampler structure. Very similar to BDSOutputROOTEventSampler, but
+in cylindrical coordinates. This class is not templated for float / double as we
+won’t use it for optical comparison. Therefore, only float precision is provided.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>The number in this event in this sampler</p></td>
+</tr>
+<tr class="row-odd"><td><p>totalEnergy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the total energy (GeV) of each hit in this sampler</p></td>
+</tr>
+<tr class="row-even"><td><p>z</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the z-coordinate of each hit (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>phi</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the phi-coordinate of each hit (rad)</p></td>
+</tr>
+<tr class="row-even"><td><p>rp</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the r component of the unit momentum vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>zp</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the z component of the unit momentum vector</p></td>
+</tr>
+<tr class="row-even"><td><p>phip</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the phi angle between the momentum vector and the surface
+normal vector (rad)</p></td>
+</tr>
+<tr class="row-odd"><td><p>p</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the momentum (magnitude) of the particle (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>T</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the time-of-flight of the particle (ns)</p></td>
+</tr>
+<tr class="row-odd"><td><p>weight</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the associated weights of the hits</p></td>
+</tr>
+<tr class="row-even"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the PDG ID for the particle of each hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>parentID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the trackID of the progenitor of the particle that hit</p></td>
+</tr>
+<tr class="row-even"><td><p>trackID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the trackID of the particle that hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>modelID</p></td>
+<td><p>int</p></td>
+<td><p>The index to the BDSIM model of which element the sampler belonged to</p></td>
+</tr>
+<tr class="row-even"><td><p>turnNumber</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the turn number of the particle that hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>S</p></td>
+<td><p>T</p></td>
+<td><p>S-position of the hit (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>charge (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the PDG charge of the particle for each hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>kineticEnergy (*)</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the kinetic energy of the particle for each hit (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>mass (*)</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the PDG mass of the particle for each hit (GeV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>rigidity (*)</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the rigidity of the particle for each hit (Tm)</p></td>
+</tr>
+<tr class="row-even"><td><p>isIon (*)</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Vector of whether the particle is an ion or not</p></td>
+</tr>
+<tr class="row-odd"><td><p>ionA (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the atomic mass number. 0 for non-nuclei.</p></td>
+</tr>
+<tr class="row-even"><td><p>ionZ (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the atomic number. 0 for non-nuclei.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nElectrons(*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Number of bound electrons if an ion. 0 otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(*) These are not stored by default (i.e. the vectors exist but are empty). If these
+parameters are desired, please use the appropriate options to turn their storage on.
+See <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> for more details.</p>
+</div>
+</section>
+<section id="bdsoutputrooteventsamplers">
+<h4>BDSOutputROOTEventSamplerS<a class="headerlink" href="#bdsoutputrooteventsamplers" title="Link to this heading"></a></h4>
+<p>Hits for the <strong>spherical</strong> sampler structure. Very similar to BDSOutputROOTEventSampler, but
+in spherical coordinates. This class is not templated for float / double as we
+won’t use it for optical comparison. Therefore, only float precision is provided.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>The number in this event in this sampler</p></td>
+</tr>
+<tr class="row-odd"><td><p>totalEnergy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the total energy (GeV) of each hit in this sampler</p></td>
+</tr>
+<tr class="row-even"><td><p>theta</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the theta-coordinate of each hit (rad)</p></td>
+</tr>
+<tr class="row-odd"><td><p>phi</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the phi-coordinate of each hit (rad)</p></td>
+</tr>
+<tr class="row-even"><td><p>rp</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the r component of the unit momentum vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>thetap</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the theta angle between the momentum vector at the surface
+of the sphere and the radial vector (rad)</p></td>
+</tr>
+<tr class="row-even"><td><p>phip</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the phi angle between the momentum vector at the surface of
+the sphere and the radial vector (rad)</p></td>
+</tr>
+<tr class="row-odd"><td><p>p</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the momentum (magnitude) of the particle (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>T</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the time-of-flight of the particle (ns)</p></td>
+</tr>
+<tr class="row-odd"><td><p>weight</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the associated weights of the hits</p></td>
+</tr>
+<tr class="row-even"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the PDG ID for the particle of each hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>parentID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the trackID of the progenitor of the particle that hit</p></td>
+</tr>
+<tr class="row-even"><td><p>trackID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the trackID of the particle that hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>modelID</p></td>
+<td><p>int</p></td>
+<td><p>The index to the BDSIM model of which element the sampler belonged to</p></td>
+</tr>
+<tr class="row-even"><td><p>turnNumber</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the turn number of the particle that hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>S</p></td>
+<td><p>T</p></td>
+<td><p>S-position of the hit (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>charge (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the PDG charge of the particle for each hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>kineticEnergy (*)</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the kinetic energy of the particle for each hit (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>mass (*)</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the PDG mass of the particle for each hit (GeV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>rigidity (*)</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Vector of the rigidity of the particle for each hit (Tm)</p></td>
+</tr>
+<tr class="row-even"><td><p>isIon (*)</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Vector of whether the particle is an ion or not</p></td>
+</tr>
+<tr class="row-odd"><td><p>ionA (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the atomic mass number. 0 for non-nuclei.</p></td>
+</tr>
+<tr class="row-even"><td><p>ionZ (*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Vector of the atomic number. 0 for non-nuclei.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nElectrons(*)</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Number of bound electrons if an ion. 0 otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(*) These are not stored by default (i.e. the vectors exist but are empty). If these
+parameters are desired, please use the appropriate options to turn their storage on.
+See <a class="reference internal" href="model_control.html#bdsim-options-output"><span class="std std-ref">Output Options</span></a> for more details.</p>
+</div>
+</section>
+<section id="bdsoutputrooteventcoords">
+<h4>BDSOutputROOTEventCoords<a class="headerlink" href="#bdsoutputrooteventcoords" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>X</p></td>
+<td><p>double</p></td>
+<td><p>Global Cartesian x coordinate (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Y</p></td>
+<td><p>double</p></td>
+<td><p>Global Cartesian y coordinate (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>Z</p></td>
+<td><p>double</p></td>
+<td><p>Global Cartesian z coordinate (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Xp</p></td>
+<td><p>double</p></td>
+<td><p>Global Cartesian unit momentum in x</p></td>
+</tr>
+<tr class="row-even"><td><p>Yp</p></td>
+<td><p>double</p></td>
+<td><p>Global Cartesian unit momentum in y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zp</p></td>
+<td><p>double</p></td>
+<td><p>Global Cartesian unit momentum in z</p></td>
+</tr>
+<tr class="row-even"><td><p>T</p></td>
+<td><p>double</p></td>
+<td><p>Time (ns)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdsoutputrooteventhistograms">
+<span id="output-structure-histograms"></span><h4>BDSOutputROOTEventHistograms<a class="headerlink" href="#bdsoutputrooteventhistograms" title="Link to this heading"></a></h4>
+<p>This class contains the following data:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>histograms1D</p></td>
+<td><p>std::vector&lt;TH1D*&gt;</p></td>
+<td><p>Vector of 1D histograms stored in the simulation</p></td>
+</tr>
+<tr class="row-odd"><td><p>histograms2D</p></td>
+<td><p>std::vector&lt;TH2D*&gt;</p></td>
+<td><p>Vector of 2D histograms stored in the simulation</p></td>
+</tr>
+<tr class="row-even"><td><p>histograms3D</p></td>
+<td><p>std::vector&lt;TH3D*&gt;</p></td>
+<td><p>Vector of 3D histograms stored in the simulation</p></td>
+</tr>
+</tbody>
+</table>
+<p>These are histograms stored for each event. Whilst a few important histograms are stored by
+default, the number may vary depending on the options chosen and the histogram vectors are filled
+dynamically based on these. For this reason, the name of the histogram is given an not the index.
+BDSIM produces six histograms by default during the simulation (the first six listed). These are:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Phits</p></td>
+<td><p>Primary hit. S location of first physics process on the primary
+track.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ploss</p></td>
+<td><p>Primary loss. S location of the end of the primary track.</p></td>
+</tr>
+<tr class="row-even"><td><p>Eloss (*)</p></td>
+<td><p>Energy deposition. Based on the data from ‘Eloss’ branch.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PhitsPE</p></td>
+<td><p>Same as Phits, but binned per element in S. Note the values
+are not normalised to the bin width.</p></td>
+</tr>
+<tr class="row-even"><td><p>PlossPE</p></td>
+<td><p>Same as Ploss, but binned per element in S. Note the values
+are not normalised to the bin width.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ElossPE (*)</p></td>
+<td><p>Same as Eloss, but binned per element in S. Note the values
+are not normalised to the bin width. Based on the data from the
+<cite>Eloss</cite> branch.</p></td>
+</tr>
+<tr class="row-even"><td><p>ElossVacuum (**)</p></td>
+<td><p>Energy deposition in the beam pipe vacuum volumes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ElossVacuumPE (**)</p></td>
+<td><p>Same as ElossVacuum, but binned per element in S. Note the
+values are not normalised to the bin width.</p></td>
+</tr>
+<tr class="row-even"><td><p>ElossTunnel (***)</p></td>
+<td><p>Energy deposition in the tunnel. Based on data from the
+<cite>ElossTunnel</cite> branch.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ElossTunnelPE (***)</p></td>
+<td><p>Energy deposition in the tunnel with per element binning. Based
+on data from the <cite>ElossTunnel</cite> branch.</p></td>
+</tr>
+<tr class="row-even"><td><p>PFirstAI</p></td>
+<td><p>Number of primary particle apertures impacting the aperture in
+S. Maximum 1 hit per event. Does not include weight.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CollPhitsPE (****)</p></td>
+<td><p>Primary hits where each bin is 1 collimator in the order they
+appear in the beam line. These are bins copied out of PhitsPE
+for only the collimators.</p></td>
+</tr>
+<tr class="row-even"><td><p>CollPlossPE (****)</p></td>
+<td><p>Primary loss where each bin is 1 collimator in the order they
+appear in the beam line. These are bins copied out of PlossPE
+for only the collimators.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CollElossPE (****)</p></td>
+<td><p>Energy deposition where each bin is 1 collimator in the order
+they appear in the beam line. These are bins copied out of
+ElossPE for only the collimators.</p></td>
+</tr>
+<tr class="row-even"><td><p>CollPInteracted
+(****)</p></td>
+<td><p>Each bin represents one collimator in the beam line in the
+order they appear and is filled with 1.0 if the primary
+particle interacted with that collimator in that event. Note,
+the primary may interact with multiple collimators each event.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>(*) The “Eloss” and “ElossPE” histograms are only created if <code class="code docutils literal notranslate"><span class="pre">storeELoss</span></code> or <code class="code docutils literal notranslate"><span class="pre">storeElossHistograms</span></code>
+are turned on (default is on).</p></li>
+<li><p>(**) The vacuum histograms are only created if <code class="code docutils literal notranslate"><span class="pre">storeELossVacuum</span></code> or <code class="code docutils literal notranslate"><span class="pre">storeELossVacuumHistograms</span></code>
+options are on (default is off).</p></li>
+<li><p>(***) The tunnel histograms are only created if <code class="code docutils literal notranslate"><span class="pre">storeELossTunnel</span></code> or <code class="code docutils literal notranslate"><span class="pre">storeELossTunnelHistograms</span></code>
+options are on (default is <code class="code docutils literal notranslate"><span class="pre">storeELossTunnelHistograms</span></code> on only when tunnel is built).</p></li>
+<li><p>(****) The histograms starting with “Coll” are only created if <code class="code docutils literal notranslate"><span class="pre">storeCollimatorInfo</span></code> is turned on.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The per-element histograms are integrated across the length of each element so they
+will have different (uneven) bin widths.</p>
+</div>
+<p>The energy loss histograms are evenly binned according to the option <code class="code docutils literal notranslate"><span class="pre">elossHistoBinWidth</span></code> (in metres).</p>
+</section>
+<section id="bdsoutputrooteventcollimator">
+<h4>BDSOutputROOTEventCollimator<a class="headerlink" href="#bdsoutputrooteventcollimator" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>primaryInteracted</p></td>
+<td><p>bool</p></td>
+<td><p>Whether the primary interacted with this collimator this event</p></td>
+</tr>
+<tr class="row-odd"><td><p>primaryStopped</p></td>
+<td><p>bool</p></td>
+<td><p>Whether the primary stopped in this collimator this event</p></td>
+</tr>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>int</p></td>
+<td><p>Number of hits recorded and therefore the length of each vector here</p></td>
+</tr>
+<tr class="row-odd"><td><p>energy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Total energy of the particle for the hit (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>energyDeposited</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Energy deposited in the step for the hit (GeV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>xIn</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Pre step point x coordinate for the hit (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>yIn</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Pre step point y coordinate for the hit (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>zIn</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Pre step point z coordinate for the hit (m)</p></td>
+</tr>
+<tr class="row-even"><td><p>xpIn</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Pre step point x fraction of unit momentum</p></td>
+</tr>
+<tr class="row-odd"><td><p>ypIn</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Pre step point y fraction of unit momentum</p></td>
+</tr>
+<tr class="row-even"><td><p>zpIn</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Pre step point z fraction of unit momentum</p></td>
+</tr>
+<tr class="row-odd"><td><p>T</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Global time at hit (ns)</p></td>
+</tr>
+<tr class="row-even"><td><p>weight</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Statistical weight associated with partilce at hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>partID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>PDG ID for particle type</p></td>
+</tr>
+<tr class="row-even"><td><p>parentID</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>TrackID of the progenitor of the particle that hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>turn</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Turn number of the hit (1 counting)</p></td>
+</tr>
+<tr class="row-even"><td><p>firstPrimaryHitThisTurn</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Whether this is the first primary particle hit in this collimator
+this turn. Used to match first hit with other simulations when there
+may be more than one primary hit in the same collimator as the particle
+passes through once.</p></td>
+</tr>
+<tr class="row-odd"><td><p>impactParameterX</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Depth into the collimator from its aperture in the frame of the collimator</p></td>
+</tr>
+<tr class="row-even"><td><p>impactParameterY</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Depth into the collimator from its aperture in the frame of the collimator</p></td>
+</tr>
+<tr class="row-odd"><td><p>isIon</p></td>
+<td><p>std::vector&lt;bool&gt;</p></td>
+<td><p>Whether the hit was made by an ion</p></td>
+</tr>
+<tr class="row-even"><td><p>ionA</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Ion atomic mass number. 0 for non-nuclei</p></td>
+</tr>
+<tr class="row-odd"><td><p>ionZ</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>Ion atomic number. 0 for non-nuclei</p></td>
+</tr>
+<tr class="row-even"><td><p>turnSet</p></td>
+<td><p>std::set&lt;int&gt;</p></td>
+<td><p>A set (no duplicate values) for which turns this collimator was hit
+(including non-primary particles depending on the options)</p></td>
+</tr>
+<tr class="row-odd"><td><p>charge</p></td>
+<td><p>std::vector&lt;int&gt;</p></td>
+<td><p>PDG charge of the particle for each hit</p></td>
+</tr>
+<tr class="row-even"><td><p>kineticEnergy</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Pre step point kinetic energy of the particle for each hit</p></td>
+</tr>
+<tr class="row-odd"><td><p>mass</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>PDG mass of the particle for each hit (GeV)</p></td>
+</tr>
+<tr class="row-even"><td><p>rigidity</p></td>
+<td><p>std::vector&lt;float&gt;</p></td>
+<td><p>Rigidity of the particle for each hit (Tm)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="eventcombineinfo-tree">
+<h3>EventCombineInfo Tree<a class="headerlink" href="#eventcombineinfo-tree" title="Link to this heading"></a></h3>
+<p>This tree will only exist in a file produced by running <cite>bdsimCombine</cite> to merge
+the events from multiple BDSIM raw files into one file.</p>
+<p>It is a friend tree to the Event tree.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Leaf Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>combinedFileIndex</p></td>
+<td><p>UInt_t</p></td>
+<td><p>Unsigned 32 bit integer. Index to header variable
+combinedFiles vector for the file this event was
+combined from.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="geometry-export">
+<h2>Geometry Export<a class="headerlink" href="#geometry-export" title="Link to this heading"></a></h2>
+<p>BDSIM can ‘output’ its geometry to a GDML file. This is done with the executable option <code class="code docutils literal notranslate"><span class="pre">--exportGeometryTo</span></code>.
+The format is determined from the file extension given. Currently, only GDML export is supported.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mylovelmodel</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">none</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">exportGeometryTo</span><span class="o">=</span><span class="n">model_render</span><span class="o">.</span><span class="n">gdml</span>
+</pre></div>
+</div>
+<p>This will produce the GDML file <cite>model_render.gdml</cite> that has the BDSIM mass world with the geometry you
+would see in the visualiser. GDML auxiliary information is written out with the visual attributes
+such as whether a volume is visible or not, the colour and the transparency. This information will
+be loaded by any GDML loader irrespective of BDSIM and not interfere with that loading.</p>
+<p>The information is written like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">volume</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;q2_outer_pole_lv0x600003006e40&quot;</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">materialref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;G4_Fe0x147912550&quot;</span><span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">solidref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;q2_outer_pole_solid0x600003006bc0&quot;</span><span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">&quot;bds_vrgba&quot;</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">&quot;1 0.82 0.1 0.1 1&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">volume</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">auxiliary</span></code> tag has <cite>auxtype</cite> “bds_vrgba” for “BDSIM visibility red green blue alpha”. The
+value is these numbers in sequence of type <code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">double</span> <span class="pre">double</span> <span class="pre">double</span> <span class="pre">double</span></code>.</p>
+<p>BDSIM will use this information if any such GDML exported from BDSIM is reloaded into it.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="externalgeometry.html" class="btn btn-neutral float-left" title="External Geometry Formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="output_analysis.html" class="btn btn-neutral float-right" title="Output Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tunnel Geometry &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=106dc6df"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Curvilinear Coordinates" href="6_curvilinear.html" />
+    <link rel="prev" title="Magnet Geometry" href="4_magnets.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BDSIM
+              <img src="../_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfacing.html">Interfacing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples &amp; Tests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#worked-examples">Worked Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#specific-machines">Specific Machines</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#features">Features</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="features.html">Features</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="geometry.html">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fields.html">Fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples &amp; Tests</a></li>
+          <li class="breadcrumb-item"><a href="features.html">Features</a></li>
+          <li class="breadcrumb-item"><a href="geometry.html">Geometry</a></li>
+      <li class="breadcrumb-item active">Tunnel Geometry</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/5_tunnel.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tunnel-geometry">
+<span id="tunnel-examples"></span><h1>Tunnel Geometry<a class="headerlink" href="#tunnel-geometry" title="Link to this heading"></a></h1>
+<p>For each tunnel test, there is an <em>a</em> and a <em>b</em> version. These are the same as the indiviual
+test but with elliptical and rectangular geometry respectively. A square tunnel section
+is really just a rectangular tunnel section, so this is tested as well.</p>
+<section id="long-straight-gmad">
+<h2>1_long_straight.gmad<a class="headerlink" href="#long-straight-gmad" title="Link to this heading"></a></h2>
+<p>A drift section, with a thin collimator that’s offset so the beam definitely hits it,
+followed by another long drift section. The tunnel is cylindrical, and of a typical size
+of an acceleartor and offset a little bit. The floor and soil are also built. This uses
+the newer modular physics lists.</p>
+<p>This test builds one straight section of tunnel from start to finish irrespective of the
+beam line as controlloed by <code class="code docutils literal notranslate"><span class="pre">buildTunnelStraigh=1</span></code>.</p>
+<p>Key code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">buildTunnel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">buildTunnelStraight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">tunnelType</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">,</span>
+        <span class="n">tunnelThickness</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+        <span class="n">tunnelSoilThickness</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+        <span class="n">tunnelMaterial</span><span class="o">=</span><span class="s2">&quot;concrete&quot;</span><span class="p">,</span>
+        <span class="n">soilMaterial</span><span class="o">=</span><span class="s2">&quot;soil&quot;</span><span class="p">,</span>
+        <span class="n">buildTunnelFloor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">tunnelFloorOffset</span><span class="o">=</span><span class="mf">1.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+        <span class="n">tunnelAper1</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+        <span class="n">tunnelAper2</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+        <span class="n">tunnelSensitive</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">tunnelVisible</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">tunnelOffsetX</span><span class="o">=</span><span class="mf">0.4</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+        <span class="n">tunnelOffsetY</span><span class="o">=-</span><span class="mf">1.2</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">1</span><span class="n">_long_straight</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/1_long_straight.png"><img alt="../_images/1_long_straight.png" src="../_images/1_long_straight.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<section id="long-straight-following-gmad">
+<h2>2_long_straight_following.gmad<a class="headerlink" href="#long-straight-following-gmad" title="Link to this heading"></a></h2>
+<p>This is the same as <a class="reference internal" href="#long-straight-gmad">1_long_straight.gmad</a> but the tunnel building algorithm is allowed
+to follow the beam line. As it’s straight, it should result in a very similar outcome.</p>
+<p>Key code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">buildTunnelStraight</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">2</span><span class="n">_long_straight_following</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2_long_straight_following.png"><img alt="../_images/2_long_straight_following.png" src="../_images/2_long_straight_following.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<section id="initial-bend-gmad">
+<h2>3_initial_bend.gmad<a class="headerlink" href="#initial-bend-gmad" title="Link to this heading"></a></h2>
+<p>This lattice has a relatively strong bend at the beginning of the lattice, followed by
+a long straight section. This tests the tunnel building algorithm’s ability to follow
+the beam line after a bend.</p>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">3</span><span class="n">_initial_bend</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/3_initial_bend.png"><img alt="../_images/3_initial_bend.png" src="../_images/3_initial_bend.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<section id="several-bends-gmad">
+<h2>4_several_bends.gmad<a class="headerlink" href="#several-bends-gmad" title="Link to this heading"></a></h2>
+<p>This lattice has long straight sections with relatively sharp bends and this pattern is
+repeated several times.</p>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">4</span><span class="n">_several_bends</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/4_several_bends.png"><img alt="../_images/4_several_bends.png" src="../_images/4_several_bends.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<section id="several-bends-back-and-forth">
+<h2>5_several_bends_back_and_forth<a class="headerlink" href="#several-bends-back-and-forth" title="Link to this heading"></a></h2>
+<p>This examples is much like <a class="reference internal" href="#several-bends-gmad">4_several_bends.gmad</a> but also bends the otherway (back and forth).</p>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">5</span><span class="n">_several_bends_back_and_forth</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/5_several_bends_back_and_forth.png"><img alt="../_images/5_several_bends_back_and_forth.png" src="../_images/5_several_bends_back_and_forth.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<section id="very-long-following-gmad">
+<h2>6_very_long_following.gmad<a class="headerlink" href="#very-long-following-gmad" title="Link to this heading"></a></h2>
+<p>This example is much like <a class="reference internal" href="#long-straight-following-gmad">2_long_straight_following.gmad</a> but longer and with not round number
+lengths. Being longer, the tunnel algorithm will split the tunnel sections up more than the single
+section produced in 2.</p>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">6</span><span class="n">_very_long_following</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/6_very_long_following.png"><img alt="../_images/6_very_long_following.png" src="../_images/6_very_long_following.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<section id="long-arc-gmad">
+<h2>7_long_arc.gmad<a class="headerlink" href="#long-arc-gmad" title="Link to this heading"></a></h2>
+<p>This example contains more gradual bends and many of them separated by short drifts and is relatively
+long. This tests part of an arc in a collider.</p>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">7</span><span class="n">_long_arc</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/7_long_arc.png"><img alt="../_images/7_long_arc.png" src="../_images/7_long_arc.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="samplers-gmad">
+<h2>8_samplers.gmad<a class="headerlink" href="#samplers-gmad" title="Link to this heading"></a></h2>
+<p>This examples is roughly based on <a class="reference internal" href="#long-arc-gmad">7_long_arc.gmad</a> (similar in form but not exactly) with the addition of
+samplers on every element, including a marker at the end as well as a superfluous one at the beginning. The
+tunnel geometry should break around these samplers leaving a 1 <span class="math notranslate nohighlight">\(\mu m\)</span> gap to avoid geometrical
+overlaps.</p>
+<p>How to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="mi">8</span><span class="n">_samplers</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/8_samplers.png"><img alt="../_images/8_samplers.png" src="../_images/8_samplers.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="4_magnets.html" class="btn btn-neutral float-left" title="Magnet Geometry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="6_curvilinear.html" class="btn btn-neutral float-right" title="Curvilinear Coordinates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

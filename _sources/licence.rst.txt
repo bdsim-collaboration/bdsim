@@ -1,0 +1,59 @@
+.. _licence:
+
+====================
+Licence & Disclaimer
+====================
+
+Licence
+-------
+
+Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
+University of London 2001 - 2025.
+
+BDSIM is free software: you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published 
+by the Free Software Foundation version 3 of the License.
+
+BDSIM is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with BDSIM.  If not, see http://www.gnu.org/licenses/.
+
+Referencing & Citation
+----------------------
+
+Any publications including simulations made using BDSIM **must** cite:
+
+L.J. Nevay et al., BDSIM: An Accelerator Tracking Code with Particle-Matter Interactions,
+Computer Physics Communications **252** 107200 (2020).
+
+* `<https://doi.org/10.1016/j.cpc.2020.107200>`_
+* `<https://arxiv.org/abs/1808.10745>`_
+
+Please cite BDSIM as well as Geant4.
+
+Citations allow the authors to demonstrably show the code usage and therefore to
+continue to support the development and maintenance of BDSIM.
+
+.. note:: There is the executable options :code:`--reference` and :code:`--citation` to
+	  display the citation in bibtex to cite BDSIM easily.
+
+
+Geant4 Acknowledgement
+----------------------
+
+This software includes software developed by Members of the Geant4 Collaboration ( http://cern.ch/geant4 ).
+
+Funding Acknowledgements
+------------------------
+
+BDSIM development has received funding from the following sources:
+
+* STFC Grant: The John Adams Institute for Accelerator Science (ST/P00203X/1)
+* EU FP7 EuCARD-2, grant agreement 312453 (WP13, ANAC2)
+* Royal Holloway University of London Impact Acceleration Account
+* STFC
+

@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualisation &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Interfacing" href="interfacing.html" />
+    <link rel="prev" title="Python Utilities" href="python_utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Visualisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#colour-coding">Colour Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bdsim-visualisation-commands">BDSIM Visualisation Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-useful-commands">Common Useful Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changing-the-colours">Changing The Colours</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#visualisation-features">Visualisation Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#control-buttons">Control Buttons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drawing-styles">Drawing Styles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#visualising-step-points">Visualising Step Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-and-custom-visualisers">Default and Custom Visualisers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-other-visualisers">Adding Other Visualisers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Visualisation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/visualisation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="visualisation">
+<span id="id1"></span><h1>Visualisation<a class="headerlink" href="#visualisation" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using the visualiser over X-Windows on a Mac, see <a class="reference internal" href="installation.html#mac-xwindows"><span class="std std-ref">XWindows With MacOS</span></a>.</p>
+</div>
+<p>When BDSIM is executed <strong>without</strong> the <code class="code docutils literal notranslate"><span class="pre">--batch</span></code> executable option, the
+Geant4 visualisation system is used. This is the default behaviour as it is
+typical to view and understand the typical outcome of a model before running larger
+simulations in batch mode. By default, BDSIM uses the <strong>OpenGL Qt</strong> visualiser
+as it’s very easy to work with and has a rich feature set.</p>
+<p>To use this visualisation, Geant4 must have been compiled with the Qt visualiser
+option turned on, which is non-default. Qt is however, the most widely used
+visualiser and recommended by Geant4.  See <a class="reference internal" href="#visualisation-adding-others"><span class="std std-ref">Adding Other Visualisers</span></a>
+for more.</p>
+<p>Below are the most commonly used commands and the full set of features is described
+in <a class="reference internal" href="#visualisation-features"><span class="std std-ref">Visualisation Features</span></a>.</p>
+<p>Using the visualiser means that BDSIM will use more memory as it is required to
+store the trajectories of all particles to display them. By default, only 100 events
+will be accumulated for display. Events outside this will be discarded from the visualisation.</p>
+<section id="colour-coding">
+<span id="visualisation-default-colour-coding"></span><h2>Colour Coding<a class="headerlink" href="#colour-coding" title="Link to this heading"></a></h2>
+<p>The default colour coding of trajectories is the same as Geant4. This colour coding is
+green: neutral; blue: positively charged; red: negatively charged.</p>
+</section>
+<section id="bdsim-visualisation-commands">
+<h2>BDSIM Visualisation Commands<a class="headerlink" href="#bdsim-visualisation-commands" title="Link to this heading"></a></h2>
+<p>BDSIM provides some extra useful commands.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/beamline/list</span></code> List all components in the beam line in the terminal.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/beamline/goto</span> <span class="pre">&lt;component</span> <span class="pre">name&gt;</span> <span class="pre">[instance</span> <span class="pre">number]</span></code> Centre the view at that name exactly. This
+will only work for items in the main beam line. Note, bends may be split into sections and
+therefore have a different name than expected - try a straight component.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/samplers/list</span></code> List the names of all samplers in the terminal.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/samplers/view</span></code> Issue all the right commands to make the samplers visible.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/field/drawQuery</span> <span class="pre">&lt;query</span> <span class="pre">object</span> <span class="pre">name&gt;</span></code> Draw the vector field of a field query object.
+(“all” can be used too) See <a class="reference internal" href="model_customisation.html#fields-visualisation-queries"><span class="std std-ref">Field Map Visualisation - Queries</span></a>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/field/listQueries</span></code> List all query objects defined in the input by name to use with the above command.</p></li>
+</ul>
+</section>
+<section id="common-useful-commands">
+<h2>Common Useful Commands<a class="headerlink" href="#common-useful-commands" title="Link to this heading"></a></h2>
+<p>Execute BDSIM with your input gmad file name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<p>The following is a list of our most commonly used commands that can be used in the
+session box (terminal prompt) inside the visualiser:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">/run/beamOn</span> <span class="pre">3</span></code> - runs three primary events</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">exit</span></code> - exits the visualiser and BDSIM</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/set/viewpointThetaPhi</span> <span class="pre">0</span> <span class="pre">90</span></code> - sets the view point angle</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/set/targetPoint</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">20</span> <span class="pre">m</span></code> - sets the rotation view point at 0,0,20 m as an example</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/scene/add/axes</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span></code> - adds a set of unit vector axes at position (0,0,0)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/drawVolume</span> <span class="pre">worlds</span></code> - view all invisible geometry including samplers</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/set/lightsVector</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">1</span></code> - change the orientation of the lighting to
+roughly opposite</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/set/viewpointThetaPhi</span> <span class="pre">180</span> <span class="pre">0</span></code> - look along the beam line</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/beamline/goto</span> <span class="pre">d1</span></code> - reposition the view point at beam line element named <cite>d1</cite></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/bds/beamline/goto</span> <span class="pre">d1</span> <span class="pre">1</span></code> - reposition the view point at beam line element named <cite>d1</cite> - 2nd usage (zero-counting)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/set/projection</span> <span class="pre">p</span> <span class="pre">75</span></code> - set the viewing style to perspective with angle 75 degrees</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/set/projection</span> <span class="pre">o</span></code> - set the projection to orthographic (no perspective)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/addCutawayPlane</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">m</span> <span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> - add a cut away plane along the beam line making
+everything on one side invisible.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/vis/viewer/clearCutawayPlanes</span></code> - get rid of cut away planes</p></li>
+</ul>
+<section id="changing-the-colours">
+<h3>Changing The Colours<a class="headerlink" href="#changing-the-colours" title="Link to this heading"></a></h3>
+<p>We can change the trajectory colours using Geant4 visualiser commands. By default, BDSIM uses
+the draw by charge colouring. Here is an example of modifying this to make neutral particles
+(e.g. numerous photons) semi-transparent so as not to dominate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">modeling</span><span class="o">/</span><span class="n">trajectories</span><span class="o">/</span><span class="n">create</span><span class="o">/</span><span class="n">drawByCharge</span>
+<span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">modeling</span><span class="o">/</span><span class="n">trajectories</span><span class="o">/</span><span class="n">drawByCharge</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="n">setRGBA</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.8</span> <span class="mi">0</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+<p>The numbers are charge (e.g. -1,0,1), R G B A</p>
+</section>
+</section>
+<section id="visualisation-features">
+<span id="id2"></span><h2>Visualisation Features<a class="headerlink" href="#visualisation-features" title="Link to this heading"></a></h2>
+<p>The default OpenGL Qt visualiser is shown below.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/qtvisualiser.png"><img alt="_images/qtvisualiser.png" src="_images/qtvisualiser.png" style="width: 100%;" />
+</a>
+</figure>
+<p>The visualiser is shown again below with some interesting parts highlighted. These are:</p>
+<ul class="simple">
+<li><p><strong>Green dashed box middle</strong> Main visualiser window - view of the model</p></li>
+<li><p><strong>Purple dashed box top left</strong> Control buttons that are described in more detail in <a class="reference internal" href="#control-buttons">Control Buttons</a></p></li>
+<li><p><strong>Blue box on the left</strong> Scene tree - expand this to see a full list of all volumes
+in the simulation.</p></li>
+<li><p><strong>Orange box top left</strong> Help browser where you can search for all commands in the visualiser</p></li>
+<li><p><strong>Red box bottom</strong> Session - enter commands here.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/qtvisualiser_highlighted.png"><img alt="_images/qtvisualiser_highlighted.png" src="_images/qtvisualiser_highlighted.png" style="width: 100%;" />
+</a>
+</figure>
+<section id="control-buttons">
+<span id="visualisation-control-buttons"></span><h3>Control Buttons<a class="headerlink" href="#control-buttons" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/qtbuttons.png"><img alt="_images/qtbuttons.png" src="_images/qtbuttons.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="drawing-styles">
+<h3>Drawing Styles<a class="headerlink" href="#drawing-styles" title="Link to this heading"></a></h3>
+<p>The model may be viewed as a wireframe model, wireframe and solid and in all cases with
+or without perspective. Some examples of this are shown below for the same model. These
+are all controlled easily from the buttons at the top. There are also commands that will
+work to control these as documented in Geant4.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/qtwireframe.png"><img alt="_images/qtwireframe.png" src="_images/qtwireframe.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">As a wireframe model.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/qtsolidandwireframe.png"><img alt="_images/qtsolidandwireframe.png" src="_images/qtsolidandwireframe.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">With both solid and wireframe visualisation (subtle lines on each piece of geometry).</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/qtperspective.png"><img alt="_images/qtperspective.png" src="_images/qtperspective.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">With perspective.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="visualising-step-points">
+<span id="visualisation-step-points"></span><h2>Visualising Step Points<a class="headerlink" href="#visualising-step-points" title="Link to this heading"></a></h2>
+<p>In the visualiser there are no truly curved tracks, but only straight lines between points.
+Therefore, if you expect to visualise spiral or helical motion of a particle, you may simple
+see a straight line depending on whether many short steps are taken or one long step is taken.
+In either case, Geant4 correctly calculates the particle motion and approach to nearby boundaries.</p>
+<p>Remember, the visualiser displays straight lines between step points. If smooth or curved motion
+is not observed then more step points should be taken. This can be controlled by setting the
+<code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">maximumStepLength</span></code> (see <a class="reference internal" href="model_control.html#options-tracking"><span class="std std-ref">Tracking Options</span></a>).</p>
+<p>In the visualiser, the individual step points can be seen by telling the visualiser to
+colour each step point with a dot. The following commands achieve this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">modeling</span><span class="o">/</span><span class="n">trajectories</span><span class="o">/</span><span class="n">create</span><span class="o">/</span><span class="n">generic</span>
+<span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">modeling</span><span class="o">/</span><span class="n">trajectories</span><span class="o">/</span><span class="n">generic</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">setDrawStepPts</span> <span class="n">true</span>
+<span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">modeling</span><span class="o">/</span><span class="n">trajectories</span><span class="o">/</span><span class="n">generic</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">setStepPtsSize</span> <span class="mi">16</span>
+</pre></div>
+</div>
+<p>The name “generic-0” is the name of the trajectory modelling instance created by the first command.
+If you have created other instances, this may have a different name, but can be found using
+tab complete in the visualiser terminal.</p>
+<p>After these commands, run an event or two to see the tracks with (yellow by default) dots
+at each step point.</p>
+</section>
+<section id="default-and-custom-visualisers">
+<h2>Default and Custom Visualisers<a class="headerlink" href="#default-and-custom-visualisers" title="Link to this heading"></a></h2>
+<p>Strictly speaking, a visualisation macro must be supplied to Geant4 to
+tell it what to display. For convenience, BDSIM provides a set of macros
+that display the geometry and add a few useful buttons and menus to the
+user interface. To use these, the user need only <strong>not</strong> specify a specific
+visualisation macro.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mylattice</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Note also no <code class="code docutils literal notranslate"><span class="pre">--batch</span></code> command</p></li>
+</ul>
+<p>If you wish to use a different visualiser, you may specify this by using
+your own visualisation macro with BDSIM. This can be done using the following
+command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mylattice</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">vis_mac</span><span class="o">=</span><span class="n">othervis</span><span class="o">.</span><span class="n">mac</span>
+</pre></div>
+</div>
+<p>where <code class="code docutils literal notranslate"><span class="pre">othervis.mac</span></code> is your visualisation macro. It is recommended to copy
+and edit the default BDSIM visualisation macro (<code class="code docutils literal notranslate"><span class="pre">bdsim/vis/bdsim_default_vis.mac</span></code>).</p>
+<p>When running, BDSIM looks for the macros in the installation directory and then the
+build directory if it exists. The user can edit this files directly as a default
+for BDSIM on their system. (e.g. <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-install-dir&gt;/vis/*.mac</span></code>).</p>
+<p>The user can also specify an optional macro to run after the visualisation has started.
+This way, you can use the default BDSIM visualisation but run your own macro at the beginning.
+This may be useful for particular view points or visualisation settings.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mylattice</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">geant4Macro</span><span class="o">=</span><span class="n">viewpoint</span><span class="o">.</span><span class="n">mac</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This macro is run after the geometry is ‘closed’ in Geant4 terminology and
+the physics list is fixed.</p>
+</div>
+</section>
+<section id="adding-other-visualisers">
+<span id="visualisation-adding-others"></span><h2>Adding Other Visualisers<a class="headerlink" href="#adding-other-visualisers" title="Link to this heading"></a></h2>
+<p>BDSIM makes use of the visualisers Geant4 was compiled with on your system.</p>
+<p>To see the list of visualiser, include the option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">visVerbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>in the input GMAD file. The default value is 0, which means no print out at all.
+Then, when BDSIM is started interactively
+(i.e. without the <code class="code docutils literal notranslate"><span class="pre">--batch</span></code> command), Geant4
+will print a list of all available visualisers that are available. Below is an
+example excerpt from the terminal output that shows the list of available
+visualisers on the developer’s system.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/availablevisualisers.png"><img alt="_images/availablevisualisers.png" src="_images/availablevisualisers.png" style="width: 100%;" />
+</a>
+</figure>
+<p>By default, BDSIM uses the <strong>OpenGL Qt</strong> visualiser - we highly recommend this, as
+it is the most modern one with the best feature set. For Geant4.11.2, BDSIM uses
+whatever the default best visualiser is available in Geant4. This is usually Vtk,
+then Qt.</p>
+<p>To add another available visualiser, you must change the build options of Geant4
+(in ccmake), recompile and install it; then you must recompile BDSIM against
+the new Geant4. In the case where you simply update the Geant4 options in the same
+installation, this process is relatively quick and recompiling BDSIM only re-links
+the libraries together (the last quick step of compilation).</p>
+<p>For Geant4 to enable other visualisers, it will require certain other 3rd party libraries
+to be present. On Mac, these can be found through a package manager such as MacPorts
+and on linux, through whatever package manager is available (e.g. yum). These must
+be installed before reconfiguring Geant4.</p>
+<p>See <a class="reference internal" href="installation.html#geant4-installation-guide"><span class="std std-ref">Geant4 Installation Guide</span></a> for more details on configuring Geant4.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_utilities.html" class="btn btn-neutral float-left" title="Python Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="interfacing.html" class="btn btn-neutral float-right" title="Interfacing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

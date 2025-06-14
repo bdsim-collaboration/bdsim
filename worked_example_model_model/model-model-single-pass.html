@@ -1,0 +1,717 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model Model - Single Pass &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=106dc6df"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Machine Diagram" href="../worked_example_machine_diagram/worked_example_machine_diagram.html" />
+    <link rel="prev" title="No Accelerator Model" href="../worked_example_no_accelerator/worked_example_no_accelerator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BDSIM
+              <img src="../_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfacing.html">Interfacing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples &amp; Tests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#worked-examples">Worked Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_target/worked_example_target.html">Analysis of Thin Target Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_collimation/worked_example_collimation.html">Collimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_atf2.html">Accelerator Test Facility 2 - KEK, Japan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_trajectories/worked_example_trajectories1.html">Trajectory Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_custom_analysis/worked_example_custom_analysis.html">Custom Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_no_accelerator/worked_example_no_accelerator.html">No Accelerator Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Model Model - Single Pass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#topics-covered">Topics Covered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contents">Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-description">Model Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-preparation">Model Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#physics-options">Physics Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tunnel">Tunnel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beam-distribution">Beam Distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-trajectories">Output &amp; Trajectories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualisation">Visualisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#process-biasing">Process Biasing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-data">Generating Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analysis">Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plotting">Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_machine_diagram/worked_example_machine_diagram.html">Machine Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#specific-machines">Specific Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples &amp; Tests</a></li>
+      <li class="breadcrumb-item active">Model Model - Single Pass</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/worked_example_model_model/model-model-single-pass.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="model-model-single-pass">
+<h1>Model Model - Single Pass<a class="headerlink" href="#model-model-single-pass" title="Link to this heading"></a></h1>
+<p>Quite an advanced example.</p>
+<section id="topics-covered">
+<h2>Topics Covered<a class="headerlink" href="#topics-covered" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Model conversion with collimators and aperture.</p></li>
+<li><p>Physics macros for Geant4 to modify physics list.</p></li>
+<li><p>BDSIM-generated tunnel.</p></li>
+<li><p>Halo bunch distribution.</p></li>
+<li><p>Trajectory storage.</p></li>
+<li><p>Cut away planes in visualisation.</p></li>
+<li><p>Process cross-section biasing.</p></li>
+<li><p>Analysis including weights.</p></li>
+<li><p>Based on the model in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/model-model/</span></code> and specifically
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/model-model/bdsim/singlepass/</span></code>.</p></li>
+</ul>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#preparation">Preparation</a></p></li>
+<li><p><a class="reference internal" href="#model-description">Model Description</a></p></li>
+<li><p><a class="reference internal" href="#model-preparation">Model Preparation</a></p></li>
+<li><p><a class="reference internal" href="#physics-options">Physics Options</a></p></li>
+<li><p><a class="reference internal" href="#tunnel">Tunnel</a></p></li>
+<li><p><a class="reference internal" href="#beam-distribution">Beam Distribution</a></p></li>
+<li><p><a class="reference internal" href="#output-trajectories">Output &amp; Trajectories</a></p></li>
+<li><p><a class="reference internal" href="#visualisation">Visualisation</a></p></li>
+<li><p><a class="reference internal" href="#process-biasing">Process Biasing</a></p></li>
+<li><p><a class="reference internal" href="#generating-data">Generating Data</a></p></li>
+<li><p><a class="reference internal" href="#analysis">Analysis</a></p></li>
+<li><p><a class="reference internal" href="#plotting">Plotting</a></p></li>
+</ul>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>BDSIM has been compiled and installed.</p></li>
+<li><p>The (DY)LD_LIBRARY_PATH and ROOT_INCLUDE_PATH environmental variables are set as
+described in <a class="reference internal" href="../output_analysis.html#output-analysis-setup"><span class="std std-ref">Setup</span></a>.</p></li>
+<li><p>ROOT can be imported in Python</p></li>
+<li><p><cite>pymadx</cite> and <cite>pybdsim</cite> have been installed.</p></li>
+</ul>
+</section>
+<section id="model-description">
+<h2>Model Description<a class="headerlink" href="#model-description" title="Link to this heading"></a></h2>
+<p>“model-model” is a fictional ring model representing 1 beam of a fictional collider.
+It is race-track shaped with two straight insertions; one for a low beta (Twiss beta)
+collision point, and another for collimation with enlarged beta functions.</p>
+<p>Here, we prepare a single pass version of this model from a straight section into
+part of the arc.</p>
+<p><em>Backstory: physicists propose a new experiment to look at only muons and neutrinos
+that are produced as a by-product at your model-model facility. They are proposing
+to dig a new shaft and tunnel in line-of-sight just after an arc starts, where it is
+hoped that the tunnel and the rock will remove most of the background from any beam
+losses. We’re tasked with predicting the muon and neutrino flux and spectrum at this
+location.</em></p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/model-model-single-pass-schematic.pdf"><img alt="../_images/model-model-single-pass-schematic.pdf" src="../_images/model-model-single-pass-schematic.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Cartoon schematic of proposed model with beam line bending out of the
+way and possible direction of muons produced in collimators into rock.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="model-preparation">
+<h2>Model Preparation<a class="headerlink" href="#model-preparation" title="Link to this heading"></a></h2>
+<p>Following an example from mode-model a single pass version can be created from the
+MADX Twiss output in a TFS file using <cite>pybdsim</cite>. A <cite>stopname</cite> argument is given
+to the <code class="code docutils literal notranslate"><span class="pre">pybdsim.convert.MadxTfs2Gmad</span></code> function as a point up to where to convert
+the model to and stop there. The name of an element is chosen about 800m into the
+lattice from the start of the collimation section. The intention is to look at muons
+produced in the collimation section.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pymadx</span>
+
+<span class="c1"># generate collimator settings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">makecollimatorgaps</span>
+
+<span class="c1"># aperture information</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">pymadx</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Aperture</span><span class="p">(</span><span class="s1">&#39;../madx/ring_aperture.tfs.gz&#39;</span><span class="p">)</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">RemoveBelowValue</span><span class="p">(</span><span class="mf">0.005</span><span class="p">)</span>
+
+<span class="c1"># collimator settings</span>
+<span class="c1"># uses pybdsim.Data.BDSAsciiData which behaves like dictionaries of dictionaries</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s1">&#39;collimatorSettings.dat&#39;</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s2">&quot;../madx/ring_from_collimation.tfs.gz&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;singlepass/bmm-sp&quot;</span><span class="p">,</span>
+                                   <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                   <span class="n">aperturedict</span><span class="o">=</span><span class="n">ap</span><span class="p">,</span>
+                                   <span class="n">collimatordict</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span>
+                                   <span class="n">stopname</span><span class="o">=</span><span class="s2">&quot;QUAD.F.H_17&quot;</span><span class="p">,</span>
+                                   <span class="n">samplers</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This writes a model in the directory “singlepass” and with the base name “bmm-sp.gmad”.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A good strategy is to <strong>not</strong> edit this main gmad file produced by the conversion
+but just included it in your own file. This means that if you re-run the script and
+regenerate the model, you don’t loose any handmade edits to this file.</p>
+</div>
+<p>The main model is <code class="code docutils literal notranslate"><span class="pre">singlepass/job-bmm-sp.gmad</span></code>. The contents are given below and then
+discussed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!include the basic model
+include bmm-sp.gmad;
+
+! now we go to town with the options
+
+! let&#39;s up the energy for more muons
+beam, energy=450*GeV;
+
+! physics options - full physics and high cuts as we want to look at high energy muons
+option, physicsList=&quot;g4FTFP_BERT&quot;,
+        defaultRangeCut=10*cm,
+        minimumKineticEnergy=10*GeV,
+        geant4PhysicsMacroFileName = &quot;emextraphysics.mac&quot;;
+
+! geometry - include a big tunnel
+option, buildTunnel=1,
+        tunnelOffsetX=40*cm,
+        tunnelOffsetY=50*cm,
+        tunnelAper1=220*cm,
+        tunnelFloorOffset=150*cm,
+        tunnelThickness=30*cm,
+        tunnelSoilThickness=20*m,
+        tunnelMaxSegmentLength=20*m;
+
+! set beam distribution to halo so it&#39;ll smash deep in the collimators that are at 7 sigma
+beam, distrType=&quot;composite&quot;,
+      xDistrType=&quot;halo&quot;,
+      yDistrType=&quot;halo&quot;,
+      zDistrType=&quot;gausstwiss&quot;,
+      haloNSigmaXInner=8,
+      haloNSigmaXOuter=12,
+      haloNSigmaYInner=8,
+      haloNSigmaYOuter=12,
+      sigmaE=0.01;
+
+! output options - only store what we need
+option, storeMinimalData=1,
+        storePrimaries=1,
+        storeSamplerCharge=1,
+        storeSamplerKineticEnergy=1,
+        storePrimaryHistograms=1;
+
+! trajectories - store muons and neutrinos that reach the sampler
+! and also their parents back to the primary particle
+option, storeTrajectory=1,
+        trajectoryConnect=1,
+        trajectoryFilterLogicAND=1,
+        storeTrajectoryParticleID=&quot;12 -12 13 -13 14 -14&quot;,
+        storeTrajectorySamplerID=&quot;detector&quot;,
+        storeTrajectoryProcesses=1,
+        storeTrajectoryTransportationSteps=0;
+
+! detector-like sampler in front of where our proposed detector would be
+! so here it&#39;s just straight ahead but in solid rock as we haven&#39;t &#39;built&#39; a tunnel yet
+detector: samplerplacement, z=500*m, apertureType=&quot;rectangular&quot;, aper1=2*m, aper2=2*m;
+
+! biasing - hadronic inelastic is much more likely than decay for pions
+! most muons come from decay - balance this out a bit so we more efficiently
+! simulate muons that reach our detector
+! note, we don&#39;t bias so heavily in vacuum as hadronic inelastic is much less likely there
+piPlusHighBias:  xsecBias, particle=&quot;pi+&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
+piMinusHighBias: xsecBias, particle=&quot;pi-&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
+piPlusLowBias:   xsecBias, particle=&quot;pi+&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
+piMinusLowBias:  xsecBias, particle=&quot;pi-&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
+
+! pi0 decays very very quickly - no need for biasing
+
+! kaons are another big source of muons
+kaPlusHighBias:  xsecBias, particle=&quot;kaon+&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
+kaMinusHighBias: xsecBias, particle=&quot;kaon-&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
+kaPlusLowBias:   xsecBias, particle=&quot;kaon+&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
+kaMinusLowBias:  xsecBias, particle=&quot;kaon-&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
+
+! attach to various places in the model
+! accelerator vacuum
+option, defaultBiasVacuum=&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;;
+! magnet outer
+option, defaultBiasMaterial=&quot;piPlusHighBias piMinusHighBias kaPlusHighBias kaMinusHighBias&quot;;
+! the air
+option, biasForWorldVolume=&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;;
+</pre></div>
+</div>
+</section>
+<section id="physics-options">
+<h2>Physics Options<a class="headerlink" href="#physics-options" title="Link to this heading"></a></h2>
+<p>In the job file, we include several physics options.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! let&#39;s up the energy for more muons
+beam, energy=450*GeV;
+
+! physics options - full physics and high cuts as we want to look at high energy muons
+option, physicsList=&quot;g4FTFP_BERT&quot;,
+        defaultRangeCut=10*cm,
+        minimumKineticEnergy=10*GeV,
+        geant4PhysicsMacroFileName = &quot;emextraphysics.mac&quot;;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>We change the beam energy for this proposal from 100 GeV to 450 GeV.</p></li>
+<li><p>We use <code class="code docutils literal notranslate"><span class="pre">g4FTFP_BERT</span></code> physics list, which is the general Geant4 high energy physics list
+containing full EM and hadronic physics as well as decay.</p></li>
+<li><p>The default range cut (usually 1 mm) is increased to 10 cm to reduce the number of secondaries
+produced as we’re only interested in relatively high energy muons and neutrinos that we expect
+to have more than say 1% of the primary particle energy. This length scale should not be longer
+than typical component lengths in the model as this will introduce artefacts in particle production
+location and rates.</p></li>
+<li><p>We <strong>knowingly</strong> introduce a completely artificial kinetic energy cut that will remove
+any particles below that energy. We do so, knowing that we are reducing the accuracy of
+the simulation but that it will be vastly faster for this example purpose. Normally, we
+should either not use such a limit or carefully choose it given the physics of interest
+so as not to affect the result. Normally, you should optimise after seeing the full result.</p></li>
+<li><p>We use a geant4 macro file with a few commands that we could use in an interactive visualiser
+to turn on some extra EM processes that are relevant. These are normally turned off but are
+highly relevant to muon production.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">physics_lists</span><span class="o">/</span><span class="n">em</span><span class="o">/</span><span class="n">GammaToMuons</span> <span class="n">true</span>
+<span class="o">/</span><span class="n">physics_lists</span><span class="o">/</span><span class="n">em</span><span class="o">/</span><span class="n">PositronToMuons</span> <span class="n">true</span>
+<span class="o">/</span><span class="n">physics_lists</span><span class="o">/</span><span class="n">em</span><span class="o">/</span><span class="n">PositronToHadrons</span> <span class="n">true</span>
+<span class="o">/</span><span class="n">physics_lists</span><span class="o">/</span><span class="n">em</span><span class="o">/</span><span class="n">NeutrinoActivation</span> <span class="n">true</span>
+<span class="o">/</span><span class="n">physics_lists</span><span class="o">/</span><span class="n">em</span><span class="o">/</span><span class="n">MuonNuclear</span> <span class="n">true</span>
+<span class="o">/</span><span class="n">physics_lists</span><span class="o">/</span><span class="n">em</span><span class="o">/</span><span class="n">GammaNuclear</span> <span class="n">true</span>
+</pre></div>
+</div>
+</section>
+<section id="tunnel">
+<h2>Tunnel<a class="headerlink" href="#tunnel" title="Link to this heading"></a></h2>
+<p>This model is fictional and we don’t have a real tunnel in mind. So we use a BDSIM-generated
+one. Several options are used to create a tunnel that follows the beam line.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! geometry - include a big tunnel
+option, buildTunnel=1,
+        tunnelOffsetX=40*cm,
+        tunnelOffsetY=50*cm,
+        tunnelAper1=220*cm,
+        tunnelFloorOffset=150*cm,
+        tunnelThickness=30*cm,
+        tunnelSoilThickness=20*m,
+        tunnelMaxSegmentLength=20*m;
+</pre></div>
+</div>
+<p>We add quite a good amount of “soil” outside the concrete tunnel shell so that even
+when the tunnel bends the location we are interested in will be inside soil / rock.</p>
+</section>
+<section id="beam-distribution">
+<h2>Beam Distribution<a class="headerlink" href="#beam-distribution" title="Link to this heading"></a></h2>
+<p>We are interested in observing muons and neutrinos produced inside the collimators. These
+are at 6 and 7 sigma of the beam, so only a very small fraction of the beam should hit
+the collimators during normal operation. To efficiently simulate such a situation, we use
+a <cite>halo</cite> distribution that neglects to generate particles in the central part of the Gaussian
+distribution but instead only at the edges. This means that instead of 1 event in over a million
+generating a proton that will hit the collimators, nearly every event does and is therefore useful.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We simulate a sample of halo and conclude some result from that. If we want a physical rate from
+the simulations we must normalise to the ratio of this halo as a fraction of the regular beam
+population (not done here).</p>
+</div>
+<p>The following beam commands update and effectively overwrite some variables from the original model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! set beam distribution to halo so it&#39;ll smash deep in the collimators that are at 7 sigma
+beam, distrType=&quot;composite&quot;,
+      xDistrType=&quot;halo&quot;,
+      yDistrType=&quot;halo&quot;,
+      zDistrType=&quot;gausstwiss&quot;,
+      haloNSigmaXInner=8,
+      haloNSigmaXOuter=12,
+      haloNSigmaYInner=8,
+      haloNSigmaYOuter=12,
+      sigmaE=0.01;
+</pre></div>
+</div>
+<p>This defines a halo from 8 to 12 sigma (a large impact on the collimators - maybe the beam is excited
+for this fictional experiment) in both the horizontal and vertical dimensions.</p>
+<p>The halo distribution is actually a uniform flat distribution that is masked by the single particle
+emittance ellipse at each amplitude.</p>
+<p>We can run the model quickly to look at the phase space.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">job</span><span class="o">-</span><span class="n">bmm</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">primaries</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">100000</span> <span class="o">--</span><span class="n">generatePrimariesOnly</span>
+</pre></div>
+</div>
+<p>This takes about 20s on the developer’s computer. We can then plot it using <cite>pybdsim</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">PhaseSpaceFromFile</span><span class="p">(</span><span class="s2">&quot;primaries.root&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/primaries-plot_coords.pdf"><img alt="../_images/primaries-plot_coords.pdf" src="../_images/primaries-plot_coords.pdf" style="width: 100%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/primaries-plot_correlations.pdf"><img alt="../_images/primaries-plot_correlations.pdf" src="../_images/primaries-plot_correlations.pdf" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="output-trajectories">
+<h2>Output &amp; Trajectories<a class="headerlink" href="#output-trajectories" title="Link to this heading"></a></h2>
+<p>The goal is to look at <strong>only</strong> muons and neutrinos reaching a plane in the rock and to
+understand their origin. We don’t really care about energy deposition in the accelerator
+so we can remove this from the data to save space. The main way to start is to use
+“Minimal Data” and then build up in this case.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! output options - only store what we need
+option, storeMinimalData=1,
+        storePrimaries=1,
+        storeSamplerCharge=1,
+        storeSamplerKineticEnergy=1,
+        storePrimaryHistograms=1;
+
+! trajectories - store muons and neutrinos that reach the sampler
+! and also their parents back to the primary particle
+option, storeTrajectory=1,
+        trajectoryConnect=1,
+        trajectoryFilterLogicAND=1,
+        storeTrajectoryParticleID=&quot;12 -12 13 -13 14 -14&quot;,
+        storeTrajectorySamplerID=&quot;detector&quot;,
+        storeTrajectoryProcesses=1,
+        storeTrajectoryTransportationSteps=0;
+
+! detector-like sampler in front of where our proposed detector would be
+! so here it&#39;s just straight ahead but in solid rock as we haven&#39;t &#39;built&#39; a tunnel yet
+detector: samplerplacement, z=500*m, apertureType=&quot;rectangular&quot;, aper1=2*m, aper2=2*m;
+</pre></div>
+</div>
+<p>We will use a sampler placement (see <a class="reference internal" href="../model_control.html#user-sampler-placement"><span class="std std-ref">Output at an Arbitrary Plane - User Placed Sampler</span></a>) for the ‘detector’ plane
+in the rock. Knowing we want to look at kinetic energy and not total energy in the sampler
+data, we request that as well as the charge.</p>
+<p>Minimal data turns off the storage of primary particles but we want to retain these so turn
+it back on.</p>
+<p>For trajectories, options are used that select only muons and common neutrinos by PDG
+particle ID (i.e. 12, -12, 13 etc); that hit our sampler plane called “detector”. We
+enforce that a given trajectory must meet all of these conditions with “AND” logic.
+We request that the trajectories are connected back to the primary. For any trajectory
+stored, we also request the process IDs from Geant4 be stored as well as ignore any
+steps on the trajectory that were purely due to crossing a geometry boundary and didn’t
+have a physics process define them (“transportation” steps).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Trajectory options are discussed in more detail in <a class="reference internal" href="../worked_example_trajectories/worked_example_trajectories1.html#worked-example-trajectory-generation"><span class="std std-ref">Trajectory Generation</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Trajectory storage can create a lot of data, so we have to be selective in what
+we store. We also know in this case that what we want (the origin of muons, neutrinos)
+cannot be found by any other means in the BDSIM general data (e.g. a sampler).</p>
+</div>
+<p>Finally, we place a sampler with a square shape 500 m in line-of-sight from the start
+of the model that we will look at.</p>
+</section>
+<section id="visualisation">
+<h2>Visualisation<a class="headerlink" href="#visualisation" title="Link to this heading"></a></h2>
+<p>To view the model, we can run <cite>bdsim</cite> with the visualiser.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">job</span><span class="o">-</span><span class="n">bmm</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">none</span>
+</pre></div>
+</div>
+<p>The model is surrounded by tunnel and soil, so we don’t see anything of interest. We can
+then add a “cutaway” plane to look inside the geometry (only for visualisation purposes).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">viewer</span><span class="o">/</span><span class="n">addCutawayPlane</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="n">m</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>This creates a plane 1 m above the x-z plane at y=0 and cuts away the top half.
+This can be undone with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">viewer</span><span class="o">/</span><span class="n">clearCutawayPlanes</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/model-model-sp-vis1.png"><img alt="../_images/model-model-sp-vis1.png" src="../_images/model-model-sp-vis1.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Default view of the model showing the surrounding (brown) rock / soil.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/model-model-sp-vis2.png"><img alt="../_images/model-model-sp-vis2.png" src="../_images/model-model-sp-vis2.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Visualisation of the model with a cut away plane and some events as well
+as perspective view turned on.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/model-model-sp-vis2-perspective.png"><img alt="../_images/model-model-sp-vis2-perspective.png" src="../_images/model-model-sp-vis2-perspective.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Visualisation of the model in the same view but also with perspective
+turned on in the visualiser.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="process-biasing">
+<h2>Process Biasing<a class="headerlink" href="#process-biasing" title="Link to this heading"></a></h2>
+<p>At high energy, unstable particles such as pions, kaons and muons can travel some distance
+in vacuum or air before they would naturally decay. Since we are interested in muons and
+neutrinos and our primary beam is protons, we surmise that our muons and neutrinos will
+likely come from the decay of pions and kaons produced in hadronic interactions of the
+protons.</p>
+<p>In material such as iron (i.e. in a magnet) or concrete or soil, the mean free path of
+hadronic interactions will likely be much shorter than the mean free path of the decay
+process. This means that we will not observe decay as much.</p>
+<p>Furthermore, the “detector” is small-ish (could in reality be much smaller) and far away
+from the source, so our simulation is overall not going to be very efficient. Efficient
+in terms of how many events simulated are useful compared to the number we simulated.</p>
+<p>We choose, based on some knowledge and experience, some biasing factors to increase
+the occurrence of muons and neutrinos.</p>
+<p>Different biasing factors are used in vacuum and in material because competing
+processes such as hadronic inelastic will not happen in vacuum and we do not
+want all particles to decay within a few metres in vacuum. If this happened, we
+would under-sample decays that would in reality happen further along in the geometry
+of the model.</p>
+<p>We defined some biasing ‘rules’ or objects for the most relevant particles and processes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">piPlusHighBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">piMinusHighBias</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">piPlusLowBias</span><span class="p">:</span>   <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">piMinusLowBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaPlusHighBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaMinusHighBias</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaPlusLowBias</span><span class="p">:</span>   <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaMinusLowBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>We then attach these (think paint-by-numbers) to different categories of geometry:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">defaultBiasVacuum</span><span class="o">=</span><span class="s2">&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">defaultBiasMaterial</span><span class="o">=</span><span class="s2">&quot;piPlusHighBias piMinusHighBias kaPlusHighBias kaMinusHighBias&quot;</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">biasForWorldVolume</span><span class="o">=</span><span class="s2">&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>These attach biases to the accelerator vacuum volumes, the magnets and the surrounding air
+respectively.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When using biasing, an analogue (i.e. without biasing) simulation should be
+run first and then biasing used with care as it can in fact make the simulation
+more noisy and converge more slowly if used wrongly. This is used here with
+some knowledge and to make the example efficient, at the expense of the best
+accuracy.</p>
+</div>
+</section>
+<section id="generating-data">
+<h2>Generating Data<a class="headerlink" href="#generating-data" title="Link to this heading"></a></h2>
+<p>A sample of 200 to 1000 events should generate a few events of interest. However, to get
+a clear result, it would be best to generate a larger data set on a computer farm. For this
+example, approximately 60M events were generated on computing cluster over night, taking
+around 5 hours with 200 cores including analysis. The following files were used on an
+HTCondor farm that used BDSIM software from CVMFS.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/model-model/farm/singlepass.sub</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/model-model/farm/bdsimjob-sp.sh</span></code></p></li>
+</ul>
+<p>Each job would generate 10000 events, create a set of histograms and also make a
+skimmed raw data file with only the events of interest in them (for efficient later
+analysis if needed and a reduced final data size).</p>
+<p>The histograms are defined in:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/model-model/analysis/analysisConfig.txt</span></code></p></li>
+</ul>
+<p>The skimming was defined by the selection of <code class="code docutils literal notranslate"><span class="pre">detector.n&gt;0</span></code>, i.e. at least
+one hit in that event in the detector sampler. This is provided in the file:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/model-model/analysis/skimselection.txt</span></code></p></li>
+</ul>
+<p>The resulting histogram files from rebdsim were merged together into one result in a
+few minutes with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimHistoMerge</span> <span class="n">ipac</span><span class="o">-</span><span class="n">run123</span><span class="o">.</span><span class="n">root</span> <span class="o">*</span><span class="n">_ana</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+</section>
+<section id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Some example results are provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/model-model/results/ipac21</span></code>.</p></li>
+</ul>
+<p>Many histograms are defined in an analysis configuration file for rebdsim. We will look
+at one histogram definition to understand some relevant features.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram2D</span>  <span class="n">Event</span>  <span class="n">OriginZX_</span><span class="o">+</span><span class="mi">13</span>  <span class="p">{</span><span class="mi">500</span><span class="p">,</span><span class="mi">100</span><span class="p">}</span>  <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>  <span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fX</span><span class="p">:</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fZ</span>  <span class="p">(</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">13</span><span class="p">)</span><span class="o">*</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">preWeights</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This is the first histogram definition in the file that plots the global X-Z origin
+coordinates of muons reaching the detector plane. The ‘variable’ plotted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fX</span><span class="p">:</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fZ</span>
+</pre></div>
+</div>
+<p>can be broken down. This is of the form y vs x (<code class="code docutils literal notranslate"><span class="pre">y:x</span></code>), which is ROOT’s inconsistent
+syntax order. All the binning etc is handled by rebdsim so is done in x, xy, xyz order
+consistently. For one variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fX</span>
+</pre></div>
+</div>
+<p>The brackets are worth noting. If we look at <a class="reference internal" href="../output.html#output-structure-trajectory"><span class="std std-ref">BDSOutputROOTEventTrajectory</span></a>, we see
+the structure of the data is <code class="code docutils literal notranslate"><span class="pre">std::vector&lt;std::vector&lt;TVector3&gt;&gt;</span></code>. The first set
+of brackets indexes the outside vector and the second brackets the inside one.
+<code class="code docutils literal notranslate"><span class="pre">[]</span></code> is ROOT’s TTree Draw syntax means “all” entries. <code class="code docutils literal notranslate"><span class="pre">[0]</span></code> is the 0th
+element in that vector. So together, it means the 0th step of all trajectories. Then we
+have the <code class="code docutils literal notranslate"><span class="pre">fX</span></code> member variable.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The member variables should be used directly. We have observed bad behaviour
+when using functions such as <code class="code docutils literal notranslate"><span class="pre">X()</span></code> in TTree Draw (i.e. also through
+rebdsim).</p>
+</div>
+<p>The other crucial part is the selection.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">13</span><span class="p">)</span><span class="o">*</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">preWeights</span><span class="p">[][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Here, we choose only trajectories for muons with PDG ID 13. We also need to include
+the initial starting weight of that particle as we use biasing and the weights are
+expected to be not equal to 1. For ROOT’s TTree syntax that we pass in through rebdsim,
+when we have a number and a Boolean for the selection we should use the general syntax
+<code class="code docutils literal notranslate"><span class="pre">(</span> <span class="pre">Boolean</span> <span class="pre">expression</span> <span class="pre">)*number</span></code>.</p>
+<p>The skeleton of a more advanced analysis is included in the files <code class="code docutils literal notranslate"><span class="pre">historyanalysis.py</span></code>
+and <code class="code docutils literal notranslate"><span class="pre">neutrinoorigin2.py</span></code>. These will be more developed and documented in future.</p>
+</section>
+<section id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Link to this heading"></a></h2>
+<p>To get a nice 2D plot we can generate a cut through set of outlines of the model. This is
+achieved using the <cite>pyg4ometry</cite> package. First, the BDSIM model is exported to a GDML file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">job</span><span class="o">-</span><span class="n">bmm</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">none</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">exportGeometryTo</span><span class="o">=</span><span class="n">bmm</span><span class="o">-</span><span class="n">sp</span><span class="o">-</span><span class="n">geometry</span><span class="o">.</span><span class="n">gdml</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>This creates a file called <cite>bmm-sp-geometry.gdml</cite>. We can load this in <cite>pyg4ometry</cite> which
+will generate plane intersection lines and export them as a set of lines we can plot. Such
+and example script is provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/model-model/bdsim/singlepass/generateCrossSectionLines.py</span></code>. This generates some JSON files with lines in the directory <code class="code docutils literal notranslate"><span class="pre">results/ipac21</span></code>.</p>
+<p>We can also then plot the 2D histogram with <cite>pybdsim</cite>. See <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/model-model/results/ipac21/plotorigins.py</span></code>.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/run123+13_origin_xz_free__r.png"><img alt="../_images/run123%2B13_origin_xz_free__r.png" src="../_images/run123%2B13_origin_xz_free__r.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Origin of muons reaching the detector plane highlighted in red on the right per event.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/run123+13_run123_xy_free__r.png"><img alt="../_images/run123%2B13_run123_xy_free__r.png" src="../_images/run123%2B13_run123_xy_free__r.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">2D distribution of muons at the detector plane per event.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../worked_example_no_accelerator/worked_example_no_accelerator.html" class="btn btn-neutral float-left" title="No Accelerator Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../worked_example_machine_diagram/worked_example_machine_diagram.html" class="btn btn-neutral float-right" title="Machine Diagram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

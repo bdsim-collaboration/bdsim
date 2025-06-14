@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Authorship" href="authorship.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose-of-bdsim">Purpose of BDSIM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-bdsim-is-suitable-for">What BDSIM is suitable for</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-bdsim-is-not-intended-for">What BDSIM is not intended for</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-applications">Example Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#capabilities">Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulation-procedure">Simulation Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-bdsim-works">How BDSIM Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tracking">Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limits">Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#energy">Energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-physical-size">Model Physical Size</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<section id="purpose-of-bdsim">
+<h2>Purpose of BDSIM<a class="headerlink" href="#purpose-of-bdsim" title="Link to this heading"></a></h2>
+<p>Beam Delivery Simulation (BDSIM) is a C++ program that utilises the Geant4
+toolkit to simulate both the transport of particles in an accelerator and
+their interaction with the accelerator material. BDSIM is capable of
+simulating a wide variety of accelerator components and magnets with Geant4
+geometry dynamically built based on a text input file. Thick lens accelerator
+tracking routines are provided for fast accurate tracking in a vacuum.</p>
+<section id="what-bdsim-is-suitable-for">
+<h3>What BDSIM is suitable for<a class="headerlink" href="#what-bdsim-is-suitable-for" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Single particle Monte-Carlo simulations of particle accelerators</p></li>
+<li><p>Simulating beam loss in a particle accelerator</p></li>
+<li><p>Simulating particle transport in an accelerator where matter interaction is expected, such as transport in air.</p></li>
+<li><p>Simulating detector backgrounds from halo and machine background sources</p></li>
+</ul>
+</section>
+<section id="what-bdsim-is-not-intended-for">
+<h3>What BDSIM is not intended for<a class="headerlink" href="#what-bdsim-is-not-intended-for" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Long-term tracking studies</p></li>
+<li><p>Simulating collective effects</p></li>
+<li><p>Lattice optical design and optimisation</p></li>
+<li><p>A replacement for tracking codes like MAD-X, SixTrack or PTC</p></li>
+</ul>
+</section>
+<section id="example-applications">
+<h3>Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Detector background from the accelerator</p></li>
+<li><p>Beam transport in air</p></li>
+<li><p>Beam interaction with vacuum gas</p></li>
+<li><p>Losses in beam extraction</p></li>
+<li><p>Collimation system efficiency and secondary radiation</p></li>
+<li><p>Transport of products from target through accelerator</p></li>
+<li><p>LHC beam loss and energy deposition</p></li>
+<li><p>CLIC muon background from the accelerator</p></li>
+<li><p>Laserwire detector signal to background ratio</p></li>
+<li><p>ILC collimator efficiency study and detector backgrounds</p></li>
+</ul>
+<p>See <a class="reference internal" href="examples.html#worked-examples"><span class="std std-ref">Worked Examples</span></a> for walk through examples with exact commands and input
+required and example plots.</p>
+</section>
+</section>
+<section id="capabilities">
+<h2>Capabilities<a class="headerlink" href="#capabilities" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>BDSIM uses <strong>ASCII</strong> text input with a syntax designed to be very similar to
+<strong>MAD8</strong> / <strong>MAD-X</strong>.</p></li>
+<li><p>Convert MAD-X / MAD8 / TRANSPORT model to a 3D model in minutes</p></li>
+<li><p>Generate beam distribution according to Twiss parameters of a beam</p></li>
+<li><p>Track beam distribution and records particle distribution after each component</p></li>
+<li><p>Simulate energy deposition in all components along beam line</p></li>
+<li><p>Calculate beam distribution and Twiss optical functions from particle distribution</p></li>
+<li><p>Use the full set of physics processes available in Geant4</p></li>
+<li><p>Adjust cross-sections of processes of interest</p></li>
+<li><p>Use externally provided geometry and field maps for a fully customised model</p></li>
+<li><p>Interactively visualise a model in 3D as well as particle tracks</p></li>
+<li><p>Analyse history and origin of radiation produced in accelerator with analysis suite</p></li>
+<li><p>Strong reproducibility - recreate any event again exactly</p></li>
+</ul>
+</section>
+<section id="simulation-procedure">
+<h2>Simulation Procedure<a class="headerlink" href="#simulation-procedure" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Create a text input <strong>.gmad</strong> lattice for BDSIM by converting a <strong>MAD-X</strong> or <strong>MAD8</strong> Twiss file or writing your own manually.</p></li>
+<li><p>Run BDSIM with core beam distribution for validation of optics and therefore model preparation.</p></li>
+<li><p>Run BDSIM with desired input distribution and physics processes with low statistics to verify desired application.</p></li>
+<li><p>Repeat 3) with greater statistics either as a single instance or on a computing cluster.</p></li>
+<li><p>Analyse output data as desired.</p></li>
+</ol>
+</section>
+<section id="how-bdsim-works">
+<h2>How BDSIM Works<a class="headerlink" href="#how-bdsim-works" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>BDSIM builds a complete Geant4 model and runs it as a Geant4 model.</p></li>
+<li><p>BDSIM does not link to another particle tracking code.</p></li>
+<li><p>BDSIM does not pass information back and forth between two codes.</p></li>
+<li><p>Thick lens tracking routines are used in place of normal 4th order Runge-Kutta integrators.</p></li>
+<li><p>BDSIM provides the required transforms between Cartesian and Curvilinear coordinate systems for accelerator tracking routines.</p></li>
+</ul>
+</div></blockquote>
+<p>In a Geant4 program, code is written in C++ to construct a 3D model of the object
+to be simulated. A Geant4 example is shown below being interactively visualised.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/geant4_application.png"><img alt="_images/geant4_application.png" src="_images/geant4_application.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example Geant4 program being visualised with events displayed.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This is labour-intensive and inflexible for different accelerator models or optics. As
+accelerators typically consist of a standard set of components these can be made
+reasonably generic. BDSIM provides a library of geometries and fields that allow
+simple optical descriptions to be made into 3D models. Example screenshots are shown
+below.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/example-beamLoss.png"><img alt="_images/example-beamLoss.png" src="_images/example-beamLoss.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">“beamLoss” example of four quadrupoles in a small tunnel section.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/example-atf2.png"><img alt="_images/example-atf2.png" src="_images/example-atf2.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Accelerator Test Facility 2 in KEK, Japan with tunnel model.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/example-atf2-2.png"><img alt="_images/example-atf2-2.png" src="_images/example-atf2-2.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Accelerator Test Facility 2 in KEK, Japan with tunnel model.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Apart from the 3D geometry, a crucial component of a model is the electromagnetic
+fields. Fields in Geant4 may be specified through a developer-provided C++ class that returns
+the field vector as a function of global Cartesian variables <cite>x</cite>, <cite>y</cite>, <cite>z</cite> and <cite>t</cite>. BDSIM provides
+classes to describe the magnetic fields found for each type of accelerator magnet as well
+as the transforms so that they can be described <em>locally</em> with respect to a particular magnet.</p>
+<p>To calculate the motion of charged particle in a field, Geant4 uses a numerical integrator
+such as a 4th Order Runge-Kutta algorithm. This is the most general solution for a varying
+field but in an accelerator the specific fields have specific analytical solutions that
+can be used for improved accuracy and computational efficiency. BDSIM provides these tracking
+routines for “thick lens” tracking.</p>
+<p>These ‘integrators’ are typically constructed with a strength that represents the field
+(such as <cite>k1</cite> for a quadrupole) and the field vector <span class="math notranslate nohighlight">\(\vec{B}\)</span> is ignored. Of course,
+in a full radiation transport simulation, there can be many different types of particles
+in all directions (even backwards). The thick lens tracking routines do not work for
+particles travelling backwards or perpendicular, so we resort back to a numerical
+integrator (typically 4th order Runge-Kutta) in these cases. The thick lens routines
+are used for paraxial particles only.</p>
+<p>Thick lens tracking routines typically work in a <strong>curvilinear coordinate system</strong>
+that follows the reference trajectory, whereas Geant4 must work in global Cartesian
+coordinates. BDSIM bridges these two systems with an automatically created parallel
+geometry of simple cylinders that follow the beam line. Using the coordinate system
+of this parallel geometry creates transforms between coordinate systems.</p>
+</section>
+<section id="tracking">
+<span id="tracking-introduction"></span><h2>Tracking<a class="headerlink" href="#tracking" title="Link to this heading"></a></h2>
+<p>There are a variety of particle tracking routines and BDSIM supplies several sets.
+The set “bdsimmatrix” issued <em>out-of-the-box</em> uses thick lens tracking and provides
+agreement with MAD-X and PTC tracking codes.</p>
+<p>A second set of routines called “bdsimtwo” is similar but differs in the way dipoles magnets
+are treated. In this case, a constant pure dipole field is used to calculate the motion
+of the particle (using a Rodrigues rotation in global Cartesian coordinates). The field
+is a ‘hard-edge’ field - it exists inside the volume at the same strength everywhere and is
+zero outside. Whilst the tracking algorithm is accurate, such a model does not agree with
+MAD-X or PTC when the dipoles have angled pole faces. This integrator set is computationally
+more efficient than the “bdsimmatrix” set, as no transforms between Cartesian and curvilinear
+coordinate systems are required for dipoles. In the case of a high-energy accelerator with
+no pole face angles or low angle bends, “bdsimtwo” may safely be used for accurate results
+and increased performance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the “bdsimmatrix” routines, the tracking associated with the pole face angle is
+handled not by the physical shape of the magnet but by the thick lens matrix. Therefore,
+no pole face angles are physically constructed. The tracking however does represent the
+pole faces. Developments underway will allow both correct tracking with the thick lens
+matrix and the physical angled pole face.</p>
+</div>
+</section>
+<section id="limits">
+<h2>Limits<a class="headerlink" href="#limits" title="Link to this heading"></a></h2>
+<section id="energy">
+<h3>Energy<a class="headerlink" href="#energy" title="Link to this heading"></a></h3>
+<p>The user must understand the validity of the Geant4 models used and the applicability of the
+physics processes / models at their energy regime. Most Geant4 high-energy processes will not
+work above (and including) 50 TeV for a single particle. In Geant4.10.4, limits have been raised
+to 100 TeV.</p>
+</section>
+<section id="model-physical-size">
+<h3>Model Physical Size<a class="headerlink" href="#model-physical-size" title="Link to this heading"></a></h3>
+<p>BDSIM uses a small padding distance between all surfaces and in addition, Geant4 treats the
+intersection with every surface of every solid with a certain tolerance. Specifying a tolerance
+like this avoids infinite recursion (or at least costly recursion) to ascertain the intersection
+of a curved track with a surface. This tolerance is by default <span class="math notranslate nohighlight">\(10^{-9}\)</span> mm. BDSIM and Geant4
+use double floating point precision throughout providing approximately 15 to 16 significant figures.
+Therefore, a maximum size of a model while still maintaining tracking precision is <span class="math notranslate nohighlight">\(10^7\)</span> mm.
+This leads us to conclude that a model of order the size of the LHC is a practical maximum.
+Developments are underway to dynamically adjust this tolerance so as to increase this size. Please
+contact us for advice (see <a class="reference internal" href="support.html#feature-request"><span class="std std-ref">Feature Request</span></a>). However, Geant4 and CLHEP are not fully templated
+(yet) to allow the use of higher precision numbers.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="authorship.html" class="btn btn-neutral float-left" title="Authorship" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

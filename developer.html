@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Documentation &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Purpose of Developer Documentation" href="dev_introduction.html" />
+    <link rel="prev" title="Version History" href="history.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_introduction.html">Purpose of Developer Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_styleguide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html">Documentation Builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html">Release Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html#change-of-year-or-licence">Change Of Year or Licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html">Program Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html">Build System &amp; Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html">Geant4 User Action Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html">Tracking Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_beamgeneration.html">Beam Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html">Sensitivity, Output &amp; Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html">Analysis Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/developer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-documentation">
+<h1>Developer Documentation<a class="headerlink" href="#developer-documentation" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev_introduction.html">Purpose of Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_contributing.html#git-convention">Git Convention</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html#unit-tests">Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html#regression-testing">Regression Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html#automated-testing">Automated Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_styleguide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_styleguide.html#c">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_styleguide.html#python">Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_documentation_build.html">Documentation Builds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html#making-the-manual">Making the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html#making-doxygen-code-documentation">Making Doxygen Code Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_release.html">Release Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_release.html#change-of-year-or-licence">Change Of Year or Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_programlayout.html">Program Layout</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html#parser">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html#geant4-model">Geant4 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html#geant4-user-action-classes">Geant4 User Action Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html#specific-run-time-order">Specific Run Time Order</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_buildsystem.html">Build System &amp; Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html#build-system">Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html#test-system">Test System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html#testing-and-continuous-integration">Testing and Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html#package-system">Package System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html#static-code-analysis">Static Code Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_parser.html">Parser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html#parser-classes">Parser Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html#bison">Bison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_geantusage.html">Geant4 User Action Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html#g4userrunaction">G4UserRunAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html#g4usereventaction">G4UserEventAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html#g4userstackingaction">G4UserStackingAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html#g4usertrackingaction">G4UserTrackingAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html#g4usersteppingaction">G4UserSteppingAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html#g4vuserprimarygeneratoraction">G4VUserPrimaryGeneratorAction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_geometry.html">Geometry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html#beam-line-calculations">Beam Line Calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html#component-factory">Component Factory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html#beam-pipe-aperture-factories">Beam Pipe / Aperture Factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html#magnet-factories">Magnet Factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html#angles-of-bends-and-faces">Angles of Bends, and Faces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html#specific-element-details">Specific Element Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tracking.html">Tracking Algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html#background-on-how-geant4-tracking-works">Background On How Geant4 Tracking Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html#integrator-sets">Integrator Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html#integrator-algorithms-section">Integrator Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html#validation-of-bdsim-integrators">Validation of BDSIM Integrators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html#bdsim-integrator-response-to-non-paraxial-particles">BDSIM Integrator Response to Non-Paraxial Particles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_fields.html">Fields</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#coordinate-system">Coordinate System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#field-names-and-parameters">Field Names and Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#synchronous-time-rigidity-with-acceleration">Synchronous Time &amp; Rigidity With Acceleration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#pure-magnetic-fields-from-equations">Pure Magnetic Fields From Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#electric-fields-from-equations">Electric Fields From Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#electromagnetic-fields-from-equations">Electromagnetic Fields From Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#field-map-file-formats">Field Map File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#bdsim-field-map-file-preparation">BDSIM Field Map File Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#field-map-transforms-and-reflections">Field Map Transforms and Reflections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html#field-map-interpolators">Field Map Interpolators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_beamgeneration.html">Beam Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_beamgeneration.html#gauss-twiss-covariance-matrix">Gauss Twiss Covariance Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_analysisoutput.html">Sensitivity, Output &amp; Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html#information-from-geant4">Information From Geant4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev_analysissuite.html">Analysis Suite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html#executables">Executables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html#source-libraries">Source Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html#dynamic-loading">Dynamic Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html#interactive-usage">Interactive Usage</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="history.html" class="btn btn-neutral float-left" title="Version History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_introduction.html" class="btn btn-neutral float-right" title="Purpose of Developer Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

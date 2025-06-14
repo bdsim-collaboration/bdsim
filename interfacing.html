@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interfacing &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples &amp; Tests" href="examples.html" />
+    <link rel="prev" title="Visualisation" href="visualisation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Interfacing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-against-bdsim">Compiling Against BDSIM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-beam-line-component">Custom Beam Line Component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-gmad">Input GMAD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-class">Component Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-constructor">Component Constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-physics-list">Custom Physics List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tracking-link-interface">Tracking Link Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Interfacing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/interfacing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interfacing">
+<span id="interfacing-section"></span><h1>Interfacing<a class="headerlink" href="#interfacing" title="Link to this heading"></a></h1>
+<p>As BDSIM is completely open source, it is possible to extend BDSIM or interface it with
+other software. This ability is driven by the needs of users, so we strongly encourage
+users or would-be developers to get in touch with the developers (see <a class="reference internal" href="support.html#support-section"><span class="std std-ref">Support</span></a>).
+We welcome extensions and contributions to BDSIM.</p>
+<p>Below are details of various methods to extend BDSIM.</p>
+<section id="compiling-against-bdsim">
+<h2>Compiling Against BDSIM<a class="headerlink" href="#compiling-against-bdsim" title="Link to this heading"></a></h2>
+<p>BDSIM includes CMake files in the installation so that another CMake application can
+use the BDSIM classes and libraries. CMake is a system to automatically create
+Make files for different operating systems and different computer systems with libraries
+in various locations. CMake is used as the build system for BDSIM, but also for Geant4,
+ROOT and CLHEP and is a common C++ software paradigm. Below is the most minimal CMakeLists.txt
+to create a C++ application using BDSIM.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cmake_minimum_required (VERSION 3.2)
+project (externalcpp)
+
+# point cmake to my own custom installation directory that&#39;s not a system dir
+# this is where BDSIMConfig.cmake exists
+set(CMAKE_PREFIX_PATH /Users/nevay/physics/reps/bdsim-develop-install/lib/cmake/bdsim)
+
+# find the package and set up variables
+find_package(BDSIM REQUIRED)
+
+# define program includes
+include_directories(${BDSIM_INCLUDE_DIR})
+
+# make a program and link to gmad (parser) and bdsim libraries
+add_executable(customprogram customprogram.cc)
+target_link_libraries(customprogram ${BDSIM_LIBRARIES})
+</pre></div>
+</div>
+<p>Along with this is a single C++ file called customprogram.cc. Below are the contents of this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &quot;BDSIMClass.hh&quot;
+
+#include &lt;iostream&gt;
+
+int main(int argc, char** argv)
+{
+  BDSIM* bds = new BDSIM(argc, argv);
+  if (!bds-&gt;Initialised())
+    {std::cout &lt;&lt; &quot;Intialisation failed&quot; &lt;&lt; std::endl; return 1;}
+
+  std::cout &lt;&lt; &quot;Custom stuff here&quot; &lt;&lt; std::endl;
+
+  bds-&gt;BeamOn();
+  delete bds;
+  return 0;
+}
+</pre></div>
+</div>
+<p>This example is provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/interfaces/externalcpp</span></code>. The user
+should edit the CMakeLists.txt so that <code class="code docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> points to their BDSIM
+installation directory if not in a system directory to allow CMake to find that installation.</p>
+</section>
+<section id="custom-beam-line-component">
+<h2>Custom Beam Line Component<a class="headerlink" href="#custom-beam-line-component" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If there are any geometrical overlaps (broken hierarchy, touching
+solids, overlapping separate solids at the same level of hierarchy),
+the Geant4 tracking may be wrong and the results cannot be trusted.
+This may lead to slow running models, inaccurate results, excessive
+navigation warnings, or worst of all: no warnings but inaccurate results.
+When developing custom geometry, the developer <strong>must</strong> ensure no
+geometrical overlaps are present before the model is used for a physics
+study.</p>
+</div>
+<p>Whilst BDSIM provides the most common accelerator beam line components, we cannot foresee
+custom components that various accelerators may have. To insert a custom component, we
+would recommend using a geometry package such as <cite>pyg4ometry</cite> to prepare GDML geometry
+and using a generic beam line <cite>element</cite>. See <a class="reference internal" href="python_utilities.html#python-geometry-preparation"><span class="std std-ref">Geometry Preparation</span></a> and
+the generic beam line element object, <a class="reference internal" href="model_construction.html#element"><span class="std std-ref">element</span></a>. A field map can also be
+overlaid on this.</p>
+<p>However, if the user is familiar with Geant4 C++, Geant4 geometry or requires a
+more detailed interaction with the simulation, it is possible to add a custom
+C++ beam line component to BDSIM. The user must define:</p>
+<ul class="simple">
+<li><p>A class that constructs the beam line component and that inherits BDSAcceleratorComponent.</p></li>
+<li><p>A factory class that constructs an instance of the component. This should inherit
+BDSComponentConstructor and translates information provided by BDSIM from the parsing of
+the input text files.</p></li>
+<li><p>A C++ main program that uses BDSIM and will be executed like BDSIM.</p></li>
+<li><p>A CMake file to compile the application sources.</p></li>
+</ul>
+<p>A complete example is provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/interfaces/usercomponent</span></code> that
+is described here. The contents of the directory are shown below.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/interface-contents.png"><img alt="_images/interface-contents.png" src="_images/interface-contents.png" style="width: 40%;" />
+</a>
+</figure>
+<p>This example builds a custom vertical dipole spectrometer. This makes use of the magnet
+geometry and beam pipe factories to build a magnet with custom proportions and an offset
+beam pipe with a screen inside it.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/usercomponent-visualisation.png"><img alt="_images/usercomponent-visualisation.png" src="_images/usercomponent-visualisation.png" style="width: 90%;" />
+</a>
+</figure>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>File</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CMakeLists.txt</p></td>
+<td><p>Defines how to compile program.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ebeam.dat</p></td>
+<td><p>Example beam distribution file.</p></td>
+</tr>
+<tr class="row-even"><td><p>include/UDipole.hh</p></td>
+<td><p>Header for component.</p></td>
+</tr>
+<tr class="row-odd"><td><p>include/UDipoleConstructor.hh</p></td>
+<td><p>Header for constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p>source/UDipole.cc</p></td>
+<td><p>Source for component.</p></td>
+</tr>
+<tr class="row-odd"><td><p>source/UDipoleConstructor.cc</p></td>
+<td><p>Source for constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p>udipole.gmad</p></td>
+<td><p>Example GMAD input for BDSIM passing user information
+through parser to custom user component.</p></td>
+</tr>
+<tr class="row-odd"><td><p>usercomponent.cc</p></td>
+<td><p>C++ main that registers custom component and constructor
+with BDSIM kernel.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="input-gmad">
+<h3>Input GMAD<a class="headerlink" href="#input-gmad" title="Link to this heading"></a></h3>
+<p>The key part in the input GMAD is to define a <cite>usercomponent</cite> beam line element. This takes
+and argument <cite>userTypeName</cite> to define the <em>type</em> of the element if more than one user
+component is registered. This beam line element can now be used normally in any line
+in BDSIM. To convey parameters to the new user-defined element, any parameter available
+for any other element may be used. These are defined in <code class="code docutils literal notranslate"><span class="pre">parser/element.hh</span></code>. Additional
+parameters may be supplied via the element member string “userParameters”. This should
+be a string with space delimited parameter value sets where each parameter and value are
+separated by a colon. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">userParameters</span><span class="o">=</span><span class="s2">&quot;variable1:0.4 variable2:bananas&quot;</span>
+</pre></div>
+</div>
+<p>The utility function <code class="code docutils literal notranslate"><span class="pre">BDS::GetUserParametersMap</span></code> from
+<code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;BDSUtilities.hh&quot;</span></code> will split
+this up into a map of strings to strings such as:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Map Key</strong></p></th>
+<th class="head"><p><strong>Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“variable1”</p></td>
+<td><p>“0.4”</p></td>
+</tr>
+<tr class="row-odd"><td><p>“variable2”</p></td>
+<td><p>“bananas”</p></td>
+</tr>
+</tbody>
+</table>
+<p>The variables are left as strings and it is up to the developer to know which variables
+to convert to numbers if required. The map can also be searched if some variables are
+optional. The usercomponent example shows this for passing the colour into the new element.</p>
+</section>
+<section id="component-class">
+<h3>Component Class<a class="headerlink" href="#component-class" title="Link to this heading"></a></h3>
+<p>The component class in this example is called “UDipole”. The user component can have any
+constructor it likes, but it must inherit BDSAcceleratorComponent and provide a name,
+length, angle it bends the beam line by and a string saying the name of the component.
+This information is used to construct the beam line and is passed to the output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “length” is the arc length if there is a finite angle. If there is a finite
+angle, this is assumed to bend the beam line continuously throughout the component.
+e.g. no ‘S’ shaped component. The coordinate system is right-handed and a
+positive angle causes deflection to negative x coordinate while propagating in
+the direction z.</p>
+</div>
+<p>BDSIM makes extensive use of the concept of factories. These are bits of code that
+take a recipe class - a small class or struct with some simple parameters - and builds
+an object. The factory retains no ownership of the object and forgets about it. We use
+this pattern to create beam pipes and magnets for example and these can be placed
+inside each other or along side each other safely.</p>
+<p>Each object inherits BDSGeometryComponent and this deals with the memory management
+(ownership) of objects and the extent of the object.</p>
+</section>
+<section id="component-constructor">
+<h3>Component Constructor<a class="headerlink" href="#component-constructor" title="Link to this heading"></a></h3>
+<p>This is a class the user must implement that inherits BDSComponentConstructor. The user
+must implement a method called Construct that has pointers to the beam line element
+from the parser (GMAD::Element) as well as the ones before and after it. It should
+also make sure to change into Geant4 units from the parser’s SI units.</p>
+</section>
+<section id="class-documentation">
+<h3>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h3>
+<p>BDSIM uses Doxygen for class documentation. This is a series of comments in C++ with
+extra comment characters that are built into a documentation system. Please look through
+the Doxygen website for BDSIM <a class="reference external" href="http://www.pp.rhul.ac.uk/bdsim/doxygen">http://www.pp.rhul.ac.uk/bdsim/doxygen</a> or the headers
+of the source code in <code class="code docutils literal notranslate"><span class="pre">bdsim/include/*.hh</span></code>.</p>
+</section>
+</section>
+<section id="custom-physics-list">
+<span id="interfacing-custom-physics"></span><h2>Custom Physics List<a class="headerlink" href="#custom-physics-list" title="Link to this heading"></a></h2>
+<p>A user may want to use their own custom physics list in C++ from Geant4. To accomplish
+this, we can make a wrapper program for bdsim and ‘register’ the desired physics list
+class to an instance of BDSIM, i.e. <code class="code docutils literal notranslate"><span class="pre">BDSIMClass</span></code>.</p>
+<p>An example is given in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/interfaces/userphysicslist</span></code>.</p>
+<p>The contents of the main program are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &quot;BDSIMClass.hh&quot; // bdsim interface
+#include &quot;SimplePhysics.hh&quot;
+#include &lt;iostream&gt;
+
+int main(int argc, char** argv)
+{
+  // construct an instance of bdsim
+  BDSIM* bds = new BDSIM();
+
+  auto myphysics = new SimplePhysics();
+  bds-&gt;RegisterUserPhysicsList(myphysics);
+
+  // construct geometry and physics
+  bds-&gt;Initialise(argc, argv);
+  if (!bds-&gt;Initialised()) // check if there was a problem.
+    {std::cout &lt;&lt; &quot;Intialisation failed&quot; &lt;&lt; std::endl; return 1;}
+
+  bds-&gt;BeamOn(); // run the simulation
+  delete bds;    // clean up
+  return 0;      // exit nicely
+}
+</pre></div>
+</div>
+<p>This program will act like BDSIM and accept all executable options. If this program is compiled
+as an executable called <code class="code docutils literal notranslate"><span class="pre">bdsimuserpl</span></code>, then we would execute it as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsimuserpl</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mymodel</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">run1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">10</span> <span class="o">--</span><span class="n">seed</span><span class="o">=</span><span class="mi">123</span>
+</pre></div>
+</div>
+<p>as an example.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is highly recommended to include Geant4’s cuts and limits processes
+to enforce step limits and G4UserLimits attached to volumes. This is particularly
+useful for BDSIM’s tracking algorithms - tracking integrators may lack validity
+for the default 10km steps in Geant4. i.e. <code class="code docutils literal notranslate"><span class="pre">RegisterPhysics(new</span> <span class="pre">G4StepLimiterPhysics());</span></code>
+in the physics list.</p>
+</div>
+</section>
+<section id="tracking-link-interface">
+<span id="interfacing-tracking-link"></span><h2>Tracking Link Interface<a class="headerlink" href="#tracking-link-interface" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Experimental and under development.</p>
+</div>
+<p>An interface is provided to use BDSIM components as part of another tracking library.</p>
+<p>This is in development and may not be well-finished. The main interface is the class
+<code class="code docutils literal notranslate"><span class="pre">BDSIMLink</span></code> that is used in place of <code class="code docutils literal notranslate"><span class="pre">BDSIM</span></code> (from <cite>BDSIMClass.hh</cite>). It is
+recommended to look through the header for the interface. It uses a simplified construction
+of BDSIM with Geant4 user actions defined in classes that begin with <code class="code docutils literal notranslate"><span class="pre">BDSLink*</span></code>.</p>
+<p>The initial implementation is made for SixTrack and is perhaps not ideal. The output
+writing is broken and the CMake option <code class="code docutils literal notranslate"><span class="pre">USE_SIXTRACK_LINK=ON</span></code> should be used.</p>
+<ul class="simple">
+<li><p>Only passive (i.e. with no fields) components can be used.</p></li>
+<li><p>A bunch may be tracked through one element at once, breaking the usual loop
+of one particle through all beam line elements.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="visualisation.html" class="btn btn-neutral float-left" title="Visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples &amp; Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

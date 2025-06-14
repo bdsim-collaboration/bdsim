@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentation Builds" href="dev_documentation_build.html" />
+    <link rel="prev" title="Testing" href="dev_testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developer.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev_introduction.html">Purpose of Developer Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html">Testing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Style Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c">C++</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#naming">Naming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indentation-spacing">Indentation &amp; Spacing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#braces">Braces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#in-code-documentation">In-Code Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Naming</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html">Documentation Builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html">Release Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html#change-of-year-or-licence">Change Of Year or Licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html">Program Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html">Build System &amp; Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html">Geant4 User Action Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html">Tracking Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_beamgeneration.html">Beam Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html">Sensitivity, Output &amp; Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html">Analysis Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="developer.html">Developer Documentation</a></li>
+      <li class="breadcrumb-item active">Style Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev_styleguide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="style-guide">
+<h1>Style Guide<a class="headerlink" href="#style-guide" title="Link to this heading"></a></h1>
+<p>This section describes the agreed style and conventions used when editing
+and writing source code in BDSIM.</p>
+<section id="c">
+<h2>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h2>
+<section id="general">
+<h3>General<a class="headerlink" href="#general" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All variables shall be namespaced and not global.</p></li>
+<li><p>The asterisk is attached to the object, not the variable name.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BDSClassName</span><span class="o">*</span> <span class="n">anInstance</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="naming">
+<h3>Naming<a class="headerlink" href="#naming" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Underscores are to be avoided, as they are hard to type and read.</p></li>
+<li><p>HEADERGUARDS_H are like this</p></li>
+<li><p>Classes start with “BDS”.</p></li>
+<li><p>Classes use UpperCamelCaseForNaming.</p></li>
+<li><p>Member functions use UpperCamelCase as well.</p></li>
+<li><p>Member variables have <strong>no</strong> prefix (such as <code class="code docutils literal notranslate"><span class="pre">_variable</span></code> or <code class="code docutils literal notranslate"><span class="pre">m_variable</span></code>).</p></li>
+<li><p>Member variables use lowerCamelCase.</p></li>
+<li><p>Energy loss is “ELoss” in code and “Eloss” in options and output for backwards compatibility
+even this generally breaks our lower camel case rule.</p></li>
+</ul>
+</section>
+<section id="indentation-spacing">
+<h3>Indentation &amp; Spacing<a class="headerlink" href="#indentation-spacing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Two spaces per level of indentation.</p></li>
+<li><p>Tabs should not be used.</p></li>
+<li><p>Spaces should be between operators.</p></li>
+</ul>
+</section>
+<section id="braces">
+<h3>Braces<a class="headerlink" href="#braces" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Explicit braces should always be used, even for one line if statements.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="p">{</span><span class="n">G4cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">G4endl</span><span class="p">;}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Braces should be on a new line - makes scope easier to determine.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">G4cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">G4endl</span><span class="p">;</span>
+    <span class="n">G4cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;This is a test&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">G4endl</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The above style is preferred (indented block), but the following is also fine.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">G4cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">G4endl</span><span class="p">;</span>
+  <span class="n">G4cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;This is a test&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">G4endl</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="in-code-documentation">
+<h3>In-Code Documentation<a class="headerlink" href="#in-code-documentation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Every single class should have doxygen documentation in the header.</p></li>
+<li><p>Obviously comments are strongly encouraged, as well as notes in this documentation.</p></li>
+<li><p>However, try not to repeat implementation - this makes it harder to maintain as comments
+have to be updated as well as the implementation in the future.</p></li>
+<li><p>Avoid documenting the purpose of functions (i.e. outside the function) in the source
+code - document the header as that is the interface that people should use when developing.</p></li>
+</ul>
+</section>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h2>
+<p>The Python modules are developed with the intention that they be used and discovered
+interactively in ipython, therefore, the naming convention described should make
+tab completion easy to understand and docstrings should allow the use of the <code class="code docutils literal notranslate"><span class="pre">?</span></code> for
+help on any class or object.</p>
+<section id="id1">
+<h3>General<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Functions or classes in modules should read well. e.g. <cite>package.Plot.Losses</cite>, not <cite>package.Plot.PlotLosses</cite>.</p></li>
+<li><p>Docstrings must be provided for all modules, classes and functions.</p></li>
+<li><p>General packages such as numpy should be imported in a hidden fashion by renaming.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_np</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Naming<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Classes use UpperCamelCaseForNaming.</p></li>
+<li><p>Member functions use UpperCamelCase as well.</p></li>
+<li><p>Member variables have no prefix (such as <code class="code docutils literal notranslate"><span class="pre">_variable</span></code> or <code class="code docutils literal notranslate"><span class="pre">m_variable</span></code>).</p></li>
+<li><p>Member variables use lowerCamelCase.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev_testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_documentation_build.html" class="btn btn-neutral float-right" title="Documentation Builds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

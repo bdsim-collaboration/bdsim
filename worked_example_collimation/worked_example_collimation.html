@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collimation &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=106dc6df"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accelerator Test Facility 2 - KEK, Japan" href="../worked_example_atf2.html" />
+    <link rel="prev" title="Analysis of Thin Target Products" href="../worked_example_target/worked_example_target.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BDSIM
+              <img src="../_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfacing.html">Interfacing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples &amp; Tests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#worked-examples">Worked Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_target/worked_example_target.html">Analysis of Thin Target Products</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Collimation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#topcis-covered">Topcis Covered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contents">Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-description">Model Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-preparation">Model Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optics">Optics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#losses">Losses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#questions-answered">Questions Answered</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_atf2.html">Accelerator Test Facility 2 - KEK, Japan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_trajectories/worked_example_trajectories1.html">Trajectory Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_custom_analysis/worked_example_custom_analysis.html">Custom Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_no_accelerator/worked_example_no_accelerator.html">No Accelerator Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_model_model/model-model-single-pass.html">Model Model - Single Pass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_machine_diagram/worked_example_machine_diagram.html">Machine Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#specific-machines">Specific Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples &amp; Tests</a></li>
+      <li class="breadcrumb-item active">Collimation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/worked_example_collimation/worked_example_collimation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="collimation">
+<span id="example-collimation-advanced"></span><h1>Collimation<a class="headerlink" href="#collimation" title="Link to this heading"></a></h1>
+<section id="topcis-covered">
+<h2>Topcis Covered<a class="headerlink" href="#topcis-covered" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Compare optics</p></li>
+<li><p>Simulate beam loss</p></li>
+<li><p>Analysis with filters</p></li>
+<li><p>Use bdsim, rebdsim, pybdsim</p></li>
+<li><p>Based on <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/collimation</span></code></p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-10events.png"><img alt="../_images/collimation-10events.png" src="../_images/collimation-10events.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#preparation">Preparation</a></p></li>
+<li><p><a class="reference internal" href="#model-description">Model Description</a></p></li>
+<li><p><a class="reference internal" href="#model-preparation">Model Preparation</a></p></li>
+<li><p><a class="reference internal" href="#optics">Optics</a></p></li>
+<li><p><a class="reference internal" href="#losses">Losses</a></p></li>
+<li><p><a class="reference internal" href="#questions-answered">Questions Answered</a></p></li>
+</ul>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>BDSIM has been compiled and installed.</p></li>
+<li><p>The (DY)LD_LIBRARY_PATH and ROOT_INCLUDE_PATH environmental variables are set as
+described in <a class="reference internal" href="../output_analysis.html#output-analysis-setup"><span class="std std-ref">Setup</span></a>.</p></li>
+<li><p>ROOT can be imported in Python</p></li>
+<li><p><cite>pybdsim</cite> has been installed.</p></li>
+</ul>
+</section>
+<section id="model-description">
+<h2>Model Description<a class="headerlink" href="#model-description" title="Link to this heading"></a></h2>
+<p>This is an example to show how to turn on extra collimation output and
+how to analyse the data. This example shows information most relevant
+to a collimation system. A basic version of this example exists that
+shows general data exploration and analysis (see
+<a class="reference internal" href="../examples/collimation-simple.html#example-collimation-simple"><span class="std std-ref">Collimation</span></a>). This example focusses on more
+detailed collimation specific information.</p>
+<p>The model consists of two collimators, followed by a triplet set of
+quadrupoles, a shielding wall and a third collimator. The collimators
+are made of successively denser material (carbon, copper and tungsten).
+This looks like:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-10events.png"><img alt="../_images/collimation-10events.png" src="../_images/collimation-10events.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="model-preparation">
+<h2>Model Preparation<a class="headerlink" href="#model-preparation" title="Link to this heading"></a></h2>
+<p>The model is fictional and designed to show the relevant features of
+BDSIM. As the beam line was relatively short, the model was written by
+hand without any automatic conversion.</p>
+<p>The files can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/collimation</span></code>:</p>
+<ul class="simple">
+<li><p>collimation.gmad - model for beam losses and collimation</p></li>
+<li><p>collimationOptics.gmad - model for Gaussian beam for optics</p></li>
+</ul>
+</section>
+<section id="optics">
+<h2>Optics<a class="headerlink" href="#optics" title="Link to this heading"></a></h2>
+<p>To understand how this machine transports particles, it is useful to
+simulate a Gaussian beam that would nominally represent some ‘core’
+beam that would be expected in the machine. Here we expect the losses
+to be very low. A specific bdsim input file is included that chooses
+a Gaussian distribution according to chosen Twiss parameters. Secondary
+particles are stopped and the distribution is recorded after every
+beam line element with the <code class="code docutils literal notranslate"><span class="pre">sample,</span> <span class="pre">all</span></code> command. Running this
+optics model takes around 10s to run 5000 particles on the developer’s
+computer.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">collimationOptics</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">o1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">5000</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommend to run at least 1000 particles for optical function
+evaluation and 10000 to 50000 if high accuracy is desired or
+a large energy spread is defined.</p>
+</div>
+<p>This produces an output file called “o1.root”. We can then calculate
+the optical functions and sizes of the beam after each element using
+the included rebdsimOptics tool.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimOptics</span> <span class="n">o1</span><span class="o">.</span><span class="n">root</span> <span class="n">o1</span><span class="o">-</span><span class="n">optics</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>This creates another file called “o1-optics.root” that contains only the
+optical function information. The Python utility <cite>pybdsim</cite> can be used
+to visualise the data.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">BDSIMOptics</span><span class="p">(</span><span class="s2">&quot;o1-optics.root&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This produces a series of graphs showing, for example, the mean, sigma, divergence
+and dispersion of the beam. The sigma and dispersion are shown below.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-optics-sigma.pdf"><img alt="../_images/collimation-optics-sigma.pdf" src="../_images/collimation-optics-sigma.pdf" style="width: 90%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-optics-dispersion.pdf"><img alt="../_images/collimation-optics-dispersion.pdf" src="../_images/collimation-optics-dispersion.pdf" style="width: 90%;" />
+</a>
+</figure>
+</section>
+<section id="losses">
+<h2>Losses<a class="headerlink" href="#losses" title="Link to this heading"></a></h2>
+<p>Of course, more interesting than the optical functions is the possibility of
+beam losses. To illustrate this, we choose a beam distribution that is a circular
+ring of particles close to the edge of the collimator. Most will hit the first collimator
+but around 1/3 will make it through at the edges as the first collimator is square.
+We should generate some events to investigate the beam losses. The below command
+generates 2000 events (2000 primary particles), which takes approximately 30s on the
+developer’s computer.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">collimation</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">data1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">2000</span>
+</pre></div>
+</div>
+<p>This produces an output file called “data1.root”, which is approximately 20Mb.
+Firstly, we might like to quickly see if there were any losses at all and if
+there was any energy deposition. This can be done by browsing the output data
+file as described in <a class="reference internal" href="../output.html#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a>, however, we’d like to look
+at the average energy loss and impacts quickly. Histograms of the primary
+particle impact and loss points as well as energy deposition are included by
+default per event in the output. A tool for convenience (<cite>rebdsimHistoMerge</cite>)
+allows averaging of these quickly as opposed to running <cite>rebdsim</cite> with an
+analysis configuration text file. This is run as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimHistoMerge</span> <span class="n">data1</span><span class="o">.</span><span class="n">root</span> <span class="n">data1</span><span class="o">-</span><span class="n">histos</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>This produces an output file called “data1-histos.root” that contains the
+merged histograms. This too can also be viewed with a TBrowser in ROOT
+as described in <a class="reference internal" href="../output.html#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a>, however, here we will make
+more standardised plots using <cite>pybdsim</cite> in Python.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">LossAndEnergyDeposition</span><span class="p">(</span><span class="s2">&quot;data1-histos.root&quot;</span><span class="p">,</span> <span class="n">hitslegendloc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">EnergyDeposition</span><span class="p">(</span><span class="s2">&quot;data1-histos.root&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the case of the first command, the legend overlaps with an expected data point, so
+we move it - this is optional (limitation of plotting library). These produce the following
+plots of primary hits, losses and energy deposition and secondly just energy deposition.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-losses-2k.pdf"><img alt="../_images/collimation-losses-2k.pdf" src="../_images/collimation-losses-2k.pdf" style="width: 90%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-energy-deposition-2k.pdf"><img alt="../_images/collimation-energy-deposition-2k.pdf" src="../_images/collimation-energy-deposition-2k.pdf" style="width: 90%;" />
+</a>
+</figure>
+<p>As expected we see a large fraction of particle impact the first collimator and we see
+some energy deposition throughout. Now, we can perform a more advanced analysis to
+learn about these impacts and losses in the collimation system.</p>
+</section>
+<section id="questions-answered">
+<h2>Questions Answered<a class="headerlink" href="#questions-answered" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#question-1">Question 1</a> Where are particles absorbed that impact the first collimator?</p></li>
+<li><p><a class="reference internal" href="#question-2">Question 2</a> Where do particles impact that don’t impact the first collimator?</p></li>
+<li><p><a class="reference internal" href="#question-3">Question 3</a> What secondaries make it through the shielding wall created from impacts on the first collimator?</p></li>
+</ul>
+<section id="question-1">
+<h3>Question 1<a class="headerlink" href="#question-1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Where are particles absorbed that impact the first collimator?</p></li>
+</ul>
+<p>We want to histogram the absorption point of the primary particle in each event but
+only for the events where the primary impact was in the first collimator. We always
+record the primary first hit point and the loss point, but here we make use of the
+collimator specific information. The first collimator is called “c1” and the collimator
+hits are stored under the “COLL_c1_0” branch of the Event tree.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name of the collimator is prefixed with “COLL_” to distinguish it
+from a sampler which would have the name “c1”. The suffix “_0” is because
+it’s the 0th placement of that collimator in the beam line.</p>
+</div>
+<p>In this collimator structure in the output there is a variable “primaryInteracted”. This
+is a Boolean which is true if the primary particle interacted with the material of the
+collimator on that event. We use this as a ‘selection’ in the histogram. We prepare
+an analysis configuration text file for <cite>rebdsim</cite> (see <a class="reference internal" href="../output_analysis.html#analysis-preparing-analysis-config"><span class="std std-ref">Preparing an Analysis Configuration File</span></a>).
+We can start from an example in BDSIM and edit that one. An example can be found in
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/analysis/perEntryHistograms/analysisConfig.txt</span></code>.</p>
+<p>The variables in the histogram specification must be exactly as you see in the output
+file so it’s useful to use a TBrowser in ROOT to browse the file while preparing the
+analysis configuration file. The following is the desired histogram specification.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Object     treeName Histogram Name       #Bins Binning  Variable          Selection</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>   <span class="n">C1ImpactLossLocation</span> <span class="p">{</span><span class="mi">96</span><span class="p">}</span>  <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">12</span><span class="p">}</span>   <span class="n">PrimaryLastHit</span><span class="o">.</span><span class="n">S</span>  <span class="n">COLL_c1_0</span><span class="o">.</span><span class="n">primaryInteracted</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Take note of the “.” in the variable names.</p>
+</div>
+<p>An example analysis configuration file is included in
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/collimation/analysisConfig.txt</span></code> that contains the histograms
+for this and subsequent questions.</p>
+<p>This can be used with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">data1</span><span class="o">.</span><span class="n">root</span> <span class="n">data1</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>This produces a ROOT file called “data1-analysis.root” with the desired histograms. The
+histograms are by default made ‘per event’ (i.e. the histogram is made separately for
+each event, then these histograms are averaged), and the histogram “C1ImpactLossLocation”
+will be in the <code class="code docutils literal notranslate"><span class="pre">Event/PerEntryHistograms/</span></code> directory in the file. This histogram
+can be plotted with <cite>pybdsim</cite>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;data1-analysis.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
+<span class="p">{</span><span class="s1">&#39;Event/MergedHistograms/CollElossPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90ad0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPInteractedPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f909d0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPhitsPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90b10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPlossPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90b90</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/ElossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90c10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/ElossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90a10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PhitsHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90a50</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PhitsPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f82650</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PlossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90910</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PlossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90790</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/AfterShielding&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH2</span> <span class="n">at</span> <span class="mh">0x119f90c90</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/C1ImpactLossLocation&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90890</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/NoC1ImpactLossLocation&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f7d710</span><span class="o">&gt;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram1D</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/C1ImpactLossLocation&#39;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">nonposy</span><span class="o">=</span><span class="s1">&#39;clip&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;S (m)&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of Primary Particles&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">AddMachineLatticeFromSurveyToFigure</span><span class="p">(</span><span class="n">gcf</span><span class="p">(),</span> <span class="n">d</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-question1.pdf"><img alt="../_images/collimation-question1.pdf" src="../_images/collimation-question1.pdf" style="width: 90%;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The y axis here is fraction of total events, so the integral of this histogram
+is not 1 as not all particle impact the first collimator. This is however, the
+accurate fraction of the events simulated, so this is what is required to correctly
+scale to a correct rate of expected events for this beam distribution.</p>
+</div>
+<ul class="simple">
+<li><p>The variable d.model is the beam line model included with each output file and automatically
+loaded with <cite>pybdsim</cite>.</p></li>
+<li><p>the “nonposy=’clip’” argument to <cite>pyplot.yscale</cite> avoids gaps in the line of the histogram
+when plotting.</p></li>
+<li><p>The command <cite>d.histogramspy</cite> is used to print out the numpy-converted histograms loaded
+from the file by <cite>pybdsim</cite> so that the name can be copied and pasted into the next command.</p></li>
+</ul>
+<p>This shows that the particles that interact with the first collimator are lost (in order)</p>
+<ol class="arabic simple">
+<li><p>just after the c1 collimator in the beam pipe (*)</p></li>
+<li><p>before the c1 collimator in the beam pipe (from back-scattering)</p></li>
+<li><p>c2 collimator</p></li>
+<li><p>c3 collimator</p></li>
+<li><p>throughout the machine</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(*) We should remember the binning in this histogram does not break at the
+element boundaries so particles stopping both in the collimator and just
+afterwards in the collimator could be in the same bin. We can always look
+at the ‘per element’ histogram from the merged histograms.</p>
+</div>
+<p>When the machine diagram is added to the figure, a searching feature is activated. Right-clicking
+anywhere on the plot will print out in the Python terminal the nearest beam line element to
+that point. Here, we can right-click on any of the peaks to get the names of these beam line
+elements.</p>
+</section>
+<section id="question-2">
+<h3>Question 2<a class="headerlink" href="#question-2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Where do particles impact that don’t impact the first collimator?</p></li>
+</ul>
+<p>Similarly, we want to histogram the impact location, so <cite>PrimaryFirstHit.S</cite>, but for
+only the events where the primary particle didn’t impact the first collimator. Again,
+we use a selection in the histogram specification.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Object     treeName Histogram Name       #Bins Binning  Variable           Selection</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>   <span class="n">NoC1ImpactLossLocation</span> <span class="p">{</span><span class="mi">96</span><span class="p">}</span>  <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">12</span><span class="p">}</span>  <span class="n">PrimaryFirstHit</span><span class="o">.</span><span class="n">S</span> <span class="n">COLL_c1_0</span><span class="o">.</span><span class="n">primaryInteracted</span><span class="o">==</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>This is included in the example analysis configuration
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/collimation/analysisConfig.txt</span></code> that contains the histograms
+for this and the other questions.</p>
+<p>This can be used with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">data1</span><span class="o">.</span><span class="n">root</span> <span class="n">data1</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>Loading and plotting with <cite>pybdsim</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;data1-analysis.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
+<span class="p">{</span><span class="s1">&#39;Event/MergedHistograms/CollElossPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90ad0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPInteractedPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f909d0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPhitsPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90b10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPlossPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90b90</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/ElossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90c10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/ElossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90a10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PhitsHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90a50</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PhitsPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f82650</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PlossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90910</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PlossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90790</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/AfterShielding&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH2</span> <span class="n">at</span> <span class="mh">0x119f90c90</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/C1ImpactLossLocation&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90890</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/NoC1ImpactLossLocation&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f7d710</span><span class="o">&gt;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram1D</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/NoC1ImpactLossLocation&#39;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">nonposy</span><span class="o">=</span><span class="s1">&#39;clip&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;S (m)&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of Primary Particles&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">AddMachineLatticeFromSurveyToFigure</span><span class="p">(</span><span class="n">gcf</span><span class="p">(),</span> <span class="n">d</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-question2.pdf"><img alt="../_images/collimation-question2.pdf" src="../_images/collimation-question2.pdf" style="width: 90%;" />
+</a>
+</figure>
+<p>Here we can see that particles that don’t impact the first collimator impact the second one
+and the third one. Some make it to the end of the beam line where they ‘hit’ the air of the
+world volume. Inspecting the raw data for Event.PrimaryFirstHit.S, we see some events with
+the value -1m. This is a value we put in the output when the impact was outside the curvilinear
+coordinate system, e.g. in the world volume away from the beam line. We can infer that the
+particles made it through the air of the world volume before reaching the boundary of the model.</p>
+</section>
+<section id="question-3">
+<h3>Question 3<a class="headerlink" href="#question-3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>What secondaries make it through the shielding wall created from impacts on the
+first collimator?</p></li>
+</ul>
+<p>We could plot many quantities of the secondary particles coming through the shielding wall,
+but, here we suggest the 2D flux. We therefore have a sampler attached to the “s1” beam line
+element (the shielding wall) that records in the distribution of all particles after it.
+We plot the 2D distribution of these particles and then filter them. The filter includes:</p>
+<ul class="simple">
+<li><p>must be a secondary particle - parentID &gt; 0</p></li>
+<li><p>primary impact must be in c1 collimator - COLL_c1_0.primaryInteracted is true</p></li>
+</ul>
+<p>This is the line added to the example analysis configuration file.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Object     treeName Histogram Name  #Bins   Binning             Variable  Selection</span>
+<span class="n">Histogram2D</span>  <span class="n">Event</span><span class="o">.</span>   <span class="n">AfterShielding</span>  <span class="p">{</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">}</span> <span class="p">{</span><span class="o">-</span><span class="mf">2.5</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span><span class="o">-</span><span class="mf">2.5</span><span class="p">:</span><span class="mf">2.5</span><span class="p">}</span> <span class="n">s1</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">s1</span><span class="o">.</span><span class="n">x</span> <span class="n">COLL_c1_0</span><span class="o">.</span><span class="n">primaryInteracted</span><span class="o">&amp;&amp;</span><span class="n">s1</span><span class="o">.</span><span class="n">parentID</span><span class="o">&gt;</span><span class="mi">0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Our analysis configuration file is a relatively thin interface to TTree::Draw in ROOT
+and so we see the inconsistency in ROOT for the order of the variables to be histogrammed.
+All of our specifications are x, then y, then z if further dimensions are required.
+However, with ROOT, the variable to be histogrammed is 1D: x, 2D y vs x, 3D x vs y vs z.
+The 2D variables are y:x here. The number of bins and ranges are in x, y, z order always.</p>
+</div>
+<p>This histogram can be plotted with <cite>pybdsim</cite>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;data1-analysis.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
+<span class="p">{</span><span class="s1">&#39;Event/MergedHistograms/CollElossPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90ad0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPInteractedPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f909d0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPhitsPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90b10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/CollPlossPE&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90b90</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/ElossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90c10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/ElossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90a10</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PhitsHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90a50</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PhitsPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f82650</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PlossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90910</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/MergedHistograms/PlossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90790</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/AfterShielding&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH2</span> <span class="n">at</span> <span class="mh">0x119f90c90</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/C1ImpactLossLocation&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f90890</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">&#39;Event/PerEntryHistograms/NoC1ImpactLossLocation&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">TH1</span> <span class="n">at</span> <span class="mh">0x119f7d710</span><span class="o">&gt;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram2D</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/AfterShielding&#39;</span><span class="p">],</span> <span class="n">logNorm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/collimation-question3.pdf"><img alt="../_images/collimation-question3.pdf" src="../_images/collimation-question3.pdf" style="width: 90%;" />
+</a>
+</figure>
+<p>The value plotted is the number of particles per square bin size on average per particle
+simulated including all the filters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The samplers by default are 5m wide, but may be shrunk to avoid geometrical overlaps
+in the case of a model with very large angle bends. Of course, this does not
+apply to this model.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../worked_example_target/worked_example_target.html" class="btn btn-neutral float-left" title="Analysis of Thin Target Products" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../worked_example_atf2.html" class="btn btn-neutral float-right" title="Accelerator Test Facility 2 - KEK, Japan" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jun 14, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
