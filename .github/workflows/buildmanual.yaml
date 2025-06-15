@@ -60,9 +60,13 @@ jobs:
           echo "Secrets set: ${{ toJson(secrets) }}"
           echo "Variables set: ${{ toJson(vars) }}"
 
+      - name: Setup SSH known_hosts
+        run: |
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: /tmp/bdsim-build/manual/html
-
+          allow_empty_commit: true
