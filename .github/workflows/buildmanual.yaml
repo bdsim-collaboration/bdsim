@@ -55,9 +55,10 @@ jobs:
           name: manual
           path: /tmp/bdsim-build/manual/html
 
-      - name: debug
+      - name: Debug secrets and vars
         run: |
           echo "Secrets set: ${{ toJson(secrets) }}"
+          echo "Variables set: ${{ toJson(vars) }}"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
