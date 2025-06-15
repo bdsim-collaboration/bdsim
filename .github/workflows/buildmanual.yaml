@@ -61,7 +61,7 @@ jobs:
           echo "Variables set: ${{ toJson(vars) }}"
 
       - name: Add GitHub to known_hosts
-        run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+        run: ssh-keyscan github.com > ~/.ssh/known_hosts
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
