@@ -55,6 +55,10 @@ jobs:
           name: manual
           path: /tmp/bdsim-build/manual/html
 
+      - name: debug
+        run: |
+          echo "Secrets set: ${{ toJson(secrets) }}"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
