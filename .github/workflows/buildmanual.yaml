@@ -60,17 +60,17 @@ jobs:
           echo "Secrets set: ${{ toJson(secrets) }}"
           echo "Variables set: ${{ toJson(vars) }}"
 
-      - name: Add GitHub to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+#      - name: Add GitHub to known_hosts
+#        run: |
+#          mkdir -p ~/.ssh
+#          ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          ssh_known_hosts: github.com
+#      - name: Deploy to GitHub Pages
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          ssh_known_hosts: github.com
 #          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: /tmp/bdsim-build/manual/html
-          allow_empty_commit: true
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_branch: gh-pages
+#          publish_dir: /tmp/bdsim-build/manual/html
+#          allow_empty_commit: true
