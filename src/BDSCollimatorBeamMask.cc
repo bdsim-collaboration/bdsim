@@ -75,6 +75,7 @@ BDSCollimatorBeamMask::BDSCollimatorBeamMask(const G4String& nameIn,
   yOffsetSlit(yOffsetSlitIn),
   tiltSlit(tiltSlitIn),
   colour(colourIn),
+  minKineticEnergy(0),
   circularOuter(circularOuterIn)
 {;}
 
@@ -227,6 +228,8 @@ void BDSCollimatorBeamMask::Build()
   collimatorLV->SetVisAttributes(collimatorVisAttr);
   RegisterVisAttributes(collimatorVisAttr);
 
+  collimatorLV->SetUserLimits(CollimatorUserLimits());
+
   // register with base class (BDSGeometryComponent)
   RegisterLogicalVolume(collimatorLV);
   if (sensitiveOuter)
@@ -268,4 +271,19 @@ void BDSCollimatorBeamMask::Build()
 
     RegisterPhysicalVolume(vacPV);
   }
+}
+
+G4UserLimits* BDSCollimatorBeamMask::CollimatorUserLimits()
+{
+  if (BDS::IsFinite(minKineticEnergy))
+  {
+    // copy default ones with correct length and global time etc provided
+    // by BDSAcceleratorComponent
+    G4UserLimits* collUserLimits = new G4UserLimits(*userLimits);
+    collUserLimits->SetUserMinEkine(minKineticEnergy);
+    RegisterUserLimits(collUserLimits);
+    return collUserLimits;
+  }
+  else // user limits - provided by BDSAcceleratorComponent
+  {return userLimits;}
 }

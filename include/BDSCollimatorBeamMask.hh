@@ -62,6 +62,8 @@ public:
   virtual G4double YApertureSlit() const {return yApertureSlit;}
   /// @}
 
+  virtual void SetMinimumKineticEnergy(G4double minimumKineticEnergyIn) {minKineticEnergy = minimumKineticEnergyIn;}
+
 protected:
   /// Check and update parameters before construction. Called at the start of Build() as
   /// we can't call a virtual function in a constructor.
@@ -70,6 +72,9 @@ protected:
   virtual void BuildContainerLogicalVolume();
   virtual void BuildInner();
   virtual void Build();
+
+  /// Return either default user limits or custom ones based on optional minimumKineticEnergy.
+  G4UserLimits* CollimatorUserLimits();
 
   ///@{ Geometrical objects:
   G4VSolid* collimatorSolid;
@@ -90,6 +95,7 @@ protected:
   G4double    yOffsetSlit;        ///< Offset of the side slit wrt the main slit in y.
   G4double    tiltSlit;           ///< Angle of the side slit.
   G4Colour*   colour;             ///< Colour of beam mask.
+  G4double    minKineticEnergy;   ///< Optional minimum kinetic energy for collimator materials.
   G4bool      circularOuter;      ///< Shape of the outer solid
 
 
