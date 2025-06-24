@@ -1,8 +1,13 @@
-gc: gascap, l=0.5*m, aper1=0.15*m, horizontalWidth=0.1*m, xsize=0.03*m, outerShape="circular",
-            layerMaterials={"G4_Si", "G4_Xe" ,"G4_C"}, materialThickness=0.01*m;
+biasDef:  xsecBias, particle="e-", proc="eBrem", xsecfact={100000}, flag={1};
+
+gc: gascap, l=0.5*m, aper1=0.15*m, apertureType="circularVacuum", horizontalWidth=0.1*m, xsize=0.03*m, outerShape="circular",
+            layerMaterials={"G4_Si", "G4_Xe" ,"G4_Cu"}, materialThickness=0.01*m, biasMaterialLV="capillaryGas:biasDef";
 
 lat: line = (gc);
 use, lat;
 
 beam, particle="e-",
       energy=1*GeV;
+
+option, physicsList = "em",
+        worldMaterial   = "vacuum";
