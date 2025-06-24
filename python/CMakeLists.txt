@@ -2,10 +2,13 @@
 find_package(Python 3.12 COMPONENTS Interpreter Development.Module REQUIRED)
 message(STATUS "Found python ${Python_VERSION}")
 message(STATUS "Python executable ${Python_EXECUTABLE}")
+message(STATUS "Is python executable the one you plan to use? If not use -DPython_EXECUTABLE=")
 
 find_package(pybind11 CONFIG REQUIRED)
 message(STATUS "Found pybind11 ${pybind11_VERSION}")
-
+if (NOT pybind11_FOUND)
+    message(FATAL_ERROR "Try using : pybind11-config --cmakedir")
+endif()
 
 # glob python binding sources
 file(GLOB GMAD_PARSER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cc)
