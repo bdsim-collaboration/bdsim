@@ -26,7 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "CLHEP/Units/PhysicalConstants.h"
 
 BDSPrimaryVertexInformation:: BDSPrimaryVertexInformation(const BDSParticleCoordsFullGlobal& primaryVertexIn,
-							  const BDSParticleDefinition*       particle):
+                                                          const BDSParticleDefinition*       particle):
   primaryVertex(primaryVertexIn),
   momentum(0),
   charge(particle->Charge()),

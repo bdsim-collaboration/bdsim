@@ -84,5 +84,5 @@ BDSParticleCoordsFull BDSBunchCircle::GetNextParticleLocal()
   G4double zp = CalculateZp(xp,yp,Zp0);
   G4double E  = E0 + envelopeE * (1-2*G4RandFlat::shoot());
   
-  return BDSParticleCoordsFull(x,y,z,xp,yp,zp,t,S0-dz,E,/*weight=*/1.0);
+  return BDSParticleCoordsFull(x,y,z,xp,yp,zp,t,S0-dz,E,/*weightIn=*/1.0);
 }
