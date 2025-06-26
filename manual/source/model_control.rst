@@ -1062,23 +1062,24 @@ appropriate parameters need to be defined for each individual distribution.
 
 * All parameters from `reference`_ distribution are used as centroids.
 * The default for `xDistrType`, `yDistrType` and `zDistrType` are `reference`.
+* The weight is the product of the weight supplied from each distribution (default 1).
 
 .. tabularcolumns:: |p{3cm}|p{4cm}|p{4cm}|
 
-+---------------+--------------------------------+------------------------+
-| **Variable**  | **Description**                | **Coordinates Used**   |
-+===============+================================+========================+
-| `xDistrType`  | Horizontal distribution type   | x,xp,weight            |
-+---------------+--------------------------------+------------------------+
-| `yDistrType`  | Vertical distribution type     | y,yp                   |
-+---------------+--------------------------------+------------------------+
-| `zDistrType`  | Longitudinal distribution type | z,zp,s,T,totalEnergy   |
-+---------------+--------------------------------+------------------------+
++---------------+--------------------------------+------------------------------------+
+| **Variable**  | **Description**                | **Coordinates Used**               |
++===============+================================+====================================+
+| `xDistrType`  | Horizontal distribution type   | x, xp, weight                      |
++---------------+--------------------------------+------------------------------------+
+| `yDistrType`  | Vertical distribution type     | y, yp, weight                      |
++---------------+--------------------------------+------------------------------------+
+| `zDistrType`  | Longitudinal distribution type | z, zp, s, T, totalEnergy, weight   |
++---------------+--------------------------------+------------------------------------+
  
 .. note:: It is currently not possible to use two differently specified versions of the same
- 	  distribution within the composite distribution, i.e. gaussTwiss (parameter set 1) for x
-	  and gaussTwiss (parameter set 2) for y. They will have the same settings as (for example)
-	  only one betx can be specified.
+          distribution within the composite distribution, i.e. gaussTwiss (parameter set 1) for x
+          and gaussTwiss (parameter set 2) for y. They will have the same settings as (for example)
+          only one betx can be specified.
 
 Examples: ::
 
@@ -1116,17 +1117,18 @@ one for directional, and one for energy & time.
 
 * All parameters from `reference`_ distribution are used as centroids.
 * The default for `spaceDistrType`, `directionDistrType` and `energyDistrType` are `reference`.
+* The weight is the product of the weight supplied from each distribution (default 1).
 
 .. tabularcolumns:: |p{3cm}|p{4cm}|p{4cm}|
 
 +----------------------+--------------------------------+------------------------+
 | **Variable**         | **Description**                | **Coordinates Used**   |
 +======================+================================+========================+
-| `spaceDistrType`     | Spatial distribution type      | x,y,z                  |
+| `spaceDistrType`     | Spatial distribution type      | x, y, z, weight        |
 +----------------------+--------------------------------+------------------------+
-| `directionDistrType` | Directional distribution type  | xp,yp,zp               |
+| `directionDistrType` | Directional distribution type  | xp, yp, zp, weight     |
 +----------------------+--------------------------------+------------------------+
-| `energyDistrType`    | Energy distribution type       | T,totalEnergy          |
+| `energyDistrType`    | Energy distribution type       | T, totalEnergy, weight |
 +----------------------+--------------------------------+------------------------+
 
 .. note:: It is currently not possible to use two differently specified versions of the same
@@ -1138,12 +1140,12 @@ Examples: ::
 
   beam, particle = "e-",
         kineticEnergy = 30*MeV,
-	distrType = "compositespacedirectionenergy",
-	spaceDistrType = "box",
-	directionDistrType = "sphere",
-	envelopeX = 2*cm,
-	envelopeY = 3*cm,
-	envelopeZ = 4*cm;
+        distrType = "compositespacedirectionenergy",
+        spaceDistrType = "box",
+        directionDistrType = "sphere",
+        envelopeX = 2*cm,
+        envelopeY = 3*cm,
+        envelopeZ = 4*cm;
 
 
 .. _beam-distributions-file-based:
