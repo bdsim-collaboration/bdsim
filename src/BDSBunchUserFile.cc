@@ -609,10 +609,10 @@ BDSParticleCoordsFull BDSBunchUserFile<T>::GetNextParticleLocal()
     {
       // type is an int so FindParticle(int) is used here
       G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-      G4ParticleDefinition* particleDef = nullptr;
+      G4ParticleDefinition* g4ParticleDef = nullptr;
       BDSIonDefinition* ionDef = nullptr;
       if (type < 1e9) // not a pdg ion
-        {particleDef = particleTable->FindParticle(type);}
+        {g4ParticleDef = particleTable->FindParticle(type);}
       else
         {
           G4IonTable* ionTable = particleTable->GetIonTable();
@@ -620,17 +620,17 @@ BDSParticleCoordsFull BDSBunchUserFile<T>::GetNextParticleLocal()
           G4double ionE;
           G4IonTable::GetNucleusByEncoding(type, ionZ, ionA, ionE, ionLevel);
           ionDef = new BDSIonDefinition(ionA, ionZ, ionZ);
-          particleDef = ionTable->GetIon(ionDef->Z(), ionDef->A(), ionDef->ExcitationEnergy());
+          g4ParticleDef = ionTable->GetIon(ionDef->Z(), ionDef->A(), ionDef->ExcitationEnergy());
         }
       
-      if (!particleDef)
+      if (!g4ParticleDef)
         {throw BDSException("BDSBunchUserFile> Particle \"" + std::to_string(type) + "\" not found");}
       // Wrap in our class that calculates momentum and kinetic energy.
       // Requires that one of E, Ek, P be non-zero (only one).
       delete particleDefinition;
       try
         {
-          particleDefinition = new BDSParticleDefinition(particleDef, E, Ek, P, ffact, ionDef);
+          particleDefinition = new BDSParticleDefinition(g4ParticleDef, E, Ek, P, ffact, ionDef);
           E = particleDefinition->TotalEnergy();
           particleDefinitionHasBeenUpdated = true;
         }
