@@ -570,6 +570,8 @@ BDSParticleCoordsFull BDSBunchUserFile<T>::GetNextParticleLocal()
         {// particle type
           ReadValue(ss, type);
           updateParticleDefinition = true; // update particle definition after finished reading line
+          delete particleDefinition;
+          particleDefinition = nullptr;
         }
       else if (it->name == "S")
         {
