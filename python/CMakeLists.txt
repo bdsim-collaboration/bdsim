@@ -54,3 +54,7 @@ install(FILES ocelot/__init__.py ocelot/bdsim_element.py
 install(FILES rftrack/__init__.py rftrack/bdsim_element.py
         DESTINATION lib/python/bdsim/rftrack
         COMPONENT python)
+
+install(FILES xsuite/__init__.py xsuite/bdsim_element.py
+        DESTINATION lib/python/bdsim/xsuite
+        COMPONENT python)
