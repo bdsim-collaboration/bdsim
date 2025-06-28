@@ -47,3 +47,6 @@ install(FILES __init__.py bdsim.py
         DESTINATION lib/python/bdsim
         COMPONENT python)
 
+install(FILES ocelot/__init__.py ocelot/bdsim_element.py
+        DESTINATION lib/python/bdsim/ocelot
+        COMPONENT python)
