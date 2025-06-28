@@ -46,10 +46,20 @@ from .sym_table import *
 from .tunnel import *
 from .bdsim import *
 
+try :
+    from .ocelot import *
+except :
+    print("Could not find ocelot")
 
-from .ocelot import *
-from .rftrack import *
-from .xsuite import *
+try :
+    from .rftrack import *
+except :
+    print("could not find rftrack")
+
+try :
+    from .xsuite import *
+except :
+    print("could not find xsuite")
 
 # singleton bdslink for rftrack, ocelot and xsuite
 bdslink_singleton = None
