@@ -19,7 +19,7 @@ PYBIND11_MODULE(bdsimlink, m) {
   py::class_<BDSIMLink>(m, "BDSIMLink")
       .def(py::init([](BDSBunch *bunch) {
         return new BDSIMLink(bunch);
-      }))
+      }), pybind11::arg("bunch") = nullptr)
       .def("Initialise",[](BDSIMLink *link,
                            py::list py_argv,
                            bool usualPrintOut,
@@ -134,8 +134,18 @@ PYBIND11_MODULE(bdsimlink, m) {
         {return link->GetArcLengthOfLinkElement(beamLineIndex);})
       .def("GetArcLengthOfLinkElement",[](BDSIMLink *link, std::string elementName)
         {return link->GetArcLengthOfLinkElement(elementName);})
+      .def("GetBunch", &BDSIMLink::GetBunch)
       .def("SelectLinkElement",[](BDSIMLink *link, int index, bool debug)
         {link->SelectLinkElement(index,debug);})
       .def("SelectLinkElement",[](BDSIMLink *link, int elementName, bool debug)
-        {link->SelectLinkElement(elementName,debug);});
+        {link->SelectLinkElement(elementName,debug);})
+      .def("XSuiteParticleTrack",[](BDSIMLink *link, int index, py::object particles, bool debug) {
+        py::print("Received:", particles);
+
+        // build BDSIM particles from particles
+
+        // beam on
+
+        // get sampler hits and fill BDSBunchXSuiteLink
+      });
 }

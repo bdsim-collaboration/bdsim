@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSBunch.hh"
+#include "BDSBunchLink.hh"
 #include "BDSBunchSixTrackLink.hh"
 #include "BDSDebug.hh"
 #include "BDSEventInfo.hh"
@@ -68,7 +69,7 @@ void BDSLinkPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   try
     {
       coords = bunch->GetNextParticleLocal();
-      auto bunchSTL = dynamic_cast<BDSBunchSixTrackLink*>(bunch);
+      auto bunchSTL = dynamic_cast<BDSBunchLink*>(bunch);
       if (bunchSTL)
         {
           eventInfo->externalParticleIDofPrimary = bunchSTL->CurrentExternalParticleID();

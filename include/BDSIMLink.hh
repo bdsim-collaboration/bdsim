@@ -62,7 +62,7 @@ class BDSIMLink
 public:
   /// Construct an instance but don't initialise. Requires initialisation with
   /// arguments argc and arv
-  explicit BDSIMLink(BDSBunch* bunchIn);
+  explicit BDSIMLink(BDSBunch* bunchIn = nullptr);
 
   /// Initialise everything given these arguments. The minimumKinetic energy should be in GeV.
   int Initialise(int argc,
@@ -145,6 +145,8 @@ public:
   double GetArcLengthOfLinkElement(const std::string& elementName);
   /// @}
 
+  BDSBunch* GetBunch() const;
+
   /// Provide a physics list that will be used inplace of the BDSIM generate one.
   void RegisterUserPhysicsList(G4VModularPhysicsList* userPhysicsListIn) {userPhysicsList = userPhysicsListIn;}
   G4VModularPhysicsList* UserPhysicsList() const {return userPhysicsList;} ///< Access user physics list.
@@ -165,6 +167,7 @@ private:
   BDSParser*    parser;
   BDSOutput*    bdsOutput;
   BDSBunch*     bdsBunch;
+  bool          internalBdsBunch;
   G4RunManager* runManager;
   BDSLinkDetectorConstruction* construction;
   BDSLinkRunAction*  runAction;

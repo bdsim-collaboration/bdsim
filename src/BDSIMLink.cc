@@ -33,6 +33,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamPipeFactory.hh"
 #include "BDSBunch.hh"
 #include "BDSBunchFactory.hh"
+#include "BDSBunchLink.hh"
 #include "BDSBunchSixTrackLink.hh"
 #include "BDSCavityFactory.hh"
 #include "BDSColours.hh"
@@ -83,12 +84,18 @@ BDSIMLink::BDSIMLink(BDSBunch* bunchIn):
   parser(nullptr),
   bdsOutput(nullptr),
   bdsBunch(bunchIn),
+  internalBdsBunch(false),
   runManager(nullptr),
   construction(nullptr),
   runAction(nullptr),
   currentElementIndex(0),
   userPhysicsList(nullptr)
-{;}
+{
+  if(!bdsBunch) {
+    bdsBunch = new BDSBunchLink();
+    internalBdsBunch = true;
+  }
+}
 
 BDSIMLink::BDSIMLink(int argc, char** argv, bool usualPrintOutIn):
   ignoreSIGINT(false),
@@ -493,6 +500,11 @@ double BDSIMLink::GetArcLengthOfLinkElement(const std::string& elementName)
   int linkID = GetLinkIndex(elementName);
   int beamlineIndex = linkIDToBeamlineIndex[linkID];
   return GetArcLengthOfLinkElement(beamlineIndex);
+}
+
+BDSBunch* BDSIMLink::GetBunch() const
+{
+  return bdsBunch;
 }
 
 void BDSIMLink::SelectLinkElement(const std::string& elementName, G4bool debug)
