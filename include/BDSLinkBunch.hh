@@ -16,8 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSBUNCHLINK_H
-#define BDSBUNCHLINK_H
+#ifndef BDSLINKBUNCH_H
+#define BDSLINKBUNCH_H
 
 #include "BDSBunch.hh"
 #include "BDSParticleExternal.hh"
@@ -33,11 +33,11 @@ class BDSParticleDefinition;
  * @author Stewart Boogert
  */
 
-class BDSBunchLink: public BDSBunch
+class BDSLinkBunch: public BDSBunch
 {
 public: 
-  BDSBunchLink();
-  virtual ~BDSBunchLink();
+  BDSLinkBunch();
+  virtual ~BDSLinkBunch();
 
   /// Get the next particle.
   virtual BDSParticleCoordsFull GetNextParticleLocal();

@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "BDSBunchLink.hh"
+#include "BDSLinkBunch.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
 #include "BDSIonDefinition.hh"
@@ -30,7 +30,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <vector>
 
-BDSBunchLink::BDSBunchLink():
+BDSLinkBunch::BDSLinkBunch():
   BDSBunch("sixtracklink"),
   currentIndex(0),
   currentExternalParticleID(0),
@@ -39,10 +39,10 @@ BDSBunchLink::BDSBunchLink():
   size(0)
 {;}
 
-BDSBunchLink::~BDSBunchLink()
+BDSLinkBunch::~BDSLinkBunch()
 {;}
 
-BDSParticleCoordsFull BDSBunchLink::GetNextParticleLocal()
+BDSParticleCoordsFull BDSLinkBunch::GetNextParticleLocal()
 {
   if (currentIndex >= size)
     {
@@ -65,7 +65,7 @@ BDSParticleCoordsFull BDSBunchLink::GetNextParticleLocal()
   return particle->coords;
 }
 
-void BDSBunchLink::AddParticle(BDSParticleDefinition*       particleDefinitionIn,
+void BDSLinkBunch::AddParticle(BDSParticleDefinition*       particleDefinitionIn,
                                const BDSParticleCoordsFull& coordsIn,
                                int   externalParticleID,
                                int   externalParentID)
@@ -74,7 +74,7 @@ void BDSBunchLink::AddParticle(BDSParticleDefinition*       particleDefinitionIn
   size = (G4int)particles.size();
 }
 
-void BDSBunchLink::ClearParticles()
+void BDSLinkBunch::ClearParticles()
 {
   currentIndex = 0;
   size = 0;
@@ -83,7 +83,7 @@ void BDSBunchLink::ClearParticles()
   particles.clear();
 }
 
-void BDSBunchLink::UpdateGeant4ParticleDefinition(G4int pdgID)
+void BDSLinkBunch::UpdateGeant4ParticleDefinition(G4int pdgID)
 {
   G4ParticleDefinition* newParticleDefinition = nullptr;
   if (!particleDefinition->IsAnIon())
@@ -116,7 +116,7 @@ void BDSBunchLink::UpdateGeant4ParticleDefinition(G4int pdgID)
 #endif
 }
 
-void BDSBunchLink::UpdateIonDefinition()
+void BDSLinkBunch::UpdateIonDefinition()
 {
   if (!currentParticleDefinition->IsAnIon())
     {return;}

@@ -33,7 +33,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamPipeFactory.hh"
 #include "BDSBunch.hh"
 #include "BDSBunchFactory.hh"
-#include "BDSBunchLink.hh"
+#include "BDSLinkBunch.hh"
 #include "BDSBunchSixTrackLink.hh"
 #include "BDSCavityFactory.hh"
 #include "BDSColours.hh"
@@ -92,7 +92,7 @@ BDSIMLink::BDSIMLink(BDSBunch* bunchIn):
   userPhysicsList(nullptr)
 {
   if(!bdsBunch) {
-    bdsBunch = new BDSBunchLink();
+    bdsBunch = new BDSLinkBunch();
     internalBdsBunch = true;
   }
 }

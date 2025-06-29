@@ -22,7 +22,7 @@ list(APPEND pythonBindingSrcs
 
 list(APPEND rootBindingSrcs
         bdsimclass bdsimlink bdsexecoptions bdsparser bdsoutputrooteventsampler
-        bdsbunch bdsbunchlink bdsbunchsixtracklink bdsparticledefinition bdsiondefinition
+        bdsbunch bdslinkbunch bdsbunchsixtracklink bdsparticledefinition bdsiondefinition
         bdsexception bdsparticlecoords bdsparticlecoordsfull
         g4particledefinition g4particletable g4iontable clhep
         bdshitsampler bdshitsamplerlink bdshitscollectionsamplerlink)
