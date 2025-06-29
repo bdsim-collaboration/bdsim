@@ -8,7 +8,7 @@ from .aperture import *
 from .array import *
 from .atom import *
 from .bdsbunch import *
-from .bdsbunchlink import *
+from .bdslinkbunch import *
 from .bdsbunchsixtracklink import *
 from .bdsexecoptions import *
 from .bdshitsampler import *
