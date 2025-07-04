@@ -1267,7 +1267,7 @@ void BDSMaterials::ListMaterials() const
   if (!externalMaterialNames.empty())
     {
       G4cout << "Loaded materials from external geometry:" << G4endl;
-      for (auto &mat: externalMaterialNames)
+      for (const auto& mat: externalMaterialNames)
         {G4cout << mat << G4endl;}
     }
   G4cout.flags(flagsCache);
