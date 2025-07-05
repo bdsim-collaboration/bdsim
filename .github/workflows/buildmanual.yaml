@@ -14,7 +14,7 @@ jobs:
   build-manual:
     name: build manual
     runs-on: ubuntu-latest
-    container: bdsim/alma9-g4.11.2:latest
+    container: bdsim/centos8-g4.11.2:latest
     permissions:
       contents: write
 
