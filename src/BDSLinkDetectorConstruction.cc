@@ -95,7 +95,7 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 {
   BDSGlobalConstants* globalConstants = BDSGlobalConstants::Instance();
 
-  auto componentFactory = new BDSComponentFactory(nullptr, false);
+  auto componentFactory = std::unique_ptr<BDSComponentFactory>(new BDSComponentFactory(nullptr, false));
   auto beamline = BDSParser::Instance()->GetBeamline();
 
   std::vector<BDSLinkOpaqueBox*> opaqueBoxes = {};
@@ -181,8 +181,6 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
       nameToElementIndex[name] = linkID;
     }
 
-  delete componentFactory;
-
   return worldPV;
 }
 
@@ -202,7 +200,8 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
                                                         G4double crystalAngle,
                                                         G4bool   /*sampleIn*/)
 {
-  auto componentFactory = new BDSComponentFactory(nullptr, false);
+  auto componentFactory = std::unique_ptr<BDSComponentFactory>(new BDSComponentFactory(nullptr, false));
+
   if (!integral)
     {
       if (!designParticle)
@@ -345,8 +344,6 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
   // update crystal biasing
   BuildPhysicsBias();
 
-  delete componentFactory;
-
   return linkID;
 }
 
@@ -365,7 +362,8 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
                                                           G4bool   buildLeftJaw,
                                                           G4bool   buildRightJaw)
 {
-    auto componentFactory = new BDSComponentFactory(nullptr, false);
+    auto componentFactory = std::unique_ptr<BDSComponentFactory>(new BDSComponentFactory(nullptr, false));
+
     if (!integral)
     {
         if (!designParticle)
@@ -442,13 +440,12 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     nameToElementIndex[collimatorName] = linkID;
     linkIDToBeamlineIndex[linkID] = (G4int)linkBeamline->size() - 1;
 
-    delete componentFactory;
-
     return linkID;
 }
 
 G4int BDSLinkDetectorConstruction::AddLinkElement(GMAD::Element el) {
-  auto componentFactory = new BDSComponentFactory(nullptr, false);
+  auto componentFactory = std::unique_ptr<BDSComponentFactory>(new BDSComponentFactory(nullptr, false));
+
   if (!integral)
   {
     if (!designParticle)
@@ -492,8 +489,6 @@ G4int BDSLinkDetectorConstruction::AddLinkElement(GMAD::Element el) {
   G4int linkID = PlaceOneComponent(linkBeamline->back(), el.name);
   nameToElementIndex[el.name] = linkID;
   linkIDToBeamlineIndex[linkID] = (G4int)linkBeamline->size() - 1;
-
-  delete componentFactory;
 
   return linkID;
 }
