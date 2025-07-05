@@ -1,4 +1,4 @@
-name: manual
+name: manual deploy
 
 on:
   workflow_dispatch:
@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-manual:
-    name: build manual
+  manual-deploy:
+    name: manual deploy
     runs-on: ubuntu-latest
     container: bdsim/ubuntu24-g4.11.2:latest
     permissions:
@@ -59,28 +59,34 @@ jobs:
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
           make doc
 
-#      - name: Upload sphinx manual
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: manual
-#          path: /tmp/bdsim-build/manual/html
-	  
-#      - name: Debug secrets and vars
-#        run: |
-#          echo "Secrets set: ${{ toJson(secrets) }}"
-#          echo "Variables set: ${{ toJson(vars) }}"
-#
-#      - name: Add GitHub to known_hosts
-#        run: |
-#          mkdir -p ~/.ssh
-#          ssh-keyscan github.com >> ~/.ssh/known_hosts
-#
-#      - name: Deploy to GitHub Pages
-#        uses: peaceiris/actions-gh-pages@v3
-#        with:
-#          ssh_known_hosts: github.com
-#          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_branch: gh-pages
-#          publish_dir: /tmp/bdsim-build/manual/html
-#          allow_empty_commit: true
+          # merge both manuals
+          mkdir -p /tmp/manuals/sphinx /tmp/manuals/doxygen
+          cp -r /tmp/bdsim-build/manual/html/* /tmp/manuals/sphinx
+          cp -r /tmp/bdsim-build/Doxygen/html/* /tmp/manuals/doxygen
+
+      - name: Upload manuals
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuals
+          path: /tmp/manuals
+
+
+      - name: Debug secrets and vars
+        run: |
+          echo "Secrets set: ${{ toJson(secrets) }}"
+          echo "Variables set: ${{ toJson(vars) }}"
+          echo "ACTION_DEPLOY_KEY ${{ secrets.ACTIONS_DEPLOY_KEY }}"
+
+      - name: Add GitHub to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_branch: gh-pages
+          publish_dir: /tmp/manuals/
+          allow_empty_commit: true
