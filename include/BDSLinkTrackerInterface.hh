@@ -12,7 +12,9 @@ class BDSParticleDefinition;
 class BDSLinkTrackerInterface {
 public:
 
-  static BDSLinkTrackerInterface* GetInstance(std::string bdsimConfigFileIn = "trackerInterface.gmad",
+  ~BDSLinkTrackerInterface() = default;
+
+  static BDSLinkTrackerInterface* GetInstance(std::string bdsimConfigFileIn,
                                               int referenceParticlePDGIn = 11,
                                               double referenceKineticEnergyIn = 100,
                                               double relativeEnergyCutIn = 0.01,
@@ -58,7 +60,6 @@ protected:
 
   // singleton pattern
   BDSLinkTrackerInterface() = default;
-  ~BDSLinkTrackerInterface() = default;
   BDSLinkTrackerInterface(const BDSLinkTrackerInterface&) = delete;
   BDSLinkTrackerInterface& operator=(const BDSLinkTrackerInterface&) = delete;
 

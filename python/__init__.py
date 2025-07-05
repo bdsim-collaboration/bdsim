@@ -22,6 +22,7 @@ from .bdsparticlecoordsfull import *
 from .bdsparser import *
 from .bdsparticledefinition import *
 from .bdsiondefinition import *
+from .bdslinktrackerinterface import *
 from .beam import *
 from .blmplacement import *
 from .cavitymodel import *

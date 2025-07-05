@@ -25,7 +25,8 @@ list(APPEND rootBindingSrcs
         bdsbunch bdslinkbunch bdsbunchsixtracklink bdsparticledefinition bdsiondefinition
         bdsexception bdsparticlecoords bdsparticlecoordsfull
         g4particledefinition g4particletable g4iontable clhep
-        bdshitsampler bdshitsamplerlink bdshitscollectionsamplerlink)
+        bdshitsampler bdshitsamplerlink bdshitscollectionsamplerlink
+        bdslinktrackerinterface)
 
 foreach(pythonBindingSrc IN ZIP_LISTS pythonBindingSrcs)
     # MESSAGE(STATUS ${pythonBindingSrc_0})

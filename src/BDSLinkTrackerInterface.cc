@@ -21,7 +21,7 @@ BDSLinkTrackerInterface* BDSLinkTrackerInterface::GetInstance(std::string bdsimC
                                                               int seedIn,
                                                               int referenceIonChargeIn,
                                                               bool batchModeIn) {
-  if(singleton) {
+  if(singleton != nullptr) {
     return singleton;
   }
   else {
@@ -70,7 +70,7 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
   linkBDSIM = new BDSIMLink(linkBunch);
 
   std::vector<std::string> bdsim_args;
-  bdsim_args.push_back("bdism");
+  bdsim_args.push_back("bdsim");
   bdsim_args.push_back("--file="+bdsimConfigFile);
   bdsim_args.push_back("--seed="+std::to_string(seed));
   bdsim_args.push_back("--output=None");
@@ -91,7 +91,6 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
   for (auto& arg : bdsim_args) {
     c_args.push_back(const_cast<char*>(arg.c_str()));
   }
-  c_args.push_back(nullptr);
 
   // initialise link object
   linkBDSIM->Initialise(c_args.size(),
