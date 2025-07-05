@@ -493,6 +493,8 @@ G4int BDSLinkDetectorConstruction::AddLinkElement(GMAD::Element el) {
   nameToElementIndex[el.name] = linkID;
   linkIDToBeamlineIndex[linkID] = (G4int)linkBeamline->size() - 1;
 
+  delete componentFactory;
+
   return linkID;
 }
 
