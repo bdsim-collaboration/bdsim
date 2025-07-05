@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy-manual:
-    name: build manual
+  manual-deploy:
+    name: manual deploy
     runs-on: ubuntu-latest
     container: bdsim/ubuntu24-g4.11.2:latest
     permissions:
