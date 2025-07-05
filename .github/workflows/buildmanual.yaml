@@ -50,7 +50,7 @@ jobs:
           make manual
 
           # install doxygen
-          apt-get -y install doxygen
+          yum -y install doxygen
 
           # build doxygen
           cd /tmp/bdsim-build
