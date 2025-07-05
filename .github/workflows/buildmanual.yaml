@@ -50,7 +50,8 @@ jobs:
           make manual
 
           # install doxygen
-          yum -y install doxygen
+	  yum install -y epel-release
+          yum install -y doxygen graphviz
 
           # build doxygen
           cd /tmp/bdsim-build
