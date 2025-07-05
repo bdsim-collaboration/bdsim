@@ -59,7 +59,7 @@ jobs:
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
           make doc
 
-	  # merge both manuals
+          # merge both manuals
           mkdir -p /tmp/manuals/sphinx /tmp/manuals/doxygen
           cp -r /tmp/bdsim-build/manual/html/* /tmp/manuals/sphinx
           cp -r /tmp/bdsim-build/Doxygen/html/* /tmp/manuals/doxygen
@@ -69,7 +69,8 @@ jobs:
 #        with:
 #          name: manual
 #          path: /tmp/bdsim-build/manual/html
-	  
+
+
 #      - name: Debug secrets and vars
 #        run: |
 #          echo "Secrets set: ${{ toJson(secrets) }}"
