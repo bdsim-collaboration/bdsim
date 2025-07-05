@@ -39,7 +39,9 @@ jobs:
           # git trusted dir
           git config --global --add safe.directory $GITHUB_WORKSPACE
   
-          # install sphinx and rtd theme 
+          # install sphinx and rtd theme
+	  python3 -m venv /tmp/venv/python3
+	  source /tmp/venv/python3/bin/activate
           pip3 install sphinx sphinx-rtd-theme 
           
           # build sphinx manual
