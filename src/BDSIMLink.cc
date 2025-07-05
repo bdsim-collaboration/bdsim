@@ -446,7 +446,7 @@ BDSIMLink::~BDSIMLink()
   
   delete runManager;
   delete parser;
-  delete argvCache;
+  delete[] argvCache;
 
   if (usualPrintOut)
     {G4cout << __METHOD_NAME__ << "End of Run. Thank you for using BDSIM!" << G4endl;}

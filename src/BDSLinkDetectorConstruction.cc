@@ -344,7 +344,9 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
 
   // update crystal biasing
   BuildPhysicsBias();
-  
+
+  delete componentFactory;
+
   return linkID;
 }
 
@@ -439,7 +441,9 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     G4int linkID = PlaceOneComponent(linkBeamline->back(), collimatorName);
     nameToElementIndex[collimatorName] = linkID;
     linkIDToBeamlineIndex[linkID] = (G4int)linkBeamline->size() - 1;
-    
+
+    delete componentFactory;
+
     return linkID;
 }
 
