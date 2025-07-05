@@ -111,6 +111,11 @@ Bug Fixes
 * Fix the :code:`Event.Trajectory.pxpypz` variable in the output. It was implemented
   incorrectly in code and was not the correct data. It is now components of the momentum
   vector (absolute) in GeV/c in a frame local to that element as it should be.
+* The weight of the :code:`composite` and :code:`compositesde` beam distributions is now the
+  product of the x, y, z weights, whereas before it was always only the x dimension weight that was taken.
+* The :code:`userfile` bunch distribution was fixed for different particle species at sub-relativistic
+  energies. The mass of the nominal design beam particle was used instead leading to a wrong total energy
+  even for the correctly specified momentum in the distribution file.
 
 
 Output Changes

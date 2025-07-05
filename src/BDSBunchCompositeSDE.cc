@@ -112,6 +112,6 @@ BDSParticleCoordsFull BDSBunchCompositeSDE::GetNextParticleLocal()
                                d.xp, d.yp, d.zp,
                                e.T, s.s,
                                e.totalEnergy,
-                               e.weight);
+                               s.weight * d.weight * e.weight);
   return result;
 }

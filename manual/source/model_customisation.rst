@@ -726,7 +726,7 @@ is automatically chosen based on the number of dimensions in the field map type.
 File Formats
 ^^^^^^^^^^^^
 
-.. note:: BDSIM field maps by default have units :math:`cm,s` and :math:`T` for magnetic
+.. note:: BDSIM field maps by default have units :math:`cm, s` and :math:`T` for magnetic
           field and :math:`V/m` for electric field.
 
 .. tabularcolumns:: |p{3cm}|p{6cm}|
@@ -734,13 +734,13 @@ File Formats
 +------------------+-----------------------------------------------------+
 | **Format**       | **Description**                                     |
 +==================+=====================================================+
-| bdsim1d          | 1D BDSIM format file  (Units :math:`cm, s, T, V\m`) |
+| bdsim1d          | 1D BDSIM format file (Units :math:`cm, s, T, V/m`)  |
 +------------------+-----------------------------------------------------+
-| bdsim2d          | 2D BDSIM format file  (Units :math:`cm, s, T, V\m`) |
+| bdsim2d          | 2D BDSIM format file (Units :math:`cm, s, T, V/m`)  |
 +------------------+-----------------------------------------------------+
-| bdsim3d          | 3D BDSIM format file  (Units :math:`cm, s, T, V\m`) |
+| bdsim3d          | 3D BDSIM format file (Units :math:`cm, s, T, V/m`)  |
 +------------------+-----------------------------------------------------+
-| bdsim4d          | 4D BDSIM format file  (Units :math:`cm, s, T, V\m`) |
+| bdsim4d          | 4D BDSIM format file (Units :math:`cm, s, T, V/m`)  |
 +------------------+-----------------------------------------------------+
 | poisson2d        | 2D Poisson Superfish SF7 file                       |
 +------------------+-----------------------------------------------------+
