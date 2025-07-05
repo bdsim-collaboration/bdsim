@@ -50,7 +50,7 @@ jobs:
           make manual
 
           # install doxygen
-	  yum install -y epel-release
+          yum install -y epel-release
           yum install -y doxygen graphviz
 
           # build doxygen
