@@ -49,6 +49,9 @@ jobs:
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
           make manual
 
+	  # install doxygen
+	  apt-get -y install doxygen
+
           # build doxygen
           cd /tmp/bdsim-build
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
