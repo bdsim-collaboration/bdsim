@@ -64,7 +64,7 @@ jobs:
           cp -r /tmp/bdsim-build/manual/html/* /tmp/manuals/sphinx
           cp -r /tmp/bdsim-build/Doxygen/html/* /tmp/manuals/doxygen
 
-      - name: Upload sphinx manual
+      - name: Upload manuals
         uses: actions/upload-artifact@v4
         with:
           name: manuals
@@ -75,6 +75,7 @@ jobs:
         run: |
           echo "Secrets set: ${{ toJson(secrets) }}"
           echo "Variables set: ${{ toJson(vars) }}"
+	  echo "ACTION_DEPLOY_KEY ${{ secrets.ACTIONS_DEPLOY_KEY }}"
 
       - name: Add GitHub to known_hosts
         run: |
