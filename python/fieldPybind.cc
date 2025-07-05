@@ -30,7 +30,7 @@ PYBIND11_MODULE(field, m) {
 
   .def_readwrite("x", &GMAD::Field::x)
   .def_readwrite("y", &GMAD::Field::y)
-  .def_readwrite("z", &GMAD::Field::x)
+  .def_readwrite("z", &GMAD::Field::z)
   .def_readwrite("t", &GMAD::Field::t)
   .def_readwrite("phi", &GMAD::Field::phi)
   .def_readwrite("theta", &GMAD::Field::theta)
