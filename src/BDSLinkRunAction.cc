@@ -68,18 +68,18 @@ void BDSLinkRunAction::AppendHits(G4int currentEventIndex,
       auto hit = new BDSHitSamplerLink(*(*hits)[i]);
       hit->eventID = currentEventIndex;
       if (hit->parentID == 0)
-	{// use same ones from event which are the original ones for this primary
-	  hit->externalParticleID = externalParticleID;
-	  hit->externalParentID   = externalParentID;
-	  nPrimariesToReturn++;
-	}
+        {// use same ones from event which are the original ones for this primary
+	        hit->externalParticleID = externalParticleID;
+	        hit->externalParentID   = externalParentID;
+          nPrimariesToReturn++;
+        }
       else
-	{// new secondary - give it a new index (caching that), and new parentID
-	  maximumExternalParticleID++;
-	  hit->externalParticleID = maximumExternalParticleID;
-	  hit->externalParentID   = externalParticleID;
-	  nSecondariesToReturn++;
-	}
+        {// new secondary - give it a new index (caching that), and new parentID
+          maximumExternalParticleID++;
+          hit->externalParticleID = maximumExternalParticleID;
+          hit->externalParentID   = externalParticleID;
+          nSecondariesToReturn++;
+        }
       allHits->insert(hit);
     }
 }

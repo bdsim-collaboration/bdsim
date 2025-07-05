@@ -128,13 +128,13 @@ void BDSLinkEventAction::EndOfEventAction(const G4Event* evt)
     {runAction->AppendHits(currentEventIndex, primaryExternalParticleID, primaryExternalParentID, samplerLink);}
 
   output->FillEvent(nullptr,
-		    evt->GetPrimaryVertex(),
+                    evt->GetPrimaryVertex(),
                     allSamplerHits,
-		    std::vector<BDSHitsCollectionSamplerCylinder*>(),
-		    std::vector<BDSHitsCollectionSamplerSphere*>(),
+                    std::vector<BDSHitsCollectionSamplerCylinder*>(),
+                    std::vector<BDSHitsCollectionSamplerSphere*>(),
                     samplerLink,
                     nullptr,
-		    nullptr,
+                    nullptr,
                     nullptr,
                     nullptr,
                     nullptr,

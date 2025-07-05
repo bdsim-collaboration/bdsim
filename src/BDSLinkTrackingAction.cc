@@ -35,11 +35,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 class G4LogicalVolume;
 
 BDSLinkTrackingAction::BDSLinkTrackingAction(G4bool batchMode,
-				     BDSLinkEventAction* eventActionIn,
-				     G4int  verboseSteppingEventStartIn,
-				     G4int  verboseSteppingEventStopIn,
-				     G4bool verboseSteppingPrimaryOnlyIn,
-				     G4int  verboseSteppingLevelIn):
+                                     BDSLinkEventAction* eventActionIn,
+                                     G4int  verboseSteppingEventStartIn,
+                                     G4int  verboseSteppingEventStopIn,
+                                     G4bool verboseSteppingPrimaryOnlyIn,
+                                     G4int  verboseSteppingLevelIn):
   interactive(!batchMode),
   eventAction(eventActionIn),
   verboseSteppingEventStart(verboseSteppingEventStartIn),
@@ -65,16 +65,16 @@ void BDSLinkTrackingAction::PreUserTrackingAction(const G4Track* track)
     {// ie secondary particle
       // only store if we want to or interactive
       if (interactive)
-	{
+        {
    
-	  auto traj = new BDSTrajectory(track,
-					interactive,
-					trajectoryStorageOptions);
-	  fpTrackingManager->SetStoreTrajectory(1);
-	  fpTrackingManager->SetTrajectory(traj);
-	}
+          auto traj = new BDSTrajectory(track,
+                                        interactive,
+                                        trajectoryStorageOptions);
+          fpTrackingManager->SetStoreTrajectory(1);
+          fpTrackingManager->SetTrajectory(traj);
+        }
       else // mark as don't store
-	{fpTrackingManager->SetStoreTrajectory(0);}
+        {fpTrackingManager->SetStoreTrajectory(0);}
     }
   else
     {// it's a primary particle
@@ -82,7 +82,7 @@ void BDSLinkTrackingAction::PreUserTrackingAction(const G4Track* track)
       // but only store the actual trajectory points if we explicitly want
       // trajectory points or we're using the visualiser.
       auto traj = new BDSTrajectoryPrimary(track,
-					   interactive, trajectoryStorageOptions, interactive);
+                                           interactive, trajectoryStorageOptions, interactive);
       fpTrackingManager->SetStoreTrajectory(1);
       fpTrackingManager->SetTrajectory(traj);
     }
@@ -98,6 +98,6 @@ void BDSLinkTrackingAction::PostUserTrackingAction(const G4Track* track)
       G4LogicalVolume* lv = track->GetVolume()->GetLogicalVolume();
       std::set<G4LogicalVolume*>* collimators = BDSAcceleratorModel::Instance()->VolumeSet("collimators");
       if (collimators->find(lv) != collimators->end())
-	{eventAction->SetPrimaryAbsorbedInCollimator(true);}
+        {eventAction->SetPrimaryAbsorbedInCollimator(true);}
     }
 }

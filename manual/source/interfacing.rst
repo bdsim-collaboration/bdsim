@@ -256,12 +256,12 @@ Tracking Link Interface
 
 An interface is provided to use BDSIM components as part of another tracking library.
 
-This is in development and may not be well-finished. The main interface is the class
-:code:`BDSIMLink` that is used in place of :code:`BDSIM` (from `BDSIMClass.hh`). It is
-recommended to look through the header for the interface. It uses a simplified construction
+The main interface is the class :code:`BDSIMLink` that is used in place of
+:code:`BDSIM` (from `BDSIMClass.hh`). It is recommended to look through the
+header for the interface. It uses a simplified geometry construction
 of BDSIM with Geant4 user actions defined in classes that begin with :code:`BDSLink*`.
-
-The initial implementation is made for SixTrack and is perhaps not ideal. The output
+The interface was written (currently) only for collimators with the minimal interface
+required. The initial implementation is made for SixTrack and is perhaps not ideal. The output
 writing is broken and the CMake option :code:`USE_SIXTRACK_LINK=ON` should be used.
 
 * Only passive (i.e. with no fields) components can be used.
