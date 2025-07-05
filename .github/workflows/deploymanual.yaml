@@ -1,0 +1,92 @@
+name: deploy manual
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'develop'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-manual:
+    name: build manual
+    runs-on: ubuntu-latest
+    container: bdsim/ubuntu24-g4.11.2:latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout bdsim
+        uses: actions/checkout@v4
+        id: checkout
+
+      - name: Get number of CPU cores
+        uses: SimenB/github-actions-cpu-cores@v2
+        id: cpu-cores
+
+      - name: Build manual
+        shell: bash
+        run: |
+          #
+          rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake
+  
+          # ROOT
+          source /tmp/root/bin/thisroot.sh
+  
+          # git trusted dir
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+  
+          # install sphinx and rtd theme
+          python3 -m venv /tmp/venv/python3
+          source /tmp/venv/python3/bin/activate
+          pip3 install sphinx sphinx-rtd-theme 
+          
+          # build sphinx manual
+          mkdir /tmp/bdsim-build
+          mkdir /tmp/bdsim-install
+          cd /tmp/bdsim-build
+          cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
+          make manual
+
+          # install doxygen
+          apt install -y doxygen graphviz
+
+          # build doxygen
+          cd /tmp/bdsim-build
+          cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
+          make doc
+
+	  # merge both manuals
+          mkdir -p /tmp/manuals/sphinx /tmp/manuals/doxygen
+          cp -r /tmp/bdsim-build/manual/html/* /tmp/manuals/sphinx
+          cp -r /tmp/bdsim-build/Doxygen/html/* /tmp/manuals/doxygen
+
+#      - name: Upload sphinx manual
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: manual
+#          path: /tmp/bdsim-build/manual/html
+	  
+#      - name: Debug secrets and vars
+#        run: |
+#          echo "Secrets set: ${{ toJson(secrets) }}"
+#          echo "Variables set: ${{ toJson(vars) }}"
+#
+#      - name: Add GitHub to known_hosts
+#        run: |
+#          mkdir -p ~/.ssh
+#          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          ssh_known_hosts: github.com
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: /tmp/manuals
+          allow_empty_commit: true
