@@ -14,7 +14,7 @@ jobs:
   build-manual:
     name: build manual
     runs-on: ubuntu-latest
-    container: bdsim/centos8-g4.11.2:latest
+    container: bdsim/ubuntu24-g4.11.2:latest
     permissions:
       contents: write
 
@@ -50,8 +50,7 @@ jobs:
           make manual
 
           # install doxygen
-          yum install -y epel-release
-          yum install -y doxygen graphviz
+          apt install -y doxygen graphviz
 
           # build doxygen
           cd /tmp/bdsim-build
