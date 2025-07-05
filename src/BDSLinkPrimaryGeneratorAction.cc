@@ -70,10 +70,10 @@ void BDSLinkPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
       coords = bunch->GetNextParticleLocal();
       auto bunchSTL = dynamic_cast<BDSBunchSixTrackLink*>(bunch);
       if (bunchSTL)
-	{
-	  eventInfo->externalParticleIDofPrimary = bunchSTL->CurrentExternalParticleID();
-	  eventInfo->externalParentIDofPrimary   = bunchSTL->CurrentExternalParentID();
-	}
+        {
+          eventInfo->externalParticleIDofPrimary = bunchSTL->CurrentExternalParticleID();
+          eventInfo->externalParentIDofPrimary   = bunchSTL->CurrentExternalParentID();
+        }
     }
   catch (const BDSException& exception)
     {// we couldn't safely generate a particle -> abort

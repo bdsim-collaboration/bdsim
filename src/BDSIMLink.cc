@@ -72,6 +72,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <map>
 #include <set>
 
+
 BDSIMLink::BDSIMLink(BDSBunch* bunchIn):
   ignoreSIGINT(false),
   usualPrintOut(true),

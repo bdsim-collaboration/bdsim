@@ -62,9 +62,8 @@ BDSParticleDefinition::BDSParticleDefinition(G4ParticleDefinition* particleIn,
     {
       ionDefinition = new BDSIonDefinition(*ionDefinitionIn);
       if (ionDefinition->OverrideCharge()) // if override for ions
-	{charge = ionDefinition->Charge();}
+        {charge = ionDefinition->Charge();}
     }
-
   SetEnergies(totalEnergyIn, kineticEnergyIn, momentumIn);
 }
 
@@ -262,8 +261,7 @@ void BDSParticleDefinition::CalculateRigidity(const G4double& ffactIn)
 void BDSParticleDefinition::CalculateLorentzFactors()
 {
   gamma = totalEnergy / mass;
-
-  beta = std::sqrt(1 - (1./std::pow(gamma,2)) );
+  beta = std::sqrt(1 - (1./std::pow(gamma,2)));
 }
 
 void BDSParticleDefinition::ApplyChangeInKineticEnergy(G4double dEk)

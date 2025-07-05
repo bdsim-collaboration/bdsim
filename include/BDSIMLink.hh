@@ -66,7 +66,7 @@ public:
                  char** argv,
                  bool   usualPrintOut        = true,
                  double minimumKineticEnergy = 0,
-                 bool   protonsAndIonsOnly   = true);
+                 bool   protonsAndIonsOnly   = false);
 
   /// Construct and initialise BDSIM.
   BDSIMLink(int argc, char** argv, bool usualPrintOut=true);
@@ -147,7 +147,7 @@ public:
 private:
   /// The main function where everything is constructed.
   int Initialise(double minimumKineticEnergy = 0,
-                 bool   protonsAndIonsOnly   = true);
+                 bool   protonsAndIonsOnly   = false);
   
   bool   ignoreSIGINT;         ///< For cmake testing.
   bool   usualPrintOut;        ///< Whether to allow the usual cout output.
