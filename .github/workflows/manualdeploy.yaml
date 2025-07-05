@@ -75,7 +75,7 @@ jobs:
         run: |
           echo "Secrets set: ${{ toJson(secrets) }}"
           echo "Variables set: ${{ toJson(vars) }}"
-	  echo "ACTION_DEPLOY_KEY ${{ secrets.ACTIONS_DEPLOY_KEY }}"
+          echo "ACTION_DEPLOY_KEY ${{ secrets.ACTIONS_DEPLOY_KEY }}"
 
       - name: Add GitHub to known_hosts
         run: |
