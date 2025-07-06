@@ -24,7 +24,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * Reference: Computer Physics Communications, 252, 107200 (2020)
  *            https://doi.org/10.1016/j.cpc.2020.107200
  *            https://arxiv.org/abs/1808.10745
- * Website:   http://www.pp.rhul.ac.uk/bdsim
+ * Website:   https://bdsim-collaboration.github.io/web/
  *
  * version @BDSIM_VERSION@
  */
