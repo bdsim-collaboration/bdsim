@@ -1,0 +1,17 @@
+<map id="BDSBeamPipeFactoryPoints" name="BDSBeamPipeFactoryPoints">
+<area shape="rect" id="Node000001" title="Factory for beam pipes defined by a series of x,y points that are extruded." alt="" coords="543,1207,772,1832"/>
+<area shape="rect" id="Node000004" href="$classBDSBeamPipeFactoryClicPCL.html" title="Factory for CLIC post collision line beam pipes." alt="" coords="5,1880,243,2105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="534,1633,245,1888,241,1884,530,1629"/>
+<area shape="rect" id="Node000005" href="$classBDSBeamPipeFactoryOctagonal.html" title="Factory for octagonal aperture model beampipes." alt="" coords="267,1910,523,2075"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="538,1740,442,1911,438,1909,534,1737"/>
+<area shape="rect" id="Node000006" href="$classBDSBeamPipeFactoryPointsFile.html" title="Factory for beam pipe made from an list of x,y points in a file." alt="" coords="547,1905,768,2080"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="660,1847,660,1905,655,1905,655,1847"/>
+<area shape="rect" id="Node000007" href="$classBDSBeamPipeFactoryRaceTrack.html" title="Factory for racetrack aperture model beampipes." alt="" coords="792,1920,1048,2065"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="781,1737,882,1918,878,1921,776,1739"/>
+<area shape="rect" id="Node000008" href="$classBDSBeamPipeFactoryRhombus.html" title="Factory for rhombus aperture model beampipes." alt="" coords="1072,1910,1323,2075"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="785,1628,1106,1908,1102,1912,781,1632"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamPipeFactoryBase.html" title="Abstract base class for beampipe factory classes." alt="" coords="535,539,780,1159"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="660,1173,660,1206,655,1206,655,1173"/>
+<area shape="rect" id="Node000003" href="$classBDSFactoryBase.html" title="Common temporary storage for all factories no matter what geometry." alt="" coords="571,5,744,491"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="660,505,660,538,655,538,655,505"/>
+</map>

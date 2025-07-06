@@ -1,0 +1,19 @@
+<map id="BDSModulator::VariesWithTime" name="BDSModulator::VariesWithTime">
+<area shape="rect" id="Node000001" title="Each derived class should override this." alt="" coords="837,67,1064,92"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldFactory.html#aae6257d23bf70122a523e0f9e1e35d85" title="Create a general EM field." alt="" coords="265,5,493,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="903,64,849,47,789,33,713,23,635,18,494,16,494,11,635,12,713,18,790,27,850,42,905,59"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldFactory.html#a432866f0da0199193e79e2d2cd1dc792" title="Creat just the electric field object." alt="" coords="545,67,789,92"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="824,82,789,82,789,77,824,77"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldFactory.html#abe272e95f65e31e32fd8af19397eb93d" title="Creat just the magnetic field object." alt="" coords="563,141,771,181"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="893,98,739,143,737,138,891,93"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldFactory.html#a4ddc6a455c87ea0ed853cf870512a4da" title="Main interface to field factory." alt="" coords="5,67,213,92"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="310,36,167,69,165,64,309,31"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="718,58,716,53,707,49,667,45,637,47,620,52,617,58,626,65,622,69,612,58,617,48,636,42,667,40,708,44,719,49,723,56"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldFactory.html#a267433e2853cc25480adcf6e4493e870" title="Create an electric field." alt="" coords="271,67,487,92"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="531,82,487,82,487,77,531,77"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="258,82,213,82,213,77,258,77"/>
+<area shape="poly" id="edge10_Node000006_Node000006" title=" " alt="" coords="716,129,699,122,667,119,640,121,623,126,617,132,620,139,615,141,612,131,620,122,639,116,667,114,700,117,718,124"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldFactory.html#aa596ea76ebc79f07a624bc3f71accac7" title="Create a purely magnetic field." alt="" coords="261,132,497,157"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="549,157,497,154,498,149,550,151"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="312,131,162,95,163,89,313,126"/>
+</map>

@@ -1,0 +1,35 @@
+<map id="BDSFieldInfo::ModulatorInfo" name="BDSFieldInfo::ModulatorInfo">
+<area shape="rect" id="Node000001" title="Accessor." alt="" coords="1579,110,1783,135"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldFactory.html#aae6257d23bf70122a523e0f9e1e35d85" title="Create a general EM field." alt="" coords="1007,7,1235,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1653,104,1598,66,1565,48,1530,35,1455,18,1378,10,1303,8,1235,11,1235,5,1303,3,1378,5,1456,13,1531,30,1567,43,1601,62,1656,99"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldFactory.html#a432866f0da0199193e79e2d2cd1dc792" title="Creat just the electric field object." alt="" coords="1287,69,1531,94"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1583,111,1493,97,1493,92,1584,105"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldFactory.html#abe272e95f65e31e32fd8af19397eb93d" title="Creat just the magnetic field object." alt="" coords="1305,143,1513,183"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="1581,140,1513,150,1512,145,1580,135"/>
+<area shape="rect" id="Node000008" href="$classBDSComponentFactory.html#acb78cbbc13acafeb40ad17b333d8ed63" title=" " alt="" coords="1319,207,1499,247"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="1646,144,1593,171,1532,197,1495,209,1494,204,1530,192,1590,166,1643,140"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldFactory.html#a4ddc6a455c87ea0ed853cf870512a4da" title="Main interface to field factory." alt="" coords="747,69,955,94"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1051,38,908,71,907,66,1050,33"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="1457,60,1455,55,1446,51,1409,47,1379,49,1364,54,1361,60,1369,67,1365,71,1355,60,1360,50,1378,44,1409,42,1448,46,1458,51,1462,57"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldFactory.html#a267433e2853cc25480adcf6e4493e870" title="Create an electric field." alt="" coords="1013,69,1229,94"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1273,84,1229,84,1229,79,1273,79"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="999,84,955,84,955,79,999,79"/>
+<area shape="poly" id="edge10_Node000006_Node000006" title=" " alt="" coords="1455,131,1439,124,1409,121,1382,123,1366,128,1360,134,1363,142,1358,143,1355,133,1363,124,1381,118,1409,116,1440,119,1457,126"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldFactory.html#aa596ea76ebc79f07a624bc3f71accac7" title="Create a purely magnetic field." alt="" coords="1003,125,1239,150"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="1291,155,1239,150,1239,145,1291,150"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="1045,125,912,97,913,92,1046,119"/>
+<area shape="rect" id="Node000009" href="$classBDSComponentFactory.html#a7df0b66f3731cf97c6efe44b0ecd9585" title=" " alt="" coords="1035,207,1206,247"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="1305,229,1206,229,1206,224,1305,224"/>
+<area shape="poly" id="edge19_Node000009_Node000009" title=" " alt="" coords="1167,195,1151,188,1121,185,1095,187,1079,192,1073,198,1076,206,1071,207,1068,197,1076,188,1094,182,1121,180,1152,183,1169,190"/>
+<area shape="rect" id="Node000010" href="$classBDSComponentFactory.html#a0dffc11cd5167e3777bd9350622d3baf" title=" " alt="" coords="765,207,936,247"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="1022,229,936,229,936,224,1022,224"/>
+<area shape="rect" id="Node000011" href="$classBDSDetectorConstruction.html#a8e5b24d8a99d199a728d8a97be40f1ab" title=" " alt="" coords="512,177,699,217"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="751,218,699,211,699,206,752,212"/>
+<area shape="rect" id="Node000014" href="$namespaceBDS.html#aab422e50ef35240eabc2a479005eb975" title=" " alt="" coords="240,242,464,267"/>
+<area shape="poly" id="edge17_Node000010_Node000014" title=" " alt="" coords="752,235,464,251,464,246,752,230"/>
+<area shape="rect" id="Node000012" href="$classBDSDetectorConstruction.html#aa81d7072ee80602ba862eda6c892c87c" title="Build the main beam line and then any other required beam lines." alt="" coords="259,177,445,217"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="498,200,445,200,445,195,498,195"/>
+<area shape="rect" id="Node000013" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="5,207,192,247"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="245,212,192,219,192,213,245,207"/>
+<area shape="poly" id="edge18_Node000014_Node000013" title=" " alt="" coords="226,244,192,240,192,234,227,238"/>
+</map>

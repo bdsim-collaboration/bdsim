@@ -1,0 +1,27 @@
+<map id="BDSSingleUse::SetActivated" name="BDSSingleUse::SetActivated">
+<area shape="rect" id="Node000001" title="Flag this instance as activated for later querying." alt="" coords="257,365,463,390"/>
+<area shape="rect" id="Node000002" href="$classBDSPhysicsAnnihiToMuMu.html#a810041cd1555836e15865ba2ac459cbe" title="Construct and attach the processes to the relevant particles." alt="" coords="11,5,204,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="351,352,336,292,309,213,290,171,267,130,240,93,208,59,190,48,193,43,211,55,244,89,272,128,295,169,314,211,342,290,356,350"/>
+<area shape="rect" id="Node000003" href="$classBDSPhysicsChannelling.html#a091f312537e60dd3a0d17336a5451f95" title="Construct and attach the processes to the relevant particles." alt="" coords="20,69,195,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="348,352,330,303,300,242,260,178,235,149,208,123,189,112,192,107,211,119,239,145,264,175,305,239,335,301,353,350"/>
+<area shape="rect" id="Node000004" href="$classBDSPhysicsCutsAndLimits.html#aa72a475f92875ded497384f9d1324f25" title="Construct and attach step limiter and cuts processes." alt="" coords="11,133,203,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="343,354,322,317,291,272,253,226,208,188,187,176,190,171,211,183,257,223,295,269,326,314,348,351"/>
+<area shape="rect" id="Node000005" href="$classBDSPhysicsEMDissociation.html#aef4947ca2df9cf32b92856f943f94d42" title="Construct and attach the processes to the relevant particles." alt="" coords="8,197,207,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="336,357,281,304,246,276,208,252,183,240,185,235,211,247,249,272,285,300,340,353"/>
+<area shape="rect" id="Node000006" href="$classBDSPhysicsGammaToMuMu.html#ae0d73269a22635ee9db4e43b6fa34bb5" title="Construct and attach the processes to the relevant particles." alt="" coords="5,261,209,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="317,361,208,316,174,304,176,299,210,311,320,356"/>
+<area shape="rect" id="Node000007" href="$classBDSPhysicsIonisation.html#a4e2d51417693badf8c6fa22309b98eae" title="Construct and attach the processes to the relevant particles." alt="" coords="26,325,189,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="246,366,189,358,189,353,247,360"/>
+<area shape="rect" id="Node000008" href="$classBDSPhysicsLaserWire.html#aa771fd6a9e8e0ff2ec0d29e930c1b781" title="Construct and attache BDSIM laserwire process." alt="" coords="26,389,189,429"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="247,394,189,402,189,396,246,389"/>
+<area shape="rect" id="Node000009" href="$classBDSPhysicsMuon.html#a505688cf8497d38fd99554f2024190a2" title="Construct and attach the processes to the relevant particles." alt="" coords="5,453,209,493"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="320,398,210,444,176,456,174,451,208,439,317,393"/>
+<area shape="rect" id="Node000010" href="$classBDSPhysicsMuonInelastic.html#a352f91969074d982093d27ddcccf92ce" title="Construct and attach the process for muons." alt="" coords="13,517,202,557"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="340,402,285,455,249,483,211,508,185,520,183,515,208,503,246,479,281,450,336,398"/>
+<area shape="rect" id="Node000011" href="$classBDSPhysicsMuonSplitting.html#afdb8265df893522f1fd7c578c1e320f9" title="Construct and attach the processes to the relevant particles." alt="" coords="13,581,201,621"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="348,404,326,441,295,486,257,532,211,572,190,583,187,579,208,567,253,528,291,483,322,438,343,401"/>
+<area shape="rect" id="Node000012" href="$classBDSPhysicsSynchRad.html#a440e776a6c8a59475135de81f8b99476" title="Construct and attach G4SynchrotronRadiation to all charged particles." alt="" coords="26,645,189,685"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="353,404,335,453,305,516,264,580,239,609,211,635,190,648,188,644,208,631,235,606,260,577,300,513,330,451,348,403"/>
+<area shape="rect" id="Node000013" href="$classBDSPhysicsXrayReflection.html#af33c5ac1290b1d8d598cfab7ecc71e73" title="Construct and attach the processes to the relevant particles." alt="" coords="11,709,204,749"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="356,404,342,465,314,544,295,586,272,627,244,666,211,699,193,711,190,707,208,695,240,662,267,624,290,583,309,542,336,463,351,403"/>
+</map>

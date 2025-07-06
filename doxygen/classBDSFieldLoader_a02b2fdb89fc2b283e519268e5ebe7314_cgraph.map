@@ -1,0 +1,13 @@
+<map id="BDSFieldLoader::LoadBDSIM3DE" name="BDSFieldLoader::LoadBDSIM3DE">
+<area shape="rect" id="Node000001" title="Load a 3D BDSIM format electric field." alt="" coords="5,31,237,56"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldLoader.html#a1112cd8d1671d37e59dc63331f1369c7" title="Create the appropriate 3D interpolator for an array." alt="" coords="285,5,555,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,31,271,28,272,33,238,36"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldLoader.html#a87e71378f5dc768129a87eae7bc60670" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="308,55,532,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="238,50,294,55,294,60,237,55"/>
+<area shape="rect" id="Node000003" href="$classBDSTypeSafeEnum.html#acd3d1ef0055b4af2523b6e05861f8d28" title="return underlying value (can be used in switch statement)" alt="" coords="603,5,825,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="555,15,589,15,589,21,555,21"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldLoader.html#a1d826661296752448611844f73575382" title="Return the cached array if there is one &#45; may return nullptr." alt="" coords="603,55,825,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="532,65,589,65,589,70,532,70"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldLoaderBDSIM.html#a2055896ad7514ed0b2d8a8ecf7c471af" title="Load a 3D array." alt="" coords="631,105,797,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="487,77,618,103,617,109,485,83"/>
+</map>

@@ -1,0 +1,41 @@
+<map id="DataLoader::CommonCtor" name="DataLoader::CommonCtor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,255,196,280"/>
+<area shape="rect" id="Node000002" href="$classDataLoader.html#a27c84433a062aed495101416646e1767" title=" " alt="" coords="247,82,467,122"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,252,169,206,243,153,294,125,297,130,245,158,172,210,118,256"/>
+<area shape="rect" id="Node000006" href="$classDataLoader.html#ac7109fb0ecd7adb61b3cfe2362b3da6f" title="Build up the input file list." alt="" coords="249,168,466,193"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="139,252,305,195,307,200,140,257"/>
+<area shape="rect" id="Node000010" href="$classDataLoader.html#a98e25896114511a6516143d9ebce99e2" title="Open the first file in the file list and map the trees in it." alt="" coords="244,304,471,329"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="168,277,278,299,277,304,167,283"/>
+<area shape="rect" id="Node000011" href="$classDataLoader.html#ac98b36187813e9e96cca4edc04768882" title="Create a tree for each sampler and add all the files to it." alt="" coords="269,353,445,379"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="124,278,178,308,245,338,275,347,273,353,243,343,175,313,122,283"/>
+<area shape="rect" id="Node000012" href="$classDataLoader.html#a2436b7e57bf62ed47dc8dd66af0ff87a" title="Map each chain to the member instance of each storage class in this class." alt="" coords="246,255,469,280"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="196,265,232,265,232,270,196,270"/>
+<area shape="rect" id="Node000003" href="$classModel.html#a1b2ed8abc9bef39d407d72fc788b1c08" title="Access all the sampler branch names from the model." alt="" coords="540,5,724,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="406,79,518,39,549,31,551,36,519,45,408,84"/>
+<area shape="rect" id="Node000004" href="$classModel.html#aa39739cddbd005479dc7a2bad3d5ec2f" title="Access all the unique sampler names from the model." alt="" coords="547,55,717,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="467,86,532,77,533,82,468,91"/>
+<area shape="rect" id="Node000005" href="$classModel.html#a30a43058f145e0f8935e548d6a5ab211" title="Set the branch addresses to address the contents of the file." alt="" coords="538,104,726,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="467,105,525,108,524,114,467,111"/>
+<area shape="rect" id="Node000007" href="$namespaceRBDS.html#a2ec2a81a202a57747714bf777c5158b7" title=" " alt="" coords="539,153,725,179"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="466,172,524,169,525,174,466,178"/>
+<area shape="rect" id="Node000008" href="$namespaceRBDS.html#a671d9ed0577c2a2d86e735e0f662080b" title=" " alt="" coords="849,153,991,179"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="726,163,835,163,835,169,726,169"/>
+<area shape="rect" id="Node000009" href="$classHeader.html#a68e4780f5c1274bf6c0b6debf4c5eced" title="Set the branch addresses to address the contents of the file." alt="" coords="1095,179,1289,204"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="992,170,1082,178,1081,184,991,175"/>
+<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="388,252,428,231,469,203,483,186,491,170,500,154,517,139,528,133,530,137,520,143,504,157,496,172,487,189,472,207,431,236,390,257"/>
+<area shape="poly" id="edge12_Node000012_Node000009" title=" " alt="" coords="430,252,518,239,824,211,1081,194,1081,200,824,216,519,245,431,257"/>
+<area shape="rect" id="Node000013" href="$classParticleData.html#a0f77538df10f79988c59d26ccdbe47c7" title="Set the branch addresses to address the contents of the file." alt="" coords="519,255,745,280"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="469,265,505,265,505,270,469,270"/>
+<area shape="rect" id="Node000014" href="$classBeam.html#a82841e90004f67da4200620ef9aa2184" title="Set the branch addresses to address the contents of the file." alt="" coords="539,304,725,329"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="429,277,548,299,547,304,428,283"/>
+<area shape="rect" id="Node000015" href="$classOptions.html#a998547713858e91d97e41937f39c3c15" title="Set the branch addresses to address the contents of the file." alt="" coords="533,353,731,379"/>
+<area shape="poly" id="edge16_Node000012_Node000015" title=" " alt="" coords="445,278,472,289,488,301,497,314,506,327,520,338,537,346,534,351,517,343,502,331,493,317,484,305,469,294,443,283"/>
+<area shape="rect" id="Node000016" href="$classRun.html#a4e920c2f05ca7614602e26fc69c12988" title="Map the ROOT file to members in this class." alt="" coords="545,403,719,428"/>
+<area shape="poly" id="edge17_Node000012_Node000016" title=" " alt="" coords="454,278,472,289,484,302,492,315,497,341,503,366,509,378,520,389,534,398,531,402,517,393,505,381,498,368,492,342,487,316,480,305,469,293,451,283"/>
+<area shape="rect" id="Node000017" href="$classEvent.html#afbf7ef5c6ee9cbba73ab8cf4443b9605" title=" " alt="" coords="539,452,725,477"/>
+<area shape="poly" id="edge18_Node000012_Node000017" title=" " alt="" coords="456,278,472,289,488,308,495,327,497,366,499,404,506,421,521,439,529,445,525,449,517,443,502,424,494,405,492,366,490,328,483,311,469,293,453,282"/>
+<area shape="rect" id="Node000018" href="$classEvent.html#a52cb64b5a5605c731fce4974f557b4b5" title="Utility method." alt="" coords="825,480,1015,505"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="725,471,811,479,811,485,725,476"/>
+<area shape="rect" id="Node000019" href="$classEvent.html#aa9c724de56b2e4ac99229fbec8e30987" title="Utility function to avoid repetition of code." alt="" coords="793,415,1047,455"/>
+<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="725,453,779,447,780,452,725,458"/>
+</map>

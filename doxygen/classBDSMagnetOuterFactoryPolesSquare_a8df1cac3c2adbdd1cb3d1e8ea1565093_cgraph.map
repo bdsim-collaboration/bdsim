@@ -1,0 +1,114 @@
+<map id="BDSMagnetOuterFactoryPolesSquare::CommonConstructor" name="BDSMagnetOuterFactoryPolesSquare::CommonConstructor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,280,221,320"/>
+<area shape="rect" id="Node000002" href="$classBDSMagnetOuterFactoryPolesBase.html#af3478b82e85bae4d3cc1ab98d00626f1" title="Common construction tasks to all methods &#45; assemble yoke and poles in container." alt="" coords="269,831,485,871"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,319,363,817,358,819,122,321"/>
+<area shape="rect" id="Node000022" href="$classBDSGeometryComponent.html#a66c8db7284315088c2c819f3a530848b" title=" " alt="" coords="1155,469,1344,509"/>
+<area shape="poly" id="edge64_Node000001_Node000022" title=" " alt="" coords="182,277,386,223,517,193,655,166,791,147,915,138,971,139,1020,144,1062,154,1096,170,1109,184,1125,211,1165,290,1237,455,1232,457,1160,292,1121,214,1105,187,1093,174,1061,159,1019,149,971,144,916,143,791,152,656,172,518,198,388,229,184,282"/>
+<area shape="rect" id="Node000023" href="$classBDSGeometryComponent.html#af4ce5153a36ecbf0ba7020b9893e5cd3" title=" " alt="" coords="869,440,1062,480"/>
+<area shape="poly" id="edge65_Node000001_Node000023" title=" " alt="" coords="221,288,367,280,533,279,613,282,685,290,745,304,789,323,803,335,810,348,816,375,821,402,827,414,838,426,858,439,855,443,834,430,822,417,815,403,811,376,805,350,798,338,787,328,744,309,684,296,613,288,533,284,368,285,222,294"/>
+<area shape="rect" id="Node000003" href="$classBDSMagnetOuterFactoryPolesBase.html#a0dfd07c416281fab28a9ed92762fcbf1" title=" " alt="" coords="553,337,769,377"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,830,383,749,391,692,404,629,424,564,450,500,486,440,531,387,539,381,542,385,535,391,490,443,455,502,429,566,409,630,396,693,388,749,382,831"/>
+<area shape="rect" id="Node000005" href="$classBDSMagnetOuterFactoryPolesBase.html#a9dff5ed58754b423aaa9a18a93456c2d" title="Empty containers for next use &#45; this class is never deleted so can&#39;t rely on scope." alt="" coords="553,223,769,263"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="377,830,386,743,409,612,429,538,455,463,489,390,531,324,563,292,599,267,602,272,566,296,535,327,494,393,460,465,434,539,415,613,391,744,382,831"/>
+<area shape="rect" id="Node000010" href="$classBDSMagnetOuterFactoryPolesBase.html#a5efb96211daa9522c2a29ec4c008a798" title="Create the coil solids corresponding to the pole solid." alt="" coords="553,465,769,505"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="380,830,394,770,422,687,443,642,467,599,497,558,532,522,549,510,552,514,535,526,501,561,472,601,447,645,427,689,399,771,385,831"/>
+<area shape="rect" id="Node000012" href="$classBDSMagnetOuterFactoryPolesBase.html#a2e9baaac6396d31e62ab625d4f533843" title=" " alt="" coords="553,723,769,763"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="419,828,532,779,574,764,576,769,534,784,421,833"/>
+<area shape="rect" id="Node000013" href="$classBDSMaterials.html#a99f6642727a7c0d7cae9aab7cefce26b" title="Get material by name." alt="" coords="1152,971,1347,997"/>
+<area shape="poly" id="edge45_Node000002_Node000013" title=" " alt="" coords="471,868,534,880,864,931,1139,968,1138,973,863,937,533,885,470,873"/>
+<area shape="rect" id="Node000017" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="1171,829,1327,869"/>
+<area shape="poly" id="edge46_Node000002_Node000017" title=" " alt="" coords="486,856,788,880,836,884,966,891,1022,890,1094,884,1167,870,1168,875,1095,889,1022,896,966,896,836,889,788,885,485,862"/>
+<area shape="rect" id="Node000021" href="$classBDSMaterials.html#a4e2a206298e5e1d18257ccfe62453fef" title="Singleton pattern access." alt="" coords="1163,1125,1336,1150"/>
+<area shape="poly" id="edge47_Node000002_Node000021" title=" " alt="" coords="383,870,394,934,420,1021,440,1067,465,1110,496,1149,534,1180,623,1184,807,1183,1094,1176,1148,1165,1197,1152,1199,1157,1149,1171,1095,1181,807,1189,623,1189,532,1185,493,1153,461,1113,435,1069,415,1023,389,935,378,871"/>
+<area shape="poly" id="edge53_Node000002_Node000022" title=" " alt="" coords="396,829,454,772,532,709,600,665,657,636,715,610,787,572,810,556,835,543,913,520,993,504,1071,495,1141,489,1141,495,1072,500,994,510,914,525,837,548,813,561,789,577,717,615,659,641,603,670,535,713,458,776,400,832"/>
+<area shape="poly" id="edge56_Node000002_Node000023" title=" " alt="" coords="381,830,398,777,428,707,448,670,472,634,500,601,532,573,565,551,596,539,625,532,654,530,714,528,749,524,787,515,835,496,880,482,882,487,837,501,789,520,749,529,715,533,654,535,626,538,598,544,568,556,535,577,503,605,476,637,452,673,432,710,403,779,386,831"/>
+<area shape="rect" id="Node000025" href="$classBDSGeometryComponent.html#ae256d1c17bcefc15e3f85c120a2c8867" title=" " alt="" coords="871,835,1060,875"/>
+<area shape="poly" id="edge57_Node000002_Node000025" title=" " alt="" coords="485,833,533,829,661,824,788,829,858,836,857,841,788,835,661,829,534,835,486,839"/>
+<area shape="rect" id="Node000027" href="$classBDSMagnetOuterFactoryPolesBase.html#a4f7870f530677792138f0536777b42a9" title=" " alt="" coords="553,1003,769,1043"/>
+<area shape="poly" id="edge28_Node000002_Node000027" title=" " alt="" coords="397,869,454,928,492,961,535,988,549,995,547,1000,532,993,489,965,450,932,393,873"/>
+<area shape="rect" id="Node000035" href="$classBDSMagnetOuterFactoryPolesBase.html#a82d40834552814159263ed642d8cd26e" title=" " alt="" coords="553,939,769,979"/>
+<area shape="poly" id="edge42_Node000002_Node000035" title=" " alt="" coords="421,868,534,918,576,932,574,937,532,922,419,873"/>
+<area shape="rect" id="Node000036" href="$classBDSMagnetOuterFactoryPolesBase.html#ad4d4103ed54933780c21a4895f87e247" title=" " alt="" coords="533,1245,788,1285"/>
+<area shape="poly" id="edge43_Node000002_Node000036" title=" " alt="" coords="384,870,395,938,421,1033,441,1085,466,1136,497,1183,535,1225,551,1237,548,1241,532,1229,493,1187,462,1139,436,1087,416,1035,390,939,378,871"/>
+<area shape="rect" id="Node000038" href="$classBDSMagnetOuterFactoryPolesBase.html#a30d0286d09f925c657cdfa3a85c55d1e" title="Chop off the top of the pole to match the appropriate yoke geometry." alt="" coords="553,1067,769,1107"/>
+<area shape="poly" id="edge48_Node000002_Node000038" title=" " alt="" coords="391,870,412,909,443,959,485,1010,535,1053,545,1058,542,1063,532,1057,481,1013,439,962,407,912,386,872"/>
+<area shape="rect" id="Node000039" href="$classBDSMagnetOuterFactoryPolesBase.html#a877e4616bae65e2e8ab892f0dd30ee44" title="Place the poles and yoke in the container volume." alt="" coords="553,1131,769,1171"/>
+<area shape="poly" id="edge49_Node000002_Node000039" title=" " alt="" coords="387,870,404,920,434,987,477,1057,504,1089,535,1117,543,1122,540,1126,532,1121,500,1093,473,1061,429,990,399,922,382,872"/>
+<area shape="rect" id="Node000040" href="$classBDSMagnetOuterFactoryPolesBase.html#a94bf7780d3ad829a36917db7181eb639" title="If we&#39;re building coils, place two coils for each pole." alt="" coords="553,1360,769,1400"/>
+<area shape="poly" id="edge50_Node000002_Node000040" title=" " alt="" coords="381,871,387,956,394,1016,407,1082,427,1151,453,1219,489,1283,535,1339,550,1351,546,1355,531,1343,485,1286,449,1221,422,1153,402,1083,389,1016,381,957,376,871"/>
+<area shape="rect" id="Node000041" href="$classBDSGeometryComponent.html#aa046608d3ba8d2079699a0a6504a559b" title=" " alt="" coords="871,1320,1060,1360"/>
+<area shape="poly" id="edge54_Node000002_Node000041" title=" " alt="" coords="381,871,386,952,394,1008,407,1069,426,1132,453,1193,489,1249,510,1273,535,1295,558,1308,589,1318,672,1332,766,1338,857,1340,857,1345,766,1343,671,1337,588,1323,556,1313,532,1300,507,1277,484,1252,448,1196,421,1134,401,1070,389,1009,381,953,376,871"/>
+<area shape="rect" id="Node000042" href="$classBDSGeometryComponent.html#a3b54e878b62c39664507450a845dfcd5" title=" " alt="" coords="871,1405,1060,1445"/>
+<area shape="poly" id="edge55_Node000002_Node000042" title=" " alt="" coords="384,871,400,984,431,1149,452,1234,476,1310,504,1371,519,1394,535,1410,574,1435,618,1451,663,1461,711,1465,758,1465,803,1461,883,1446,884,1451,804,1466,758,1470,710,1471,663,1467,616,1456,572,1439,532,1414,515,1397,499,1374,471,1312,446,1235,425,1150,394,985,378,871"/>
+<area shape="rect" id="Node000043" href="$classBDSMagnetOuterFactoryBase.html#a35f3fced906f7f0a62d00e002dea98e8" title="Copy face normals from members to an instance of outer." alt="" coords="554,69,767,109"/>
+<area shape="poly" id="edge58_Node000002_Node000043" title=" " alt="" coords="377,830,385,729,408,571,428,481,454,387,488,296,531,209,550,182,572,157,618,116,621,120,576,160,554,185,536,212,493,298,459,389,433,482,413,572,390,730,382,831"/>
+<area shape="rect" id="Node000047" href="$classBDSMagnetOuterFactoryBase.html#ab0e55513fa7128a764652846293ad41d" title="Attach default user limits to all logical volumes." alt="" coords="554,401,767,441"/>
+<area shape="poly" id="edge63_Node000002_Node000047" title=" " alt="" coords="378,830,387,758,412,656,432,601,458,546,491,495,532,451,540,445,543,449,535,455,495,499,463,549,437,603,417,658,393,759,383,831"/>
+<area shape="rect" id="Node000004" href="$classBDSBeamPipe.html#a77695689c84ab9709833dbeb8e53180a" title="If it is circular, we need the radius." alt="" coords="861,312,1070,352"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="769,346,847,339,847,344,769,351"/>
+<area shape="rect" id="Node000006" href="$classBDSMagnetOuterFactoryBase.html#a28bfffe53019f86682ad45a046de3017" title="Empty containers for next use &#45; factories are never deleted so can&#39;t rely on scope." alt="" coords="859,184,1072,224"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="769,226,845,217,845,222,769,232"/>
+<area shape="rect" id="Node000009" href="$classBDSMagnetOuterFactoryPolesBase.html#a1555dd57aefbfeeba5462266e0aaad0c" title="Non&#45;virtual clean up to be used in constructor." alt="" coords="857,248,1073,288"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="769,249,844,255,843,261,769,254"/>
+<area shape="rect" id="Node000007" href="$classBDSMagnetOuterFactoryBase.html#a4b283c21a484c5562b3a15bfe3f12668" title="Non&#45;virtual clean up that can be used in the constructor." alt="" coords="1143,184,1356,224"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1072,201,1129,201,1129,207,1072,207"/>
+<area shape="rect" id="Node000008" href="$classBDSFactoryBase.html#af7ee4619ac98f5d4ee6fb30dca8f62e4" title="Empty containers for next use &#45; factories are never deleted so can&#39;t rely on scope." alt="" coords="1404,184,1619,224"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1356,201,1390,201,1390,207,1356,207"/>
+<area shape="rect" id="Node000011" href="$classBDSMagnetOuterFactoryPolesBase.html#acfe020b702df2dfd2f465a69998ed2dc" title="Create all the points that make up the extruded solid of the pole." alt="" coords="857,376,1073,416"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="751,463,787,451,811,438,835,426,858,418,860,423,837,430,813,443,789,456,753,468"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="756,760,836,776,911,784,971,784,1028,791,1060,802,1096,820,1113,834,1123,848,1145,880,1225,960,1222,964,1141,883,1119,851,1109,837,1093,825,1058,807,1027,797,970,789,910,789,836,781,755,765"/>
+<area shape="poly" id="edge17_Node000012_Node000017" title=" " alt="" coords="769,739,925,747,1011,758,1095,776,1152,796,1202,820,1200,825,1150,801,1094,781,1010,764,924,752,769,744"/>
+<area shape="poly" id="edge21_Node000012_Node000021" title=" " alt="" coords="681,761,735,831,765,877,790,926,800,955,804,982,803,1030,803,1052,808,1073,818,1094,838,1114,878,1140,923,1157,971,1167,1019,1171,1067,1170,1113,1165,1191,1151,1192,1156,1114,1171,1068,1175,1019,1176,970,1173,921,1162,876,1145,834,1118,814,1097,803,1075,798,1053,798,1030,798,982,795,956,786,928,760,880,731,834,677,764"/>
+<area shape="poly" id="edge22_Node000012_Node000022" title=" " alt="" coords="678,720,742,656,786,621,835,591,904,564,962,553,1021,548,1094,533,1172,511,1174,516,1095,539,1021,553,962,559,906,569,837,596,789,625,746,660,681,724"/>
+<area shape="poly" id="edge23_Node000012_Node000023" title=" " alt="" coords="675,721,741,642,786,593,834,547,876,514,918,485,921,490,880,518,838,551,790,597,745,645,680,724"/>
+<area shape="rect" id="Node000024" href="$classBDSGeometryComponent.html#ae70878d39e522057c500460c1c933844" title=" " alt="" coords="871,605,1060,645"/>
+<area shape="poly" id="edge25_Node000012_Node000024" title=" " alt="" coords="696,720,760,687,835,655,860,647,861,652,837,660,762,692,699,725"/>
+<area shape="poly" id="edge26_Node000012_Node000025" title=" " alt="" coords="743,760,789,779,814,797,837,814,871,828,869,833,835,818,810,801,787,784,741,765"/>
+<area shape="rect" id="Node000026" href="$classBDSGeometryComponent.html#a2d8e6ffde776c31bc6bef53a3ae5febe" title="Set extent." alt="" coords="871,669,1060,709"/>
+<area shape="poly" id="edge27_Node000012_Node000026" title=" " alt="" coords="768,721,856,706,857,711,769,726"/>
+<area shape="rect" id="Node000014" href="$classBDSMaterials.html#aaadfcedd8e34c1686e3e498a322eb361" title="output available materials" alt="" coords="1410,971,1613,997"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="1347,990,1396,990,1396,996,1347,995"/>
+<area shape="rect" id="Node000016" href="$namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="1447,922,1575,947"/>
+<area shape="poly" id="edge16_Node000013_Node000016" title=" " alt="" coords="1317,969,1433,947,1434,952,1318,974"/>
+<area shape="poly" id="edge14_Node000014_Node000013" title=" " alt="" coords="1410,978,1360,978,1360,972,1410,973"/>
+<area shape="rect" id="Node000015" href="$classBDSMaterials.html#ae42d0803dcdc0cbae050ba87e72a988c" title="Print mass fractions of consituents of a given material." alt="" coords="1667,963,1849,1003"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="1613,981,1653,981,1653,986,1613,986"/>
+<area shape="rect" id="Node000018" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="1429,857,1593,897"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="1328,855,1416,864,1415,870,1327,860"/>
+<area shape="rect" id="Node000019" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="1435,758,1587,783"/>
+<area shape="poly" id="edge19_Node000017_Node000019" title=" " alt="" coords="1303,827,1403,793,1438,784,1440,789,1405,799,1305,832"/>
+<area shape="rect" id="Node000020" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="1425,807,1597,833"/>
+<area shape="poly" id="edge20_Node000017_Node000020" title=" " alt="" coords="1327,838,1411,828,1412,834,1328,843"/>
+<area shape="poly" id="edge24_Node000023_Node000022" title=" " alt="" coords="1063,467,1141,476,1141,481,1062,473"/>
+<area shape="rect" id="Node000028" href="$classBDSMagnetOuterFactoryBase.html#a32af48c909e383f76590d2a04eb471c5" title=" " alt="" coords="859,1000,1072,1040"/>
+<area shape="poly" id="edge29_Node000027_Node000028" title=" " alt="" coords="769,1019,845,1018,845,1024,769,1024"/>
+<area shape="rect" id="Node000032" href="$classBDSMagnetOuterFactoryPolesBase.html#ac65b2a3e04f449fabe2e02b6434746eb" title=" " alt="" coords="849,1064,1081,1104"/>
+<area shape="poly" id="edge36_Node000027_Node000032" title=" " alt="" coords="761,1040,853,1059,852,1064,760,1045"/>
+<area shape="poly" id="edge30_Node000028_Node000013" title=" " alt="" coords="1072,1004,1138,995,1139,1001,1073,1009"/>
+<area shape="poly" id="edge34_Node000028_Node000017" title=" " alt="" coords="999,997,1202,874,1205,879,1001,1002"/>
+<area shape="poly" id="edge35_Node000028_Node000021" title=" " alt="" coords="1073,1038,1096,1050,1112,1065,1121,1081,1129,1096,1144,1110,1158,1117,1155,1122,1141,1114,1125,1099,1116,1083,1108,1068,1093,1054,1071,1043"/>
+<area shape="rect" id="Node000029" href="$classBDSColours.html#a70b63e931ed622f303245065d959b60e" title="singleton pattern" alt="" coords="1169,1025,1330,1050"/>
+<area shape="poly" id="edge31_Node000028_Node000029" title=" " alt="" coords="1072,1024,1155,1029,1155,1034,1072,1029"/>
+<area shape="rect" id="Node000030" href="$classBDSColours.html#ab19369a3f87d6f470da02a8a385ecf32" title="Private constructor as singleton." alt="" coords="1420,1025,1603,1050"/>
+<area shape="poly" id="edge32_Node000029_Node000030" title=" " alt="" coords="1330,1035,1406,1035,1406,1040,1330,1040"/>
+<area shape="rect" id="Node000031" href="$classBDSColours.html#abb27d7d63d9f0b2da5e2126a86ac8863" title=" " alt="" coords="1690,1027,1826,1053"/>
+<area shape="poly" id="edge33_Node000030_Node000031" title=" " alt="" coords="1603,1036,1676,1036,1676,1042,1603,1041"/>
+<area shape="poly" id="edge39_Node000032_Node000013" title=" " alt="" coords="1064,1062,1093,1050,1107,1041,1117,1031,1127,1021,1141,1011,1172,998,1174,1003,1144,1016,1130,1025,1121,1035,1111,1045,1096,1054,1066,1066"/>
+<area shape="poly" id="edge41_Node000032_Node000021" title=" " alt="" coords="1073,1101,1168,1120,1167,1125,1072,1107"/>
+<area shape="poly" id="edge40_Node000032_Node000029" title=" " alt="" coords="1081,1062,1158,1050,1158,1055,1082,1068"/>
+<area shape="rect" id="Node000033" href="$classBDSColours.html#a47bf1fce3a161fa47e30ec7620de2eaf" title="Get a cached anonymous colour by values." alt="" coords="1164,1074,1335,1099"/>
+<area shape="poly" id="edge37_Node000032_Node000033" title=" " alt="" coords="1082,1082,1150,1083,1150,1088,1081,1088"/>
+<area shape="rect" id="Node000034" href="$namespaceBDS.html#a8dbf382bb29843a4904f8b5e6b141b1d" title=" " alt="" coords="1435,1074,1588,1099"/>
+<area shape="poly" id="edge38_Node000033_Node000034" title=" " alt="" coords="1335,1084,1421,1084,1421,1089,1335,1089"/>
+<area shape="rect" id="Node000037" href="$classBDSMagnetOuterFactoryBase.html#ad9526edda9df36ed34840ececd6ff957" title=" " alt="" coords="836,1245,1095,1285"/>
+<area shape="poly" id="edge44_Node000036_Node000037" title=" " alt="" coords="788,1263,822,1263,822,1268,788,1268"/>
+<area shape="poly" id="edge51_Node000040_Node000041" title=" " alt="" coords="769,1363,857,1352,857,1357,769,1368"/>
+<area shape="poly" id="edge52_Node000040_Node000042" title=" " alt="" coords="769,1393,857,1407,857,1412,769,1399"/>
+<area shape="rect" id="Node000044" href="$classBDSMagnetOuter.html#a723a270077800ae58f175de24738ee66" title="Setter for face normals." alt="" coords="867,5,1063,45"/>
+<area shape="poly" id="edge59_Node000043_Node000044" title=" " alt="" coords="756,67,856,46,857,51,757,72"/>
+<area shape="rect" id="Node000046" href="$classBDSMagnetOuter.html#ae6352284783212259569012c8cfa52de" title="Setter for face normals." alt="" coords="862,69,1069,109"/>
+<area shape="poly" id="edge61_Node000043_Node000046" title=" " alt="" coords="768,87,849,87,849,92,768,92"/>
+<area shape="rect" id="Node000045" href="$classBDSAcceleratorComponent.html#aab349a282eee9b2dee4a05d7bd41a644" title="Allow updating of face normals. Virtual so derived class may apply it to daughters." alt="" coords="1150,37,1349,77"/>
+<area shape="poly" id="edge60_Node000044_Node000045" title=" " alt="" coords="1064,34,1136,42,1136,47,1063,39"/>
+<area shape="poly" id="edge62_Node000046_Node000045" title=" " alt="" coords="1069,75,1136,67,1137,73,1069,80"/>
+</map>

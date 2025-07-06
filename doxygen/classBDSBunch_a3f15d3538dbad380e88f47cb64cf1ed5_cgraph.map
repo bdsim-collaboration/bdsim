@@ -1,0 +1,27 @@
+<map id="BDSBunch::ApplyTransform" name="BDSBunch::ApplyTransform">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,159,204,184"/>
+<area shape="rect" id="Node000002" href="$classBDSBunch.html#a78ef3af948c93d56a7d7a78206858450" title="Add on the offset in T for the current bunch number (i*bunchPeriod)." alt="" coords="252,101,471,127"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,156,290,127,291,132,163,161"/>
+<area shape="rect" id="Node000003" href="$classBDSBunch.html#a02d25c9b2f1c1deb759ba9c73b0b5514" title="Calculate the global coordinates from curvilinear coordinates of a beam line." alt="" coords="259,151,464,191"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,169,245,169,245,174,204,174"/>
+<area shape="rect" id="Node000013" href="$classBDSParticleCoords.html#abe36bf0b2d757f54c28b62d695095e99" title="Apply a transform to the coordinates and return a copy of them transformed." alt="" coords="286,215,437,255"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="157,182,273,211,272,216,156,187"/>
+<area shape="rect" id="Node000004" href="$classBDSAcceleratorModel.html#a899da925682f73f7f52a1a88ad25e25c" title="Accessor." alt="" coords="560,119,724,159"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="464,157,546,148,547,153,465,162"/>
+<area shape="rect" id="Node000005" href="$classBDSBeamline.html#ad639e6ff494db695d7cfa89fcf1342ac" title=" " alt="" coords="519,183,765,223"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="465,180,506,185,505,190,464,186"/>
+<area shape="rect" id="Node000006" href="$classBDSBeamline.html#a81bb1806b0ecbaf6bc263532ac9ade76" title="Return a reference to the element at i." alt="" coords="862,5,994,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="747,181,764,169,776,154,783,139,786,107,790,74,798,57,812,41,829,30,848,22,850,27,831,35,815,45,802,60,795,75,792,107,788,140,781,157,767,173,750,185"/>
+<area shape="rect" id="Node000007" href="$classBDSAcceleratorComponent.html#a0d3e2aa20a70ec80002cf6b07dee4522" title=" " alt="" coords="829,55,1027,95"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="742,181,764,169,779,154,787,138,795,121,812,105,822,99,825,104,815,109,800,125,792,141,783,157,767,173,745,185"/>
+<area shape="rect" id="Node000008" href="$classBDSAcceleratorComponent.html#a71d1d672e8ab445958093f0d7e3441d9" title=" " alt="" coords="829,119,1027,159"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="732,181,824,160,825,165,733,186"/>
+<area shape="rect" id="Node000009" href="$classBDSAcceleratorComponent.html#a51a731c2a058c4686feb03e65c661afa" title=" " alt="" coords="829,183,1027,223"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="766,201,815,201,815,206,766,206"/>
+<area shape="rect" id="Node000010" href="$classBDSBeamline.html#abcc1ef01cad756aa7c10fe01f86fbb83" title="Return the element in this beam line according to a given s coordinate." alt="" coords="813,247,1043,287"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="733,221,825,242,824,247,732,226"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamlineElement.html#afa5d090d4979635b69140d7bda5acd62" title="Accessor." alt="" coords="845,311,1011,351"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="675,221,738,259,814,297,835,305,833,310,812,302,735,264,672,226"/>
+<area shape="rect" id="Node000012" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="876,376,980,401"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="661,222,723,291,766,329,815,361,863,378,862,383,812,366,763,333,719,295,657,225"/>
+</map>

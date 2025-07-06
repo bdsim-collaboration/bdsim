@@ -1,0 +1,11 @@
+<map id="BDSMagnetOuterFactoryLHC" name="BDSMagnetOuterFactoryLHC">
+<area shape="rect" id="Node000001" title="The base factory for the LHC magnet geometry factory." alt="" coords="161,1381,396,1787"/>
+<area shape="rect" id="Node000004" href="$classBDSMagnetOuterFactoryLHCLeft.html" title="LHC outer magnet geometry offset to the left." alt="" coords="5,1835,264,1920"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,1800,158,1835,153,1833,170,1798"/>
+<area shape="rect" id="Node000005" href="$classBDSMagnetOuterFactoryLHCRight.html" title="LHC outer magnet geometry offset to the right." alt="" coords="288,1835,557,1920"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="387,1798,404,1833,400,1835,382,1800"/>
+<area shape="rect" id="Node000002" href="$classBDSMagnetOuterFactoryBase.html" title="Abstract base class for magnet outer volume factories." alt="" coords="144,539,413,1333"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,1347,281,1381,276,1381,276,1347"/>
+<area shape="rect" id="Node000003" href="$classBDSFactoryBase.html" title="Common temporary storage for all factories no matter what geometry." alt="" coords="192,5,365,491"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,505,281,539,276,539,276,505"/>
+</map>

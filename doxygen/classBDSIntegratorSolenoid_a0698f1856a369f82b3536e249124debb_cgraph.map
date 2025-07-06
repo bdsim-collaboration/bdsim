@@ -1,0 +1,31 @@
+<map id="BDSIntegratorSolenoid::Stepper" name="BDSIntegratorSolenoid::Stepper">
+<area shape="rect" id="Node000001" title="Calculate the particle motion along step length l in the paraxial approximation." alt="" coords="5,173,175,213"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorDrift.html#abf8596190741284f2de23c74ceb6a365" title="Error array [6] all 0." alt="" coords="249,29,392,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,171,157,125,188,101,221,79,236,72,238,77,224,84,191,105,160,130,112,175"/>
+<area shape="rect" id="Node000003" href="$classBDSAuxiliaryNavigator.html#a2301be23a5e3eb9f06e33b06ceed4bd0" title=" " alt="" coords="235,144,407,184"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="175,180,221,174,222,179,175,185"/>
+<area shape="rect" id="Node000009" href="$classBDSStep.html#a0868cd519b353b30fddcddde50b50b2c" title="Accessor." alt="" coords="467,210,643,235"/>
+<area shape="poly" id="edge14_Node000001_Node000009" title=" " alt="" coords="175,196,453,214,453,219,175,201"/>
+<area shape="rect" id="Node000010" href="$classBDSStep.html#ab5b76ceccd5b2b893fe9f618db789961" title="Accessor." alt="" coords="470,259,639,285"/>
+<area shape="poly" id="edge15_Node000001_Node000010" title=" " alt="" coords="175,207,223,216,457,255,457,260,222,221,175,212"/>
+<area shape="rect" id="Node000012" href="$namespaceBDS.html#acd93f7748953a5157b113e21c7886429" title=" " alt="" coords="241,94,400,119"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="129,171,222,130,250,120,252,126,224,134,131,176"/>
+<area shape="rect" id="Node000013" href="$classBDSIntegratorMag.html#a536bf19a357e7f88071867f39d1a5393" title="Setter for distChord to private member." alt="" coords="223,309,419,349"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="116,212,165,249,224,288,251,302,248,306,221,293,162,254,113,216"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="278,30,275,20,282,10,297,5,321,3,347,6,362,13,360,18,346,11,321,8,299,10,285,15,280,21,283,28"/>
+<area shape="rect" id="Node000004" href="$classBDSAuxiliaryNavigator.html#ae62af95146ad9b0a1711a1d28503a378" title=" " alt="" coords="469,145,641,185"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="407,162,455,162,455,167,407,167"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="503,46,607,71"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="391,142,417,128,431,117,440,105,450,92,465,80,488,70,490,75,468,85,454,96,445,108,435,120,420,133,394,146"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="402,181,491,204,490,209,400,187"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="353,182,405,214,468,246,487,253,485,258,466,250,403,219,350,186"/>
+<area shape="rect" id="Node000011" href="$classBDSStep.html#a2d7e96b52266ea4b72c6dc9c64f887a3" title="Mirror function to G4ThreeVector::rotateZ(). Returns copy that&#39;s rotated." alt="" coords="487,95,622,121"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="404,141,487,121,488,126,405,147"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html#afe9af56d9265badd807a6dc28351a3aa" title="Utility function to select appropriate transform." alt="" coords="710,113,882,153"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="640,151,696,144,697,149,641,157"/>
+<area shape="rect" id="Node000006" href="$classBDSAuxiliaryNavigator.html#a0ccf4c63af2d239f8cf0890885961bad" title="A wrapper for the underlying static navigator instance located within this class." alt="" coords="691,177,901,217"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="641,174,678,179,677,184,640,179"/>
+<area shape="rect" id="Node000007" href="$classBDSAuxiliaryNavigator.html#a3d1430bbb5ad92f55303f9173faab8e8" title="Utility function to select appropriate navigator." alt="" coords="949,177,1121,217"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="901,195,935,195,935,200,901,200"/>
+<area shape="poly" id="edge13_Node000012_Node000008" title=" " alt="" coords="383,91,489,69,490,75,384,97"/>
+</map>

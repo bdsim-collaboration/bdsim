@@ -1,0 +1,119 @@
+<map id="BDSComponentFactory::SetFieldDefinitions" name="BDSComponentFactory::SetFieldDefinitions">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,565,176,605"/>
+<area shape="poly" id="edge60_Node000001_Node000001" title=" " alt="" coords="44,566,41,556,49,546,65,541,91,539,120,542,136,549,133,554,118,547,91,544,66,546,52,551,46,557,49,564"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldInfo.html#a3d51005600e69e781c2a6bec44a35495" title="*= for BScaling." alt="" coords="224,321,463,346"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,564,110,521,136,464,173,406,196,379,222,357,234,349,237,354,226,361,200,383,177,409,141,466,115,523,100,566"/>
+<area shape="rect" id="Node000003" href="$classBDSComponentFactory.html#a2ad7ad22a0d23c5eb0a680b76a5d1aec" title="Create a transform from a tilt offset. If nullptr, returns identity transform." alt="" coords="258,371,429,411"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="102,563,149,497,183,459,223,427,247,414,249,418,225,432,187,463,153,500,106,567"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldFactory.html#a48b442f3163d23db2b805c8dc36e89fa" title="Public accessor method for singleton pattern." alt="" coords="763,435,952,461"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="127,563,172,541,223,521,292,502,363,487,505,464,638,452,748,446,749,452,638,457,506,470,364,492,293,507,225,527,174,546,130,568"/>
+<area shape="rect" id="Node000043" href="$classBDSFieldInfo.html#a7dc4fdf68997b3a59186104eaa2fe96c" title="Accessor." alt="" coords="241,651,445,677"/>
+<area shape="poly" id="edge56_Node000001_Node000043" title=" " alt="" coords="147,603,225,629,279,645,278,650,223,635,145,608"/>
+<area shape="rect" id="Node000044" href="$classBDSComponentFactory.html#af922d210cff5ce2f467fdeaafae499fc" title="Get the scaling factor for a particular outer field depending on the global and individual setting." alt="" coords="1011,183,1181,223"/>
+<area shape="poly" id="edge57_Node000001_Node000044" title=" " alt="" coords="177,595,285,606,420,612,568,607,642,599,714,585,789,569,847,552,873,540,898,523,923,501,950,472,965,450,973,430,978,391,981,350,986,328,998,303,1026,263,1058,230,1062,234,1030,266,1002,305,991,329,986,351,983,392,978,432,969,453,954,475,927,505,901,528,875,544,849,557,790,574,715,591,643,604,568,612,420,617,285,611,176,600"/>
+<area shape="rect" id="Node000045" href="$classBDSAcceleratorComponent.html#ac10335aca7b423f6fd2634c7c668ac17" title="Set the field definition for the whole component." alt="" coords="244,701,443,741"/>
+<area shape="poly" id="edge59_Node000001_Node000045" title=" " alt="" coords="114,604,162,646,193,668,225,687,241,694,239,699,223,692,190,672,159,650,110,608"/>
+<area shape="rect" id="Node000046" href="$classBDSComponentFactory.html#acb78cbbc13acafeb40ad17b333d8ed63" title=" " alt="" coords="253,536,433,576"/>
+<area shape="poly" id="edge61_Node000001_Node000046" title=" " alt="" coords="176,573,239,565,240,571,177,578"/>
+<area shape="rect" id="Node000050" href="$classBDSFieldInfo.html#a35134fdd82e120eb93b56c93eb36aa47" title="Set the beam line transform." alt="" coords="244,765,443,805"/>
+<area shape="poly" id="edge67_Node000001_Node000050" title=" " alt="" coords="105,605,123,637,151,677,185,717,226,751,235,757,233,762,222,756,181,721,146,680,119,640,100,607"/>
+<area shape="rect" id="Node000004" href="$classBDSTiltOffset.html#af1878e8d57e3a95f349cd1ac5d51cc84" title="Get a transform to represent this tilt offset." alt="" coords="513,378,713,403"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="429,388,499,388,499,393,429,393"/>
+<area shape="rect" id="Node000005" href="$classBDSTiltOffset.html#afaea269ef8fe46a8bbe9df43d16bbc31" title="More advance accessor for offset &#45; only in x,y." alt="" coords="768,378,947,403"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="713,388,754,388,754,393,713,393"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldFactory.html#ac33fb78d5178aef4462bb91d6eafb7dc" title="Private default constructor as singleton class." alt="" coords="1000,316,1192,356"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="898,433,951,412,1049,361,1051,366,953,417,900,438"/>
+<area shape="rect" id="Node000008" href="$classBDSParticleDefinition.html#a3b5bf32d304deea3883ebd9c73e6c5a6" title="Accessor." alt="" coords="1252,5,1412,45"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1120,314,1156,279,1190,233,1201,209,1206,187,1208,146,1213,105,1222,84,1238,62,1250,51,1254,55,1242,66,1227,87,1219,107,1214,146,1211,188,1206,211,1194,236,1160,282,1124,318"/>
+<area shape="rect" id="Node000009" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="1835,108,1991,148"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="1137,313,1239,264,1352,206,1403,184,1471,163,1564,144,1657,133,1822,124,1822,130,1658,138,1564,149,1473,168,1405,189,1355,211,1241,269,1139,318"/>
+<area shape="rect" id="Node000011" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="2099,198,2251,223"/>
+<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="1192,316,1240,309,1362,298,1466,294,1643,295,1728,294,1818,289,1921,278,2041,256,2089,243,2132,226,2134,231,2090,248,2042,261,1922,283,1819,295,1728,299,1643,300,1466,299,1362,303,1240,315,1193,321"/>
+<area shape="rect" id="Node000012" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="2089,298,2261,323"/>
+<area shape="poly" id="edge13_Node000007_Node000012" title=" " alt="" coords="1192,331,2075,310,2075,316,1192,336"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldFactory.html#a164fb62f8a9a06e93327d7a7a65ae698" title="Prepare all required definitions that can be used dynamically." alt="" coords="1240,697,1424,737"/>
+<area shape="poly" id="edge14_Node000007_Node000013" title=" " alt="" coords="1112,355,1314,684,1309,687,1108,358"/>
+<area shape="rect" id="Node000041" href="$classBDSFieldFactory.html#a1ceeadcf845eb83ff01f8e4dc3512f5e" title="Prepare all required modulator definitions that can be used dynamically." alt="" coords="1513,475,1697,515"/>
+<area shape="poly" id="edge52_Node000007_Node000041" title=" " alt="" coords="1153,354,1297,404,1473,460,1504,469,1503,474,1471,465,1295,409,1151,359"/>
+<area shape="rect" id="Node000010" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="2093,108,2257,148"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="1991,125,2079,125,2079,131,1991,131"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="1992,143,2042,157,2132,190,2130,195,2041,163,1991,148"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="1993,135,2019,144,2043,158,2061,176,2070,194,2078,212,2091,233,2120,262,2148,287,2145,291,2116,266,2087,236,2073,215,2065,196,2057,179,2040,162,2017,149,1991,140"/>
+<area shape="poly" id="edge35_Node000013_Node000009" title=" " alt="" coords="1333,697,1349,594,1378,446,1397,371,1418,302,1443,245,1470,207,1514,194,1604,176,1822,140,1822,145,1605,181,1515,199,1474,212,1447,248,1423,303,1402,372,1383,447,1354,595,1339,697"/>
+<area shape="rect" id="Node000014" href="$namespaceBDS.html#a721e4f4dd7877f2306620d113aff05c1" title=" " alt="" coords="1519,425,1690,450"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="1335,696,1350,648,1376,583,1416,516,1441,486,1471,460,1505,443,1508,448,1473,465,1445,490,1420,520,1381,585,1355,649,1341,698"/>
+<area shape="rect" id="Node000015" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="1861,407,1965,433"/>
+<area shape="poly" id="edge39_Node000013_Node000015" title=" " alt="" coords="1333,697,1342,637,1365,557,1383,515,1406,475,1435,439,1471,410,1519,385,1572,371,1627,365,1681,365,1734,371,1784,379,1864,400,1863,406,1782,384,1733,376,1681,371,1627,370,1573,376,1521,390,1473,414,1439,443,1411,478,1388,518,1370,559,1348,639,1338,698"/>
+<area shape="rect" id="Node000016" href="$classBDSFieldFactory.html#aa6236abca81df83e1347db05a07129dc" title="Suggest a default interpolator." alt="" coords="1513,804,1696,844"/>
+<area shape="poly" id="edge17_Node000013_Node000016" title=" " alt="" coords="1388,735,1425,754,1449,773,1473,790,1501,801,1499,806,1471,794,1446,777,1423,758,1385,740"/>
+<area shape="rect" id="Node000017" href="$namespaceBDS.html#a00d364a5bb4a5532fe544f0895817694" title="Return a std::set of reflection types. Split string on white space." alt="" coords="1491,539,1718,579"/>
+<area shape="poly" id="edge18_Node000013_Node000017" title=" " alt="" coords="1350,695,1401,645,1434,618,1471,595,1502,581,1504,586,1473,600,1438,623,1404,649,1353,699"/>
+<area shape="rect" id="Node000021" href="$namespaceBDS.html#a19dc7fa879aa8de9a7da87b9f0e6ffa5" title="Function that gives corresponding enum value for string (case&#45;insensitive)" alt="" coords="1812,605,2015,630"/>
+<area shape="poly" id="edge22_Node000013_Node000021" title=" " alt="" coords="1376,695,1421,677,1471,661,1556,644,1642,632,1798,619,1798,624,1643,637,1557,650,1473,667,1423,682,1378,700"/>
+<area shape="rect" id="Node000022" href="$namespaceBDS.html#a28a5629bb09ff602194ed2ef6d8380c4" title="Function that gives corresponding enum value for string (case&#45;insensitive)" alt="" coords="1820,654,2007,679"/>
+<area shape="poly" id="edge24_Node000013_Node000022" title=" " alt="" coords="1424,697,1472,691,1648,675,1806,667,1807,672,1649,681,1472,696,1424,703"/>
+<area shape="rect" id="Node000023" href="$namespaceBDS.html#a9a790926da679d24b447d3f638af472d" title="Function that determines enum from string (case&#45;insensitive)." alt="" coords="1495,705,1715,730"/>
+<area shape="poly" id="edge26_Node000013_Node000023" title=" " alt="" coords="1424,715,1481,715,1481,720,1424,720"/>
+<area shape="rect" id="Node000024" href="$namespaceBDS.html#a2d646a3b9dcc783b0a0231cf8a856ba0" title="Function that determines enum from string (case&#45;insensitive)." alt="" coords="1489,754,1721,779"/>
+<area shape="poly" id="edge28_Node000013_Node000024" title=" " alt="" coords="1425,731,1521,749,1520,754,1424,737"/>
+<area shape="rect" id="Node000025" href="$namespaceBDS.html#a4e4c2f64800c7da9ee8a98c7a222499f" title=" " alt="" coords="1539,222,1670,247"/>
+<area shape="poly" id="edge30_Node000013_Node000025" title=" " alt="" coords="1336,696,1352,637,1380,553,1419,458,1470,367,1495,333,1522,303,1575,254,1578,258,1526,306,1499,337,1474,369,1424,461,1385,555,1357,639,1341,698"/>
+<area shape="rect" id="Node000028" href="$classBDSFieldFactory.html#acc6128a5c7d6ff041d81796f0b5630a5" title=" " alt="" coords="1493,1196,1716,1236"/>
+<area shape="poly" id="edge34_Node000013_Node000028" title=" " alt="" coords="1405,735,1426,754,1444,783,1456,812,1463,840,1465,868,1459,921,1446,974,1434,1026,1430,1078,1433,1104,1441,1130,1454,1156,1474,1182,1484,1191,1480,1195,1470,1186,1450,1159,1436,1132,1428,1105,1425,1078,1429,1026,1441,973,1453,921,1459,867,1457,841,1451,813,1440,786,1422,758,1401,739"/>
+<area shape="rect" id="Node000029" href="$namespaceBDS.html#a19d31eefa8c6250d333d269ace5e04eb" title="Return true if the type is one containing &#39;auto&#39;." alt="" coords="1503,869,1707,894"/>
+<area shape="poly" id="edge36_Node000013_Node000029" title=" " alt="" coords="1398,735,1426,754,1437,767,1444,781,1449,807,1456,831,1462,843,1474,854,1491,865,1489,869,1470,858,1458,846,1451,833,1444,808,1439,783,1432,770,1422,758,1395,740"/>
+<area shape="rect" id="Node000031" href="$namespaceBDS.html#a01ad2cbff07231a957b8dedc9ee931ec" title=" " alt="" coords="1498,1017,1711,1057"/>
+<area shape="poly" id="edge38_Node000013_Node000031" title=" " alt="" coords="1403,735,1426,754,1446,788,1453,820,1452,852,1448,883,1444,914,1444,944,1453,974,1474,1004,1488,1015,1484,1019,1470,1007,1448,976,1439,945,1439,914,1443,883,1447,852,1448,821,1441,790,1422,758,1400,739"/>
+<area shape="rect" id="Node000032" href="$namespaceBDS.html#adc9776bf6ec2c082d206550095b2d680" title="Report the number of dimensions for that format." alt="" coords="1487,918,1723,943"/>
+<area shape="poly" id="edge40_Node000013_Node000032" title=" " alt="" coords="1401,735,1426,754,1440,774,1447,794,1449,833,1451,870,1459,888,1474,905,1479,909,1475,913,1470,909,1454,890,1446,871,1443,834,1441,795,1435,777,1422,758,1398,740"/>
+<area shape="rect" id="Node000033" href="$namespaceBDS.html#ad90ca5c56ddabbc7cfc7c5c76df832a4" title="Report the number of dimensions for that interpolator type." alt="" coords="1472,967,1737,993"/>
+<area shape="poly" id="edge42_Node000013_Node000033" title=" " alt="" coords="1402,735,1426,754,1443,781,1450,807,1450,833,1448,859,1446,884,1447,908,1456,931,1474,954,1478,957,1474,961,1470,958,1451,934,1442,909,1441,883,1443,858,1445,833,1444,808,1438,783,1422,758,1399,739"/>
+<area shape="rect" id="Node000034" href="$classBDSFieldFactory.html#a30350671e19f62cd068d74b3649ae5da" title=" " alt="" coords="1497,1081,1712,1121"/>
+<area shape="poly" id="edge44_Node000013_Node000034" title=" " alt="" coords="1404,735,1426,754,1449,796,1457,837,1455,877,1447,916,1440,954,1439,992,1449,1030,1459,1048,1474,1067,1487,1079,1484,1083,1470,1071,1454,1051,1444,1032,1434,992,1435,954,1442,915,1449,876,1452,837,1444,798,1422,758,1400,739"/>
+<area shape="rect" id="Node000040" href="$namespaceBDS.html#a2862b65e7f82e5a0d796165379f5b226" title=" " alt="" coords="1534,1146,1675,1171"/>
+<area shape="poly" id="edge51_Node000013_Node000040" title=" " alt="" coords="1404,736,1426,754,1442,780,1453,805,1459,830,1461,855,1456,903,1445,950,1436,996,1433,1041,1436,1064,1443,1086,1456,1109,1474,1131,1495,1147,1521,1156,1520,1161,1493,1152,1470,1135,1451,1112,1438,1088,1431,1065,1427,1041,1430,995,1440,948,1451,902,1456,854,1454,831,1448,807,1438,782,1422,758,1401,740"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="1690,430,1847,421,1848,426,1690,435"/>
+<area shape="rect" id="Node000018" href="$namespaceBDS.html#a6b50ec123dc33d075a943c6f56b50736" title="Function that gives corresponding enum value for string (case&#45;insensitive)" alt="" coords="1785,506,2041,531"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="1718,541,1801,530,1802,536,1719,547"/>
+<area shape="rect" id="Node000020" href="$namespaceBDS.html#ac14ed2e56cb979567c3979c34699ae15" title="Split a string on whitespace and return a vector of these &#39;words&#39;." alt="" coords="1823,555,2004,581"/>
+<area shape="poly" id="edge21_Node000017_Node000020" title=" " alt="" coords="1718,559,1809,562,1809,568,1718,565"/>
+<area shape="rect" id="Node000019" href="$namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="2111,629,2239,654"/>
+<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="2005,529,2042,542,2074,558,2104,578,2153,617,2149,622,2101,583,2072,563,2040,546,2003,534"/>
+<area shape="poly" id="edge23_Node000021_Node000019" title=" " alt="" coords="2015,624,2098,632,2097,637,2015,629"/>
+<area shape="poly" id="edge25_Node000022_Node000019" title=" " alt="" coords="2007,655,2097,646,2098,651,2007,660"/>
+<area shape="poly" id="edge27_Node000023_Node000019" title=" " alt="" coords="1715,718,1870,712,1956,704,2041,689,2090,675,2135,657,2136,662,2092,680,2042,695,1957,709,1871,718,1715,723"/>
+<area shape="poly" id="edge29_Node000024_Node000019" title=" " alt="" coords="1721,767,1794,764,1875,757,1959,743,2040,722,2099,693,2147,660,2150,665,2102,698,2042,726,1960,749,1876,762,1794,770,1721,772"/>
+<area shape="poly" id="edge32_Node000025_Node000009" title=" " alt="" coords="1669,223,1703,214,1736,200,1750,190,1759,180,1769,168,1784,158,1821,143,1823,148,1787,162,1773,172,1763,183,1754,194,1739,205,1705,219,1671,228"/>
+<area shape="rect" id="Node000026" href="$namespaceBDS.html#a2ee20fe28a8eb9195099899c97007669" title="Get the current dir the program was executed from." alt="" coords="1840,173,1987,198"/>
+<area shape="poly" id="edge31_Node000025_Node000026" title=" " alt="" coords="1670,222,1826,197,1827,202,1671,227"/>
+<area shape="rect" id="Node000027" href="$namespaceBDS.html#ad6f9730a98f75c5f79e822b02e8708d5" title=" " alt="" coords="1813,222,2014,247"/>
+<area shape="poly" id="edge33_Node000025_Node000027" title=" " alt="" coords="1670,232,1799,232,1799,237,1670,237"/>
+<area shape="rect" id="Node000030" href="$classBDSTypeSafeEnum.html#acd3d1ef0055b4af2523b6e05861f8d28" title="return underlying value (can be used in switch statement)" alt="" coords="1802,914,2025,939"/>
+<area shape="poly" id="edge37_Node000029_Node000030" title=" " alt="" coords="1692,891,1813,909,1812,915,1691,897"/>
+<area shape="poly" id="edge41_Node000032_Node000030" title=" " alt="" coords="1723,926,1788,926,1788,931,1723,932"/>
+<area shape="poly" id="edge43_Node000033_Node000030" title=" " alt="" coords="1678,965,1825,939,1826,944,1679,970"/>
+<area shape="rect" id="Node000035" href="$classBDSMagnetStrength.html#a90d22343f9f5fe3d9dce9ffd73554d17" title="Accessor to all keys." alt="" coords="1833,964,1994,1004"/>
+<area shape="poly" id="edge45_Node000034_Node000035" title=" " alt="" coords="1711,1079,1736,1067,1751,1055,1759,1041,1768,1027,1784,1014,1818,998,1820,1003,1787,1018,1772,1031,1764,1044,1755,1058,1739,1072,1713,1084"/>
+<area shape="rect" id="Node000036" href="$classBDSFieldFactory.html#a46926a125da6d3ea825814bb9d2e3afb" title="Convert the string &#39;value&#39; to a double. Throw an exception including the parameterNameForError if it ..." alt="" coords="1821,1028,2006,1068"/>
+<area shape="poly" id="edge46_Node000034_Node000036" title=" " alt="" coords="1712,1080,1806,1064,1807,1069,1713,1085"/>
+<area shape="rect" id="Node000037" href="$namespaceBDS.html#ae8da82e80a4ce09c91083b77a81ab10c" title="Take one long string and split on space and then on colon. &quot;key1:value1 key2:value2&quot; etc." alt="" coords="1807,1093,2019,1118"/>
+<area shape="poly" id="edge47_Node000034_Node000037" title=" " alt="" coords="1712,1100,1794,1101,1794,1106,1712,1105"/>
+<area shape="rect" id="Node000038" href="$classBDSMagnetStrength.html#ad765deb6b0f78ed0fd4c1f310767f229" title="Access a unit factor for a given key." alt="" coords="1819,1194,2007,1219"/>
+<area shape="poly" id="edge48_Node000034_Node000038" title=" " alt="" coords="1706,1119,1739,1132,1754,1142,1763,1153,1773,1163,1787,1172,1826,1188,1824,1193,1784,1177,1769,1167,1759,1156,1750,1146,1736,1137,1704,1124"/>
+<area shape="rect" id="Node000039" href="$classBDSMagnetStrength.html#a4064362d52ab7af2e606d83d6bb1c848" title="Whether or not the supplied key is a valid magnet strength parameter." alt="" coords="2095,1161,2256,1201"/>
+<area shape="poly" id="edge50_Node000034_Node000039" title=" " alt="" coords="1713,1117,1786,1128,2082,1167,2081,1173,1785,1133,1712,1122"/>
+<area shape="poly" id="edge49_Node000038_Node000039" title=" " alt="" coords="2007,1195,2081,1188,2081,1193,2008,1200"/>
+<area shape="poly" id="edge55_Node000041_Node000015" title=" " alt="" coords="1694,472,1736,460,1785,441,1847,427,1848,432,1786,447,1738,465,1696,477"/>
+<area shape="rect" id="Node000042" href="$namespaceBDS.html#a03b1eb3b0461e77d5294bc96bb718301" title="Function that gives corresponding enum value for string (case&#45;insensitive)" alt="" coords="1802,457,2025,482"/>
+<area shape="poly" id="edge53_Node000041_Node000042" title=" " alt="" coords="1697,484,1788,477,1789,482,1697,490"/>
+<area shape="poly" id="edge54_Node000042_Node000019" title=" " alt="" coords="2013,480,2043,492,2081,520,2114,553,2162,616,2157,619,2110,557,2077,524,2040,497,2011,484"/>
+<area shape="poly" id="edge58_Node000044_Node000009" title=" " alt="" coords="1181,191,1472,163,1821,133,1822,138,1472,168,1182,197"/>
+<area shape="rect" id="Node000047" href="$classBDSComponentFactory.html#ad4d41934377cec6c1a882f2821b856ab" title=" " alt="" coords="527,485,698,525"/>
+<area shape="poly" id="edge62_Node000046_Node000047" title=" " alt="" coords="433,537,513,521,514,526,434,542"/>
+<area shape="rect" id="Node000049" href="$classBDSFieldInfo.html#acfa7907a3d397ea62ae29df6df7f9366" title="Accessor." alt="" coords="511,550,715,575"/>
+<area shape="poly" id="edge66_Node000046_Node000049" title=" " alt="" coords="434,556,497,557,497,562,433,561"/>
+<area shape="poly" id="edge65_Node000047_Node000006" title=" " alt="" coords="698,483,788,461,790,466,699,488"/>
+<area shape="poly" id="edge63_Node000047_Node000028" title=" " alt="" coords="688,523,716,536,784,577,843,618,896,659,942,701,1022,783,1092,865,1163,947,1244,1027,1291,1066,1344,1105,1404,1144,1473,1182,1489,1189,1487,1194,1471,1186,1401,1148,1341,1110,1287,1070,1240,1031,1159,950,1088,869,1018,787,938,705,892,664,840,623,781,582,713,541,685,528"/>
+<area shape="rect" id="Node000048" href="$classBDSComponentFactory.html#a0a5670b86502644d6dd596b2adfff080" title="TBC &#45; remove when modulators are implemented fully." alt="" coords="764,812,951,852"/>
+<area shape="poly" id="edge64_Node000047_Node000048" title=" " alt="" coords="700,523,717,537,738,570,747,602,747,634,743,665,738,697,738,728,745,759,765,792,776,802,772,806,761,795,740,761,733,728,733,696,737,665,741,634,741,603,733,572,713,540,696,527"/>
+</map>

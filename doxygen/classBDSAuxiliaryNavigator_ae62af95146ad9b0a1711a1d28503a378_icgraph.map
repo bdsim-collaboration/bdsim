@@ -1,0 +1,62 @@
+<map id="BDSAuxiliaryNavigator::ConvertToLocal" name="BDSAuxiliaryNavigator::ConvertToLocal">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1037,496,1209,536"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorDipoleRodrigues.html#a1afb272e18be7814ce19b89fca66a08d" title="Calculate the new particle coordinates." alt="" coords="769,5,989,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1120,482,1116,397,1109,343,1098,284,1081,223,1058,164,1027,108,987,59,972,48,976,43,991,55,1032,105,1063,161,1086,221,1103,282,1114,342,1121,397,1125,482"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDecapole.html#af19d40795d31008a6ce9324cced44420" title="Calculate the new particle coordinates." alt="" coords="792,69,967,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1118,482,1110,408,1090,312,1073,261,1051,211,1023,164,988,123,965,108,968,104,991,119,1027,161,1056,208,1078,259,1095,310,1115,408,1123,482"/>
+<area shape="rect" id="Node000005" href="$classBDSIntegratorOctupole.html#a01ad8aadae1c730a3adbb3a1cff79c70" title="Calculate the new particle coordinates." alt="" coords="794,133,965,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1116,483,1104,420,1081,340,1064,299,1044,258,1018,220,988,187,963,172,966,167,991,183,1022,217,1048,255,1069,296,1086,339,1109,419,1121,482"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorSextupole.html#a0913399e7f95e9c7abe9da7b134d7414" title="Calculate the new particle coordinates." alt="" coords="790,197,969,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1112,484,1097,432,1072,370,1036,306,1014,277,988,251,967,238,970,234,991,247,1018,273,1041,303,1077,367,1102,430,1117,482"/>
+<area shape="rect" id="Node000007" href="$classBDSTrajectoryPoint.html#a6c133730db8eefa3acdd652c6013c94a" title=" " alt="" coords="802,261,957,301"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1107,484,1088,445,1062,400,1029,354,988,316,956,299,958,294,991,311,1033,351,1067,397,1093,443,1112,482"/>
+<area shape="rect" id="Node000008" href="$classBDSTrajectoryPoint.html#a061a3cabe9b001774ae9019f6c62af8e" title=" " alt="" coords="802,325,957,365"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1098,487,1051,432,1021,404,988,380,956,365,958,360,991,375,1024,400,1055,428,1102,483"/>
+<area shape="rect" id="Node000009" href="$classBDSAuxiliaryNavigator.html#aad3cd22756a815cb8b7736e917351ea1" title=" " alt="" coords="793,389,965,429"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1078,491,1035,467,988,444,956,432,958,427,990,439,1038,462,1081,486"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldEGlobal.html#a9c599d93acc4af9d05ac63e895857405" title=" " alt="" coords="783,454,975,479"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1023,499,942,482,943,477,1024,493"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldEMGlobal.html#a8393f29e5763d58608d7c963f634f8ac" title=" " alt="" coords="777,503,981,529"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1024,519,981,519,981,513,1024,513"/>
+<area shape="rect" id="Node000014" href="$classBDSFieldMagGlobal.html#ae48afe211b81647d601144ce837bfea7" title=" " alt="" coords="800,553,959,593"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1025,542,960,557,958,552,1024,537"/>
+<area shape="rect" id="Node000016" href="$classBDSAuxiliaryNavigator.html#a2301be23a5e3eb9f06e33b06ceed4bd0" title=" " alt="" coords="793,617,965,657"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="1088,547,1043,578,990,608,960,620,959,615,988,603,1040,574,1085,542"/>
+<area shape="rect" id="Node000024" href="$classBDSSDApertureImpacts.html#a2f427ce33db67c0479afaf73bcdd84a7" title=" " alt="" coords="792,681,967,721"/>
+<area shape="poly" id="edge24_Node000001_Node000024" title=" " alt="" coords="1105,549,1058,611,1026,644,991,672,968,684,965,679,988,667,1023,640,1054,608,1101,546"/>
+<area shape="rect" id="Node000025" href="$classBDSSDEnergyDeposition.html#a6b6b5911ea055faf41bd43b0cf2a0f41" title=" " alt="" coords="788,745,971,785"/>
+<area shape="poly" id="edge25_Node000001_Node000025" title=" " alt="" coords="1113,550,1095,592,1069,642,1034,693,991,735,971,747,969,743,988,731,1030,689,1065,640,1090,590,1108,548"/>
+<area shape="rect" id="Node000026" href="$classBDSSDCollimator.html#aaa286f700019550b8ee3b1e92fe8d3b1" title=" " alt="" coords="783,809,976,849"/>
+<area shape="poly" id="edge26_Node000001_Node000026" title=" " alt="" coords="1118,550,1104,604,1079,671,1042,740,1019,772,991,799,973,811,970,807,988,795,1015,768,1038,737,1074,669,1099,603,1113,549"/>
+<area shape="rect" id="Node000028" href="$classBDSSDEnergyDeposition.html#afea8a8b31b3489ea630aea9839d106f6" title=" " alt="" coords="788,873,971,913"/>
+<area shape="poly" id="edge28_Node000001_Node000028" title=" " alt="" coords="1121,550,1111,616,1088,700,1071,744,1050,788,1023,828,991,863,972,876,969,872,988,859,1019,825,1045,785,1066,742,1083,699,1105,615,1116,549"/>
+<area shape="rect" id="Node000029" href="$classBDSIntegratorKickerThin.html#a8e26a8c35bbf449d5dbb8aa7554ff0ea" title="The stepper for integration." alt="" coords="789,937,970,977"/>
+<area shape="poly" id="edge29_Node000001_Node000029" title=" " alt="" coords="1124,550,1117,627,1097,728,1080,782,1057,835,1028,884,991,927,972,941,969,937,988,923,1024,881,1052,832,1075,780,1092,727,1111,626,1119,550"/>
+<area shape="rect" id="Node000030" href="$classBDSIntegratorMultipoleThin.html#ab0c1e98ddd2babdacf8b89a799f83d16" title=" " alt="" coords="778,1001,981,1041"/>
+<area shape="poly" id="edge30_Node000001_Node000030" title=" " alt="" coords="1126,550,1122,638,1116,694,1105,756,1088,819,1065,881,1033,940,991,991,976,1003,972,999,987,987,1028,937,1060,879,1083,817,1100,755,1111,693,1117,637,1120,550"/>
+<area shape="rect" id="Node000003" href="$classBDSIntegratorDipoleRodrigues.html#a39052dea9cd2cf5911499f392158f5d0" title=" " alt="" coords="496,5,716,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="755,28,716,28,716,23,755,23"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldEGlobal.html#aea875fcce81d30e7f5ab5a24c15093ac" title=" " alt="" coords="510,375,702,415"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="807,453,769,444,721,429,679,417,681,412,722,424,770,439,808,448"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldEMGlobal.html#ae5393d7ac6d51b74060f17ddab1584d9" title=" " alt="" coords="504,439,708,479"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="804,503,701,481,702,476,805,498"/>
+<area shape="rect" id="Node000015" href="$classBDSFieldMagGlobal.html#abd7761ce80910afbcabad688d03f76ad" title=" " alt="" coords="527,503,685,543"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="786,559,685,540,686,535,787,554"/>
+<area shape="rect" id="Node000017" href="$classBDSIntegratorDipoleFringe.html#aaff6b07b64bceaa2c260372a696373a7" title=" " alt="" coords="248,589,443,629"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="782,617,721,608,657,603,606,604,491,608,443,609,443,604,491,603,606,598,657,598,722,603,782,612"/>
+<area shape="rect" id="Node000020" href="$classBDSIntegratorDipoleFringe.html#afbf09d985a079577f9408f24bf77ace4" title=" " alt="" coords="509,617,703,657"/>
+<area shape="poly" id="edge19_Node000016_Node000020" title=" " alt="" coords="780,640,704,640,704,635,780,635"/>
+<area shape="rect" id="Node000021" href="$classBDSIntegratorDipoleQuadrupole.html#a27229460bc6feb95ca999d832498f0ac" title=" " alt="" coords="491,681,721,721"/>
+<area shape="poly" id="edge21_Node000016_Node000021" title=" " alt="" coords="781,663,693,684,691,679,779,658"/>
+<area shape="rect" id="Node000022" href="$classBDSIntegratorQuadrupole.html#a071058eb0a85f92dc4bcf17b7534f741" title=" " alt="" coords="512,745,700,785"/>
+<area shape="poly" id="edge22_Node000016_Node000022" title=" " alt="" coords="782,665,771,671,756,687,748,703,739,719,723,735,701,747,699,743,720,731,735,716,743,700,751,683,768,667,779,660"/>
+<area shape="rect" id="Node000023" href="$classBDSIntegratorSolenoid.html#a0698f1856a369f82b3536e249124debb" title="Calculate the particle motion along step length l in the paraxial approximation." alt="" coords="521,809,691,849"/>
+<area shape="poly" id="edge23_Node000016_Node000023" title=" " alt="" coords="783,662,771,671,759,686,752,702,748,734,744,767,737,783,723,799,692,818,689,814,720,795,732,780,739,765,743,733,747,700,754,684,767,667,780,658"/>
+<area shape="rect" id="Node000018" href="$classBDSIntegratorDipoleFringe.html#aca9d25a8039e726d92cd8b73dc166233" title="The stepper for integration. Calls base class stepper." alt="" coords="5,557,200,597"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="234,597,200,593,201,588,235,592"/>
+<area shape="rect" id="Node000019" href="$classBDSIntegratorDipoleFringeScaling.html#af99a3f3c60588ef5ad617567f41942bf" title=" " alt="" coords="5,621,200,661"/>
+<area shape="poly" id="edge18_Node000017_Node000019" title=" " alt="" coords="235,627,201,631,200,626,234,621"/>
+<area shape="poly" id="edge20_Node000020_Node000017" title=" " alt="" coords="495,628,443,622,443,617,495,623"/>
+<area shape="rect" id="Node000027" href="$classBDSSDCollimator.html#a8dc8f61f3f10bf0096626bbce5c9d003" title=" " alt="" coords="497,874,715,899"/>
+<area shape="poly" id="edge27_Node000026_Node000027" title=" " alt="" coords="771,855,668,877,667,871,770,850"/>
+</map>

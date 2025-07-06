@@ -1,0 +1,23 @@
+<map id="BDSFieldLoaderPoisson::LoadMag2D" name="BDSFieldLoaderPoisson::LoadMag2D">
+<area shape="rect" id="Node000001" title="Load the 2D array of 3&#45;Vector field values." alt="" coords="1595,69,1769,109"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldLoader.html#a1c9b9e5decb661e7728d2e9fb634bff4" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="1333,69,1547,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1581,92,1547,92,1547,87,1581,87"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldLoader.html#a43e0175f50fd494d0576453d4af75889" title="Load a 2D poisson superfish B field map." alt="" coords="1072,5,1285,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1344,69,1260,48,1261,43,1345,63"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldLoader.html#aad0053524e562b9aa1526eae5f6b62ff" title=" " alt="" coords="1072,69,1285,109"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="1319,92,1286,92,1286,87,1319,87"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldLoader.html#a6792b328ec98c9632b98ff693dd81fc3" title=" " alt="" coords="1072,133,1285,173"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="1345,115,1261,136,1260,131,1344,110"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldLoader.html#a9d7eea0510b0e67f797675b1c94ce92f" title="Main interface to load a magnetic field." alt="" coords="801,77,1024,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1082,51,967,79,966,74,1081,46"/>
+<area shape="poly" id="edge8_Node000004_Node000004" title=" " alt="" coords="959,68,957,63,949,59,913,55,885,57,870,62,867,68,874,75,870,78,861,68,866,58,883,52,913,50,950,54,960,59,964,65"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldFactory.html#abe272e95f65e31e32fd8af19397eb93d" title="Creat just the magnetic field object." alt="" coords="545,69,753,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="788,92,753,92,753,87,788,87"/>
+<area shape="poly" id="edge7_Node000005_Node000005" title=" " alt="" coords="694,58,678,51,649,48,624,50,609,55,603,61,606,68,601,70,598,60,606,50,623,45,649,43,680,46,696,53"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldFactory.html#aa596ea76ebc79f07a624bc3f71accac7" title="Create a purely magnetic field." alt="" coords="261,77,497,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="531,92,497,92,497,87,531,87"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldFactory.html#a4ddc6a455c87ea0ed853cf870512a4da" title="Main interface to field factory." alt="" coords="5,77,213,102"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="248,92,213,92,213,87,248,87"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="1058,92,1024,92,1024,87,1058,87"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="1081,133,966,105,967,99,1082,128"/>
+</map>

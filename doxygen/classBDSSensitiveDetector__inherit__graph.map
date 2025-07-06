@@ -1,0 +1,21 @@
+<map id="BDSSensitiveDetector" name="BDSSensitiveDetector">
+<area shape="rect" id="Node000001" title="Virtual class to define interface for ordered multi&#45;sensitive detector." alt="" coords="784,119,977,284"/>
+<area shape="rect" id="Node000003" href="$classBDSSDCollimator.html" title="The sensitive detector class that provides sensitivity to collimators instances." alt="" coords="5,569,172,915"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="771,211,617,225,443,248,360,264,286,284,226,307,185,334,163,358,145,384,117,443,99,506,90,569,84,568,94,505,112,441,140,382,159,355,182,330,224,302,284,279,359,259,442,243,616,219,770,206"/>
+<area shape="rect" id="Node000004" href="$classBDSSDEnergyDeposition.html" title="Generates BDSHitsEnergyDepositions from step information &#45; uses curvilinear coords." alt="" coords="196,572,405,912"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="770,207,684,217,590,238,543,255,498,276,456,302,419,334,397,359,378,386,348,446,327,509,313,572,308,571,321,508,343,443,373,383,392,355,415,330,453,298,495,271,541,250,588,233,683,211,769,201"/>
+<area shape="rect" id="Node000005" href="$classBDSSDEnergyDepositionGlobal.html" title="Generates BDSHitsEnergyDepositionGlobal from step information." alt="" coords="429,332,681,1152"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="774,263,732,295,696,334,684,351,679,348,692,330,728,291,771,259"/>
+<area shape="rect" id="Node000006" href="$classBDSSDSampler.html" title="The sensitive detector class that provides sensitivity to BDSSampler instances." alt="" coords="706,629,855,855"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="866,298,804,630,799,629,860,297"/>
+<area shape="rect" id="Node000007" href="$classBDSSDSamplerCylinder.html" title="The sensitive detector class that provides sensitivity to BDSSamplerCylinder instances." alt="" coords="879,629,1082,855"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="901,297,963,629,957,630,896,298"/>
+<area shape="rect" id="Node000008" href="$classBDSSDSamplerLink.html" title="The sensitive detector class that provides sensitivity to BDSSamplerLink instances." alt="" coords="1107,589,1297,895"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="991,246,1048,282,1074,305,1096,330,1133,391,1160,457,1180,524,1192,589,1187,590,1174,525,1155,458,1128,393,1092,334,1070,309,1044,286,988,250"/>
+<area shape="rect" id="Node000009" href="$classBDSSDSamplerSphere.html" title="The sensitive detector class that provides sensitivity to BDSSamplerSphere instances." alt="" coords="1321,629,1515,855"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="992,204,1071,216,1157,238,1199,255,1240,275,1278,300,1312,330,1338,362,1360,398,1378,436,1392,475,1411,555,1420,629,1414,630,1406,556,1387,477,1373,438,1356,400,1334,365,1308,334,1275,304,1237,280,1197,259,1155,243,1070,221,991,209"/>
+<area shape="rect" id="Node000010" href="$classBDSSDThinThing.html" title="The sensitive detector class that provides sensitivity to record thin thing hits." alt="" coords="1539,569,1705,915"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="991,208,1134,222,1293,247,1369,263,1436,282,1491,304,1529,330,1551,355,1570,382,1598,442,1616,505,1626,569,1621,570,1611,507,1593,444,1565,385,1547,358,1526,334,1488,309,1434,287,1367,268,1292,252,1133,228,991,213"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="802,5,959,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="883,84,883,118,878,118,878,84"/>
+</map>

@@ -1,0 +1,28 @@
+<map id="BDSMultilayerScreen::AddScreenLayer" name="BDSMultilayerScreen::AddScreenLayer">
+<area shape="rect" id="Node000001" title="Add a premade screen layer &#45; retains ownership of layer." alt="" coords="5,233,164,273"/>
+<area shape="rect" id="Node000002" href="$classBDSScreenLayer.html#a322bba77b1307030854e1bc066b01c30" title="Make this plane a sampling plane." alt="" coords="212,166,447,191"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,231,211,200,242,192,244,197,213,205,131,236"/>
+<area shape="rect" id="Node000010" href="$classBDSColourWheel.html#a82b19afe1b87e59d0895fea112c4a606" title="Return current colour." alt="" coords="238,215,421,241"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="164,242,224,236,224,242,165,248"/>
+<area shape="rect" id="Node000011" href="$classBDSScreenLayer.html#a66c374a37ceb6fe676eae08ca8e0cbe8" title="Accessor." alt="" coords="230,265,429,290"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="164,258,217,264,216,269,164,264"/>
+<area shape="rect" id="Node000012" href="$classBDSColourWheel.html#a7bc62fff7e23651ab6283843733a5991" title="Iterate colour choice from RGB." alt="" coords="245,314,413,339"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="133,271,213,300,245,308,243,314,211,305,131,276"/>
+<area shape="rect" id="Node000003" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="505,73,661,113"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="367,163,510,115,511,120,369,168"/>
+<area shape="rect" id="Node000007" href="$classBDSSamplerRegistry.html#a8ab60000257f2826431f7505b1d62bc8" title="Accessor for registry." alt="" coords="505,159,662,199"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="447,176,491,176,491,181,447,181"/>
+<area shape="rect" id="Node000009" href="$classBDSSamplerRegistry.html#aef08119ea09cfeddade12fcd5ce1bac6" title=" " alt="" coords="505,247,662,287"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="406,189,448,200,493,218,535,238,533,243,491,223,446,205,405,194"/>
+<area shape="rect" id="Node000004" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="724,5,888,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="649,71,726,47,728,52,650,76"/>
+<area shape="rect" id="Node000005" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="730,70,882,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="661,87,716,84,716,90,662,92"/>
+<area shape="rect" id="Node000006" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="720,119,892,145"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="662,104,719,114,719,120,661,109"/>
+<area shape="rect" id="Node000008" href="$classBDSSamplerRegistry.html#adf923639c77f775de1c1638818bc6554" title="Private constructor to enforce singleton pattern." alt="" coords="723,169,889,209"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="662,180,710,182,709,187,662,185"/>
+<area shape="poly" id="edge9_Node000009_Node000009" title=" " alt="" coords="542,247,539,237,546,228,561,222,583,220,609,223,623,230,621,235,608,228,583,225,562,227,549,232,545,238,547,246"/>
+<area shape="rect" id="Node000013" href="$classBDSColourWheel.html#a158866784ccc0ccbb1c8fc0d4104e5db" title="Start sequence again." alt="" coords="495,314,672,339"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="414,324,481,324,481,329,414,329"/>
+</map>

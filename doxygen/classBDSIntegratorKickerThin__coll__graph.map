@@ -1,0 +1,26 @@
+<map id="BDSIntegratorKickerThin" name="BDSIntegratorKickerThin">
+<area shape="rect" id="Node000001" title="Integrator for thin h or v kick." alt="" coords="217,2348,426,2793"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorMag.html" title="Common functionality to BDSIM integrators." alt="" coords="174,875,407,1300"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,1314,319,2348,314,2348,293,1314"/>
+<area shape="rect" id="Node000009" href="$classBDSIntegratorMultipoleThin.html" title="Integrator that ignores the field and uses the analytical solution to a multipole." alt="" coords="360,1377,589,1563"/>
+<area shape="poly" id="edge11_Node000009_Node000002" title=" " alt="" coords="402,1312,433,1376,428,1378,397,1314"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="291,383,466,448"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="375,462,321,875,316,874,370,461"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="555,353,725,478"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="625,492,603,566,573,653,532,743,481,827,466,843,452,853,437,862,422,876,410,891,405,888,418,873,434,858,449,848,462,839,477,824,527,740,568,651,598,565,620,491"/>
+<area shape="rect" id="Node000007" href="$classBDSIntegratorDipoleRodrigues2.html" title="Exact helix through pure dipole field." alt="" coords="764,955,1020,1220"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="671,490,845,954,840,956,666,492"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="5,5,267,825"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="236,838,244,874,239,875,231,840"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorDipoleFringe.html" title="Integrator that ignores the field and uses the analytical solution for a dipole kick." alt="" coords="354,1625,577,2271"/>
+<area shape="poly" id="edge9_Node000006_Node000005" title=" " alt="" coords="116,839,119,953,127,1069,142,1186,164,1299,201,1423,249,1545,302,1660,356,1762,352,1764,298,1662,244,1547,196,1425,159,1301,136,1187,122,1070,114,953,110,840"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="393,2271,379,2333,374,2331,388,2270"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="823,1234,579,1724,574,1721,818,1232"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="815,383,969,448"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="895,462,895,954,889,954,889,462"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="476,1563,475,1609,469,1609,470,1563"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="604,1055,740,1120"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="665,1121,637,1204,594,1301,556,1365,551,1362,590,1299,632,1202,660,1119"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="431,1055,579,1120"/>
+<area shape="poly" id="edge13_Node000009_Node000011" title=" " alt="" coords="505,1121,486,1361,481,1361,500,1120"/>
+</map>

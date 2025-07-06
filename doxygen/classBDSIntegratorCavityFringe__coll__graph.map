@@ -1,0 +1,17 @@
+<map id="BDSIntegratorCavityFringe" name="BDSIntegratorCavityFringe">
+<area shape="rect" id="Node000001" title="Integrator for RF cavity fringes. Only the transverse momentum kicks are applied, this integrator wil..." alt="" coords="297,1737,520,1903"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorRMatrixThin.html" title="Integrator that just moves the particle parallel to the s axis." alt="" coords="179,1349,399,1675"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="360,1687,379,1736,374,1738,355,1689"/>
+<area shape="rect" id="Node000003" href="$classBDSIntegratorMag.html" title="Common functionality to BDSIM integrators." alt="" coords="172,875,405,1300"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,1314,291,1349,286,1349,286,1314"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,383,180,448"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="104,461,140,622,194,825,210,874,205,875,189,826,135,624,99,462"/>
+<area shape="rect" id="Node000005" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="204,353,373,478"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="291,492,291,874,286,874,286,492"/>
+<area shape="rect" id="Node000006" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="398,5,659,825"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="396,802,387,826,369,875,364,874,382,824,391,801"/>
+<area shape="rect" id="Node000007" href="$classBDSMagUsualEqRhs.html" title="Override G4Mag_UsualEqRhs, provides BDSIM integrators access to particle attributes." alt="" coords="423,1389,637,1635"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="484,1636,450,1723,445,1721,479,1634"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="458,1055,602,1120"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="533,1134,533,1389,527,1389,527,1134"/>
+</map>

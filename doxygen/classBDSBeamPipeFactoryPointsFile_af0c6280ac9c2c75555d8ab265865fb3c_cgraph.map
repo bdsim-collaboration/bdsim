@@ -1,0 +1,35 @@
+<map id="BDSBeamPipeFactoryPointsFile::GeneratePoints" name="BDSBeamPipeFactoryPointsFile::GeneratePoints">
+<area shape="rect" id="Node000001" title="Purely to fulfill interface &#45; should not be used!" alt="" coords="5,149,208,189"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamPipeFactoryPointsFile.html#a6425df0abb13f5a2c160eba81a881fea" title="Calculate the determinant of 2x G4TwoVectors." alt="" coords="256,120,459,160"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,155,242,151,243,156,208,160"/>
+<area shape="rect" id="Node000003" href="$namespaceBDS.html#a83a807d63844ef871530f3b6a681351f" title=" " alt="" coords="265,185,449,210"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,178,252,183,251,188,208,183"/>
+<area shape="rect" id="Node000004" href="$classBDSAperturePointsCache.html#a1b52c9b0ba0c58081f432a8fb71a7c6c" title="Add an entry to the cache." alt="" coords="509,5,695,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="437,182,457,170,469,157,476,143,481,115,485,85,492,70,505,55,510,51,514,55,509,59,497,73,491,87,486,116,481,145,473,160,460,174,440,187"/>
+<area shape="rect" id="Node000005" href="$namespaceBDS.html#aa689cdffef91f8626aded351ac2760c6" title="Checks if filename exists." alt="" coords="543,70,661,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="432,182,457,170,472,155,480,139,489,122,505,106,528,94,531,99,508,110,493,125,485,141,477,158,460,174,434,187"/>
+<area shape="rect" id="Node000006" href="$classBDSAperturePointsCache.html#af19e06b68636a583b0fd2ed388798f13" title="Retrieve a cached files. Will return nullptr if not found." alt="" coords="509,120,695,160"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="412,182,502,161,504,166,413,187"/>
+<area shape="rect" id="Node000007" href="$namespaceBDS.html#a4e4c2f64800c7da9ee8a98c7a222499f" title=" " alt="" coords="537,185,667,210"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="449,195,523,195,523,200,449,200"/>
+<area shape="rect" id="Node000014" href="$classBDSAperturePointsCache.html#a838d885c110d64bf8178e7d25b94bfc0" title="Access the singleton instance." alt="" coords="509,235,695,275"/>
+<area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="413,207,504,229,502,234,412,213"/>
+<area shape="rect" id="Node000015" href="$classBDSAperturePointsLoader.html#a2b2cad686336f4fe6cc7a933e44e67c5" title=" " alt="" coords="507,299,697,339"/>
+<area shape="poly" id="edge14_Node000003_Node000015" title=" " alt="" coords="379,208,435,245,508,284,524,291,522,296,505,289,432,249,376,212"/>
+<area shape="rect" id="Node000017" href="$namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="538,363,666,389"/>
+<area shape="poly" id="edge16_Node000003_Node000017" title=" " alt="" coords="369,209,423,276,463,315,508,348,526,357,523,362,505,353,459,319,419,279,365,212"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#a2ee20fe28a8eb9195099899c97007669" title="Get the current dir the program was executed from." alt="" coords="773,127,919,153"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="656,182,778,153,779,158,658,187"/>
+<area shape="rect" id="Node000009" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="768,177,924,217"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="667,195,754,195,754,200,667,200"/>
+<area shape="rect" id="Node000013" href="$namespaceBDS.html#ad6f9730a98f75c5f79e822b02e8708d5" title=" " alt="" coords="745,242,947,267"/>
+<area shape="poly" id="edge12_Node000007_Node000013" title=" " alt="" coords="658,207,779,236,778,241,656,213"/>
+<area shape="rect" id="Node000010" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="999,120,1163,160"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="924,176,985,161,986,166,925,181"/>
+<area shape="rect" id="Node000011" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="1005,185,1157,210"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="925,195,991,195,991,200,925,200"/>
+<area shape="rect" id="Node000012" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="995,234,1167,259"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="925,211,1007,229,1006,234,924,216"/>
+<area shape="rect" id="Node000016" href="$namespaceBDS.html#ac14ed2e56cb979567c3979c34699ae15" title="Split a string on whitespace and return a vector of these &#39;words&#39;." alt="" coords="755,306,937,331"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="698,316,741,316,741,321,698,321"/>
+</map>

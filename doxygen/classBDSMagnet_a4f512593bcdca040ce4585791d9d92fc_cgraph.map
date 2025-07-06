@@ -1,0 +1,23 @@
+<map id="BDSMagnet::BuildVacuumField" name="BDSMagnet::BuildVacuumField">
+<area shape="rect" id="Node000001" title="Construct the field for the vacuum and attach it." alt="" coords="5,175,228,201"/>
+<area shape="rect" id="Node000002" href="$classBDSGeometryComponent.html#a1cc97e68291b831189d85859b7e85a11" title="Accessor &#45; see member for more info." alt="" coords="547,5,757,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,173,185,114,227,81,275,55,339,34,406,22,472,16,533,15,533,20,473,22,407,27,341,40,277,60,230,85,188,118,131,177"/>
+<area shape="rect" id="Node000003" href="$classBDSBeamPipe.html#acd1963a51f524e92089e45b47c875780" title=" " alt="" coords="276,69,499,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,173,275,119,298,111,300,116,277,124,147,178"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldBuilder.html#afce98b06b6c3ba5d798462a6a7f663fb" title="Singleton pattern accessor." alt="" coords="293,134,482,159"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="200,173,290,159,291,164,201,178"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldBuilder.html#a7885f5d18908c75b768ee6353bfcbd64" title=" " alt="" coords="293,208,481,248"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="204,198,280,209,279,215,203,203"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldInfo.html#a94c3cfeb3c80fcd532707379e5816224" title="Set the field definition transform." alt="" coords="288,273,487,298"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="143,198,203,228,277,257,309,267,307,272,275,263,201,233,141,203"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldInfo.html#aa3d2a4f48e8e43410b8010937200e8f8" title="Transform for the field definition only." alt="" coords="298,322,477,347"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="132,199,191,252,232,283,277,308,295,315,293,320,275,313,229,287,188,256,128,203"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="470,67,555,46,556,51,471,72"/>
+<area shape="rect" id="Node000004" href="$classBDSGeometryComponent.html#a78506c1d15b5f0cfbde0d534df0b7b1b" title="Access all logical volumes belonging to this component." alt="" coords="557,69,747,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="499,87,544,87,544,92,499,92"/>
+<area shape="rect" id="Node000005" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="600,134,704,159"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="481,107,587,130,586,135,480,112"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldBuilder.html#ae610d8ed05bdf76f422deabe130fccbb" title="Private default constructor to enforce singleton pattern." alt="" coords="556,184,748,224"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="447,157,547,178,545,184,446,162"/>
+<area shape="poly" id="edge9_Node000008_Node000008" title=" " alt="" coords="338,208,335,198,343,189,361,183,387,181,418,184,435,191,432,196,417,189,387,187,362,189,346,193,341,199,343,207"/>
+</map>

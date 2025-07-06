@@ -1,0 +1,17 @@
+<map id="BDSIntegratorEulerOld" name="BDSIntegratorEulerOld">
+<area shape="rect" id="Node000001" title="Common functionality for Euler integrators." alt="" coords="232,1347,428,1492"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorDecapole.html" title="Integrator for Decapolar field." alt="" coords="5,1540,207,1665"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="233,1503,184,1542,181,1538,229,1499"/>
+<area shape="rect" id="Node000007" href="$classBDSIntegratorOctupole.html" title="Integrator for octupole field." alt="" coords="231,1540,429,1665"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="333,1506,333,1540,327,1540,327,1506"/>
+<area shape="rect" id="Node000008" href="$classBDSIntegratorSextupole.html" title="Integrator for sextupole field." alt="" coords="454,1540,659,1665"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="432,1499,481,1538,478,1542,429,1503"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorMag.html" title="Common functionality to BDSIM integrators." alt="" coords="213,873,447,1299"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,1313,333,1346,327,1346,327,1313"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="47,383,221,448"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="146,461,181,622,235,825,251,872,246,874,230,826,176,624,140,462"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="245,353,415,478"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="333,492,333,873,327,873,327,492"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="439,5,701,825"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="437,806,430,826,412,874,407,872,425,824,432,805"/>
+</map>

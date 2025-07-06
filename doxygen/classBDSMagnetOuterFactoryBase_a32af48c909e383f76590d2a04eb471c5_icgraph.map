@@ -1,0 +1,41 @@
+<map id="BDSMagnetOuterFactoryBase::CreateLogicalVolumes" name="BDSMagnetOuterFactoryBase::CreateLogicalVolumes">
+<area shape="rect" id="Node000001" title=" " alt="" coords="867,517,1080,557"/>
+<area shape="rect" id="Node000002" href="$classBDSMagnetOuterFactoryCylindrical.html#a713bf7465bea498496175b3a5b397423" title=" " alt="" coords="568,357,819,397"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="924,513,728,400,731,395,927,508"/>
+<area shape="rect" id="Node000014" href="$classBDSMagnetOuterFactoryPolesBase.html#a4f7870f530677792138f0536777b42a9" title=" " alt="" coords="585,549,801,589"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="853,554,802,560,801,554,852,548"/>
+<area shape="rect" id="Node000003" href="$classBDSMagnetOuterFactoryCylindrical.html#a6bb12f8658486e22ded163e4ac326fb3" title="decapole outer volume" alt="" coords="269,5,520,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="681,345,662,283,629,206,607,166,582,127,552,91,518,59,500,48,503,43,522,55,556,87,586,123,612,163,634,203,667,281,686,343"/>
+<area shape="rect" id="Node000004" href="$classBDSMagnetOuterFactoryCylindrical.html#a026ab7c8ff42d3dd4509d125a3e0bdd8" title="horizontal and vertical kicker outer volume" alt="" coords="269,69,520,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="677,346,654,296,619,236,574,175,548,147,518,124,498,112,500,107,522,119,551,143,578,171,624,233,659,294,682,344"/>
+<area shape="rect" id="Node000005" href="$classBDSMagnetOuterFactoryCylindrical.html#a2ef73eb7ebff4c54a0199490bdc3b129" title="general multipole outer volume &#45; could be any 2N order multipole" alt="" coords="269,133,520,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="670,347,644,309,609,266,567,224,519,188,494,176,497,171,521,183,570,220,613,263,648,306,674,344"/>
+<area shape="rect" id="Node000006" href="$classBDSMagnetOuterFactoryCylindrical.html#a0fdd088c7d9438e49c038bfad488432a" title="muon spoiler outer volume" alt="" coords="269,197,520,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="659,350,596,299,559,274,519,252,489,240,491,235,521,247,561,269,600,295,662,346"/>
+<area shape="rect" id="Node000007" href="$classBDSMagnetOuterFactoryCylindrical.html#aceba94b4c430cdf8427ad4f8bc0c81c7" title="octupole outer volume" alt="" coords="269,261,520,301"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="629,355,519,316,478,304,480,299,521,311,631,350"/>
+<area shape="rect" id="Node000008" href="$classBDSMagnetOuterFactoryCylindrical.html#aafd19c9e57585452d14a831294d98263" title="quadrupole outer volume" alt="" coords="269,325,520,365"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="554,365,520,361,521,356,555,360"/>
+<area shape="rect" id="Node000009" href="$classBDSMagnetOuterFactoryCylindrical.html#a20d66ad43d6d454b8c5d8699781f2113" title="rectangular bend outer volume" alt="" coords="269,389,520,429"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="555,395,521,399,520,393,554,390"/>
+<area shape="rect" id="Node000010" href="$classBDSMagnetOuterFactoryCylindrical.html#adf8fb7304200af8cf31b575af357fe03" title="RF cavity outer volume." alt="" coords="269,453,520,493"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="631,405,521,444,480,456,478,451,519,439,629,400"/>
+<area shape="rect" id="Node000011" href="$classBDSMagnetOuterFactoryCylindrical.html#a389c4090b1c5b3c0b5a1d1740e975334" title="sector bend outer volume" alt="" coords="269,517,520,557"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="662,409,600,460,561,485,521,508,491,520,489,515,519,503,559,481,596,455,659,405"/>
+<area shape="rect" id="Node000012" href="$classBDSMagnetOuterFactoryCylindrical.html#a1a0c366c5bb1a67f2ee22a43c44c8587" title="sextupole outer volume" alt="" coords="269,581,520,621"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="674,411,648,448,613,492,570,535,521,572,497,584,494,579,519,567,567,531,609,488,644,445,670,408"/>
+<area shape="rect" id="Node000013" href="$classBDSMagnetOuterFactoryCylindrical.html#a92da27885998349cfff4b3f3d6ec7bbf" title="solenoid outer volume" alt="" coords="269,645,520,685"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="668,409,620,468,570,539,558,566,551,590,542,613,522,635,503,648,500,643,518,631,537,610,546,588,552,564,566,536,616,465,663,406"/>
+<area shape="rect" id="Node000015" href="$classBDSMagnetOuterFactoryPolesBase.html#af3478b82e85bae4d3cc1ab98d00626f1" title="Common construction tasks to all methods &#45; assemble yoke and poles in container." alt="" coords="287,709,503,749"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="662,601,600,652,561,677,521,700,491,712,489,707,519,695,559,673,596,647,659,597"/>
+<area shape="rect" id="Node000016" href="$classBDSMagnetOuterFactoryPolesSquare.html#a8df1cac3c2adbdd1cb3d1e8ea1565093" title=" " alt="" coords="5,581,221,621"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="278,706,268,699,251,683,243,667,235,651,220,635,199,624,202,619,223,631,239,648,248,664,256,680,271,695,281,701"/>
+<area shape="rect" id="Node000017" href="$classBDSMagnetOuterFactoryPolesBase.html#a53a13abc5a1494a5ad6ec4cb39b82a29" title="decapole outer volume" alt="" coords="5,645,221,685"/>
+<area shape="poly" id="edge16_Node000015_Node000017" title=" " alt="" coords="292,709,201,688,202,683,293,704"/>
+<area shape="rect" id="Node000018" href="$classBDSMagnetOuterFactoryPolesBase.html#af01ee4e9e1a7580533a4f400eee1fac6" title="octupole outer volume" alt="" coords="5,709,221,749"/>
+<area shape="poly" id="edge17_Node000015_Node000018" title=" " alt="" coords="273,732,222,732,222,727,273,727"/>
+<area shape="rect" id="Node000019" href="$classBDSMagnetOuterFactoryPolesBase.html#ae9a2a53b37ba3b29098d9b169a52803f" title="quadrupole outer volume" alt="" coords="5,773,221,813"/>
+<area shape="poly" id="edge18_Node000015_Node000019" title=" " alt="" coords="293,755,202,776,201,771,292,750"/>
+<area shape="rect" id="Node000020" href="$classBDSMagnetOuterFactoryPolesBase.html#a7c1d233eefeae326e74be8c0844f2e24" title="sextupole outer volume" alt="" coords="5,837,221,877"/>
+<area shape="poly" id="edge19_Node000015_Node000020" title=" " alt="" coords="352,759,292,794,222,828,190,840,188,835,220,823,289,789,349,754"/>
+</map>

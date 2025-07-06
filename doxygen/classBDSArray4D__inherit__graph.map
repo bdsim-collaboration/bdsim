@@ -1,0 +1,29 @@
+<map id="BDSArray4D" name="BDSArray4D">
+<area shape="rect" id="Node000001" title="4D array and base class for 3,2 &amp; 1D arrays." alt="" coords="329,5,459,651"/>
+<area shape="rect" id="Node000002" href="$classBDSArray3D.html" title="3D array class." alt="" coords="238,1559,369,1664"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="373,665,310,1559,304,1558,368,664"/>
+<area shape="rect" id="Node000005" href="$classBDSArray4DCoords.html" title="Overlay of 4D array that provides uniform only spatial coordinate mapping." alt="" coords="393,699,579,2524"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="421,664,423,698,418,699,415,665"/>
+<area shape="rect" id="Node000003" href="$classBDSArray2D.html" title="2D array." alt="" coords="238,2632,369,2737"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="306,1678,306,2632,301,2632,301,1678"/>
+<area shape="rect" id="Node000004" href="$classBDSArray1D.html" title="1D array for completeness in array system." alt="" coords="238,2905,369,3011"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="306,2751,306,2905,301,2905,301,2751"/>
+<area shape="rect" id="Node000006" href="$classBDSArray3DCoords.html" title="3D array with spatial mapping derived from BDSArray4DCoords." alt="" coords="395,2602,571,2767"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="486,2538,486,2602,481,2602,481,2538"/>
+<area shape="rect" id="Node000014" href="$classBDSArray4DCoordsTransformed.html" title="Wrapped BDSArray4DCoords with possible transformation to extend field." alt="" coords="596,2572,853,2797"/>
+<area shape="poly" id="edge13_Node000005_Node000014" title=" " alt="" coords="584,2041,702,2571,697,2572,579,2042"/>
+<area shape="rect" id="Node000007" href="$classBDSArray2DCoords.html" title="2D array with spatial mapping derived from BDSArray4DCoords." alt="" coords="394,2865,570,3051"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="486,2781,485,2865,480,2865,480,2781"/>
+<area shape="rect" id="Node000013" href="$classBDSArray3DCoordsTransformed.html" title="Wrapped BDSArray3DCoords with possible transformation to extend field." alt="" coords="595,2845,852,3071"/>
+<area shape="poly" id="edge12_Node000006_Node000013" title=" " alt="" coords="567,2776,627,2843,623,2847,563,2780"/>
+<area shape="rect" id="Node000008" href="$classBDSArray1DCoords.html" title="1D array with spatial mapping derived from BDSArray4DCoords." alt="" coords="46,3229,222,3414"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="398,3062,382,3073,361,3084,341,3090,306,3094,271,3100,254,3108,236,3121,213,3144,194,3171,164,3229,159,3227,189,3168,209,3141,232,3117,252,3103,270,3095,305,3089,340,3085,359,3079,379,3068,395,3057"/>
+<area shape="rect" id="Node000010" href="$classBDSArray2DCoordsRDipole.html" title="A wrapper to achieve 2D reflection of a minimal dipole field solve." alt="" coords="246,3119,473,3524"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="449,3065,430,3119,425,3118,444,3063"/>
+<area shape="rect" id="Node000011" href="$classBDSArray2DCoordsRQuad.html" title="A wrapper to achieve 2D reflection of a minimal quadrupole field solve." alt="" coords="497,3119,715,3524"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="520,3063,539,3118,534,3119,515,3065"/>
+<area shape="rect" id="Node000012" href="$classBDSArray2DCoordsTransformed.html" title="Wrapped BDSArray2DCoords with possible transformation to extend field." alt="" coords="740,3209,997,3434"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="570,3058,585,3068,623,3085,657,3091,691,3097,709,3104,729,3117,774,3158,811,3207,807,3210,770,3162,726,3121,707,3109,689,3102,656,3096,621,3091,582,3073,567,3062"/>
+<area shape="rect" id="Node000009" href="$classBDSArray1DCoordsTransformed.html" title="Wrapped BDSArray1DCoords with possible transformation to extend field." alt="" coords="5,3572,263,3797"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="137,3428,137,3572,131,3572,131,3428"/>
+</map>

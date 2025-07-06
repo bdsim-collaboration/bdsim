@@ -1,0 +1,25 @@
+<map id="BDSFieldLoader::BDSFieldLoader" name="BDSFieldLoader::BDSFieldLoader">
+<area shape="rect" id="Node000001" title="Private default constructor as singleton." alt="" coords="1072,151,1263,191"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldLoader.html#aa4b306368dac96f73c4395592c62b307" title="Singleton accessor." alt="" coords="837,158,1024,183"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1058,173,1024,173,1024,168,1058,168"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldFactory.html#aae6257d23bf70122a523e0f9e1e35d85" title="Create a general EM field." alt="" coords="265,15,493,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="911,149,861,92,827,64,788,42,746,28,701,18,611,9,525,11,453,18,452,13,525,5,611,4,702,13,747,23,790,38,830,60,864,88,915,145"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldFactory.html#a432866f0da0199193e79e2d2cd1dc792" title="Creat just the electric field object." alt="" coords="545,77,789,102"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="888,155,789,117,739,105,740,100,790,112,890,150"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldFactory.html#abe272e95f65e31e32fd8af19397eb93d" title="Creat just the magnetic field object." alt="" coords="563,151,771,191"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="823,173,771,173,771,168,823,168"/>
+<area shape="rect" id="Node000009" href="$classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="604,215,731,241"/>
+<area shape="poly" id="edge12_Node000002_Node000009" title=" " alt="" coords="862,189,790,205,731,218,730,213,789,200,861,184"/>
+<area shape="rect" id="Node000010" href="$classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="577,265,758,290"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="903,193,852,226,790,256,753,267,751,262,788,251,849,221,900,189"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldFactory.html#a4ddc6a455c87ea0ed853cf870512a4da" title="Main interface to field factory." alt="" coords="5,77,213,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="310,46,167,79,165,74,309,41"/>
+<area shape="poly" id="edge7_Node000005_Node000005" title=" " alt="" coords="714,68,711,63,703,59,667,55,639,57,624,62,621,68,629,75,625,78,616,68,621,58,638,52,667,50,705,54,715,59,719,65"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldFactory.html#a267433e2853cc25480adcf6e4493e870" title="Create an electric field." alt="" coords="271,77,487,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="531,92,487,92,487,87,531,87"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="258,92,213,92,213,87,258,87"/>
+<area shape="poly" id="edge11_Node000007_Node000007" title=" " alt="" coords="712,139,696,132,667,129,642,131,627,136,621,142,624,150,619,151,616,141,624,132,641,126,667,124,698,127,714,134"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldFactory.html#aa596ea76ebc79f07a624bc3f71accac7" title="Create a purely magnetic field." alt="" coords="261,142,497,167"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="549,167,497,164,498,159,550,162"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="312,141,162,105,163,100,313,136"/>
+</map>

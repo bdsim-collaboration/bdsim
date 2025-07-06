@@ -1,0 +1,29 @@
+<map id="Analysis::SimpleHistograms" name="Analysis::SimpleHistograms">
+<area shape="rect" id="Node000001" title="Process histogram definitions from configuration instance." alt="" coords="5,166,211,191"/>
+<area shape="rect" id="Node000002" href="$classAnalysis.html#ad50996545eea4ffc2ef6d3c110fbd663" title="Create an individual histogram based on a definition." alt="" coords="277,109,449,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,163,292,134,293,140,166,169"/>
+<area shape="rect" id="Node000010" href="$classConfig.html#aba43fe0ace4a276f52f0df8ba43ad5f4" title="Access all simple histogram definitions &#45; throws exception if out of range." alt="" coords="259,159,468,199"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="211,176,245,176,245,181,211,181"/>
+<area shape="rect" id="Node000011" href="$classConfig.html#a457e3ee834c0c7d3607e59486787d802" title="Singleton accessor." alt="" coords="300,223,427,249"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="166,189,293,218,292,223,165,194"/>
+<area shape="rect" id="Node000003" href="$classHistogramFactory.html#afe19d7305c7e606c73d8f476842fdc8f" title=" " alt="" coords="516,101,703,141"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="449,119,502,119,502,124,449,124"/>
+<area shape="rect" id="Node000004" href="$classHistogramFactory.html#ad790da51a7263f2719458ddadf3bb21e" title="Create 1D histogram." alt="" coords="751,5,937,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="651,99,750,55,769,47,771,52,752,60,653,104"/>
+<area shape="rect" id="Node000006" href="$classHistogramFactory.html#a91b42eda6d0be94655de5e3359cc6772" title="Create 2D histogram." alt="" coords="751,69,937,109"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="702,106,737,101,737,107,703,111"/>
+<area shape="rect" id="Node000007" href="$classHistogramFactory.html#a86928671293fe23250f19e3f48f104f1" title="Create 3D histogram." alt="" coords="751,133,937,173"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="703,131,737,136,737,141,702,137"/>
+<area shape="rect" id="Node000009" href="$classHistogramFactory.html#ad721ec4ed9ac4859c9b963804db25bd2" title="Create 4D histogram." alt="" coords="751,197,937,237"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="653,139,752,183,771,190,769,195,750,188,651,144"/>
+<area shape="rect" id="Node000005" href="$classHistogramFactory.html#a583570441a9c8a3164233e4b121f9a4e" title="Whether name is set or not." alt="" coords="985,104,1208,144"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="906,43,938,55,1039,96,1037,101,936,60,904,48"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="938,99,972,104,971,110,937,105"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="937,140,971,136,972,141,938,145"/>
+<area shape="rect" id="Node000008" href="$namespaceRBDS.html#a5ebbd8d84481dd32fb77fc3408c68cc6" title="Linear range of values." alt="" coords="1035,171,1159,197"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="938,162,1022,172,1021,178,937,167"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="907,195,936,183,984,156,1010,146,1012,151,986,161,938,188,909,200"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="937,202,1021,191,1022,197,938,208"/>
+<area shape="rect" id="Node000012" href="$classConfig.html#a61351cd84ffffb459da8459bd216cf34" title="Private constructor for singleton pattern." alt="" coords="553,223,665,249"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="427,233,539,233,539,239,427,239"/>
+</map>

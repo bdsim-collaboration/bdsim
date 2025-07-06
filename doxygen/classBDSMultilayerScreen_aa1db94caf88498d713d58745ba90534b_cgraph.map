@@ -1,0 +1,28 @@
+<map id="BDSMultilayerScreen::Build" name="BDSMultilayerScreen::Build">
+<area shape="rect" id="Node000001" title="Construct container, compute dimensions then place layers." alt="" coords="5,205,164,245"/>
+<area shape="rect" id="Node000002" href="$classBDSMultilayerScreen.html#a76c91750ca63f96ee737eb53e142a07e" title="Build a container volume." alt="" coords="216,141,375,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,203,215,183,217,188,152,208"/>
+<area shape="rect" id="Node000012" href="$classBDSMultilayerScreen.html#a79aacee79db0bafcf1e83959b59da73f" title=" " alt="" coords="212,205,379,245"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="164,223,198,223,198,228,164,228"/>
+<area shape="rect" id="Node000013" href="$classBDSMultilayerScreen.html#afb9fe0e8c16b7ef2b2ff1dd4aa70f38d" title="Place each layer in order in the container volume." alt="" coords="216,269,375,309"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="152,243,217,263,215,268,150,248"/>
+<area shape="rect" id="Node000003" href="$classBDSMaterials.html#a99f6642727a7c0d7cae9aab7cefce26b" title="Get material by name." alt="" coords="427,38,621,63"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,139,483,67,485,72,339,144"/>
+<area shape="rect" id="Node000007" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="446,141,602,181"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="375,159,432,159,432,164,375,164"/>
+<area shape="rect" id="Node000011" href="$classBDSMaterials.html#a4e2a206298e5e1d18257ccfe62453fef" title="Singleton pattern access." alt="" coords="437,206,611,231"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="376,179,460,200,459,205,374,184"/>
+<area shape="rect" id="Node000004" href="$classBDSMaterials.html#aaadfcedd8e34c1686e3e498a322eb361" title="output available materials" alt="" coords="669,13,872,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="621,47,705,37,706,43,622,52"/>
+<area shape="rect" id="Node000006" href="$namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="707,62,835,87"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="622,57,693,64,692,70,621,63"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="669,30,590,39,589,33,669,24"/>
+<area shape="rect" id="Node000005" href="$classBDSMaterials.html#ae42d0803dcdc0cbae050ba87e72a988c" title="Print mass fractions of consituents of a given material." alt="" coords="920,5,1103,45"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="872,23,906,23,906,28,872,28"/>
+<area shape="rect" id="Node000008" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="689,112,853,152"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="602,149,675,141,676,146,603,155"/>
+<area shape="rect" id="Node000009" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="695,177,847,202"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="603,168,682,177,681,182,602,173"/>
+<area shape="rect" id="Node000010" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="685,226,857,251"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="586,179,622,192,670,212,697,220,696,225,668,217,620,197,584,184"/>
+</map>

@@ -1,0 +1,32 @@
+<map id="BDSInterpolator3DNearest" name="BDSInterpolator3DNearest">
+<area shape="rect" id="Node000001" title="Interpolated field array that gives the nearest neighbour value." alt="" coords="121,4131,343,4256"/>
+<area shape="rect" id="Node000002" href="$classBDSInterpolator3D.html" title="Interface for all 3D interpolators." alt="" coords="139,3816,325,4081"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,4095,235,4131,229,4131,229,4095"/>
+<area shape="rect" id="Node000003" href="$classBDSInterpolator.html" title="Interface for all interpolators containing basic extent of validity." alt="" coords="126,3598,295,3743"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="220,3757,224,3816,219,3816,215,3757"/>
+<area shape="rect" id="Node000004" href="$classBDSArray3DCoords.html" title="3D array with spatial mapping derived from BDSArray4DCoords." alt="" coords="320,3588,496,3753"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="358,3755,327,3804,322,3801,354,3752"/>
+<area shape="rect" id="Node000005" href="$classBDSArray4DCoords.html" title="Overlay of 4D array that provides uniform only spatial coordinate mapping." alt="" coords="315,1813,501,3539"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="411,3553,411,3588,405,3588,405,3553"/>
+<area shape="rect" id="Node000006" href="$classBDSArray4D.html" title="4D array and base class for 3,2 &amp; 1D arrays." alt="" coords="175,1101,305,1707"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="284,1720,318,1974,313,1974,279,1721"/>
+<area shape="rect" id="Node000007" href="$classBDSThreeVector.html" title=" " alt="" coords="5,553,216,1039"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="165,1038,175,1085,170,1086,160,1039"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="240,763,459,829"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="346,830,300,1085,295,1085,341,829"/>
+<area shape="rect" id="Node000009" href="$classBDSThreeVector.html" title="Simple three vector that&#39;s templated so the right type can be used." alt="" coords="271,5,428,491"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="352,491,352,747,347,747,347,491"/>
+<area shape="rect" id="Node000010" href="$classBDSTypeSafeEnum.html" title=" " alt="" coords="537,1274,764,1534"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="608,1535,578,1631,552,1731,506,1958,501,1957,547,1730,573,1629,603,1534"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="622,2629,831,2723"/>
+<area shape="poly" id="edge12_Node000012_Node000010" title=" " alt="" coords="651,1534,649,1731,649,1789,664,2028,684,2262,722,2612,716,2612,679,2263,659,2028,644,1789,644,1731,646,1534"/>
+<area shape="rect" id="Node000011" href="$structdimensions__def.html" title="Type definition for dimensions by name." alt="" coords="592,763,709,829"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="653,842,653,1274,648,1274,648,842"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="724,2628,721,2257,712,1997,695,1731,672,1551,678,1550,700,1730,717,1997,726,2257,730,2628"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="799,1371,878,1437"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="839,1437,735,2613,729,2612,833,1436"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="773,756,904,836"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="841,850,841,1371,836,1371,836,850"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="329,1371,487,1437"/>
+<area shape="poly" id="edge15_Node000005_Node000015" title=" " alt="" coords="411,1437,411,1797,405,1797,405,1437"/>
+</map>

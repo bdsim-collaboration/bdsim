@@ -1,0 +1,20 @@
+<map id="BDSIntegratorDipoleQuadrupole" name="BDSIntegratorDipoleQuadrupole">
+<area shape="rect" id="Node000001" title="Integrator for combined dipole and quadrupolar field." alt="" coords="537,1363,794,1788"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorMag.html" title="Common functionality to BDSIM integrators." alt="" coords="266,875,499,1300"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="509,1300,544,1361,540,1364,504,1302"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="291,383,466,448"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="382,461,384,874,379,874,376,461"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="490,353,659,478"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="562,492,527,647,480,826,464,875,459,874,475,825,522,645,557,491"/>
+<area shape="rect" id="Node000008" href="$classBDSIntegratorDipoleRodrigues2.html" title="Exact helix through pure dipole field." alt="" coords="537,955,793,1220"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="588,492,650,954,645,955,582,492"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="5,5,267,825"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="274,805,281,824,300,873,295,875,276,826,269,807"/>
+<area shape="rect" id="Node000006" href="$classBDSMagUsualEqRhs.html" title="Override G4Mag_UsualEqRhs, provides BDSIM integrators access to particle attributes." alt="" coords="825,965,1039,1210"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="867,1212,792,1350,787,1347,863,1209"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="863,383,1007,448"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="937,462,935,964,930,964,932,462"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="668,1220,668,1346,663,1346,663,1220"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="684,383,839,448"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="758,462,687,955,682,954,752,461"/>
+</map>

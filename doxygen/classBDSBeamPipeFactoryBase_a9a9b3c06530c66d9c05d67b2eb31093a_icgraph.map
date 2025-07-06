@@ -1,0 +1,57 @@
+<map id="BDSBeamPipeFactoryBase::BuildBeamPipeAndRegisterVolumes" name="BDSBeamPipeFactoryBase::BuildBeamPipeAndRegisterVolumes">
+<area shape="rect" id="Node000001" title="build beampipe and register logical volumes" alt="" coords="1164,421,1428,461"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamPipeFactoryLHCDetailed.html#a270472c02f08dbf5c869a5a3bfcbd493" title=" " alt="" coords="867,69,1110,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1275,411,1209,307,1164,245,1114,187,1066,145,1020,112,1023,107,1070,141,1118,183,1168,242,1214,304,1279,408"/>
+<area shape="rect" id="Node000005" href="$classBDSBeamPipeFactoryCircularVacuum.html#aedaa92d2d5c9fd9a167ee6688e43b2bd" title=" " alt="" coords="861,197,1116,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1268,412,1203,341,1161,302,1115,268,1057,240,1059,235,1117,263,1164,298,1207,337,1272,409"/>
+<area shape="rect" id="Node000008" href="$classBDSBeamPipeFactoryClicPCL.html#a4177db7f7dfe12f2fd5cf0d425a443d3" title="Overloads BDSBeamPipeFactoryPoints to make asymmetric extents, otherwise the same." alt="" coords="883,277,1094,317"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1256,415,1192,372,1115,332,1082,320,1084,315,1117,327,1194,368,1259,411"/>
+<area shape="rect" id="Node000009" href="$classBDSBeamPipeFactoryPoints.html#a554b6be64be028e1f7433c73ad4abe37" title=" " alt="" coords="887,341,1090,381"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1204,420,1066,384,1067,379,1206,415"/>
+<area shape="rect" id="Node000012" href="$classBDSBeamPipeFactoryRectangular.html#ab7c6b36bce0e3a84c63b69ac1dbfe4e8" title=" " alt="" coords="869,421,1109,461"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1150,444,1109,444,1109,439,1150,439"/>
+<area shape="rect" id="Node000015" href="$classBDSBeamPipeFactoryCircular.html#af29d1986a207001ed09530f7c9152911" title=" " alt="" coords="883,581,1095,621"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1245,470,1030,584,1027,579,1243,466"/>
+<area shape="rect" id="Node000022" href="$classBDSBeamPipeFactoryElliptical.html#a68cb908865a6219300ca2803fa941cfa" title=" " alt="" coords="583,517,801,557"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="1172,466,1116,476,802,524,801,519,1116,471,1172,461"/>
+<area shape="rect" id="Node000023" href="$classBDSBeamPipeFactoryLHC.html#a50e509f66be317212dfd7d286fe9cebd" title=" " alt="" coords="887,760,1090,800"/>
+<area shape="poly" id="edge24_Node000001_Node000023" title=" " alt="" coords="1287,475,1264,533,1229,605,1180,679,1151,714,1118,743,1085,762,1083,757,1114,739,1147,710,1176,676,1224,603,1259,531,1282,473"/>
+<area shape="rect" id="Node000026" href="$classBDSBeamPipeFactoryRectEllipse.html#a0048cf8dda31fe44ce46f751422f9fad" title=" " alt="" coords="288,703,523,743"/>
+<area shape="poly" id="edge27_Node000001_Node000026" title=" " alt="" coords="1277,474,1250,512,1213,556,1168,600,1117,636,1044,671,966,697,886,717,805,729,727,736,652,739,523,737,523,731,652,734,726,731,805,724,885,711,965,692,1042,666,1115,631,1165,595,1209,552,1245,509,1273,471"/>
+<area shape="rect" id="Node000003" href="$classBDSBeamPipeFactoryLHCDetailed.html#a38eccefce989e65c5fd17268e9177dd5" title=" " alt="" coords="571,5,813,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="881,69,785,48,786,43,882,64"/>
+<area shape="rect" id="Node000004" href="$classBDSBeamPipeFactoryLHCDetailed.html#a9145cd4c248c2cc8fdd3d0c499d5b1d7" title="create a flat ended beampipe" alt="" coords="571,69,813,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="854,92,813,92,813,87,854,87"/>
+<area shape="rect" id="Node000006" href="$classBDSBeamPipeFactoryCircularVacuum.html#ab5d608aeffd1b014626a4c54e80f9c9a" title=" " alt="" coords="586,133,798,173"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="881,197,785,176,786,171,882,192"/>
+<area shape="rect" id="Node000007" href="$classBDSBeamPipeFactoryCircularVacuum.html#a764a7ec41e357cc71bf1a5c7fa693b1f" title="create a flat ended beampipe" alt="" coords="586,197,798,237"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="847,220,798,220,798,215,847,215"/>
+<area shape="rect" id="Node000010" href="$classBDSBeamPipeFactoryPoints.html#ad0e19a6494bfacf7e316b38c89acb109" title="Required overloaded method from BDSBeamPipeFactoryBase to build angled piece of beam pipe." alt="" coords="591,261,793,301"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="891,340,861,332,813,316,771,304,772,299,814,311,862,327,892,335"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamPipeFactoryPoints.html#a824478206a41bafa65a6d5200e1a7a8f" title="Required overloaded method from BDSBeamPipeFactoryBase to build straight piece of beam pipe." alt="" coords="591,325,793,365"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="873,358,794,353,794,348,874,352"/>
+<area shape="rect" id="Node000013" href="$classBDSBeamPipeFactoryRectangular.html#a43dc3ff8cf8bc2f8c486f11aa77c5c27" title=" " alt="" coords="572,389,812,429"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="855,430,812,425,812,420,855,424"/>
+<area shape="rect" id="Node000014" href="$classBDSBeamPipeFactoryRectangular.html#a02723f737441540aa0ccab3639ecfcd6" title="create a flat ended beampipe" alt="" coords="572,453,812,493"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="855,458,812,463,812,458,855,453"/>
+<area shape="rect" id="Node000016" href="$classBDSBeamPipeFactoryCircular.html#a6459d0a0d4e9e408ddf95e3f2aca323e" title=" " alt="" coords="586,581,798,621"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="869,604,798,604,798,599,869,599"/>
+<area shape="rect" id="Node000017" href="$classBDSBeamPipeFactoryCircular.html#ac36ca4c65bdbd25e6f2a6f808be102a1" title="create a flat ended beampipe" alt="" coords="586,645,798,685"/>
+<area shape="poly" id="edge16_Node000015_Node000017" title=" " alt="" coords="882,627,786,648,785,643,881,622"/>
+<area shape="rect" id="Node000018" href="$classBDSBeamPipeFactoryElliptical.html#a6af3ef4c3ce87b6448b934ce64de5f35" title=" " alt="" coords="296,547,515,587"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="596,644,570,636,451,589,453,584,572,631,597,639"/>
+<area shape="rect" id="Node000019" href="$classBDSBeamPipeFactoryElliptical.html#ac82e88ee4898e9c0f17a4bfabf114bde" title="create a flat ended beampipe" alt="" coords="296,639,515,679"/>
+<area shape="poly" id="edge18_Node000017_Node000019" title=" " alt="" coords="572,665,515,664,515,659,572,660"/>
+<area shape="rect" id="Node000020" href="$classBDSBeamPipeFactoryRectEllipse.html#a19aafb02fc75d30f6031b1f3a197a7e6" title=" " alt="" coords="5,639,240,679"/>
+<area shape="poly" id="edge19_Node000019_Node000020" title=" " alt="" coords="282,661,240,661,240,656,282,656"/>
+<area shape="rect" id="Node000021" href="$classBDSBeamPipeFactoryRectEllipse.html#a7ec55930370ff65951784433086fa9be" title="create a flat ended beampipe" alt="" coords="5,703,240,743"/>
+<area shape="poly" id="edge20_Node000019_Node000021" title=" " alt="" coords="304,684,212,705,211,700,302,679"/>
+<area shape="poly" id="edge22_Node000022_Node000018" title=" " alt="" coords="569,553,515,558,515,553,569,547"/>
+<area shape="poly" id="edge23_Node000022_Node000019" title=" " alt="" coords="591,564,572,572,548,585,524,601,449,641,446,636,521,596,545,581,570,567,589,559"/>
+<area shape="rect" id="Node000024" href="$classBDSBeamPipeFactoryLHC.html#a58bb5df7b58e333b916f37acd9e83492" title=" " alt="" coords="598,760,786,800"/>
+<area shape="poly" id="edge25_Node000023_Node000024" title=" " alt="" coords="873,783,786,783,786,777,873,777"/>
+<area shape="rect" id="Node000025" href="$classBDSBeamPipeFactoryLHC.html#a1ddced623f3d0e53dfae0814abfd2db2" title="create a flat ended beampipe" alt="" coords="598,824,786,864"/>
+<area shape="poly" id="edge26_Node000023_Node000025" title=" " alt="" coords="882,806,786,827,785,821,881,800"/>
+<area shape="poly" id="edge28_Node000026_Node000020" title=" " alt="" coords="302,702,211,681,212,676,304,697"/>
+<area shape="poly" id="edge29_Node000026_Node000021" title=" " alt="" coords="274,725,240,725,240,720,274,720"/>
+</map>

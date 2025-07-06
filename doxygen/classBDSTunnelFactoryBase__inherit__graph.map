@@ -1,0 +1,15 @@
+<map id="BDSTunnelFactoryBase" name="BDSTunnelFactoryBase">
+<area shape="rect" id="Node000001" title="Abstract base class for tunnel factory classes." alt="" coords="488,539,724,1213"/>
+<area shape="rect" id="Node000003" href="$classBDSTunnelFactoryCircular.html" title="Factory for circular tunnel segments. Builds floor, tunnel and soil." alt="" coords="5,1343,223,1489"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="480,1005,360,1129,237,1263,170,1345,166,1342,233,1260,356,1125,476,1002"/>
+<area shape="rect" id="Node000004" href="$classBDSTunnelFactoryElliptical.html" title="Factory for elliptical tunnel segments. Builds floor, tunnel and soil." alt="" coords="247,1343,469,1489"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="485,1146,393,1344,389,1342,480,1144"/>
+<area shape="rect" id="Node000005" href="$classBDSTunnelFactoryRectAboveGround.html" title="Factory for rectangular tunnel segments above ground." alt="" coords="493,1261,719,1571"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="609,1227,609,1261,603,1261,603,1227"/>
+<area shape="rect" id="Node000006" href="$classBDSTunnelFactoryRectangular.html" title="Factory for rectangular tunnel segments. Builds floor, tunnel and soil." alt="" coords="743,1343,987,1489"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="732,1134,833,1342,828,1344,728,1136"/>
+<area shape="rect" id="Node000007" href="$classBDSTunnelFactorySquare.html" title="Factory for square tunnel segments. Builds floor, tunnel and soil." alt="" coords="1011,1343,1228,1489"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="736,992,867,1118,1001,1260,1069,1342,1065,1345,997,1263,863,1122,732,996"/>
+<area shape="rect" id="Node000002" href="$classBDSFactoryBase.html" title="Common temporary storage for all factories no matter what geometry." alt="" coords="519,5,693,491"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="609,505,609,539,603,539,603,505"/>
+</map>

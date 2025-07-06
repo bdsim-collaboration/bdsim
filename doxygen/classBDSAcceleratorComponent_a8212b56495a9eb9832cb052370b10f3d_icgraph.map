@@ -1,0 +1,19 @@
+<map id="BDSAcceleratorComponent::GetAcceleratorVacuumLogicalVolumes" name="BDSAcceleratorComponent::GetAcceleratorVacuumLogicalVolumes">
+<area shape="rect" id="Node000001" title="Access the &#39;vacuum&#39; volume(s) in this component if any. Default is empty set." alt="" coords="683,81,908,135"/>
+<area shape="rect" id="Node000002" href="$classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="445,5,607,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="695,79,634,60,595,48,596,43,635,55,697,74"/>
+<area shape="rect" id="Node000003" href="$classBDSWireScanner.html#a07a716aa5b4ad28b9d535586642fdcd6" title=" " alt="" coords="440,70,612,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="669,99,612,93,612,88,669,93"/>
+<area shape="rect" id="Node000004" href="$classBDSCavityElement.html#af3cd08c89d219d7fbae482dfec98a6a5" title="Creates field objects &#45; doesn&#39;t nothing by default and derived classes can override." alt="" coords="417,119,635,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="669,122,635,125,635,120,669,117"/>
+<area shape="rect" id="Node000006" href="$classBDSDetectorConstruction.html#aaf83c954889b2286ae076f5c6cb071e7" title=" " alt="" coords="433,169,619,209"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="692,142,594,172,592,167,690,137"/>
+<area shape="rect" id="Node000005" href="$classBDSCavityElement.html#a9af1357334c154e21de32f488dfae6d6" title="The full construction sequence that calls all methods in order." alt="" coords="183,119,369,145"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="404,135,370,135,370,129,404,129"/>
+<area shape="rect" id="Node000007" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="211,177,341,202"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="419,192,341,192,341,187,419,187"/>
+<area shape="rect" id="Node000008" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,151,128,177"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="197,182,128,174,128,168,198,177"/>
+<area shape="rect" id="Node000009" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,201,135,226"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="198,201,135,208,135,203,197,196"/>
+</map>

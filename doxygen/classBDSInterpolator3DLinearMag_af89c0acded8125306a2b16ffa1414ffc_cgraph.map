@@ -1,0 +1,31 @@
+<map id="BDSInterpolator3DLinearMag::GetInterpolatedValueT" name="BDSInterpolator3DLinearMag::GetInterpolatedValueT">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,240,216,280"/>
+<area shape="rect" id="Node000002" href="$classBDSArray3DCoords.html#a9decf77feb34fae3a986b832703ac0a8" title="Extract 2x2x2 points lying around coordinate x." alt="" coords="264,191,467,231"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,237,250,230,251,236,215,243"/>
+<area shape="rect" id="Node000009" href="$namespaceBDS.html#a02efc03ffa0a162d016100d36bef9fef" title="Linear interpolation in 3 dimensions including magnitude interpolation." alt="" coords="294,275,437,301"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="217,269,280,276,280,281,216,274"/>
+<area shape="rect" id="Node000003" href="$classBDSArray4DCoords.html#adde7d1edc399b77540a42d6b8fbc7705" title="Utility version to forward to individual function." alt="" coords="515,101,751,141"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="425,188,558,143,559,148,427,193"/>
+<area shape="rect" id="Node000007" href="$classBDSArray4D.html#ad069beef5283962f1f0ec19555562b77" title=" " alt="" coords="547,198,718,223"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="467,208,534,208,534,213,467,213"/>
+<area shape="rect" id="Node000004" href="$classBDSArray4DCoords.html#a13dbdf73310398a15db4de066fe4ba4f" title="Not much point in being both virtual and inline (in our use case) but has to be virtual." alt="" coords="799,5,1035,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="681,99,798,55,824,47,826,52,800,60,683,104"/>
+<area shape="rect" id="Node000005" href="$classBDSArray4DCoords.html#a62b8274dcfef2f918366e106f6e912e1" title="Not much point in being both virtual and inline (in our use case) but has to be virtual." alt="" coords="799,69,1035,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="751,105,785,102,785,107,751,111"/>
+<area shape="rect" id="Node000006" href="$classBDSArray4DCoords.html#a45244d86d135fb3a1060db4c954edd01" title="Not much point in being both virtual and inline (in our use case) but has to be virtual." alt="" coords="799,133,1035,173"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="751,132,785,136,785,141,751,137"/>
+<area shape="rect" id="Node000008" href="$classBDSArray4D.html#a244bfb2c6ac401c17a0f7dc93d6e708b" title="Return whether the indices are valid and lie within the array boundaries or not." alt="" coords="836,198,997,223"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="718,208,822,208,822,213,718,213"/>
+<area shape="rect" id="Node000010" href="$namespaceBDS.html#a7c00f4d8f43f5f29e579bbbfd009a875" title="Linear interpolation in 3 dimensions." alt="" coords="575,249,690,274"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="437,278,561,266,562,271,437,284"/>
+<area shape="rect" id="Node000011" href="$namespaceBDS.html#ae902af53e26f46bfa902e60814eaa720" title="Linear interpolation of the magnitude in 3 dimensions." alt="" coords="546,298,719,323"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="437,291,532,300,532,305,437,297"/>
+<area shape="rect" id="Node000013" href="$namespaceBDS.html#a997c703dfcc2674bf67a8816200ca727" title=" " alt="" coords="1304,325,1391,350"/>
+<area shape="poly" id="edge15_Node000009_Node000013" title=" " alt="" coords="399,298,452,317,515,332,626,346,739,354,960,358,1153,350,1290,340,1290,346,1153,356,960,363,739,359,625,351,514,337,451,322,397,303"/>
+<area shape="rect" id="Node000012" href="$namespaceBDS.html#a8737e15635c287249ea1c850ab349bfd" title="Linear interpolation of the magnitude in 1 dimension." alt="" coords="1083,299,1256,325"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="705,295,798,284,917,277,1035,284,1101,294,1100,299,1034,289,917,283,799,289,706,301"/>
+<area shape="rect" id="Node000014" href="$namespaceBDS.html#afcf32d741a4eb98e2b4518b376558472" title="Linear interpolation of the magnitude in 2 dimensions." alt="" coords="830,299,1003,325"/>
+<area shape="poly" id="edge13_Node000011_Node000014" title=" " alt="" coords="720,308,816,309,816,314,720,314"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="1257,322,1291,327,1290,332,1256,327"/>
+<area shape="poly" id="edge14_Node000014_Node000012" title=" " alt="" coords="1003,309,1069,309,1069,315,1003,315"/>
+</map>

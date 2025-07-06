@@ -1,0 +1,15 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classAnalysis.html" title="Base class for any TTree analysis." alt="" coords="5,104,83,129"/>
+<area shape="rect" id="Node000001" href="$classBeamAnalysis.html" title="Analysis of the options tree." alt="" coords="137,5,251,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="65,92,94,65,129,40,152,28,155,33,132,44,98,69,69,96"/>
+<area shape="rect" id="Node000002" href="$classEventAnalysis.html" title="Event level analysis." alt="" coords="137,55,251,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="95,97,154,78,156,83,97,102"/>
+<area shape="rect" id="Node000004" href="$classModelAnalysis.html" title="Analysis of the model tree." alt="" coords="135,104,253,129"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="96,114,135,114,135,119,96,119"/>
+<area shape="rect" id="Node000005" href="$classOptionsAnalysis.html" title="Analysis of the options tree." alt="" coords="131,153,257,179"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="97,131,156,151,154,156,95,136"/>
+<area shape="rect" id="Node000006" href="$classRunAnalysis.html" title="Analysis of a run." alt="" coords="143,203,245,228"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="69,137,98,163,132,188,157,200,154,205,129,192,95,167,65,141"/>
+<area shape="rect" id="Node000003" href="$classEventAnalysisOrbit.html" title="Simple analysis to pull out first hit in each sampler." alt="" coords="305,55,452,80"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="265,65,305,65,305,70,265,70"/>
+</map>

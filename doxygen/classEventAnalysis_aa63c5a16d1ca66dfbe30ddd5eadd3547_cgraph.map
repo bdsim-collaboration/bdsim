@@ -1,0 +1,68 @@
+<map id="EventAnalysis::Execute" name="EventAnalysis::Execute">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,211,179,236"/>
+<area shape="rect" id="Node000002" href="$classAnalysis.html#a4ea39bfb3bcc08eabd09e9245f8c24d6" title="Create structures necessary for per entry histograms." alt="" coords="253,9,443,49"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,209,157,162,225,105,300,54,303,58,228,109,160,166,109,212"/>
+<area shape="rect" id="Node000005" href="$classEventAnalysis.html#a75ba5f46b853fd29c98f5112ce52b269" title="Operate on each entry in the event tree." alt="" coords="262,300,434,325"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="131,234,298,293,296,298,129,239"/>
+<area shape="rect" id="Node000015" href="$classEventAnalysis.html#a78a4502aa4b1e9ac42cf82623c4c8cd4" title="Process histogram definitions from configuration instance." alt="" coords="227,120,469,145"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="128,208,298,147,299,152,130,213"/>
+<area shape="rect" id="Node000027" href="$classEventAnalysis.html#ae6b1db00605c38cc8623dd10fbe419e6" title="Terminate each individual sampler analysis and append optical functions." alt="" coords="255,399,441,424"/>
+<area shape="poly" id="edge33_Node000001_Node000027" title=" " alt="" coords="109,234,160,281,228,336,313,390,310,394,225,340,156,285,105,238"/>
+<area shape="rect" id="Node000003" href="$classConfig.html#a457e3ee834c0c7d3607e59486787d802" title="Singleton accessor." alt="" coords="857,5,983,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="443,24,843,17,843,22,443,30"/>
+<area shape="rect" id="Node000004" href="$classConfig.html#a61351cd84ffffb459da8459bd216cf34" title="Private constructor for singleton pattern." alt="" coords="1127,5,1239,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="984,15,1113,15,1113,21,984,21"/>
+<area shape="rect" id="Node000006" href="$classHistogramMeanFromFile.html#a954792998d3c377bb0c379a61c698967" title=" " alt="" coords="543,199,725,239"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="381,297,516,249,543,241,544,246,518,254,383,302"/>
+<area shape="rect" id="Node000011" href="$classAnalysis.html#a780d060be6d01ece992ea38e38dd8524" title="Accumulate means and variances for per entry histograms." alt="" coords="525,263,743,303"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="434,301,511,293,512,299,435,307"/>
+<area shape="rect" id="Node000012" href="$classEventAnalysis.html#a1f24e075eb2cabda4b3efc9b098b1023" title="Initialise each sampler analysis object in samplerAnalysis." alt="" coords="545,328,723,353"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="435,318,531,328,531,333,434,324"/>
+<area shape="rect" id="Node000013" href="$classEventAnalysis.html#aa1720b0e44b9c723ed7a424a86c495b0" title="Process each sampler analysis object." alt="" coords="517,377,751,403"/>
+<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="387,323,518,363,553,372,552,377,517,369,385,328"/>
+<area shape="rect" id="Node000014" href="$classAnalysis.html#ac332bd28a8bd8516596ff8ef45009f85" title="Virtual function for user to overload and use. Does nothing by default." alt="" coords="551,427,717,452"/>
+<area shape="poly" id="edge13_Node000005_Node000014" title=" " alt="" coords="371,323,518,413,541,421,539,426,516,418,369,328"/>
+<area shape="rect" id="Node000007" href="$classBDSOutputROOTEventHistograms.html#a957061e86261bd48501ff7da9e81e901" title="Accessors." alt="" coords="799,298,1041,338"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="722,237,752,249,776,267,800,284,817,291,815,296,797,288,773,271,749,254,720,242"/>
+<area shape="rect" id="Node000008" href="$classBDSOutputROOTEventHistograms.html#a497d4f1e2cb4107fd71bf29a69204737" title="Accessors." alt="" coords="799,362,1041,402"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="727,234,752,249,764,262,771,275,777,300,783,325,789,337,800,348,807,353,803,357,797,352,785,340,778,327,772,301,766,277,760,265,749,253,724,238"/>
+<area shape="rect" id="Node000009" href="$classBDSOutputROOTEventHistograms.html#a6e19598e56a6c6d2357c66a28a61445e" title="Accessors." alt="" coords="799,170,1041,210"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="725,207,784,201,785,207,726,213"/>
+<area shape="rect" id="Node000010" href="$classBDSOutputROOTEventHistograms.html#a37f7cc16c61abb625009cfb7b98ca3ba" title="Accessors." alt="" coords="799,234,1041,274"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="726,228,785,235,785,240,725,233"/>
+<area shape="poly" id="edge28_Node000015_Node000003" title=" " alt="" coords="384,117,446,97,517,78,691,45,843,24,843,29,692,50,518,83,447,103,386,123"/>
+<area shape="rect" id="Node000016" href="$classEventAnalysis.html#a108be907273eccd35a5a8571eeafcd42" title="Fill a set of simple histograms across all events." alt="" coords="529,143,739,168"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="470,140,515,143,515,149,469,145"/>
+<area shape="rect" id="Node000025" href="$classAnalysis.html#a4e3f52e2e993bde2a5ba49aaf61dc0f8" title="Process histogram definitions from configuration instance." alt="" coords="531,93,737,119"/>
+<area shape="poly" id="edge29_Node000015_Node000025" title=" " alt="" coords="469,119,517,114,518,120,470,124"/>
+<area shape="rect" id="Node000017" href="$classAnalysis.html#ad50996545eea4ffc2ef6d3c110fbd663" title="Create an individual histogram based on a definition." alt="" coords="834,120,1006,145"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="739,144,820,138,820,143,739,150"/>
+<area shape="rect" id="Node000018" href="$classHistogramFactory.html#afe19d7305c7e606c73d8f476842fdc8f" title=" " alt="" coords="1089,113,1276,153"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="1006,130,1076,130,1076,135,1006,135"/>
+<area shape="rect" id="Node000019" href="$classHistogramFactory.html#ad790da51a7263f2719458ddadf3bb21e" title="Create 1D histogram." alt="" coords="1324,17,1511,57"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="1224,110,1323,66,1342,59,1344,64,1325,71,1226,115"/>
+<area shape="rect" id="Node000021" href="$classHistogramFactory.html#a91b42eda6d0be94655de5e3359cc6772" title="Create 2D histogram." alt="" coords="1324,81,1511,121"/>
+<area shape="poly" id="edge20_Node000018_Node000021" title=" " alt="" coords="1276,117,1310,113,1311,118,1276,123"/>
+<area shape="rect" id="Node000022" href="$classHistogramFactory.html#a86928671293fe23250f19e3f48f104f1" title="Create 3D histogram." alt="" coords="1324,209,1511,249"/>
+<area shape="poly" id="edge22_Node000018_Node000022" title=" " alt="" coords="1226,150,1325,194,1344,202,1342,207,1323,199,1224,155"/>
+<area shape="rect" id="Node000024" href="$classHistogramFactory.html#ad721ec4ed9ac4859c9b963804db25bd2" title="Create 4D histogram." alt="" coords="1324,145,1511,185"/>
+<area shape="poly" id="edge25_Node000018_Node000024" title=" " alt="" coords="1276,143,1311,147,1310,153,1276,148"/>
+<area shape="rect" id="Node000020" href="$classHistogramFactory.html#a583570441a9c8a3164233e4b121f9a4e" title="Whether name is set or not." alt="" coords="1559,115,1781,155"/>
+<area shape="poly" id="edge19_Node000019_Node000020" title=" " alt="" coords="1479,54,1512,66,1612,108,1610,112,1510,71,1477,59"/>
+<area shape="poly" id="edge21_Node000021_Node000020" title=" " alt="" coords="1511,111,1545,116,1545,121,1510,116"/>
+<area shape="poly" id="edge23_Node000022_Node000020" title=" " alt="" coords="1480,206,1510,194,1558,168,1584,157,1586,162,1560,172,1512,199,1482,211"/>
+<area shape="rect" id="Node000023" href="$namespaceRBDS.html#a5ebbd8d84481dd32fb77fc3408c68cc6" title="Linear range of values." alt="" coords="1608,183,1732,208"/>
+<area shape="poly" id="edge24_Node000022_Node000023" title=" " alt="" coords="1510,214,1594,203,1595,208,1511,219"/>
+<area shape="poly" id="edge26_Node000024_Node000020" title=" " alt="" coords="1510,151,1545,147,1545,152,1511,157"/>
+<area shape="poly" id="edge27_Node000024_Node000023" title=" " alt="" coords="1511,173,1595,184,1594,189,1510,179"/>
+<area shape="poly" id="edge32_Node000025_Node000003" title=" " alt="" coords="694,91,749,72,773,56,798,41,842,27,844,32,800,46,776,61,752,76,695,96"/>
+<area shape="poly" id="edge30_Node000025_Node000017" title=" " alt="" coords="737,113,821,121,820,126,737,118"/>
+<area shape="rect" id="Node000026" href="$classConfig.html#aba43fe0ace4a276f52f0df8ba43ad5f4" title="Access all simple histogram definitions &#45; throws exception if out of range." alt="" coords="815,55,1025,95"/>
+<area shape="poly" id="edge31_Node000025_Node000026" title=" " alt="" coords="737,92,801,85,802,91,737,98"/>
+<area shape="rect" id="Node000028" href="$classAnalysis.html#a3ddb88e6be48ec7f9650d312040b50d8" title=" " alt="" coords="559,476,709,501"/>
+<area shape="poly" id="edge34_Node000027_Node000028" title=" " alt="" coords="387,422,518,462,553,471,552,476,517,467,385,427"/>
+<area shape="rect" id="Node000029" href="$classHistogramMeanFromFile.html#aa8aac1a97f3455108a30e028b8a572f7" title="Finish calculation." alt="" coords="829,454,1011,494"/>
+<area shape="poly" id="edge35_Node000028_Node000029" title=" " alt="" coords="709,482,815,477,815,482,710,487"/>
+<area shape="rect" id="Node000030" href="$classAnalysis.html#abaafcc451851e5f82ee5ebaaa90c2de1" title="Prepare result of per entry histogram accumulation." alt="" coords="817,518,1023,558"/>
+<area shape="poly" id="edge36_Node000028_Node000030" title=" " alt="" coords="709,499,804,515,803,521,708,504"/>
+</map>

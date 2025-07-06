@@ -1,0 +1,31 @@
+<map id="BDS::CalculateFaces" name="BDS::CalculateFaces">
+<area shape="rect" id="Node000001" title="Calculate input and output normal vector." alt="" coords="837,173,992,198"/>
+<area shape="rect" id="Node000002" href="$classBDSCurvilinearFactory.html#ac6f83725e3224ad5f8bcfb50f93455b3" title=" " alt="" coords="567,5,761,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="895,163,850,110,821,83,788,60,760,47,762,42,791,55,824,79,854,107,899,160"/>
+<area shape="rect" id="Node000003" href="$classBDSMagnetOuterFactoryLHC.html#ac063865d8f4741ad5f656b1566bd1e1e" title=" " alt="" coords="561,69,767,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="879,168,836,145,788,124,753,112,754,107,790,119,839,140,882,163"/>
+<area shape="rect" id="Node000007" href="$classBDSMagnetOuterFactoryCylindrical.html#a20d66ad43d6d454b8c5d8699781f2113" title="rectangular bend outer volume" alt="" coords="539,133,789,173"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="824,176,789,172,790,167,824,171"/>
+<area shape="rect" id="Node000008" href="$classBDSMagnetOuterFactoryCylindrical.html#a389c4090b1c5b3c0b5a1d1740e975334" title="sector bend outer volume" alt="" coords="539,197,789,237"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="824,200,790,204,789,199,824,194"/>
+<area shape="rect" id="Node000009" href="$classBDSTunnelFactoryBase.html#a1e625db186e756951daf1a8d841d79fc" title=" " alt="" coords="560,262,768,317"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="881,207,790,252,757,264,755,259,788,247,878,202"/>
+<area shape="rect" id="Node000015" href="$classBDSComponentFactory.html#a01218ebf53720d021c2e089806fe6643" title=" " alt="" coords="579,341,749,381"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="901,211,857,272,826,304,791,332,751,349,748,345,788,327,823,300,853,269,897,208"/>
+<area shape="rect" id="Node000004" href="$classBDSMagnetOuterFactoryLHC.html#aa23b23a2b450061a7ba839315f7241c9" title="horizontal and vertical kicker outer volume" alt="" coords="272,37,479,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="547,79,478,71,479,66,548,74"/>
+<area shape="rect" id="Node000005" href="$classBDSMagnetOuterFactoryLHC.html#a10de22d1a1beb852738d55b5d2694c8c" title="sector bend outer volume" alt="" coords="272,101,479,141"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="548,105,479,113,478,107,547,100"/>
+<area shape="rect" id="Node000006" href="$classBDSMagnetOuterFactoryLHC.html#a8620853ac503990a9862174f03e812ee" title="rectangular bend outer volume" alt="" coords="5,101,212,141"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="258,124,212,124,212,119,258,119"/>
+<area shape="rect" id="Node000010" href="$classBDSTunnelFactoryBase.html#a81c367f52ca7b4e218f562f60e5e2194" title=" " alt="" coords="265,205,485,245"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="546,266,466,248,467,243,547,261"/>
+<area shape="rect" id="Node000012" href="$classBDSTunnelFactory.html#acf0618809b4f8cd258fd415b95bdc222" title="Create a tunnel section with an angled input and output face." alt="" coords="279,269,471,309"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="546,292,471,292,471,287,546,287"/>
+<area shape="rect" id="Node000013" href="$classBDSTunnelFactoryBase.html#a927be07527789918fc0595f502bc8b6e" title=" " alt="" coords="260,333,491,373"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="547,318,467,336,466,331,546,313"/>
+<area shape="rect" id="Node000011" href="$classBDSTunnelFactory.html#a0a0694619cd60d61ff3baa9399be568c" title=" " alt="" coords="15,205,203,245"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="251,228,203,228,203,223,251,223"/>
+<area shape="rect" id="Node000014" href="$classBDSTunnelFactory.html#a3364711f83f457cffdbaa936482239c8" title=" " alt="" coords="15,333,203,373"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="246,356,203,356,203,351,246,351"/>
+</map>

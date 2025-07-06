@@ -1,0 +1,39 @@
+<map id="BDSFieldQuery::QueryField" name="BDSFieldQuery::QueryField">
+<area shape="rect" id="Node000001" title="Query the field in the Geant4 model according to information in query." alt="" coords="5,322,201,347"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldQuery.html#a7d941f7cca83f08c579c0893a2f402fd" title="Warn the user if the fieldObject variable is use when it shouldn&#39;t be." alt="" coords="254,5,461,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,321,119,272,146,200,165,161,188,123,216,87,248,55,254,50,257,55,251,59,220,90,193,126,170,164,151,202,124,273,110,323"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldQuery.html#a5e9d87a94be6f6076fb5aa8c7ec10985" title="Throw an exception if the number of steps is &gt;1 and the difference between max and min is 0." alt="" coords="251,69,463,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="108,321,126,283,156,231,197,175,221,149,248,126,268,113,271,118,251,130,225,153,201,178,161,234,131,286,113,323"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldQuery.html#a22e7a1f507dd77c30b73b8279ba55925" title="Reset any member variables used during a query. Closes any files if open." alt="" coords="267,185,448,210"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="117,320,172,275,209,249,248,227,287,212,289,216,250,232,212,254,175,279,120,324"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldQuery.html#ab40d287153596a8e507920e9bf9f9e48" title="Close any files if open." alt="" coords="525,185,717,210"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="109,320,128,287,158,245,199,202,222,184,248,170,290,155,335,147,380,145,424,147,507,160,573,178,572,183,506,165,424,152,380,150,335,152,292,160,250,174,225,188,202,206,162,248,132,290,113,323"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldQuery.html#ae5041191a411f0ead18112ccf3a616ce" title=" " alt="" coords="513,249,729,274"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="126,320,181,293,249,271,313,260,378,254,500,251,500,257,378,259,313,265,250,276,183,298,128,324"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldQuery.html#ae9bf7571e3996e224a285befc07becd2" title="Convert a global field axis to a local one." alt="" coords="249,501,465,541"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="116,346,169,409,208,447,251,480,275,493,272,498,248,485,204,451,165,413,112,349"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldQuery.html#a414a318d33ba7c74cc803561f3fc71e8" title="Apply a transform to the coordinates. Does not apply to time." alt="" coords="249,565,465,605"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="112,347,129,387,159,442,199,501,224,528,251,551,259,556,256,561,248,555,220,532,195,504,154,445,124,389,107,349"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldQuery.html#a0b7983e9e37d4ddc1897960729d02f1d" title="Open potentially both electric and magnetic field map files." alt="" coords="526,311,717,337"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="202,334,249,335,357,337,465,335,512,332,512,337,465,340,357,342,249,340,202,339"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldQuery.html#abb0aa9b120b73e2ff207b5619843fe0a" title="Print out whether B and E files are being generated and which ones." alt="" coords="526,365,717,405"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="202,342,512,372,512,377,201,347"/>
+<area shape="rect" id="Node000014" href="$classBDSFieldQuery.html#a820e66f4606b42f0ca060c9044930fc9" title="Different algorithm where we query a specific list of points defined in the query info object." alt="" coords="250,285,465,325"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="201,321,236,317,236,322,202,326"/>
+<area shape="rect" id="Node000015" href="$classBDSFieldQuery.html#ae89edc4b678efb8bdaa1d494e58ca933" title="Write an entry ta line of the output file(s). The array is assumed to be Bx,By,Bz,..." alt="" coords="525,439,717,479"/>
+<area shape="poly" id="edge21_Node000001_Node000015" title=" " alt="" coords="151,345,250,371,516,433,515,438,249,376,150,350"/>
+<area shape="rect" id="Node000016" href="$classBDSFieldQueryInfo.html#a341b7ea72db3e470317fdf8b51512b02" title="Whether to query a specific set of points." alt="" coords="281,629,433,669"/>
+<area shape="poly" id="edge20_Node000001_Node000016" title=" " alt="" coords="110,347,124,397,150,470,169,509,192,548,219,584,251,615,270,627,267,632,248,619,215,587,188,551,165,512,145,472,119,399,105,348"/>
+<area shape="rect" id="Node000004" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="569,77,673,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="463,87,555,87,555,92,463,92"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="448,195,511,195,511,200,448,200"/>
+<area shape="rect" id="Node000011" href="$namespaceBDS.html#aa689cdffef91f8626aded351ac2760c6" title="Checks if filename exists." alt="" coords="822,286,941,311"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="717,312,808,303,809,308,717,317"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldQuery.html#a1083a52a2d822cac4af07b84513b2027" title="Utility to write required header information." alt="" coords="777,335,985,361"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="717,330,764,334,763,340,717,335"/>
+<area shape="poly" id="edge15_Node000014_Node000006" title=" " alt="" coords="401,283,512,234,569,212,571,217,514,238,403,287"/>
+<area shape="poly" id="edge16_Node000014_Node000007" title=" " alt="" coords="465,285,531,274,531,279,465,290"/>
+<area shape="poly" id="edge17_Node000014_Node000010" title=" " alt="" coords="465,310,513,314,512,319,465,316"/>
+<area shape="poly" id="edge18_Node000014_Node000013" title=" " alt="" coords="425,323,542,359,541,364,423,328"/>
+<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="384,324,442,368,515,415,549,431,546,436,512,420,439,373,381,328"/>
+</map>

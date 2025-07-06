@@ -1,0 +1,41 @@
+<map id="BDS::IsFiniteStrength" name="BDS::IsFiniteStrength">
+<area shape="rect" id="Node000001" title=" " alt="" coords="803,463,961,489"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorEulerOld.html#a6df6ffffb77ffb84a32216c4bf363479" title=" " alt="" coords="557,101,725,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="874,450,862,394,840,319,804,241,781,204,753,171,734,156,711,144,714,139,737,151,757,167,785,201,809,238,845,318,867,392,879,449"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorDipoleRodrigues.html#a1afb272e18be7814ce19b89fca66a08d" title="Calculate the new particle coordinates." alt="" coords="531,181,751,221"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="871,451,856,406,832,350,798,292,777,265,753,242,723,224,726,219,756,238,781,262,802,289,837,347,861,404,876,449"/>
+<area shape="rect" id="Node000008" href="$classBDSIntegratorDipoleFringe.html#aaff6b07b64bceaa2c260372a696373a7" title=" " alt="" coords="266,287,461,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="870,451,855,412,830,365,797,321,776,302,753,286,712,269,668,259,622,255,576,257,490,270,420,289,418,284,489,265,576,251,622,250,668,254,713,264,756,282,780,297,801,317,835,363,860,409,875,449"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldMagMultipole.html#ac7d1359c821179086db9d5d7c4113f5f" title="Access the field value." alt="" coords="556,296,725,336"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="862,454,816,401,786,374,753,350,725,337,727,332,756,346,790,370,820,398,866,450"/>
+<area shape="rect" id="Node000012" href="$classBDSIntegratorDipoleQuadrupole.html#a27229460bc6feb95ca999d832498f0ac" title=" " alt="" coords="248,468,479,508"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="868,502,823,558,792,585,756,606,694,627,642,633,589,625,526,607,482,587,442,562,382,510,386,506,445,557,485,583,528,601,590,620,642,628,693,622,754,602,789,581,819,554,863,499"/>
+<area shape="rect" id="Node000013" href="$classBDSIntegratorG4RK4MinStep.html#a18aa9df329f43175df614b23b6076a70" title=" " alt="" coords="535,424,746,464"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="789,466,746,461,747,455,790,461"/>
+<area shape="rect" id="Node000014" href="$classBDSIntegratorQuadrupole.html#a071058eb0a85f92dc4bcf17b7534f741" title=" " alt="" coords="547,488,735,528"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="789,491,735,498,735,493,789,486"/>
+<area shape="rect" id="Node000015" href="$classBDSIntegratorSolenoid.html#a0698f1856a369f82b3536e249124debb" title="Calculate the particle motion along step length l in the paraxial approximation." alt="" coords="556,552,725,592"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="848,498,756,542,721,554,719,549,754,538,846,493"/>
+<area shape="rect" id="Node000016" href="$classBDSIntegratorDipoleRodrigues2.html#ab916840e8b671da8305cf68b8d1cc369" title="Output error array." alt="" coords="527,360,755,400"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="846,459,754,414,719,403,721,398,756,410,848,454"/>
+<area shape="rect" id="Node000017" href="$classBDSIntegratorKickerThin.html#a8e26a8c35bbf449d5dbb8aa7554ff0ea" title="The stepper for integration." alt="" coords="550,667,731,707"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="871,502,827,575,795,615,756,650,722,669,720,664,753,646,791,612,823,572,866,500"/>
+<area shape="rect" id="Node000018" href="$classBDSIntegratorMultipoleThin.html#ab0c1e98ddd2babdacf8b89a799f83d16" title=" " alt="" coords="539,731,742,771"/>
+<area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="877,503,863,550,839,609,804,669,782,697,756,721,737,733,735,728,753,717,778,693,799,666,834,606,858,548,872,502"/>
+<area shape="rect" id="Node000019" href="$classBDSIntegratorEuler.html#a44d4330ef31d865fc7798ac425d1f2fb" title="Calculate output coordinates." alt="" coords="567,795,714,835"/>
+<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="880,503,870,561,848,637,832,677,811,716,786,753,756,785,737,798,715,807,713,802,734,793,753,781,782,749,807,713,827,675,843,635,864,559,875,502"/>
+<area shape="rect" id="Node000003" href="$classBDSIntegratorDecapole.html#af19d40795d31008a6ce9324cced44420" title="Calculate the new particle coordinates." alt="" coords="276,5,451,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="579,99,478,60,440,48,441,43,480,55,581,94"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorOctupole.html#a01ad8aadae1c730a3adbb3a1cff79c70" title="Calculate the new particle coordinates." alt="" coords="278,69,449,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="543,113,448,102,449,96,543,107"/>
+<area shape="rect" id="Node000005" href="$classBDSIntegratorSextupole.html#a0913399e7f95e9c7abe9da7b134d7414" title="Calculate the new particle coordinates." alt="" coords="274,133,453,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="544,135,453,146,453,140,543,130"/>
+<area shape="rect" id="Node000007" href="$classBDSIntegratorDipoleRodrigues.html#a39052dea9cd2cf5911499f392158f5d0" title=" " alt="" coords="253,197,473,237"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="517,211,474,214,473,208,517,206"/>
+<area shape="rect" id="Node000009" href="$classBDSIntegratorDipoleFringe.html#aca9d25a8039e726d92cd8b73dc166233" title="The stepper for integration. Calls base class stepper." alt="" coords="5,255,200,295"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="252,296,200,289,200,284,253,290"/>
+<area shape="rect" id="Node000010" href="$classBDSIntegratorDipoleFringeScaling.html#af99a3f3c60588ef5ad617567f41942bf" title=" " alt="" coords="5,319,200,359"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="253,323,200,329,200,324,252,318"/>
+<area shape="poly" id="edge16_Node000016_Node000008" title=" " alt="" coords="551,359,439,329,440,324,552,354"/>
+<area shape="poly" id="edge17_Node000016_Node000012" title=" " alt="" coords="550,407,528,414,462,442,404,470,402,465,460,437,526,410,549,402"/>
+</map>

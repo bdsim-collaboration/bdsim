@@ -1,0 +1,31 @@
+<map id="BDSSingleUse" name="BDSSingleUse">
+<area shape="rect" id="Node000001" title="Class to provide single use functionality." alt="" coords="1580,5,1721,131"/>
+<area shape="rect" id="Node000002" href="$classBDSPhysicsAnnihiToMuMu.html" title="High energy muon processes." alt="" coords="5,259,227,384"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1566,75,1255,87,840,109,635,124,456,141,318,160,271,170,240,181,215,197,192,216,155,260,151,257,189,212,212,192,238,176,269,165,318,155,455,136,635,119,839,104,1254,82,1566,69"/>
+<area shape="rect" id="Node000003" href="$classBDSPhysicsChannelling.html" title="Channelling physics process." alt="" coords="251,259,453,384"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1567,71,1321,74,998,88,835,101,685,121,558,147,507,163,467,181,443,197,422,216,387,260,383,257,418,213,440,193,464,176,506,158,557,142,684,116,835,96,998,82,1321,69,1567,66"/>
+<area shape="rect" id="Node000004" href="$classBDSPhysicsCherenkov.html" title="Cherenkov physics process constructor." alt="" coords="477,219,672,424"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1566,73,1362,80,1104,97,975,111,857,129,757,153,717,166,685,181,660,199,638,220,635,217,657,194,683,176,715,161,756,147,856,124,974,106,1104,92,1362,75,1566,68"/>
+<area shape="rect" id="Node000005" href="$classBDSPhysicsCutsAndLimits.html" title="Physics processes required for user tracking limits." alt="" coords="696,179,920,464"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1566,78,1412,90,1227,112,1053,142,983,160,932,181,922,187,919,183,929,176,981,155,1052,136,1226,106,1412,85,1566,72"/>
+<area shape="rect" id="Node000006" href="$classBDSPhysicsEMDissociation.html" title="Electromagnetic dissociation for high energy ions." alt="" coords="943,259,1169,384"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1567,76,1482,86,1383,105,1280,135,1230,156,1183,181,1137,217,1099,260,1095,257,1133,213,1180,176,1227,151,1278,130,1382,100,1481,81,1566,71"/>
+<area shape="rect" id="Node000007" href="$classBDSPhysicsGammaToMuMu.html" title="High energy muon processes." alt="" coords="1193,259,1425,384"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1568,106,1503,139,1439,181,1396,219,1358,260,1354,257,1392,215,1436,177,1500,135,1566,101"/>
+<area shape="rect" id="Node000008" href="$classBDSPhysicsIonisation.html" title="Only ionisation from G4EmStandardPhysics." alt="" coords="1449,259,1639,384"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1621,145,1573,259,1568,257,1616,143"/>
+<area shape="rect" id="Node000009" href="$classBDSPhysicsLaserWire.html" title="Constructor for BDSLaserCompton process." alt="" coords="1663,259,1854,384"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1685,143,1735,257,1730,259,1680,145"/>
+<area shape="rect" id="Node000010" href="$classBDSPhysicsMuon.html" title="High energy muon processes." alt="" coords="1878,249,2039,394"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1735,97,1803,131,1837,152,1868,177,1899,210,1925,247,1920,250,1895,214,1865,181,1834,156,1801,135,1733,102"/>
+<area shape="rect" id="Node000011" href="$classBDSPhysicsMuonInelastic.html" title="Only nuclear interactions for mu+&#45;." alt="" coords="2063,259,2281,384"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1735,75,1807,87,1889,106,1974,136,2015,154,2054,176,2098,214,2135,257,2131,260,2095,218,2050,181,2012,159,1972,141,1888,112,1806,92,1734,80"/>
+<area shape="rect" id="Node000012" href="$classBDSPhysicsMuonSplitting.html" title="High energy muon processes." alt="" coords="2305,199,2532,444"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1735,74,1873,89,2036,111,2188,140,2249,157,2295,176,2324,196,2321,201,2292,181,2248,162,2187,145,2035,116,1873,94,1735,79"/>
+<area shape="rect" id="Node000013" href="$classBDSPhysicsRadioactivation.html" title="Radioactivation processes." alt="" coords="2557,259,2785,384"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1735,69,1924,79,2160,98,2278,112,2387,130,2478,151,2545,176,2571,193,2594,213,2633,257,2629,260,2591,216,2568,197,2543,181,2476,156,2386,135,2278,118,2160,104,1924,84,1735,75"/>
+<area shape="rect" id="Node000014" href="$classBDSPhysicsSynchRad.html" title="A physics constructor that only constructs Synchrotron Radiation." alt="" coords="2809,259,2999,384"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1735,66,1974,69,2285,83,2443,96,2588,116,2710,142,2759,158,2799,176,2822,193,2843,213,2875,257,2871,260,2839,216,2819,197,2796,181,2757,163,2708,147,2587,121,2442,102,2285,88,1973,74,1735,71"/>
+<area shape="rect" id="Node000015" href="$classBDSPhysicsXrayReflection.html" title="Xray reflection." alt="" coords="3023,249,3244,394"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1736,70,2037,83,2435,105,2631,120,2803,137,2935,155,2981,166,3012,176,3056,208,3091,247,3087,250,3052,211,3009,181,2980,171,2934,161,2802,142,2631,125,2435,111,2037,88,1735,75"/>
+</map>

@@ -1,0 +1,37 @@
+<map id="BDSBeamPipeFactory::BDSBeamPipeFactory" name="BDSBeamPipeFactory::BDSBeamPipeFactory">
+<area shape="rect" id="Node000001" title="Private constructor as singleton pattern." alt="" coords="1008,240,1179,280"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamPipeFactory.html#a6ddb785bdca626c90eb381b67d4f56d8" title="Singleton accessor." alt="" coords="797,240,960,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="994,263,960,263,960,257,994,257"/>
+<area shape="rect" id="Node000003" href="$classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="551,5,713,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="863,228,846,189,821,143,788,98,748,60,712,41,715,37,751,55,792,94,825,140,850,186,868,226"/>
+<area shape="rect" id="Node000004" href="$classBDSDrift.html#a20d2b4172fe80d6e24304da7b5a25fcd" title="Construct geometry." alt="" coords="573,70,691,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="858,230,813,167,783,135,748,109,720,97,691,90,692,84,722,92,751,104,786,131,817,164,862,227"/>
+<area shape="rect" id="Node000006" href="$classBDSUndulator.html#adba1c8a3aed4c74b03fbf03f0e8c0105" title=" " alt="" coords="555,119,709,145"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="847,232,803,193,748,158,709,145,711,140,750,154,806,189,851,228"/>
+<area shape="rect" id="Node000007" href="$classBDSMagnet.html#a4b7a0b84152772942403ff769d6afd28" title=" " alt="" coords="529,169,735,194"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="822,237,749,208,706,197,707,192,750,203,824,232"/>
+<area shape="rect" id="Node000009" href="$classBDSShield.html#a070256302b0986760d6605a75871db80" title="Build a beam pipe in the hole if required." alt="" coords="534,218,730,243"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="784,251,730,245,731,240,784,246"/>
+<area shape="rect" id="Node000011" href="$classBDSWireScanner.html#a0517bfffe5afa9ecdaad71290b9ece9f" title=" " alt="" coords="515,268,749,308"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="784,273,750,277,749,272,783,268"/>
+<area shape="rect" id="Node000012" href="$classBDSMagnetOuterFactoryLHC.html#ac063865d8f4741ad5f656b1566bd1e1e" title=" " alt="" coords="529,332,735,372"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="828,289,750,322,714,334,712,329,748,318,825,284"/>
+<area shape="rect" id="Node000016" href="$classBDSMagnetOuterFactoryLHC.html#a534a6911ebc00f6c15ccff4da8ace47f" title="quadrupole outer volume" alt="" coords="529,396,735,436"/>
+<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="855,293,810,341,782,365,751,386,725,398,723,393,748,382,778,361,806,337,851,289"/>
+<area shape="rect" id="Node000017" href="$classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="569,461,695,486"/>
+<area shape="poly" id="edge16_Node000002_Node000017" title=" " alt="" coords="867,294,849,331,823,373,791,415,751,450,725,463,697,471,695,466,723,458,748,446,787,412,819,370,844,328,862,292"/>
+<area shape="rect" id="Node000018" href="$classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="541,510,723,535"/>
+<area shape="poly" id="edge17_Node000002_Node000018" title=" " alt="" coords="872,294,857,341,832,397,798,454,776,479,751,501,724,515,722,510,748,496,772,475,793,450,828,395,852,339,867,292"/>
+<area shape="rect" id="Node000005" href="$classBDSScreen.html#a55f57913d9fea52704047eb4668f9b90" title="Construct geometry." alt="" coords="296,70,431,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="559,85,431,85,431,80,559,80"/>
+<area shape="rect" id="Node000008" href="$classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="294,169,433,194"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="515,184,433,184,433,179,515,179"/>
+<area shape="rect" id="Node000010" href="$classBDSShield.html#a0714c11b0fa500bb434b1a5d07182e6e" title=" " alt="" coords="298,218,429,243"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="520,233,429,233,429,228,520,228"/>
+<area shape="rect" id="Node000013" href="$classBDSMagnetOuterFactoryLHC.html#aa23b23a2b450061a7ba839315f7241c9" title="horizontal and vertical kicker outer volume" alt="" coords="260,300,467,340"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="515,341,467,335,467,330,516,335"/>
+<area shape="rect" id="Node000014" href="$classBDSMagnetOuterFactoryLHC.html#a10de22d1a1beb852738d55b5d2694c8c" title="sector bend outer volume" alt="" coords="260,364,467,404"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="516,369,467,374,467,369,515,363"/>
+<area shape="rect" id="Node000015" href="$classBDSMagnetOuterFactoryLHC.html#a8620853ac503990a9862174f03e812ee" title="rectangular bend outer volume" alt="" coords="5,364,212,404"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="247,387,212,387,212,381,247,381"/>
+</map>

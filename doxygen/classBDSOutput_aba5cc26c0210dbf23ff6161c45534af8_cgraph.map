@@ -1,0 +1,70 @@
+<map id="BDSOutput::FillEvent" name="BDSOutput::FillEvent">
+<area shape="rect" id="Node000001" title="Copy event information from Geant4 simulation structures to output structures." alt="" coords="5,381,163,406"/>
+<area shape="rect" id="Node000002" href="$classBDSOutputStructures.html#ad001975e238c101ebb3cd96456e67037" title="Clear the local structures in this class in preparation for a new event." alt="" coords="223,69,426,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,380,95,331,118,261,134,222,154,185,179,150,209,119,215,114,219,119,212,123,183,153,159,188,139,225,123,263,101,332,90,381"/>
+<area shape="rect" id="Node000007" href="$classBDSOutput.html#ab575c2973ddc58ed3d37397d2581d4d9" title="Fill aperture impact hits." alt="" coords="211,134,439,159"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="86,379,99,338,123,280,159,220,182,192,209,169,217,163,220,168,212,173,186,196,163,223,128,283,104,340,91,381"/>
+<area shape="rect" id="Node000008" href="$classBDSOutput.html#af4f86332c11e8defe1db4adb6277334f" title="Fill collimator hits." alt="" coords="217,183,432,209"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="88,379,104,346,130,302,165,256,209,218,219,212,222,217,212,222,169,260,134,305,109,349,93,382"/>
+<area shape="rect" id="Node000009" href="$classBDSOutput.html#a086cec62251d5e76aae6b24e3dfad799" title="Fill a collection of energy hits into the appropriate output structure." alt="" coords="227,331,422,357"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="146,378,248,357,249,362,147,383"/>
+<area shape="rect" id="Node000015" href="$classBDSOutput.html#a325c7010742649823b54f24e570536e7" title="Fill event summary information." alt="" coords="233,381,416,406"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="163,391,220,391,220,396,163,396"/>
+<area shape="rect" id="Node000017" href="$classBDSOutput.html#a59b89ea7695e1cd4c9f41d3103b0c0bb" title=" " alt="" coords="239,454,410,479"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="128,404,270,447,268,453,126,409"/>
+<area shape="rect" id="Node000019" href="$classBDSOutput.html#aad6a280983b182c282eb0283ae6338ad" title="Fill the hit where the primary particle impact." alt="" coords="229,282,420,307"/>
+<area shape="poly" id="edge19_Node000001_Node000019" title=" " alt="" coords="101,378,149,347,210,316,233,308,234,314,212,321,151,352,104,383"/>
+<area shape="rect" id="Node000020" href="$classBDSOutput.html#aa12c5264480f8bd78063c151d103b378" title="Fill a collection volume exit hits into the appropriate output structure." alt="" coords="225,233,425,258"/>
+<area shape="poly" id="edge22_Node000001_Node000020" title=" " alt="" coords="92,379,138,324,171,293,209,267,224,260,226,265,212,272,175,297,142,328,96,382"/>
+<area shape="rect" id="Node000021" href="$classBDSOutput.html#a44fcbd48b131bc7319416c26028a3a1e" title="Fill sampler link hits into output structures." alt="" coords="211,503,438,529"/>
+<area shape="poly" id="edge25_Node000001_Node000021" title=" " alt="" coords="100,404,147,446,178,469,212,488,234,497,232,502,210,493,175,473,143,450,96,408"/>
+<area shape="rect" id="Node000022" href="$classBDSOutput.html#a3e959bab2a8b2a57e38d456d86613774" title="Fill sampler hits from a vector&lt;sampler hits collection&gt;." alt="" coords="225,553,425,593"/>
+<area shape="poly" id="edge26_Node000001_Node000022" title=" " alt="" coords="95,405,139,468,173,506,212,538,225,545,222,550,209,542,169,510,135,472,90,408"/>
+<area shape="rect" id="Node000023" href="$classBDSOutput.html#aef8d598b63bee11f818c1af022228ff2" title="Fill a map of scorer hits into the output." alt="" coords="231,618,418,643"/>
+<area shape="poly" id="edge27_Node000001_Node000023" title=" " alt="" coords="92,405,105,445,129,499,165,556,187,581,212,603,223,610,221,615,209,607,183,585,160,559,124,501,100,447,86,407"/>
+<area shape="rect" id="Node000031" href="$classBDSOutput.html#a77e2e84eecb27ed667ab89085f67f3cf" title="Copy a set of trajectories to the output structure." alt="" coords="227,667,422,693"/>
+<area shape="poly" id="edge35_Node000001_Node000031" title=" " alt="" coords="90,406,101,453,123,520,139,556,159,592,183,625,212,653,221,659,218,663,209,657,179,628,155,595,134,559,118,522,95,454,85,407"/>
+<area shape="rect" id="Node000032" href="$classBDSOutput.html#a18d3f3d5a5ff889cba23ac486925131b" title=" " alt="" coords="227,717,423,757"/>
+<area shape="poly" id="edge36_Node000001_Node000032" title=" " alt="" coords="89,406,98,460,118,540,134,584,155,627,181,667,212,702,220,708,216,712,209,706,176,670,150,629,129,586,113,542,92,461,84,407"/>
+<area shape="rect" id="Node000003" href="$classBDSOutputROOTEventHistograms.html#a88c5c8c39d5823f8c7b12ade58ab1999" title="Flush the contents." alt="" coords="487,5,729,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="413,67,505,46,506,51,415,72"/>
+<area shape="rect" id="Node000004" href="$classBDSOutputROOTEventSampler.html#a93e52f0ddd69231bedbbed34a4a48dd8" title="Clean Sampler." alt="" coords="497,69,719,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="426,87,483,87,483,92,426,92"/>
+<area shape="rect" id="Node000005" href="$classBDSOutputROOTEventTrajectory.html#a384aceae1f8a4a30e3022b74e6ef9898" title="add comment to avoid warning (no need to make persistent, see issue #191)" alt="" coords="493,133,723,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="415,107,506,128,505,133,413,112"/>
+<area shape="rect" id="Node000006" href="$classBDSOutputROOTEventTrajectory.html#a3a079d5a4dacf212479acf6cf7b3edbe" title="Non&#45;virtual version for initialising members." alt="" coords="783,133,1014,173"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="724,151,770,151,770,156,724,156"/>
+<area shape="rect" id="Node000010" href="$classBDSOutput.html#a4e68667804de26d80dfc907acd57dab2" title=" " alt="" coords="505,204,711,244"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="411,329,437,316,452,302,460,286,469,270,485,254,495,248,498,252,488,258,473,273,465,289,457,305,440,321,413,334"/>
+<area shape="rect" id="Node000012" href="$classBDSOutputROOTEventLoss.html#acb4e6c578e26083aefce36b20dcc6617" title="Fill from another instance." alt="" coords="510,268,706,308"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="389,329,496,307,497,313,390,334"/>
+<area shape="rect" id="Node000013" href="$classBDSHitEnergyDeposition.html#a7e41f78ff1c2e08010d68f7b7e786086" title="Accessor for extra piece of information." alt="" coords="517,332,699,372"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="422,344,503,346,503,352,422,349"/>
+<area shape="rect" id="Node000014" href="$classBDSHitEnergyDeposition.html#aa573e358606c17612043bb593bf5e86e" title="Accessor for extra piece of information." alt="" coords="517,396,699,436"/>
+<area shape="poly" id="edge13_Node000009_Node000014" title=" " alt="" coords="392,354,439,365,487,381,516,390,514,395,486,387,438,371,391,359"/>
+<area shape="rect" id="Node000011" href="$classBDSOutputROOTEventHistograms.html#ac5dffd337b275a894ab67c6bc7f39780" title="Accessors." alt="" coords="777,204,1020,244"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="712,221,763,221,763,227,712,227"/>
+<area shape="rect" id="Node000016" href="$classBDSEventInfo.html#aab9b1fdaf62e08e2cc27d242a40db0a3" title="Accessor." alt="" coords="525,461,691,486"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="405,404,440,415,464,430,488,446,514,455,512,460,486,450,461,435,438,420,403,409"/>
+<area shape="poly" id="edge18_Node000017_Node000017" title=" " alt="" coords="286,456,277,446,282,436,298,430,325,427,358,431,371,441,368,445,356,436,325,433,299,435,285,440,283,445,290,452"/>
+<area shape="rect" id="Node000018" href="$classBDSOutputROOTEventCoords.html#a6d65073334e9c4c8231b7beeab8d35df" title="Fill from another instance." alt="" coords="502,511,714,551"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="387,477,439,488,512,505,511,510,438,493,386,482"/>
+<area shape="poly" id="edge20_Node000019_Node000010" title=" " alt="" coords="385,279,438,267,486,253,518,245,519,250,487,259,439,272,386,285"/>
+<area shape="poly" id="edge21_Node000019_Node000012" title=" " alt="" coords="420,290,496,288,496,293,420,295"/>
+<area shape="poly" id="edge23_Node000020_Node000010" title=" " alt="" coords="425,235,491,230,491,235,425,240"/>
+<area shape="poly" id="edge24_Node000020_Node000012" title=" " alt="" coords="410,255,497,269,496,274,409,261"/>
+<area shape="rect" id="Node000024" href="$classBDSOutput.html#a3c633a56eaa599e0aae77e156b2b65aa" title="Fill an individual scorer hits map into a particular output histogram." alt="" coords="515,611,701,651"/>
+<area shape="poly" id="edge28_Node000023_Node000024" title=" " alt="" coords="418,628,501,628,501,633,418,633"/>
+<area shape="rect" id="Node000025" href="$classBDSOutputROOTEventHistograms.html#a98a4752d7d8694f053425625d5148827" title="Add the values from one supplied 3D histogram to another. Uses TH3&#45;Add()." alt="" coords="777,453,1020,493"/>
+<area shape="poly" id="edge29_Node000024_Node000025" title=" " alt="" coords="652,608,690,587,728,561,742,546,750,531,760,517,776,503,787,497,790,501,779,508,764,521,755,534,746,549,731,565,693,592,655,613"/>
+<area shape="rect" id="Node000026" href="$classBDSOutputROOTEventHistograms.html#af53ac2367a32007f7a9a3ebbb98b91aa" title="Accessors." alt="" coords="777,517,1020,557"/>
+<area shape="poly" id="edge30_Node000024_Node000026" title=" " alt="" coords="660,608,777,567,805,558,806,564,778,572,662,613"/>
+<area shape="rect" id="Node000027" href="$classBDSOutputROOTEventHistograms.html#abe13e0d7f5990059f092bafd06fd06db" title="Accessors." alt="" coords="777,581,1020,621"/>
+<area shape="poly" id="edge31_Node000024_Node000027" title=" " alt="" coords="701,619,763,612,764,618,702,624"/>
+<area shape="rect" id="Node000028" href="$namespaceBDS.html#a411221a711de19106da8c85c897df474" title=" " alt="" coords="805,646,992,671"/>
+<area shape="poly" id="edge32_Node000024_Node000028" title=" " alt="" coords="702,637,792,646,791,651,701,642"/>
+<area shape="rect" id="Node000029" href="$classBDSOutputROOTEventHistograms.html#af49e1e7dcd3a18a754c1f634947a5c82" title=" " alt="" coords="777,696,1020,736"/>
+<area shape="poly" id="edge33_Node000024_Node000029" title=" " alt="" coords="673,648,778,680,811,690,810,695,777,685,672,653"/>
+<area shape="rect" id="Node000030" href="$namespaceBDS.html#a3d2494435d6be46925d1b834e4e8f771" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="833,761,965,786"/>
+<area shape="poly" id="edge34_Node000024_Node000030" title=" " alt="" coords="634,649,696,698,736,724,778,746,820,759,818,764,776,750,734,728,693,702,630,653"/>
+</map>

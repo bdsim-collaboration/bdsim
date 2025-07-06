@@ -1,0 +1,60 @@
+<map id="BDSCollimatorTipJaw::Build" name="BDSCollimatorTipJaw::Build">
+<area shape="rect" id="Node000001" title="Override function in BDSCollimator for totally different construction." alt="" coords="5,480,165,520"/>
+<area shape="rect" id="Node000002" href="$classBDSAcceleratorComponent.html#a40efaeee24eec1f10d4e1ef21ebe5e70" title=" " alt="" coords="225,101,424,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,479,137,373,171,306,211,240,250,191,289,149,293,153,254,194,216,243,176,308,142,376,97,481"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="1055,277,1159,302"/>
+<area shape="poly" id="edge23_Node000001_Node000008" title=" " alt="" coords="93,479,111,446,136,407,170,368,212,338,261,324,346,314,582,299,840,291,1041,287,1041,293,840,296,582,304,346,319,262,330,214,342,174,372,141,410,115,449,98,481"/>
+<area shape="rect" id="Node000014" href="$classBDSCollimatorTipJaw.html#a95accdd088ca364ee258a2573f1d4273" title=" " alt="" coords="245,352,405,392"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="106,478,153,439,212,402,230,393,233,398,215,406,156,444,110,482"/>
+<area shape="rect" id="Node000020" href="$classBDSTipCollimator.html#ad959738c08520c8ef8ced158d833e549" title="Return either default user limits or custom ones based on optional minimumKineticEnergy." alt="" coords="488,237,701,277"/>
+<area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="90,479,105,438,130,387,165,335,187,313,212,294,242,277,275,264,342,248,411,241,474,241,474,246,411,246,343,253,276,269,245,282,215,298,190,317,169,339,134,389,110,440,95,480"/>
+<area shape="rect" id="Node000021" href="$classBDSGeometryComponent.html#a66c8db7284315088c2c819f3a530848b" title=" " alt="" coords="500,520,689,560"/>
+<area shape="poly" id="edge24_Node000001_Node000021" title=" " alt="" coords="155,518,214,529,356,541,487,542,486,547,355,546,213,535,154,523"/>
+<area shape="rect" id="Node000022" href="$classBDSGeometryComponent.html#aa046608d3ba8d2079699a0a6504a559b" title=" " alt="" coords="230,480,419,520"/>
+<area shape="poly" id="edge25_Node000001_Node000022" title=" " alt="" coords="165,497,216,497,216,503,165,503"/>
+<area shape="rect" id="Node000023" href="$classBDSGeometryComponent.html#af4ce5153a36ecbf0ba7020b9893e5cd3" title=" " alt="" coords="228,416,421,456"/>
+<area shape="poly" id="edge26_Node000001_Node000023" title=" " alt="" coords="160,477,236,457,237,462,162,482"/>
+<area shape="rect" id="Node000024" href="$classBDSGeometryComponent.html#ae70878d39e522057c500460c1c933844" title=" " alt="" coords="230,595,419,635"/>
+<area shape="poly" id="edge28_Node000001_Node000024" title=" " alt="" coords="118,518,163,546,214,574,247,587,245,592,212,578,160,550,115,522"/>
+<area shape="rect" id="Node000025" href="$classBDSGeometryComponent.html#ae256d1c17bcefc15e3f85c120a2c8867" title=" " alt="" coords="230,659,419,699"/>
+<area shape="poly" id="edge29_Node000001_Node000025" title=" " alt="" coords="101,519,146,581,178,615,215,644,225,650,222,655,212,649,174,619,142,585,97,522"/>
+<area shape="rect" id="Node000026" href="$classBDSAcceleratorComponent.html#a34b5746ec0195c9cf1eb3b266805d61c" title=" " alt="" coords="213,723,436,778"/>
+<area shape="poly" id="edge30_Node000001_Node000026" title=" " alt="" coords="96,520,112,559,137,610,172,663,215,709,222,714,218,718,212,713,167,666,133,613,107,561,91,522"/>
+<area shape="rect" id="Node000027" href="$classBDSAcceleratorModel.html#a13e1cca9ba6aa2d998861ce9cee4614d" title="Returns pointer to a set of logical volumes. If no set by that name exits, create it." alt="" coords="243,803,407,843"/>
+<area shape="poly" id="edge31_Node000001_Node000027" title=" " alt="" coords="92,520,103,574,125,646,141,685,162,723,186,758,215,789,231,800,228,804,212,793,182,761,157,726,137,687,120,648,98,575,87,521"/>
+<area shape="rect" id="Node000003" href="$classBDSAcceleratorComponent.html#ac3dc5747c25252ee2c23fd79f42c3d9e" title="Doesn&#39;t change member variables, but may change their contents." alt="" coords="495,5,694,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="371,99,483,55,507,47,509,52,485,60,373,104"/>
+<area shape="rect" id="Node000005" href="$classBDSAcceleratorComponent.html#aadcfb05c9ace0b03f5c970a03fb1875d" title=" " alt="" coords="484,69,705,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="424,107,470,101,470,107,424,112"/>
+<area shape="rect" id="Node000006" href="$classBDSAcceleratorComponent.html#ab51491885727c90ec4ab1bf0baad596e" title=" " alt="" coords="495,133,694,173"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="424,130,482,137,481,143,424,136"/>
+<area shape="rect" id="Node000004" href="$classBDSGeometryComponent.html#a8fbb096281f2e8b6510750fd4eb63105" title="Utility function to apply user limits to an assembly volume as there&#39;s not interface." alt="" coords="753,5,973,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="694,23,739,23,739,28,694,28"/>
+<area shape="rect" id="Node000007" href="$namespaceBDS.html#a721e4f4dd7877f2306620d113aff05c1" title=" " alt="" coords="778,137,949,162"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="694,149,764,148,764,153,694,155"/>
+<area shape="rect" id="Node000009" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="785,72,941,112"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="682,131,771,110,772,115,684,136"/>
+<area shape="rect" id="Node000013" href="$classBDSGeometryComponent.html#ab6ca27b409c38ccb93456c5deae106be" title=" " alt="" coords="769,187,958,227"/>
+<area shape="poly" id="edge12_Node000006_Node000013" title=" " alt="" coords="695,170,756,183,755,188,694,176"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="942,160,975,172,1008,193,1039,217,1088,264,1084,268,1036,221,1005,197,972,177,940,165"/>
+<area shape="rect" id="Node000010" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="1025,129,1189,169"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="942,108,1012,124,1011,130,941,113"/>
+<area shape="rect" id="Node000011" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="1031,30,1183,55"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="941,74,1030,55,1031,61,942,79"/>
+<area shape="rect" id="Node000012" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="1021,79,1193,105"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="942,89,1007,89,1007,95,942,95"/>
+<area shape="poly" id="edge19_Node000014_Node000008" title=" " alt="" coords="405,389,519,409,663,423,740,424,819,420,897,408,972,388,1005,373,1036,353,1084,310,1087,314,1039,357,1008,378,974,393,898,413,820,425,740,430,662,429,518,415,404,394"/>
+<area shape="rect" id="Node000015" href="$classBDSColours.html#a47bf1fce3a161fa47e30ec7620de2eaf" title="Get a cached anonymous colour by values." alt="" coords="509,353,680,378"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="405,367,495,365,496,370,405,373"/>
+<area shape="rect" id="Node000017" href="$classBDSColours.html#a70b63e931ed622f303245065d959b60e" title="singleton pattern" alt="" coords="514,454,675,479"/>
+<area shape="poly" id="edge16_Node000014_Node000017" title=" " alt="" coords="406,390,437,402,461,417,485,432,527,448,525,453,483,437,459,422,435,406,404,395"/>
+<area shape="rect" id="Node000016" href="$namespaceBDS.html#a8dbf382bb29843a4904f8b5e6b141b1d" title=" " alt="" coords="787,353,940,378"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="680,363,773,363,773,368,680,368"/>
+<area shape="rect" id="Node000018" href="$classBDSColours.html#ab19369a3f87d6f470da02a8a385ecf32" title="Private constructor as singleton." alt="" coords="772,454,955,479"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="675,464,758,464,758,469,675,469"/>
+<area shape="rect" id="Node000019" href="$classBDSColours.html#abb27d7d63d9f0b2da5e2126a86ac8863" title=" " alt="" coords="1039,454,1175,479"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="955,464,1025,464,1025,469,955,469"/>
+<area shape="poly" id="edge21_Node000020_Node000008" title=" " alt="" coords="702,261,1041,283,1041,288,702,267"/>
+<area shape="poly" id="edge22_Node000020_Node000013" title=" " alt="" coords="701,235,754,224,755,230,702,240"/>
+<area shape="poly" id="edge27_Node000023_Node000021" title=" " alt="" coords="403,454,437,466,485,490,535,512,533,517,483,494,435,470,401,459"/>
+</map>

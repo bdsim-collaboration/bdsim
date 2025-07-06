@@ -1,0 +1,50 @@
+<map id="BDSOutput::FillModel" name="BDSOutput::FillModel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,429,165,454"/>
+<area shape="rect" id="Node000002" href="$classBDSOutputStructures.html#a68afdf09ffa187a2c5c295449171180b" title="Clear the local model structure." alt="" coords="233,165,404,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,427,288,214,292,217,100,430"/>
+<area shape="rect" id="Node000004" href="$classBDSOutputROOTEventModel.html#aaa45ba4df41f1c39013de69e481428a1" title="Fill root output." alt="" coords="215,389,422,429"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,428,202,423,202,428,166,433"/>
+<area shape="rect" id="Node000023" href="$classBDSAcceleratorModel.html#a2d39dfe2bd3cac97183304e06c9e88d5" title="Access all scorer histogram definitions." alt="" coords="213,453,424,493"/>
+<area shape="poly" id="edge23_Node000001_Node000023" title=" " alt="" coords="166,450,200,454,200,460,165,455"/>
+<area shape="rect" id="Node000024" href="$classBDSOutput.html#a0525971cf8504d16f1ee09685b7c9f4c" title="Write a representation of the samplers and beamline." alt="" coords="231,518,407,543"/>
+<area shape="poly" id="edge24_Node000001_Node000024" title=" " alt="" coords="110,452,157,477,214,503,243,512,241,517,212,508,155,482,107,457"/>
+<area shape="rect" id="Node000003" href="$classBDSOutputROOTEventModel.html#aa92215e2e02bfe4721ba6cbf3c31c4e2" title="Initialise all members." alt="" coords="484,5,691,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="337,163,393,109,431,80,471,55,485,48,488,53,473,60,434,84,397,113,340,167"/>
+<area shape="rect" id="Node000005" href="$classBDSAcceleratorModel.html#a899da925682f73f7f52a1a88ad25e25c" title="Accessor." alt="" coords="505,69,669,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="329,388,422,216,433,188,440,164,450,142,470,119,491,106,494,111,474,123,454,145,445,166,438,190,426,218,333,391"/>
+<area shape="rect" id="Node000006" href="$classBDSBeamline.html#ae06f2d1f98faf8a8eec80f149d70c792" title="Iterator mechanics." alt="" coords="510,134,665,159"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="328,388,394,270,434,209,453,186,470,170,495,157,498,162,474,174,457,189,438,212,398,273,333,390"/>
+<area shape="rect" id="Node000007" href="$classBDSOutputROOTEventModel.html#afba823b9e38a1647eb04d94ae010ad37" title="Utility function." alt="" coords="484,184,691,224"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="330,387,353,354,385,312,424,270,471,234,482,227,484,232,473,238,428,274,389,316,357,357,334,390"/>
+<area shape="rect" id="Node000008" href="$classBDSBeamline.html#af0adc3567fcac15aac4948540ddad947" title="Iterator mechanics." alt="" coords="516,249,659,274"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="337,387,393,335,430,306,471,283,501,272,503,277,473,288,433,311,396,339,340,391"/>
+<area shape="rect" id="Node000009" href="$classBDSTiltOffset.html#a9ac80c9f1039f69768c4181ae501f0ad" title="Accessor." alt="" coords="507,298,668,323"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="353,387,408,359,471,332,498,324,500,329,473,337,410,364,356,392"/>
+<area shape="rect" id="Node000010" href="$classBDSTiltOffset.html#a79ef69ee8af669492ab3d18840736c24" title="Accessor." alt="" coords="494,347,681,373"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="422,388,504,373,505,378,423,393"/>
+<area shape="rect" id="Node000011" href="$classBDSTiltOffset.html#a53195358cf08dd98b71b71813ed887ed" title="Accessor." alt="" coords="494,397,681,422"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="422,407,480,407,480,412,422,412"/>
+<area shape="rect" id="Node000012" href="$classBDSPhysicalVolumeInfoRegistry.html#af11a28667b48386f8eb56552d6a6ba73" title="Singleton accessor." alt="" coords="472,447,703,487"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="414,427,480,441,479,446,412,432"/>
+<area shape="rect" id="Node000014" href="$classBDSSamplerRegistry.html#a8ab60000257f2826431f7505b1d62bc8" title="Accessor for registry." alt="" coords="509,511,666,551"/>
+<area shape="poly" id="edge13_Node000004_Node000014" title=" " alt="" coords="403,427,426,439,441,454,450,469,459,483,474,496,497,508,494,513,470,501,455,486,446,471,437,457,422,444,400,432"/>
+<area shape="rect" id="Node000016" href="$classBDSMagnetStrength.html#a13117751c1b4770af22600b803e2d86e" title="Accessor for all normal components &#45; k1 &#45; k12." alt="" coords="507,575,668,615"/>
+<area shape="poly" id="edge15_Node000004_Node000016" title=" " alt="" coords="409,427,426,439,439,455,446,471,450,502,455,532,462,546,474,561,495,575,492,579,470,565,457,549,450,534,445,503,441,472,434,458,422,443,406,432"/>
+<area shape="rect" id="Node000018" href="$classBDSPhysicalVolumeInfoRegistry.html#ac16b53fd563e40c51934e2b866450fd2" title="Access a set of volumes registered for the placement of a beamline element." alt="" coords="472,639,703,679"/>
+<area shape="poly" id="edge17_Node000004_Node000018" title=" " alt="" coords="411,428,426,440,443,463,451,487,452,511,450,534,449,558,450,580,458,603,474,625,478,628,474,632,470,628,453,605,445,581,443,558,445,534,447,511,445,488,438,466,422,443,408,432"/>
+<area shape="rect" id="Node000019" href="$classBDSBeamline.html#a962802803a6dccfe0919f489564fcfeb" title="Get the number of elements." alt="" coords="515,703,660,729"/>
+<area shape="poly" id="edge18_Node000004_Node000019" title=" " alt="" coords="412,428,426,440,447,472,455,504,454,536,449,568,445,599,445,629,453,659,474,689,487,699,503,707,501,712,484,704,470,693,448,661,439,630,439,598,444,567,449,536,450,505,442,474,422,443,409,432"/>
+<area shape="rect" id="Node000020" href="$classBDSMagnetStrength.html#a19f306564fb3733579c485c323b6d4af" title="Accessor for all skew components &#45; k1 &#45; k12." alt="" coords="507,753,668,793"/>
+<area shape="poly" id="edge19_Node000004_Node000020" title=" " alt="" coords="412,427,426,440,450,478,459,516,457,554,450,591,444,628,442,665,450,701,474,738,495,755,492,759,470,742,446,703,437,665,438,628,445,590,452,554,454,517,445,480,422,443,409,431"/>
+<area shape="rect" id="Node000021" href="$classBDSMagnetStrength.html#ad765deb6b0f78ed0fd4c1f310767f229" title="Access a unit factor for a given key." alt="" coords="493,818,681,843"/>
+<area shape="poly" id="edge21_Node000004_Node000021" title=" " alt="" coords="412,427,426,440,443,463,454,487,461,510,463,534,459,580,449,626,439,671,435,715,438,737,445,759,457,781,474,804,483,811,479,815,470,807,452,784,440,761,433,738,430,715,434,670,444,624,454,579,458,534,455,511,449,489,438,466,422,443,409,431"/>
+<area shape="rect" id="Node000013" href="$classBDSPhysicalVolumeInfoRegistry.html#a45c1c6104df6864c056a8d0918b6915b" title="Default constructor is private as singleton." alt="" coords="751,447,989,487"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="703,464,737,464,737,469,703,469"/>
+<area shape="rect" id="Node000015" href="$classBDSSamplerRegistry.html#adf923639c77f775de1c1638818bc6554" title="Private constructor to enforce singleton pattern." alt="" coords="787,511,953,551"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="666,528,773,528,773,533,666,533"/>
+<area shape="rect" id="Node000017" href="$classBDSMagnetStrength.html#a68e4eba0d6e0236be9c537619decd0de" title=" " alt="" coords="789,660,951,700"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="663,612,703,624,796,653,794,658,702,629,661,617"/>
+<area shape="poly" id="edge20_Node000020_Node000017" title=" " alt="" coords="659,751,702,737,802,702,804,707,704,743,661,756"/>
+<area shape="rect" id="Node000022" href="$classBDSMagnetStrength.html#a4064362d52ab7af2e606d83d6bb1c848" title="Whether or not the supplied key is a valid magnet strength parameter." alt="" coords="789,811,951,851"/>
+<area shape="poly" id="edge22_Node000021_Node000022" title=" " alt="" coords="682,828,776,828,776,833,682,833"/>
+</map>

@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release Checklist &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Program Layout" href="dev_programlayout.html" />
+    <link rel="prev" title="Documentation Builds" href="dev_documentation_build.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developer.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev_introduction.html">Purpose of Developer Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_styleguide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html">Documentation Builds</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Release Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-of-year-or-licence">Change Of Year or Licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html">Program Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html">Build System &amp; Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html">Geant4 User Action Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html">Tracking Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_beamgeneration.html">Beam Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html">Sensitivity, Output &amp; Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html">Analysis Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="developer.html">Developer Documentation</a></li>
+      <li class="breadcrumb-item active">Release Checklist</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev_release.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="release-checklist">
+<span id="dev-release"></span><h1>Release Checklist<a class="headerlink" href="#release-checklist" title="Link to this heading"></a></h1>
+<p>Things to update immediately before a release  (i.e. from a release candidate branch):</p>
+<ol class="arabic">
+<li><p>README - update at the top and the version history.</p></li>
+<li><p>CMakeLists.txt - change major, minor and patch version at the very top.</p></li>
+<li><p>For each submodule:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Follow release procedure for PyPi: <a class="reference external" href="http://www.pp.rhul.ac.uk/bdsim/pybdsim/developer.html#release-checklist">http://www.pp.rhul.ac.uk/bdsim/pybdsim/developer.html#release-checklist</a></p></li>
+<li><p>Upload to testpypi.</p></li>
+<li><p>Upload to pypi.</p></li>
+<li><p>Update html manual on website.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Update version number of each Python package in version history only.</p></li>
+<li><p>Check data versions and update samples:</p>
+<ul class="simple">
+<li><p>If the data format has changed increment the data version in each output class header in the ClassDef() at the bottom.</p></li>
+<li><p>Check data version in <code class="code docutils literal notranslate"><span class="pre">configuration/BDSVersionData.hh</span></code>.</p></li>
+<li><p>After updating the build, go to <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-build-dir&gt;/configuration</span></code> and manually edit BDSVersion.hh to
+be the new version (e.g. v1.7.0) then make install. You may have to touch
+<code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-dir&gt;/src/BDSOutputROOTEventHeader.cc</span></code>. Then the data samples will have the right
+version number in their header.bdsimVersion (rather than previous-version-dirty). If ccmake
+is run though, this will be overwritten.</p></li>
+<li><p>Also check <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-build-dir&gt;/src/BDSExecOptions.cc</span></code> for the “versionGit” string.</p></li>
+<li><p>Regenerate data samples in <code class="code docutils literal notranslate"><span class="pre">examples/features/data/</span></code> using regenerateSamples.sh</p></li>
+<li><p>Regenerate data sample <code class="code docutils literal notranslate"><span class="pre">examples/features/beam/userfile/userfile-sample.root</span></code> using regenerateUserFileSample.sh.</p></li>
+<li><p>Regenerate data sample <code class="code docutils literal notranslate"><span class="pre">examples/features/beam/ptc/ptc-sample.root</span></code> using regeneratePtcSample.sh.</p></li>
+</ul>
+</li>
+<li><p>Update version history (including Python utilities and data versions) in
+manual source.</p>
+<ul class="simple">
+<li><p>Python utility versions.</p></li>
+<li><p>Data version.</p></li>
+<li><p>Data class versions.</p></li>
+</ul>
+</li>
+<li><p>If BDSColours has changed, run BDSIM with DEBUGOUTPUT build and copy print out of
+colours to manual (already in correct format) - model_customisation.rst : Colours.</p></li>
+<li><p>Regenerate BDSIM manual (pdf and html) and check the version number then commit the new
+pdf version. Upload html version to website. May have to re-run cmake to update version number.
+If the manual won’t copy to the build directory it’s because there is a temporary file starting
+with a <cite>#</cite> is present in the source directory.</p></li>
+<li><p>Merge release candidate branch back into develop.</p></li>
+<li><p>In develop, put back README, CMakeLists.txt to new version.develop.</p></li>
+<li><p>Merge release candidate branch into master then delete. (<code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master;</span> <span class="pre">git</span> <span class="pre">merge</span> <span class="pre">--no-ff</span> <span class="pre">v1.X.0-rc</span></code>)</p></li>
+<li><p>Check all tests complete locally given merge before pushing.</p></li>
+<li><p>Tag master branch for version number.</p></li>
+</ol>
+</section>
+<section id="change-of-year-or-licence">
+<h1>Change Of Year or Licence<a class="headerlink" href="#change-of-year-or-licence" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Update LICENCE.txt in bdsim root directory.</p></li>
+<li><p>From BDSIM root directory, <code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">utils/updatelicence.sh</span></code></p></li>
+<li><p>Reset <code class="code docutils literal notranslate"><span class="pre">BDSEmStandardPhysicsOp4Channelling.hh</span></code> and <code class="code docutils literal notranslate"><span class="pre">BDSEmStandardPhysicsOp4Channelling.cc</span></code>.</p></li>
+</ol>
+<p>Then it should be safe to commit the hundreds of file changes in one go.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev_documentation_build.html" class="btn btn-neutral float-left" title="Documentation Builds" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_programlayout.html" class="btn btn-neutral float-right" title="Program Layout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<map id="BDSAcceleratorModel::TunnelBeamline" name="BDSAcceleratorModel::TunnelBeamline">
+<area shape="rect" id="Node000001" title="Access the beam line containing all the tunnel segments." alt="" coords="839,69,1003,109"/>
+<area shape="rect" id="Node000002" href="$classBDSDetectorConstruction.html#a5bed9e3a301f1db2ef82f147d01ef177" title=" " alt="" coords="588,5,775,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="831,68,756,48,757,43,833,63"/>
+<area shape="rect" id="Node000004" href="$classBDSDetectorConstruction.html#aa564f0cee84c47e41d7917e11107bc3f" title="Place beam line, tunnel beam line, end pieces and placements in world." alt="" coords="588,69,775,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="825,92,775,92,775,87,825,87"/>
+<area shape="rect" id="Node000005" href="$classBDSOutput.html#abb828f07c0bd68858c9cfd2a6135c327" title="Create histograms." alt="" coords="572,134,791,159"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="827,115,791,124,738,137,737,131,790,119,826,110"/>
+<area shape="rect" id="Node000003" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="319,35,506,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="574,40,506,47,506,42,574,34"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="574,78,506,69,506,64,574,73"/>
+<area shape="rect" id="Node000006" href="$classBDSOutput.html#a509954e8dcd2570104217e26f5703eee" title=" " alt="" coords="301,127,524,167"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="558,149,524,149,524,144,558,144"/>
+<area shape="rect" id="Node000007" href="$classBDSOutput.html#a30dd5e1cdb7554b3adb5a504516a401d" title="Close a file and open a new one." alt="" coords="5,109,253,134"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="288,138,253,135,254,130,288,133"/>
+<area shape="rect" id="Node000008" href="$classBDSIMLink.html#aed5c334e4db2171da99dd381b43da904" title="The main function where everything is constructed." alt="" coords="51,158,207,183"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="288,160,208,167,207,161,288,155"/>
+</map>

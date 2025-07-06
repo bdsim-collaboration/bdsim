@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Analysis &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=106dc6df"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="No Accelerator Model" href="../worked_example_no_accelerator/worked_example_no_accelerator.html" />
+    <link rel="prev" title="Trajectory Generation" href="../worked_example_trajectories/worked_example_trajectories1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BDSIM
+              <img src="../_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfacing.html">Interfacing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples &amp; Tests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#worked-examples">Worked Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_target/worked_example_target.html">Analysis of Thin Target Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_collimation/worked_example_collimation.html">Collimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_atf2.html">Accelerator Test Facility 2 - KEK, Japan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_trajectories/worked_example_trajectories1.html">Trajectory Generation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Custom Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#topics-covered">Topics Covered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contents">Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-data-to-analyse">Generating Data To Analyse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simple-data-loop">Simple Data Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebdsim-average-histograms">Rebdsim Average Histograms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_no_accelerator/worked_example_no_accelerator.html">No Accelerator Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_model_model/model-model-single-pass.html">Model Model - Single Pass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_machine_diagram/worked_example_machine_diagram.html">Machine Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#specific-machines">Specific Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples &amp; Tests</a></li>
+      <li class="breadcrumb-item active">Custom Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/worked_example_custom_analysis/worked_example_custom_analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="custom-analysis">
+<h1>Custom Analysis<a class="headerlink" href="#custom-analysis" title="Link to this heading"></a></h1>
+<section id="topics-covered">
+<h2>Topics Covered<a class="headerlink" href="#topics-covered" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Per-event data structures and loading</p></li>
+<li><p>Histogramming data</p></li>
+<li><p>Using rebdsim classes in custom analysis</p></li>
+<li><p>Based on models in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/trajectories</span></code>.</p></li>
+</ul>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#preparation">Preparation</a></p></li>
+<li><p><a class="reference internal" href="#generating-data-to-analyse">Generating Data To Analyse</a></p></li>
+<li><p><a class="reference internal" href="#simple-data-loop">Simple Data Loop</a></p></li>
+<li><p><a class="reference internal" href="#rebdsim-average-histograms">Rebdsim Average Histograms</a></p></li>
+</ul>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>BDSIM has been compiled and installed.</p></li>
+<li><p>The (DY)LD_LIBRARY_PATH and ROOT_INCLUDE_PATH environmental variables are set as
+described in <a class="reference internal" href="../output_analysis.html#output-analysis-setup"><span class="std std-ref">Setup</span></a>.</p></li>
+<li><p>ROOT can be imported in Python</p></li>
+<li><p><cite>pymadx</cite> and <cite>pybdsim</cite> have been installed.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example model will only work with Geant4.10.4 and upwards.</p>
+</div>
+</section>
+<section id="generating-data-to-analyse">
+<h2>Generating Data To Analyse<a class="headerlink" href="#generating-data-to-analyse" title="Link to this heading"></a></h2>
+<p>For the purpose of this example we need to generate a data file to analyse. We
+use the example described in <a class="reference internal" href="../worked_example_trajectories/worked_example_trajectories1.html#worked-example-trajectory-generation"><span class="std std-ref">Trajectory Generation</span></a>. We can
+generate a data file with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bdsim</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">trajectories</span>
+<span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">proton</span><span class="o">-</span><span class="n">target</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">run1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">200</span> <span class="o">--</span><span class="n">seed</span><span class="o">=</span><span class="mi">123</span>
+</pre></div>
+</div>
+<p>This will generate a file called <code class="code docutils literal notranslate"><span class="pre">run1.root</span></code> that we will use to analyse.</p>
+<p>Broadly speaking, the example generates trajectories of muons and neutrinos with
+their link back the primary proton (e.g. likely a pion). The model uses biasing so
+we must use the weights in the data.</p>
+</section>
+<section id="simple-data-loop">
+<h2>Simple Data Loop<a class="headerlink" href="#simple-data-loop" title="Link to this heading"></a></h2>
+<p>Using pybdsim, which in turn uses the Python interface to ROOT, we can load the data
+and see all of it individually. pybdsim internally uses ROOT to load the bdsim shared
+libraries that contain the definitions of all the C++ classes used in the output. This
+script is in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/trajectories/simpleloop.py</span></code> and contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">Analyse</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">outputfilename</span><span class="p">):</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="n">particles</span>    <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">particlesStr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">]</span>
+<span class="n">names</span>        <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu^-$&#39;</span><span class="p">,</span>     <span class="sa">r</span><span class="s1">&#39;$\mu^+$&#39;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s1">&#39;$\nu_{\mu}$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\overline{\nu}_{\mu}$&#39;</span><span class="p">]</span>
+
+<span class="c1"># setup histograms - 1x 2D histogram in X,Z for each particle</span>
+<span class="n">oZX</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">ps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span><span class="n">particlesStr</span><span class="p">):</span>
+    <span class="c1"># x dimension of histogram: 50 bins in Z from 0 to 10m</span>
+    <span class="c1"># y dimension of histogram: 50 bins in X from -1 to 1 m</span>
+    <span class="c1"># note the histogram has no concept of units - it&#39;s purely just a</span>
+    <span class="c1"># number so we need to choose ranges appropriately</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span><span class="p">(</span><span class="s2">&quot;Origin_ZX_&quot;</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span> <span class="s2">&quot;Origin of &quot;</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span>
+                  <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
+                  <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">oZX</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+
+<span class="n">eventTree</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">()</span>
+<span class="c1"># using this python syntax for name in thing, ROOT will make the variable</span>
+<span class="c1"># &#39;name&#39; (&#39;event&#39;) here, have the exact same layout as we see in a TBrowser</span>
+<span class="c1"># and as is in the file.</span>
+<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">eventTree</span><span class="p">:</span>
+    <span class="c1"># now loop over the trajectories stored for this event</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1"># get the particle ID of the trajectory</span>
+        <span class="n">partID</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">partID</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">partID</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">:</span>
+            <span class="k">continue</span> <span class="c1"># skip ones we don&#39;t want to histogram</span>
+
+        <span class="c1"># i-th trajectory and the 0th (ie first) point of the trajectory position vector</span>
+        <span class="n">originPos</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">x</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="n">originPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">originPos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">postWeights</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">oZX</span><span class="p">[</span><span class="n">partID</span><span class="p">]</span><span class="o">.</span><span class="n">Fill</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+
+<span class="c1"># now write histograms out to a new ROOT file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="n">outputfilename</span><span class="p">,</span> <span class="s2">&quot;RECREATE&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">pid</span><span class="p">,</span><span class="n">histogram</span> <span class="ow">in</span> <span class="n">oZX</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">histogram</span><span class="o">.</span><span class="n">AddDirectory</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># bdsim / rebdsim classes turn off AddDirectory by default</span>
+    <span class="n">histogram</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This loops over each event and inside that event loops over each trajectory. If it matches
+one of the desired particle IDs we histogram the X,Z (global) coordinates of its starting
+point.</p>
+<p>To view the histograms, see <a class="reference internal" href="../output_analysis.html#output-analysis-quick-recipes"><span class="std std-ref">Quick Recipes</span></a>.</p>
+</section>
+<section id="rebdsim-average-histograms">
+<h2>Rebdsim Average Histograms<a class="headerlink" href="#rebdsim-average-histograms" title="Link to this heading"></a></h2>
+<p>The above histograms are simple ROOT histograms. These are a count of a quantity
+in each bin. However, often we are interested in the mean or average per-event
+rate so that we can easily scale this to a realistic beam or setup. i.e. we
+typically never simulate the same number of events as real life particles, but
+enough to gain a statistical understanding of the outcome. With the simple histograms
+we can of course, normalise to the number of events if we keep track of it. If the quantity
+however, is more than 1 thing per event, then the variance and error on the mean will not
+be correct. This is discussed in <a class="reference internal" href="../output_analysis.html#analysis-per-entry-histograms-vs-simple"><span class="std std-ref">Per-Entry and Simple Histograms</span></a>.</p>
+<p>Normally, in rebdsim, the histograms are per-event averages. We can reproduce this ourselves
+in Python using classes from rebdsim. The following script is included in
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/trajectories/rebdsimaveragehistograms.py</span></code>. The same histograms
+are created as in the earlier part of this example but are a per-event average.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">Analyse</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">outputfilename</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="n">particles</span>    <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">]</span>
+    <span class="n">particlesStr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">]</span>
+    <span class="n">names</span>        <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu^-$&#39;</span><span class="p">,</span>     <span class="sa">r</span><span class="s1">&#39;$\mu^+$&#39;</span><span class="p">,</span>
+                    <span class="sa">r</span><span class="s1">&#39;$\nu_{\mu}$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\overline{\nu}_{\mu}$&#39;</span><span class="p">]</span>
+
+    <span class="c1"># setup histograms - 1x 2D histogram in X,Z for each particle</span>
+    <span class="c1"># a base hsitogram is one we will use for each event and empty it afterwards</span>
+    <span class="n">baseHistograms</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">ps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span><span class="n">particlesStr</span><span class="p">):</span>
+        <span class="c1"># x dimension of histogram: 50 bins in Z from 0 to 10m</span>
+        <span class="c1"># y dimension of histogram: 50 bins in X from -1 to 1 m</span>
+        <span class="c1"># note the histogram has no concept of units - it&#39;s purely just a</span>
+        <span class="c1"># number so we need to choose ranges appropriately</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span><span class="p">(</span><span class="s2">&quot;Origin_ZX_&quot;</span><span class="o">+</span><span class="n">ps</span><span class="o">+</span><span class="s2">&quot;BASE&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin of &quot;</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">baseHistograms</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+
+    <span class="c1"># make accumulators that calculate a rolling average for each histogram</span>
+    <span class="n">accumulators</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">hist</span> <span class="ow">in</span> <span class="n">baseHistograms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># note we must have a different name for the resultant accumulated histogram, so we strip</span>
+        <span class="c1"># off the &#39;BASE&#39; suffix we added (knowingly) to the base histogram</span>
+        <span class="n">accumulators</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">HistogramAccumulator</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;BASE&quot;</span><span class="p">),</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetTitle</span><span class="p">())</span>
+
+    <span class="n">eventTree</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">()</span>
+    <span class="c1"># using this python syntax for name in thing, ROOT will make the variable</span>
+    <span class="c1"># &#39;name&#39; (&#39;event&#39;) here, have the exact same layout as we see in a TBrowser</span>
+    <span class="c1"># and as is in the file.</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">eventTree</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">baseHistograms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">h</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+
+        <span class="c1"># now loop over the trajectories stored for this event</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+            <span class="c1"># get the particle ID of the trajectory</span>
+            <span class="n">partID</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">partID</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">partID</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">:</span>
+                <span class="k">continue</span> <span class="c1"># skip ones we don&#39;t want to histogram</span>
+
+            <span class="c1"># i-th trajectory and the 0th (ie first) point of the trajectory position vector</span>
+            <span class="n">originPos</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">x</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="n">originPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">originPos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">weight</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">postWeights</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">baseHistograms</span><span class="p">[</span><span class="n">partID</span><span class="p">]</span><span class="o">.</span><span class="n">Fill</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+
+        <span class="c1"># at the end of the event we &#39;accumulate&#39; one event</span>
+        <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">baseHistograms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">accumulators</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">Accumulate</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+    <span class="c1"># now we terminate the accumulators - ie normalise to the number of events</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">accumulators</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Terminate</span><span class="p">()</span>
+
+    <span class="c1"># now write histograms out to a new ROOT file</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="n">outputfilename</span><span class="p">,</span> <span class="s2">&quot;RECREATE&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">AddDirectory</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># bdsim / rebdsim classes turn off AddDirectory by default</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The key concept is we create a regular histogram but also an accumulator based on it.
+We fill the histogram possibly several times for a given event, and at the end of the
+event we mark this by accumulating that individual histogram. At the start of each event
+we use the same base histogram again but we reset it to empty it.</p>
+<p>To view the histograms, see <a class="reference internal" href="../output_analysis.html#output-analysis-quick-recipes"><span class="std std-ref">Quick Recipes</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../worked_example_trajectories/worked_example_trajectories1.html" class="btn btn-neutral float-left" title="Trajectory Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../worked_example_no_accelerator/worked_example_no_accelerator.html" class="btn btn-neutral float-right" title="No Accelerator Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

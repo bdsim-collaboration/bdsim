@@ -1,0 +1,23 @@
+<map id="BDSOutputROOTParticleData::IsIon" name="BDSOutputROOTParticleData::IsIon">
+<area shape="rect" id="Node000001" title="This doesn&#39;t count a proton (even with electrons) as an ion." alt="" coords="544,101,753,141"/>
+<area shape="rect" id="Node000002" href="$classBDSOutputROOTEventSamplerC.html#a57b1a9b6f81dd6e22546174aab6b2094" title="Function to calculate on the fly the parameters." alt="" coords="275,5,496,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="590,98,495,60,459,48,460,43,497,55,592,93"/>
+<area shape="rect" id="Node000004" href="$classBDSOutputROOTEventSamplerS.html#aa1e126da8bebe3b50ed0024ff8f4fab4" title="Function to calculate on the fly the parameters." alt="" coords="275,69,496,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="530,110,496,105,497,100,531,104"/>
+<area shape="rect" id="Node000006" href="$classBDSOutputROOTParticleData.html#a46136b43bfc5c74ebedb5f927ba432c1" title="Calculate kinetic energy of particle given PDG ID and total energy in GeV." alt="" coords="281,133,490,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="531,138,491,143,490,138,530,133"/>
+<area shape="rect" id="Node000009" href="$classBDSOutputROOTParticleData.html#acf155e4adffc7967c347b681d00c0db2" title="Calculate rigidity of particle given PDG ID and total energy in GeV." alt="" coords="281,261,490,301"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="604,151,421,264,418,259,601,147"/>
+<area shape="rect" id="Node000003" href="$classBDSOutputROOTEventSamplerC.html#a08ea20a87d260b03dd557b8f253f97e2" title="Calculate and fill calculated variables." alt="" coords="5,5,227,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="261,28,227,28,227,23,261,23"/>
+<area shape="rect" id="Node000005" href="$classBDSOutputROOTEventSamplerS.html#a2c394bcbc4b5a162040004a22694e801" title="Calculate and fill calculated variables." alt="" coords="5,69,227,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="261,92,227,92,227,87,261,87"/>
+<area shape="rect" id="Node000007" href="$classBDSOutputROOTEventSamplerC.html#ab4594b77e47f753f51ac38faad6fd371" title="Function to calculate on the fly the parameters." alt="" coords="5,133,227,173"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="267,156,227,156,227,151,267,151"/>
+<area shape="rect" id="Node000008" href="$classBDSOutputROOTEventSamplerS.html#a6757da068ab5b55b695c5e0a81fecca1" title="Function to calculate on the fly the parameters." alt="" coords="5,197,227,237"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="288,179,201,200,200,195,286,174"/>
+<area shape="rect" id="Node000010" href="$classBDSOutputROOTEventSamplerC.html#a727c4869977580924447b1341c391e71" title="Function to calculate on the fly the parameters." alt="" coords="5,261,227,301"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="267,284,227,284,227,279,267,279"/>
+<area shape="rect" id="Node000011" href="$classBDSOutputROOTEventSamplerS.html#acb814916ff6a2a931b52bfb7d30520c8" title="Function to calculate on the fly the parameters." alt="" coords="5,325,227,365"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="288,307,201,328,200,323,286,302"/>
+</map>

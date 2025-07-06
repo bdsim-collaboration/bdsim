@@ -1,0 +1,33 @@
+<map id="BDSScreen::Build" name="BDSScreen::Build">
+<area shape="rect" id="Node000001" title="Construct geometry." alt="" coords="5,319,140,345"/>
+<area shape="rect" id="Node000002" href="$classBDSDrift.html#a20d2b4172fe80d6e24304da7b5a25fcd" title="Construct geometry." alt="" coords="188,319,307,345"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,329,174,329,174,335,140,335"/>
+<area shape="rect" id="Node000003" href="$classBDSGeometryComponent.html#a1cc97e68291b831189d85859b7e85a11" title="Accessor &#45; see member for more info." alt="" coords="371,5,582,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,318,254,269,270,198,284,160,302,122,325,86,353,55,358,51,361,55,357,59,329,89,307,124,289,162,276,200,259,270,252,319"/>
+<area shape="rect" id="Node000004" href="$classBDSGeometryComponent.html#aa375346a226da39ab947054b0cbd7047" title="Accessor &#45; see member for more info." alt="" coords="382,69,571,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="249,319,259,280,279,226,309,169,329,142,353,119,368,109,371,113,356,123,333,146,314,171,283,228,264,281,254,320"/>
+<area shape="rect" id="Node000005" href="$classBDSBeamPipe.html#a1482f81903f080d5c38011a2e1139f6f" title="Access the vacuum volume to set fields and limits." alt="" coords="355,133,599,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="252,318,288,253,317,215,353,183,362,177,365,182,356,187,321,219,292,256,257,320"/>
+<area shape="rect" id="Node000006" href="$classBDSGeometryComponent.html#a249f41628a0670f729dbd2ac7b4b84dc" title="Update the extents of this object with those of another object." alt="" coords="382,197,571,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="260,317,300,282,353,247,370,240,372,244,356,252,303,286,264,321"/>
+<area shape="rect" id="Node000009" href="$classBDSBeamPipe.html#a3db99c21de7b72207782b3d0e425913f" title="Accessor." alt="" coords="360,262,593,287"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="287,317,354,297,396,288,397,293,355,303,289,322"/>
+<area shape="rect" id="Node000010" href="$classBDSBeamPipeFactory.html#a6ddb785bdca626c90eb381b67d4f56d8" title="Singleton accessor." alt="" coords="395,312,558,352"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="307,329,382,329,382,335,307,335"/>
+<area shape="rect" id="Node000012" href="$classBDSBeamPipe.html#aac24f82f9f9bde44f07ed756dd4f2182" title="Accessor." alt="" coords="355,377,599,402"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="289,342,355,361,397,371,396,376,354,367,287,347"/>
+<area shape="rect" id="Node000013" href="$classBDSGeometryComponent.html#a553ac33a48c070e63e7e9ce9c6974642" title=" " alt="" coords="382,427,571,467"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="264,343,303,378,356,412,372,420,370,424,353,417,300,382,260,347"/>
+<area shape="rect" id="Node000014" href="$classBDSAcceleratorComponent.html#a34b5746ec0195c9cf1eb3b266805d61c" title=" " alt="" coords="365,491,588,546"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="257,344,293,407,322,444,356,477,365,482,362,487,353,481,318,448,289,410,252,346"/>
+<area shape="rect" id="Node000015" href="$classBDSAcceleratorComponent.html#aab349a282eee9b2dee4a05d7bd41a644" title="Allow updating of face normals. Virtual so derived class may apply it to daughters." alt="" coords="377,571,576,611"/>
+<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="253,345,263,386,282,443,312,505,332,532,356,557,366,564,363,568,353,561,328,536,307,507,277,445,258,387,248,346"/>
+<area shape="rect" id="Node000016" href="$classBDSAcceleratorComponent.html#a45ca6bd4d926828c09e0886464b82083" title="Allow updating of face normals. Virtual so derived class may apply it to daughters." alt="" coords="377,635,576,675"/>
+<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="252,344,258,396,273,470,287,511,305,551,328,588,356,621,367,629,364,633,353,625,323,592,300,554,282,513,268,472,252,397,247,345"/>
+<area shape="rect" id="Node000007" href="$classBDSGeometryComponent.html#a2e634337243089e76d818fc036674b6e" title="Accessor &#45; see member for more info." alt="" coords="647,159,836,199"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="571,201,633,192,634,197,572,206"/>
+<area shape="rect" id="Node000008" href="$classBDSGeometryComponent.html#ac96a203c1f5bd2b0bad1f44a219ff20a" title="Accessor &#45; see member for more info." alt="" coords="647,223,836,263"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="572,224,634,230,633,235,571,229"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamPipeFactory.html#abe68196e27db78da0a466027d67b9a5f" title="Private constructor as singleton pattern." alt="" coords="656,312,827,352"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="558,329,642,329,642,335,558,335"/>
+</map>

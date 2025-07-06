@@ -1,0 +1,15 @@
+<map id="BDS::IsIon" name="BDS::IsIon">
+<area shape="rect" id="Node000001" title="Whether a particle is an ion. A proton is counted NOT as an ion." alt="" coords="488,95,576,121"/>
+<area shape="rect" id="Node000002" href="$classBDSLinkStackingAction.html#a3c3f322117ce468d1fe6a1145d162634" title=" " alt="" coords="237,5,411,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="498,91,439,60,405,48,407,43,441,55,501,86"/>
+<area shape="rect" id="Node000003" href="$namespaceBDS.html#a354c4ff21c6796be59faf773f4ac8dae" title="Calls IsIon above but also a proton with any bound electrons is considered an ion." alt="" coords="280,70,368,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="474,104,368,91,369,85,475,98"/>
+<area shape="rect" id="Node000004" href="$classBDSSDSamplerLink.html#ab64a5d24471c269ce1337fa4a7b768c6" title=" " alt="" coords="208,119,440,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="474,117,434,122,434,117,474,112"/>
+<area shape="rect" id="Node000005" href="$classBDSTrajectoryPoint.html#a1cef85e27169cf4132e52e184c2d8bc6" title="Utility function to prepare and fill extra ion variables." alt="" coords="251,169,397,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="499,130,441,158,399,173,397,168,439,154,496,125"/>
+<area shape="rect" id="Node000006" href="$classBDSTrajectoryPoint.html#a6c133730db8eefa3acdd652c6013c94a" title=" " alt="" coords="5,137,160,177"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="237,181,160,170,161,165,237,175"/>
+<area shape="rect" id="Node000007" href="$classBDSTrajectoryPoint.html#a061a3cabe9b001774ae9019f6c62af8e" title=" " alt="" coords="5,201,160,241"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="237,203,161,214,160,208,237,198"/>
+</map>

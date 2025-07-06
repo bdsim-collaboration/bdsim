@@ -1,0 +1,1485 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tracking Algorithms &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fields" href="dev_fields.html" />
+    <link rel="prev" title="Geometry" href="dev_geometry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developer.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev_introduction.html">Purpose of Developer Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_styleguide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html">Documentation Builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html">Release Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html#change-of-year-or-licence">Change Of Year or Licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html">Program Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html">Build System &amp; Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html">Geant4 User Action Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html">Geometry</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tracking Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#background-on-how-geant4-tracking-works">Background On How Geant4 Tracking Works</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linear-fields">Linear Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#non-linear-fields">Non-Linear Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integrator-sets">Integrator Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrator-algorithms-section">Integrator Algorithms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#common-magnetic-field-interface-from-geant4">Common Magnetic Field Interface From Geant4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-convention">Coordinate Convention</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-drift">BDSIM Drift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-dipole-rodrigues">BDSIM Dipole Rodrigues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-dipole-rodrigues-2">BDSIM Dipole Rodrigues 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-quadrupole">BDSIM Quadrupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-euler">BDSIM Euler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-sextupole">BDSIM Sextupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-octupole">BDSIM Octupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-decapole">BDSIM Decapole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-solenoid">BDSIM Solenoid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-old-euler-common">BDSIM Old Euler Common</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-dipole-fringe">BDSIM Dipole Fringe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-thin-multipole">BDSIM Thin Multipole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-dipole-matrix">BDSIM Dipole Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-cavity-fringes">BDSIM Cavity Fringes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#validation-of-bdsim-integrators">Validation of BDSIM Integrators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bdsim-integrator-response-to-non-paraxial-particles">BDSIM Integrator Response to Non-Paraxial Particles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_beamgeneration.html">Beam Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html">Sensitivity, Output &amp; Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html">Analysis Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="developer.html">Developer Documentation</a></li>
+      <li class="breadcrumb-item active">Tracking Algorithms</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev_tracking.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tracking-algorithms">
+<span id="dev-tracking"></span><h1>Tracking Algorithms<a class="headerlink" href="#tracking-algorithms" title="Link to this heading"></a></h1>
+<section id="background-on-how-geant4-tracking-works">
+<h2>Background On How Geant4 Tracking Works<a class="headerlink" href="#background-on-how-geant4-tracking-works" title="Link to this heading"></a></h2>
+<p>Geant4 provides the ability track a variety of particles through space in the 3D
+geometry model. Importantly, it provides the ability to track the motion of
+particles in electromagnetic fields.  As Geant4 provides a large library of
+particle types, the tracking software must be capable of tracking particles
+of different masses and charges.</p>
+<p>This is achieved by factorising certain functionality into different sets of C++
+classes.  The user must provide a function that will return the electric
+and magnetic field vectors for a given set of <span class="math notranslate nohighlight">\((x,y,z,t)\)</span> coordinates.
+Specifically, this is a class that inherits <code class="code docutils literal notranslate"><span class="pre">G4Field</span></code> and provides an implementation
+of the pure virtual method <code class="code docutils literal notranslate"><span class="pre">GetFieldValue(position)</span></code> where position is <span class="math notranslate nohighlight">\(x,y,z,t\)</span>.</p>
+<p>As the user specifies the field (and it is essentially unknown), numerical integration
+techniques must be used to solve the equation of motion to calculate the trajectory
+of a given particle.  Geant4 provides a variety of different numerical integrators
+that offer various capabilities and trade-offs in accuracy and computational speed.
+The field and numerical integrator classes are combined with a few other necessary
+Geant4 classes to create a <em>complete</em> “field” capable of calculating the trajectory of
+a particle that would represent the physical motion in the given field. After this,
+the complete field may be attached to a <em>G4LogicalVolume</em> instance. A logical volume
+has not just a shape, but also material, colour, field, sensitivity etc. Even though
+only one logical volume object may be created, it may <em>placed</em> multiple times in the
+3D geometry model.</p>
+<p>As described in <a class="reference internal" href="dev_fields.html#dev-fields"><span class="std std-ref">Fields</span></a>, BDSIM provides a variety of C++ classes that
+represent typical accelerator (pure) magnetic fields. These can be attached to
+the relevant vacuum volumes in the geometry along with Geant4 numerical integrators
+to achieve particle tracking in an accelerator.</p>
+<section id="linear-fields">
+<h3>Linear Fields<a class="headerlink" href="#linear-fields" title="Link to this heading"></a></h3>
+<p>For both a uniform dipole field and quadrupolar field (linear fields), there exist
+analytical solutions to the equations of
+motion. These solutions provide a more accurate representation of the particle’s
+motion in the field and may offer significant computational advantage over numerical
+integration techniques. Primarily, for reasons of accuracy, these are provided in
+BDSIM for the dipole and quadrupole.</p>
+</section>
+<section id="non-linear-fields">
+<h3>Non-Linear Fields<a class="headerlink" href="#non-linear-fields" title="Link to this heading"></a></h3>
+<p>BDSIM provides an integrator for higher-order fields that more accurately conserves
+energy when calculating the particle trajectory (‘symplecticity’) as well as being
+competitive computationally. The routine provided is a second-order Euler integration
+algorithm.  More will be added in future.</p>
+</section>
+</section>
+<section id="integrator-sets">
+<span id="id1"></span><h2>Integrator Sets<a class="headerlink" href="#integrator-sets" title="Link to this heading"></a></h2>
+<p>When using BDSIM, the user can select a <em>set</em> of integrators (i.e. tracking routines)
+with the following syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">integratorSet</span><span class="o">=</span><span class="s2">&quot;bdsimtwo&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This choice affects the computation time and accuracy of the simulation, but each set
+may be suited to different scenarios.  As more integration algorithms are added to BDSIM,
+more sets can be added that mix and match routines as required.</p>
+<ul class="simple">
+<li><p>“bdsimmatrix” is the default and recommended.</p></li>
+<li><p>“bdsimtwo” is acceptable if no fringe dipole pole faces are present.</p></li>
+</ul>
+<p>All sets apart from “geant4” make use of custom BDSIM integrators for accelerator tracking.
+These integrators ignore the supplied field and use a strength parameter (such as <cite>k1</cite>
+for a quadrupole) instead. The field is always present and should a backwards or
+non-paraxial particle be used, these BDSIM integrators resort to a G4ClassicalRK4
+algorithm. This allows all particles to be tracking in all directions over all momentum
+ranges, but with the accuracy and speed of accelerator tracking for paraxial particles.</p>
+<p>The specific details are described in <span class="target" id="integrator-algorithms">Integrator Algorithms</span>.</p>
+<p>The integrator set may be one of the following (case-insensitive):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Set</strong></p></th>
+<th class="head"><p><strong>Magnetic Field Type</strong></p></th>
+<th class="head"><p><strong>Integrator</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="20"><p>bdsimmatrix</p></td>
+<td><p>Solenoid</p></td>
+<td><p>BDSIM Solenoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dipole</p></td>
+<td><p>BDSIM Dipole Matrix</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole with K1</p></td>
+<td><p>BDSIM Dipole Matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quadrupole</p></td>
+<td><p>BDSIM Quadrupole</p></td>
+</tr>
+<tr class="row-even"><td><p>Sextupole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-odd"><td><p>Octupole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-even"><td><p>Decapole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thick Multipole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Muon Spoiler</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>RF Cavity (EM)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>RF (E only)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>General Default</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Quadrupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Sextupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Octupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Decapole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole Fringe</p></td>
+<td><p>BDSIM Dipole Fringe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin Multipole</p></td>
+<td><p>BDSIM Thin Multipole</p></td>
+</tr>
+<tr class="row-even"><td><p>Multipole Outer</p></td>
+<td><p>G4NystromRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin RMatrix</p></td>
+<td><p>BDSIM Thin RMatrix</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Set</strong></p></th>
+<th class="head"><p><strong>Magnetic Field Type</strong></p></th>
+<th class="head"><p><strong>Integrator</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="20"><p>bdsimmatrixfringescaling</p></td>
+<td><p>Solenoid</p></td>
+<td><p>BDSIM Solenoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dipole</p></td>
+<td><p>BDSIM Dipole Matrix</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole with K1</p></td>
+<td><p>BDSIM Dipole Matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quadrupole</p></td>
+<td><p>BDSIM Quadrupole</p></td>
+</tr>
+<tr class="row-even"><td><p>Sextupole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-odd"><td><p>Octupole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-even"><td><p>Decapole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thick Multipole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Muon Spoiler</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>RF Cavity (EM)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>RF (E only)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>General Default</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Quadrupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Sextupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Octupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Decapole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole Fringe</p></td>
+<td><p>BDSIM Dipole Fringe Scaling</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin Multipole</p></td>
+<td><p>BDSIM Thin Multipole</p></td>
+</tr>
+<tr class="row-even"><td><p>Multipole Outer</p></td>
+<td><p>G4NystromRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin RMatrix</p></td>
+<td><p>BDSIM Thin RMatrix</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Set</strong></p></th>
+<th class="head"><p><strong>Magnetic Field Type</strong></p></th>
+<th class="head"><p><strong>Integrator</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="20"><p>bdsimtwo</p></td>
+<td><p>Solenoid</p></td>
+<td><p>BDSIM Solenoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dipole</p></td>
+<td><p>BDSIM Dipole Rodrigues 2</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole with K1</p></td>
+<td><p>BDSIM Dipole Matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quadrupole</p></td>
+<td><p>BDSIM Quadrupole</p></td>
+</tr>
+<tr class="row-even"><td><p>Sextupole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-odd"><td><p>Octupole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-even"><td><p>Decapole</p></td>
+<td><p>BDSIM Euler</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thick Multipole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Muon Spoiler</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>RF Cavity (EM)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>RF (E only)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>General Default</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Quadrupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Sextupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Octupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Decapole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole Fringe</p></td>
+<td><p>BDSIM Dipole Fringe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin Multipole</p></td>
+<td><p>BDSIM Thin Multipole</p></td>
+</tr>
+<tr class="row-even"><td><p>Multipole Outer</p></td>
+<td><p>G4NystromRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin RMatrix</p></td>
+<td><p>BDSIM Thin RMatrix</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Set</strong></p></th>
+<th class="head"><p><strong>Magnetic Field Type</strong></p></th>
+<th class="head"><p><strong>Integrator</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="19"><p>bdsim</p></td>
+<td><p>Solenoid</p></td>
+<td><p>BDSIM Solenoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dipole</p></td>
+<td><p>BDSIM Dipole Rodrigues</p></td>
+</tr>
+<tr class="row-even"><td><p>Quadrupole</p></td>
+<td><p>BDSIM Quadrupole</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sextupole</p></td>
+<td><p>BDSIM Sextuple</p></td>
+</tr>
+<tr class="row-even"><td><p>Octupole</p></td>
+<td><p>BDSIM Octupole</p></td>
+</tr>
+<tr class="row-odd"><td><p>Decapole</p></td>
+<td><p>BDSIM Decapole</p></td>
+</tr>
+<tr class="row-even"><td><p>Thick Multipole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Muon Spoiler</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>RF Cavity (EM)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>RF (E only)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>General Default</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Quadrupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Sextupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Octupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Decapole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dipole Fringe</p></td>
+<td><p>BDSIM Dipole Fringe</p></td>
+</tr>
+<tr class="row-even"><td><p>Thin Multipole</p></td>
+<td><p>BDSIM Thin Multipole</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multipole Outer</p></td>
+<td><p>G4NystromRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Thin RMatrix</p></td>
+<td><p>BDSIM Thin RMatrix</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Set</strong></p></th>
+<th class="head"><p><strong>Magnetic Field Type</strong></p></th>
+<th class="head"><p><strong>Integrator</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="20"><p>geant4</p></td>
+<td><p>Solenoid</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dipole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole with K1</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quadrupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Sextupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Octupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Decapole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thick Multipole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Muon Spoiler</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>RF Cavity (EM)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>RF (E only)</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>General Default</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Quadrupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Sextupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Octupole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Decapole</p></td>
+<td><p>G4ClassicalRK4</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole Fringe</p></td>
+<td><p>BDSIM Dipole Fringe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin Multipole</p></td>
+<td><p>BDSIM Thin Multipole</p></td>
+</tr>
+<tr class="row-even"><td><p>Multipole Outer</p></td>
+<td><p>G4NystromRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin RMatrix</p></td>
+<td><p>BDSIM Thin RMatrix</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Set</strong></p></th>
+<th class="head"><p><strong>Magnetic Field Type</strong></p></th>
+<th class="head"><p><strong>Integrator</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="20"><p>geant4dp*</p></td>
+<td><p>Solenoid</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dipole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole with K1</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quadrupole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>Sextupole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>Octupole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>Decapole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thick Multipole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>Muon Spoiler</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>RF Cavity (EM)</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>RF (E only)</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>General Default</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Quadrupole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Sextupole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>Skew Octupole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-odd"><td><p>Skew Decapole</p></td>
+<td><p>G4DormandPrince745</p></td>
+</tr>
+<tr class="row-even"><td><p>Dipole Fringe</p></td>
+<td><p>BDSIM Dipole Fringe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin Multipole</p></td>
+<td><p>BDSIM Thin Multipole</p></td>
+</tr>
+<tr class="row-even"><td><p>Multipole Outer</p></td>
+<td><p>G4NystromRK4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thin RMatrix</p></td>
+<td><p>BDSIM Thin RMatrix</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>*</cite> “geant4dp” is only available when BDSIM is compiled against
+Geant 4.10.4 or higher.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both dipole, fringe and thin multipole fields are <em>thin</em> elements
+and have no <em>thick</em> equivalent. Therefore, they have no field that
+Geant4 can use and can only use the BDSIM integrators.</p>
+</div>
+</section>
+<section id="integrator-algorithms-section">
+<span id="id2"></span><h2>Integrator Algorithms<a class="headerlink" href="#integrator-algorithms-section" title="Link to this heading"></a></h2>
+<p>BDSIM currently only provides integrators for magnetic fields, i.e. not electric
+or electromagnetic fields.  For these types of fields, Geant4 integrators are used.</p>
+<section id="common-magnetic-field-interface-from-geant4">
+<h3>Common Magnetic Field Interface From Geant4<a class="headerlink" href="#common-magnetic-field-interface-from-geant4" title="Link to this heading"></a></h3>
+<p>The magnetic field integrators provided by BDSIM inherit <code class="code docutils literal notranslate"><span class="pre">G4MagIntegratorStepper</span></code>.
+This is constructed with respect to a <code class="code docutils literal notranslate"><span class="pre">G4EquationOfMotion</span></code> object, which is
+a <code class="code docutils literal notranslate"><span class="pre">G4Mag_UsalEqRhs</span></code> instance for BDSIM integrators.  This <em>equation of motion</em>
+provides the partial differential of the motion at a given location - i.e. the field
+is found at that location and the vector potential calculated.</p>
+<p>An integrator derived from <code class="code docutils literal notranslate"><span class="pre">G4MagIntegratorStepper</span></code> must implement a method:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Stepper</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">G4double</span><span class="w"> </span><span class="n">y</span><span class="p">[],</span>
+<span class="w">                      </span><span class="k">const</span><span class="w"> </span><span class="n">G4double</span><span class="w"> </span><span class="n">dydx</span><span class="p">[],</span>
+<span class="w">                            </span><span class="n">G4double</span><span class="w"> </span><span class="n">h</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">G4double</span><span class="w"> </span><span class="n">yout</span><span class="p">[],</span>
+<span class="w">                            </span><span class="n">G4double</span><span class="w"> </span><span class="n">yerr</span><span class="p">[]</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This is responsible for calculating the coordinates of a trajectory given the input
+point <code class="code docutils literal notranslate"><span class="pre">y[]</span></code> (which is [<span class="math notranslate nohighlight">\(x,y,z,p_x,p_y,p_z,t\)</span>]) for a step length of <span class="math notranslate nohighlight">\(h\)</span>.
+The output coordinates are written to <code class="code docutils literal notranslate"><span class="pre">yout[]</span></code> (also [<span class="math notranslate nohighlight">\(x,y,z,p_x,p_y,p_z,t\)</span>])
+, along with the associated absolute uncertainty for each parameter to <code class="code docutils literal notranslate"><span class="pre">yerr[]</span></code>.
+The differentials at the initial location are given by <code class="code docutils literal notranslate"><span class="pre">dydx</span></code>.  These are calculated
+in <code class="code docutils literal notranslate"><span class="pre">G4Mag_UsualEqRhs.cc</span></code> as follows:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A} = ~ \frac{charge \cdot c}{ \|\mathbf{p}\| } (\mathbf{p} \times \mathbf{B})\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathrm{dydx}[0] &amp;= ~ \frac{p_x}{\|\mathbf{p}\|}\\
+\mathrm{dydx}[1] &amp;= ~ \frac{p_y}{\|\mathbf{p}\|}\\
+\mathrm{dydx}[2] &amp;= ~ \frac{p_z}{\|\mathbf{p}\|}\\
+\mathrm{dydx}[3] &amp;= ~ \mathbf{A}[0]\\
+\mathrm{dydx}[4] &amp;= ~ \mathbf{A}[1]\\
+\mathrm{dydx}[5] &amp;= ~ \mathbf{A}[2]\end{split}\]</div>
+<p>(There are other factors in the code for units that aren’t shown here.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Field calls</strong>: Geant4 will sample the field to give to the equation of
+motion to calculate
+<span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. Getting the field value is generally conidered an <em>expensive</em>
+operation, as it may often involve geometry lookup for transforms, applying transforms
+or indexing a large array along with interpolation.  In the case of BDSIM, the
+majority of fields require a geometry lookup and transform but are simple equations.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Time</strong>: Geant4 magnetic integrators do not integrate time and
+therefore copy the initial
+value of time to the output coordinates.  BDSIM integrators follow this behaviour.
+The time is handled by Geant4 at a higher level, as the magnetic integrators are
+specified to be only integrating over six variables.</p>
+</div>
+</section>
+<section id="coordinate-convention">
+<h3>Coordinate Convention<a class="headerlink" href="#coordinate-convention" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Units are not explicitly mentioned here. In code there are factors to convert to Geant4 units.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{q}\)</span> is used to represent a 3-vector for spatial coordinates (<span class="math notranslate nohighlight">\(x,y,z\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{p}\)</span> is used to represent a 3-vector for the momentum (<span class="math notranslate nohighlight">\(p_x, p_y, p_z\)</span>).</p></li>
+<li><p>The subscript “<span class="math notranslate nohighlight">\(_{in}\)</span>” is used to denote input coordinates.</p></li>
+<li><p>The subscript “<span class="math notranslate nohighlight">\(_{out}\)</span>” is used to denote what will be output coordinates after the step.</p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> is used to describe the spatial step length requested. This would be along the curved
+trajectory through a field the particle would take.</p></li>
+</ul>
+</section>
+<section id="bdsim-drift">
+<h3>BDSIM Drift<a class="headerlink" href="#bdsim-drift" title="Link to this heading"></a></h3>
+<p>This algorithm transports a particle through free space with no external force acting on it.
+This is provided here, although provided generally by Geant4, as it is required by other
+BDSIM integrators under various circumstances. It exists in the
+<code class="code docutils literal notranslate"><span class="pre">BDSIntegratorBase::AdvanceDrift</span></code>
+base class function for the BDSIM magnetic field integrators.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{q}_{out} ~ &amp;= ~ \mathbf{q}_{in} + h~\mathbf{\hat{p}_{in}} \\
+\mathbf{p}_{out} ~ &amp;= ~ \mathbf{p}_{in}\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The drift element in BDSIM is not assigned a field or BDSIM-provided tracking
+algorithm. The tracking is handled by Geant4.</p>
+</div>
+</section>
+<section id="bdsim-dipole-rodrigues">
+<h3>BDSIM Dipole Rodrigues<a class="headerlink" href="#bdsim-dipole-rodrigues" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDipoleRodrigues</span></code></p></li>
+</ul>
+<p>This integrator is constructed with its own strength parameter and <strong>ignores</strong> the field
+information provided by Geant4. The field value (already multiplied by <code class="code docutils literal notranslate"><span class="pre">CLHEP::tesla</span></code>) is
+assumed to be entirely along local <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span>, i.e. the field vector is
+<span class="math notranslate nohighlight">\(\mathbf{B} = (0,B,0)\)</span>. The algorithm progresses as follows:</p>
+<ul class="simple">
+<li><p>If the field value is zero or the particle is neutral, the coordinates are advanced as a drift.</p></li>
+</ul>
+<p>Otherwise continue as follows:</p>
+<ul class="simple">
+<li><p>Calculate bending radius <span class="math notranslate nohighlight">\(\rho\)</span> as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\rho~=~ \frac{\|\mathbf{p}_{in}\|} {\mathbf{B} \cdot charge}\]</div>
+<ul class="simple">
+<li><p>Convert coordinates from global to local (curvilinear) frame of reference.</p></li>
+<li><p>Calculate local change of coordinates.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\theta           ~ &amp;= ~ \frac{h}{\rho} \\
+\mathbf{\hat{f}} ~ &amp;= ~ \mathbf{\hat{p}} \times \hat{\mathbf{y}} \\
+\mathrm{CT}      ~ &amp;= ~ \cos^2(\theta/2) - sin^2(\theta/2) \\
+\mathrm{ST}      ~ &amp;= ~ 2~\cos(\theta/2)\,\sin(\theta/2)\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{q}_{out} ~ &amp;= ~ \mathbf{q}_{in} + \rho \left[ \, \mathrm{ST}\,\mathbf{\hat{p}_{in}} +
+(1- \mathrm{CT})\, \mathbf{\hat{f}} \,  \right]\\
+\mathbf{p}_{out} ~ &amp;= ~ \mathbf{\hat{p}_{in}}\,\mathrm{CT} + \mathbf{\hat{f}}\,\mathrm{ST}\end{split}\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho\)</span> is less than a minimum radius of curvature (5 cm by default), reduce the
+magnitude of the momentum by two percent to induce artificial spiralling.</p></li>
+<li><p>Convert to global coordinates.</p></li>
+</ul>
+<p>This was the original dipole algorithm included with BDSIM until v0.96, however, this
+is limited to dipole fields aligned with <span class="math notranslate nohighlight">\(\hat{y}\)</span> only and often caused tracking
+warnings with very low momenta particles in strong magnetic fields. A more flexible integrator
+that works in 3D was written to improve upon this and is described in <span class="target" id="bdsim-dipole2">BDSIM Dipole2</span>.</p>
+</section>
+<section id="bdsim-dipole-rodrigues-2">
+<span id="bdsim-dipole-rodrigues2"></span><h3>BDSIM Dipole Rodrigues 2<a class="headerlink" href="#bdsim-dipole-rodrigues-2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDipoleRodrigues2</span></code></p></li>
+</ul>
+<p>This routine makes use of the tracking routine provided in Geant4 for a pure magnetic field.
+This is provided in the <code class="code docutils literal notranslate"><span class="pre">G4MagHelicalStepper</span></code> class, which provides the tracking routine
+for a single step through a pure magnetic field, but not the other functionality required
+for a suitable integrator. This BDSIM class that inherits it provides the rest of the require
+functionality, as well as special treatment for particles that may spiral indefinitely.</p>
+<ul class="simple">
+<li><p>The field <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is queried at <span class="math notranslate nohighlight">\(\mathbf{q}_{in}\)</span>.</p></li>
+<li><p>A full step along the trajectory is calculated.</p></li>
+<li><p>If the radius of curvature is less than the minimum radius of curvature (5 cm by default),
+use the explicit spiralling algorithm.</p></li>
+</ul>
+<p>Otherwise:</p>
+<ul class="simple">
+<li><p>Calculate the motion through two half-steps (includes sampling the field at the half-step
+point).</p></li>
+<li><p>Calculate the error on the output coordinates as the difference between two half-steps and
+one full-step.</p></li>
+</ul>
+<p>The spiralling algorithm artificially advances the helix of the particle along the field
+direction more quickly than it would naturally by step length <span class="math notranslate nohighlight">\(h\)</span>, even if it had
+no momentum component along the field direction. This ensures that a particle that spirals
+in a strong magnetic field without ever hitting a boundary will terminate in timely manner
+and not dominate tracking time. The minimum radius of curvature is chosen to be approximately
+the radius of the typical aperture throughout the model (specified in the options). As the
+magnetic field does no work, a spiralling particle could spiral for a very long time and cause
+an event to run almost indefinitely. Given most dipoles in accelerators induce only a few
+milliradians of deflection, such a particle must be of a much lower momentum than the
+design momentum of the dipole and would not progress far from the magnet in reality.</p>
+<p>This artificial behaviour terminates particles in the approximate location by moving them
+more quickly to a boundary.</p>
+<p>The routine provided by Geant4 in G4MagHelicalStepper is as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{p}_{\|} ~ &amp;= ~ \|\mathbf{B}\| ~ (\mathbf{\hat{B}} \cdot  \mathbf{\hat{p}}_{in}) \\
+\mathbf{p}_{\perp} ~ &amp;= ~ \mathbf{\hat{p}}_{in} - \mathbf{p}_{\|}\\\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}R ~ &amp;= ~ \frac{-\|B\| ~ charge} {\mathbf{p}_{in}}\\
+\theta ~ &amp;= ~ \frac{h}{R}\end{split}\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\|\theta\| &lt; 0.005\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathrm{ST} ~ &amp;= ~ \sin\theta\\
+\mathrm{CT} ~ &amp;= ~ \cos\theta\end{split}\]</div>
+<ul class="simple">
+<li><p>Else:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathrm{ST} ~ &amp;= ~ \theta - \frac{1}{6}~\theta^{3}\\
+\mathrm{CT} ~ &amp;= ~ 1 - \frac{1}{2}~\theta^{2} + \frac{1}{24}~\theta^{4}\end{split}\]</div>
+<p>The final coordinates are calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{q}_{out} ~ = ~ \mathbf{q}_{in} + R ~ \Big[ \mathrm{ST}~\mathbf{p}_{\perp} + (1-\mathrm{CT})~(\mathbf{\hat{B}} \times \mathbf{\hat{p}}_{in}) \Big] + h~\mathbf{p}_{\|}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{p}_{out} ~ = ~ \mathbf{\hat{p}}_{in} ~ \Big[ \mathrm{CT}~\mathbf{p}_{\perp} + \mathrm{ST}\,(\mathbf{\hat{B}} \times \mathbf{\hat{p}}_{in}) \Big] + \mathbf{p}_{\|}\]</div>
+<p>The distance from the chord and arc of the true path are also calculated by Geant4 and
+the algorithm is as follows.</p>
+<ul class="simple">
+<li><p>If the angle of the curve is in the range <span class="math notranslate nohighlight">\(0 \leq \theta \leq ~ \pi\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Delta_{chord} ~ = ~ R ~\Bigg[1-\cos\Big(\frac{\theta}{2}\Big) \Bigg]\]</div>
+<ul class="simple">
+<li><p>Else if <span class="math notranslate nohighlight">\(\pi &lt; \theta &lt; 2\pi\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Delta_{chord} ~ = ~ R ~\Bigg[1+\cos\Big(\frac{2\pi-\theta}{2}\Big) \Bigg]\]</div>
+<ul class="simple">
+<li><p>Else:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Delta_{chord} ~ = 2~R\]</div>
+</section>
+<section id="bdsim-quadrupole">
+<h3>BDSIM Quadrupole<a class="headerlink" href="#bdsim-quadrupole" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorQuadrupole</span></code></p></li>
+</ul>
+<p>The field gradient is calculated upon construction of the integrator as:</p>
+<div class="math notranslate nohighlight">
+\[B' ~ = ~ \frac{\mathrm{d}B_{y}}{\mathrm{d}x} ~ = ~ B\rho~ \Big( \frac{1}{B\rho}~\frac{\mathrm{d}B_{y}}{\mathrm{d}x} \Big)~ = ~ B\rho~k_{1}\]</div>
+<p>For each usage:</p>
+<ul class="simple">
+<li><p>Calculates strength parameter <span class="math notranslate nohighlight">\(\kappa\)</span> <em>w.r.t.</em> a given particle rigidity:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\kappa ~=~ \frac{charge \cdot c}{\|\mathbf{p}_{in}\|} ~ \frac{\mathrm{d}B_{y}}{\mathrm{d}x}\]</div>
+<p>If <span class="math notranslate nohighlight">\(\|\kappa\| &lt; 10^{-20}\)</span>, use the drift integrator. Else, continue as:</p>
+<ul class="simple">
+<li><p>Convert to local curvilinear coordinates.</p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(\hat{p}_{z,local} &lt; 0.9\)</span>, the particle is considered non-paraxial and the backup
+integrator from <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorMag</span></code> is used.  Else, proceed with thick matrix
+transportation.  In this case, the following factors are calculated:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}rk  = ~\sqrt{\|\kappa\|~p_{z}} \\
+rkh = h~p_{z}~rk\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(\kappa &gt; 0\)</span>, the focusing thick matrix is used (in the local curvilinear frame):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{M_{quad, +\kappa}}~=~
+\begin{pmatrix}
+\cos(rkh)                         &amp; \frac{1}{rk}\sin(rkh)  &amp; 0 &amp; 0    \\
+-\|\kappa\|~\frac{1}{rk}\sin(rkh) &amp; \cos(rkh)              &amp; 0 &amp; 0    \\
+0 &amp; 0 &amp; \cosh(rkh)                          &amp;  \frac{1}{rk}\sinh(rkh) \\
+0 &amp; 0 &amp; \|\kappa\|~\frac{1}{rk}\sinh(rkh)   &amp; \cosh(rkh)              \\
+\end{pmatrix}\end{split}\]</div>
+<p>and for <span class="math notranslate nohighlight">\(\kappa &lt; 0\)</span>, the defocusing thick matrix is used (again, in the local
+curvilinear frame):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{M_{quad, -\kappa}}~=~
+\begin{pmatrix}
+\cosh(rkh)                          &amp;  \frac{1}{rk}\sinh(rkh) &amp; 0 &amp; 0 \\
+\|\kappa\|~\frac{1}{rk}\sinh(rkh)   &amp; \cosh(rkh)              &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \cos(rkh)                         &amp; \frac{1}{rk}\sin(rkh)     \\
+0 &amp; 0 &amp; -\|\kappa\|~\frac{1}{rk}\sin(rkh) &amp; \cos(rkh)                 \\
+\end{pmatrix}\end{split}\]</div>
+<p>These are used as follows (again in the local curvilinear frame):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+q_{x,out} \\
+p_{x,out} \\
+q_{y,out} \\
+p_{y,out} \\
+\end{pmatrix} ~ = ~
+\mathbf{M_{quad,\pm}} ~
+\begin{pmatrix}
+q_{x,in} \\
+p_{x,in} \\
+q_{y,in} \\
+p_{y,in} \\
+\end{pmatrix}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(p_{z,out}\)</span> is calculated by conserving momentum.</p>
+<div class="math notranslate nohighlight">
+\[p_{z,out} ~ = ~ \sqrt{1 - p_{x,out}^2 - p_{y,out}^2}\]</div>
+<p><span class="math notranslate nohighlight">\(q_{z,out}\)</span> is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[q_{z,out} ~ = ~ \sqrt{\Big[ h^2\,(1 - \frac{h^2}{12\,R^2}) - (\mathrm{d}q_{x}^2 + \mathrm{d}q_{y}^2) \Big]}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathrm{d}q_{x,y}\)</span> are the changes in local <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively.
+<span class="math notranslate nohighlight">\(R\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[R ~ = ~ \frac{1}{\|R''\|}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}R'' ~ = ~
+\begin{pmatrix}
+-p_{z,in}~q_{x,in} \\
+p_{z,in}~q_{y,in}  \\
+q_{x,in}~p_{x,in} - q_{y,in}~p_{y,in}\\
+\end{pmatrix}\end{split}\]</div>
+<p>The distance from the chord and arc of the true path are estimated as:</p>
+<div class="math notranslate nohighlight">
+\[\Delta_{chord} ~ = ~ \frac{h^2}{8\,R}\]</div>
+</section>
+<section id="bdsim-euler">
+<h3>BDSIM Euler<a class="headerlink" href="#bdsim-euler" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorEuler</span></code></p></li>
+<li><p>Calculates the halfway position along step length <span class="math notranslate nohighlight">\(h\)</span> if the particle were to drift:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathbf{q}_{half} ~ = ~ \mathbf{q}_{in} + \mathbf{\hat{p}_{in}} ~ \frac{h}{2}\]</div>
+<ul class="simple">
+<li><p>Calculates the vector potential <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> <em>w.r.t.</em> <span class="math notranslate nohighlight">\(\mathbf{q}_{half}\)</span>
+but with <span class="math notranslate nohighlight">\(\mathbf{p}_{in}\)</span> (the original momentum - so as if the particle truly
+drifted to that point). Uses the equation of motion method <code class="code docutils literal notranslate"><span class="pre">RightHandSide</span></code>.
+This invokes one query of the field.</p></li>
+<li><p>Calculates the new coordinates:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{q}_{out} ~ &amp;= ~ \mathbf{q}_{in} + \mathbf{\hat{p}_{in}} ~ h + \mathbf{A}~\frac{h^{2}}{2~\|\mathbf{p}_{in}\|} \\
+\mathbf{p}_{out} ~ &amp;= ~ \mathbf{p}_{in} + \mathbf{A}~h\end{split}\]</div>
+</section>
+<section id="bdsim-sextupole">
+<h3>BDSIM Sextupole<a class="headerlink" href="#bdsim-sextupole" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorSextupole</span></code></p></li>
+</ul>
+<p>This integrator is constructed with <span class="math notranslate nohighlight">\(k_2\)</span> (originally calculated <em>w.r.t.</em> the nominal
+beam rigidity higher up in BDSIM). It uses this to give a notion of a sextupolar field
+whilst calculating the magnetic vector potential in the local curvilinear coordinate frame.
+The input coordinates must therefore be converted to local curvilinear ones.</p>
+<p>In comparison to the <span class="target" id="id3">BDSIM Euler</span> integrator, this has one extra transform for the coordinates
+but one fewer for the field and so has roughly the same performance. The algorithm is as follows:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\|k_{2}\| &lt; 10^{-12}\)</span>, track as a drift.</p></li>
+<li><p>Convert coordinates from global to local curvilinear frame.</p></li>
+<li><p>A point halfway along the step length <span class="math notranslate nohighlight">\(h\)</span> is calculated using a drift algorithm (”<span class="math notranslate nohighlight">\(_{mid}\)</span>”).</p></li>
+<li><p>This position is used to calculate the vector potential as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} = \frac{k_2}{2!} ~
+\begin{pmatrix}
+\hat{p}_{z,in}~(q_{x,mid}^2 - q_{y,mid}^2 ) \\
+-2~\hat{p}_{z,in}~q_{x,mid}~q_{y,mid}       \\
+\hat{p}_{x,in}~(q_{x,mid}^2 - q_{y,mid}^2 ) - 2~\hat{p}_{y,in}~q_{x,mid}~q_{y,mid}
+\end{pmatrix}\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can be viewed as the cross product between the unit momentum vector and the
+sextupolar field, whilst assuming that the <span class="math notranslate nohighlight">\(B_z\)</span> component is always zero
+and so some terms of the cross product can be omitted.</p>
+</div>
+<ul class="simple">
+<li><p>The output coordinates are calculated with the communal <a class="reference internal" href="#communal-euler"><span class="std std-ref">BDSIM Old Euler Common</span></a> algorithm.</p></li>
+</ul>
+</section>
+<section id="bdsim-octupole">
+<h3>BDSIM Octupole<a class="headerlink" href="#bdsim-octupole" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorOctupole</span></code></p></li>
+</ul>
+<p>This integrator is constructed with <span class="math notranslate nohighlight">\(k_3\)</span> (originally calculated <em>w.r.t.</em> the nominal
+beam rigidity higher up in BDSIM).</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\|k_{3}\| &lt; 10^{-20}\)</span>, track as a drift.</p></li>
+<li><p>Convert coordinates from global to local curvilinear frame.</p></li>
+<li><p>A point halfway along the step length <span class="math notranslate nohighlight">\(h\)</span> is calculated using a drift algorithm (”<span class="math notranslate nohighlight">\(_{mid}\)</span>”).</p></li>
+<li><p>This position is used to calculate the vector potential as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} = \frac{k_3}{3!} ~
+\begin{pmatrix}
+-\hat{p}_{z,in}~(q_{x,mid}^3 - 3~q_{y,mid}^2~q_{x,mid} ) \\
+-\hat{p}_{z,in}~(q_{x,mid}^3 - 3~q_{x,mid}^2~q_{y,mid} ) \\
+\hat{p}_{x,in}~(q_{x,mid}^3 - 3~q_{y,mid}^2~q_{x,mid} ) - \hat{p}_{y,in}~(q_{x,mid}^3 - 3~q_{x,mid}^2~q_{y,mid} )
+\end{pmatrix}\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can be viewed as the cross product between the unit momentum vector and the
+octupolar field, whilst assuming that the <span class="math notranslate nohighlight">\(B_z\)</span> component is always zero
+and so some terms of the cross product can be omitted.</p>
+</div>
+<ul class="simple">
+<li><p>The output coordinates are calculated with the communal <a class="reference internal" href="#communal-euler"><span class="std std-ref">BDSIM Old Euler Common</span></a> algorithm.</p></li>
+</ul>
+</section>
+<section id="bdsim-decapole">
+<h3>BDSIM Decapole<a class="headerlink" href="#bdsim-decapole" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDecapole</span></code></p></li>
+</ul>
+<p>This integrator is constructed with <span class="math notranslate nohighlight">\(k_4\)</span> (originally calculated <em>w.r.t.</em> the nominal
+beam rigidity higher up in BDSIM).</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\|k_{4}\| &lt; 10^{-20}\)</span>, track as a drift.</p></li>
+<li><p>Convert coordinates from global to local curvilinear frame.</p></li>
+<li><p>A point halfway along the step length <span class="math notranslate nohighlight">\(h\)</span> is calculated using a drift algorithm (”<span class="math notranslate nohighlight">\(_{mid}\)</span>”).</p></li>
+<li><p>This position is used to calculate the vector potential as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} = \frac{k_4}{4!} ~
+\begin{pmatrix}
+\hat{p}_{z,in}~(q_{x,mid}^4 - 6~q_{x,mid}^2~q_{y,mid}^2 + q_{y,mid}^4 )     \\
+-\hat{p}_{z,in}~\big[4~q_{x,mid}~q_{y,mid}~(q_{x,mid}^2-q_{y,mid}^2) \big] \\
+\hat{p}_{x,in}~\big[q_{x,mid}^4 - 6~q_{x,mid}^2~q_{y,mid}^2 + q_{y,mid}^4 \big] -
+\hat{p}_{y,in}~\big[4~q_{x,mid}~q_{y,mid}~(q_{x,mid}^2-q_{y,mid}^2) \big]
+\end{pmatrix}\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can be viewed as the cross product between the unit momentum vector and the
+decapolar field, whilst assuming that the <span class="math notranslate nohighlight">\(B_z\)</span> component is always zero
+and so some terms of the cross product can be omitted.</p>
+</div>
+<ul class="simple">
+<li><p>The output coordinates are calculated with the communal <a class="reference internal" href="#communal-euler"><span class="std std-ref">BDSIM Old Euler Common</span></a> algorithm.</p></li>
+</ul>
+</section>
+<section id="bdsim-solenoid">
+<h3>BDSIM Solenoid<a class="headerlink" href="#bdsim-solenoid" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorSolenoid</span></code></p></li>
+</ul>
+<p>This integrator is constructed with a field strength. <cite>ks</cite> is calculated from this field
+strength for the nominal rigidity.</p>
+<p>The particle motion for a solenoid is calculated for the body of the solenoid only and
+the edge effects are provided via thin elements using the rmatrix integrator.</p>
+<p>The thick matrix for the solenoid body is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+1 &amp; \frac{\sin(2Kl)}{2K}        &amp; 0 &amp; \frac{(1 - \cos(2Kl))}{2K}  \\
+0 &amp; \cos(2Kl)                   &amp; 0 &amp; \sin(2Kl)                   \\
+0 &amp; -\frac{(1 - \cos(2Kl))}{2K} &amp; 1 &amp; \frac{\sin(2Kl)}{2K}        \\
+0 &amp; -\sin(2Kl)                  &amp; 0 &amp; \cos(2Kl)                   \\
+\end{pmatrix}\end{split}\]</div>
+<p>The solenoid fringes are constructed as thin RMatrix elements either end of the solenoid body.
+If the fringes are constructed, the length of the solenoid body is reduced by the thin element length
+in order to conserve the total element length. In this case the solenoid strength is scaled accordingly.
+For the fringes, the following matrix is used</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+1      &amp; 0  &amp; 0     &amp; 0 \\
+0      &amp; 1  &amp; \mp K &amp; 0 \\
+0      &amp; 0  &amp; 1     &amp; 0 \\
+\pm K  &amp; 0  &amp; 0     &amp; 1 \\
+\end{pmatrix}\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[K = \frac{B}{2 B\rho}\]</div>
+<p>The plus minuses are flipped for the exit fringe.</p>
+<p>If the the <cite>x</cite> and <cite>y</cite> components of the unit curvilinear momentum are greater than 0.1 or the
+<cite>z</cite> component is less than 0.9, the fall-back G4ClassicalRK4 integrator is used.</p>
+</section>
+<section id="bdsim-old-euler-common">
+<span id="communal-euler"></span><h3>BDSIM Old Euler Common<a class="headerlink" href="#bdsim-old-euler-common" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorMag</span></code></p></li>
+</ul>
+<p>The Euler integration part of the original BDSIM integrators for higher order fields
+exists in one place in <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorMag::AdvanceChord()</span></code>. This takes the step
+length <span class="math notranslate nohighlight">\(h\)</span>, the local position, momentum and vector potential.  The algorithm
+is as follows:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\|\mathbf{A}\| = 0\)</span>, advance as a drift.</p></li>
+<li><p>Else, proceed as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}q_{x,out} ~ = ~ q_{x,in} + p_{x,in}~h + \frac{A_{x}~h^2}{2}\\
+q_{y,out} ~ = ~ q_{y,in} + p_{y,in}~h + \frac{A_{y}~h^2}{2}\\\end{split}\]</div>
+<p>The output z-coordinate is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}q_{z,out} ~ = ~ q_{z,in} + \sqrt{\Bigg[ h^2 ~ \big(1 - \frac{h^2~\|\mathbf{A}\|^2}{12} \big) - \delta_{x}^2 - \delta_{y}^2 \Bigg]} \\\end{split}\]</div>
+<p>The momentum is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{p}_{out} = \mathbf{p}_{in} + h~\mathbf{A} \\\end{split}\]</div>
+<p>The delta chord intersection is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\Delta_{chord} ~ = ~ \frac{h^2 \|\mathbf{A}\|}{8}\]</div>
+<p>The error is not calculated here.</p>
+</section>
+<section id="bdsim-dipole-fringe">
+<span id="dipole-fringe-integrator"></span><h3>BDSIM Dipole Fringe<a class="headerlink" href="#bdsim-dipole-fringe" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDipoleFringe</span></code></p></li>
+</ul>
+<p>This integrator provides only a change in momentum that represents both the edge effect of a dipole
+with a pole face rotation and dipole pole face curvature. The effect of pole face curvature is applied
+using the thin multipole integrator with a sextupole strength of:</p>
+<div class="math notranslate nohighlight">
+\[K_3l = -\frac{h}{\rho} \frac{1}{\cos^3(\theta)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is the pole face curvature and <span class="math notranslate nohighlight">\(\theta\)</span> is the pole face rotation angle.</p>
+<p>The pole face curvature effect is applied first, but only if the pole face curvature is finite. The function
+for applying the momentum kick converts to curvilinear coordinates, calls the thin multipole stepper function
+that applies the kick, and finally converts back to global coordinates.</p>
+<p>As the thin fringe element has finite length, a small dipole kick must be applied to conserve the magnetic
+length of the dipole. This class inherits <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDipoleRodrigues2</span></code> for the dipole component of
+the motion. After that, the small change in momentum is applied.</p>
+<ul class="simple">
+<li><p>If the step length is longer than 1 mm, the kick is not applied (i.e. not a thin dipole edge element).</p></li>
+<li><p>The input coordinates are converted to the local curvilinear frame. This is required only for
+this algorithm and not for that in <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDipoleRodrigues2</span></code>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\hat{p}_{z,local} &lt; 0.9\)</span>, the particle is considered non-paraxial and no change in momentum
+is applied.</p></li>
+</ul>
+<p>The thin matrix in the local curvilinear frame is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+x_1    \\
+x'_1   \\
+y_1    \\
+y'_1   \\
+l_1    \\
+\delta \\
+\end{pmatrix}
+=
+ \begin{pmatrix}
+ 1                          &amp; 0 &amp; 0                                     &amp; 0 &amp; 0 &amp; 0 \\
+ \frac{1}{\rho}\tan{\theta} &amp; 1 &amp; 0                                     &amp; 0 &amp; 0 &amp; 0 \\
+ 0                          &amp; 0 &amp; 1                                     &amp; 0 &amp; 0 &amp; 0 \\
+ 0                          &amp; 0 &amp; -\frac{1}{\rho}\tan{(\theta - corr.)} &amp; 1 &amp; 0 &amp; 0 \\
+ 0                          &amp; 0 &amp; 0                                     &amp; 0 &amp; 1 &amp; 0 \\
+ 0                          &amp; 0 &amp; 0                                     &amp; 0 &amp; 0 &amp; 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+x_0    \\
+x'_0   \\
+y_0    \\
+y'_0   \\
+l_0    \\
+\delta \\
+\end{pmatrix}\end{split}\]</div>
+<p>The resulting momentum change will therefore be:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}dp_{x} ~ &amp;= ~ \frac{q_{x,in}}{\rho}~\tan(\theta)\\
+dp_{y} ~ &amp;= ~ -\frac{q_{y,in}}{\rho}~\tan(\theta - corr.)\end{split}\]</div>
+<p>Where “<span class="math notranslate nohighlight">\(corr.\)</span>” is the fringe field correction term. The calculation of the fringe
+field correction term is split into two terms, which are calculated separately in two
+namespace functions <code class="code docutils literal notranslate"><span class="pre">BDS::FringeFieldCorrection()</span></code> and <code class="code docutils literal notranslate"><span class="pre">BDS::SecondFringeFieldCorrection()</span></code>
+upon class instantiation. These functions calculate:</p>
+<div class="math notranslate nohighlight">
+\[corr. ~ = ~ f_{int}~\frac{2~h_{gap}}{\rho}~\frac{(1 + \sin^2\theta)}{\cos\theta} ~ corr_{2}.\]</div>
+<p>and:</p>
+<div class="math notranslate nohighlight">
+\[corr_{2}. ~ = ~ 1 - f_{int}~f_{intk2}~\frac{2~h_{gap}}{\rho}~\tan\theta\]</div>
+<p>respectively, where <span class="math notranslate nohighlight">\(f_{int}\)</span> is an input parameter but described by:</p>
+<div class="math notranslate nohighlight">
+\[f_{int} ~ = ~ \int_{-\infty}^{\infty} \frac{B_y(s)~\big(B_0 - B_y(s)\big)}{2~h_{gap}~B_0^2} \mathrm{d}s\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(h_{gap}\)</span> is also an input parameter that specifies the half-distance between the dipole
+poles. Fintk2 is a second fringe parameter with a default of zero, meaning the <span class="math notranslate nohighlight">\(corr_{2}\)</span> term equals
+1 by default.</p>
+<p>The final change in momentum is therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}d\mathbf{p} ~ = ~
+\begin{pmatrix}
++ dp_{x} \\
++ dp_{y} \\
+0
+\end{pmatrix}\end{split}\]</div>
+<ul class="simple">
+<li><p>This <span class="math notranslate nohighlight">\(\mathrm{d}p\)</span> vector is converted to the global frame.</p></li>
+</ul>
+<p>The output momentum (from the dipole integrator) is adjusted as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{p}_{out} ~ = ~ \mathbf{p}_{in} + d\mathbf{p}\]</div>
+</section>
+<section id="bdsim-thin-multipole">
+<h3>BDSIM Thin Multipole<a class="headerlink" href="#bdsim-thin-multipole" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorMultipoleThin</span></code></p></li>
+</ul>
+<p>This integrator applies a thin multipole kick to forward going paraxial particles. This is
+normally attached to a box or disc that is very thin (Geant4 requires finite dimensions)
+,but sufficiently small that only one step is taken through it. Typically, a length of 1 pm
+is used along <span class="math notranslate nohighlight">\(S\)</span>. It is not possible to control how many steps a particle takes
+through a given volume in Geant4 tracking, as many physics processes can propose different
+step lengths. However, by choosing such a short length of volume and by filling it with
+vacuum, no other process will force a step in the middle of the volume. If more than one
+step were taken, the integrator would be used multiple times, resulting in stronger
+kicks than are correct.</p>
+<ul class="simple">
+<li><p>Convert coordinates from global to local curvilinear frame.</p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(\hat{p}_{z,local} &lt; 0.9\)</span>, the particle is considered non-paraxial and the backup
+integrator from <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorMag</span></code> is used. Else proceed with thin kick.</p>
+<p>The output position remains the same.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{q}_{out} ~ = ~ \mathbf{q}_{in}\]</div>
+<p>The momentum is modified as:</p>
+<div class="math notranslate nohighlight">
+\[qc = q_{x,in} + i~q_{y,in}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}dp_{n} ~ = ~ \sum_{j=1}^{12} ~ \frac{k_{n,j}}{j!}~qc^j \\
+dp_{s} ~ = ~ \sum_{j=1}^{12} ~ \frac{k_{s,j}}{j!}~qc^j\end{split}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(qc\)</span> is the complex number formed from the horizontal and vertical positions
+in the local curvilinear frame and the subscripts “<span class="math notranslate nohighlight">\(_{n}\)</span>” and “<span class="math notranslate nohighlight">\(_{s}\)</span>” represent
+normal and skew multipole components respectively.  The output momentum is therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p_{x,out} ~ = ~ p_{x,in} - \mathrm{Re}(dp_{n}) - \mathrm{Im}(dp_{s}) \\
+p_{y,out} ~ = ~ p_{y,in} + \mathrm{Im}(dp_{n}) + \mathrm{Im}(dp_{s}) \\
+p_{z,out} ~ = ~ \sqrt{\big[1 - p_{x,out}^2 - p_{y,out}^2 \big] }\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{p}_{out} ~ = ~
+\begin{pmatrix}
+p_{x,out} \\
+p_{y,out} \\
+p_{z,out}
+\end{pmatrix}\end{split}\]</div>
+</section>
+<section id="bdsim-dipole-matrix">
+<h3>BDSIM Dipole Matrix<a class="headerlink" href="#bdsim-dipole-matrix" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDipoleQuadrupole</span></code></p></li>
+</ul>
+<p>This integrator is constructed with its own strength parameter and <strong>ignores</strong> the field
+information provided by Geant4. The field value (already multiplied by <code class="code docutils literal notranslate"><span class="pre">CLHEP::tesla</span></code>) is
+assumed to be entirely along local <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span>, i.e. the field vector is
+<span class="math notranslate nohighlight">\(\mathbf{B} = (0,B,0)\)</span>.</p>
+<p>Upon construction of the integrator, the following are calculated:</p>
+<ul class="simple">
+<li><p>The nominal bending radius <span class="math notranslate nohighlight">\(\rho\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\rho~=~ \frac{L}{\theta}\]</div>
+<p>The bending radius is not calculated using the magnetic field, as the field can be set to purposefully
+underpower or overpower the magnet.</p>
+<ul class="simple">
+<li><p>The quadrupolar component, the field gradient:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[B' ~ = ~ \frac{\mathrm{d}B_{y}}{\mathrm{d}x} ~ = ~ B\rho~ \Big( \frac{1}{B\rho}~\frac{\mathrm{d}B_{y}}{\mathrm{d}x} \Big)~ = ~ B\rho~k_{1}\]</div>
+<p>For each usage, the strength parameter <span class="math notranslate nohighlight">\(\kappa\)</span> is calculated <em>w.r.t.</em> a given particle rigidity:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\kappa ~=~ \frac{charge \cdot c}{\|\mathbf{p}_{in}\|} ~ \frac{\mathrm{d}B_{y}}{\mathrm{d}x}\]</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>The ratio of supplied magnetic field to nominal magnetic field:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[fieldRatio = \frac{B \cdot \rho}{B\rho}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(B\)</span> is the magnetic field strength, <span class="math notranslate nohighlight">\(\rho\)</span> is the nominal bending radius, and <span class="math notranslate nohighlight">\(B\rho\)</span> is
+the nominal magnetic rigidity for the magnet, which is cached upon construction. The field ratio is used to
+calculate the curvilinear transform angle. If <span class="math notranslate nohighlight">\(~fieldRatio = 1\)</span>, then proceed using the nominal bending
+angle <span class="math notranslate nohighlight">\(\theta\)</span>, otherwise if  <span class="math notranslate nohighlight">\(~fieldRatio != 1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\theta = fieldRatio \cdot \theta\]</div>
+<p>As this integrator will ultimately use particle coordinates in the curvilinear frame, the <em>bending</em> actually
+occurs in the curvilinear transforms. As a dipole can be underpowered or overpowered by specifying both the
+field and angle in the input component definition, the transforms must be supplied with the correct bending angle
+to ensure the particles will be transformed onto the correct trajectory.</p>
+<p>The algorithm progresses as follows:</p>
+<ul class="simple">
+<li><p>If the field value is zero, the particle is neutral. For a very small step length <span class="math notranslate nohighlight">\(h &lt; 10^{-12} m\)</span>, the coordinates are advanced as a drift.</p></li>
+</ul>
+<p>Otherwise continue as follows:</p>
+<p>The distance from the chord and arc of the true path is calculated by taking a single step taken using
+the backup dipole stepper <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorDipoleRodrigues2</span></code>. This integrator provides access to the
+chord-arc distance which is then used in this integrator. We assume the dipole component will provide a
+bigger effect than the quadrupole component.</p>
+<ul class="simple">
+<li><p>For small step length <span class="math notranslate nohighlight">\(h &lt; 10^{-7} m\)</span>, the coordinates are advanced using the full backup stepper.</p></li>
+</ul>
+<p>The radius of curvature is also taken from the aforementioned single step in the backup integrator. If
+the chord-arc distance is <span class="math notranslate nohighlight">\(&gt; 0.3\)</span> times the radius of curvature, the particle is assumed to be
+spiralling and subsequently the full backup stepper is used.</p>
+<ul class="simple">
+<li><p>Convert to local curvilinear coordinates.</p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(\hat{p}_{z,local} &lt; 0.9\)</span>, the particle is considered non-paraxial and the backup
+integrator from <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorMag</span></code> is used.  Else, proceed with thick matrix transportation.</p>
+<ul class="simple">
+<li><p>Thick dipole matrix:</p></li>
+</ul>
+<p>The matrix implemented is the RMatrix from Particle Accelerator Physics (3rd Edition) by Wiedemann,
+chapter five. For the case of a focussing magnet, <span class="math notranslate nohighlight">\(\kappa \geq 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+x_1    \\
+x'_1   \\
+y_1    \\
+y'_1   \\
+l_1    \\
+\delta \\
+\end{pmatrix}
+=
+ \begin{pmatrix}
+ \cos{\Theta_x}            &amp; \frac{\sin{\Theta_x}}{\sqrt{K_x}} &amp; 0                         &amp; 0                                  &amp; 0 &amp; \frac{1 - \cos{\Theta_x}}{\sqrt{K_x}} \\
+ -\sqrt{K_x}\sin{\Theta_x} &amp; \cos{\Theta_x}                    &amp; 0                         &amp; 0                                  &amp; 0 &amp; \sin{\Theta_x}                        \\
+ 0                         &amp; 0                                 &amp; \cosh{\Theta_y}           &amp; \frac{\sinh{\Theta_y}}{\sqrt{K_y}} &amp; 0 &amp; 0                                     \\
+ 0                         &amp; 0                                 &amp; \sqrt{K_y}\sinh{\Theta_y} &amp; \cosh{\Theta_y}                    &amp; 0 &amp; 0                                     \\
+ 0                         &amp; 0                                 &amp; 0                         &amp; 0                                  &amp; 1 &amp; 0                                     \\
+ 0                         &amp; 0                                 &amp; 0                         &amp; 0                                  &amp; 0 &amp; 1                                     \\
+\end{pmatrix}
+\begin{pmatrix}
+x_0    \\
+x'_0   \\
+y_0    \\
+y'_0   \\
+l_0    \\
+\delta \\
+\end{pmatrix}\end{split}\]</div>
+<p>Where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Theta_x &amp;= \sqrt{K_x}~h   = \sqrt{\|\kappa + \kappa_0^2\|}~h\\
+\Theta_y &amp;= \sqrt{\|K_y\|}~h = \sqrt{\|\kappa\|}~h\\
+\kappa_0 &amp;= \frac{1}{\rho}\end{split}\]</div>
+<p>For the case of a defocussing magnet <span class="math notranslate nohighlight">\(\kappa &lt; 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+x_1    \\
+x'_1   \\
+y_1    \\
+y'_1   \\
+l_1    \\
+\delta \\
+\end{pmatrix}
+=
+ \begin{pmatrix}
+ \cosh{\Theta_x}            &amp; \frac{\sinh{\Theta_x}}{\sqrt{K_x}} &amp; 0                         &amp; 0                                 &amp; 0 &amp; \frac{1 - \cosh{\Theta_x}}{\sqrt{K_x}} \\
+ \sqrt{K_x}\sinh{\Theta_x} &amp; \cosh{\Theta_x}                     &amp; 0                         &amp; 0                                 &amp; 0 &amp; \sinh{\Theta_x}                        \\
+ 0                         &amp; 0                                   &amp; \cos{\Theta_y}            &amp; \frac{\sin{\Theta_y}}{\sqrt{K_y}} &amp; 0 &amp; 0                                      \\
+ 0                         &amp; 0                                   &amp; -\sqrt{K_y}\sin{\Theta_y} &amp; \cos{\Theta_y}                    &amp; 0 &amp; 0                                      \\
+ 0                         &amp; 0                                   &amp; 0                         &amp; 0                                 &amp; 1 &amp; 0                                      \\
+ 0                         &amp; 0                                   &amp; 0                         &amp; 0                                 &amp; 0 &amp; 1                                      \\
+\end{pmatrix}
+\begin{pmatrix}
+x_0    \\
+x'_0   \\
+y_0    \\
+y'_0   \\
+l_0    \\
+\delta \\
+\end{pmatrix}\end{split}\]</div>
+<p>In the case where <span class="math notranslate nohighlight">\(\kappa = 0\)</span>, the matrix simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+x_1    \\
+x'_1   \\
+y_1    \\
+y'_1   \\
+l_1    \\
+\delta \\
+\end{pmatrix}
+=
+ \begin{pmatrix}
+ \cos{\frac{h}{\rho}}      &amp; \rho~\sin{\frac{h}{\rho}} &amp; 0 &amp; 0 &amp; 0 &amp; \rho~\Big(1 - \cos{\frac{h}{\rho}}\Big) \\
+ -\rho\sin{\frac{h}{\rho}} &amp; \cos{\frac{h}{\rho}}      &amp; 0 &amp; 0 &amp; 0 &amp; \sin{\frac{h}{\rho}}                    \\
+ 0                         &amp; 0                         &amp; 1 &amp; h &amp; 0 &amp; 0                                       \\
+ 0                         &amp; 0                         &amp; 0 &amp; 1 &amp; 0 &amp; 0                                       \\
+ 0                         &amp; 0                         &amp; 0 &amp; 0 &amp; 1 &amp; 0                                       \\
+ 0                         &amp; 0                         &amp; 0 &amp; 0 &amp; 0 &amp; 1                                       \\
+\end{pmatrix}
+\begin{pmatrix}
+x_0    \\
+x'_0   \\
+y_0    \\
+y'_0   \\
+l_0    \\
+\delta \\
+\end{pmatrix}\end{split}\]</div>
+<p>The z terms are not calculated via the matrix method, rather the z-position is simply the
+addition of the step length, and the z-momentum is calculated from the x- and y-momentum to ensure
+momentum conservation. Note that these matrices are incomplete; there are terms for the calculation of
+the l parameter which are not needed in this stepper.</p>
+</section>
+<section id="bdsim-cavity-fringes">
+<h3>BDSIM Cavity Fringes<a class="headerlink" href="#bdsim-cavity-fringes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Class name: <code class="code docutils literal notranslate"><span class="pre">BDSIntegratorCavityFringe</span></code></p></li>
+</ul>
+<p>Cavity fringes are constructed as thin RMatrix elements either end of the solenoid body. This integrator
+inherits the thin rmatrix integrator and automatically sets the matrix elements.</p>
+<ul class="simple">
+<li><p>The input coordinates are converted to the local curvilinear frame.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\hat{p}_{z,local} &lt; 0.9\)</span>, the particle is considered non-paraxial and no change in momentum
+is applied.</p></li>
+</ul>
+<p>If the fringes of an RF cavity are constructed, the length of the cavity body is reduced by the thin element
+length in order to conserve the total element length. In this case the cavity efield is scaled accordingly.
+For the fringes, the following matrix is used:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+1                                          &amp; 0  &amp; 0                                          &amp; 0 \\
+\mp \frac{\gamma^{\prime}}{2\gamma_{i(f)}} &amp; 1  &amp; 0                                          &amp; 0 \\
+0                                          &amp; 0  &amp; 1                                          &amp; 0 \\
+0                                          &amp; 0  &amp; \mp \frac{\gamma^{\prime}}{2\gamma_{i(f)}} &amp; 1 \\
+\end{pmatrix}\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\gamma^{\prime} = \frac{qE_0\cos(\Delta\phi)}{m_0 c^2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(q\)</span> is the particle charge, <span class="math notranslate nohighlight">\(E_0\)</span> is the peak cavity field strength, <span class="math notranslate nohighlight">\(\Delta\phi\)</span> is
+the cavity field phase offset, <span class="math notranslate nohighlight">\(m_0 c^2\)</span> is the particle rest mass, and <span class="math notranslate nohighlight">\(\gamma_{i(f)}\)</span> is
+the entrance <span class="math notranslate nohighlight">\((i)\)</span> and exit <span class="math notranslate nohighlight">\((f)\)</span> particle lorentz factor.</p>
+<p>As the off-diagonal matrix elements are energy dependent, the integrator sets those terms every time the
+integrator is called. After the thin rmatrix stepper has advanced the particle, the off-diagonal elements are
+set back to zero to prevent particle-specific information being cached and applied to subsequent particles.
+In the event that those matrix terms are 0, the particle advance as if the fringe element is a drift.</p>
+</section>
+</section>
+<section id="validation-of-bdsim-integrators">
+<h2>Validation of BDSIM Integrators<a class="headerlink" href="#validation-of-bdsim-integrators" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Comparison with PTC</p></li>
+<li><p>Comparison with RK4</p></li>
+</ul>
+</section>
+<section id="bdsim-integrator-response-to-non-paraxial-particles">
+<h2>BDSIM Integrator Response to Non-Paraxial Particles<a class="headerlink" href="#bdsim-integrator-response-to-non-paraxial-particles" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Use Geant4 RK4</p></li>
+<li><p>Treat as drift for very low energy</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev_geometry.html" class="btn btn-neutral float-left" title="Geometry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_fields.html" class="btn btn-neutral float-right" title="Fields" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

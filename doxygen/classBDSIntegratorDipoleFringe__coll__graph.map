@@ -1,0 +1,23 @@
+<map id="BDSIntegratorDipoleFringe" name="BDSIntegratorDipoleFringe">
+<area shape="rect" id="Node000001" title="Integrator that ignores the field and uses the analytical solution for a dipole kick." alt="" coords="463,1625,686,2271"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorDipoleRodrigues2.html" title="Exact helix through pure dipole field." alt="" coords="5,955,261,1220"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,1231,466,1729,461,1731,205,1234"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="56,383,211,448"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,462,136,954,131,954,131,462"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="265,353,434,478"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="329,492,225,826,182,955,177,954,220,825,324,491"/>
+<area shape="rect" id="Node000007" href="$classBDSIntegratorMag.html" title="Common functionality to BDSIM integrators." alt="" coords="458,875,691,1300"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="373,490,419,645,477,824,495,874,490,875,472,826,414,647,368,492"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="723,5,984,825"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="899,839,900,953,897,1069,886,1187,867,1301,834,1422,789,1542,739,1655,688,1756,684,1754,735,1653,784,1540,828,1421,861,1299,880,1186,891,1069,895,952,894,839"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="720,744,665,876,660,874,715,742"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorMultipoleThin.html" title="Integrator that ignores the field and uses the analytical solution to a multipole." alt="" coords="460,1377,689,1563"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="577,1563,577,1609,572,1609,572,1563"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="577,1314,577,1377,572,1377,572,1314"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="487,383,662,448"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="577,461,577,874,572,874,572,461"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="716,1055,852,1120"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="778,1121,750,1204,730,1253,706,1301,665,1365,660,1362,702,1299,725,1251,745,1202,773,1119"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="286,1055,434,1120"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="372,1119,402,1202,423,1251,448,1299,490,1362,485,1365,443,1301,419,1254,397,1204,367,1121"/>
+</map>

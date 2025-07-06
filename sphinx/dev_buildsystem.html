@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build System &amp; Testing &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Parser" href="dev_parser.html" />
+    <link rel="prev" title="Program Layout" href="dev_programlayout.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developer.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev_introduction.html">Purpose of Developer Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_styleguide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html">Documentation Builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html">Release Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html#change-of-year-or-licence">Change Of Year or Licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html">Program Layout</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build System &amp; Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-system">Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-system">Test System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-and-continuous-integration">Testing and Continuous Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-system">Package System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#static-code-analysis">Static Code Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html">Geant4 User Action Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html">Tracking Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_fields.html">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_beamgeneration.html">Beam Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html">Sensitivity, Output &amp; Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html">Analysis Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="developer.html">Developer Documentation</a></li>
+      <li class="breadcrumb-item active">Build System &amp; Testing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev_buildsystem.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="build-system-testing">
+<span id="dev-buildandtesting"></span><h1>Build System &amp; Testing<a class="headerlink" href="#build-system-testing" title="Link to this heading"></a></h1>
+<section id="build-system">
+<h2>Build System<a class="headerlink" href="#build-system" title="Link to this heading"></a></h2>
+<p>The build system is based on CMake. The build options and variables are described in the user’s
+manual. Some additional options for developers:</p>
+<p><strong>Deprecated</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>make dist: This archives the git repository in a file bdsim-0.9.develop.tar.bz2</p></li>
+<li><p>make copy-deps: This copies all dependent libraries to the build/devs/ directory</p></li>
+<li><p>BUILD_MACOSX_APP: CMake variable that builds an MacOS application at installation time</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="test-system">
+<h2>Test System<a class="headerlink" href="#test-system" title="Link to this heading"></a></h2>
+<p>The test system is based on CTest, which works in combination with CMake. Tests are added to the
+<code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file beside each example declaring the main gmad file as well as any
+optional command line arguments.</p>
+<p>Useful ctest commands (can all be combined):</p>
+<ul class="simple">
+<li><p>ctest -N : print tests without execution</p></li>
+<li><p>ctest -R &lt;regexp&gt; : execute tests that match regexp</p></li>
+<li><p>ctest -LE LONG : execute tests that are not LONG (more than about a minute)</p></li>
+<li><p>ctest -I 5,5 : only execute test 5</p></li>
+<li><p>ctest -VV : print output to screen</p></li>
+</ul>
+<p>For example, to find the test command for the sextupole component test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ctest</span> <span class="o">-</span><span class="n">R</span> <span class="n">Component</span><span class="o">-</span><span class="n">Sextupole</span> <span class="o">-</span><span class="n">VV</span> <span class="o">-</span><span class="n">N</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-and-continuous-integration">
+<h2>Testing and Continuous Integration<a class="headerlink" href="#testing-and-continuous-integration" title="Link to this heading"></a></h2>
+<p>Testing is done via continuous integration on the Github website. It is initiated by making a pull
+request, at which point the website will automatically run all tests for a variety of operating
+systems and Geant4 versions and report back. Tests must pass for a pull request to be accepted.</p>
+</section>
+<section id="package-system">
+<h2>Package System<a class="headerlink" href="#package-system" title="Link to this heading"></a></h2>
+<p>The package system is based on CPack, which works in combination with CMake.
+One can package the binaries and libraries with <code class="code docutils literal notranslate"><span class="pre">cpack</span></code>. A packed .tar.gz and a Mac OS .dmg is created.
+The source can be packed with <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">dist</span></code>.
+It is recommended to pack the libraries after each release version and put the binaries and libraries on the <a class="reference external" href="https://twiki.ph.rhul.ac.uk/twiki/bin/view/PP/JAI/BDsimDownload">BDSIM Download page</a>.</p>
+</section>
+<section id="static-code-analysis">
+<h2>Static Code Analysis<a class="headerlink" href="#static-code-analysis" title="Link to this heading"></a></h2>
+<p>The code of BDSIM is analysed by the static analysis tool Coverity. Its analysis is available with CERN credentials at <a class="reference external" href="https://coverity.cern.ch">CERN’s Coverity site</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev_programlayout.html" class="btn btn-neutral float-left" title="Program Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_parser.html" class="btn btn-neutral float-right" title="Parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

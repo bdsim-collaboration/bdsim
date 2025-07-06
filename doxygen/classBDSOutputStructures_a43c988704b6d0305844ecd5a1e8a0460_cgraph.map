@@ -1,0 +1,23 @@
+<map id="BDSOutputStructures::PrepareCollimatorInformation" name="BDSOutputStructures::PrepareCollimatorInformation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,119,229,159"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamline.html#a81bb1806b0ecbaf6bc263532ac9ade76" title="Return a reference to the element at i." alt="" coords="313,5,445,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,117,204,78,276,41,301,32,303,37,278,46,207,83,148,121"/>
+<area shape="rect" id="Node000003" href="$classBDSAcceleratorModel.html#a899da925682f73f7f52a1a88ad25e25c" title="Accessor." alt="" coords="297,55,461,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,117,283,96,284,101,200,122"/>
+<area shape="rect" id="Node000004" href="$classBDSBeamline.html#afc150f9359f0c99cc8e147e2a336dd02" title="Return indices in order of ecol, rcol, jcol and crystalcol elements." alt="" coords="277,119,480,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="229,137,263,137,263,142,229,142"/>
+<area shape="rect" id="Node000009" href="$classBDSBeamlineElement.html#a6c0e6b1882d763ec39be90a1261b70ab" title="Accessor." alt="" coords="296,183,461,223"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="200,157,284,177,283,183,199,162"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamlineElement.html#a536029441cd91cd6b1356d54fe09f37b" title="Accessor." alt="" coords="296,247,461,287"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="149,157,207,195,278,233,295,240,293,245,276,238,205,199,146,162"/>
+<area shape="rect" id="Node000005" href="$classBDSBeamline.html#af143adc4fc65018e279dd745970fdae3" title="Return vector of indices for this beam line where element of type name &#39;type&#39; is found." alt="" coords="528,119,731,159"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="480,137,514,137,514,142,480,142"/>
+<area shape="rect" id="Node000006" href="$classBDSBeamlineElement.html#a7a275ec29093ad60e09cbc5704850601" title="Accessor." alt="" coords="779,87,944,127"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="731,123,765,118,765,123,731,128"/>
+<area shape="rect" id="Node000007" href="$classBDSBeamlineElement.html#ae76fd63244135ed82e2e0cb61a887515" title="Accessor." alt="" coords="779,151,944,191"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="731,151,765,155,765,161,731,156"/>
+<area shape="rect" id="Node000008" href="$classBDSAcceleratorComponent.html#ad637633010ce61da27db37718c1be203" title="Get a string describing the type of the component." alt="" coords="992,151,1191,191"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="944,169,978,169,978,174,944,174"/>
+<area shape="rect" id="Node000010" href="$classBDSAcceleratorComponent.html#a297ada7fdf4679780a55566b3d3cddd4" title="The name of the component without modification." alt="" coords="530,183,729,223"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="462,201,517,201,517,206,462,206"/>
+</map>

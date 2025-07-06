@@ -1,0 +1,43 @@
+<map id="BDSThreeVector::z" name="BDSThreeVector::z">
+<area shape="rect" id="Node000001" title="Accessor by name." alt="" coords="521,205,664,230"/>
+<area shape="rect" id="Node000002" href="$classBDSArrayOperatorValueReflect.html#a44e85952ae22070bcd65c593979e470e" title=" " alt="" coords="251,5,473,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="577,194,537,126,507,90,472,60,451,48,453,43,475,55,511,87,541,123,582,191"/>
+<area shape="rect" id="Node000003" href="$classBDSArrayOperatorValueFlip.html#a1d6a5b99672d68f8c08a19d1221c0014" title=" " alt="" coords="261,69,463,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="567,196,525,159,472,124,445,112,447,107,475,119,528,155,571,192"/>
+<area shape="rect" id="Node000004" href="$classBDSArray2DCoordsRQuad.html#a5268815045ffcd874baac4f5d662d250" title="Overridden from BDSArray4D." alt="" coords="267,133,457,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="532,203,434,176,436,171,533,198"/>
+<area shape="rect" id="Node000006" href="$classBDSInterpolator1D.html#aae57d360fc994653cc1f88e68beb3278" title="Public interface to a 1D interpolator. Returns Geant4 type as that&#39;s what will be needed." alt="" coords="282,197,442,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="507,220,442,220,442,215,507,215"/>
+<area shape="rect" id="Node000010" href="$classBDSInterpolator2D.html#a5292920ece70932d2bbb93bd253aea3e" title="Public interface to a 2D interpolator. Returns Geant4 type as that&#39;s what will be needed." alt="" coords="282,293,442,333"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="550,238,412,296,410,291,548,233"/>
+<area shape="rect" id="Node000014" href="$classBDSInterpolator3D.html#a38b52dbf1b58261c5d5d2907415568d9" title="Public interface to a 3D interpolator. Returns Geant4 type as that&#39;s what will be needed." alt="" coords="282,485,442,525"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="575,243,381,487,377,483,571,239"/>
+<area shape="rect" id="Node000018" href="$classBDSInterpolator4D.html#acb1598ae4f61e57461bf27be64796653" title="Public interface to a 4D interpolator. Returns Geant4 type as that&#39;s what will be needed." alt="" coords="282,677,442,717"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="587,244,546,373,514,456,476,539,427,618,382,679,378,676,423,615,471,536,509,454,541,371,582,242"/>
+<area shape="rect" id="Node000005" href="$classBDSArray2DCoordsRQuad.html#ab2859dd48c7039f27e5fa78ef4da6d34" title=" " alt="" coords="9,5,199,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="258,129,249,123,233,107,224,91,216,75,201,59,181,48,183,43,204,55,220,72,229,88,237,104,252,119,261,125"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldEInterpolated1D.html#a0240f849fc16124770757a9cca2b19dc" title="Return the interpolated field value at a given point." alt="" coords="11,69,197,109"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="268,198,249,187,233,171,224,155,216,139,201,123,181,112,183,107,204,119,220,136,229,152,237,168,252,183,270,193"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldEMInterpolated1D.html#a475d6a916e778feeba0daf0f72c3100e" title="Return the interpolated field value at a given point." alt="" coords="5,133,203,173"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="268,197,185,176,186,171,269,192"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldMagInterpolated1D.html#ae67b52eb50c7d2276ed52c43ddcbc6e5" title="Return the interpolated field value at a given point." alt="" coords="7,197,201,237"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="268,220,202,220,202,215,268,215"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldEInterpolated2D.html#a068b0c117e498f39342dc2f338cc9fcd" title=" " alt="" coords="11,261,197,301"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="268,304,196,295,197,290,269,299"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldEMInterpolated2D.html#acc43a25e32bde38b6ecc44b31687698f" title="Return the interpolated field value at a given point." alt="" coords="5,325,203,365"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="269,328,203,336,202,330,268,322"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldMagInterpolated2D.html#a3d4095a0038c50aabf5a8dc3b4b13f4e" title=" " alt="" coords="7,389,201,429"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="302,341,204,380,169,392,167,387,202,375,300,336"/>
+<area shape="rect" id="Node000015" href="$classBDSFieldEInterpolated3D.html#a1571828bdb23ee376b4c30cb4ed933f8" title="Return the interpolated field value at a given point." alt="" coords="11,453,197,493"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="268,496,196,487,197,482,269,491"/>
+<area shape="rect" id="Node000016" href="$classBDSFieldEMInterpolated3D.html#ac938959a7a120b9261c9921c258e1c1c" title="Return the interpolated field value at a given point." alt="" coords="5,517,203,557"/>
+<area shape="poly" id="edge15_Node000014_Node000016" title=" " alt="" coords="269,520,203,528,202,522,268,514"/>
+<area shape="rect" id="Node000017" href="$classBDSFieldMagInterpolated3D.html#a005e0b35f892d85b557a5f4ccd9da9b9" title="Return the interpolated field value at a given point." alt="" coords="7,581,201,621"/>
+<area shape="poly" id="edge16_Node000014_Node000017" title=" " alt="" coords="302,533,204,572,169,584,167,579,202,567,300,528"/>
+<area shape="rect" id="Node000019" href="$classBDSFieldEInterpolated4D.html#aa892a27771b0f63dd699a83e1e499f1a" title="Return the interpolated field value at a given point." alt="" coords="11,645,197,685"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="268,688,196,679,197,674,269,683"/>
+<area shape="rect" id="Node000020" href="$classBDSFieldMagInterpolated4D.html#a94995b216bfc0193c6cfe40369541306" title="Return the interpolated field value at a given point." alt="" coords="7,709,201,749"/>
+<area shape="poly" id="edge19_Node000018_Node000020" title=" " alt="" coords="269,712,202,720,201,715,268,706"/>
+<area shape="rect" id="Node000021" href="$classBDSFieldEMInterpolated4D.html#a73d2cd5f93a85d911b0a39d5c774af81" title="Return the interpolated field value at a given point." alt="" coords="5,773,203,813"/>
+<area shape="poly" id="edge20_Node000018_Node000021" title=" " alt="" coords="302,725,204,764,169,776,167,771,202,759,300,720"/>
+</map>

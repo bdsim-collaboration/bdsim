@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model Conversion &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="External Geometry Formats" href="externalgeometry.html" />
+    <link rel="prev" title="Model Customisation" href="model_customisation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Conversion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#manual-preparation">Manual Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mad-x-conversion">MAD-X Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mad8-conversion">MAD8 Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-builder">Python Builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optical-validation">Optical Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-options-for-generating-optics">Recommended Options for Generating Optics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-optics-data">Generating Optics Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analysing-optics-data">Analysing Optics Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-optical-data">Loading Optical Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-of-optics">Comparison of Optics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-notes">Comparison Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-comparison">Advanced Comparison</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Model Conversion</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/model_conversion.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="model-conversion">
+<h1>Model Conversion<a class="headerlink" href="#model-conversion" title="Link to this heading"></a></h1>
+<p>A BDSIM model can be prepared either manually in a hand-written fashion,
+or using a provided suite of python tools to automatically convert
+the description of an accelerator lattice from other formats, such as
+MAD-X, MAD8 or Transport, to that of BDSIM - gmad.</p>
+<p>The automatic conversion is typically achieved by preparing a ‘rendered’
+or ‘flat’ output description of each element in the accelerator from
+whatever optics program you use to design the accelerator, then
+converting this using our Python utility <cite>pybdsim</cite> - see <a class="reference internal" href="python_utilities.html#python-utilities"><span class="std std-ref">Python Utilities</span></a>.</p>
+<p>Additionally, the python tools can be used to programmatically create
+an accelerator lattice of your own design, which is described in
+<a class="reference internal" href="#python-builder">Python Builder</a>.</p>
+<section id="manual-preparation">
+<h2>Manual Preparation<a class="headerlink" href="#manual-preparation" title="Link to this heading"></a></h2>
+<p>An input gmad (text) file can easily be prepared manually in your favourite
+text editor by defining (in order):</p>
+<ol class="arabic simple">
+<li><p>Individual elements</p></li>
+<li><p>The order they appear in a <code class="code docutils literal notranslate"><span class="pre">line</span></code></p></li>
+<li><p>Which <code class="code docutils literal notranslate"><span class="pre">period</span></code> to use - the above line</p></li>
+<li><p>Options such as the physics list and tracking cuts</p></li>
+<li><p>Input beam distribution</p></li>
+</ol>
+<p>Please see <a class="reference internal" href="model_construction.html#model-construction"><span class="std std-ref">Model Construction</span></a> for a description of the input syntax.</p>
+</section>
+<section id="mad-x-conversion">
+<h2>MAD-X Conversion<a class="headerlink" href="#mad-x-conversion" title="Link to this heading"></a></h2>
+<p>A MAD-X lattice can be easily converted to a BDSIM gmad input file using the supplied
+python utilities. This is achieved by:</p>
+<ol class="arabic simple">
+<li><p>Preparing a TFS file with MAD-X containing all Twiss table information</p></li>
+<li><p>Converting the TFS file to gmad using pybdsim.</p></li>
+</ol>
+<p>The Twiss file can be prepared by appending the following MAD-X syntax to the
+end of your MAD-X script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span><span class="p">,</span><span class="n">flag</span><span class="o">=</span><span class="n">twiss</span><span class="p">,</span> <span class="n">clear</span><span class="p">;</span>
+<span class="n">twiss</span><span class="p">,</span><span class="n">sequence</span><span class="o">=</span><span class="n">SEQUENCENAME</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">twiss</span><span class="o">.</span><span class="n">tfs</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>where <cite>SEQUENCENAME</cite> is the name of the sequence in MAD-X. By not specifying the
+output columns, a very large file is produced containing all possible columns.
+This is required to successfully convert the lattice.  If the TFS file contains
+insufficient information, <cite>pybdsim</cite> will not be able to convert the model. Use
+<cite>pybdsim</cite> in Python to convert the model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s1">&#39;inputfile.tfs&#39;</span><span class="p">,</span> <span class="s1">&#39;latticev1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is described in more detail in the dedicated <cite>pybdsim</cite> documentation
+<a class="reference external" href="http://www.pp.rhul.ac.uk/bdsim/pybdsim/convert.html">http://www.pp.rhul.ac.uk/bdsim/pybdsim/convert.html</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The python utilities require “<cite>.tfs</cite>” suffix as the file type to work properly.</p>
+</div>
+<p>To convert the TFS file, <cite>pybdsim</cite> should be used and can be installed via pip - see
+<a class="reference internal" href="python_utilities.html#python-utilities"><span class="std std-ref">Python Utilities</span></a>.</p>
+</section>
+<section id="mad8-conversion">
+<h2>MAD8 Conversion<a class="headerlink" href="#mad8-conversion" title="Link to this heading"></a></h2>
+<p>This can be prepared in a similar fashion to a MAD-X model. The user must have our
+pymad8 and <cite>pybdsim</cite> packages (see <a class="reference internal" href="python_utilities.html#python-utilities"><span class="std std-ref">Python Utilities</span></a>).</p>
+<p>This is described in more detail in the dedicated <cite>pybdsim</cite> documentation
+<a class="reference external" href="http://www.pp.rhul.ac.uk/bdsim/pybdsim/convert.html">http://www.pp.rhul.ac.uk/bdsim/pybdsim/convert.html</a>.</p>
+</section>
+<section id="python-builder">
+<h2>Python Builder<a class="headerlink" href="#python-builder" title="Link to this heading"></a></h2>
+<p>Using the classes in the <cite>pybdsim</cite> package that are used in the conversion process,
+the user may create a BDSIM model programmatically, i.e. the user can write a Python
+script to create the lattice they want.</p>
+<p>This is described in more detail in the dedicated <cite>pybdsim</cite> documentation
+<a class="reference external" href="http://www.pp.rhul.ac.uk/bdsim/pybdsim/builder.html">http://www.pp.rhul.ac.uk/bdsim/pybdsim/builder.html</a></p>
+<p>The pymadx package also has a similar functionality and is documented in its
+dedicated documentation <a class="reference external" href="http://www.pp.rhul.ac.uk/bdsim/pymadx/moduledocs.html#module-pymadx.Builder">http://www.pp.rhul.ac.uk/bdsim/pymadx/moduledocs.html#module-pymadx.Builder</a>.</p>
+</section>
+<section id="optical-validation">
+<span id="id2"></span><h2>Optical Validation<a class="headerlink" href="#optical-validation" title="Link to this heading"></a></h2>
+<p>Once a model has been prepared or converted, it is often useful to compare the optical functions
+of the accelerator to a known reference. This ensures that the model has been prepared correctly.
+If, for example, a drift between magnets was too short or magnetic strengths were wrong, the
+optical functions would disagree and this would clearly indicate where the problem lies. This
+is an important validation step before physics studies begin, where such errors may not be so
+clear.</p>
+<p>Simulating the passage of several thousand particles validates optical functions with a
+distribution according to the core Gaussian distribution. Samplers are attached to
+all elements to record the particle distribution after each element. A provided optical
+analysis is used to calculate optical functions and moments of the particle coordinates
+that can then be compared to a reference.</p>
+<section id="recommended-options-for-generating-optics">
+<h3>Recommended Options for Generating Optics<a class="headerlink" href="#recommended-options-for-generating-optics" title="Link to this heading"></a></h3>
+<p>Options in gmad:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;em&quot;</span><span class="p">,</span>
+        <span class="n">stopSecondaries</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">aper1</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+
+<span class="n">sample</span><span class="p">,</span> <span class="nb">all</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If no physics is present, particles will not interact with material and will not stop if lost.</p></li>
+<li><p>‘Stop secondaries’ will kill any secondary particles - faster and doesn’t pollute data.</p></li>
+<li><p>A large aperture size should be use throughout to avoid clipping the beam.</p></li>
+<li><p>Samplers should be attached to all elements to record the beam distribution after each element.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Attaching samplers to all elements vastly increases the output data file size and the
+user should generally only attach samplers to points of specific interest.</p>
+</div>
+<p>A Gaussian beam according to the Twiss parameters at the start of the beam line should be used. An
+emittance should be chosen that is used in the source of optics (i.e. in the MAD-X model and therefore
+appears in the header of the TFS Twiss output), but an emittance that ensures the beam size is small
+enough throughout the machine to avoid particles clipping.</p>
+<p>A target number of particles is 1000 for linear optics with no energy spread and approximately 10000
+for a beam with energy spread. The optical analysis calculates the statistical uncertainty associated
+with estimating each parameter, given there is a finite number of particles. With approximately 1000
+particles, it is very unlikely to have any particles beyond 3:math:<cite>sigma</cite> for a Gaussian distribution,
+therefore as long as most apertures are above this, no particles should be lost.</p>
+</section>
+<section id="generating-optics-data">
+<h3>Generating Optics Data<a class="headerlink" href="#generating-optics-data" title="Link to this heading"></a></h3>
+<p>BDSIM should be executed in batch mode running between 1000 and 10000 particles (for example).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mymodel</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">op1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">2000</span>
+</pre></div>
+</div>
+</section>
+<section id="analysing-optics-data">
+<h3>Analysing Optics Data<a class="headerlink" href="#analysing-optics-data" title="Link to this heading"></a></h3>
+<p>The output file can then be analysed with <cite>rebdsimOptics</cite>. <cite>rebdsimOptics</cite> is a simple interface to
+<cite>rebdsim</cite> to calculate optical functions only. It is possible to run <cite>rebdsim</cite> with an analysis
+configuration text file specifying <cite>CalculateOpticalFunctions</cite> (see <a class="reference internal" href="output_analysis.html#output-analysis-configuration-file"><span class="std std-ref">Histograms</span></a>).
+Rebdsim takes arguments as the input file(s) and the desired output file name for the optical functions.
+The optical functions are written to a separate ROOT format file only containing the optical functions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimOptics</span> <span class="n">op1</span><span class="o">.</span><span class="n">root</span> <span class="n">op1_optics</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>To calculate the optical functions, the emittance is calculated from the distribution at each sampler.
+In this case, only linear optics should be used, as non-linear optical elements, such as sextupoles
+and higher order magnets, couple the emittance in horizontal and vertical directions and the calculation
+is invalid for Twiss parameters. The default option in <cite>rebdsimOptics</cite> is to calculate the emittance only
+once for the first sampler and assume this for all subsequent samplers. In the case of acceleration, or
+where the geometrical emittance is expected to change, the emittance can be calculated at each sampler
+freshly. The executable option <cite>-\-emittanceOnFly</cite> should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimOptics</span> <span class="n">op1</span><span class="o">.</span><span class="n">root</span> <span class="n">op1_optics</span><span class="o">.</span><span class="n">root</span> <span class="o">--</span><span class="n">emittanceOnFly</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using rebdsimOptics to analyse multiple files for optics, the input file name should
+be surrounded with inverted commas - i.e. <code class="code docutils literal notranslate"><span class="pre">rebdsimOptics</span> <span class="pre">&quot;*.root&quot;</span> <span class="pre">optics.root</span></code>.</p>
+</div>
+</section>
+<section id="loading-optical-data">
+<h3>Loading Optical Data<a class="headerlink" href="#loading-optical-data" title="Link to this heading"></a></h3>
+<p>After calculating the optical functions, the data file can be loaded in ROOT manually or
+using the provided <cite>pybdsim</cite> utility in Python using ROOT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;op1_optics.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">optics</span>
+</pre></div>
+</div>
+<p>This provides arrays of all the optical functions in a dictionary.</p>
+</section>
+<section id="comparison-of-optics">
+<h3>Comparison of Optics<a class="headerlink" href="#comparison-of-optics" title="Link to this heading"></a></h3>
+<p>For each of the formats BDSIM supports for converting models, there is a comparison plotting script
+in <cite>pybdsim</cite> to allow easy comparison. For MAD-X conversion, for example, the Twiss output in a TFS
+file can be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Compare</span><span class="o">.</span><span class="n">MadxVsBDSIM</span><span class="p">(</span><span class="s1">&#39;madxtwiss.tfs&#39;</span><span class="p">,</span> <span class="s1">&#39;op1_optics.root&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will create a series of plots with both the optical functions from MAD-X and those calcualted by
+<cite>rebdsimOptics</cite> on the same plot with a colour machine diagram on top. A few example plots are shown
+below.</p>
+<p>All plots are also written by default to a single pdf file whose name is by default based on the
+the <cite>rebdsimOptics</cite> output file name given to the comparison. In this case, it would be <cite>op1_optics.pdf</cite>.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/mean.pdf"><img alt="_images/mean.pdf" src="_images/mean.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example comparison of beam centroids for ATF2.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/sigma.pdf"><img alt="_images/sigma.pdf" src="_images/sigma.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example comparison of beam size for ATF2.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/sigmap.pdf"><img alt="_images/sigmap.pdf" src="_images/sigmap.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example comparison of <span class="math notranslate nohighlight">\(\sigma_{xp, yp}\)</span> for ATF2.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/beta.pdf"><img alt="_images/beta.pdf" src="_images/beta.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example comparison of Twiss <span class="math notranslate nohighlight">\(\beta\)</span> functions.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/alpha.pdf"><img alt="_images/alpha.pdf" src="_images/alpha.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example comparison of Twiss <span class="math notranslate nohighlight">\(\alpha\)</span> functions.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="comparison-notes">
+<h3>Comparison Notes<a class="headerlink" href="#comparison-notes" title="Link to this heading"></a></h3>
+<p>It is worth noting that we are drawing a sample of particle coordinates from a probability distribution
+and then calculating moments of the sample distribution to estimate the original parameters of the
+probability distribution. With a higher number of samples, the estimate improves but is still an estimate.
+The optical comparison is useful to validate the model preparation and extremely small differences in
+optical functions should not be interpreted as poor tracking.</p>
+</section>
+<section id="advanced-comparison">
+<h3>Advanced Comparison<a class="headerlink" href="#advanced-comparison" title="Link to this heading"></a></h3>
+<p>For very precise comparison, there are two further possible options that can be used.</p>
+<ol class="arabic simple">
+<li><p>BDSIM can be compiled with double precision output as opposed to the default floating-point
+precision. This is a CMake option (see <a class="reference internal" href="installation.html#configuring-bdsim"><span class="std std-ref">Configuring the Build</span></a>). The option <cite>ROOT_DOUBLE_OUTPUT</cite>
+should be turned on and BDSIM recompiled and installed.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">beam,</span> <span class="pre">offsetSampleMean=1</span></code> should be used in the input gmad. This pre-calculates all coordinates
+of the particles and subtracts the small sample mean from each coordinate, removing any small systematic
+offset at the beginning that typically propagates throughout the beam line. This will not work in the
+visualiser and breaks the strong-reproducibility in BDSIM - use with caution.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="model_customisation.html" class="btn btn-neutral float-left" title="Model Customisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="externalgeometry.html" class="btn btn-neutral float-right" title="External Geometry Formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

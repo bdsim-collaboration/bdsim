@@ -1,0 +1,41 @@
+<map id="BDSIntegratorMag" name="BDSIntegratorMag">
+<area shape="rect" id="Node000001" title="Common functionality to BDSIM integrators." alt="" coords="1349,873,1583,1299"/>
+<area shape="rect" id="Node000005" href="$classBDSIntegratorDipoleQuadrupole.html" title="Integrator for combined dipole and quadrupolar field." alt="" coords="5,1377,263,1802"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1336,1105,1079,1140,925,1165,767,1194,614,1227,475,1264,359,1305,313,1326,277,1349,244,1378,240,1374,274,1345,311,1322,357,1300,473,1259,613,1222,766,1188,925,1159,1078,1135,1335,1100"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorDipoleRodrigues.html" title="Stepper that calculates trajectory through uniform magnetic field." alt="" coords="287,1437,535,1742"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1336,1096,1165,1116,1065,1134,959,1159,851,1192,744,1234,642,1286,549,1349,508,1390,475,1438,471,1435,504,1386,546,1345,640,1281,742,1229,849,1187,957,1154,1064,1129,1164,1111,1335,1091"/>
+<area shape="rect" id="Node000007" href="$classBDSIntegratorEuler.html" title="BDSIM 2nd order Euler integration." alt="" coords="559,1527,733,1652"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1336,1105,1200,1131,1123,1151,1043,1177,963,1209,885,1248,812,1294,747,1349,714,1389,689,1435,671,1483,659,1527,654,1526,666,1482,684,1433,709,1386,743,1345,809,1290,883,1243,961,1204,1041,1172,1121,1146,1199,1126,1335,1099"/>
+<area shape="rect" id="Node000008" href="$classBDSIntegratorEulerOld.html" title="Common functionality for Euler integrators." alt="" coords="757,1517,953,1662"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1338,1130,1247,1166,1150,1214,1053,1275,1009,1310,968,1348,937,1387,912,1431,892,1476,877,1517,872,1515,887,1474,907,1429,933,1384,964,1345,1005,1306,1050,1270,1147,1209,1245,1161,1336,1125"/>
+<area shape="rect" id="Node000012" href="$classBDSIntegratorG4RK4MinStep.html" title="Integrator that wraps a G4ClassicalRK4 and below a minimum step size uses a drift." alt="" coords="978,1517,1215,1662"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1342,1214,1284,1279,1230,1348,1175,1435,1132,1518,1127,1515,1171,1432,1225,1345,1280,1276,1338,1210"/>
+<area shape="rect" id="Node000013" href="$classBDSIntegratorKickerThin.html" title="Integrator for thin h or v kick." alt="" coords="1240,1347,1449,1832"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1414,1313,1406,1347,1401,1346,1409,1311"/>
+<area shape="rect" id="Node000014" href="$classBDSIntegratorMultipoleThin.html" title="Integrator that ignores the field and uses the analytical solution to a multipole." alt="" coords="1474,1437,1703,1742"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1524,1311,1554,1436,1549,1437,1518,1313"/>
+<area shape="rect" id="Node000015" href="$classBDSIntegratorParallelTransport.html" title="Integrator that just moves the particle parallel to the s axis." alt="" coords="1728,1527,1977,1652"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1595,1205,1658,1273,1717,1345,1778,1438,1825,1525,1821,1528,1773,1441,1713,1348,1654,1276,1591,1209"/>
+<area shape="rect" id="Node000016" href="$classBDSIntegratorQuadrupole.html" title="Integrator that ignores the field and uses the analytical solution to a quadrupole." alt="" coords="2002,1517,2218,1662"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="1597,1123,1691,1159,1795,1207,1898,1269,1946,1305,1991,1345,2024,1384,2051,1428,2073,1474,2090,1516,2085,1518,2069,1476,2047,1431,2019,1387,1987,1349,1943,1309,1895,1273,1793,1212,1689,1164,1595,1128"/>
+<area shape="rect" id="Node000017" href="$classBDSIntegratorRMatrixThin.html" title="Integrator that just moves the particle parallel to the s axis." alt="" coords="2243,1427,2463,1752"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="1597,1099,1740,1125,1822,1145,1907,1171,1993,1203,2078,1242,2158,1289,2232,1345,2267,1382,2295,1425,2290,1428,2262,1385,2228,1349,2155,1294,2076,1247,1991,1208,1905,1176,1820,1150,1739,1130,1596,1104"/>
+<area shape="rect" id="Node000019" href="$classBDSIntegratorSolenoid.html" title="Integrator that ignores the field and uses the analytical solution to a solenoid." alt="" coords="2487,1527,2685,1652"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="1597,1104,1817,1142,2076,1197,2202,1229,2315,1265,2409,1304,2446,1324,2476,1345,2513,1385,2541,1432,2562,1481,2576,1526,2571,1527,2557,1482,2536,1434,2509,1388,2472,1349,2443,1328,2407,1308,2313,1270,2200,1234,2075,1202,1816,1147,1596,1109"/>
+<area shape="rect" id="Node000020" href="$classBDSIntegratorTeleporter.html" title="Custom unphysical integrator to advance particle in teleporter." alt="" coords="2709,1497,2914,1682"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="1597,1098,1863,1130,2023,1153,2188,1182,2348,1215,2493,1253,2613,1296,2661,1320,2698,1345,2731,1377,2757,1415,2777,1455,2792,1495,2787,1497,2772,1457,2752,1417,2727,1380,2695,1349,2658,1324,2611,1301,2491,1258,2347,1220,2187,1187,2023,1158,1862,1135,1596,1103"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="1183,383,1357,448"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1282,461,1317,622,1371,825,1387,872,1382,874,1366,826,1312,624,1276,462"/>
+<area shape="rect" id="Node000003" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="1381,353,1551,478"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1469,492,1469,873,1463,873,1463,492"/>
+<area shape="rect" id="Node000004" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="1575,5,1837,825"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1573,802,1565,826,1547,874,1542,872,1559,824,1568,801"/>
+<area shape="rect" id="Node000009" href="$classBDSIntegratorDecapole.html" title="Integrator for Decapolar field." alt="" coords="531,1910,732,2035"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="825,1676,790,1754,747,1833,689,1911,685,1908,742,1831,786,1751,821,1674"/>
+<area shape="rect" id="Node000010" href="$classBDSIntegratorOctupole.html" title="Integrator for octupole field." alt="" coords="756,1910,955,2035"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="858,1676,858,1909,853,1909,853,1676"/>
+<area shape="rect" id="Node000011" href="$classBDSIntegratorSextupole.html" title="Integrator for sextupole field." alt="" coords="979,1910,1185,2035"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="890,1674,925,1752,968,1831,996,1871,1027,1908,1023,1912,992,1874,964,1833,920,1754,885,1676"/>
+<area shape="rect" id="Node000018" href="$classBDSIntegratorCavityFringe.html" title="Integrator for RF cavity fringes. Only the transverse momentum kicks are applied, this integrator wil..." alt="" coords="2241,1880,2464,2065"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="2355,1766,2355,1880,2350,1880,2350,1766"/>
+</map>

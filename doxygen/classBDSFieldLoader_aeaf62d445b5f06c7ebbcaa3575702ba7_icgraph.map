@@ -1,0 +1,32 @@
+<map id="BDSFieldLoader::LoadBDSIM4D" name="BDSFieldLoader::LoadBDSIM4D">
+<area shape="rect" id="Node000001" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="1400,118,1624,143"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldLoader.html#a9769be04cad3991f92e3161e871a33fa" title="Load a 4D BDSIM format magnetic field." alt="" coords="1113,61,1347,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1435,118,1293,89,1294,83,1436,113"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldLoader.html#a43c59d1d01620d1186f43c3535bd7934" title="Load a 4D BDSIM format electric field." alt="" coords="1114,118,1346,143"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="1387,133,1346,133,1346,128,1387,128"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldLoader.html#a15103354a46e00add71935cc18451e2c" title="Load a 4D BDSIM format electro&#45;magnetic field." alt="" coords="1108,167,1352,193"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="1426,148,1304,170,1303,165,1425,143"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldLoader.html#a9d7eea0510b0e67f797675b1c94ce92f" title="Main interface to load a magnetic field." alt="" coords="837,45,1060,70"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1100,69,1060,66,1060,61,1100,63"/>
+<area shape="poly" id="edge7_Node000003_Node000003" title=" " alt="" coords="999,36,996,31,988,27,949,23,918,25,902,30,899,36,907,43,904,46,894,36,899,26,917,20,949,18,989,22,1000,27,1004,34"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldFactory.html#abe272e95f65e31e32fd8af19397eb93d" title="Creat just the magnetic field object." alt="" coords="563,29,771,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="823,56,772,55,772,50,823,51"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="715,18,698,11,667,8,640,10,624,15,618,21,621,28,616,30,612,20,621,10,639,5,667,3,700,5,717,13"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldFactory.html#aa596ea76ebc79f07a624bc3f71accac7" title="Create a purely magnetic field." alt="" coords="261,53,497,78"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="550,59,498,61,497,56,549,53"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldFactory.html#a4ddc6a455c87ea0ed853cf870512a4da" title="Main interface to field factory." alt="" coords="5,118,213,143"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="313,84,163,121,162,115,312,79"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldLoader.html#ac40d3e4a6c835bb756cf440e34be2505" title="Main interface to load an electric field." alt="" coords="847,118,1050,143"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="1100,133,1050,133,1050,128,1100,128"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldFactory.html#a432866f0da0199193e79e2d2cd1dc792" title="Creat just the electric field object." alt="" coords="545,118,789,143"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="833,133,789,133,789,128,833,128"/>
+<area shape="poly" id="edge13_Node000009_Node000009" title=" " alt="" coords="717,109,715,105,707,101,667,97,637,99,621,104,618,109,626,116,622,120,612,110,618,100,636,93,667,91,708,96,719,101,722,107"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldFactory.html#a267433e2853cc25480adcf6e4493e870" title="Create an electric field." alt="" coords="271,118,487,143"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="531,133,487,133,487,128,531,128"/>
+<area shape="poly" id="edge12_Node000010_Node000006" title=" " alt="" coords="258,133,213,133,213,128,258,128"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldLoader.html#a3208f9562d507cdc7b616763fd837c7a" title="Main interface to load an electro&#45;magnetic field." alt="" coords="841,167,1056,193"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="1094,183,1056,183,1056,177,1094,177"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldFactory.html#aae6257d23bf70122a523e0f9e1e35d85" title="Create a general EM field." alt="" coords="265,167,493,193"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="827,183,494,183,494,177,827,177"/>
+<area shape="poly" id="edge17_Node000013_Node000006" title=" " alt="" coords="295,167,179,146,180,141,296,162"/>
+</map>

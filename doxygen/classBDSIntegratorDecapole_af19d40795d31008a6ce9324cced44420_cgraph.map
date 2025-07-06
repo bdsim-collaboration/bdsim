@@ -1,0 +1,35 @@
+<map id="BDSIntegratorDecapole::AdvanceHelix" name="BDSIntegratorDecapole::AdvanceHelix">
+<area shape="rect" id="Node000001" title="Calculate the new particle coordinates." alt="" coords="5,201,180,241"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorEulerOld.html#a6df6ffffb77ffb84a32216c4bf363479" title=" " alt="" coords="244,5,412,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,200,153,133,187,95,226,62,248,49,250,54,230,66,191,99,157,136,109,203"/>
+<area shape="rect" id="Node000005" href="$classBDSIntegratorMag.html#a536bf19a357e7f88071867f39d1a5393" title="Setter for distChord to private member." alt="" coords="483,63,679,103"/>
+<area shape="poly" id="edge18_Node000001_Node000005" title=" " alt="" coords="109,199,158,150,191,125,227,106,287,87,350,76,412,71,469,71,469,76,412,76,351,81,289,92,229,110,193,130,161,154,112,203"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorDrift.html#abf8596190741284f2de23c74ceb6a365" title="Error array [6] all 0." alt="" coords="257,144,399,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="175,199,242,182,244,187,176,204"/>
+<area shape="rect" id="Node000007" href="$classBDSIntegratorMag.html#acd5f485b2131e61ae1395f6fe68f91bc" title="scaling of momentum in case localMom is a unit vector" alt="" coords="228,259,428,299"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="176,239,232,253,231,258,175,244"/>
+<area shape="rect" id="Node000010" href="$classBDSStep.html#a0868cd519b353b30fddcddde50b50b2c" title="Accessor." alt="" coords="493,209,669,234"/>
+<area shape="poly" id="edge16_Node000001_Node000010" title=" " alt="" coords="180,219,479,219,479,224,180,224"/>
+<area shape="rect" id="Node000011" href="$classBDSStep.html#ab5b76ceccd5b2b893fe9f618db789961" title="Accessor." alt="" coords="497,323,666,349"/>
+<area shape="poly" id="edge17_Node000001_Node000011" title=" " alt="" coords="118,239,167,276,197,294,229,308,293,325,360,335,424,339,483,339,483,345,424,344,359,340,292,330,227,313,194,299,164,281,115,244"/>
+<area shape="rect" id="Node000012" href="$classBDSAuxiliaryNavigator.html#ae62af95146ad9b0a1711a1d28503a378" title=" " alt="" coords="242,373,414,413"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="112,240,161,295,194,325,229,352,252,365,250,370,227,357,190,330,157,299,108,243"/>
+<area shape="rect" id="Node000003" href="$namespaceBDS.html#acd93f7748953a5157b113e21c7886429" title=" " alt="" coords="502,13,661,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="412,23,488,23,488,28,412,28"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="413,42,479,57,478,62,412,47"/>
+<area shape="rect" id="Node000004" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="769,13,873,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="661,23,755,23,755,28,661,28"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="284,144,282,134,289,125,304,119,328,117,355,120,370,127,368,132,354,125,328,123,305,125,292,129,287,135,289,143"/>
+<area shape="rect" id="Node000008" href="$classBDSAuxiliaryNavigator.html#a763d44f27c25d6c754274fa0aa653f3a" title=" " alt="" coords="495,259,667,299"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="428,276,482,276,482,281,428,281"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="416,256,511,234,512,240,418,261"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="418,296,512,318,511,323,416,301"/>
+<area shape="rect" id="Node000009" href="$classBDSAuxiliaryNavigator.html#abb5f04a5ee7b026f21ae7715df1cf727" title="Utility function to select appropriate transform." alt="" coords="735,259,907,299"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="667,276,721,276,721,281,667,281"/>
+<area shape="rect" id="Node000013" href="$classBDSAuxiliaryNavigator.html#afe9af56d9265badd807a6dc28351a3aa" title="Utility function to select appropriate transform." alt="" coords="495,437,667,477"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="409,411,489,431,488,437,407,416"/>
+<area shape="rect" id="Node000014" href="$classBDSAuxiliaryNavigator.html#a0ccf4c63af2d239f8cf0890885961bad" title="A wrapper for the underlying static navigator instance located within this class." alt="" coords="476,373,687,413"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="414,391,462,391,462,396,414,396"/>
+<area shape="rect" id="Node000015" href="$classBDSAuxiliaryNavigator.html#a3d1430bbb5ad92f55303f9173faab8e8" title="Utility function to select appropriate navigator." alt="" coords="735,373,907,413"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="687,391,721,391,721,396,687,396"/>
+</map>

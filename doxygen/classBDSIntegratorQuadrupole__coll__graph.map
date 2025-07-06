@@ -1,0 +1,11 @@
+<map id="BDSIntegratorQuadrupole" name="BDSIntegratorQuadrupole">
+<area shape="rect" id="Node000001" title="Integrator that ignores the field and uses the analytical solution to a quadrupole." alt="" coords="181,1347,397,1492"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorMag.html" title="Common functionality to BDSIM integrators." alt="" coords="172,873,405,1299"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,1313,291,1346,286,1346,286,1313"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,383,180,448"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,461,140,622,194,825,209,872,204,874,189,826,135,624,99,462"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="204,353,373,478"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="291,492,291,873,286,873,286,492"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="398,5,659,825"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="396,806,389,826,371,874,366,872,383,824,391,805"/>
+</map>

@@ -1,0 +1,22 @@
+<map id="BDSEventAction::IdentifyTrajectoriesForStorage" name="BDSEventAction::IdentifyTrajectoriesForStorage">
+<area shape="rect" id="Node000001" title="Sift through all trajectories (if any) and mark for storage." alt="" coords="5,215,189,255"/>
+<area shape="rect" id="Node000002" href="$classBDSEventAction.html#a1c0e9c1f1879474afee75f0db941fcde" title=" " alt="" coords="237,29,489,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,214,127,180,156,140,192,99,236,65,251,57,254,62,239,70,196,103,160,143,131,183,112,216"/>
+<area shape="rect" id="Node000003" href="$classBDSSamplerRegistry.html#ab32788019d3c5d38c561b1950e50ef7f" title="Accessor." alt="" coords="285,79,442,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="118,213,170,171,202,148,236,129,271,116,273,120,238,134,205,153,173,175,122,217"/>
+<area shape="rect" id="Node000004" href="$classBDSTrajectory.html#a58bfd05f1f8ffd87681b2caf24ef2edd" title="Access a point &#45; use this class&#39;s container." alt="" coords="275,144,451,169"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="143,213,237,178,270,170,271,175,238,183,144,218"/>
+<area shape="rect" id="Node000005" href="$classBDSTrajectory.html#a0eeecf38eac31eaf83fbb20cf3784f63" title="Get number of trajectory points in this trajectory." alt="" coords="253,193,474,219"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="189,223,239,217,239,222,190,228"/>
+<area shape="rect" id="Node000006" href="$classBDSHitEnergyDeposition.html#a40c0132a69b38e66fd9432b22f37bd7f" title="Accessor for extra piece of information." alt="" coords="272,243,455,283"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="190,242,258,250,258,255,189,248"/>
+<area shape="rect" id="Node000007" href="$classBDSSamplerRegistry.html#a8ab60000257f2826431f7505b1d62bc8" title="Accessor for registry." alt="" coords="285,307,442,347"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="141,253,238,293,272,303,271,308,236,298,139,258"/>
+<area shape="rect" id="Node000009" href="$classBDSTrajectoryPoint.html#a47b2a246c68d341afdcb7e8a28e6451f" title="Return the transverse local radius in x,y." alt="" coords="290,371,437,411"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="118,254,168,306,202,334,239,357,278,373,276,378,236,362,199,338,165,310,114,258"/>
+<area shape="rect" id="Node000010" href="$classBDSTrajectory.html#a6b461a3503fe5763090e8b193d6e2b5e" title="Record the parent trajectory." alt="" coords="272,436,455,461"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="110,254,128,291,156,337,194,383,239,421,260,432,258,437,236,426,190,387,152,340,124,294,105,257"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="322,31,313,21,318,11,335,5,363,3,399,7,410,11,414,17,409,20,406,15,398,12,363,8,336,10,321,15,318,20,326,27"/>
+<area shape="rect" id="Node000008" href="$classBDSSamplerRegistry.html#adf923639c77f775de1c1638818bc6554" title="Private constructor to enforce singleton pattern." alt="" coords="537,307,703,347"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="442,325,524,325,524,330,442,330"/>
+</map>

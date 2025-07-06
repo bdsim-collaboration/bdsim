@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running BDSIM &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Input Syntax" href="input_syntax.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running BDSIM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-operation">Basic Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executable-options">Executable Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interactively">Interactively</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-batch-mode">In Batch Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recreate-mode">Recreate Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Running BDSIM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/running.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-bdsim">
+<span id="id1"></span><h1>Running BDSIM<a class="headerlink" href="#running-bdsim" title="Link to this heading"></a></h1>
+<section id="basic-operation">
+<h2>Basic Operation<a class="headerlink" href="#basic-operation" title="Link to this heading"></a></h2>
+<p>The minimum required information to run BDSIM is an input GMAD file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">lattice</span><span class="o">.</span><span class="n">gmad</span>
+</pre></div>
+</div>
+<p>The following section describes other ‘executable’ options that may specify
+various options, such as whether to run in ‘batch’ mode or interactively with a
+visualiser and where to write output.</p>
+</section>
+<section id="executable-options">
+<span id="id2"></span><h2>Executable Options<a class="headerlink" href="#executable-options" title="Link to this heading"></a></h2>
+<p>BDSIM can be executed in a terminal with extra arguments to specify various inputs.
+The angular brackets here are to indicate a user-specified value and should not
+be used literally.  The following command may be used to display all options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>--help</p></td>
+<td><p>Lists all executable commands</p></td>
+</tr>
+<tr class="row-even"><td><p>--reference or --citation</p></td>
+<td><p>Print out the citation for the BDSIM paper,
+including the bibtex syntax.</p></td>
+</tr>
+<tr class="row-odd"><td><p>--file=&lt;file&gt;</p></td>
+<td><p>Specifies the input gmad file</p></td>
+</tr>
+<tr class="row-even"><td><p>--batch</p></td>
+<td><p>Batch mode - no graphics</p></td>
+</tr>
+<tr class="row-odd"><td><p>--circular</p></td>
+<td><p>Assumes circular machine - turn control. See
+note below.</p></td>
+</tr>
+<tr class="row-even"><td><p>--colours</p></td>
+<td><p>Print out all colours predefined in BDSIM and
+exit</p></td>
+</tr>
+<tr class="row-odd"><td><p>--distrFile=&lt;file&gt;</p></td>
+<td><p>Which file to use for the bunch
+distribution</p></td>
+</tr>
+<tr class="row-even"><td><p>--distrFileNLinesSkip=N</p></td>
+<td><p>Number of lines to skip into a file. This is
+added to <code class="code docutils literal notranslate"><span class="pre">nlinesIgnore</span></code>. This is applied
+again if the file loops.</p></td>
+</tr>
+<tr class="row-odd"><td><p>--distrFileLoopNTimes=N</p></td>
+<td><p>Repeat the distribution file entirely N times.</p></td>
+</tr>
+<tr class="row-even"><td><p>--exportGeometryTo=&lt;file&gt;</p></td>
+<td><p>Exports the geometry to a file
+extension, which determines the format
+where possible extensions are (“gdml”)</p></td>
+</tr>
+<tr class="row-odd"><td><p>--E0=N</p></td>
+<td><p>Set the beam E0 total energy (in GeV only)</p></td>
+</tr>
+<tr class="row-even"><td><p>--Ek0=N</p></td>
+<td><p>Set the beam Ek0 kinetic energy (in GeV only)</p></td>
+</tr>
+<tr class="row-odd"><td><p>--geant4MacroFileName=&lt;file&gt;</p></td>
+<td><p>Optional Geant4 macro file to run after the
+visualisation has started. Only works in
+interactive visualisation.</p></td>
+</tr>
+<tr class="row-even"><td><p>--geant4PhysicsMacroFileName=&lt;file&gt;</p></td>
+<td><p>Optional Geant4 macro file to run after
+physics lists have been constructed but
+before a run.</p></td>
+</tr>
+<tr class="row-odd"><td><p>--generatePrimariesOnly</p></td>
+<td><p>Generates primary particle coordinates only
+then exits without simulating anything</p></td>
+</tr>
+<tr class="row-even"><td><p>--materials</p></td>
+<td><p>Lists materials included in BDSIM by default</p></td>
+</tr>
+<tr class="row-odd"><td><p>--ngenerate=N</p></td>
+<td><p>The number of primary events to simulate
+overrides the ngenerate option in the input
+file.</p></td>
+</tr>
+<tr class="row-even"><td><p>--output=&lt;fmt&gt;</p></td>
+<td><p>Outputs the format “rootevent” (default) or
+“none”</p></td>
+</tr>
+<tr class="row-odd"><td><p>--outfile=&lt;file&gt;</p></td>
+<td><p>Outputs file name. Will be appended with _N
+where N = 0, 1, 2, 3…</p></td>
+</tr>
+<tr class="row-even"><td><p>--printFractionEvents=N</p></td>
+<td><p>How often to print out events as a fraction
+of the total number of events to simulate
+(default 0.1 i.e. 10%). -1 for all.</p></td>
+</tr>
+<tr class="row-odd"><td><p>--printFractionTurns=N</p></td>
+<td><p>How often to print out turns as a fraction
+of the total number of turns to simulate
+(default 0.2 i.e. 20%). -1 for all. Will
+only print out on an event that will print
+out as well.</p></td>
+</tr>
+<tr class="row-even"><td><p>--printPhysicsProcesses</p></td>
+<td><p>At the start of the run, print out all
+particles registered according to the physics
+list chosen and print out the name of every
+physics process for that particle.</p></td>
+</tr>
+<tr class="row-odd"><td><p>--P0=N</p></td>
+<td><p>Set the beam P0 momentum (in GeV only)</p></td>
+</tr>
+<tr class="row-even"><td><p>--recreate=&lt;file&gt;</p></td>
+<td><p>The rootevent output file to recreate events
+from.</p></td>
+</tr>
+<tr class="row-odd"><td><p>--seed=&lt;N&gt;</p></td>
+<td><p>Seed for the random number generator</p></td>
+</tr>
+<tr class="row-even"><td><p>--seedStateFileName=&lt;file&gt;</p></td>
+<td><p>File containing CLHEP::Random seed state
+NB - this overrides other seed values</p></td>
+</tr>
+<tr class="row-odd"><td><p>--startFromEvent=N</p></td>
+<td><p>Event offset to start from when recreating
+events when using <code class="code docutils literal notranslate"><span class="pre">--recreate</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>--survey=&lt;file&gt;</p></td>
+<td><p>Prints survey info to &lt;file&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>--verbose</p></td>
+<td><p>Displays general parameters before run</p></td>
+</tr>
+<tr class="row-even"><td><p>--verboseEventBDSIM</p></td>
+<td><p>BDSIM event level print out</p></td>
+</tr>
+<tr class="row-odd"><td><p>--verboseEventLevel</p></td>
+<td><p>(0-5) level of Geant4 event level print out
+for all events</p></td>
+</tr>
+<tr class="row-even"><td><p>--verboseEventStart</p></td>
+<td><p>Event index to start event print out</p></td>
+</tr>
+<tr class="row-odd"><td><p>--verboseEventContinueFor</p></td>
+<td><p>Number of events for event level print out</p></td>
+</tr>
+<tr class="row-even"><td><p>--verboseEventNumber</p></td>
+<td><p>Shortcut that sets <cite>verboseEventStart</cite> and
+also sets <cite>verboseEventContinueFor</cite> to 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>--verboseTrackingLevel</p></td>
+<td><p>(0-5) tracking level print out</p></td>
+</tr>
+<tr class="row-even"><td><p>--verboseSteppingBDSIM</p></td>
+<td><p>BDSIM stepping print out for all events and
+all particles.</p></td>
+</tr>
+<tr class="row-odd"><td><p>--verboseSteppingLevel</p></td>
+<td><p>(0-5) level of Geant4 stepping level print out</p></td>
+</tr>
+<tr class="row-even"><td><p>--verboseSteppingEventStart</p></td>
+<td><p>Event index to start stepping print out</p></td>
+</tr>
+<tr class="row-odd"><td><p>--verboseSteppingEventContinueFor</p></td>
+<td><p>Number of events for stepping print out</p></td>
+</tr>
+<tr class="row-even"><td><p>--verboseSteppingPrimaryOnly</p></td>
+<td><p>Print stepping info for primary only</p></td>
+</tr>
+<tr class="row-odd"><td><p>--version</p></td>
+<td><p>Displays the version number of BDSIM</p></td>
+</tr>
+<tr class="row-even"><td><p>--versionGit</p></td>
+<td><p>Displays the version number of BDSIM along
+with the git SHA1 from the repository when
+BDSIM was built</p></td>
+</tr>
+<tr class="row-odd"><td><p>--vis_debug</p></td>
+<td><p>Displays all volumes in the visualiser</p></td>
+</tr>
+<tr class="row-even"><td><p>--vis_mac=&lt;file&gt;</p></td>
+<td><p>File with the visualisation macro script.
+Default provided by BDSIM: openGL (OGLSQt)).</p></td>
+</tr>
+<tr class="row-odd"><td><p>--writeSeedState</p></td>
+<td><p>Writes an ASCII file seed state for each
+event</p></td>
+</tr>
+</tbody>
+</table>
+<p>BDSIM can be run in one of two ways: <a class="reference internal" href="#interactively">interactively</a> or <a class="reference internal" href="#in-batch-mode">in batch mode</a>, which
+are described in the following sections.</p>
+<p>When run interactively, a Geant4 visualiser is invoked that produces a window with an image
+of the BDSIM model as well as a terminal prompt to control it. No events are simulated
+without user input. BDSIM provides a basic visualisation “macro” for Geant4 using the Qt
+visualiser to start and add the geometry to the scene. This is found from the
+BDSIM installation directory or failing that the build directory. The user may provide
+their own custom visualisation macro with the executable command <code class="code docutils literal notranslate"><span class="pre">--vis_mac=mymac.mac</span></code>.</p>
+<p>Alternatively, BDSIM can be run in batch mode, where no visualiser
+is used and the specified number of primary events is simulated and feedback is printed
+to the terminal. Batch mode is typically much faster than the interactive mode, but
+the interactive mode is very useful for understanding the model and a typical event
+in the simulation, i.e. where a particle hits.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on the <code class="code docutils literal notranslate"><span class="pre">--circular</span></code> option and using BDSIM with circular machines,
+see <a class="reference internal" href="model_construction.html#circular-machines"><span class="std std-ref">Circular Machines</span></a>.</p>
+</div>
+<p>See <a class="reference internal" href="model_control.html#bdsim-options-verbosity"><span class="std std-ref">Print Out Options</span></a> for more details on the verbosity options.</p>
+</section>
+<section id="interactively">
+<span id="running-interactively"></span><h2>Interactively<a class="headerlink" href="#interactively" title="Link to this heading"></a></h2>
+<p>Features:</p>
+<ul class="simple">
+<li><p>Default option</p></li>
+<li><p>Interactive visualisation of the accelerator model</p></li>
+<li><p>Ability to view and rotate the accelerator model</p></li>
+<li><p>Ability to run and view individual events</p></li>
+<li><p>Visualise events generated at run time</p></li>
+<li><p>Typically slower than batch mode</p></li>
+<li><p>No events run without user input</p></li>
+</ul>
+<p>To execute BDSIM in interactive mode, the user must simply not use the <code class="code docutils literal notranslate"><span class="pre">--batch</span></code> command.
+The user can also specify a macro file using the <code class="code docutils literal notranslate"><span class="pre">--vis_mac</span></code> option above. By default,
+BDSIM will use its own macro that uses Qt and displays the model with a white background. This
+can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/vis/bdsim_default_vis.mac</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using the visualiser over X-Windows on a Mac, see <a class="reference internal" href="installation.html#mac-xwindows"><span class="std std-ref">XWindows With MacOS</span></a>.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">run2</span>
+</pre></div>
+</div>
+<p>This executes BDSIM for the simpleMachine example in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/simpleMachine</span></code> with ROOT
+output (default) to a file named “run2”. The program is run interactively and the window shown
+below appears. From here, the user types into the visualiser terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">beamOn</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This runs one event and visualises it. Each time this command is used, a new output file with a
+numerical suffix will be created.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/qtvisualiser.png"><img alt="_images/qtvisualiser.png" src="_images/qtvisualiser.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">BDSIM running interactively with OpenGL Qt visualiser from Geant4.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To exit the visualiser, in the visualiser terminal type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
+</pre></div>
+</div>
+<p>More details of how to use the visualiser and common commands can be found in <a class="reference internal" href="visualisation.html#visualisation"><span class="std std-ref">Visualisation</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The visualiser is part of Geant4, so if the desired visualiser isn’t available, you
+must recompile Geant4 with the correct visualiser (and subsequently BDSIM afterwards). Geant4
+also uses the CMake configuration system. The visualiser shown is the OpenGL Qt visualiser, which
+we recommend for its ease of use and high level of interactivity.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>BDSIM simulates one particle at a time from the primary distribution and all of the
+associated secondaries. Each event is independent and different particles in the input
+bunch cannot interact with each other or their secondaries. This is an underlying feature
+of Geant4.</p>
+</div>
+</section>
+<section id="in-batch-mode">
+<h2>In Batch Mode<a class="headerlink" href="#in-batch-mode" title="Link to this heading"></a></h2>
+<p>Features:</p>
+<ul class="simple">
+<li><p>No interactive visualiser</p></li>
+<li><p>Faster</p></li>
+<li><p>Number of events runs, then program quits</p></li>
+<li><p>No user input</p></li>
+<li><p>Typical use for a “job” on a farm</p></li>
+</ul>
+<p>To execute BDSIM in batch mode, simply use the <code class="code docutils literal notranslate"><span class="pre">--batch</span></code> execution option.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">atf2</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">run1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">seed</span><span class="o">=</span><span class="mi">123</span>
+</pre></div>
+</div>
+<p>This executes BDSIM for the ATF2 example with ROOT output to a file name “run1” in batch
+mode with a seed value of 123. The simulation runs the number of events specified by the
+<code class="code docutils literal notranslate"><span class="pre">ngenerate</span></code> options parameter in the input gmad file, which is 1 by default.</p>
+</section>
+<section id="recreate-mode">
+<span id="running-recreation"></span><h2>Recreate Mode<a class="headerlink" href="#recreate-mode" title="Link to this heading"></a></h2>
+<p>After performing a simulation in BDSIM, it is possible to reproduce one or more events exactly
+the same again - this is called “strong recreation”. To do this, the original input gmad files
+(and any associated external geometry, field maps, beam distribution files e.g. all the input)
+are required and should be the same as was originally used. Along with this, a BDSIM ROOT output
+file is required.</p>
+<p>The output file is used to load the random number generator seed states at the start of each
+event such that the beam and physics processes will be the same. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mymodel</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">run1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">100</span>
+</pre></div>
+</div>
+<p>Now let us recreate event 87 (0 counting):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">mymodel</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">selectevent</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="n">recreate</span><span class="o">=</span><span class="n">run1</span><span class="o">.</span><span class="n">root</span> <span class="o">--</span><span class="n">startFromEvent</span><span class="o">=</span><span class="mi">87</span>
+</pre></div>
+</div>
+<p>The relevant executable options are <code class="code docutils literal notranslate"><span class="pre">recreate</span></code>, <code class="code docutils literal notranslate"><span class="pre">startFromEvent</span></code>. These are
+also documented in <a class="reference internal" href="model_control.html#options-general-run"><span class="std std-ref">General Run Options</span></a>.</p>
+<p>Recreation can also be used by specifying options in the input gmad file. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! start with the original model
+include mymodel.gmad;
+
+option, recreate=1,
+        recreateFileName=&quot;run1.root&quot;,
+        startFromEvent=87,
+        ngenerate=1;
+</pre></div>
+</div>
+<p>If the above GMAD syntax was in a file called “recreation1.gmad”, we would run it like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">recreation1</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">selectevent</span> <span class="o">--</span><span class="n">batch</span>
+</pre></div>
+</div>
+<p>This would be equivalent to the recreation example above. Note, the option <code class="code docutils literal notranslate"><span class="pre">recreate</span></code>
+in GMAD is a Boolean (set to 1 or 0) but as an executable option it’s the path to the
+file (a string).</p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The event offset counting is 0 counting. So, the first event is index 0. This is consistent
+with the print out of event number in BDSIM.</p></li>
+<li><p>If the recreation goes beyond the stored number of events, the random number generator will proceed
+as normal. e.g. starting from event 80/100 and generating 30 events, will result in 10 new events.</p></li>
+<li><p>Executable options override whatever options were used (and therefore stored in the output) in the
+initial run of BDSIM.</p></li>
+<li><p>Changing physics options in your input as compared to the original model will result in different
+results. The primary particle coordinates will of course be the same. The random number generator
+is set at the beginning of each new event.</p></li>
+<li><p>If a user supplied bunch distribution is used, the reading of the bunch file will start from
+the correct event to fully recreate the exact same event again.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="input_syntax.html" class="btn btn-neutral float-right" title="Input Syntax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

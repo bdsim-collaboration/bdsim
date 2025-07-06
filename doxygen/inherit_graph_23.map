@@ -1,0 +1,29 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classBDSArray4D.html" title="4D array and base class for 3,2 &amp; 1D arrays." alt="" coords="5,56,108,81"/>
+<area shape="rect" id="Node000001" href="$classBDSArray3D.html" title="3D array class." alt="" coords="179,31,281,56"/>
+<area shape="poly" id="edge8_Node000000_Node000001" title=" " alt="" coords="121,57,178,48,179,53,122,62"/>
+<area shape="rect" id="Node000004" href="$classBDSArray4DCoords.html" title="Overlay of 4D array that provides uniform only spatial coordinate mapping." alt="" coords="156,80,304,105"/>
+<area shape="poly" id="edge11_Node000000_Node000004" title=" " alt="" coords="122,75,156,80,156,85,121,80"/>
+<area shape="rect" id="Node000002" href="$classBDSArray2D.html" title="2D array." alt="" coords="415,31,518,56"/>
+<area shape="poly" id="edge9_Node000001_Node000002" title=" " alt="" coords="295,41,415,41,415,46,295,46"/>
+<area shape="rect" id="Node000003" href="$classBDSArray1D.html" title="1D array for completeness in array system." alt="" coords="693,31,795,56"/>
+<area shape="poly" id="edge10_Node000002_Node000003" title=" " alt="" coords="532,41,693,41,693,46,532,46"/>
+<area shape="rect" id="Node000005" href="$classBDSArray3DCoords.html" title="3D array with spatial mapping derived from BDSArray4DCoords." alt="" coords="393,80,541,105"/>
+<area shape="poly" id="edge12_Node000004_Node000005" title=" " alt="" coords="318,90,393,90,393,95,318,95"/>
+<area shape="rect" id="Node000013" href="$classBDSArray4DCoordsTransformed.html" title="Wrapped BDSArray4DCoords with possible transformation to extend field." alt="" coords="352,129,581,155"/>
+<area shape="poly" id="edge20_Node000004_Node000013" title=" " alt="" coords="306,106,405,127,404,132,304,111"/>
+<area shape="rect" id="Node000006" href="$classBDSArray2DCoords.html" title="2D array with spatial mapping derived from BDSArray4DCoords." alt="" coords="670,80,818,105"/>
+<area shape="poly" id="edge13_Node000005_Node000006" title=" " alt="" coords="554,90,670,90,670,95,554,95"/>
+<area shape="rect" id="Node000012" href="$classBDSArray3DCoordsTransformed.html" title="Wrapped BDSArray3DCoords with possible transformation to extend field." alt="" coords="629,129,859,155"/>
+<area shape="poly" id="edge19_Node000005_Node000012" title=" " alt="" coords="552,105,672,127,671,132,552,110"/>
+<area shape="rect" id="Node000007" href="$classBDSArray1DCoords.html" title="1D array with spatial mapping derived from BDSArray4DCoords." alt="" coords="947,5,1095,31"/>
+<area shape="poly" id="edge14_Node000006_Node000007" title=" " alt="" coords="828,74,858,65,881,52,906,40,946,28,948,33,908,44,884,57,860,70,829,79"/>
+<area shape="rect" id="Node000009" href="$classBDSArray2DCoordsRDipole.html" title="A wrapper to achieve 2D reflection of a minimal dipole field solve." alt="" coords="922,55,1121,80"/>
+<area shape="poly" id="edge16_Node000006_Node000009" title=" " alt="" coords="831,82,922,74,922,79,832,87"/>
+<area shape="rect" id="Node000010" href="$classBDSArray2DCoordsRQuad.html" title="A wrapper to achieve 2D reflection of a minimal quadrupole field solve." alt="" coords="926,104,1117,129"/>
+<area shape="poly" id="edge17_Node000006_Node000010" title=" " alt="" coords="832,98,926,106,925,111,831,103"/>
+<area shape="rect" id="Node000011" href="$classBDSArray2DCoordsTransformed.html" title="Wrapped BDSArray2DCoords with possible transformation to extend field." alt="" coords="907,153,1136,179"/>
+<area shape="poly" id="edge18_Node000006_Node000011" title=" " alt="" coords="832,106,860,114,884,126,908,138,951,151,950,156,906,143,881,131,858,119,831,111"/>
+<area shape="rect" id="Node000008" href="$classBDSArray1DCoordsTransformed.html" title="Wrapped BDSArray1DCoords with possible transformation to extend field." alt="" coords="1184,5,1413,31"/>
+<area shape="poly" id="edge15_Node000007_Node000008" title=" " alt="" coords="1109,15,1184,15,1184,21,1109,21"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="EventAnalysis::Process" name="EventAnalysis::Process">
+<area shape="rect" id="Node000001" title="Operate on each entry in the event tree." alt="" coords="5,230,177,255"/>
+<area shape="rect" id="Node000002" href="$classHistogramMeanFromFile.html#a954792998d3c377bb0c379a61c698967" title=" " alt="" coords="251,101,433,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,228,157,190,224,151,242,143,244,148,227,156,160,195,110,232"/>
+<area shape="rect" id="Node000007" href="$classAnalysis.html#a780d060be6d01ece992ea38e38dd8524" title="Accumulate means and variances for per entry histograms." alt="" coords="233,165,451,205"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="147,227,241,206,242,211,148,233"/>
+<area shape="rect" id="Node000008" href="$classEventAnalysis.html#a1f24e075eb2cabda4b3efc9b098b1023" title="Initialise each sampler analysis object in samplerAnalysis." alt="" coords="253,230,431,255"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="178,240,239,240,239,245,178,245"/>
+<area shape="rect" id="Node000009" href="$classEventAnalysis.html#aa1720b0e44b9c723ed7a424a86c495b0" title="Process each sampler analysis object." alt="" coords="225,279,459,305"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="157,253,264,274,263,279,156,258"/>
+<area shape="rect" id="Node000010" href="$classAnalysis.html#ac332bd28a8bd8516596ff8ef45009f85" title="Virtual function for user to overload and use. Does nothing by default." alt="" coords="259,329,425,354"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="113,253,163,284,226,315,250,323,249,328,224,320,160,289,110,258"/>
+<area shape="rect" id="Node000003" href="$classBDSOutputROOTEventHistograms.html#a957061e86261bd48501ff7da9e81e901" title="Accessors." alt="" coords="507,5,749,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,99,506,55,532,47,534,52,508,60,391,104"/>
+<area shape="rect" id="Node000004" href="$classBDSOutputROOTEventHistograms.html#a497d4f1e2cb4107fd71bf29a69204737" title="Accessors." alt="" coords="507,69,749,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="433,109,492,102,493,107,434,114"/>
+<area shape="rect" id="Node000005" href="$classBDSOutputROOTEventHistograms.html#a6e19598e56a6c6d2357c66a28a61445e" title="Accessors." alt="" coords="507,133,749,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="434,129,493,136,492,141,433,134"/>
+<area shape="rect" id="Node000006" href="$classBDSOutputROOTEventHistograms.html#a37f7cc16c61abb625009cfb7b98ca3ba" title="Accessors." alt="" coords="507,197,749,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="429,139,460,151,484,167,508,183,526,190,524,195,505,188,481,172,457,156,427,144"/>
+</map>

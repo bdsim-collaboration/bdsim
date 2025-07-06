@@ -1,0 +1,41 @@
+<map id="BDS::InspectSubtractionSolid" name="BDS::InspectSubtractionSolid">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,203,216,228"/>
+<area shape="rect" id="Node000002" href="$namespaceBDS.html#a8ea511b9c46d22957a4e79ac5a408b44" title=" " alt="" coords="264,203,439,228"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,222,250,222,250,227,216,227"/>
+<area shape="rect" id="Node000013" href="$classBDSExtent.html#ae4cc45437f763b90f12aaf73631a4cf1" title="Comparison operator for x,y only. Ignores z (length)." alt="" coords="735,317,977,343"/>
+<area shape="poly" id="edge24_Node000001_Node000013" title=" " alt="" coords="138,226,198,254,283,291,383,327,487,353,543,360,586,361,686,353,772,342,773,348,687,358,586,366,542,366,486,358,381,332,281,296,195,259,135,230"/>
+<area shape="poly" id="edge18_Node000002_Node000001" title=" " alt="" coords="264,209,230,209,230,204,264,204"/>
+<area shape="rect" id="Node000003" href="$namespaceBDS.html#a9e5ac5da9b11853b737f97912a8712aa" title="Inspect a G4Box." alt="" coords="522,5,651,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="356,201,374,168,402,124,439,79,485,40,507,29,510,34,488,44,443,82,406,128,379,171,361,204"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#a621acbd02e51bee703bf27869c6b1edc" title="Inspect a G4CutTubs." alt="" coords="509,55,664,80"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="361,201,410,146,446,115,485,89,500,82,502,87,488,94,449,120,414,150,365,204"/>
+<area shape="rect" id="Node000009" href="$namespaceBDS.html#ad412bf20d42dac6cdf362cbaa819b3e5" title="Inspect a G4DisplacedSolid." alt="" coords="487,203,687,228"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="439,221,473,222,473,227,439,227"/>
+<area shape="rect" id="Node000011" href="$namespaceBDS.html#a2cb3c7cc7919614c24fa653c759c357f" title="Inspect a G4EllipticalTube." alt="" coords="491,104,682,129"/>
+<area shape="poly" id="edge13_Node000002_Node000011" title=" " alt="" coords="370,200,421,169,486,138,508,131,510,136,488,143,424,174,373,205"/>
+<area shape="rect" id="Node000012" href="$namespaceBDS.html#a21457f2e1e343d094ed5a780a1f0038d" title="Inspect a G4IntersectionSolid." alt="" coords="496,253,677,293"/>
+<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="381,225,483,254,482,259,379,231"/>
+<area shape="rect" id="Node000014" href="$namespaceBDS.html#ad36a14323a5988a89dba892492bc90e3" title="Inspect a G4Tubs." alt="" coords="520,153,653,179"/>
+<area shape="poly" id="edge19_Node000002_Node000014" title=" " alt="" coords="412,200,511,179,512,184,413,205"/>
+<area shape="rect" id="Node000015" href="$namespaceBDS.html#aef97cb26f29818afd3c456d718df704f" title="Inspect a G4UnionSolid." alt="" coords="499,317,674,343"/>
+<area shape="poly" id="edge21_Node000002_Node000015" title=" " alt="" coords="363,226,413,270,449,294,488,314,488,314,486,319,486,319,447,299,410,274,359,230"/>
+<area shape="rect" id="Node000004" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="778,73,934,113"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="643,28,687,39,779,66,778,71,686,45,642,33"/>
+<area shape="rect" id="Node000005" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="1029,15,1193,55"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="934,73,1016,54,1017,59,935,78"/>
+<area shape="rect" id="Node000006" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="1035,80,1187,105"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="934,90,1022,90,1022,95,934,95"/>
+<area shape="rect" id="Node000007" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="1025,129,1197,155"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="935,105,1032,124,1031,129,934,110"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="664,72,764,81,764,87,664,77"/>
+<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="486,209,453,209,453,204,486,204"/>
+<area shape="rect" id="Node000010" href="$classBDSExtent.html#a06f807cf83a61af653fee2f76940cf60" title="Provide a new copy of this extent with an offset applied." alt="" coords="777,203,935,228"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="687,213,763,213,763,218,687,218"/>
+<area shape="poly" id="edge12_Node000010_Node000010" title=" " alt="" coords="815,204,806,194,811,184,828,178,856,176,892,180,902,185,906,190,901,193,898,189,890,185,856,181,829,183,814,188,811,194,819,201"/>
+<area shape="poly" id="edge14_Node000011_Node000004" title=" " alt="" coords="682,106,764,98,764,103,682,111"/>
+<area shape="poly" id="edge16_Node000012_Node000002" title=" " alt="" coords="534,255,452,234,453,228,535,250"/>
+<area shape="poly" id="edge17_Node000012_Node000013" title=" " alt="" coords="678,289,783,312,782,317,677,295"/>
+<area shape="poly" id="edge20_Node000014_Node000004" title=" " alt="" coords="638,151,686,138,772,114,774,119,687,143,639,156"/>
+<area shape="poly" id="edge22_Node000015_Node000002" title=" " alt="" coords="563,320,526,309,486,295,434,267,389,238,392,233,437,263,488,290,528,304,564,315"/>
+<area shape="poly" id="edge23_Node000015_Node000013" title=" " alt="" coords="674,327,721,327,721,333,674,333"/>
+</map>

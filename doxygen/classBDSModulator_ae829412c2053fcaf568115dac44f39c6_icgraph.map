@@ -1,0 +1,45 @@
+<map id="BDSModulator::Factor" name="BDSModulator::Factor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="844,302,1007,327"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldE.html#a49704855f475674e6334233649934a7b" title="Get the field value after applying transform for local offset." alt="" coords="555,138,786,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="891,296,690,166,693,161,894,292"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldEM.html#abd9f5a59f1c518d194a859e164d84799" title="Get the field value after applying transform for local offset." alt="" coords="549,302,792,327"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="830,317,792,317,792,312,830,312"/>
+<area shape="rect" id="Node000015" href="$classBDSFieldMag.html#a91589c5876310ff044a92cf8251c60bd" title="Get the field value after applying transform for local offset." alt="" coords="545,513,796,538"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="900,339,689,515,685,511,896,334"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldEGlobal.html#a9c599d93acc4af9d05ac63e895857405" title=" " alt="" coords="289,14,481,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="638,133,574,95,496,57,448,42,450,37,498,52,577,90,641,128"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldEGlobalPlacement.html#a2abd364b4feef5a10c68a50696b4d6f1" title=" " alt="" coords="285,67,484,107"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="599,138,474,109,475,104,600,132"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldEInterpolated2Layer.html#a24b259b160644c7373a4b81eb6c9a325" title="Return the interpolated field value at a given point." alt="" coords="279,131,490,171"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="542,153,490,153,490,148,542,148"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldE.html#a5cbcac0e263e48495e9411e8cf4dcb73" title=" " alt="" coords="291,195,478,221"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="593,169,449,198,448,193,592,164"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldEGlobal.html#aea875fcce81d30e7f5ab5a24c15093ac" title=" " alt="" coords="19,5,211,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="275,29,211,28,211,23,275,23"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldEGlobalPlacement.html#a61899f522c70b1fcb1eb3446a9b4994e" title=" " alt="" coords="15,69,214,109"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="272,90,214,91,214,86,272,85"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldEMGlobal.html#a8393f29e5763d58608d7c963f634f8ac" title=" " alt="" coords="283,245,487,270"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="592,302,448,273,449,267,593,297"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldEMGlobalPlacement.html#a59b1add9c0bbc95831f0978f8ea4e89f" title=" " alt="" coords="279,295,490,335"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="536,317,490,317,490,312,536,312"/>
+<area shape="rect" id="Node000014" href="$classBDSFieldEM.html#ab7271d63162beda2ef9d44c189f0b270" title=" " alt="" coords="285,359,484,385"/>
+<area shape="poly" id="edge13_Node000009_Node000014" title=" " alt="" coords="593,333,449,362,448,357,592,328"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldEMGlobal.html#ae5393d7ac6d51b74060f17ddab1584d9" title=" " alt="" coords="13,235,217,275"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="269,259,217,258,217,253,269,254"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldEMGlobalPlacement.html#a90cabb5d2ed2e5edc83acbd9e62a119e" title=" " alt="" coords="9,299,220,339"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="266,319,220,320,220,314,265,314"/>
+<area shape="rect" id="Node000016" href="$classBDSFieldMagDipoleQuadrupole.html#a84f31664faf9c0850a2185edf09318ee" title="Access the field value." alt="" coords="272,409,497,449"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="624,510,496,464,458,452,459,447,498,459,626,505"/>
+<area shape="rect" id="Node000017" href="$classBDSFieldMagGlobal.html#ae48afe211b81647d601144ce837bfea7" title=" " alt="" coords="305,473,464,513"/>
+<area shape="poly" id="edge16_Node000015_Node000017" title=" " alt="" coords="543,514,464,505,465,500,544,508"/>
+<area shape="rect" id="Node000019" href="$classBDSFieldMagGlobalPlacement.html#a80fb318e40a4c63f64ab504cfd86e7c3" title=" " alt="" coords="275,537,494,577"/>
+<area shape="poly" id="edge18_Node000015_Node000019" title=" " alt="" coords="544,542,494,548,494,542,543,537"/>
+<area shape="rect" id="Node000021" href="$classBDSFieldMagInterpolated2Layer.html#a374c5cffda062ceeb909355df2738476" title="Return the interpolated field value at a given point." alt="" coords="287,601,482,641"/>
+<area shape="poly" id="edge20_Node000015_Node000021" title=" " alt="" coords="626,545,498,592,459,604,458,599,496,587,624,540"/>
+<area shape="rect" id="Node000022" href="$classBDSFieldMag.html#a803e5c8e55e3240ccd5be68cdd17c4f8" title=" " alt="" coords="281,666,488,691"/>
+<area shape="poly" id="edge21_Node000015_Node000022" title=" " alt="" coords="648,549,584,603,543,632,498,656,463,668,461,663,496,651,540,627,581,599,645,545"/>
+<area shape="rect" id="Node000018" href="$classBDSFieldMagGlobal.html#abd7761ce80910afbcabad688d03f76ad" title=" " alt="" coords="35,473,194,513"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="292,496,194,496,194,491,292,491"/>
+<area shape="rect" id="Node000020" href="$classBDSFieldMagGlobalPlacement.html#a2b57459f898dd7d759a4d60512452085" title=" " alt="" coords="5,537,224,577"/>
+<area shape="poly" id="edge19_Node000019_Node000020" title=" " alt="" coords="262,560,224,560,224,555,262,555"/>
+</map>

@@ -1,0 +1,59 @@
+<map id="BDSCavityFactoryBase::CreateCavity" name="BDSCavityFactoryBase::CreateCavity">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,515,176,555"/>
+<area shape="rect" id="Node000002" href="$classBDSCavityFactoryBase.html#a2b1786b63abd5e0f2c76e4b91d7811b2" title="Construct output object and register all temporary objects from vectors." alt="" coords="224,196,457,236"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,513,313,245,317,249,110,516"/>
+<area shape="rect" id="Node000010" href="$classBDSCavityFactoryBase.html#ad0c7e6311e306833498dd248e0c8ad16" title="Ensure all internal members are reset before reuse. Calls CleanUpBase." alt="" coords="255,387,426,427"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="113,512,161,474,223,436,241,428,243,433,225,441,164,478,116,517"/>
+<area shape="rect" id="Node000013" href="$classBDSCavityFactoryBase.html#ad8abc8c1d959eb0baccfddaee60ecb87" title="Create vacuumLV, cavityLV and containerLV." alt="" coords="253,451,428,491"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="169,512,248,491,250,497,170,517"/>
+<area shape="rect" id="Node000014" href="$classBDSCavityFactoryBase.html#a7d94aac68606455b716d2de22fa686e2" title="Create vacuumSolid and cavitySolid. Must return the container radius." alt="" coords="255,515,426,555"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="176,532,242,532,242,537,176,537"/>
+<area shape="rect" id="Node000015" href="$classBDSCavityFactoryBase.html#a9dd5ff78b9cfb70401f40440e2fb23db" title="Place the vacuum and cavity centrally in the container logical volume." alt="" coords="255,579,426,619"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="170,552,250,573,248,578,169,557"/>
+<area shape="rect" id="Node000016" href="$classBDSCavityFactoryBase.html#a408bd328bdc97f368f0fa8136495d821" title=" " alt="" coords="255,643,426,683"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="116,553,164,591,225,628,243,636,241,641,223,633,161,595,113,557"/>
+<area shape="rect" id="Node000023" href="$classBDSCavityFactoryBase.html#a34728f2e41291788a039f4136635fce3" title="Set vis attributes for cavityLV, vacuumLV and containerLV." alt="" coords="255,711,426,751"/>
+<area shape="poly" id="edge23_Node000001_Node000023" title=" " alt="" coords="106,554,152,622,186,660,226,692,244,703,241,707,222,697,183,664,148,625,101,557"/>
+<area shape="rect" id="Node000003" href="$classBDSGeometryComponent.html#a66c8db7284315088c2c819f3a530848b" title=" " alt="" coords="759,72,949,112"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="349,195,371,155,405,106,449,58,476,38,504,22,544,8,585,3,627,5,668,11,745,35,807,63,805,68,743,40,667,17,626,10,585,9,545,14,506,26,479,42,453,62,409,110,376,158,354,197"/>
+<area shape="rect" id="Node000004" href="$classBDSGeometryComponent.html#aa046608d3ba8d2079699a0a6504a559b" title=" " alt="" coords="507,36,697,76"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="361,194,423,141,462,111,504,86,518,79,520,84,507,90,465,116,426,145,365,198"/>
+<area shape="rect" id="Node000005" href="$classBDSGeometryComponent.html#a3b54e878b62c39664507450a845dfcd5" title=" " alt="" coords="507,100,697,140"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="390,193,504,149,526,142,527,147,506,154,392,198"/>
+<area shape="rect" id="Node000006" href="$classBDSGeometryComponent.html#af4ce5153a36ecbf0ba7020b9893e5cd3" title=" " alt="" coords="505,164,699,204"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="457,199,492,195,492,200,458,204"/>
+<area shape="rect" id="Node000007" href="$classBDSGeometryComponent.html#ae70878d39e522057c500460c1c933844" title=" " alt="" coords="507,228,697,268"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="458,228,494,232,493,237,457,233"/>
+<area shape="rect" id="Node000008" href="$classBDSGeometryComponent.html#ab6ca27b409c38ccb93456c5deae106be" title=" " alt="" coords="507,292,697,332"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="392,234,506,277,527,285,526,290,504,282,390,239"/>
+<area shape="rect" id="Node000009" href="$classBDSGeometryComponent.html#ae256d1c17bcefc15e3f85c120a2c8867" title=" " alt="" coords="507,356,697,396"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="365,234,426,287,465,316,507,342,520,348,518,353,504,346,462,320,423,291,361,238"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="664,161,698,149,790,114,791,119,700,154,665,166"/>
+<area shape="rect" id="Node000011" href="$classBDSCavityFactoryBase.html#a8f0145ef04c16924bd3429ca7b27dab3" title="Non&#45;virtual clean up that can be used in the constructor safely." alt="" coords="517,420,687,460"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="427,415,503,425,503,430,426,420"/>
+<area shape="rect" id="Node000012" href="$classBDSFactoryBase.html#af7ee4619ac98f5d4ee6fb30dca8f62e4" title="Empty containers for next use &#45; factories are never deleted so can&#39;t rely on scope." alt="" coords="747,420,961,460"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="687,437,733,437,733,443,687,443"/>
+<area shape="rect" id="Node000017" href="$namespaceBDS.html#a721e4f4dd7877f2306620d113aff05c1" title=" " alt="" coords="517,555,687,581"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="419,640,456,628,561,584,563,589,458,633,421,645"/>
+<area shape="rect" id="Node000019" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="524,643,680,683"/>
+<area shape="poly" id="edge19_Node000016_Node000019" title=" " alt="" coords="426,660,510,660,510,665,426,665"/>
+<area shape="rect" id="Node000018" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="802,518,906,543"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="687,553,788,538,789,543,688,558"/>
+<area shape="rect" id="Node000020" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="772,568,936,608"/>
+<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="669,640,772,609,774,614,671,645"/>
+<area shape="rect" id="Node000021" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="778,633,930,658"/>
+<area shape="poly" id="edge21_Node000019_Node000021" title=" " alt="" coords="680,655,764,649,764,654,680,660"/>
+<area shape="rect" id="Node000022" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="768,682,940,707"/>
+<area shape="poly" id="edge22_Node000019_Node000022" title=" " alt="" coords="681,670,755,679,754,685,680,675"/>
+<area shape="poly" id="edge29_Node000023_Node000019" title=" " alt="" coords="418,708,511,684,512,689,419,713"/>
+<area shape="rect" id="Node000024" href="$classBDSColours.html#a47bf1fce3a161fa47e30ec7620de2eaf" title="Get a cached anonymous colour by values." alt="" coords="517,726,687,751"/>
+<area shape="poly" id="edge24_Node000023_Node000024" title=" " alt="" coords="426,731,503,733,503,738,426,736"/>
+<area shape="rect" id="Node000026" href="$classBDSColours.html#a70b63e931ed622f303245065d959b60e" title="singleton pattern" alt="" coords="521,778,683,803"/>
+<area shape="poly" id="edge26_Node000023_Node000026" title=" " alt="" coords="427,748,533,772,532,777,426,753"/>
+<area shape="rect" id="Node000025" href="$namespaceBDS.html#a8dbf382bb29843a4904f8b5e6b141b1d" title=" " alt="" coords="777,731,931,757"/>
+<area shape="poly" id="edge25_Node000024_Node000025" title=" " alt="" coords="687,738,763,739,763,745,687,743"/>
+<area shape="rect" id="Node000027" href="$classBDSColours.html#ab19369a3f87d6f470da02a8a385ecf32" title="Private constructor as singleton." alt="" coords="763,781,945,806"/>
+<area shape="poly" id="edge27_Node000026_Node000027" title=" " alt="" coords="683,789,749,789,749,795,683,794"/>
+<area shape="rect" id="Node000028" href="$classBDSColours.html#abb27d7d63d9f0b2da5e2126a86ac8863" title=" " alt="" coords="1009,781,1145,806"/>
+<area shape="poly" id="edge28_Node000027_Node000028" title=" " alt="" coords="946,791,996,791,996,796,946,796"/>
+</map>

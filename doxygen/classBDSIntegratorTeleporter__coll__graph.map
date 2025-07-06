@@ -1,0 +1,19 @@
+<map id="BDSIntegratorTeleporter" name="BDSIntegratorTeleporter">
+<area shape="rect" id="Node000001" title="Custom unphysical integrator to advance particle in teleporter." alt="" coords="414,1663,619,1828"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorMag.html" title="Common functionality to BDSIM integrators." alt="" coords="275,1175,508,1600"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="473,1612,490,1662,485,1663,468,1614"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,611,180,676"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="102,689,133,852,159,953,194,1052,232,1134,277,1213,272,1216,228,1137,189,1054,154,955,127,854,96,690"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="204,581,373,706"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="302,720,365,1174,359,1175,296,721"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="398,233,659,1053"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="453,1067,433,1175,428,1174,448,1066"/>
+<area shape="rect" id="Node000006" href="$classBDSPTCOneTurnMap.html" title="Class to load and use PTC 1 turn map." alt="" coords="635,1175,860,1600"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="637,1564,581,1650,576,1647,632,1561"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="684,611,811,676"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="750,676,750,1158,745,1158,745,676"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="835,603,1038,683"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="937,684,930,769,916,886,894,1019,861,1151,858,1160,853,1158,855,1150,888,1018,911,886,925,769,932,683"/>
+<area shape="rect" id="Node000009" href="$structBDSPTCOneTurnMap_1_1PTCMapTerm.html" title=" " alt="" coords="817,5,1056,171"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="939,171,939,586,934,586,934,171"/>
+</map>

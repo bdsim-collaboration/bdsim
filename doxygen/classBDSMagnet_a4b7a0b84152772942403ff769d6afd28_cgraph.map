@@ -1,0 +1,40 @@
+<map id="BDSMagnet::BuildBeampipe" name="BDSMagnet::BuildBeampipe">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,313,211,338"/>
+<area shape="rect" id="Node000002" href="$classBDSGeometryComponent.html#a33a2819656d372eabd97e0cb6a096ed1" title="Accessor &#45; see member for more info." alt="" coords="286,5,475,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,312,125,263,154,194,174,156,197,119,225,85,257,55,272,46,275,50,260,59,229,89,202,122,178,159,159,196,130,265,115,313"/>
+<area shape="rect" id="Node000003" href="$classBDSBeamPipe.html#a1482f81903f080d5c38011a2e1139f6f" title="Access the vacuum volume to set fields and limits." alt="" coords="259,69,503,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,311,131,273,162,221,205,166,230,141,257,119,266,113,269,118,260,124,233,145,209,170,167,224,136,276,117,314"/>
+<area shape="rect" id="Node000004" href="$classBDSGeometryComponent.html#a249f41628a0670f729dbd2ac7b4b84dc" title="Update the extents of this object with those of another object." alt="" coords="286,133,475,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="117,311,172,249,212,214,257,183,272,176,274,181,260,188,216,218,176,253,121,314"/>
+<area shape="rect" id="Node000007" href="$classBDSBeamPipe.html#a3db99c21de7b72207782b3d0e425913f" title="Accessor." alt="" coords="264,198,497,223"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="125,310,182,272,219,251,258,234,286,224,287,229,260,238,221,256,185,277,128,315"/>
+<area shape="rect" id="Node000008" href="$classBDSBeamPipeFactory.html#a6ddb785bdca626c90eb381b67d4f56d8" title="Singleton accessor." alt="" coords="299,248,462,288"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="169,310,285,285,286,290,170,315"/>
+<area shape="rect" id="Node000010" href="$classBDSBeamPipe.html#aac24f82f9f9bde44f07ed756dd4f2182" title="Accessor." alt="" coords="259,313,503,338"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="211,323,245,323,245,328,211,328"/>
+<area shape="rect" id="Node000011" href="$classBDSGeometryComponent.html#a553ac33a48c070e63e7e9ce9c6974642" title=" " alt="" coords="286,363,475,403"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="170,335,273,357,272,363,169,341"/>
+<area shape="rect" id="Node000012" href="$namespaceBDS.html#a3fa35622cb10a53538e338c368f74ad0" title=" " alt="" coords="270,427,491,453"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="128,336,185,374,221,395,260,412,287,421,286,426,258,417,219,399,182,378,125,340"/>
+<area shape="rect" id="Node000014" href="$classBDSAcceleratorComponent.html#a34b5746ec0195c9cf1eb3b266805d61c" title=" " alt="" coords="269,477,492,531"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="122,337,177,396,217,431,260,462,272,468,270,473,257,466,213,435,173,400,118,340"/>
+<area shape="rect" id="Node000015" href="$classBDSMagnet.html#aad33d927f96fa3f689cf39b70f2bfad3" title="Update face normal and also to beam pipe and magnet outer." alt="" coords="262,555,499,581"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="117,337,134,377,164,433,206,492,232,518,260,540,272,547,270,552,257,545,228,522,202,495,160,436,129,380,112,339"/>
+<area shape="rect" id="Node000018" href="$classBDSMagnet.html#a0cb61e22328271bc962f781441d5551e" title="Update face normal and also to beam pipe and magnet outer." alt="" coords="281,607,481,647"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="115,338,130,386,159,454,178,492,202,528,229,562,260,591,270,598,267,602,257,595,225,566,197,531,174,494,154,457,125,387,110,339"/>
+<area shape="rect" id="Node000005" href="$classBDSGeometryComponent.html#a2e634337243089e76d818fc036674b6e" title="Accessor &#45; see member for more info." alt="" coords="559,95,749,135"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="475,137,545,127,546,133,476,143"/>
+<area shape="rect" id="Node000006" href="$classBDSGeometryComponent.html#ac96a203c1f5bd2b0bad1f44a219ff20a" title="Accessor &#45; see member for more info." alt="" coords="559,159,749,199"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="476,159,546,166,545,171,475,165"/>
+<area shape="rect" id="Node000009" href="$classBDSBeamPipeFactory.html#abe68196e27db78da0a466027d67b9a5f" title="Private constructor as singleton pattern." alt="" coords="569,248,739,288"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="462,265,555,265,555,271,462,271"/>
+<area shape="rect" id="Node000013" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="602,427,706,453"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="492,437,588,437,588,443,492,443"/>
+<area shape="rect" id="Node000016" href="$classBDSMagnetOuter.html#a723a270077800ae58f175de24738ee66" title="Setter for face normals." alt="" coords="556,545,752,585"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="500,564,542,564,543,569,500,570"/>
+<area shape="rect" id="Node000017" href="$classBDSAcceleratorComponent.html#aab349a282eee9b2dee4a05d7bd41a644" title="Allow updating of face normals. Virtual so derived class may apply it to daughters." alt="" coords="805,577,1004,617"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="753,575,792,580,791,586,752,580"/>
+<area shape="rect" id="Node000019" href="$classBDSMagnetOuter.html#ae6352284783212259569012c8cfa52de" title="Setter for face normals." alt="" coords="551,609,757,649"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="481,625,537,626,537,631,481,630"/>
+<area shape="poly" id="edge19_Node000019_Node000017" title=" " alt="" coords="757,613,792,609,792,614,758,619"/>
+</map>

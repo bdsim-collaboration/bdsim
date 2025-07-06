@@ -1,0 +1,21 @@
+<map id="BDSDetectorConstruction::PlaceBeamlineInWorld" name="BDSDetectorConstruction::PlaceBeamlineInWorld">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,192,141"/>
+<area shape="rect" id="Node000002" href="$classBDSPhysicalVolumeInfoRegistry.html#af11a28667b48386f8eb56552d6a6ba73" title="Singleton accessor." alt="" coords="240,5,471,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,99,239,55,262,47,264,52,241,60,141,104"/>
+<area shape="rect" id="Node000004" href="$classBDSAcceleratorModel.html#adc4a8ba377d000ac16a6e890d90b9035" title="Access region information. Will exit if not found." alt="" coords="273,69,437,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,107,259,99,260,104,192,112"/>
+<area shape="rect" id="Node000005" href="$classBDSPhysicalVolumeInfoRegistry.html#ae2deaa75edb8823f403667b11ed4452b" title=" " alt="" coords="240,133,471,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="192,130,227,135,226,140,192,136"/>
+<area shape="rect" id="Node000010" href="$classBDSPhysicalVolumeInfoRegistry.html#a07b6edf5a8b049bea1e023297663113b" title=" " alt="" coords="240,197,471,237"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="141,139,241,183,264,191,262,196,239,188,139,144"/>
+<area shape="rect" id="Node000003" href="$classBDSPhysicalVolumeInfoRegistry.html#a45c1c6104df6864c056a8d0918b6915b" title="Default constructor is private as singleton." alt="" coords="519,5,757,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="471,23,505,23,505,28,471,28"/>
+<area shape="rect" id="Node000006" href="$classBDSPhysicalVolumeInfo.html#a9b8d686b590746ac3ede89082e277904" title="Get the name of the logical volume." alt="" coords="549,101,727,141"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="471,138,535,130,536,136,471,143"/>
+<area shape="rect" id="Node000007" href="$classBDSPhysicalVolumeInfoRegistry.html#a917abd8d3c5ef58519ae0daabeab17c8" title="Check whether a physical volume is registered at all." alt="" coords="523,165,753,205"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="471,164,509,168,508,173,471,169"/>
+<area shape="rect" id="Node000008" href="$classBDSPhysicalVolumeInfoRegistry.html#afbba2b6d3b4292203f4a071c1d269d6a" title="Check whether a physical volume is registered ot the general backup registry." alt="" coords="807,133,1038,173"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="753,170,793,165,794,170,754,175"/>
+<area shape="rect" id="Node000009" href="$classBDSPhysicalVolumeInfoRegistry.html#a46e20e73c3f4d6e0366258b1aea6d6ab" title="Check whether a physical volume is registered to the read out registry." alt="" coords="805,197,1040,237"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="754,196,792,200,791,205,753,201"/>
+</map>

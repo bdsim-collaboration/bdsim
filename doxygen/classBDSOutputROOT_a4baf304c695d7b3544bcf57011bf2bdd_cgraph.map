@@ -1,0 +1,13 @@
+<map id="BDSOutputROOT::UpdateSamplers" name="BDSOutputROOT::UpdateSamplers">
+<area shape="rect" id="Node000001" title="Implementation for ROOT output. Only for link &#45; not for regular use." alt="" coords="5,45,251,70"/>
+<area shape="rect" id="Node000002" href="$classBDSOutputStructures.html#ac4cfcd2960d5d34da3fd616a32ac2ed5" title="Interface to allow setting up samplers later for dynamic geometry construction a la SixTrack...." alt="" coords="299,37,496,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="251,55,285,55,285,60,251,60"/>
+<area shape="rect" id="Node000003" href="$classBDSSamplerRegistry.html#aa43e95e7269819332dbc64f88e904836" title="Access all the unique names at once." alt="" coords="544,5,701,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="496,41,530,36,531,41,497,46"/>
+<area shape="rect" id="Node000005" href="$classBDSSamplerRegistry.html#a8ab60000257f2826431f7505b1d62bc8" title="Accessor for registry." alt="" coords="544,69,701,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="497,69,531,74,530,79,496,74"/>
+<area shape="rect" id="Node000004" href="$classBDSSamplerPlacementRecord.html#abf081061236a4c40524f9f9151025514" title="Accessor." alt="" coords="749,5,967,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="701,23,736,23,736,28,701,28"/>
+<area shape="rect" id="Node000006" href="$classBDSSamplerRegistry.html#adf923639c77f775de1c1638818bc6554" title="Private constructor to enforce singleton pattern." alt="" coords="775,69,941,109"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="701,87,761,87,761,92,701,92"/>
+</map>

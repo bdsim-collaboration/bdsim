@@ -1,0 +1,25 @@
+<map id="BDSFieldE" name="BDSFieldE">
+<area shape="rect" id="Node000001" title="Interface for BDSIM electric fields that may or may not be local." alt="" coords="606,119,783,444"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldEGlobal.html" title="A base class for electric fields in local to be used in global coordinates." alt="" coords="5,552,203,717"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="594,313,508,343,410,382,309,433,261,462,216,494,186,522,159,554,155,550,182,518,213,490,258,458,307,428,408,377,506,338,592,308"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldEGlobalPlacement.html" title="Wrapper class to convert to global coordinates using a navigator for placements." alt="" coords="227,552,453,717"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="597,371,467,494,412,553,408,550,463,490,593,367"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldEInterpolated.html" title="Class to provide scaling and a base class pointer for interpolator fields." alt="" coords="477,492,672,777"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="638,458,626,492,621,491,633,456"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldEInterpolated2Layer.html" title="Two interpolated fields in one. One takes precedence in a subregion." alt="" coords="697,552,935,717"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="757,456,790,551,785,553,752,458"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldESinusoid.html" title="A sinusoidal electric (only) field that doesn&#39;t vary with position. Uses cosine." alt="" coords="960,512,1131,757"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="796,353,873,417,949,490,966,510,962,513,945,494,870,421,793,358"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldEZero.html" title="Null E field &#45; for special cases where we need a valid object." alt="" coords="1155,582,1301,687"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="797,309,878,337,969,377,1061,428,1104,457,1145,490,1181,534,1208,580,1204,583,1177,537,1141,494,1101,462,1058,432,967,382,876,342,795,314"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="639,5,750,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="697,84,697,118,692,118,692,84"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldEInterpolated1D.html" title="A 1D field from an interpolated array with any interpolation." alt="" coords="112,865,325,1051"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="468,779,467,780,433,798,402,805,373,811,339,828,292,867,289,863,336,823,371,806,401,799,431,793,464,775,465,774"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldEInterpolated2D.html" title="A 2D field from an interpolated array with any interpolation." alt="" coords="349,845,563,1071"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="520,791,500,846,495,844,515,789"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldEInterpolated3D.html" title="A 3D field from an interpolated array with any interpolation." alt="" coords="587,825,800,1091"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="634,789,647,824,642,826,629,791"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldEInterpolated4D.html" title="A 4D field from an interpolated array with any interpolation." alt="" coords="824,885,1037,1031"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="684,774,685,775,718,793,748,799,779,806,813,823,848,851,879,883,875,887,845,855,811,828,777,811,747,805,717,798,683,780,681,779"/>
+</map>

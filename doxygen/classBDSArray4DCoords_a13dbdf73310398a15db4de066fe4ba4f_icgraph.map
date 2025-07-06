@@ -1,0 +1,67 @@
+<map id="BDSArray4DCoords::ArrayCoordsFromX" name="BDSArray4DCoords::ArrayCoordsFromX">
+<area shape="rect" id="Node000001" title="Not much point in being both virtual and inline (in our use case) but has to be virtual." alt="" coords="825,677,1061,717"/>
+<area shape="rect" id="Node000002" href="$classBDSArray4DCoords.html#a02423af9ee5c277b36805250f2579860" title="Utility version to forward to individual function." alt="" coords="541,133,777,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="928,665,869,511,825,412,775,315,723,236,676,175,680,172,727,233,780,312,830,410,874,509,933,663"/>
+<area shape="rect" id="Node000009" href="$classBDSArray4DCoords.html#adde7d1edc399b77540a42d6b8fbc7705" title="Utility version to forward to individual function." alt="" coords="541,325,777,365"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="918,667,856,579,775,475,678,367,682,364,779,472,860,576,922,664"/>
+<area shape="rect" id="Node000016" href="$classBDSArray4DCoords.html#ae3ffdb736ac7c630192de16cd710f05e" title="Utility version to forward to individual function." alt="" coords="541,485,777,525"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="916,668,857,603,818,569,776,540,751,528,753,523,779,535,822,564,861,599,920,665"/>
+<area shape="rect" id="Node000023" href="$classBDSArray4DCoords.html#aeb021f2a399ca42ca2713db9abe8df45" title="Convenience function to easily get array coords in all dimensions at once." alt="" coords="541,549,777,589"/>
+<area shape="poly" id="edge22_Node000001_Node000023" title=" " alt="" coords="900,672,843,637,776,604,744,592,745,587,778,599,845,632,903,668"/>
+<area shape="rect" id="Node000024" href="$classBDSArray1DCoords.html#a4a386d55315cc847912cb79bce188812" title="Extract 2 points lying around coordinate x." alt="" coords="558,613,761,653"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="840,677,748,656,749,651,841,672"/>
+<area shape="rect" id="Node000027" href="$classBDSArray1DCoordsTransformed.html#a78b97a7f48bdc2c61feded8789a05ed5" title=" " alt="" coords="545,677,774,717"/>
+<area shape="poly" id="edge26_Node000001_Node000027" title=" " alt="" coords="812,700,774,700,774,695,812,695"/>
+<area shape="rect" id="Node000028" href="$classBDSArray4DCoordsTransformed.html#ac57b1adb6279fd25f03d5dcb6fcfedd5" title=" " alt="" coords="545,741,774,781"/>
+<area shape="poly" id="edge27_Node000001_Node000028" title=" " alt="" coords="841,723,749,744,748,739,840,718"/>
+<area shape="rect" id="Node000029" href="$classBDSArray1DCoords.html#a42fb6e4b7b826d4ff752bf8b61c296e4" title="Extract 4 points lying around coordinate x, where x will be between points 2 and 3." alt="" coords="558,805,761,845"/>
+<area shape="poly" id="edge28_Node000001_Node000029" title=" " alt="" coords="903,727,845,762,778,796,745,808,744,803,776,791,843,758,900,723"/>
+<area shape="rect" id="Node000031" href="$classBDSArray1DCoordsTransformed.html#a88cfdd5c0440d028ccd8eddc07238477" title=" " alt="" coords="545,869,774,909"/>
+<area shape="poly" id="edge30_Node000001_Node000031" title=" " alt="" coords="920,730,861,796,822,830,779,860,753,872,751,867,776,855,818,826,857,792,916,727"/>
+<area shape="rect" id="Node000032" href="$classBDSArray2DCoordsTransformed.html#acbbe38e5964b1cb854bd29de41cd3527" title=" " alt="" coords="545,933,774,973"/>
+<area shape="poly" id="edge31_Node000001_Node000032" title=" " alt="" coords="929,731,906,775,873,827,830,879,779,924,757,935,755,931,776,919,826,875,868,824,901,772,925,728"/>
+<area shape="rect" id="Node000033" href="$classBDSArray3DCoordsTransformed.html#ae7e409b501bdaf9b187e1f7d9550d7df" title=" " alt="" coords="545,997,774,1037"/>
+<area shape="poly" id="edge32_Node000001_Node000033" title=" " alt="" coords="935,731,915,787,883,856,838,927,810,959,779,987,759,1000,756,995,776,983,806,956,833,924,878,854,910,785,930,730"/>
+<area shape="rect" id="Node000003" href="$classBDSArray2DCoords.html#afa41cc8a44990277b7d6367a69399a0d" title="Extract 2x2 points lying around coordinate x." alt="" coords="277,37,480,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="596,131,492,92,455,80,456,75,494,87,598,126"/>
+<area shape="rect" id="Node000006" href="$classBDSArray2DCoordsTransformed.html#ab87ec273d6c1aed37ed8b718a1e739d2" title=" " alt="" coords="264,101,493,141"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="528,141,493,137,494,132,528,136"/>
+<area shape="rect" id="Node000007" href="$classBDSArray2DCoords.html#a3e00b27d3229b4bbd227d3f7a0875431" title="Extract 4x4 points lying around coordinate x." alt="" coords="277,165,480,205"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="528,171,480,176,480,171,528,166"/>
+<area shape="rect" id="Node000004" href="$classBDSInterpolator2DLinear.html#a240ed50371491a4987bba3a829308678" title=" " alt="" coords="19,5,202,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="263,46,202,39,203,34,264,41"/>
+<area shape="rect" id="Node000005" href="$classBDSInterpolator2DLinearMag.html#af958ba60cf1a109d95b7b7dfb014fc26" title=" " alt="" coords="5,69,216,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="264,74,217,79,216,74,263,68"/>
+<area shape="rect" id="Node000008" href="$classBDSInterpolator2DCubic.html#a4738105b93eb1e0dcd5f4488adaef0f2" title=" " alt="" coords="21,165,200,205"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="263,188,200,188,200,183,263,183"/>
+<area shape="rect" id="Node000010" href="$classBDSArray3DCoords.html#a9decf77feb34fae3a986b832703ac0a8" title="Extract 2x2x2 points lying around coordinate x." alt="" coords="277,229,480,269"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="596,323,492,284,455,272,456,267,494,279,598,318"/>
+<area shape="rect" id="Node000013" href="$classBDSArray3DCoordsTransformed.html#a67cd702b643847b089b0bac05041e36f" title=" " alt="" coords="264,293,493,333"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="528,333,493,329,494,324,528,328"/>
+<area shape="rect" id="Node000014" href="$classBDSArray3DCoords.html#ae011db391262432795d5bf4f281eb92d" title="Extract 4x4x4 points lying around coordinate x." alt="" coords="277,357,480,397"/>
+<area shape="poly" id="edge13_Node000009_Node000014" title=" " alt="" coords="528,363,480,368,480,363,528,358"/>
+<area shape="rect" id="Node000011" href="$classBDSInterpolator3DLinear.html#aaa56b95f1764ba8b447873b2550c165a" title=" " alt="" coords="19,229,202,269"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="264,252,202,252,202,247,264,247"/>
+<area shape="rect" id="Node000012" href="$classBDSInterpolator3DLinearMag.html#af89c0acded8125306a2b16ffa1414ffc" title=" " alt="" coords="5,293,216,333"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="282,275,196,296,194,291,280,270"/>
+<area shape="rect" id="Node000015" href="$classBDSInterpolator3DCubic.html#aa4a2629ee24f5f1663a85d170a2e4d7c" title=" " alt="" coords="21,357,200,397"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="263,380,200,380,200,375,263,375"/>
+<area shape="rect" id="Node000017" href="$classBDSArray4DCoords.html#aa339406e77a7879dd7aa4533c75918c6" title="Extract 2x2x2x2 points lying around coordinate x." alt="" coords="277,421,480,461"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="557,485,466,464,467,459,558,480"/>
+<area shape="rect" id="Node000020" href="$classBDSArray4DCoords.html#ac37a11b1cd56d5cc66a87b532256d225" title="Extract 4x4x4x4 points lying around coordinate x." alt="" coords="277,485,480,525"/>
+<area shape="poly" id="edge19_Node000016_Node000020" title=" " alt="" coords="528,508,480,508,480,503,528,503"/>
+<area shape="rect" id="Node000022" href="$classBDSArray4DCoordsTransformed.html#a0c9fa0969f2bf5b54dc70376220088ce" title=" " alt="" coords="264,549,493,589"/>
+<area shape="poly" id="edge21_Node000016_Node000022" title=" " alt="" coords="558,531,467,552,466,547,557,526"/>
+<area shape="rect" id="Node000018" href="$classBDSInterpolator4DLinear.html#ab41545075f61771da79ab0f79f1562ca" title=" " alt="" coords="19,421,202,461"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="264,444,202,444,202,439,264,439"/>
+<area shape="rect" id="Node000019" href="$classBDSInterpolator4DLinearMag.html#a1d6578e3bf027fa2085bf8e2b6e32310" title=" " alt="" coords="5,485,216,525"/>
+<area shape="poly" id="edge18_Node000017_Node000019" title=" " alt="" coords="282,467,196,488,194,483,280,462"/>
+<area shape="rect" id="Node000021" href="$classBDSInterpolator4DCubic.html#a549601e3bbd737ccc2036a7f1201e48e" title=" " alt="" coords="21,549,200,589"/>
+<area shape="poly" id="edge20_Node000020_Node000021" title=" " alt="" coords="282,531,196,552,194,547,280,526"/>
+<area shape="rect" id="Node000025" href="$classBDSInterpolator1DLinear.html#a2ae8fc83653827d6d242e9163a01beb5" title=" " alt="" coords="287,613,470,653"/>
+<area shape="poly" id="edge24_Node000024_Node000025" title=" " alt="" coords="544,636,470,636,470,631,544,631"/>
+<area shape="rect" id="Node000026" href="$classBDSInterpolator1DLinearMag.html#a517905b10329cc086df5d25164cfdfe7" title=" " alt="" coords="273,677,484,717"/>
+<area shape="poly" id="edge25_Node000024_Node000026" title=" " alt="" coords="558,659,467,680,466,675,557,654"/>
+<area shape="rect" id="Node000030" href="$classBDSInterpolator1DCubic.html#aab564448ad4b737d96aca12f24546104" title=" " alt="" coords="289,805,468,845"/>
+<area shape="poly" id="edge29_Node000029_Node000030" title=" " alt="" coords="544,828,468,828,468,823,544,823"/>
+</map>

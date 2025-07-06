@@ -1,0 +1,100 @@
+<map id="BDSOutput::CloseAndOpenNewFile" name="BDSOutput::CloseAndOpenNewFile">
+<area shape="rect" id="Node000001" title="Close a file and open a new one." alt="" coords="5,767,253,793"/>
+<area shape="rect" id="Node000002" href="$classBDSOutputStructures.html#a6a5b5066be04194bc00bf71464a5dd44" title="Clear the local header structure." alt="" coords="324,673,501,713"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,765,301,723,327,715,329,720,302,728,170,770"/>
+<area shape="rect" id="Node000003" href="$classBDSOutput.html#afb6e8aa90b8c3b292a63182b87e6b57b" title=" " alt="" coords="333,738,493,763"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="252,765,319,758,319,763,252,770"/>
+<area shape="rect" id="Node000004" href="$classBDSOutput.html#a509954e8dcd2570104217e26f5703eee" title=" " alt="" coords="301,788,524,828"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="254,790,288,793,288,798,253,795"/>
+<area shape="rect" id="Node000045" href="$classBDSOutput.html#a0ccacc3aeb7af47dc9339a79c7ae251e" title="Open a new file. This should call WriteHeader() in it." alt="" coords="336,853,489,878"/>
+<area shape="poly" id="edge53_Node000001_Node000045" title=" " alt="" coords="165,790,302,837,338,847,337,852,301,843,163,795"/>
+<area shape="rect" id="Node000005" href="$classBDSOutput.html#abb828f07c0bd68858c9cfd2a6135c327" title="Create histograms." alt="" coords="575,766,793,791"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="524,793,561,789,561,795,524,799"/>
+<area shape="rect" id="Node000029" href="$classBDSOutputStructures.html#a012b5352189ec42497442e4d6904c5dd" title="Construct collimators." alt="" coords="603,816,765,856"/>
+<area shape="poly" id="edge31_Node000004_Node000029" title=" " alt="" coords="524,817,590,824,589,829,524,822"/>
+<area shape="rect" id="Node000030" href="$classBDSOutputStructures.html#a2f2108cb67d0fb2e971258f876a446c3" title="Construct a map of material pointer to integer ID and name." alt="" coords="600,880,768,920"/>
+<area shape="poly" id="edge32_Node000004_Node000030" title=" " alt="" coords="493,826,525,838,549,852,573,866,592,873,590,878,571,870,547,856,523,842,491,831"/>
+<area shape="rect" id="Node000031" href="$classBDSOutputStructures.html#a4c4038a61b8cfd429f25cc1e0e2d8164" title="Construct samplers." alt="" coords="605,1087,763,1127"/>
+<area shape="poly" id="edge33_Node000004_Node000031" title=" " alt="" coords="507,826,526,838,546,860,555,881,562,904,574,931,664,1074,659,1077,570,933,557,906,550,883,541,863,522,842,504,830"/>
+<area shape="rect" id="Node000034" href="$classBDSOutputStructures.html#ade60aab9d37ae189fac724248513acbd" title="Extract number of collimators and their names from beam line." alt="" coords="585,123,783,163"/>
+<area shape="poly" id="edge36_Node000004_Node000034" title=" " alt="" coords="508,786,522,773,534,753,543,728,553,664,555,589,552,507,548,346,554,279,560,251,570,228,597,194,630,168,633,172,600,198,574,231,565,253,559,280,553,346,558,507,560,589,558,665,548,729,539,755,526,776,511,790"/>
+<area shape="rect" id="Node000043" href="$classBDSOutputStructures.html#a43c988704b6d0305844ecd5a1e8a0460" title=" " alt="" coords="572,241,796,281"/>
+<area shape="poly" id="edge46_Node000004_Node000043" title=" " alt="" coords="505,786,522,773,568,717,604,654,631,586,651,517,665,450,673,389,680,295,685,295,679,389,670,451,656,518,636,588,609,656,572,720,526,777,508,790"/>
+<area shape="rect" id="Node000006" href="$classBDSAcceleratorModel.html#a899da925682f73f7f52a1a88ad25e25c" title="Accessor." alt="" coords="1175,384,1339,424"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="686,765,701,712,730,635,751,594,777,554,807,516,843,484,960,458,1161,419,1162,425,961,464,845,489,811,520,781,557,756,597,735,638,706,714,691,766"/>
+<area shape="rect" id="Node000007" href="$classBDSOutput.html#adecf04945eceb065dc846eefcc17fd49" title="Calculate the number of bins and required maximum s." alt="" coords="849,791,1080,831"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="794,788,836,793,835,799,793,794"/>
+<area shape="rect" id="Node000012" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="1179,848,1335,888"/>
+<area shape="poly" id="edge23_Node000005_Node000012" title=" " alt="" coords="763,789,797,802,812,812,822,822,831,832,845,840,927,863,1012,875,1094,878,1165,875,1165,880,1094,883,1011,880,926,869,843,845,828,836,818,826,809,816,795,806,761,794"/>
+<area shape="rect" id="Node000016" href="$classBDSOutputStructures.html#a05bc259fa4aebc368103c4d5c44289c7" title="Create histograms for both evtHistos and runHistos. Return index from evtHistos." alt="" coords="885,1199,1044,1239"/>
+<area shape="poly" id="edge16_Node000005_Node000016" title=" " alt="" coords="782,789,798,802,817,826,829,851,836,875,839,899,835,947,823,995,812,1043,808,1090,810,1114,817,1137,828,1161,846,1185,859,1196,874,1205,871,1209,856,1201,842,1188,824,1164,812,1139,805,1115,802,1090,807,1042,818,994,829,946,834,899,831,876,824,853,812,829,794,806,779,794"/>
+<area shape="rect" id="Node000017" href="$classBDSOutputStructures.html#ac922f1053d65f0777350980726bb5fa1" title="Create histograms for both evtHistos and runHistos. Return index from evtHistos." alt="" coords="885,384,1044,424"/>
+<area shape="poly" id="edge17_Node000005_Node000017" title=" " alt="" coords="685,765,699,707,727,620,748,572,774,524,805,480,842,441,871,422,874,427,846,445,809,483,778,527,753,574,732,622,704,708,690,766"/>
+<area shape="rect" id="Node000018" href="$classBDSOutputStructures.html#a6d186d1e6455ac5f5cf0b8f74e95e01c" title="Create histograms for both evtHistos and runHistos. Return index from evtHistos." alt="" coords="885,499,1044,539"/>
+<area shape="poly" id="edge18_Node000005_Node000018" title=" " alt="" coords="688,765,707,723,740,664,785,602,812,573,843,548,871,534,873,538,845,553,816,577,789,605,744,667,712,725,693,767"/>
+<area shape="rect" id="Node000019" href="$classBDSBeamline.html#a0e5c90f690b89fee951fcb8c754ce703" title=" " alt="" coords="844,563,1085,589"/>
+<area shape="poly" id="edge19_Node000005_Node000019" title=" " alt="" coords="690,764,712,730,746,685,790,637,843,598,856,591,858,596,845,602,794,641,750,688,716,733,695,767"/>
+<area shape="rect" id="Node000020" href="$classBDSBLMRegistry.html#a274f58a87e200a1f1079c81cb6efb720" title="Accessor for registry." alt="" coords="868,970,1061,995"/>
+<area shape="poly" id="edge21_Node000005_Node000020" title=" " alt="" coords="779,789,798,802,813,821,821,841,823,881,824,919,831,938,846,955,857,964,854,968,842,959,827,940,819,920,817,881,816,842,809,824,794,806,776,794"/>
+<area shape="rect" id="Node000022" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="913,613,1017,638"/>
+<area shape="poly" id="edge24_Node000005_Node000022" title=" " alt="" coords="695,764,755,708,797,675,843,648,898,631,900,636,845,653,800,680,758,712,699,768"/>
+<area shape="rect" id="Node000023" href="$classBDSSDManager.html#a6a59cad413ab6509db443009407d2a2e" title="Access a vector of the just primitive scorer part of the names." alt="" coords="849,663,1081,703"/>
+<area shape="poly" id="edge25_Node000005_Node000023" title=" " alt="" coords="713,763,843,712,869,704,871,709,845,717,715,768"/>
+<area shape="rect" id="Node000024" href="$classBDSSDManager.html#ab34ec610e35b1c2ec60369fe88705e96" title="Access a vector the full primitive scorer names as registered." alt="" coords="849,727,1081,767"/>
+<area shape="poly" id="edge26_Node000005_Node000024" title=" " alt="" coords="793,764,835,759,835,764,794,769"/>
+<area shape="rect" id="Node000025" href="$classBDSSDManager.html#a0711243c9c0372198994333888d71595" title="Access the map of units for primitive scorers." alt="" coords="849,905,1081,945"/>
+<area shape="poly" id="edge27_Node000005_Node000025" title=" " alt="" coords="774,789,798,802,816,822,823,844,830,865,846,885,864,897,862,901,842,889,825,867,818,846,811,825,794,806,772,794"/>
+<area shape="rect" id="Node000026" href="$classBDSAcceleratorModel.html#a2ca84654a4d46fe0bc9ceafaabd106b6" title="Access all scorer histogram definitions." alt="" coords="846,1020,1083,1060"/>
+<area shape="poly" id="edge28_Node000005_Node000026" title=" " alt="" coords="780,789,798,802,817,828,825,854,826,880,823,906,820,931,821,957,828,982,846,1006,850,1010,846,1014,842,1010,824,984,816,958,815,931,818,905,820,880,820,855,812,830,794,806,777,794"/>
+<area shape="rect" id="Node000027" href="$namespaceBDS.html#a3d2494435d6be46925d1b834e4e8f771" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="899,1085,1031,1110"/>
+<area shape="poly" id="edge29_Node000005_Node000027" title=" " alt="" coords="781,789,798,802,821,836,830,870,828,905,822,939,816,972,815,1005,824,1038,846,1070,864,1083,886,1092,884,1097,862,1088,842,1074,819,1040,810,1006,811,972,817,938,823,904,824,871,816,838,794,806,778,794"/>
+<area shape="rect" id="Node000028" href="$classBDSAcceleratorModel.html#a6707c0415f942cc60dbdd71efca2316a" title="Access the beam line containing all the tunnel segments." alt="" coords="883,1135,1047,1175"/>
+<area shape="poly" id="edge30_Node000005_Node000028" title=" " alt="" coords="782,789,798,802,814,822,825,843,834,883,831,923,823,963,815,1003,813,1042,821,1082,831,1101,846,1121,871,1139,868,1144,842,1125,827,1104,816,1084,807,1043,810,1002,818,962,826,922,829,883,820,844,809,825,794,806,778,794"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="1068,788,1083,777,1100,757,1110,738,1116,699,1118,657,1122,633,1131,607,1181,511,1231,434,1235,437,1186,513,1136,609,1127,634,1123,658,1121,700,1115,740,1104,760,1087,781,1072,793"/>
+<area shape="rect" id="Node000008" href="$classBDSBeamline.html#ac04d240785d833af3dc31b1d00b2dfa4" title="Iterator mechanics." alt="" coords="1176,749,1337,774"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="1080,789,1167,774,1168,779,1081,794"/>
+<area shape="rect" id="Node000009" href="$classBDSBeamline.html#a34feac75ecebce148c6cbc8228e1d729" title="Return a reference to the last element." alt="" coords="1157,798,1356,823"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="1080,808,1144,808,1144,813,1080,813"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamlineElement.html#a8b7c7b3cf1ecee4822158dc09197c2fc" title="Accessor." alt="" coords="1174,620,1339,660"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="1057,788,1084,776,1109,757,1132,734,1217,666,1220,670,1135,738,1112,761,1087,781,1059,793"/>
+<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="1068,828,1165,847,1164,853,1067,833"/>
+<area shape="rect" id="Node000010" href="$classBDSBeamline.html#a265effeecf73fdf74d62188e34c0ae74" title="Return a reference to the last element." alt="" coords="1439,773,1589,798"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="1356,798,1425,791,1425,797,1356,804"/>
+<area shape="rect" id="Node000013" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="1432,872,1596,912"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="1335,873,1419,880,1418,886,1335,878"/>
+<area shape="rect" id="Node000014" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="1438,937,1590,962"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="1318,886,1429,921,1457,930,1455,935,1427,927,1317,891"/>
+<area shape="rect" id="Node000015" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="1428,822,1600,847"/>
+<area shape="poly" id="edge15_Node000012_Node000015" title=" " alt="" coords="1334,855,1414,845,1414,850,1335,861"/>
+<area shape="poly" id="edge20_Node000019_Node000011" title=" " alt="" coords="1032,586,1086,597,1161,615,1160,620,1085,603,1031,591"/>
+<area shape="rect" id="Node000021" href="$classBDSBLMRegistry.html#a56669586239b295500d7ca6f14444723" title="Private constructor to enforce singleton pattern." alt="" coords="1133,970,1380,995"/>
+<area shape="poly" id="edge22_Node000020_Node000021" title=" " alt="" coords="1062,980,1120,980,1120,985,1062,985"/>
+<area shape="rect" id="Node000032" href="$classBDSSamplerRegistry.html#a8ab60000257f2826431f7505b1d62bc8" title="Accessor for registry." alt="" coords="886,1263,1043,1303"/>
+<area shape="poly" id="edge34_Node000031_Node000032" title=" " alt="" coords="704,1125,762,1186,802,1220,845,1248,874,1261,872,1266,843,1253,799,1224,759,1190,700,1129"/>
+<area shape="rect" id="Node000033" href="$classBDSSamplerRegistry.html#adf923639c77f775de1c1638818bc6554" title="Private constructor to enforce singleton pattern." alt="" coords="1174,1263,1339,1303"/>
+<area shape="poly" id="edge35_Node000032_Node000033" title=" " alt="" coords="1044,1280,1160,1280,1160,1285,1044,1285"/>
+<area shape="poly" id="edge38_Node000034_Node000006" title=" " alt="" coords="718,120,791,85,837,67,886,53,938,44,990,44,1041,54,1087,76,1103,90,1113,104,1121,135,1124,168,1136,206,1187,297,1235,371,1231,374,1182,299,1131,208,1119,169,1115,136,1108,107,1099,94,1084,81,1039,59,990,49,939,49,888,58,838,72,793,90,721,125"/>
+<area shape="rect" id="Node000035" href="$classBDSBeamline.html#a81bb1806b0ecbaf6bc263532ac9ade76" title="Return a reference to the element at i." alt="" coords="899,219,1031,245"/>
+<area shape="poly" id="edge37_Node000034_Node000035" title=" " alt="" coords="730,160,784,183,845,204,886,215,885,220,843,209,782,188,728,165"/>
+<area shape="rect" id="Node000036" href="$classBDSBeamline.html#af143adc4fc65018e279dd745970fdae3" title="Return vector of indices for this beam line where element of type name &#39;type&#39; is found." alt="" coords="1155,37,1358,77"/>
+<area shape="poly" id="edge39_Node000034_Node000036" title=" " alt="" coords="705,120,763,73,802,50,843,32,884,22,927,16,1012,13,1094,20,1165,32,1164,37,1093,25,1012,19,927,21,885,27,845,37,804,54,766,77,708,124"/>
+<area shape="rect" id="Node000040" href="$classBDSBeamlineElement.html#a6c0e6b1882d763ec39be90a1261b70ab" title="Accessor." alt="" coords="882,155,1047,195"/>
+<area shape="poly" id="edge43_Node000034_Node000040" title=" " alt="" coords="784,151,869,161,868,166,783,157"/>
+<area shape="rect" id="Node000042" href="$classBDSBeamlineElement.html#a536029441cd91cd6b1356d54fe09f37b" title="Accessor." alt="" coords="882,91,1047,131"/>
+<area shape="poly" id="edge45_Node000034_Node000042" title=" " alt="" coords="783,129,868,119,869,124,784,134"/>
+<area shape="rect" id="Node000037" href="$classBDSBeamlineElement.html#a7a275ec29093ad60e09cbc5704850601" title="Accessor." alt="" coords="1431,5,1597,45"/>
+<area shape="poly" id="edge40_Node000036_Node000037" title=" " alt="" coords="1358,42,1418,35,1418,40,1359,47"/>
+<area shape="rect" id="Node000038" href="$classBDSBeamlineElement.html#ae76fd63244135ed82e2e0cb61a887515" title="Accessor." alt="" coords="1431,69,1597,109"/>
+<area shape="poly" id="edge41_Node000036_Node000038" title=" " alt="" coords="1359,67,1418,75,1418,80,1358,73"/>
+<area shape="rect" id="Node000039" href="$classBDSAcceleratorComponent.html#ad637633010ce61da27db37718c1be203" title="Get a string describing the type of the component." alt="" coords="1648,69,1847,109"/>
+<area shape="poly" id="edge42_Node000038_Node000039" title=" " alt="" coords="1597,87,1634,87,1634,92,1597,92"/>
+<area shape="rect" id="Node000041" href="$classBDSAcceleratorComponent.html#a297ada7fdf4679780a55566b3d3cddd4" title="The name of the component without modification." alt="" coords="1157,155,1356,195"/>
+<area shape="poly" id="edge44_Node000040_Node000041" title=" " alt="" coords="1047,172,1144,172,1144,177,1047,177"/>
+<area shape="poly" id="edge48_Node000043_Node000006" title=" " alt="" coords="733,279,845,319,1162,383,1161,389,843,324,731,284"/>
+<area shape="poly" id="edge47_Node000043_Node000035" title=" " alt="" coords="796,247,885,238,885,243,796,252"/>
+<area shape="poly" id="edge51_Node000043_Node000040" title=" " alt="" coords="740,239,843,204,872,196,873,201,845,209,741,244"/>
+<area shape="poly" id="edge52_Node000043_Node000042" title=" " alt="" coords="710,239,786,180,843,140,868,130,870,135,845,145,789,185,713,243"/>
+<area shape="rect" id="Node000044" href="$classBDSBeamline.html#afc150f9359f0c99cc8e147e2a336dd02" title="Return indices in order of ecol, rcol, jcol and crystalcol elements." alt="" coords="863,269,1066,309"/>
+<area shape="poly" id="edge49_Node000043_Node000044" title=" " alt="" coords="796,270,850,275,849,281,796,275"/>
+<area shape="poly" id="edge50_Node000044_Node000036" title=" " alt="" coords="1065,267,1084,254,1096,241,1103,228,1109,201,1115,172,1131,141,1165,108,1202,82,1205,87,1168,112,1135,144,1120,174,1114,202,1108,230,1100,244,1087,258,1068,271"/>
+</map>

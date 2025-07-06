@@ -1,0 +1,41 @@
+<map id="BDSBunchUserFile::GetNextParticleLocal" name="BDSBunchUserFile::GetNextParticleLocal">
+<area shape="rect" id="Node000001" title="Get the next particle." alt="" coords="5,262,209,302"/>
+<area shape="rect" id="Node000002" href="$classBDSIonDefinition.html#a59321f6420ec18bc69ba7f57c14a04d4" title="Accessor." alt="" coords="292,5,441,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,261,130,215,160,154,201,92,227,64,256,40,277,28,280,33,259,44,231,68,205,96,164,157,135,217,118,263"/>
+<area shape="rect" id="Node000003" href="$classBDSBunch.html#ad74b5dcfc33ef0839ced17146ec33fe6" title="Calculate zp safely based on other components." alt="" coords="279,55,454,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,260,139,225,170,181,209,136,256,97,285,82,288,87,259,102,213,140,174,184,143,228,122,263"/>
+<area shape="rect" id="Node000004" href="$classBDSBunchUserFile.html#a35a67ade4a264fb456f5d63dd525d082" title=" " alt="" coords="261,198,473,238"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="189,259,271,239,273,244,190,265"/>
+<area shape="rect" id="Node000010" href="$classBDSBunchUserFile.html#a61d7857dd9b72d988ff50d0419db360e" title="Return true if a line is all whitespace or is commented out (starts with &#39;#&#39;)." alt="" coords="823,180,1064,205"/>
+<area shape="poly" id="edge19_Node000001_Node000010" title=" " alt="" coords="131,260,186,220,220,200,256,184,331,157,396,137,455,125,511,119,568,118,628,122,775,141,840,155,897,173,896,178,838,160,774,146,628,127,567,123,511,124,456,130,398,142,333,162,258,188,223,205,189,225,134,264"/>
+<area shape="rect" id="Node000011" href="$classBDSIonDefinition.html#a8d3f552a2ae64b58fbd890acd1ffd42b" title="Accessor." alt="" coords="264,262,469,302"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="209,279,250,279,250,285,209,285"/>
+<area shape="rect" id="Node000012" href="$classBDSBunchUserFile.html#a2bbbeb1cb4e1ba8a59e6503dc471a494" title=" " alt="" coords="257,327,476,352"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="199,299,296,321,295,326,198,305"/>
+<area shape="rect" id="Node000013" href="$classBDSParticleDefinition.html#a4ef91751f44916d514a5fc00164b42a4" title=" " alt="" coords="287,377,447,417"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="142,300,196,330,258,361,281,370,279,375,256,366,193,335,139,304"/>
+<area shape="rect" id="Node000017" href="$classBDSParticleDefinition.html#acaeaeb4b994d51e516e90a7f5bbd9785" title="Accessor." alt="" coords="287,441,447,481"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="126,300,180,363,217,397,259,426,275,435,272,439,256,431,214,401,176,366,122,304"/>
+<area shape="rect" id="Node000018" href="$classBDSIonDefinition.html#ae23191459bfa4bc4cbf6dfbb97965b52" title="Accessor." alt="" coords="292,505,441,531"/>
+<area shape="poly" id="edge21_Node000001_Node000018" title=" " alt="" coords="119,301,139,342,169,394,209,446,233,470,259,490,280,501,277,506,256,495,229,474,205,450,165,397,134,345,115,304"/>
+<area shape="rect" id="Node000005" href="$classBDSBunchUserFile.html#ae41b5af78b76a4145904d4b6f16bf15f" title="Close the file handler." alt="" coords="525,156,774,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="473,197,562,181,563,186,474,202"/>
+<area shape="rect" id="Node000006" href="$classBDSBunchUserFile.html#afc512001d03693206ea8d94be31b5ed7" title="Open the file and check it&#39;s open." alt="" coords="526,205,773,231"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="473,215,512,215,512,221,473,221"/>
+<area shape="rect" id="Node000007" href="$classBDSBunchUserFile.html#a7de9c9507a81c51e6092ad0d2b90bfa8" title=" " alt="" coords="538,305,761,345"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="451,236,477,248,492,258,502,269,511,279,525,289,543,297,541,302,523,294,508,283,498,273,489,262,475,252,449,241"/>
+<area shape="rect" id="Node000009" href="$classBDSBunchUserFile.html#a53d101f41e955489f6d5bec269b8ac7f" title=" " alt="" coords="524,255,775,280"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="474,234,563,250,562,255,473,239"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="891,340,995,365"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="761,333,878,344,877,349,761,338"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="723,277,775,290,899,332,897,337,774,295,721,283"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="718,252,774,239,889,207,890,212,775,245,719,257"/>
+<area shape="poly" id="edge18_Node000013_Node000008" title=" " alt="" coords="447,388,877,355,878,360,447,393"/>
+<area shape="rect" id="Node000014" href="$classBDSParticleDefinition.html#a48b578b27d45b8c0278a39e9140d7bcb" title="Calculate and set lorentz factors." alt="" coords="557,483,742,523"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="448,413,477,426,492,437,502,448,511,459,525,469,544,478,542,483,523,474,508,463,498,452,489,441,475,431,446,418"/>
+<area shape="rect" id="Node000015" href="$classBDSParticleDefinition.html#adebd21785dd0fee987f9c636eaee2540" title="Calculate and set momentum based on totalEnergy and mass." alt="" coords="566,547,733,587"/>
+<area shape="poly" id="edge15_Node000013_Node000015" title=" " alt="" coords="448,409,478,427,490,440,497,454,502,482,508,508,514,521,526,533,554,550,552,555,522,537,510,524,503,510,497,483,492,456,485,443,474,431,446,414"/>
+<area shape="rect" id="Node000016" href="$classBDSParticleDefinition.html#a0145f16a0326cab7b6d6c257c298f8b5" title="Calculate and set rigidity based on charge and momentum." alt="" coords="569,419,729,459"/>
+<area shape="poly" id="edge16_Node000013_Node000016" title=" " alt="" coords="447,406,556,423,555,428,446,411"/>
+<area shape="poly" id="edge17_Node000016_Node000008" title=" " alt="" coords="717,417,886,367,887,372,719,422"/>
+</map>

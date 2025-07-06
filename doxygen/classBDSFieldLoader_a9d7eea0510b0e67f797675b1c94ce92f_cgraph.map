@@ -1,0 +1,111 @@
+<map id="BDSFieldLoader::LoadMagField" name="BDSFieldLoader::LoadMagField">
+<area shape="rect" id="Node000001" title="Main interface to load a magnetic field." alt="" coords="5,557,228,583"/>
+<area shape="poly" id="edge40_Node000001_Node000001" title=" " alt="" coords="69,559,58,549,64,539,83,533,117,531,161,535,172,541,175,547,170,549,168,544,159,540,117,536,84,538,67,543,64,548,72,555"/>
+<area shape="rect" id="Node000002" href="$classBDSFieldInfo.html#ae6de229a30ee01741956efd5ae2085ce" title="Accessor." alt="" coords="326,5,505,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,557,117,471,123,406,135,333,154,257,183,181,222,110,246,77,274,48,292,35,312,26,314,31,295,40,278,52,250,81,226,113,187,183,159,258,140,335,129,407,122,471,120,557"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldLoader.html#ae18e2f3aeb3f23d697ad1549c6b48d09" title="Check file path isn&#39;t empty and throw exception if it is." alt="" coords="310,107,521,132"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="116,557,124,485,133,433,147,375,167,314,194,254,230,198,274,149,296,135,299,139,278,153,234,201,199,256,172,316,152,376,138,434,129,486,121,557"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldInfo.html#a8248f46223b721619711ee13b328ff8c" title="Accessor." alt="" coords="639,59,835,84"/>
+<area shape="poly" id="edge55_Node000001_Node000004" title=" " alt="" coords="115,557,117,475,123,414,135,346,154,276,182,207,222,144,246,116,274,92,300,78,336,69,426,58,529,57,626,60,626,66,529,62,426,64,337,74,302,83,278,96,250,120,226,147,187,209,159,277,140,347,128,415,122,475,120,557"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldInfo.html#a2b9f3e9a7258608b1b77e99bc43e515f" title="Accessor." alt="" coords="634,115,841,155"/>
+<area shape="poly" id="edge58_Node000001_Node000005" title=" " alt="" coords="116,557,125,491,150,391,170,336,197,283,232,234,275,193,292,185,323,178,410,164,620,142,620,147,411,169,324,183,294,190,277,198,236,238,202,286,175,338,155,393,131,492,122,558"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldInfo.html#ada1ee03825e2ad7c6b0e1a35c25ecc72" title="Accessor." alt="" coords="342,208,489,233"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="117,557,130,498,157,412,178,366,204,320,236,278,274,243,300,228,328,220,329,225,302,233,278,247,240,282,209,323,183,368,162,414,135,500,123,558"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldInfo.html#a17cbddecff6c92b225599517f3c9264a" title="Accessor." alt="" coords="331,257,500,283"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="119,556,134,506,164,434,185,395,210,357,240,323,274,293,295,282,317,274,318,279,297,287,278,298,244,326,215,360,190,398,169,436,139,508,124,558"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldMagGradient.html#a93feb7e7175b85ac249bdaa03d5c301a" title="Find the Magnet strengths of a multipole field to nth order." alt="" coords="333,307,497,347"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="121,556,141,517,174,462,219,405,245,379,275,357,319,337,321,342,277,362,249,383,223,409,178,465,146,519,126,558"/>
+<area shape="rect" id="Node000014" href="$namespaceBDS.html#a01ad2cbff07231a957b8dedc9ee931ec" title=" " alt="" coords="309,371,522,411"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="126,555,184,491,227,453,275,421,295,412,297,417,277,426,230,457,188,494,130,559"/>
+<area shape="rect" id="Node000015" href="$classBDSFieldLoader.html#a68cb8a0f05fa1cd03ab4154428fcb0f4" title="Load a 1D BDSIM format magnetic field." alt="" coords="299,679,532,704"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="136,581,196,622,235,645,277,664,307,673,305,678,275,668,233,649,193,627,133,585"/>
+<area shape="rect" id="Node000017" href="$classBDSTypeSafeEnum.html#acd3d1ef0055b4af2523b6e05861f8d28" title="return underlying value (can be used in switch statement)" alt="" coords="920,765,1143,791"/>
+<area shape="poly" id="edge62_Node000001_Node000017" title=" " alt="" coords="126,582,144,621,176,675,221,729,248,753,277,772,327,788,394,799,473,805,561,806,744,800,906,788,906,793,745,805,561,812,473,810,393,805,325,794,275,776,244,757,217,733,172,678,140,624,121,584"/>
+<area shape="rect" id="Node000021" href="$classBDSFieldLoader.html#a9d654109d4ec9785a03ec3b9480c048e" title="Load a 2D BDSIM format magnetic field." alt="" coords="299,436,532,461"/>
+<area shape="poly" id="edge22_Node000001_Node000021" title=" " alt="" coords="133,555,193,513,233,491,275,472,305,462,307,467,277,476,235,495,196,518,136,559"/>
+<area shape="rect" id="Node000026" href="$classBDSFieldLoader.html#ab6593b5a85ef97aa4270759d73b4377d" title="Load a 3D BDSIM format magnetic field." alt="" coords="299,899,532,924"/>
+<area shape="poly" id="edge28_Node000001_Node000026" title=" " alt="" coords="123,582,136,639,163,722,184,767,210,811,241,851,278,885,288,892,285,896,274,889,237,855,205,814,179,770,158,724,131,641,118,584"/>
+<area shape="rect" id="Node000031" href="$classBDSFieldLoader.html#a9769be04cad3991f92e3161e871a33fa" title="Load a 4D BDSIM format magnetic field." alt="" coords="299,849,532,875"/>
+<area shape="poly" id="edge34_Node000001_Node000031" title=" " alt="" coords="124,582,141,629,172,696,193,732,217,768,245,800,278,828,304,842,301,847,274,832,242,804,213,771,188,735,167,699,136,631,119,584"/>
+<area shape="rect" id="Node000036" href="$classBDSFieldLoader.html#a43e0175f50fd494d0576453d4af75889" title="Load a 2D poisson superfish B field map." alt="" coords="309,550,522,590"/>
+<area shape="poly" id="edge41_Node000001_Node000036" title=" " alt="" coords="228,567,295,567,295,573,228,573"/>
+<area shape="rect" id="Node000039" href="$classBDSFieldLoader.html#aad0053524e562b9aa1526eae5f6b62ff" title=" " alt="" coords="309,486,522,526"/>
+<area shape="poly" id="edge46_Node000001_Node000039" title=" " alt="" coords="176,555,307,526,309,532,177,560"/>
+<area shape="rect" id="Node000040" href="$classBDSFieldLoader.html#a6792b328ec98c9632b98ff693dd81fc3" title=" " alt="" coords="309,614,522,654"/>
+<area shape="poly" id="edge49_Node000001_Node000040" title=" " alt="" coords="177,580,309,608,307,614,176,585"/>
+<area shape="rect" id="Node000043" href="$classBDSFieldInfo.html#abae57367c0eb520a8bfc473035be48bf" title="Accessor." alt="" coords="311,949,519,989"/>
+<area shape="poly" id="edge54_Node000001_Node000043" title=" " alt="" coords="122,582,133,646,159,742,179,794,205,846,238,894,278,935,300,949,297,953,274,939,234,897,200,849,174,796,153,743,127,647,117,583"/>
+<area shape="rect" id="Node000044" href="$classBDSFieldInfo.html#a1e06400718a2b0531b8dbd4eceab7a8d" title="Accessor." alt="" coords="306,1013,525,1039"/>
+<area shape="poly" id="edge56_Node000001_Node000044" title=" " alt="" coords="121,582,127,656,136,710,149,770,169,832,196,894,232,950,278,999,295,1010,292,1014,274,1003,228,954,192,896,164,834,144,771,131,711,122,657,116,583"/>
+<area shape="rect" id="Node000045" href="$classBDSFieldInfo.html#a5200181a879e11f7bba8c325825cf6bb" title="Accessor." alt="" coords="276,1063,555,1088"/>
+<area shape="poly" id="edge57_Node000001_Node000045" title=" " alt="" coords="120,583,124,664,131,724,143,791,162,862,190,931,228,995,251,1024,278,1049,282,1053,279,1057,274,1053,247,1027,224,998,185,933,157,863,138,793,125,725,119,665,115,583"/>
+<area shape="rect" id="Node000046" href="$namespaceBDS.html#adc9776bf6ec2c082d206550095b2d680" title="Report the number of dimensions for that format." alt="" coords="619,748,855,773"/>
+<area shape="poly" id="edge59_Node000001_Node000046" title=" " alt="" coords="129,581,152,610,186,647,228,685,277,714,359,742,444,759,529,766,605,767,605,773,528,772,444,764,357,747,275,719,225,689,182,651,148,613,125,584"/>
+<area shape="rect" id="Node000047" href="$classBDSFieldInfo.html#aa3d2a4f48e8e43410b8010937200e8f8" title="Transform for the field definition only." alt="" coords="326,1112,505,1137"/>
+<area shape="poly" id="edge61_Node000001_Node000047" title=" " alt="" coords="120,583,121,671,126,737,137,812,156,890,184,967,224,1038,249,1070,278,1099,294,1110,314,1118,312,1123,292,1115,274,1103,245,1073,220,1041,179,969,151,891,132,813,121,738,115,671,115,583"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="501,104,637,83,638,89,501,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="521,122,620,127,620,132,521,127"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldMagGradient.html#a23055a7b3c5a1ff9f50f8d8d8ca98a21" title=" " alt="" coords="655,207,819,247"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="497,309,554,292,577,278,602,264,641,249,643,254,604,268,580,282,556,296,498,315"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldMagGradient.html#aab55cd45e189b2bb8f6be54331936512" title=" " alt="" coords="655,322,819,362"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="498,328,641,335,641,340,498,334"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldMagGradient.html#a54c9320b8dab95fa39e5451aea3bd6c0" title=" " alt="" coords="949,286,1113,326"/>
+<area shape="poly" id="edge14_Node000008_Node000011" title=" " alt="" coords="497,316,603,307,780,302,936,302,936,307,780,308,603,313,498,321"/>
+<area shape="poly" id="edge9_Node000009_Node000009" title=" " alt="" coords="683,208,680,198,689,188,708,183,737,181,771,183,790,191,788,196,770,189,737,186,709,188,691,193,685,199,688,206"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="819,329,935,315,936,320,820,335"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldMagGradient.html#af92854497a2be7bf6f93aea11da48546" title="Query a point on x axis (by default) for By." alt="" coords="1191,286,1355,326"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="1113,303,1177,303,1177,309,1113,309"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldMag.html#a991f4c068913825f30f1dd6c54e39d53" title=" " alt="" coords="1403,293,1573,319"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="1355,303,1389,303,1389,309,1355,309"/>
+<area shape="rect" id="Node000016" href="$classBDSFieldLoader.html#a3298aadc902125797319ed822d70b013" title="Create the appropriate 1D interpolator for an array." alt="" coords="603,699,872,724"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="533,696,589,699,588,705,532,701"/>
+<area shape="rect" id="Node000018" href="$classBDSFieldLoader.html#ae5b98041e49807d3f6034caab57bc8d5" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="625,649,849,675"/>
+<area shape="poly" id="edge19_Node000015_Node000018" title=" " alt="" coords="532,678,611,671,612,676,533,683"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="811,721,873,734,972,759,971,764,871,739,810,727"/>
+<area shape="rect" id="Node000019" href="$classBDSFieldLoader.html#a687a1e540234ac46ae042a67edca99c8" title="Return the cached array if there is one &#45; may return nullptr." alt="" coords="921,633,1142,659"/>
+<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="849,653,906,650,907,655,850,659"/>
+<area shape="rect" id="Node000020" href="$classBDSFieldLoaderBDSIM.html#a6ca870df5db84c6df0d05b71d73dbec0" title="Load a 1D array." alt="" coords="948,683,1115,723"/>
+<area shape="poly" id="edge21_Node000018_Node000020" title=" " alt="" coords="828,672,935,687,934,692,828,677"/>
+<area shape="rect" id="Node000022" href="$classBDSFieldLoader.html#a42d56126fdc54489e886eacd8c2473e1" title="Create the appropriate 2D interpolator for an array." alt="" coords="603,436,872,461"/>
+<area shape="poly" id="edge23_Node000021_Node000022" title=" " alt="" coords="532,446,589,446,589,451,532,451"/>
+<area shape="rect" id="Node000023" href="$classBDSFieldLoader.html#a29aef9c828fef5cbb24b2a16ed8ca615" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="625,387,849,412"/>
+<area shape="poly" id="edge25_Node000021_Node000023" title=" " alt="" coords="498,433,639,412,640,417,499,439"/>
+<area shape="poly" id="edge24_Node000022_Node000017" title=" " alt="" coords="858,460,874,472,897,504,907,537,907,570,902,602,896,635,895,668,902,700,922,734,937,747,954,757,951,762,933,751,918,737,897,702,890,668,891,634,896,602,901,569,901,538,892,507,870,476,854,464"/>
+<area shape="rect" id="Node000024" href="$classBDSFieldLoader.html#afb8b005a9f923e53221d8916eaef6156" title="Return the cached array if there is one &#45; may return nullptr." alt="" coords="921,440,1142,465"/>
+<area shape="poly" id="edge26_Node000023_Node000024" title=" " alt="" coords="810,409,872,421,949,435,948,440,872,426,809,415"/>
+<area shape="rect" id="Node000025" href="$classBDSFieldLoaderBDSIM.html#aebd0347c6be0d5436848e7959e40c743" title="Load a 2D array." alt="" coords="948,375,1115,415"/>
+<area shape="poly" id="edge27_Node000023_Node000025" title=" " alt="" coords="850,395,934,394,934,399,850,400"/>
+<area shape="rect" id="Node000027" href="$classBDSFieldLoader.html#a1112cd8d1671d37e59dc63331f1369c7" title="Create the appropriate 3D interpolator for an array." alt="" coords="603,899,872,924"/>
+<area shape="poly" id="edge29_Node000026_Node000027" title=" " alt="" coords="532,909,589,909,589,914,532,914"/>
+<area shape="rect" id="Node000028" href="$classBDSFieldLoader.html#a87e71378f5dc768129a87eae7bc60670" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="625,1005,849,1031"/>
+<area shape="poly" id="edge31_Node000026_Node000028" title=" " alt="" coords="525,922,556,934,572,946,581,960,590,972,604,984,639,999,637,1004,601,988,586,976,577,963,568,950,553,939,523,927"/>
+<area shape="poly" id="edge30_Node000027_Node000017" title=" " alt="" coords="836,896,871,885,910,866,946,843,1004,798,1008,802,949,847,912,870,873,890,838,901"/>
+<area shape="rect" id="Node000029" href="$classBDSFieldLoader.html#a1d826661296752448611844f73575382" title="Return the cached array if there is one &#45; may return nullptr." alt="" coords="921,1005,1142,1031"/>
+<area shape="poly" id="edge32_Node000028_Node000029" title=" " alt="" coords="850,1015,907,1015,907,1021,850,1021"/>
+<area shape="rect" id="Node000030" href="$classBDSFieldLoaderBDSIM.html#a2055896ad7514ed0b2d8a8ecf7c471af" title="Load a 3D array." alt="" coords="948,1055,1115,1095"/>
+<area shape="poly" id="edge33_Node000028_Node000030" title=" " alt="" coords="804,1028,935,1054,934,1059,803,1033"/>
+<area shape="rect" id="Node000032" href="$classBDSFieldLoader.html#aada0be8c56c17485e664a16b1febe126" title="Create the appropriate 4D interpolator for an array." alt="" coords="603,849,872,875"/>
+<area shape="poly" id="edge35_Node000031_Node000032" title=" " alt="" coords="532,859,589,859,589,865,532,865"/>
+<area shape="rect" id="Node000033" href="$classBDSFieldLoader.html#aeaf62d445b5f06c7ebbcaa3575702ba7" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="625,948,849,973"/>
+<area shape="poly" id="edge37_Node000031_Node000033" title=" " alt="" coords="525,872,556,885,572,897,581,911,590,923,604,934,618,941,616,946,601,939,586,927,576,914,568,901,553,890,523,877"/>
+<area shape="poly" id="edge36_Node000032_Node000017" title=" " alt="" coords="795,847,871,827,980,793,982,798,873,833,797,852"/>
+<area shape="rect" id="Node000034" href="$classBDSFieldLoader.html#aa99655a5ec3a110396bfc914a4c44e34" title="Return the cached array if there is one &#45; may return nullptr." alt="" coords="921,891,1142,916"/>
+<area shape="poly" id="edge38_Node000033_Node000034" title=" " alt="" coords="811,945,871,934,958,916,959,921,873,939,812,951"/>
+<area shape="rect" id="Node000035" href="$classBDSFieldLoaderBDSIM.html#a56c380c9da01fd194f72fdd96cabbd36" title="Load a 4D array." alt="" coords="948,941,1115,981"/>
+<area shape="poly" id="edge39_Node000033_Node000035" title=" " alt="" coords="850,958,934,958,934,963,850,963"/>
+<area shape="poly" id="edge42_Node000036_Node000022" title=" " alt="" coords="521,551,553,536,568,521,576,505,584,488,601,472,615,464,618,469,604,476,589,491,581,507,573,524,556,540,524,556"/>
+<area shape="rect" id="Node000037" href="$classBDSFieldLoader.html#a1c9b9e5decb661e7728d2e9fb634bff4" title="Utility function to use the right templated loader class (gz or normal)." alt="" coords="631,486,844,526"/>
+<area shape="poly" id="edge43_Node000036_Node000037" title=" " alt="" coords="516,547,623,526,624,531,517,553"/>
+<area shape="poly" id="edge44_Node000037_Node000024" title=" " alt="" coords="844,484,947,465,948,470,845,489"/>
+<area shape="rect" id="Node000038" href="$classBDSFieldLoaderPoisson.html#a2972aa201bff9941825633d562ac59ec" title="Load the 2D array of 3&#45;Vector field values." alt="" coords="944,490,1119,530"/>
+<area shape="poly" id="edge45_Node000037_Node000038" title=" " alt="" coords="844,505,931,506,930,511,844,510"/>
+<area shape="poly" id="edge47_Node000039_Node000022" title=" " alt="" coords="522,484,652,461,653,466,523,490"/>
+<area shape="poly" id="edge48_Node000039_Node000037" title=" " alt="" coords="522,503,617,503,617,509,522,509"/>
+<area shape="poly" id="edge50_Node000040_Node000022" title=" " alt="" coords="521,619,553,600,566,585,572,570,576,537,579,504,587,488,601,472,609,466,612,470,604,476,591,491,585,506,581,538,577,571,570,588,556,604,524,624"/>
+<area shape="poly" id="edge51_Node000040_Node000037" title=" " alt="" coords="521,615,553,600,568,585,576,569,585,552,601,536,617,527,619,532,604,540,589,555,581,571,573,588,556,604,524,620"/>
+<area shape="rect" id="Node000041" href="$classBDSArray4DCoords.html#a110b862ecca82a897f9a56696835d355" title="The distance in spatial coordinates between any two points in the array." alt="" coords="640,600,835,625"/>
+<area shape="poly" id="edge52_Node000040_Node000041" title=" " alt="" coords="522,624,626,617,626,623,522,630"/>
+<area shape="rect" id="Node000042" href="$classBDSArray4DCoords.html#aa63d19345e2f8ec920fbab5f4b3fa067" title="The distance in spatial coordinates between any two points in the array." alt="" coords="641,551,834,576"/>
+<area shape="poly" id="edge53_Node000040_Node000042" title=" " alt="" coords="506,611,554,599,602,585,643,576,644,581,603,590,555,605,508,617"/>
+<area shape="poly" id="edge60_Node000046_Node000017" title=" " alt="" coords="856,765,907,768,906,773,855,770"/>
+</map>

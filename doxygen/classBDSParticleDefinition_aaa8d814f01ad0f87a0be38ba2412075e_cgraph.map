@@ -1,0 +1,15 @@
+<map id="BDSParticleDefinition::ApplyChangeInKineticEnergy" name="BDSParticleDefinition::ApplyChangeInKineticEnergy">
+<area shape="rect" id="Node000001" title="Utility function to update quantities by adding on dEK (can be negative)." alt="" coords="5,5,224,45"/>
+<area shape="rect" id="Node000002" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="713,9,817,34"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,20,429,16,665,16,700,17,700,22,665,21,429,21,224,25"/>
+<area shape="rect" id="Node000003" href="$classBDSParticleDefinition.html#a4ef91751f44916d514a5fc00164b42a4" title=" " alt="" coords="272,59,432,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,43,259,55,258,60,203,48"/>
+<area shape="poly" id="edge7_Node000003_Node000002" title=" " alt="" coords="424,56,480,44,596,29,699,22,700,27,596,35,480,49,425,61"/>
+<area shape="rect" id="Node000004" href="$classBDSParticleDefinition.html#a48b578b27d45b8c0278a39e9140d7bcb" title="Calculate and set lorentz factors." alt="" coords="480,59,665,99"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="432,76,466,76,466,81,432,81"/>
+<area shape="rect" id="Node000005" href="$classBDSParticleDefinition.html#adebd21785dd0fee987f9c636eaee2540" title="Calculate and set momentum based on totalEnergy and mass." alt="" coords="489,123,656,163"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="422,96,491,116,489,121,421,101"/>
+<area shape="rect" id="Node000006" href="$classBDSParticleDefinition.html#a0145f16a0326cab7b6d6c257c298f8b5" title="Calculate and set rigidity based on charge and momentum." alt="" coords="493,187,653,227"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="377,97,424,135,481,172,495,179,492,184,479,177,420,139,374,101"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="645,184,664,173,694,143,718,109,752,45,756,48,723,112,698,146,667,177,648,189"/>
+</map>

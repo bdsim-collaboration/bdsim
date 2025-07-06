@@ -1,0 +1,1476 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fields &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Beam Generation" href="dev_beamgeneration.html" />
+    <link rel="prev" title="Tracking Algorithms" href="dev_tracking.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developer.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev_introduction.html">Purpose of Developer Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_styleguide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation_build.html">Documentation Builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html">Release Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_release.html#change-of-year-or-licence">Change Of Year or Licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_programlayout.html">Program Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_buildsystem.html">Build System &amp; Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_parser.html">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geantusage.html">Geant4 User Action Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tracking.html">Tracking Algorithms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#coordinate-system">Coordinate System</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#important-points">Important Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notes-about-plots">Notes About Plots</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#field-names-and-parameters">Field Names and Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synchronous-time-rigidity-with-acceleration">Synchronous Time &amp; Rigidity With Acceleration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#time-integration">Time Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#energy-momentum-and-rigidity">Energy, Momentum and Rigidity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pure-magnetic-fields-from-equations">Pure Magnetic Fields From Equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dipole">Dipole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quadrupole">Quadrupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sextupole">Sextupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#octupole">Octupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decapole">Decapole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#skewed-versions">Skewed Versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#skew-quadrupole">Skew Quadrupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#skew-sextupole">Skew Sextupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#skew-octupole">Skew Octupole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#skew-decapole">Skew Decapole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multipole">Multipole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#undulator">Undulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#muon-spoiler">Muon Spoiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dipole-yoke-field-3d">Dipole Yoke Field 3D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general-yoke-multipole">General Yoke Multipole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solenoid-sheet-or-cylinder">Solenoid Sheet or Cylinder</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#electric-fields-from-equations">Electric Fields From Equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sinusoidal-electric-field">Sinusoidal Electric Field</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#electromagnetic-fields-from-equations">Electromagnetic Fields From Equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pill-box-cavity">Pill-Box Cavity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#field-map-file-formats">Field Map File Formats</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-field-format">BDSIM Field Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-field-format-1d">BDSIM Field Format 1D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-field-format-2d">BDSIM Field Format 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-field-format-3d">BDSIM Field Format 3D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-field-format-4d">BDSIM Field Format 4D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bdsim-field-format-different-dimensions">BDSIM Field Format Different Dimensions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bdsim-field-map-file-preparation">BDSIM Field Map File Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#field-map-transforms-and-reflections">Field Map Transforms and Reflections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#index-operator">Index Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#value-operator">Value Operator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#field-map-interpolators">Field Map Interpolators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nearest-neighbour">Nearest Neighbour</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linear">Linear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linear-magnitude">Linear Magnitude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cubic">Cubic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#higher-dim-interpolation">Linear &amp; Cubic Higher Dimension Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation-specifics">Implementation Specifics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dev_beamgeneration.html">Beam Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysisoutput.html">Sensitivity, Output &amp; Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_analysissuite.html">Analysis Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="developer.html">Developer Documentation</a></li>
+      <li class="breadcrumb-item active">Fields</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev_fields.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fields">
+<span id="dev-fields"></span><h1>Fields<a class="headerlink" href="#fields" title="Link to this heading"></a></h1>
+<p>BDSIM provides the magnetic fields typical to an accelerator, as well as the ability
+to import field maps and overlay them on geometry. Practically, this is accomplished
+through several objects, but the main two that the user or developer must select are the
+field and the integrator. The first describes the field itself; the latter how
+the particle position and momentum is affected by the field.</p>
+<p>The integrators are described in <a class="reference internal" href="dev_tracking.html#dev-tracking"><span class="std std-ref">Tracking Algorithms</span></a>.</p>
+<section id="coordinate-system">
+<h2>Coordinate System<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
+<p>The accelerator is modelled, following convention, in curvilinear coordinates
+that follow the beam line. However, in practice, Geant4 requires that the fields
+and coordinates be supplied and calculated in global Cartesian coordinates.
+The simplest solution
+in Geant4 is to get the transformation from the global coordinates to the local
+coordinates of the volume being queried for the field and tracking.  However, if
+the field is ‘attached’ to not just a simple single shape or volume, but a nested set
+of volumes, the local coordinates of that volume are not necessarily the same as
+the accelerator curvilinear coordinates. To get around this, a parallel geometry
+is built with simple shapes whose local coordinates are degenerate with the
+curvilinear coordinate system.  This geometry is used to find the transforms so
+that when their local coordinates are queried, they represent the curvilinear
+coordinates of the beam line.</p>
+<p>Generally, to query a point in the geometry, one should use a G4Navigator instance.
+There is the singleton G4Navigator from Geant4 available to the developer, but this
+must <strong>never</strong> be used. Querying a point
+in the geometry with this navigator changes the state of the navigator and therefore
+the perceived location in the geometry hierarchy of the particle in question from that
+point on. To avoid this, an extra navigator is created and used. Whilst these are not
+large objects in memory, a single static extra navigator (member of BDSAuxiliaryNavigator)
+is used. An instance of a G4Navigator can perform a search relative to the last queried
+point, which is usually significantly faster than a fresh query from the top of the
+hierarchy. By using a static auxiliary navigator, we take advantage of the relative search,
+because although many fields and integrators may have query separate BDSAuxiliaryNavigator
+instances, the underlying static navigator is used. In practice, the queries are generated
+by the progress of a particle, so they’re likely to be close to each other in the geometry.</p>
+<p>Utility methods for conversion are provided in BDSAuxiliaryNavigator. The developer should
+design their class to inherit this one if they wish to convert to curvilinear coordinates.</p>
+<p>Pure magnetic fields are provided that don’t inherit BDSAuxiliaryNavigator to avoid the
+requirement of ‘closed’ Geant4 geometry and a parallel curvilinear world. This greatly
+simplifies things if the developer wants to simply make use of (or test alone for that
+matter) a single field class.</p>
+<section id="important-points">
+<h3>Important Points<a class="headerlink" href="#important-points" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Field classes don’t use BDSAuxiliary navigator and therefore don’t require a full Geant4 run.</p></li>
+<li><p>The fields constructed for the BDSIM model are wrapped in an instance of BDSFieldMagGlobal
+that provides the necessary local-to-global transforms.</p></li>
+<li><p>Using BDSAuxiliaryNavigator requires an accelerator to be built, i.e. it requires a world
+volume, read out world, contents in both, the geometry to be ‘closed’ by Geant4 and
+a valid run manager instantiated. One may generally use the field classes, but without the
+auxiliary navigator in this case.</p></li>
+</ul>
+</section>
+<section id="notes-about-plots">
+<h3>Notes About Plots<a class="headerlink" href="#notes-about-plots" title="Link to this heading"></a></h3>
+<p>The plots provided here are generated by surveying each field class at various points in both
+a uniform Cartesian grid and also in a radial grid. The vector field plots are generated
+automatically using matplotlib. Whilst these look <em>pretty spiffy</em>, occasionally the vectors pass
+through inflection points (such as the origin) that we know they should not. This is purely a
+numerical artefact and the plots are only to give a rough impression of the field shape. The
+fields are generated by the equations described and are correct even at inflection points.</p>
+</section>
+</section>
+<section id="field-names-and-parameters">
+<span id="dev-fields-pure-field-names"></span><h2>Field Names and Parameters<a class="headerlink" href="#field-names-and-parameters" title="Link to this heading"></a></h2>
+<p>Any field can be queried in BDSIM, including the pure fields described below. However, these
+must by queried by their type name exactly, and some parameters must also be specified that
+would normally be associated with a beam line element. Below are all the fields and associated
+parameters required.</p>
+<ul class="simple">
+<li><p>These are all defined in <code class="code docutils literal notranslate"><span class="pre">bdsim/include/BDSFieldType.hh</span></code></p></li>
+<li><p>Only pure fields from equations are listed here as field maps are done by <code class="code docutils literal notranslate"><span class="pre">format:filepath</span></code>.</p></li>
+<li><p>Any parameters not specified will <strong>default to zero</strong>.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is fairly advanced exposure of BDSIM-internals and to be used
+with some care. You may have to look in the source code (.cc file)
+to understand the appropriate use of the parameters. The units are
+in the same input units as BDSIM.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Field Type Name</strong></p></th>
+<th class="head"><p><strong>Parameters</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>solenoidsheet</p></td>
+<td><p>length, field, poletipradius</p></td>
+</tr>
+<tr class="row-odd"><td><p>dipole, solenoid, dipole3d</p></td>
+<td><p>field, bx, by, bz</p></td>
+</tr>
+<tr class="row-even"><td><p>quadrupole</p></td>
+<td><p>k1</p></td>
+</tr>
+<tr class="row-odd"><td><p>dipolequadrupole</p></td>
+<td><p>field, bx, by, bz, k1</p></td>
+</tr>
+<tr class="row-even"><td><p>sextupole</p></td>
+<td><p>k2</p></td>
+</tr>
+<tr class="row-odd"><td><p>octupole</p></td>
+<td><p>k3</p></td>
+</tr>
+<tr class="row-even"><td><p>decapole</p></td>
+<td><p>k4</p></td>
+</tr>
+<tr class="row-odd"><td><p>multipole</p></td>
+<td><p>k1, k2, k3… k12, k1s, k2s, k3s… k12s</p></td>
+</tr>
+<tr class="row-even"><td><p>muonspoiler</p></td>
+<td><p>field</p></td>
+</tr>
+<tr class="row-odd"><td><p>skewquadrupole</p></td>
+<td><p>k1</p></td>
+</tr>
+<tr class="row-even"><td><p>skewsextupole</p></td>
+<td><p>k2</p></td>
+</tr>
+<tr class="row-odd"><td><p>skewoctupole</p></td>
+<td><p>k3</p></td>
+</tr>
+<tr class="row-even"><td><p>skewdecapole</p></td>
+<td><p>k4</p></td>
+</tr>
+<tr class="row-odd"><td><p>rfconstantinx, rfconstantiny,
+rfconstantinz</p></td>
+<td><p>efield, frequency, phase</p></td>
+</tr>
+<tr class="row-even"><td><p>rfpillbox</p></td>
+<td><p>equatoradius, efield, frequency, phase</p></td>
+</tr>
+<tr class="row-odd"><td><p>undulator</p></td>
+<td><p>length, field</p></td>
+</tr>
+<tr class="row-even"><td><p>multipoleouterdipole</p></td>
+<td><p>field, bx, by, bz, poletipradius</p></td>
+</tr>
+<tr class="row-odd"><td><p>multipoleouterquadrupole</p></td>
+<td><p>k1, poletipradius</p></td>
+</tr>
+<tr class="row-even"><td><p>multipoleoutersextupole</p></td>
+<td><p>k2, poletipradius</p></td>
+</tr>
+<tr class="row-odd"><td><p>multipoleouteroctupole</p></td>
+<td><p>k3, poletipradius</p></td>
+</tr>
+<tr class="row-even"><td><p>multipoleouterdecapole</p></td>
+<td><p>k4, poletipradius</p></td>
+</tr>
+<tr class="row-odd"><td><p>skewmultipoleouterquadrupole</p></td>
+<td><p>k1, poletipradius</p></td>
+</tr>
+<tr class="row-even"><td><p>skewmultipoleoutersextupole</p></td>
+<td><p>k2, poletipradius</p></td>
+</tr>
+<tr class="row-odd"><td><p>skewmultipoleouteroctupole</p></td>
+<td><p>k3, poletipradius</p></td>
+</tr>
+<tr class="row-even"><td><p>skewmultipoleouterdecapole</p></td>
+<td><p>k4, poletipradius</p></td>
+</tr>
+<tr class="row-odd"><td><p>multipoleouterdipole3d</p></td>
+<td><p>field, bx, by, bz</p></td>
+</tr>
+<tr class="row-even"><td><p>multipoleouterdipolelhc</p></td>
+<td><p>field, bx, by, bz, poletipradius</p></td>
+</tr>
+<tr class="row-odd"><td><p>multipoleouterquadrupolelhc</p></td>
+<td><p>k1, poletipradius</p></td>
+</tr>
+<tr class="row-even"><td><p>multipoleoutersextupolelhc</p></td>
+<td><p>k2, poletipradius</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>“poletipradius” will default to “aper1” or the beam pipe radius from the options,
+unless otherwise specified</p></li>
+</ul>
+<p>Example for a dipole field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fieldParameters</span><span class="o">=</span><span class="s2">&quot;field=1.0, by=1&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="synchronous-time-rigidity-with-acceleration">
+<span id="fields-beamline-integration"></span><h2>Synchronous Time &amp; Rigidity With Acceleration<a class="headerlink" href="#synchronous-time-rigidity-with-acceleration" title="Link to this heading"></a></h2>
+<p>To calculate the real value of fields in the model, it is typically required to know
+the magnetic rigidity of the design particle at that point in the beamline or
+the relative time of arrival of a particle. Both require ‘keeping track’ of the
+particle velocity, or more formally integrating changes to it throughout the
+beamline.</p>
+<p>Initially, a ‘design’ particle definition is given. As each component is constructed,
+its effect on the beam is integrated.</p>
+<section id="time-integration">
+<h3>Time Integration<a class="headerlink" href="#time-integration" title="Link to this heading"></a></h3>
+<p>If the kinetic energy is unchanged, the synchronous time at the centre of the component
+is given by:</p>
+<div class="math notranslate nohighlight">
+\[t_{mid} = t_0 + \frac{l_i}{2} / v_{0}\]</div>
+<p>In the case where the velocity changes, the synchronous time at the centre of the component
+is given by:</p>
+<div class="math notranslate nohighlight">
+\[t_{mid} = t_0 + \frac{l_i}{2} / ( \frac{1}{2}(v_{1} - v_{0}) + v_0 )\]</div>
+<p>where <span class="math notranslate nohighlight">\(v_0\)</span> is the velocity of the incoming particle and <span class="math notranslate nohighlight">\(v_1\)</span> the
+outgoing velocity. <span class="math notranslate nohighlight">\(l_i\)</span> is the length of the i-th component being considered.</p>
+</section>
+<section id="energy-momentum-and-rigidity">
+<h3>Energy, Momentum and Rigidity<a class="headerlink" href="#energy-momentum-and-rigidity" title="Link to this heading"></a></h3>
+<p>The kinetic energy of the particle is integrated across each component. From this, the
+design particle definition is updated including re-calculation of the total energy,
+momentum, relativistic gamma and beta, and the rigidity. The change in kinetic energy
+is calculated depending on the field used.</p>
+<p><strong>Sinusoidal Electric Field</strong> (see <a class="reference internal" href="#field-sinusoid-efield"><span class="std std-ref">Sinusoidal Electric Field</span></a>)</p>
+<div class="math notranslate nohighlight">
+\[dE_k = charge \cdot |E| \cdot l_i  \cdot \cos(\phi)\]</div>
+<p><strong>Pill-box Electromagnetic Field</strong> (see <a class="reference internal" href="#field-pill-box"><span class="std std-ref">Pill-Box Cavity</span></a>)</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\lambda_{RF} = c / f\\f_1 = \frac{\pi l_i}{\beta \lambda}\\TTF = \frac{\sin(f_1)}{f_1}\\dE_k = charge \cdot |E| \cdot l_i \cdot TTF\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(l_i\)</span> is the length of the component, <span class="math notranslate nohighlight">\(\beta\)</span> is the ratio of
+the velocity to the speed of light. <cite>TTF</cite> is the transit time factor.</p>
+</section>
+</section>
+<section id="pure-magnetic-fields-from-equations">
+<h2>Pure Magnetic Fields From Equations<a class="headerlink" href="#pure-magnetic-fields-from-equations" title="Link to this heading"></a></h2>
+<p>Described here are a list of typical magnetic fields that are described by equations, rather
+than an interpolated field map. These are used for the majority of the accelerator components.
+Described here is the pure version without global to curvilinear transformations. These classes
+are wrapped when used with general BDSAcceleratorComponent instances.</p>
+<section id="dipole">
+<h3>Dipole<a class="headerlink" href="#dipole" title="Link to this heading"></a></h3>
+<p>The dipole field is constructed with a magnitude <span class="math notranslate nohighlight">\(|B|\)</span> and a unit vector
+<span class="math notranslate nohighlight">\(\hat{\mathbf{b}}\)</span>. It is constant with position and the default unit vector
+is <span class="math notranslate nohighlight">\((0,1,0)\)</span> - unit y.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B} = \hat{\mathbf{b}} \cdot |B|\]</div>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/dipole_radial.pdf"><img alt="_images/dipole_radial.pdf" src="_images/dipole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a dipole with <span class="math notranslate nohighlight">\(\mathbf{B} = 1.3~\mathrm{T}\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="quadrupole">
+<h3>Quadrupole<a class="headerlink" href="#quadrupole" title="Link to this heading"></a></h3>
+<p>The quadrupole field is constructed with strength parameter <span class="math notranslate nohighlight">\(k_1\)</span> and with respect to
+a nominal rigidity <span class="math notranslate nohighlight">\(B\rho\)</span>. Although the rigidity is included in <span class="math notranslate nohighlight">\(k_1\)</span>, it is
+required to calculate the field gradient internally.</p>
+<div class="math notranslate nohighlight">
+\[k_1 = \frac{1}{B\rho} \frac{\partial B_y}{\partial x}\]</div>
+<p>The field is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_x &amp; = \frac{\partial B_y}{\partial x} y \\
+B_y &amp; = \frac{\partial B_y}{\partial x} x \\
+B_z &amp; = 0\end{split}\]</div>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/quadrupole_radial.pdf"><img alt="_images/quadrupole_radial.pdf" src="_images/quadrupole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a quadrupole with <span class="math notranslate nohighlight">\(k_1 = 0.34\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="sextupole">
+<h3>Sextupole<a class="headerlink" href="#sextupole" title="Link to this heading"></a></h3>
+<p>The sextupole field is constructed with strength parameter <span class="math notranslate nohighlight">\(k_2\)</span> and with respect
+to a nominal rigidity <span class="math notranslate nohighlight">\(B\rho\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[k_2 = \frac{1}{B\rho} \frac{\partial^2 B_y}{\partial x^2}\]</div>
+<p>The field is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_x &amp; = \frac{1}{2!} \frac{\partial^2 B_y}{\partial x^2} \,2xy \\
+B_y &amp; = \frac{1}{2!} \frac{\partial^2 B_y}{\partial x^2} \, (x^2 - y^2) \\
+B_z &amp; = 0\end{split}\]</div>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/sextupole_radial.pdf"><img alt="_images/sextupole_radial.pdf" src="_images/sextupole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a sextupole with <span class="math notranslate nohighlight">\(k_2 = 3.91\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="octupole">
+<h3>Octupole<a class="headerlink" href="#octupole" title="Link to this heading"></a></h3>
+<p>The octupole field is constructed with strength parameter <span class="math notranslate nohighlight">\(k_3\)</span> and with respect to
+a nominal rigidity <span class="math notranslate nohighlight">\(B\rho\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[k_3 = \frac{1}{B\rho} \frac{\partial^3 B_y}{\partial x^3}\]</div>
+<p>The field is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_x &amp; = \frac{1}{3!} \frac{\partial^3 B_y}{\partial x^3} \,(3x^2 y - y^3) \\
+B_y &amp; = \frac{1}{3!} \frac{\partial^3 B_y}{\partial x^3} \, (x^3 - 3xy^2) \\
+B_z &amp; = 0\end{split}\]</div>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/octupole_radial.pdf"><img alt="_images/octupole_radial.pdf" src="_images/octupole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a octupole with <span class="math notranslate nohighlight">\(k_3 = 12.56\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="decapole">
+<h3>Decapole<a class="headerlink" href="#decapole" title="Link to this heading"></a></h3>
+<p>The decapole field is constructed with strength parameter <span class="math notranslate nohighlight">\(k_4\)</span> and with respect to
+a nominal rigidity <span class="math notranslate nohighlight">\(B\rho\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[k_4 = \frac{1}{B\rho} \frac{\partial^4 B_y}{\partial x^4}\]</div>
+<p>The field is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_x &amp; = \frac{1}{4!} \frac{\partial^4 B_y}{\partial x^4} \, 4xy(x^2 - y^2) \\
+B_y &amp; = \frac{1}{4!} \frac{\partial^4 B_y}{\partial x^4} \, (x^4 - 6x^2y^2 + y^4) \\
+B_z &amp; = 0\end{split}\]</div>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/decapole_radial.pdf"><img alt="_images/decapole_radial.pdf" src="_images/decapole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a decapole with <span class="math notranslate nohighlight">\(k_4 = 45567.32\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="skewed-versions">
+<h3>Skewed Versions<a class="headerlink" href="#skewed-versions" title="Link to this heading"></a></h3>
+<p>All of the above magnets (dipole, quadrupole, sextupole, octupole and decapole) are also
+available as their skew counterparts. With BDSIM, it is trivial to create a skew component
+by simply creating a normal component and applying the appropriate tilt to it. However,
+should one want the field skewed but not the component - say, the correct upright square
+aperture - these fields can be used.</p>
+<p>A wrapper class is provided that is instantiated with an angle (hard coded in BDSFieldFactory).
+When the field is queried, the coordinates being queried are rotated by the angle. The
+returned field vector is then anti-rotated to give the correct skew field at the original
+location.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}_{skew}(x,y) = R(-\theta) \mathbf{B}(x',y')\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+x' \\
+y' \\
+z' \\
+\end{bmatrix}
+=
+R(\theta)
+\begin{bmatrix}
+x \\
+y \\
+z \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos \theta &amp; - \sin \theta &amp; 0\\
+\sin \theta &amp; \cos \theta   &amp; 0\\
+0 &amp; 0 &amp; 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+z \\
+\end{bmatrix}\end{split}\]</div>
+<p>Example field maps are shown below.</p>
+</section>
+<section id="skew-quadrupole">
+<h3>Skew Quadrupole<a class="headerlink" href="#skew-quadrupole" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="_images/skewquadrupole_radial.pdf"><img alt="_images/skewquadrupole_radial.pdf" src="_images/skewquadrupole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a skew quadrupole with <span class="math notranslate nohighlight">\(k_1 = 0.34\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="skew-sextupole">
+<h3>Skew Sextupole<a class="headerlink" href="#skew-sextupole" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="_images/skewsextupole_radial.pdf"><img alt="_images/skewsextupole_radial.pdf" src="_images/skewsextupole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a skew sextupole with <span class="math notranslate nohighlight">\(k_2 = 3.92\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="skew-octupole">
+<h3>Skew Octupole<a class="headerlink" href="#skew-octupole" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="_images/skewoctupole_radial.pdf"><img alt="_images/skewoctupole_radial.pdf" src="_images/skewoctupole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a skew octupole with <span class="math notranslate nohighlight">\(k_3 = 12.56\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="skew-decapole">
+<h3>Skew Decapole<a class="headerlink" href="#skew-decapole" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="_images/skewdecapole_radial.pdf"><img alt="_images/skewdecapole_radial.pdf" src="_images/skewdecapole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a skew decapole with <span class="math notranslate nohighlight">\(k_4 = 45567.32\)</span>, and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="multipole">
+<h3>Multipole<a class="headerlink" href="#multipole" title="Link to this heading"></a></h3>
+<p>A general multipole field is also provided. The field is calculated in cylindrical coordinates, then converted
+to Cartesian. The field is calculated using an array of strength parameters <span class="math notranslate nohighlight">\(k_1,k_2,\dotsc k_{12}\)</span> and
+the skewed strength parameters <span class="math notranslate nohighlight">\(ks_1,ks_2,\dotsc ks_{12}\)</span> with respect to a nominal rigidity <span class="math notranslate nohighlight">\(B\rho\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently the dipole component is not implemented. <span class="math notranslate nohighlight">\(k_1\)</span> is the quadrupole strength,
+<span class="math notranslate nohighlight">\(k_2\)</span> is the sextupole strength, <em>etc</em>.</p>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}r                          &amp; = \sqrt{x^2 + y^2} \\
+B_r      (\mathrm{normal}) &amp; = \frac{1}{B\rho} \displaystyle\sum_{i=1}^{12} \frac{k_i}{i!} \,r^i \sin(i \phi) \\
+B_{\phi} (\mathrm{normal}) &amp; = \frac{1}{B\rho} \displaystyle\sum_{i=1}^{12} \frac{k_i}{i!} \, r^i \cos(i \phi) \\
+B_r      (\mathrm{skewed}) &amp; = \frac{1}{B\rho} \displaystyle\sum_{i=1}^{12} \frac{ks_i}{i!} \, r^i \cos(i \phi) \\
+B_{\phi} (\mathrm{skewed}) &amp; = \frac{1}{B\rho} \displaystyle\sum_{i=1}^{12} -\frac{ks_i}{i!} \, r^i \sin(i \phi)\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_x &amp; = B_r \cos \phi - B_{\phi} \sin \phi \\
+B_y &amp; = B_r \sin \phi + B_{\phi} \cos \phi \\\end{split}\]</div>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="_images/multipole_radial.pdf"><img alt="_images/multipole_radial.pdf" src="_images/multipole_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a multipole with <span class="math notranslate nohighlight">\(\{k_1, k_2, k_3, k_4, k_5\} = \{0.12,0.02,-0.003,0.0004,-0.00005\}\)</span>,
+and <span class="math notranslate nohighlight">\(B\rho = 4.333\)</span>.</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="undulator">
+<h3>Undulator<a class="headerlink" href="#undulator" title="Link to this heading"></a></h3>
+<p>The undulator field is constructed with the peak field strength <span class="math notranslate nohighlight">\(B\)</span> and the undulator period <span class="math notranslate nohighlight">\(\lambda\)</span>.
+The field, according to Wiedemann pg. 103, is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_{x} ~ &amp;= ~ 0 \\
+B_{y} ~ &amp;= ~ B \cdot \cos\big(z \frac{2\pi}{\lambda}\big) \cosh\big(y \frac{2\pi}{\lambda}\big)\\
+B_{z} ~ &amp;= ~ -B \cdot \sin\big(z \frac{2\pi}{\lambda}\big) \sinh\big(y \frac{2\pi}{\lambda}\big)\end{split}\]</div>
+</section>
+<section id="muon-spoiler">
+<h3>Muon Spoiler<a class="headerlink" href="#muon-spoiler" title="Link to this heading"></a></h3>
+<p>A muon spoiler field is provided that gives a constant toroidal field. It is constructed with field strength
+<span class="math notranslate nohighlight">\(B~(\mathrm{T})\)</span>. The field is calculated
+according to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}r   &amp; = \sqrt{x^2 + y^2} \\
+B_x &amp; = \frac{y}{r} B \\
+B_y &amp; = \frac{-x}{r} B \\
+B_z &amp; = 0\end{split}\]</div>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="_images/muonspoiler_radial.pdf"><img alt="_images/muonspoiler_radial.pdf" src="_images/muonspoiler_radial.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example field map of a muon spoiler with field <span class="math notranslate nohighlight">\(B = 1.3~(\mathrm{T})\)</span>. Note, the
+variation shown in the graph is only numerical differences. The field is constant and this
+is purely due to the plotting vector field algorithm.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dipole-yoke-field-3d">
+<h3>Dipole Yoke Field 3D<a class="headerlink" href="#dipole-yoke-field-3d" title="Link to this heading"></a></h3>
+<p>For the outer part of a dipole, as described by a uniform field in 3D <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, a pure
+dipole field at position <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> from the origin is provided according to</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}_{\mathrm{dipole}}(\mathbf{r}) = \frac{3\mathbf{r}(\mathbf{m}\cdot\mathbf{r})}{r^5} - \frac{\mathbf{m}}{r^3}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{m}\)</span> is a unit vector along the pure dipole field direction. The field value
+is scaled to the field at the pole tip. For positions within a radial distance of the origin of
+pole tip radius, the uniform field vector is used. At the transition, a sigmoid function is used
+to smoothly vary (weight <span class="math notranslate nohighlight">\(\mathrm{w}\)</span>) between the uniform field vector (<span class="math notranslate nohighlight">\(\mathbf{B}_{u}\)</span>)
+according to</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{w} = \frac{1}{2} \left[ \tanh \left ( \frac{3 r - \| 0.5\,r_{\mathrm{pole tip}} \|}{1 \mathrm{cm}} \right) + 1 \right]\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}(\mathbf{r}) = \mathrm{w}\,\mathbf{B}_{dipole}(\mathbf{r}) + (1 - \mathrm{w}) \mathbf{B}_{u}\]</div>
+<p>An example is shown below for <span class="math notranslate nohighlight">\(\mathbf{B} = (0.23,0.56,0)\,\mathrm{T}\)</span> and a pole tip radius of 40mm.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/outerdipole3d_radial.pdf"><img alt="_images/outerdipole3d_radial.pdf" src="_images/outerdipole3d_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="general-yoke-multipole">
+<span id="yoke-multipole-field"></span><h3>General Yoke Multipole<a class="headerlink" href="#general-yoke-multipole" title="Link to this heading"></a></h3>
+<p>For the outside of magnets, a generalised multipolar field is provided. This is an approximate field
+for outside the beam pipe and does not take into account the permeability of the iron. We suggest
+overlaying a field map for your own magnets if greater accuracy is desired.</p>
+<p>The field is described by the linear sum of infinitely long current sources along <span class="math notranslate nohighlight">\(\pm z\)</span>
+(in curvilinear coordinates). Each current source is placed exactly in between each pole at
+a distance of pole tip radius (<span class="math notranslate nohighlight">\(r_{\mathrm{pole tip}}\)</span>). The field is normalised to the
+field sampled from the interior field at a pole tip.</p>
+<p>Wire locations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+x \\
+y \\
+\end{bmatrix}_i
+=
+\begin{bmatrix}
+0  \\
+r_{\mathrm{pole tip}} \\
+\end{bmatrix}
+\begin{bmatrix}
+\cos \theta_i &amp; - \sin \theta_i \\
+\sin \theta_i &amp; \cos \theta_i   \\
+\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\theta_i = \left \{ \frac{i\,2\pi}{n_{\mathrm{poles}}} \right \} \quad \mathrm{for} \quad i = \{0 \ldots n_{\mathrm{poles}} \}\]</div>
+<p>The field value as a function of position <span class="math notranslate nohighlight">\(\mathbf{r} = (x,y)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}(\mathbf{r}) = \sum_{i = 1}^{i = n_{\mathrm{poles}}} (-1)^{i} \, \frac{(\mathbf{r} - \mathbf{c}_i)_{\perp}}{\|\mathbf{r} - \mathbf{c}_i\|}\]</div>
+<p>These are provided for dipole through to decapole- including their skew counterparts. A few examples are presented below.</p>
+<section id="multipole-yoke-dipole">
+<h4>Multipole Yoke - Dipole<a class="headerlink" href="#multipole-yoke-dipole" title="Link to this heading"></a></h4>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/multipoleouterdipole_radial.pdf"><img alt="_images/multipoleouterdipole_radial.pdf" src="_images/multipoleouterdipole_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="multipole-yoke-quadrupole">
+<h4>Multipole Yoke - Quadrupole<a class="headerlink" href="#multipole-yoke-quadrupole" title="Link to this heading"></a></h4>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/multipoleouterquadrupole_radial.pdf"><img alt="_images/multipoleouterquadrupole_radial.pdf" src="_images/multipoleouterquadrupole_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="multipole-yoke-sextupole">
+<h4>Multipole Yoke - Sextupole<a class="headerlink" href="#multipole-yoke-sextupole" title="Link to this heading"></a></h4>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/multipoleoutersextupole_radial.pdf"><img alt="_images/multipoleoutersextupole_radial.pdf" src="_images/multipoleoutersextupole_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="multipole-yoke-octupole">
+<h4>Multipole Yoke - Octupole<a class="headerlink" href="#multipole-yoke-octupole" title="Link to this heading"></a></h4>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/multipoleouteroctupole_radial.pdf"><img alt="_images/multipoleouteroctupole_radial.pdf" src="_images/multipoleouteroctupole_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="multipole-yoke-decapole">
+<h4>Multipole Yoke - Decapole<a class="headerlink" href="#multipole-yoke-decapole" title="Link to this heading"></a></h4>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/multipoleouterdecapole_radial.pdf"><img alt="_images/multipoleouterdecapole_radial.pdf" src="_images/multipoleouterdecapole_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="multipole-yoke-skew-quadrupole">
+<h4>Multipole Yoke - Skew Quadrupole<a class="headerlink" href="#multipole-yoke-skew-quadrupole" title="Link to this heading"></a></h4>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/skewmultipoleouterquadrupole_radial.pdf"><img alt="_images/skewmultipoleouterquadrupole_radial.pdf" src="_images/skewmultipoleouterquadrupole_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="multipole-yoke-dual">
+<span id="fields-multipole-outer-lhc"></span><h4>Multipole Yoke - Dual<a class="headerlink" href="#multipole-yoke-dual" title="Link to this heading"></a></h4>
+<p>This field is the addition of two multipole yoke fields at a specified separation. The field is built
+with one of the fields at the centre of the coordinate system (x,y = 0,0) with the second field either
+to the left or the right. Like the other multipole yoke fields, a pole tip radius is required to normalise
+the field against a perfect one of the same type.</p>
+<p>This field can be used as an approximate field for joint two beam magnets such as those of the LHC. In
+the case of the LHC, the separation is 194 mm. If <cite>lhcright</cite> or <cite>lhcleft</cite> magnet geometry types are used
+these fields are automatically applied to rbends, sbends, quadrupoles and sextupoles.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/multipoleouterdipolelhc_radial.pdf"><img alt="_images/multipoleouterdipolelhc_radial.pdf" src="_images/multipoleouterdipolelhc_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/multipoleouterquadrupolelhc_radial.pdf"><img alt="_images/multipoleouterquadrupolelhc_radial.pdf" src="_images/multipoleouterquadrupolelhc_radial.pdf" style="width: 70%;" />
+</a>
+</figure>
+</section>
+</section>
+<section id="solenoid-sheet-or-cylinder">
+<h3>Solenoid Sheet or Cylinder<a class="headerlink" href="#solenoid-sheet-or-cylinder" title="Link to this heading"></a></h3>
+<p>For the outside of a solenoid, we have a solenoid “sheet” or “cylinder” model. This is
+modelled on the magnetic field due to symmetric cylinder of current of full length
+<span class="math notranslate nohighlight">\(2 b\)</span> and of radius <span class="math notranslate nohighlight">\(a\)</span>. The field is calculated in cylindrical coordinates
+and translated into Cartesian. The normalisation is to some nominal field <span class="math notranslate nohighlight">\(B_0\)</span>.</p>
+<p>This follows the parameterisation and uses the algorithm for the generalised complete
+elliptical integral as described in:</p>
+<ul class="simple">
+<li><p>Cylindrical Magnets and ideal Solenoids, N. Derby and S. Olbert, American Journal of
+Physics <strong>78</strong>, 229 (2010); <a class="reference external" href="https://doi.org/10.1119/1.3256157">https://doi.org/10.1119/1.3256157</a> and also at
+<a class="reference external" href="https://arxiv.org/abs/0909.3880">https://arxiv.org/abs/0909.3880</a>.</p></li>
+</ul>
+<p>The cylindrical B field components are given by:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}B_{rho} &amp;= B_0 \left[ \alpha_+ C(k_+,1,1,-1) - \alpha_- C(k_-,1,1,-1) \right],\\B_z &amp;= \frac{B_0 a}{a + \rho} \left[ \beta_+ C(k_+,\gamma^2,1,\gamma) - \beta_- C(k_-,\gamma^2,1,\gamma) \right]\end{aligned}\end{align} \]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}B_0 &amp;= \frac{\mu_0 n I}{\pi},\\z_{\pm} &amp;= z \pm b,\\\alpha_{\pm} &amp;= \frac{a}{\sqrt{z_{\pm}^{2} + (\rho + a)^2}},\\\beta_{\pm} &amp;= \frac{z_{\pm}}{ \sqrt{z_{\pm}^{2} + (\rho + a)^2}},\\\gamma &amp;= \frac{a - \rho}{a + \rho},\\k_{\pm} &amp;= \sqrt{ \frac{z_{\pm}^{2} + (\rho - a)^2}{z_{\pm}^{2} + (\rho + a)^2} }.\end{aligned}\end{align} \]</div>
+<p>The implementation defines a <em>spatial tolerance</em> of <span class="math notranslate nohighlight">\(10^{-5} \times \textrm{min}(a,2h)\)</span>. If a coordinate
+is requested within this distance of the cylinder radius (i.e. <span class="math notranslate nohighlight">\(|\rho - a| &lt; tol.\)</span> and <span class="math notranslate nohighlight">\(|z| &lt; b\)</span>) or on
+the end of the cylinder face (i.e. <span class="math notranslate nohighlight">\(|\,|z| - h\,| &lt; tol.\)</span> and <span class="math notranslate nohighlight">\(\rho &lt; a + tol.\)</span>) then no field is returned as the
+function is unstable at these points.</p>
+<p>The coordinates are transformed as:</p>
+<div class="math notranslate nohighlight">
+\[z, \rho, \phi = z,\: \sqrt{x^2 + y^2},\: \arctan \left( \frac{y}{x} \right).\]</div>
+<p>Here, <code class="code docutils literal notranslate"><span class="pre">std::atan2(y,x)</span></code> is used for <span class="math notranslate nohighlight">\(\arctan\)</span> to give the correct sign throughout. The final field
+is constructed as:</p>
+<div class="math notranslate nohighlight">
+\[B_{x,y,z} = \{ B_{\rho}, 0, B_z \},\]</div>
+<p>then rotated about the <span class="math notranslate nohighlight">\(z\)</span> axis by angle <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p>If the field is queried close to the axis (i.e. <span class="math notranslate nohighlight">\(|\rho| &lt; tol.\)</span>), then a reduced formula is
+used:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}B_{\rho} &amp;= 0,\\B_{z} &amp;= \frac{B_{0}}{2} \left[  \frac{z+b}{ \sqrt{(z+b)^2 + a^2} } - \frac{z-b} { \sqrt{(z-b)^2 + a^2} } \right].\end{aligned}\end{align} \]</div>
+<p>Below is an example of the field.</p>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="_images/solenoidsheet.pdf"><img alt="_images/solenoidsheet.pdf" src="_images/solenoidsheet.pdf" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Solenoidal field for 2T solenoid.</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="electric-fields-from-equations">
+<h2>Electric Fields From Equations<a class="headerlink" href="#electric-fields-from-equations" title="Link to this heading"></a></h2>
+<section id="sinusoidal-electric-field">
+<span id="field-sinusoid-efield"></span><h3>Sinusoidal Electric Field<a class="headerlink" href="#sinusoidal-electric-field" title="Link to this heading"></a></h3>
+<p>This field provides an electric field along local unit <cite>u</cite> direction (e.g. unit <cite>z</cite> or unit <cite>x</cite>)
+with an amplitude <cite>E</cite> that <strong>does not vary</strong> with position (<cite>x</cite>, <cite>y</cite>, <cite>z</cite>), but only varies sinusoidally
+with time (<cite>t</cite>). Therefore, this field does not represent a realistic cavity with no variation in say
+<cite>z</cite> in the strength of electric field, but is useful nonetheless.</p>
+<p>A cosine is used so when the default phase is zero, a maximum acceleration
+is provided for a synchronous particle at the centre of the object. An rf cavity using this
+field can be constructed with <cite>E</cite> as peak voltage (subsequently divided by length), or the
+field itself as <cite>gradient</cite>.</p>
+<p>The field is given by the combination of the peak field <cite>E</cite>, the frequency <cite>f</cite> (Hz) along
+with the phase <span class="math notranslate nohighlight">\(\phi\)</span>. Typically, the synchronous time at the centre of the element
+it is attached to as well as the frequency are used to calculate a global phase for the
+arrival time of the synchronous particle to the centre of the object.</p>
+<div class="math notranslate nohighlight">
+\[E_z = E\,\cos(2\,\pi\,f\,t + \phi)\]</div>
+<p>The 3D Cartesian field vectors are therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{B} &amp; = (0, \,0, \,0) \\
+\mathbf{E} &amp; = (0, \,0, \,E_z)\end{split}\]</div>
+<p>In the case where frequency is not set, the field reduces to a constant in the local <cite>z</cite> direction:</p>
+<div class="math notranslate nohighlight">
+\[E_z = E\,\cos(\phi)\]</div>
+</section>
+</section>
+<section id="electromagnetic-fields-from-equations">
+<h2>Electromagnetic Fields From Equations<a class="headerlink" href="#electromagnetic-fields-from-equations" title="Link to this heading"></a></h2>
+<section id="pill-box-cavity">
+<span id="field-pill-box"></span><h3>Pill-Box Cavity<a class="headerlink" href="#pill-box-cavity" title="Link to this heading"></a></h3>
+<p>The pill-box cavity field is constructed with a peak electric field <span class="math notranslate nohighlight">\(E\)</span>, a
+frequency <span class="math notranslate nohighlight">\(f\)</span>, phase <span class="math notranslate nohighlight">\(\psi\)</span> and a cavity radius. It represents the
+TM010 mode of a simple pill-box cavity.</p>
+<p>Geant4 queries the field in (local) Cartesian coordinates and we require cylindrical
+coordinates for the field description. These are converted as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\phi &amp; = \tan^{-1} ( \frac{y}{x} ) \\
+r    &amp; = \sqrt{x^2 + y^2}\end{split}\]</div>
+<p>The cavity radius is used to
+normalise the Bessel function so that the field drops to zero at this point. The field
+is time-dependent and the <span class="math notranslate nohighlight">\(E_z\)</span> and <span class="math notranslate nohighlight">\(B_{\phi}\)</span> components are calculated
+and then returned in 3D Cartesian coordinates. The cavity radius is used to calculate
+a normalised radius <span class="math notranslate nohighlight">\(r_n\)</span> with respect to the first zero of the zeroth Bessel:</p>
+<div class="math notranslate nohighlight">
+\[r_n = r \, \frac{2.404825557695772768622} { \mathrm{cavity\,radius}}\]</div>
+<p>The electric field is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_z(r_n, z ,t) &amp; = E \, J_{0}(r_n) \cos(2\,\pi\,f\,(t - T_{0}) + \psi)\\\end{split}\]</div>
+<p>The radial B-field amplitude is calculated from the E-field amplitude.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}H_{\phi}(r_n, z, t) &amp; = \frac{E}{Z_{0}} \, J_{1}(r_n) \sin(2\,\pi\,f\,(t - T_{0}) + \psi)\\
+B_{\phi}(r_n, z, t) &amp; = \mu_{0} H_{\phi}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Z_{0}\)</span> is the impedance of free space, and <span class="math notranslate nohighlight">\(T_0\)</span> is the global offset in
+time to the centre of the object the field is attached to (i.e. the synchronous time). To
+calculate B, a vacuum is assumed and therefore only the vacuum permeability is used to
+calculate B from H.</p>
+<p>The 3D Cartesian field vectors are therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+B_x \\
+B_y \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+0  \\
+B_{\phi} \\
+\end{bmatrix}
+\begin{bmatrix}
+\cos \phi &amp; - \sin \phi \\
+\sin \phi &amp; \cos \phi   \\
+\end{bmatrix}\end{split}\]</div>
+<p>The final 3-vectors are constructed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{B} &amp; = (B_x,\, B_y \,0) \\
+\mathbf{E} &amp; = (0, \,0, \,E_z)\end{split}\]</div>
+</section>
+</section>
+<section id="field-map-file-formats">
+<span id="field-map-formats"></span><h2>Field Map File Formats<a class="headerlink" href="#field-map-file-formats" title="Link to this heading"></a></h2>
+<section id="bdsim-field-format">
+<h3>BDSIM Field Format<a class="headerlink" href="#bdsim-field-format" title="Link to this heading"></a></h3>
+<p>The field should be in an ASCII text file with the extension <code class="code docutils literal notranslate"><span class="pre">.dat</span></code>. Below is an
+example of the required format in each 1D, 2D, 3D and 4D case.</p>
+<ul class="simple">
+<li><p>A compressed file using <em>gzip</em> may also be used (“.gz” extension).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to use <strong>pybdsim</strong> to write field maps as it is guaranteed to write the
+correct syntax exactly. It is <strong>not</strong> recommended to write field maps by hand.</p>
+</div>
+<p>The <cite>pybdsim</cite> utility package may be used to prepare fields in the correct format in Python if a
+Python numpy array is provided.  If the user has a custom field format, it would be
+advisable to write a script to load this data into a Python numpy array and use the
+provided file writers in pybdsim.</p>
+<p>Generally:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A series of keys define the dimensions of the grid.</p></li>
+<li><p>The keys must not have any whitespace before them nor any between the key and the ‘&gt;’</p></li>
+<li><p>The keys at the beginning do not have to be in any order.</p></li>
+<li><p>Empty lines will be skipped.</p></li>
+<li><p>A line starting with <code class="code docutils literal notranslate"><span class="pre">!</span></code> denotes the column name definition row (there can be only one of these).</p></li>
+<li><p>The order in the file must be 1) keys, 2) column name definition row, 3) data.</p></li>
+<li><p>A line starting with <code class="code docutils literal notranslate"><span class="pre">#</span></code> will be ignored as a comment line.</p></li>
+<li><p>The default order of the data loop is the <strong>lowest</strong> dimension first and then the upper,
+so the order should be <span class="math notranslate nohighlight">\(x\)</span>, then <span class="math notranslate nohighlight">\(y\)</span>, then <span class="math notranslate nohighlight">\(z\)</span>, then <span class="math notranslate nohighlight">\(t\)</span>. If
+we look in a file, we should see the first coordinate column change first.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">loopOrder</span> <span class="pre">&gt;</span> <span class="pre">tzyx</span></code> may optionally be defined in the header to indicate the
+the <strong>opposite</strong> order of looping of variables in the file to the loader. The default is xyzt.
+It can only be <strong>either</strong> ‘xyzt’ or ‘tzyx’. In this case, the coordinate columns must still
+be in x,y,z,t order but the right most column coordinate will change first.</p></li>
+<li><p>Python classes are provided to write numpy arrays to this format.</p></li>
+<li><p>Any lines beyond the amount of data specified by the dimensions will be ignored.</p></li>
+<li><p>One <strong>cannot</strong> put a comment after the data in the line.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The units are <span class="math notranslate nohighlight">\(cm\)</span> for spatial coordinates and <span class="math notranslate nohighlight">\(s\)</span> for temporal.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a 1,2 or 3D field is required that is not along <span class="math notranslate nohighlight">\(x, x:y, x:y:z\)</span> respectively,
+the user should label the columns appropriately (i.e. ‘X’ and ‘Z’) and use the
+correct key names in the file (i.e. ‘xmin’ and ‘zmin’) and the field will be
+automatically constructed along the desired direction. It is assumed the field
+is constant in the other dimensions.</p>
+</div>
+<p>There are python scripts in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/4_bdsimformat</span></code> called
+<code class="code docutils literal notranslate"><span class="pre">Generate1D.py</span></code> etc., that were used to create the example data sets there that
+have sinusoidally oscillating data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The dimension parameters (<span class="math notranslate nohighlight">\(x,y,z,t\)</span>) are used in order here for 1,2,3 and 4D
+fields, but other combinations are possible. See <a class="reference internal" href="#fields-different-dimensions"><span class="std std-ref">BDSIM Field Format Different Dimensions</span></a>.</p>
+</div>
+</section>
+<section id="bdsim-field-format-1d">
+<h3>BDSIM Field Format 1D<a class="headerlink" href="#bdsim-field-format-1d" title="Link to this heading"></a></h3>
+<p>For a field that varies in <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>xmin</p></td>
+<td><p>The lower spatial coordinate in x associated with the field map</p></td>
+</tr>
+<tr class="row-odd"><td><p>xmax</p></td>
+<td><p>The upper spatial coordinate in x associated with the field map</p></td>
+</tr>
+<tr class="row-even"><td><p>nx</p></td>
+<td><p>Number of elements in x (1 counting)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example syntax is shown below and there is an example in
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/4_bdsimformat/1dexample.tar.gz</span></code>. The complete example
+field is specified here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xmin&gt; -30.0
+nx&gt; 8
+xmax&gt; 22.5
+! X              Fx              Fy              Fz
+-3.00000000E+01      -2.94957486E+00 -2.82240016E-01 -1.16825503E+00
+-2.25000000E+01      -9.08808379E-01 -1.55614639E+00 -7.42211878E-01
+-1.50000000E+01      1.44943102E+00  -1.99498997E+00 -2.99500250E-01
+-7.50000000E+00      3.30134246E+00  -1.36327752E+00 1.49937508E-01
+0.00000000E+00       4.00000000E+00  0.00000000E+00  5.96007992E-01
+7.50000000E+00       3.30134246E+00  1.36327752E+00  1.02869342E+00
+1.50000000E+01       1.44943102E+00  1.99498997E+00  1.43827662E+00
+2.25000000E+01       -9.08808379E-01 1.55614639E+00  1.81555922E+00
+</pre></div>
+</div>
+<p>The same field could be specified along <span class="math notranslate nohighlight">\(z\)</span> with the following start:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>zmin&gt; -30.0
+nz&gt; 8
+zmax&gt; 22.5
+! Z              Fx              Fy              Fz
+</pre></div>
+</div>
+</section>
+<section id="bdsim-field-format-2d">
+<h3>BDSIM Field Format 2D<a class="headerlink" href="#bdsim-field-format-2d" title="Link to this heading"></a></h3>
+<p>All of the 1D parameters, plus:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>ymin</p></td>
+<td><p>The lower spatial coordinate in <span class="math notranslate nohighlight">\(y\)</span> associated with the field map</p></td>
+</tr>
+<tr class="row-odd"><td><p>ymax</p></td>
+<td><p>The upper spatial coordinate in <span class="math notranslate nohighlight">\(y\)</span> associated with the field map</p></td>
+</tr>
+<tr class="row-even"><td><p>ny</p></td>
+<td><p>Number of elements in y (1 counting)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example syntax is shown below and there is an example in
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/4_bdsimformat/2dexample.tar.gz</span></code>.  Only the first
+small part of the file is reproduced here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ymax&gt; 22.6
+nx&gt; 8
+ny&gt; 11
+xmax&gt; 26.0
+xmin&gt; -30.0
+ymin&gt; -25.0
+! X                Y              Fx              Fy              Fz
+-3.00000000E+01       -2.50000000E+01 1.76523839E+00  1.08228603E+00  2.12211605E-01
+-2.44000000E+01       -2.50000000E+01 8.90617540E-01  1.48727104E+00  1.03093724E+00
+-1.88000000E+01       -2.50000000E+01 -1.59784082E-01 1.59871406E+00  1.76936408E+00
+-1.32000000E+01       -2.50000000E+01 -1.17864919E+00 1.39461962E+00  2.36997669E+00
+-7.60000000E+00       -2.50000000E+01 -1.96488486E+00 9.15269759E-01  2.78599391E+00
+-2.00000000E+00       -2.50000000E+01 -2.36331212E+00 2.55273528E-01  2.98501250E+00
+3.60000000E+00        -2.50000000E+01 -2.29529355E+00 -4.55105921E-01 2.95153108E+00
+9.20000000E+00        -2.50000000E+01 -1.77425397E+00 -1.07566133E+00 2.68815749E+00
+1.48000000E+01        -2.50000000E+01 -9.03030699E-01 -1.48391395E+00 2.21540568E+00
+2.04000000E+01        -2.50000000E+01 1.46423320E-01  -1.59928717E+00 1.57009785E+00
+2.60000000E+01        -2.50000000E+01 1.16697784E+00  -1.39900982E+00 8.02496486E-01
+-3.00000000E+01       -1.82000000E+01 2.85845993E+00  3.33182089E-01  2.12211605E-01
+-2.44000000E+01       -1.82000000E+01 1.44218172E+00  4.57856850E-01  1.03093724E+00
+-1.88000000E+01       -1.82000000E+01 -2.58739215E-01 4.92164617E-01  1.76936408E+00
+-1.32000000E+01       -1.82000000E+01 -1.90859292E+00 4.29334082E-01  2.36997669E+00
+-7.60000000E+00       -1.82000000E+01 -3.18174852E+00 2.81766079E-01  2.78599391E+00
+-2.00000000E+00       -1.82000000E+01 -3.82692389E+00 7.85860346E-02  2.98501250E+00
+3.60000000E+00        -1.82000000E+01 -3.71678107E+00 -1.40104499E-01 2.95153108E+00
+9.20000000E+00        -1.82000000E+01 -2.87305889E+00 -3.31142672E-01 2.68815749E+00
+1.48000000E+01        -1.82000000E+01 -1.46228242E+00 -4.56823370E-01 2.21540568E+00
+2.04000000E+01        -1.82000000E+01 2.37104061E-01  -4.92341051E-01 1.57009785E+00
+2.60000000E+01        -1.82000000E+01 1.88969342E+00  -4.30685607E-01 8.02496486E-01
+-3.00000000E+01       -1.14000000E+01 2.68008252E+00  -5.64139424E-01 2.12211605E-01
+-2.44000000E+01       -1.14000000E+01 1.35218479E+00  -7.75237050E-01 1.03093724E+00
+-1.88000000E+01       -1.14000000E+01 -2.42593028E-01 -8.33326499E-01 1.76936408E+00
+</pre></div>
+</div>
+</section>
+<section id="bdsim-field-format-3d">
+<h3>BDSIM Field Format 3D<a class="headerlink" href="#bdsim-field-format-3d" title="Link to this heading"></a></h3>
+<p>All of the 1D and 2D parameters, plus:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>zmin</p></td>
+<td><p>The lower spatial coordinate in <span class="math notranslate nohighlight">\(z\)</span> associated with the field map</p></td>
+</tr>
+<tr class="row-odd"><td><p>zmax</p></td>
+<td><p>The upper spatial coordinate in <span class="math notranslate nohighlight">\(z\)</span> associated with the field map</p></td>
+</tr>
+<tr class="row-even"><td><p>nz</p></td>
+<td><p>Number of elements in z (1 counting)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example syntax is shown below and there is an example in
+<code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/4_bdsimformat/3dexample.tar.gz</span></code>.  Only the first
+small part of the file is reproduced here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>zmax&gt; 29.0
+ymax&gt; 18.2
+zmin&gt; -35.0
+nx&gt; 9
+ny&gt; 7
+nz&gt; 10
+xmax&gt; 24.9
+xmin&gt; -30.0
+ymin&gt; -25.0
+! X                Y               Z              Fx              Fy              Fz
+-3.00000000E+01       -2.50000000E+01 -3.50000000E+01 -3.32347616E+01 7.10822860E+01  -2.97096247E+00
+-2.39000000E+01       -2.50000000E+01 -3.50000000E+01 -3.41989531E+01 7.15099195E+01  -1.54145628E+01
+-1.78000000E+01       -2.50000000E+01 -3.50000000E+01 -3.53501533E+01 7.15850542E+01  -2.64353051E+01
+-1.17000000E+01       -2.50000000E+01 -3.50000000E+01 -3.64196083E+01 7.12901497E+01  -3.50159076E+01
+-5.60000000E+00       -2.50000000E+01 -3.50000000E+01 -3.71576482E+01 7.06940528E+01  -4.03643284E+01
+5.00000000E-01        -2.50000000E+01 -3.50000000E+01 -3.73919737E+01 6.99359256E+01  -4.19868757E+01
+6.60000000E+00        -2.50000000E+01 -3.50000000E+01 -3.70678802E+01 6.91927569E+01  -3.97337784E+01
+1.27000000E+01        -2.50000000E+01 -3.50000000E+01 -3.62610291E+01 6.86380434E+01  -3.38130113E+01
+1.88000000E+01        -2.50000000E+01 -3.50000000E+01 -3.51597841E+01 6.84012859E+01  -2.47710971E+01
+2.49000000E+01        -2.50000000E+01 -3.50000000E+01 -3.40212366E+01 6.85377567E+01  -1.34426596E+01
+-3.00000000E+01       -1.78000000E+01 -3.50000000E+01 -3.21147359E+01 7.02805617E+01  -2.97096247E+00
+-2.39000000E+01       -1.78000000E+01 -3.50000000E+01 -3.36906971E+01 7.03914175E+01  -1.54145628E+01
+-1.78000000E+01       -1.78000000E+01 -3.50000000E+01 -3.55723220E+01 7.04108947E+01  -2.64353051E+01
+-1.17000000E+01       -1.78000000E+01 -3.50000000E+01 -3.73203353E+01 7.03344464E+01  -3.50159076E+01
+-5.60000000E+00       -1.78000000E+01 -3.50000000E+01 -3.85266540E+01 7.01799198E+01  -4.03643284E+01
+5.00000000E-01        -1.78000000E+01 -3.50000000E+01 -3.89096566E+01 6.99833900E+01  -4.19868757E+01
+6.60000000E+00        -1.78000000E+01 -3.50000000E+01 -3.83799291E+01 6.97907378E+01  -3.97337784E+01
+1.27000000E+01        -1.78000000E+01 -3.50000000E+01 -3.70611392E+01 6.96469391E+01  -3.38130113E+01
+1.88000000E+01        -1.78000000E+01 -3.50000000E+01 -3.52611655E+01 6.95855643E+01  -2.47710971E+01
+2.49000000E+01        -1.78000000E+01 -3.50000000E+01 -3.34002212E+01 6.96209417E+01  -1.34426596E+01
+-3.00000000E+01       -1.06000000E+01 -3.50000000E+01 -3.24269222E+01 6.93395698E+01  -2.97096247E+00
+-2.39000000E+01       -1.06000000E+01 -3.50000000E+01 -3.38323640E+01 6.90786203E+01  -1.54145628E+01
+-1.78000000E+01       -1.06000000E+01 -3.50000000E+01 -3.55103966E+01 6.90327717E+01  -2.64353051E+01
+-1.17000000E+01       -1.06000000E+01 -3.50000000E+01 -3.70692744E+01 6.92127277E+01  -3.50159076E+01
+-5.60000000E+00       -1.06000000E+01 -3.50000000E+01 -3.81450691E+01 6.95764767E+01  -4.03643284E+01
+5.00000000E-01        -1.06000000E+01 -3.50000000E+01 -3.84866308E+01 7.00390993E+01  -4.19868757E+01
+6.60000000E+00        -1.06000000E+01 -3.50000000E+01 -3.80142199E+01 7.04925941E+01  -3.97337784E+01
+1.27000000E+01        -1.06000000E+01 -3.50000000E+01 -3.68381234E+01 7.08310901E+01  -3.38130113E+01
+1.88000000E+01        -1.06000000E+01 -3.50000000E+01 -3.52329073E+01 7.09755637E+01  -2.47710971E+01
+.
+.
+.
+.
+.
+1.27000000E+01        1.10000000E+01  -2.70000000E+01 -2.51221541E+01 5.47711204E+01  -2.60843230E+01
+1.88000000E+01        1.10000000E+01  -2.70000000E+01 -2.67620595E+01 5.49051692E+01  -1.91091320E+01
+2.49000000E+01        1.10000000E+01  -2.70000000E+01 -2.84575134E+01 5.48279013E+01  -1.03700517E+01
+-3.00000000E+01       1.82000000E+01  -2.70000000E+01 -2.98584599E+01 5.43331821E+01  -2.29188533E+00
+-2.39000000E+01       1.82000000E+01  -2.70000000E+01 -2.82971395E+01 5.44648292E+01  -1.18912342E+01
+-1.78000000E+01       1.82000000E+01  -2.70000000E+01 -2.64329949E+01 5.44879594E+01  -2.03929497E+01
+-1.17000000E+01       1.82000000E+01  -2.70000000E+01 -2.47012207E+01 5.43971730E+01  -2.70122716E+01
+-5.60000000E+00       1.82000000E+01  -2.70000000E+01 -2.35061087E+01 5.42136644E+01  -3.11381962E+01
+5.00000000E-01        1.82000000E+01  -2.70000000E+01 -2.31266642E+01 5.39802747E+01  -3.23898755E+01
+6.60000000E+00        1.82000000E+01  -2.70000000E+01 -2.36514705E+01 5.37514900E+01  -3.06517719E+01
+1.27000000E+01        1.82000000E+01  -2.70000000E+01 -2.49580088E+01 5.35807213E+01  -2.60843230E+01
+1.88000000E+01        1.82000000E+01  -2.70000000E+01 -2.67412608E+01 5.35078354E+01  -1.91091320E+01
+2.49000000E+01        1.82000000E+01  -2.70000000E+01 -2.85849168E+01 5.35498480E+01  -1.03700517E+01
+-3.00000000E+01       -2.50000000E+01 -1.90000000E+01 -1.72347616E+01 3.90822860E+01  -1.61280820E+00
+-2.39000000E+01       -2.50000000E+01 -1.90000000E+01 -1.81989531E+01 3.95099195E+01  -8.36790554E+00
+-1.78000000E+01       -2.50000000E+01 -1.90000000E+01 -1.93501533E+01 3.95850542E+01  -1.43505942E+01
+-1.17000000E+01       -2.50000000E+01 -1.90000000E+01 -2.04196083E+01 3.92901497E+01  -1.90086356E+01
+-5.60000000E+00       -2.50000000E+01 -1.90000000E+01 -2.11576482E+01 3.86940528E+01  -2.19120640E+01
+5.00000000E-01        -2.50000000E+01 -1.90000000E+01 -2.13919737E+01 3.79359256E+01  -2.27928754E+01
+6.60000000E+00        -2.50000000E+01 -1.90000000E+01 -2.10678802E+01 3.71927569E+01  -2.15697654E+01
+1.27000000E+01        -2.50000000E+01 -1.90000000E+01 -2.02610291E+01 3.66380434E+01  -1.83556347E+01
+1.88000000E+01        -2.50000000E+01 -1.90000000E+01 -1.91597841E+01 3.64012859E+01  -1.34471670E+01
+2.49000000E+01        -2.50000000E+01 -1.90000000E+01 -1.80212366E+01 3.65377567E+01  -7.29744379E+00
+-3.00000000E+01       -1.78000000E+01 -1.90000000E+01 -1.61147359E+01 3.82805617E+01  -1.61280820E+00
+-2.39000000E+01       -1.78000000E+01 -1.90000000E+01 -1.76906971E+01 3.83914175E+01  -8.36790554E+00
+-1.78000000E+01       -1.78000000E+01 -1.90000000E+01 -1.95723220E+01 3.84108947E+01  -1.43505942E+01
+</pre></div>
+</div>
+</section>
+<section id="bdsim-field-format-4d">
+<h3>BDSIM Field Format 4D<a class="headerlink" href="#bdsim-field-format-4d" title="Link to this heading"></a></h3>
+<p>All of the 1D, 2D and 3D parameters, plus:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>tmin</p></td>
+<td><p>The lower spatial coordinate in <span class="math notranslate nohighlight">\(t\)</span> associated with the field map</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmax</p></td>
+<td><p>The upper spatial coordinate in <span class="math notranslate nohighlight">\(t\)</span> associated with the field map</p></td>
+</tr>
+<tr class="row-even"><td><p>nt</p></td>
+<td><p>Number of elements in t (1 counting)</p></td>
+</tr>
+</tbody>
+</table>
+<p>There is an example in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/4_bdsimformat/tdexample.tar.gz</span></code>.</p>
+</section>
+<section id="bdsim-field-format-different-dimensions">
+<span id="fields-different-dimensions"></span><h3>BDSIM Field Format Different Dimensions<a class="headerlink" href="#bdsim-field-format-different-dimensions" title="Link to this heading"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only for BDSIM format field map files.</p>
+</div>
+<p>Different dimensions can be used but they must be in order. Below is a list of the allowable
+alternate dimensions for various field maps.</p>
+<ul>
+<li><p>The dimensions are detected automatically by the column label row.</p></li>
+<li><p>The reverse order of all the possible combinations is also possible with the <code class="code docutils literal notranslate"><span class="pre">loopOrder</span></code>
+header parameter set to the reverse (either <code class="code docutils literal notranslate"><span class="pre">xyzt</span></code> or <code class="code docutils literal notranslate"><span class="pre">tzyx</span></code>) for the general order
+even if not all those dimensions are present. The default order is <code class="code docutils literal notranslate"><span class="pre">xyzt</span></code> with the more
+left column appearing to change first in value. Even if the order of the looping in the file
+is different, the columns themselves must still be in x,y,z,t order left to right.</p></li>
+<li><p>4D field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span>
+</pre></div>
+</div>
+</li>
+<li><p>3D field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">t</span>
+<span class="n">x</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span>
+<span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span>
+</pre></div>
+</div>
+</li>
+<li><p>2D field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span>
+<span class="n">x</span><span class="p">,</span><span class="n">z</span>
+<span class="n">x</span><span class="p">,</span><span class="n">t</span>
+<span class="n">y</span><span class="p">,</span><span class="n">z</span>
+<span class="n">y</span><span class="p">,</span><span class="n">t</span>
+<span class="n">z</span><span class="p">,</span><span class="n">t</span>
+</pre></div>
+</div>
+</li>
+<li><p>1D field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+<span class="n">y</span>
+<span class="n">z</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>See examples in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/maps_bdsim/*.py</span></code>.</p>
+</section>
+</section>
+<section id="bdsim-field-map-file-preparation">
+<span id="field-map-file-preparation"></span><h2>BDSIM Field Map File Preparation<a class="headerlink" href="#bdsim-field-map-file-preparation" title="Link to this heading"></a></h2>
+<p>The Python BDSIM utility <em>pybdsim</em> may be used to prepare a BDSIM format field map file
+from a Python numpy array.</p>
+<p>The pybdsim field classes are fully documented in the pybdsim documentation <a class="reference external" href="http://www.pp.rhul.ac.uk/bdsim/pybdsim/">http://www.pp.rhul.ac.uk/bdsim/pybdsim/</a>.</p>
+</section>
+<section id="field-map-transforms-and-reflections">
+<h2>Field Map Transforms and Reflections<a class="headerlink" href="#field-map-transforms-and-reflections" title="Link to this heading"></a></h2>
+<p>To implement transforms such as reflections and flips, the implementation introduces
+two types of class. These are index operators and value operators. A combination of these
+produces the relevant field map. Typically, a reflection and flip operator are provided
+for each that operates on x,y,z,t independently.</p>
+<p>For this to work, the extraction of a small section of the array for interpolation
+is done inside the array class (e.g. <code class="code docutils literal notranslate"><span class="pre">BDSArray3DCoordsTransformed</span></code>) and not inside
+the interpolator. The interpolator simply asks for a section of the array (e.g. 2x2x2).</p>
+<p>If a reflection is required, only then will the field loader wrap the resultant loaded
+field map array (e.g. <code class="code docutils literal notranslate"><span class="pre">BDSArray2DCoords</span></code>) in with a transform and a set of operators.</p>
+<p>If more than one operator is specified, they are appended to a vector of operators that
+are applied sequentially.</p>
+<section id="index-operator">
+<h3>Index Operator<a class="headerlink" href="#index-operator" title="Link to this heading"></a></h3>
+<p>An index operator takes any real array coordinate (i.e. not spatial coordinate, but array
+index space coordinate) including negative values (not possible in an array indexed from 0)
+and therefore including points outside its range. The operator maps this query index onto
+a different index - most likely in available data (although it doesn’t have to be).</p>
+<p>This new index is the one used to access the array.</p>
+<ul class="simple">
+<li><p>These inherit <code class="code docutils literal notranslate"><span class="pre">BDSArrayOperatorIndex</span></code>.</p></li>
+</ul>
+</section>
+<section id="value-operator">
+<h3>Value Operator<a class="headerlink" href="#value-operator" title="Link to this heading"></a></h3>
+<p>Based on the queried (i.e. before the index operator) array space coordinate, the field
+value components may be altered.</p>
+<ul class="simple">
+<li><p>These inherit <code class="code docutils literal notranslate"><span class="pre">BDSArrayOperatorValue</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="field-map-interpolators">
+<span id="field-interpolators"></span><h2>Field Map Interpolators<a class="headerlink" href="#field-map-interpolators" title="Link to this heading"></a></h2>
+<p>A variety of interpolators are provided with BDSIM.  Example data sets in 1D and 2D were generated
+with simple <span class="math notranslate nohighlight">\(x,y,z\)</span> field vector components that have different amplitudes and phased
+sinusoids shown below.</p>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="_images/field_raw.pdf"><img alt="_images/field_raw.pdf" src="_images/field_raw.pdf" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 1D field value components.</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="_images/field_raw2d.png"><img alt="_images/field_raw2d.png" src="_images/field_raw2d.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 2D field value components.</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="nearest-neighbour">
+<h3>Nearest Neighbour<a class="headerlink" href="#nearest-neighbour" title="Link to this heading"></a></h3>
+<p>The nearest neighbour algorithm returns the field value of the closest defined point in
+the map and returns that value. Therefore, the interpolated map contains only the values
+of the original map. This only serves the purpose of being able to query the map at any
+set of coordinates and provides a ‘pixelated’ appearance and sharp discontinuities
+halfway between points in the map.  This is intended only for completeness and debugging.</p>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="_images/field_nearest.pdf"><img alt="_images/field_nearest.pdf" src="_images/field_nearest.pdf" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 1D field value components with nearest neighbour interpolation.</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="_images/field_nearest2d.png"><img alt="_images/field_nearest2d.png" src="_images/field_nearest2d.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 2D field value components with nearest neighbour interpolation.</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="linear">
+<h3>Linear<a class="headerlink" href="#linear" title="Link to this heading"></a></h3>
+<p>In this case, the interpolated value lies on a straight line between two given points.
+The field value <span class="math notranslate nohighlight">\(f\)</span> at point <span class="math notranslate nohighlight">\(x_i\)</span> lying between <span class="math notranslate nohighlight">\(x_a\)</span> and <span class="math notranslate nohighlight">\(x_b\)</span>
+is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}xd     &amp;= \frac{(x_i - x_a)}{(x_b - x_a)}\\
+f(x_i) &amp;= f(x_a)\,(1-xd) + f(x_b)\,xd\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(xd\)</span> will lie in the range <span class="math notranslate nohighlight">\([0,1]\)</span>. This is, of course, a 1D equation and
+a version of linear interpolation. See <span class="target" id="linear-cubic-higher-dimension-interpolation">Linear &amp; Cubic Higher Dimension Interpolation</span> for
+further details for 2,3 and 4D interpolation.</p>
+<figure class="align-center" id="id19">
+<a class="reference internal image-reference" href="_images/field_linear.pdf"><img alt="_images/field_linear.pdf" src="_images/field_linear.pdf" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 1D field value components with linear interpolation.</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="_images/field_linear2d.png"><img alt="_images/field_linear2d.png" src="_images/field_linear2d.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 2D field value components with linear interpolation.</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="linear-magnitude">
+<h3>Linear Magnitude<a class="headerlink" href="#linear-magnitude" title="Link to this heading"></a></h3>
+<p>in this case, the interpolation is also linear. However, additionally, the magnitude of
+the field vector is also linearly interpolated. Imagine linear interpolation between two
+vectors pointing up and right with magnitude 1. The linearly interpolated vector exactly
+half way between would be at 45 degrees point to the top right. As the components of the
+vector are linearly interpolated separately, (0,1) to (1,0), then the components would be (0.5,0.5).
+This would result in a magnitude of <span class="math notranslate nohighlight">\(\sqrt{2 \times 0.5^2} = 0.707\)</span>. This is
+shown in the figure below.</p>
+<p>However, with this ‘linear-magnitude’ interpolator, the magnitude would be also linearly
+interpolated between 1 and 1, so would remain 1.</p>
+<p>This interpolator is most useful when linear interpolation is desired, but the field map
+is relatively sparse.</p>
+<figure class="align-center" id="id21">
+<a class="reference internal image-reference" href="_images/linear-mag.pdf"><img alt="_images/linear-mag.pdf" src="_images/linear-mag.pdf" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Schematic of linear interpolation and linear + magnitude interpolation.</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="_images/field_linear_mag.pdf"><img alt="_images/field_linear_mag.pdf" src="_images/field_linear_mag.pdf" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 1D field value components with linear mag interpolation.</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="_images/field_linear_mag2d.png"><img alt="_images/field_linear_mag2d.png" src="_images/field_linear_mag2d.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 2D field value components with linear mag interpolation.</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="cubic">
+<h3>Cubic<a class="headerlink" href="#cubic" title="Link to this heading"></a></h3>
+<p>In this case, the surrounding four map entries of any given point are used in combination
+to give a small section of a cubic polynomial.  For a given point <span class="math notranslate nohighlight">\(x_i\)</span>, the closest
+point which is on the lower-valued side is called <span class="math notranslate nohighlight">\(m_1\)</span> (m for map), and the
+closest point which is on the higher-valued side is called <span class="math notranslate nohighlight">\(m_2\)</span>. Points further
+outside these (in a 1D case) are called <span class="math notranslate nohighlight">\(m_0\)</span> and <span class="math notranslate nohighlight">\(m_3\)</span> respectively. (On a
+linear number scale from low to high they would be <span class="math notranslate nohighlight">\(m_0, m_1, m_2, m_3\)</span>.) The
+field value <span class="math notranslate nohighlight">\(f(x_i)\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[xd = \frac{(x_i - x_a)}{(x_b - x_a)}\]</div>
+<div class="math notranslate nohighlight">
+\[f(x_i) = m_1 + \frac{1}{2}\,xd\,(m_2 - m_0 + xd\,(\,2m_0 - 5 m_1 + 4 m_2 - m_3 + xd\,(\,3\,(m_1 - m_2) + m_3 - m_0)))\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(xd\)</span> will lie in the range <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
+<p>This is, of course, a 1D equation and version of cubic interpolation.
+See <a class="reference internal" href="#higher-dim-interpolation"><span class="std std-ref">Linear &amp; Cubic Higher Dimension Interpolation</span></a> for further details for 2,3 and 4D interpolation.
+One could of course cache the gradient at each point, but here it is calculated dynamically.
+This allows the 1D interpolation case to be used in different dimensions for different gradients
+and is not prohibitively slow.</p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="_images/field_cubic.pdf"><img alt="_images/field_cubic.pdf" src="_images/field_cubic.pdf" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 1D field value components with cubic interpolation.</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id25">
+<a class="reference internal image-reference" href="_images/field_cubic2d.png"><img alt="_images/field_cubic2d.png" src="_images/field_cubic2d.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example 2D field value components with cubic interpolation.</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the <span class="math notranslate nohighlight">\(x,y,z\)</span> components are shown individually, they are in fact part of
+a 3-vector class that is used for interpolation, i.e. the components are not interpolated
+individually.</p>
+</div>
+</section>
+<section id="higher-dim-interpolation">
+<span id="id1"></span><h3>Linear &amp; Cubic Higher Dimension Interpolation<a class="headerlink" href="#higher-dim-interpolation" title="Link to this heading"></a></h3>
+<p>To interpolate both in a cubic polynomial and linear at greater than one dimension, the
+1D interpolator can be used iteratively. In the case of 2D interpolation this would be called
+<em>bilinear</em> and <em>bicubic</em>, and in the case of 3D, <em>trilinear</em> and <em>tricubic</em> interpolation.
+Below is a diagram of a cube representing a point <span class="math notranslate nohighlight">\(C\)</span> at an arbitrary point inside the
+eight corners that represent the closest values of the regular field map. The diagram shows this
+approximately in the centre of the cube, but it could lie anywhere inside the eight points.</p>
+<figure class="align-center" id="id26">
+<a class="reference internal image-reference" href="_images/interpolation_cube.pdf"><img alt="_images/interpolation_cube.pdf" src="_images/interpolation_cube.pdf" style="width: 50%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Field map value coordinates for 3D interpolation. <a class="footnote-reference brackets" href="#f1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:3D_interpolation2.svg">Marmelad Cubic Diagram Wikipedia</a>.</p>
+</aside>
+</aside>
+<p><span class="math notranslate nohighlight">\(C_{00}\)</span> can be found by interpolating between <span class="math notranslate nohighlight">\(C_{000}\)</span> and <span class="math notranslate nohighlight">\(C_{100}\)</span>.
+<span class="math notranslate nohighlight">\(C_{10}, C_{01}, C_{11}\)</span> can be found in a similar manner with each of their edges.
+<span class="math notranslate nohighlight">\(C_0\)</span> and <span class="math notranslate nohighlight">\(C_1\)</span> can be found by then interpolating between <span class="math notranslate nohighlight">\(C_{00}\)</span> and
+<span class="math notranslate nohighlight">\(C_{10}\)</span> for example (in the case of <span class="math notranslate nohighlight">\(C_0\)</span>).  <span class="math notranslate nohighlight">\(C\)</span> can then be found by
+interpolating between <span class="math notranslate nohighlight">\(C_0\)</span> and <span class="math notranslate nohighlight">\(C_1\)</span> , giving the desired value.</p>
+<p>One may interpolate the dimensions in any order and arrive at the same result. By doing
+it in such a way, the 2D interpolator can use the 1D interpolator; the 3D interpolator
+can use the 2D interpolator etc. By ensuring the 1D case is correct, there is a much
+lower likelihood of implementation faults occurring for higher dimensional interpolators.</p>
+</section>
+<section id="implementation-specifics">
+<h3>Implementation Specifics<a class="headerlink" href="#implementation-specifics" title="Link to this heading"></a></h3>
+<p>To implement this iterative algorithm, <em>C</em> arrays are used, as sub-arrays can be easily
+passed around, due to their underlying pointer nature in <em>C</em>. A small section of
+code from <code class="code docutils literal notranslate"><span class="pre">bdsim/src/BDSInterpolatorRoutines.cc</span></code> is shown below:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/interpolation_code_snippet.png"><img alt="_images/interpolation_code_snippet.png" src="_images/interpolation_code_snippet.png" style="width: 90%;" />
+</a>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev_tracking.html" class="btn btn-neutral float-left" title="Tracking Algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_beamgeneration.html" class="btn btn-neutral float-right" title="Beam Generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

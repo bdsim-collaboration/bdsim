@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analysis of Thin Target Products &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=106dc6df"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Collimation" href="../worked_example_collimation/worked_example_collimation.html" />
+    <link rel="prev" title="Histograms in Python" href="../basic_example_python_histograms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BDSIM
+              <img src="../_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfacing.html">Interfacing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples &amp; Tests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#worked-examples">Worked Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Analysis of Thin Target Products</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#topics-covered">Topics Covered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contents">Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-description">Model Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-data">Generating Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#questions-answered">Questions Answered</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_collimation/worked_example_collimation.html">Collimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_atf2.html">Accelerator Test Facility 2 - KEK, Japan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_trajectories/worked_example_trajectories1.html">Trajectory Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_custom_analysis/worked_example_custom_analysis.html">Custom Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_no_accelerator/worked_example_no_accelerator.html">No Accelerator Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_model_model/model-model-single-pass.html">Model Model - Single Pass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_machine_diagram/worked_example_machine_diagram.html">Machine Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#specific-machines">Specific Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples &amp; Tests</a></li>
+      <li class="breadcrumb-item active">Analysis of Thin Target Products</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/worked_example_target/worked_example_target.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="analysis-of-thin-target-products">
+<span id="example-worked-target"></span><h1>Analysis of Thin Target Products<a class="headerlink" href="#analysis-of-thin-target-products" title="Link to this heading"></a></h1>
+<section id="topics-covered">
+<h2>Topics Covered<a class="headerlink" href="#topics-covered" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Write a simple model from scratch</p></li>
+<li><p>Generate data</p></li>
+<li><p>Analyse beam loss fraction</p></li>
+<li><p>Make particle spectra</p></li>
+<li><p>Use bdsim, rebdsim, pybdsim</p></li>
+<li><p>Based on <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/target/target-p-cu.gmad</span></code></p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/target-p-cu-10events.png"><img alt="../_images/target-p-cu-10events.png" src="../_images/target-p-cu-10events.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#preparation">Preparation</a></p></li>
+<li><p><a class="reference internal" href="#model-description">Model Description</a></p></li>
+<li><p><a class="reference internal" href="#generating-data">Generating Data</a></p></li>
+<li><p><a class="reference internal" href="#questions-answered">Questions Answered</a></p></li>
+</ul>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>BDSIM has been compiled and installed.</p></li>
+<li><p>The (DY)LD_LIBRARY_PATH and ROOT_INCLUDE_PATH environmental variables are set as
+described in <a class="reference internal" href="../output_analysis.html#output-analysis-setup"><span class="std std-ref">Setup</span></a>.</p></li>
+<li><p>ROOT can be imported in Python</p></li>
+<li><p><cite>pybdsim</cite> has been installed.</p></li>
+</ul>
+</section>
+<section id="model-description">
+<h2>Model Description<a class="headerlink" href="#model-description" title="Link to this heading"></a></h2>
+<p>This example shows a high energy (6.5 TeV) proton beam hitting a
+5cm copper target. This produces a large number of secondary particles.
+This examples illustrates the analysis and understanding of the products
+in an invisible ‘sampler’ plane after the target.</p>
+<p>The model consists of a small 1 cm vacuum pipe followed by a target. The
+solid box of target material is created using the <cite>target</cite> component.
+The width of the target is the default <cite>horizontalWidth</cite> for all elements,
+which is 0.5 m. See <a class="reference internal" href="../model_control.html#options-common"><span class="std std-ref">Common Options</span></a>. The model looks like:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/target-p-cu.png"><img alt="../_images/target-p-cu.png" src="../_images/target-p-cu.png" style="width: 100%;" />
+</a>
+</figure>
+<p>The input files for BDSIM can be found in <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim&gt;/examples/target/</span></code>.</p>
+<ul class="simple">
+<li><p>target-p-cu.gmad - model discussed here</p></li>
+<li><p>target-p-cu-sampler-extras.gmad - same model but with extra sampler output turned on.</p></li>
+<li><p>target-ion-w.gmad - tungsten target and 1 TeV carbon ion beam.</p></li>
+<li><p>target-ion-w-sampler-extras.gmad - similar but with extra sampler output.</p></li>
+</ul>
+<p>The model was prepared by hand as it is quite simple. The input syntax is included
+below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+<span class="n">t1</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">;</span>
+<span class="n">l1</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">t1</span><span class="p">);</span>
+<span class="n">use</span><span class="p">,</span> <span class="n">l1</span><span class="p">;</span>
+
+<span class="n">sample</span><span class="p">,</span> <span class="nb">all</span><span class="p">;</span>
+
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+      <span class="n">energy</span><span class="o">=</span><span class="mf">6.5</span><span class="o">*</span><span class="n">TeV</span><span class="p">;</span>
+
+<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;g4FTFP_BERT&quot;</span><span class="p">,</span>
+        <span class="n">defaultRangeCut</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+
+<span class="n">option</span><span class="p">,</span> <span class="n">ngenerate</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+        <span class="n">elossHistoBinWidth</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>First we define the beam line elements we want and then the line (sequence) of the them.
+The <code class="code docutils literal notranslate"><span class="pre">use</span></code> command specifies which line to use. <code class="code docutils literal notranslate"><span class="pre">sample,</span> <span class="pre">all;</span></code> tells BDSIM
+to put a <cite>sampler</cite> after each element. A sampler is an invisible 1 nm long plane that is
+5 m wide by default that records the passage of any particle in any direction through it
+(so both forwards and backwards). We then specify a beam, the physics processes to use
+and some options.</p>
+<p>Here we use a Geant4 reference physics list <code class="code docutils literal notranslate"><span class="pre">g4FTFP_BERT</span></code> that is a standard high
+energy physics list suitable for LHC-like applications. See <a class="reference internal" href="../model_control.html#physics-geant4-lists"><span class="std std-ref">Geant4 Reference Physics Lists</span></a>.</p>
+<p>We choose a default range cut to speed things up a little for the purposes of the example.
+The range cut is roughly a distance a secondary particle would have to travel and survive
+in that material. If it wouldn’t travel this distance, it isn’t produced and the energy
+is recorded at that location. This therefore approximately corresponds to an energy cut
+per particle species per material. This is much more accurate than a general energy cut,
+but care should be taken not to choose a length scale longer than the typical element
+length as you may see discontinuities in energy deposition close to boundaries. The default
+in Geant4 is 1 mm that roughly corresponds to ~keV energies for most particles.</p>
+<p>Specifying a seed allows the user to reproduce the simulation exactly that’s demonstrated
+here.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">elossHistoBinWidth</span></code> option specifies the binning along the beam line for the
+default energy deposition (“eloss”) histogram that’s created as BDSIM runs. The default
+is 1 m as BDSIM is typically used for large accelerators. In this case, our whole model
+would fit in one bin, which wouldn’t be so interesting. Therefore, we specify a smaller
+bin width.  See <a class="reference internal" href="../model_control.html#options-common"><span class="std std-ref">Common Options</span></a>.</p>
+</section>
+<section id="generating-data">
+<h2>Generating Data<a class="headerlink" href="#generating-data" title="Link to this heading"></a></h2>
+<p>Here, we generate a sample of data to be analysed. Run BDSIM with the input model and
+specify a number of events (i.e. number of primary beam particles) to simulate. We also
+specify what we want the output data file to be called.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">target</span><span class="o">-</span><span class="n">p</span><span class="o">-</span><span class="n">cu</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">data1</span> <span class="o">--</span><span class="n">batch</span> <span class="o">--</span><span class="n">ngenerate</span><span class="o">=</span><span class="mi">200</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">--batch</span></code> option means that no visualiser is used and the events are simulated
+and BDSIM finishes.</p>
+<p>This creates an output ROOT file called <cite>data1.root</cite>. On the developer’s laptop, this
+took approximately 35 seconds to run in total.</p>
+<p>The model can also be run interactively, but given the large number of secondary particles
+it is advisable to run a low number of events e.g. 1 to 10. In this case you would run
+BDSIM as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">target</span><span class="o">-</span><span class="n">p</span><span class="o">-</span><span class="n">cu</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="n">data1</span>
+</pre></div>
+</div>
+<p>Once the visualiser starts, enter the following command in the session terminal prompt
+at the bottom. (see <a class="reference internal" href="../running.html#running-interactively"><span class="std std-ref">Interactively</span></a>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">beamOn</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>A visualisation of 10 events can be seen at the beginning of this example.</p>
+<p>Some of the terminal print out (which is kept to be as minimal as possible in BDSIM) is
+worth noting. The beam print out shows the kinematics of the beam particle chosen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Design</span> <span class="n">particle</span> <span class="n">properties</span><span class="p">:</span>
+<span class="n">Particle</span><span class="p">:</span>       <span class="s2">&quot;proton&quot;</span>
+<span class="n">Mass</span><span class="p">:</span>            <span class="mf">0.938272</span> <span class="n">GeV</span>
+<span class="n">Charge</span><span class="p">:</span>          <span class="mi">1</span> <span class="n">e</span>
+<span class="n">Total</span> <span class="n">Energy</span><span class="p">:</span>    <span class="mi">6500</span> <span class="n">GeV</span>
+<span class="n">Kinetic</span> <span class="n">Energy</span><span class="p">:</span>  <span class="mf">6499.06</span> <span class="n">GeV</span>
+<span class="n">Momentum</span><span class="p">:</span>        <span class="mi">6500</span> <span class="n">GeV</span>
+<span class="n">Gamma</span><span class="p">:</span>           <span class="mf">6927.63</span>
+<span class="n">Beta</span><span class="p">:</span>            <span class="mi">1</span>
+<span class="n">Rigidity</span> <span class="p">(</span><span class="n">Brho</span><span class="p">):</span> <span class="mf">21681.7</span> <span class="n">T</span><span class="o">*</span><span class="n">m</span>
+</pre></div>
+</div>
+<p>There is then a large print out of physics processes from Geant4. However, at the end
+a “Table of Registered Couples” is of interest. This indicates the range cuts for basic
+particle types and the corresponding energies calculated. These energies do not vary
+linearly with range. We can use this as an idea of the approximate energy scale.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=========</span> <span class="n">Table</span> <span class="n">of</span> <span class="n">registered</span> <span class="n">couples</span> <span class="o">==============================</span>
+
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">0</span>     <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">geometry</span> <span class="p">:</span> <span class="n">Yes</span>
+ <span class="n">Material</span> <span class="p">:</span> <span class="n">G4_AIR</span>
+ <span class="n">Range</span> <span class="n">cuts</span>        <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">-</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">+</span>  <span class="mi">3</span> <span class="n">cm</span>  <span class="n">proton</span> <span class="mi">3</span> <span class="n">cm</span>
+ <span class="n">Energy</span> <span class="n">thresholds</span> <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">990</span> <span class="n">eV</span>     <span class="n">e</span><span class="o">-</span>  <span class="mf">43.5254</span> <span class="n">keV</span>    <span class="n">e</span><span class="o">+</span>  <span class="mf">43.2339</span> <span class="n">keV</span> <span class="n">proton</span> <span class="mi">3</span> <span class="n">MeV</span>
+ <span class="n">Region</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">which</span> <span class="n">use</span> <span class="n">this</span> <span class="n">couple</span> <span class="p">:</span>
+    <span class="n">DefaultRegionForTheWorld</span>
+
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">1</span>     <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">geometry</span> <span class="p">:</span> <span class="n">Yes</span>
+ <span class="n">Material</span> <span class="p">:</span> <span class="n">G4_Galactic</span>
+ <span class="n">Range</span> <span class="n">cuts</span>        <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">-</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">+</span>  <span class="mi">3</span> <span class="n">cm</span>  <span class="n">proton</span> <span class="mi">3</span> <span class="n">cm</span>
+ <span class="n">Energy</span> <span class="n">thresholds</span> <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">990</span> <span class="n">eV</span>     <span class="n">e</span><span class="o">-</span>  <span class="mi">990</span> <span class="n">eV</span>     <span class="n">e</span><span class="o">+</span>  <span class="mi">990</span> <span class="n">eV</span>  <span class="n">proton</span> <span class="mi">3</span> <span class="n">MeV</span>
+ <span class="n">Region</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">which</span> <span class="n">use</span> <span class="n">this</span> <span class="n">couple</span> <span class="p">:</span>
+    <span class="n">DefaultRegionForTheWorld</span>
+
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">2</span>     <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">geometry</span> <span class="p">:</span> <span class="n">Yes</span>
+ <span class="n">Material</span> <span class="p">:</span> <span class="n">vacuum</span>
+ <span class="n">Range</span> <span class="n">cuts</span>        <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">-</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">+</span>  <span class="mi">3</span> <span class="n">cm</span>  <span class="n">proton</span> <span class="mi">3</span> <span class="n">cm</span>
+ <span class="n">Energy</span> <span class="n">thresholds</span> <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">990</span> <span class="n">eV</span>     <span class="n">e</span><span class="o">-</span>  <span class="mi">990</span> <span class="n">eV</span>     <span class="n">e</span><span class="o">+</span>  <span class="mi">990</span> <span class="n">eV</span>  <span class="n">proton</span> <span class="mi">3</span> <span class="n">MeV</span>
+ <span class="n">Region</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">which</span> <span class="n">use</span> <span class="n">this</span> <span class="n">couple</span> <span class="p">:</span>
+    <span class="n">DefaultRegionForTheWorld</span>
+
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">3</span>     <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">geometry</span> <span class="p">:</span> <span class="n">Yes</span>
+ <span class="n">Material</span> <span class="p">:</span> <span class="n">stainlesssteel</span>
+ <span class="n">Range</span> <span class="n">cuts</span>        <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">-</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">+</span>  <span class="mi">3</span> <span class="n">cm</span>  <span class="n">proton</span> <span class="mi">3</span> <span class="n">cm</span>
+ <span class="n">Energy</span> <span class="n">thresholds</span> <span class="p">:</span>  <span class="n">gamma</span>  <span class="mf">109.289</span> <span class="n">keV</span>    <span class="n">e</span><span class="o">-</span>  <span class="mf">46.8866</span> <span class="n">MeV</span>    <span class="n">e</span><span class="o">+</span>  <span class="mf">43.5457</span> <span class="n">MeV</span> <span class="n">proton</span> <span class="mi">3</span> <span class="n">MeV</span>
+ <span class="n">Region</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">which</span> <span class="n">use</span> <span class="n">this</span> <span class="n">couple</span> <span class="p">:</span>
+    <span class="n">DefaultRegionForTheWorld</span>
+
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">4</span>     <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">geometry</span> <span class="p">:</span> <span class="n">Yes</span>
+ <span class="n">Material</span> <span class="p">:</span> <span class="n">G4_Cu</span>
+ <span class="n">Range</span> <span class="n">cuts</span>        <span class="p">:</span>  <span class="n">gamma</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">-</span>  <span class="mi">3</span> <span class="n">cm</span>     <span class="n">e</span><span class="o">+</span>  <span class="mi">3</span> <span class="n">cm</span>  <span class="n">proton</span> <span class="mi">3</span> <span class="n">cm</span>
+ <span class="n">Energy</span> <span class="n">thresholds</span> <span class="p">:</span>  <span class="n">gamma</span>  <span class="mf">128.416</span> <span class="n">keV</span>    <span class="n">e</span><span class="o">-</span>  <span class="mf">52.2089</span> <span class="n">MeV</span>    <span class="n">e</span><span class="o">+</span>  <span class="mf">48.4888</span> <span class="n">MeV</span> <span class="n">proton</span> <span class="mi">3</span> <span class="n">MeV</span>
+ <span class="n">Region</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">which</span> <span class="n">use</span> <span class="n">this</span> <span class="n">couple</span> <span class="p">:</span>
+    <span class="n">DefaultRegionForTheWorld</span>
+
+<span class="o">====================================================================</span>
+</pre></div>
+</div>
+</section>
+<section id="questions-answered">
+<h2>Questions Answered<a class="headerlink" href="#questions-answered" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#question-1">Question 1</a> What fraction of the beam makes it through the target?</p></li>
+<li><p><a class="reference internal" href="#question-2">Question 2</a> What spectrum of particles comes out after the target?</p></li>
+<li><p><a class="reference internal" href="#question-3">Question 3</a> How much energy is reflected backwards from the target?</p></li>
+</ul>
+</div></blockquote>
+<section id="question-1">
+<h3>Question 1<a class="headerlink" href="#question-1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>What fraction of the beam makes it through the target?</p></li>
+</ul>
+<p>Here we want to know the fraction of primary particles after the target. To do this we look
+at the data recorded in the sampler after the target. The target was called “t1” in the
+input so there will be a sampler structure in the Event tree of the output called “t1”.</p>
+<p>To get this answer we can make a histogram using rebdsim. This may seem an unintuitive
+approach but it includes all the correct event averaging and uncertainty calculations.</p>
+<p>To analyse data and make histograms using rebdsim we use an analysis configuration text
+file. We start, as always, by copying an example from BDSIM that can be found in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">features</span><span class="o">/</span><span class="n">analysis</span><span class="o">/</span><span class="n">perEntryHistograms</span><span class="o">/</span><span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>We histogram any value of any particle recorded in the sampler in a 1 bin histogram
+with the filter (“selection”) that only primary particles are filled. The default
+histogramming is per event, i.e. normalised to the number of events. Below are two
+possible ways to achieve the same answer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram1D</span>   <span class="n">Event</span><span class="o">.</span> <span class="n">Q1PrimaryFraction</span>   <span class="p">{</span><span class="mi">2</span><span class="p">}</span>  <span class="p">{</span><span class="o">-</span><span class="mf">0.5</span><span class="p">:</span><span class="mf">1.5</span><span class="p">}</span> <span class="n">t1</span><span class="o">.</span><span class="n">parentID</span><span class="o">==</span><span class="mi">0</span> <span class="n">t1</span><span class="o">.</span><span class="n">parentID</span><span class="o">==</span><span class="mi">0</span>
+<span class="n">Histogram1D</span>   <span class="n">Event</span><span class="o">.</span> <span class="n">Q1PrimaryFraction2</span>  <span class="p">{</span><span class="mi">1</span><span class="p">}</span>  <span class="p">{</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>     <span class="n">t1</span><span class="o">.</span><span class="n">x</span>           <span class="n">t1</span><span class="o">.</span><span class="n">parentID</span><span class="o">==</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>This file for this example is provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/target/analysisConfig.txt</span></code>. We
+run rebdsim with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">data1</span><span class="o">.</span><span class="n">root</span> <span class="n">data1</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>This produces an output ROOT file called <cite>data1-analysis.root</cite> that contains the desired
+histograms.</p>
+<p>The first histograms a Boolean of whether the parentID (the track ID of the particle that
+created that one) is 0 or not. Only primary particles have <code class="code docutils literal notranslate"><span class="pre">parentID==0</span></code> as they have
+no parent. This will happen for every particle recorded in the sampler including secondaries.
+We therefore add a “selection” (a filter) to only bin the particles where their parentID is 0.
+The Boolean will become a number when binned so it can either be a 0 or a 1. We choose histogram
+bins from 0.5 to 1.5 with two bins so that the centres are inside the bins.</p>
+<p>This will produce a histogram with two bins centred on 0 and 1. The value of the second bin
+centred on 1 is the answer.</p>
+<p>A second way is to histogram any one coordinate and apply the same filter of primaries only.
+In the above code we declare a 1 bin 1D histogram from -2 to +2 m to cover all values of x.
+The histogram contains one bin with the mean number of primaries per event that go through
+the sampler.</p>
+<p>We can extract this number easily with pybdsim. In iPython (or Python):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;data1-analysis.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
+<span class="go">{&#39;Event/MergedHistograms/ElossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x129b37ad0&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/ElossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x129b37a10&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PhitsHisto&#39;: &lt;pybdsim.Data.TH1 at 0x129b37a50&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PhitsPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x129b2a890&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PlossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x129b37990&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PlossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x129b37890&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/Q1PrimaryFraction&#39;: &lt;pybdsim.Data.TH1 at 0x129b25790&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/Q2PrimaryFraction2&#39;: &lt;pybdsim.Data.TH1 at 0x129ac0410&gt;}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q1ha</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/Q1PrimaryFraction&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">q1ha</span><span class="p">)</span>
+<span class="go">&lt;pybdsim.Data.TH1 at 0x129b25790&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q1ha</span><span class="o">.</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span>
+<span class="go">            q1ha.contents   q1ha.hist       q1ha.title      q1ha.xlabel     q1ha.xunderflow</span>
+<span class="go">            q1ha.entries    q1ha.name       q1ha.xcentres   q1ha.xlowedge   q1ha.xwidths</span>
+<span class="go">            q1ha.errors     q1ha.nbinsx     q1ha.xhighedge  q1ha.xoverflow  q1ha.ylabel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q1ha</span><span class="o">.</span><span class="n">contents</span>
+<span class="go">array([0.   , 0.755])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q1ha</span><span class="o">.</span><span class="n">errors</span>
+<span class="go">array([0.        , 0.03048807])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q1hb</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/Q1PrimaryFraction2&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q1hb</span><span class="o">.</span><span class="n">contents</span>
+<span class="go">array([0.755])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q1ha</span><span class="o">.</span><span class="n">errors</span>
+<span class="go">array([0.03048807])</span>
+</pre></div>
+</div>
+<p>So here we see two ways to find the answer of <span class="math notranslate nohighlight">\(0.755 \pm 0.031\)</span> of the proton beam
+goes through remaining an intact proton. Note, this doesn’t say whether it interacted or
+not, but just whether the primary made it through intact. If the proton had disintegrated
+then it would not be a primary anymore.</p>
+</section>
+<section id="question-2">
+<h3>Question 2<a class="headerlink" href="#question-2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>What spectrum of particles comes out after the target?</p></li>
+</ul>
+<p>The ideal plot here would be histograms of different particle species for different
+energies, i.e. a line for each particle type. To do this, we again histogram the
+particles recorded in the sampler after the target. We histogram the energy for
+each particle species. The following analysis is used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2All</span>               <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2ProtonsPrimary</span>    <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2212</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">parentID</span><span class="o">==</span><span class="mi">0</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2ProtonsSecondary</span>  <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2212</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">parentID</span><span class="o">&gt;</span><span class="mi">0</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2PiPlusMinus</span>       <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="nb">abs</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="p">)</span><span class="o">==</span><span class="mi">211</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2PiZero</span>            <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">111</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2Electrons</span>         <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">11</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2Positrons</span>         <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==-</span><span class="mi">11</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2Gammas</span>            <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">22</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2Muons</span>             <span class="p">{</span><span class="mi">130</span><span class="p">}</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">6500</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="nb">abs</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="p">)</span><span class="o">==</span><span class="mi">13</span>
+</pre></div>
+</div>
+<p>The particle IDs are the Particle Data Group IDs that can be found online at
+<a class="reference external" href="https://pdg.lbl.gov/2021/web/viewer.html?file=%2F2021/reviews/rpp2020-rev-monte-carlo-numbering.pdf">https://pdg.lbl.gov/2021/web/viewer.html?file=%2F2021/reviews/rpp2020-rev-monte-carlo-numbering.pdf</a>.</p>
+<p>After the target there is air as this is the default <cite>worldMaterial</cite> (see
+<a class="reference internal" href="../model_control.html#options-common"><span class="std std-ref">Common Options</span></a>). Potentially, a (likely secondary) particle could
+bounce back off of the air and go through the sampler before hitting the
+target again. We could change to the world material option to vacuum
+(<code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">worldMaterial=&quot;G4_Galactic&quot;;</span></code>) to avoid this or add the
+filter of the z component of the momentum is
+positive - i.e. forwards travelling. This is why we have <code class="code docutils literal notranslate"><span class="pre">t1.zp&gt;0</span></code>
+in all of the selections above. We can quickly check if there are any backwards
+going particles at all by inspecting the data in a ROOT TBrowser (see
+<a class="reference internal" href="../output.html#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a>). Below is a screenshot of ROOT.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/target-q2-backwards-going.png"><img alt="../_images/target-q2-backwards-going.png" src="../_images/target-q2-backwards-going.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Component of unit momentum recorded in sampler after target. Positive equates
+to forward going and negative to backwards going. Total number of particles
+across all particles in all events in the data.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>There are indeed some, although only a small fraction. This is for all particles across
+all events. We therefore use the filter to get the correct answer.</p>
+<p>This file for this example is provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/target/analysisConfig.txt</span></code>. We
+run rebdsim with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">data1</span><span class="o">.</span><span class="n">root</span> <span class="n">data1</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>We can then load and plot the data in iPython (or Python) using pybdsim. Below is the
+example Python code used to generate the plots here and this is included with this
+example as <code class="code docutils literal notranslate"><span class="pre">plotSpectra.py</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">PlotSpectra</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">outputfilename</span><span class="o">=</span><span class="s1">&#39;spectra&#39;</span><span class="p">,</span> <span class="n">xlog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="n">keyLabels</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;All&quot;</span><span class="p">,</span>              <span class="s2">&quot;All&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;ProtonsPrimary&quot;</span><span class="p">,</span>   <span class="s2">&quot;p (primary)&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;ProtonsSecondary&quot;</span><span class="p">,</span> <span class="s2">&quot;p (secondary)&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;Neutrons&quot;</span><span class="p">,</span>         <span class="s2">&quot;n&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;PiPlusMinus&quot;</span><span class="p">,</span>      <span class="s2">&quot;$\pi^{\pm}$&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;PiZero&quot;</span><span class="p">,</span>           <span class="s2">&quot;$\pi^</span><span class="si">{0}</span><span class="s2">$&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;Electrons&quot;</span><span class="p">,</span>        <span class="s2">&quot;e$^{-}$&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;Positrons&quot;</span><span class="p">,</span>        <span class="s2">&quot;e$^{+}$&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;Gammas&quot;</span><span class="p">,</span>           <span class="s2">&quot;$\gamma$&quot;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s2">&quot;Muons&quot;</span><span class="p">,</span>            <span class="s2">&quot;$\mu^{\pm}$&quot;</span><span class="p">)]</span>
+
+    <span class="n">logString</span> <span class="o">=</span> <span class="s2">&quot;Log&quot;</span> <span class="k">if</span> <span class="n">xlog</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">histograms</span> <span class="o">=</span> <span class="p">[</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s2">&quot;Event/PerEntryHistograms/Q2&quot;</span><span class="o">+</span><span class="n">logString</span><span class="o">+</span><span class="n">keyLabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">]</span> <span class="k">for</span> <span class="n">keyLabel</span> <span class="ow">in</span> <span class="n">keyLabels</span> <span class="p">]</span>
+    <span class="n">labels</span>     <span class="o">=</span> <span class="p">[</span><span class="n">kl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">kl</span> <span class="ow">in</span> <span class="n">keyLabels</span><span class="p">]</span>
+    <span class="n">xlabel</span>     <span class="o">=</span> <span class="s2">&quot;Total Particle Energy (GeV)&quot;</span>
+    <span class="n">ylabel</span>     <span class="o">=</span> <span class="s2">&quot;Number / Proton / &quot;</span>
+    <span class="n">binWidth</span>   <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s2">&quot;Event/PerEntryHistograms/Q2&quot;</span><span class="o">+</span><span class="n">logString</span><span class="o">+</span><span class="s2">&quot;All&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">xwidths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ylabel</span>     <span class="o">+=</span> <span class="s2">&quot;dlog(E) GeV&quot;</span> <span class="k">if</span> <span class="n">xlog</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">binWidth</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; GeV&quot;</span>
+
+    <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram1DMultiple</span><span class="p">(</span><span class="n">histograms</span><span class="p">,</span>
+                                     <span class="n">labels</span><span class="p">,</span>
+                                     <span class="n">log</span><span class="o">=</span><span class="n">ylog</span><span class="p">,</span>
+                                     <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span>
+                                     <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span>
+                                     <span class="n">legendKwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="s1">&#39;small&#39;</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">xlog</span><span class="p">:</span>
+        <span class="n">_plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">1e1</span><span class="p">,</span><span class="mf">1e4</span><span class="p">)</span>
+        <span class="n">_plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">6600</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">outputfilename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.pdf&quot;</span><span class="p">):</span>
+        <span class="n">outputfilename</span> <span class="o">+=</span> <span class="s2">&quot;.pdf&quot;</span>
+    <span class="n">_plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">outputfilename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can use this as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">plotSpectra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plotSpectra</span><span class="o">.</span><span class="n">PlotSpectra</span><span class="p">(</span><span class="s1">&#39;data1-analysis.root&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This produces the following plot.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/target-q2-spectra.pdf"><img alt="../_images/target-q2-spectra.pdf" src="../_images/target-q2-spectra.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Spectra of particles for 200 events through a 5cm target of copper.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This doesn’t look so informative at first glance. We can generate more statistics but we can
+also make a logarithmically binned plot. We add more lines to the analysisConfig.txt for
+rebdsim. See <a class="reference internal" href="../output_analysis.html#output-analysis-configuration-file"><span class="std std-ref">Histograms</span></a> for more details. Here are the lines
+we add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogAll</span>              <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogProtonsPrimary</span>   <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2212</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">parentID</span><span class="o">==</span><span class="mi">0</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogProtonsSecondary</span> <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2212</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">parentID</span><span class="o">&gt;</span><span class="mi">0</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogNeutrons</span>         <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2112</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogPiPlusMinus</span>      <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="nb">abs</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="p">)</span><span class="o">==</span><span class="mi">211</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogPiZero</span>           <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">111</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogElectrons</span>        <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">11</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogPositrons</span>        <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==-</span><span class="mi">11</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogGammas</span>           <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">22</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span><span class="o">.</span>  <span class="n">Q2LogMuons</span>            <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">3.82</span><span class="p">}</span>  <span class="n">t1</span><span class="o">.</span><span class="n">energy</span>  <span class="n">t1</span><span class="o">.</span><span class="n">zp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="nb">abs</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">partID</span><span class="p">)</span><span class="o">==</span><span class="mi">13</span>
+</pre></div>
+</div>
+<p>We use the above plotting script in Python to make a logarithmically binned plot:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">plotSpectra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plotSpectra</span><span class="o">.</span><span class="n">PlotSpectra</span><span class="p">(</span><span class="s1">&#39;data1-analysis.root&#39;</span><span class="p">,</span> <span class="n">xlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This produces the following figure.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/target-q2-spectra-log.pdf"><img alt="../_images/target-q2-spectra-log.pdf" src="../_images/target-q2-spectra-log.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Spectra of particles for 200 events through a 5cm target of copper.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This is more informative but still we are lacking statistics. Given the first generation
+of data took less than a minute, we can run more, reanalyse the new data using rebdsim
+and make new plots. Below are such plots for 10000 events. On the developer’s computer this
+took 35 minutes to run.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/target-q2-spectra-10k.pdf"><img alt="../_images/target-q2-spectra-10k.pdf" src="../_images/target-q2-spectra-10k.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Spectra of particles for 10000 events through a 5cm target of copper.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/target-q2-spectra-10k-log.pdf"><img alt="../_images/target-q2-spectra-10k-log.pdf" src="../_images/target-q2-spectra-10k-log.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Spectra of particles for 10000 events through a 5cm target of copper.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The more histograms we add and the more filters we add, the slower the analysis will
+be. The analysis is actually very efficient for what it does. If the analysis
+becomes too long running, consider generating separate data files and analysing
+them separately, then combining the resultant histograms. For further details,
+see <a class="reference internal" href="../output_analysis.html#output-analysis-scaling-up"><span class="std std-ref">Scaling Up - Parallelising Analysis</span></a> and <a class="reference internal" href="../output_analysis.html#output-analysis-efficiency"><span class="std std-ref">Data Workflows - Speed &amp; Efficiency</span></a>.</p>
+</div>
+<p>This running time could be easily reduced by introducing a kinetic energy cut. We must
+acknowledge though that introduces some level of inaccuracy as we artificially stop
+particles below this kinetic energy so the ultimate energy deposition location will be
+different.  Given the very high initial energy, we could choose a cut of 1 GeV by adding
+the following to the input GMAD file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">minimumKineticEnergy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This reduces the run time on the developer’s computer for 10000 events from 35 minutes
+to 5 minutes.</p>
+</section>
+<section id="question-3">
+<h3>Question 3<a class="headerlink" href="#question-3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>How much energy is reflected backwards from the target?</p></li>
+</ul>
+<p>Our sampler attached to the target is actually after the target. Samplers are only
+ever after an element, so we prepared the model with a drift on the front. If
+we really didn’t want to see the effect of scattering or energy deposition in the
+beam pipe, we could set the <code class="code docutils literal notranslate"><span class="pre">apertureType=&quot;circularvacuum&quot;</span></code> and
+<code class="code docutils literal notranslate"><span class="pre">vacuumMaterial=&quot;air&quot;</span></code> to set the material to air so it’s consistent with
+the surroundings. However, here we don’t mind. The <code class="code docutils literal notranslate"><span class="pre">sample,</span> <span class="pre">all;</span></code> command
+means the drift will have a sampler at the end of it, so before the target. The
+sampler name will be the name of the drift, “d1”.</p>
+<p>We therefore bin any variable on this sampler with the selection of backwards going
+and weight by the energy. The histogram definition is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram1D</span> <span class="n">Event</span><span class="o">.</span> <span class="n">Q3BackwardsEnergy</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span> <span class="p">{</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span> <span class="n">d1</span><span class="o">.</span><span class="n">x</span>  <span class="n">d1</span><span class="o">.</span><span class="n">energy</span><span class="o">*</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">zp</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The weighting by energy means that each entry will be filled with the energy instead
+of the count 1. The Boolean filter becomes a number in ROOT and is either 1 or 0.</p>
+<p>This file for this example is provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/target/analysisConfig.txt</span></code>. We
+run rebdsim with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">data1</span><span class="o">.</span><span class="n">root</span> <span class="n">data1</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>We inspect the histogram in pybdsim to get the value of the one bin.  In iPython:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;data1-analysis.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/Q3BackwardsEnergy&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">contents</span>
+<span class="go">array([32.364])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">errors</span>
+<span class="go">array([1.44402409])</span>
+</pre></div>
+</div>
+<p>Therefore, we see that there is on average <span class="math notranslate nohighlight">\(32.364 \pm 1.444\)</span> GeV reflected backwards
+per event, i.e. per 6.5 TeV proton hitting the target. This value was based on a sample of
+3000 events.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../basic_example_python_histograms.html" class="btn btn-neutral float-left" title="Histograms in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../worked_example_collimation/worked_example_collimation.html" class="btn btn-neutral float-right" title="Collimation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

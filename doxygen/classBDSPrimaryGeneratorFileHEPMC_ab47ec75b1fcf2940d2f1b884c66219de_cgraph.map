@@ -1,0 +1,52 @@
+<map id="BDSPrimaryGeneratorFileHEPMC::GeneratePrimaryVertex" name="BDSPrimaryGeneratorFileHEPMC::GeneratePrimaryVertex">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,519,240,559"/>
+<area shape="rect" id="Node000002" href="$classBDSPrimaryGeneratorFileHEPMC.html#ad8f75badab82a6de22276cffe767393a" title="Conversion from HepMC::GenEvent to G4Event." alt="" coords="288,395,523,435"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,517,345,439,347,444,171,522"/>
+<area shape="rect" id="Node000021" href="$classBDSPrimaryGeneratorFileHEPMC.html#a816472fb0a4d1de9ca36aa6f437391ac" title=" " alt="" coords="288,583,523,623"/>
+<area shape="poly" id="edge21_Node000001_Node000021" title=" " alt="" coords="212,557,304,578,303,583,211,562"/>
+<area shape="rect" id="Node000003" href="$classBDSBunchEventGenerator.html#af39d29bad3f81e44df4ef5e16fa30e61" title=" " alt="" coords="593,157,783,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,393,569,269,649,203,653,207,572,273,431,397"/>
+<area shape="rect" id="Node000006" href="$classBDSBunch.html#a3f15d3538dbad380e88f47cb64cf1ed5" title=" " alt="" coords="589,284,787,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="453,393,643,312,645,317,455,398"/>
+<area shape="rect" id="Node000017" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="1481,376,1585,401"/>
+<area shape="poly" id="edge19_Node000002_Node000017" title=" " alt="" coords="523,410,571,409,1467,388,1467,393,571,414,523,415"/>
+<area shape="rect" id="Node000019" href="$classBDSBunch.html#a8701b12f50b53afdf2450163a327090e" title=" " alt="" coords="589,423,787,463"/>
+<area shape="poly" id="edge18_Node000002_Node000019" title=" " alt="" coords="523,424,575,430,575,435,523,430"/>
+<area shape="rect" id="Node000020" href="$classBDSPrimaryGeneratorFile.html#a6c51b8150d703b54bd4bc27b7334d463" title="Utility function for derived classes to check a position is inside the world." alt="" coords="594,487,782,527"/>
+<area shape="poly" id="edge20_Node000002_Node000020" title=" " alt="" coords="459,433,572,473,598,481,596,486,570,478,457,438"/>
+<area shape="rect" id="Node000004" href="$classBDSBunchEventGenerator.html#a77851eda36099105d68707aa28fc094f" title=" " alt="" coords="867,126,1062,166"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="783,163,853,156,854,161,784,169"/>
+<area shape="rect" id="Node000005" href="$namespaceBDS.html#a246ba41aac65469c8dd13d1362f70bbe" title=" " alt="" coords="1151,132,1343,157"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1062,143,1137,143,1137,148,1062,148"/>
+<area shape="rect" id="Node000007" href="$classBDSBunch.html#a78ef3af948c93d56a7d7a78206858450" title="Add on the offset in T for the current bunch number (i*bunchPeriod)." alt="" coords="855,195,1074,220"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="717,281,779,256,853,230,887,221,888,226,854,235,781,261,720,286"/>
+<area shape="rect" id="Node000008" href="$classBDSBunch.html#a02d25c9b2f1c1deb759ba9c73b0b5514" title="Calculate the global coordinates from curvilinear coordinates of a beam line." alt="" coords="862,245,1067,285"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="787,283,848,275,848,281,788,288"/>
+<area shape="rect" id="Node000018" href="$classBDSParticleCoords.html#abe36bf0b2d757f54c28b62d695095e99" title="Apply a transform to the coordinates and return a copy of them transformed." alt="" coords="889,309,1040,349"/>
+<area shape="poly" id="edge17_Node000006_Node000018" title=" " alt="" coords="788,305,876,316,875,321,787,311"/>
+<area shape="rect" id="Node000009" href="$classBDSAcceleratorModel.html#a899da925682f73f7f52a1a88ad25e25c" title="Accessor." alt="" coords="1165,182,1329,222"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1055,242,1151,220,1153,226,1056,247"/>
+<area shape="rect" id="Node000010" href="$classBDSBeamline.html#ad639e6ff494db695d7cfa89fcf1342ac" title=" " alt="" coords="1124,246,1371,286"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1067,262,1110,263,1110,268,1067,268"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamline.html#a81bb1806b0ecbaf6bc263532ac9ade76" title="Return a reference to the element at i." alt="" coords="1467,5,1599,31"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1354,244,1369,232,1385,209,1393,186,1394,163,1392,138,1390,114,1391,90,1399,65,1417,41,1434,29,1453,21,1455,26,1436,34,1421,45,1404,68,1396,91,1395,114,1397,138,1399,162,1398,187,1390,212,1373,236,1357,248"/>
+<area shape="rect" id="Node000012" href="$classBDSAcceleratorComponent.html#a0d3e2aa20a70ec80002cf6b07dee4522" title=" " alt="" coords="1434,55,1633,95"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="1352,244,1369,232,1382,217,1388,202,1392,170,1396,138,1403,121,1417,105,1422,101,1426,105,1421,109,1408,124,1401,139,1397,171,1393,204,1386,220,1372,236,1356,248"/>
+<area shape="rect" id="Node000013" href="$classBDSAcceleratorComponent.html#a71d1d672e8ab445958093f0d7e3441d9" title=" " alt="" coords="1434,119,1633,159"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="1347,244,1369,232,1384,217,1392,202,1401,185,1417,169,1427,163,1430,168,1420,173,1405,188,1397,204,1389,220,1372,236,1350,248"/>
+<area shape="rect" id="Node000014" href="$classBDSAcceleratorComponent.html#a51a731c2a058c4686feb03e65c661afa" title=" " alt="" coords="1434,183,1633,223"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="1339,243,1428,224,1429,229,1340,249"/>
+<area shape="rect" id="Node000015" href="$classBDSBeamline.html#abcc1ef01cad756aa7c10fe01f86fbb83" title="Return the element in this beam line according to a given s coordinate." alt="" coords="1419,247,1648,287"/>
+<area shape="poly" id="edge14_Node000010_Node000015" title=" " alt="" coords="1371,264,1405,264,1405,269,1371,269"/>
+<area shape="rect" id="Node000016" href="$classBDSBeamlineElement.html#afa5d090d4979635b69140d7bda5acd62" title="Accessor." alt="" coords="1451,311,1616,351"/>
+<area shape="poly" id="edge15_Node000010_Node000016" title=" " alt="" coords="1336,283,1438,307,1437,312,1335,289"/>
+<area shape="poly" id="edge16_Node000010_Node000017" title=" " alt="" coords="1279,284,1342,323,1420,361,1468,375,1467,380,1418,366,1339,328,1276,288"/>
+<area shape="rect" id="Node000022" href="$classBDSPrimaryGeneratorFileHEPMC.html#a8cd4e60d1ba55d9e6a521e20df51abdd" title=" " alt="" coords="571,551,805,591"/>
+<area shape="poly" id="edge22_Node000021_Node000022" title=" " alt="" coords="523,587,557,584,557,589,523,593"/>
+<area shape="rect" id="Node000023" href="$classBDSPrimaryGeneratorFile.html#aa2a3d5d2a3a4c78817b667ffb4dc6ffe" title=" " alt="" coords="594,615,782,655"/>
+<area shape="poly" id="edge23_Node000021_Node000023" title=" " alt="" coords="523,614,581,621,580,626,523,619"/>
+<area shape="rect" id="Node000024" href="$classBDSPrimaryGeneratorFileHEPMC.html#ae71c8da4f2f9d84d224651bab078f680" title="Construct the member &quot;reader&quot; and open the file for reading." alt="" coords="571,679,805,719"/>
+<area shape="poly" id="edge24_Node000021_Node000024" title=" " alt="" coords="455,621,572,665,597,673,596,678,570,670,453,626"/>
+<area shape="rect" id="Node000025" href="$classBDSTypeSafeEnum.html#acd3d1ef0055b4af2523b6e05861f8d28" title="return underlying value (can be used in switch statement)" alt="" coords="853,687,1076,712"/>
+<area shape="poly" id="edge25_Node000024_Node000025" title=" " alt="" coords="806,697,839,697,839,702,806,702"/>
+</map>

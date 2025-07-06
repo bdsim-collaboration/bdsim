@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Accelerator Model &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=106dc6df"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Model Model - Single Pass" href="../worked_example_model_model/model-model-single-pass.html" />
+    <link rel="prev" title="Custom Analysis" href="../worked_example_custom_analysis/worked_example_custom_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BDSIM
+              <img src="../_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_analysis.html">Output Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfacing.html">Interfacing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples &amp; Tests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#worked-examples">Worked Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_target/worked_example_target.html">Analysis of Thin Target Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_collimation/worked_example_collimation.html">Collimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_atf2.html">Accelerator Test Facility 2 - KEK, Japan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_trajectories/worked_example_trajectories1.html">Trajectory Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_custom_analysis/worked_example_custom_analysis.html">Custom Analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">No Accelerator Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#topics-covered">Topics Covered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contents">Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#world-geometry-file">World Geometry File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#world-geometry-file-tunnel">World Geometry File - Tunnel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#placement-only-model">Placement Only Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tunnel-preparation">Tunnel Preparation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_model_model/model-model-single-pass.html">Model Model - Single Pass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../worked_example_machine_diagram/worked_example_machine_diagram.html">Machine Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#specific-machines">Specific Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples &amp; Tests</a></li>
+      <li class="breadcrumb-item active">No Accelerator Model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/worked_example_no_accelerator/worked_example_no_accelerator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="no-accelerator-model">
+<h1>No Accelerator Model<a class="headerlink" href="#no-accelerator-model" title="Link to this heading"></a></h1>
+<section id="topics-covered">
+<h2>Topics Covered<a class="headerlink" href="#topics-covered" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Placement of externally provided geometry</p></li>
+<li><p>External source for world geometry</p></li>
+<li><p>Shielding or tunnel placement</p></li>
+<li><p>Based on models in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/no-accelerator</span></code>.</p></li>
+</ul>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#preparation">Preparation</a></p></li>
+<li><p><a class="reference internal" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#world-geometry-file">World Geometry File</a></p></li>
+<li><p><a class="reference internal" href="#world-geometry-file-tunnel">World Geometry File - Tunnel</a></p></li>
+<li><p><a class="reference internal" href="#placement-only-model">Placement Only Model</a></p></li>
+<li><p><a class="reference internal" href="#id1">Tunnel Preparation</a></p></li>
+</ul>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>BDSIM has been compiled and installed - including GDML support.</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>BDSIM is intended to build a 3D Geant4 model of an accelerator.
+It normally creates an empty box of air as the outermost volume
+called the “world” (for the purpose of the simulation).</p>
+<p>Conceptually though, we can use BDSIM as a simple interface
+to Geant4 to try things out relatively quickly. In early versions
+of BDSIM, it was forcibly required to build a beam line but this is
+no longer the case and a model can be made with no geometry or
+only other geometry.</p>
+<p>Two common scenarios are presented:</p>
+<ol class="arabic simple">
+<li><p>Using an external file as the world and all contents</p></li>
+<li><p>Placing one or more external files in a BDSIM-provided world</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If loading a complete piece of geometry as the world it will not
+have any fields, nor the ability to attach a field map. Field maps
+can only be used in accelerator components or <cite>placements</cite> of geometry.</p>
+</div>
+</section>
+<section id="world-geometry-file">
+<h2>World Geometry File<a class="headerlink" href="#world-geometry-file" title="Link to this heading"></a></h2>
+<p>BDSIM can build a model by simply loading a geometry file for the world and building
+no beam line. This will be passive geometry only (i.e. no fields). An example is provided
+in <code class="code docutils literal notranslate"><span class="pre">world.gmad</span></code> and contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+    <span class="n">energy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
+    <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
+    <span class="n">Z0</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+
+<span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:tunnel.gdml&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>A random direction beam is also illustrated as a point-like source of particles in the
+middle of the tunnel geometry (which was placed at +10m from the origin and is 20m long).</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/world.png"><img alt="../_images/world.png" src="../_images/world.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="world-geometry-file-tunnel">
+<h2>World Geometry File - Tunnel<a class="headerlink" href="#world-geometry-file-tunnel" title="Link to this heading"></a></h2>
+<p>Although this example is about not using a beamline, sometimes we do also include one.</p>
+<p>In the case where BDSIM builds a beam line, it first calculates the extent of the beam line
+and any geometry placements and tunnel and creates an empty box big enough to encompass everything.
+Then, all the geometry is finally placed in the world. However, it may be chosen to provide
+a world volume yourself instead of the BDSIM-generated one.</p>
+<p>We can use this as way to easily import tunnel or shielding geometry. A common task
+is to place shielding or a concrete tunnel around a beam line. If we assume the tunnel
+geometry is made in an external geometry package and provided as a GDML file, then we
+would initially think we can simply “place” this in the world with the beam line. However,
+we may cause overlaps that would result in bad tracking and volumes being missed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A convenient tool to prepare simple geometry in GDML is <code class="code docutils literal notranslate"><span class="pre">pyg4ometry</span></code> as
+described in <a class="reference internal" href="../python_utilities.html#python-geometry-preparation"><span class="std std-ref">Geometry Preparation</span></a>. Scripts are provided here
+as a demonstration.</p>
+</div>
+<section id="bad-example">
+<h3>Bad Example<a class="headerlink" href="#bad-example" title="Link to this heading"></a></h3>
+<p>As an example of what can go wrong, we build a beam line then try to place an externally
+provided tunnel geometry over it. Tunnel geometry as described in <a class="reference internal" href="#tunnel-preparation"><span class="std std-ref">Tunnel Preparation</span></a>
+is used - i.e. <code class="code docutils literal notranslate"><span class="pre">tunnel.gdml</span></code>. We build a beam line and then make a placement of this
+geometry where we want the tunnel. Here is the model as contained in the file
+<code class="code docutils literal notranslate"><span class="pre">bad-hierarchy.gmad</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<span class="n">qf1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.4</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">;</span>
+<span class="n">qd1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.4</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">k1</span><span class="o">=-</span><span class="mf">0.01</span><span class="p">;</span>
+<span class="n">l1</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">qf1</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">qd1</span><span class="p">,</span><span class="n">d1</span><span class="p">);</span>
+<span class="n">l2</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">);</span>
+<span class="n">use</span><span class="p">,</span> <span class="n">l2</span><span class="p">;</span>
+
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+      <span class="n">energy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+
+<span class="n">tunnelPlacement</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:tunnel.gdml&quot;</span><span class="p">;</span>
+
+<span class="n">option</span><span class="p">,</span> <span class="n">checkOverlaps</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This is run in bdsim with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">bad</span><span class="o">-</span><span class="n">hierarchy</span><span class="o">.</span><span class="n">gmad</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">none</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When using any geometry not generated by BDSIM, we should always explicitly
+check for overlaps. This is done in 2 ways - with the <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">checkOverlaps=1;</span></code>
+and also interactively in the visualiser with <code class="code docutils literal notranslate"><span class="pre">/geometry/test/run</span></code>.</p>
+</div>
+<p>The geometry is shown below and at first glance seems ok. This is because the material
+air and also the outermost volume of any geometry is made transparent for convenience.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/bad-hierarchy1.png"><img alt="../_images/bad-hierarchy1.png" src="../_images/bad-hierarchy1.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Apparently ok geometry, but actually overlapping. The air volume from the
+tunnel.gdml file is shown in light grey.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/bad-hierarchy2.png"><img alt="../_images/bad-hierarchy2.png" src="../_images/bad-hierarchy2.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Apparently ok geometry, but actually overlapping.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The overlap checking from the option in the input gmad does not give any overlaps for the
+author, which is wrong.  Running the test in the visualiser with the command
+<code class="code docutils literal notranslate"><span class="pre">/geometry/test/run</span></code> shows many overlaps as expected. We expect each beam
+line component to overlap with the container air box of the tunnel geometry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Running geometry overlaps check...
+Checking overlaps for volume d1_0_pv (G4Tubs) ...
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomVol1002
+     issued by : G4PVPlacement::CheckOverlaps()
+     Overlap with volume already placed !
+        Overlap is detected for volume d1_0_pv:0 (G4Tubs)
+        with tunnelPlacmenet_tunnelPlacmenet_container_lv_0_pv:0 (G4Box) volume&#39;s
+        local point (3.18274,-27.3172,251.806), overlapping by at least: 24.7482 m
+NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+</pre></div>
+</div>
+<p>This model is wrong because the tunnel.gdml file is made of a 50 x 50 x 50m box of air with the
+tunnel in it and this air box will overlap with the beam line as it placed at the same
+level in the hierarchy as it even if it doesn’t look like it and it looks like the tunnel
+is fine. This is shown in a sketch of the hierarchy below:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/bad-hierarchy.pdf"><img alt="../_images/bad-hierarchy.pdf" src="../_images/bad-hierarchy.pdf" style="width: 80%;" />
+</a>
+</figure>
+<p>Pieces of geometry at the same level in the hierarchy should not spatially overlap.</p>
+</section>
+<section id="correct-example">
+<h3>Correct Example<a class="headerlink" href="#correct-example" title="Link to this heading"></a></h3>
+<p>To correctly do this, we load the tunnel as the “world” volume for BDSIM. This means
+BDSIM will use this and place the beam line <em>inside</em> it. We just have to ensure that
+the beam line will not touch the concrete part of the tunnel. This is done by design
+and by the placement of the beam line. (See <a class="reference internal" href="../model_control.html#beamline-offset"><span class="std std-ref">Offset for Main Beam Line</span></a> for how to displace
+the beam line from 0,0,0 and in direction 0,0,1). The example is provided in
+<code class="code docutils literal notranslate"><span class="pre">world-tunnel.gmad</span></code> and contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<span class="n">qf1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.4</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">;</span>
+<span class="n">qd1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.4</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">k1</span><span class="o">=-</span><span class="mf">0.01</span><span class="p">;</span>
+<span class="n">l1</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">qf1</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">qd1</span><span class="p">,</span><span class="n">d1</span><span class="p">);</span>
+<span class="n">l2</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">);</span>
+<span class="n">use</span><span class="p">,</span> <span class="n">l2</span><span class="p">;</span>
+
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+      <span class="n">energy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+
+<span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:tunnel.gdml&quot;</span><span class="p">;</span>
+
+<span class="n">option</span><span class="p">,</span> <span class="n">checkOverlaps</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>We check overlaps in both ways (the option and interactively) and we find no
+overlaps as expected! The model is therefore safe to generate physics results from.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/world-tunnel.png"><img alt="../_images/world-tunnel.png" src="../_images/world-tunnel.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Similar geometry but with the tunnel used as a world volume</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="placement-only-model">
+<h2>Placement Only Model<a class="headerlink" href="#placement-only-model" title="Link to this heading"></a></h2>
+<p>We can make placements of geometry and let BDSIM generate a world box sufficiently big
+to encompass each placement. This is shown in the example file <code class="code docutils literal notranslate"><span class="pre">placements-only.gmad</span></code>,
+which contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+      <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">200</span><span class="o">*</span><span class="n">MeV</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">;</span>
+
+<span class="n">b1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:boxofwater.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<span class="n">b2</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:boxofwater.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+
+<span class="n">b3</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:boxofwater.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+    <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">angle</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This places a piece of geometry 3 times in different places. BDSIM generates a world
+volume of air to contain them. The geometry is made in the script <code class="code docutils literal notranslate"><span class="pre">makeboxofwater.py</span></code>
+using pyg4ometry and consists of a 20cm steel width, 1cm thick stainless steel box with
+water inside. A container volume of air (20.2cm wide) is used to contain everything.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/makeboxofwater.png"><img alt="../_images/makeboxofwater.png" src="../_images/makeboxofwater.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Visualisation of the <code class="code docutils literal notranslate"><span class="pre">makeboxofwater.py</span></code> script to create the geometry
+as shown in the VTK visualiser of pyg4ometry.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/placements-only1.png"><img alt="../_images/placements-only1.png" src="../_images/placements-only1.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Visualisation in BDSIM of 3x placements of the same geometry.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/placements-only2.png"><img alt="../_images/placements-only2.png" src="../_images/placements-only2.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Visualisation in BDSIM of 3x placements of the same geometry with the
+steel box made transparent and a set of unit vector axes added with the
+command <code class="code docutils literal notranslate"><span class="pre">/vis/scene/add/axes</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">20</span> <span class="pre">cm</span></code>.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="tunnel-preparation">
+<span id="id1"></span><h2>Tunnel Preparation<a class="headerlink" href="#tunnel-preparation" title="Link to this heading"></a></h2>
+<p>A simple of piece of geometry is created to show a (rough) tunnel. It is provided in the
+script <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/no-accelerator/maketunnel.py</span></code> and uses pyg4ometry.  A few points
+of interest:</p>
+<ul>
+<li><p>we check overlaps with the command <code class="code docutils literal notranslate"><span class="pre">containerLV.checkOverlaps(recursive=True)</span></code> and
+this gives the following print out:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LogicalVolume</span><span class="o">.</span><span class="n">checkOverlaps</span><span class="o">&gt;</span> <span class="n">full</span> <span class="n">daughter</span><span class="o">-</span><span class="n">mother</span> <span class="n">intersection</span> <span class="n">test</span> <span class="n">tunnel_pv</span>
+<span class="n">LogicalVolume</span><span class="o">.</span><span class="n">checkOverlaps</span><span class="o">&gt;</span> <span class="n">full</span> <span class="n">daughter</span><span class="o">-</span><span class="n">mother</span> <span class="n">coplanar</span> <span class="n">test</span> <span class="n">tunnel_pv</span>
+</pre></div>
+</div>
+<p>which means everything is ok - no overlaps detected.</p>
+</li>
+<li><p>the tunnel clearly has the floor piece sticking out of the cylinder - this is fine
+and just for the sake of the simplest geometry to illustrate code features.</p></li>
+</ul>
+<p>The Python script can be run interactively in ipython or just on the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+<span class="o">&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">maketunnel</span>
+<span class="o">&gt;</span> <span class="n">maketunnel</span><span class="o">.</span><span class="n">MakeTunnel</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">maketunnel</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>It will produce an output file called <code class="code docutils literal notranslate"><span class="pre">tunnel.gdml</span></code> that is used in this example.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/tunnel1.png"><img alt="../_images/tunnel1.png" src="../_images/tunnel1.png" style="width: 80%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/tunnel2.png"><img alt="../_images/tunnel2.png" src="../_images/tunnel2.png" style="width: 80%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/tunnel3.png"><img alt="../_images/tunnel3.png" src="../_images/tunnel3.png" style="width: 80%;" />
+</a>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../worked_example_custom_analysis/worked_example_custom_analysis.html" class="btn btn-neutral float-left" title="Custom Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../worked_example_model_model/model-model-single-pass.html" class="btn btn-neutral float-right" title="Model Model - Single Pass" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,1861 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Output Analysis &mdash; BDSIM 1.7.7.develop documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python Utilities" href="python_utilities.html" />
+    <link rel="prev" title="Output" href="output.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BDSIM
+              <img src="_static/bdsim-logo-small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence &amp; Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running BDSIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_syntax.html">Input Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_construction.html">Model Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_control.html">Model Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_customisation.html">Model Customisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_conversion.html">Model Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalgeometry.html">External Geometry Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-recipes">Quick Recipes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inspect-histograms">Inspect Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-energy-deposition-losses">Plot Energy Deposition &amp; Losses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#find-event-number-of-interesting-condition">Find Event Number of Interesting Condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#print-variable-from-data">Print Variable From Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-raw-data">Load Raw Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bdskim-skimming-tool">bdskim - Skimming Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bdsimcombine-combine-bdsim-output-files">bdsimCombine - Combine BDSIM Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rebdsim-general-analysis-tool">rebdsim - General Analysis Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-an-analysis-configuration-file">Preparing an Analysis Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#per-entry-and-simple-histograms">Per-Entry and Simple Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-error-on-the-mean">Standard Error On The Mean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#histograms">Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#histogram-selections">Histogram Selections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectra">Spectra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectra-commands">Spectra Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectra-particle-specification">Spectra Particle Specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logarithmic-binning">Logarithmic Binning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uneven-binning">Uneven Binning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis-configuration-options">Analysis Configuration Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables-in-data">Variables In Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rebdsimcombine-output-combination">rebdsimCombine - Output Combination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rebdsimhistomerge-simple-histogram-merging">rebdsimHistoMerge - Simple Histogram Merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rebdsimoptics-optical-functions">rebdsimOptics - Optical Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rebdsimorbit-orbit-extraction">rebdsimOrbit - Orbit Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-workflows-speed-efficiency">Data Workflows - Speed &amp; Efficiency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#speed-tips">Speed Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scaling-up-parallelising-analysis">Scaling Up - Parallelising Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#low-data-volume">Low-Data Volume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-data-volume">High-Data Volume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raw-data-reduction">Raw Data Reduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#normalisation">Normalisation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#user-analysis">User Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#analysis-in-python">Analysis in Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ipython">IPython</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raw-data-loading">Raw Data Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebdsim-histogram-loading">REBDSIM Histogram Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#looping-over-events">Looping Over Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accumulating-average-histograms">Accumulating - Average Histograms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-rebdsim-file-in-python">Create A REBDSIM File in Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebdsim-in-python">REBDSIM In Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sampler-data">Sampler Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis-in-c-or-root">Analysis in C++ or ROOT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Raw Data Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">REBDSIM Histogram Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Looping Over Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Sampler Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-classes">Output Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-methods">Numerical Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#numerically-stable-calculation-of-mean-variance">Numerically Stable Calculation of Mean &amp; Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merging-histograms">Merging Histograms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_utilities.html">Python Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing.html">Interfacing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples &amp; Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_description.html">Model Description</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BDSIM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Output Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/output_analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="output-analysis">
+<span id="output-analysis-section"></span><h1>Output Analysis<a class="headerlink" href="#output-analysis" title="Link to this heading"></a></h1>
+<p>This section describes how to load, view and analyse data from the recommended output <strong>rootevent</strong>
+format.</p>
+<p>Broadly, there are 2 data formats with BDSIM and its analysis tools. These will be the
+same format, i.e. ROOT files, but will have a different layout. These are:</p>
+<ol class="arabic simple">
+<li><p>BDSIM raw data - the output of a BDSIM run</p></li>
+<li><p>REBDSIM data - the output of various analysis tools containing histograms and optics.</p></li>
+</ol>
+<p>A variety of tools are provided that accommodate several different workflows depending on
+data size versus computation time for analysis. The following tools are provided:</p>
+<blockquote>
+<div></div></blockquote>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Tool</strong></p></th>
+<th class="head"><p><strong>Used on Data Type</strong></p></th>
+<th class="head"><p><strong>Produces as Output</strong></p></th>
+<th class="head"><p><strong>Purpose</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bdskim</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>Filter a raw file to select events</p></td>
+</tr>
+<tr class="row-odd"><td><p>bdsimCombine</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>Combine events from multiple files</p></td>
+</tr>
+<tr class="row-even"><td><p>rebdsim</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>Make histograms of raw data</p></td>
+</tr>
+<tr class="row-odd"><td><p>rebdsimCombine</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>Combine REBDSIM output files
+as if they were done in one run of
+rebdsim</p></td>
+</tr>
+<tr class="row-even"><td><p>rebdsimHistoMerge</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>Merge per-made per event histograms
+in BDSIM raw output (e.g. ELoss)</p></td>
+</tr>
+<tr class="row-odd"><td><p>rebdsimOptics</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>Calculate optical functions from raw
+sampler data</p></td>
+</tr>
+<tr class="row-even"><td><p>rebdsimOrbit</p></td>
+<td><p>BDSIM raw</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>Extract the i-th hit from every
+sampler</p></td>
+</tr>
+</tbody>
+</table>
+<p>These are discussed each in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#bdskim-tool"><span class="std std-ref">bdskim - Skimming Tool</span></a></p></li>
+<li><p><a class="reference internal" href="#bdsim-combine-tool"><span class="std std-ref">bdsimCombine - Combine BDSIM Output Files</span></a></p></li>
+<li><p><a class="reference internal" href="#rebdsim-analysis-tool"><span class="std std-ref">rebdsim - General Analysis Tool</span></a></p></li>
+<li><p><a class="reference internal" href="#rebdsim-combine-tool"><span class="std std-ref">rebdsimCombine - Output Combination</span></a></p></li>
+<li><p><a class="reference internal" href="#rebdsim-histo-merge-tool"><span class="std std-ref">rebdsimHistoMerge - Simple Histogram Merging</span></a></p></li>
+<li><p><a class="reference internal" href="#rebdsim-optics-tool"><span class="std std-ref">rebdsimOptics - Optical Functions</span></a></p></li>
+<li><p><a class="reference internal" href="#rebdsim-orbit-tool"><span class="std std-ref">rebdsimOrbit - Orbit Extraction</span></a></p></li>
+</ul>
+<p>See <a class="reference internal" href="output.html#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a> for how to view the data and make the most basic
+on-the-fly histograms.</p>
+<p>Strategies on the workflow and use of the tools is discussed in <a class="reference internal" href="#output-analysis-efficiency"><span class="std std-ref">Data Workflows - Speed &amp; Efficiency</span></a>.</p>
+<section id="setup">
+<span id="output-analysis-setup"></span><h2>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>BDSIM must be installed after compilation for the analysis tools to function properly.</p></li>
+<li><p>Environmental variables should be set by sourcing <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-install-dir&gt;/bin/bdsim.sh</span></code>.</p></li>
+<li><p>A ROOT logon macro may optionally be written for convenience in loading libraries.</p></li>
+</ol>
+<p>If the setup is correct, you should be able to execute ‘rebdsim’ in the terminal. See
+<a class="reference internal" href="installation.html#installation-building"><span class="std std-ref">Compiling BDSIM</span></a> and <a class="reference internal" href="installation.html#installation-environmental-variables"><span class="std std-ref">Environmental Variables</span></a> for more
+details.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rebdsim_execution.png"><img alt="_images/rebdsim_execution.png" src="_images/rebdsim_execution.png" style="width: 100%;" />
+</a>
+</figure>
+<p>If the analysis will be regularly used interactively, it is worth automating the library
+loading in root by finding and editing the <code class="code docutils literal notranslate"><span class="pre">rootlogon.C</span></code> in your
+<code class="code docutils literal notranslate"><span class="pre">&lt;root-install-dir&gt;/macros/</span></code> directory.  Example text would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Loading rebdsim libraries&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
+  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The file extension is omitted on purpose.</p>
+</div>
+<p>The absolute path is not necessary, as the above environmental variables are used by ROOT
+to find the library.</p>
+</section>
+<section id="quick-recipes">
+<span id="output-analysis-quick-recipes"></span><h2>Quick Recipes<a class="headerlink" href="#quick-recipes" title="Link to this heading"></a></h2>
+<section id="inspect-histograms">
+<h3>Inspect Histograms<a class="headerlink" href="#inspect-histograms" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Run rebdsimHistoMerge on BDSIM output file (quick).</p></li>
+<li><p>Browse output of rebdsimHistoMerge in TBrowser in ROOT.</p></li>
+</ol>
+<p>See <a class="reference internal" href="#rebdsim-histo-merge-tool"><span class="std std-ref">rebdsimHistoMerge - Simple Histogram Merging</span></a> for details.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimHistoMerge</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
+<span class="n">root</span> <span class="o">-</span><span class="n">l</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
+<span class="o">&gt;</span> <span class="n">TBrowser</span> <span class="n">tb</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="plot-energy-deposition-losses">
+<h3>Plot Energy Deposition &amp; Losses<a class="headerlink" href="#plot-energy-deposition-losses" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Run rebdsimHistoMerge on BDSIM output file (quick).</p></li>
+<li><p>Plot in Python using <cite>pybdsim</cite> using dedicated plotting function.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimHistoMerge</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">LossAndEnergyDeposition</span><span class="p">(</span><span class="s2">&quot;results.root&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="find-event-number-of-interesting-condition">
+<h3>Find Event Number of Interesting Condition<a class="headerlink" href="#find-event-number-of-interesting-condition" title="Link to this heading"></a></h3>
+<p>If you want to recreate a specific event to witness it but need the event index.</p>
+<ol class="arabic simple">
+<li><p>Load raw BDSIM output file in ROOT.</p></li>
+<li><p>Get the event tree.</p></li>
+<li><p>Scan with condition.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">-</span><span class="n">l</span> <span class="n">myfile</span><span class="o">.</span><span class="n">root</span>
+<span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">_file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">&quot;Summary.index&quot;</span><span class="p">,</span> <span class="s2">&quot;PrimaryLastHit.S&gt;10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The syntax is <code class="code docutils literal notranslate"><span class="pre">evt-&gt;Scan(&quot;Summary.index&quot;,</span> <span class="pre">&quot;selection&quot;)</span></code>. This will print out
+the <code class="code docutils literal notranslate"><span class="pre">Summary.index</span></code> variable in the data (i.e. the event index) for each entry in the tree
+(i.e. event) that matches the selection condition. The condition should be with respect to variables
+in the Event tree and without “Event” in them. ROOT typically prints a few at a time, with the
+return key printing out the next few and <code class="code docutils literal notranslate"><span class="pre">q</span></code> to quit this scanning mode.</p>
+</section>
+<section id="print-variable-from-data">
+<h3>Print Variable From Data<a class="headerlink" href="#print-variable-from-data" title="Link to this heading"></a></h3>
+<p>In ROOT terminology we can ‘scan’ a tree to see a variable. The option, <code class="code docutils literal notranslate"><span class="pre">colsize</span></code>
+(as a string for the 3rd argument) allows us to increase the precision printed out.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">-</span><span class="n">l</span> <span class="n">myfile</span><span class="o">.</span><span class="n">root</span>
+<span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">_file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">&quot;Summary.index&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">&quot;Summary.index&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;colsize=20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="load-raw-data">
+<h3>Load Raw Data<a class="headerlink" href="#load-raw-data" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;results.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">():</span>
+<span class="go">...:    print(event.Summary.duration)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="bdskim-skimming-tool">
+<span id="bdskim-tool"></span><h2>bdskim - Skimming Tool<a class="headerlink" href="#bdskim-skimming-tool" title="Link to this heading"></a></h2>
+<p>A tool called “bdskim” is included that allows us to “skim” or reduce the raw BDSIM data according
+to an event selection. This tool creates a new file but containing only select events. The other trees
+(Header, Options, etc) are copied.</p>
+<p>This may be used to vastly reduce the size of an output file to included only the events of interest
+if they are rare.</p>
+<ul class="simple">
+<li><p>This program takes a BDSIM output format file and produces one of the same format.</p></li>
+<li><p>The selection is a text string without spaces that could normally be used with <code class="code docutils literal notranslate"><span class="pre">TTree::Draw</span></code> in ROOT.</p></li>
+<li><p>The selection is supplied in a text file, the name of which is given as an argument (e.g. <cite>skimselection.txt</cite>).</p></li>
+</ul>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdskim</span> <span class="o">&lt;</span><span class="n">skimselection</span><span class="o">.</span><span class="n">txt</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">input_bdsim_raw</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">output_bdsim_raw</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdskim</span> <span class="n">skimselection</span><span class="o">.</span><span class="n">txt</span> <span class="mf">1234.</span><span class="n">root</span>  <span class="mi">1234</span><span class="o">-</span><span class="n">skim</span><span class="o">.</span><span class="n">root</span>
+
+<span class="n">bdskim</span> <span class="n">skimselection</span><span class="o">.</span><span class="n">txt</span> <span class="mf">1234.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>The second version uses <code class="code docutils literal notranslate"><span class="pre">1234_skiimed.root</span></code> as the default output file name by adding “_skimmed”
+to the name of the input file.</p>
+<p>As an example, if we use the data sample included in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/data</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdskim</span> <span class="n">skimselection</span><span class="o">.</span><span class="n">txt</span> <span class="n">sample1</span><span class="o">.</span><span class="n">root</span> <span class="n">sample1</span><span class="o">-</span><span class="n">skimmed</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>This reduces the sample1.root data file from containing 10 events to 4 events of interest. The contents
+of <cite>skimselection.txt</cite> are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dq1_1</span><span class="o">.</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">30</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The output file name is optional and will default to <code class="code docutils literal notranslate"><span class="pre">inputfilename_skimmed.root.</span></code></p></li>
+<li><p>Any line starting with <code class="code docutils literal notranslate"><span class="pre">#</span></code> will be treated as a comment and ignored.</p></li>
+<li><p>Any empty line will be ignored.</p></li>
+<li><p>Only one selection should be specified in the file.</p></li>
+<li><p>The selection must not contain any white space between characters, i.e. there is only 1 ‘word’ on the line.</p></li>
+<li><p>Run information is not recalculated (e.g. histograms) and is simply copied from the original file.</p></li>
+</ul>
+</section>
+<section id="bdsimcombine-combine-bdsim-output-files">
+<span id="bdsim-combine-tool"></span><h2>bdsimCombine - Combine BDSIM Output Files<a class="headerlink" href="#bdsimcombine-combine-bdsim-output-files" title="Link to this heading"></a></h2>
+<p>One may wish to combine multiple small output files from several BDSIM runs into a single file. The
+included tool <code class="code docutils literal notranslate"><span class="pre">bdsimCombine</span></code> achieves this. It is extremely similar to ROOT’s <code class="code docutils literal notranslate"><span class="pre">hadd</span></code>
+program but does not also merge the other trees in the output duplicating their data (e.g. we don’t
+need N copies of the options or model).</p>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsimCombine</span> <span class="o">&lt;</span><span class="n">result</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">file1</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">file2</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>where <cite>&lt;result.root&gt;</cite> is the desired name of the merged output file and <cite>&lt;fileX.root&gt;</cite> etc.
+are input files to be merged.</p>
+<p>Example from <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/data/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsimCombine</span> <span class="n">combined</span><span class="o">-</span><span class="n">raw</span><span class="o">.</span><span class="n">root</span> <span class="n">sample</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>This will add another TTree to the output called <code class="code docutils literal notranslate"><span class="pre">EventCombineInfo</span></code>. This has one
+number in it that is the file index that each event originally came from. This separate
+TTree has the same number of events as the Event tree. It is, in ROOT terminology, a
+“friend” tree, which means its variables can be used as if they are in the Event tree.
+The index can be used to find the original file name in the header in the variable
+<code class="code docutils literal notranslate"><span class="pre">combinedFiles</span></code> (see <a class="reference internal" href="output.html#output-header-tree"><span class="std std-ref">Header Tree</span></a>).</p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>More than 1 file must be merged otherwise the program will stop</p></li>
+<li><p>You may use a <em>glob</em> command for the input file argument (e.g. <code class="code docutils literal notranslate"><span class="pre">&quot;*.root&quot;</span></code>)</p></li>
+<li><p>Original and skimmed files may be used and mixed</p></li>
+<li><p><strong>Run</strong> information is not summed or updated and are only taken from the first file</p></li>
+<li><p>Zombie files will be tolerated, but at least 1 valid file is required</p></li>
+<li><p>The ParticleData, Beam, Options, Model and Run trees are copied from the 1st (valid) file
+and do not represent merged information from all files, i.e. the run histograms are not
+recalculated.</p></li>
+<li><p>The Header contains the <code class="code docutils literal notranslate"><span class="pre">nOriginalEvents</span></code> which is added up in either case of an
+original or skimmed file being used. In the case of original files, this is commonly 0,
+but the data is inspected to provide an accurate total in the merged file.</p></li>
+<li><p>The variable <code class="code docutils literal notranslate"><span class="pre">skimmedFile</span></code> is the logical <cite>OR</cite> of all the files loaded, so if
+one file is skimmed, then this will be true.</p></li>
+<li><p>Note, ROOT has a default threshold of 100GB per file, after which it will start a new
+file. <cite>bdsimCombine</cite> will only add the other Trees to the first file. This threshold
+is controllable in ROOT (<cite>TTree::SetMaxTreeSize</cite>) but no control over this is currently
+provided with <cite>bdsimCombine</cite>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tool is distinct from <a class="reference internal" href="#rebdsim-combine-tool"><span class="std std-ref">rebdsimCombine - Output Combination</span></a> as this tool only handles
+raw BDSIM output data. <cite>rebdsimCombine</cite> handles output from the analysis
+tool <cite>rebdsim</cite>.</p>
+</div>
+<p>To merge files together in small chunks to reduce a data size (e.g. every 10 files into 1), a utility
+function in pybdsim is provided. See <code class="code docutils literal notranslate"><span class="pre">pybdsim.Run.Reduce</span></code> and <code class="code docutils literal notranslate"><span class="pre">pybdsim.Run.ReduceParallel</span></code>.
+This allows us to reduce a data set into fewer files in parallel. Note, this may cause intensive disk
+usage, but usually using some parallel processes will be significantly faster than just one.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
+<span class="o">&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">chunkermp</span>
+<span class="o">&gt;</span> <span class="n">chunkermp</span><span class="o">.</span><span class="n">ReduceRun</span><span class="p">(</span><span class="s2">&quot;datafiles/*.root&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;outputdir/&quot;</span><span class="p">,</span> <span class="n">nCPUs</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will combine the glob result of <code class="code docutils literal notranslate"><span class="pre">datafiles/*.root</span></code> in chunks of 10 files at a time to <code class="code docutils literal notranslate"><span class="pre">outputdir</span></code>
+using 4 processes. Note, the trailing “/” must be present if it is a directory.</p>
+<p>A single threaded version is included in <code class="code docutils literal notranslate"><span class="pre">bdsim/utils/chunker.py</span></code> that could be used potentially
+for Python2 but is untested.</p>
+<p>This script simply builds and executes the system commands, so <cite>bdsimCombine</cite> must therefore be
+available as a command (i.e. <code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">&lt;bdsim-install-dir&gt;/bin/bdsim.sh</span></code> before using).</p>
+</section>
+<section id="rebdsim-general-analysis-tool">
+<span id="rebdsim-analysis-tool"></span><h2>rebdsim - General Analysis Tool<a class="headerlink" href="#rebdsim-general-analysis-tool" title="Link to this heading"></a></h2>
+<p>BDSIM is accompanied by an analysis tool called <cite>rebdsim</cite> (“root event BDSIM”)
+that provides the ability to use simple text input files to specify histograms and process data.
+It also provides the ability to calculate optical functions from the sampler data.</p>
+<p><cite>rebdsim</cite> is based on a set of analysis classes that are compiled into a library. These
+may be used through <cite>rebdsim</cite>, but also through the ROOT interpreter and in a user’s
+ROOT macro or compiled code. They may also be used through Python if the user has
+ROOT available through Python.</p>
+<p><cite>rebdsim</cite> is executed with one argument which is the path to an analysis configuration text
+file. This is a simple text file that describes which histograms to make from the data.
+Optionally, a second argument of a data file to operate on will override the one specified
+in the analysis configuration file. This allows the same analysis configuration to be used
+to analyse many different data files. A third optional argument (must have second argument
+specified) is the output file name that the resultant analysis will be written to.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span>
+<span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
+<span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="s2">&quot;*.root&quot;</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If the output filename is specified this will take precedence over the output file name
+possibly specified in the analysis configuration text file.</p></li>
+<li><p>If no output file name is given as an argument and no output file name is specified in the
+analysis configuration text file, then the default will be the input file name + <code class="code docutils literal notranslate"><span class="pre">&quot;_ana.root&quot;</span></code>
+and the file will be written to the current working directory.</p></li>
+<li><p>Multiple output files can be given at once with a glob regular expression (detected by the character
+<code class="code docutils literal notranslate"><span class="pre">*</span></code> in the input file name. To do this, put the pattern in quotes so it is expanded not by the
+shell but by rebdsim. e.g. <code class="code docutils literal notranslate"><span class="pre">rebdsim</span> <span class="pre">analysisConfig.txt</span> <span class="pre">&quot;*.root&quot;</span></code>.</p></li>
+</ul>
+<section id="preparing-an-analysis-configuration-file">
+<span id="analysis-preparing-analysis-config"></span><h3>Preparing an Analysis Configuration File<a class="headerlink" href="#preparing-an-analysis-configuration-file" title="Link to this heading"></a></h3>
+<p>The analysis configuration file is a simple text file. This can be prepared by copying
+and editing an example. The text file acts as a thin interface to an analysis in ROOT
+that would commonly use the <code class="code docutils literal notranslate"><span class="pre">TTree-&gt;Draw()</span></code> method.</p>
+<p>The input text file has roughly two sections: options and histogram definitions.</p>
+<p>Examples can be found in:</p>
+<ul class="simple">
+<li><p><cite>&lt;bdsim&gt;/examples/features/io/1_rootevent/analysisConfig.txt</cite></p></li>
+<li><p><cite>&lt;bdsim&gt;/examples/features/analysis/simpleHistograms/analysisConfig.txt</cite></p></li>
+<li><p><cite>&lt;bdsim&gt;/examples/features/analysis/perEntryHistograms/analysisConfig.txt</cite></p></li>
+<li><p><cite>&lt;bdsim&gt;/examples/features/analysis/rebdsim/</cite></p></li>
+</ul>
+<p>We strongly recommend browsing the data in a TBrowser beforehand and double-clicking
+the variables. This gives you an idea of the range of the data. See <a class="reference internal" href="output.html#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a>
+for more details.</p>
+<p>There are three types of histograms that <cite>rebdsim</cite> can produce:</p>
+<ol class="arabic simple">
+<li><p>“Simple” histograms - these are sum over all entries in that tree.</p></li>
+<li><p>“Per-Entry” histograms - here an individual histogram is made for each entry in the
+tree and these are averaged across all entries. In the case of the Event tree, each
+entry is a single event. A per-entry histogram is therefore a per-event histogram.</p></li>
+<li><p>“Merged” histograms - these are the mean taken across all entries of a histogram
+already in the output file. For example, there is an energy deposition histogram
+stored with each event. This would be merged into a per-event average.</p></li>
+</ol>
+</section>
+<section id="per-entry-and-simple-histograms">
+<span id="analysis-per-entry-histograms-vs-simple"></span><h3>Per-Entry and Simple Histograms<a class="headerlink" href="#per-entry-and-simple-histograms" title="Link to this heading"></a></h3>
+<p>For the energy deposition histogram for example, the energy deposition hits are binned
+as a function of the curvilinear <cite>S</cite> position along the accelerator. In fact, the <cite>S</cite> position
+is binned with the weight of the energy. In each event, a single primary particle can lead
+to the creation of thousands of secondaries that can each create many energy deposition hits.
+In the case of a simple histogram, all energy deposition hits across all events are binned.
+This gives us a total for the simulation performed and the bin error (uncertainty associated
+with a given histogram bin) is proportional to <span class="math notranslate nohighlight">\(1/sqrt(N)\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the
+number of entries in that bin. This, however, doesn’t correctly represent the variation seen
+from event to event. Using the per-event histograms, a single simple 1D histogram of energy
+deposition is created and these are averaged. The resultant histogram has the mean per-event
+(note the normalisation here versus the simple histograms) and the error on the bin is the
+standard error on the mean, i.e.</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{bin~error} = \frac{\sigma}{\sqrt{n_{events}}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of the values in that bin for all events.</p>
+<ul class="simple">
+<li><p>When loading the resultant histograms with pybdsim (see <a class="reference internal" href="python_utilities.html#python-utilities"><span class="std std-ref">Python Utilities</span></a>), functions
+are provided in the pybdsim.Data.TH1 2 and 3 classes that wrap the ROOT TH1D, TH2D and TH3D
+classes called <code class="code docutils literal notranslate"><span class="pre">ErrorsToSTD()</span></code> and <code class="code docutils literal notranslate"><span class="pre">ErrorsToErrorOnMean()</span></code> to easily convert
+between error on the mean and the standard deviation.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Per-entry histograms will only be calculated where there exists two or more entries
+in the tree. In the case of the Event tree, this corresponds to more than two events.</p>
+</div>
+</section>
+<section id="standard-error-on-the-mean">
+<h3>Standard Error On The Mean<a class="headerlink" href="#standard-error-on-the-mean" title="Link to this heading"></a></h3>
+<p>The errors in the per-event histograms from BDSIM as the standard error on the mean and <strong>not</strong>
+the standard deviation. These errors represent how well the central value, the mean, is
+estimated statistically. This is typically what is desired when performing a simulation to
+see that the simulation (a Monte Carlo) has converged to specific value. If we were to provide
+the standard deviation, it would be unclear whether the simulation has converged or whether there
+is just a large variation from event to event in that bin.</p>
+<p>If the standard deviation is required, the user should multiply the errors by <span class="math notranslate nohighlight">\(\sqrt{N_{events}}\)</span>.
+See <a class="reference internal" href="#numerical-methods"><span class="std std-ref">Numerical Methods</span></a> for a mathematical description of how the errors are calculated.</p>
+</section>
+<section id="histograms">
+<span id="output-analysis-configuration-file"></span><h3>Histograms<a class="headerlink" href="#histograms" title="Link to this heading"></a></h3>
+<p>Below is a complete of a rebdsim analysis configuration text file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">InputFilePath</span>    <span class="n">output</span><span class="o">.</span><span class="n">root</span>
+<span class="n">OutputFileName</span>   <span class="n">ana_1</span><span class="o">.</span><span class="n">root</span>
+<span class="n">CalculateOptics</span>  <span class="kc">True</span>
+<span class="c1"># Object  Tree Name Histogram Name  # of Bins  Binning             Variable            Selection</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span>     <span class="n">Primaryx</span>         <span class="p">{</span><span class="mi">100</span><span class="p">}</span>      <span class="p">{</span><span class="o">-</span><span class="mf">0.1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">}</span>          <span class="n">Primary</span><span class="o">.</span><span class="n">x</span>           <span class="mi">1</span>
+<span class="n">Histogram1D</span>  <span class="n">Event</span>     <span class="n">Primaryy</span>         <span class="p">{</span><span class="mi">100</span><span class="p">}</span>      <span class="p">{</span><span class="o">-</span><span class="mf">0.1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">}</span>          <span class="n">Primary</span><span class="o">.</span><span class="n">y</span>           <span class="mi">1</span>
+<span class="n">Histogram1D</span>  <span class="n">Options</span>   <span class="n">seedState</span>        <span class="p">{</span><span class="mi">200</span><span class="p">}</span>      <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">}</span>             <span class="n">Options</span><span class="o">.</span><span class="n">GMAD</span><span class="p">::</span><span class="n">OptionsBase</span><span class="o">.</span><span class="n">seed</span> <span class="mi">1</span>
+<span class="n">Histogram1D</span>  <span class="n">Model</span>     <span class="n">componentLength</span>  <span class="p">{</span><span class="mi">100</span><span class="p">}</span>      <span class="p">{</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">100</span><span class="p">}</span>           <span class="n">Model</span><span class="o">.</span><span class="n">length</span>        <span class="mi">1</span>
+<span class="n">Histogram1D</span>  <span class="n">Run</span>       <span class="n">runDuration</span>      <span class="p">{</span><span class="mi">1000</span><span class="p">}</span>     <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">1000</span><span class="p">}</span>            <span class="n">Summary</span><span class="o">.</span><span class="n">duration</span>    <span class="mi">1</span>
+<span class="n">Histogram2D</span>  <span class="n">Event</span>     <span class="n">XvsY</span>             <span class="p">{</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">}</span>  <span class="p">{</span><span class="o">-</span><span class="mf">0.1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">}</span> <span class="n">Primary</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">Primary</span><span class="o">.</span><span class="n">x</span> <span class="mi">1</span>
+<span class="n">Histogram3D</span>  <span class="n">Event</span>     <span class="n">PhaseSpace3D</span>     <span class="p">{</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">}</span> <span class="p">{</span><span class="o">-</span><span class="mf">5e-6</span><span class="p">:</span><span class="mf">5e-6</span><span class="p">,</span><span class="o">-</span><span class="mf">5e-6</span><span class="p">:</span><span class="mf">5e-6</span><span class="p">,</span><span class="o">-</span><span class="mf">5e-6</span><span class="p">:</span><span class="mf">5e-6</span><span class="p">}</span> <span class="n">Primary</span><span class="o">.</span><span class="n">x</span><span class="p">:</span><span class="n">Primary</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">Primary</span><span class="o">.</span><span class="n">z</span> <span class="mi">1</span>
+<span class="n">Histogram1DLog</span>  <span class="n">Event</span>  <span class="n">PrimaryXAbs</span>      <span class="p">{</span><span class="mi">20</span><span class="p">}</span>       <span class="p">{</span><span class="o">-</span><span class="mi">9</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">}</span>             <span class="nb">abs</span><span class="p">(</span><span class="n">Primary</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>                 <span class="mi">1</span>
+<span class="n">Histogram2D</span>     <span class="n">Event</span>  <span class="n">PhaseSpaceXXP</span>    <span class="p">{</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">}</span>    <span class="p">{</span><span class="o">-</span><span class="mf">1e-6</span><span class="p">:</span><span class="mf">1e-6</span><span class="p">,</span><span class="o">-</span><span class="mf">1e-4</span><span class="p">:</span><span class="mf">1e-4</span><span class="p">}</span> <span class="n">Primary</span><span class="o">.</span><span class="n">xp</span><span class="p">:</span><span class="n">Primaryx</span> <span class="mi">1</span>
+<span class="n">Histogram2DLog</span>  <span class="n">Event</span>  <span class="n">PhaseSpaceXYAbs2</span> <span class="p">{</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">}</span>    <span class="p">{</span><span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mf">1e-6</span><span class="p">:</span><span class="mf">1e-5</span><span class="p">}</span>  <span class="nb">abs</span><span class="p">(</span><span class="n">Primary</span><span class="o">.</span><span class="n">y</span><span class="p">):</span><span class="n">Primary</span><span class="o">.</span><span class="n">x</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The variable for plotting is really a simple interface to CERN ROOT’s TTree Draw
+method. If 1D, there is just <code class="code docutils literal notranslate"><span class="pre">x</span></code>. If 2D, it’s <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">:</span> <span class="pre">x</span></code>.
+If 3D, it’s <code class="code docutils literal notranslate"><span class="pre">z</span> <span class="pre">:</span> <span class="pre">y</span> <span class="pre">:</span> <span class="pre">x</span></code>. This <strong>only</strong> applies to the variable and
+<strong>not</strong> to the bin specification.</p>
+</div>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">HistogramND</span></code> defines an N-dimension per-entry histogram where <cite>N</cite> is 1,2 or 3.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">SimpleHistogramND</span></code> defines an N-dimension simple histogram where <cite>N</cite> is 1,2 or 3.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Spectra</span></code>, <code class="code docutils literal notranslate"><span class="pre">SpectraTE</span></code> and <code class="code docutils literal notranslate"><span class="pre">SpectraRigidity</span></code> define a set of 1D histograms
+for various particles for kinetic energy, total energy (“TE”) or rigidity respectively. This
+has slightly different syntax as described in <a class="reference internal" href="#spectra-definition"><span class="std std-ref">Spectra</span></a>.</p></li>
+<li><p>Each individual argument in the histogram rows must not contain any white space!</p></li>
+<li><p>Columns in the histogram rows must be separated by any amount of white space (at least one space).</p></li>
+<li><p>A line beginning with <code class="code docutils literal notranslate"><span class="pre">#</span></code> is ignored as a comment line.</p></li>
+<li><p>Empty lines are also ignored.</p></li>
+<li><p>For bins and binning, the dimensions are separated by <code class="code docutils literal notranslate"><span class="pre">,</span></code>.</p></li>
+<li><p>For bins and binning, the range from low to high is specified by <code class="code docutils literal notranslate"><span class="pre">low:high</span></code>.</p></li>
+<li><p>For a 2D or 3D histogram, x vs. y variables are specified by <code class="code docutils literal notranslate"><span class="pre">samplername.y:samplername.x</span></code>.
+See warning above for order of variables.</p></li>
+<li><p>Variables must contain the full ‘address’ of a variable inside a Tree.</p></li>
+<li><p>Variables can also contain a value manipulation, e.g. <code class="code docutils literal notranslate"><span class="pre">1000*(Primary.energy-0.938)</span></code> (to get
+the kinetic energy of proton primaries in MeV).</p></li>
+</ul>
+</section>
+<section id="histogram-selections">
+<h3>Histogram Selections<a class="headerlink" href="#histogram-selections" title="Link to this heading"></a></h3>
+<p>A selection is a weight that can be used as a filter to fill only desired information
+into the histogram. Conceptually, we loop over all data <strong>always</strong> and multiple by 0 if we
+want to filter it out.</p>
+<ul class="simple">
+<li><p>If no selection or filtering is desired, use 1.</p></li>
+<li><p>The selection is a weight. In the case of the Boolean expression, it is a weight of 1 or 0.</p></li>
+<li><p>The selection can be a Boolean operation (e.g. <code class="code docutils literal notranslate"><span class="pre">Primary.x&gt;0</span></code>) or simply <code class="code docutils literal notranslate"><span class="pre">1</span></code> for all events.</p></li>
+<li><p>Multiple Boolean operations can be used e.g. <code class="code docutils literal notranslate"><span class="pre">Primary.x&gt;0&amp;&amp;samplername.ParentID!=0</span></code>.</p></li>
+<li><p>If a Boolean and a weight is desired, multiply both with the Boolean in brackets, e.g.
+<code class="code docutils literal notranslate"><span class="pre">Eloss.energy*(Eloss.S&gt;145.3)</span></code>.  So <code class="code docutils literal notranslate"><span class="pre">weight*(Boolean)</span></code>.</p></li>
+<li><p>True or False, as well as 1 or 0, may be used for Boolean options at the top.</p></li>
+<li><p>ROOT special variables can be used as well, such as <code class="code docutils literal notranslate"><span class="pre">Entry$</span></code> and <code class="code docutils literal notranslate"><span class="pre">Entries$</span></code>. See
+the documentation link immediately below.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Per-entry histograms will only be calculated where there exists two or more entries
+in the tree. In the case of the Event tree, this corresponds to more than two events.
+Whilst the per-entry histograms will work for any tree in the output, they are primarily
+useful for per-event analysis on the Event tree.</p>
+</div>
+<p>The variable and selection go directly into ROOT’s TTree::Draw method and if you are familiar with
+these, any syntax it supports can be used.  A full explanation on the combination of selection parameters
+is given in the ROOT TTree class:
+<a class="reference external" href="https://root.cern.ch/doc/master/classTTree.html">https://root.cern.ch/doc/master/classTTree.html</a>.  See the “Draw” method and “selection”.</p>
+</section>
+<section id="spectra">
+<span id="spectra-definition"></span><h3>Spectra<a class="headerlink" href="#spectra" title="Link to this heading"></a></h3>
+<p>The Spectra command is a convenient way to make common energy or rigidity spectra (<strong>1D</strong>) histograms
+for a variety of particles species. Normally, we would need to make 1 histogram in energy with a
+selection for each particle species by PDG ID. This could be done manually as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Object   Tree Name Histogram Name  # of Bins Binning Variable       Selection</span>
+<span class="n">Histogram1D</span> <span class="n">Event</span><span class="o">.</span> <span class="n">Protons</span>           <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">energy</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2212</span>
+<span class="n">Histogram1D</span> <span class="n">Event</span><span class="o">.</span> <span class="n">ProtonsPrimary</span>    <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">energy</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2212</span><span class="o">&amp;&amp;</span><span class="n">samplerName</span><span class="o">.</span><span class="n">parentID</span><span class="o">==</span><span class="mi">0</span>
+<span class="n">Histogram1D</span> <span class="n">Event</span><span class="o">.</span> <span class="n">ProtonsSecondary</span>  <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">energy</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2212</span><span class="o">&amp;&amp;</span><span class="n">samplerName</span><span class="o">.</span><span class="n">parentID</span><span class="o">&gt;</span><span class="mi">0</span>
+<span class="n">Histogram1D</span> <span class="n">Event</span><span class="o">.</span> <span class="n">Neutrons</span>          <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">energy</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">2112</span>
+<span class="n">Histgoram1D</span> <span class="n">Event</span><span class="o">.</span> <span class="n">Electrons</span>         <span class="p">{</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">energy</span> <span class="n">samplerName</span><span class="o">.</span><span class="n">partID</span><span class="o">==</span><span class="mi">11</span>
+</pre></div>
+</div>
+<p>However, this can be equivalently achieved with the Spectra command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Object    Sampler Name # of Bins  Binning  Particles                  Selection</span>
+<span class="n">SpectraTE</span>  <span class="n">samplerName</span>   <span class="mi">100</span>       <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>   <span class="p">{</span><span class="mi">2212</span><span class="p">,</span><span class="n">p2212</span><span class="p">,</span><span class="n">s2212</span><span class="p">,</span><span class="mi">2112</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>where <cite>samplerName</cite> is the name of the sampler in the data to be analysed. Here, the histograms
+in total energy (i.e. “TE” suffix) are created with 100 bins from 1 to 10 GeV for all protons,
+primary protons, secondary protons, neutrons and electrons.</p>
+<p>See examples in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/analysis/rebdsim/spectra*</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The weight variable is always included in the spectra histograms.</p>
+</div>
+<p>The required columns are:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Column</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Command</p></td>
+<td><p>Which type of spectra to make</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sampler name</p></td>
+<td><p>Name of sampler in data to be analysed</p></td>
+</tr>
+<tr class="row-even"><td><p>Number of bins</p></td>
+<td><p>Number of bins in each histogram</p></td>
+</tr>
+<tr class="row-odd"><td><p>Binning</p></td>
+<td><p>The binning range</p></td>
+</tr>
+<tr class="row-even"><td><p>Particle specification</p></td>
+<td><p>A list of particles - see below</p></td>
+</tr>
+<tr class="row-odd"><td><p>Selection</p></td>
+<td><p>‘1’ or a filter as in a regular histogram</p></td>
+</tr>
+</tbody>
+</table>
+<p>These are made by default on a per-event basis, but can be made a set of simple
+histograms also by prefixing Spectra with “Simple”. The set of histograms is always made on the
+Event tree in the BDSIM output data and uses kinetic energy by default. Note that kinetic
+energy is not stored by default in the output
+and the option <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">storeSamplerKineticEnergy=1;</span></code> should be used at simulation time.
+Alternatively, the suffix “TE” can be used to use the total energy variable “energy” in the data.</p>
+</section>
+<section id="spectra-commands">
+<h3>Spectra Commands<a class="headerlink" href="#spectra-commands" title="Link to this heading"></a></h3>
+<p>The following commands are accepted.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Command</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Spectra</p></td>
+<td><p>Per-event histograms in kinetic energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>SpectraMomentum</p></td>
+<td><p>Per-event histograms in momentum</p></td>
+</tr>
+<tr class="row-even"><td><p>SpectraTE</p></td>
+<td><p>Per-event histograms in total energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>SpectraRigidity</p></td>
+<td><p>Per-event histograms in rigidity</p></td>
+</tr>
+<tr class="row-even"><td><p>SimpleSpectra</p></td>
+<td><p>Total histograms in kinetic energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>SimpleSpectraMomentum</p></td>
+<td><p>Total histograms in momentum</p></td>
+</tr>
+<tr class="row-even"><td><p>SimpleSpectraTE</p></td>
+<td><p>Total histograms in total energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>SimpleSpectraRigidity</p></td>
+<td><p>Total histograms in rigidity</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each of these can be suffixed with “Log” for logarithmic binning. Note as with the Histogram
+command, if logarithmic binning is used, the bin limits should be the power of 10 desired. e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SpectraLog</span>  <span class="n">samplerName</span>   <span class="mi">100</span> <span class="p">{</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">}</span>   <span class="p">{</span><span class="mi">2212</span><span class="p">,</span><span class="n">p2212</span><span class="p">,</span><span class="n">s2212</span><span class="p">,</span><span class="mi">2112</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>To make a set of logarithmically binned histograms from <span class="math notranslate nohighlight">\(10^{-2}\)</span> GeV to <span class="math notranslate nohighlight">\(10^{4}\)</span> GeV.</p>
+</section>
+<section id="spectra-particle-specification">
+<h3>Spectra Particle Specification<a class="headerlink" href="#spectra-particle-specification" title="Link to this heading"></a></h3>
+<p>Particles can be specified in several ways:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Example</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>{11,-11,22,2212}</p></td>
+<td><p>Histograms are made for the specified comma-separated PDG IDs. The sign
+of each is observed, so -11 is not the same as 11.</p></td>
+</tr>
+<tr class="row-odd"><td><p>{particles}</p></td>
+<td><p>A histogram for every unique particle that is not an ion encountered in
+the data is made.</p></td>
+</tr>
+<tr class="row-even"><td><p>{ions}</p></td>
+<td><p>A histogram for every unique ion encountered in the data is made.</p></td>
+</tr>
+<tr class="row-odd"><td><p>{all}</p></td>
+<td><p>A histogram for every unique particle or ion encountered in the data is
+made. Caution - this could be a lot.</p></td>
+</tr>
+<tr class="row-even"><td><p>{top10} *</p></td>
+<td><p>A histogram is made for every unique particle and ion encountered in
+data but only the top N specified are saved as judged by the integral
+of each histogram including weights. Here 10 is used but any positive
+number above 1 can be used e.g. Top5 is valid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>{p11,s11,-11,22}</p></td>
+<td><p>The letter ‘p’ or ‘s’ can be prefixed to a PDG ID to specify primary
+or secondary versions of that particle species. This can be applied to
+any PDG ID however, it only makes sense for particle(s) in the beam
+definition (or user bunch file or event generator file).</p></td>
+</tr>
+<tr class="row-even"><td><p>{top10ions} *</p></td>
+<td><p>Similar to top10 but only for ions. The number may be a positive
+integer greater than 1. e.g. {top5ions}</p></td>
+</tr>
+<tr class="row-odd"><td><p>{top10particles} *</p></td>
+<td><p>Similar to top10 but only for non-ions.</p></td>
+</tr>
+<tr class="row-even"><td><p>{total,11,-11,22}</p></td>
+<td><p>The keyword ‘total’ will make a histogram that accepts all particles
+for total. The total histogram is written out with PDG ID</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>(*) The <cite>topN</cite> syntax cannot be used with simple histograms (e.g. with the syntax
+SimpleSpectra) because we need to perform per-event analysis to build up a set of
+PDG IDs at each event and re-evaluate the top N.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>(*) When using <cite>rebdsimCombine</cite> to merge multiple rebdsim output files, spectra
+will be merged too as expected. In the case of Top N histograms, the top (by integral)
+particle species may be different from file to file. The histograms are mapped in the
+first file loaded and any not matching these ones will be ignored, so you may end up
+with a subset of histograms and statistics. This is purposeful because adding 0 entries
+for a newly encountered histogram in the accumulation would result in a possibly lower
+than average true mean. Care should be taken to observe the number of entries in each
+merged histogram which is the number of events merged for that histogram. To avoid this,
+specific PDG IDs should be given.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No white space should be in the particle specification.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The total histogram, if requested, is written out with PDG ID 0.</p>
+</div>
+</section>
+<section id="logarithmic-binning">
+<h3>Logarithmic Binning<a class="headerlink" href="#logarithmic-binning" title="Link to this heading"></a></h3>
+<p>Logarithmic binning may be used by specifying ‘Log’ after ‘HistogramND’ for each dimension.
+The dimensions specified in order are <cite>x</cite>, <cite>y</cite>, <cite>z</cite>. If a linearly spaced dimension is
+required, the user should write ‘Lin’. If nothing is specified it is assumed to be linear.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram1D</span>       <span class="o">//</span> <span class="n">linearly</span> <span class="n">spaced</span>
+<span class="n">Histogram1DLog</span>    <span class="o">//</span> <span class="n">logarithmically</span> <span class="n">spaced</span>
+<span class="n">Histogram2D</span>       <span class="o">//</span> <span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span> <span class="n">are</span> <span class="n">linearly</span> <span class="n">spaced</span>
+<span class="n">Histogram2DLog</span>    <span class="o">//</span> <span class="n">X</span> <span class="ow">is</span> <span class="n">logarithmically</span> <span class="n">spaced</span> <span class="ow">and</span> <span class="n">Y</span> <span class="n">linearly</span>
+<span class="n">Histgoram2DLinLog</span> <span class="o">//</span> <span class="n">X</span> <span class="ow">is</span> <span class="n">linearly</span> <span class="n">spaced</span> <span class="ow">and</span> <span class="n">Y</span> <span class="n">logarithmically</span>
+</pre></div>
+</div>
+<p>The bin’s lower edges and upper edges should be an exponent of 10. For example, to generate
+a 1D histogram with thirty logarithmically spaced bins from 1e-3 to 1e3, the following syntax
+would be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram1DLog</span> <span class="n">Event</span><span class="o">.</span> <span class="n">EnergySpectrum</span> <span class="p">{</span><span class="mi">30</span><span class="p">}</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span> <span class="n">Eloss</span><span class="o">.</span><span class="n">energy</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="uneven-binning">
+<h3>Uneven Binning<a class="headerlink" href="#uneven-binning" title="Link to this heading"></a></h3>
+<p>Variable bin widths in histograms may also be used. These may be used in one or multiple dimensions and
+in combination with logarithmic binning. Uneven binning is specified by supplying a text file
+with a single column of <strong>bin edges</strong> per dimension. These are the lower bin edges as well as the
+upper most one. Therefore, at least <strong>2</strong> bin edges are required to define the minimum 1 bin. e.g.
+a histogram with 1 single bin of width 2 centred at 3 would be defined by a text file containing
+the 2 lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.0</span>
+<span class="mf">3.0</span>
+</pre></div>
+</div>
+<p>Implementation notes:</p>
+<ul class="simple">
+<li><p>The text file name <strong>must</strong> end with <code class="code docutils literal notranslate"><span class="pre">.txt</span></code>.</p></li>
+<li><p>The text file should contain one number per line.</p></li>
+<li><p>The number may be in scientific or floating point or integer format.</p></li>
+<li><p>The number of bins must still be specified in the histogram definition, but the number is ignored
+(see the value “1” in the example below).</p></li>
+<li><p>The text file name (path <strong>relative</strong> to the execution location, or absolute path) is used to
+define the bin edges in that dimension.</p></li>
+<li><p>No white-space must be allowed inside the binning specification.</p></li>
+</ul>
+<p>Examples can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/analysis/rebdsim/</span></code>. Specifically,
+“unevenBinning.txt” and “bins-x.txt”. An example Python script called “makebinning.py” is provided
+that generates random bin widths in a range.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Histogram1D</span>    <span class="n">Event</span> <span class="n">UnevenX</span>     <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="p">{</span><span class="n">bins</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>                        <span class="n">d2_1</span><span class="o">.</span><span class="n">x</span>                     <span class="mi">1</span>
+<span class="n">Histogram2D</span>    <span class="n">Event</span> <span class="n">UnevenXY</span>    <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>    <span class="p">{</span><span class="n">bins</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">y</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>             <span class="n">d2_1</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">x</span>              <span class="mi">1</span>
+<span class="n">Histogram2D</span>    <span class="n">Event</span> <span class="n">UnevenY</span>     <span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>   <span class="p">{</span><span class="o">-</span><span class="mf">0.5</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">y</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>               <span class="n">d2_1</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">x</span>              <span class="mi">1</span>
+<span class="n">Histogram3D</span>    <span class="n">Event</span> <span class="n">UnevenXYZ</span>   <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>  <span class="p">{</span><span class="n">bins</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">y</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">z</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>  <span class="n">d2_1</span><span class="o">.</span><span class="n">x</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">energy</span>  <span class="mi">1</span>
+<span class="n">Histogram3D</span>    <span class="n">Event</span> <span class="n">UnevenYZ</span>    <span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="p">{</span><span class="o">-</span><span class="mf">0.5</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">y</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">z</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>    <span class="n">d2_1</span><span class="o">.</span><span class="n">x</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">energy</span>  <span class="mi">1</span>
+<span class="n">Histogram3D</span>    <span class="n">Event</span> <span class="n">UnevenZ</span>     <span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="p">{</span><span class="o">-</span><span class="mf">0.5</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">z</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>          <span class="n">d2_1</span><span class="o">.</span><span class="n">x</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">energy</span>  <span class="mi">1</span>
+<span class="n">Histogram2DLog</span> <span class="n">Event</span> <span class="n">LogXUnevenY</span> <span class="p">{</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>  <span class="p">{</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="n">bins</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>                   <span class="n">d1_1</span><span class="o">.</span><span class="n">x</span><span class="p">:</span><span class="n">d2_1</span><span class="o">.</span><span class="n">energy</span>         <span class="mi">1</span>
+<span class="n">Histogram2DLinLog</span> <span class="n">Event</span> <span class="n">UnevenXLogY</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">}</span> <span class="p">{</span><span class="n">bins</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>                 <span class="n">d2_1</span><span class="o">.</span><span class="n">energy</span><span class="p">:</span><span class="n">d1_1</span><span class="o">.</span><span class="n">x</span>         <span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Uneven binning can be used in combination with logarithmic binning, but the uneven one should be
+labelled as linear (i.e. “Lin”).</p></li>
+</ul>
+</section>
+<section id="analysis-configuration-options">
+<h3>Analysis Configuration Options<a class="headerlink" href="#analysis-configuration-options" title="Link to this heading"></a></h3>
+<p>The following (case-insensitive) options may be specified in the top part.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Option</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Default</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AllBranchesActivated</p></td>
+<td><p>Developer debug option to turn on all branches.</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>BackwardsCompatible</p></td>
+<td><p>ROOT event output files from BDSIM prior to v0.994
+do not have the header structure that is used to
+ensure the files are the right format and prevent
+a segfault from ROOT. If this option is true, the
+header will not be checked, allowing old files to be
+analysed.</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>CalculateOptics</p></td>
+<td><p>Whether to calculate optical functions or not</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug</p></td>
+<td><p>Whether to print out debug information</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>EmittanceOnTheFly</p></td>
+<td><p>Whether to calculate the emittance freshly at each
+sampler or simply use the emittance calculated from
+the first sampler (i.e. the primaries). The default
+is false and therefore calculates the emittance at
+each sampler.</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>EventStart</p></td>
+<td><p>Event index to start from - zero counting. Default
+is 0.</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>EventEnd</p></td>
+<td><p>Event index to finish analysis at - zero counting.
+Default is -1 that represents how ever many events
+there are in the file (or files if multiple are
+being analysed at once).</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>InputFilePath</p></td>
+<td><p>The root event file to analyse (or regex for
+multiple).</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>MergeHistograms</p></td>
+<td><p>Whether to merge the event level default histograms
+provided by BDSIM. Turning this off will
+significantly improve the speed of analysis if only
+separate user-defined histograms are desired.</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>OutputFileName</p></td>
+<td><p>The name of the result file  written to</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>OpticsFileName</p></td>
+<td><p>The name of a separate text file copy of the
+optical functions output</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>PrintOut</p></td>
+<td><p>Whether there is any per-event print out at all. The
+default is True.</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>PrintModuloFraction</p></td>
+<td><p>The fraction of events to print out. If you require
+for every event, set this to 0.</p></td>
+<td><p>0.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>ProcessSamplers</p></td>
+<td><p>Whether to load the sampler data or not</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>VerboseSpectra</p></td>
+<td><p>Print out the full expanded definition of any
+spectra that have been defined.</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variables-in-data">
+<h3>Variables In Data<a class="headerlink" href="#variables-in-data" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="output.html#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a> for how to view the data and make the most basic
+on-the-fly histograms.</p>
+</section>
+</section>
+<section id="rebdsimcombine-output-combination">
+<span id="rebdsim-combine-tool"></span><h2>rebdsimCombine - Output Combination<a class="headerlink" href="#rebdsimcombine-output-combination" title="Link to this heading"></a></h2>
+<p><cite>rebdsimCombine</cite> is a tool that can combine <cite>rebdsim</cite> output files correctly
+(i.e. the mean of the mean histograms) to provide the overall mean and error on
+the mean, as if all events had been analysed in one execution of <cite>rebdsim</cite>.
+Simple histograms are simply summed (not averaged).</p>
+<p>The combination of the histograms from the <cite>rebdsim</cite> output files is very quick
+in comparison to the analysis. <cite>rebdsimCombine</cite> is used as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimCombine</span> <span class="o">&lt;</span><span class="n">result</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">file1</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">file2</span><span class="o">.</span><span class="n">root</span><span class="o">&gt;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>where <cite>&lt;result.root&gt;</cite> is the desired name of the merged output file and <cite>&lt;fileX.root&gt;</cite> etc.
+are input files to be merged. This workflow is shown schematically in the figure below.</p>
+</section>
+<section id="rebdsimhistomerge-simple-histogram-merging">
+<span id="rebdsim-histo-merge-tool"></span><h2>rebdsimHistoMerge - Simple Histogram Merging<a class="headerlink" href="#rebdsimhistomerge-simple-histogram-merging" title="Link to this heading"></a></h2>
+<p>BDSIM, by default, records a few histograms per event that typically include the primary
+particle impact and loss location as well as the energy deposition. The histograms are
+stored in vectors inside the Event tree of the output. These cannot be viewed directly
+in the ROOT TBrowser as they are in a vector. Even then, each histogram is for one event
+only. To view the average of all the histograms, a dedicated tool is provided that provides
+a subset of the <cite>rebdsim</cite> functionality. <cite>rebdsim</cite> would automatically combine these
+histograms while performing analysis.</p>
+<p>A tool <cite>rebdsimHistoMerge</cite> is provided to take the average of only the already existing
+histograms without the need to prepare an analysis configuration file. It is run as
+follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimHistoMerge</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimHistoMerge</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>This creates a ROOT file called (first example) “results.root” and (second example)
+“output_histos.root”, that contains the average histograms
+across all events.  This can only operate on BDSIM output files, not <cite>rebdsim</cite>
+output files.</p>
+<ul class="simple">
+<li><p>The output file name is optional and will default to <code class="code docutils literal notranslate"><span class="pre">inputfilename_histos.root.</span></code></p></li>
+</ul>
+</section>
+<section id="rebdsimoptics-optical-functions">
+<span id="rebdsim-optics-tool"></span><h2>rebdsimOptics - Optical Functions<a class="headerlink" href="#rebdsimoptics-optical-functions" title="Link to this heading"></a></h2>
+<p><cite>rebdsimOptics</cite> is a tool to load sampler data from a BDSIM output file and calculate
+optical functions as well as beam sizes. It is run as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimOptics</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">optics</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimOptics</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>This creates a ROOT file called (first example) “optics.root” and
+(second example) output_optics.root, that contains the optical functions
+of the sampler data.</p>
+<p>This may also take the optional argument <code class="code docutils literal notranslate"><span class="pre">--emittanceOnTheFly</span></code> (exactly, case-sensitive)
+where the emittance is recalculated at each sampler. By default, we calculate the emittance
+<strong>only</strong> for the first sampler and use that as the assumed value for all other samplers. This
+does not affect sigmas but does affect <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(beta\)</span> for the optical functions.</p>
+<p>If the central energy of the beam changes throughout the lattice, e.g. accelerating or decelerating
+cavities are used, then the emittance on the fly option should be used.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimOptics</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">optics</span><span class="o">.</span><span class="n">root</span> <span class="o">--</span><span class="n">emittanceOnTheFly</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The order is not interchangeable.</p></li>
+<li><p>The output file name is optional and will default to <code class="code docutils literal notranslate"><span class="pre">inputfilename_optics.root.</span></code></p></li>
+<li><p>The output <strong>is not</strong> mergeable with <cite>rebdsimCombine</cite>.</p></li>
+</ul>
+<p>See <a class="reference internal" href="model_conversion.html#optical-validation"><span class="std std-ref">Optical Validation</span></a> for more details.</p>
+</section>
+<section id="rebdsimorbit-orbit-extraction">
+<span id="rebdsim-orbit-tool"></span><h2>rebdsimOrbit - Orbit Extraction<a class="headerlink" href="#rebdsimorbit-orbit-extraction" title="Link to this heading"></a></h2>
+<p>A small tool was made but not actively used to extract the i-th hit from every sampler. In the
+case where we simulate one particle and sample all beam line elements, this gives us the ‘orbit’
+of that particle.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsimOrbit</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">orbit</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>The argument <cite>output.root</cite> is a BDSIM raw file. The output of this program is a REBDSIM file
+that can be loaded with the pybdsim Python utility.</p>
+</section>
+<section id="data-workflows-speed-efficiency">
+<span id="output-analysis-efficiency"></span><h2>Data Workflows - Speed &amp; Efficiency<a class="headerlink" href="#data-workflows-speed-efficiency" title="Link to this heading"></a></h2>
+<p>It is easily possible to generate problematic quantities of data with such a simulation
+as BDSIM. Here, we discuss some common workflows with data.</p>
+<section id="speed-tips">
+<h3>Speed Tips<a class="headerlink" href="#speed-tips" title="Link to this heading"></a></h3>
+<p>Whilst the ROOT file IO is very efficient, the sheer volume of data to process can
+easily result in slow running analysis. To combat this, only the minimal variables
+should be loaded that need to be. <cite>rebdsim</cite> automatically activates only the ‘ROOT
+branches’ it needs for the analysis. A few possible ways to improve performance are:</p>
+<ul class="simple">
+<li><p>Reduce number of 2D or 3D histograms if possible. Analysis is linear in time with number
+of bins.</p></li>
+<li><p>Remove unnecessary histograms from your analysis configuration file.</p></li>
+<li><p>Avoid unnecessary filters in the selection.</p></li>
+<li><p>Turn off optical function calculations if they’re not needed or don’t make sense, i.e.
+if you’re analysing the spray from a collimator in a sampler, it makes no sense to
+calculate the optical functions of that distribution.</p></li>
+<li><p>Turn off the MergeHistograms option. If you’re only making your own histograms, this should
+considerably speed up the analysis for a large number of events.</p></li>
+</ul>
+<p>Simple histograms to not require loading each entry in the tree and an analysis with
+only simple histograms will be quicker. Per-entry histograms of course, require loading
+each entry.</p>
+<p><cite>rebdsim</cite> ‘turns off’ the loading of all data and only loads what is necessary for the
+given analysis.</p>
+</section>
+<section id="scaling-up-parallelising-analysis">
+<span id="output-analysis-scaling-up"></span><h3>Scaling Up - Parallelising Analysis<a class="headerlink" href="#scaling-up-parallelising-analysis" title="Link to this heading"></a></h3>
+<p>For high-statistics studies, it’s common to run multiple instances of BDSIM with different
+seeds (different seeds ensures different results) on a high throughout the computer cluster.
+Key parameters to consider are:</p>
+<ol class="arabic simple">
+<li><p>the total number of events being analysed</p></li>
+<li><p>the total volume (Mb, Gb, Tb) of data being analysed</p></li>
+</ol>
+<p>There is a minimum time per event for analysis on the order of 1 ms. Depending on the quantity
+of data stored per event, the data may take longer to load. It may also take longer to analyse
+if many histograms are requested.</p>
+<p>Generally, on a single computer, simulation and analysis can become slow at anywhere
+from 50,000 to 10,000,000 events. Also, ~ 1 - 10 Gb is probably the practical limit for
+quick analysis on a laptop.</p>
+<p>In contrast, sometimes, the simulation itself is slow but the output data is quite small.</p>
+<p>Below are 3 example strategies that can be used and for which tools are included. These are:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#output-analysis-strategy-low-data-vol"><span class="std std-ref">Low-Data Volume</span></a></p></li>
+<li><p><a class="reference internal" href="#output-analysis-strategy-high-data-vol"><span class="std std-ref">High-Data Volume</span></a></p></li>
+<li><p><a class="reference internal" href="#output-analysis-strategy-skimming"><span class="std std-ref">Raw Data Reduction</span></a></p></li>
+</ol>
+</section>
+<section id="low-data-volume">
+<span id="output-analysis-strategy-low-data-vol"></span><h3>Low-Data Volume<a class="headerlink" href="#low-data-volume" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><em>e.g. simulation slow, output data low volume</em></p></li>
+</ul>
+<p>If the overall output data volume is relatively low, it is recommend to analyse all of the
+output files at once with <cite>rebdsim</cite>. In the analysis configuration file,
+the <cite>InputFilePath</cite> should be specified as <cite>“*.root”</cite> to match all the root files
+in the current directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For <cite>“*.root”</cite> all files should be from the same simulation and only BDSIM
+output files (i.e. not <cite>rebdsim</cite> output files).</p>
+</div>
+<p><cite>rebdsim</cite> will ‘chain’ the files together to behave as one big file with all of the events.
+This is shown schematically in the figure below.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/multiple_outputs_rebdsim.pdf"><img alt="_images/multiple_outputs_rebdsim.pdf" src="_images/multiple_outputs_rebdsim.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Schematic of strategy for a low volume of data produced from a computationally
+intense simulation. Multiple instances of BDSIM are executed, each producing their
+own output file. These are analysed all at once with <cite>rebdsim</cite>.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This strategy works best for a relatively low number of events and data volume (example
+numbers might be &lt; 10000 events and &lt; 10 GB of data).</p>
+</section>
+<section id="high-data-volume">
+<span id="output-analysis-strategy-high-data-vol"></span><h3>High-Data Volume<a class="headerlink" href="#high-data-volume" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><em>e.g. simulation slow, output data high volume</em></p></li>
+</ul>
+<p>In this case, it is better to analyse each output file with <cite>rebdsim</cite> separately and then
+combine the results. In the case of per-event histograms, <cite>rebdsim</cite> provides the mean
+per event, along with the error on the mean for the bin error. A separate tool,
+<cite>rebdsimCombine</cite>, can be used to combine these <cite>rebdsim</cite> output files into one single
+file. This is numerically equivalent to analysing all the data in one execution of
+<cite>rebdsim</cite> but significantly faster. See <a class="reference internal" href="#rebdsim-combine-tool"><span class="std std-ref">rebdsimCombine - Output Combination</span></a> for more details.</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/multiple_analyses.pdf"><img alt="_images/multiple_analyses.pdf" src="_images/multiple_analyses.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Schematic of strategy for a high-data volume analysis. Multiple instances of
+BDSIM are executed in a script that then executes <cite>rebdsim</cite> with a suitable
+analysis configuration. Only the output files from <cite>rebdsim</cite> are then combined
+into a final output identical to what would have been produced from analysing
+all data at once, but in vastly reduced time.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="raw-data-reduction">
+<span id="output-analysis-strategy-skimming"></span><h3>Raw Data Reduction<a class="headerlink" href="#raw-data-reduction" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><em>e.g. a 2 stage simulation where only ~ 1% of data from the first is passed to the second stage</em></p></li>
+</ul>
+<p>In the case where you want raw BDSIM data but want to reduce it to a select number of events
+meeting some criteria, two tools can be used. Firstly, <cite>bdskim</cite> to skim a data file according
+to a selection on the events, and then <cite>bdsimCombine</cite> to combine many skimmed raw data files
+into one single file.</p>
+<p>For example, if we are interested in relatively rare events and we cannot make our simulation
+any more efficient (e.g. with choice of beam distribution, physics lists, cross-section biasing),
+then we could run many instances of BDSIM on a computer farm. Each job would run BDSIM, then
+<cite>bdskim</cite>, then return the skimmed file back. The skimmed files could be merged manually giving
+one single file of raw data with events of interest.</p>
+<p>The total number of events simulated is preserved in the header so we can normalise any result
+correctly later on to get the correct physical rate.</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="_images/skimming.pdf"><img alt="_images/skimming.pdf" src="_images/skimming.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Schematic of strategy for a skimming data reduction. Multiple instances of
+BDSIM are executed in a script that then executes <cite>bdskim</cite> with a suitable
+selection file. Only the output files from <cite>bdskim</cite> are then combined
+into a final output.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="normalisation">
+<h4>Normalisation<a class="headerlink" href="#normalisation" title="Link to this heading"></a></h4>
+<p>If skimming is used, we must know the original number of events simulated so we can
+correctly normalise any results for the original per-event rate. The header in each
+BDSIM and REBDSIM output file contains several numbers that provide this information.</p>
+<p>The default histograms from rebdsim are per-event normalised. Only “SimpleHistograms”
+are unnormalised.</p>
+<p>These are also documented in <a class="reference internal" href="output.html#output-header-tree"><span class="std std-ref">Header Tree</span></a>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable Name</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>skimmedFile</p></td>
+<td><p>bool</p></td>
+<td><p>Whether the file’s Event tree is
+made of skimmed events.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nOriginalEvents (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>If a skimmed file, this is the number
+of events in the original file.</p></td>
+</tr>
+<tr class="row-even"><td><p>nEventsRequested (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>Number of events requested to be
+simulated from the file.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nEventsInFile (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>Number of events in the input
+distribution file.</p></td>
+</tr>
+<tr class="row-even"><td><p>nEventsInFileSkipped (*)</p></td>
+<td><p>unsigned long long int</p></td>
+<td><p>Number of events from the
+distribution file that were skipped
+due to filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>distrFileLoopNTimes</p></td>
+<td><p>unsigned int</p></td>
+<td><p>Number of times to replay a given
+distribution file.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>(*) This variable may only be filled in the second entry of the tree as they are only
+available at the end of a run and ROOT does not permit overwriting an entry. The first entry
+to the header tree is written when the file is opened and must be there in case of a crash
+or the BDSIM instance was killed.</p></li>
+</ul>
+<p>As an example, the following 2-stage simulation is described:</p>
+<ol class="arabic simple">
+<li><p>BDSIM is used to simulate a high energy proton on a target with only muons recorded in a sampler
+after the target</p></li>
+<li><p>The output from the first stage is skimmed as only (as an example) <strong>1%</strong> of data has a relevant
+muon in the sampler.</p></li>
+<li><p>The files are combined 10 to 1 with bdsimCombine as each file now only has very few events. Each
+resultant file has approximately 10x the 1% of events.</p></li>
+<li><p>The skimmed-then-combined output (in BDSIM raw format) is then loaded as an input distribution into the second
+stage simulation model of the rest of the beamline. Some filters are used in loading the events
+that results in <strong>2%</strong> of these remaining events being discarded. Additionally, each file is
+looped 5 times to repeat the same input particles with a different physics outcome to improve statistics.</p></li>
+<li><p>Histograms are made on the second stage simulation.</p></li>
+<li><p>Finally, the histograms are combined together from all simulations to form a single result set of histograms.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example fractions are not specific and are just fictional example numbers to allow
+you to follow the calculation.</p>
+</div>
+<ul class="simple">
+<li><p>In some cases the variable is just copied from one file to another.</p></li>
+<li><p>The following table is an example of how the described numbers would evolve in the header <strong>after</strong>
+each step described. It represents the <strong>most complicated</strong> workflow possible, to show the evolution
+of the numbers.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>After</strong></p></th>
+<th class="head"><p><strong>File Format</strong></p></th>
+<th class="head"><p><strong>nOriginalEvents</strong></p></th>
+<th class="head"><p><strong>nEventsRequested</strong></p></th>
+<th class="head"><p><strong>nEventsInFile</strong></p></th>
+<th class="head"><p><strong>nEventsInFileSkipped</strong></p></th>
+<th class="head"><p><strong>distrFileLoopNTimes</strong></p></th>
+<th class="head"><p><strong>TTree / TH1 Entries</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bdsim</p></td>
+<td><p>BDSIM Raw</p></td>
+<td><p>N</p></td>
+<td><p>N</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>bdskim (1%)</p></td>
+<td><p>BDSIM Raw</p></td>
+<td><p>N</p></td>
+<td><p>N</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0.01 x N</p></td>
+</tr>
+<tr class="row-even"><td><p>bdsimCombine (10 files)</p></td>
+<td><p>BDSIM Raw</p></td>
+<td><p>10 x N</p></td>
+<td><p>10 x N</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>10 x 0.01 x N</p></td>
+</tr>
+<tr class="row-odd"><td><p>bdsim (5 loops of file)(2% rejected on load)</p></td>
+<td><p>BDSIM Raw</p></td>
+<td><p>10 x N</p></td>
+<td><p>5 x 10 x 0.01 x N</p></td>
+<td><p>10 x 0.01 x N</p></td>
+<td><p>0.02 x 10 x 0.01 x N</p></td>
+<td><p>5</p></td>
+<td><p>5 x 10 x 0.01 x N x 0.98</p></td>
+</tr>
+<tr class="row-even"><td><p>rebdsim</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>10 x N</p></td>
+<td><p>5 x 10 x 0.01 x N</p></td>
+<td><p>10 x 0.01 x N</p></td>
+<td><p>5 x 0.02 x 10 x 0.01 x N</p></td>
+<td><p>5</p></td>
+<td><p>5 x 10 x 0.01 x N x 0.98</p></td>
+</tr>
+<tr class="row-odd"><td><p>rebdsimCombine (J files)</p></td>
+<td><p>REBDSIM</p></td>
+<td><p>J x 10 x N</p></td>
+<td><p>J x 5 x 10 x 0.01 x N</p></td>
+<td><p>J x 0.01 x N</p></td>
+<td><p>J x 5 x 0.02 x 10 x 0.01 x N</p></td>
+<td><p>5</p></td>
+<td><p>J x 5 x 10 x 0.01 x N x 0.98</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For J, it is not strictly J times but the sum over J. In the table, there is an assumption
+there is the exact same number of events and skimmed events in each file, whereas, in reality,
+it will be slightly different. These numbers are purely for illustrative purposes.</p>
+</div>
+<p>The final per-entry histograms at the end of this workflow have <span class="math notranslate nohighlight">\(J \times 5 \times 10 \times 0.01 \times N \times 0.98\)</span>
+entries, where one entry represents one event. The histograms must be multiplied by:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{scaling} = \frac{5 \times 10 \times 0.01 \times N \times 0.98}{N}\]</div>
+<p>to recover the original rate per proton on target in this simulation. This is done automatically
+by rebdsim. rebdsimCombine just adds together the already correctly normalised histograms.</p>
+</section>
+</section>
+</section>
+<section id="user-analysis">
+<span id="output-user-analysis"></span><h2>User Analysis<a class="headerlink" href="#user-analysis" title="Link to this heading"></a></h2>
+<p>Whilst <cite>rebdsim</cite> will cover the majority of analyses, the user may desire a more
+detailed or customised analysis. Methods to accomplish this are detailed here for
+interactive or compiled C++ with ROOT, or through Python.</p>
+<p>The classes used to store and load data in BDSIM are packaged into a library. This
+library can be used interactively in Python and ROOT to load the data manually.</p>
+<p>A custom analysis can also be put in files the same as rebdsim would produce
+and then rebdsimCombine can be used on them. This allows us to scale up a custom
+analysis to any size. See <a class="reference internal" href="#custom-analysis-rebdsim-file"><span class="std std-ref">Create A REBDSIM File in Python</span></a>.</p>
+<section id="analysis-in-python">
+<h3>Analysis in Python<a class="headerlink" href="#analysis-in-python" title="Link to this heading"></a></h3>
+<p>This is the preferred method. Analysis in Python can be done using ROOT in Python
+directly or through our library <cite>pybdsim</cite> (see <a class="reference internal" href="python_utilities.html#python-utilities"><span class="std std-ref">Python Utilities</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROOT must have been installed or compiled with Python support.</p>
+</div>
+<p>You can test whether ROOT works with your Python installation by starting Python and
+trying to import ROOT - there should be no errors.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
+</pre></div>
+</div>
+<p>The library containing the analysis classes may be then loaded:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ROOT</span><span class="o">.</span><span class="n">gSystem</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ROOT</span><span class="o">.</span><span class="n">gSystem</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The classes in <code class="code docutils literal notranslate"><span class="pre">bdsim/analysis</span></code> will now be available inside ROOT in Python.</p>
+<p>This can also be conveniently achieved with pybdsim:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">LoadROOTLibraries</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This raises a Python exception if the libraries aren’t found correctly. This is done
+automatically when any BDSIM output file is loaded using the ROOT libraries.</p>
+<section id="ipython">
+<h4>IPython<a class="headerlink" href="#ipython" title="Link to this heading"></a></h4>
+<p>We recommend using IPython instead of pure Python to allow interactive exploration
+of the tools. After typing at the IPython prompt for example <code class="code docutils literal notranslate"><span class="pre">pybdsim.</span></code>, press
+the tab key and all of the available functions and objects inside <cite>pybdsim</cite> (in this
+case) will be shown.</p>
+<p>For any object, function or class, type a question mark after it to see the doc-string
+associated with it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;combined-ana.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span>
+<span class="go">d.ConvertToPybdsimHistograms d.histograms2d</span>
+<span class="go">d.filename                   d.histograms2dpy</span>
+<span class="go">d.histograms                 d.histograms3d</span>
+<span class="go">d.histograms1d               d.histograms3dpy</span>
+<span class="go">d.histograms1dpy             d.histogramspy</span>
+</pre></div>
+</div>
+</section>
+<section id="raw-data-loading">
+<h4>Raw Data Loading<a class="headerlink" href="#raw-data-loading" title="Link to this heading"></a></h4>
+<p>Any output file from the BDSIM set of tools can be loaded with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;myoutputfile.root&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will work for files from BDSIM, <cite>rebdsim</cite>, <cite>rebdsimCombine</cite>, <cite>rebdsimHistoMerge</cite>
+and <cite>rebdsimOptics</cite>. This function may return a different type of object depending
+on the file that was loaded. The two types are <cite>DataLoader</cite>, which is the same as
+the <cite>rebdsim</cite> C++ class but in Python, and <cite>RebdsimFile</cite> (defined in
+<code class="code docutils literal notranslate"><span class="pre">pybdsim/pybdsim/Data.py</span></code>), which is a Python class
+to hold the output from a <cite>rebdsim</cite> output file and conveniently convert ROOT histograms
+to numpy arrays. The type can easily be inspected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">pybdsim.Data.RebdsimFile</span>
+</pre></div>
+</div>
+</section>
+<section id="rebdsim-histogram-loading">
+<h4>REBDSIM Histogram Loading<a class="headerlink" href="#rebdsim-histogram-loading" title="Link to this heading"></a></h4>
+<p>Output from <cite>rebdsim</cite> can be loaded using pybdsim. The histograms made by <cite>rebdsim</cite>
+are loaded as the ROOT objects they are, but are also converted to numpy arrays
+using classes provided by pybdsim for convenience. The Python converted ones are
+held in dictionaries suffixed with ‘py’. The histograms are loaded into dictionaries
+where the key is a string with the full path and name of the histogram in the <cite>rebdsim</cite>
+output file. The value is the histogram from the file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;rebdsimoutputfile.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">histograms</span>
+<span class="go">{&#39;Event/MergedHistograms/ElossHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossHisto&quot;) at 0x7fbe365e9520&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/ElossPEHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossPEHisto&quot;) at 0x7fbe365ea750&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/ElossTunnelHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossTunnelHisto&quot;) at 0x7fbe365eab40&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/ElossTunnelPEHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossTunnelPEHisto&quot;) at 0x7fbe365eaf30&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PhitsHisto&#39;: &lt;ROOT.TH1D object (&quot;PhitsHisto&quot;) at 0x7fbe365e8bd0&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PhitsPEHisto&#39;: &lt;ROOT.TH1D object (&quot;PhitsPEHisto&quot;) at 0x7fbe365e9cb0&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PlossHisto&#39;: &lt;ROOT.TH1D object (&quot;PlossHisto&quot;) at 0x7fbe365e8fc0&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PlossPEHisto&#39;: &lt;ROOT.TH1D object (&quot;PlossPEHisto&quot;) at 0x7fbe365ea0a0&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/EnergyLossManual&#39;: &lt;ROOT.TH1D object (&quot;EnergyLossManual&quot;) at 0x7fbe365a3a50&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/EnergySpectrum&#39;: &lt;ROOT.TH1D object (&quot;EnergySpectrum&quot;) at 0x7fbe365a2e20&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/EventDuration&#39;: &lt;ROOT.TH1D object (&quot;EventDuration&quot;) at 0x7fbe325907b0&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/TunnelDeposition&#39;: &lt;ROOT.TH3D object (&quot;TunnelDeposition&quot;) at 0x7fbe35e2c800&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/TunnelLossManual&#39;: &lt;ROOT.TH1D object (&quot;TunnelLossManual&quot;) at 0x7fbe365a40b0&gt;,</span>
+<span class="go">&#39;Event/SimpleHistograms/Primaryx&#39;: &lt;ROOT.TH1D object (&quot;Primaryx&quot;) at 0x7fbe325cf9d0&gt;,</span>
+<span class="go">&#39;Event/SimpleHistograms/Primaryy&#39;: &lt;ROOT.TH1D object (&quot;Primaryy&quot;) at 0x7fbe325d0230&gt;,</span>
+<span class="go">&#39;Event/SimpleHistograms/TunnelHitsTransverse&#39;: &lt;ROOT.TH2D object (&quot;TunnelHitsTransverse&quot;) at 0x7fbe30a7fe00&gt;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
+<span class="go">{&#39;Event/MergedHistograms/ElossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682fa10&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/ElossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f850&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/ElossTunnelHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f690&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/ElossTunnelPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f990&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PhitsHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f890&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PhitsPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f950&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PlossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f7d0&gt;,</span>
+<span class="go">&#39;Event/MergedHistograms/PlossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f5d0&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/EnergyLossManual&#39;: &lt;pybdsim.Data.TH1 at 0x12682f810&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/EnergySpectrum&#39;: &lt;pybdsim.Data.TH1 at 0x122d577d0&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/EventDuration&#39;: &lt;pybdsim.Data.TH1 at 0x12682f910&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/TunnelDeposition&#39;: &lt;pybdsim.Data.TH3 at 0x116abe090&gt;,</span>
+<span class="go">&#39;Event/PerEntryHistograms/TunnelLossManual&#39;: &lt;pybdsim.Data.TH1 at 0x122d67190&gt;,</span>
+<span class="go">&#39;Event/SimpleHistograms/Primaryx&#39;: &lt;pybdsim.Data.TH1 at 0x12682f710&gt;,</span>
+<span class="go">&#39;Event/SimpleHistograms/Primaryy&#39;: &lt;pybdsim.Data.TH1 at 0x12682f790&gt;,</span>
+<span class="go">&#39;Event/SimpleHistograms/TunnelHitsTransverse&#39;: &lt;pybdsim.Data.TH2 at 0x12682fa50&gt;}</span>
+</pre></div>
+</div>
+</section>
+<section id="looping-over-events">
+<h4>Looping Over Events<a class="headerlink" href="#looping-over-events" title="Link to this heading"></a></h4>
+<p>The following is an example of how to loop over events in a BDSIM output file using
+pybdsim.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;myoutputfile.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eventTree</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">eventTree</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">Primary</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In this example, the variable <code class="code docutils literal notranslate"><span class="pre">event</span></code> will have the same structure as the
+Event tree in the BDSIM output. See <a class="reference internal" href="output.html#basic-data-inspection"><span class="std std-ref">Basic Data Inspection</span></a> for more details
+on how to browse the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The branch “Summary” in the Event and Run trees used to be called “Info”
+in BDSIM &lt; V1.3. This conflicted with TObject::Info() so this looping in
+Python would work for any data in this branch, hence the change.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not construct numpy arrays inside the loop - this seems to expose
+some behaviour with numpy where it gets slower and slower with every
+loop.</p>
+</div>
+</section>
+<section id="accumulating-average-histograms">
+<h4>Accumulating - Average Histograms<a class="headerlink" href="#accumulating-average-histograms" title="Link to this heading"></a></h4>
+<p>We typically want a histogram that is an average per-event. If writing our own analysis
+in Python we can of course make a ROOT histogram through ROOT’s Python interface and fill
+it as we loop over events. However, we can also use rebdsim’s analysis classes through
+ROOT.</p>
+<p><strong>Terminology</strong> : “accumulating” means to add up some quantity over a data set. Here, our
+accumulators (things that accumulate) are building up the average as they go.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">HistogramAccumulator</span></code> class wraps a ROOT TH1D or TH2D or TH3D object and
+calculates a rolling average. The class is available in our rebdsim library which is
+imported automatically when loading a data file with pybdsim. However, one can explicitly
+load it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">LoadROOTLibraries</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>HistogramAccumulator can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/analysis/HistogramAccumulator.hh</span></code>.</p></li>
+<li><p>It works on TH1D, TH2D, TH3D histograms.</p></li>
+<li><p>You do not need to specify the number of dimensions of the histogram - it’s automatic.</p></li>
+</ul>
+<p>This is the basic usage of HistogramAccumulator in Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span><span class="p">(</span><span class="s2">&quot;HistogramNameForFileBASE&quot;</span><span class="p">,</span> <span class="s2">&quot;A Nice Title&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># 100 bins from 0 to 20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ha</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">HistogramAccumulator</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">GetName</span><span class="p">()[:</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="n">h</span><span class="o">.</span><span class="n">GetTitle</span><span class="p">())</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">Fill</span><span class="p">(</span><span class="mf">1.2</span><span class="p">)</span>       <span class="c1"># fill the histogram</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ha</span><span class="o">.</span><span class="n">Accumulate</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>  <span class="c1"># add this histogram to the rolling mean</span>
+
+<span class="go">... repeat these last 3 lines ...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">Terminate</span><span class="p">()</span> <span class="c1"># returns a TH1* that is the average</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TH1 is the base class of TH1D, TH2D and TH3D</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We need a basic ROOT histogram to base the accumulator off of. It needs to have a
+different name, but it can have the same title. The first argument, the object name,
+is the one used when writing to a file and ROOT uses this internally to identify it
+so it <strong>must</strong> be unique. Here, we append the suffix “BASE” onto its name for the
+simple histogram, and we give the accumulator the desired name without this suffix
+by stripping it off (<code class="code docutils literal notranslate"><span class="pre">[:-4]</span></code> means up to the 4th last character).</p>
+</div>
+<p>An example in a loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;mytastydata.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span><span class="p">(</span><span class="s2">&quot;HistogramNameForFileBASE&quot;</span><span class="p">,</span> <span class="s2">&quot;A Nice Title&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># 100 bins from 0 to 20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ha</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">HistogramAccumulator</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">GetName</span><span class="p">()[:</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="n">h</span><span class="o">.</span><span class="n">GetTitle</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">():</span>
+<span class="go">        h.Reset()</span>
+<span class="go">        for i in range(event.someSampler.n):</span>
+<span class="go">            h.Fill(event.someSampler.x, event.someSampler.weight)</span>
+<span class="go">        ha.Accumulate(h)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">Terminate</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">CreateEmptyRebdsimFile</span><span class="p">(</span><span class="s2">&quot;somehistograms.root&quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">nOriginalEvents</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">WriteROOTHistogramsToDirectory</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;Event/PerEntryHistograms&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">result</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-rebdsim-file-in-python">
+<span id="custom-analysis-rebdsim-file"></span><h4>Create A REBDSIM File in Python<a class="headerlink" href="#create-a-rebdsim-file-in-python" title="Link to this heading"></a></h4>
+<p>When making a custom analysis, we most likely might want to apply it to a large data set using
+a computer farm. If we have per-event average histograms, you <strong>cannot use hadd</strong> from ROOT as
+it simply adds histograms together. We want to make use of rebdsimCombine as we would normally,
+but we wrote our own ROOT file with our own histograms. How do we proceed?</p>
+<p>pybdsim has a utility function that will create a rebdsim file that you can write your own histograms
+too. This isn’t required, but then allows you to use rebdsimCombine.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">CreateEmptyRebdsimFile</span><span class="p">(</span><span class="s2">&quot;outfilename.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">WriteROOTHistogramsToDirectory</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;Event/PerEntryHistograms&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">th1Object</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The last item should be a list of ROOT histograms (e.g. TH1D, TH2D, TH3D). The directory should
+match the layout of a regular rebdsim file. e.g. :</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">Event/PerEntryHistograms</span></code> for average histograms</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Event/SimpleHistograms</span></code> for regular histograms that aren’t averaged or event-normalised.</p></li>
+</ul>
+</section>
+<section id="rebdsim-in-python">
+<h4>REBDSIM In Python<a class="headerlink" href="#rebdsim-in-python" title="Link to this heading"></a></h4>
+<p>The custom analysis could be used to replace rebdsim. Although there is no point to this, examples
+are provided that illustrate the usage of the classes and tools. See:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/analysis/pythonAnalysis</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>rebdsim itself <strong>cannot</strong> be used in Python. This part only describes how to reproduce
+rebdsim again in Python as an example of data analysis.</p>
+</div>
+</section>
+<section id="sampler-data">
+<h4>Sampler Data<a class="headerlink" href="#sampler-data" title="Link to this heading"></a></h4>
+<p>The following shows the convenience methods to access sampler data from a BDSIM
+output file using pybdsim:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;myoutputfile.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">primaries</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">SamplerData</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">primaries</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">[&#39;weight&#39;,</span>
+<span class="go">&#39;trackID&#39;,</span>
+<span class="go">&#39;energy&#39;,</span>
+<span class="go">&#39;turnNumber&#39;,</span>
+<span class="go">&#39;parentID&#39;,</span>
+<span class="go">&#39;xp&#39;,</span>
+<span class="go">&#39;zp&#39;,</span>
+<span class="go">&#39;rigidity&#39;,</span>
+<span class="go">&#39;ionZ&#39;,</span>
+<span class="go">&#39;charge&#39;,</span>
+<span class="go">&#39;ionA&#39;,</span>
+<span class="go">&#39;modelID&#39;,</span>
+<span class="go">&#39;S&#39;,</span>
+<span class="go">&#39;T&#39;,</span>
+<span class="go">&#39;yp&#39;,</span>
+<span class="go">&#39;partID&#39;,</span>
+<span class="go">&#39;n&#39;,</span>
+<span class="go">&#39;mass&#39;,</span>
+<span class="go">&#39;y&#39;,</span>
+<span class="go">&#39;x&#39;,</span>
+<span class="go">&#39;z&#39;,</span>
+<span class="go">&#39;isIon&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">primaries</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="go">array([0.001, 0.001, 0.001, ..., 0.001, 0.001, 0.001])</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">SamplerData</span></code> function has an optional second argument that takes the
+index (zero counting) of the sampler or the name as it appears in the file. This
+includes the primaries (“Primary”).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This loads all data into memory at once and is generally not as efficient
+as looping over event by event. This is provided for convenience, but may
+not scale well to very large data sets.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This concatenates all events into one array, so the event by event
+nature of the data is lost. This may be acceptable in some cases, but
+it is worth considering making a 2D histogram directly using <cite>rebdsim</cite>
+rather than say loading the sampler data here and making a 2D plot.
+Certainly, if the statistical uncertainties are to be calculated, this
+is a far preferable route.</p>
+</div>
+</section>
+</section>
+<section id="analysis-in-c-or-root">
+<h3>Analysis in C++ or ROOT<a class="headerlink" href="#analysis-in-c-or-root" title="Link to this heading"></a></h3>
+<p>The following commands can be used as either compiled C++ or as interactive C++ using
+ROOT. Here, we show their usage using ROOT interactively.</p>
+<p>When using ROOT’s interpreter, you can use the functionality of the BDSIM classes
+dynamically. First, you must load the shared library (if not done so in your ROOT logon
+macro) to provide the classes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Loading this library exposes all classes that are found in <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim&gt;/analysis</span></code>. If you
+are familiar with ROOT, you may use the ROOT file as you would any other given the
+classes provided by the library:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">TFile</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">,</span> <span class="s2">&quot;READ&quot;</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">eventTree</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event&quot;</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">BDSOutputROOTEventLoss</span><span class="o">*</span> <span class="n">elosslocal</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BDSOutputROOTEventLoss</span><span class="p">();</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">eventTree</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s2">&quot;Eloss.&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">elosslocal</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">eventTree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">elosslocal</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+      <span class="mi">345</span>
+<span class="n">root</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The header (“.hh”) files in <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim&gt;/analysis</span></code> provide the contents and abilities
+of each class.</p>
+<section id="id1">
+<h4>Raw Data Loading<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>This would of course be fairly tedious to load all the structures in the output. Therefore,
+a data loader class is provided that constructs local instances of all the objects and
+sets the branch address on them (links them to the open file). For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">DataLoader</span><span class="o">*</span> <span class="n">dl</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataLoader</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">Event</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEvent</span><span class="p">();</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evtTree</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEventTree</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Here, a file is loaded and by default all data is loaded in the file.</p>
+</section>
+<section id="id2">
+<h4>REBDSIM Histogram Loading<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p>To load histograms, the user should open the ROOT file and access the histograms directly.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">TFile</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">TH1D</span><span class="o">*</span> <span class="n">eloss</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1D</span><span class="o">*</span><span class="p">)</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event/MergedHistograms/ElossHisto&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>It is recommended to use a TBrowser to get the exact names of objects in the file.</p>
+</section>
+<section id="id3">
+<h4>Looping Over Events<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<p>We get access to event by event information through a local event object and the linked
+event tree (here, a chain of all files) provided by the DataLoader class. We can then load
+a particular entry in the tree, which for the Event tree is an individual event:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">evtTree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The event object now contains the data loaded from the file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Eloss</span><span class="o">-&gt;</span><span class="n">n</span>
+<span class="p">(</span><span class="n">int_t</span><span class="p">)</span> <span class="mi">430</span>
+</pre></div>
+</div>
+<p>For our example, the file has 430 entries of energy loss for event #10. The analysis loading
+classes are designed to have the same structure as the output file. Look at
+<cite>bdsim/analysis/Event.hh</cite> to see what objects the class has.</p>
+<p>One may manually loop over the events in a macro:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">DoLoop</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
+  <span class="n">DataLoader</span><span class="o">*</span> <span class="n">dl</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataLoader</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">);</span>
+  <span class="n">Event</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEvent</span><span class="p">();</span>
+  <span class="n">TTree</span><span class="o">*</span> <span class="n">evtTree</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEventTree</span><span class="p">();</span>
+  <span class="nb">int</span> <span class="n">nentries</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="n">evtTree</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nentries</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">evtTree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+      <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Eloss</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">root</span><span class="o">&gt;</span> <span class="o">.</span><span class="n">L</span> <span class="n">myMacro</span><span class="o">.</span><span class="n">C</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">DoLoop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This would loop over all entries and print the number of energy deposition hits per
+event.</p>
+</section>
+<section id="id4">
+<h4>Sampler Data<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>Samplers are dynamically added to the output based on the names the user decides in
+their input accelerator model. The names of the samplers can be accessed from the
+DataLoader class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">samplerNames</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetSamplerNames</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="output-classes">
+<h4>Output Classes<a class="headerlink" href="#output-classes" title="Link to this heading"></a></h4>
+<p>The following classes are used for data loading and can be found in <cite>bdsim/analysis</cite>:</p>
+<ul class="simple">
+<li><p>DataLoader.hh</p></li>
+<li><p>Beam.hh</p></li>
+<li><p>Event.hh</p></li>
+<li><p>Header.hh</p></li>
+<li><p>Model.hh</p></li>
+<li><p>Options.hh</p></li>
+<li><p>Run.hh</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="numerical-methods">
+<span id="id5"></span><h2>Numerical Methods<a class="headerlink" href="#numerical-methods" title="Link to this heading"></a></h2>
+<p>Algorithms used to accurately calculate quantities are described here. These are
+documented explicitly as a simple implementation of the mathematical formulae
+would result in an inaccurate answer in some cases.</p>
+<section id="numerically-stable-calculation-of-mean-variance">
+<h3>Numerically Stable Calculation of Mean &amp; Variance<a class="headerlink" href="#numerically-stable-calculation-of-mean-variance" title="Link to this heading"></a></h3>
+<p>To calculate the mean in the per-entry histograms as well as the associated error
+(the standard error on the mean), the following formulae are used:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\bar{x} &amp;= \sum_{i = 0}^{n} x_{i}\\
+\sigma_{\bar{x}} &amp;= \frac{1}{\sqrt{n}}\sigma = \frac{1}{\sqrt{n}}\sqrt{\frac{1}{n-1}\sum_{i = 0}^{n}(x_{i} - \bar{x})^2 }\end{split}\]</div>
+<p>These equations are however problematic to implement computationally. The formula above
+for the variance requires two passes through the data to first calculate the mean,
+then the variance using that mean. The above equation can be rearranged to provide the same
+calculation with a single pass through the data, however, such algorithms are typically
+numerically unstable, i.e. they rely on a small difference between two very large numbers.
+With the finite precision of a number represented in a C++ double type (~15 significant
+digits), the instability may lead to un-physical results (negative variances) and generally
+incorrect results.</p>
+<p>The algorithm used in <cite>rebdsim</cite> to calculate the means and variances is an online, single-pass
+numerically stable one. This means that the variance is calculated as each data point
+is accumulated, it requires only one pass of the data, and does not suffer numerical instability.
+To calculate the mean, the following recurrence relation is used:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}\bar{x}_{i = 0} &amp;= 0\\
+\bar{x}_{i+1} &amp;= \bar{x}_{i} + \frac{(x - \bar{x}_{i})}{i}\\\end{split}\\\mathrm{for}~ i~ [1\, ...\, n_{event}]\end{aligned}\end{align} \]</div>
+<p>The variance is calculated with the following recurrence relation that requires the above
+online mean calculation:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}Var\,(x)_{i = 0} &amp;= 0 \\
+Var\,(x)_{i+1} &amp;= Var\,(x)_{i} + (x - \bar{x}_{i})\,(x - \bar{x}_{i+1})\\\end{split}\\\mathrm{for}~ i~ [1\, ... \,n_{event}]\end{aligned}\end{align} \]</div>
+<p>After processing all entries, the variance is used to calculate the standard error on the mean
+with:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\bar{x}} = \sqrt{\frac{1}{n}}\sqrt{\frac{1}{(n-1)} Var\,(x)}\]</div>
+</section>
+<section id="merging-histograms">
+<h3>Merging Histograms<a class="headerlink" href="#merging-histograms" title="Link to this heading"></a></h3>
+<p><cite>rebdsimCombine</cite> merges histograms that already have the mean and the error on the
+mean in each bin. These are combined with a separate algorithm that is also numerically
+stable.</p>
+<p>The mean is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\bar{x}_{i = 0} &amp;= 0\\
+\delta &amp;= x_{i+1} - \bar{x}_{i}\\
+\bar{x}_{i+1} &amp;= \bar{x}_{i} + n_{i+1}\frac{\delta}{n_{i} + n_{i+1}}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}Var\,(x)_{i = 0} &amp;= 0 \\
+Var\,(x)_{i+1} &amp;= Var\,(x)_{i} + Var\,(x)_{i+1} + (n_{i}\,n_{i+1} \frac{\delta^{2}}{n_{i} + n_{i+1}})\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathrm{for}~ i~ [1\, ... \,n_{rebdsim\, files}]\]</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="output.html" class="btn btn-neutral float-left" title="Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_utilities.html" class="btn btn-neutral float-right" title="Python Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
+      <span class="lastupdated">Last updated on Jul 06, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYMKZHVZJ2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JYMKZHVZJ2', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

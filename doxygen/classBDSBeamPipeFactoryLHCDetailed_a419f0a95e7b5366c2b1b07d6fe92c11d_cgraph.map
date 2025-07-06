@@ -1,0 +1,26 @@
+<map id="BDSBeamPipeFactoryLHCDetailed::BuildLogicalVolumes" name="BDSBeamPipeFactoryLHCDetailed::BuildLogicalVolumes">
+<area shape="rect" id="Node000001" title="build logical volumes" alt="" coords="5,112,248,152"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamPipeFactoryBase.html#a1f29358caa5e0b32f5e31dee7294ae84" title="build logical volumes" alt="" coords="296,112,491,152"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,129,282,129,282,135,248,135"/>
+<area shape="rect" id="Node000003" href="$classBDSMaterials.html#a99f6642727a7c0d7cae9aab7cefce26b" title="Get material by name." alt="" coords="539,62,733,87"/>
+<area shape="poly" id="edge12_Node000001_Node000003" title=" " alt="" coords="223,109,296,97,414,85,525,77,525,82,414,90,296,103,224,115"/>
+<area shape="rect" id="Node000011" href="$classBDSMaterials.html#a4e2a206298e5e1d18257ccfe62453fef" title="Singleton pattern access." alt="" coords="549,177,723,202"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="224,149,296,161,421,174,536,182,535,188,420,180,296,167,223,155"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="478,109,568,88,569,93,479,115"/>
+<area shape="rect" id="Node000007" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="558,112,714,152"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="491,129,544,129,544,135,491,135"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="479,149,569,171,568,176,478,155"/>
+<area shape="rect" id="Node000004" href="$classBDSMaterials.html#aaadfcedd8e34c1686e3e498a322eb361" title="output available materials" alt="" coords="781,13,984,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="733,61,836,39,837,44,734,67"/>
+<area shape="rect" id="Node000006" href="$namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="819,62,947,87"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="733,72,805,72,805,77,733,77"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="781,39,683,61,682,56,780,34"/>
+<area shape="rect" id="Node000005" href="$classBDSMaterials.html#ae42d0803dcdc0cbae050ba87e72a988c" title="Print mass fractions of consituents of a given material." alt="" coords="1032,5,1215,45"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="984,23,1018,23,1018,28,984,28"/>
+<area shape="rect" id="Node000008" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="801,112,965,152"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="714,129,787,129,787,135,714,135"/>
+<area shape="rect" id="Node000009" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="807,177,959,202"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="715,147,815,171,813,176,714,153"/>
+<area shape="rect" id="Node000010" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="797,226,969,251"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="712,150,735,162,750,175,759,188,768,201,783,212,795,219,793,223,780,217,764,204,755,191,746,179,732,166,709,154"/>
+</map>

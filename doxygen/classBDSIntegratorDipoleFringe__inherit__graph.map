@@ -1,0 +1,13 @@
+<map id="BDSIntegratorDipoleFringe" name="BDSIntegratorDipoleFringe">
+<area shape="rect" id="Node000001" title="Integrator that ignores the field and uses the analytical solution for a dipole kick." alt="" coords="206,1047,429,1612"/>
+<area shape="rect" id="Node000006" href="$classBDSIntegratorDipoleFringeScaling.html" title="Derived fringe field integrator that does normalise to momentum." alt="" coords="211,1660,424,1844"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="320,1626,320,1660,315,1660,315,1626"/>
+<area shape="rect" id="Node000002" href="$classBDSIntegratorDipoleRodrigues2.html" title="Exact helix through pure dipole field." alt="" coords="48,456,304,721"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,734,266,1046,261,1047,201,735"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,35,160,101"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,114,155,455,150,456,88,115"/>
+<area shape="rect" id="Node000004" href="$classBDSIntegratorDrift.html" title="Routine for drift algorithm." alt="" coords="185,5,354,131"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="258,145,202,456,197,455,253,144"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html" title="Extra G4Navigator to get coordinate transforms." alt="" coords="328,179,589,999"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="380,1013,374,1047,369,1046,375,1012"/>
+</map>

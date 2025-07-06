@@ -1,0 +1,26 @@
+<map id="BDSOutputROOT::NewFile" name="BDSOutputROOT::NewFile">
+<area shape="rect" id="Node000001" title="Open a new file." alt="" coords="5,95,195,121"/>
+<area shape="rect" id="Node000002" href="$classBDSOutput.html#a06893114f5522ffdef6a41aefe1e6dbc" title="Whether to create the collimator structures in the output or not." alt="" coords="245,5,457,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,93,242,55,267,47,268,52,244,60,136,98"/>
+<area shape="rect" id="Node000003" href="$classBDSOutput.html#a99a3be935822ed9b18740365cdb6f7b1" title="Fill the local structure header with information &#45; updates time stamp." alt="" coords="268,70,435,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,96,254,90,255,95,195,101"/>
+<area shape="rect" id="Node000007" href="$classBDSOutput.html#a4f3e975acb3f39cc3229bc60cb390bfd" title="Get the next file name based on the base file name and the accrued number of files." alt="" coords="243,119,460,145"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="195,114,229,118,229,123,195,120"/>
+<area shape="rect" id="Node000009" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="537,169,693,209"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="132,118,183,138,243,155,316,168,390,176,524,185,523,190,390,182,315,173,242,160,182,143,130,123"/>
+<area shape="rect" id="Node000004" href="$classBDSOutputROOTEventHeader.html#ad5c23dd008f2aae572a5c06d9bfeedec" title=" " alt="" coords="508,5,723,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="410,67,509,46,510,51,411,73"/>
+<area shape="rect" id="Node000006" href="$classBDSOutput.html#aff54717db4cc850497e57b9c72495dec" title="Write the header." alt="" coords="524,70,707,95"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="435,80,511,80,511,85,435,85"/>
+<area shape="rect" id="Node000005" href="$classBDSOutputROOTEventHeader.html#af06a053def06e0b58a58516dd8616d7b" title="Fill with information from Geant4 side of things." alt="" coords="771,5,985,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="723,23,757,23,757,28,723,28"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#aa689cdffef91f8626aded351ac2760c6" title="Checks if filename exists." alt="" coords="556,119,675,145"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="460,129,542,129,542,135,460,135"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="411,142,525,167,524,172,410,147"/>
+<area shape="rect" id="Node000010" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="796,112,960,152"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="693,170,782,150,783,155,694,175"/>
+<area shape="rect" id="Node000011" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="802,177,954,202"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="694,187,788,187,788,192,694,192"/>
+<area shape="rect" id="Node000012" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="792,226,964,251"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="694,201,797,221,796,226,693,207"/>
+</map>

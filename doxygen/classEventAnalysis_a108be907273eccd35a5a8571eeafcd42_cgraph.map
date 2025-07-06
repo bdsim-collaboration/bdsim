@@ -1,0 +1,23 @@
+<map id="EventAnalysis::FillHistogram" name="EventAnalysis::FillHistogram">
+<area shape="rect" id="Node000001" title="Fill a set of simple histograms across all events." alt="" coords="5,109,215,134"/>
+<area shape="rect" id="Node000002" href="$classAnalysis.html#ad50996545eea4ffc2ef6d3c110fbd663" title="Create an individual histogram based on a definition." alt="" coords="263,109,435,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,119,249,119,249,124,215,124"/>
+<area shape="rect" id="Node000003" href="$classHistogramFactory.html#afe19d7305c7e606c73d8f476842fdc8f" title=" " alt="" coords="483,101,669,141"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="435,119,469,119,469,124,435,124"/>
+<area shape="rect" id="Node000004" href="$classHistogramFactory.html#ad790da51a7263f2719458ddadf3bb21e" title="Create 1D histogram." alt="" coords="717,5,904,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="617,99,716,55,736,47,738,52,718,60,620,104"/>
+<area shape="rect" id="Node000006" href="$classHistogramFactory.html#a91b42eda6d0be94655de5e3359cc6772" title="Create 2D histogram." alt="" coords="717,69,904,109"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="669,106,703,101,704,107,670,111"/>
+<area shape="rect" id="Node000007" href="$classHistogramFactory.html#a86928671293fe23250f19e3f48f104f1" title="Create 3D histogram." alt="" coords="717,133,904,173"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="670,131,704,136,703,141,669,137"/>
+<area shape="rect" id="Node000009" href="$classHistogramFactory.html#ad721ec4ed9ac4859c9b963804db25bd2" title="Create 4D histogram." alt="" coords="717,197,904,237"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="620,139,718,183,738,190,736,195,716,188,617,144"/>
+<area shape="rect" id="Node000005" href="$classHistogramFactory.html#a583570441a9c8a3164233e4b121f9a4e" title="Whether name is set or not." alt="" coords="952,104,1175,144"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="873,43,905,55,1005,96,1003,101,903,60,871,48"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="904,99,939,104,938,110,904,105"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="904,140,938,136,939,141,904,145"/>
+<area shape="rect" id="Node000008" href="$namespaceRBDS.html#a5ebbd8d84481dd32fb77fc3408c68cc6" title="Linear range of values." alt="" coords="1001,171,1125,197"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="904,162,988,172,988,178,904,167"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="873,195,903,183,951,156,977,146,979,151,953,161,905,188,875,200"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="904,202,988,191,988,197,904,208"/>
+</map>

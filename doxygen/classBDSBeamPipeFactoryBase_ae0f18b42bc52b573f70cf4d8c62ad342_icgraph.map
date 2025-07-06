@@ -1,0 +1,25 @@
+<map id="BDSBeamPipeFactoryBase::CheckAngledVolumeCanBeBuilt" name="BDSBeamPipeFactoryBase::CheckAngledVolumeCanBeBuilt">
+<area shape="rect" id="Node000001" title="check if a beam pipe volume with angled faces can be constructed" alt="" coords="581,165,817,205"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamPipeFactoryCircularVacuum.html#ab5d608aeffd1b014626a4c54e80f9c9a" title=" " alt="" coords="307,5,519,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="666,158,607,107,570,82,532,60,503,48,505,43,535,55,573,77,610,103,669,154"/>
+<area shape="rect" id="Node000003" href="$classBDSBeamPipeFactoryRectEllipse.html#a806e0141084f77fae1591e6aded7ac4d" title=" " alt="" coords="296,69,531,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="637,163,532,124,493,112,495,107,534,119,638,158"/>
+<area shape="rect" id="Node000005" href="$classBDSBeamPipeFactoryRectangular.html#a65dd2d27e5fb63922fe10cc20df94f9e" title=" " alt="" coords="293,133,533,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="567,173,533,169,534,164,568,168"/>
+<area shape="rect" id="Node000007" href="$classBDSBeamPipeFactoryElliptical.html#a29ccc01dc472587c282939a63b8c59b2" title=" " alt="" coords="304,197,523,237"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="568,203,523,208,523,202,567,197"/>
+<area shape="rect" id="Node000009" href="$classBDSBeamPipeFactoryCircular.html#acfcef682324df36f6ea8d50bc4e588f3" title="Pass containerRadius by reference to update." alt="" coords="307,261,519,301"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="638,213,534,252,495,264,493,259,532,247,637,208"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamPipeFactoryPoints.html#a9eacda39c6f4ab4e4ce0ff6a2c6e89cc" title="Create angled solids. Uses CreateSolids() method." alt="" coords="312,325,515,365"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="669,217,610,267,573,293,535,316,505,328,503,323,532,311,570,289,607,263,666,213"/>
+<area shape="rect" id="Node000004" href="$classBDSBeamPipeFactoryRectEllipse.html#a19aafb02fc75d30f6031b1f3a197a7e6" title=" " alt="" coords="8,69,243,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="282,92,243,92,243,87,282,87"/>
+<area shape="rect" id="Node000006" href="$classBDSBeamPipeFactoryRectangular.html#a43dc3ff8cf8bc2f8c486f11aa77c5c27" title=" " alt="" coords="5,133,245,173"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="280,156,245,156,245,151,280,151"/>
+<area shape="rect" id="Node000008" href="$classBDSBeamPipeFactoryElliptical.html#a6af3ef4c3ce87b6448b934ce64de5f35" title=" " alt="" coords="16,197,235,237"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="290,220,235,220,235,215,290,215"/>
+<area shape="rect" id="Node000010" href="$classBDSBeamPipeFactoryCircular.html#a6459d0a0d4e9e408ddf95e3f2aca323e" title=" " alt="" coords="19,261,231,301"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="294,284,231,284,231,279,294,279"/>
+<area shape="rect" id="Node000012" href="$classBDSBeamPipeFactoryPoints.html#ad0e19a6494bfacf7e316b38c89acb109" title="Required overloaded method from BDSBeamPipeFactoryBase to build angled piece of beam pipe." alt="" coords="24,325,227,365"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="298,348,227,348,227,343,298,343"/>
+</map>

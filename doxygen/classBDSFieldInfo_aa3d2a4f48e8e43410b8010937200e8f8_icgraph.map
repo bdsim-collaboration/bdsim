@@ -1,0 +1,42 @@
+<map id="BDSFieldInfo::Transform" name="BDSFieldInfo::Transform">
+<area shape="rect" id="Node000001" title="Transform for the field definition only." alt="" coords="1127,180,1305,205"/>
+<area shape="rect" id="Node000002" href="$classBDSMagnet.html#a4f512593bcdca040ce4585791d9d92fc" title="Construct the field for the vacuum and attach it." alt="" coords="847,5,1069,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1198,170,1149,106,1116,72,1077,44,1052,33,1054,28,1080,40,1119,68,1153,102,1202,166"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldFactory.html#a432866f0da0199193e79e2d2cd1dc792" title="Creat just the electric field object." alt="" coords="545,121,789,147"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1175,177,1129,160,1078,146,1004,135,929,130,789,129,789,124,929,125,1005,130,1079,141,1131,155,1176,172"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldFactory.html#abe272e95f65e31e32fd8af19397eb93d" title="Creat just the magnetic field object." alt="" coords="563,213,771,253"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="1140,210,1079,219,917,231,772,235,772,230,917,226,1078,214,1139,205"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldLoader.html#ac40d3e4a6c835bb756cf440e34be2505" title="Main interface to load an electric field." alt="" coords="857,55,1059,80"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="1188,173,1138,137,1078,102,1022,83,1024,78,1080,97,1141,132,1191,169"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldLoader.html#a3208f9562d507cdc7b616763fd837c7a" title="Main interface to load an electro&#45;magnetic field." alt="" coords="851,331,1065,356"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="1198,218,1148,270,1116,298,1080,320,1048,333,1046,328,1077,316,1113,293,1145,267,1194,215"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldLoader.html#a9d7eea0510b0e67f797675b1c94ce92f" title="Main interface to load a magnetic field." alt="" coords="847,180,1069,205"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="1113,195,1070,195,1070,190,1113,190"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldInfo.html#a28330564ef374286b0384b44988bd07d" title="Compound transform of field + beam line transform." alt="" coords="837,281,1079,307"/>
+<area shape="poly" id="edge19_Node000001_Node000013" title=" " alt="" coords="1183,215,1135,240,1080,264,1017,284,1016,279,1078,260,1132,235,1180,210"/>
+<area shape="rect" id="Node000003" href="$classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="598,5,737,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="833,21,737,21,737,15,833,15"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="719,113,717,108,708,104,667,100,636,102,620,107,616,112,625,119,621,123,611,113,616,103,635,97,667,95,709,99,720,104,724,110"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldFactory.html#a267433e2853cc25480adcf6e4493e870" title="Create an electric field." alt="" coords="271,147,487,172"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="532,149,488,153,487,147,531,143"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldFactory.html#a4ddc6a455c87ea0ed853cf870512a4da" title="Main interface to field factory." alt="" coords="5,249,213,275"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="333,179,145,252,143,247,331,174"/>
+<area shape="poly" id="edge10_Node000007_Node000007" title=" " alt="" coords="717,201,699,194,667,191,639,193,622,198,616,204,619,211,614,213,611,203,620,194,638,188,667,186,701,189,719,196"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldFactory.html#aa596ea76ebc79f07a624bc3f71accac7" title="Create a purely magnetic field." alt="" coords="261,220,497,245"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="549,235,498,235,498,230,549,230"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="249,249,214,253,213,248,249,244"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="889,86,724,124,723,119,888,80"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldFactory.html#aae6257d23bf70122a523e0f9e1e35d85" title="Create a general EM field." alt="" coords="553,331,781,356"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="837,346,782,346,782,341,837,341"/>
+<area shape="poly" id="edge15_Node000011_Node000006" title=" " alt="" coords="539,350,404,345,332,337,261,325,191,302,134,277,137,272,193,298,262,319,332,332,405,339,539,345"/>
+<area shape="poly" id="edge17_Node000012_Node000007" title=" " alt="" coords="852,210,772,221,771,216,851,205"/>
+<area shape="poly" id="edge18_Node000012_Node000012" title=" " alt="" coords="1004,171,1001,166,993,162,958,159,930,161,916,166,913,171,920,178,917,182,908,172,912,162,929,155,958,153,994,157,1004,162,1008,168"/>
+<area shape="poly" id="edge21_Node000013_Node000004" title=" " alt="" coords="923,277,836,219,812,198,788,179,752,162,716,149,718,144,754,157,791,174,816,194,839,215,925,272"/>
+<area shape="poly" id="edge22_Node000013_Node000007" title=" " alt="" coords="883,281,762,255,763,250,884,276"/>
+<area shape="poly" id="edge20_Node000013_Node000011" title=" " alt="" coords="870,312,744,333,743,328,869,306"/>
+<area shape="rect" id="Node000014" href="$classBDSFieldFactory.html#ad4888a2183034fb23c81ffeef6cc4493" title=" " alt="" coords="546,279,789,304"/>
+<area shape="poly" id="edge23_Node000013_Node000014" title=" " alt="" coords="823,295,789,295,789,290,824,290"/>
+<area shape="rect" id="Node000015" href="$classBDSFieldFactory.html#a2c9c2e4a940342ae9ac7c220778b628f" title="Create an irregular (special) field." alt="" coords="275,270,483,310"/>
+<area shape="poly" id="edge24_Node000014_Node000015" title=" " alt="" coords="532,293,484,293,484,288,532,288"/>
+<area shape="poly" id="edge25_Node000015_Node000006" title=" " alt="" coords="261,280,213,275,214,270,262,275"/>
+</map>

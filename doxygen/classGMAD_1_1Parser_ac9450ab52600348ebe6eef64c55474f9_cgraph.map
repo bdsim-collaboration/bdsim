@@ -1,0 +1,39 @@
+<map id="GMAD::Parser::Parser" name="GMAD::Parser::Parser">
+<area shape="rect" id="Node000001" title="Constructor from filename." alt="" coords="5,129,164,155"/>
+<area shape="rect" id="Node000002" href="$classGMAD_1_1Parser.html#af2b5cc600f11be6034a2abd176515d10" title="Initialisation of parser functions and constants." alt="" coords="213,104,388,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,130,199,126,200,131,165,135"/>
+<area shape="rect" id="Node000008" href="$classGMAD_1_1Parser.html#ab8bf97a3c2e4647cf11edb6a60818003" title="Parse the input file and construct beamline_list and options." alt="" coords="212,153,389,179"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="165,148,199,152,198,157,164,153"/>
+<area shape="rect" id="Node000003" href="$classGMAD_1_1Parser.html#aed2629392fb664a432910a7f1002c352" title="Add function to parser." alt="" coords="442,55,621,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="360,101,457,80,459,86,361,107"/>
+<area shape="rect" id="Node000006" href="$structGMAD_1_1Parameters.html#a5cedbc01a18d48a6def41ab611bee50a" title="Reset the parameters to defaults and setMap." alt="" coords="439,104,623,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="388,114,426,114,426,119,388,119"/>
+<area shape="rect" id="Node000004" href="$classGMAD_1_1Symtab.html#aadbafd5b6145ffbcba3f8a30ebeb4b38" title="Set to Array value." alt="" coords="711,5,861,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="597,52,706,31,707,36,598,57"/>
+<area shape="rect" id="Node000005" href="$classGMAD_1_1SymbolMap.html#af597d205eb4cb203e2af91bd7c488bdb" title="Create new parser symbol." alt="" coords="673,55,899,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="621,65,660,65,660,70,621,70"/>
+<area shape="rect" id="Node000007" href="$structGMAD_1_1Element.html#ab551b05c37f4a38f2cf93ee64ac438dc" title="flush method" alt="" coords="704,104,868,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="624,114,690,114,690,119,624,119"/>
+<area shape="rect" id="Node000009" href="$classGMAD_1_1SymbolMap.html#a065f68a1f0650a478c93fc9371d82c41" title="Destructor that clears memory." alt="" coords="437,153,625,179"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="389,163,424,163,424,169,389,169"/>
+<area shape="rect" id="Node000010" href="$classGMAD_1_1Parser.html#afcfafb79049b1a074e21db4598250dbe" title="Expand all sequences define with &#39;line&#39; into FastLists." alt="" coords="448,203,615,243"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="353,176,438,197,437,203,352,181"/>
+<area shape="rect" id="Node000011" href="$classGMAD_1_1Parser.html#a83e228b66f80ae0a6b1ea26908e5e87b" title=" " alt="" coords="687,211,885,236"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="615,221,673,221,673,226,615,226"/>
+<area shape="rect" id="Node000012" href="$classGMAD_1_1FastList.html#a0eb8ca7f0c3ac57da83f3695780641d6" title=" " alt="" coords="963,37,1127,63"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="807,208,850,178,897,139,910,121,919,104,928,88,945,72,955,66,958,70,948,76,932,91,923,106,915,124,901,142,854,183,810,213"/>
+<area shape="rect" id="Node000013" href="$classGMAD_1_1FastList.html#ad7c2cd85c15955c7f00f46bf7ff995b2" title="empty lists" alt="" coords="965,87,1125,112"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="802,208,863,166,903,142,946,121,966,114,967,119,948,126,906,146,866,170,805,213"/>
+<area shape="rect" id="Node000014" href="$classGMAD_1_1FastList.html#a97ec3c22a7936bdec61a7932b8fa5169" title=" " alt="" coords="969,136,1121,161"/>
+<area shape="poly" id="edge13_Node000011_Node000014" title=" " alt="" coords="824,208,946,170,976,162,977,167,947,175,826,213"/>
+<area shape="rect" id="Node000015" href="$classGMAD_1_1FastList.html#ada88aee2ed2bdcf6237e3b462ea4efcd" title="erase elements" alt="" coords="963,185,1127,211"/>
+<area shape="poly" id="edge14_Node000011_Node000015" title=" " alt="" coords="885,211,949,205,950,210,886,216"/>
+<area shape="rect" id="Node000016" href="$classGMAD_1_1FastList.html#aeb35ebf343b86b642d59cb0ae9164c2d" title=" " alt="" coords="969,235,1121,260"/>
+<area shape="poly" id="edge15_Node000011_Node000016" title=" " alt="" coords="886,230,956,236,955,242,885,235"/>
+<area shape="rect" id="Node000017" href="$classGMAD_1_1Parser.html#a7331bbbc5b29f76811b0488494db7890" title="find element" alt="" coords="974,285,1117,325"/>
+<area shape="poly" id="edge16_Node000011_Node000017" title=" " alt="" coords="828,233,968,278,967,283,827,239"/>
+<area shape="rect" id="Node000018" href="$classGMAD_1_1FastList.html#a843f3796174f0b8c45a94dbea8e1163c" title="template definitions need to be in header" alt="" coords="963,349,1128,375"/>
+<area shape="poly" id="edge17_Node000011_Node000018" title=" " alt="" coords="803,234,864,283,904,310,948,334,969,343,967,348,946,339,902,315,860,287,800,238"/>
+<area shape="rect" id="Node000019" href="$classGMAD_1_1FastList.html#adfc447ce794401455811fade5ae14c14" title=" " alt="" coords="947,399,1144,424"/>
+<area shape="poly" id="edge18_Node000011_Node000019" title=" " alt="" coords="798,235,855,307,898,349,948,385,961,392,959,396,945,390,895,353,851,310,794,238"/>
+</map>

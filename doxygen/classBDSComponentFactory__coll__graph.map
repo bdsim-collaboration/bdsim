@@ -1,0 +1,96 @@
+<map id="BDSComponentFactory" name="BDSComponentFactory">
+<area shape="rect" id="Node000001" title="Factory to produce all types of BDSAcceleratorComponents." alt="" coords="1708,4840,1937,5580"/>
+<area shape="rect" id="Node000002" href="$classBDSComponentFactoryUser.html" title="Factory for user specified accelerator components." alt="" coords="455,4523,713,4668"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="639,4666,690,4723,751,4775,870,4851,997,4919,1128,4980,1257,5033,1383,5079,1500,5118,1693,5174,1692,5179,1498,5123,1381,5084,1255,5038,1125,4984,995,4924,868,4855,748,4779,686,4727,635,4670"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="155,2787,376,2867"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,2867,571,4506,566,4507,270,2868"/>
+<area shape="rect" id="Node000004" href="$classBDSComponentConstructor.html" title="Interface class the developer should derive to construct their element." alt="" coords="5,1190,232,1295"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="126,1295,263,2771,258,2771,121,1296"/>
+<area shape="rect" id="Node000005" href="$classBDSModulatorInfo.html" title="Holder class for all information required to describe a modulator." alt="" coords="2456,591,2640,976"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="2487,977,2451,1111,2417,1264,2392,1426,2385,1508,2383,1589,2383,4597,2380,4644,2371,4689,2357,4734,2339,4776,2316,4817,2290,4856,2229,4929,2161,4995,2090,5053,2019,5102,1953,5143,1950,5139,2016,5098,2086,5049,2158,4991,2226,4926,2286,4853,2312,4814,2334,4774,2352,4732,2366,4688,2374,4643,2377,4597,2377,1589,2380,1508,2387,1425,2412,1263,2446,1109,2482,975"/>
+<area shape="rect" id="Node000006" href="$classBDSTypeSafeEnum.html" title=" " alt="" coords="2394,135,2649,395"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="2588,394,2601,432,2611,472,2615,523,2612,574,2607,574,2610,523,2605,472,2596,434,2583,396"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="2386,472,2595,567"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="2457,396,2451,419,2448,433,2451,447,2454,456,2449,458,2445,449,2443,433,2445,418,2452,394"/>
+<area shape="rect" id="Node000007" href="$structmodulatortypes__def.html" title="Type definition for field modulators." alt="" coords="2449,13,2594,78"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="2524,92,2524,134,2519,134,2519,92"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="2494,472,2501,411,2506,411,2499,472"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="1167,232,1246,297"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1247,270,2072,416,2221,438,2287,449,2371,469,2369,474,2286,454,2220,443,2072,421,1246,276"/>
+<area shape="rect" id="Node000014" href="$structGMAD_1_1Element.html" title="Element class." alt="" coords="759,1695,942,3960"/>
+<area shape="poly" id="edge18_Node000014_Node000009" title=" " alt="" coords="1169,285,1113,314,1046,355,980,408,950,440,925,473,910,503,904,529,901,591,892,651,878,706,852,800,847,843,851,885,868,929,900,974,917,983,942,987,1007,985,1072,984,1098,988,1116,998,1134,1023,1147,1054,1157,1090,1163,1130,1168,1222,1165,1321,1144,1519,1124,1671,1092,1890,1048,2110,999,2320,949,2507,944,2506,993,2319,1043,2109,1086,1889,1119,1670,1139,1519,1159,1321,1163,1222,1158,1131,1151,1091,1142,1055,1129,1025,1113,1002,1097,993,1072,989,1007,991,941,993,915,988,897,978,863,931,845,887,841,843,847,799,873,704,886,650,896,590,899,528,905,501,920,471,946,436,976,405,1043,351,1110,309,1166,280"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="311,487,468,552"/>
+<area shape="poly" id="edge17_Node000016_Node000009" title=" " alt="" coords="1167,273,1056,287,898,315,809,334,717,358,626,387,538,421,488,448,442,479,439,474,485,443,536,416,624,382,716,353,807,329,897,309,1055,282,1167,267"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="624,751,781,816"/>
+<area shape="poly" id="edge21_Node000018_Node000009" title=" " alt="" coords="1168,272,1090,283,992,309,941,328,890,353,844,383,803,420,776,456,754,496,738,538,725,582,710,665,705,734,700,734,705,665,720,580,732,537,750,494,772,453,799,417,841,379,888,348,938,323,990,304,1089,278,1167,267"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="460,743,615,823"/>
+<area shape="poly" id="edge26_Node000021_Node000009" title=" " alt="" coords="1168,270,1075,278,1015,287,951,301,884,320,818,346,755,379,699,421,667,454,639,492,615,533,595,575,566,658,549,728,544,727,561,656,590,573,610,530,634,489,663,451,696,417,753,375,816,341,882,315,949,296,1014,282,1074,273,1167,264"/>
+<area shape="rect" id="Node000026" title=" " alt="" coords="1335,472,1545,567"/>
+<area shape="poly" id="edge33_Node000026_Node000009" title=" " alt="" coords="1238,296,1388,457,1384,461,1234,299"/>
+<area shape="rect" id="Node000031" title=" " alt="" coords="1859,472,2069,567"/>
+<area shape="poly" id="edge40_Node000031_Node000009" title=" " alt="" coords="1247,275,1495,352,1845,469,1843,474,1494,357,1245,280"/>
+<area shape="rect" id="Node000035" title=" " alt="" coords="1102,472,1311,567"/>
+<area shape="poly" id="edge46_Node000035_Node000009" title=" " alt="" coords="1209,297,1209,455,1204,455,1204,297"/>
+<area shape="rect" id="Node000038" title=" " alt="" coords="2093,472,2302,567"/>
+<area shape="poly" id="edge53_Node000038_Node000009" title=" " alt="" coords="1247,270,1382,296,1586,340,1828,398,2078,468,2076,473,1827,403,1585,345,1381,302,1246,276"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1141,5,1272,85"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="1209,99,1209,232,1204,232,1204,99"/>
+<area shape="rect" id="Node000011" href="$classBDSBeamlineIntegral.html" title="A class that holds the current integrated quantities along a beam line." alt="" coords="2418,4413,2673,4777"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="2435,4779,2401,4818,2348,4868,2291,4916,2173,5005,2056,5081,1953,5142,1950,5138,2054,5077,2170,5000,2288,4912,2344,4864,2397,4814,2431,4776"/>
+<area shape="rect" id="Node000012" href="$classBDSParticleDefinition.html" title="Wrapper for particle definition." alt="" coords="2525,2295,2752,3360"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="2613,3360,2558,4397,2553,4397,2608,3360"/>
+<area shape="rect" id="Node000013" href="$classBDSIonDefinition.html" title="Class to parse an ion particle definition." alt="" coords="2559,1000,2719,1485"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="2641,1486,2641,2278,2636,2278,2636,1486"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="945,3948,997,4163,1029,4271,1065,4377,1106,4481,1151,4583,1201,4681,1257,4776,1301,4837,1352,4895,1408,4948,1467,4997,1586,5080,1695,5144,1692,5148,1583,5085,1463,5001,1404,4952,1348,4899,1297,4841,1252,4779,1197,4684,1146,4585,1101,4483,1060,4379,1024,4272,992,4165,939,3949"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="761,4563,956,4628"/>
+<area shape="poly" id="edge24_Node000020_Node000014" title=" " alt="" coords="762,3722,760,3889,764,4057,776,4225,796,4389,816,4473,842,4546,837,4548,811,4475,791,4390,770,4226,759,4058,755,3889,757,3722"/>
+<area shape="rect" id="Node000015" href="$classGMAD_1_1Published.html" title=" " alt="" coords="256,1090,467,1395"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="415,1408,762,2530,757,2531,410,1409"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="385,553,379,591,368,717,362,844,360,1074,355,1073,357,844,363,716,373,590,380,552"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="967,1210,1103,1275"/>
+<area shape="poly" id="edge19_Node000014_Node000017" title=" " alt="" coords="1032,1276,999,1510,947,1943,941,1943,993,1509,1027,1275"/>
+<area shape="poly" id="edge20_Node000014_Node000018" title=" " alt="" coords="704,816,697,1091,697,1286,704,1485,728,1805,760,2122,755,2123,722,1805,699,1485,692,1286,692,1091,699,816"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="833,1210,943,1275"/>
+<area shape="poly" id="edge22_Node000014_Node000019" title=" " alt="" coords="885,1276,869,1380,855,1510,845,1678,840,1678,849,1509,863,1379,880,1275"/>
+<area shape="poly" id="edge23_Node000014_Node000020" title=" " alt="" coords="860,4562,873,4389,880,4185,882,3976,887,3977,885,4185,879,4389,865,4563"/>
+<area shape="poly" id="edge25_Node000014_Node000021" title=" " alt="" coords="539,824,540,1100,548,1291,565,1485,604,1742,652,2001,706,2246,758,2465,753,2467,700,2248,647,2002,598,1743,560,1486,542,1291,534,1100,534,824"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="1561,4555,1708,4635"/>
+<area shape="poly" id="edge27_Node000001_Node000022" title=" " alt="" coords="1649,4635,1707,4824,1702,4825,1644,4636"/>
+<area shape="rect" id="Node000023" href="$classBDSCavityInfo.html" title="Holder for all Geometrical information required to create an RF cavity." alt="" coords="1513,2675,1687,2980"/>
+<area shape="poly" id="edge28_Node000022_Node000023" title=" " alt="" coords="1606,2980,1636,4539,1631,4539,1600,2980"/>
+<area shape="rect" id="Node000024" href="$classBDSTypeSafeEnum.html" title=" " alt="" coords="1454,1113,1682,1373"/>
+<area shape="poly" id="edge29_Node000023_Node000024" title=" " alt="" coords="1573,1373,1599,2658,1594,2658,1568,1373"/>
+<area shape="poly" id="edge32_Node000026_Node000024" title=" " alt="" coords="1561,1112,1546,791,1537,656,1528,592,1521,581,1526,578,1533,590,1542,656,1552,791,1566,1112"/>
+<area shape="rect" id="Node000025" href="$structcavitytypes__def.html" title="Type definition for RF cavities." alt="" coords="1569,487,1687,552"/>
+<area shape="poly" id="edge30_Node000024_Node000025" title=" " alt="" coords="1631,566,1627,746,1612,976,1594,1113,1588,1112,1607,976,1621,745,1625,566"/>
+<area shape="poly" id="edge31_Node000024_Node000026" title=" " alt="" coords="1438,567,1432,646,1430,748,1435,862,1452,975,1470,1037,1494,1097,1489,1099,1465,1039,1447,977,1430,862,1424,748,1427,646,1432,567"/>
+<area shape="rect" id="Node000027" title=" " alt="" coords="1749,4555,1896,4635"/>
+<area shape="poly" id="edge34_Node000001_Node000027" title=" " alt="" coords="1825,4635,1825,4824,1820,4824,1820,4635"/>
+<area shape="rect" id="Node000028" href="$classBDSCrystalInfo.html" title="Holder for all information required to create a crystal." alt="" coords="1721,2615,1924,3040"/>
+<area shape="poly" id="edge35_Node000027_Node000028" title=" " alt="" coords="1825,3040,1825,4539,1820,4539,1820,3040"/>
+<area shape="rect" id="Node000029" href="$classBDSTypeSafeEnum.html" title=" " alt="" coords="1707,1113,1939,1373"/>
+<area shape="poly" id="edge36_Node000028_Node000029" title=" " alt="" coords="1825,1373,1825,2598,1820,2598,1820,1373"/>
+<area shape="poly" id="edge39_Node000031_Node000029" title=" " alt="" coords="1873,1112,1895,1045,1913,975,1931,869,1935,784,1938,699,1948,590,1949,583,1954,583,1953,591,1943,699,1941,784,1936,869,1919,977,1900,1046,1878,1113"/>
+<area shape="rect" id="Node000030" href="$structcrystaltypes__def.html" title="Type definition for crystal shapes." alt="" coords="1712,487,1835,552"/>
+<area shape="poly" id="edge37_Node000029_Node000030" title=" " alt="" coords="1777,566,1785,745,1799,976,1811,1112,1806,1113,1793,976,1780,745,1772,566"/>
+<area shape="poly" id="edge38_Node000029_Node000031" title=" " alt="" coords="1861,565,1837,592,1821,630,1810,681,1804,743,1801,812,1803,959,1811,1096,1806,1096,1798,959,1796,812,1799,743,1805,680,1816,628,1832,589,1857,562"/>
+<area shape="rect" id="Node000032" href="$classBDSIntegratorSet.html" title="Which integrator to use for each type of magnet / field object." alt="" coords="1234,3984,1411,4389"/>
+<area shape="poly" id="edge41_Node000001_Node000032" title=" " alt="" coords="1346,4389,1362,4482,1386,4581,1417,4681,1457,4776,1509,4864,1570,4948,1634,5024,1698,5091,1694,5095,1631,5028,1565,4951,1504,4867,1452,4779,1412,4683,1380,4583,1357,4483,1341,4390"/>
+<area shape="rect" id="Node000033" href="$classBDSTypeSafeEnum.html" title=" " alt="" coords="1178,1113,1430,1373"/>
+<area shape="poly" id="edge42_Node000032_Node000033" title=" " alt="" coords="1307,1373,1324,3967,1319,3967,1302,1373"/>
+<area shape="poly" id="edge45_Node000035_Node000033" title=" " alt="" coords="1326,1112,1338,997,1340,863,1335,794,1324,724,1306,656,1282,592,1276,581,1280,578,1286,590,1311,655,1329,723,1340,793,1345,863,1343,997,1331,1113"/>
+<area shape="rect" id="Node000034" href="$structintegratortypes__def.html" title="Type definition for integrators." alt="" coords="935,487,1078,552"/>
+<area shape="poly" id="edge43_Node000033_Node000034" title=" " alt="" coords="1025,564,1093,744,1185,975,1246,1111,1241,1114,1180,977,1088,746,1020,566"/>
+<area shape="poly" id="edge44_Node000033_Node000035" title=" " alt="" coords="1203,567,1196,645,1190,747,1192,861,1205,976,1220,1037,1241,1096,1236,1098,1215,1038,1200,976,1187,862,1185,747,1190,645,1198,567"/>
+<area shape="rect" id="Node000036" href="$classBDSTypeSafeEnum.html" title="Improve type&#45;safety of native enum data type in C++." alt="" coords="2165,1113,2342,1373"/>
+<area shape="poly" id="edge47_Node000001_Node000036" title=" " alt="" coords="2250,1373,2218,1920,2191,2315,2155,2769,2111,3263,2056,3780,1992,4304,1916,4816,1915,4824,1909,4823,1911,4816,1986,4303,2051,3780,2105,3262,2150,2768,2186,2315,2213,1920,2245,1373"/>
+<area shape="rect" id="Node000037" title=" " alt="" coords="2327,487,2361,552"/>
+<area shape="poly" id="edge48_Node000036_Node000037" title=" " alt="" coords="2349,566,2350,746,2345,861,2332,976,2318,1046,2300,1113,2295,1112,2313,1045,2327,976,2340,861,2345,746,2344,566"/>
+<area shape="rect" id="Node000039" href="$classBDSTypeSafeEnum.html" title=" " alt="" coords="1963,1113,2141,1373"/>
+<area shape="poly" id="edge51_Node000039_Node000037" title=" " alt="" coords="2339,566,2336,591,2334,678,2335,792,2333,849,2328,902,2316,946,2298,978,2281,991,2263,997,2227,993,2191,989,2173,992,2155,1002,2131,1025,2111,1053,2082,1114,2077,1111,2107,1050,2127,1022,2152,998,2171,987,2191,983,2227,988,2262,991,2278,987,2294,974,2312,944,2322,901,2328,849,2330,792,2329,678,2331,590,2334,565"/>
+<area shape="poly" id="edge49_Node000036_Node000038" title=" " alt="" coords="2204,567,2245,1096,2239,1096,2198,567"/>
+<area shape="poly" id="edge52_Node000039_Node000038" title=" " alt="" coords="2135,568,2118,592,2108,653,2094,783,2066,1096,2061,1096,2088,782,2102,653,2114,590,2131,565"/>
+<area shape="poly" id="edge50_Node000038_Node000039" title=" " alt="" coords="2027,1113,2008,973,1995,821,1994,748,1998,683,2007,629,2025,589,2076,566,2078,571,2029,593,2012,631,2003,684,1999,748,2000,820,2013,973,2032,1112"/>
+<area shape="rect" id="Node000040" title=" " alt="" coords="2697,4545,2844,4645"/>
+<area shape="poly" id="edge54_Node000001_Node000040" title=" " alt="" coords="2760,4647,2732,4714,2712,4748,2687,4779,2603,4856,2510,4924,2412,4984,2311,5037,2212,5082,2117,5120,1954,5176,1952,5171,2115,5115,2210,5077,2309,5032,2409,4980,2507,4919,2600,4851,2683,4776,2708,4745,2728,4711,2755,4645"/>
+</map>

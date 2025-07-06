@@ -1,0 +1,32 @@
+<map id="Config::ParseHistogramLine" name="Config::ParseHistogramLine">
+<area shape="rect" id="Node000001" title="Parse a line beginning with histogram. Uses other functions if appropriately defined." alt="" coords="5,428,207,453"/>
+<area shape="rect" id="Node000002" href="$classConfig.html#a32a654b744a9c669c05c43309ba5d3af" title="Return a lower case copy of a string." alt="" coords="781,377,923,403"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,451,255,462,384,471,485,472,586,462,713,437,763,422,809,405,810,410,765,428,714,442,587,467,486,477,384,476,254,467,171,456"/>
+<area shape="rect" id="Node000003" href="$classConfig.html#adf1891c7ca61ecfad0747d872c689ac0" title="Parse everything after the histogram declaration and check all parameters." alt="" coords="255,228,429,253"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,426,313,261,317,265,124,430"/>
+<area shape="rect" id="Node000013" href="$classConfig.html#a1aeec8811ff28f8e03df80fda210a539" title="Parse a settings line in input file and appropriate update member map." alt="" coords="266,428,418,453"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="207,438,252,438,252,443,207,443"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="430,228,494,226,567,229,642,241,714,264,752,285,786,312,835,365,831,368,782,315,749,289,712,268,641,246,566,235,494,232,430,234"/>
+<area shape="rect" id="Node000004" href="$classConfig.html#a3acbda25cc420c70749e255d73d96b2d" title=" " alt="" coords="491,5,700,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="345,227,361,189,388,138,426,85,450,60,476,40,485,34,488,39,479,44,453,64,431,88,393,141,366,192,350,229"/>
+<area shape="rect" id="Node000006" href="$classConfig.html#a6261f2836e7d0e472e15a562ed5b05f6" title=" " alt="" coords="518,177,673,203"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="406,225,517,203,518,208,407,230"/>
+<area shape="rect" id="Node000008" href="$classConfig.html#aef3f49a6d01b0c00b533349ddac889e4" title=" " alt="" coords="528,279,663,304"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="407,251,518,273,517,279,406,256"/>
+<area shape="rect" id="Node000009" href="$classConfig.html#aa9756321ffb09c48d45036da21700025" title="Parse whether each dimension is log or linear." alt="" coords="531,328,660,353"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="363,251,414,282,478,313,518,325,517,330,476,318,411,287,361,256"/>
+<area shape="rect" id="Node000010" href="$classConfig.html#aedab6f07f6358cf655801bd603546c1e" title=" " alt="" coords="515,377,676,403"/>
+<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="355,252,404,306,439,337,479,362,502,372,500,377,476,367,436,341,400,310,351,255"/>
+<area shape="rect" id="Node000011" href="$classConfig.html#aad1fce50195a8113fff014d947af1002" title=" " alt="" coords="479,55,711,80"/>
+<area shape="poly" id="edge13_Node000003_Node000011" title=" " alt="" coords="349,226,396,160,433,121,476,89,489,83,491,87,479,94,436,125,400,163,353,229"/>
+<area shape="rect" id="Node000012" href="$classConfig.html#ab5505c70ffef6f612889c69f79210387" title=" " alt="" coords="477,128,713,153"/>
+<area shape="poly" id="edge14_Node000003_Node000012" title=" " alt="" coords="360,226,411,194,476,162,501,154,503,159,478,167,414,198,363,230"/>
+<area shape="rect" id="Node000005" href="$classConfig.html#a3b9d74d16917429ad723c054ffc36360" title=" " alt="" coords="761,5,943,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="700,15,748,15,748,21,700,21"/>
+<area shape="rect" id="Node000007" href="$namespaceRBDS.html#a41448e5d9bb7af08731c66f734292890" title="Method to load a single column text file and return vector of values." alt="" coords="789,177,915,203"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="673,187,775,187,775,193,673,193"/>
+<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="661,350,772,372,771,377,660,356"/>
+<area shape="poly" id="edge12_Node000010_Node000002" title=" " alt="" coords="676,387,767,387,767,393,676,393"/>
+<area shape="poly" id="edge15_Node000012_Node000012" title=" " alt="" coords="554,130,545,120,550,110,567,104,595,101,631,105,641,110,645,116,641,119,638,114,630,110,595,107,568,109,554,114,551,119,558,126"/>
+<area shape="poly" id="edge17_Node000013_Node000002" title=" " alt="" coords="418,435,556,426,713,411,772,402,773,408,714,417,556,432,418,440"/>
+</map>

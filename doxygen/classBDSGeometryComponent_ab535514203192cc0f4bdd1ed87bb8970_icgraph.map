@@ -1,0 +1,42 @@
+<map id="BDSGeometryComponent::GetPlacementOffset" name="BDSGeometryComponent::GetPlacementOffset">
+<area shape="rect" id="Node000001" title="Accessor &#45; see member for more info." alt="" coords="1607,223,1796,263"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamline.html#aec30dae8d75cc5af7d63d4004c68197e" title=" " alt="" coords="1300,109,1559,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1665,216,1616,181,1558,149,1518,137,1520,131,1560,144,1619,176,1668,212"/>
+<area shape="rect" id="Node000014" href="$classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="1348,159,1511,199"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="1602,222,1510,200,1511,195,1603,217"/>
+<area shape="rect" id="Node000015" href="$classBDSElement.html#ab0494422b7120639d8676e6c13a05cfb" title="This does the full construction. Loads the external geometry and field if there is one." alt="" coords="1326,223,1533,263"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="1593,245,1533,245,1533,240,1593,240"/>
+<area shape="rect" id="Node000017" href="$classBDSMagnet.html#a7b599c6b9823b3a7dd57e254dbc94226" title=" " alt="" coords="1342,287,1517,313"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="1601,268,1559,277,1497,290,1496,285,1558,272,1600,263"/>
+<area shape="rect" id="Node000019" href="$classBDSMagnet.html#ae6407e111778f404115ba7c4b1f3e2a5" title=" " alt="" coords="1318,337,1541,362"/>
+<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="1663,273,1615,302,1560,328,1521,339,1519,334,1558,323,1612,297,1660,268"/>
+<area shape="rect" id="Node000003" href="$classBDSBeamline.html#a9ea22e2abe29c800aa6e3112fe68824e" title=" " alt="" coords="1033,109,1252,134"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1286,124,1252,124,1252,119,1286,119"/>
+<area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="768,5,983,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1099,106,984,60,948,48,950,43,986,55,1101,101"/>
+<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="768,69,983,109"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="1023,110,983,105,983,100,1023,104"/>
+<area shape="rect" id="Node000008" href="$classBDSDetectorConstruction.html#a8e5b24d8a99d199a728d8a97be40f1ab" title=" " alt="" coords="782,133,969,173"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="1023,138,969,145,968,140,1022,133"/>
+<area shape="rect" id="Node000011" href="$classBDSTunnelBuilder.html#a0c63e82a5857c7457682f9f121ca6e24" title=" " alt="" coords="765,197,985,237"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="1101,142,986,188,950,200,948,195,984,183,1099,137"/>
+<area shape="rect" id="Node000005" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="475,13,717,38"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="754,28,718,28,718,23,754,23"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="486,69,706,109"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="754,92,706,92,706,87,754,87"/>
+<area shape="rect" id="Node000009" href="$classBDSDetectorConstruction.html#aa81d7072ee80602ba862eda6c892c87c" title="Build the main beam line and then any other required beam lines." alt="" coords="240,133,427,173"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="768,156,427,156,427,151,768,151"/>
+<area shape="rect" id="Node000010" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="5,191,192,231"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="238,179,182,193,180,188,237,174"/>
+<area shape="rect" id="Node000012" href="$classBDSDetectorConstruction.html#ab4d9ff089bf5aa4748d241a72f10c9b3" title="Build the tunnel around the already constructed flat beam line." alt="" coords="503,197,689,237"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="751,220,690,220,690,215,751,215"/>
+<area shape="poly" id="edge14_Node000012_Node000010" title=" " alt="" coords="488,219,192,215,192,209,488,213"/>
+<area shape="rect" id="Node000013" href="$classBDSDetectorConstruction.html#aa564f0cee84c47e41d7917e11107bc3f" title="Place beam line, tunnel beam line, end pieces and placements in world." alt="" coords="240,248,427,288"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="490,240,428,253,427,247,489,235"/>
+<area shape="poly" id="edge13_Node000013_Node000010" title=" " alt="" coords="237,247,180,233,182,228,238,242"/>
+<area shape="rect" id="Node000016" href="$classBDSElement.html#a88f53a91fd12690cb171d98c588b0f76" title=" " alt="" coords="1071,230,1215,255"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="1312,245,1215,245,1215,240,1312,240"/>
+<area shape="rect" id="Node000018" href="$classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="1073,311,1212,337"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="1329,311,1213,321,1212,316,1328,306"/>
+<area shape="poly" id="edge21_Node000019_Node000018" title=" " alt="" coords="1304,341,1212,333,1213,327,1305,336"/>
+</map>

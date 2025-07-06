@@ -1,0 +1,27 @@
+<map id="BDSFieldEM" name="BDSFieldEM">
+<area shape="rect" id="Node000001" title="Interface for BDSIM electro&#45;magnetic fields that may or may not be local." alt="" coords="725,119,923,464"/>
+<area shape="rect" id="Node000003" href="$classBDSFieldEMGlobal.html" title="A base class for electro&#45;magnetic fields in local to be used in global coordinates." alt="" coords="5,612,203,777"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="712,312,600,338,470,378,403,404,337,436,274,472,216,514,194,536,173,560,141,613,136,611,169,557,190,532,213,510,271,468,335,431,401,399,468,373,599,333,711,307"/>
+<area shape="rect" id="Node000004" href="$classBDSFieldEMGlobalPlacement.html" title="A base class for electro&#45;magnetic fields in local to be used in global coordinates." alt="" coords="227,612,466,777"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="715,351,596,422,535,466,479,514,435,562,398,613,394,610,431,559,475,510,532,462,593,418,712,346"/>
+<area shape="rect" id="Node000005" href="$classBDSFieldEMInterpolated.html" title="Class to provide scaling and a base class pointer for interpolator fields." alt="" coords="490,512,697,877"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="721,478,699,515,694,512,716,475"/>
+<area shape="rect" id="Node000010" href="$classBDSFieldEMMuonCooler.html" title="A composite RF and B field for a muon cooler." alt="" coords="721,572,927,817"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="827,478,827,572,821,572,821,478"/>
+<area shape="rect" id="Node000011" href="$classBDSFieldEMRFCavity.html" title="Pill box cavity electromagnetic field." alt="" coords="951,532,1139,857"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="928,475,958,530,954,533,923,478"/>
+<area shape="rect" id="Node000012" href="$classBDSFieldEMVectorSum.html" title="A vector sum of multiple displaced EM fields." alt="" coords="1164,592,1361,797"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="936,349,1046,419,1102,463,1153,510,1185,549,1213,590,1208,593,1181,552,1149,514,1098,467,1043,424,933,353"/>
+<area shape="rect" id="Node000013" href="$classBDSFieldEMZero.html" title="Null EM field &#45; for special cases where we need a valid object." alt="" coords="1385,642,1543,747"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="937,310,1039,336,1154,377,1213,403,1271,434,1325,469,1375,510,1401,540,1423,574,1452,641,1447,643,1418,576,1397,543,1371,514,1322,474,1268,439,1211,408,1152,382,1037,342,935,315"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="740,5,908,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="827,85,827,118,821,118,821,85"/>
+<area shape="rect" id="Node000006" href="$classBDSFieldEMInterpolated1D.html" title="A 1D field from an interpolated array with any interpolation." alt="" coords="107,1005,333,1271"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="481,878,479,879,461,891,443,898,411,904,379,909,363,916,346,927,310,964,280,1007,276,1004,306,961,342,923,360,911,378,904,410,898,442,893,458,887,476,875,478,874"/>
+<area shape="rect" id="Node000007" href="$classBDSFieldEMInterpolated2D.html" title="A 2D field from an interpolated array with any interpolation." alt="" coords="357,965,582,1311"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="541,891,520,966,515,964,536,890"/>
+<area shape="rect" id="Node000008" href="$classBDSFieldEMInterpolated3D.html" title="A 3D field from an interpolated array with any interpolation." alt="" coords="606,925,831,1351"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="651,890,661,924,656,926,646,891"/>
+<area shape="rect" id="Node000009" href="$classBDSFieldEMInterpolated4D.html" title="A 4D field from an interpolated array with any interpolation." alt="" coords="855,1045,1081,1231"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="709,874,711,875,728,887,745,893,777,898,809,904,826,911,844,923,872,950,896,980,933,1044,929,1046,891,983,868,953,841,927,824,916,808,909,776,904,743,898,726,891,708,879,706,878"/>
+</map>

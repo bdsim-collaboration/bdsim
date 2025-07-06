@@ -1,0 +1,61 @@
+<map id="BDSTrajectoryPoint::BDSTrajectoryPoint" name="BDSTrajectoryPoint::BDSTrajectoryPoint">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,440,160,480"/>
+<area shape="rect" id="Node000002" href="$classBDSAuxiliaryNavigator.html#ae62af95146ad9b0a1711a1d28503a378" title=" " alt="" coords="245,37,417,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,439,87,372,105,277,121,226,142,176,170,128,206,87,231,71,234,75,210,91,175,132,147,178,126,228,110,279,93,373,87,440"/>
+<area shape="rect" id="Node000006" href="$classBDSPhysicalVolumeInfo.html#a0685fe6827f5f09785bbe90470d5bde7" title="Accessor." alt="" coords="238,101,425,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="83,439,93,382,113,305,129,263,150,222,175,184,206,151,224,139,227,143,210,155,179,188,154,225,134,265,118,306,98,383,89,440"/>
+<area shape="rect" id="Node000007" href="$classBDSPhysicalVolumeInfo.html#a71d179fe7489940b5202de1c19b3b0c6" title="Accessor." alt="" coords="220,165,443,205"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="86,439,99,393,122,332,157,269,180,240,206,215,213,210,216,215,210,219,184,244,162,272,127,335,104,395,91,441"/>
+<area shape="rect" id="Node000008" href="$classBDSPhysicalVolumeInfoRegistry.html#a7eb2ab1407b4a7d35ccc5250f04a0086" title=" " alt="" coords="216,229,447,269"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="90,439,106,404,132,361,165,317,206,279,215,274,218,278,210,283,169,320,136,364,111,406,95,441"/>
+<area shape="rect" id="Node000011" href="$classBDSProcessMap.html#ae00f1c0ceae1ded653ddb3481e8f6ba6" title="Despatched function to operator() for getting the name of processes." alt="" coords="208,294,455,319"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="95,438,140,383,171,354,207,330,225,321,227,326,209,334,175,358,144,387,99,442"/>
+<area shape="rect" id="Node000013" href="$classBDSPhysicalVolumeInfo.html#a2b32cfd734175691ccc8952870b3cf3e" title="Get the s position coordinate of the logical volume." alt="" coords="243,344,420,384"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="117,438,159,415,207,394,230,386,232,391,209,398,161,420,119,442"/>
+<area shape="rect" id="Node000014" href="$classBDSTrajectoryPoint.html#ade7b07a20ac35faf9462d92e1a6d1425" title=" " alt="" coords="258,408,405,448"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="160,447,244,436,245,442,160,453"/>
+<area shape="rect" id="Node000015" href="$classBDSPhysicalVolumeInfoRegistry.html#af11a28667b48386f8eb56552d6a6ba73" title="Singleton accessor." alt="" coords="216,472,447,512"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="160,467,203,473,202,478,160,473"/>
+<area shape="rect" id="Node000017" href="$classBDSProcessMap.html#a0b1a3f63d6d2879589966dcbeb82cc9d" title="Singleton accessor." alt="" coords="236,537,427,562"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="118,478,161,501,209,521,241,531,239,536,207,527,158,506,116,483"/>
+<area shape="rect" id="Node000019" href="$classBDSStep.html#a0868cd519b353b30fddcddde50b50b2c" title="Accessor." alt="" coords="243,586,419,611"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="102,478,147,526,177,551,209,571,231,580,229,585,207,576,174,555,143,530,98,482"/>
+<area shape="rect" id="Node000020" href="$classBDSStep.html#ab5b76ceccd5b2b893fe9f618db789961" title="Accessor." alt="" coords="247,635,416,661"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="96,479,113,511,138,550,170,588,209,620,234,632,232,637,207,625,167,592,134,553,108,514,91,482"/>
+<area shape="rect" id="Node000021" href="$classBDSTrajectoryPoint.html#a1cef85e27169cf4132e52e184c2d8bc6" title="Utility function to prepare and fill extra ion variables." alt="" coords="258,685,405,725"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="93,480,107,520,132,572,166,625,186,649,210,670,246,689,244,694,206,674,182,653,161,628,127,574,102,522,88,481"/>
+<area shape="rect" id="Node000023" href="$classBDSTrajectoryPoint.html#a862e57e2902301e44b9372bbbfb05461" title="Utility function to prepare and fill extra link variables." alt="" coords="258,749,405,789"/>
+<area shape="poly" id="edge22_Node000001_Node000023" title=" " alt="" coords="90,480,101,532,122,601,138,638,158,673,182,707,210,735,227,747,246,755,244,760,224,751,206,739,177,710,153,676,133,640,117,603,95,533,84,481"/>
+<area shape="rect" id="Node000030" href="$classBDSStep.html#a302cedb396aa299819d3825c1810f69a" title="Accessor." alt="" coords="221,814,441,839"/>
+<area shape="poly" id="edge29_Node000001_Node000030" title=" " alt="" coords="88,480,94,543,113,630,128,676,149,722,176,763,210,799,217,805,214,809,206,803,172,767,145,724,123,678,108,631,89,544,82,481"/>
+<area shape="rect" id="Node000003" href="$classBDSAuxiliaryNavigator.html#afe9af56d9265badd807a6dc28351a3aa" title="Utility function to select appropriate transform." alt="" coords="537,5,709,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="417,45,523,34,523,39,418,51"/>
+<area shape="rect" id="Node000004" href="$classBDSAuxiliaryNavigator.html#a0ccf4c63af2d239f8cf0890885961bad" title="A wrapper for the underlying static navigator instance located within this class." alt="" coords="517,69,728,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="418,64,504,74,503,79,417,69"/>
+<area shape="rect" id="Node000005" href="$classBDSAuxiliaryNavigator.html#a3d1430bbb5ad92f55303f9173faab8e8" title="Utility function to select appropriate navigator." alt="" coords="791,69,963,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="728,87,777,87,777,92,728,92"/>
+<area shape="rect" id="Node000009" href="$classBDSPhysicalVolumeInfoRegistry.html#afbba2b6d3b4292203f4a071c1d269d6a" title="Check whether a physical volume is registered ot the general backup registry." alt="" coords="507,165,738,205"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="423,227,517,206,519,211,424,232"/>
+<area shape="rect" id="Node000010" href="$classBDSPhysicalVolumeInfoRegistry.html#a46e20e73c3f4d6e0366258b1aea6d6ab" title="Check whether a physical volume is registered to the read out registry." alt="" coords="505,229,740,269"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="447,247,492,247,492,252,447,252"/>
+<area shape="rect" id="Node000012" href="$classBDSProcessMap.html#adf35fc8768949b01dd4df5ab90f5d4a5" title="Main access method for getting the name of processes." alt="" coords="523,294,723,319"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="455,304,509,304,509,309,455,309"/>
+<area shape="rect" id="Node000016" href="$classBDSPhysicalVolumeInfoRegistry.html#a45c1c6104df6864c056a8d0918b6915b" title="Default constructor is private as singleton." alt="" coords="503,472,742,512"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="447,489,489,489,489,495,447,495"/>
+<area shape="rect" id="Node000018" href="$classBDSProcessMap.html#a788f391178fcc50d57cbce5319b133e8" title="Private default constructor as singleton pattern." alt="" coords="503,537,743,562"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="427,547,489,547,489,552,427,552"/>
+<area shape="rect" id="Node000022" href="$namespaceBDS.html#ae13fec78008a9f4c4be12f34c729e1b8" title="Whether a particle is an ion. A proton is counted NOT as an ion." alt="" coords="579,667,667,693"/>
+<area shape="poly" id="edge21_Node000021_Node000022" title=" " alt="" coords="405,696,565,682,565,688,405,702"/>
+<area shape="rect" id="Node000024" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="545,717,701,757"/>
+<area shape="poly" id="edge23_Node000023_Node000024" title=" " alt="" coords="404,759,531,745,531,750,405,764"/>
+<area shape="rect" id="Node000028" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="571,782,675,807"/>
+<area shape="poly" id="edge27_Node000023_Node000028" title=" " alt="" coords="405,773,557,786,557,792,405,778"/>
+<area shape="rect" id="Node000029" href="$namespaceBDS.html#a024dda8285e3099531e7a64e37eda41b" title="Calculate the rigidity for a total momentum and charge." alt="" coords="569,831,676,857"/>
+<area shape="poly" id="edge28_Node000023_Node000029" title=" " alt="" coords="406,786,455,800,503,817,556,830,555,835,502,823,454,805,404,791"/>
+<area shape="rect" id="Node000025" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="795,660,959,700"/>
+<area shape="poly" id="edge24_Node000024_Node000025" title=" " alt="" coords="700,717,780,699,782,704,701,722"/>
+<area shape="rect" id="Node000026" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="801,725,953,750"/>
+<area shape="poly" id="edge25_Node000024_Node000026" title=" " alt="" coords="701,735,787,735,787,740,701,740"/>
+<area shape="rect" id="Node000027" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="791,774,963,799"/>
+<area shape="poly" id="edge26_Node000024_Node000027" title=" " alt="" coords="701,750,798,769,797,774,700,755"/>
+</map>

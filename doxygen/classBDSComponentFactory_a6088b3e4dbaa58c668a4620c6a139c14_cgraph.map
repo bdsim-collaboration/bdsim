@@ -1,0 +1,31 @@
+<map id="BDSComponentFactory::PrepareMagnetOuterFieldInfo" name="BDSComponentFactory::PrepareMagnetOuterFieldInfo">
+<area shape="rect" id="Node000001" title="Prepare the field definition for the yoke of a magnet." alt="" coords="5,262,227,302"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamPipeInfo.html#ae71dd3cc3b8cd9842929083d19a549e6" title="Return an indicative extent of the beam pipe &#45; typically the maximum of x or y extent." alt="" coords="275,90,487,130"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,260,194,205,232,174,273,146,300,133,303,138,276,151,235,178,197,209,138,264"/>
+<area shape="rect" id="Node000005" href="$classBDSTypeSafeEnum.html#acd3d1ef0055b4af2523b6e05861f8d28" title="return underlying value (can be used in switch statement)" alt="" coords="1112,155,1335,180"/>
+<area shape="poly" id="edge15_Node000001_Node000005" title=" " alt="" coords="191,259,348,222,441,204,534,190,686,175,838,167,1098,163,1098,168,838,172,686,181,535,195,442,210,349,228,192,265"/>
+<area shape="rect" id="Node000009" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="303,262,459,302"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="227,279,289,279,289,285,227,285"/>
+<area shape="rect" id="Node000013" href="$classBDSIntegratorSet.html#ac95de07c591884ba3e41c14ed85b5d41" title="Get appropriate integrator based on the field type." alt="" coords="849,287,1056,312"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="186,299,301,328,452,354,536,363,622,367,709,364,793,354,856,337,911,315,913,320,858,342,794,359,709,370,622,372,536,368,452,359,300,333,184,305"/>
+<area shape="rect" id="Node000014" href="$classBDSFieldInfo.html#a7ef56fa5e000ecb37812913ca1fff179" title="Set Transform &#45; could be done afterwards once instance of this class is passed around." alt="" coords="283,420,478,445"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="141,300,199,349,237,375,276,398,313,413,311,418,273,403,234,380,196,353,137,304"/>
+<area shape="rect" id="Node000003" href="$classBDSBeamPipeInfo.html#a1c16d19265fb5a67c418a9252bf21d16" title=" " alt="" coords="569,55,759,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="487,91,565,79,566,85,487,97"/>
+<area shape="rect" id="Node000008" href="$classBDSExtent.html#a42c4ab2302575ce58134cb23fa85d7f1" title="Return the maximum absolute value considering only x,y." alt="" coords="535,104,793,129"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="487,110,521,111,521,116,487,115"/>
+<area shape="rect" id="Node000004" href="$classBDSBeamPipeInfo.html#aa3f0589dbbb9bc95eeff6b6dbd968f30" title="Return an extent for just the raw aperture." alt="" coords="841,5,1064,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="739,52,864,30,865,36,739,57"/>
+<area shape="rect" id="Node000006" href="$classBDSExtent.html#a014909f1c58cea48b693a1d001afe3f9" title="Accessor." alt="" coords="887,55,1018,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="759,65,873,65,873,70,759,70"/>
+<area shape="rect" id="Node000007" href="$classBDSExtent.html#aee615c582978d0904118a6d2f5446302" title="Accessor." alt="" coords="887,104,1018,129"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="739,77,874,101,873,106,739,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1034,28,1065,40,1106,63,1144,90,1202,143,1198,146,1140,94,1103,67,1063,44,1033,33"/>
+<area shape="rect" id="Node000010" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="582,205,746,245"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="458,264,568,241,569,247,459,269"/>
+<area shape="rect" id="Node000011" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="588,269,740,295"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="459,279,574,279,574,285,459,285"/>
+<area shape="rect" id="Node000012" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="578,319,750,344"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="459,293,577,314,576,319,458,298"/>
+<area shape="poly" id="edge13_Node000013_Node000005" title=" " alt="" coords="979,284,1183,184,1185,188,981,289"/>
+</map>
