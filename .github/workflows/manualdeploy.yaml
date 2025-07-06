@@ -2,9 +2,9 @@ name: manual deploy
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - 'develop'
+  push:
+    tags:
+    - 'v*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
