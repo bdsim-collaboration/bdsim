@@ -5,14 +5,14 @@ var searchData=
   ['y0_5fv_2',['y0_v',['../classBDSBunchGaussian.html#a20e75dcff24ef271ea4327162ab09257',1,'BDSBunchGaussian']]],
   ['yaperture_3',['yaperture',['../classBDSTipCollimator.html#a09f2871b8a06999995c04f37a7228094',1,'BDSTipCollimator::yAperture'],['../classBDSCollimator.html#acf442cff27b810a9d3c9c876dad772b9',1,'BDSCollimator::yAperture']]],
   ['yaperturein_4',['yaperturein',['../classBDSCollimator.html#a78ae2d037b94c225fcdb17008e9e2faf',1,'BDSCollimator::YApertureIn()'],['../classBDSTipCollimator.html#ae92d01f72c08e6267b96dbb9f4c598fc',1,'BDSTipCollimator::YApertureIn()']]],
-  ['yapertureout_5',['yapertureout',['../classBDSCollimator.html#a6afb9f52e9ac23954c2742b4a16d575a',1,'BDSCollimator::yApertureOut'],['../classBDSTipCollimator.html#a89ae42e078f55c851415f7b487c5a9e8',1,'BDSTipCollimator::yApertureOut'],['../classBDSCollimator.html#adfd02baaa6111a47a98f2d6efa074d11',1,'BDSCollimator::YApertureOut()'],['../classBDSTipCollimator.html#a1d8381e06fd1ad3c9d01202c135c0760',1,'BDSTipCollimator::YApertureOut()']]],
+  ['yapertureout_5',['yapertureout',['../classBDSCollimator.html#adfd02baaa6111a47a98f2d6efa074d11',1,'BDSCollimator::YApertureOut()'],['../classBDSTipCollimator.html#a1d8381e06fd1ad3c9d01202c135c0760',1,'BDSTipCollimator::YApertureOut()'],['../classBDSCollimator.html#a6afb9f52e9ac23954c2742b4a16d575a',1,'BDSCollimator::yApertureOut'],['../classBDSTipCollimator.html#a89ae42e078f55c851415f7b487c5a9e8',1,'BDSTipCollimator::yApertureOut']]],
   ['ydir_6',['ydir',['../structGMAD_1_1Element.html#ac37ecaecbe65153fa501a4d0a49b5686',1,'GMAD::Element']]],
   ['ydistrtype_7',['yDistrType',['../classGMAD_1_1BeamBase.html#abd18dd67325b0282a717df3668a60862',1,'GMAD::BeamBase']]],
   ['yfromarraycoords_8',['YFromArrayCoords',['../classBDSArray4DCoords.html#a12dfe94b9b149f3f3d0e05ac2ba1cb14',1,'BDSArray4DCoords']]],
   ['yhalfheight_9',['yhalfheight',['../classBDSCollimatorJaw.html#a9e499f8c2770041c8e9201fb23116cc8',1,'BDSCollimatorJaw::yHalfHeight'],['../classBDSCollimatorTipJaw.html#ad3231a8c44761d2138b9ae257abdfc77',1,'BDSCollimatorTipJaw::yHalfHeight']]],
   ['yinitial_10',['yInitial',['../classBDSIntegratorDipoleRodrigues.html#ace71a93545ad46341bafdee1de3e76a0',1,'BDSIntegratorDipoleRodrigues']]],
   ['ymax_11',['ymax',['../classBDSArray4DCoords.html#ab3671d26299ba5809c4ae66ee928f419',1,'BDSArray4DCoords::yMax'],['../classBDSGeometryFactoryBase.html#a004307f0f89a0559715186b2c898b143',1,'BDSGeometryFactoryBase::ymax'],['../classGMAD_1_1Query.html#ad1483d2d524f9bd291c04cc26355380b',1,'GMAD::Query::ymax']]],
-  ['ymin_12',['ymin',['../classBDSGeometryFactoryBase.html#a962b259a3e07bf7e4dcbf193e992cbfe',1,'BDSGeometryFactoryBase::ymin'],['../classGMAD_1_1Query.html#a650f92121d87193d2cbb0b259abf14b6',1,'GMAD::Query::ymin'],['../classBDSArray4DCoords.html#a0fc7def1840d8b7c873da9e19429ef31',1,'BDSArray4DCoords::yMin']]],
+  ['ymin_12',['ymin',['../classBDSArray4DCoords.html#a0fc7def1840d8b7c873da9e19429ef31',1,'BDSArray4DCoords::yMin'],['../classBDSGeometryFactoryBase.html#a962b259a3e07bf7e4dcbf193e992cbfe',1,'BDSGeometryFactoryBase::ymin'],['../classGMAD_1_1Query.html#a650f92121d87193d2cbb0b259abf14b6',1,'GMAD::Query::ymin']]],
   ['yneg_13',['YNeg',['../classBDSExtent.html#a7356c371a31d27387a277148585b2a7b',1,'BDSExtent']]],
   ['ynegglobal_14',['YNegGlobal',['../classBDSExtentGlobal.html#a01ee94d0259f6f87e6a3ba56c010ccad',1,'BDSExtentGlobal']]],
   ['yokecolour_15',['YokeColour',['../classBDSMagnetOuterFactoryLHC.html#a46457627ad72d4d1449e5ce346176309',1,'BDSMagnetOuterFactoryLHC']]],
@@ -26,7 +26,7 @@ var searchData=
   ['yp_5fv_23',['yp_v',['../classBDSBunchGaussian.html#a89a5eea69f89791a6594932681b787a1',1,'BDSBunchGaussian']]],
   ['ypos_24',['YPos',['../classBDSExtent.html#aee615c582978d0904118a6d2f5446302',1,'BDSExtent']]],
   ['yposglobal_25',['YPosGlobal',['../classBDSExtentGlobal.html#a4c418805c21a8b002da261421c8a97c9',1,'BDSExtentGlobal']]],
-  ['ysize_26',['ysize',['../structGMAD_1_1Element.html#aae7306d424ed97c1063fd5c749e5fb82',1,'GMAD::Element::ysize'],['../classGMAD_1_1ScorerMesh.html#aba5d36589dd3f24e6d5ccf56753e1753',1,'GMAD::ScorerMesh::ysize'],['../classBDSShield.html#ae98c622d0b031544254976b88f8c3726',1,'BDSShield::ySize']]],
+  ['ysize_26',['ysize',['../classBDSShield.html#ae98c622d0b031544254976b88f8c3726',1,'BDSShield::ySize'],['../structGMAD_1_1Element.html#aae7306d424ed97c1063fd5c749e5fb82',1,'GMAD::Element::ysize'],['../classGMAD_1_1ScorerMesh.html#aba5d36589dd3f24e6d5ccf56753e1753',1,'GMAD::ScorerMesh::ysize']]],
   ['ysizeout_27',['ysizeOut',['../structGMAD_1_1Element.html#a97ad1c8902757206a439aa780cde0750',1,'GMAD::Element']]],
-  ['ystep_28',['ystep',['../classBDSArray4DCoords.html#a238e3072c5c31d22e5d08014e27a72c0',1,'BDSArray4DCoords::yStep'],['../classBDSArray4DCoords.html#aa63d19345e2f8ec920fbab5f4b3fa067',1,'BDSArray4DCoords::YStep() const']]]
+  ['ystep_28',['ystep',['../classBDSArray4DCoords.html#aa63d19345e2f8ec920fbab5f4b3fa067',1,'BDSArray4DCoords::YStep() const'],['../classBDSArray4DCoords.html#a238e3072c5c31d22e5d08014e27a72c0',1,'BDSArray4DCoords::yStep']]]
 ];

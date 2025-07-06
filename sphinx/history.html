@@ -451,6 +451,9 @@ pyg4ometry and also be BDSIM if the same file is loaded in again.</p></li>
 <ul class="simple">
 <li><p>New <code class="code docutils literal notranslate"><span class="pre">ionisation</span></code> modular physics list for only the ionisation process for the most
 common particles.</p></li>
+<li><p>New <code class="code docutils literal notranslate"><span class="pre">ftf_bic</span></code> modular physics list.</p></li>
+<li><p>New <code class="code docutils literal notranslate"><span class="pre">dna_chemistry</span></code>, <code class="code docutils literal notranslate"><span class="pre">dna_chemistry_1</span></code>, <code class="code docutils literal notranslate"><span class="pre">dna_chemistry_2</span></code>, <code class="code docutils literal notranslate"><span class="pre">dna_chemistry_3</span></code>
+physics lists.</p></li>
 </ul>
 </section>
 <section id="new-options">
@@ -478,6 +481,7 @@ accordingly.</p></td>
 <section id="general-updates">
 <h3>General Updates<a class="headerlink" href="#general-updates" title="Link to this heading"></a></h3>
 <ul class="simple">
+<li><p>Build configuration now requires CMake 3.7 or greater.</p></li>
 <li><p>The interface for custom components has changed due to the new beamline integral class and object.
 The example has been updated accordingly.</p></li>
 <li><p>Internally, beamline elements are now cached based on both their name (basic reuse of components)
@@ -507,6 +511,8 @@ no model tree was stored. The samplers would not be identified in the past.</p><
 <li><p>Fix the <code class="code docutils literal notranslate"><span class="pre">Event.Trajectory.pxpypz</span></code> variable in the output. It was implemented
 incorrectly in code and was not the correct data. It is now components of the momentum
 vector (absolute) in GeV/c in a frame local to that element as it should be.</p></li>
+<li><p>Fixed the DNA variant modular physcis lists that would always default to the original variant.
+i.e. <code class="code docutils literal notranslate"><span class="pre">dna_3</span></code> would always default to <code class="code docutils literal notranslate"><span class="pre">dna</span></code>. This has been fixed for all variants.</p></li>
 <li><p>The weight of the <code class="code docutils literal notranslate"><span class="pre">composite</span></code> and <code class="code docutils literal notranslate"><span class="pre">compositesde</span></code> beam distributions is now the
 product of the x, y, z weights, whereas before it was always only the x dimension weight that was taken.</p></li>
 <li><p>The <code class="code docutils literal notranslate"><span class="pre">userfile</span></code> bunch distribution was fixed for different particle species at sub-relativistic

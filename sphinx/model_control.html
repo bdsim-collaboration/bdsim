@@ -2210,6 +2210,18 @@ Geant4 tracking integrators track spin correctly. Uses
 <tr class="row-even"><td><p>dna</p></td>
 <td><p>G4EmDNAPhysics list.  Only applies to G4_WATER material.</p></td>
 </tr>
+<tr class="row-odd"><td><p>dna_chemistry</p></td>
+<td><p>G4EmDNAChemistry list. From Geant4 10.2 onwards.</p></td>
+</tr>
+<tr class="row-even"><td><p>dna_chemistry_1</p></td>
+<td><p>G4EmDNAChemistry list. From Geant4 10.7 onwards.</p></td>
+</tr>
+<tr class="row-odd"><td><p>dna_chemistry_2</p></td>
+<td><p>G4EmDNAChemistry list. From Geant4 10.7 onwards.</p></td>
+</tr>
+<tr class="row-even"><td><p>dna_chemistry_3</p></td>
+<td><p>G4EmDNAChemistry list. From Geant4 10.7 onwards.</p></td>
+</tr>
 <tr class="row-odd"><td><p>dna_1</p></td>
 <td><p>Variant 1 of G4EmDNAPhysics list. Uses G4EmDNAPhysics_option1.</p></td>
 </tr>
@@ -2272,59 +2284,64 @@ FTF physics lists require <cite>G4HadronElasticPhysics</cite> to work correctly.
 <td><p>Similar to <cite>FTFP_BERT</cite>, but with the high precision neutron package.
 This is provided by <cite>G4HadronPhysicsFTFP_BERT_HP</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p>gamma_to_mumu</p></td>
+<tr class="row-even"><td><p>ftf_bic</p></td>
+<td><p>Similar to <cite>ftfp_bert</cite>, but with the binary cascade for various
+particles - see Geant4 for which particles and which transition
+energies. Uses <cite>G4HadronPhysicsFTF_BIC</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>gamma_to_mumu</p></td>
 <td><p>Only gamma to a muon pair for gammas is registered.</p></td>
 </tr>
-<tr class="row-odd"><td><p>hadronic_elastic</p></td>
+<tr class="row-even"><td><p>hadronic_elastic</p></td>
 <td><p>Elastic hadronic processes. This is provided by
 <cite>G4HadronElasticPhysics.</cite></p></td>
 </tr>
-<tr class="row-even"><td><p>hadronic_elastic_d</p></td>
+<tr class="row-odd"><td><p>hadronic_elastic_d</p></td>
 <td><p><cite>G4HadronDElasticPhysics</cite></p></td>
 </tr>
-<tr class="row-odd"><td><p>hadronic_elastic_h</p></td>
+<tr class="row-even"><td><p>hadronic_elastic_h</p></td>
 <td><p><cite>G4HadronHElasticPhysics</cite></p></td>
 </tr>
-<tr class="row-even"><td><p>hadronic_elastic_hp</p></td>
+<tr class="row-odd"><td><p>hadronic_elastic_hp</p></td>
 <td><p><cite>G4HadronElasticPhysicsHP</cite></p></td>
 </tr>
-<tr class="row-odd"><td><p>hadronic_elastic_lend (<cite>**</cite>)</p></td>
+<tr class="row-even"><td><p>hadronic_elastic_lend (<cite>**</cite>)</p></td>
 <td><p><cite>G4HadronElasticPhysicsLEND</cite></p></td>
 </tr>
-<tr class="row-even"><td><p>hadronic_elastic_xs</p></td>
+<tr class="row-odd"><td><p>hadronic_elastic_xs</p></td>
 <td><p><cite>G4HadronElasticPhysicsXS</cite></p></td>
 </tr>
-<tr class="row-odd"><td><p>ion</p></td>
+<tr class="row-even"><td><p>ion</p></td>
 <td><p><cite>G4IonPhysics</cite></p></td>
 </tr>
-<tr class="row-even"><td><p>ion_binary (<cite>*</cite>)</p></td>
+<tr class="row-odd"><td><p>ion_binary (<cite>*</cite>)</p></td>
 <td><p><cite>G4IonBinaryCascadePhysics</cite></p></td>
 </tr>
-<tr class="row-odd"><td><p>ion_elastic</p></td>
+<tr class="row-even"><td><p>ion_elastic</p></td>
 <td><p><cite>G4IonElasticPhysics</cite></p></td>
 </tr>
-<tr class="row-even"><td><p>ion_elastic_qmd</p></td>
+<tr class="row-odd"><td><p>ion_elastic_qmd</p></td>
 <td><p><cite>G4IonQMDPhysics</cite></p></td>
 </tr>
-<tr class="row-odd"><td><p>ion_em_dissociation</p></td>
+<tr class="row-even"><td><p>ion_em_dissociation</p></td>
 <td><p>Electromagnetic dissociation for ions. Uses <cite>G4EMDissociation</cite>. May
 produce warnings. Experimental.</p></td>
 </tr>
-<tr class="row-even"><td><p>ion_inclxx (<cite>*</cite>)</p></td>
+<tr class="row-odd"><td><p>ion_inclxx (<cite>*</cite>)</p></td>
 <td><p><cite>G4IonINCLXXPhysics</cite></p></td>
 </tr>
-<tr class="row-odd"><td><p>ion_php (<cite>*</cite>)</p></td>
+<tr class="row-even"><td><p>ion_php (<cite>*</cite>)</p></td>
 <td><p><cite>G4IonPhysicsPHP</cite>. Available from Geant4.10.3 onwards.</p></td>
 </tr>
-<tr class="row-even"><td><p>ionisation</p></td>
+<tr class="row-odd"><td><p>ionisation</p></td>
 <td><p>Only ionisation for e+-, p, pbar, pi+-, K+-, mu+-, generic ion.</p></td>
 </tr>
-<tr class="row-odd"><td><p>lw</p></td>
+<tr class="row-even"><td><p>lw</p></td>
 <td><p>Laserwire photon producing process as if the laserwire had scattered
 photons from the beam. Not actively developed, but will register
 process.</p></td>
 </tr>
-<tr class="row-even"><td><p>muon</p></td>
+<tr class="row-odd"><td><p>muon</p></td>
 <td><p>Provides muon production and scattering processes. Be careful if using
 with <cite>em_extra</cite> as processes may be double registered. Includes Gamma
 to muons, annihilation to muon pair, ‘ee’ to hadrons, pion decay to
@@ -2332,33 +2349,33 @@ muons, multiple scattering for muons, muon Bremsstrahlung, pair
 production and Cherenkov light are all provided. Given by BDSIM
 physics builder (a la Geant4) <cite>BDSPhysicsMuon</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>muon_inelastic</p></td>
+<tr class="row-even"><td><p>muon_inelastic</p></td>
 <td><p>Only hadronic interactions for both muons. Incompatible with
 <cite>em_extra</cite> and <cite>muon</cite> physics lists.</p></td>
 </tr>
-<tr class="row-even"><td><p>neutron_tracking_cut</p></td>
+<tr class="row-odd"><td><p>neutron_tracking_cut</p></td>
 <td><p><cite>G4NeutronTrackingCut</cite> allows neutrons to be killed via their tracking
 time (i.e. time of flight) and minimum kinetic energy. These options
 are set via the option command, <cite>neutronTimeLimit</cite> (s) and
 <cite>neutronKineticEnergyLimit</cite> (GeV).</p></td>
 </tr>
-<tr class="row-odd"><td><p>optical</p></td>
+<tr class="row-even"><td><p>optical</p></td>
 <td><p>Optical physics processes including absorption, Rayleigh scattering,
 Mie scattering, optical boundary processes, scintillation and
 Cherenkov. This uses <cite>G4OpticalPhysics</cite> class.</p></td>
 </tr>
-<tr class="row-even"><td><p>qgsp_bert</p></td>
+<tr class="row-odd"><td><p>qgsp_bert</p></td>
 <td><p>Quark-Gluon String Precompound Model with Bertini Cascade model.
 This is based on the <cite>G4HadronPhysicsQGSP_BERT</cite> class and includes
 hadronic elastic and inelastic processes. Suitable for high energy
 (&gt;10 GeV).</p></td>
 </tr>
-<tr class="row-odd"><td><p>qgsp_bert_hp</p></td>
+<tr class="row-even"><td><p>qgsp_bert_hp</p></td>
 <td><p>Similar to <cite>QGSP_BERT</cite>, but with the addition of data-driven high
 precision neutron models to transport neutrons below 20 MeV down to
 thermal energies. This is provided by <cite>G4HadronPhysicsQGSP_BERT_HP</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p>qgsp_bic</p></td>
+<tr class="row-odd"><td><p>qgsp_bic</p></td>
 <td><p>Like <cite>QGSP</cite>, but using Geant4 Binary cascade for primary protons and
 neutrons with energies below ~10GeV, thus replacing the use of the LEP
 model for protons and neutrons. In comparison to the LEP model, Binary
@@ -2366,32 +2383,32 @@ cascade better describes production of secondary particles produced
 from interactions of protons and neutrons with nuclei. This is
 provided by <cite>G4HadronPhysicsQGSP_BIC</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>qgsp_bic_hp</p></td>
+<tr class="row-even"><td><p>qgsp_bic_hp</p></td>
 <td><p>Similar to <cite>QGSP_BIC</cite>, but with the high precision neutron package.
 This is provided by <cite>G4HadronPhysicsQGSP_BIC_HP</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p>radioactivation</p></td>
+<tr class="row-odd"><td><p>radioactivation</p></td>
 <td><p>Use G4Radioactivation process. Atomic de-excitation disabled for now.
 Only available for Geant4 V10.4 onwards.</p></td>
 </tr>
-<tr class="row-odd"><td><p>shielding</p></td>
+<tr class="row-even"><td><p>shielding</p></td>
 <td><p><cite>G4HadronPhysicsShielding</cite>. Inelastic hadron physics suitable for
 shielding applications.</p></td>
 </tr>
-<tr class="row-even"><td><p>shielding_lend  (<cite>**</cite>)</p></td>
+<tr class="row-odd"><td><p>shielding_lend  (<cite>**</cite>)</p></td>
 <td><p><cite>G4HadronPhysicsShieldingLEND</cite>. Similar to <cite>shielding</cite>, but requires
 LEND data set for low-energy neutrons. Available from Geant4.10.4
 onwards.</p></td>
 </tr>
-<tr class="row-odd"><td><p>stopping</p></td>
+<tr class="row-even"><td><p>stopping</p></td>
 <td><p><cite>G4StoppingPhysics</cite>. Hadronic physics for stopping particles.</p></td>
 </tr>
-<tr class="row-even"><td><p>synch_rad</p></td>
+<tr class="row-odd"><td><p>synch_rad</p></td>
 <td><p>Provides synchrotron radiation for all charged particles. Provided by
 BDSIM physics builder <cite>BDSPhysicsSynchRad</cite> that provides the process
 <cite>G4SynchrotronRadiation</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>xray_reflection</p></td>
+<tr class="row-even"><td><p>xray_reflection</p></td>
 <td><p>X-ray reflection for most materials. Available from Geant4.11.2
 onwards.</p></td>
 </tr>

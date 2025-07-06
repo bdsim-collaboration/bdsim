@@ -1,79 +1,81 @@
 <map id="BDSModularPhysicsList::ConstructAllLeptons" name="BDSModularPhysicsList::ConstructAllLeptons">
-<area shape="rect" id="Node000001" title=" " alt="" coords="487,1001,661,1041"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="487,1037,661,1077"/>
 <area shape="rect" id="Node000002" href="$classBDSModularPhysicsList.html#ab64658857ed7f024ed26c08953370a52" title=" " alt="" coords="246,5,421,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="570,987,566,797,560,663,549,519,532,375,509,242,494,184,477,133,458,91,437,59,419,45,423,41,441,56,463,89,482,131,499,183,514,241,537,374,554,518,565,663,571,797,575,987"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="570,1024,567,827,561,688,551,538,534,388,511,250,496,190,479,137,459,93,437,59,419,45,423,41,441,56,463,90,483,135,501,188,516,249,540,387,556,538,567,688,573,827,576,1023"/>
 <area shape="rect" id="Node000004" href="$classBDSModularPhysicsList.html#a72f4fe8e3144b59f5578a48c2737163b" title="Physics constructor loader." alt="" coords="246,69,421,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="570,988,564,809,557,684,545,550,528,416,505,293,475,192,457,153,437,123,419,109,423,105,441,120,461,150,480,190,510,292,534,415,550,549,562,684,569,809,575,988"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="570,1024,565,839,558,709,547,569,531,429,507,301,493,244,476,195,458,154,437,123,419,109,423,105,441,120,462,152,481,193,498,243,512,300,536,428,553,568,564,709,570,839,575,1024"/>
 <area shape="rect" id="Node000005" href="$classBDSModularPhysicsList.html#aca4d73423b3399cba2c48c442fc065cb" title="Physics constructor loader." alt="" coords="232,134,435,159"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="570,988,563,817,556,698,544,571,527,445,504,330,474,236,457,200,437,173,423,161,426,157,441,169,461,197,479,234,510,329,533,444,550,571,561,698,569,817,575,987"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="570,1024,565,846,558,723,547,590,530,458,507,338,492,285,476,239,457,201,437,173,423,161,426,157,441,169,462,198,481,237,497,283,512,336,535,457,552,590,563,723,570,846,575,1023"/>
 <area shape="rect" id="Node000007" href="$classBDSModularPhysicsList.html#a1a7b9ebd525ea91d5469d9bf3725f1d8" title="Physics constructor loader." alt="" coords="228,183,439,209"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="569,988,562,826,541,595,524,477,501,369,472,281,455,247,437,222,423,211,426,207,441,218,460,244,477,279,507,368,529,476,547,595,567,826,575,988"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="569,1024,563,855,555,739,543,614,527,490,504,377,474,284,456,249,437,222,423,211,426,207,441,218,461,246,479,282,509,375,532,489,549,613,561,738,568,855,575,1023"/>
 <area shape="rect" id="Node000008" href="$classBDSModularPhysicsList.html#a228c83d4ffc73918ca8bf22ceda44a66" title="Physics constructor loader." alt="" coords="228,233,439,258"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="569,988,560,835,538,619,521,509,499,408,471,326,454,295,437,271,423,260,426,256,441,267,459,292,475,324,504,407,526,508,543,618,565,834,574,987"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="569,1024,561,864,540,638,523,522,501,416,472,329,455,296,437,271,423,260,426,256,441,267,460,293,477,327,506,415,529,521,546,637,567,864,574,1024"/>
 <area shape="rect" id="Node000009" href="$classBDSModularPhysicsList.html#a39808d37846abeded2d68f00c3695002" title="Physics constructor loader." alt="" coords="228,282,439,307"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="568,988,558,844,535,643,518,541,496,448,469,371,453,342,437,321,423,310,426,305,441,317,458,340,474,369,501,446,523,540,540,642,563,844,574,988"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="569,1024,559,873,537,662,520,554,498,455,470,374,454,344,437,321,423,310,426,305,441,317,459,341,475,372,503,454,525,553,543,661,565,873,574,1024"/>
 <area shape="rect" id="Node000010" href="$classBDSModularPhysicsList.html#a90e3feeab6eeccf2dc4508be8a0f0b33" title="Physics constructor loader." alt="" coords="228,331,439,357"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="568,988,556,853,531,668,514,573,492,488,467,418,452,391,437,371,420,359,423,355,441,367,457,388,471,416,497,486,519,572,537,667,561,852,573,987"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="568,1024,557,883,534,686,516,586,494,495,468,421,453,393,437,371,420,359,423,355,441,367,457,390,473,419,500,494,521,585,539,685,563,882,573,1024"/>
 <area shape="rect" id="Node000011" href="$classBDSModularPhysicsList.html#a93fad16b8604df19efd69ec4724bc145" title="Physics constructor loader." alt="" coords="246,381,421,421"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="567,988,552,865,526,700,508,616,487,540,463,477,437,435,419,422,423,417,441,432,468,475,492,538,513,615,531,699,557,865,572,987"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="567,1024,554,894,528,718,510,628,489,547,465,480,451,455,437,435,419,421,423,417,441,431,456,452,470,478,494,545,516,627,533,717,559,894,572,1023"/>
 <area shape="rect" id="Node000012" href="$classBDSModularPhysicsList.html#af06422e3f818fbd46c83010bfa8b9b68" title="Physics constructor loader." alt="" coords="246,445,421,485"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="566,988,549,877,521,731,504,657,484,591,461,536,437,499,419,486,422,481,441,496,466,534,489,589,509,656,527,730,555,877,571,987"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="566,1024,551,907,524,749,506,670,486,598,462,539,437,499,419,486,422,481,441,496,467,537,491,596,511,669,529,748,556,906,572,1023"/>
 <area shape="rect" id="Node000013" href="$classBDSModularPhysicsList.html#ade8b3e1dd8109cebc30728e2425103d1" title="Physics constructor loader." alt="" coords="246,509,421,549"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="570,988,566,902,559,848,548,789,531,728,507,668,476,612,437,563,419,550,423,546,441,559,481,609,512,666,536,726,553,788,564,847,571,902,576,987"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="565,1024,548,919,520,781,502,712,482,649,460,598,437,563,420,550,423,546,441,560,465,595,487,647,507,710,525,780,553,918,571,1023"/>
 <area shape="rect" id="Node000014" href="$classBDSModularPhysicsList.html#a1d6609221dcf54815ae665631b13c71e" title="Physics constructor loader." alt="" coords="245,573,422,613"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="569,988,560,914,539,817,523,765,500,715,472,668,437,627,421,615,424,611,440,623,476,665,505,713,527,763,545,815,566,913,574,987"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="570,1024,564,944,544,837,527,781,504,725,474,673,437,627,421,615,424,611,441,623,479,670,509,723,532,779,549,836,569,943,575,1024"/>
 <area shape="rect" id="Node000015" href="$classBDSModularPhysicsList.html#a3d1ff948abfd8f5b7749a6777810eeee" title="Physics constructor loader." alt="" coords="246,637,421,677"/>
-<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="566,988,554,925,531,845,514,803,493,763,467,725,437,691,419,679,423,675,440,687,472,721,498,760,519,801,536,844,559,924,571,987"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="568,1024,558,955,536,865,519,818,497,772,470,729,437,691,420,679,423,675,440,687,474,726,502,769,524,816,541,864,563,954,573,1024"/>
 <area shape="rect" id="Node000016" href="$classBDSModularPhysicsList.html#acdbdd6acdf794d3df6277930210c9f40" title="Physics constructor loader." alt="" coords="246,701,421,741"/>
-<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="563,989,547,937,522,874,486,810,463,781,437,755,420,744,423,739,440,751,467,777,490,807,527,872,552,936,568,987"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="565,1025,551,967,527,894,510,856,490,819,465,785,437,755,419,743,422,739,440,751,470,782,494,817,515,854,532,892,557,965,570,1024"/>
 <area shape="rect" id="Node000017" href="$classBDSModularPhysicsList.html#abb34a6edb7765f172457f12fa44571a2" title="Physics constructor loader." alt="" coords="246,765,421,805"/>
-<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="557,990,539,950,512,904,478,859,437,819,418,808,420,803,440,815,482,855,517,901,543,948,562,987"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="560,1025,544,979,518,923,482,867,461,842,437,819,418,808,421,803,440,815,465,838,487,864,522,921,549,977,565,1023"/>
 <area shape="rect" id="Node000018" href="$classBDSModularPhysicsList.html#a42c5856a8458e2fa9dd6f0d7c498506e" title="Physics constructor loader." alt="" coords="246,829,421,869"/>
-<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="546,992,499,940,469,914,437,890,400,872,403,867,440,886,473,910,503,937,550,989"/>
-<area shape="rect" id="Node000019" href="$classBDSModularPhysicsList.html#abc16eb736a89d43083928d97db6f7147" title="Physics constructor loader." alt="" coords="5,912,180,952"/>
-<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="539,994,493,961,466,946,438,935,372,921,304,915,239,916,181,921,180,916,239,911,304,910,373,915,439,929,469,941,496,956,543,990"/>
-<area shape="rect" id="Node000020" href="$classBDSModularPhysicsList.html#adb480705a4bc5336290343c0330f06d3" title="Physics constructor loader." alt="" coords="5,988,180,1028"/>
-<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="473,1021,180,1013,180,1008,473,1016"/>
-<area shape="rect" id="Node000021" href="$classBDSModularPhysicsList.html#aced2617af693c8df1938ad94968b6b41" title="Physics constructor loader." alt="" coords="246,944,421,984"/>
-<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="476,1001,417,987,418,981,477,996"/>
-<area shape="rect" id="Node000022" href="$classBDSModularPhysicsList.html#ad23befaa7ee6f785e94d06797db888e5" title="Physics constructor loader." alt="" coords="246,1059,421,1099"/>
-<area shape="poly" id="edge23_Node000001_Node000022" title=" " alt="" coords="477,1047,418,1061,417,1056,476,1042"/>
-<area shape="rect" id="Node000023" href="$classBDSModularPhysicsList.html#a7950fd626b7dd5b383aa134fa4911be3" title="Physics constructor loader." alt="" coords="246,1123,421,1163"/>
-<area shape="poly" id="edge24_Node000001_Node000023" title=" " alt="" coords="538,1052,492,1083,440,1113,411,1125,409,1120,438,1108,490,1079,535,1047"/>
-<area shape="rect" id="Node000024" href="$classBDSModularPhysicsList.html#a205303ff0161f0e6b7b6a197d82fc77c" title="Physics constructor loader." alt="" coords="246,1187,421,1227"/>
-<area shape="poly" id="edge25_Node000001_Node000024" title=" " alt="" coords="555,1054,508,1116,476,1149,440,1177,417,1189,415,1184,437,1172,472,1145,504,1113,551,1051"/>
-<area shape="rect" id="Node000025" href="$classBDSModularPhysicsList.html#a959972da8bb780741b04075c8b3693ea" title="Physics constructor loader." alt="" coords="246,1251,421,1291"/>
-<area shape="poly" id="edge26_Node000001_Node000025" title=" " alt="" coords="563,1055,545,1098,519,1147,484,1198,440,1241,420,1253,418,1248,437,1237,480,1194,514,1145,541,1095,559,1053"/>
-<area shape="rect" id="Node000026" href="$classBDSModularPhysicsList.html#a2d16d309ab24a6dd8ce18686777c0c12" title="Physics constructor loader." alt="" coords="246,1315,421,1355"/>
-<area shape="poly" id="edge27_Node000001_Node000026" title=" " alt="" coords="569,1055,554,1109,529,1177,492,1245,468,1277,440,1305,423,1317,420,1312,437,1301,464,1273,487,1242,524,1174,549,1108,563,1054"/>
-<area shape="rect" id="Node000027" href="$classBDSModularPhysicsList.html#a4c83cc5a52493755b32558a62d000bf5" title="Physics constructor loader." alt="" coords="232,1379,435,1405"/>
-<area shape="poly" id="edge28_Node000001_Node000027" title=" " alt="" coords="572,1056,562,1122,539,1206,522,1251,500,1294,473,1334,440,1369,420,1382,417,1377,437,1365,469,1331,496,1291,517,1249,534,1205,557,1121,567,1055"/>
-<area shape="rect" id="Node000028" href="$classBDSModularPhysicsList.html#a24bda0d2a3a4d3eed4e31bdd0faa70f9" title="Physics constructor loader." alt="" coords="246,1429,421,1469"/>
-<area shape="poly" id="edge29_Node000001_Node000028" title=" " alt="" coords="574,1055,566,1130,545,1227,527,1279,505,1330,476,1377,440,1419,422,1433,419,1428,437,1415,472,1374,500,1327,523,1277,539,1226,560,1129,569,1055"/>
-<area shape="rect" id="Node000029" href="$classBDSModularPhysicsList.html#a9b68a66822dbfb58a159deea7180ffbf" title="Physics constructor loader." alt="" coords="246,1493,421,1533"/>
-<area shape="poly" id="edge30_Node000001_Node000029" title=" " alt="" coords="576,1055,571,1141,564,1196,553,1255,536,1316,512,1377,481,1433,441,1483,423,1497,419,1493,437,1479,476,1430,507,1374,531,1315,548,1254,559,1195,566,1140,570,1055"/>
-<area shape="rect" id="Node000030" href="$classBDSModularPhysicsList.html#ae30899b3e6eafe93c078ed8a3365f119" title="Physics constructor loader." alt="" coords="246,1557,421,1597"/>
-<area shape="poly" id="edge31_Node000001_Node000030" title=" " alt="" coords="571,1056,555,1166,527,1313,509,1387,489,1454,466,1509,441,1547,422,1561,419,1557,437,1544,461,1507,484,1452,504,1385,521,1312,549,1165,566,1055"/>
-<area shape="rect" id="Node000031" href="$classBDSModularPhysicsList.html#a7e2d80c2a7e703cd1fb9fc74d8ce94b3" title="Physics constructor loader." alt="" coords="246,1621,421,1661"/>
-<area shape="poly" id="edge32_Node000001_Node000031" title=" " alt="" coords="572,1056,557,1178,531,1344,513,1428,492,1505,468,1568,441,1611,423,1625,419,1621,437,1608,463,1565,487,1503,508,1427,526,1343,552,1177,567,1055"/>
-<area shape="rect" id="Node000032" href="$classBDSModularPhysicsList.html#a2f623bd475c3ecaa94f23e7a05dcb2cf" title="Physics constructor loader." alt="" coords="246,1685,421,1725"/>
-<area shape="poly" id="edge33_Node000001_Node000032" title=" " alt="" coords="573,1055,560,1189,535,1375,518,1469,496,1555,471,1626,456,1654,441,1675,423,1689,419,1685,437,1671,452,1651,466,1624,491,1554,512,1468,530,1374,555,1189,568,1055"/>
-<area shape="rect" id="Node000033" href="$classBDSModularPhysicsList.html#aabfbee9c206bfc7629897bfbec3ef29a" title="Physics constructor loader." alt="" coords="246,1749,421,1789"/>
-<area shape="poly" id="edge34_Node000001_Node000033" title=" " alt="" coords="574,1055,563,1202,539,1406,522,1510,500,1606,473,1685,458,1715,441,1739,423,1754,419,1749,437,1736,453,1713,468,1683,495,1604,516,1509,534,1405,557,1201,568,1055"/>
-<area shape="rect" id="Node000034" href="$classBDSModularPhysicsList.html#aecf0ade3bfdf30010be40e968fe0d4f0" title="Physics constructor loader." alt="" coords="246,1813,421,1853"/>
-<area shape="poly" id="edge35_Node000001_Node000034" title=" " alt="" coords="574,1055,565,1213,543,1436,526,1551,503,1656,475,1743,459,1777,441,1803,422,1818,419,1814,437,1800,454,1774,470,1741,498,1655,521,1550,538,1436,560,1212,569,1055"/>
-<area shape="rect" id="Node000035" href="$classBDSModularPhysicsList.html#aaa4118c9635ca55a52976d79b53d192a" title="Physics constructor loader." alt="" coords="246,1877,421,1917"/>
-<area shape="poly" id="edge36_Node000001_Node000035" title=" " alt="" coords="575,1055,567,1224,547,1467,530,1592,507,1707,478,1802,460,1839,441,1867,422,1882,419,1878,437,1864,456,1836,473,1800,502,1706,525,1591,542,1466,562,1224,569,1055"/>
-<area shape="rect" id="Node000036" href="$classBDSModularPhysicsList.html#ac4cc26a886ce13a290de4a6387694220" title="Physics constructor loader." alt="" coords="246,1941,421,1981"/>
-<area shape="poly" id="edge37_Node000001_Node000036" title=" " alt="" coords="575,1055,570,1236,562,1362,551,1498,534,1633,511,1757,480,1860,462,1900,441,1931,423,1946,419,1942,437,1928,457,1898,475,1858,506,1756,529,1632,546,1497,557,1361,564,1235,570,1055"/>
-<area shape="rect" id="Node000037" href="$classBDSModularPhysicsList.html#a982952f70f8c37e5ddbbca6c8de5d2d7" title="Physics constructor loader." alt="" coords="246,2005,421,2045"/>
-<area shape="poly" id="edge38_Node000001_Node000037" title=" " alt="" coords="575,1055,572,1246,565,1381,555,1527,538,1673,514,1807,500,1866,482,1918,463,1962,441,1995,423,2010,419,2006,437,1992,458,1959,478,1916,494,1865,509,1806,533,1672,549,1527,560,1381,566,1246,570,1055"/>
-<area shape="rect" id="Node000038" href="$classBDSModularPhysicsList.html#afc20937b91158c4aa5d67dacd3b3e189" title="Physics constructor loader." alt="" coords="246,2069,421,2109"/>
-<area shape="poly" id="edge39_Node000001_Node000038" title=" " alt="" coords="576,1055,574,1257,568,1401,558,1558,542,1714,518,1858,503,1921,485,1977,464,2023,441,2059,423,2074,419,2070,437,2056,460,2021,480,1975,498,1920,513,1857,537,1713,553,1557,563,1401,568,1257,570,1055"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="554,1027,508,954,475,916,437,884,416,872,419,867,440,879,479,912,512,951,559,1024"/>
+<area shape="rect" id="Node000019" href="$classBDSModularPhysicsList.html#ab9dccef670fe89bb7f8916426796eab6" title="Physics constructor loader." alt="" coords="246,893,421,933"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="540,1030,493,992,437,954,397,936,399,931,440,950,496,987,543,1026"/>
+<area shape="rect" id="Node000020" href="$classBDSModularPhysicsList.html#abc16eb736a89d43083928d97db6f7147" title="Physics constructor loader." alt="" coords="5,976,180,1016"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="526,1033,484,1013,438,999,371,988,303,984,180,989,180,983,303,979,372,983,439,993,486,1008,529,1028"/>
+<area shape="rect" id="Node000021" href="$classBDSModularPhysicsList.html#adb480705a4bc5336290343c0330f06d3" title="Physics constructor loader." alt="" coords="5,1052,180,1092"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="473,1063,180,1072,180,1067,473,1058"/>
+<area shape="rect" id="Node000022" href="$classBDSModularPhysicsList.html#aced2617af693c8df1938ad94968b6b41" title="Physics constructor loader." alt="" coords="246,1008,421,1048"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="472,1048,421,1041,421,1036,473,1042"/>
+<area shape="rect" id="Node000023" href="$classBDSModularPhysicsList.html#ad23befaa7ee6f785e94d06797db888e5" title="Physics constructor loader." alt="" coords="246,1123,421,1163"/>
+<area shape="poly" id="edge24_Node000001_Node000023" title=" " alt="" coords="505,1084,391,1125,390,1120,503,1079"/>
+<area shape="rect" id="Node000024" href="$classBDSModularPhysicsList.html#a7950fd626b7dd5b383aa134fa4911be3" title="Physics constructor loader." alt="" coords="246,1187,421,1227"/>
+<area shape="poly" id="edge25_Node000001_Node000024" title=" " alt="" coords="547,1089,500,1134,440,1177,414,1189,412,1184,437,1172,496,1130,544,1086"/>
+<area shape="rect" id="Node000025" href="$classBDSModularPhysicsList.html#a205303ff0161f0e6b7b6a197d82fc77c" title="Physics constructor loader." alt="" coords="246,1251,421,1291"/>
+<area shape="poly" id="edge26_Node000001_Node000025" title=" " alt="" coords="559,1091,540,1126,513,1166,479,1206,440,1241,419,1253,416,1248,437,1236,476,1203,509,1163,535,1123,555,1088"/>
+<area shape="rect" id="Node000026" href="$classBDSModularPhysicsList.html#a959972da8bb780741b04075c8b3693ea" title="Physics constructor loader." alt="" coords="246,1315,421,1355"/>
+<area shape="poly" id="edge27_Node000001_Node000026" title=" " alt="" coords="566,1091,549,1139,523,1196,487,1255,465,1281,440,1305,422,1317,419,1312,437,1301,461,1278,483,1251,519,1194,544,1137,561,1090"/>
+<area shape="rect" id="Node000027" href="$classBDSModularPhysicsList.html#a2d16d309ab24a6dd8ce18686777c0c12" title="Physics constructor loader." alt="" coords="246,1379,421,1419"/>
+<area shape="poly" id="edge28_Node000001_Node000027" title=" " alt="" coords="570,1092,557,1151,533,1225,516,1264,495,1302,470,1338,440,1369,422,1381,419,1377,437,1365,466,1334,490,1299,511,1262,528,1224,552,1150,565,1091"/>
+<area shape="rect" id="Node000028" href="$classBDSModularPhysicsList.html#a4c83cc5a52493755b32558a62d000bf5" title="Physics constructor loader." alt="" coords="232,1443,435,1469"/>
+<area shape="poly" id="edge29_Node000001_Node000028" title=" " alt="" coords="573,1092,565,1163,543,1255,526,1303,504,1351,475,1394,440,1433,421,1445,418,1441,437,1429,471,1391,499,1348,521,1301,538,1253,559,1162,568,1091"/>
+<area shape="rect" id="Node000029" href="$classBDSModularPhysicsList.html#a24bda0d2a3a4d3eed4e31bdd0faa70f9" title="Physics constructor loader." alt="" coords="246,1493,421,1533"/>
+<area shape="poly" id="edge30_Node000001_Node000029" title=" " alt="" coords="575,1091,568,1170,548,1275,531,1331,508,1386,478,1438,441,1483,422,1497,419,1492,437,1479,474,1435,503,1384,526,1329,543,1274,563,1169,569,1091"/>
+<area shape="rect" id="Node000030" href="$classBDSModularPhysicsList.html#a9b68a66822dbfb58a159deea7180ffbf" title="Physics constructor loader." alt="" coords="246,1557,421,1597"/>
+<area shape="poly" id="edge31_Node000001_Node000030" title=" " alt="" coords="576,1092,573,1182,567,1240,556,1303,539,1369,515,1433,483,1494,441,1547,423,1561,419,1557,437,1543,478,1491,511,1431,534,1367,551,1302,562,1239,568,1181,571,1091"/>
+<area shape="rect" id="Node000031" href="$classBDSModularPhysicsList.html#ae30899b3e6eafe93c078ed8a3365f119" title="Physics constructor loader." alt="" coords="246,1621,421,1661"/>
+<area shape="poly" id="edge32_Node000001_Node000031" title=" " alt="" coords="571,1092,556,1208,529,1363,511,1441,490,1512,467,1571,441,1611,422,1625,419,1621,437,1608,462,1568,485,1510,506,1440,523,1362,550,1207,566,1091"/>
+<area shape="rect" id="Node000032" href="$classBDSModularPhysicsList.html#a7e2d80c2a7e703cd1fb9fc74d8ce94b3" title="Physics constructor loader." alt="" coords="246,1685,421,1725"/>
+<area shape="poly" id="edge33_Node000001_Node000032" title=" " alt="" coords="572,1091,559,1219,533,1393,515,1482,494,1563,469,1629,455,1655,441,1675,423,1689,419,1685,437,1671,451,1652,464,1627,489,1561,510,1481,528,1392,553,1218,567,1091"/>
+<area shape="rect" id="Node000033" href="$classBDSModularPhysicsList.html#a2f623bd475c3ecaa94f23e7a05dcb2cf" title="Physics constructor loader." alt="" coords="246,1749,421,1789"/>
+<area shape="poly" id="edge34_Node000001_Node000033" title=" " alt="" coords="573,1091,561,1231,537,1424,519,1523,498,1613,472,1688,457,1717,441,1739,423,1754,419,1749,437,1735,452,1714,467,1686,493,1612,514,1522,532,1424,556,1230,568,1091"/>
+<area shape="rect" id="Node000034" href="$classBDSModularPhysicsList.html#aabfbee9c206bfc7629897bfbec3ef29a" title="Physics constructor loader." alt="" coords="246,1813,421,1853"/>
+<area shape="poly" id="edge35_Node000001_Node000034" title=" " alt="" coords="574,1091,564,1242,541,1455,524,1564,501,1664,474,1746,458,1778,441,1803,423,1818,419,1813,437,1800,454,1776,469,1744,496,1662,518,1563,536,1454,558,1242,568,1091"/>
+<area shape="rect" id="Node000035" href="$classBDSModularPhysicsList.html#aecf0ade3bfdf30010be40e968fe0d4f0" title="Physics constructor loader." alt="" coords="246,1877,421,1917"/>
+<area shape="poly" id="edge36_Node000001_Node000035" title=" " alt="" coords="574,1091,566,1254,545,1486,528,1605,505,1714,476,1805,459,1840,441,1867,422,1882,419,1878,437,1864,455,1837,471,1803,500,1713,522,1604,540,1485,561,1253,569,1091"/>
+<area shape="rect" id="Node000036" href="$classBDSModularPhysicsList.html#aaa4118c9635ca55a52976d79b53d192a" title="Physics constructor loader." alt="" coords="246,1941,421,1981"/>
+<area shape="poly" id="edge37_Node000001_Node000036" title=" " alt="" coords="575,1091,568,1265,561,1386,549,1516,532,1646,509,1765,479,1863,461,1902,441,1931,422,1946,419,1942,437,1928,456,1899,474,1861,504,1763,526,1645,543,1515,555,1385,563,1264,569,1091"/>
+<area shape="rect" id="Node000037" href="$classBDSModularPhysicsList.html#ac4cc26a886ce13a290de4a6387694220" title="Physics constructor loader." alt="" coords="246,2005,421,2045"/>
+<area shape="poly" id="edge38_Node000001_Node000037" title=" " alt="" coords="575,1091,570,1276,564,1406,553,1546,536,1686,512,1815,498,1872,481,1922,462,1963,441,1995,423,2010,419,2006,437,1992,458,1961,476,1920,493,1870,507,1814,531,1686,547,1546,558,1406,565,1276,570,1091"/>
+<area shape="rect" id="Node000038" href="$classBDSModularPhysicsList.html#a982952f70f8c37e5ddbbca6c8de5d2d7" title="Physics constructor loader." alt="" coords="246,2069,421,2109"/>
+<area shape="poly" id="edge39_Node000001_Node000038" title=" " alt="" coords="576,1091,573,1287,567,1427,556,1577,540,1727,516,1866,501,1927,483,1980,463,2025,441,2059,423,2074,419,2070,437,2056,459,2022,479,1978,496,1925,511,1865,534,1727,551,1577,561,1426,567,1287,570,1091"/>
+<area shape="rect" id="Node000039" href="$classBDSModularPhysicsList.html#afc20937b91158c4aa5d67dacd3b3e189" title="Physics constructor loader." alt="" coords="246,2133,421,2173"/>
+<area shape="poly" id="edge40_Node000001_Node000039" title=" " alt="" coords="576,1091,575,1299,570,1447,560,1607,544,1768,520,1916,504,1981,486,2038,465,2086,441,2123,423,2138,419,2134,437,2120,460,2084,481,2037,499,1980,514,1915,538,1767,555,1607,564,1446,569,1298,570,1091"/>
 <area shape="rect" id="Node000003" href="$classBDSModularPhysicsList.html#af05f3d747c67b5d0daf19bdc71c95b18" title="Physics constructor loader." alt="" coords="5,5,180,45"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="232,28,180,28,180,23,232,23"/>
 <area shape="rect" id="Node000006" href="$classBDSModularPhysicsList.html#a57b23aa0c5011eb36849aeead1716857" title="Physics constructor loader." alt="" coords="5,127,180,167"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="218,149,180,149,180,144,218,144"/>
-<area shape="poly" id="edge21_Node000021_Node000019" title=" " alt="" coords="232,953,180,946,181,941,232,948"/>
-<area shape="poly" id="edge22_Node000021_Node000020" title=" " alt="" coords="233,985,181,995,180,989,232,980"/>
+<area shape="poly" id="edge22_Node000022_Node000020" title=" " alt="" coords="232,1017,180,1010,181,1005,232,1012"/>
+<area shape="poly" id="edge23_Node000022_Node000021" title=" " alt="" coords="233,1049,181,1059,180,1053,232,1044"/>
 </map>

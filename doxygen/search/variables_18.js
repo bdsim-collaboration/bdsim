@@ -10,7 +10,7 @@ var searchData=
   ['yhalfheight_7',['yhalfheight',['../classBDSCollimatorJaw.html#a9e499f8c2770041c8e9201fb23116cc8',1,'BDSCollimatorJaw::yHalfHeight'],['../classBDSCollimatorTipJaw.html#ad3231a8c44761d2138b9ae257abdfc77',1,'BDSCollimatorTipJaw::yHalfHeight']]],
   ['yinitial_8',['yInitial',['../classBDSIntegratorDipoleRodrigues.html#ace71a93545ad46341bafdee1de3e76a0',1,'BDSIntegratorDipoleRodrigues']]],
   ['ymax_9',['ymax',['../classBDSArray4DCoords.html#ab3671d26299ba5809c4ae66ee928f419',1,'BDSArray4DCoords::yMax'],['../classBDSGeometryFactoryBase.html#a004307f0f89a0559715186b2c898b143',1,'BDSGeometryFactoryBase::ymax'],['../classGMAD_1_1Query.html#ad1483d2d524f9bd291c04cc26355380b',1,'GMAD::Query::ymax']]],
-  ['ymin_10',['ymin',['../classBDSGeometryFactoryBase.html#a962b259a3e07bf7e4dcbf193e992cbfe',1,'BDSGeometryFactoryBase::ymin'],['../classGMAD_1_1Query.html#a650f92121d87193d2cbb0b259abf14b6',1,'GMAD::Query::ymin'],['../classBDSArray4DCoords.html#a0fc7def1840d8b7c873da9e19429ef31',1,'BDSArray4DCoords::yMin']]],
+  ['ymin_10',['ymin',['../classBDSArray4DCoords.html#a0fc7def1840d8b7c873da9e19429ef31',1,'BDSArray4DCoords::yMin'],['../classBDSGeometryFactoryBase.html#a962b259a3e07bf7e4dcbf193e992cbfe',1,'BDSGeometryFactoryBase::ymin'],['../classGMAD_1_1Query.html#a650f92121d87193d2cbb0b259abf14b6',1,'GMAD::Query::ymin']]],
   ['yokefields_11',['yokeFields',['../classBDSComponentFactory.html#a5c99287388f80701a5b85ef822717c62',1,'BDSComponentFactory']]],
   ['yokefinishradius_12',['yokeFinishRadius',['../classBDSMagnetOuterFactoryPolesBase.html#a1cd9b38108da8c7ee0880db8de115f27',1,'BDSMagnetOuterFactoryPolesBase']]],
   ['yokesolid_13',['yokeSolid',['../classBDSMagnetOuterFactoryBase.html#acc2fdd0e61910c9fa92afe2b90e03d77',1,'BDSMagnetOuterFactoryBase']]],
@@ -18,7 +18,7 @@ var searchData=
   ['yp_15',['yp',['../classEventAnalysisOrbit.html#ae0dc959d33854448d060a685f5b1b65a',1,'EventAnalysisOrbit']]],
   ['yp0_16',['yp0',['../classBDSBunch.html#a29c4a28f5b47aff0d57858eda2f94303',1,'BDSBunch::Yp0'],['../classGMAD_1_1BeamBase.html#aed87f581cc7e322f833efd892dfe7be0',1,'GMAD::BeamBase::Yp0']]],
   ['yp_5fv_17',['yp_v',['../classBDSBunchGaussian.html#a89a5eea69f89791a6594932681b787a1',1,'BDSBunchGaussian']]],
-  ['ysize_18',['ysize',['../structGMAD_1_1Element.html#aae7306d424ed97c1063fd5c749e5fb82',1,'GMAD::Element::ysize'],['../classGMAD_1_1ScorerMesh.html#aba5d36589dd3f24e6d5ccf56753e1753',1,'GMAD::ScorerMesh::ysize'],['../classBDSShield.html#ae98c622d0b031544254976b88f8c3726',1,'BDSShield::ySize']]],
+  ['ysize_18',['ysize',['../classBDSShield.html#ae98c622d0b031544254976b88f8c3726',1,'BDSShield::ySize'],['../structGMAD_1_1Element.html#aae7306d424ed97c1063fd5c749e5fb82',1,'GMAD::Element::ysize'],['../classGMAD_1_1ScorerMesh.html#aba5d36589dd3f24e6d5ccf56753e1753',1,'GMAD::ScorerMesh::ysize']]],
   ['ysizeout_19',['ysizeOut',['../structGMAD_1_1Element.html#a97ad1c8902757206a439aa780cde0750',1,'GMAD::Element']]],
   ['ystep_20',['yStep',['../classBDSArray4DCoords.html#a238e3072c5c31d22e5d08014e27a72c0',1,'BDSArray4DCoords']]]
 ];

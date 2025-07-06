@@ -1822,6 +1822,14 @@ Examples: ::
 +------------------------------+------------------------------------------------------------------------+
 | dna                          | G4EmDNAPhysics list.  Only applies to G4_WATER material.               |
 +------------------------------+------------------------------------------------------------------------+
+| dna_chemistry                | G4EmDNAChemistry list. From Geant4 10.2 onwards.                       |
++------------------------------+------------------------------------------------------------------------+
+| dna_chemistry_1              | G4EmDNAChemistry list. From Geant4 10.7 onwards.                       |
++------------------------------+------------------------------------------------------------------------+
+| dna_chemistry_2              | G4EmDNAChemistry list. From Geant4 10.7 onwards.                       |
++------------------------------+------------------------------------------------------------------------+
+| dna_chemistry_3              | G4EmDNAChemistry list. From Geant4 10.7 onwards.                       |
++------------------------------+------------------------------------------------------------------------+
 | dna_1                        | Variant 1 of G4EmDNAPhysics list. Uses G4EmDNAPhysics_option1.         |
 +------------------------------+------------------------------------------------------------------------+
 | dna_X                        | Variant X of G4EmDNAPhysics list, where X is one of 1,2,3,4,5,6,7.     |
@@ -1866,6 +1874,10 @@ Examples: ::
 +------------------------------+------------------------------------------------------------------------+
 | ftfp_bert_hp                 | Similar to `FTFP_BERT`, but with the high precision neutron package.   |
 |                              | This is provided by `G4HadronPhysicsFTFP_BERT_HP`.                     |
++------------------------------+------------------------------------------------------------------------+
+| ftf_bic                      | Similar to `ftfp_bert`, but with the binary cascade for various        |
+|                              | particles - see Geant4 for which particles and which transition        |
+|                              | energies. Uses `G4HadronPhysicsFTF_BIC`.                               |
 +------------------------------+------------------------------------------------------------------------+
 | gamma_to_mumu                | Only gamma to a muon pair for gammas is registered.                    |
 +------------------------------+------------------------------------------------------------------------+
