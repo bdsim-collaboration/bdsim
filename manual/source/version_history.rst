@@ -29,7 +29,6 @@ to maintain the expected high quality of the code.
   Boolean flag still works, but by default is false. Any linked tracking code must now
   filter the particles they can handle themselves.
 
-
 New Features
 ------------
 
@@ -47,7 +46,6 @@ New Features
   elements.
 * The "rfcavity" field is now "rfpillbox".
 
-
 **General**
 
 * :code:`autoColour=1` now works for all collimators and target elements. If turned on, the
@@ -59,7 +57,9 @@ New Features
 
 * New :code:`ionisation` modular physics list for only the ionisation process for the most
   common particles.
-
+* New :code:`ftf_bic` modular physics list.
+* New :code:`dna_chemistry`, :code:`dna_chemistry_1`, :code:`dna_chemistry_2`, :code:`dna_chemistry_3`
+  physics lists.
 
 
 New Options
@@ -82,6 +82,7 @@ New Options
 General Updates
 ---------------
 
+* Build configuration now requires CMake 3.7 or greater.
 * The interface for custom components has changed due to the new beamline integral class and object.
   The example has been updated accordingly.
 * Internally, beamline elements are now cached based on both their name (basic reuse of components)
@@ -111,6 +112,8 @@ Bug Fixes
 * Fix the :code:`Event.Trajectory.pxpypz` variable in the output. It was implemented
   incorrectly in code and was not the correct data. It is now components of the momentum
   vector (absolute) in GeV/c in a frame local to that element as it should be.
+* Fixed the DNA variant modular physcis lists that would always default to the original variant.
+  i.e. :code:`dna_3` would always default to :code:`dna`. This has been fixed for all variants.
 * The weight of the :code:`composite` and :code:`compositesde` beam distributions is now the
   product of the x, y, z weights, whereas before it was always only the x dimension weight that was taken.
 * The :code:`userfile` bunch distribution was fixed for different particle species at sub-relativistic

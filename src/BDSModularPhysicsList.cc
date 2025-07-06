@@ -71,6 +71,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4HadronHElasticPhysics.hh"
 #include "G4HadronPhysicsFTFP_BERT.hh"
 #include "G4HadronPhysicsFTFP_BERT_HP.hh"
+#include "G4HadronPhysicsFTF_BIC.hh"
 #include "G4HadronPhysicsQGSP_BERT.hh"
 #include "G4HadronPhysicsQGSP_BERT_HP.hh"
 #include "G4HadronPhysicsQGSP_BIC.hh"
@@ -94,6 +95,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #if G4VERSION_NUMBER > 1019
 #include "G4EmStandardPhysicsGS.hh"
+#include "G4EmDNAChemistry.hh"
 #endif
 
 #if G4VERSION_NUMBER > 1020
@@ -126,6 +128,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4OpticalProcessIndex.hh"
 #else
 #include "G4OpticalParameters.hh"
+#endif
+
+#if G4VERSION_NUMBER > 1069
+#include "G4EmDNAChemistry_option1.hh"
+#include "G4EmDNAChemistry_option2.hh"
+#include "G4EmDNAChemistry_option3.hh"
 #endif
 
 #if G4VERSION_NUMBER > 1119
@@ -167,7 +175,8 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   temporaryName(""),
   opticalPhysics(nullptr),
   emWillBeUsed(false),
-  usingIons(false)
+  usingIons(false),
+  particlesConstructed(false)
 {
   globals = BDSGlobalConstants::Instance();
   
@@ -194,6 +203,7 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   physicsConstructors.insert(std::make_pair("em_4",                   &BDSModularPhysicsList::Em4));
   physicsConstructors.insert(std::make_pair("ftfp_bert",              &BDSModularPhysicsList::FTFPBERT));
   physicsConstructors.insert(std::make_pair("ftfp_bert_hp",           &BDSModularPhysicsList::FTFPBERTHP));
+  physicsConstructors.insert(std::make_pair("ftf_bic",                &BDSModularPhysicsList::FTFBIC));
   physicsConstructors.insert(std::make_pair("gamma_to_mumu",          &BDSModularPhysicsList::GammaToMuMu));
   physicsConstructors.insert(std::make_pair("hadronic_elastic",       &BDSModularPhysicsList::HadronicElastic));
   physicsConstructors.insert(std::make_pair("hadronic_elastic_d",     &BDSModularPhysicsList::HadronicElasticD));
@@ -222,6 +232,7 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   physicsConstructors.insert(std::make_pair("synch_rad",              &BDSModularPhysicsList::SynchRad));
 #if G4VERSION_NUMBER > 1019
   physicsConstructors.insert(std::make_pair("em_gs",                  &BDSModularPhysicsList::EmGS));
+  physicsConstructors.insert(std::make_pair("dna_chemistry",          &BDSModularPhysicsList::DNAChemistry));
 #endif
 #if G4VERSION_NUMBER > 1020
   physicsConstructors.insert(std::make_pair("decay_spin",             &BDSModularPhysicsList::DecaySpin));
@@ -244,6 +255,11 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   physicsConstructors.insert(std::make_pair("dna_7",                  &BDSModularPhysicsList::DNA));
   physicsConstructors.insert(std::make_pair("radioactivation",        &BDSModularPhysicsList::Radioactivation));
   physicsConstructors.insert(std::make_pair("shielding_lend",         &BDSModularPhysicsList::ShieldingLEND));
+#endif
+#if G4VERSION_NUMBER > 1069
+  physicsConstructors.insert(std::make_pair("dna_chemistry_1",        &BDSModularPhysicsList::DNAChemistry));
+  physicsConstructors.insert(std::make_pair("dna_chemistry_2",        &BDSModularPhysicsList::DNAChemistry));
+  physicsConstructors.insert(std::make_pair("dna_chemistry_3",        &BDSModularPhysicsList::DNAChemistry));
 #endif
 #if G4VERSION_NUMBER > 1119
   physicsConstructors.insert(std::make_pair("xray_reflection",        &BDSModularPhysicsList::XrayReflection));
@@ -278,6 +294,18 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["annihi_to_mumu"] = {"em_extra"};
   incompatible["muon"] = {"em_extra"};
   incompatible["muon_inelastic"] = {"em_extra", "muon"};
+  incompatible["dna"]    = {"dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_1"]  = {"dna",   "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_2"]  = {"dna_1", "dna",   "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_3"]  = {"dna_1", "dna_2", "dna",   "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_4"]  = {"dna_1", "dna_2", "dna_3", "dna",   "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_5"]  = {"dna_1", "dna_2", "dna_3", "dna_4", "dna",   "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_6"]  = {"dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna",   "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_7"]  = {"dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna",   "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_chemistry"]    = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_chemistry_1"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry",   "dna_chemistry_2", "dna_chemistry_3"};
+  incompatible["dna_chemistry_2"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry",   "dna_chemistry_3"};
+  incompatible["dna_chemistry_3"]  = {"dna", "dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7",  "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry"};
   incompatible["em"]     = {"em_ss", "em_wvi", "em_1",   "em_2", "em_3", "em_4"};
   incompatible["em_ss"]  = {"em",    "em_wvi", "em_1",   "em_2", "em_3", "em_4"};
   incompatible["em_wvi"] = {"em",    "em_ss",  "em_1",   "em_2", "em_3", "em_4"};
@@ -287,8 +315,9 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["em_4"]   = {"em",    "em_ss",  "em_wvi", "em_1", "em_2", "em_3"};
   incompatible["em_livermore"] = {"em_livermore_polarised"};
   incompatible["em_extra"] = {"muon", "muon_inelastic"};
-  incompatible["ftfp_bert"]    = {"ftfp_bert_hp", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
-  incompatible["ftfp_bert_hp"] = {"ftfp_bert",    "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
+  incompatible["ftfp_bert"]    = {"ftfp_bert_hp", "ftf_bic", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
+  incompatible["ftfp_bert_hp"] = {"ftfp_bert",    "ftf_bic", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
+  incompatible["ftf_bic"]      = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert", "qgsp_bert_hp", "qgsp_bic", "qgsp_bic_hp"};
   incompatible["gamma_to_mumu"] = {"em_extra"};
   incompatible["hadronic_elastic"]      = {"hadronic_elastic_d", "hadronic_elastic_h", "hadronic_elastic_hp", "hadronic_elastic_lend", "hadronic_elastic_xs"};
   incompatible["hadronic_elastic_d"]    = {"hadronic_elastic",   "hadronic_elastic_h", "hadronic_elastic_hp", "hadronic_elastic_lend", "hadronic_elastic_xs"};
@@ -298,10 +327,10 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["hadronic_elastic_xs"]   = {"hadronic_elastic",   "hadronic_elastic_d", "hadronic_elastic_h",  "hadronic_elastic_hp",   "hadronic_elastic_lend"};
   incompatible["ion_elastic"] = {"ion_elastic_qmd"};
   incompatible["ionisation"] = {"em", "em_ss", "em_1", "em_2", "em_3", "em_4", "em_livermore"};
-  incompatible["qgsp_bert"]    = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert_hp", "qgsp_bic",     "qgsp_bic_hp"};
-  incompatible["qgsp_bert_hp"] = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert",    "qgsp_bic",     "qgsp_bic_hp"};
-  incompatible["qgsp_bic"]     = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic_hp"};
-  incompatible["qgsp_bic_hp"]  = {"ftfp_bert", "ftfp_bert_hp", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic"};
+  incompatible["qgsp_bert"]    = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert_hp", "qgsp_bic",     "qgsp_bic_hp"};
+  incompatible["qgsp_bert_hp"] = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bic",     "qgsp_bic_hp"};
+  incompatible["qgsp_bic"]     = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic_hp"};
+  incompatible["qgsp_bic_hp"]  = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic"};
 
 #if G4VERSION_NUMBER > 1019
   for (const auto& name : {"em", "em_ss", "em_wvi", "em_1", "em_2", "em_3", "em_4"})
@@ -337,8 +366,11 @@ BDSModularPhysicsList::~BDSModularPhysicsList()
 
 void BDSModularPhysicsList::ConstructParticle()
 {
+  if (particlesConstructed)
+    {return;}
   BDS::ConstructMinimumParticleSet();
   G4VModularPhysicsList::ConstructParticle();
+  particlesConstructed = true;
 }
 
 void BDSModularPhysicsList::ConstructProcess()
@@ -755,6 +787,16 @@ void BDSModularPhysicsList::FTFPBERTHP()
     }
 }
 
+void BDSModularPhysicsList::FTFBIC()
+{
+  ConstructAllLeptons();
+  if (!physicsActivated["ftf_bic"])
+  {
+    constructors.push_back(new G4HadronPhysicsFTF_BIC());
+    physicsActivated["ftf_bic"] = true;
+  }
+}
+
 void BDSModularPhysicsList::GammaToMuMu()
 {
   if (!physicsActivated["gamma_to_mumu"])
@@ -1063,6 +1105,25 @@ void BDSModularPhysicsList::EmGS()
       physicsActivated["em_gs"] = true;
     }
 }
+
+void BDSModularPhysicsList::DNAChemistry()
+{
+  if (!physicsActivated["dna_chemistry"])
+    {
+      // only one DNA chemistry physics list possible
+      if (temporaryName == "dna_chemistry")
+        {constructors.push_back(new G4EmDNAChemistry());}
+#if G4VERSION_NUMBER > 1069
+      else if (temporaryName == "dna_chemistry_1")
+        {constructors.push_back(new G4EmDNAChemistry_option1());}
+      else if (temporaryName == "dna_chemistry_2")
+        {constructors.push_back(new G4EmDNAChemistry_option2());}
+      else if (temporaryName == "dna_chemistry_3")
+        {constructors.push_back(new G4EmDNAChemistry_option3());}
+#endif
+      physicsActivated["dna_chemistry"] = true;
+    }
+}
 #endif
 
 #if G4VERSION_NUMBER > 1020
@@ -1098,6 +1159,8 @@ void BDSModularPhysicsList::IonPHP()
 void BDSModularPhysicsList::DecayMuonicAtom()
 {
   ConstructAllLeptons();
+  ConstructAllBaryons();
+  ConstructAllMesons();
 #if G4VERSION_NUMBER > 1059
   ConstructAllIons();
 #endif
@@ -1114,27 +1177,22 @@ void BDSModularPhysicsList::DNA()
 {
   if (!physicsActivated["dna"])
     {
-      // only one DNA physics list possible
-      if (BDS::StrContains(temporaryName, "option"))
-        {
-          if (BDS::StrContains(temporaryName, "1"))
-            {constructors.push_back(new G4EmDNAPhysics_option1());}
-          if (BDS::StrContains(temporaryName, "2"))
-            {constructors.push_back(new G4EmDNAPhysics_option2());}
-          if (BDS::StrContains(temporaryName, "3"))
-            {constructors.push_back(new G4EmDNAPhysics_option3());}
-          if (BDS::StrContains(temporaryName, "4"))
-            {constructors.push_back(new G4EmDNAPhysics_option4());}
-          if (BDS::StrContains(temporaryName, "5"))
-            {constructors.push_back(new G4EmDNAPhysics_option5());}
-          if (BDS::StrContains(temporaryName, "6"))
-            {constructors.push_back(new G4EmDNAPhysics_option6());}
-          if (BDS::StrContains(temporaryName, "7"))
-            {constructors.push_back(new G4EmDNAPhysics_option7());}
-        }
-      else
+      if (temporaryName == "dna")
         {constructors.push_back(new G4EmDNAPhysics());}
-      
+      else if (temporaryName == "dna_1")
+        {constructors.push_back(new G4EmDNAPhysics_option1());}
+      else if (temporaryName == "dna_2")
+        {constructors.push_back(new G4EmDNAPhysics_option2());}
+      else if (temporaryName == "dna_3")
+        {constructors.push_back(new G4EmDNAPhysics_option3());}
+      else if (temporaryName == "dna_4")
+        {constructors.push_back(new G4EmDNAPhysics_option4());}
+      else if (temporaryName == "dna_5")
+        {constructors.push_back(new G4EmDNAPhysics_option5());}
+      else if (temporaryName == "dna_6")
+        {constructors.push_back(new G4EmDNAPhysics_option6());}
+      else if (temporaryName == "dna_7")
+        {constructors.push_back(new G4EmDNAPhysics_option7());}
       physicsActivated["dna"] = true;
     }
 }

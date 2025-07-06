@@ -4,7 +4,7 @@ l1: line = (c1);
 
 use, l1;
 
-option, physicsList="em dna"; ! TODO why is em needed here to avoid a crash?
+option, physicsList="dna_chemistry";
 
 option, checkOverlaps=1;
 

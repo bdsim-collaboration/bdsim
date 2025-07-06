@@ -148,6 +148,8 @@ private:
   /// Flag telling whether ions are being used either in physics list or in beam particle.
   mutable G4bool usingIons;
 
+  G4bool particlesConstructed;
+
   /// Unique physics constructor that doesn't add physics processes but only forces the
   /// immediate construction of all particles.  See implementation for constructors called.
   void AllParticles();
@@ -173,6 +175,7 @@ private:
   void Em4();
   void FTFPBERT();
   void FTFPBERTHP();
+  void FTFBIC();
   void GammaToMuMu();
   void HadronicElastic();
   void HadronicElasticD();
@@ -201,6 +204,7 @@ private:
   void SynchRad();
 #if G4VERSION_NUMBER > 1019
   void EmGS();
+  void DNAChemistry();
 #endif
 #if G4VERSION_NUMBER > 1020
   void DecaySpin();
