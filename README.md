@@ -5,7 +5,7 @@
 BDSIM version 1.7.7.develop program for radiation transport in accelerators
 
 The official web site is:
-	http://www.pp.rhul.ac.uk/bdsim
+	https://bdsim-collaboration.github.io/web/
 
 Mailing list is:
 https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=BDSIM
