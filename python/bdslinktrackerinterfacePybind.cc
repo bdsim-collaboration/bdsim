@@ -12,6 +12,8 @@ namespace py = pybind11;
 // #define CACHE_PTRS 1
 
 #include "BDSLinkTrackerInterface.hh"
+#include "BDSIMLink.hh"
+#include "BDSLinkBunch.hh"
 
 template <typename T>
 T* make_ptr(py::array_t<T> &arr) {
@@ -53,7 +55,9 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                     py::return_value_policy::reference)
       .def_static("GetInstance", []() {return BDSLinkTrackerInterface::GetInstance();},
                   py::return_value_policy::reference)
-      .def("TrackXSuite",[](BDSLinkTrackerInterface *link,
+      .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink)
+      .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink)
+      .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
                             int iElement,
                             py::object particles) {
         py::print("Element BDSIM:",iElement);
@@ -63,7 +67,8 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
         py::array_t<double> y = py::cast<py::array_t<double>>(particles.attr("y"));
 
         // fill BDSLinkBunch
-
+        auto bunch = tracker_interface->GetBunchLink();
+        // bunch->AddParticle();
 
 #ifdef CACHE_PTRS
         double *x_ptr = make_ptr<double>(x);
@@ -71,8 +76,11 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
 #endif
 
         // run n particles
+        auto link = tracker_interface->GetBDSIMLink();
+        // link->BeamOn();
 
         // get sampler data
+        //link->SamplerHits();
 
         // change state of existing particles
         set_element<double>(x, 0, 1000);
