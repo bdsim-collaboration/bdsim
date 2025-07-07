@@ -1,0 +1,17 @@
+from bdsim/ubuntu24-g4.11.2
+
+RUN apt install -y libhepmc3-dev
+
+# Python support tools (pybdsim, pymadx, pymad8, pytransport, pyg4ometry)
+RUN python3 -m venv /tmp/venv-bdsim &&\
+    /tmp/venv-bdsim/bin/pip install pybdsim pymadx pymad8 pytransport ipython
+
+# build BDSIM
+RUN source /tmp/root/bin/thisroot.sh && \
+    git clone https://github.com/bdsim-collaboration/bdsim.git &&\
+    cd bdsim && git checkout develop && cd ../ &&\
+    mkdir bdsim-build && cd bdsim-build &&\
+    rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake && \     
+    cmake ../bdsim -DUSE_HEPMC3=ON && make -j12 install &&\
+    echo 'source /usr/local/bin/bdsim.sh' >> ~/.bashrc
+    
