@@ -1,7 +1,8 @@
 BDSIM build environment Dockerfiles
 ----------------------------------
 
-All environment dockerfiles have now moved to a separate repo `bdsim-collaboration docker<https://github.com/bdsim-collaboration/docker>`_ and are available in dockerhub `bdsim docker team <https://hub.docker.com/u/bdsim>`_
+All environment dockerfiles have now moved to a separate repo `bdsim-collaboration docker<https://github.com/bdsim-collaboration/docker>`_
+and are available in dockerhub `bdsim docker team <https://hub.docker.com/u/bdsim>`_
 
 If you wish to check the files that were stored here: :: 
 
@@ -12,6 +13,9 @@ If you wish to check the files that were stored here: ::
 Docker build environments for Testing
 -------------------------------------
 
+Docker images exist with the software environment to build BDSIM (i.e CLHEP, Geant4 etc). These are all avilable from dockerhub and are
+used to perform our testing of BDSIM.
+
 Command to get a given image: ::
 
   docker pull bdsim/<IMAGENAME> 
@@ -21,3 +25,18 @@ Command ro run a given image: ::
   docker run -ti bdsim/<IMAGENAME>
 
 
+Buiding docker BDSIM
+--------------------
+
+The dockerfiles here are for building docker images that contain an operating version of BDSIM. These images
+are based on the testing images. In generate you are welcome to use them and adapt the dockerfiles, but the
+primary aim of these dockerfiles/images is to perform regression testing in the CI/CD (GitHub)
+
+To build a BDSIM docker image: ::
+
+   docker build -t <YOUR_TAG> -f <DOCKERFILE> <CONTEXT>
+
+So for example to build alma9 Geant4.11.3 with develop BDSIM
+
+   docker build -t alma9-g4.11.3-bdsim -f alma9-g4.11.3-bdsim .
+   
