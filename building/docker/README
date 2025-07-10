@@ -13,14 +13,14 @@ If you wish to check the files that were stored here: ::
 Docker build environments for Testing
 -------------------------------------
 
-Docker images exist with the software environment to build BDSIM (i.e CLHEP, Geant4 etc). These are all avilable from dockerhub and are
-used to perform our testing of BDSIM.
+Docker images exist with the software environment to build BDSIM (i.e CLHEP, Geant4 etc). These are all available from
+dockerhub and are used to perform our testing of BDSIM.
 
 Command to get a given image: ::
 
   docker pull bdsim/<IMAGENAME> 
 
-Command ro run a given image: ::
+Command to run a given image: ::
 
   docker run -ti bdsim/<IMAGENAME>
 

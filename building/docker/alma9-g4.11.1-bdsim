@@ -1,4 +1,4 @@
-from bdsim/alma9-g4.11.1
+FROM bdsim/alma9-g4.11.1
 
 RUN yum install -y HepMC3-devel
 
@@ -11,7 +11,7 @@ RUN source /tmp/root/bin/thisroot.sh && \
     git clone https://github.com/bdsim-collaboration/bdsim.git &&\
     cd bdsim && git checkout develop && cd ../ &&\
     mkdir bdsim-build && cd bdsim-build &&\
-    rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake && \     
+    rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake && \
     cmake ../bdsim -DUSE_HEPMC3=ON && make -j12 install &&\
     echo 'source /usr/local/bin/bdsim.sh' >> ~/.bashrc
     
