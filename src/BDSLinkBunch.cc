@@ -65,7 +65,7 @@ BDSParticleCoordsFull BDSLinkBunch::GetNextParticleLocal()
   return particle->coords;
 }
 
-void BDSLinkBunch::AddParticle(BDSParticleDefinition*       particleDefinitionIn,
+void BDSLinkBunch::AddParticle(BDSParticleDefinition* particleDefinitionIn,
                                const BDSParticleCoordsFull& coordsIn,
                                int   externalParticleID,
                                int   externalParentID)

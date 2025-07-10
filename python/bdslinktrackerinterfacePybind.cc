@@ -55,8 +55,8 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                     py::return_value_policy::reference)
       .def_static("GetInstance", []() {return BDSLinkTrackerInterface::GetInstance();},
                   py::return_value_policy::reference)
-      .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink)
-      .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink)
+      .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink,py::return_value_policy::reference)
+      .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink,py::return_value_policy::reference)
       .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
                             int iElement,
                             py::object particles) {
@@ -89,5 +89,31 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
         // add extra particles of products
 
         // clean BDSLinkBunch of particles
+      })
+      .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
+        py::print("Bunch6d::", bunch6d);
+        auto size_method = bunch6d.attr("size");
+        py::print("Bunch6d::size",size_method());
+
+        auto bdsim_link = tracker_interface->GetBDSIMLink();
+        auto bunch_link = tracker_interface->GetBunchLink();
+
+        int nparticle = bunch6d.attr("size")().cast<int>();
+
+        py::print("links ", bdsim_link, bunch_link);
+
+        for(int i = 0; i < nparticle ;i++) {
+          auto p = bunch6d.attr("get_particle")(i);
+          py::print(i);
+          tracker_interface->AddParticle(0,0, // x, y
+                                         0,0, // xp, yp
+                                         0,0, // ct, deltap
+                                         1,1, // chi, chargeRatio
+                                         0, // s
+                                         i, 11); // trackID, parent;
+        }
+        py::print("Before beam on");
+        bdsim_link->BeamOn(10);
+        py::print("After beam on");
       });
 }

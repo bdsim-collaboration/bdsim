@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <filesystem>
 
 #include "CLHEP/Units/SystemOfUnits.h"
 #include "CLHEP/Units/PhysicalConstants.h"
@@ -21,6 +22,12 @@ BDSLinkTrackerInterface* BDSLinkTrackerInterface::GetInstance(std::string bdsimC
                                                               int seedIn,
                                                               int referenceIonChargeIn,
                                                               bool batchModeIn) {
+  if (!std::filesystem::exists(bdsimConfigFileIn)) {
+    std::cout << "File does not exist.\n";
+    return nullptr;
+  }
+
+
   if(singleton != nullptr) {
     return singleton;
   }
@@ -98,6 +105,8 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                         true,
                         minimumKineticEnergy/CLHEP::GeV,
                         false);
+
+  referenceParticleDefinition = prepareBDSParticleDefition(referenceParticlePDG, 0, referenceKineticEnergy, static_cast<double>(referenceIonCharge));
 }
 
 BDSParticleDefinition* BDSLinkTrackerInterface::prepareBDSParticleDefition(int pdg,
@@ -141,6 +150,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
                                           double ct, double deltap, double chi,
                                           double chargeRatio, double s,
                                           int trackid, int pdgid) {
+  std::cout << "BDSLinkTrackerInterface::AddParticle" << std::endl;
 
   auto q = chargeRatio * referenceParticleDefinition->Charge();
   auto mass_ratio = chargeRatio / chi;
@@ -170,6 +180,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
                                       partDef->TotalEnergy(),
                                       1);
 
+  std::cout << "add particle" << std::endl;
   return linkBunch->AddParticle(partDef, coords, trackid, trackid);
 
 }
