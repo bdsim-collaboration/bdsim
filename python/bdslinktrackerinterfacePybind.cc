@@ -100,8 +100,6 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
 
         int nparticle = bunch6d.attr("size")().cast<int>();
 
-        py::print("links ", bdsim_link, bunch_link);
-
         for(int i = 0; i < nparticle ;i++) {
           auto p = bunch6d.attr("get_particle")(i);
           py::print(i);
@@ -112,8 +110,6 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                          0, // s
                                          i, 11); // trackID, parent;
         }
-        py::print("Before beam on");
-        bdsim_link->BeamOn(10);
-        py::print("After beam on");
+        bdsim_link->BeamOn(nparticle);
       });
 }
