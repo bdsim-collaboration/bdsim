@@ -141,7 +141,7 @@ BDSParticleDefinition* BDSLinkTrackerInterface::prepareBDSParticleDefition(int p
                          " " + std::to_string(charge);
 
     particleDefinition = new BDSParticleDefinition(bdsimPartName, mass, charge, 0,
-                                                  kineticEnergy, momentum, 1, ionDef, pdg);
+                                                   kineticEnergy, momentum, 1, ionDef, pdg);
   }
   return particleDefinition;
 }
@@ -180,9 +180,8 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
                                       partDef->TotalEnergy(),
                                       1);
 
-  std::cout << "add particle" << std::endl;
-  return linkBunch->AddParticle(partDef, coords, trackid, trackid);
-
+  linkBunch->AddParticle(partDef, coords, trackid, trackid);
+  return;
 }
 
 void BDSLinkTrackerInterface::AddParticles(std::vector<double> x, std::vector<double> y,
