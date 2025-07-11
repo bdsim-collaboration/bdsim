@@ -183,13 +183,14 @@ def test_TrackerInterface() :
 
     print(icol1, icol2, idri1)
     # add single particle
-    pd = ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1,
-                              chargeRatio=1 , s=0,
-                              trackid=1 , pdgID=11)
+    for i in range(0,1000,1):
+        pd = ti.addParticlePython(x=0, y=0, px=0, py=0, ct=0, deltap=0, chi = 1,
+                                  chargeRatio=1 , s=0,
+                                  trackid=i , pdgID=11)
 
 
     ti.bds_link.SelectLinkElement(0)
-    ti.bds_link.BeamOn(1)
+    ti.bds_link.BeamOn(1000)
 
     sh = ti.bds_link.SamplerHits()
     print("number of sampler hits", sh.entries())
