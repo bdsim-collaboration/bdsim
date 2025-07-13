@@ -28,6 +28,9 @@ inline void set_element(py::array_t<T> &arr, int index, T value) {
   ptr[index] = value;
 }
 
+void TrackXSuite(BDSLinkTrackerInterface *tracker_interface, py::object particles);
+void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object particles);
+
 PYBIND11_MODULE(bdslinktrackerinterface, m) {
   py::class_<BDSLinkTrackerInterface>(m,"BDSLinkTrackerInterface")
       .def_static("GetInstance", [](std::string bdsimConfigFile,
@@ -58,58 +61,73 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
       .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink,py::return_value_policy::reference)
       .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink,py::return_value_policy::reference)
       .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
-                            int iElement,
                             py::object particles) {
-        py::print("Element BDSIM:",iElement);
-        py::print("Particles:", particles);
-
-        py::array_t<double> x = py::cast<py::array_t<double>>(particles.attr("x"));
-        py::array_t<double> y = py::cast<py::array_t<double>>(particles.attr("y"));
-
-        // fill BDSLinkBunch
-        auto bunch = tracker_interface->GetBunchLink();
-        // bunch->AddParticle();
-
-#ifdef CACHE_PTRS
-        double *x_ptr = make_ptr<double>(x);
-        double *y_ptr = make_ptr<double>(y);
-#endif
-
-        // run n particles
-        auto link = tracker_interface->GetBDSIMLink();
-        // link->BeamOn();
-
-        // get sampler data
-        //link->SamplerHits();
-
-        // change state of existing particles
-        set_element<double>(x, 0, 1000);
-
-
-        // add extra particles of products
-
-        // clean BDSLinkBunch of particles
+        TrackXSuite(tracker_interface, particles);
       })
       .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
-        py::print("Bunch6d::", bunch6d);
-        auto size_method = bunch6d.attr("size");
-        py::print("Bunch6d::size",size_method());
-
-        auto bdsim_link = tracker_interface->GetBDSIMLink();
-        auto bunch_link = tracker_interface->GetBunchLink();
-
-        int nparticle = bunch6d.attr("size")().cast<int>();
-
-        for(int i = 0; i < nparticle ;i++) {
-          auto p = bunch6d.attr("get_particle")(i);
-          py::print(i);
-          tracker_interface->AddParticle(0,0, // x, y
-                                         0,0, // xp, yp
-                                         0,0, // ct, deltap
-                                         1,1, // chi, chargeRatio
-                                         0, // s
-                                         i, 11); // trackID, parent;
-        }
-        bdsim_link->BeamOn(nparticle);
+        TrackRFTrack(tracker_interface, bunch6d);
       });
+}
+
+
+void TrackXSuite(BDSLinkTrackerInterface *tracker_interface, py::object particles) {
+  py::print("Particles:", particles);
+
+  py::array_t<double> x = py::cast < py::array_t < double >> (particles.attr("x"));
+  py::array_t<double> y = py::cast < py::array_t < double >> (particles.attr("y"));
+
+
+  // fill BDSLinkBunch
+  auto bunch = tracker_interface->GetBunchLink();
+  for (int i = 0; i < 10; i++) {
+    py::print(i);
+    tracker_interface->AddParticle(0, 0, // x, y
+                                   0, 0, // xp, yp
+                                   0, 0, // ct, deltap
+                                   1, 1, // chi, chargeRatio
+                                   0, // s
+                                   i, 11); // trackID, parent;
+  }
+
+#ifdef CACHE_PTRS
+  double *x_ptr = make_ptr<double>(x);
+  double *y_ptr = make_ptr<double>(y);
+#endif
+
+  // run n particles
+  auto link = tracker_interface->GetBDSIMLink();
+  link->BeamOn(10);
+
+  // get sampler data
+  //link->SamplerHits();
+
+  // change state of existing particles
+  set_element<double>(x, 0, 1000);
+
+  // add extra particles of products
+
+  // clean BDSLinkBunch of particles
+}
+
+void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
+  py::print("Bunch6d::", bunch6d);
+  auto size_method = bunch6d.attr("size");
+  py::print("Bunch6d::size",size_method());
+
+  auto bdsim_link = tracker_interface->GetBDSIMLink();
+  auto bunch_link = tracker_interface->GetBunchLink();
+
+  int nparticle = bunch6d.attr("size")().cast<int>();
+
+  for(int i = 0; i < nparticle ;i++) {
+    auto p = bunch6d.attr("get_particle")(i);
+    py::print(i);
+    tracker_interface->AddParticle(0,0, // x, y
+                                   0,0, // xp, yp
+                                   0,0, // ct, deltap
+                                   1,1, // chi, chargeRatio
+                                   0, // s
+                                   i, 11); // trackID, parent;
+  }
+  bdsim_link->BeamOn(nparticle);
 }
