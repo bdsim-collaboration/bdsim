@@ -1,85 +1,42 @@
-Running The BDSIM Dockerfile
-----------------------------
+BDSIM build environment Dockerfiles
+----------------------------------
 
-From a Centos7 machine with docker installed and docker running:  ::
+All environment dockerfiles have now moved to a separate repo `bdsim-collaboration docker<https://github.com/bdsim-collaboration/docker>`_
+and are available in dockerhub `bdsim docker team <https://hub.docker.com/u/bdsim>`_
 
-   source run-centos-bdsim.sh
+If you wish to check the files that were stored here: :: 
 
-This may take a while to download the ~5Gb file but once downloaded it will run quickly. This provides
-a complete environment with BDSIM, Geant4, ROOT, CLHEP, iPython, and the BDSIM Python utilities (pybdism,
-pymadx, pymad8, pytransport).
-
-
-Docker Files For Testing
-------------------------
-
-Command to build a given image: ::
-
-  docker build -t jairhul/<IMAGENAME> -f <DOCKERFILE> <CONTEXTPATH>
-
-e.g.: ::
-
-  docker build -t jairhul/centos7-geant4v10.5.1-environment -f Dockerfile-centos7-bdsim-geant4v10.5.1-environment  .
+   git checkout develop
+   git checkout 84f07ca71293621fc13070f54e8117e0c9b5f019
 
 
-- These contain a version of geant4
-- The docker file points to the branch of a given version and updates it.
-- The patch numbers refer to the latest patch known on that branch
-- If a patch (e.g. v11.0.3 -> v11.0.4) number changes then advance the numbers of the dockerfile name and rebuild image
-- If a minor or major version number (e.g v11.0.3 -> v11.1.0) copy dockerfile and rename  and rebuild image
+Docker build environments for Testing
+-------------------------------------
+
+Docker images exist with the software environment to build BDSIM (i.e CLHEP, Geant4 etc). These are all available from
+dockerhub and are used to perform our testing of BDSIM.
+
+Command to get a given image: ::
+
+  docker pull bdsim/<IMAGENAME> 
+
+Command to run a given image: ::
+
+  docker run -ti bdsim/<IMAGENAME>
 
 
-For Testing
-***********
+Buiding docker BDSIM
+--------------------
 
-* Dockerfile-centos7-bdsim-base-environment
-* Dockerfile-centos7-bdsim-base-environment-dt9  : dev-tools9 for C++17 compatible compiler
-* Dockerfile-centos7-bdsim-base-environment-dt9-no-root  : dev-tool9 but no package manager root installation
-* Dockerfile-centos7-bdsim-geant4v10.1.3-environment
-* Dockerfile-centos7-bdsim-geant4v10.2.3-environment
-* Dockerfile-centos7-bdsim-geant4v10.3.3-environment
-* Dockerfile-centos7-bdsim-geant4v10.4.3-environment
-* Dockerfile-centos7-bdsim-geant4v10.5.1-environment
-* Dockerfile-centos7-bdsim-geant4v10.6.3-environment
-* Dockerfile-centos7-bdsim-geant4v10.7.4-environment
-* Dockerfile-centos7-bdsim-geant4v11.0.4-environment
-* Dockerfile-centos7-bdsim-geant4v11.1.1-environment
-* Dockerfile-centos7-bdsim-geant4v10.7.3.2-jai-environment  : patched Geant4.10.7.2 to turn back on proton diffraction
+The dockerfiles here are for building docker images that contain an operating version of BDSIM. These images
+are based on the testing images. In generate you are welcome to use them and adapt the dockerfiles, but the
+primary aim of these dockerfiles/images is to perform regression testing in the CI/CD (GitHub)
 
-For General Deployment
-**********************
+To build a BDSIM docker image: ::
 
-* Dockerfile-centos7-bdsim-environment
+   docker build -t <YOUR_TAG> -f <DOCKERFILE> <CONTEXT>
 
+So for example to build alma9 Geant4.11.3 with develop BDSIM
 
-Architecture
-------------
-
-If building on a different architecture from the destination one (e.g. on Mac M1 building x86_64) an extra flag
-must be used. In the build-testing-environments.sh you can comment out the appropriate SUFFIX variable to give
-the following flag: ::
-
-  --platform linux/amd64
-
-Note, the base image will have to be pushed first. In the derived (testing) images, the base image is called.
-Docker will not find it locally due to the platform mismatch. Therefore, it's best to tag and push to dockerhub
-first. Otherwise you would have to edit all of the dockerfiles to include the above flag in the FROM command. ::
-
-  FROM --platform linux/amd64 IMAGE_NAME
-
-Otherwise, despite the high level use of the same flag it appears to look for the local architecture.
-
-Scripts
--------
-
-These are for developers to build and tag all the environments for testing and deployment.
-
-* build-testing-environments-base.sh
-* tag-upload-testing-base-environments.sh
-* build-testing-environments.sh
-* tag-upload-testing-environments.sh
-* build-centos7-bdsim.sh
-
-
-* run-centos-bdsim.sh
-
+   docker build -t alma9-g4.11.3-bdsim -f alma9-g4.11.3-bdsim .
+   
