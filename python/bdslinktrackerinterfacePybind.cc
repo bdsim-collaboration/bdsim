@@ -107,12 +107,14 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface, py::object particle
   // add extra particles of products
 
   // clean BDSLinkBunch of particles
+
+
 }
 
 void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
-  py::print("Bunch6d::", bunch6d);
+  py::print("TrackRFTrack> Bunch6d::", bunch6d);
   auto size_method = bunch6d.attr("size");
-  py::print("Bunch6d::size",size_method());
+  py::print("TrackRFTrack> Bunch6d::size",size_method());
 
   auto bdsim_link = tracker_interface->GetBDSIMLink();
   auto bunch_link = tracker_interface->GetBunchLink();
@@ -121,13 +123,25 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
 
   for(int i = 0; i < nparticle ;i++) {
     auto p = bunch6d.attr("get_particle")(i);
-    py::print(i);
-    tracker_interface->AddParticle(0,0, // x, y
-                                   0,0, // xp, yp
-                                   0,0, // ct, deltap
+    py::print("TrackRFTrack> ",i);
+    auto x = py::cast<double>(p.attr("x"));
+    auto y = py::cast<double>(p.attr("y"));
+    auto xp = py::cast<double>(p.attr("xp"));
+    auto yp = py::cast<double>(p.attr("yp"));
+    auto t = py::cast<double>(p.attr("t"));
+
+    tracker_interface->AddParticle(x*CLHEP::mm, y*CLHEP::mm, // x, y
+                                   xp*CLHEP::mrad, yp*CLHEP::mrad, // xp, yp
+                                   y*CLHEP::mm,0, // ct, deltap
                                    1,1, // chi, chargeRatio
                                    0, // s
                                    i, 11); // trackID, parent;
   }
   bdsim_link->BeamOn(nparticle);
+
+  // Create the C++ std::vector<double> representing the particle array
+  std::vector<double> data = {1, 2, 3, 4, 5, 6, 12345, +1, 1e4};
+  py::array_t<double> arr(data.size(), data.data());
+  auto append_method = bunch6d.attr("append");
+  append_method(arr);
 }
