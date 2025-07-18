@@ -131,13 +131,17 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     auto t = py::cast<double>(p.attr("t"));
 
     tracker_interface->AddParticle(x*CLHEP::mm, y*CLHEP::mm, // x, y
-                                   xp*CLHEP::mrad, yp*CLHEP::mrad, // xp, yp
-                                   y*CLHEP::mm,0, // ct, deltap
+                                   xp, yp, // xp, yp
+                                   0,0, // ct, deltap
                                    1,1, // chi, chargeRatio
                                    0, // s
                                    i, 11); // trackID, parent;
   }
   bdsim_link->BeamOn(nparticle);
+
+  // loop over sampler hits and update bunch
+
+
 
   // Create the C++ std::vector<double> representing the particle array
   std::vector<double> data = {1, 2, 3, 4, 5, 6, 12345, +1, 1e4};
