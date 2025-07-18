@@ -44,7 +44,7 @@ foreach(rootBindingSrc IN ZIP_LISTS rootBindingSrcs)
     bdsim_install_python(${rootBindingSrc_0})
 endforeach()
 
-install(FILES __init__.py bdsim.py
+install(FILES __init__.py bdsim.py convert.py
         DESTINATION lib/python/bdsim
         COMPONENT python)
 

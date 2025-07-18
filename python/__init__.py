@@ -46,6 +46,7 @@ from .scorermesh import *
 from .sym_table import *
 from .tunnel import *
 from .bdsim import *
+from .convert import *
 
 try :
     from .ocelot import *
