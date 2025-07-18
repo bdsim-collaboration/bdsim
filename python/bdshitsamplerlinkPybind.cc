@@ -13,5 +13,10 @@ namespace py = pybind11;
 #include "BDSHitSamplerLink.hh"
 
 PYBIND11_MODULE(bdshitsamplerlink, m) {
-  py::class_<BDSHitSamplerLink, BDSHitSampler>(m,"BDSHitSamplerLink");
+  py::class_<BDSHitSamplerLink, BDSHitSampler>(m,"BDSHitSamplerLink")
+  .def_readwrite("A", &BDSHitSamplerLink::A)
+  .def_readwrite("Z", &BDSHitSamplerLink::Z)
+  .def_readwrite("eventID", &BDSHitSamplerLink::eventID)
+  .def_readwrite("externalParticleID", &BDSHitSamplerLink::externalParticleID)
+  .def_readwrite("externalParentID", &BDSHitSamplerLink::externalParentID);
 }
