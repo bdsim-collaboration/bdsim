@@ -150,7 +150,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
                                           double ct, double deltap, double chi,
                                           double chargeRatio, double s,
                                           int trackid, int pdgid) {
-  std::cout << "BDSLinkTrackerInterface::AddParticle" << std::endl;
+  //std::cout << "BDSLinkTrackerInterface::AddParticle" << std::endl;
 
   auto q = chargeRatio * referenceParticleDefinition->Charge();
   auto mass_ratio = chargeRatio / chi;

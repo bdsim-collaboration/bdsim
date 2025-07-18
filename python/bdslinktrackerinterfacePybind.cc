@@ -122,6 +122,8 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
   int nparticle = bunch6d.attr("size")().cast<int>();
 
   for(int i = 0; i < nparticle ;i++) {
+    // py::print("TrackRFTrack> ",i);
+
     auto p = bunch6d.attr("get_particle")(i);
     py::print("TrackRFTrack> ",i);
     auto x = py::cast<double>(p.attr("x"));
