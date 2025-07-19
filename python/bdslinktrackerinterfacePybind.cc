@@ -198,6 +198,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       // need to set particle as not lost
       auto p = bunch6d.attr("get_particle")(idx_insert);
       p.attr("S_lost") = py::cast(std::nan(""));
+      p.attr("Pc") = py::cast(h->momentum);
     }
   }
 }
