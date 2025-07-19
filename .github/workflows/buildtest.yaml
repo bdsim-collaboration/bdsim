@@ -58,7 +58,7 @@ jobs:
           mkdir /tmp/bdsim-build
           mkdir /tmp/bdsim-install
           cd /tmp/bdsim-build
-          cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
+          cmake -DCMAKE_CXX_STANDARD=17 -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install $GITHUB_WORKSPACE
           make -j${{ steps.cpu-cores.outputs.count }} install
 
       - name: Test bdsim
