@@ -178,18 +178,26 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       // other coordinates
     }
     else { // new particle
+
       new_particle_data[0] = h->coords.x;
       new_particle_data[1] = h->coords.xp;
       new_particle_data[2] = h->coords.y;
       new_particle_data[3] = h->coords.yp;
 
+      // look up particle mass and charge
       G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle(h->pdgID);
       new_particle_data[6] = particle->GetPDGMass();
       new_particle_data[7] = particle->GetPDGCharge();
-      new_particle_data[8] = 0;
+      new_particle_data[8] = 1; // TODO : AL what should this be
 
+      // append bdsim generated particle
+      int idx_insert = bunch6d.attr("size")().cast<int>();
       py::array_t<double> new_particle_arr(new_particle_data.size(), new_particle_data.data());
       append_method(new_particle_arr);
+
+      // need to set particle as not lost
+      auto p = bunch6d.attr("get_particle")(idx_insert);
+      p.attr("S_lost") = py::cast(std::nan(""));
     }
   }
 }
