@@ -52,7 +52,7 @@ install(FILES ocelot/__init__.py ocelot/bdsim_element.py
         DESTINATION lib/python/bdsim/ocelot
         COMPONENT python)
 
-install(FILES rftrack/__init__.py rftrack/bdsim_element.py
+install(FILES rftrack/__init__.py rftrack/bdsim_element.py rftrack/pandas.py
         DESTINATION lib/python/bdsim/rftrack
         COMPONENT python)
 

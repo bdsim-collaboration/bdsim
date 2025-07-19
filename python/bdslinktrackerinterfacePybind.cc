@@ -11,9 +11,13 @@ namespace py = pybind11;
 
 // #define CACHE_PTRS 1
 
+#include "G4ParticleTable.hh"
+#include "G4ParticleDefinition.hh"
+
 #include "BDSLinkTrackerInterface.hh"
 #include "BDSIMLink.hh"
 #include "BDSLinkBunch.hh"
+
 
 template <typename T>
 T* make_ptr(py::array_t<T> &arr) {
@@ -119,6 +123,10 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
   auto bdsim_link = tracker_interface->GetBDSIMLink();
   auto bunch_link = tracker_interface->GetBunchLink();
 
+  // clear sampler hits (do this first and not at end as sampler data will
+  // no longer available in python)
+  bdsim_link->ClearSamplerHits();
+
   int nparticle = bunch6d.attr("size")().cast<int>();
 
   for(int i = 0; i < nparticle ;i++) {
@@ -141,12 +149,47 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
   bdsim_link->BeamOn(nparticle);
 
   // loop over sampler hits and update bunch
+  auto sh = bdsim_link->SamplerHits();
+
+  // set all bunch particles as if they didn't make it (s)
+  //auto endpoint = (*sh)[0]->coords.s;
+  auto endpoint = 0.1;
+  for(int i=0; i<nparticle; i++) {
+    auto p = bunch6d.attr("get_particle")(i);
+    p.attr("S_lost") = py::cast(endpoint);
+  }
 
 
-
-  // Create the C++ std::vector<double> representing the particle array
-  std::vector<double> data = {1, 2, 3, 4, 5, 6, 12345, +1, 1e4};
-  py::array_t<double> arr(data.size(), data.data());
   auto append_method = bunch6d.attr("append");
-  append_method(arr);
+  std::vector<double> new_particle_data = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+  for(std::size_t i=0; i<sh->entries(); i++) {
+    auto h = (*sh)[i];
+    // std::cout << i << " " << h->externalParentID << std::endl;
+    auto externalID = h->externalParentID;
+    auto trackID = h->trackID;
+    if(trackID == 1) { // existing partucke
+      auto p = bunch6d.attr("get_particle")(externalID);
+      p.attr("x") = py::cast(h->coords.x);
+      p.attr("y") = py::cast(h->coords.y);
+      p.attr("xp") = py::cast(h->coords.xp);
+      p.attr("yp") = py::cast(h->coords.yp);
+      p.attr("S_lost") = py::cast(std::nan(""));
+      // other coordinates
+    }
+    else { // new particle
+      new_particle_data[0] = h->coords.x;
+      new_particle_data[1] = h->coords.xp;
+      new_particle_data[2] = h->coords.y;
+      new_particle_data[3] = h->coords.yp;
+
+      G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle(h->pdgID);
+      new_particle_data[6] = particle->GetPDGMass();
+      new_particle_data[7] = particle->GetPDGCharge();
+      new_particle_data[8] = 0;
+
+      py::array_t<double> new_particle_arr(new_particle_data.size(), new_particle_data.data());
+      append_method(new_particle_arr);
+    }
+  }
 }

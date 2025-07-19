@@ -1,5 +1,13 @@
 import pandas
-def SamplerHits2Pandas(hc) :
+def SamplerHits2Dataframe(hc) :
+    '''
+
+    :param hc: SamplerHits collection from BDSIM
+    :return: pandas.DataFrame of the SamplerHits collection
+
+    Function to convert a bdsim Samplerhits collection into a pandas.DataFrame for debugging. Generally do not use for analysis
+
+    '''
 
     x = []
     y = []
