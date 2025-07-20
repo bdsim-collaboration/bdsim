@@ -22,10 +22,11 @@ BDSLinkTrackerInterface* BDSLinkTrackerInterface::GetInstance(std::string bdsimC
                                                               int seedIn,
                                                               int referenceIonChargeIn,
                                                               bool batchModeIn) {
-  if (!std::filesystem::exists(bdsimConfigFileIn)) {
-    std::cout << "File does not exist.\n";
-    return nullptr;
-  }
+  // TODO does not work on all platforms
+  //if (!std::filesystem::exists(bdsimConfigFileIn)) {
+  //  std::cout << "File does not exist.\n";
+  //  return nullptr;
+  //}
 
 
   if(singleton != nullptr) {
