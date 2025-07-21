@@ -28,10 +28,7 @@ BDSPlasmaHDF5::BDSPlasmaHDF5(G4String mainPathIn,
 mainPath(mainPathIn),
 particlePath(particlePathIn),
 fieldPath(fieldPathIn)
-{
-  //fileName = "/Users/marindeniaud/PhD/PhD-git/bdsim-develop/pwfa/diags/hdf5/data00000000.h5";
-  //G4String fileName = BDS::GetFullPath(fn);
-}
+{}
 
 BDSPlasmaHDF5::~BDSPlasmaHDF5()
 {;}

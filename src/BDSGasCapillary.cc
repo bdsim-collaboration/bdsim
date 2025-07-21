@@ -94,16 +94,28 @@ void BDSGasCapillary::CheckParameters()
 }
 
 G4String BDSGasCapillary::CapillaryOuterMaterial() const
-{if (capillaryOuterMaterial) {return capillaryOuterMaterial->GetName();}
-  else {return "none";}}
+{
+  if (capillaryOuterMaterial)
+    {return capillaryOuterMaterial->GetName();}
+  else
+    {return "none";}
+}
 
 G4String BDSGasCapillary::CapillaryGasMaterial() const
-{if (capillaryGasMaterial) {return capillaryGasMaterial->GetName();}
-  else{return "none";}}
+{
+  if (capillaryGasMaterial)
+    {return capillaryGasMaterial->GetName();}
+  else
+    {return "none";}
+}
 
 G4String BDSGasCapillary::ElectrodeMaterial() const
-{if (electrodeMaterial) {return electrodeMaterial->GetName();}
-  else {return "none";}}
+{
+  if (electrodeMaterial)
+    {return electrodeMaterial->GetName();}
+  else
+    {return "none";}
+}
 
 
 void BDSGasCapillary::BuildContainerLogicalVolume()

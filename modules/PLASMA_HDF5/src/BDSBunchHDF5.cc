@@ -54,7 +54,7 @@ void BDSBunchHDF5::LoadHDF5Data()
   std::vector<double> PY = HDF5->GetPY();
   std::vector<double> PZ = HDF5->GetPZ();
 
-  for (int i=0; i<X.size(); i++)
+  for (size_t i=0; i<X.size(); i++)
   {
     HDF5Data.emplace_back(std::array<double, 6>{X[i], Y[i], Z[i], PX[i], PY[i], PZ[i]});
   }

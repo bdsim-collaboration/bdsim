@@ -155,7 +155,7 @@ public:
 #ifdef BDSDEBUG
       G4cout << "BDSIdealGas::CheckGasLaw: " << G4endl;
 #endif
-      if (density != 0 and pressure == 0)
+      if (density != 0 && pressure == 0)
       {
         G4double calcPressure = CalculatePressureFromTemperatureDensity(components, componentFractions,
                                                                         temperature, density);
@@ -165,7 +165,7 @@ public:
         BDS::Warning(msg);
       }
 
-      else if (density !=0 and pressure !=0 and temperature == 300)
+      else if (density !=0 && pressure !=0 && temperature == 300)
       {
         G4double calcTemp = CalculateTemperatureFromPressureDensity(components, componentFractions,
                                                                     pressure, density);
@@ -175,7 +175,7 @@ public:
         BDS::Warning(msg);
       }
 
-      else if (density == 0 and pressure !=0)
+      else if (density == 0 && pressure !=0)
       {
         G4double calcDens = CalculateDensityFromPressureTemperature(components, componentFractions,
                                                                     pressure, temperature);
@@ -185,7 +185,7 @@ public:
         BDS::Warning(msg);
       }
 
-      else if (density !=0 and pressure !=0 and temperature != 300)
+      else if (density !=0 && pressure !=0 && temperature != 300)
       {
         G4double calcDensity = CalculateDensityFromPressureTemperature(components, componentFractions, pressure, temperature);
         if(density != calcDensity)
@@ -200,6 +200,6 @@ public:
     }
 };
 
-const G4double BDSIdealGas::R = CLHEP::Avogadro * CLHEP::k_Boltzmann / CLHEP::joule * 10;
+const G4double BDSIdealGas::R = CLHEP::Avogadro * CLHEP::k_Boltzmann / CLHEP::joule * 10; //TODO find out about this factor
 
 #endif

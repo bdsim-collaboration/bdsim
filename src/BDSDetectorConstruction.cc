@@ -1290,7 +1290,6 @@ void BDSDetectorConstruction::BuildPhysicsBias()
           auto splitpos = lvbias.find(':');
           auto lvname = lvbias.substr(0,splitpos);
           auto biasname = lvbias.substr(splitpos+1);
-          G4cout << lvname << " " << biasname << G4endl;
           namesAndBiasesMap[lvname] = biasname;
         }
         auto allLVs       = accCom->GetAcceleratorMaterialLogicalVolumes();
