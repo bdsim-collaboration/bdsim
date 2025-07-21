@@ -52,7 +52,7 @@ def SamplerHits2Dataframe(hc) :
         Momentum.append(coords.Momentum())
         Position.append(coords.Position())
         totalEnergy.append(coords.totalEnergy)
-        weight.append(weight)
+        weight.append(coords.weight)
 
         A.append(hc[i].A)
         beamlineIndex.append(hc[i].beamlineIndex)

@@ -168,8 +168,8 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     // std::cout << i << " " << h->externalParentID << std::endl;
     auto externalID = h->externalParentID;
     auto trackID = h->trackID;
+    auto p = bunch6d.attr("get_particle")(externalID);
     if(trackID == 1) { // existing partucke
-      auto p = bunch6d.attr("get_particle")(externalID);
       p.attr("x") = py::cast(h->coords.x);
       p.attr("y") = py::cast(h->coords.y);
       p.attr("xp") = py::cast(h->coords.xp);
@@ -188,7 +188,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle(h->pdgID);
       new_particle_data[6] = particle->GetPDGMass();
       new_particle_data[7] = particle->GetPDGCharge();
-      new_particle_data[8] = 1; // TODO : AL what should this be
+      new_particle_data[8] = py::cast<double>(p.attr("N"))*h->coords.weight;
 
       // append bdsim generated particle
       int idx_insert = bunch6d.attr("size")().cast<int>();
