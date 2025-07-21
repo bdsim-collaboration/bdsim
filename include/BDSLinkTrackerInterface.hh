@@ -11,6 +11,10 @@ class BDSParticleDefinition;
 
 class BDSLinkTrackerInterface {
 public:
+  void SetNoNeutralParticles(bool val) { noNeutralParticles = val; }
+  bool GetNoNeutralParticles() const { return noNeutralParticles; }
+
+  void ClearXtrackData();
 
   ~BDSLinkTrackerInterface() = default;
 
@@ -35,7 +39,7 @@ public:
   BDSLinkBunch* GetBunchLink() {return linkBunch;}
   BDSIMLink* GetBDSIMLink() {return linkBDSIM;}
 
-  BDSParticleDefinition* GetReferenceParticleDefinition() {return referenceParticleDefinition;}
+  BDSParticleDefinition* GetReferenceParticleDefinition() const;
   void SetReferenceParticleDefinition(BDSParticleDefinition *rpd) {referenceParticleDefinition = rpd;}
 
   BDSParticleDefinition* prepareBDSParticleDefition(int pdg,
@@ -53,8 +57,11 @@ public:
                     std::vector<double> s, std::vector<int> trackid,
                     std::vector<int> pdgid);
 
-protected:
+  // TODO is this needed?
+  std::vector<bool>& GetParticleActiveState() { return particleActiveState; }
 
+protected:
+    bool noNeutralParticles = true;  // default value
   // singleton pointer
   static BDSLinkTrackerInterface* singleton;
 
@@ -94,6 +101,9 @@ protected:
 
   // reference particle
   BDSParticleDefinition* referenceParticleDefinition;
+
+  // todo, what is this for?
+  std::vector<bool> particleActiveState;
 };
 
 #endif
