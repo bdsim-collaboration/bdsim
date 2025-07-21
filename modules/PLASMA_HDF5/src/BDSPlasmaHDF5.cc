@@ -134,12 +134,12 @@ std::vector<double> BDSPlasmaHDF5::GetEr()
 
 std::vector<double> BDSPlasmaHDF5::GetEz()
 {
-  H5::Group E = fields.openGroup("B");
+  H5::Group E = fields.openGroup("E");
   return Get3DVector(E, "z");
 }
 
 std::vector<double> BDSPlasmaHDF5::GetBt()
 {
-  H5::Group E = fields.openGroup("B");
-  return Get3DVector(E, "t");
+  H5::Group B = fields.openGroup("B");
+  return Get3DVector(B, "t");
 }
