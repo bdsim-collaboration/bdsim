@@ -37,10 +37,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * @author Marin Deniaud
  */
 
-G4double R = CLHEP::Avogadro * CLHEP::k_Boltzmann / CLHEP::joule * 10;
-
 class BDSIdealGas{
 public:
+    const static G4double R;
+
     template <typename Type>
     static G4double CalculateDensityFromPressureTemperature(const std::list<G4String>& components,
                                                             const std::list<Type>& componentFractions,
@@ -199,5 +199,7 @@ public:
       }
     }
 };
+
+const G4double BDSIdealGas::R = CLHEP::Avogadro * CLHEP::k_Boltzmann / CLHEP::joule * 10;
 
 #endif

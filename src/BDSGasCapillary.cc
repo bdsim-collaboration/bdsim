@@ -154,7 +154,7 @@ void BDSGasCapillary::BuildUncutSolid() {
                                  chordLength * 0.5 - lengthSafety,             // length
                                  0, CLHEP::twopi);                             // phiMin phiMax
 
-  RegisterSolid(capillaryOuterSolid);
+  RegisterSolid(capillaryOuterUncutSolid);
   RegisterSolid(electrodeUncutSolid);
   RegisterSolid(capillaryGasSolid);
 }
@@ -227,7 +227,7 @@ void BDSGasCapillary::Build()
   G4LogicalVolume* vac = *(GetAcceleratorVacuumLogicalVolumes().begin()); // take the first one
 
   G4PVPlacement* capillaryOuterPV = new G4PVPlacement(Rotate,                      // rotation
-                                                      G4ThreeVector(),             // position
+                                                      G4ThreeVector(0, 0, 0),             // position
                                                       capillaryOuterLV,            // its logical volume
                                                       name + "_capillaryOuter_pv", // its name
                                                       vac,      // its mother  volume
@@ -236,7 +236,7 @@ void BDSGasCapillary::Build()
                                                       checkOverlaps);
 
   G4PVPlacement* capillaryGasPV = new G4PVPlacement(Rotate,                    // rotation
-                                                    (G4ThreeVector) 0,      // position
+                                                    G4ThreeVector(0,0,0),      // position
                                                     capillaryGasLV,            // its logical volume
                                                     name + "_capillaryGas_pv", // its name
                                                     vac,    // its mother  volume

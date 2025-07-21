@@ -90,7 +90,7 @@ void BDSCollimatorBeamMask::CheckParameters()
     throw BDSException(__METHOD_NAME__, "Error in beam mask");
   }
 
-  if (BDS::IsFinite((xAperture <= 0) || (yAperture <= 0)))
+  if (! BDS::IsFinite(xAperture) || xAperture <= 0 || ! BDS::IsFinite(yAperture) || yAperture <= 0)
   {
     G4cerr << __METHOD_NAME__ << "no aperture set for the main slit!" << G4endl;
     G4cerr << "In element named "  << name << " we have a x (half) aperture " << xAperture <<
@@ -98,7 +98,8 @@ void BDSCollimatorBeamMask::CheckParameters()
     throw BDSException(__METHOD_NAME__, "Error in beam mask");
   }
 
-  if (BDS::IsFinite((xApertureSlit <= 0) || (yApertureSlit <= 0)))
+  if (! BDS::IsFinite(xApertureSlit) || xApertureSlit <= 0 ||
+      ! BDS::IsFinite(yApertureSlit) || yApertureSlit <= 0)
   {
     G4cerr << __METHOD_NAME__ << "no aperture set for the side slit!" << G4endl;
     G4cerr << "In element named "  << name << " we have a x (half) aperture " << xApertureSlit <<

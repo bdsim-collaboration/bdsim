@@ -63,25 +63,25 @@ BDSGasJet::BDSGasJet(const G4String& nameIn,
 
 void BDSGasJet::CheckParameters()
 {
-  if (BDS::IsFinite(xSize <= 0))
+  if (xSize <= 0 || !BDS::IsFinite(xSize))
   {
     G4cerr << __METHOD_NAME__ << "must provide positive non-zero dimension to gas jet!" << G4endl;
     G4cerr << "x size : " << xSize << " mm" << G4endl;
-    throw BDSException(__METHOD_NAME__, "Error in beam mask");
+    throw BDSException(__METHOD_NAME__, "Error in gas jet");
   }
 
-  if (BDS::IsFinite(ySize <= 0))
+  if (ySize <= 0 || !BDS::IsFinite(ySize))
   {
     G4cerr << __METHOD_NAME__ << "must provide positive non-zero dimension to gas jet!" << G4endl;
     G4cerr << "y size : " << ySize << " mm" << G4endl;
-    throw BDSException(__METHOD_NAME__, "Error in beam mask");
+    throw BDSException(__METHOD_NAME__, "Error in gas jet");
   }
 
-  if (BDS::IsFinite(zSize <= 0))
+  if (zSize <= 0 || !BDS::IsFinite(zSize))
   {
     G4cerr << __METHOD_NAME__ << "must provide positive non-zero dimension to gas jet!" << G4endl;
     G4cerr << "z size : " << zSize << " mm" << G4endl;
-    throw BDSException(__METHOD_NAME__, "Error in beam mask");
+    throw BDSException(__METHOD_NAME__, "Error in gas jet");
   }
 }
 

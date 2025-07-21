@@ -44,11 +44,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <utility>
 
 #ifdef USE_GZSTREAM
-#include "modules/PLASMA_HDF5/include/BDSBunchHDF5.hh"
+#include "src-external/gzstream/gzstream.h"
 #endif
 
 #ifdef USE_PLASMA_HDF5
-#include "src-external/gzstream/gzstream.h"
+#include "modules/PLASMA_HDF5/include/BDSBunchHDF5.hh"
 #endif
 
 BDSBunch* BDSBunchFactory::CreateBunch(const BDSParticleDefinition* beamParticle,
