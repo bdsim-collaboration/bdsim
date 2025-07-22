@@ -41,7 +41,7 @@ BDSParser* BDSParser::Instance(const std::string& name)
 {
   if (instance)
     {
-      std::cerr << "WARNING BDSParser was already initialised! " << instance << std::endl;
+      std::cerr << "WARNING BDSParser was already initialised! " << std::endl;
       delete instance;
     }
   instance = new BDSParser(name);

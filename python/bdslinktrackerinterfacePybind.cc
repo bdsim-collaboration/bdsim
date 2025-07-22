@@ -53,7 +53,7 @@ void SelectElement(BDSIMLink* link, const std::string& elementName)
 
   // Check if the element exists by querying the index: -1 means it doesn't exist
   if (link->GetLinkIndex(elementName) == -1)
-  {throw std::runtime_error("Element not found " + elementName);}
+    {throw std::runtime_error("Element not found " + elementName);}
 }
 
 BDSParticleDefinition* PrepareBDSParticleDefinition(long long int pdgIDIn, double momentumIn,
@@ -440,7 +440,6 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
   py::print("TrackRFTrack> Bunch6d::size",size_method());
 
   auto bdsim_link = tracker_interface->GetBDSIMLink();
-  auto bunch_link = tracker_interface->GetBunchLink();
 
   // clear sampler hits (do this first and not at end as sampler data will
   // no longer available in python)
@@ -456,7 +455,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     auto y = py::cast<double>(p.attr("y"));
     auto xp = py::cast<double>(p.attr("xp"));
     auto yp = py::cast<double>(p.attr("yp"));
-    auto t = py::cast<double>(p.attr("t"));
+    // auto t = py::cast<double>(p.attr("t"));
 
     tracker_interface->AddParticle(x*CLHEP::mm, y*CLHEP::mm, // x, y
                                    xp, yp, // xp, yp
@@ -515,7 +514,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       append_method(new_particle_arr);
 
       // need to set particle as not lost
-      auto p = bunch6d.attr("get_particle")(idx_insert);
+      p = bunch6d.attr("get_particle")(idx_insert);
       p.attr("S_lost") = py::cast(std::nan(""));
       p.attr("Pc") = py::cast(h->momentum);
     }

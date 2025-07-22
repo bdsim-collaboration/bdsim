@@ -168,7 +168,12 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
   auto oneplusdelta = (1 + deltap);
   auto xp = px / oneplusdelta;
   auto yp = py / oneplusdelta;
-  auto zp = sqrt(1 - pow(xp,2) - pow(yp,2));
+  auto sqrtarg = 1 - std::pow(xp,2) - std::pow(yp,2);
+
+  auto zp = 0.0;
+
+  if (sqrtarg >=0)
+    { zp = std::sqrt(sqrtarg); }
 
   auto coords = BDSParticleCoordsFull(x * CLHEP::m,
                                       y * CLHEP::m,
