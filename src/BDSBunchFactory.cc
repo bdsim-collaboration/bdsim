@@ -47,6 +47,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "src-external/gzstream/gzstream.h"
 #endif
 
+#ifdef USE_PLASMA_HDF5
+#include "modules/PLASMA_HDF5/include/BDSBunchHDF5.hh"
+#endif
+
 BDSBunch* BDSBunchFactory::CreateBunch(const BDSParticleDefinition* beamParticle,
                                        const GMAD::Beam&            beam,
                                        const G4Transform3D&         beamlineTransform,
@@ -134,6 +138,10 @@ BDSBunch* BDSBunchFactory::CreateBunch(const BDSParticleDefinition* beamParticle
       {bdsBunch = new BDSBunchBox(); break;}
     case BDSBunchType::halosigma:
       {bdsBunch = new BDSBunchHaloFlatSigma(); break;}
+#ifdef USE_PLASMA_HDF5
+    case BDSBunchType::hdf5:
+      {bdsBunch = new BDSBunchHDF5(); break;}
+#endif
     default:
       {bdsBunch = new BDSBunch(); break;}
     }

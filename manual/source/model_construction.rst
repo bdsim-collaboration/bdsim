@@ -225,6 +225,7 @@ The following elements may be defined
 * `wirescanner`_
 * `ct`_
 * `muoncooler`_
+* `bmcol`_
 
 .. TODO add screen, awakescreen
 
@@ -2183,29 +2184,29 @@ muoncooler
 	    :align: center
 
 
-`muoncooler` defines a **complete** 6D muon cooling lattice. Upon instantiation, a logical volume 
-with the specified horizontal width and length is generated, providing space for the 
-placement of the main 6D ionisation cooling beamline elements: solenoids, dipoles, RF cavities, and absorbers. 
-The element ensures that fringe effects from all magnets are accounted for and 
-allowing for accurate summation of the electric and magnetic field contributions across the entire 
+`muoncooler` defines a **complete** 6D muon cooling lattice. Upon instantiation, a logical volume
+with the specified horizontal width and length is generated, providing space for the
+placement of the main 6D ionisation cooling beamline elements: solenoids, dipoles, RF cavities, and absorbers.
+The element ensures that fringe effects from all magnets are accounted for and
+allowing for accurate summation of the electric and magnetic field contributions across the entire
 lattice.
 
-In the current 6D cooling implementation, the cooling channel can include:  
+In the current 6D cooling implementation, the cooling channel can include:
 
-- **Solenoids (coils)**  
-- **Dipoles (field only, no physical magnet)** 
-- **RF cavities**  
-- **Absorbers**  
+- **Solenoids (coils)**
+- **Dipoles (field only, no physical magnet)**
+- **RF cavities**
+- **Absorbers**
 
-Parameters for these components can be specified as either:  
+Parameters for these components can be specified as either:
 
-- A **single value**, applying uniformly across all instances of that component  
-- A **list of values**, where each value corresponds to the respective component's position in the cooling channel  
+- A **single value**, applying uniformly across all instances of that component
+- A **list of values**, where each value corresponds to the respective component's position in the cooling channel
 
 **Electric and Magnetic Field Models**
 
-- The **solenoid field model** can be either a **sheet model** (`solenoidsheet`) or a **block model** (`solenoidblock`). 
-- For dipoles, two models exist currently: `dipole` and `dipoleenge`. The `dipole` model is a simple hard-edge dipole field, while the `dipoleenge` model includes Enge-type fringe fields and follows the treatment outlined in: Muratori, B.D. et al (2015) ‘Analytical expressions for fringe fields in multipole magnets’, *Physical Review Special Topics - Accelerators and Beams*, 18(6). https://doi.org/10.1103/physrevstab.18.064001   
+- The **solenoid field model** can be either a **sheet model** (`solenoidsheet`) or a **block model** (`solenoidblock`).
+- For dipoles, two models exist currently: `dipole` and `dipoleenge`. The `dipole` model is a simple hard-edge dipole field, while the `dipoleenge` model includes Enge-type fringe fields and follows the treatment outlined in: Muratori, B.D. et al (2015) ‘Analytical expressions for fringe fields in multipole magnets’, *Physical Review Special Topics - Accelerators and Beams*, 18(6). https://doi.org/10.1103/physrevstab.18.064001
 - For the RF cavities, a simple RF pillbox (`rfpillbox`) model has been implemented.
 
 
@@ -2333,7 +2334,160 @@ Parameters for these components can be specified as either:
 |                              | [m]                           |              |
 +------------------------------+-------------------------------+--------------+
 
-An example of a cooling channel has been provided in `/examples/components/muoncooler.gmad`, and can be used as a template for development.  
+An example of a cooling channel has been provided in `/examples/components/muoncooler.gmad`, and can be used as a template for development.
+
+
+.. _component-bmcol:
+
+bmcol
+^^^^^
+
+.. figure:: figures/bmcol.png
+	    :width: 60%
+	    :align: center
+
+`bmcol` define a beam mask that can be placed in a place in a dispersive section of a beamline in order to separate the
+beam with respect to the energy dispersion of said beam. This mask features two slits (a main slit and a side slit)
+with adjustable sizes and positions.
+
+* The main slit is always centered on the beam mask mount. The side slit position is defined is defined with respect to
+  the main one and can be tilted.
+* The whole mount can then have x and y offset inside of the beam pipe.
+
+.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
+
++-------------------+------------------------------------------------+----------------+---------------+
+| **Parameter**     | **Description**                                | **Default**    | **Required**  |
++===================+================================================+================+===============+
+| `l`               | Length [m]                                     | 0              | Yes           |
++-------------------+------------------------------------------------+----------------+---------------+
+| `material`        | Outer material                                 | None           | Yes           |
++-------------------+------------------------------------------------+----------------+---------------+
+| `horizontalWidth` | Outer full width [m]                           | 0.15 m         | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `xsize`           | Horizontal half aperture of main slit [m]      | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `ysize`           | Vertical half aperture of main slit [m]        | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `xsize2`          | Horizontal half aperture of side slit [m]      | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `ysize2`          | Vertical half aperture of side slit [m]        | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `offsetX2`        | Horizontal displacement of side slit [m]       | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `offsetY2`        | Vertical displacement of side slit [m]         | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `tilt2`           | Clockwise rotation of side slit [rad].         | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `outerShape`      | Shape of the outer material                    | 'rectangular'  | No            |
+|                   | (circular or rectangular).                     |                |               |
++-------------------+------------------------------------------------+----------------+---------------+
+
+Notes:
+
+* The :ref:`aperture-parameters` may also be specified.
+* The :ref:`offsets-and-tilts` may also be specified.
+
+Examples: ::
+
+  bm: bmcol, l=2*mm, aper1=0.15*m, horizontalWidth=0.15*m, material="G4_W",
+             offsetX=0*mm, offsetY=0*mm, xsize=5*mm, ysize=30*mm, outerShape="rectangular",
+             offsetX2=20*mm, offsetY2=0*mm, xsize2=1*mm, ysize2=30*mm, tilt2=0.3*rad;
+
+
+.. _component-gascap:
+
+gascap
+^^^^^^
+
+.. figure:: figures/gascap.png
+	    :width: 60%
+	    :align: center
+
+`gascap` define a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
+This element is composed of an innner cylindrical material (usually it is gas), an outer capillary material and two
+electrodes on each sides (with respect to beam axis).
+
+* The inner gas cell is always center on the beam axis.
+* The electrodes have the same shape and thickness.
+
+.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
+
++---------------------+----------------------------------------------+----------------+---------------+
+| **Parameter**       | **Description**                              | **Default**    | **Required**  |
++=====================+==============================================+================+===============+
+| `l`                 | Length [m]                                   | 0              | Yes           |
++---------------------+----------------------------------------------+----------------+---------------+
+| `layerMaterials`    | List of materials in order :                 | None           | Yes           |
+|                     | {Outer, Inner, Electrodes}                   |                |               |
++---------------------+----------------------------------------------+----------------+---------------+
+| `horizontalWidth`   | Outer full width [m]                         | 0.15 m         | No            |
++---------------------+----------------------------------------------+----------------+---------------+
+| `xsize`             | Diameter of inner material [m]               | 0              | No            |
++---------------------+----------------------------------------------+----------------+---------------+
+| `materialThickness` | Thickness of the two electrodes on each sides| 0              | No            |
+|                     | [m]                                          |                |               |
++---------------------+----------------------------------------------+----------------+---------------+
+| `outerShape`        | Shape of the outer material                  | 'rectangular'  | No            |
+|                     | (circular or rectangular).                   |                |               |
++---------------------+----------------------------------------------+----------------+---------------+
+
+Notes:
+
+* The :ref:`aperture-parameters` may also be specified.
+
+Examples: ::
+
+  gc: gascap, l=0.5*m, aper1=0.15*m, horizontalWidth=0.1*m, xsize=0.03*m, outerShape="circular",
+              layerMaterials={"G4_Si", "G4_Xe" ,"G4_C"}, materialThickness=0.01*m;
+
+
+.. _component-gasjet:
+
+gasjet
+^^^^^^
+
+.. figure:: figures/gasjet.png
+	    :width: 60%
+	    :align: center
+
+`gasjet` define a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This element is a box of
+material that can be placed in x and y and angled in all directions with respect to the center of the beam pipe.
+
+* The gas jet size is independent of the beam pipe length. However its position is dependent to the center of the pipe
+  along the beam axis.
+
+.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
+
++-------------------+----------------------------+----------------+---------------+
+| **Parameter**     | **Description**            | **Default**    | **Required**  |
++===================+============================+================+===============+
+| `l`               | Length [m]                 | 0              | Yes           |
++-------------------+----------------------------+----------------+---------------+
+| `material`        | Material of the jet        | None           | Yes           |
++-------------------+----------------------------+----------------+---------------+
+| `xdir`            | Size along x axis [m]      | 0              | No            |
++-------------------+----------------------------+----------------+---------------+
+| `ydir`            | Size along y axis [m]      | 0              | No            |
++-------------------+----------------------------+----------------+---------------+
+| `zdir`            | Size along z axis [m]      | 0              | No            |
++-------------------+----------------------------+----------------+---------------+
+| `phi`             | Angle along x axis [rad]   | 0              | No            |
++-------------------+----------------------------+----------------+---------------+
+| `theta`           | Angle along y axis [rad]   | 0              | No            |
++-------------------+----------------------------+----------------+---------------+
+| `psi`             | Angle along z axis [rad]   | 0              | No            |
++-------------------+----------------------------+----------------+---------------+
+
+Notes:
+
+* The :ref:`aperture-parameters` may also be specified.
+* The :ref:`offsets-and-tilts` may also be specified.
+
+Examples: ::
+
+  gj: gasjet, l=0.15*m, aper1=0.15*m, material="G4_AIR", offsetX=0*m, offsetY=0*m,
+              xdir=0.07*m, ydir=0.07*m, zdir=0.01*m, phi=0, theta=1, psi=0;
 
 
 .. _offsets-and-tilts:

@@ -1,0 +1,15 @@
+! Small model to test ideal gas conversions
+
+! One element beamline with a gas material
+d1: drift, l=0.5, vacuumMaterial="gas";
+lat: line = (d1);
+use, lat;
+
+! Beam definition 1 GeV electrons
+beam, particle="e-", energy=1*GeV;
+
+! Gas material definition
+! Pressure in atmosphere, density in g.cm-3 and temperature in kelvin
+gas: matdef, T=300, P=1*atmosphere, state="gas", componentsFractions={1}, components={ "Ar" };
+
+! Density value should compute to around 0.0016229 g.cm-3
