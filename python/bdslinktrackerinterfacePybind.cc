@@ -441,6 +441,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
 
   auto bdsim_link = tracker_interface->GetBDSIMLink();
 
+  auto refPDG = tracker_interface->GetReferenceParticleDefinition()->PDGID();
   // clear sampler hits (do this first and not at end as sampler data will
   // no longer available in python)
   bdsim_link->ClearSamplerHits();
@@ -453,16 +454,18 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     auto p = bunch6d.attr("get_particle")(i);
     auto x = py::cast<double>(p.attr("x"));
     auto y = py::cast<double>(p.attr("y"));
-    auto xp = py::cast<double>(p.attr("xp"));
-    auto yp = py::cast<double>(p.attr("yp"));
+    auto p4v = (py::cast<py::array_t<double>>(p.attr("get_four_momentum")())).unchecked<2>();
     // auto t = py::cast<double>(p.attr("t"));
+    auto pdgID = py::cast<int>(p.attr("pdg_id")); // initiall this will be zero and add particle will set to reference particle
 
     tracker_interface->AddParticle(x*CLHEP::mm, y*CLHEP::mm, // x, y
-                                   xp, yp, // xp, yp
-                                   0,0, // ct, deltap
-                                   1,1, // chi, chargeRatio
+                                   p4v(1,0), p4v(2,0), p4v(3,0), // px, px, pz
+                                   0, // ct
                                    0, // s
-                                   i, 11); // trackID, parent;
+                                   i, pdgID); // trackID, parent;
+    if (pdgID == 0) {
+      p.attr("pdg_id") = py::cast(refPDG);
+    }
   }
   bdsim_link->BeamOn(nparticle);
 
@@ -517,6 +520,9 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       p = bunch6d.attr("get_particle")(idx_insert);
       p.attr("S_lost") = py::cast(std::nan(""));
       p.attr("Pc") = py::cast(h->momentum);
+
+      // set particle pdg
+      p.attr("pdg_id") = py::cast(h->pdgID);
     }
   }
 }

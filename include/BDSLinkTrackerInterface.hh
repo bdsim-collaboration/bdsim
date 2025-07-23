@@ -50,6 +50,9 @@ public:
                    double ct, double deltap, double chi,
                    double chargeRatio, double s,
                    int trackid, int pdgid);
+  void AddParticle(double x, double y, double px, double py,
+                   double ct, double pc, double s,
+                   int trackid, int pdgid);
   void AddParticles(std::vector<double> x, std::vector<double> y,
                     std::vector<double> px, std::vector<double> py,
                     std::vector<double> ct, std::vector<double> deltap,

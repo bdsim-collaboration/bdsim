@@ -21,6 +21,7 @@ def Bunch2Dataframe(bunch6d) :
     y = []
     yp = []
     N = []
+    pdg_id = []
 
     for i in range(0,bunch6d.size()) :
         p = bunch6d[i]
@@ -36,6 +37,7 @@ def Bunch2Dataframe(bunch6d) :
         y.append(p.y)
         yp.append(p.yp)
         N.append(p.N)
+        pdg_id.append(p.pdg_id)
 
     return pandas.DataFrame({"id":id,
                              "lifetime":lifetime,
@@ -48,7 +50,8 @@ def Bunch2Dataframe(bunch6d) :
                              "x":x,
                              "xp":xp,
                              "y":y,
-                             "yp":yp})
+                             "yp":yp,
+                             "pdg_id":pdg_id})
 
 
 

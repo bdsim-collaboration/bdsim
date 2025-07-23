@@ -151,7 +151,6 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
                                           double ct, double deltap, double chi,
                                           double chargeRatio, double s,
                                           int trackid, int pdgid) {
-  //std::cout << "BDSLinkTrackerInterface::AddParticle" << std::endl;
 
   auto q = chargeRatio * referenceParticleDefinition->Charge();
   auto mass_ratio = chargeRatio / chi;
@@ -174,6 +173,46 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
 
   if (sqrtarg >=0)
     { zp = std::sqrt(sqrtarg); }
+
+  auto coords = BDSParticleCoordsFull(x * CLHEP::m,
+                                      y * CLHEP::m,
+                                      0,
+                                      xp,
+                                      yp,
+                                      zp,
+                                      t,
+                                      0,
+                                      partDef->TotalEnergy(),
+                                      1);
+
+  linkBunch->AddParticle(partDef, coords, trackid, trackid);
+  return;
+}
+
+void BDSLinkTrackerInterface::AddParticle(double x, double y,
+                                          double px, double py, double pz,
+                                          double ct, double s,
+                                          int trackid, int pdgid) {
+  auto pdg = 0;
+  auto q = 0.0;
+
+  if(pdgid == 0) {
+    pdg = referenceParticleDefinition->PDGID();
+    q = referenceParticleDefinition->Charge();
+  }
+  else {
+    pdg = pdgid;
+    q = G4ParticleTable::GetParticleTable()->FindParticle(pdg)->GetPDGCharge();
+  }
+
+  auto p = std::sqrt(std::pow(px,2) +
+                             std::pow(py,2) +
+                             std::pow(pz,2));
+  auto partDef = prepareBDSParticleDefition(pdg, p, 0, q);
+  auto t = - ct * CLHEP::m / (referenceParticleDefinition->Beta() * CLHEP::c_light);
+  auto xp = px / pz;
+  auto yp = py / pz;
+  auto zp = pz / p;
 
   auto coords = BDSParticleCoordsFull(x * CLHEP::m,
                                       y * CLHEP::m,
