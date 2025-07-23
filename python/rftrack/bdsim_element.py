@@ -9,11 +9,9 @@ class BDSIMElement(RF_Track.UserElement) :
         self.bds_link = bdsim.BDSLinkTrackerInterface.GetInstance()
         e_idx = self.bds_link.GetBDSIMLink().AddLinkElement(e)
 
-        self.index = e_idx
-
-        self.bds_link.GetBDSIMLink().SelectLinkElement(e_idx)
-
+        self.e_idx = e_idx
 
     def track(self, bunch6d):
         print("python track> ",bunch6d)
+        self.bds_link.GetBDSIMLink().SelectLinkElement(self.e_idx)
         self.bds_link.TrackRFTrack(bunch6d)
