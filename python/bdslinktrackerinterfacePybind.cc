@@ -15,6 +15,8 @@ namespace py = pybind11;
 #include "G4ParticleDefinition.hh"
 #include "G4IonTable.hh"
 #include "G4Electron.hh"
+#include "Randomize.hh"
+
 
 
 #include "BDSLinkTrackerInterface.hh"
@@ -455,6 +457,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     auto x = py::cast<double>(p.attr("x"));
     auto y = py::cast<double>(p.attr("y"));
     auto p4v = (py::cast<py::array_t<double>>(p.attr("get_four_momentum")())).unchecked<2>();
+    // TODO time needs to calculated wrt to reference particle
     // auto t = py::cast<double>(p.attr("t"));
     auto pdgID = py::cast<int>(p.attr("pdg_id")); // initiall this will be zero and add particle will set to reference particle
 
@@ -496,7 +499,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       p.attr("xp") = py::cast(h->coords.xp);
       p.attr("yp") = py::cast(h->coords.yp);
       p.attr("S_lost") = py::cast(std::nan(""));
-      // other coordinates
+      // TODO colulate absolute T for particle
     }
     else { // new particle
 
@@ -519,10 +522,30 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       // need to set particle as not lost
       p = bunch6d.attr("get_particle")(idx_insert);
       p.attr("S_lost") = py::cast(std::nan(""));
+
+      // set particle momentum
       p.attr("Pc") = py::cast(h->momentum);
 
       // set particle pdg
       p.attr("pdg_id") = py::cast(h->pdgID);
+
+      // TODO colulate absolute T for new particles particle
+      // set particle time
+
+      // set created particle lifetime for RF Track
+      auto lifetime = particle->GetPDGLifeTime();
+      auto mass = particle->GetPDGMass();
+      if (lifetime < 0) { // set infinite lifetime
+        p.attr("lifetime") = std::numeric_limits<double>::infinity();
+      }
+      else if(mass > 0) { // need to have non zero mass
+        auto boosted_lifetime = h->coords.totalEnergy/mass*lifetime;
+        auto sampled_lifetime = -boosted_lifetime * std::log(G4UniformRand());
+        //std::cout << lifetime << " " << h->coords.totalEnergy << " " << mass << std::endl;
+        // p.attr("lifetime") = py::cast(boosted_lifetime);
+
+        p.attr("lifetime") = std::numeric_limits<double>::infinity();
+      }
     }
   }
 }
