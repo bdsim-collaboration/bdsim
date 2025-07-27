@@ -191,7 +191,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
 
 void BDSLinkTrackerInterface::AddParticle(double x, double y,
                                           double px, double py, double pz,
-                                          double ct, double s,
+                                          double t, double s,
                                           int trackid, int pdgid) {
   auto pdg = 0;
   auto q = 0.0;
@@ -209,7 +209,6 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y,
                              std::pow(py,2) +
                              std::pow(pz,2));
   auto partDef = prepareBDSParticleDefition(pdg, p, 0, q);
-  auto t = - ct * CLHEP::m / (referenceParticleDefinition->Beta() * CLHEP::c_light);
   auto xp = px / pz;
   auto yp = py / pz;
   auto zp = pz / p;
