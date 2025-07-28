@@ -23,7 +23,8 @@ jobs:
     - name: Install deps
       run: |
         dnf install -y epel-release 
-        dnf install -y python3-lsb
+        dnf install -y lsb_release
+	
 
     - name: Setup CVMFS
       uses: cvmfs-contrib/github-action-cvmfs@v4
