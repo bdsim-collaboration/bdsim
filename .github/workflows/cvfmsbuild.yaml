@@ -14,13 +14,14 @@ jobs:
     - name: Setup CVMFS
       uses: cvmfs-contrib/github-action-cvmfs@v4
 
-    - name: Run container
-      run: |
-        docker pull almalinux:9
-        docker run -v /cvmfs:/cvmfs:shared -ti almalinux:9
-
     - name: Checkout repo
       uses: actions/checkout@v4
 
     - name: Test CernVM-FS
       run: ls /cvmfs/sft.cern.ch/
+
+    - name: Run container
+      run: |
+        docker pull almalinux:9
+        docker run -v /cvmfs:/cvmfs:shared -v $PWD:/app almalinux:9 .github/bin/cvmfs_build.sh
+
