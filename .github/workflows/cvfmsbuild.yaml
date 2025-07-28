@@ -12,7 +12,7 @@ jobs:
     
     steps:
     - name: Setup CVMFS
-      uses: uses: cvmfs-contrib/github-action-cvmfs@v4
+      uses: cvmfs-contrib/github-action-cvmfs@v4
 
     - name: Run container
       run: |
