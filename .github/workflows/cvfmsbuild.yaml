@@ -20,7 +20,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
 
-    - nmae: Install deps
+    - name: Install deps
       run: dnf install redhat-lsb-core
       
     - name: Setup CVMFS
