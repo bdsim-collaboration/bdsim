@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         container: [almalinux:8, almalinux:9]
-	lcg: [LCG100]
+        lcg: [LCG100]
 
     steps:
     - name: Setup CVMFS
