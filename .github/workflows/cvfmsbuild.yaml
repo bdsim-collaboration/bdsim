@@ -9,7 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
+    strategy:
+      fail-fast: false
+      matrix:
+        container: [almalinux:8, almalinux:9]
+	lcg: [LCG100]
+
     steps:
     - name: Setup CVMFS
       uses: cvmfs-contrib/github-action-cvmfs@v4
@@ -22,6 +28,6 @@ jobs:
 
     - name: Run container
       run: |
-        docker pull almalinux:9
-        docker run -v /cvmfs:/cvmfs:shared -v $PWD:/repo almalinux:9 /repo/.github/bin/cvmfs_build.sh
+        docker pull ${{ matrix.container }}
+        docker run -v /cvmfs:/cvmfs:shared -v $PWD:/repo ${{ matrix.container }} /repo/.github/bin/cvmfs_build.sh
 
