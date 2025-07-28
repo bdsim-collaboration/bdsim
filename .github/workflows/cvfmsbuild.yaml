@@ -23,5 +23,5 @@ jobs:
     - name: Run container
       run: |
         docker pull almalinux:9
-        docker run -v /cvmfs:/cvmfs:shared -v $PWD:/repo almalinux:9 /repo/github/bin/cvmfs_build.sh
+        docker run -v /cvmfs:/cvmfs:shared -v $PWD:/repo almalinux:9 /repo/.github/bin/cvmfs_build.sh
 
