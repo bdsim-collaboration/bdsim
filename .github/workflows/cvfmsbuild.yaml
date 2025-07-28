@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: almalinux
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repo
