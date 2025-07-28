@@ -9,7 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    container: almalinux:9
+    
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
