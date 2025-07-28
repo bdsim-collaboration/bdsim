@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install deps
-      run: dnf install -y redhat-lsb-core
+      run: dnf install -y dnf-plugins-core
       
     - name: Setup CVMFS
       uses: cvmfs-contrib/github-action-cvmfs@v4
