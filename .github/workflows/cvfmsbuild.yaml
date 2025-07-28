@@ -9,17 +9,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: almalinux:9
     
     steps:
+    - name: Setup CVMFS
+      uses: uses: cvmfs-contrib/github-action-cvmfs@v4
+
+    - name: Run container
+      run:
+        docker pull almalinux:9
+        docker run -v /cvmfs:/cvmfs:shared -ti almalinux:9
+
     - name: Checkout repo
       uses: actions/checkout@v4
-
-    - name: Setup CVMFS
-      run: |
-        dnf install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs-release-latest.noarch.rpm
-        dnf install -y cvmfs 
-        cvmfs_config setup
 
     - name: Test CernVM-FS
       run: ls /cvmfs/sft.cern.ch/
