@@ -25,7 +25,6 @@ jobs:
         dnf install -y epel-release 
         dnf install -y lsb_release
 	
-
     - name: Setup CVMFS
       uses: cvmfs-contrib/github-action-cvmfs@v4
 
