@@ -9,11 +9,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: ${{ matrix.container }}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        container: [almalinux8, almalinux9]
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
 
+    - nmae: Install deps
+      run: dnf install redhat-lsb-core
+      
     - name: Setup CVMFS
       uses: cvmfs-contrib/github-action-cvmfs@v4
 
