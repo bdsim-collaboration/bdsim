@@ -9,12 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ${{ matrix.container }}
-
-    strategy:
-      fail-fast: false
-      matrix:
-        container: [almalinux:8, almalinux:9]
 
     steps:
     - name: Checkout repo
