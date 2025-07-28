@@ -14,6 +14,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
 
+    - name: Setup CVMFS
     - uses: cvmfs-contrib/github-action-cvmfs@v4
 
     - name: Test CernVM-FS
