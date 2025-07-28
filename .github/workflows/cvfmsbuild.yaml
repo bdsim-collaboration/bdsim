@@ -18,7 +18,7 @@ jobs:
     - name: Setup CVMFS
       run: |
         dnf install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs-release-latest.noarch.rpm
-	dnf install -y cvmfs 
+        dnf install -y cvmfs 
         cvmfs_config setup
 
     - name: Test CernVM-FS
