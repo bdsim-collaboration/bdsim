@@ -15,7 +15,7 @@ jobs:
       uses: uses: cvmfs-contrib/github-action-cvmfs@v4
 
     - name: Run container
-      run:
+      run: |
         docker pull almalinux:9
         docker run -v /cvmfs:/cvmfs:shared -ti almalinux:9
 
