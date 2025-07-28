@@ -9,22 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ${{ matrix.container }}
-    
-    strategy:
-      fail-fast: false
-      matrix:
-        container: [almalinux:8, almalinux:9]
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
-
-    - name: Install deps
-      run: |
-        dnf install -y epel-release 
-        dnf install -y lsb_release
-        lsb_release -a > /etc/lsb-release
 
     - name: Setup CVMFS
       uses: cvmfs-contrib/github-action-cvmfs@v4
