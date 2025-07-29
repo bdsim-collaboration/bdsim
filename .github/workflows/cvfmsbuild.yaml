@@ -29,5 +29,5 @@ jobs:
     - name: Run container
       run: |
         docker pull ${{ matrix.container }}
-        docker run -v /cvmfs:/cvmfs:shared -v $PWD:/repo ${{ matrix.container }} /repo/.github/bin/cvmfs_build.sh
+        docker run -v /cvmfs:/cvmfs:shared -v $PWD:/repo ${{ matrix.container }} /repo/.github/bin/cvmfs_build.sh x86_64 el9 gcc15 108 11.3.2 
 
