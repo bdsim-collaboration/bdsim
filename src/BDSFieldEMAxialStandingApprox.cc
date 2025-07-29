@@ -14,10 +14,10 @@ BDSFieldEMAxialStandingApprox::BDSFieldEMAxialStandingApprox(BDSMagnetStrength c
                                   (*strength)["cavity_phase"],
                                   (*strength)["synchronousT0"])
 {
-  eFieldAmplitude = 0;
-  cavity_length = 0;
-  frequency = 0;
-  transitTime = 0;
+  //eFieldAmplitude = 0;
+  //cavity_length = 0;
+  //frequency = 0;
+  //transitTime = 0;
 }
 
 BDSFieldEMAxialStandingApprox::BDSFieldEMAxialStandingApprox(G4double cavity_cell_lengthIn,
