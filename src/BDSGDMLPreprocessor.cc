@@ -315,7 +315,6 @@ void BDSGDMLPreprocessor::ProcessNode(DOMNode*        node,
     {return;} // ignore this node
   else if (thisNodeName == "property")
     {
-      std::cout << "property" << std::endl;
       ProcessAttributes(node->getAttributes(), prefix, true);
     }
   else
