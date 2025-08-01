@@ -73,7 +73,7 @@ private:
   void ReadAttributes(xercesc::DOMNamedNodeMap* attributeMap);
   void ProcessDoc(xercesc::DOMNodeIterator* dotIterator, const G4String& prefix);
   void ProcessNode(xercesc::DOMNode* node, const G4String& prefix);
-  void ProcessAttributes(xercesc::DOMNamedNodeMap* attributeMap, const G4String& prefix);
+  void ProcessAttributes(xercesc::DOMNamedNodeMap* attributeMap, const G4String& prefix, bool property = false);
 
   G4String parentDir;                   ///< Directory of main gdml file.
   std::vector<std::string> ignoreNodes; ///< Nodes to ignore.

@@ -136,7 +136,7 @@ BDSGDMLPreprocessor::~BDSGDMLPreprocessor()
 {;}
 
 G4String BDSGDMLPreprocessor::PreprocessFile(const G4String& file,
-					     const G4String& prefix,
+                                             const G4String& prefix,
                                              G4bool preprocessSchema)
 {
   G4cout << __METHOD_NAME__ << "Preprocessing GDML file " << file << G4endl;
@@ -297,14 +297,14 @@ void BDSGDMLPreprocessor::ReadAttributes(DOMNamedNodeMap* attributeMap)
 }
 
 void BDSGDMLPreprocessor::ProcessDoc(DOMNodeIterator* docIterator,
-				     const G4String&  prefix)
+                                     const G4String&  prefix)
 {
   for (DOMNode* currentNode = docIterator->nextNode(); currentNode != 0; currentNode = docIterator->nextNode())
     {ProcessNode(currentNode, prefix);}
 }
 
 void BDSGDMLPreprocessor::ProcessNode(DOMNode*        node,
-				      const G4String& prefix)
+                                      const G4String& prefix)
 {
   if (!node)
     {return;}
@@ -313,16 +313,22 @@ void BDSGDMLPreprocessor::ProcessNode(DOMNode*        node,
   auto search = std::find(ignoreNodes.begin(), ignoreNodes.end(), thisNodeName);
   if (search != ignoreNodes.end())
     {return;} // ignore this node
+  else if (thisNodeName == "property")
+    {
+      std::cout << "property" << std::endl;
+      ProcessAttributes(node->getAttributes(), prefix, true);
+    }
   else
     {ProcessAttributes(node->getAttributes(), prefix);}
 }
 
 G4String BDSGDMLPreprocessor::ProcessedNodeName(const G4String& nodeName,
-						const G4String& prefix)
+                                                const G4String& prefix)
 {return prefix + "_" + nodeName;}
 
 void BDSGDMLPreprocessor::ProcessAttributes(DOMNamedNodeMap* attributeMap,
-					    const G4String&  prefix)
+                                            const G4String&  prefix,
+                                            bool             property)
 {
   if (!attributeMap)
     {return;}
@@ -335,6 +341,12 @@ void BDSGDMLPreprocessor::ProcessAttributes(DOMNamedNodeMap* attributeMap,
       auto search = std::find(ignoreAttrs.begin(), ignoreAttrs.end(), name);
       if (search != ignoreAttrs.end())
         {continue;} // ignore this attribute
+
+      // the property names should be not appended as Geant4 is expecting RINDEX etc,
+      // not prefix_RINDEX
+      if (XMLString::compareIString(attr->getNodeName(),
+                                    XMLString::transcode("name")) == 0 && property)
+        {continue;}
 
       if (XMLString::compareIString(attr->getNodeName(),
                                     XMLString::transcode("name")) == 0)
