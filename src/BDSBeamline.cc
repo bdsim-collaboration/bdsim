@@ -580,7 +580,7 @@ void BDSBeamline::ApplyTransform3D(BDSTransform3D* component)
   // apply position
   // transform the local dx,dy,dz displacement into the global frame then apply
   G4ThreeVector delta = G4ThreeVector(dx, dy, dz).transform(*previousReferenceRotationEnd);
-  previousReferencePositionEnd = previousReferencePositionEnd + G4ThreeVector(dx, dy, dz);
+  previousReferencePositionEnd = previousReferencePositionEnd + delta;
   
   // apply rotation
   G4RotationMatrix trRotInverse = component->rotationMatrix.inverse();
