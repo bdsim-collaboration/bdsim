@@ -95,11 +95,11 @@ G4double BDSLaser::W(G4double z) const
   return W0()*std::sqrt(1.0+std::pow(z/rayleighRange,2.0));
 }
 
-G4double BDSLaser::Intensity(G4double x, G4double y, G4double z, G4double t) const
+G4double BDSLaser::Intensity(G4double x, G4double y, G4double z) const
 {
-  return Intensity(G4ThreeVector(x,y,z), t);
+  return Intensity(G4ThreeVector(x,y,z));
 }
-G4double BDSLaser::Intensity(const G4ThreeVector& xyz, G4double /*t*/) const
+G4double BDSLaser::Intensity(const G4ThreeVector& xyz) const
 {
   G4double r2 = xyz.perpPart().mag2(); // x^2 + y^2
   G4double wofz = W(xyz.z());
@@ -127,7 +127,7 @@ G4double BDSLaser::HyperbolicAngle() const
 
 G4double BDSLaser::TemporalProfileGaussian(G4double particleGlobalTime, G4double particleZCoord) const
 {
-    G4double mu = (particleGlobalTime-(T0+laserArrivalTime))*CLHEP::nanosecond; // can be negative - locates the peak of the pulse in time for a given particleGlobalTime
+    G4double mu = (particleGlobalTime-(T0+laserArrivalTime)); // can be negative - locates the peak of the pulse in time for a given particleGlobalTime
     G4double sigmaT = pulseDuration/(2.0 * std::sqrt(2.0 * std::log(2.0))) ;
     return std::exp(-((particleZCoord/CLHEP::c_light - mu)*(particleZCoord/CLHEP::c_light-mu)) / (2.0 * sigmaT * sigmaT));
 }

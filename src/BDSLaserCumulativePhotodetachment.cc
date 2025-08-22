@@ -65,11 +65,11 @@ G4double BDSLaserCumulativePhotodetachment::GetMeanFreePath(const G4Track& track
 
   G4LogicalVolume* lv = track.GetVolume()->GetLogicalVolume();
   if (!lv->IsExtended()) // not extended so can't be a laser logical volume
-  {return std::numeric_limits<double>::max();}
+    {return std::numeric_limits<double>::max();}
 
   BDSLogicalVolumeLaser* lvv = dynamic_cast<BDSLogicalVolumeLaser*>(lv);
   if (!lvv) // it's an extended volume but not ours (could be a crystal)
-  {return std::numeric_limits<double>::max();}
+    {return std::numeric_limits<double>::max();}
 
   *forceCondition = Forced;
 
@@ -84,11 +84,11 @@ G4VParticleChange* BDSLaserCumulativePhotodetachment::PostStepDoIt(const G4Track
 
   G4LogicalVolume* lv = track.GetVolume()->GetLogicalVolume();
   if (!lv->IsExtended()) // not extended so can't be a laser logical volume
-  {return pParticleChange;}
+    {return pParticleChange;}
 
   BDSLogicalVolumeLaser* lvv = dynamic_cast<BDSLogicalVolumeLaser *>(lv);
   if (!lvv) // it's an extended volume but not ours (could be a crystal)
-  {return pParticleChange;}
+    {return pParticleChange;}
 
   // else proceed
   const BDSLaser* laser = lvv->Laser();
@@ -101,77 +101,70 @@ G4VParticleChange* BDSLaserCumulativePhotodetachment::PostStepDoIt(const G4Track
   G4ThreeVector particleBeta = particleMomentum/particleEnergy;
   G4double particleGamma = particleEnergy/ion->GetMass();
   G4double particleVelocity = particleBeta.mag()*CLHEP::c_light;
-  G4LorentzVector particle4Vector = ion->Get4Momentum();
-  particle4Vector.boost(-particleBeta);
-  G4double particleGlobalTimePostStep = track.GetGlobalTime();
+  G4LorentzVector particle4VectorMomentum = ion->Get4Momentum();
+  particle4VectorMomentum.boost(-particleBeta);
+  G4double particleTimePostStepGlobal = track.GetGlobalTime();
 
   //######### Get particle position and momentum direction ###############################
-  G4ThreeVector particlePositionGlobalPostStep = track.GetPosition();
-  G4ThreeVector particlePositionGlobal = track.GetStep()->GetPreStepPoint()->GetPosition();
-  G4ThreeVector particleDirectionMomentumGlobal = track.GetStep()->GetPreStepPoint()->GetMomentumDirection();
-  G4ThreeVector currentParticlePositionGlobal = track.GetPosition();
+  G4ThreeVector particlePositionPostStepGlobal = track.GetPosition();
+  G4ThreeVector particlePositionPreStepGlobal = track.GetStep()->GetPreStepPoint()->GetPosition();
+  G4ThreeVector particleMomentumDirectionPreStepGlobal = track.GetStep()->GetPreStepPoint()->GetMomentumDirection();
 
-  G4ThreeVector stepVector = currentParticlePositionGlobal-particlePositionGlobal;
+  G4ThreeVector stepVector = particlePositionPostStepGlobal-particlePositionPreStepGlobal;
   G4double  stepMagnitude = stepVector.mag();
 
   //#################### Get rotation and translation matrices for global to laser coordinates ############################
 
   const G4RotationMatrix* rot = track.GetTouchable()->GetRotation();
   const G4AffineTransform transform = track.GetTouchable()->GetHistory()->GetTopTransform();
-  G4ThreeVector particlePositionLocal = transform.TransformPoint(particlePositionGlobal);
-  G4ThreeVector particleDirectionMomentumLocal = transform.TransformPoint(particleDirectionMomentumGlobal).unit();
-  //########################## Get Laser #####################################
 
   //######################## Get/Create photon information ##############################
-
   G4ThreeVector photonUnit(0,0,1);
   photonUnit.transform(*rot);
-  G4double photonE = (CLHEP::h_Planck*CLHEP::c_light)/laser->Wavelength();
-  G4ThreeVector photonVector = photonUnit*photonE;
-  G4LorentzVector photonLorentz = G4LorentzVector(photonVector,photonE);
+  G4double photonEnergy = (CLHEP::h_Planck*CLHEP::c_light)/laser->Wavelength();
+  G4ThreeVector photonVector = photonUnit*photonEnergy;
+  G4LorentzVector photonLorentzVector = G4LorentzVector(photonVector,photonEnergy);
 
-  photonLorentz.boost(particleBeta);
-  G4double photonEnergy = photonLorentz.e();
+  photonLorentzVector.boost(particleBeta);
+  G4double photonEnergyLorentz = photonLorentzVector.e();
 
   G4double photonFluxSum = 0;
 
-  G4double particleGlobalTimePreStep = particleGlobalTimePostStep-(stepVector.mag()/particleVelocity);
+  G4double particleTimePreStepGlobal = track.GetStep()->GetPreStepPoint()->GetGlobalTime();
 
   std::vector<G4double> fluxArray;
   std::vector<G4LorentzVector> trajectoryPositions;
 
-  G4int nSteps = 100;
-  G4double nStepsD = (G4double)nSteps;
 
-  for (G4int i = 0; i < nSteps; i++)
+  for(G4int i = 0;i<=99;i++)
   {
-        G4ThreeVector stepPositionGlobal = particlePositionGlobal+float(i)*(stepMagnitude/100.)*particleDirectionMomentumGlobal;
+        G4ThreeVector stepPositionGlobal = particlePositionPreStepGlobal+float(i)*(stepMagnitude/100.)*particleMomentumDirectionPreStepGlobal;
         G4ThreeVector stepPositionLocal = transform.TransformPoint(stepPositionGlobal);
-        G4double particleStepGlobalTime = particleGlobalTimePreStep+((float(i)*(stepMagnitude/100.))/particleVelocity);
-        G4double stepIntensity  = ((laser->Intensity(stepPositionLocal,0)/photonEnergy)
-                                   * laser->TemporalProfileGaussian(particleStepGlobalTime,stepPositionLocal.z()));
+        G4double stepTimeGlobal = particleTimePreStepGlobal+(float(i)*(stepMagnitude/100.)/particleVelocity);
+        G4double stepIntensity  = ((laser->Intensity(stepPositionLocal)/photonEnergyLorentz)
+                                   * laser->TemporalProfileGaussian(stepTimeGlobal,stepPositionLocal.z()));
         photonFluxSum = photonFluxSum + stepIntensity;
         fluxArray.push_back(stepIntensity);
   }
 
-  G4double crossSection = photoDetachmentEngine->CrossSection(photonEnergy);
+  G4double crossSection = photoDetachmentEngine->CrossSection(photonEnergyLorentz);
 
   G4double stepTime = stepMagnitude/particleVelocity;
-  G4double cumulativeProbability = 1.0 - std::exp(-1.0*crossSection*photonFluxSum*(stepTime/100.)*particleGamma);
+  G4double cumulativeProbability = 1.0 - std::exp((-1.0*crossSection*photonFluxSum*(stepTime/100.)*particleGamma));
 
   G4double secondaryStepPosition;
   
   if (photonFluxSum == 0)
     {secondaryStepPosition = G4UniformRand();}
   else
-  {
-    G4RandGeneral trajectoryPDFRandom = CLHEP::RandGeneral(*CLHEP::HepRandom::getTheEngine(),
+    {
+      G4RandGeneral trajectoryPDFRandom = CLHEP::RandGeneral(*CLHEP::HepRandom::getTheEngine(),
                                                              fluxArray.data(),100,0);
-    secondaryStepPosition = trajectoryPDFRandom.shoot();
-  }
+      secondaryStepPosition = trajectoryPDFRandom.shoot();
+    }
 
-  G4ThreeVector proposedPositionGlobal = particlePositionGlobal + (stepMagnitude*secondaryStepPosition*particleDirectionMomentumGlobal);
-  G4double proposedTime = particleGlobalTimePreStep + (stepMagnitude*secondaryStepPosition/particleVelocity);
+  G4ThreeVector proposedPositionGlobal = particlePositionPreStepGlobal + (stepMagnitude*secondaryStepPosition*particleMomentumDirectionPreStepGlobal);
+  G4double proposedTimeGlobal = particleTimePreStepGlobal + (stepMagnitude*secondaryStepPosition/particleVelocity);
 
   aParticleChange.ProposePosition(proposedPositionGlobal);
   G4double initialWeight=aParticleChange.GetParentWeight();
@@ -192,7 +185,7 @@ G4VParticleChange* BDSLaserCumulativePhotodetachment::PostStepDoIt(const G4Track
   G4double ionMass = ion->GetMass();
   // hydrogen kinematics
 
-  G4double outgoingH0Energy = ionMass+photonEnergy-outgoingElectronEnergy;
+  G4double outgoingH0Energy = ionMass+photonEnergyLorentz-outgoingElectronEnergy;
   G4double outgoingH0Momentum = std::sqrt(outgoingH0Energy*outgoingH0Energy-hydrogenMass*hydrogenMass);
   G4LorentzVector outgoingH0;
   outgoingH0.setPx(-1.0*randomDirection.x()*outgoingH0Momentum);
@@ -215,8 +208,8 @@ G4VParticleChange* BDSLaserCumulativePhotodetachment::PostStepDoIt(const G4Track
   G4DynamicParticle* electron = new G4DynamicParticle(G4Electron::ElectronDefinition(),
                                                       outgoingElectron.vect().unit(),
                                                       outgoingElectron.e());
-  aParticleChange.AddSecondary(electron,proposedTime);
-  aParticleChange.ProposePosition(particlePositionGlobalPostStep);
+  aParticleChange.AddSecondary(electron,proposedTimeGlobal);
+  aParticleChange.ProposePosition(particlePositionPostStepGlobal);
 
   aParticleChange.ProposeParentWeight(initialWeight*cumulativeProbability);
   return G4VDiscreteProcess::PostStepDoIt(track, step);
