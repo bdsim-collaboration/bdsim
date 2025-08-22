@@ -64,8 +64,6 @@ std::string GMAD::typestr(ElementType type)
       {return "gascap";               break;}
     case ElementType::_GASJET:
       {return "gasjet";               break;}
-    case ElementType::_LASER:
-      {return "laser";               break;}
     case ElementType::_MATERIAL:
       {return "material";            break;}
     case ElementType::_RBEND:
