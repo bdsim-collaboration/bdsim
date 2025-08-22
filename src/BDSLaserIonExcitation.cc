@@ -135,7 +135,7 @@ G4VParticleChange* BDSLaserIonExcitation::PostStepDoIt(const G4Track& track,
   G4double photonEnergy = photonLorentz.e();
   G4double crossSection = ionExcitationEngine->CrossSection(photonEnergy);
   G4double particleGlobalTime = track.GetGlobalTime();
-  G4double photonFlux = (laser->Intensity(particlePositionLocal,0)*laser->TemporalProfileGaussian(particleGlobalTime,particlePositionLocal.z()))/photonEnergy;
+  G4double photonFlux = (laser->Intensity(particlePositionLocal)*laser->TemporalProfileGaussian(particleGlobalTime,particlePositionLocal.z()))/photonEnergy;
   G4LorentzVector ion4Vector = ion->Get4Momentum();
   ion4Vector.boost(-ionBeta);
 

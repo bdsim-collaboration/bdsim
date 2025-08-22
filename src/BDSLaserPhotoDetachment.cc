@@ -109,19 +109,19 @@ G4VParticleChange* BDSLaserPhotoDetachment::PostStepDoIt(const G4Track& track,
 
   G4DynamicParticle* ion = const_cast<G4DynamicParticle*>(track.GetDynamicParticle());
 
-  G4ThreeVector particlePositionGlobal = track.GetPosition();
+  G4ThreeVector particlePositionPostStepGlobal = track.GetPosition();
   G4ThreeVector particleDirectionMomentumGlobal = track.GetMomentumDirection();
   const G4RotationMatrix* rot = track.GetTouchable()->GetRotation();
   const G4AffineTransform transform = track.GetTouchable()->GetHistory()->GetTopTransform();
-  G4ThreeVector particlePositionLocal = transform.TransformPoint(particlePositionGlobal);
+  G4ThreeVector particlePositionLocal = transform.TransformPoint(particlePositionPostStepGlobal);
   G4ThreeVector particleDirectionMomentumLocal = transform.TransformPoint(particleDirectionMomentumGlobal).unit();
 
   // create photon
   G4ThreeVector photonUnit(0,0,1);
   photonUnit.transform(*rot);
-  G4double photonE = (CLHEP::h_Planck*CLHEP::c_light)/laser->Wavelength();
-  G4ThreeVector photonVector = photonUnit*photonE;
-  G4LorentzVector photonLorentz = G4LorentzVector(photonVector,photonE);
+  G4double photonEnergy = (CLHEP::h_Planck*CLHEP::c_light)/laser->Wavelength();
+  G4ThreeVector photonVector = photonUnit*photonEnergy;
+  G4LorentzVector photonLorentz = G4LorentzVector(photonVector,photonEnergy);
 
   G4double ionEnergy = ion->GetTotalEnergy();
   G4ThreeVector ionMomentum = ion->GetMomentum();
@@ -130,21 +130,21 @@ G4VParticleChange* BDSLaserPhotoDetachment::PostStepDoIt(const G4Track& track,
   G4double ionGamma = ionEnergy/ionMass;
   G4double ionVelocity = ionBeta.mag()*CLHEP::c_light;
   photonLorentz.boost(-ionBeta);
-  G4double photonEnergy = photonLorentz.e();
-  G4double crossSection = photoDetachmentEngine->CrossSection(photonEnergy);
+  G4double photonEnergyLorentz = photonLorentz.e();
+  G4double crossSection = photoDetachmentEngine->CrossSection(photonEnergyLorentz);
 
-  G4double particleGlobalTime = track.GetGlobalTime();
-  G4double intensity =laser->Intensity(particlePositionLocal,0);
-  G4double timeProfile=laser->TemporalProfileGaussian(particleGlobalTime,particlePositionLocal.z());
-  G4double photonFlux = (intensity/photonEnergy)*timeProfile;
+  G4double particleTimePostStepGlobal = track.GetGlobalTime();
+  G4double intensity =laser->Intensity(particlePositionLocal);
+  G4double timeProfile=laser->TemporalProfileGaussian(particleTimePostStepGlobal,particlePositionLocal.z());
+  G4double photonFlux = (intensity/photonEnergyLorentz)*timeProfile;
 
-  G4double ionTime = (stepLength/ionVelocity)*ionGamma;
+  G4double ionTime = track.GetStep()->GetPreStepPoint()->GetGlobalTime();
   G4double NeutralisationProbability = 1.0-std::exp(-crossSection*photonFlux*ionTime);
   const BDSGlobalConstants* g = BDSGlobalConstants::Instance();
   G4double scaleFactor = g->ScaleFactorLaser();
   G4double randomNumber = G4UniformRand();
 
-      if((NeutralisationProbability*scaleFactor)>randomNumber)
+  if((NeutralisationProbability*scaleFactor)>randomNumber)
     {
     // electron kinematics
       G4ThreeVector randomDirection = G4RandomDirection();
@@ -156,7 +156,7 @@ G4VParticleChange* BDSLaserPhotoDetachment::PostStepDoIt(const G4Track& track,
 
       // hydrogen kinematics
 
-      G4double outgoingH0Energy = ionMass+photonEnergy-outgoingElectronEnergy;
+      G4double outgoingH0Energy = ionMass+photonEnergyLorentz-outgoingElectronEnergy;
       G4double outgoingH0Momentum = std::sqrt(outgoingH0Energy*outgoingH0Energy-hydrogenMass*hydrogenMass);
       G4LorentzVector outgoingH0;
       outgoingH0.setPx(-1.0*randomDirection.x()*outgoingH0Momentum);

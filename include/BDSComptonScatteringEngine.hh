@@ -64,6 +64,7 @@ private:
   G4StokesVector outgoingElectronPolarization;
   G4double particleMass;
   G4double particleRadius;
+
   G4int partID;
 };
 

@@ -48,6 +48,7 @@ void BDSComptonScatteringEngine::SetParticle(G4int partIDIn)
   particleRadius = (CLHEP::e_squared) / (4 * CLHEP::pi * CLHEP::epsilon0 * particleMass);
 }
 
+
 G4double BDSComptonScatteringEngine::CrossSection(G4double photonEnergyIn, G4int partIn)
 {
   SetParticle(partIn);
@@ -72,18 +73,14 @@ void BDSComptonScatteringEngine::PerformCompton(const G4ThreeVector& boost,G4int
   G4double phi = MCPhi(theta,scatteredGammaEnergy);
   G4ThreeVector scatteredGammaUnitVector(std::sin(theta)*std::cos(phi), std::sin(theta)*std::sin(phi), std::cos(theta));
   if(incomingGamma.x()<=1e9&&incomingGamma.y()<=1e9)
-  {
+    {
       scatteredGammaUnitVector.rotate(0,CLHEP::pi,0);
-      //rotateUz(incomingGamma.vect().unit());
-      //theta -=CLHEP::pi;
-      //scatteredGammaUnitVector.setX(std::sin(theta)*std::cos(phi));
-      //scatteredGammaUnitVector.setY(std::sin(theta)*std::sin(phi));
-      //scatteredGammaUnitVector.setZ(std::cos(theta));
-  }
-  else{
+    }
+  else
+    {
       G4RotationMatrix* rot = CalculateRotation();
       scatteredGammaUnitVector.transform(*rot);
-  }
+    }
   scatteredGamma.setVect(scatteredGammaUnitVector * scatteredGammaEnergy);
   scatteredGamma.setE(scatteredGammaEnergy);
   G4ThreeVector scatteredElectronVector(incomingGamma.vect()-scatteredGamma.vect());
@@ -139,9 +136,9 @@ G4double BDSComptonScatteringEngine::MCPhi(G4double theta, G4double scatteredEne
     G4double maxCrossSec2 = PolarizationCrossSectionPhi(theta, maxPhiVal+CLHEP::pi,scatteredEnergy);
     G4double maxCrossSec;
     if(maxCrossSec1>=maxCrossSec2)
-    {maxCrossSec=maxCrossSec1;}
+      {maxCrossSec=maxCrossSec1;}
     else
-    {maxCrossSec=maxCrossSec2;}
+      {maxCrossSec=maxCrossSec2;}
     G4double phi = CLHEP::twopi*G4UniformRand();
     G4double randCrossSecPhi = PolarizationCrossSectionPhi(theta, phi, scatteredEnergy);
     G4double randCrossSec = maxCrossSec*G4UniformRand();
@@ -163,23 +160,19 @@ G4double BDSComptonScatteringEngine::PolarizationCrossSectionPhi(G4double theta,
 
 G4double BDSComptonScatteringEngine::PolarizationCrossSectionMaxPhi(G4double theta ,G4double Ep)
 {
-    //G4double numer = incomingGammaPolarization.p2()*std::sin(theta)*std::sin(theta)+incomingGammaPolarization.p3()*incomingElectronPolarization.p1()*Ep*std::sin(theta)*(1.0-std::cos(theta));
-
-    //G4double denom = -1*incomingGammaPolarization.p3()*incomingElectronPolarization.p2()*Ep*std::sin(theta)*(1.0-std::cos(theta))+incomingGammaPolarization.p1()*std::sin(theta)*std::sin(theta);
-
-    G4double numer = -incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep*std::sin(theta)*incomingElectronPolarization.p2() -
+  G4double numer = -incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep*std::sin(theta)*incomingElectronPolarization.p2() -
                         std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p2();
-    G4double denom = std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p1()+
+  G4double denom = std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p1()+
                     incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep*std::sin(theta)*incomingElectronPolarization.p1();
-    G4double phiVal = std::atan(numer/denom);
-    if(phiVal<0)
+  G4double phiVal = std::atan(numer/denom);
+  if (phiVal<0)
     {phiVal+=CLHEP::pi;}
-    if(numer ==0)
+  if (numer ==0)
     {return 0;}
-    if (denom ==0)
+  if (denom ==0)
     {return 0;}
-    else
-    {return phiVal;}
+  else
+   {return phiVal;}
 }
 
 
