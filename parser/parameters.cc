@@ -159,6 +159,13 @@ Parameters::Parameters()
   setMap["materialThickness"] = false;
   setMap["degraderOffset"]    = false;
 
+  setMap["laserBeam"]         = false;
+  setMap["laserOffsetTheta"]  = false;
+  setMap["laserOffsetPhi"]    = false;
+  setMap["laserOffsetX"]      = false;
+  setMap["laserOffsetY"]      = false;
+  setMap["laserOffsetZ"]      = false;
+
   setMap["wireDiameter"]      = false;
   setMap["wireLength"]        = false;
   setMap["wireOffsetX"]       = false;

@@ -637,6 +637,14 @@ void Element::flush()
   materialThickness = 0;
   degraderOffset = 0;
 
+  // laserwire
+  laserBeam        = "";
+  laserOffsetTheta = 0;
+  laserOffsetPhi   = 0;
+  laserOffsetX     = 0;
+  laserOffsetY     = 0;
+  laserOffsetZ     = 0;
+
   // for wirescanner
   wireDiameter = 0;
   wireLength   = 0;
