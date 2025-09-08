@@ -29,8 +29,6 @@ MACRO(COPY_FILE_IF_CHANGED in_file out_file target)
       POST_BUILD 
       COMMAND    ${CMAKE_COMMAND}
       ARGS       -E copy ${in_file} ${out_file}
-      MAIN_DEPENDENCY ${in_file}
-      #COMMENT    "Copying file: ${in_file} to: ${out_file}"
       )
   ENDIF()
 ENDMACRO(COPY_FILE_IF_CHANGED)
