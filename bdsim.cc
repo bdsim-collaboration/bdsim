@@ -42,7 +42,7 @@ int main(int argc, char** argv)
       if (!bds->Initialised())
 	{
 	  if (bds->InitialisationResult() == 1)
-	    {std::cout << "Intialisation failed" << std::endl; return 1;}
+	    {std::cout << "Initialisation failed" << std::endl; return 1;}
 	}
       else
 	{bds->BeamOn();}
