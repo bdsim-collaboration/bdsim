@@ -16,22 +16,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSBUNCHGAUSSSLOWEXT_H
-#define BDSBUNCHGAUSSSLOWEXT_H
+#include "BDSBunchGaussMatrix.hh"
+#include "BDSBunchGaussMatrixSlowExt.hh"
 
-#include "BDSBunchGaussSlowExtBase.hh"
-
-/**
- * @brief Simple Gauss with slow extraction P-T.
- * 
- * @author Laurie Nevay
- */
-
-class BDSBunchGaussSlowExt: public BDSBunchGaussSlowExtBase
+BDSBunchGaussMatrixSlowExt::BDSBunchGaussMatrixSlowExt():
+  BDSBunchGaussSlowExtBase("gaussmatrixslowext")
 {
-public:
-  BDSBunchGaussSlowExt();
-  virtual ~BDSBunchGaussSlowExt() = default;
-};
-
-#endif
+  gauss = new BDSBunchGaussMatrix();
+}

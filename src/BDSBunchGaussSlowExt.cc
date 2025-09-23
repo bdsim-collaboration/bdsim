@@ -18,58 +18,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSBunchGauss.hh"
 #include "BDSBunchGaussSlowExt.hh"
-#include "BDSBunchSlowExt.hh"
-#include "BDSDebug.hh"
-#include "BDSWarning.hh"
-
-#include "parser/beam.h"
-
 
 BDSBunchGaussSlowExt::BDSBunchGaussSlowExt():
-  BDSBunch("gaussslowext"),
-  gauss(new BDSBunchGauss()),
-  slowext(new BDSBunchSlowExt())
-{;}
-
-BDSBunchGaussSlowExt::~BDSBunchGaussSlowExt()
+  BDSBunchGaussSlowExtBase("gaussslowext")
 {
-  delete gauss;
-  delete slowext;
-}
-
-void BDSBunchGaussSlowExt::SetOptions(const BDSParticleDefinition* beamParticle,
-                                         const GMAD::Beam& beam,
-                                         const BDSBunchType& distrType,
-                                         G4Transform3D beamlineTransformIn,
-                                         const G4double beamlineSIn)
-{
-  BDSBunch::SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
-
-  gauss->SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
-  slowext->SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
-
-  if (gauss->OffsetSampleMean())
-    {BDS::Warning(__METHOD_NAME__, "offsetSampleMean will only work for the gauss component of this slow extracted distribution");}
-}
-
-void BDSBunchGaussSlowExt::CheckParameters()
-{
-  gauss->CheckParameters();
-  slowext->CheckParameters();
-}
-
-BDSParticleCoordsFull BDSBunchGaussSlowExt::GetNextParticleLocal()
-{
-  auto pGauss = gauss->GetNextParticleLocal();
-  G4double dtLocal, dELocal;
-  slowext->GetDeltas(dtLocal, dELocal);
-  pGauss.totalEnergy += dELocal;
-  pGauss.T += dtLocal;
-  return pGauss;
-}
-
-void BDSBunchGaussSlowExt::BeginOfRunAction(G4int numberOfEvents,
-                                               G4bool batchMode)
-{
-  gauss->BeginOfRunAction(numberOfEvents, batchMode);
+  gauss = new BDSBunchGauss();
 }

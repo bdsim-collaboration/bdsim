@@ -26,8 +26,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBunchFactory.hh"
 #include "BDSBunchGauss.hh"
 #include "BDSBunchGaussMatrix.hh"
+#include "BDSBunchGaussMatrixSlowExt.hh"
 #include "BDSBunchGaussSlowExt.hh"
 #include "BDSBunchGaussTwiss.hh"
+#include "BDSBunchGaussTwissSlowExt.hh"
 #include "BDSBunchHalo.hh"
 #include "BDSBunchHaloFlatSigma.hh"
 #include "BDSBunchPtc.hh"
@@ -98,6 +100,10 @@ BDSBunch* BDSBunchFactory::CreateBunch(const BDSParticleDefinition* beamParticle
       {bdsBunch = new BDSBunchGaussTwiss(); break;}
     case BDSBunchType::gaussslowext:
       {bdsBunch = new BDSBunchGaussSlowExt(); break;}
+    case BDSBunchType::gaussmatrixslowext:
+      {bdsBunch = new BDSBunchGaussMatrixSlowExt(); break;}
+    case BDSBunchType::gausstwissslowext:
+      {bdsBunch = new BDSBunchGaussTwissSlowExt(); break;}
     case BDSBunchType::circle:
       {bdsBunch = new BDSBunchCircle(); break;}
     case BDSBunchType::square:
