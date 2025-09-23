@@ -19,6 +19,7 @@ Model Control
   - :ref:`physics-modular-physics-lists`
   - :ref:`physics-geant4-lists`
   - :ref:`physics-complete-lists`
+  - :ref:`millicharged-physics`
 
 * :ref:`physics-biasing`
 
@@ -2390,6 +2391,42 @@ target of carbon. This example can be found in :code:`bdsim/examples/features/pr
 .. note:: Although, this is referred to proton diffraction this applies to all nucleons
           and therefore will affect ion-ion collisions too.
 
+
+.. _millicharged-physics:
+
+Millicharged Physics
+--------------------
+
+Currently, millicharged physics include EM transport and scattering processes.
+To simulate millicharged particles, the following options may be specified:
+
+.. tabularcolumns:: |p{5cm}|p{10cm}|p{3cm}|p{3cm}|
+
++-------------------+---------------------------------------+----------------+-----------------+
+| Parameter         | Description                           | Default        | Required        |
++===================+=======================================+================+=================+
+|`enableMillicharge`| Whether to allow millicharge physics. | False          | No              |
++-------------------+---------------------------------------+----------------+-----------------+
+|`millichargeName`  | Name of the particle.                 | "millicharged" | No              |
++-------------------+---------------------------------------+----------------+-----------------+
+|`millichargeMass`  | Rest mass [GeV].                      | 100            | No              |
++-------------------+---------------------------------------+----------------+-----------------+
+|`millichargeCharge`| Electric charge [e+].                 | 0.1            | No              |
++-------------------+---------------------------------------+----------------+-----------------+
+|`millichargeID`    | PDG ID.                               | 411000         | No              |
++-------------------+---------------------------------------+----------------+-----------------+
+
+Example: ::
+
+  beam, particle="millie",
+        kineticEnergy=100*GeV;
+
+  option, enableMillicharge=1,
+        millichargeName="millie",
+        millichargeMass=10*GeV,
+        millichargeCharge=0.01,
+        millichargeID=411000;
+        
 
 .. _physics-biasing:
 
