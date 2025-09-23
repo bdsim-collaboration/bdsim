@@ -31,9 +31,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 struct bunchtypes_def
 {
-  enum type {reference, gaussmatrix, gauss, gausstwiss, circle, square, ring, eshell,
-	     halo, composite, userfile, ptc, sixtrack, eventgeneratorfile, sphere,
-	     compositesde, box, bdsimsampler, halosigma, hdf5};
+  enum type {reference,
+		gaussmatrix, gauss, gausstwiss,
+		gaussmatrixslowext, gaussslowext, gausstwissslowext,
+		circle, square, ring, eshell,
+		halo, composite, userfile, ptc, sixtrack, eventgeneratorfile, sphere,
+		compositesde, box, bdsimsampler, halosigma, hdf5, slowext};
 };
 
 typedef BDSTypeSafeEnum<bunchtypes_def,int> BDSBunchType;

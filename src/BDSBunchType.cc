@@ -35,6 +35,9 @@ std::map<BDSBunchType, std::string>* BDSBunchType::dictionary =
       {BDSBunchType::gaussmatrix, "gaussmatrix"},
       {BDSBunchType::gauss,       "gauss"},
       {BDSBunchType::gausstwiss,  "gausstwiss"},
+      {BDSBunchType::gaussmatrixslowext, "gaussmatrixslowext"},
+      {BDSBunchType::gaussslowext,       "gaussslowext"},
+      {BDSBunchType::gausstwissslowext,  "gausstwissslowext"},
       {BDSBunchType::circle,      "circle"},
       {BDSBunchType::square,      "square"},
       {BDSBunchType::ring,        "ring"},
@@ -50,40 +53,47 @@ std::map<BDSBunchType, std::string>* BDSBunchType::dictionary =
       {BDSBunchType::box,         "box"},
       {BDSBunchType::halosigma,   "halosigma"},
       {BDSBunchType::bdsimsampler,"bdsimsampler"},
-      {BDSBunchType::hdf5,        "hdf5"}
+      {BDSBunchType::hdf5,        "hdf5"},
+      {BDSBunchType::slowext,     "slowext"},
 });
 
 BDSBunchType BDS::DetermineBunchType(G4String distrType)
 {
   std::map<G4String, BDSBunchType> types;
 
-  types["reference"]      = BDSBunchType::reference;
-  types["gaussmatrix"]    = BDSBunchType::gaussmatrix;
-  types["gauss-matrix"]   = BDSBunchType::gaussmatrix;
-  types["gauss"]          = BDSBunchType::gauss;
-  types["gausstwiss"]     = BDSBunchType::gausstwiss;
-  types["gauss-twiss"]    = BDSBunchType::gausstwiss;
-  types["circle"]         = BDSBunchType::circle;
-  types["square"]         = BDSBunchType::square;
-  types["ring"]           = BDSBunchType::ring;
-  types["eshell"]         = BDSBunchType::eshell;
-  types["halo"]           = BDSBunchType::halo;
-  types["composite"]      = BDSBunchType::composite;
-  types["userfile"]       = BDSBunchType::userfile;
-  types["ptc"]            = BDSBunchType::ptc;
-  types["sixtrack"]       = BDSBunchType::sixtrack;
-  types["eventgeneratorfile"] = BDSBunchType::eventgeneratorfile;
-  types["event-generator-file"] = BDSBunchType::eventgeneratorfile;
-  types["sphere"]         = BDSBunchType::sphere;
+  types["reference"]             = BDSBunchType::reference;
+  types["gaussmatrix"]           = BDSBunchType::gaussmatrix;
+  types["gauss-matrix"]          = BDSBunchType::gaussmatrix;
+  types["gauss"]                 = BDSBunchType::gauss;
+  types["gausstwiss"]            = BDSBunchType::gausstwiss;
+  types["gauss-twiss"]           = BDSBunchType::gausstwiss;
+  types["gaussmatrixslowext"]    = BDSBunchType::gaussmatrixslowext;
+  types["gauss-matrix-slow-ext"] = BDSBunchType::gaussmatrixslowext;
+  types["gaussslowext"]          = BDSBunchType::gaussslowext;
+  types["gauss-slow-ext"]        = BDSBunchType::gaussslowext;
+  types["gausstwissslowext"]     = BDSBunchType::gausstwissslowext;
+  types["gauss-twiss-slow-ext"]  = BDSBunchType::gausstwissslowext;
+  types["circle"]                = BDSBunchType::circle;
+  types["square"]                = BDSBunchType::square;
+  types["ring"]                  = BDSBunchType::ring;
+  types["eshell"]                = BDSBunchType::eshell;
+  types["halo"]                  = BDSBunchType::halo;
+  types["composite"]             = BDSBunchType::composite;
+  types["userfile"]              = BDSBunchType::userfile;
+  types["ptc"]                   = BDSBunchType::ptc;
+  types["sixtrack"]              = BDSBunchType::sixtrack;
+  types["eventgeneratorfile"]    = BDSBunchType::eventgeneratorfile;
+  types["event-generator-file"]  = BDSBunchType::eventgeneratorfile;
+  types["sphere"]                = BDSBunchType::sphere;
   types["compositespacedirectionenergy"] = BDSBunchType::compositesde;
   types["composite-space-direction-energy"] = BDSBunchType::compositesde;
-  types["compositesde"]   = BDSBunchType::compositesde;
-  types["box"]            = BDSBunchType::box;
-  types["halosigma"]      = BDSBunchType::halosigma;
-  types["halo-sigma"]     = BDSBunchType::halosigma;
-  types["bdsimsampler"]   = BDSBunchType::bdsimsampler;
-  types["bdsim-sampler"]  = BDSBunchType::bdsimsampler;
-  types["hdf5"]           = BDSBunchType::hdf5;
+  types["compositesde"]          = BDSBunchType::compositesde;
+  types["box"]                   = BDSBunchType::box;
+  types["halosigma"]             = BDSBunchType::halosigma;
+  types["halo-sigma"]            = BDSBunchType::halosigma;
+  types["bdsimsampler"]          = BDSBunchType::bdsimsampler;
+  types["bdsim-sampler"]         = BDSBunchType::bdsimsampler;
+  types["hdf5"]                  = BDSBunchType::hdf5;
 
   distrType = BDS::LowerCase(distrType);
 
