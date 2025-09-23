@@ -49,8 +49,8 @@ std::map<BDSBunchType, std::string>* BDSBunchType::dictionary =
       {BDSBunchType::compositesde,"compositespacedirectionenergy"},
       {BDSBunchType::box,         "box"},
       {BDSBunchType::halosigma,   "halosigma"},
-      {BDSBunchType::bdsimsampler, "bdsimsampler"},
-      {BDSBunchType::hdf5, "hdf5"}
+      {BDSBunchType::bdsimsampler,"bdsimsampler"},
+      {BDSBunchType::hdf5,        "hdf5"}
 });
 
 BDSBunchType BDS::DetermineBunchType(G4String distrType)
@@ -59,8 +59,10 @@ BDSBunchType BDS::DetermineBunchType(G4String distrType)
 
   types["reference"]      = BDSBunchType::reference;
   types["gaussmatrix"]    = BDSBunchType::gaussmatrix;
+  types["gauss-matrix"]   = BDSBunchType::gaussmatrix;
   types["gauss"]          = BDSBunchType::gauss;
   types["gausstwiss"]     = BDSBunchType::gausstwiss;
+  types["gauss-twiss"]    = BDSBunchType::gausstwiss;
   types["circle"]         = BDSBunchType::circle;
   types["square"]         = BDSBunchType::square;
   types["ring"]           = BDSBunchType::ring;
@@ -71,13 +73,17 @@ BDSBunchType BDS::DetermineBunchType(G4String distrType)
   types["ptc"]            = BDSBunchType::ptc;
   types["sixtrack"]       = BDSBunchType::sixtrack;
   types["eventgeneratorfile"] = BDSBunchType::eventgeneratorfile;
+  types["event-generator-file"] = BDSBunchType::eventgeneratorfile;
   types["sphere"]         = BDSBunchType::sphere;
   types["compositespacedirectionenergy"] = BDSBunchType::compositesde;
+  types["composite-space-direction-energy"] = BDSBunchType::compositesde;
   types["compositesde"]   = BDSBunchType::compositesde;
   types["box"]            = BDSBunchType::box;
   types["halosigma"]      = BDSBunchType::halosigma;
+  types["halo-sigma"]     = BDSBunchType::halosigma;
   types["bdsimsampler"]   = BDSBunchType::bdsimsampler;
-  types["hdf5"]   = BDSBunchType::hdf5;
+  types["bdsim-sampler"]  = BDSBunchType::bdsimsampler;
+  types["hdf5"]           = BDSBunchType::hdf5;
 
   distrType = BDS::LowerCase(distrType);
 

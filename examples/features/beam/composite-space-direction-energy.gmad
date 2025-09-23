@@ -1,0 +1,15 @@
+beam, particle = "e-",
+      energy = 30*MeV,
+      distrType = "composite-space-direction-energy",
+      spaceDistrType = "box",
+      directionDistrType = "sphere",
+      energyDistrType = "gauss",
+      envelopeX = 1*cm,
+      envelopeY = 2*cm,
+      envelopeZ = 3*cm,
+      sigmaEk = 0.1;
+
+include options.gmad
+include fodo.gmad;
+
+option, ngenerate=10;

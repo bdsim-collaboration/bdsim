@@ -1,4 +1,5 @@
 simple_testing(bunch-bdsimsampler                     "--file=bdsimsampler.gmad"                 "")
+simple_testing(bunch-bdsim-sampler                    "--file=bdsim-sampler.gmad"                "")
 simple_testing(bunch-bdsimsampler-offset              "--file=bdsimsampler-offset.gmad"          "")
 simple_testing(bunch-bdsimsampler-permit-unstable     "--file=bdsimsampler-permit-unstable.gmad" "")
 simple_testing(bunch-bdsimsampler-loop-ntimes         "--file=bdsimsampler-loop-ntimes.gmad"     "")

@@ -1,0 +1,21 @@
+c1: rcol, l=0.2*m, material="W";
+l1: line=(c1);
+use, l1;
+
+denergy: scorer, type="depositedenergy";
+ddose: scorer, type="depositeddose";
+
+! mesh in collimator
+meshCol: scorermesh, nx=19, ny=19, nz=20, scoreQuantity="denergy ddose",
+	 xsize=1.9*cm, ysize=1.9*cm, zsize=20*cm,
+	 z=10*cm;
+
+beam, particle="e-",
+      energy=50*GeV;
+
+option, physicsList="em",
+	defaultRangeCut=1*cm,
+	minimumKineticEnergy=20*MeV,
+	elossHistoBinWidth=5*mm,
+	seed=123,
+	ngenerate=20;

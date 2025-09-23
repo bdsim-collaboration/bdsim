@@ -1,0 +1,16 @@
+beam, particle="e-",
+      energy=1.0*GeV,
+      distrType="gauss-twiss",
+      betx=4.60000*m,
+      bety=2.60000*m,
+      alfx=-0.3083824,
+      alfy= 0.0233215,
+      emitx=25e-9,
+      emity=25e-9;
+
+
+
+include options.gmad
+include fodo.gmad;
+
+option, ngenerate=10;
