@@ -19,7 +19,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSBUNCHSIGMAMATRIX_H
 #define BDSBUNCHSIGMAMATRIX_H 
 
-#include "BDSBunchGaussian.hh"
+#include "BDSBunchGaussBase.hh"
 
 #include "G4Transform3D.hh"
 
@@ -34,7 +34,7 @@ namespace GMAD
  * @author Stewart Boogert
  */
 
-class BDSBunchSigmaMatrix: public BDSBunchGaussian
+class BDSBunchSigmaMatrix: public BDSBunchGaussBase
 {
 public:
   BDSBunchSigmaMatrix();

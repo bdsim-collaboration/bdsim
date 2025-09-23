@@ -35,7 +35,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <vector>
 
 BDSBunchTwiss::BDSBunchTwiss():
-  BDSBunchGaussian("gausstwiss"),
+  BDSBunchGaussBase("gausstwiss"),
   betaX(0.0), betaY(0.0),
   alphaX(0.0), alphaY(0.0),
   emitX(0.0), emitY(0.0),
@@ -51,7 +51,7 @@ void BDSBunchTwiss::SetOptions(const BDSParticleDefinition* beamParticle,
                                const G4double beamlineSIn)
 {
   // Fill means and class BDSBunch::SetOptions
-  BDSBunchGaussian::SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
+  BDSBunchGaussBase::SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
 
   betaX  = beam.betx;
   betaY  = beam.bety;
@@ -116,7 +116,7 @@ void BDSBunchTwiss::SetOptions(const BDSParticleDefinition* beamParticle,
 
 void BDSBunchTwiss::CheckParameters()
 {
-  BDSBunchGaussian::CheckParameters();
+  BDSBunchGaussBase::CheckParameters();
   if (emitX <= 0)
     {throw BDSException(__METHOD_NAME__, "emitx must be finite!");}
   if (emitY <= 0)

@@ -29,7 +29,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "CLHEP/Units/PhysicalConstants.h"
 
 BDSBunchSigmaMatrix::BDSBunchSigmaMatrix():
-  BDSBunchGaussian("gauss/gausstwiss")
+  BDSBunchGaussBase("sigmamatrix")
 {;}
 
 void BDSBunchSigmaMatrix::SetOptions(const BDSParticleDefinition* beamParticle,
@@ -39,7 +39,7 @@ void BDSBunchSigmaMatrix::SetOptions(const BDSParticleDefinition* beamParticle,
                                      const G4double beamlineSIn)
 {
   // Fill means and class BDSBunch::SetOptions
-  BDSBunchGaussian::SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
+  BDSBunchGaussBase::SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
 
   switch (distrType.underlying())
     {
@@ -78,7 +78,7 @@ void BDSBunchSigmaMatrix::SetOptions(const BDSParticleDefinition* beamParticle,
         sigmaGM[1][1] = std::pow(beam.sigmaXp,2);
         sigmaGM[2][2] = std::pow(beam.sigmaY, 2);
         sigmaGM[3][3] = std::pow(beam.sigmaYp,2);
-        sigmaGM[4][4] = std::pow(sigmaT, 2); // these are made slightly finite in BDSBunchGaussian
+        sigmaGM[4][4] = std::pow(sigmaT, 2); // these are made slightly finite in BDSBunchGaussBase
         sigmaGM[5][5] = std::pow(sigmaE, 2); // if 0 to ensure +ve definiteness
         break;
       }
