@@ -34,11 +34,11 @@ namespace GMAD
  * @author Stewart Boogert
  */
 
-class BDSBunchTwiss: public BDSBunchGaussBase
+class BDSBunchGaussTwiss: public BDSBunchGaussBase
 {
 public: 
-  BDSBunchTwiss();
-  virtual ~BDSBunchTwiss(){;}  
+  BDSBunchGaussTwiss();
+  virtual ~BDSBunchGaussTwiss(){;}
   virtual void SetOptions(const BDSParticleDefinition* beamParticle,
 			  const GMAD::Beam& beam,
 			  const BDSBunchType& distrType,

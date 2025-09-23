@@ -16,8 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSBUNCHSIGMAMATRIX_H
-#define BDSBUNCHSIGMAMATRIX_H 
+#ifndef BDSBUNCHGAUSSMATRIX_H
+#define BDSBUNCHGAUSSMATRIX_H
 
 #include "BDSBunchGaussBase.hh"
 
@@ -34,16 +34,16 @@ namespace GMAD
  * @author Stewart Boogert
  */
 
-class BDSBunchSigmaMatrix: public BDSBunchGaussBase
+class BDSBunchGaussMatrix: public BDSBunchGaussBase
 {
 public:
-  BDSBunchSigmaMatrix();
-  virtual ~BDSBunchSigmaMatrix(){;}
+	BDSBunchGaussMatrix();
+  virtual ~BDSBunchGaussMatrix(){;}
   virtual void SetOptions(const BDSParticleDefinition* beamParticle,
-			  const GMAD::Beam& beam,
-			  const BDSBunchType& distrType,
-			  G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
-			  const G4double beamlineS = 0);
+													const GMAD::Beam& beam,
+													const BDSBunchType& distrType,
+													G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
+													const G4double beamlineS = 0);
 };
 
 #endif
