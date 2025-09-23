@@ -332,4 +332,10 @@ void Beam::PublishMembers()
   publish("eventGeneratorMaxEK",     &Beam::eventGeneratorMaxEK); // alias
   publish("eventGeneratorParticles", &Beam::eventGeneratorParticles);
   publish("eventGeneratorWarnSkippedParticles", &Beam::eventGeneratorWarnSkippedParticles);
+
+  // slow extraction beam
+  publish("dTStart", &Beam::dTStart);
+  publish("dTStop",  &Beam::dTStop);
+  publish("dPStart", &Beam::dPStart);
+  publish("dPStop",  &Beam::dPStop);
 }
