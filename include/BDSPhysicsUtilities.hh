@@ -89,7 +89,7 @@ namespace BDS
                                                      G4double totalEnergyIn,
                                                      G4double kineticEnergyIn,
                                                      G4double momentumIn,
-						     G4double ffact = 1);
+                                                     G4double ffact = 1);
 
   /// Ensure required beam particle has been constructed for Geant4 purposes. Expects
   /// lowercase letters, not the Geant4 exact string.
