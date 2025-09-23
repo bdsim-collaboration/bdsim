@@ -141,6 +141,12 @@ BDSBunch* BDSBunchFactory::CreateBunch(const BDSParticleDefinition* beamParticle
 #ifdef USE_PLASMA_HDF5
     case BDSBunchType::hdf5:
       {bdsBunch = new BDSBunchHDF5(); break;}
+#else
+    case BDSBunchType::hdf5:
+      {
+        G4String message = "BDSIM is not compiled with HDF5 support.";
+        throw BDSException(__METHOD_NAME__, message);
+      }
 #endif
     default:
       {bdsBunch = new BDSBunch(); break;}
