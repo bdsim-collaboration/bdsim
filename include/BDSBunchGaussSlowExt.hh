@@ -55,6 +55,8 @@ public:
                           G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
                           const G4double beamlineS = 0);
 
+  virtual void CheckParameters();
+
   /// Either draw from the vector of already created points or fire fresh
   /// from the matrix.
   virtual BDSParticleCoordsFull GetNextParticleLocal();

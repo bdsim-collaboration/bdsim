@@ -52,6 +52,12 @@ void BDSBunchGaussSlowExt::SetOptions(const BDSParticleDefinition* beamParticle,
     {BDS::Warning(__METHOD_NAME__, "offsetSampleMean will only work for the gauss component of this slow extracted distribution");}
 }
 
+void BDSBunchGaussSlowExt::CheckParameters()
+{
+  gauss->CheckParameters();
+  slowext->CheckParameters();
+}
+
 BDSParticleCoordsFull BDSBunchGaussSlowExt::GetNextParticleLocal()
 {
   auto pGauss = gauss->GetNextParticleLocal();
