@@ -24,15 +24,18 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBunchEShell.hh"
 #include "BDSBunchEventGenerator.hh"
 #include "BDSBunchFactory.hh"
+#include "BDSBunchGauss.hh"
+#include "BDSBunchGaussMatrix.hh"
+#include "BDSBunchGaussSlowExt.hh"
+#include "BDSBunchGaussTwiss.hh"
 #include "BDSBunchHalo.hh"
 #include "BDSBunchHaloFlatSigma.hh"
 #include "BDSBunchPtc.hh"
 #include "BDSBunchRing.hh"
+#include "BDSBunchSlowExt.hh"
 #include "BDSBunchSphere.hh"
-#include "BDSBunchSigmaMatrix.hh"
 #include "BDSBunchSixTrack.hh"
 #include "BDSBunchSquare.hh"
-#include "BDSBunchTwiss.hh"
 #include "BDSBunchType.hh"
 #include "BDSBunchUserFile.hh"
 #include "BDSDebug.hh"
@@ -87,11 +90,14 @@ BDSBunch* BDSBunchFactory::CreateBunch(const BDSParticleDefinition* beamParticle
     {
     case BDSBunchType::reference:
       {bdsBunch = new BDSBunch(); break;}
-    case BDSBunchType::gaussmatrix:
     case BDSBunchType::gauss:
-      {bdsBunch = new BDSBunchSigmaMatrix(); break;}
+      {bdsBunch = new BDSBunchGauss(); break;}
+    case BDSBunchType::gaussmatrix:
+      {bdsBunch = new BDSBunchGaussMatrix(); break;}
     case BDSBunchType::gausstwiss:
-      {bdsBunch = new BDSBunchTwiss(); break;}
+      {bdsBunch = new BDSBunchGaussTwiss(); break;}
+    case BDSBunchType::gaussslowext:
+      {bdsBunch = new BDSBunchGaussSlowExt(); break;}
     case BDSBunchType::circle:
       {bdsBunch = new BDSBunchCircle(); break;}
     case BDSBunchType::square:
@@ -129,6 +135,8 @@ BDSBunch* BDSBunchFactory::CreateBunch(const BDSParticleDefinition* beamParticle
       {bdsBunch = new BDSBunchPtc(); break;}
     case BDSBunchType::sixtrack:
       {bdsBunch = new BDSBunchSixTrack(); break;}
+    case BDSBunchType::slowext:
+      {bdsBunch = new BDSBunchSlowExt(); break;}
     case BDSBunchType::sphere:
       {bdsBunch = new BDSBunchSphere(); break;}
     case BDSBunchType::eventgeneratorfile:
