@@ -80,6 +80,7 @@ BDSBunchType BDS::DetermineBunchType(G4String distrType)
   types["halo"]                  = BDSBunchType::halo;
   types["composite"]             = BDSBunchType::composite;
   types["userfile"]              = BDSBunchType::userfile;
+  types["user-file"]             = BDSBunchType::userfile;
   types["ptc"]                   = BDSBunchType::ptc;
   types["sixtrack"]              = BDSBunchType::sixtrack;
   types["eventgeneratorfile"]    = BDSBunchType::eventgeneratorfile;

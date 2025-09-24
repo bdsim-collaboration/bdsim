@@ -1,6 +1,7 @@
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
 simple_testing(bunch-userfile                  "--file=userfile.gmad"                  "")
+simple_testing(bunch-user-file                 "--file=user-file.gmad"                 "")
 simple_testing(bunch-userfile-ngenerate        "--file=userfile2.gmad"                 "")
 simple_testing(bunch-userfile-loop             "--file=userfile-loop.gmad"             "")
 simple_testing(bunch-userfile-loop-ntimes      "--file=userfile-loop-ntimes.gmad"      "")
