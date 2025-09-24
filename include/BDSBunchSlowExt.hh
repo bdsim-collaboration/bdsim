@@ -46,8 +46,9 @@ public:
   virtual void CheckParameters();
   virtual BDSParticleCoordsFull GetNextParticleLocal();
 
-	/// Generate the random shift for this call.
-	void GetDeltas(G4double& dt, G4double& dE);
+	/// Generate the random shift for this call. This function is const but it
+	/// advances the static (global) random number generator.
+	void GetDeltas(G4double& dt, G4double& dE) const;
   
 protected:
   G4double dTStart;

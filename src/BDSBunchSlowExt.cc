@@ -97,7 +97,7 @@ BDSParticleCoordsFull BDSBunchSlowExt::GetNextParticleLocal()
   return BDSParticleCoordsFull(X0,Y0,Z0,Xp0,Yp0,Zp0,t,S0,E,/*weight=*/1.0);
 }
 
-void BDSBunchSlowExt::GetDeltas(G4double& dtLocal, G4double& dELocal)
+void BDSBunchSlowExt::GetDeltas(G4double& dtLocal, G4double& dELocal) const
 {
   G4double fraction = G4RandFlat::shoot();
   dtLocal = dTStart + dT*fraction;
