@@ -94,6 +94,8 @@ BDSBunchType BDS::DetermineBunchType(G4String distrType)
   types["bdsimsampler"]          = BDSBunchType::bdsimsampler;
   types["bdsim-sampler"]         = BDSBunchType::bdsimsampler;
   types["hdf5"]                  = BDSBunchType::hdf5;
+  types["slowext"]               = BDSBunchType::slowext;
+  types["slow-ext"]              = BDSBunchType::slowext;
 
   distrType = BDS::LowerCase(distrType);
 

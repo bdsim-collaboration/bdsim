@@ -48,7 +48,7 @@ void BDSBunchGaussSlowExtBase::SetOptions(const BDSParticleDefinition* beamParti
   slowext->SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
 
   if (gauss->OffsetSampleMean())
-    {BDS::Warning(__METHOD_NAME__, "offsetSampleMean will only work for the gauss component of this slow extracted distribution");}
+    {BDS::Warning(__METHOD_NAME__, "offsetSampleMean will only work for the Gaussian component of this slow extracted distribution");}
 }
 
 void BDSBunchGaussSlowExtBase::CheckParameters()
