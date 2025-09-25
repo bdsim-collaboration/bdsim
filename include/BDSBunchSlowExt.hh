@@ -39,16 +39,16 @@ public:
   BDSBunchSlowExt(BDSBunchSlowExt&) = delete;
   /// @}
   virtual void SetOptions(const BDSParticleDefinition* beamParticle,
-													const GMAD::Beam& beam,
-													const BDSBunchType& distrType,
-													G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
-													const G4double beamlineS = 0);
+                          const GMAD::Beam& beam,
+                          const BDSBunchType& distrType,
+                          G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
+                          const G4double beamlineS = 0);
   virtual void CheckParameters();
   virtual BDSParticleCoordsFull GetNextParticleLocal();
-
-	/// Generate the random shift for this call. This function is const but it
-	/// advances the static (global) random number generator.
-	void GetDeltas(G4double& dt, G4double& dE) const;
+  
+  /// Generate the random shift for this call. This function is const but it
+  /// advances the static (global) random number generator.
+  void GetDeltas(G4double& dt, G4double& dE) const;
   
 protected:
   G4double dTStart;
@@ -57,7 +57,7 @@ protected:
   G4double dPStop;
   G4bool applyGradient;
   G4double dT;
-	G4double dEStart;
+  G4double dEStart;
   G4double dE;
 };
 

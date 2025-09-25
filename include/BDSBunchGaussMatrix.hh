@@ -37,13 +37,13 @@ namespace GMAD
 class BDSBunchGaussMatrix: public BDSBunchGaussBase
 {
 public:
-	BDSBunchGaussMatrix();
+  BDSBunchGaussMatrix();
   virtual ~BDSBunchGaussMatrix(){;}
   virtual void SetOptions(const BDSParticleDefinition* beamParticle,
-													const GMAD::Beam& beam,
-													const BDSBunchType& distrType,
-													G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
-													const G4double beamlineS = 0);
+                          const GMAD::Beam& beam,
+                          const BDSBunchType& distrType,
+                          G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
+                          const G4double beamlineS = 0);
 };
 
 #endif
