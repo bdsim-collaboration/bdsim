@@ -1,0 +1,12 @@
+beam, particle = "proton",
+      momentum = 100*GeV,
+      distrType = "slow-ext";
+
+! no slow extraction parameters given, so dP = 0 and dT = 0
+! the code should therefore not do anything other than a
+! reference distribution and print out a one-time warning
+
+include fodo.gmad;
+include options.gmad;
+
+option, ngenerate=10;

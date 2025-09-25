@@ -1,0 +1,18 @@
+beam,  particle = "e-",
+       energy = 1.0*GeV,
+       distrType = "gaussmatrixslowext",
+       sigma11 = 0.002*mm*0.002*mm,
+       sigma22 = 0.09*0.005*0.09*0.005,
+       sigma33 = 0.002*mm*0.002*mm,
+       sigma44 = 0.09*0.005*0.09*0.005,
+       sigma55 = 1e-9*1e-9, 	     
+       sigma66 = 1e-5*1e-5,
+       dTStart = -2.4*s,
+       dTStop = 2.4*s,
+       dPStart = 0,
+       dPStop = 0.6*GeV;
+
+include options.gmad
+include fodo.gmad;
+
+option, ngenerate=10;

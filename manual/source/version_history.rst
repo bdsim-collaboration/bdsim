@@ -37,6 +37,13 @@ New Features
 * New :code:`CreateEmptyBdskimFile` in the :code:`DataDummyClass` to give this function in pybdsim
   for easy customised skimming in Python.
 
+**Bunch Distributions**
+
+* New :code:`slowext` (slow extraction) distribution for a linear sweep in momentum with time. Also,
+  other distributions with each type of Gaussian have been added: :code:`gauss-slow-ext`,
+  :code:`gauss-slow-ext`, :code:`gauss-twiss-slow-ext` where the Gaussian part is first generated
+  and the slow extraction sweep added on top.
+
 **Fields**
 
 * The `rf` beamline element now has the parameter :code:`cavityFieldType` to specify which
@@ -82,6 +89,8 @@ New Options
 General Updates
 ---------------
 
+* Bunch distributions now accepts hyphenated versions of the names, e.g. :code:`gausstwiss` and
+  :code:`gauss-twiss` are both accepted.
 * Build configuration now requires CMake 3.7 or greater.
 * The interface for custom components has changed due to the new beamline integral class and object.
   The example has been updated accordingly.

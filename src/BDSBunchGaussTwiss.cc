@@ -16,26 +16,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "BDSBunchTwiss.hh"
+#include "BDSBunchGaussTwiss.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
-#include "BDSUtilities.hh"
 
 #include "parser/beam.h"
 
 #include "globals.hh"
 
 #include "Randomize.hh"
-#include "CLHEP/Matrix/SymMatrix.h"
-#include "CLHEP/Matrix/Vector.h"
 #include "CLHEP/RandomObjects/RandMultiGauss.h"
-#include "CLHEP/Units/PhysicalConstants.h"
 
 #include <cmath>
 #include <vector>
 
-BDSBunchTwiss::BDSBunchTwiss():
-  BDSBunchGaussian("gausstwiss"),
+BDSBunchGaussTwiss::BDSBunchGaussTwiss():
+  BDSBunchGaussBase("gausstwiss"),
   betaX(0.0), betaY(0.0),
   alphaX(0.0), alphaY(0.0),
   emitX(0.0), emitY(0.0),
@@ -44,14 +40,14 @@ BDSBunchTwiss::BDSBunchTwiss():
   dispXP(0.0), dispYP(0.0)
 {;}
 
-void BDSBunchTwiss::SetOptions(const BDSParticleDefinition* beamParticle,
+void BDSBunchGaussTwiss::SetOptions(const BDSParticleDefinition* beamParticle,
                                const GMAD::Beam& beam,
                                const BDSBunchType& distrType,
                                G4Transform3D beamlineTransformIn,
                                const G4double beamlineSIn)
 {
   // Fill means and class BDSBunch::SetOptions
-  BDSBunchGaussian::SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
+  BDSBunchGaussBase::SetOptions(beamParticle, beam, distrType, beamlineTransformIn, beamlineSIn);
 
   betaX  = beam.betx;
   betaY  = beam.bety;
@@ -114,9 +110,9 @@ void BDSBunchTwiss::SetOptions(const BDSParticleDefinition* beamParticle,
   gaussMultiGen = CreateMultiGauss(*CLHEP::HepRandom::getTheEngine(),meansGM,sigmaGM);
 }
 
-void BDSBunchTwiss::CheckParameters()
+void BDSBunchGaussTwiss::CheckParameters()
 {
-  BDSBunchGaussian::CheckParameters();
+  BDSBunchGaussBase::CheckParameters();
   if (emitX <= 0)
     {throw BDSException(__METHOD_NAME__, "emitx must be finite!");}
   if (emitY <= 0)

@@ -16,34 +16,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSBUNCHSIGMAMATRIX_H
-#define BDSBUNCHSIGMAMATRIX_H 
+#ifndef BDSBUNCHGAUSSSLOWEXT_H
+#define BDSBUNCHGAUSSSLOWEXT_H
 
-#include "BDSBunchGaussian.hh"
-
-#include "G4Transform3D.hh"
-
-namespace GMAD
-{
-  class Beam;
-}
+#include "BDSBunchGaussSlowExtBase.hh"
 
 /**
- * @brief A 6D Gaussian distribution based on a covariance matrix.
+ * @brief Simple Gauss with slow extraction P-T.
  * 
- * @author Stewart Boogert
+ * @author Laurie Nevay
  */
 
-class BDSBunchSigmaMatrix: public BDSBunchGaussian
+class BDSBunchGaussSlowExt: public BDSBunchGaussSlowExtBase
 {
 public:
-  BDSBunchSigmaMatrix();
-  virtual ~BDSBunchSigmaMatrix(){;}
-  virtual void SetOptions(const BDSParticleDefinition* beamParticle,
-			  const GMAD::Beam& beam,
-			  const BDSBunchType& distrType,
-			  G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
-			  const G4double beamlineS = 0);
+  BDSBunchGaussSlowExt();
+  virtual ~BDSBunchGaussSlowExt() = default;
 };
 
 #endif

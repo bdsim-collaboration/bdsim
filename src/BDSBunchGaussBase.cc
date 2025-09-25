@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "BDSBunchGaussian.hh"
+#include "BDSBunchGaussBase.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
 #include "BDSGlobalConstants.hh"
@@ -51,7 +51,7 @@ namespace {
   }
 }
 
-BDSBunchGaussian::BDSBunchGaussian(const G4String& nameIn):
+BDSBunchGaussBase::BDSBunchGaussBase(const G4String& nameIn):
   BDSBunch(nameIn),
   meansGM(CLHEP::HepVector(6)),
   sigmaGM(CLHEP::HepSymMatrix(6)),
@@ -62,12 +62,12 @@ BDSBunchGaussian::BDSBunchGaussian(const G4String& nameIn):
   coordinates = {&x0_v, &xp_v, &y0_v, &yp_v, &z0_v, &zp_v, &E_v, &t_v, &weight_v};
 }
 
-BDSBunchGaussian::~BDSBunchGaussian()
+BDSBunchGaussBase::~BDSBunchGaussBase()
 {
   delete gaussMultiGen;
 }
 
-void BDSBunchGaussian::SetOptions(const BDSParticleDefinition* beamParticle,
+void BDSBunchGaussBase::SetOptions(const BDSParticleDefinition* beamParticle,
                                   const GMAD::Beam& beam,
                                   const BDSBunchType& distrType,
                                   G4Transform3D beamlineTransformIn,
@@ -95,7 +95,7 @@ void BDSBunchGaussian::SetOptions(const BDSParticleDefinition* beamParticle,
   meansGM[5] = 1;
 }
 
-void BDSBunchGaussian::BeginOfRunAction(G4int numberOfEvents,
+void BDSBunchGaussBase::BeginOfRunAction(G4int numberOfEvents,
                                         G4bool /*batchMode*/)
 {
   if (!offsetSampleMean)
@@ -108,7 +108,7 @@ void BDSBunchGaussian::BeginOfRunAction(G4int numberOfEvents,
   PreGenerateEvents(numberOfEvents);
 }
 
-CLHEP::RandMultiGauss* BDSBunchGaussian::CreateMultiGauss(CLHEP::HepRandomEngine& anEngine,
+CLHEP::RandMultiGauss* BDSBunchGaussBase::CreateMultiGauss(CLHEP::HepRandomEngine& anEngine,
                                                           const CLHEP::HepVector& mu,
                                                           CLHEP::HepSymMatrix& sigma)
 {
@@ -161,7 +161,7 @@ CLHEP::RandMultiGauss* BDSBunchGaussian::CreateMultiGauss(CLHEP::HepRandomEngine
   return new CLHEP::RandMultiGauss(anEngine,mu,sigma); 
 }
 
-void BDSBunchGaussian::PreGenerateEvents(G4int nGenerate)
+void BDSBunchGaussBase::PreGenerateEvents(G4int nGenerate)
 {
   G4cout << __METHOD_NAME__ << "Pregenerating " << nGenerate << " events." << G4endl;
   // generate all required primaries first
@@ -226,7 +226,7 @@ void BDSBunchGaussian::PreGenerateEvents(G4int nGenerate)
     }
 }
   
-BDSParticleCoordsFull BDSBunchGaussian::GetNextParticleLocal()
+BDSParticleCoordsFull BDSBunchGaussBase::GetNextParticleLocal()
 {
   if (offsetSampleMean)
     {
@@ -250,7 +250,7 @@ BDSParticleCoordsFull BDSBunchGaussian::GetNextParticleLocal()
 }
 
 
-BDSParticleCoordsFull BDSBunchGaussian::GetNextParticleLocalCoords()
+BDSParticleCoordsFull BDSBunchGaussBase::GetNextParticleLocalCoords()
 {
   CLHEP::HepVector v = gaussMultiGen->fire();
   // unlike other bunch distributions reintroduce units (taken out in set options)

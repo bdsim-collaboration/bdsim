@@ -1,0 +1,14 @@
+beam, particle = "proton",
+      momentum = 100*GeV,
+      distrType = "slow-ext",
+      dTStart = -2.4*s,
+      dTStop = 2.4*s,
+      dPStart = 0.6*GeV,
+      dPStop = -0.6*GeV;
+
+! dP/dt is negative
+
+include fodo.gmad;
+include options.gmad;
+
+option, ngenerate=10;

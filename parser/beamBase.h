@@ -139,7 +139,7 @@ namespace GMAD
 
       bool offsetSampleMean;
 
-      /// @{ Event generator file filter.
+      /// @{ fo event generator file filter
       int    eventGeneratorNEventsSkip;
       double eventGeneratorMinX;
       double eventGeneratorMaxX;
@@ -162,6 +162,14 @@ namespace GMAD
       std::string eventGeneratorParticles;
       bool   eventGeneratorWarnSkippedParticles;
       /// @}
+
+      /// @{ for slow-extraction beam
+      double dTStart;
+      double dTStop;
+      double dPStart;
+      double dPStop;
+      /// @}
+      
   
       /// A list of all the keys that have been set in this instance.
       std::vector<std::string> setKeys;

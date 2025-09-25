@@ -1,0 +1,19 @@
+beam,  particle = "proton",
+       momentum = 100*GeV,
+       distrType = "gauss-slow-ext",
+       sigmaX  = 0.4*mm,
+       sigmaY  = 0.2*mm,
+       sigmaXp = 1e-6,
+       sigmaYp = 1e-7,
+       sigmaE  = 4e-4,
+       sigmaT  = 1e-9,
+       dTStart = -2.4*s,
+       dTStop = 2.4*s,
+       dPStart = 0,
+       dPStop = 0.6*GeV;
+
+
+include options.gmad
+include fodo.gmad;
+
+option, ngenerate=10;

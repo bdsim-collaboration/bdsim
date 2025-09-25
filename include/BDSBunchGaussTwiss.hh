@@ -19,7 +19,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSBUNCHTWISS_H
 #define BDSBUNCHTWISS_H 
 
-#include "BDSBunchGaussian.hh"
+#include "BDSBunchGaussBase.hh"
 
 #include "G4Transform3D.hh"
 
@@ -34,11 +34,11 @@ namespace GMAD
  * @author Stewart Boogert
  */
 
-class BDSBunchTwiss: public BDSBunchGaussian
+class BDSBunchGaussTwiss: public BDSBunchGaussBase
 {
 public: 
-  BDSBunchTwiss();
-  virtual ~BDSBunchTwiss(){;}  
+  BDSBunchGaussTwiss();
+  virtual ~BDSBunchGaussTwiss(){;}
   virtual void SetOptions(const BDSParticleDefinition* beamParticle,
 			  const GMAD::Beam& beam,
 			  const BDSBunchType& distrType,

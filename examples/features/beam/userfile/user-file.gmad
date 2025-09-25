@@ -1,0 +1,8 @@
+beam,  particle="e-",
+       energy = 1*GeV,
+       distrType  = "user-file",
+       distrFile  = "userbeamdata.dat",
+       distrFileFormat = "x[mum]:xp[mrad]:y[mum]:yp[mrad]:z[cm]:E[GeV]";
+
+include options.gmad;
+include fodo.gmad;

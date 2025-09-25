@@ -3,6 +3,7 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURC
 # data stored using HepMC2 library but loaded using HepMC3 in BDSIM
 if (USE_HEPMC3)
   simple_testing(bunch-eventgeneratorfile-hepmc2                 "--file=eventgeneratorfile-hepmc2.gmad"                    "")
+  simple_testing(bunch-event-generator-file-hepmc2               "--file=event-generator-file-hepmc2.gmad"                  "")
   simple_testing(bunch-eventgeneratorfile-hepmc2-ngenerate       "--file=eventgeneratorfile-hepmc2-ngenerate.gmad --ngenerate=2"  "")	
   simple_testing(bunch-eventgeneratorfile-hepmc2-filtered        "--file=eventgeneratorfile-hepmc2-filtered.gmad"           "")
   simple_testing(bunch-eventgeneratorfile-hepmc2-filtered2       "--file=eventgeneratorfile-hepmc2-filtered2.gmad"          "")

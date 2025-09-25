@@ -16,8 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSBUNCHGAUSSIAN_H
-#define BDSBUNCHGAUSSIAN_H 
+#ifndef BDSBUNCHGAUSSBASE_H
+#define BDSBUNCHGAUSSBASE_H
 
 #include "BDSBunch.hh"
 
@@ -46,12 +46,12 @@ namespace GMAD
  * @author Stewart Boogert
  */
 
-class BDSBunchGaussian: public BDSBunch
+class BDSBunchGaussBase: public BDSBunch
 {
 public:
-  BDSBunchGaussian() = delete;
-  explicit BDSBunchGaussian(const G4String& nameIn);
-  virtual ~BDSBunchGaussian();
+  BDSBunchGaussBase() = delete;
+  explicit BDSBunchGaussBase(const G4String& nameIn);
+  virtual ~BDSBunchGaussBase();
   
   virtual void SetOptions(const BDSParticleDefinition* beamParticle,
 			  const GMAD::Beam& beam,
@@ -67,6 +67,8 @@ public:
   /// Either draw from the vector of already created points or fire fresh
   /// from the matrix.
   virtual BDSParticleCoordsFull GetNextParticleLocal();
+
+  inline G4bool OffsetSampleMean() const {return offsetSampleMean;}
   
 protected:
   /// Create multidimensional Gaussian random number generator
