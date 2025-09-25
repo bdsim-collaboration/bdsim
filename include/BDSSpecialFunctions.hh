@@ -33,6 +33,6 @@ namespace BDS
                G4double c,
                G4double s,
                G4int nIterationLimit = 1000);
-};
+}
 
 #endif
