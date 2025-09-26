@@ -37,7 +37,6 @@ else()
   message(STATUS "Using root-config: ${ROOT_CONFIG_EXECUTABLE}")
 
   set(ROOT_EXECUTABLE ${ROOTSYS}/bin/root)
-
   message(STATUS "Using root-executable: ${ROOT_EXECUTABLE}")
 
   execute_process(

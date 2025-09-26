@@ -142,6 +142,7 @@ jobs:
           source /tmp/geant4-${{ matrix.geant4-version }}/bin/geant4.sh
           source /tmp/bdsim-install/bin/bdsim.sh
 
+          echo $(which root)
           # geant4 contains absolute paths
           if [[ "${{ matrix.geant4-version }}" == "v10.7.4" ]]; then
             export G4NEUTRONHPDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4NDL4.6"
