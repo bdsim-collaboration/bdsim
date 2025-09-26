@@ -36,9 +36,6 @@ else()
 
   message(STATUS "Using root-config: ${ROOT_CONFIG_EXECUTABLE}")
 
-  set(ROOT_EXECUTABLE ${ROOTSYS}/bin/root)
-  message(STATUS "Using root-executable: ${ROOT_EXECUTABLE}")
-
   execute_process(
     COMMAND ${ROOT_CONFIG_EXECUTABLE} --prefix 
     OUTPUT_VARIABLE ROOTSYS 
@@ -63,6 +60,9 @@ else()
     COMMAND ${ROOT_CONFIG_EXECUTABLE} --evelibs
     OUTPUT_VARIABLE ROOT_EVELIBRARIES
     OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+  set(ROOT_EXECUTABLE ${ROOTSYS}/bin/root)
+  message(STATUS "Using root-executable: ${ROOT_EXECUTABLE}")
 
   # Hack to remove c++11 lib in favour of the one provided already
   if (NOT "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
