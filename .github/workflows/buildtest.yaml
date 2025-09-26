@@ -140,6 +140,8 @@ jobs:
         shell: bash
         run: |
           source /tmp/geant4-${{ matrix.geant4-version }}/bin/geant4.sh
+          source /tmp/bdsim-install/bin/bdsim.sh
+
           # Set up root
           if [[ "${{ matrix.os }}" == "macOS-14" ]]; then
             source /opt/homebrew/bin/thisroot.sh  
@@ -148,7 +150,6 @@ jobs:
           elif [[ "${{ matrix.so }}" == "macOS-15-intel" ]]; then
             source /usr/local/homebrew/bin/thisroot.sh	  
           fi 
-          source /tmp/bdsim-install/bin/bdsim.sh
 
           # geant4 contains absolute paths
           if [[ "${{ matrix.geant4-version }}" == "v10.7.4" ]]; then
