@@ -76,7 +76,7 @@ jobs:
       fail-fast: false
       matrix:
         geant4-version: ["v10.7.4", "v11.0.4", "v11.1.3", "v11.2.2", "v11.3.2"]
-        os: [macOS-13, macOS-14]
+        os: [macOS-14, macOS-15, macOS-15-intel]
 #        geant4-version: ["v10.7.4","v11.1.3"]
 #        os: [macOS-13]
 
@@ -94,18 +94,19 @@ jobs:
         shell: bash      
         run: |
           # Switch bison depending on macOS
-          if [[ "${{ matrix.os }}" == "macOS-13" ]]; then
-            echo "BISON_PATH=/usr/local/opt/bison/bin/bison" >> $GITHUB_ENV
-          elif [[ "${{ matrix.os }}" == "macOS-14" ]]; then
+          if [[ "${{ matrix.os }}" == "macOS-14" ]]; then
             echo "BISON_PATH=/opt/homebrew/opt/bison/bin/bison" >> $GITHUB_ENV
+          elif [[ "${{ matrix.os }}" == "macOS-15" ]]; then
+            echo "BISON_PATH=/opt/homebrew/opt/bison/bin/bison" >> $GITHUB_ENV
+          elif [[ "${{ matrix.os }}" == "macOS-15-intel" ]]; then
+            echo "BISON_PATH=/usr/local/opt/bison/bin/bison" >> $GITHUB_ENV
           fi
-
 
       - name: Get Geant4
         shell: bash
         run: |
           # download geant4 build
-          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.25/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
+          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.26/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
           # unpack geant4
           tar zxf geant4-${{ matrix.os }}-${{ matrix.geant4-version }}.tgz -C /tmp/
 
@@ -120,10 +121,12 @@ jobs:
           source /tmp/geant4-${{ matrix.geant4-version }}/bin/geant4.sh
 
           # Set up root, geant4 and bdsim
-          if [[ "${{ matrix.os }}" == "macOS-13" ]]; then
-            source /usr/local/bin/thisroot.sh
-          elif [[ "${{ matrix.os }}" == "macOS-14" ]]; then
+          if [[ "${{ matrix.os }}" == "macOS-14" ]]; then
             source /opt/homebrew/bin/thisroot.sh  
+          elif [[ "${{ matrix.so }}" == "macOS-15" ]]; then
+            source /opt/homebrew/bin/thisroot.sh	  
+          elif [[ "${{ matrix.so }}" == "macOS-15-intel" ]]; then
+            source /usr/local/homebrew/bin/thisroot.sh	  
           fi 
           
           # build
