@@ -142,15 +142,6 @@ jobs:
           source /tmp/geant4-${{ matrix.geant4-version }}/bin/geant4.sh
           source /tmp/bdsim-install/bin/bdsim.sh
 
-          # Set up root
-          if [[ "${{ matrix.os }}" == "macOS-14" ]]; then
-            source /opt/homebrew/bin/thisroot.sh  
-          elif [[ "${{ matrix.so }}" == "macOS-15" ]]; then
-            source /opt/homebrew/bin/thisroot.sh	  
-          elif [[ "${{ matrix.so }}" == "macOS-15-intel" ]]; then
-            source /usr/local/homebrew/bin/thisroot.sh	  
-          fi 
-
           # geant4 contains absolute paths
           if [[ "${{ matrix.geant4-version }}" == "v10.7.4" ]]; then
             export G4NEUTRONHPDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4NDL4.6"
