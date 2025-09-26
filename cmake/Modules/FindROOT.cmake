@@ -38,6 +38,8 @@ else()
 
   set(ROOT_EXECUTABLE ${ROOTSYS}/bin/root)
 
+  message(STATUS "Using root-executable: ${ROOT_EXECUTABLE}")
+
   execute_process(
     COMMAND ${ROOT_CONFIG_EXECUTABLE} --prefix 
     OUTPUT_VARIABLE ROOTSYS 
