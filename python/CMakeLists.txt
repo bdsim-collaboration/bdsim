@@ -1,5 +1,5 @@
 # -DPython_FIND_VIRTUALENV=ONLY
-find_package(Python 3.12 COMPONENTS Interpreter Development.Module REQUIRED)
+find_package(Python 3.8 COMPONENTS Interpreter Development.Module REQUIRED)
 message(STATUS "Found python ${Python_VERSION}")
 message(STATUS "Python executable ${Python_EXECUTABLE}")
 message(STATUS "Is python executable the one you plan to use? If not use -DPython_EXECUTABLE=")
