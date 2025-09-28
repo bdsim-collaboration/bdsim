@@ -15,7 +15,9 @@ namespace py = pybind11;
 #include "G4ParticleDefinition.hh"
 #include "G4DecayTable.hh"
 #include "G4ProcessManager.hh"
+#if G4VERSION_NUMBER >= 41100
 #include "G4VTrackingManager.hh"
+#endif
 #include "G4ParticleTable.hh"
 
 PYBIND11_MODULE(g4particledefinition, m) {
@@ -72,8 +74,10 @@ PYBIND11_MODULE(g4particledefinition, m) {
     .def("SetDecayTable", &G4ParticleDefinition::SetDecayTable)
     .def("GetProcessManager", &G4ParticleDefinition::GetProcessManager)
     .def("SetProcessManager", &G4ParticleDefinition::GetProcessManager)
+#if G4VERSION_NUMBER >= 41100
     .def("GetTrackingManager", &G4ParticleDefinition::GetTrackingManager)
     .def("SetTrackingManager", &G4ParticleDefinition::GetTrackingManager)
+#endif
     .def("GetParticleTable", &G4ParticleDefinition::GetParticleTable)
     .def("GetAtomicNumber", &G4ParticleDefinition::GetAtomicNumber)
     .def("GetAtomicMass", &G4ParticleDefinition::GetAtomicMass)
