@@ -72,9 +72,23 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
 G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
                                                  const G4double       /*t*/) const
 {
-  G4double z = position.z();
-  G4double rho = position.perp();
-  G4double phi = position.phi(); // angle about z axis
+  // Rotation angles - to be moved to struct later
+  G4double rotationX = CLHEP::pi/2; 
+  G4double rotationY = 0.0;
+  G4double rotationZ = 0.0;
+  
+  // Transform position from global to local coordinates (inverse rotation)
+  G4ThreeVector localPosition = position;
+  
+  // Apply inverse rotations in reverse order (Z -> Y -> X)
+  // to transform from global frame to solenoid's local frame
+  localPosition.rotateZ(-rotationZ);
+  localPosition.rotateY(-rotationY);
+  localPosition.rotateX(-rotationX);
+  
+  G4double z = localPosition.z();
+  G4double rho = localPosition.perp();
+  G4double phi = localPosition.phi(); // angle about z axis
    
   // check if close to current source - function not well-behaved at exactly the rho of
   // the current source or at the boundary of +- halfLength
@@ -129,9 +143,17 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
     }
   // we have to be consistent with the phi we calculated at the beginning,
   // so unit rho is in the x direction.
-  G4ThreeVector result = G4ThreeVector(Brho,0,Bz)* normalisation;
-  result = result.rotateZ(phi);
-  return result;
+  G4ThreeVector localField = G4ThreeVector(Brho,0,Bz) * normalisation;
+  localField = localField.rotateZ(phi);
+  
+  // Transform field from local back to global coordinates (forward rotation)
+  // Apply rotations in forward order (X -> Y -> Z)
+  G4ThreeVector globalField = localField;
+  globalField.rotateX(rotationX);
+  globalField.rotateY(rotationY);
+  globalField.rotateZ(rotationZ);
+  
+  return globalField;
 }
 
 G4double BDSFieldMagSolenoidSheet::OnAxisBz(G4double zp,
