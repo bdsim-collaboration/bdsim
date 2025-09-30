@@ -32,14 +32,17 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 
 BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(BDSMagnetStrength const* strength,
-                                                   G4double radiusIn, G4double toleranceIn):
-  BDSFieldMagSolenoidSheet((*strength)["field"], false, radiusIn, (*strength)["length"], toleranceIn)
+                                                   G4double radiusIn,G4double toleranceIn):
+  BDSFieldMagSolenoidSheet((*strength)["field"], false, radiusIn, (*strength)["length"], 0.0, 0.0, 0.0, toleranceIn)
 {;}
 
 BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
                                                    G4bool   strengthIsCurrent,
                                                    G4double sheetRadius,
                                                    G4double fullLength,
+                                                    G4double tiltX,
+                                                    G4double tiltY,
+                                                    G4double tiltZ,
                                                    G4double toleranceIn):
   a(sheetRadius),
   halfLength(0.5*fullLength),
@@ -47,6 +50,9 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
   I(0.0),
   spatialLimit(std::min(1e-5*sheetRadius, 1e-5*fullLength)),
   normalisation(1.0) ,
+  rotateX(tiltX),
+  rotateY(tiltY),
+  rotateZ(tiltZ),
   coilTolerance(toleranceIn)
 {
   finiteStrength = BDS::IsFinite(std::abs(strength));
@@ -73,23 +79,23 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
                                                  const G4double       /*t*/) const
 {
   // Rotation angles - to be moved to struct later
-  G4double rotationX = CLHEP::pi/2; 
-  G4double rotationY = 0.0;
-  G4double rotationZ = 0.0;
+  //G4double rotationX = CLHEP::pi/4; // 45 degrees to put solenoid along z axis
+  //G4double rotationY = 0.0;
+  //G4double rotationZ = 0.0;
   
   // Transform position from global to local coordinates (inverse rotation)
   G4ThreeVector localPosition = position;
   
   // Apply inverse rotations in reverse order (Z -> Y -> X)
   // to transform from global frame to solenoid's local frame
-  localPosition.rotateZ(-rotationZ);
-  localPosition.rotateY(-rotationY);
-  localPosition.rotateX(-rotationX);
-  
+  localPosition.rotateZ(-rotateZ);
+  localPosition.rotateY(-rotateY);
+  localPosition.rotateX(-rotateX);
+
   G4double z = localPosition.z();
   G4double rho = localPosition.perp();
   G4double phi = localPosition.phi(); // angle about z axis
-   
+  std::cout<<"rho "<<rho<<" phi "<<phi<<std::endl;
   // check if close to current source - function not well-behaved at exactly the rho of
   // the current source or at the boundary of +- halfLength
   if (std::abs(rho - a) < spatialLimit && (std::abs(z) < halfLength+2*spatialLimit))
@@ -149,10 +155,10 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
   // Transform field from local back to global coordinates (forward rotation)
   // Apply rotations in forward order (X -> Y -> Z)
   G4ThreeVector globalField = localField;
-  globalField.rotateX(rotationX);
-  globalField.rotateY(rotationY);
-  globalField.rotateZ(rotationZ);
-  
+  globalField.rotateX(rotateX);
+  globalField.rotateY(rotateY);
+  globalField.rotateZ(rotateZ);
+
   return globalField;
 }
 
