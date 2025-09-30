@@ -35,7 +35,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 BDSFieldMagSolenoidBlock::BDSFieldMagSolenoidBlock(BDSMagnetStrength const* strength,
                                                    G4double innerRadiusIn):
-  BDSFieldMagSolenoidBlock((*strength)["field"], false, innerRadiusIn, (*strength)["coilRadialThickness"], (*strength)["length"], 0, 1)
+  BDSFieldMagSolenoidBlock((*strength)["field"], false, innerRadiusIn, (*strength)["coilRadialThickness"], (*strength)["length"], 0.0, 0.0, 0.0, 0,1)
 {;}
 
 
@@ -44,6 +44,9 @@ BDSFieldMagSolenoidBlock::BDSFieldMagSolenoidBlock(G4double strength,
                                                    G4double innerRadiusIn,
                                                    G4double radialThicknessIn,
                                                    G4double fullLengthZIn,
+                                                   G4double tiltXIn,
+                                                   G4double tiltYIn,
+                                                   G4double tiltZIn,
                                                    G4double toleranceIn,
                                                    G4int    nSheetsIn):
   a(innerRadiusIn),
@@ -51,6 +54,9 @@ BDSFieldMagSolenoidBlock::BDSFieldMagSolenoidBlock(G4double strength,
   fullLengthZ(fullLengthZIn),
   B0(0),
   I(0),
+  tiltX(tiltXIn),
+  tiltY(tiltYIn),
+  tiltZ(tiltZIn),
   coilTolerance(toleranceIn/(nSheetsIn*2)), //double the tolerance for each sheet
   nSheetsBlock(nSheetsIn)
 {
@@ -86,6 +92,9 @@ G4ThreeVector BDSFieldMagSolenoidBlock::GetField(const G4ThreeVector& position,
                                                          true,
                                                          a + (sheet * dr) + dr / 2,
                                                          fullLengthZ,
+                                                          tiltX,
+                                                          tiltY,
+                                                          tiltZ,
                                                          coilTolerance);
       sheetField = field->GetField(position);
       if (sheetField == G4ThreeVector(0, 0, 0))

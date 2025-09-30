@@ -56,6 +56,9 @@ public:
                            G4bool   strengthIsCurrent,
                            G4double sheetRadius,
                            G4double fullLength,
+                           G4double tiltX,
+                           G4double tiltY,
+                           G4double tiltZ,
                            G4double toleranceIn = 0.0);
   virtual ~BDSFieldMagSolenoidSheet(){;}
 
@@ -79,6 +82,9 @@ private:
   G4double I;
   G4double spatialLimit;
   G4double normalisation;
+  G4double rotateX;
+  G4double rotateY;
+  G4double rotateZ;
   G4double coilTolerance;
 };
 

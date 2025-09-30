@@ -47,6 +47,9 @@ public:
                            G4double innerRadiusIn,
                            G4double radialThicknessIn,
                            G4double fullLengthZIn,
+                           G4double tiltXIn,
+                           G4double tiltYIn,
+                           G4double tiltZIn,
                            G4double toleranceIn,
                            G4int  nSheetsIn);
   /// Alternative constructor for field factory that uses "field" (i.e. B) strength
@@ -71,6 +74,9 @@ private:
   G4double fullLengthZ;
   G4double B0;
   G4double I;
+  G4double tiltX;
+  G4double tiltY;
+  G4double tiltZ;
   G4double coilTolerance;
   G4int    nSheetsBlock;
   G4double currentDensity;
