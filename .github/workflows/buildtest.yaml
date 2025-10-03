@@ -133,7 +133,7 @@ jobs:
           mkdir /tmp/bdsim-build
           mkdir /tmp/bdsim-install
           cd /tmp/bdsim-build
-          cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install -DBISON_EXECUTABLE=$BISON_PATH $GITHUB_WORKSPACE  -DGeant4_PREFIX=/tmp/geant4-${{ matrix.geant4-version }}/bin/
+          cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install -DBISON_EXECUTABLE=$BISON_PATH $GITHUB_WORKSPACE  -DGeant4_CONGIG=/tmp/geant4-${{ matrix.geant4-version }}/bin/geant4-config
           make -j${{ steps.cpu-cores.outputs.count }} install
 
       - name: Test bdsim
