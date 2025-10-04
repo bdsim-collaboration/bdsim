@@ -5,7 +5,10 @@ on:
   release:
     types:
       - published
-  
+  push:
+    branches:
+      - 'develop'  
+
 jobs:
 
   docker-bdsim:
