@@ -134,6 +134,8 @@ std::vector<BDS::MuonCoolerCoilInfo> BDS::BuildMuonCoolerCoilInfos(const GMAD::C
                                              "coilRadialThickness",
                                              "coilLengthZ",
                                              "coilCurrent",
+                                             "coilOffsetX",
+                                             "coilOffsetY",
                                              "coilOffsetZ",
                                              "coilTiltX",
                                              "coilTiltY",
@@ -142,6 +144,8 @@ std::vector<BDS::MuonCoolerCoilInfo> BDS::BuildMuonCoolerCoilInfos(const GMAD::C
                                                     &(definition.coilRadialThickness),
                                                     &(definition.coilLengthZ),
                                                     &(definition.coilCurrent),
+                                                    &(definition.coilOffsetX),
+                                                    &(definition.coilOffsetY),
                                                     &(definition.coilOffsetZ),
                                                     &(definition.coilTiltX),
                                                     &(definition.coilTiltY),
@@ -167,10 +171,12 @@ std::vector<BDS::MuonCoolerCoilInfo> BDS::BuildMuonCoolerCoilInfos(const GMAD::C
                                       coilVarsV[1][i] * CLHEP::m,      // radialThickness
                                       coilVarsV[2][i] * CLHEP::m,      // lengthZ
                                       coilVarsV[3][i] * CLHEP::ampere, // current
-                                      coilVarsV[4][i] * CLHEP::m,      // offsetZ
-                                      coilVarsV[5][i],                 // tiltX
-                                      coilVarsV[6][i],                 // tiltY
-                                      coilVarsV[7][i],                 // tiltZ
+                                      coilVarsV[4][i] * CLHEP::m,      // offsetX
+                                      coilVarsV[5][i] * CLHEP::m,      // offsetY
+                                      coilVarsV[6][i] * CLHEP::m,      // offsetZ
+                                      coilVarsV[7][i],                 // tiltX
+                                      coilVarsV[8][i],                 // tiltY
+                                      coilVarsV[9][i],                 // tiltZ
                                       coilMaterials[i],        // no material for now
                                       definition.onAxisTolerance * CLHEP::tesla, // onAxisTolerance
                                       definition.nSheets

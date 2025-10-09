@@ -35,6 +35,8 @@ namespace BDS
     G4double radialThickness;
     G4double fullLengthZ;
     G4double current;
+    G4double offsetX;
+    G4double offsetY;
     G4double offsetZ;
     G4double tiltX;
     G4double tiltY;

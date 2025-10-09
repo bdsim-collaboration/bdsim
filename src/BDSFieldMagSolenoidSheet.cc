@@ -33,7 +33,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(BDSMagnetStrength const* strength,
                                                    G4double radiusIn,G4double toleranceIn):
-  BDSFieldMagSolenoidSheet((*strength)["field"], false, radiusIn, (*strength)["length"], 0.0, 0.0, 0.0, toleranceIn)
+  BDSFieldMagSolenoidSheet((*strength)["field"], false, radiusIn, (*strength)["length"], 0.0, 0.0, 0.0, 0.0, 0.0, toleranceIn)
 {;}
 
 BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
@@ -43,6 +43,8 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
                                                     G4double tiltX,
                                                     G4double tiltY,
                                                     G4double tiltZ,
+                                                    G4double offsetXIn,
+                                                    G4double offsetYIn,
                                                    G4double toleranceIn):
   a(sheetRadius),
   halfLength(0.5*fullLength),
@@ -53,6 +55,8 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
   rotateX(tiltX),
   rotateY(tiltY),
   rotateZ(tiltZ),
+  offsetX(offsetXIn),
+  offsetY(offsetYIn),
   coilTolerance(toleranceIn)
 {
   finiteStrength = BDS::IsFinite(std::abs(strength));
@@ -84,14 +88,16 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
   //G4double rotationZ = 0.0;
   
   // Transform position from global to local coordinates (inverse rotation)
+  // First apply offsets
   G4ThreeVector localPosition = position;
-  
+  localPosition.setX(localPosition.x() - offsetX);
+  localPosition.setY(localPosition.y() - offsetY);
+
   // Apply inverse rotations in reverse order (Z -> Y -> X)
   // to transform from global frame to solenoid's local frame
   localPosition.rotateZ(-rotateZ);
   localPosition.rotateY(-rotateY);
   localPosition.rotateX(-rotateX);
-
   G4double z = localPosition.z();
   G4double rho = localPosition.perp();
   G4double phi = localPosition.phi(); // angle about z axis

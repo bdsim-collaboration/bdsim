@@ -66,6 +66,8 @@ void BDSFieldEMMuonCooler::BuildMagnets(const BDSFieldInfoExtraMuonCooler* info)
                                                           ci.tiltX,
                                                           ci.tiltY,
                                                           ci.tiltZ,
+                                                          ci.offsetX,
+                                                          ci.offsetY,
                                                           ci.onAxisTolerance,
                                                           ci.nSheets));
             fieldOffsets.emplace_back(0,0,ci.offsetZ);
@@ -87,6 +89,8 @@ void BDSFieldEMMuonCooler::BuildMagnets(const BDSFieldInfoExtraMuonCooler* info)
                                                           ci.tiltX,
                                                           ci.tiltY,
                                                           ci.tiltZ,
+                                                          ci.offsetX,
+                                                          ci.offsetY,
                                                           ci.onAxisTolerance));
             fieldOffsets.emplace_back(0,0,ci.offsetZ);
           }
