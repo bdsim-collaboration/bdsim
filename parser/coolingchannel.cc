@@ -39,6 +39,8 @@ void CoolingChannel::clear()
   coilRadialThickness.clear();
   coilLengthZ.clear();
   coilCurrent.clear();
+  coilOffsetX.clear();
+  coilOffsetY.clear();
   coilOffsetZ.clear();
   coilTiltX.clear();
   coilTiltY.clear();
@@ -102,6 +104,8 @@ void CoolingChannel::PublishMembers()
   publish("coilRadialThickness",  &CoolingChannel::coilRadialThickness);
   publish("coilLengthZ",          &CoolingChannel::coilLengthZ);
   publish("coilCurrent",          &CoolingChannel::coilCurrent);
+  publish("coilOffsetX",          &CoolingChannel::coilOffsetX);
+  publish("coilOffsetY",          &CoolingChannel::coilOffsetY);
   publish("coilOffsetZ",          &CoolingChannel::coilOffsetZ);
   publish("coilTiltX",           &CoolingChannel::coilTiltX);
   publish("coilTiltY",           &CoolingChannel::coilTiltY);
@@ -155,6 +159,8 @@ void CoolingChannel::PublishMembers()
   attribute_map_list_double["coilRadialThickness"] = &coilRadialThickness;
   attribute_map_list_double["coilLengthZ"]         = &coilLengthZ;
   attribute_map_list_double["coilCurrent"]         = &coilCurrent;
+  attribute_map_list_double["coilOffsetX"]         = &coilOffsetX;
+  attribute_map_list_double["coilOffsetY"]         = &coilOffsetY;
   attribute_map_list_double["coilOffsetZ"]         = &coilOffsetZ;
   attribute_map_list_double["coilTiltX"]           = &coilTiltX;
   attribute_map_list_double["coilTiltY"]           = &coilTiltY;
