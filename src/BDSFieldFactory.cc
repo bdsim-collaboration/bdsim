@@ -38,6 +38,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSFieldEMRFCavity.hh"
 #include "BDSFieldEMZero.hh"
 #include "BDSFieldFactory.hh"
+#include "BDSFieldGaborLens.hh"
 #include "BDSFieldInfo.hh"
 #include "BDSFieldInfoExtra.hh"
 #include "BDSFieldLoader.hh"
