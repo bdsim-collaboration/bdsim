@@ -209,6 +209,17 @@ void Element::PublishMembers()
   publish("materialThickness", &Element::materialThickness);
   publish("degraderOffset",    &Element::degraderOffset);
 
+  publish("laserBeam",         &Element::laserBeam);
+  publish("laserOffsetTheta",  &Element::laserOffsetTheta);
+  publish("laserOffsetPhi",    &Element::laserOffsetPhi);
+  publish("laserOffsetX",      &Element::laserOffsetX);
+  publish("laserOffsetY",      &Element::laserOffsetY);
+  publish("laserOffsetZ",      &Element::laserOffsetZ);
+
+  publish("undulatorPeriod",       &Element::undulatorPeriod);
+  publish("undulatorGap",          &Element::undulatorGap);
+  publish("undulatorMagnetHeight", &Element::undulatorMagnetHeight);
+
   // for wirescanner
   publish("wireDiameter",      &Element::wireDiameter);
   publish("wireLength",        &Element::wireLength);
@@ -399,10 +410,10 @@ void Element::print(int ident) const
                   << "scintmaterial   = " << scintmaterial       << std::endl;
         break;
       }
-    case ElementType::_LASER:
+    case ElementType::_LASERWIREOLD:
       {
-        std::cout << "lambda= " << waveLength << "m" << std::endl
-                  << "xSigma= " << xsize << "m" << std::endl
+          std::cout << "lambda= " << waveLength << "m" << std::endl
+                  <<  "xSigma= " << xsize << "m" << std::endl
                   << "ySigma= " << ysize << "m" << std::endl
                   << "xdir= "   << xdir << std::endl
                   << "ydir= "   << ydir << std::endl
@@ -610,6 +621,14 @@ void Element::flush()
   materialThickness = 0;
   degraderOffset = 0;
 
+  // laserwire
+  laserBeam        = "";
+  laserOffsetTheta = 0;
+  laserOffsetPhi   = 0;
+  laserOffsetX     = 0;
+  laserOffsetY     = 0;
+  laserOffsetZ     = 0;
+
   // for wirescanner
   wireDiameter = 0;
   wireLength   = 0;
@@ -631,7 +650,7 @@ void Element::flush()
   biasMaterialList.clear();
   biasVacuumList.clear();
   biasMaterialLVList.clear();
-  
+
   minimumKineticEnergy = 0;
 
   samplerName = "";

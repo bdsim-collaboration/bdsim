@@ -79,6 +79,9 @@ namespace GMAD {
   template void Parser::Add<Material, FastList<Material> >(bool unique, const std::string& className);
   template void Parser::Add<NewColour, FastList<NewColour> >(bool unique, const std::string& className);
   template void Parser::Add<PhysicsBiasing, FastList<PhysicsBiasing> >(bool unique, const std::string& className);
+  template void Parser::Add<Laser, FastList<Laser> >(bool unique, const std::string& className);
+
+
 }
 
 using namespace GMAD;
@@ -750,7 +753,7 @@ void Parser::Overwrite(const std::string& objectName)
   // find object and set values
 
   // possible object types are:
-  // element, atom, colour, crystal, coolingchannel, field, material, physicsbiasing, placement,
+  // element, atom, colour, crystal, coolingchannel, field, laser, material, physicsbiasing, placement,
   // query, region, tunnel, cavitymodel, samplerplacement, aperture, scorer, scorermesh, blm
   bool extended = false;
   auto element_it = element_list.find(objectName);
@@ -787,6 +790,7 @@ void Parser::Overwrite(const std::string& objectName)
     else if ( (extended = FindAndExtend<Aperture>   (objectName)) ) {}
     else if ( (extended = FindAndExtend<BLMPlacement> (objectName)) ) {}
     else if ( (extended = FindAndExtend<Modulator>  (objectName)) ) {}
+    else if ( (extended = FindAndExtend<Laser>      (objectName)) ) {}
   }
 
   if (!extended)
@@ -871,6 +875,9 @@ bool Parser::TryPrintingObject(const std::string& objectName) const
   auto searchField = std::find_if(field_list.begin(), field_list.end(), [&on](const Field& obj) {return obj.name == on;});
   if (searchField != field_list.end())
     {searchField->print(); return true;}
+  auto searchLaser = std::find_if(laser_list.begin(), laser_list.end(), [&on](const Laser& obj) {return obj.name == on;});
+  if (searchLaser != laser_list.end())
+    {searchLaser->print(); return true;}
   auto searchMaterial = std::find_if(material_list.begin(), material_list.end(), [&on](const Material& obj) {return obj.name == on;});
   if (searchMaterial != material_list.end())
     {searchMaterial->print(); return true;}
@@ -948,13 +955,13 @@ namespace GMAD {
 
   template<>
   FastList<Crystal>& Parser::GetList<Crystal>(){return crystal_list;}
-    
+
   template<>
   CoolingChannel& Parser::GetGlobal(){return coolingchannel;}
-    
+
   template<>
   FastList<CoolingChannel>& Parser::GetList<CoolingChannel>(){return coolingchannel_list;}
-  
+
   template<>
   Field& Parser::GetGlobal(){return field;}
 
@@ -1008,8 +1015,14 @@ namespace GMAD {
 
   template<>
   FastList<Placement>& Parser::GetList<Placement>(){return placement_list;}
-  
+
   template<>
+  Laser& Parser::GetGlobal(){return laser;}
+
+  template<>
+  FastList<Laser>& Parser::GetList<Laser>(){return laser_list;}
+
+    template<>
   PhysicsBiasing& Parser::GetGlobal(){return xsecbias;}
 
   template<>

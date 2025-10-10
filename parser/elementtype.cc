@@ -64,8 +64,6 @@ std::string GMAD::typestr(ElementType type)
       {return "gascap";               break;}
     case ElementType::_GASJET:
       {return "gasjet";               break;}
-    case ElementType::_LASER:
-      {return "laser";               break;}
     case ElementType::_MATERIAL:
       {return "material";            break;}
     case ElementType::_RBEND:
@@ -88,6 +86,8 @@ std::string GMAD::typestr(ElementType type)
       {return "kicker";              break;}
     case ElementType::_TKICKER:
       {return "tkicker";             break;}
+    case ElementType::_LASERWIREOLD:
+      {return "laserwireold";      break;}
     case ElementType::_TRANSFORM3D:
       {return "transform3d";         break;}
     case ElementType::_WIRESCANNER:
@@ -120,6 +120,8 @@ std::string GMAD::typestr(ElementType type)
       {return "dump";                break;}
     case ElementType::_MUONCOOLER:
       {return "muoncoolier";         break;}
+    case ElementType::_LASERWIRE:
+      {return "laserwire";           break;}
     case ElementType::_CT:
       {return "ct";                  break;}
     case ElementType::_TARGET:

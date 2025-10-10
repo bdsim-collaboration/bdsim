@@ -42,7 +42,7 @@ namespace GMAD
     _BMCOL       = 12,
     _ECOL        = 13,
     _RCOL        = 14,
-    _LASER       = 15,
+    _LASERWIREOLD      = 15,
     _MATERIAL    = 16,
     _RBEND       = 17,
     _GASCAP      = 18,
@@ -75,7 +75,9 @@ namespace GMAD
     _RFX           = 77,
     _RFY           = 78,
     _MUONCOOLER    = 79,
-    _JCOLTIP       = 80
+    _JCOLTIP       = 80,
+    _LASERWIRE     = 81,
+    _LASER         = 82
   };
 
   /// conversion from enum to string
