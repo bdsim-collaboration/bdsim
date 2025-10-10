@@ -135,5 +135,4 @@ void BDSIonDefinition::Parse(const G4String& definition)
       G4String message("Invalid ion definition: Charge is greater than Z");
       throw BDSException(__METHOD_NAME__, message);
     }
-    auto dummy = 1;
 }
