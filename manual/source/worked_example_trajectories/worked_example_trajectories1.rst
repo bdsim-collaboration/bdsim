@@ -40,7 +40,7 @@ Key Concepts
 ------------
 
 * A "trajectory" is a record of a particle track through a model. It contains information
-  about each step the particle took and there one trajectory is for one particle.
+  about each step the particle took and there is one trajectory for each particle.
 * A "primary" particle is one that started at the beginning of an event. There may be more
   than one, but typically BDSIM starts with one particle per event.
 * A "secondary" particle is any subsequent particle created in the simulation, no matter

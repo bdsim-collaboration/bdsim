@@ -37,6 +37,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "FTFP_BERT.hh"
 #include "globals.hh"
+#include "BDSParticleMilli.hh"
 #include "G4AntiNeutrinoE.hh"
 #include "G4AntiNeutrinoMu.hh"
 #include "G4AntiNeutrinoTau.hh"
@@ -420,6 +421,8 @@ void BDS::ConstructBeamParticleG4(const G4String& name)
     {G4NeutrinoTau::NeutrinoTauDefinition();}
   else if (name == "anti_nu_tau")
     {G4AntiNeutrinoTau::AntiNeutrinoTauDefinition();}
+  else if (name == BDSGlobalConstants::Instance()->millichargeName())
+    {ParticleMilli::MillichargeDefinition();}
   else
     {
       G4String msg = "Unknown common beam particle type \"" + name;

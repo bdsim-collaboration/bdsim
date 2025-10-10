@@ -423,7 +423,7 @@ Below is a complete of a rebdsim analysis configuration text file.
   Histogram2D  Event     XvsY             {100,100}  {-0.1:0.1,-0.1:0.1} Primary.y:Primary.x 1
   Histogram3D  Event     PhaseSpace3D     {20,30,40} {-5e-6:5e-6,-5e-6:5e-6,-5e-6:5e-6} Primary.x:Primary.y:Primary.z 1
   Histogram1DLog  Event  PrimaryXAbs      {20}       {-9:-3}             abs(Primary.x)                 1
-  Histogram2D     Event  PhaseSpaceXXP    {20,30}    {-1e-6:1e-6,-1e-4:1e-4} Primary.xp:Primaryx 1
+  Histogram2D     Event  PhaseSpaceXXP    {20,30}    {-1e-6:1e-6,-1e-4:1e-4} Primary.xp:Primary.x 1
   Histogram2DLog  Event  PhaseSpaceXYAbs2 {20,30}    {-6:-3,-1e-6:1e-5}  abs(Primary.y):Primary.x 1
 
 .. warning:: The variable for plotting is really a simple interface to CERN ROOT's TTree Draw

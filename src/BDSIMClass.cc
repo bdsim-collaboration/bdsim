@@ -82,6 +82,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSVisManager.hh"
 #include "BDSWarning.hh"
 
+#include "FTFP_BERT.hh"
+#include "BDSPhysicsMilli.hh"
+
 BDSIM::BDSIM():
   ignoreSIGINT(false),
   usualPrintOut(true),
@@ -214,7 +217,13 @@ int BDSIM::Initialise()
   auto parallelWorldPhysics = BDS::ConstructParallelWorldPhysics(parallelWorldsRequiringPhysics);
   G4int physicsVerbosity = globals->PhysicsVerbosity();
   G4VModularPhysicsList* physList;
-  if (userPhysicsList)
+  if(BDSGlobalConstants::Instance()->enableMillicharge())
+    {
+      G4cout << "Using millicharged physics" << G4endl;
+      physList = new FTFP_BERT();
+      physList->ReplacePhysics(new BDSPhysicsMilli("G4millicharged",physicsVerbosity));
+    }
+  else if (userPhysicsList)
     {
       G4cout << "Using externally registered user defined physics list" << G4endl;
       physList = userPhysicsList;
@@ -235,10 +244,10 @@ int BDSIM::Initialise()
   BDSParticleDefinition* beamParticle = nullptr;
   G4bool beamDifferentFromDesignParticle = false;
   BDS::ConstructDesignAndBeamParticle(BDSParser::Instance()->GetBeam(),
-                                      globals->FFact(),
-                                      designParticle,
-                                      beamParticle,
-                                      beamDifferentFromDesignParticle);
+                                    globals->FFact(),
+                                    designParticle,
+                                    beamParticle,
+                                    beamDifferentFromDesignParticle);
   G4double minEK = globals->MinimumKineticEnergy();
   if (beamParticle->KineticEnergy() < minEK && BDS::IsFinite(minEK))
     {throw BDSException("option, minimumKineticEnergy is higher than kinetic energy of the beam - all primary particles wil be killed!");}

@@ -442,7 +442,7 @@ in the field definition in either :code:`magneticReflection` or :code:`electricR
 * (\*) See pictorial representation below
 
 For :code:`reflectxydipole`, :math:`x \mapsto |x|` and :math:`y \mapsto |y|`
-for the array look up. Then the value found at that location if changed as follows:
+for the array look up. Then the value found at that location is changed as follows:
 
 * if :math:`x < 0 \wedge y \geqslant 0`, :math:`B_x \mapsto -B_x`
 * if :math:`x \geqslant 0 \wedge y < 0`, :math:`B_x \mapsto -B_x`
@@ -451,20 +451,20 @@ for the array look up. Then the value found at that location if changed as follo
 
 
 For :code:`reflectxzdipole`, :math:`y \mapsto |y|` for the array look up. Then
-the value found at that location if changed as follows:
+the value found at that location is changed as follows:
 
 * if :math:`y < 0`, :math:`B_x \mapsto -B_x`
 
 
 For :code:`reflectxzsolenoid`, :math:`z \mapsto |z|` for the array look up. Then
-the value found at that location if changed as follows:
+the value found at that location is changed as follows:
 
 * if :math:`z < 0`, :math:`B_x \mapsto -B_x`
 * if :math:`z < 0`, :math:`B_y \mapsto -B_y`
 
 
 For :code:`reflectxyquadrupole`, :math:`x \mapsto |x|` and :math:`y \mapsto |y|`
-for the array look up. Then the value found at that location if changed as follows:
+for the array look up. Then the value found at that location is changed as follows:
 
 * if :math:`x < 0`, :math:`B_y \mapsto -B_y`
 * if :math:`y < 0`, :math:`B_x \mapsto -B_x`
@@ -1597,7 +1597,7 @@ lhc
     :width: 40%
     :align: left
 
-The LHC aperture shapre is defined by three parameters. It is the intersection (i.e. only
+The LHC aperture shape is defined by three parameters. It is the intersection (i.e. only
 where both exist) of a circle and a rectangle centred on each other. :code:`aper1` is the
 horizontal half-width of the rectangle. :code:`aper2` is the vertical half-height of the
 rectangle. :code:`aper3` is the radius of the circle. Depending on these parameters, a similar
