@@ -105,7 +105,7 @@ G4VParticleChange* BDSLaserPhotoDetachment::PostStepDoIt(const G4Track& track,
   // else proceed
   const BDSLaser* laser = lvv->Laser();
   
-  G4double stepLength = step.GetStepLength();
+  //G4double stepLength = step.GetStepLength();  TODO: check & remove if not needed
 
   G4DynamicParticle* ion = const_cast<G4DynamicParticle*>(track.GetDynamicParticle());
 
@@ -127,8 +127,8 @@ G4VParticleChange* BDSLaserPhotoDetachment::PostStepDoIt(const G4Track& track,
   G4ThreeVector ionMomentum = ion->GetMomentum();
   G4double ionMass = ion->GetMass();
   G4ThreeVector ionBeta = ionMomentum/ionEnergy;
-  G4double ionGamma = ionEnergy/ionMass;
-  G4double ionVelocity = ionBeta.mag()*CLHEP::c_light;
+  //G4double ionGamma = ionEnergy/ionMass;  // TODO: check & remove if not needed
+  //G4double ionVelocity = ionBeta.mag()*CLHEP::c_light;  // TODO: check & remove if not needed
   photonLorentz.boost(-ionBeta);
   G4double photonEnergyLorentz = photonLorentz.e();
   G4double crossSection = photoDetachmentEngine->CrossSection(photonEnergyLorentz);

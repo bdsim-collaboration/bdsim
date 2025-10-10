@@ -90,9 +90,8 @@ public:
   BDSAcceleratorComponent* CreateComponent(GMAD::Element const* elementIn,
 					   GMAD::Element const* prevElementIn,
 					   GMAD::Element const* nextElementIn,
-					   BDSBeamlineIntegral& integral,
-                       G4double currentArcLength = 0);
-  
+					   BDSBeamlineIntegral& integral);
+
   /// Public creation for object that dynamically stops all particles once the primary
   /// has completed a certain number of turns.
   BDSAcceleratorComponent* CreateTerminator(G4double witdth);

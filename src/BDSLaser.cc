@@ -66,8 +66,8 @@ BDSLaser::BDSLaser(G4double wavelengthIn,
   sigma0(sigma0In),
   laserArrivalTime(laserArrivalTimeIn),
   T0(T0In),
-  polarization(polarizationIn),
-  ignoreRayleighRange(ignoreRayleighRangeIn)
+  ignoreRayleighRange(ignoreRayleighRangeIn),
+  polarization(polarizationIn)
 {
   if(!BDS::IsFinite(sigma0In))
     {throw BDSException(__METHOD_NAME__, "Laser waist sigma0 is zero.");}
@@ -82,8 +82,8 @@ BDSLaser::BDSLaser(G4double wavelengthIn):   wavelength(wavelengthIn),
                                              sigma0(0),
                                              laserArrivalTime(0),
                                              T0(0),
-                                             polarization(0),
-                                             ignoreRayleighRange(0) {}
+                                             ignoreRayleighRange(0),
+                                             polarization(0) {}
 
 BDSLaser::~BDSLaser()
 {;}

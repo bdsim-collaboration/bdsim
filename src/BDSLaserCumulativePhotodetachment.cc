@@ -103,7 +103,7 @@ G4VParticleChange* BDSLaserCumulativePhotodetachment::PostStepDoIt(const G4Track
   G4double particleVelocity = particleBeta.mag()*CLHEP::c_light;
   G4LorentzVector particle4VectorMomentum = ion->Get4Momentum();
   particle4VectorMomentum.boost(-particleBeta);
-  G4double particleTimePostStepGlobal = track.GetGlobalTime();
+  //G4double particleTimePostStepGlobal = track.GetGlobalTime(); // TODO: check & remove if not needed
 
   //######### Get particle position and momentum direction ###############################
   G4ThreeVector particlePositionPostStepGlobal = track.GetPosition();

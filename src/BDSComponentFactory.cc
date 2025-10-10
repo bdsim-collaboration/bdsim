@@ -171,8 +171,7 @@ BDSComponentFactory::~BDSComponentFactory()
 BDSAcceleratorComponent* BDSComponentFactory::CreateComponent(Element const* elementIn,
 							      Element const* prevElementIn,
 							      Element const* nextElementIn,
-							      BDSBeamlineIntegral& integral,
-                                  G4double currentArcLength)
+							      BDSBeamlineIntegral& integral)
 {
   switch (elementIn->type)
   {
