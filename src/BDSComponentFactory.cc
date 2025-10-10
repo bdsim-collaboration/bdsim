@@ -2263,34 +2263,6 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateLaserwire(G4double syncrhono
 			      BDSColours::Instance()->GetColour(colour)));
 }
 
-BDSAcceleratorComponent* BDSComponentFactory::CreateLaserwire(G4double syncrhonousTime)
-{
-    if(!HasSufficientMinimumLength(element))
-    {return nullptr;}
-
-    BDSLaser* laser = PrepareLaser(element);
-    laser->SetT0(syncrhonousTime);
-
-
-
-  G4ThreeVector laserOffset = G4ThreeVector(element->laserOffsetX * CLHEP::m,
-					    element->laserOffsetY * CLHEP::m,
-					    element->laserOffsetZ * CLHEP::m);
-  G4String colour = laser->GetLaserColour();
-
-
-    return (new BDSLaserWireNew(elementName,
-			      element->l*CLHEP::m,
-			      PrepareBeamPipeInfo(element),
-			      laser,
-			      30.0*laser->Sigma0(),
-			      element->wireLength*CLHEP::m,
-			      element->laserOffsetTheta*CLHEP::rad,
-			      element->laserOffsetPhi*CLHEP::rad,
-			      laserOffset,
-			      BDSColours::Instance()->GetColour(colour)));
-}
-
 BDSMagnet* BDSComponentFactory::CreateMagnet(const GMAD::Element* el,
 					     BDSMagnetStrength*   st,
 					     BDSFieldType         fieldType,
