@@ -12,6 +12,9 @@ on:
 jobs:
 
   docker-bdsim:
+    # ensure workflow on runs on main bdsim repo and not forks 
+    if: github.repository == 'bdsim-collaboration/bdsim'
+
     name: Push alma9 bdsim docker images to Docker Hub
     runs-on: ubuntu-latest
 
