@@ -112,6 +112,10 @@ extern FILE *yyin;
 
 Parser* Parser::instance = nullptr;
 
+Parser::Parser() {
+
+}
+
 Parser* Parser::Instance()
 {
   if (!instance)
@@ -988,7 +992,7 @@ namespace GMAD {
   template<> FastList<Material>& Parser::GetList<Material>(){return material_list;}
 
   template<> Laser& Parser::GetGlobal(){return laser;}
-  template<> Laser* Parser::GetGlobalPtr(){return laser;}
+  template<> Laser* Parser::GetGlobalPtr(){return &laser;}
   template<> FastList<Laser>& Parser::GetList<Laser>(){return laser_list;}
 
   template<> Modulator& Parser::GetGlobal() {return modulator;}

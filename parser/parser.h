@@ -88,12 +88,13 @@ namespace GMAD
     static Parser* Instance();
     /// Destructor
     virtual ~Parser();
+    /// Default contructor
+    Parser();
 
   protected:
     /// Constructor from filename
     explicit Parser(std::string filename);
-    /// Default contructor
-    Parser();
+
   private:
     /// Instance
     static Parser* instance;
