@@ -42,6 +42,7 @@ public:
 				G4double           brho,
 				G4double           separation,
 				G4bool             secondFieldOnLeft = true,
+                G4bool             secondFieldInverted = true,
 				G4double           arbitraryScaling  = 1.0);
   
   virtual ~BDSFieldMagMultipoleOuterDual();
@@ -53,6 +54,7 @@ public:
 private:
   BDSFieldMagMultipoleOuter* fieldBase;
   G4ThreeVector offset;
+  G4bool invertSecondField;
 };
 
 #endif

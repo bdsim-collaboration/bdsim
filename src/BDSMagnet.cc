@@ -262,9 +262,14 @@ void BDSMagnet::BuildOuterField()
               BDSFieldInfo* secondBPField = new BDSFieldInfo(*vacuumFieldInfo);
               G4double sign = mgt == BDSMagnetGeometryType::lhcleft ? 1.0 : -1.0;
               secondBPField->Translate(G4ThreeVector(sign * BDSMagnetOuterFactoryLHC::beamSeparation, 0, 0));
-              (*(secondBPField->MagnetStrength()))["field"] *= -1; // flip the sign
-              if (BDS::IsFinite((*(secondBPField->MagnetStrength()))["k1"]))
+
+              if (magnetType != BDSMagnetType::quadrupole)
+              {
+                (*(secondBPField->MagnetStrength()))["field"] *= -1; // flip the sign
+                if (BDS::IsFinite((*(secondBPField->MagnetStrength()))["k1"]))
                 {(*(secondBPField->MagnetStrength()))["k1"] *= -1;}
+              }
+
               secondBPField->SetIntegratorType(BDSIntegratorType::g4classicalrk4);
               BDSFieldBuilder::Instance()->RegisterFieldForConstruction(secondBPField,
                                                                         daughters[0]->GetContainerLogicalVolume(),

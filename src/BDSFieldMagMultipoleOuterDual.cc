@@ -28,6 +28,7 @@ BDSFieldMagMultipoleOuterDual::BDSFieldMagMultipoleOuterDual(G4int              
 							     G4double           brho,
 							     G4double           separation,
 							     G4bool             secondFieldOnLeft,
+                                 G4bool             secondFieldInverted,
 							     G4double           arbitraryScaling):
   fieldBase(nullptr)
 {
@@ -35,6 +36,7 @@ BDSFieldMagMultipoleOuterDual::BDSFieldMagMultipoleOuterDual(G4int              
 					    kPositive, brho, arbitraryScaling);
   G4double offsetX = secondFieldOnLeft ? -separation : separation;
   offset = G4ThreeVector(offsetX,0,0);
+  invertSecondField = secondFieldInverted;
 }
 
 BDSFieldMagMultipoleOuterDual::~BDSFieldMagMultipoleOuterDual()
@@ -48,7 +50,10 @@ G4ThreeVector BDSFieldMagMultipoleOuterDual::GetField(const G4ThreeVector& posit
   G4ThreeVector aSide      = fieldBase->GetField(position, t);
   G4ThreeVector shiftedPos = position + offset;
   G4ThreeVector bSide      = fieldBase->GetField(shiftedPos,t);
-  bSide *= -1.0; // opposite to whatever 'a' side is
+  if (invertSecondField)
+  {
+      bSide *= -1.0; // opposite to whatever 'a' side
+  }
   G4ThreeVector result = aSide + bSide;
   return result;
 }
