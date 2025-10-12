@@ -76,8 +76,9 @@ namespace GMAD
     _RFY           = 78,
     _MUONCOOLER    = 79,
     _JCOLTIP       = 80,
-    _LASERWIRE     = 81,
-    _LASER         = 82
+    _GABORLENS     = 81,
+    _LASERWIRE     = 82,
+    _LASER         = 83
   };
 
   /// conversion from enum to string

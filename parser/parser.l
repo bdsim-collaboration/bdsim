@@ -137,6 +137,7 @@ dump { return DUMP; }
 muoncooler { return MUONCOOLER; }
 ct { return CT; }
 target { return TARGET; }
+gaborlens { return GABORLENS; }
 laserwire   { return LASERWIRE; }
 
 cavitymodel {return CAVITYMODEL; }
