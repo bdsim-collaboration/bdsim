@@ -54,6 +54,7 @@ simple_testing(component-shield              "--file=shield.gmad"          ${OVE
 simple_testing(component-solenoid            "--file=solenoid.gmad"        ${OVERLAP_CHECK})
 simple_testing(component-target              "--file=target.gmad"          ${OVERLAP_CHECK})
 simple_testing(component-transform3d         "--file=transform3d.gmad"     ${OVERLAP_CHECK})
+simple_testing(component-transform3d-offset  "--file=transform3d_offset.gmad"    ${OVERLAP_CHECK})
 simple_testing(component-tunnel              "--file=tunnel.gmad"          ${OVERLAP_CHECK})
 simple_testing(component-undulator           "--file=undulator.gmad"       ${OVERLAP_CHECK})
 simple_testing(component-vkicker             "--file=vkicker.gmad"         ${OVERLAP_CHECK})

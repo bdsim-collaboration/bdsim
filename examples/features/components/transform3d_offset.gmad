@@ -1,0 +1,17 @@
+! here we apply a transform3d but after a component that changes the
+! beamline frame to be not axix-aligned.
+
+dft: drift, l=0.5*m;
+s1: sbend, angle=pi/2, l=1*m, horizontalWidth=3*cm, tilt=pi/6;
+t1: transform3d, x=1*cm, y=1*cm, z=1*cm;
+l1: line=(dft, s1, t1, dft);
+use, l1;
+
+beam, particle="e-",
+      energy=1*GeV;
+
+option, aper1=1*cm;
+
+! note this will cause overlaps with the curvilinear world
+! so we we don't bother - it's just to test all variables are
+! parsed correctly
