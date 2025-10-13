@@ -1,33 +1,38 @@
 <map id="BDSBunch::CheckParameters" name="BDSBunch::CheckParameters">
-<area shape="rect" id="Node000001" title=" " alt="" coords="568,320,779,345"/>
-<area shape="rect" id="Node000002" href="$classBDSBunchBox.html#a2272455d036d1a0ba97d61ee3a91794b" title=" " alt="" coords="270,5,506,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="664,307,648,251,620,179,601,141,577,105,550,72,518,44,499,33,502,29,522,40,554,68,582,102,605,139,625,177,653,249,669,306"/>
-<area shape="rect" id="Node000003" href="$classBDSBunchCircle.html#a30f2e9fba09997f2f265d8afd5d123de" title=" " alt="" coords="264,55,512,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="661,308,642,261,612,202,571,143,546,117,519,95,495,82,497,78,521,90,550,113,575,140,617,200,647,259,666,306"/>
-<area shape="rect" id="Node000004" href="$classBDSBunchComposite.html#a9c3d40dedfe8864b5f86b1638a506b85" title=" " alt="" coords="305,105,471,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="656,310,633,275,602,234,563,193,519,159,496,147,471,139,472,134,498,143,521,154,567,189,606,231,637,272,660,307"/>
-<area shape="rect" id="Node000005" href="$classBDSBunchCompositeSDE.html#abc6504f05fa41d1fb21ad6ee5cfa7649" title=" " alt="" coords="295,169,481,209"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="647,313,591,267,556,243,519,223,480,209,482,204,521,218,559,239,594,263,650,309"/>
-<area shape="rect" id="Node000006" href="$classBDSBunchEShell.html#a8a421eafb236411fe20fb1ab7bcb49b7" title=" " alt="" coords="263,233,513,259"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="632,317,579,295,519,274,467,261,469,256,521,269,581,290,634,312"/>
-<area shape="rect" id="Node000007" href="$classBDSBunchEventGenerator.html#a70382188d540663568aa7c3c64b60e11" title=" " alt="" coords="293,283,483,323"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="554,323,483,316,484,310,554,318"/>
-<area shape="rect" id="Node000008" href="$classBDSBunchHalo.html#af407d6d62362640c52f44d4b2fcfba71" title=" " alt="" coords="267,348,509,373"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="555,347,509,351,509,346,554,342"/>
-<area shape="rect" id="Node000010" href="$classBDSBunchHaloFlatSigma.html#adfb910be5885e2524c9d492c0fdfbe2b" title=" " alt="" coords="295,398,481,438"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="626,352,521,387,473,400,471,395,519,382,624,347"/>
-<area shape="rect" id="Node000012" href="$classBDSBunchRing.html#a8c34bd84bc24d002e30d59d4c7319515" title=" " alt="" coords="268,463,508,488"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="651,357,596,406,560,431,521,452,484,465,483,460,519,448,557,427,592,402,648,353"/>
-<area shape="rect" id="Node000013" href="$classBDSBunchSquare.html#ab1cc9217987d33de6fa5c872a83310a8" title=" " alt="" coords="260,512,516,537"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="659,359,636,392,605,431,566,470,521,502,491,514,489,510,519,497,563,466,601,427,632,389,655,356"/>
-<area shape="rect" id="Node000014" href="$classBDSBunchTwiss.html#a5d15a3315c78fe0b2ce915db842a4510" title=" " alt="" coords="265,561,511,587"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="664,359,644,402,614,455,573,508,548,532,521,552,499,564,496,559,519,548,545,528,569,505,609,452,640,400,660,357"/>
-<area shape="rect" id="Node000016" href="$classBDSBunchUserFile.html#aeb7ca33c9fbe28e82f9eb2ec88e0b320" title=" " alt="" coords="256,611,520,636"/>
-<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="668,360,650,412,621,478,579,545,552,576,522,602,501,613,499,608,518,597,548,572,574,542,616,476,645,410,663,358"/>
-<area shape="rect" id="Node000009" href="$classBDSBunchHalo.html#a805fbd0062a69508684b22dfd2869a1c" title=" " alt="" coords="7,348,206,373"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="254,363,206,363,206,358,254,358"/>
-<area shape="rect" id="Node000011" href="$classBDSBunchHaloFlatSigma.html#a5a2f092d3da5b756d674d0db89e31ccd" title=" " alt="" coords="14,398,199,438"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="282,421,200,421,200,415,282,415"/>
-<area shape="rect" id="Node000015" href="$classBDSBunchTwiss.html#a91d4a40cc9954fa7f2e94958587f2c79" title=" " alt="" coords="5,561,208,587"/>
-<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="251,577,208,577,208,571,251,571"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="579,384,789,409"/>
+<area shape="rect" id="Node000002" href="$classBDSBunchBox.html#a2272455d036d1a0ba97d61ee3a91794b" title=" " alt="" coords="281,5,517,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="677,371,665,304,640,214,620,167,596,121,566,80,529,44,511,33,514,28,532,40,570,76,600,119,625,165,645,212,670,302,682,370"/>
+<area shape="rect" id="Node000003" href="$classBDSBunchCircle.html#a30f2e9fba09997f2f265d8afd5d123de" title=" " alt="" coords="275,55,523,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="675,371,660,313,632,237,613,198,590,159,562,125,529,95,508,82,510,78,532,91,566,121,594,156,618,195,637,235,665,311,680,370"/>
+<area shape="rect" id="Node000004" href="$classBDSBunchComposite.html#a9c3d40dedfe8864b5f86b1638a506b85" title=" " alt="" coords="315,105,482,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="671,372,652,326,622,268,581,208,557,182,529,159,506,146,481,137,483,132,509,141,532,154,560,178,585,205,627,265,657,323,676,370"/>
+<area shape="rect" id="Node000005" href="$classBDSBunchCompositeSDE.html#abc6504f05fa41d1fb21ad6ee5cfa7649" title=" " alt="" coords="306,169,491,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="666,374,644,339,612,298,574,257,529,223,490,206,493,201,532,218,577,253,617,295,648,336,671,371"/>
+<area shape="rect" id="Node000006" href="$classBDSBunchEShell.html#a8a421eafb236411fe20fb1ab7bcb49b7" title=" " alt="" coords="273,233,524,259"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="661,376,605,323,569,296,530,274,494,261,496,256,532,269,572,292,608,319,664,372"/>
+<area shape="rect" id="Node000007" href="$classBDSBunchEventGenerator.html#a70382188d540663568aa7c3c64b60e11" title=" " alt="" coords="303,283,494,323"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="641,381,530,338,489,326,490,321,532,333,643,376"/>
+<area shape="rect" id="Node000008" href="$classBDSBunchGaussSlowExtBase.html#a6851d9bf6fb33c50e904d9d76808879c" title=" " alt="" coords="5,485,219,525"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="640,417,588,435,531,451,450,468,368,481,219,499,219,494,367,476,449,463,530,446,587,430,638,412"/>
+<area shape="rect" id="Node000009" href="$classBDSBunchGaussTwiss.html#ad7ef73ae1a2e96b6f1f5b321ad50f43d" title=" " alt="" coords="317,347,481,387"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="565,387,481,378,481,373,566,382"/>
+<area shape="rect" id="Node000011" href="$classBDSBunchHalo.html#af407d6d62362640c52f44d4b2fcfba71" title=" " alt="" coords="278,412,519,437"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="565,411,520,415,519,410,565,406"/>
+<area shape="rect" id="Node000013" href="$classBDSBunchHaloFlatSigma.html#adfb910be5885e2524c9d492c0fdfbe2b" title=" " alt="" coords="306,613,491,653"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="673,423,652,463,621,512,581,561,532,603,493,621,490,616,529,598,577,558,617,509,648,461,669,421"/>
+<area shape="rect" id="Node000015" href="$classBDSBunchRing.html#a8c34bd84bc24d002e30d59d4c7319515" title=" " alt="" coords="279,563,519,588"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="669,422,614,489,575,524,532,554,504,565,502,560,529,549,572,520,610,485,664,419"/>
+<area shape="rect" id="Node000016" href="$classBDSBunchSlowExt.html#a08a4e16b93708800455968559f92d12c" title=" " alt="" coords="267,513,530,539"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="657,420,601,459,532,496,471,516,469,511,530,492,599,454,654,416"/>
+<area shape="rect" id="Node000017" href="$classBDSBunchSquare.html#ab1cc9217987d33de6fa5c872a83310a8" title=" " alt="" coords="271,677,527,703"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="678,424,661,476,632,543,589,610,563,641,532,667,509,680,506,675,529,662,559,637,585,607,627,540,656,474,673,422"/>
+<area shape="rect" id="Node000018" href="$classBDSBunchUserFile.html#aeb7ca33c9fbe28e82f9eb2ec88e0b320" title=" " alt="" coords="267,727,531,752"/>
+<area shape="poly" id="edge18_Node000001_Node000018" title=" " alt="" coords="681,423,667,485,640,565,620,607,596,648,567,685,532,717,514,729,511,724,529,713,563,682,591,645,615,605,635,563,662,483,676,422"/>
+<area shape="rect" id="Node000010" href="$classBDSBunchGaussTwiss.html#ae75c03c1a8ec692fb234fa69eadef857" title=" " alt="" coords="30,347,194,387"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="303,370,194,370,194,365,303,365"/>
+<area shape="rect" id="Node000012" href="$classBDSBunchHalo.html#a805fbd0062a69508684b22dfd2869a1c" title=" " alt="" coords="13,412,211,437"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="264,427,212,427,212,422,264,422"/>
+<area shape="rect" id="Node000014" href="$classBDSBunchHaloFlatSigma.html#a5a2f092d3da5b756d674d0db89e31ccd" title=" " alt="" coords="19,613,205,653"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="292,635,205,635,205,630,292,630"/>
+<area shape="poly" id="edge16_Node000016_Node000008" title=" " alt="" coords="253,518,219,515,219,510,254,513"/>
 </map>

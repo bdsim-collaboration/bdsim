@@ -109,28 +109,31 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structbunchtypes__def.html">   32</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structbunchtypes__def.html">bunchtypes_def</a></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">enum</span> type {reference, gaussmatrix, gauss, gausstwiss, circle, square, ring, eshell,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>             halo, composite, userfile, ptc, sixtrack, eventgeneratorfile, sphere,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>             compositesde, box, bdsimsampler, halosigma};</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">enum</span> type {reference,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                gaussmatrix, gauss, gausstwiss,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                gaussmatrixslowext, gaussslowext, gausstwissslowext,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                circle, square, ring, eshell,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                halo, composite, userfile, ptc, sixtrack, eventgeneratorfile, sphere,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                compositesde, box, bdsimsampler, halosigma, hdf5, slowext};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
 </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">typedef</span> <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSTypeSafeEnum&lt;bunchtypes_def,int&gt;</a> <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceBDS.html">BDS</a></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a> <a class="code hl_function" href="namespaceBDS.html#a729f37f07b5e83df227d8583fb352efb">DetermineBunchType</a>(G4String distrType);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">typedef</span> <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSTypeSafeEnum&lt;bunchtypes_def,int&gt;</a> <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceBDS.html">BDS</a></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a> <a class="code hl_function" href="namespaceBDS.html#a729f37f07b5e83df227d8583fb352efb">DetermineBunchType</a>(G4String distrType);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassBDSTypeSafeEnum_html"><div class="ttname"><a href="classBDSTypeSafeEnum.html">BDSTypeSafeEnum</a></div><div class="ttdoc">Improve type-safety of native enum data type in C++.</div><div class="ttdef"><b>Definition</b> <a href="BDSTypeSafeEnum_8hh_source.html#l00046">BDSTypeSafeEnum.hh:47</a></div></div>
 <div class="ttc" id="anamespaceBDS_html"><div class="ttname"><a href="namespaceBDS.html">BDS</a></div><div class="ttdoc">Return either G4Tubs or G4CutTubs depending on flat face.</div><div class="ttdef"><b>Definition</b> <a href="BDSBunchHaloFlatSigma_8cc_source.html#l00039">BDSBunchHaloFlatSigma.cc:40</a></div></div>
-<div class="ttc" id="anamespaceBDS_html_a729f37f07b5e83df227d8583fb352efb"><div class="ttname"><a href="namespaceBDS.html#a729f37f07b5e83df227d8583fb352efb">BDS::DetermineBunchType</a></div><div class="ttdeci">BDSBunchType DetermineBunchType(G4String distrType)</div><div class="ttdoc">Function that gives corresponding enum value for string (case-insensitive).</div><div class="ttdef"><b>Definition</b> <a href="BDSBunchType_8cc_source.html#l00055">BDSBunchType.cc:55</a></div></div>
+<div class="ttc" id="anamespaceBDS_html_a729f37f07b5e83df227d8583fb352efb"><div class="ttname"><a href="namespaceBDS.html#a729f37f07b5e83df227d8583fb352efb">BDS::DetermineBunchType</a></div><div class="ttdeci">BDSBunchType DetermineBunchType(G4String distrType)</div><div class="ttdoc">Function that gives corresponding enum value for string (case-insensitive).</div><div class="ttdef"><b>Definition</b> <a href="BDSBunchType_8cc_source.html#l00060">BDSBunchType.cc:60</a></div></div>
 <div class="ttc" id="astructbunchtypes__def_html"><div class="ttname"><a href="structbunchtypes__def.html">bunchtypes_def</a></div><div class="ttdoc">Type definition for bunch distributions - used for comparison in factory methods.</div><div class="ttdef"><b>Definition</b> <a href="BDSBunchType_8hh_source.html#l00032">BDSBunchType.hh:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 6 2025 16:37:47 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:13:47 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

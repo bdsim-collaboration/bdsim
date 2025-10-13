@@ -1,41 +1,53 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBDSBunch.html" title="The base class for bunch distribution generators." alt="" coords="5,327,95,352"/>
-<area shape="rect" id="Node000001" href="$classBDSBunchBox.html" title="A bunch distribution that produces an uncorrelated uniform random distribution within a 6D box." alt="" coords="178,5,293,31"/>
-<area shape="poly" id="edge118_Node000000_Node000001" title=" " alt="" coords="49,313,53,256,66,183,78,144,93,106,114,71,141,40,158,28,177,21,179,26,160,33,144,44,119,74,98,109,83,146,71,184,58,257,54,313"/>
-<area shape="rect" id="Node000002" href="$classBDSBunchCircle.html" title="An uncorrelated uniform random distribution within a circle in each dimension." alt="" coords="172,55,299,80"/>
-<area shape="poly" id="edge119_Node000000_Node000002" title=" " alt="" coords="51,312,58,264,73,204,99,143,118,114,141,89,171,73,173,77,144,93,122,117,104,145,78,206,63,265,56,313"/>
-<area shape="rect" id="Node000003" href="$classBDSBunchComposite.html" title="A distribution that allows mixing of three different distributions in each primary dimension." alt="" coords="156,104,315,129"/>
-<area shape="poly" id="edge120_Node000000_Node000003" title=" " alt="" coords="53,312,63,274,80,227,105,179,122,158,141,139,159,127,162,132,144,143,126,161,110,182,85,229,68,275,59,314"/>
-<area shape="rect" id="Node000004" href="$classBDSBunchCompositeSDE.html" title="A distribution that allows mixing of three different distributions in each primary dimension." alt="" coords="143,153,328,179"/>
-<area shape="poly" id="edge121_Node000000_Node000004" title=" " alt="" coords="58,313,88,250,111,216,141,188,162,176,164,181,144,192,115,220,92,253,62,315"/>
-<area shape="rect" id="Node000005" href="$classBDSBunchEShell.html" title="An uncorrelated uniform random distribution within an elliptical shell." alt="" coords="171,203,300,228"/>
-<area shape="poly" id="edge122_Node000000_Node000005" title=" " alt="" coords="65,313,97,274,118,254,141,237,170,224,172,229,144,242,122,258,101,278,69,317"/>
-<area shape="rect" id="Node000006" href="$classBDSBunchFileBased.html" title="An intermediate layer for any bunch classes that are file based." alt="" coords="159,252,311,277"/>
-<area shape="poly" id="edge123_Node000000_Node000006" title=" " alt="" coords="81,317,142,286,176,275,178,280,144,291,84,322"/>
-<area shape="rect" id="Node000010" href="$classBDSBunchGaussian.html" title="Common functionality for a 6D Gaussian distribution." alt="" coords="161,301,310,327"/>
-<area shape="poly" id="edge127_Node000000_Node000010" title=" " alt="" coords="108,329,160,322,161,327,109,334"/>
-<area shape="rect" id="Node000013" href="$classBDSBunchHalo.html" title="A halo distribution based on both twiss parameters and sigmas." alt="" coords="176,351,295,376"/>
-<area shape="poly" id="edge130_Node000000_Node000013" title=" " alt="" coords="109,344,176,353,175,358,108,350"/>
-<area shape="rect" id="Node000014" href="$classBDSBunchHaloFlatSigma.html" title="Bunch halo distribution where the PDF is uniformly distribution in sigma." alt="" coords="143,400,328,425"/>
-<area shape="poly" id="edge131_Node000000_Node000014" title=" " alt="" coords="86,357,144,385,182,397,180,402,142,390,83,361"/>
-<area shape="rect" id="Node000015" href="$classBDSBunchRing.html" title="A bunch distribution that produces an uncorrelated random uniform distribution along a circle in phas..." alt="" coords="176,449,295,475"/>
-<area shape="poly" id="edge132_Node000000_Node000015" title=" " alt="" coords="70,362,102,399,144,434,177,449,175,454,141,439,98,403,66,365"/>
-<area shape="rect" id="Node000016" href="$classBDSBunchSixTrack.html" title="A bunch distribution that reads a SixTrack hits file." alt="" coords="164,499,307,524"/>
-<area shape="poly" id="edge133_Node000000_Node000016" title=" " alt="" coords="63,363,93,425,116,457,144,484,167,496,165,501,141,488,112,460,88,427,58,366"/>
-<area shape="rect" id="Node000017" href="$classBDSBunchSixTrackLink.html" title="A bunch distribution that holds a bunch from Sixtrack Link." alt="" coords="150,548,321,573"/>
-<area shape="poly" id="edge134_Node000000_Node000017" title=" " alt="" coords="59,365,69,403,85,448,110,494,144,533,165,546,162,550,141,537,106,497,81,451,64,404,54,366"/>
-<area shape="rect" id="Node000018" href="$classBDSBunchSphere.html" title="A bunch distribution that produces an uncorrelated uniform random direction distribution over a spher..." alt="" coords="168,597,303,623"/>
-<area shape="poly" id="edge135_Node000000_Node000018" title=" " alt="" coords="56,366,63,413,78,472,104,532,122,560,144,584,169,598,166,603,141,588,118,563,100,535,73,474,58,414,51,366"/>
-<area shape="rect" id="Node000019" href="$classBDSBunchSquare.html" title="A bunch distribution that produces an uncorrelated uniform random distribution within a square in pha..." alt="" coords="168,647,303,672"/>
-<area shape="poly" id="edge136_Node000000_Node000019" title=" " alt="" coords="54,365,58,421,71,494,83,532,98,569,119,603,144,633,169,648,166,653,141,637,114,606,94,571,78,534,66,495,53,422,49,366"/>
-<area shape="rect" id="Node000007" href="$classBDSBunchEventGenerator.html" title="A wrapper of BDSBunch to include a filter for the events loaded by an event generator." alt="" coords="376,153,567,179"/>
-<area shape="poly" id="edge124_Node000006_Node000007" title=" " alt="" coords="311,245,327,237,341,225,350,213,359,200,375,188,400,176,403,181,377,192,363,204,354,216,345,229,329,242,314,249"/>
-<area shape="rect" id="Node000008" href="$classBDSBunchPtc.html" title="A bunch distribution that reads a PTC inrays file." alt="" coords="417,203,526,228"/>
-<area shape="poly" id="edge125_Node000006_Node000008" title=" " alt="" coords="310,247,416,224,417,229,311,252"/>
-<area shape="rect" id="Node000009" href="$classBDSBunchUserFile.html" title="A bunch distribution that reads a user specified column file." alt="" coords="381,252,561,277"/>
-<area shape="poly" id="edge126_Node000006_Node000009" title=" " alt="" coords="326,262,381,262,381,267,326,267"/>
-<area shape="rect" id="Node000011" href="$classBDSBunchSigmaMatrix.html" title="A 6D Gaussian distribution based on a covariance matrix." alt="" coords="385,301,557,327"/>
-<area shape="poly" id="edge128_Node000010_Node000011" title=" " alt="" coords="324,311,385,311,385,317,324,317"/>
-<area shape="rect" id="Node000012" href="$classBDSBunchTwiss.html" title="A bunch distribution according to the twiss parameterisation." alt="" coords="409,351,533,376"/>
-<area shape="poly" id="edge129_Node000010_Node000012" title=" " alt="" coords="311,327,410,348,409,353,310,332"/>
+<area shape="rect" id="Node000000" href="$classBDSBunch.html" title="The base class for bunch distribution generators." alt="" coords="5,376,95,401"/>
+<area shape="rect" id="Node000001" href="$classBDSBunchBox.html" title="A bunch distribution that produces an uncorrelated uniform random distribution within a 6D box." alt="" coords="192,5,307,31"/>
+<area shape="poly" id="edge119_Node000000_Node000001" title=" " alt="" coords="52,362,64,287,82,191,108,100,124,64,141,40,164,25,191,17,192,22,167,30,145,44,128,67,113,102,88,192,69,288,57,363"/>
+<area shape="rect" id="Node000002" href="$classBDSBunchCircle.html" title="An uncorrelated uniform random distribution within a circle in each dimension." alt="" coords="186,55,313,80"/>
+<area shape="poly" id="edge120_Node000000_Node000002" title=" " alt="" coords="49,362,52,305,65,232,77,193,93,155,114,120,141,89,162,76,185,68,187,73,164,81,144,93,118,123,98,158,82,195,70,233,58,306,54,362"/>
+<area shape="rect" id="Node000003" href="$classBDSBunchComposite.html" title="A distribution that allows mixing of three different distributions in each primary dimension." alt="" coords="170,104,329,129"/>
+<area shape="poly" id="edge121_Node000000_Node000003" title=" " alt="" coords="50,361,57,313,72,253,99,191,118,163,141,139,168,123,171,128,144,143,122,167,104,194,77,255,62,314,56,362"/>
+<area shape="rect" id="Node000004" href="$classBDSBunchCompositeSDE.html" title="A distribution that allows mixing of three different distributions in each primary dimension." alt="" coords="157,153,342,179"/>
+<area shape="poly" id="edge122_Node000000_Node000004" title=" " alt="" coords="53,362,63,323,79,276,105,228,122,207,141,188,160,177,162,181,144,192,126,210,109,231,84,278,68,324,58,363"/>
+<area shape="rect" id="Node000005" href="$classBDSBunchEShell.html" title="An uncorrelated uniform random distribution within an elliptical shell." alt="" coords="185,203,314,228"/>
+<area shape="poly" id="edge123_Node000000_Node000005" title=" " alt="" coords="57,362,87,299,111,265,141,237,162,226,184,219,185,224,164,231,144,241,115,269,92,302,62,364"/>
+<area shape="rect" id="Node000006" href="$classBDSBunchFileBased.html" title="An intermediate layer for any bunch classes that are file based." alt="" coords="173,252,325,277"/>
+<area shape="poly" id="edge124_Node000000_Node000006" title=" " alt="" coords="65,363,97,323,118,303,141,286,172,273,174,278,144,291,121,307,101,327,69,366"/>
+<area shape="rect" id="Node000010" href="$classBDSBunchGaussBase.html" title="Common functionality for a 6D Gaussian distribution." alt="" coords="169,301,330,327"/>
+<area shape="poly" id="edge128_Node000000_Node000010" title=" " alt="" coords="81,366,142,336,178,324,180,329,144,340,83,371"/>
+<area shape="rect" id="Node000014" href="$classBDSBunchGaussSlowExtBase.html" title="Gaussian with a P&#45;T correlation for slow extraction added on top." alt="" coords="143,351,356,376"/>
+<area shape="poly" id="edge132_Node000000_Node000014" title=" " alt="" coords="108,379,149,373,150,379,109,384"/>
+<area shape="rect" id="Node000018" href="$classBDSBunchHalo.html" title="A halo distribution based on both twiss parameters and sigmas." alt="" coords="190,400,309,425"/>
+<area shape="poly" id="edge136_Node000000_Node000018" title=" " alt="" coords="109,393,190,403,190,408,108,398"/>
+<area shape="rect" id="Node000019" href="$classBDSBunchHaloFlatSigma.html" title="Bunch halo distribution where the PDF is uniformly distribution in sigma." alt="" coords="157,449,342,475"/>
+<area shape="poly" id="edge137_Node000000_Node000019" title=" " alt="" coords="85,406,144,434,185,447,183,452,142,439,82,411"/>
+<area shape="rect" id="Node000020" href="$classBDSBunchRing.html" title="A bunch distribution that produces an uncorrelated random uniform distribution along a circle in phas..." alt="" coords="190,499,309,524"/>
+<area shape="poly" id="edge138_Node000000_Node000020" title=" " alt="" coords="70,411,101,449,122,468,144,484,167,494,191,501,189,506,165,499,141,488,118,472,98,453,66,415"/>
+<area shape="rect" id="Node000021" href="$classBDSBunchSixTrack.html" title="A bunch distribution that reads a SixTrack hits file." alt="" coords="178,548,321,573"/>
+<area shape="poly" id="edge139_Node000000_Node000021" title=" " alt="" coords="63,413,93,474,116,506,144,533,179,549,177,554,141,538,112,510,88,477,58,415"/>
+<area shape="rect" id="Node000022" href="$classBDSBunchSixTrackLink.html" title="A bunch distribution that holds a bunch from Sixtrack Link." alt="" coords="164,597,335,623"/>
+<area shape="poly" id="edge140_Node000000_Node000022" title=" " alt="" coords="59,414,68,452,85,498,110,544,126,565,144,583,165,595,162,599,141,587,122,568,105,547,80,500,63,454,53,415"/>
+<area shape="rect" id="Node000023" href="$classBDSBunchSlowExt.html" title="A bunch distribution with a linear sweep in momentum in time." alt="" coords="179,647,320,672"/>
+<area shape="poly" id="edge141_Node000000_Node000023" title=" " alt="" coords="56,415,63,463,77,522,104,582,122,610,144,633,161,644,179,651,177,656,158,649,141,637,118,613,99,585,72,524,57,464,51,416"/>
+<area shape="rect" id="Node000024" href="$classBDSBunchSphere.html" title="A bunch distribution that produces an uncorrelated uniform random direction distribution over a spher..." alt="" coords="182,696,317,721"/>
+<area shape="poly" id="edge142_Node000000_Node000024" title=" " alt="" coords="54,415,58,471,71,544,82,582,98,619,118,653,144,683,162,695,183,702,181,707,160,699,141,687,114,656,93,621,77,584,65,545,52,472,49,415"/>
+<area shape="rect" id="Node000025" href="$classBDSBunchSquare.html" title="A bunch distribution that produces an uncorrelated uniform random distribution within a square in pha..." alt="" coords="182,745,317,771"/>
+<area shape="poly" id="edge143_Node000000_Node000025" title=" " alt="" coords="57,415,69,489,88,584,113,675,128,709,145,732,162,744,183,752,181,757,160,749,141,736,124,712,108,676,82,586,64,490,52,416"/>
+<area shape="rect" id="Node000007" href="$classBDSBunchEventGenerator.html" title="A wrapper of BDSBunch to include a filter for the events loaded by an event generator." alt="" coords="420,104,611,129"/>
+<area shape="poly" id="edge125_Node000006_Node000007" title=" " alt="" coords="337,248,354,237,365,226,372,214,377,189,383,164,390,151,402,139,421,127,424,132,406,143,395,154,388,165,382,190,377,216,370,229,358,241,339,253"/>
+<area shape="rect" id="Node000008" href="$classBDSBunchPtc.html" title="A bunch distribution that reads a PTC inrays file." alt="" coords="461,153,570,179"/>
+<area shape="poly" id="edge126_Node000006_Node000008" title=" " alt="" coords="337,245,355,237,369,226,378,213,387,200,403,188,431,176,460,169,461,174,432,181,405,192,391,204,382,216,373,229,357,242,340,250"/>
+<area shape="rect" id="Node000009" href="$classBDSBunchUserFile.html" title="A bunch distribution that reads a user specified column file." alt="" coords="425,203,605,228"/>
+<area shape="poly" id="edge127_Node000006_Node000009" title=" " alt="" coords="331,247,445,225,446,231,332,252"/>
+<area shape="rect" id="Node000011" href="$classBDSBunchGauss.html" title="A 6D Gaussian distribution based on a covariance matrix." alt="" coords="451,252,580,277"/>
+<area shape="poly" id="edge129_Node000010_Node000011" title=" " alt="" coords="331,296,450,274,451,279,332,301"/>
+<area shape="rect" id="Node000012" href="$classBDSBunchGaussMatrix.html" title="A 6D Gaussian distribution based on a covariance matrix." alt="" coords="430,301,601,327"/>
+<area shape="poly" id="edge130_Node000010_Node000012" title=" " alt="" coords="344,311,430,311,430,317,344,317"/>
+<area shape="rect" id="Node000013" href="$classBDSBunchGaussTwiss.html" title="A bunch distribution according to the twiss parameterisation." alt="" coords="433,351,597,376"/>
+<area shape="poly" id="edge131_Node000010_Node000013" title=" " alt="" coords="332,327,446,348,445,353,331,332"/>
+<area shape="rect" id="Node000015" href="$classBDSBunchGaussMatrixSlowExt.html" title="Gauss matrix with slow extraction P&#45;T." alt="" coords="404,400,627,425"/>
+<area shape="poly" id="edge133_Node000014_Node000015" title=" " alt="" coords="332,376,446,397,445,403,331,381"/>
+<area shape="rect" id="Node000016" href="$classBDSBunchGaussSlowExt.html" title="Simple Gauss with slow extraction P&#45;T." alt="" coords="425,449,606,475"/>
+<area shape="poly" id="edge134_Node000014_Node000016" title=" " alt="" coords="344,378,357,385,373,397,382,410,391,423,405,434,435,447,433,452,403,439,387,427,378,414,369,401,355,390,341,383"/>
+<area shape="rect" id="Node000017" href="$classBDSBunchGaussTwissSlowExt.html" title="Twiss Gauss with slow extraction P&#45;T." alt="" coords="407,499,623,524"/>
+<area shape="poly" id="edge135_Node000014_Node000017" title=" " alt="" coords="351,380,358,385,370,397,377,410,383,436,388,461,395,473,406,484,427,496,424,501,402,488,390,476,383,463,377,437,372,412,365,401,354,389,348,385"/>
 </map>

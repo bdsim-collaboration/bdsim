@@ -1,19 +1,27 @@
 <map id="BDS::ConstructDesignAndBeamParticle" name="BDS::ConstructDesignAndBeamParticle">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,97,232,137"/>
-<area shape="rect" id="Node000002" href="$namespaceBDS.html#a6b650bc7f85b5852e7f592dd2f40f7b6" title="Throw an exception if too few or too many parameters are set for the supplied keys." alt="" coords="285,31,506,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,94,332,57,334,62,196,99"/>
-<area shape="rect" id="Node000004" href="$namespaceBDS.html#a57afdf4da1c284aca699485b1f6e92db" title=" " alt="" coords="280,104,511,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="232,114,266,114,266,119,232,119"/>
-<area shape="rect" id="Node000008" href="$namespaceBDS.html#ad153d7d16b858fd465306e9bf4461a6e" title="Count how many out of the set of keys in a beam instance are set." alt="" coords="295,177,495,203"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="196,134,334,171,332,176,194,139"/>
-<area shape="rect" id="Node000003" href="$classGMAD_1_1Beam.html#a5d5c8bc6d12280790172db2de50a0a77" title="get method (only for doubles)" alt="" coords="579,5,761,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="506,30,565,25,566,30,506,36"/>
-<area shape="rect" id="Node000005" href="$namespaceBDS.html#a17db413ca370dc9e23aff6c9bc6386fa" title=" " alt="" coords="559,55,781,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="466,101,585,80,586,85,467,107"/>
-<area shape="rect" id="Node000006" href="$namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="606,104,734,129"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="511,114,592,114,592,119,511,119"/>
-<area shape="rect" id="Node000007" href="$namespaceBDS.html#a246ba41aac65469c8dd13d1362f70bbe" title=" " alt="" coords="574,153,766,179"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="467,127,586,148,585,153,466,132"/>
-<area shape="rect" id="Node000009" href="$classGMAD_1_1Beam.html#acbe26b95bbe89cb1d943b368ef5cb767" title="Whether a parameter has been set using the set_value method or not." alt="" coords="572,203,768,228"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="496,197,558,202,558,208,495,202"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,112,232,152"/>
+<area shape="rect" id="Node000002" href="$namespaceBDS.html#a6b650bc7f85b5852e7f592dd2f40f7b6" title="Throw an exception if too few or too many parameters are set for the supplied keys." alt="" coords="285,46,506,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,109,332,72,334,78,196,115"/>
+<area shape="rect" id="Node000004" href="$namespaceBDS.html#a57afdf4da1c284aca699485b1f6e92db" title=" " alt="" coords="280,119,511,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="232,129,266,129,266,135,232,135"/>
+<area shape="rect" id="Node000012" href="$namespaceBDS.html#ad153d7d16b858fd465306e9bf4461a6e" title="Count how many out of the set of keys in a beam instance are set." alt="" coords="295,193,495,218"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="196,149,334,186,332,192,194,155"/>
+<area shape="rect" id="Node000003" href="$classGMAD_1_1Beam.html#a5d5c8bc6d12280790172db2de50a0a77" title="get method (only for doubles)" alt="" coords="579,21,761,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="506,46,565,40,566,46,506,51"/>
+<area shape="rect" id="Node000005" href="$namespaceBDS.html#a17db413ca370dc9e23aff6c9bc6386fa" title=" " alt="" coords="559,70,781,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="466,117,585,95,586,100,467,122"/>
+<area shape="rect" id="Node000010" href="$namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee" title="Utility function to simplify lots of syntax changes for pedantic g4 changes." alt="" coords="606,119,734,145"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="511,129,592,129,592,135,511,135"/>
+<area shape="rect" id="Node000011" href="$namespaceBDS.html#a246ba41aac65469c8dd13d1362f70bbe" title=" " alt="" coords="574,169,766,194"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="467,142,586,164,585,169,466,147"/>
+<area shape="rect" id="Node000006" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="829,63,985,103"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="781,80,816,80,816,85,781,85"/>
+<area shape="rect" id="Node000007" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="1037,5,1201,45"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="981,60,1031,46,1032,52,983,65"/>
+<area shape="rect" id="Node000008" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="1043,70,1195,95"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="985,80,1030,80,1030,85,985,85"/>
+<area shape="rect" id="Node000009" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="1033,119,1205,145"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="986,98,1051,114,1050,119,985,103"/>
+<area shape="rect" id="Node000013" href="$classGMAD_1_1Beam.html#acbe26b95bbe89cb1d943b368ef5cb767" title="Whether a parameter has been set using the set_value method or not." alt="" coords="572,218,768,243"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="496,212,558,218,558,223,495,217"/>
 </map>

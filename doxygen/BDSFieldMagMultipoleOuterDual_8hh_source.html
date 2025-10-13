@@ -121,29 +121,31 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                                G4double           brho,</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                G4double           separation,</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                                G4bool             secondFieldOnLeft = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                G4double           arbitraryScaling  = 1.0);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classBDSFieldMagMultipoleOuterDual.html">~BDSFieldMagMultipoleOuterDual</a>();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">virtual</span> G4ThreeVector <a class="code hl_function" href="classBDSFieldMagMultipoleOuterDual.html#a2e140a190abcfcc4629779dc7fbf6c81">GetField</a>(<span class="keyword">const</span> G4ThreeVector&amp; position,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                 <span class="keyword">const</span> <span class="keywordtype">double</span>         t = 0) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <a class="code hl_class" href="classBDSFieldMagMultipoleOuter.html">BDSFieldMagMultipoleOuter</a>* fieldBase;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  G4ThreeVector offset;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                G4bool             secondFieldInverted = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                G4double           arbitraryScaling  = 1.0);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classBDSFieldMagMultipoleOuterDual.html">~BDSFieldMagMultipoleOuterDual</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">virtual</span> G4ThreeVector <a class="code hl_function" href="classBDSFieldMagMultipoleOuterDual.html#a2e140a190abcfcc4629779dc7fbf6c81">GetField</a>(<span class="keyword">const</span> G4ThreeVector&amp; position,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                 <span class="keyword">const</span> <span class="keywordtype">double</span>         t = 0) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <a class="code hl_class" href="classBDSFieldMagMultipoleOuter.html">BDSFieldMagMultipoleOuter</a>* fieldBase;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  G4ThreeVector offset;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  G4bool invertSecondField;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>};</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassBDSFieldMagMultipoleOuterDual_html"><div class="ttname"><a href="classBDSFieldMagMultipoleOuterDual.html">BDSFieldMagMultipoleOuterDual</a></div><div class="ttdoc">Sum of two multipole fields spaced by a distance in x.</div><div class="ttdef"><b>Definition</b> <a href="BDSFieldMagMultipoleOuterDual_8hh_source.html#l00035">BDSFieldMagMultipoleOuterDual.hh:36</a></div></div>
-<div class="ttc" id="aclassBDSFieldMagMultipoleOuterDual_html_a2e140a190abcfcc4629779dc7fbf6c81"><div class="ttname"><a href="classBDSFieldMagMultipoleOuterDual.html#a2e140a190abcfcc4629779dc7fbf6c81">BDSFieldMagMultipoleOuterDual::GetField</a></div><div class="ttdeci">virtual G4ThreeVector GetField(const G4ThreeVector &amp;position, const double t=0) const</div><div class="ttdoc">Access the field value.</div><div class="ttdef"><b>Definition</b> <a href="BDSFieldMagMultipoleOuterDual_8cc_source.html#l00045">BDSFieldMagMultipoleOuterDual.cc:45</a></div></div>
+<div class="ttc" id="aclassBDSFieldMagMultipoleOuterDual_html_a2e140a190abcfcc4629779dc7fbf6c81"><div class="ttname"><a href="classBDSFieldMagMultipoleOuterDual.html#a2e140a190abcfcc4629779dc7fbf6c81">BDSFieldMagMultipoleOuterDual::GetField</a></div><div class="ttdeci">virtual G4ThreeVector GetField(const G4ThreeVector &amp;position, const double t=0) const</div><div class="ttdoc">Access the field value.</div><div class="ttdef"><b>Definition</b> <a href="BDSFieldMagMultipoleOuterDual_8cc_source.html#l00047">BDSFieldMagMultipoleOuterDual.cc:47</a></div></div>
 <div class="ttc" id="aclassBDSFieldMagMultipoleOuter_html"><div class="ttname"><a href="classBDSFieldMagMultipoleOuter.html">BDSFieldMagMultipoleOuter</a></div><div class="ttdoc">A simple parameterisation of N-Pole outer yoke magnetic field.</div><div class="ttdef"><b>Definition</b> <a href="BDSFieldMagMultipoleOuter_8hh_source.html#l00055">BDSFieldMagMultipoleOuter.hh:56</a></div></div>
 <div class="ttc" id="aclassBDSFieldMag_html"><div class="ttname"><a href="classBDSFieldMag.html">BDSFieldMag</a></div><div class="ttdoc">Interface for static magnetic fields that may or may not be local.</div><div class="ttdef"><b>Definition</b> <a href="BDSFieldMag_8hh_source.html#l00038">BDSFieldMag.hh:39</a></div></div>
 <div class="ttc" id="aclassBDSMagnetStrength_html"><div class="ttname"><a href="classBDSMagnetStrength.html">BDSMagnetStrength</a></div><div class="ttdoc">Efficient storage of magnet strengths.</div><div class="ttdef"><b>Definition</b> <a href="BDSMagnetStrength_8hh_source.html#l00044">BDSMagnetStrength.hh:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 6 2025 16:37:47 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:13:47 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

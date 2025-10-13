@@ -1,9 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,171,56"/>
-<area shape="rect" id="Node000001" href="$classBDSPrimaryGeneratorFile.html" title="Common interface for any primary generators that are file based." alt="" coords="219,31,407,56"/>
-<area shape="poly" id="edge331_Node000000_Node000001" title=" " alt="" coords="184,41,218,41,218,46,184,46"/>
-<area shape="rect" id="Node000002" href="$classBDSPrimaryGeneratorFileHEPMC.html" title="Loader to use any HepMC3 compatible file." alt="" coords="459,5,693,31"/>
-<area shape="poly" id="edge332_Node000001_Node000002" title=" " alt="" coords="420,30,458,27,459,32,421,36"/>
-<area shape="rect" id="Node000003" href="$classBDSPrimaryGeneratorFileSampler.html" title="Loader to read a specific sampler from a BDSIM ROOT output file." alt="" coords="455,55,697,80"/>
-<area shape="poly" id="edge333_Node000001_Node000003" title=" " alt="" coords="421,50,455,54,454,59,420,56"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,116,31"/>
+<area shape="rect" id="Node000001" href="$classBDSTerminatorUserLimits.html" title="Dynamic user limits for a volume that changed based on the parameter turnstaken in BDSGlobalConstants..." alt="" coords="164,5,353,31"/>
+<area shape="poly" id="edge335_Node000000_Node000001" title=" " alt="" coords="130,15,164,15,164,21,130,21"/>
 </map>

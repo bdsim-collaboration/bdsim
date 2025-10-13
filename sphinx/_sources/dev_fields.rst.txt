@@ -160,7 +160,7 @@ parameters required.
 
 Example for a dipole field: ::
 
-  fieldParameters="field=1.0, by=1";
+  fieldParameters="field=1.0 by=1";
 
 
 .. _fields-beamline-integration:

@@ -1,21 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,179,73,204"/>
-<area shape="rect" id="Node000001" href="$classBDSHitApertureImpact.html" title="Snapshot of information for particle passing through a collimator." alt="" coords="149,5,319,31"/>
-<area shape="poly" id="edge320_Node000000_Node000001" title=" " alt="" coords="45,164,55,135,70,101,92,68,120,40,148,25,150,30,123,44,96,71,75,104,60,137,50,166"/>
-<area shape="rect" id="Node000002" href="$classBDSHitCollimator.html" title="Snapshot of information for particle passing through a collimator." alt="" coords="166,55,302,80"/>
-<area shape="poly" id="edge321_Node000000_Node000002" title=" " alt="" coords="52,165,80,125,98,106,120,89,142,79,165,72,166,77,144,83,123,94,102,110,84,129,56,168"/>
-<area shape="rect" id="Node000003" href="$classBDSHitEnergyDeposition.html" title="Information recorded for a single piece of energy deposition." alt="" coords="143,104,325,129"/>
-<area shape="poly" id="edge322_Node000000_Node000003" title=" " alt="" coords="67,168,120,138,155,127,157,132,122,143,69,173"/>
-<area shape="rect" id="Node000004" href="$classBDSHitEnergyDepositionGlobal.html" title="Information recorded for a step leaving a volume." alt="" coords="121,153,347,179"/>
-<area shape="poly" id="edge323_Node000000_Node000004" title=" " alt="" coords="87,183,136,176,137,181,88,188"/>
-<area shape="rect" id="Node000005" href="$classBDSHitSampler.html" title="The information recorded from a particle impacting a sampler." alt="" coords="173,203,295,228"/>
-<area shape="poly" id="edge324_Node000000_Node000005" title=" " alt="" coords="88,195,173,205,172,210,87,200"/>
-<area shape="rect" id="Node000007" href="$classBDSHitSamplerCylinder.html" title="The information recorded from a particle impacting a sampler." alt="" coords="146,252,322,277"/>
-<area shape="poly" id="edge326_Node000000_Node000007" title=" " alt="" coords="71,209,122,237,162,249,161,255,120,242,69,214"/>
-<area shape="rect" id="Node000008" href="$classBDSHitSamplerSphere.html" title="The information recorded from a particle impacting a sampler." alt="" coords="151,301,317,327"/>
-<area shape="poly" id="edge327_Node000000_Node000008" title=" " alt="" coords="57,214,84,252,102,271,123,286,152,299,149,304,120,291,99,275,80,256,52,218"/>
-<area shape="rect" id="Node000009" href="$classBDSHitThinThing.html" title="A hit if a particle lost energy in a thin object." alt="" coords="168,351,300,376"/>
-<area shape="poly" id="edge328_Node000000_Node000009" title=" " alt="" coords="50,216,76,277,96,309,123,336,144,348,168,355,167,361,142,353,120,340,92,313,71,280,45,218"/>
-<area shape="rect" id="Node000006" href="$classBDSHitSamplerLink.html" title="The information recorded from a particle impacting a link sampler." alt="" coords="395,203,544,228"/>
-<area shape="poly" id="edge325_Node000005_Node000006" title=" " alt="" coords="309,213,395,213,395,218,309,218"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,124,31"/>
+<area shape="rect" id="Node000001" href="$classBDSUIcmdStringInt.html" title="UI command with string, then optional integer argument." alt="" coords="172,5,319,31"/>
+<area shape="poly" id="edge331_Node000000_Node000001" title=" " alt="" coords="138,15,172,15,172,21,138,21"/>
 </map>

@@ -1,17 +1,19 @@
 <map id="BDSBunch::GetNextParticleLocal" name="BDSBunch::GetNextParticleLocal">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1215,152,1413,192"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1215,184,1413,224"/>
 <area shape="rect" id="Node000002" href="$classBDSLinkPrimaryGeneratorAction.html#a4efd162aae1366d6d464971a1683b7ac" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="929,5,1162,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1281,145,1229,101,1165,60,1137,48,1139,43,1168,55,1233,96,1285,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1288,174,1236,115,1202,85,1165,60,1140,48,1143,43,1168,55,1205,81,1239,112,1292,171"/>
 <area shape="rect" id="Node000003" href="$classBDSBunch.html#ad0fe9077dea51a4dedc0158f32264215" title=" " alt="" coords="946,70,1145,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1260,149,1166,111,1118,98,1120,93,1168,105,1262,144"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1276,178,1226,142,1166,110,1127,98,1128,93,1168,106,1228,138,1279,174"/>
 <area shape="rect" id="Node000011" href="$classBDSBunchComposite.html#a3786ebba9151ef1e1f87013c99ece4e4" title=" " alt="" coords="962,120,1129,160"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1201,161,1129,153,1129,147,1201,156"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1216,183,1128,162,1130,157,1217,178"/>
 <area shape="rect" id="Node000012" href="$classBDSBunchCompositeSDE.html#adb04cb43b97b3ac2fed6950c725728eb" title=" " alt="" coords="953,184,1138,224"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1201,188,1139,196,1138,190,1201,183"/>
-<area shape="rect" id="Node000013" href="$classBDSPrimaryGeneratorFileHEPMC.html#ad8f75badab82a6de22276cffe767393a" title="Conversion from HepMC::GenEvent to G4Event." alt="" coords="928,248,1163,288"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1260,200,1168,239,1129,251,1128,245,1166,233,1258,196"/>
-<area shape="rect" id="Node000015" href="$classBDSPrimaryGeneratorFileSampler.html#a33d0ac29ec6da2d09aae4d1a70820d37" title="Read sampler hits and put into primary vertices if they pass filters." alt="" coords="924,312,1167,352"/>
-<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1288,204,1236,255,1203,280,1168,302,1140,314,1138,309,1165,298,1200,276,1232,250,1284,200"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1201,207,1138,207,1138,201,1201,201"/>
+<area shape="rect" id="Node000013" href="$classBDSBunchSlowExt.html#a674d4730a4cb986ba480e6cb8529d406" title=" " alt="" coords="944,248,1147,288"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1217,230,1130,251,1129,245,1215,225"/>
+<area shape="rect" id="Node000014" href="$classBDSPrimaryGeneratorFileHEPMC.html#ad8f75badab82a6de22276cffe767393a" title="Conversion from HepMC::GenEvent to G4Event." alt="" coords="928,312,1163,352"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1278,235,1228,270,1168,302,1136,314,1134,309,1166,298,1225,265,1275,230"/>
+<area shape="rect" id="Node000016" href="$classBDSPrimaryGeneratorFileSampler.html#a33d0ac29ec6da2d09aae4d1a70820d37" title="Read sampler hits and put into primary vertices if they pass filters." alt="" coords="924,376,1167,416"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="1294,237,1242,303,1207,337,1168,366,1144,378,1141,374,1165,362,1204,333,1238,299,1290,234"/>
 <area shape="rect" id="Node000004" href="$classBDSBunchUserFile.html#a71238fe44c433ad46f68b84f3119352c" title=" " alt="" coords="653,31,857,71"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="932,73,857,65,857,59,933,68"/>
 <area shape="rect" id="Node000005" href="$classBDSBunch.html#adc8a53b966a9dcc0ce402d597a7c9319" title=" " alt="" coords="655,95,854,135"/>
@@ -26,8 +28,8 @@
 <area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="169,135,128,130,129,124,169,130"/>
 <area shape="rect" id="Node000010" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,155,135,181"/>
 <area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="170,157,135,162,135,157,169,152"/>
-<area shape="rect" id="Node000014" href="$classBDSPrimaryGeneratorFileHEPMC.html#ab47ec75b1fcf2940d2f1b884c66219de" title=" " alt="" coords="637,248,872,288"/>
-<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="914,271,872,271,872,265,914,265"/>
-<area shape="rect" id="Node000016" href="$classBDSPrimaryGeneratorFileSampler.html#af5d8f669214c6449600e919d94abce2b" title="Read the next non&#45;empty sampler entry from the file." alt="" coords="633,312,876,352"/>
-<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="911,335,876,335,876,329,911,329"/>
+<area shape="rect" id="Node000015" href="$classBDSPrimaryGeneratorFileHEPMC.html#ab47ec75b1fcf2940d2f1b884c66219de" title=" " alt="" coords="637,312,872,352"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="914,335,872,335,872,329,914,329"/>
+<area shape="rect" id="Node000017" href="$classBDSPrimaryGeneratorFileSampler.html#af5d8f669214c6449600e919d94abce2b" title="Read the next non&#45;empty sampler entry from the file." alt="" coords="633,376,876,416"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="911,399,876,399,876,393,911,393"/>
 </map>

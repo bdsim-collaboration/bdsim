@@ -21,7 +21,7 @@ var searchData=
   ['fieldvacuum_18',['fieldVacuum',['../structGMAD_1_1Element.html#a993b37ee674c9c799e8713eeb628165b',1,'GMAD::Element']]],
   ['file_19',['file',['../classBDSFieldLoaderBDSIM.html#af6765ad3c5c43ba932ffe1fb39320d28',1,'BDSFieldLoaderBDSIM::file'],['../classBDSFieldLoaderPoisson.html#ae46ff7df53f43a9dc0ef1b2fb1185eff',1,'BDSFieldLoaderPoisson::file'],['../classBDSScorerConversionLoader.html#acb7e2fb5dc210d6d8531ca40b278609e',1,'BDSScorerConversionLoader::file']]],
   ['fileextension_20',['fileExtension',['../classBDSOutput.html#a5d6728ba844e1de664d673a940d1f5c7',1,'BDSOutput']]],
-  ['filename_21',['filename',['../classBDSScorerInfo.html#a96799a5a10c9a7a40b9613346f6e8e6c',1,'BDSScorerInfo::filename'],['../classBDSBunchPtc.html#a30425a4555f494b650fb61d1057d813b',1,'BDSBunchPtc::fileName']]],
+  ['filename_21',['filename',['../classBDSBunchPtc.html#a30425a4555f494b650fb61d1057d813b',1,'BDSBunchPtc::fileName'],['../classBDSScorerInfo.html#a96799a5a10c9a7a40b9613346f6e8e6c',1,'BDSScorerInfo::filename']]],
   ['filters_22',['filters',['../classBDSSDFilterOr.html#a322a6f12db26f861883820d259617e47',1,'BDSSDFilterOr::filters'],['../classBDSSDManager.html#a181d4fb546ac03739ed59edf649c0bc9',1,'BDSSDManager::filters'],['../classBDSSDFilterAnd.html#a279c56cf74678a7d0b5ad53f257aa35a',1,'BDSSDFilterAnd::filters']]],
   ['finitesigmae_23',['finiteSigmaE',['../classBDSBunch.html#a3df176b2a54a0acee5cdc4b57d933084',1,'BDSBunch']]],
   ['finitesigmat_24',['finiteSigmaT',['../classBDSBunch.html#ad2802e972d0c0bb550fbe871c9d84f0d',1,'BDSBunch']]],

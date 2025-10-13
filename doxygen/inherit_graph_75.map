@@ -1,3 +1,97 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBDSGlobalConstants.html" title="A class that holds global options and constants." alt="" coords="5,5,161,31"/>
+<area shape="rect" id="Node000000" href="$classBDSGeometryComponent.html" title="A generic geometry component for a bdsim model." alt="" coords="5,1091,195,1116"/>
+<area shape="rect" id="Node000001" href="$classBDSAcceleratorComponent.html" title="Abstract class that represents a component of an accelerator." alt="" coords="243,720,441,745"/>
+<area shape="poly" id="edge190_Node000000_Node000001" title=" " alt="" coords="115,1078,330,744,335,747,119,1081"/>
+<area shape="rect" id="Node000036" href="$classBDSBLM.html" title="A beam loss monitor." alt="" coords="303,943,381,968"/>
+<area shape="poly" id="edge225_Node000000_Node000036" title=" " alt="" coords="119,1079,171,1027,205,1000,241,977,272,965,302,958,303,963,273,970,244,982,208,1004,174,1031,123,1082"/>
+<area shape="rect" id="Node000037" href="$classBDSBeamPipe.html" title="A holder class for a piece of beam pipe geometry." alt="" coords="285,992,399,1017"/>
+<area shape="poly" id="edge226_Node000000_Node000037" title=" " alt="" coords="132,1081,182,1053,242,1026,284,1013,285,1018,244,1031,185,1058,134,1086"/>
+<area shape="rect" id="Node000038" href="$classBDSCavity.html" title="A holder class for an RF cavity piece of geometry." alt="" coords="297,1041,387,1067"/>
+<area shape="poly" id="edge227_Node000000_Node000038" title=" " alt="" coords="176,1085,296,1060,297,1066,177,1091"/>
+<area shape="rect" id="Node000039" href="$classBDSCrystal.html" title="An object for both a crystal from a factory." alt="" coords="295,1091,389,1116"/>
+<area shape="poly" id="edge228_Node000000_Node000039" title=" " alt="" coords="209,1101,294,1101,294,1106,209,1106"/>
+<area shape="rect" id="Node000040" href="$classBDSGeometryExternal.html" title="A loaded piece of externally provided geometry." alt="" coords="258,1140,426,1165"/>
+<area shape="poly" id="edge229_Node000000_Node000040" title=" " alt="" coords="177,1116,279,1137,278,1143,176,1121"/>
+<area shape="rect" id="Node000041" href="$classBDSLinkOpaqueBox.html" title="Wrapper box for an accelerator component." alt="" coords="267,1189,417,1215"/>
+<area shape="poly" id="edge230_Node000000_Node000041" title=" " alt="" coords="134,1121,185,1149,244,1176,280,1187,278,1192,242,1180,182,1154,132,1125"/>
+<area shape="rect" id="Node000042" href="$classBDSMagnetOuter.html" title="An object for both the returned magnet outer body but also a tight fitting container for the whole ma..." alt="" coords="275,1239,409,1264"/>
+<area shape="poly" id="edge231_Node000000_Node000042" title=" " alt="" coords="123,1124,174,1176,208,1202,244,1225,275,1237,273,1242,241,1230,205,1207,171,1180,119,1128"/>
+<area shape="rect" id="Node000043" href="$classBDSSampler.html" title="Base class and registry of sampler instances." alt="" coords="291,1460,393,1485"/>
+<area shape="poly" id="edge232_Node000000_Node000043" title=" " alt="" coords="119,1126,334,1458,330,1461,115,1129"/>
+<area shape="rect" id="Node000002" href="$classBDSCavityElement.html" title="RF Cavity. Uses factories to construct appropriate geometry." alt="" coords="512,29,657,55"/>
+<area shape="poly" id="edge191_Node000001_Node000002" title=" " alt="" coords="343,706,356,572,384,379,403,280,427,190,455,115,470,86,488,64,510,49,513,53,491,68,475,89,460,117,432,191,409,281,389,380,362,573,348,707"/>
+<area shape="rect" id="Node000003" href="$classBDSCollimator.html" title="Base class for collimators with common construction." alt="" coords="526,79,643,104"/>
+<area shape="poly" id="edge192_Node000001_Node000003" title=" " alt="" coords="343,706,358,581,387,403,407,312,430,228,457,160,472,134,487,113,505,101,525,93,527,98,508,105,491,117,476,137,462,162,435,230,412,313,392,404,364,582,349,707"/>
+<area shape="rect" id="Node000008" href="$classBDSCollimatorBeamMask.html" title="A class for a beam mask collimator." alt="" coords="489,128,680,153"/>
+<area shape="poly" id="edge197_Node000001_Node000008" title=" " alt="" coords="344,706,360,590,390,427,410,344,433,268,459,205,487,163,503,151,506,156,491,167,463,208,438,269,415,345,396,428,366,591,349,707"/>
+<area shape="rect" id="Node000009" href="$classBDSCollimatorCrystal.html" title="A piece of vacuum beam pipe with a crystal for channelling." alt="" coords="503,177,666,203"/>
+<area shape="poly" id="edge198_Node000001_Node000009" title=" " alt="" coords="340,706,342,613,348,550,359,480,377,408,403,337,440,270,462,240,488,212,503,201,506,205,491,216,466,243,444,273,408,339,382,410,364,481,353,550,347,613,345,706"/>
+<area shape="rect" id="Node000010" href="$classBDSDegrader.html" title="Degrader based on wedge design used in the PSI medical accelerator." alt="" coords="530,227,639,252"/>
+<area shape="poly" id="edge199_Node000001_Node000010" title=" " alt="" coords="341,706,345,621,353,563,365,501,383,436,409,373,443,313,488,261,507,248,529,241,531,246,509,253,491,265,448,316,414,375,388,438,370,502,358,564,351,621,346,706"/>
+<area shape="rect" id="Node000011" href="$classBDSDrift.html" title="A piece of vacuum beam pipe." alt="" coords="546,276,623,301"/>
+<area shape="poly" id="edge200_Node000001_Node000011" title=" " alt="" coords="342,706,349,628,371,522,390,465,415,408,447,356,488,311,515,295,545,287,547,293,517,300,491,315,451,359,420,411,395,466,376,523,355,629,347,706"/>
+<area shape="rect" id="Node000013" href="$classBDSDump.html" title="An infinite absorber." alt="" coords="541,325,629,351"/>
+<area shape="poly" id="edge202_Node000001_Node000013" title=" " alt="" coords="343,706,354,637,378,543,396,493,421,445,451,399,488,360,513,345,540,338,541,343,515,350,491,364,455,403,425,447,401,496,383,545,359,638,348,707"/>
+<area shape="rect" id="Node000014" href="$classBDSElement.html" title="A class for a generic piece of external geometry." alt="" coords="533,375,636,400"/>
+<area shape="poly" id="edge203_Node000001_Node000014" title=" " alt="" coords="345,706,358,645,384,565,403,522,426,481,454,443,488,409,509,397,532,389,534,394,511,401,491,413,458,446,431,484,408,525,389,567,363,647,350,707"/>
+<area shape="rect" id="Node000015" href="$classBDSGaborLens.html" title="Gabor lens based on prototype design at Imperial College (https://doi.org/10.3390/app11104357)" alt="" coords="525,424,644,449"/>
+<area shape="poly" id="edge204_Node000001_Node000015" title=" " alt="" coords="347,706,364,653,392,586,432,517,458,486,488,459,505,448,524,441,526,446,508,453,491,463,462,489,437,520,396,589,369,655,352,707"/>
+<area shape="rect" id="Node000016" href="$classBDSGap.html" title="Gap in accelerator beamline." alt="" coords="547,473,622,499"/>
+<area shape="poly" id="edge205_Node000001_Node000016" title=" " alt="" coords="350,706,370,663,399,609,438,554,462,529,488,508,517,494,547,486,548,492,519,499,491,512,465,533,442,558,403,612,374,665,355,708"/>
+<area shape="rect" id="Node000017" href="$classBDSGasCapillary.html" title="Base class for gas capillary." alt="" coords="519,523,651,548"/>
+<area shape="poly" id="edge206_Node000001_Node000017" title=" " alt="" coords="355,707,377,673,407,632,444,591,488,557,517,544,520,549,491,562,448,595,411,636,381,676,359,709"/>
+<area shape="rect" id="Node000018" href="$classBDSGasJet.html" title="A class for a gas jet." alt="" coords="539,572,630,597"/>
+<area shape="poly" id="edge207_Node000001_Node000018" title=" " alt="" coords="362,708,416,657,450,629,488,606,538,589,540,594,490,611,453,634,419,661,366,712"/>
+<area shape="rect" id="Node000019" href="$classBDSLaserWire.html" title="A laser wire scanner." alt="" coords="527,621,642,647"/>
+<area shape="poly" id="edge208_Node000001_Node000019" title=" " alt="" coords="375,711,427,683,488,656,526,644,528,649,490,660,430,687,378,715"/>
+<area shape="rect" id="Node000020" href="$classBDSLaserWireNew.html" title="Laserwire in beam pipe." alt="" coords="513,671,656,696"/>
+<area shape="poly" id="edge209_Node000001_Node000020" title=" " alt="" coords="418,715,521,693,522,699,419,720"/>
+<area shape="rect" id="Node000021" href="$classBDSLaserwireBuilder.html" title=" " alt="" coords="505,720,664,745"/>
+<area shape="poly" id="edge210_Node000001_Node000021" title=" " alt="" coords="455,730,505,730,505,735,455,735"/>
+<area shape="rect" id="Node000022" href="$classBDSLine.html" title="A class that hold multiple accelerator components." alt="" coords="547,769,623,795"/>
+<area shape="poly" id="edge211_Node000001_Node000022" title=" " alt="" coords="419,746,547,772,546,777,418,751"/>
+<area shape="rect" id="Node000023" href="$classBDSLinkComponent.html" title="A BDSAcceleratorComponent wrapper for BDSLinkOpaqueBox." alt="" coords="509,819,660,844"/>
+<area shape="poly" id="edge212_Node000001_Node000023" title=" " alt="" coords="379,750,430,777,490,804,529,816,528,821,488,808,428,782,376,755"/>
+<area shape="rect" id="Node000024" href="$classBDSMagnet.html" title="Abstract base class that implements features common to all magnets." alt="" coords="535,868,634,893"/>
+<area shape="poly" id="edge213_Node000001_Node000024" title=" " alt="" coords="366,754,420,804,454,830,490,853,536,869,534,874,488,858,451,835,416,808,362,757"/>
+<area shape="rect" id="Node000025" href="$classBDSMuonCooler.html" title="A muon cooling module." alt="" coords="521,917,648,943"/>
+<area shape="poly" id="edge214_Node000001_Node000025" title=" " alt="" coords="360,756,411,829,448,869,491,902,522,916,520,921,488,907,445,873,407,833,355,759"/>
+<area shape="rect" id="Node000026" href="$classBDSShield.html" title="A square mask of solid material with a square aperture." alt="" coords="540,967,629,992"/>
+<area shape="poly" id="edge215_Node000001_Node000026" title=" " alt="" coords="355,757,375,800,404,853,443,906,466,931,491,952,515,964,541,972,539,977,513,969,488,956,462,935,439,910,399,856,370,802,351,759"/>
+<area shape="rect" id="Node000027" href="$classBDSSimpleComponent.html" title="A BDSAcceleratorComponent wrapper for BDSGeometryComponent." alt="" coords="500,1016,669,1041"/>
+<area shape="poly" id="edge216_Node000001_Node000027" title=" " alt="" coords="358,757,428,897,466,965,491,1001,512,1014,510,1018,488,1005,461,968,424,899,353,759"/>
+<area shape="rect" id="Node000028" href="$classBDSTeleporter.html" title="An element that unnaturally shifts the beam across its length &#45; a fudge volume." alt="" coords="527,1065,642,1091"/>
+<area shape="poly" id="edge217_Node000001_Node000028" title=" " alt="" coords="359,756,398,833,444,929,455,966,460,996,469,1023,491,1051,508,1062,528,1069,526,1074,506,1067,488,1055,464,1026,455,997,450,967,439,931,393,835,354,759"/>
+<area shape="rect" id="Node000029" href="$classBDSTerminator.html" title="Class for small control volume for circular macines." alt="" coords="525,1115,644,1140"/>
+<area shape="poly" id="edge218_Node000001_Node000029" title=" " alt="" coords="360,756,400,832,444,929,452,956,456,980,458,1023,465,1061,474,1080,491,1100,507,1112,526,1119,524,1124,505,1116,488,1104,470,1083,460,1063,452,1023,450,981,447,957,439,931,396,835,355,759"/>
+<area shape="rect" id="Node000030" href="$classBDSTipCollimator.html" title="Base class for collimators with a bulk material and a tip of a different material." alt="" coords="516,1164,653,1189"/>
+<area shape="poly" id="edge219_Node000001_Node000030" title=" " alt="" coords="360,756,402,832,444,929,453,963,456,994,454,1049,455,1074,460,1099,471,1123,491,1149,517,1166,514,1170,488,1153,466,1126,455,1100,450,1075,449,1049,450,994,447,964,439,931,397,834,356,759"/>
+<area shape="rect" id="Node000032" href="$classBDSTransform3D.html" title="Transform in beam line that takes up no space." alt="" coords="519,1213,651,1239"/>
+<area shape="poly" id="edge221_Node000001_Node000032" title=" " alt="" coords="361,756,402,832,425,880,444,929,454,971,456,1009,451,1076,450,1107,455,1137,467,1168,491,1200,504,1210,519,1217,517,1222,501,1215,487,1204,463,1171,449,1139,445,1107,446,1076,451,1009,448,972,439,931,420,882,398,834,356,759"/>
+<area shape="rect" id="Node000033" href="$classBDSTunnelSection.html" title="Class that represents a section of tunnel." alt="" coords="515,1263,654,1288"/>
+<area shape="poly" id="edge222_Node000001_Node000033" title=" " alt="" coords="361,756,403,831,425,879,444,929,455,979,456,1023,448,1102,446,1139,450,1175,464,1211,491,1250,503,1259,516,1266,514,1271,500,1264,487,1253,459,1214,445,1176,440,1139,443,1102,451,1023,449,979,439,931,420,881,398,834,356,758"/>
+<area shape="rect" id="Node000034" href="$classBDSUndulator.html" title="Undulator." alt="" coords="528,1312,641,1337"/>
+<area shape="poly" id="edge223_Node000001_Node000034" title=" " alt="" coords="361,756,403,831,426,879,444,929,451,966,454,1013,456,1122,459,1177,465,1227,475,1269,491,1299,508,1312,529,1319,527,1324,506,1316,487,1302,470,1271,459,1228,454,1177,451,1122,449,1013,445,967,439,931,421,881,399,834,357,758"/>
+<area shape="rect" id="Node000035" href="$classBDSWireScanner.html" title="Single cylindrical wire inside beam pipe." alt="" coords="519,1361,650,1387"/>
+<area shape="poly" id="edge224_Node000001_Node000035" title=" " alt="" coords="361,756,404,831,426,879,444,929,451,971,454,1024,455,1147,457,1210,462,1267,473,1314,491,1348,504,1359,520,1366,518,1371,502,1364,487,1352,468,1316,457,1268,451,1210,449,1147,449,1024,446,971,439,931,421,881,399,834,357,758"/>
+<area shape="rect" id="Node000004" href="$classBDSCollimatorElliptical.html" title="A class for an elliptical collimator." alt="" coords="739,5,912,31"/>
+<area shape="poly" id="edge193_Node000003_Node000004" title=" " alt="" coords="653,72,679,64,727,40,764,28,765,33,729,44,681,68,655,77"/>
+<area shape="rect" id="Node000005" href="$classBDSCollimatorJaw.html" title="Collimator with only two jaw and no top bit." alt="" coords="755,55,895,80"/>
+<area shape="poly" id="edge194_Node000003_Node000005" title=" " alt="" coords="657,82,755,72,755,77,657,87"/>
+<area shape="rect" id="Node000006" href="$classBDSCollimatorRectangular.html" title="A class for a rectangular collimator." alt="" coords="728,104,923,129"/>
+<area shape="poly" id="edge195_Node000003_Node000006" title=" " alt="" coords="657,96,728,104,728,109,657,102"/>
+<area shape="rect" id="Node000007" href="$classBDSTarget.html" title="A class for a box or cylinder piece of 1 material." alt="" coords="781,153,870,179"/>
+<area shape="poly" id="edge196_Node000003_Node000007" title=" " alt="" coords="658,105,681,113,705,126,729,138,781,154,780,159,727,143,703,130,679,118,656,110"/>
+<area shape="rect" id="Node000012" href="$classBDSScreen.html" title="A multilayer screen in a beam pipe." alt="" coords="779,276,872,301"/>
+<area shape="poly" id="edge201_Node000011_Node000012" title=" " alt="" coords="637,286,778,286,778,291,637,291"/>
+<area shape="rect" id="Node000031" href="$classBDSCollimatorTipJaw.html" title="Collimator with jaws having a bulk material and a tip of a different material." alt="" coords="745,1164,905,1189"/>
+<area shape="poly" id="edge220_Node000030_Node000031" title=" " alt="" coords="667,1174,745,1174,745,1179,667,1179"/>
+<area shape="rect" id="Node000044" href="$classBDSSamplerCustom.html" title="Custom shaped sampler with fixed thickness." alt="" coords="508,1411,661,1436"/>
+<area shape="poly" id="edge233_Node000043_Node000044" title=" " alt="" coords="406,1457,521,1433,522,1439,407,1462"/>
+<area shape="rect" id="Node000045" href="$classBDSSamplerCylinder.html" title="Cylindrical sampler around an object." alt="" coords="506,1460,663,1485"/>
+<area shape="poly" id="edge234_Node000043_Node000045" title=" " alt="" coords="407,1470,506,1470,506,1475,407,1475"/>
+<area shape="rect" id="Node000046" href="$classBDSSamplerPlane.html" title="Rectangular sampler with fixed thickness but variable x,y." alt="" coords="515,1509,654,1535"/>
+<area shape="poly" id="edge235_Node000043_Node000046" title=" " alt="" coords="407,1483,522,1507,521,1512,406,1488"/>
+<area shape="rect" id="Node000047" href="$classBDSSamplerSphere.html" title="Spherical sampler around an object." alt="" coords="511,1559,659,1584"/>
+<area shape="poly" id="edge236_Node000043_Node000047" title=" " alt="" coords="378,1490,430,1518,490,1545,526,1556,524,1561,488,1550,427,1523,375,1495"/>
 </map>

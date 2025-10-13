@@ -80,6 +80,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#box">box</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#halo">halo</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#halosigma">halosigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#slowext">slowext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gaussslowext">gaussslowext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gaussmatrixslowext">gaussmatrixslowext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gausstwissslowext">gausstwissslowext</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#composite">composite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#compositespacedirectionenergy">compositespacedirectionenergy</a></li>
 </ul>
@@ -103,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#proton-diffraction">Proton Diffraction</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#millicharged-physics">Millicharged Physics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#physics-biasing">Physics Biasing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cross-section-biasing">Cross-Section Biasing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometric-importance-sampling">Geometric Importance Sampling</a></li>
@@ -231,6 +236,7 @@
 <li><p><a class="reference internal" href="#physics-modular-physics-lists"><span class="std std-ref">Modular Physics Lists</span></a></p></li>
 <li><p><a class="reference internal" href="#physics-geant4-lists"><span class="std std-ref">Geant4 Reference Physics Lists</span></a></p></li>
 <li><p><a class="reference internal" href="#physics-complete-lists"><span class="std std-ref">Complete Physics Lists</span></a></p></li>
+<li><p><a class="reference internal" href="#millicharged-physics"><span class="std std-ref">Millicharged Physics</span></a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#physics-biasing"><span class="std std-ref">Physics Biasing</span></a></p>
@@ -610,6 +616,11 @@ is clockwise. This is irrespective of particle charge.</p>
 - <a class="reference internal" href="#box">box</a>
 - <a class="reference internal" href="#halo">halo</a>
 - <a class="reference internal" href="#halosigma">halosigma</a></p>
+<p><strong>Slow Extraction</strong>
+- <a class="reference internal" href="#slowext">slowext</a>
+- <a class="reference internal" href="#gaussmatrixslowext">gaussmatrixslowext</a>
+- <a class="reference internal" href="#gaussslowext">gaussslowext</a>
+- <a class="reference internal" href="#gausstwissslowext">gausstwissslowext</a></p>
 <p><strong>Composite</strong>
 - <a class="reference internal" href="#composite">composite</a>
 - <a class="reference internal" href="#compositespacedirectionenergy">compositespacedirectionenergy</a></p>
@@ -643,9 +654,9 @@ particle - including the rest mass.</p>
 <div></div></blockquote>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Default</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Default</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -718,7 +729,8 @@ Each set of coordinates will be stored in the output under <cite>Primary</cite> 
 <span class="math notranslate nohighlight">\(\mu\mathrm{m}\)</span> vertically.</p>
 </section>
 <section id="gaussmatrix">
-<h4>gaussmatrix<a class="headerlink" href="#gaussmatrix" title="Link to this heading"></a></h4>
+<span id="beam-gauss-matrix"></span><h4>gaussmatrix<a class="headerlink" href="#gaussmatrix" title="Link to this heading"></a></h4>
+<p>Both <code class="code docutils literal notranslate"><span class="pre">gaussmatrix</span></code> and <code class="code docutils literal notranslate"><span class="pre">gauss-matrix</span></code> are accepted.</p>
 <p>Uses the <span class="math notranslate nohighlight">\(N\)</span> dimensional Gaussian generator from <cite>CLHEP</cite>, <cite>CLHEP::RandMultiGauss</cite>. The generator
 is initialised by a <span class="math notranslate nohighlight">\(6\times1\)</span> means vector and <span class="math notranslate nohighlight">\(6\times 6\)</span> sigma matrix.</p>
 <ul class="simple">
@@ -726,8 +738,8 @@ is initialised by a <span class="math notranslate nohighlight">\(6\times1\)</spa
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -766,7 +778,7 @@ be finite also.</p>
 </div>
 </section>
 <section id="gauss">
-<h4>gauss<a class="headerlink" href="#gauss" title="Link to this heading"></a></h4>
+<span id="beam-gauss"></span><h4>gauss<a class="headerlink" href="#gauss" title="Link to this heading"></a></h4>
 <p>Uses the <a class="reference internal" href="#gaussmatrix">gaussmatrix</a> beam generator but with simplified input parameters, as opposed to a complete
 beam sigma matrix. This beam distribution has a diagonal <span class="math notranslate nohighlight">\(\sigma\)</span>-matrix and does not allow for
 correlations between phase space coordinates, so:</p>
@@ -792,8 +804,8 @@ as follows:</p>
 <p>and <code class="code docutils literal notranslate"><span class="pre">sigmaP</span></code> is subsequently calculated as above from this.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -825,7 +837,8 @@ as follows:</p>
 </table>
 </section>
 <section id="gausstwiss">
-<h4>gausstwiss<a class="headerlink" href="#gausstwiss" title="Link to this heading"></a></h4>
+<span id="beam-gauss-twiss"></span><h4>gausstwiss<a class="headerlink" href="#gausstwiss" title="Link to this heading"></a></h4>
+<p>Both <code class="code docutils literal notranslate"><span class="pre">gausstwiss</span></code> and <code class="code docutils literal notranslate"><span class="pre">gauss-twiss</span></code> are accepted.</p>
 <p>The beam parameters are defined by the usual Twiss parameters (listed below in full)
 <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span>, plus dispersion <span class="math notranslate nohighlight">\(\eta\)</span>, from
 which the beam <span class="math notranslate nohighlight">\(\sigma\)</span> -matrix is calculated, using the following equations:</p>
@@ -863,8 +876,8 @@ one is calculated from the other.</p></li>
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -928,8 +941,8 @@ energy is also uniformly distributed between <span class="math notranslate nohig
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -961,8 +974,8 @@ energy is also uniformly distributed between <span class="math notranslate nohig
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1014,8 +1027,8 @@ all other parameters, the <a class="reference internal" href="#reference">refere
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1039,8 +1052,8 @@ all other parameters, the <a class="reference internal" href="#reference">refere
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1122,8 +1135,8 @@ This results in an uneven distribution in these variables over the range (cube p
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1178,8 +1191,8 @@ f_{\rm haloWeight}(\epsilon_{\rm SP}) &amp; = \exp\left(-\frac{\epsilon_{SP}-\ep
 </ul>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1278,6 +1291,7 @@ f_{\rm haloWeight}(\epsilon_{\rm SP}) &amp; = \exp\left(-\frac{\epsilon_{SP}-\ep
 </section>
 <section id="halosigma">
 <h4>halosigma<a class="headerlink" href="#halosigma" title="Link to this heading"></a></h4>
+<p>Both <code class="code docutils literal notranslate"><span class="pre">halosigma</span></code> and <code class="code docutils literal notranslate"><span class="pre">halo-sigma</span></code> are accepted.</p>
 <p>Similar to type <cite>halo</cite> except instead of uniformly sampling <span class="math notranslate nohighlight">\(J\)</span>, the single
 particle emittance (action), the particle’s <span class="math notranslate nohighlight">\(n\sigma\)</span> is sampled uniformly
 instead. The particle action <span class="math notranslate nohighlight">\(J\)</span> is expressed in terms of the multiple of
@@ -1293,8 +1307,8 @@ distributions are expressed in terms of <span class="math notranslate nohighligh
 re-weighting in post-processing.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1357,6 +1371,127 @@ re-weighting in post-processing.</p>
       <span class="n">haloNSigmaXOuter</span>      <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
       <span class="n">haloNSigmaYInner</span>      <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
       <span class="n">haloNSigmaYOuter</span>      <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="slowext">
+<span id="beam-slowext"></span><h4>slowext<a class="headerlink" href="#slowext" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Also accepts <code class="code docutils literal notranslate"><span class="pre">slow-ext</span></code>.</p></li>
+</ul>
+<p>Spatial coordinates follow the reference beam parameters. Otherwise, the distribution
+produces a linear correlation between momentum and time as defined by a start and stop
+point in time (relative to the central <cite>T0</cite>) and from an offset in momentum at the start
+to a different value at the stop point. This is shown schematically below.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/slowext-diagram.png"><img alt="_images/slowext-diagram.png" src="_images/slowext-diagram.png" style="width: 50%;" />
+</a>
+</figure>
+<p>Particles are uniformly and randomly drawn along this correlation. There must be a difference
+between the start and stop time. <cite>dTStart</cite> should be less than <cite>dTStop</cite>. <cite>dPStart</cite> can be less
+or greather than <cite>dPStop</cite>. The start and stop times can both be before or after zero as can the
+moemntum values both be above or below the nominal value.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>dTStart</cite></p></td>
+<td><p>Starting time offset from T0 (s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>dTStop</cite></p></td>
+<td><p>Stop time offset from T0 (s)</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>dPStart</cite></p></td>
+<td><p>Starting point offset in P from P0 (GeV)</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>dPStop</cite></p></td>
+<td><p>Stoppoing point offset in P from P0 (GeV)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+      <span class="n">momentum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;slowext&quot;</span><span class="p">,</span>
+      <span class="n">dTStart</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+      <span class="n">dTStop</span> <span class="o">=</span> <span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+      <span class="n">dPStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">dPStop</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="gaussslowext">
+<h4>gaussslowext<a class="headerlink" href="#gaussslowext" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Also accepts <code class="code docutils literal notranslate"><span class="pre">gauss-slow-ext</span></code>.</p></li>
+</ul>
+<p>This distribution first uses the parameters of <a class="reference internal" href="#beam-gauss"><span class="std std-ref">gauss</span></a> (i.e. an uncorrelated Gaussian),
+and then <strong>adds</strong> to that the P-T correlation of <a class="reference internal" href="#beam-slowext"><span class="std std-ref">slowext</span></a>. The parameters of both can be used.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+       <span class="n">momentum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
+       <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;gaussslowext&quot;</span><span class="p">,</span>
+       <span class="n">sigmaX</span>  <span class="o">=</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+       <span class="n">sigmaY</span>  <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+       <span class="n">sigmaXp</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span>
+       <span class="n">sigmaYp</span> <span class="o">=</span> <span class="mf">1e-7</span><span class="p">,</span>
+       <span class="n">sigmaE</span>  <span class="o">=</span> <span class="mf">4e-4</span><span class="p">,</span>
+       <span class="n">sigmaT</span>  <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span>
+       <span class="n">dTStart</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+       <span class="n">dTStop</span> <span class="o">=</span> <span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+       <span class="n">dPStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+       <span class="n">dPStop</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="gaussmatrixslowext">
+<h4>gaussmatrixslowext<a class="headerlink" href="#gaussmatrixslowext" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Also accepts <code class="code docutils literal notranslate"><span class="pre">gauss-matrix-slow-ext</span></code>.</p></li>
+</ul>
+<p>This distribution first uses the parameters of <a class="reference internal" href="#beam-gauss-matrix"><span class="std std-ref">gaussmatrix</span></a> and then <strong>adds</strong> to that
+the P-T correlation of <a class="reference internal" href="#beam-slowext"><span class="std std-ref">slowext</span></a>. The parameters of both can be used.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+       <span class="n">energy</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
+       <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;gaussmatrixslowext&quot;</span><span class="p">,</span>
+       <span class="n">sigma11</span> <span class="o">=</span> <span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="o">*</span><span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+       <span class="n">sigma22</span> <span class="o">=</span> <span class="mf">0.09</span><span class="o">*</span><span class="mf">0.005</span><span class="o">*</span><span class="mf">0.09</span><span class="o">*</span><span class="mf">0.005</span><span class="p">,</span>
+       <span class="n">sigma33</span> <span class="o">=</span> <span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="o">*</span><span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+       <span class="n">sigma44</span> <span class="o">=</span> <span class="mf">0.09</span><span class="o">*</span><span class="mf">0.005</span><span class="o">*</span><span class="mf">0.09</span><span class="o">*</span><span class="mf">0.005</span><span class="p">,</span>
+       <span class="n">sigma55</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="o">*</span><span class="mf">1e-9</span><span class="p">,</span>
+       <span class="n">sigma66</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">,</span>
+       <span class="n">dTStart</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+       <span class="n">dTStop</span> <span class="o">=</span> <span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+       <span class="n">dPStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+       <span class="n">dPStop</span> <span class="o">=</span> <span class="mf">0.06</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="gausstwissslowext">
+<h4>gausstwissslowext<a class="headerlink" href="#gausstwissslowext" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Also accepts <code class="code docutils literal notranslate"><span class="pre">gauss-twiss-slow-ext</span></code>.</p></li>
+</ul>
+<p>This distribution first uses the parameters of <a class="reference internal" href="#beam-gauss-twiss"><span class="std std-ref">gausstwiss</span></a> and then <strong>adds</strong> to that
+the P-T correlation of <a class="reference internal" href="#beam-slowext"><span class="std std-ref">slowext</span></a>. The parameters of both can be used.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+      <span class="n">energy</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;gausstwissslowext&quot;</span><span class="p">,</span>
+      <span class="n">betx</span><span class="o">=</span><span class="mf">4.60000</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+      <span class="n">bety</span><span class="o">=</span><span class="mf">2.60000</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+      <span class="n">alfx</span><span class="o">=-</span><span class="mf">0.3083824</span><span class="p">,</span>
+      <span class="n">alfy</span><span class="o">=</span> <span class="mf">0.0233215</span><span class="p">,</span>
+      <span class="n">emitx</span><span class="o">=</span><span class="mf">25e-9</span><span class="p">,</span>
+      <span class="n">emity</span><span class="o">=</span><span class="mf">25e-9</span><span class="p">,</span>
+      <span class="n">dTStart</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+      <span class="n">dTStop</span> <span class="o">=</span> <span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
+      <span class="n">dPStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">dPStop</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -1428,7 +1563,7 @@ only one betx can be specified.</p>
 <section id="compositespacedirectionenergy">
 <h4>compositespacedirectionenergy<a class="headerlink" href="#compositespacedirectionenergy" title="Link to this heading"></a></h4>
 <ul class="simple">
-<li><p>Also accepted <code class="code docutils literal notranslate"><span class="pre">compositesde</span></code>.</p></li>
+<li><p>Also accepted <code class="code docutils literal notranslate"><span class="pre">compositesde</span></code> and <code class="code docutils literal notranslate"><span class="pre">composite-space-direction-energy</span></code>.</p></li>
 </ul>
 <p>The distribution allows 3 different distributions to be mixed together. One for spatial coordinates,
 one for directional, and one for energy &amp; time.</p>
@@ -1500,7 +1635,7 @@ looped (knowingly introducing potential correlations).</p>
 <p>For all the file-based distributions, the following beam options apply.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>Option</strong></p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
 <th class="head"><p><strong>Default</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
 </tr>
@@ -1643,8 +1778,8 @@ particles will be tracked beyond their normal lifetime.</p>
 </div>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 <th class="head"><p><strong>Required</strong></p></th>
 </tr>
 </thead>
@@ -1784,8 +1919,8 @@ not to be used in conjunction with “z”.</p></td>
 <p>Output from MAD-X PTC used as input for BDSIM.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1805,6 +1940,7 @@ their contents</p></td>
 </section>
 <section id="eventgeneratorfile">
 <span id="beam-eventgenerator"></span><h4>eventgeneratorfile<a class="headerlink" href="#eventgeneratorfile" title="Link to this heading"></a></h4>
+<p>Both <code class="code docutils literal notranslate"><span class="pre">eventgeneratorfile</span></code> and <code class="code docutils literal notranslate"><span class="pre">event-generator-file</span></code> are accepted.</p>
 <p>To use a file from an event generator, the HepMC3 library must be used and BDSIM must be
 compiled with respect to it.  See <a class="reference internal" href="installation.html#installation-bdsim-config-options"><span class="std std-ref">Optional Configuration Options</span></a> for more details.</p>
 <p>When using an event generator file, the <strong>design</strong> particle and total energy must still be
@@ -1818,8 +1954,8 @@ implemented as <span class="math notranslate nohighlight">\(&gt;=\)</span> and <
 <p>where <cite>W</cite> is some coordinate.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1969,6 +2105,7 @@ examples:</p>
 </section>
 <section id="bdsimsampler">
 <span id="beam-bdsimsampler"></span><h4>bdsimsampler<a class="headerlink" href="#bdsimsampler" title="Link to this heading"></a></h4>
+<p>Both <code class="code docutils literal notranslate"><span class="pre">bdsimsampler</span></code> and <code class="code docutils literal notranslate"><span class="pre">bdsim-sampler</span></code> are accepted.</p>
 <p>Recorded hits in a sampler in a BDSIM ROOT output file can be loaded back into BDSIM
 and launched through a model. This does not have to be the same model and the starting
 position does not need to be the same.</p>
@@ -1981,8 +2118,8 @@ in the original model as a beam offset.</p>
 </div>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Varaible</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -2691,19 +2828,19 @@ option, physicsList=&quot;ftfp_bert&quot;;
 </div>
 <p>A comparison is shown below with this option on and off for a 7TeV proton incident on a 40cm
 target of carbon. This example can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/processes/protonDiffraction</span></code>.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="_images/proton-diffraction-comparison.pdf"><img alt="_images/proton-diffraction-comparison.pdf" src="_images/proton-diffraction-comparison.pdf" style="width: 80%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">The relative change in the momentum of protons immmediately after the target.</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+<p><span class="caption-text">The relative change in the momentum of protons immmediately after the target.</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="_images/proton-diffraction-comparison-zoom.pdf"><img alt="_images/proton-diffraction-comparison-zoom.pdf" src="_images/proton-diffraction-comparison-zoom.pdf" style="width: 80%;" />
 </a>
 <figcaption>
 <p><span class="caption-text">The relative change in the momentum of protons immmediately after the target. For a
-narrow range close to the nominal momentum (<span class="math notranslate nohighlight">\(\Delta P / P = 0\)</span>).</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+narrow range close to the nominal momentum (<span class="math notranslate nohighlight">\(\Delta P / P = 0\)</span>).</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -2713,8 +2850,60 @@ and therefore will affect ion-ion collisions too.</p>
 </div>
 </section>
 </section>
+<section id="millicharged-physics">
+<span id="id10"></span><h2>Millicharged Physics<a class="headerlink" href="#millicharged-physics" title="Link to this heading"></a></h2>
+<p>Currently, millicharged physics include EM transport and scattering processes.
+To simulate millicharged particles, the following options may be specified:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>enableMillicharge</cite></p></td>
+<td><p>Whether to allow millicharge physics.</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>millichargeName</cite></p></td>
+<td><p>Name of the particle.</p></td>
+<td><p>“millicharged”</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>millichargeMass</cite></p></td>
+<td><p>Rest mass [GeV].</p></td>
+<td><p>100</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>millichargeCharge</cite></p></td>
+<td><p>Electric charge [e+].</p></td>
+<td><p>0.1</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>millichargeID</cite></p></td>
+<td><p>PDG ID.</p></td>
+<td><p>411000</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;millie&quot;</span><span class="p">,</span>
+      <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+
+<span class="n">option</span><span class="p">,</span> <span class="n">enableMillicharge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+      <span class="n">millichargeName</span><span class="o">=</span><span class="s2">&quot;millie&quot;</span><span class="p">,</span>
+      <span class="n">millichargeMass</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
+      <span class="n">millichargeCharge</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+      <span class="n">millichargeID</span><span class="o">=</span><span class="mi">411000</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
 <section id="physics-biasing">
-<span id="id10"></span><h2>Physics Biasing<a class="headerlink" href="#physics-biasing" title="Link to this heading"></a></h2>
+<span id="id11"></span><h2>Physics Biasing<a class="headerlink" href="#physics-biasing" title="Link to this heading"></a></h2>
 <p>BDSIM currently provides a few ways to artificially interfere with the physics processes
 to make the desired outcome happen more often. In these cases, the goal is to simulate
 the correct physical outcome, but more efficiently in the parameters of interest,
@@ -2751,7 +2940,8 @@ only one proton definition.</p>
 </div>
 <ol class="arabic simple">
 <li><p>Define a bias object with parameters in following table.</p></li>
-<li><p>Use <code class="code docutils literal notranslate"><span class="pre">bias</span></code>, <code class="code docutils literal notranslate"><span class="pre">biasMaterial</span></code> or <code class="code docutils literal notranslate"><span class="pre">biasVacuum</span></code> in an element definition naming the bias object.</p></li>
+<li><p>Use <code class="code docutils literal notranslate"><span class="pre">bias</span></code>, <code class="code docutils literal notranslate"><span class="pre">biasMaterial</span></code>, <code class="code docutils literal notranslate"><span class="pre">biasMaterialLV</span></code> or <code class="code docutils literal notranslate"><span class="pre">biasVacuum</span></code> in an element definition
+naming the bias object.</p></li>
 </ol>
 <table class="docutils align-default">
 <thead>
@@ -2808,10 +2998,12 @@ with the desired physics list, or a complete Geant4 one such as
 </div>
 <p>The process can also be attached to a specific element using the keywords <code class="code docutils literal notranslate"><span class="pre">biasVacuum</span></code> or
 <code class="code docutils literal notranslate"><span class="pre">biasMaterial</span></code> for the biasing to be attached the vacuum volume or everything outside the
-vacuum respectively:</p>
+vacuum respectively. Alternatively the process can be attached to a specific logical volume of an element
+by using the keyword <code class="code docutils literal notranslate"><span class="pre">biasMaterialLV</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>q1: quadrupole, l=1*m, material=&quot;Iron&quot;, biasVacuum=&quot;biasDef1 biasDef2&quot;; ! uses the process biasDef1 and biasDef2
 q2: quadrupole, l=0.5*m, biasMaterial=&quot;biasDef2&quot;;
 q3: quadrupole, l=20*cm, k1=0.25, bias=&quot;biasDef1&quot;;
+q4: quadrupole, l=20*cm, k1=0.25, biasMaterialLV=&quot;container:biasDef1&quot;;
 </pre></div>
 </div>
 <ul class="simple">
@@ -2819,6 +3011,9 @@ q3: quadrupole, l=20*cm, k1=0.25, bias=&quot;biasDef1&quot;;
 inner volume of a beam pipe only in each component.</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">biasMaterial</span></code> applies to all volumes that are not the vacuum. This includes
 the beam pipe itself.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">biasMaterialLV</span></code> looks in the logical volumes whose name contains a specific string (in the example it is
+‘container’) and applies the bias to it. If multiple physical volumes are placed from the same logical volume
+they will all be biased.</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">bias</span></code> applies to both the bias vacuum and material parts.</p></li>
 <li><p>If both <code class="code docutils literal notranslate"><span class="pre">bias</span></code> and one or both of <code class="code docutils literal notranslate"><span class="pre">biasVacuum</span></code> and <code class="code docutils literal notranslate"><span class="pre">biasMaterial</span></code> are used
 then the effect is cumulative. <code class="code docutils literal notranslate"><span class="pre">bias</span></code> is just a way to add to both vacuum and material.</p></li>
@@ -2831,7 +3026,8 @@ line element definition. See <a class="reference internal" href="model_construct
 </ul>
 <p>Defaults can be set with the options <code class="code docutils literal notranslate"><span class="pre">defaultBiasVacuum</span></code> and <code class="code docutils literal notranslate"><span class="pre">defaultBiasMaterial</span></code>. Only
 in the case where a beam line element has no biasing specified will these bias objects be applied.
-They will not be mixed with per-element definitions.</p>
+They will not be mixed with per-element definitions. Using <code class="code docutils literal notranslate"><span class="pre">defaultBiasMaterial</span></code> impact both <code class="code docutils literal notranslate"><span class="pre">biasMaterial</span></code>
+and <code class="code docutils literal notranslate"><span class="pre">biasMaterialLV</span></code>.</p>
 <ul class="simple">
 <li><p>The world logical volume (only, i.e. excluding any daughters) can be biased with the option
 <code class="code docutils literal notranslate"><span class="pre">biasForWorldVolume</span></code>.</p></li>
@@ -2915,11 +3111,11 @@ we have the desired number of muons minus 1.</p></li>
 a weight of original weight / N muons.</p></li>
 </ol>
 <p>Schematically, this would look like:</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="_images/muonsplitting.pdf"><img alt="_images/muonsplitting.pdf" src="_images/muonsplitting.pdf" style="width: 70%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Schematic of a <span class="math notranslate nohighlight">\(\pi^+\)</span> decay to a muon and a muon neutrino.</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+<p><span class="caption-text">Schematic of a <span class="math notranslate nohighlight">\(\pi^+\)</span> decay to a muon and a muon neutrino.</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -2975,28 +3171,28 @@ this energy and the factor is ‘faded-in’ from 0.8 x this value. The factor i
 interpolated as a function of kinetic energy and rounded to the nearest integer.</p>
 <p>In the case of a second splitting factor and therefore also <cite>muonSplittingThresholdParentEk2</cite>,
 a similar linear interpolation procedure is used along with rounding.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="_images/splittingfactor1.pdf"><img alt="_images/splittingfactor1.pdf" src="_images/splittingfactor1.pdf" style="width: 70%;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Muon splitting factor as a function of kinetic energy with only 1 factor specified
-and no kinetic energy threshold used.</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+and no kinetic energy threshold used.</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="_images/splittingfactor1b.pdf"><img alt="_images/splittingfactor1b.pdf" src="_images/splittingfactor1b.pdf" style="width: 70%;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Muon splitting factor as a function of kinetic energy with only 1 factor specified
-and a kinetic energy threshold specified.</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+and a kinetic energy threshold specified.</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="_images/splittingfactor2.pdf"><img alt="_images/splittingfactor2.pdf" src="_images/splittingfactor2.pdf" style="width: 70%;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Muon splitting factor as a function of kinetic energy with 2 factors specified as
-well as 2 kinetic energy thresholds.</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+well as 2 kinetic energy thresholds.</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><strong>Examples:</strong></p>
@@ -3066,13 +3262,13 @@ interest. With more muons, we sample this better.</p>
 <p>We cannot use a factor of say, 1 million and only sample 1 event, because we would only
 sample 1 (e.g.) decay in 1 location. We must still sample many locations well to properly
 estimate the muon flux.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="_images/muon_splitting_comparison_with_divsym.png"><img alt="_images/muon_splitting_comparison_with_divsym.png" src="_images/muon_splitting_comparison_with_divsym.png" style="width: 70%;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Comparison of the muon spectrum for the same model with activated muon splitting
 and without muon splitting [F. Metzger, <cite>Examination of the RF separated beam
-technique at CERN’s M2 beam line</cite>, PhD thesis (in progress)].</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+technique at CERN’s M2 beam line</cite>, PhD thesis (in progress)].</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><strong>Notes:</strong></p>
@@ -3167,7 +3363,7 @@ are described in the following sub-sections:</p>
 <li><p><a class="reference internal" href="#bdsim-options-verbosity"><span class="std std-ref">Print Out Options</span></a></p></li>
 <li><p><a class="reference internal" href="#offset-for-main-beam-line">Offset for Main Beam Line</a></p></li>
 <li><p><a class="reference internal" href="#scoring-map">Scoring Map</a></p></li>
-<li><p><a class="reference internal" href="#id12">Developer Options</a></p></li>
+<li><p><a class="reference internal" href="#id13">Developer Options</a></p></li>
 </ul>
 <section id="common-options">
 <span id="options-common"></span><h3>Common Options<a class="headerlink" href="#common-options" title="Link to this heading"></a></h3>
@@ -3718,7 +3914,7 @@ accordingly.</p></td>
 </table>
 </section>
 <section id="physics-process-options">
-<span id="id11"></span><h3>Physics Processes<a class="headerlink" href="#physics-process-options" title="Link to this heading"></a></h3>
+<span id="id12"></span><h3>Physics Processes<a class="headerlink" href="#physics-process-options" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Option</strong></p></th>
@@ -4665,7 +4861,7 @@ deposition data.</p>
 </table>
 </section>
 <section id="developer-options">
-<span id="id12"></span><h3>Developer Options<a class="headerlink" href="#developer-options" title="Link to this heading"></a></h3>
+<span id="id13"></span><h3>Developer Options<a class="headerlink" href="#developer-options" title="Link to this heading"></a></h3>
 <p>These are documented here, but use with caution, as they lead to undesirable behaviour and
 should only be used with understanding.</p>
 <table class="docutils align-default">
@@ -4917,7 +5113,7 @@ with PDG ID 13 and -13. The sampler attached to “d1” would record only 11 an
 particles.</p>
 </section>
 <section id="sampler-visualisation">
-<span id="id13"></span><h3>Sampler Visualisation<a class="headerlink" href="#sampler-visualisation" title="Link to this heading"></a></h3>
+<span id="id14"></span><h3>Sampler Visualisation<a class="headerlink" href="#sampler-visualisation" title="Link to this heading"></a></h3>
 <p>The samplers are normally invisible and are built in a parallel world geometry in Geant4. To
 visualise them, the following command should be used in the visualiser:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">bds</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">view</span>
@@ -5302,7 +5498,7 @@ the desired element to see it appear and disappear repeatedly.</p>
 </section>
 </section>
 <section id="scoring">
-<span id="id14"></span><h2>Scoring<a class="headerlink" href="#scoring" title="Link to this heading"></a></h2>
+<span id="id15"></span><h2>Scoring<a class="headerlink" href="#scoring" title="Link to this heading"></a></h2>
 <p>Scoring is the ability to record integrals (or ‘scores’) of certain information such as the
 dose or flux in a 3D histogram for some part of the 3D model. This is done as it is much less
 information than storing all the ‘hits’ from each step of each particle in each event as well
@@ -5314,18 +5510,18 @@ bin in the mesh and therefore there’s no ambiguity over proportioning some qua
 energy deposition) in one step or another. The figure below shows the regular “mass world”
 view of a quadrupole, and also a wire-frame view of the same quadrupole with the normally invisible
 scoring mesh in a parallel world.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="_images/scoring-mass-world.png"><img alt="_images/scoring-mass-world.png" src="_images/scoring-mass-world.png" style="width: 50%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">“Mass world” view of a quadrupole.</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+<p><span class="caption-text">“Mass world” view of a quadrupole.</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="_images/scoring-wireframe.png"><img alt="_images/scoring-wireframe.png" src="_images/scoring-wireframe.png" style="width: 50%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Wire-frame view of the same quadrupole but with a scoring mesh visualised (grey).</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
+<p><span class="caption-text">Wire-frame view of the same quadrupole but with a scoring mesh visualised (grey).</span><a class="headerlink" href="#id28" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Conceptually creating a scoring mesh is split into two key definitions in the input:</p>
@@ -5355,7 +5551,7 @@ is one proton fired per-event, then the quantity for deposited dose is J / kg / 
 <li><p>Examples can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/scoring</span></code>.</p></li>
 </ul>
 <section id="sampler-coordinate-systems">
-<span id="id15"></span><h3>Sampler Coordinate Systems<a class="headerlink" href="#sampler-coordinate-systems" title="Link to this heading"></a></h3>
+<span id="id16"></span><h3>Sampler Coordinate Systems<a class="headerlink" href="#sampler-coordinate-systems" title="Link to this heading"></a></h3>
 <p>Each sampler type records different variables depending on its geometry. The hits recorded
 are always in the frame of that sampler object. The coordinates for each shape are as follows:</p>
 <p><strong>plane</strong></p>
@@ -5385,7 +5581,7 @@ the sampler name as it is a constant.</p></li>
 </ul>
 </section>
 <section id="scorer">
-<span id="id16"></span><h3>Scorer<a class="headerlink" href="#scorer" title="Link to this heading"></a></h3>
+<span id="id17"></span><h3>Scorer<a class="headerlink" href="#scorer" title="Link to this heading"></a></h3>
 <p>A <cite>scorer</cite> defines a quantity to be recorded. The syntax is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">parameter2</span><span class="o">=</span><span class="n">value</span><span class="p">;</span>
 </pre></div>
@@ -5470,7 +5666,7 @@ the primary particle(s) with Parent ID == 0.</p></td>
 </tbody>
 </table>
 <section id="scorer-types">
-<span id="id17"></span><h4>Scorer Types<a class="headerlink" href="#scorer-types" title="Link to this heading"></a></h4>
+<span id="id18"></span><h4>Scorer Types<a class="headerlink" href="#scorer-types" title="Link to this heading"></a></h4>
 <p>The following are accepted scorer types.</p>
 <ul class="simple">
 <li><p>As the histogram is per-event, the quantity stored is per-event also. So, if there
@@ -5832,7 +6028,7 @@ best way is to merge the histograms per-event into an average. This can be done 
 <li><p>ROOT’s TBrowser does not show 3D histograms by default. In the top left, the “Draw Option” drop
 down menu should be set to “lego2” for example, then re-click on the 3D histogram as shown below.</p></li>
 </ul>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="_images/scoring-root-file-view.png"><img alt="_images/scoring-root-file-view.png" src="_images/scoring-root-file-view.png" style="width: 95%;" />
 </a>
 <figcaption>
@@ -5840,13 +6036,13 @@ down menu should be set to “lego2” for example, then re-click on the 3D hist
 the “lego2” visualisation option. This is based on 100 events from the example
 <cite>scoring-filter-material-include.gmad</cite>. Here a material filter is used to score only
 the coils of a quadrupole - the 8 coils can be seen lying in 8 clusters in an
-x,y plane with z (along the beam line) being vertically.</span><a class="headerlink" href="#id28" title="Link to this image"></a></p>
+x,y plane with z (along the beam line) being vertically.</span><a class="headerlink" href="#id29" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="controlling-simulation-speed">
-<span id="id18"></span><h2>Controlling Simulation Speed<a class="headerlink" href="#controlling-simulation-speed" title="Link to this heading"></a></h2>
+<span id="id19"></span><h2>Controlling Simulation Speed<a class="headerlink" href="#controlling-simulation-speed" title="Link to this heading"></a></h2>
 <p>The particle showers created in high energy particle interactions with matter can lead to a
 very large number of particles being produced in an event. These in turn each take time to
 track through the model and the computational time per event increases. When simulating a
@@ -6027,7 +6223,7 @@ result may not entirely match that if using the <cite>bdsimmatrix</cite> set due
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Jul 06, 2025.
+      <span class="lastupdated">Last updated on Oct 13, 2025.
       </span></p>
   </div>
 

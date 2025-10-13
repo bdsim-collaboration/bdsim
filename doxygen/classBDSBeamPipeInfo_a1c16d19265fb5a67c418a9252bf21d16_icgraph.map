@@ -1,17 +1,21 @@
 <map id="BDSBeamPipeInfo::Extent" name="BDSBeamPipeInfo::Extent">
-<area shape="rect" id="Node000001" title=" " alt="" coords="759,55,949,80"/>
-<area shape="rect" id="Node000002" href="$classBDSUndulator.html#ac985c8543f66a40cec17e3f1b88179aa" title=" " alt="" coords="493,15,711,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="745,56,710,52,711,46,745,51"/>
-<area shape="rect" id="Node000003" href="$classBDSBeamPipeInfo.html#ae71dd3cc3b8cd9842929083d19a549e6" title="Return an indicative extent of the beam pipe &#45; typically the maximum of x or y extent." alt="" coords="496,79,708,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="745,84,709,89,708,83,744,79"/>
-<area shape="rect" id="Node000004" href="$classBDSComponentFactory.html#a6088b3e4dbaa58c668a4620c6a139c14" title="Prepare the field definition for the yoke of a magnet." alt="" coords="224,47,445,87"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="482,88,445,83,446,78,482,82"/>
-<area shape="rect" id="Node000008" href="$classBDSComponentFactory.html#adb8d2d110dd2072417757751aebce6a0" title=" " alt="" coords="239,111,430,151"/>
-<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="483,116,430,123,430,117,482,111"/>
-<area shape="rect" id="Node000005" href="$namespaceBDS.html#a9b5dcbe56d4c0d0df06fc5eaf7e7963b" title=" " alt="" coords="11,5,170,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="221,47,154,33,155,28,222,42"/>
-<area shape="rect" id="Node000006" href="$namespaceBDS.html#ae4874e3c55f5bb2fd6e0fb209fdc684b" title=" " alt="" coords="11,55,170,80"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="210,70,170,70,170,65,210,65"/>
-<area shape="rect" id="Node000007" href="$classBDSComponentFactory.html#a3117748794572246aac9bb89b6b1ba8b" title="Helper method for common magnet construction." alt="" coords="5,105,176,145"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="236,93,177,107,176,102,235,88"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="759,70,949,95"/>
+<area shape="rect" id="Node000002" href="$classBDSUndulator.html#ac985c8543f66a40cec17e3f1b88179aa" title=" " alt="" coords="493,5,711,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="783,69,690,48,691,43,785,64"/>
+<area shape="rect" id="Node000003" href="$classBDSGaborLens.html#a68e91c0a459d0ebcdbbbdc91b61e879b" title="Build the outer volume." alt="" coords="505,70,699,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="745,85,699,85,699,80,745,80"/>
+<area shape="rect" id="Node000005" href="$classBDSBeamPipeInfo.html#ae71dd3cc3b8cd9842929083d19a549e6" title="Return an indicative extent of the beam pipe &#45; typically the maximum of x or y extent." alt="" coords="496,120,708,160"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="785,101,691,123,690,117,783,96"/>
+<area shape="rect" id="Node000004" href="$classBDSGaborLens.html#a75a45ab01ddcf0f5b2bedd2ff62d4f41" title=" " alt="" coords="255,70,414,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="491,85,414,85,414,80,491,80"/>
+<area shape="rect" id="Node000006" href="$classBDSComponentFactory.html#a6088b3e4dbaa58c668a4620c6a139c14" title="Prepare the field definition for the yoke of a magnet." alt="" coords="224,120,445,160"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="482,143,446,143,446,137,482,137"/>
+<area shape="rect" id="Node000010" href="$classBDSComponentFactory.html#adb8d2d110dd2072417757751aebce6a0" title=" " alt="" coords="239,184,430,224"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="505,166,419,187,418,181,504,161"/>
+<area shape="rect" id="Node000007" href="$namespaceBDS.html#a9b5dcbe56d4c0d0df06fc5eaf7e7963b" title=" " alt="" coords="11,78,170,103"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="221,120,154,106,155,101,222,115"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#ae4874e3c55f5bb2fd6e0fb209fdc684b" title=" " alt="" coords="11,127,170,153"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="210,143,170,143,170,137,210,137"/>
+<area shape="rect" id="Node000009" href="$classBDSComponentFactory.html#a3117748794572246aac9bb89b6b1ba8b" title="Helper method for common magnet construction." alt="" coords="5,177,176,217"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="236,166,177,180,176,175,235,161"/>
 </map>

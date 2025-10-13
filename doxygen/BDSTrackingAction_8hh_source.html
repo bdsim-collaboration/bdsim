@@ -106,61 +106,62 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;BDSTrajectoryOptions.hh&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;G4Types.hh&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;G4UserTrackingAction.hh&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">class </span><a class="code hl_class" href="classBDSEventAction.html">BDSEventAction</a>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">class </span>G4Track;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html">   34</a></span><span class="keyword">class </span><a class="code hl_class" href="classBDSTrackingAction.html">BDSTrackingAction</a>: <span class="keyword">public</span> G4UserTrackingAction</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <a class="code hl_function" href="classBDSTrackingAction.html#a7373e5a9f15a7966d1f4c6ca54b40c2c">BDSTrackingAction</a>(G4bool batchMode,</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                    G4bool storeTrajectoryIn,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    <span class="keyword">const</span> <a class="code hl_struct" href="structBDS_1_1TrajectoryOptions.html">BDS::TrajectoryOptions</a>&amp; storeTrajectoryOptionsIn,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    <a class="code hl_class" href="classBDSEventAction.html">BDSEventAction</a>* eventActionIn,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                    G4int  verboseSteppingEventStartIn,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                    G4int  verboseSteppingEventStopIn,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    G4bool verboseSteppingPrimaryOnlyIn,</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    G4int  verboseSteppingLevelIn);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classBDSTrackingAction.html">~BDSTrackingAction</a>(){;}</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classBDSTrackingAction.html#a57bd9de1b9675a0a47ebdb17b708b74d">PreUserTrackingAction</a>(<span class="keyword">const</span> G4Track* track);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classBDSTrackingAction.html#a62840d70def168e3ddea2af26d382e2a">PostUserTrackingAction</a>(<span class="keyword">const</span> G4Track* track);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#a7373e5a9f15a7966d1f4c6ca54b40c2c">   56</a></span>  <a class="code hl_function" href="classBDSTrackingAction.html#a7373e5a9f15a7966d1f4c6ca54b40c2c">BDSTrackingAction</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#a5350c0be2b8bd250538ec378de0468a6">   60</a></span>  <span class="keyword">const</span> G4bool <a class="code hl_variable" href="classBDSTrackingAction.html#a5350c0be2b8bd250538ec378de0468a6">interactive</a>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">const</span> G4bool storeTrajectory; </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#ac9fe2fd9fde916941e56094ad76ca333">   63</a></span>  <span class="keyword">const</span> <a class="code hl_struct" href="structBDS_1_1TrajectoryOptions.html">BDS::TrajectoryOptions</a> <a class="code hl_variable" href="classBDSTrackingAction.html#ac9fe2fd9fde916941e56094ad76ca333">storeTrajectoryOptions</a>; </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#ac0b639bc719a060185313ddea00ded94">   66</a></span>  <a class="code hl_class" href="classBDSEventAction.html">BDSEventAction</a>* <a class="code hl_variable" href="classBDSTrackingAction.html#ac0b639bc719a060185313ddea00ded94">eventAction</a>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  G4int  verboseSteppingEventStart;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  G4int  verboseSteppingEventStop;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  G4bool verboseSteppingPrimaryOnly;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  G4int  verboseSteppingLevel;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;globals.hh&quot;</span> <span class="comment">// geant4 types / globals</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;G4UserTrackingAction.hh&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">class </span><a class="code hl_class" href="classBDSEventAction.html">BDSEventAction</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">class </span>G4Track;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html">   35</a></span><span class="keyword">class </span><a class="code hl_class" href="classBDSTrackingAction.html">BDSTrackingAction</a>: <span class="keyword">public</span> G4UserTrackingAction</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <a class="code hl_function" href="classBDSTrackingAction.html#a7373e5a9f15a7966d1f4c6ca54b40c2c">BDSTrackingAction</a>(G4bool batchMode,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    G4bool storeTrajectoryIn,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    <span class="keyword">const</span> <a class="code hl_struct" href="structBDS_1_1TrajectoryOptions.html">BDS::TrajectoryOptions</a>&amp; storeTrajectoryOptionsIn,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                    <a class="code hl_class" href="classBDSEventAction.html">BDSEventAction</a>* eventActionIn,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                    G4int  verboseSteppingEventStartIn,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    G4int  verboseSteppingEventStopIn,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    G4bool verboseSteppingPrimaryOnlyIn,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    G4int  verboseSteppingLevelIn);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classBDSTrackingAction.html">~BDSTrackingAction</a>(){;}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classBDSTrackingAction.html#a57bd9de1b9675a0a47ebdb17b708b74d">PreUserTrackingAction</a>(<span class="keyword">const</span> G4Track* track);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classBDSTrackingAction.html#a62840d70def168e3ddea2af26d382e2a">PostUserTrackingAction</a>(<span class="keyword">const</span> G4Track* track);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#a7373e5a9f15a7966d1f4c6ca54b40c2c">   57</a></span>  <a class="code hl_function" href="classBDSTrackingAction.html#a7373e5a9f15a7966d1f4c6ca54b40c2c">BDSTrackingAction</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#a5350c0be2b8bd250538ec378de0468a6">   61</a></span>  <span class="keyword">const</span> G4bool <a class="code hl_variable" href="classBDSTrackingAction.html#a5350c0be2b8bd250538ec378de0468a6">interactive</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">const</span> G4bool storeTrajectory; </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#ac9fe2fd9fde916941e56094ad76ca333">   64</a></span>  <span class="keyword">const</span> <a class="code hl_struct" href="structBDS_1_1TrajectoryOptions.html">BDS::TrajectoryOptions</a> <a class="code hl_variable" href="classBDSTrackingAction.html#ac9fe2fd9fde916941e56094ad76ca333">storeTrajectoryOptions</a>; </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classBDSTrackingAction.html#ac0b639bc719a060185313ddea00ded94">   67</a></span>  <a class="code hl_class" href="classBDSEventAction.html">BDSEventAction</a>* <a class="code hl_variable" href="classBDSTrackingAction.html#ac0b639bc719a060185313ddea00ded94">eventAction</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  G4int  verboseSteppingEventStart;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  G4int  verboseSteppingEventStop;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  G4bool verboseSteppingPrimaryOnly;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  G4int  verboseSteppingLevel;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>};</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassBDSEventAction_html"><div class="ttname"><a href="classBDSEventAction.html">BDSEventAction</a></div><div class="ttdoc">Process information at the event level.</div><div class="ttdef"><b>Definition</b> <a href="BDSEventAction_8hh_source.html#l00047">BDSEventAction.hh:48</a></div></div>
-<div class="ttc" id="aclassBDSTrackingAction_html"><div class="ttname"><a href="classBDSTrackingAction.html">BDSTrackingAction</a></div><div class="ttdoc">Action to decide whether or not to store trajectory information.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00034">BDSTrackingAction.hh:35</a></div></div>
-<div class="ttc" id="aclassBDSTrackingAction_html_a5350c0be2b8bd250538ec378de0468a6"><div class="ttname"><a href="classBDSTrackingAction.html#a5350c0be2b8bd250538ec378de0468a6">BDSTrackingAction::interactive</a></div><div class="ttdeci">const G4bool interactive</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00060">BDSTrackingAction.hh:60</a></div></div>
-<div class="ttc" id="aclassBDSTrackingAction_html_a57bd9de1b9675a0a47ebdb17b708b74d"><div class="ttname"><a href="classBDSTrackingAction.html#a57bd9de1b9675a0a47ebdb17b708b74d">BDSTrackingAction::PreUserTrackingAction</a></div><div class="ttdeci">virtual void PreUserTrackingAction(const G4Track *track)</div><div class="ttdoc">Used to decide whether or not to store trajectories.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8cc_source.html#l00056">BDSTrackingAction.cc:56</a></div></div>
-<div class="ttc" id="aclassBDSTrackingAction_html_a62840d70def168e3ddea2af26d382e2a"><div class="ttname"><a href="classBDSTrackingAction.html#a62840d70def168e3ddea2af26d382e2a">BDSTrackingAction::PostUserTrackingAction</a></div><div class="ttdeci">virtual void PostUserTrackingAction(const G4Track *track)</div><div class="ttdoc">Detect whether track is a primary and if so whether it ended in a collimator.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8cc_source.html#l00099">BDSTrackingAction.cc:99</a></div></div>
+<div class="ttc" id="aclassBDSTrackingAction_html"><div class="ttname"><a href="classBDSTrackingAction.html">BDSTrackingAction</a></div><div class="ttdoc">Action to decide whether or not to store trajectory information.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00035">BDSTrackingAction.hh:36</a></div></div>
+<div class="ttc" id="aclassBDSTrackingAction_html_a5350c0be2b8bd250538ec378de0468a6"><div class="ttname"><a href="classBDSTrackingAction.html#a5350c0be2b8bd250538ec378de0468a6">BDSTrackingAction::interactive</a></div><div class="ttdeci">const G4bool interactive</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00061">BDSTrackingAction.hh:61</a></div></div>
+<div class="ttc" id="aclassBDSTrackingAction_html_a57bd9de1b9675a0a47ebdb17b708b74d"><div class="ttname"><a href="classBDSTrackingAction.html#a57bd9de1b9675a0a47ebdb17b708b74d">BDSTrackingAction::PreUserTrackingAction</a></div><div class="ttdeci">virtual void PreUserTrackingAction(const G4Track *track)</div><div class="ttdoc">Used to decide whether or not to store trajectories.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8cc_source.html#l00057">BDSTrackingAction.cc:57</a></div></div>
+<div class="ttc" id="aclassBDSTrackingAction_html_a62840d70def168e3ddea2af26d382e2a"><div class="ttname"><a href="classBDSTrackingAction.html#a62840d70def168e3ddea2af26d382e2a">BDSTrackingAction::PostUserTrackingAction</a></div><div class="ttdeci">virtual void PostUserTrackingAction(const G4Track *track)</div><div class="ttdoc">Detect whether track is a primary and if so whether it ended in a collimator.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8cc_source.html#l00107">BDSTrackingAction.cc:107</a></div></div>
 <div class="ttc" id="aclassBDSTrackingAction_html_a7373e5a9f15a7966d1f4c6ca54b40c2c"><div class="ttname"><a href="classBDSTrackingAction.html#a7373e5a9f15a7966d1f4c6ca54b40c2c">BDSTrackingAction::BDSTrackingAction</a></div><div class="ttdeci">BDSTrackingAction()=delete</div><div class="ttdoc">No default constructor required.</div></div>
-<div class="ttc" id="aclassBDSTrackingAction_html_ac0b639bc719a060185313ddea00ded94"><div class="ttname"><a href="classBDSTrackingAction.html#ac0b639bc719a060185313ddea00ded94">BDSTrackingAction::eventAction</a></div><div class="ttdeci">BDSEventAction * eventAction</div><div class="ttdoc">Cache of trajectory options.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00066">BDSTrackingAction.hh:66</a></div></div>
-<div class="ttc" id="aclassBDSTrackingAction_html_ac9fe2fd9fde916941e56094ad76ca333"><div class="ttname"><a href="classBDSTrackingAction.html#ac9fe2fd9fde916941e56094ad76ca333">BDSTrackingAction::storeTrajectoryOptions</a></div><div class="ttdeci">const BDS::TrajectoryOptions storeTrajectoryOptions</div><div class="ttdoc">Cache of flag from global constants to control storing all trajectories.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00063">BDSTrackingAction.hh:63</a></div></div>
+<div class="ttc" id="aclassBDSTrackingAction_html_ac0b639bc719a060185313ddea00ded94"><div class="ttname"><a href="classBDSTrackingAction.html#ac0b639bc719a060185313ddea00ded94">BDSTrackingAction::eventAction</a></div><div class="ttdeci">BDSEventAction * eventAction</div><div class="ttdoc">Cache of trajectory options.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00067">BDSTrackingAction.hh:67</a></div></div>
+<div class="ttc" id="aclassBDSTrackingAction_html_ac9fe2fd9fde916941e56094ad76ca333"><div class="ttname"><a href="classBDSTrackingAction.html#ac9fe2fd9fde916941e56094ad76ca333">BDSTrackingAction::storeTrajectoryOptions</a></div><div class="ttdeci">const BDS::TrajectoryOptions storeTrajectoryOptions</div><div class="ttdoc">Cache of flag from global constants to control storing all trajectories.</div><div class="ttdef"><b>Definition</b> <a href="BDSTrackingAction_8hh_source.html#l00064">BDSTrackingAction.hh:64</a></div></div>
 <div class="ttc" id="astructBDS_1_1TrajectoryOptions_html"><div class="ttname"><a href="structBDS_1_1TrajectoryOptions.html">BDS::TrajectoryOptions</a></div><div class="ttdef"><b>Definition</b> <a href="BDSTrajectoryOptions_8hh_source.html#l00032">BDSTrajectoryOptions.hh:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 6 2025 16:37:47 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:13:47 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

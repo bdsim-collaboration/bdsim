@@ -1,9 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,155,56"/>
-<area shape="rect" id="Node000001" href="$classBDSPSCellFluxScaled3D.html" title="Primitive scorer for cell flux in a 3D mesh with a conversion factor." alt="" coords="203,5,381,31"/>
-<area shape="poly" id="edge334_Node000000_Node000001" title=" " alt="" coords="168,30,202,26,203,31,169,35"/>
-<area shape="rect" id="Node000003" href="$classBDSPSPopulationScaled.html" title="Primitive scorer for population in a volume with a conversion factor based on angle and kinetic energ..." alt="" coords="203,55,381,80"/>
-<area shape="poly" id="edge336_Node000000_Node000003" title=" " alt="" coords="169,51,203,55,203,60,168,56"/>
-<area shape="rect" id="Node000002" href="$classBDSPSCellFluxScaledPerParticle3D.html" title="Primitive scorer for a 3D mesh with a conversion factor." alt="" coords="429,5,677,31"/>
-<area shape="poly" id="edge335_Node000001_Node000002" title=" " alt="" coords="395,15,429,15,429,21,395,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,141,56"/>
+<area shape="rect" id="Node000001" href="$classBDSLinkRunAction.html" title="Simplified run action to hold link hits." alt="" coords="189,5,332,31"/>
+<area shape="poly" id="edge336_Node000000_Node000001" title=" " alt="" coords="154,30,189,25,189,30,155,35"/>
+<area shape="rect" id="Node000002" href="$classBDSRunAction.html" title="Control over the beginning and end of run actions." alt="" coords="203,55,318,80"/>
+<area shape="poly" id="edge337_Node000000_Node000002" title=" " alt="" coords="155,51,203,57,203,63,154,56"/>
 </map>

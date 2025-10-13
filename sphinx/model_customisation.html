@@ -88,6 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#compound-material-by-mass-fraction">Compound Material by Mass Fraction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#predefined-materials">Predefined Materials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vacuum-and-air">Vacuum and Air</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ideal-gases">Ideal gases</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#aperture-parameters">Aperture Parameters</a><ul>
@@ -667,7 +668,7 @@ flips to make a quadrupolar field</p></td>
 <li><p>(*) See pictorial representation below</p></li>
 </ul>
 <p>For <code class="code docutils literal notranslate"><span class="pre">reflectxydipole</span></code>, <span class="math notranslate nohighlight">\(x \mapsto |x|\)</span> and <span class="math notranslate nohighlight">\(y \mapsto |y|\)</span>
-for the array look up. Then the value found at that location if changed as follows:</p>
+for the array look up. Then the value found at that location is changed as follows:</p>
 <ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(x &lt; 0 \wedge y \geqslant 0\)</span>, <span class="math notranslate nohighlight">\(B_x \mapsto -B_x\)</span></p></li>
 <li><p>if <span class="math notranslate nohighlight">\(x \geqslant 0 \wedge y &lt; 0\)</span>, <span class="math notranslate nohighlight">\(B_x \mapsto -B_x\)</span></p></li>
@@ -675,18 +676,18 @@ for the array look up. Then the value found at that location if changed as follo
 <li><p><span class="math notranslate nohighlight">\(\wedge\)</span> is logical AND</p></li>
 </ul>
 <p>For <code class="code docutils literal notranslate"><span class="pre">reflectxzdipole</span></code>, <span class="math notranslate nohighlight">\(y \mapsto |y|\)</span> for the array look up. Then
-the value found at that location if changed as follows:</p>
+the value found at that location is changed as follows:</p>
 <ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(y &lt; 0\)</span>, <span class="math notranslate nohighlight">\(B_x \mapsto -B_x\)</span></p></li>
 </ul>
 <p>For <code class="code docutils literal notranslate"><span class="pre">reflectxzsolenoid</span></code>, <span class="math notranslate nohighlight">\(z \mapsto |z|\)</span> for the array look up. Then
-the value found at that location if changed as follows:</p>
+the value found at that location is changed as follows:</p>
 <ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(z &lt; 0\)</span>, <span class="math notranslate nohighlight">\(B_x \mapsto -B_x\)</span></p></li>
 <li><p>if <span class="math notranslate nohighlight">\(z &lt; 0\)</span>, <span class="math notranslate nohighlight">\(B_y \mapsto -B_y\)</span></p></li>
 </ul>
 <p>For <code class="code docutils literal notranslate"><span class="pre">reflectxyquadrupole</span></code>, <span class="math notranslate nohighlight">\(x \mapsto |x|\)</span> and <span class="math notranslate nohighlight">\(y \mapsto |y|\)</span>
-for the array look up. Then the value found at that location if changed as follows:</p>
+for the array look up. Then the value found at that location is changed as follows:</p>
 <ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(x &lt; 0\)</span>, <span class="math notranslate nohighlight">\(B_y \mapsto -B_y\)</span></p></li>
 <li><p>if <span class="math notranslate nohighlight">\(y &lt; 0\)</span>, <span class="math notranslate nohighlight">\(B_x \mapsto -B_x\)</span></p></li>
@@ -1848,6 +1849,23 @@ with the following fractions:</p>
 </table>
 <p>It is a gas with density of 1.20479 mg/cm3.</p>
 </section>
+<section id="ideal-gases">
+<h3>Ideal gases<a class="headerlink" href="#ideal-gases" title="Link to this heading"></a></h3>
+<p>When a new material is added with the parameter <code class="code docutils literal notranslate"><span class="pre">state=gas</span></code>, BDSIM check if the ideal gas law is respected between
+the density, pressure and temperature. It is assumed that the density is correct as it is the parameter Geant4 cares
+about. If the ideal gas law isn’t respected, the temperature is defaulted to <code class="code docutils literal notranslate"><span class="pre">T=300</span></code> and the pressure is calculated from
+the density.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This check does not apply to <a class="reference internal" href="#predefined-materials"><span class="std std-ref">Predefined Materials</span></a> and other materials defined above.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Molar mass calculations can’t distinguish between single atom elements and elements with multiple of the same
+atom (oxygen and dioxygen for example). This ideal gas calculation is intended for the former case like with
+noble gases.</p>
+</div>
+</section>
 </section>
 <section id="aperture-parameters">
 <span id="id7"></span><h2>Aperture Parameters<a class="headerlink" href="#aperture-parameters" title="Link to this heading"></a></h2>
@@ -2081,7 +2099,7 @@ thickness is added outside this aperture.</p>
 <h3>lhc<a class="headerlink" href="#lhc" title="Link to this heading"></a></h3>
 <a class="reference internal image-reference" href="_images/lhc.png"><img alt="_images/lhc.png" class="align-left" src="_images/lhc.png" style="width: 40%;" />
 </a>
-<p>The LHC aperture shapre is defined by three parameters. It is the intersection (i.e. only
+<p>The LHC aperture shape is defined by three parameters. It is the intersection (i.e. only
 where both exist) of a circle and a rectangle centred on each other. <code class="code docutils literal notranslate"><span class="pre">aper1</span></code> is the
 horizontal half-width of the rectangle. <code class="code docutils literal notranslate"><span class="pre">aper2</span></code> is the vertical half-height of the
 rectangle. <code class="code docutils literal notranslate"><span class="pre">aper3</span></code> is the radius of the circle. Depending on these parameters, a similar
@@ -4123,7 +4141,7 @@ in MAD-X with the following</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Jul 06, 2025.
+      <span class="lastupdated">Last updated on Oct 13, 2025.
       </span></p>
   </div>
 

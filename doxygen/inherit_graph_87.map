@@ -1,3 +1,43 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBDSMagnetOuterFactory.html" title="The main interface for using the magnet outer factories." alt="" coords="5,5,187,31"/>
+<area shape="rect" id="Node000000" href="$classBDSInterpolator.html" title="Interface for all interpolators containing basic extent of validity." alt="" coords="5,376,131,401"/>
+<area shape="rect" id="Node000001" href="$classBDSInterpolator1D.html" title="Interface for all 1D interpolators." alt="" coords="179,104,321,129"/>
+<area shape="poly" id="edge237_Node000000_Node000001" title=" " alt="" coords="83,363,238,128,242,131,87,366"/>
+<area shape="rect" id="Node000006" href="$classBDSInterpolator2D.html" title="Interface for all 2D interpolators." alt="" coords="179,301,321,327"/>
+<area shape="poly" id="edge242_Node000000_Node000006" title=" " alt="" coords="111,368,217,324,219,329,114,373"/>
+<area shape="rect" id="Node000011" href="$classBDSInterpolator3D.html" title="Interface for all 3D interpolators." alt="" coords="179,449,321,475"/>
+<area shape="poly" id="edge247_Node000000_Node000011" title=" " alt="" coords="114,404,218,447,216,452,112,409"/>
+<area shape="rect" id="Node000016" href="$classBDSInterpolator4D.html" title="Interface for all 4D interpolators." alt="" coords="179,647,321,672"/>
+<area shape="poly" id="edge252_Node000000_Node000016" title=" " alt="" coords="88,411,242,645,238,648,83,414"/>
+<area shape="rect" id="Node000002" href="$classBDSInterpolator1DCubic.html" title="Cubic interpolation over 1d array." alt="" coords="385,5,564,31"/>
+<area shape="poly" id="edge238_Node000001_Node000002" title=" " alt="" coords="277,94,319,65,368,40,403,28,404,33,370,44,321,70,280,98"/>
+<area shape="rect" id="Node000003" href="$classBDSInterpolator1DLinear.html" title="Linear interpolation over 1d array." alt="" coords="383,55,566,80"/>
+<area shape="poly" id="edge239_Node000001_Node000003" title=" " alt="" coords="321,98,415,77,417,83,322,104"/>
+<area shape="rect" id="Node000004" href="$classBDSInterpolator1DLinearMag.html" title="Linear interpolation over 1d array including magnitude interpolation." alt="" coords="369,104,580,129"/>
+<area shape="poly" id="edge240_Node000001_Node000004" title=" " alt="" coords="335,114,369,114,369,119,335,119"/>
+<area shape="rect" id="Node000005" href="$classBDSInterpolator1DNearest.html" title="Interpolated field array that gives the nearest neighbour value." alt="" coords="377,153,572,179"/>
+<area shape="poly" id="edge241_Node000001_Node000005" title=" " alt="" coords="322,130,417,151,415,156,321,135"/>
+<area shape="rect" id="Node000007" href="$classBDSInterpolator2DCubic.html" title="Cubic interpolation over 2d array." alt="" coords="385,203,564,228"/>
+<area shape="poly" id="edge243_Node000006_Node000007" title=" " alt="" coords="277,291,319,263,368,237,403,225,404,231,370,242,321,267,280,295"/>
+<area shape="rect" id="Node000008" href="$classBDSInterpolator2DLinear.html" title="Linear interpolation over 2d array." alt="" coords="383,252,566,277"/>
+<area shape="poly" id="edge244_Node000006_Node000008" title=" " alt="" coords="321,296,415,275,417,280,322,301"/>
+<area shape="rect" id="Node000009" href="$classBDSInterpolator2DLinearMag.html" title="Linear interpolation over 2d array including magnitude interpolation." alt="" coords="369,301,580,327"/>
+<area shape="poly" id="edge245_Node000006_Node000009" title=" " alt="" coords="335,311,369,311,369,317,335,317"/>
+<area shape="rect" id="Node000010" href="$classBDSInterpolator2DNearest.html" title="Interpolated field array that gives the nearest neighbour value." alt="" coords="377,351,572,376"/>
+<area shape="poly" id="edge246_Node000006_Node000010" title=" " alt="" coords="322,327,417,348,415,353,321,332"/>
+<area shape="rect" id="Node000012" href="$classBDSInterpolator3DCubic.html" title="Cubic interpolation over 3d array." alt="" coords="385,400,564,425"/>
+<area shape="poly" id="edge248_Node000011_Node000012" title=" " alt="" coords="321,444,415,423,417,428,322,449"/>
+<area shape="rect" id="Node000013" href="$classBDSInterpolator3DLinear.html" title="Linear interpolation over 3d array." alt="" coords="383,449,566,475"/>
+<area shape="poly" id="edge249_Node000011_Node000013" title=" " alt="" coords="335,459,383,459,383,465,335,465"/>
+<area shape="rect" id="Node000014" href="$classBDSInterpolator3DLinearMag.html" title="Linear interpolation over 3d array including magnitude interpolation." alt="" coords="369,499,580,524"/>
+<area shape="poly" id="edge250_Node000011_Node000014" title=" " alt="" coords="322,475,417,496,415,501,321,480"/>
+<area shape="rect" id="Node000015" href="$classBDSInterpolator3DNearest.html" title="Interpolated field array that gives the nearest neighbour value." alt="" coords="377,548,572,573"/>
+<area shape="poly" id="edge251_Node000011_Node000015" title=" " alt="" coords="280,480,322,508,370,533,408,545,407,550,368,538,319,512,277,485"/>
+<area shape="rect" id="Node000017" href="$classBDSInterpolator4DCubic.html" title="Cubic interpolation over 4d array." alt="" coords="385,597,564,623"/>
+<area shape="poly" id="edge253_Node000016_Node000017" title=" " alt="" coords="321,641,415,620,417,625,322,646"/>
+<area shape="rect" id="Node000018" href="$classBDSInterpolator4DLinear.html" title="Linear interpolation over 4d array." alt="" coords="383,647,566,672"/>
+<area shape="poly" id="edge254_Node000016_Node000018" title=" " alt="" coords="335,657,383,657,383,662,335,662"/>
+<area shape="rect" id="Node000019" href="$classBDSInterpolator4DLinearMag.html" title="Linear interpolation over 4d array including magnitude interpolation." alt="" coords="369,696,580,721"/>
+<area shape="poly" id="edge255_Node000016_Node000019" title=" " alt="" coords="322,672,417,693,415,699,321,678"/>
+<area shape="rect" id="Node000020" href="$classBDSInterpolator4DNearest.html" title="Interpolated field array that gives the nearest neighbour value." alt="" coords="377,745,572,771"/>
+<area shape="poly" id="edge256_Node000016_Node000020" title=" " alt="" coords="280,678,322,705,370,730,408,743,407,748,368,735,319,710,277,682"/>
 </map>

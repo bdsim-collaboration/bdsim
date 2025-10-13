@@ -120,6 +120,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1Field.html">Field</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classGMAD_1_1Field.html" title="Field class for parser.">Field</a> class for parser.  <a href="classGMAD_1_1Field.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1Laser.html">Laser</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classGMAD_1_1Placement.html" title="Placement class for parser.">Placement</a> class for laser.  <a href="classGMAD_1_1Laser.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMAD_1_1Material.html">Material</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structGMAD_1_1Material.html" title="Material class.">Material</a> class.  <a href="structGMAD_1_1Material.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,48 +197,56 @@ Enumerations</h2></td></tr>
 , <b>_LINE</b> = 11
 , <br />
 &#160;&#160;<b>_REV_LINE</b> = -11
+, <b>_BMCOL</b> = 12
 , <b>_ECOL</b> = 13
 , <b>_RCOL</b> = 14
-, <b>_LASER</b> = 15
 , <br />
-&#160;&#160;<b>_MATERIAL</b> = 16
+&#160;&#160;<b>_LASERWIREOLD</b> = 15
+, <b>_MATERIAL</b> = 16
 , <b>_RBEND</b> = 17
+, <b>_GASCAP</b> = 18
+, <br />
+&#160;&#160;<b>_GASJET</b> = 19
 , <b>_ELEMENT</b> = 20
 , <b>_SCREEN</b> = 21
+, <b>_AWAKESCREEN</b> = 22
 , <br />
-&#160;&#160;<b>_AWAKESCREEN</b> = 22
-, <b>_AWAKESPECTROMETER</b> = 23
+&#160;&#160;<b>_AWAKESPECTROMETER</b> = 23
 , <b>_SHIELD</b> = 24
 , <b>_VKICKER</b> = 31
+, <b>_HKICKER</b> = 32
 , <br />
-&#160;&#160;<b>_HKICKER</b> = 32
-, <b>_KICKER</b> = 33
+&#160;&#160;<b>_KICKER</b> = 33
 , <b>_TKICKER</b> = 34
 , <b>_TRANSFORM3D</b> = 61
+, <b>_MUONSPOILER</b> = 62
 , <br />
-&#160;&#160;<b>_MUONSPOILER</b> = 62
-, <b>_DEGRADER</b> = 63
+&#160;&#160;<b>_DEGRADER</b> = 63
 , <b>_THINMULT</b> = 64
 , <b>_GAP</b> = 65
+, <b>_THINRMATRIX</b> = 66
 , <br />
-&#160;&#160;<b>_THINRMATRIX</b> = 66
-, <b>_PARALLELTRANSPORTER</b> = 67
+&#160;&#160;<b>_PARALLELTRANSPORTER</b> = 67
 , <b>_RMATRIX</b> = 68
 , <b>_CRYSTALCOL</b> = 69
+, <b>_UNDULATOR</b> = 70
 , <br />
-&#160;&#160;<b>_UNDULATOR</b> = 70
-, <b>_JCOL</b> = 71
+&#160;&#160;<b>_JCOL</b> = 71
 , <b>_WIRESCANNER</b> = 72
 , <b>_USERCOMPONENT</b> = 73
+, <b>_DUMP</b> = 74
 , <br />
-&#160;&#160;<b>_DUMP</b> = 74
-, <b>_CT</b> = 75
+&#160;&#160;<b>_CT</b> = 75
 , <b>_TARGET</b> = 76
 , <b>_RFX</b> = 77
+, <b>_RFY</b> = 78
 , <br />
-&#160;&#160;<b>_RFY</b> = 78
-, <b>_MUONCOOLER</b> = 79
+&#160;&#160;<b>_MUONCOOLER</b> = 79
 , <b>_JCOLTIP</b> = 80
+, <b>_GABORLENS</b> = 81
+, <b>_LASERWIRE</b> = 82
+, <br />
+&#160;&#160;<b>_LASER</b> = 83
 <br />
  }</td></tr>
 <tr class="memdesc:a432c08a28d6d1c068b6c70404be88b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">types of elements  <a href="namespaceGMAD.html#a432c08a28d6d1c068b6c70404be88b55">More...</a><br /></td></tr>
@@ -718,7 +729,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="elementtype_8cc_source.html#l00029">29</a> of file <a class="el" href="elementtype_8cc_source.html">elementtype.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="elementtype_8cc_source.html#l00024">operator&lt;&lt;()</a>, and <a class="el" href="BDSComponentFactory_8cc_source.html#l02838">BDSComponentFactory::PrepareColour()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="elementtype_8cc_source.html#l00024">operator&lt;&lt;()</a>, and <a class="el" href="BDSComponentFactory_8cc_source.html#l03067">BDSComponentFactory::PrepareColour()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -836,7 +847,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 6 2025 16:37:51 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:13:52 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

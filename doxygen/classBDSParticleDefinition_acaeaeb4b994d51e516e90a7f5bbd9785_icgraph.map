@@ -1,43 +1,51 @@
 <map id="BDSParticleDefinition::TotalEnergy" name="BDSParticleDefinition::TotalEnergy">
-<area shape="rect" id="Node000001" title="Accessor." alt="" coords="803,313,963,353"/>
-<area shape="rect" id="Node000002" href="$classBDSBunchUserFile.html#aec927948533337d0189a4def950e9a95" title="Get the next particle." alt="" coords="551,283,755,323"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="789,323,754,319,755,314,789,318"/>
-<area shape="rect" id="Node000003" href="$classBDSBunch.html#abbc32e9978a9355b24200fc4c48b77e3" title=" " alt="" coords="569,348,737,373"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="789,347,737,353,737,348,789,341"/>
-<area shape="rect" id="Node000004" href="$classBDSIMLink.html#aed5c334e4db2171da99dd381b43da904" title="The main function where everything is constructed." alt="" coords="311,5,467,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="556,344,549,337,534,319,524,300,516,262,518,225,525,188,532,151,533,115,525,79,515,61,501,44,485,32,466,24,468,19,487,27,505,40,519,58,530,77,539,114,537,151,530,189,523,225,521,262,529,298,539,316,553,334,559,340"/>
-<area shape="rect" id="Node000005" href="$classBDSBunchBox.html#a6211f2ced19492e234e4512a33229d08" title=" " alt="" coords="292,55,485,80"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="555,343,549,337,528,306,519,275,520,244,524,213,529,183,529,153,521,124,501,95,484,82,487,78,505,91,526,121,535,152,534,183,530,214,525,245,525,275,532,304,553,334,559,339"/>
-<area shape="rect" id="Node000006" href="$classBDSBunchComposite.html#a5dae96af678cb1ca5398040f66c1791a" title=" " alt="" coords="305,105,472,145"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="555,343,549,337,532,315,524,292,524,246,524,202,517,180,501,159,471,139,474,135,504,155,521,178,529,201,529,246,529,291,537,312,553,334,559,339"/>
-<area shape="rect" id="Node000007" href="$classBDSBunchCompositeSDE.html#acf4c8a82fdc4999ecc3f0d9f7acb650b" title=" " alt="" coords="296,169,481,209"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="557,344,549,337,536,323,529,308,524,279,519,250,513,236,501,223,480,209,483,205,504,219,517,233,524,248,529,278,534,307,540,320,552,333,561,339"/>
-<area shape="rect" id="Node000008" href="$classBDSBunchEShell.html#a6beb1eda6f26c581cebca66692c223d8" title=" " alt="" coords="285,233,493,259"/>
-<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="563,345,549,337,533,321,524,304,516,288,501,274,476,261,478,256,504,269,521,285,529,302,537,318,552,333,565,340"/>
-<area shape="rect" id="Node000009" href="$classBDSBunchFileBased.html#ad755ec7bac929b17e425b7396a92e549" title="Pull out the relevant options and then pass through to BDSBunch::SetOptions()." alt="" coords="309,283,469,323"/>
-<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="579,348,469,323,470,318,581,342"/>
-<area shape="rect" id="Node000013" href="$classBDSBunchGaussian.html#a344c0a87e5110e6ca46901d5db292fe1" title=" " alt="" coords="275,348,503,373"/>
-<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="555,363,503,363,503,358,555,358"/>
-<area shape="rect" id="Node000016" href="$classBDSBunchHalo.html#a805fbd0062a69508684b22dfd2869a1c" title=" " alt="" coords="289,397,488,423"/>
-<area shape="poly" id="edge15_Node000003_Node000016" title=" " alt="" coords="571,379,458,400,457,395,570,373"/>
-<area shape="rect" id="Node000017" href="$classBDSBunchHaloFlatSigma.html#a5a2f092d3da5b756d674d0db89e31ccd" title=" " alt="" coords="296,447,481,487"/>
-<area shape="poly" id="edge16_Node000003_Node000017" title=" " alt="" coords="619,382,565,410,504,438,469,450,467,445,502,433,563,405,616,378"/>
-<area shape="rect" id="Node000018" href="$classBDSBunchRing.html#a5252c3ddad047416cc446d68ed1125b9" title=" " alt="" coords="290,512,487,537"/>
-<area shape="poly" id="edge17_Node000003_Node000018" title=" " alt="" coords="635,386,581,444,544,476,504,502,472,514,470,509,501,497,541,471,577,441,631,382"/>
-<area shape="rect" id="Node000019" href="$classBDSBunchSixTrack.html#a2347136ae5c3229b0c70fabe1c36d940" title=" " alt="" coords="277,561,500,587"/>
-<area shape="poly" id="edge18_Node000003_Node000019" title=" " alt="" coords="641,387,620,425,589,470,551,515,504,552,480,564,478,559,501,548,547,511,585,467,615,422,637,385"/>
-<area shape="rect" id="Node000020" href="$classBDSBunchSquare.html#a5f6717f2247d9799ccd7ce14480d924f" title=" " alt="" coords="282,611,495,636"/>
-<area shape="poly" id="edge19_Node000003_Node000020" title=" " alt="" coords="645,387,627,434,598,492,557,552,532,579,504,602,483,613,481,608,501,597,528,575,553,548,593,490,622,432,641,385"/>
-<area shape="rect" id="Node000021" href="$classBDSBunchCircle.html#a65a5e6f760833e934cd17761cf606e32" title=" " alt="" coords="286,660,491,685"/>
-<area shape="poly" id="edge20_Node000003_Node000021" title=" " alt="" coords="648,388,633,443,605,515,586,552,563,589,536,622,504,651,485,662,482,658,501,647,532,618,559,586,581,550,600,513,628,442,643,386"/>
+<area shape="rect" id="Node000001" title="Accessor." alt="" coords="797,377,957,417"/>
+<area shape="rect" id="Node000002" href="$classBDSBunchUserFile.html#aec927948533337d0189a4def950e9a95" title="Get the next particle." alt="" coords="545,347,749,387"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="783,387,749,383,750,378,784,382"/>
+<area shape="rect" id="Node000003" href="$classBDSBunch.html#abbc32e9978a9355b24200fc4c48b77e3" title=" " alt="" coords="563,412,731,437"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="784,411,732,417,731,412,783,405"/>
+<area shape="rect" id="Node000004" href="$classBDSIMLink.html#aed5c334e4db2171da99dd381b43da904" title="The main function where everything is constructed." alt="" coords="308,5,464,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="550,408,543,401,526,378,515,355,508,333,505,310,509,264,519,219,529,175,533,131,530,109,524,87,512,66,495,44,481,32,463,25,465,20,483,28,499,40,517,63,529,85,536,108,538,131,535,176,525,221,515,265,511,310,513,332,520,354,531,376,547,398,554,404"/>
+<area shape="rect" id="Node000005" href="$classBDSBunchBox.html#a6211f2ced19492e234e4512a33229d08" title=" " alt="" coords="289,55,483,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="550,408,543,401,528,382,518,362,509,323,511,284,519,245,527,207,529,169,520,132,510,113,495,95,480,82,483,78,499,91,515,110,525,130,534,169,532,208,524,246,517,284,514,322,523,360,533,379,547,398,554,404"/>
+<area shape="rect" id="Node000006" href="$classBDSBunchComposite.html#a5dae96af678cb1ca5398040f66c1791a" title=" " alt="" coords="303,105,469,145"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="550,407,543,401,522,370,514,340,514,309,518,278,523,248,523,218,515,188,495,159,468,140,471,135,499,155,520,186,528,217,528,248,523,279,519,309,519,339,527,368,547,398,553,403"/>
+<area shape="rect" id="Node000007" href="$classBDSBunchCompositeSDE.html#acf4c8a82fdc4999ecc3f0d9f7acb650b" title=" " alt="" coords="293,169,479,209"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="550,407,543,401,526,379,519,356,518,310,518,266,511,244,495,223,477,209,480,205,499,219,516,242,523,265,524,310,524,355,531,376,547,398,553,403"/>
+<area shape="rect" id="Node000008" href="$classBDSBunchEShell.html#a6beb1eda6f26c581cebca66692c223d8" title=" " alt="" coords="282,233,490,259"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="551,407,543,401,530,385,523,369,519,335,515,303,508,288,496,273,477,261,480,257,499,269,513,285,520,302,524,335,528,367,534,382,547,397,554,403"/>
+<area shape="rect" id="Node000009" href="$classBDSBunchFileBased.html#ad755ec7bac929b17e425b7396a92e549" title="Pull out the relevant options and then pass through to BDSBunch::SetOptions()." alt="" coords="306,283,466,323"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="557,409,544,401,527,385,519,369,511,353,496,337,465,322,468,317,499,333,515,350,524,366,532,382,547,397,560,404"/>
+<area shape="rect" id="Node000013" href="$classBDSBunchGaussBase.html#a3d5d51daed42f2c0eeee3500f45898fd" title=" " alt="" coords="301,347,471,387"/>
+<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="575,412,471,389,472,383,576,406"/>
+<area shape="rect" id="Node000016" href="$classBDSBunchGaussSlowExtBase.html#a107273446a0549aa2f9629e54115647a" title=" " alt="" coords="9,526,223,566"/>
+<area shape="poly" id="edge17_Node000003_Node000016" title=" " alt="" coords="554,413,490,410,418,413,344,426,309,437,276,452,260,466,252,482,244,499,228,516,206,528,204,524,225,512,240,496,248,480,256,463,273,448,307,432,343,420,417,407,490,404,555,408"/>
+<area shape="rect" id="Node000018" href="$classBDSBunchHalo.html#a805fbd0062a69508684b22dfd2869a1c" title=" " alt="" coords="287,463,485,488"/>
+<area shape="poly" id="edge18_Node000003_Node000018" title=" " alt="" coords="568,443,453,465,452,460,567,437"/>
+<area shape="rect" id="Node000019" href="$classBDSBunchHaloFlatSigma.html#a5a2f092d3da5b756d674d0db89e31ccd" title=" " alt="" coords="293,513,479,553"/>
+<area shape="poly" id="edge19_Node000003_Node000019" title=" " alt="" coords="613,446,560,474,498,502,461,515,459,510,496,497,557,469,610,442"/>
+<area shape="rect" id="Node000020" href="$classBDSBunchRing.html#a5252c3ddad047416cc446d68ed1125b9" title=" " alt="" coords="287,577,485,603"/>
+<area shape="poly" id="edge20_Node000003_Node000020" title=" " alt="" coords="630,450,576,509,539,541,499,567,467,580,465,575,496,562,536,536,572,505,626,446"/>
+<area shape="rect" id="Node000021" href="$classBDSBunchSixTrack.html#a2347136ae5c3229b0c70fabe1c36d940" title=" " alt="" coords="275,627,497,652"/>
+<area shape="poly" id="edge21_Node000003_Node000021" title=" " alt="" coords="636,451,614,489,584,533,545,579,499,616,472,629,470,624,496,612,541,575,580,530,610,486,631,449"/>
+<area shape="rect" id="Node000022" href="$classBDSBunchSlowExt.html#a4f749a8f93b88cce022fe80d157ce490" title=" " alt="" coords="276,676,496,701"/>
+<area shape="poly" id="edge22_Node000003_Node000022" title=" " alt="" coords="640,451,622,498,592,557,552,617,527,644,499,667,478,678,475,674,496,662,523,640,547,613,588,554,617,496,635,450"/>
+<area shape="rect" id="Node000023" href="$classBDSBunchSquare.html#a5f6717f2247d9799ccd7ce14480d924f" title=" " alt="" coords="279,725,493,751"/>
+<area shape="poly" id="edge24_Node000003_Node000023" title=" " alt="" coords="643,451,628,507,600,579,581,617,558,653,531,687,499,716,479,728,477,723,496,712,527,683,553,650,576,614,595,577,623,505,638,450"/>
+<area shape="rect" id="Node000024" href="$classBDSBunchCircle.html#a65a5e6f760833e934cd17761cf606e32" title=" " alt="" coords="283,775,489,800"/>
+<area shape="poly" id="edge25_Node000003_Node000024" title=" " alt="" coords="645,451,633,516,607,601,588,646,564,690,534,730,499,765,481,777,478,772,496,761,530,727,559,687,583,644,602,599,627,515,640,450"/>
 <area shape="rect" id="Node000010" href="$classBDSBunchPtc.html#aeef8564bc3d568d64949588bccee0b6f" title="Pull out the relevant options and then pass through to BDSBunch::SetOptions()." alt="" coords="22,184,210,209"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="294,283,273,272,258,260,249,247,240,234,225,223,199,212,201,207,228,218,244,231,253,243,262,256,276,268,297,278"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="292,282,273,272,258,259,249,247,240,234,225,223,199,212,201,207,228,218,244,231,253,243,262,256,276,268,294,277"/>
 <area shape="rect" id="Node000011" href="$classBDSBunchUserFile.html#a93afc355c8ea0ae25b1ef6e61a416fb9" title="Pull out the relevant options and then pass through to BDSBunch::SetOptions()." alt="" coords="5,233,227,259"/>
-<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="294,286,177,261,178,256,296,281"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="292,286,176,261,177,256,293,281"/>
 <area shape="rect" id="Node000012" href="$classBDSBunchEventGenerator.html#aea6fa58192a059ef4d100f8b2de89824" title="Pull out the relevant options and then pass through to BDSBunch::SetOptions()." alt="" coords="21,283,211,323"/>
-<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="295,306,212,306,212,301,295,301"/>
-<area shape="rect" id="Node000014" href="$classBDSBunchSigmaMatrix.html#a7f7f7ea446a6be4780b0f285df2dddf9" title=" " alt="" coords="30,347,202,387"/>
-<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="261,366,202,368,202,363,261,361"/>
-<area shape="rect" id="Node000015" href="$classBDSBunchTwiss.html#a91d4a40cc9954fa7f2e94958587f2c79" title=" " alt="" coords="15,412,217,437"/>
-<area shape="poly" id="edge14_Node000013_Node000015" title=" " alt="" coords="316,379,275,389,227,402,175,415,174,409,226,397,274,383,314,374"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="292,306,212,306,212,301,292,301"/>
+<area shape="rect" id="Node000014" href="$classBDSBunchGauss.html#ae69184428760d68c299b6e79a3e091d4" title=" " alt="" coords="12,348,220,373"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="288,368,220,366,220,361,288,362"/>
+<area shape="rect" id="Node000015" href="$classBDSBunchGaussMatrix.html#a2a8c7c2a22182c43740a89834e292ccc" title=" " alt="" coords="31,398,201,438"/>
+<area shape="poly" id="edge14_Node000013_Node000015" title=" " alt="" coords="288,388,202,405,201,399,287,383"/>
+<area shape="poly" id="edge15_Node000013_Node000016" title=" " alt="" coords="292,396,276,408,265,421,259,434,254,461,248,488,241,502,228,516,211,528,208,524,225,512,236,499,243,487,248,460,254,432,261,418,273,404,289,392"/>
+<area shape="rect" id="Node000017" href="$classBDSBunchGaussTwiss.html#ae75c03c1a8ec692fb234fa69eadef857" title=" " alt="" coords="34,462,198,502"/>
+<area shape="poly" id="edge16_Node000013_Node000017" title=" " alt="" coords="303,395,276,408,262,419,253,430,243,441,228,452,200,465,197,460,225,448,240,437,249,427,258,415,273,404,300,390"/>
+<area shape="poly" id="edge23_Node000022_Node000016" title=" " alt="" coords="292,674,274,667,233,645,195,618,136,568,140,564,198,614,236,640,276,662,294,669"/>
 </map>

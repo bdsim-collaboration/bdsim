@@ -1,25 +1,27 @@
 <map id="BDSParticleDefinition::Mass" name="BDSParticleDefinition::Mass">
-<area shape="rect" id="Node000001" title="Accessor." alt="" coords="920,152,1080,192"/>
+<area shape="rect" id="Node000001" title="Accessor." alt="" coords="920,184,1080,224"/>
 <area shape="rect" id="Node000002" href="$classBDSPTCOneTurnMap.html#a104b6ce67c30c62cb3151ff1b1991a24" title="Main constructor with path to maptable file." alt="" coords="633,5,872,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="971,144,927,100,900,78,871,60,844,48,846,43,873,55,903,74,930,96,975,140"/>
-<area shape="rect" id="Node000003" href="$classBDSOutput.html#a90a68a6389decad657c7eadc084649e3" title=" " alt="" coords="633,70,872,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="952,148,913,128,871,111,827,98,829,93,873,105,915,123,954,143"/>
-<area shape="rect" id="Node000008" href="$classBDSLinkPrimaryGeneratorAction.html#a4efd162aae1366d6d464971a1683b7ac" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="636,120,869,160"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="906,163,869,158,870,152,907,157"/>
-<area shape="rect" id="Node000009" href="$classBDSPrimaryGeneratorAction.html#ade62b3c8d63eeb5570027fe5996d6e8f" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="369,213,576,253"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="958,202,918,223,873,239,796,251,718,256,643,255,576,250,576,245,643,249,718,251,795,246,871,233,916,218,956,197"/>
-<area shape="rect" id="Node000010" href="$classBDSBunch.html#adc8a53b966a9dcc0ce402d597a7c9319" title=" " alt="" coords="653,184,852,224"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="907,187,853,194,852,188,906,181"/>
-<area shape="rect" id="Node000011" href="$classBDSBunchUserFile.html#a93afc355c8ea0ae25b1ef6e61a416fb9" title="Pull out the relevant options and then pass through to BDSBunch::SetOptions()." alt="" coords="642,299,863,325"/>
-<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="973,204,929,245,873,282,822,302,821,297,871,278,925,240,969,200"/>
-<area shape="rect" id="Node000004" href="$classBDSIM.html#a8e123509ba0bb36cea10033ebb617646" title=" " alt="" coords="360,117,585,142"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="663,100,550,119,549,114,662,95"/>
-<area shape="rect" id="Node000005" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,117,312,142"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="347,132,312,132,312,127,347,127"/>
-<area shape="rect" id="Node000006" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,91,128,117"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="169,121,128,115,129,110,169,116"/>
-<area shape="rect" id="Node000007" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,141,135,166"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="170,143,135,147,135,142,169,137"/>
-<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="663,183,520,145,522,139,665,178"/>
-<area shape="poly" id="edge10_Node000010_Node000009" title=" " alt="" coords="640,218,577,225,576,220,639,213"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="977,174,933,115,904,85,871,60,848,48,850,43,873,55,907,81,937,111,982,170"/>
+<area shape="rect" id="Node000003" href="$classBDSComponentFactory.html#a12c931cfbf47ddd96577b34d307b28ac" title="Calculate the electric field strength of the confined plasma in a Gabor lens." alt="" coords="645,69,860,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="960,178,918,149,871,124,840,112,842,107,873,119,921,145,963,173"/>
+<area shape="rect" id="Node000004" href="$classBDSOutput.html#a90a68a6389decad657c7eadc084649e3" title=" " alt="" coords="633,134,872,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="907,183,871,175,815,162,816,157,873,169,909,178"/>
+<area shape="rect" id="Node000009" href="$classBDSLinkPrimaryGeneratorAction.html#a4efd162aae1366d6d464971a1683b7ac" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="636,184,869,224"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="906,207,870,207,870,201,906,201"/>
+<area shape="rect" id="Node000010" href="$classBDSPrimaryGeneratorAction.html#ade62b3c8d63eeb5570027fe5996d6e8f" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="369,277,576,317"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="972,236,928,273,902,290,873,303,797,320,719,327,643,325,576,319,576,313,644,320,719,321,796,315,871,297,899,285,925,269,969,232"/>
+<area shape="rect" id="Node000011" href="$classBDSBunch.html#adc8a53b966a9dcc0ce402d597a7c9319" title=" " alt="" coords="653,248,852,288"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="909,230,831,251,830,245,908,225"/>
+<area shape="rect" id="Node000012" href="$classBDSBunchUserFile.html#a93afc355c8ea0ae25b1ef6e61a416fb9" title="Pull out the relevant options and then pass through to BDSBunch::SetOptions()." alt="" coords="642,363,863,389"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="980,237,936,293,906,322,873,346,828,366,826,361,871,342,903,318,932,289,976,234"/>
+<area shape="rect" id="Node000005" href="$classBDSIM.html#a8e123509ba0bb36cea10033ebb617646" title=" " alt="" coords="360,181,585,206"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="663,164,550,183,549,178,662,159"/>
+<area shape="rect" id="Node000006" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,181,312,206"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="347,196,312,196,312,191,347,191"/>
+<area shape="rect" id="Node000007" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,155,128,181"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="169,185,128,179,129,174,169,180"/>
+<area shape="rect" id="Node000008" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,205,135,230"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="170,207,135,211,135,206,169,201"/>
+<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="663,247,520,209,522,203,665,242"/>
+<area shape="poly" id="edge11_Node000011_Node000010" title=" " alt="" coords="640,282,577,289,576,284,639,277"/>
 </map>

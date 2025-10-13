@@ -189,7 +189,7 @@ In Python, we can also load ROOT histograms using ROOT's Python interface. ::
   ipython
   >>> import ROOT
   >>> f = ROOT.TFile("bdsim/examples/features/data/combined-ana.root")
-  >>> h = f.Get("'Event/PerEntryHistograms/PrimaryX")
+  >>> h = f.Get("Event/PerEntryHistograms/PrimaryX")
 
 Plotting Histograms
 -------------------

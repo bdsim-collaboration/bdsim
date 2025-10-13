@@ -88,8 +88,8 @@ Collaboration diagram for BDSBeamPipeFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBDSBeamPipeFactory__coll__graph.png" border="0" usemap="#aBDSBeamPipeFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="aBDSBeamPipeFactory_coll__map" id="aBDSBeamPipeFactory_coll__map">
-<area shape="rect" title="The main interface for using the beam pipe factories." alt="" coords="633,1377,823,1623"/>
-<area shape="poly" title=" " alt="" coords="825,1459,842,1474,849,1500,846,1518,838,1531,834,1528,841,1516,844,1500,838,1477,821,1464"/>
+<area shape="rect" title="The main interface for using the beam pipe factories." alt="" coords="579,1377,877,1643"/>
+<area shape="poly" title=" " alt="" coords="879,1472,897,1487,903,1510,900,1526,893,1538,888,1535,896,1524,898,1510,892,1490,875,1476"/>
 <area shape="rect" href="classBDSBeamPipeFactoryBase.html" title="Abstract base class for beampipe factory classes." alt="" coords="605,548,851,1168"/>
 <area shape="poly" title=" " alt="" coords="731,1168,731,1361,725,1361,725,1168"/>
 <area shape="rect" href="classBDSFactoryBase.html" title="Common temporary storage for all factories no matter what geometry." alt="" coords="641,133,815,499"/>
@@ -113,6 +113,8 @@ Collaboration diagram for BDSBeamPipeFactory:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae87f3d29d99a909eaeca52bd69048e66" id="r_ae87f3d29d99a909eaeca52bd69048e66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBDSBeamPipe.html">BDSBeamPipe</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBDSBeamPipeFactory.html#ae87f3d29d99a909eaeca52bd69048e66">CreateBeamPipe</a> (const G4String &amp;name, G4double length, <a class="el" href="classBDSBeamPipeInfo.html">BDSBeamPipeInfo</a> *bpi)</td></tr>
 <tr class="separator:ae87f3d29d99a909eaeca52bd69048e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43f949ca5b73fb634a0d71b90fdf31ce" id="r_a43f949ca5b73fb634a0d71b90fdf31ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBDSBeamPipe.html">BDSBeamPipe</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBDSBeamPipeFactory.html#a43f949ca5b73fb634a0d71b90fdf31ce">CreateBeamPipeForVacuumIntersection</a> (const G4String &amp;name, G4double length, <a class="el" href="classBDSBeamPipeInfo.html">BDSBeamPipeInfo</a> *info)</td></tr>
+<tr class="separator:a43f949ca5b73fb634a0d71b90fdf31ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a514158dbeaf20b54528c937625ef9401" id="r_a514158dbeaf20b54528c937625ef9401"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBDSBeamPipe.html">BDSBeamPipe</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBDSBeamPipeFactory.html#a514158dbeaf20b54528c937625ef9401">CreateBeamPipe</a> (<a class="el" href="classBDSTypeSafeEnum.html">BDSBeamPipeType</a> beamPipeTypeIn, const G4String &amp;nameIn, G4double lengthIn, G4double aper1=0, G4double aper2=0, G4double aper3=0, G4double aper4=0, G4Material *vacuumMaterialIn=nullptr, G4double beamPipeThicknessIn=0, G4Material *beamPipeMaterialIn=nullptr, const G4String &amp;pointsFileIn=&quot;&quot;, const G4String &amp;pointsUnitIn=&quot;&quot;)</td></tr>
 <tr class="separator:a514158dbeaf20b54528c937625ef9401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4e1f890ee964534f28209c3473d84f1" id="r_ae4e1f890ee964534f28209c3473d84f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBDSBeamPipe.html">BDSBeamPipe</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBDSBeamPipeFactory.html#ae4e1f890ee964534f28209c3473d84f1">CreateBeamPipe</a> (<a class="el" href="classBDSTypeSafeEnum.html">BDSBeamPipeType</a> beamPipeType, const G4String &amp;name, G4double length, const G4ThreeVector &amp;inputFaceNormal, const G4ThreeVector &amp;outputFaceNormal, G4double aper1, G4double aper2, G4double aper3, G4double aper4, G4Material *vacuumMaterial, G4double beamPipeThickness, G4Material *beamPipeMaterial, const G4String &amp;pointsFileIn=&quot;&quot;, const G4String &amp;pointsUnitIn=&quot;&quot;)</td></tr>
@@ -201,7 +203,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00064">64</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00065">65</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
 
 </div>
 </div>
@@ -230,51 +232,63 @@ Static Private Attributes</h2></td></tr>
 
 <p>Private constructor as singleton pattern. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">48</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">49</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00091">circular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00100">circularvacuum</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00101">clicpcl</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00092">elliptical</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00094">lhc</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00095">lhcdetailed</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00099">octagonal</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00102">pointsfile</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00097">racetrack</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00093">rectangular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00096">rectellipse</a>, and <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00098">rhombus</a>.</p>
+<p class="reference">References <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00098">circular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00107">circularvacuum</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00108">clicpcl</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00099">elliptical</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00101">lhc</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00102">lhcdetailed</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00106">octagonal</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00109">pointsfile</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00104">racetrack</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00100">rectangular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00103">rectellipse</a>, and <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00105">rhombus</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00041">Instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00042">Instance()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBDSBeamPipeFactory_abe68196e27db78da0a466027d67b9a5f_icgraph.png" border="0" usemap="#aclassBDSBeamPipeFactory_abe68196e27db78da0a466027d67b9a5f_icgraph" alt=""/></div>
 <map name="aclassBDSBeamPipeFactory_abe68196e27db78da0a466027d67b9a5f_icgraph" id="aclassBDSBeamPipeFactory_abe68196e27db78da0a466027d67b9a5f_icgraph">
-<area shape="rect" title="Private constructor as singleton pattern." alt="" coords="1008,240,1179,280"/>
-<area shape="rect" href="classBDSBeamPipeFactory.html#a6ddb785bdca626c90eb381b67d4f56d8" title="Singleton accessor." alt="" coords="797,240,960,280"/>
-<area shape="poly" title=" " alt="" coords="994,263,960,263,960,257,994,257"/>
-<area shape="rect" href="classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="551,5,713,45"/>
-<area shape="poly" title=" " alt="" coords="863,228,846,189,821,143,788,98,748,60,712,41,715,37,751,55,792,94,825,140,850,186,868,226"/>
-<area shape="rect" href="classBDSDrift.html#a20d2b4172fe80d6e24304da7b5a25fcd" title="Construct geometry." alt="" coords="573,70,691,95"/>
-<area shape="poly" title=" " alt="" coords="858,230,813,167,783,135,748,109,720,97,691,90,692,84,722,92,751,104,786,131,817,164,862,227"/>
-<area shape="rect" href="classBDSUndulator.html#adba1c8a3aed4c74b03fbf03f0e8c0105" title=" " alt="" coords="555,119,709,145"/>
-<area shape="poly" title=" " alt="" coords="847,232,803,193,748,158,709,145,711,140,750,154,806,189,851,228"/>
-<area shape="rect" href="classBDSMagnet.html#a4b7a0b84152772942403ff769d6afd28" title=" " alt="" coords="529,169,735,194"/>
-<area shape="poly" title=" " alt="" coords="822,237,749,208,706,197,707,192,750,203,824,232"/>
-<area shape="rect" href="classBDSShield.html#a070256302b0986760d6605a75871db80" title="Build a beam pipe in the hole if required." alt="" coords="534,218,730,243"/>
-<area shape="poly" title=" " alt="" coords="784,251,730,245,731,240,784,246"/>
-<area shape="rect" href="classBDSWireScanner.html#a0517bfffe5afa9ecdaad71290b9ece9f" title=" " alt="" coords="515,268,749,308"/>
-<area shape="poly" title=" " alt="" coords="784,273,750,277,749,272,783,268"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#ac063865d8f4741ad5f656b1566bd1e1e" title=" " alt="" coords="529,332,735,372"/>
-<area shape="poly" title=" " alt="" coords="828,289,750,322,714,334,712,329,748,318,825,284"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a534a6911ebc00f6c15ccff4da8ace47f" title="quadrupole outer volume" alt="" coords="529,396,735,436"/>
-<area shape="poly" title=" " alt="" coords="855,293,810,341,782,365,751,386,725,398,723,393,748,382,778,361,806,337,851,289"/>
-<area shape="rect" href="classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="569,461,695,486"/>
-<area shape="poly" title=" " alt="" coords="867,294,849,331,823,373,791,415,751,450,725,463,697,471,695,466,723,458,748,446,787,412,819,370,844,328,862,292"/>
-<area shape="rect" href="classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="541,510,723,535"/>
-<area shape="poly" title=" " alt="" coords="872,294,857,341,832,397,798,454,776,479,751,501,724,515,722,510,748,496,772,475,793,450,828,395,852,339,867,292"/>
+<area shape="rect" title="Private constructor as singleton pattern." alt="" coords="1020,381,1191,421"/>
+<area shape="rect" href="classBDSBeamPipeFactory.html#a6ddb785bdca626c90eb381b67d4f56d8" title="Singleton accessor." alt="" coords="809,381,972,421"/>
+<area shape="poly" title=" " alt="" coords="1006,404,972,404,972,399,1006,399"/>
+<area shape="rect" href="classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="557,5,719,45"/>
+<area shape="poly" title=" " alt="" coords="884,368,875,302,854,219,837,175,817,133,791,94,760,59,741,46,719,37,721,32,743,42,763,55,795,90,821,130,842,173,859,217,880,301,889,367"/>
+<area shape="rect" href="classBDSDrift.html#a20d2b4172fe80d6e24304da7b5a25fcd" title="Construct geometry." alt="" coords="579,70,697,95"/>
+<area shape="poly" title=" " alt="" coords="882,368,871,311,848,240,832,203,812,168,788,136,760,109,730,93,697,86,698,80,732,88,763,105,792,133,817,166,837,201,853,238,876,309,888,367"/>
+<area shape="rect" href="classBDSUndulator.html#adba1c8a3aed4c74b03fbf03f0e8c0105" title=" " alt="" coords="561,119,715,145"/>
+<area shape="poly" title=" " alt="" coords="879,369,865,321,841,263,806,206,785,180,760,158,738,146,715,139,716,134,741,141,763,154,788,176,811,203,846,261,870,319,884,367"/>
+<area shape="rect" href="classBDSGaborLens.html#adac92f17d38f893b6192b64988f2cc95" title="Build the beam pipe." alt="" coords="525,169,751,194"/>
+<area shape="poly" title=" " alt="" coords="875,369,858,331,833,287,800,243,760,208,739,197,741,192,763,203,804,240,837,284,862,328,880,367"/>
+<area shape="rect" href="classBDSMagnet.html#a4b7a0b84152772942403ff769d6afd28" title=" " alt="" coords="535,218,741,243"/>
+<area shape="poly" title=" " alt="" coords="868,371,824,311,794,282,760,257,735,246,737,241,763,252,797,278,828,308,873,368"/>
+<area shape="rect" href="classBDSShield.html#a070256302b0986760d6605a75871db80" title="Build a beam pipe in the hole if required." alt="" coords="540,267,736,293"/>
+<area shape="poly" title=" " alt="" coords="857,374,813,339,760,308,724,295,726,290,762,303,816,334,860,370"/>
+<area shape="rect" href="classBDSCollimatorBeamMask.html#ab5442696ad7b9107e991791955899f26" title=" " alt="" coords="527,317,749,357"/>
+<area shape="poly" title=" " alt="" coords="797,380,717,360,718,355,798,375"/>
+<area shape="rect" href="classBDSGasCapillary.html#a85d68fd68340e35e7de9f41df1cb9fc2" title=" " alt="" coords="521,381,755,421"/>
+<area shape="poly" title=" " alt="" coords="796,404,755,404,755,399,796,399"/>
+<area shape="rect" href="classBDSGasJet.html#aa65ffb3231cffda99a71c9fdcffbf1e2" title=" " alt="" coords="541,445,735,485"/>
+<area shape="poly" title=" " alt="" coords="798,427,718,448,717,443,797,422"/>
+<area shape="rect" href="classBDSLaserWireNew.html#a1bf89b20249bf0acea27a1e064cd61a8" title=" " alt="" coords="515,509,761,549"/>
+<area shape="poly" title=" " alt="" coords="859,433,815,468,763,500,733,512,731,507,760,495,812,463,856,428"/>
+<area shape="rect" href="classBDSWireScanner.html#a0517bfffe5afa9ecdaad71290b9ece9f" title=" " alt="" coords="521,573,755,613"/>
+<area shape="poly" title=" " alt="" coords="874,435,830,500,799,535,763,564,740,575,738,571,760,559,795,531,826,497,870,432"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#ac063865d8f4741ad5f656b1566bd1e1e" title=" " alt="" coords="535,637,741,677"/>
+<area shape="poly" title=" " alt="" coords="882,436,866,480,841,531,807,583,786,607,763,627,743,640,740,635,760,623,782,603,803,580,836,529,861,478,877,434"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a534a6911ebc00f6c15ccff4da8ace47f" title="quadrupole outer volume" alt="" coords="535,701,741,741"/>
+<area shape="poly" title=" " alt="" coords="887,435,874,491,851,560,815,631,791,663,763,691,743,705,740,700,760,687,787,660,810,628,846,558,869,490,882,434"/>
+<area shape="rect" href="classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="575,766,701,791"/>
+<area shape="poly" title=" " alt="" coords="890,435,882,503,861,590,845,635,824,679,796,720,763,755,734,772,702,780,701,775,732,767,760,751,792,717,819,677,840,633,856,588,876,502,885,435"/>
+<area shape="rect" href="classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="547,815,729,841"/>
+<area shape="poly" title=" " alt="" coords="892,435,887,512,869,612,852,665,830,717,801,765,763,806,748,817,730,824,728,819,745,812,760,802,796,761,825,714,847,664,863,611,881,511,887,435"/>
 <area shape="rect" href="classBDSScreen.html#a55f57913d9fea52704047eb4668f9b90" title="Construct geometry." alt="" coords="296,70,431,95"/>
-<area shape="poly" title=" " alt="" coords="559,85,431,85,431,80,559,80"/>
-<area shape="rect" href="classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="294,169,433,194"/>
-<area shape="poly" title=" " alt="" coords="515,184,433,184,433,179,515,179"/>
-<area shape="rect" href="classBDSShield.html#a0714c11b0fa500bb434b1a5d07182e6e" title=" " alt="" coords="298,218,429,243"/>
-<area shape="poly" title=" " alt="" coords="520,233,429,233,429,228,520,228"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#aa23b23a2b450061a7ba839315f7241c9" title="horizontal and vertical kicker outer volume" alt="" coords="260,300,467,340"/>
-<area shape="poly" title=" " alt="" coords="515,341,467,335,467,330,516,335"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a10de22d1a1beb852738d55b5d2694c8c" title="sector bend outer volume" alt="" coords="260,364,467,404"/>
-<area shape="poly" title=" " alt="" coords="516,369,467,374,467,369,515,363"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a8620853ac503990a9862174f03e812ee" title="rectangular bend outer volume" alt="" coords="5,364,212,404"/>
-<area shape="poly" title=" " alt="" coords="247,387,212,387,212,381,247,381"/>
+<area shape="poly" title=" " alt="" coords="565,85,431,85,431,80,565,80"/>
+<area shape="rect" href="classBDSGaborLens.html#a75a45ab01ddcf0f5b2bedd2ff62d4f41" title=" " alt="" coords="284,169,443,194"/>
+<area shape="poly" title=" " alt="" coords="512,184,443,184,443,179,512,179"/>
+<area shape="rect" href="classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="294,218,433,243"/>
+<area shape="poly" title=" " alt="" coords="521,233,433,233,433,228,521,228"/>
+<area shape="rect" href="classBDSShield.html#a0714c11b0fa500bb434b1a5d07182e6e" title=" " alt="" coords="298,267,429,293"/>
+<area shape="poly" title=" " alt="" coords="526,283,429,283,429,277,526,277"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#aa23b23a2b450061a7ba839315f7241c9" title="horizontal and vertical kicker outer volume" alt="" coords="260,605,467,645"/>
+<area shape="poly" title=" " alt="" coords="521,646,467,640,467,635,521,641"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a10de22d1a1beb852738d55b5d2694c8c" title="sector bend outer volume" alt="" coords="260,669,467,709"/>
+<area shape="poly" title=" " alt="" coords="521,674,467,680,467,675,521,668"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a8620853ac503990a9862174f03e812ee" title="rectangular bend outer volume" alt="" coords="5,669,212,709"/>
+<area shape="poly" title=" " alt="" coords="247,692,212,692,212,687,247,687"/>
 </map>
 </div>
 
@@ -379,7 +393,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00175">175</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00194">194</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
 
 </div>
 </div>
@@ -469,7 +483,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00156">156</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00175">175</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
 
 </div>
 </div>
@@ -505,7 +519,64 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00118">118</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00137">137</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+
+</div>
+</div>
+<a id="a43f949ca5b73fb634a0d71b90fdf31ce" name="a43f949ca5b73fb634a0d71b90fdf31ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43f949ca5b73fb634a0d71b90fdf31ce">&#9670;&#160;</a></span>CreateBeamPipeForVacuumIntersection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classBDSBeamPipe.html">BDSBeamPipe</a> * BDSBeamPipeFactory::CreateBeamPipeForVacuumIntersection </td>
+          <td>(</td>
+          <td class="paramtype">const G4String &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">G4double&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classBDSBeamPipeInfo.html">BDSBeamPipeInfo</a> *&#160;</td>
+          <td class="paramname"><em>info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a circular vacuum volume that's smaller than the aperture definition by length safety large suitable for intersections with something that should fit in the vacuum of a beam pipe that would be created with the same recipe. </p>
+
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00119">119</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00108">BDSBeamPipeInfo::aper1</a>, <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00109">BDSBeamPipeInfo::aper2</a>, <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00110">BDSBeamPipeInfo::aper3</a>, <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00111">BDSBeamPipeInfo::aper4</a>, <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00116">BDSBeamPipeInfo::beamPipeMaterial</a>, <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00115">BDSBeamPipeInfo::beamPipeThickness</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="BDSBeamPipeInfo_8cc_source.html#l00166">BDSBeamPipeInfo::ShrinkBy()</a>, and <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00114">BDSBeamPipeInfo::vacuumMaterial</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classBDSBeamPipeFactory_a43f949ca5b73fb634a0d71b90fdf31ce_cgraph.png" border="0" usemap="#aclassBDSBeamPipeFactory_a43f949ca5b73fb634a0d71b90fdf31ce_cgraph" alt=""/></div>
+<map name="aclassBDSBeamPipeFactory_a43f949ca5b73fb634a0d71b90fdf31ce_cgraph" id="aclassBDSBeamPipeFactory_a43f949ca5b73fb634a0d71b90fdf31ce_cgraph">
+<area shape="rect" title=" " alt="" coords="5,92,293,132"/>
+<area shape="rect" href="classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="367,63,523,103"/>
+<area shape="poly" title=" " alt="" coords="293,95,353,89,353,94,294,100"/>
+<area shape="rect" href="classBDSBeamPipeInfo.html#a546340afb2094a20587b22b41e83a304" title="Return a copy that&#39;s shrunk by value margin." alt="" coords="341,127,548,153"/>
+<area shape="poly" title=" " alt="" coords="294,123,328,126,327,132,293,128"/>
+<area shape="rect" href="classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="600,5,764,45"/>
+<area shape="poly" title=" " alt="" coords="522,61,586,46,587,51,523,66"/>
+<area shape="rect" href="classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="606,70,758,95"/>
+<area shape="poly" title=" " alt="" coords="523,80,592,80,592,85,523,85"/>
+<area shape="rect" href="classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="596,119,768,145"/>
+<area shape="poly" title=" " alt="" coords="523,96,608,114,607,119,522,101"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -535,9 +606,9 @@ Here is the caller graph for this function:</div>
 
 <p>Return the appropriate factory singleton pointer given a type. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">81</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">82</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00091">circular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00100">circularvacuum</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00101">clicpcl</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00092">elliptical</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00094">lhc</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00095">lhcdetailed</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00099">octagonal</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00102">pointsfile</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00097">racetrack</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00093">rectangular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00096">rectellipse</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00098">rhombus</a>, and <a class="el" href="BDSTypeSafeEnum_8hh_source.html#l00062">BDSTypeSafeEnum&lt; def, inner &gt;::underlying()</a>.</p>
+<p class="reference">References <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00098">circular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00107">circularvacuum</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00108">clicpcl</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00099">elliptical</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00101">lhc</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00102">lhcdetailed</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00106">octagonal</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00109">pointsfile</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00104">racetrack</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00100">rectangular</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00103">rectellipse</a>, <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00105">rhombus</a>, and <a class="el" href="BDSTypeSafeEnum_8hh_source.html#l00062">BDSTypeSafeEnum&lt; def, inner &gt;::underlying()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -576,11 +647,11 @@ Here is the call graph for this function:</div>
 
 <p>Singleton accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00041">41</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00042">42</a> of file <a class="el" href="BDSBeamPipeFactory_8cc_source.html">BDSBeamPipeFactory.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00085">instance</a>.</p>
+<p class="reference">References <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00092">instance</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSCollimatorCrystal_8cc_source.html#l00079">BDSCollimatorCrystal::Build()</a>, <a class="el" href="BDSDrift_8cc_source.html#l00037">BDSDrift::Build()</a>, <a class="el" href="BDSUndulator_8cc_source.html#l00128">BDSUndulator::Build()</a>, <a class="el" href="BDSMagnet_8cc_source.html#l00151">BDSMagnet::BuildBeampipe()</a>, <a class="el" href="BDSShield_8cc_source.html#l00131">BDSShield::BuildBeamPipe()</a>, <a class="el" href="BDSWireScanner_8cc_source.html#l00076">BDSWireScanner::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00083">BDSMagnetOuterFactoryLHC::CreateLHCDipole()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00996">BDSMagnetOuterFactoryLHC::CreateQuadrupole()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00423">BDSIM::~BDSIM()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00396">BDSIMLink::~BDSIMLink()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSCollimatorCrystal_8cc_source.html#l00079">BDSCollimatorCrystal::Build()</a>, <a class="el" href="BDSDrift_8cc_source.html#l00037">BDSDrift::Build()</a>, <a class="el" href="BDSUndulator_8cc_source.html#l00128">BDSUndulator::Build()</a>, <a class="el" href="BDSGaborLens_8cc_source.html#l00248">BDSGaborLens::BuildBeamPipe()</a>, <a class="el" href="BDSMagnet_8cc_source.html#l00151">BDSMagnet::BuildBeampipe()</a>, <a class="el" href="BDSShield_8cc_source.html#l00131">BDSShield::BuildBeamPipe()</a>, <a class="el" href="BDSCollimatorBeamMask_8cc_source.html#l00122">BDSCollimatorBeamMask::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSGasCapillary_8cc_source.html#l00121">BDSGasCapillary::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSGasJet_8cc_source.html#l00096">BDSGasJet::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSLaserWireNew_8cc_source.html#l00095">BDSLaserWireNew::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSWireScanner_8cc_source.html#l00080">BDSWireScanner::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00083">BDSMagnetOuterFactoryLHC::CreateLHCDipole()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00996">BDSMagnetOuterFactoryLHC::CreateQuadrupole()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00432">BDSIM::~BDSIM()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00396">BDSIMLink::~BDSIMLink()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -596,39 +667,51 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBDSBeamPipeFactory_a6ddb785bdca626c90eb381b67d4f56d8_icgraph.png" border="0" usemap="#aclassBDSBeamPipeFactory_a6ddb785bdca626c90eb381b67d4f56d8_icgraph" alt=""/></div>
 <map name="aclassBDSBeamPipeFactory_a6ddb785bdca626c90eb381b67d4f56d8_icgraph" id="aclassBDSBeamPipeFactory_a6ddb785bdca626c90eb381b67d4f56d8_icgraph">
-<area shape="rect" title="Singleton accessor." alt="" coords="797,240,960,280"/>
-<area shape="rect" href="classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="551,5,713,45"/>
-<area shape="poly" title=" " alt="" coords="863,228,846,189,821,143,788,98,748,60,712,41,715,37,751,55,792,94,825,140,850,186,868,226"/>
-<area shape="rect" href="classBDSDrift.html#a20d2b4172fe80d6e24304da7b5a25fcd" title="Construct geometry." alt="" coords="573,70,691,95"/>
-<area shape="poly" title=" " alt="" coords="858,230,813,167,783,135,748,109,720,97,691,90,692,84,722,92,751,104,786,131,817,164,862,227"/>
-<area shape="rect" href="classBDSUndulator.html#adba1c8a3aed4c74b03fbf03f0e8c0105" title=" " alt="" coords="555,119,709,145"/>
-<area shape="poly" title=" " alt="" coords="847,232,803,193,748,158,709,145,711,140,750,154,806,189,851,228"/>
-<area shape="rect" href="classBDSMagnet.html#a4b7a0b84152772942403ff769d6afd28" title=" " alt="" coords="529,169,735,194"/>
-<area shape="poly" title=" " alt="" coords="822,237,749,208,706,197,707,192,750,203,824,232"/>
-<area shape="rect" href="classBDSShield.html#a070256302b0986760d6605a75871db80" title="Build a beam pipe in the hole if required." alt="" coords="534,218,730,243"/>
-<area shape="poly" title=" " alt="" coords="784,251,730,245,731,240,784,246"/>
-<area shape="rect" href="classBDSWireScanner.html#a0517bfffe5afa9ecdaad71290b9ece9f" title=" " alt="" coords="515,268,749,308"/>
-<area shape="poly" title=" " alt="" coords="784,273,750,277,749,272,783,268"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#ac063865d8f4741ad5f656b1566bd1e1e" title=" " alt="" coords="529,332,735,372"/>
-<area shape="poly" title=" " alt="" coords="828,289,750,322,714,334,712,329,748,318,825,284"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a534a6911ebc00f6c15ccff4da8ace47f" title="quadrupole outer volume" alt="" coords="529,396,735,436"/>
-<area shape="poly" title=" " alt="" coords="855,293,810,341,782,365,751,386,725,398,723,393,748,382,778,361,806,337,851,289"/>
-<area shape="rect" href="classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="569,461,695,486"/>
-<area shape="poly" title=" " alt="" coords="867,294,849,331,823,373,791,415,751,450,725,463,697,471,695,466,723,458,748,446,787,412,819,370,844,328,862,292"/>
-<area shape="rect" href="classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="541,510,723,535"/>
-<area shape="poly" title=" " alt="" coords="872,294,857,341,832,397,798,454,776,479,751,501,724,515,722,510,748,496,772,475,793,450,828,395,852,339,867,292"/>
+<area shape="rect" title="Singleton accessor." alt="" coords="809,381,972,421"/>
+<area shape="rect" href="classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="557,5,719,45"/>
+<area shape="poly" title=" " alt="" coords="884,368,875,302,854,219,837,175,817,133,791,94,760,59,741,46,719,37,721,32,743,42,763,55,795,90,821,130,842,173,859,217,880,301,889,367"/>
+<area shape="rect" href="classBDSDrift.html#a20d2b4172fe80d6e24304da7b5a25fcd" title="Construct geometry." alt="" coords="579,70,697,95"/>
+<area shape="poly" title=" " alt="" coords="882,368,871,311,848,240,832,203,812,168,788,136,760,109,730,93,697,86,698,80,732,88,763,105,792,133,817,166,837,201,853,238,876,309,888,367"/>
+<area shape="rect" href="classBDSUndulator.html#adba1c8a3aed4c74b03fbf03f0e8c0105" title=" " alt="" coords="561,119,715,145"/>
+<area shape="poly" title=" " alt="" coords="879,369,865,321,841,263,806,206,785,180,760,158,738,146,715,139,716,134,741,141,763,154,788,176,811,203,846,261,870,319,884,367"/>
+<area shape="rect" href="classBDSGaborLens.html#adac92f17d38f893b6192b64988f2cc95" title="Build the beam pipe." alt="" coords="525,169,751,194"/>
+<area shape="poly" title=" " alt="" coords="875,369,858,331,833,287,800,243,760,208,739,197,741,192,763,203,804,240,837,284,862,328,880,367"/>
+<area shape="rect" href="classBDSMagnet.html#a4b7a0b84152772942403ff769d6afd28" title=" " alt="" coords="535,218,741,243"/>
+<area shape="poly" title=" " alt="" coords="868,371,824,311,794,282,760,257,735,246,737,241,763,252,797,278,828,308,873,368"/>
+<area shape="rect" href="classBDSShield.html#a070256302b0986760d6605a75871db80" title="Build a beam pipe in the hole if required." alt="" coords="540,267,736,293"/>
+<area shape="poly" title=" " alt="" coords="857,374,813,339,760,308,724,295,726,290,762,303,816,334,860,370"/>
+<area shape="rect" href="classBDSCollimatorBeamMask.html#ab5442696ad7b9107e991791955899f26" title=" " alt="" coords="527,317,749,357"/>
+<area shape="poly" title=" " alt="" coords="797,380,717,360,718,355,798,375"/>
+<area shape="rect" href="classBDSGasCapillary.html#a85d68fd68340e35e7de9f41df1cb9fc2" title=" " alt="" coords="521,381,755,421"/>
+<area shape="poly" title=" " alt="" coords="796,404,755,404,755,399,796,399"/>
+<area shape="rect" href="classBDSGasJet.html#aa65ffb3231cffda99a71c9fdcffbf1e2" title=" " alt="" coords="541,445,735,485"/>
+<area shape="poly" title=" " alt="" coords="798,427,718,448,717,443,797,422"/>
+<area shape="rect" href="classBDSLaserWireNew.html#a1bf89b20249bf0acea27a1e064cd61a8" title=" " alt="" coords="515,509,761,549"/>
+<area shape="poly" title=" " alt="" coords="859,433,815,468,763,500,733,512,731,507,760,495,812,463,856,428"/>
+<area shape="rect" href="classBDSWireScanner.html#a0517bfffe5afa9ecdaad71290b9ece9f" title=" " alt="" coords="521,573,755,613"/>
+<area shape="poly" title=" " alt="" coords="874,435,830,500,799,535,763,564,740,575,738,571,760,559,795,531,826,497,870,432"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#ac063865d8f4741ad5f656b1566bd1e1e" title=" " alt="" coords="535,637,741,677"/>
+<area shape="poly" title=" " alt="" coords="882,436,866,480,841,531,807,583,786,607,763,627,743,640,740,635,760,623,782,603,803,580,836,529,861,478,877,434"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a534a6911ebc00f6c15ccff4da8ace47f" title="quadrupole outer volume" alt="" coords="535,701,741,741"/>
+<area shape="poly" title=" " alt="" coords="887,435,874,491,851,560,815,631,791,663,763,691,743,705,740,700,760,687,787,660,810,628,846,558,869,490,882,434"/>
+<area shape="rect" href="classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="575,766,701,791"/>
+<area shape="poly" title=" " alt="" coords="890,435,882,503,861,590,845,635,824,679,796,720,763,755,734,772,702,780,701,775,732,767,760,751,792,717,819,677,840,633,856,588,876,502,885,435"/>
+<area shape="rect" href="classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="547,815,729,841"/>
+<area shape="poly" title=" " alt="" coords="892,435,887,512,869,612,852,665,830,717,801,765,763,806,748,817,730,824,728,819,745,812,760,802,796,761,825,714,847,664,863,611,881,511,887,435"/>
 <area shape="rect" href="classBDSScreen.html#a55f57913d9fea52704047eb4668f9b90" title="Construct geometry." alt="" coords="296,70,431,95"/>
-<area shape="poly" title=" " alt="" coords="559,85,431,85,431,80,559,80"/>
-<area shape="rect" href="classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="294,169,433,194"/>
-<area shape="poly" title=" " alt="" coords="515,184,433,184,433,179,515,179"/>
-<area shape="rect" href="classBDSShield.html#a0714c11b0fa500bb434b1a5d07182e6e" title=" " alt="" coords="298,218,429,243"/>
-<area shape="poly" title=" " alt="" coords="520,233,429,233,429,228,520,228"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#aa23b23a2b450061a7ba839315f7241c9" title="horizontal and vertical kicker outer volume" alt="" coords="260,300,467,340"/>
-<area shape="poly" title=" " alt="" coords="515,341,467,335,467,330,516,335"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a10de22d1a1beb852738d55b5d2694c8c" title="sector bend outer volume" alt="" coords="260,364,467,404"/>
-<area shape="poly" title=" " alt="" coords="516,369,467,374,467,369,515,363"/>
-<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a8620853ac503990a9862174f03e812ee" title="rectangular bend outer volume" alt="" coords="5,364,212,404"/>
-<area shape="poly" title=" " alt="" coords="247,387,212,387,212,381,247,381"/>
+<area shape="poly" title=" " alt="" coords="565,85,431,85,431,80,565,80"/>
+<area shape="rect" href="classBDSGaborLens.html#a75a45ab01ddcf0f5b2bedd2ff62d4f41" title=" " alt="" coords="284,169,443,194"/>
+<area shape="poly" title=" " alt="" coords="512,184,443,184,443,179,512,179"/>
+<area shape="rect" href="classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="294,218,433,243"/>
+<area shape="poly" title=" " alt="" coords="521,233,433,233,433,228,521,228"/>
+<area shape="rect" href="classBDSShield.html#a0714c11b0fa500bb434b1a5d07182e6e" title=" " alt="" coords="298,267,429,293"/>
+<area shape="poly" title=" " alt="" coords="526,283,429,283,429,277,526,277"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#aa23b23a2b450061a7ba839315f7241c9" title="horizontal and vertical kicker outer volume" alt="" coords="260,605,467,645"/>
+<area shape="poly" title=" " alt="" coords="521,646,467,640,467,635,521,641"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a10de22d1a1beb852738d55b5d2694c8c" title="sector bend outer volume" alt="" coords="260,669,467,709"/>
+<area shape="poly" title=" " alt="" coords="521,674,467,680,467,675,521,668"/>
+<area shape="rect" href="classBDSMagnetOuterFactoryLHC.html#a8620853ac503990a9862174f03e812ee" title="rectangular bend outer volume" alt="" coords="5,669,212,709"/>
+<area shape="poly" title=" " alt="" coords="247,692,212,692,212,687,247,687"/>
 </map>
 </div>
 
@@ -657,9 +740,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00091">91</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -685,9 +768,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00100">100</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00107">107</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -713,9 +796,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00101">101</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00108">108</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -741,9 +824,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00092">92</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00099">99</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -769,9 +852,9 @@ Here is the caller graph for this function:</div>
 
 <p>Singleton instance pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00085">85</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00092">92</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00041">Instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00042">Instance()</a>.</p>
 
 </div>
 </div>
@@ -797,9 +880,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00094">94</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00101">101</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -825,9 +908,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00095">95</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00102">102</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -853,9 +936,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00099">99</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00106">106</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -881,9 +964,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00102">102</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00109">109</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -909,9 +992,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00097">97</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00104">104</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -937,9 +1020,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00093">93</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00100">100</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -965,9 +1048,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00096">96</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00103">103</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -993,9 +1076,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSBeamPipeFactory_8hh_source.html#l00105">105</a> of file <a class="el" href="BDSBeamPipeFactory_8hh_source.html">BDSBeamPipeFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00048">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00081">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00049">BDSBeamPipeFactory()</a>, and <a class="el" href="BDSBeamPipeFactory_8cc_source.html#l00082">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -1006,7 +1089,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 6 2025 16:37:49 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:13:49 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

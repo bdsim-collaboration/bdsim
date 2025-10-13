@@ -125,8 +125,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:acc2527b40eccdc43bf38d82d530f9456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bca205afd7f543ad34a1badc8c5408d" id="r_a7bca205afd7f543ad34a1badc8c5408d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBDSGDMLPreprocessor.html#a7bca205afd7f543ad34a1badc8c5408d">ProcessNode</a> (xercesc::DOMNode *node, const G4String &amp;prefix)</td></tr>
 <tr class="separator:a7bca205afd7f543ad34a1badc8c5408d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2ad8b016fd6e37e05985cdc10a98706" id="r_ab2ad8b016fd6e37e05985cdc10a98706"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBDSGDMLPreprocessor.html#ab2ad8b016fd6e37e05985cdc10a98706">ProcessAttributes</a> (xercesc::DOMNamedNodeMap *attributeMap, const G4String &amp;prefix)</td></tr>
-<tr class="separator:ab2ad8b016fd6e37e05985cdc10a98706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5137d9e4a5969cea5c6753ea15a9a88c" id="r_a5137d9e4a5969cea5c6753ea15a9a88c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBDSGDMLPreprocessor.html#a5137d9e4a5969cea5c6753ea15a9a88c">ProcessAttributes</a> (xercesc::DOMNamedNodeMap *attributeMap, const G4String &amp;prefix, bool property=false)</td></tr>
+<tr class="separator:a5137d9e4a5969cea5c6753ea15a9a88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -266,8 +266,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ab2ad8b016fd6e37e05985cdc10a98706" name="ab2ad8b016fd6e37e05985cdc10a98706"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2ad8b016fd6e37e05985cdc10a98706">&#9670;&#160;</a></span>ProcessAttributes()</h2>
+<a id="a5137d9e4a5969cea5c6753ea15a9a88c" name="a5137d9e4a5969cea5c6753ea15a9a88c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5137d9e4a5969cea5c6753ea15a9a88c">&#9670;&#160;</a></span>ProcessAttributes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -285,7 +285,13 @@ Here is the call graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const G4String &amp;&#160;</td>
-          <td class="paramname"><em>prefix</em>&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>property</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -300,7 +306,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00324">324</a> of file <a class="el" href="BDSGDMLPreprocessor_8cc_source.html">BDSGDMLPreprocessor.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00328">328</a> of file <a class="el" href="BDSGDMLPreprocessor_8cc_source.html">BDSGDMLPreprocessor.cc</a>.</p>
 
 </div>
 </div>
@@ -377,7 +383,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Prepare the prefixed name. Done in a public static function so the convention is in only one place. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00320">320</a> of file <a class="el" href="BDSGDMLPreprocessor_8cc_source.html">BDSGDMLPreprocessor.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00324">324</a> of file <a class="el" href="BDSGDMLPreprocessor_8cc_source.html">BDSGDMLPreprocessor.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSGeometryFactoryGDML_8cc_source.html#l00217">BDSGeometryFactoryGDML::PreprocessedName()</a>.</p>
 <div class="dynheader">
@@ -703,7 +709,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 6 2025 16:37:50 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:13:50 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

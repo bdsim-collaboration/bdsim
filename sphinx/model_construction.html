@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#gap">gap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#crystalcol">crystalcol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#undulator">undulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gaborlens">gaborlens</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#transform3d">transform3d</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rmatrix">rmatrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#thinrmatrix">thinrmatrix</a></li>
@@ -105,6 +106,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#marker">marker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ct">ct</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#muoncooler">muoncooler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bmcol">bmcol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gascap">gascap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gasjet">gasjet</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#offsets-tilts-component-misalignment">Offsets &amp; Tilts - Component Misalignment</a></li>
@@ -354,6 +358,7 @@ Spaces will be ignored.</p>
 <li><p><a class="reference internal" href="#gap">gap</a></p></li>
 <li><p><a class="reference internal" href="#crystalcol">crystalcol</a></p></li>
 <li><p><a class="reference internal" href="#undulator">undulator</a></p></li>
+<li><p><a class="reference internal" href="#gaborlens">gaborlens</a></p></li>
 <li><p><a class="reference internal" href="#transform3d">transform3d</a></p></li>
 <li><p><a class="reference internal" href="#rmatrix">rmatrix</a></p></li>
 <li><p><a class="reference internal" href="#thinrmatrix">thinrmatrix</a></p></li>
@@ -362,6 +367,7 @@ Spaces will be ignored.</p>
 <li><p><a class="reference internal" href="#wirescanner">wirescanner</a></p></li>
 <li><p><a class="reference internal" href="#ct">ct</a></p></li>
 <li><p><a class="reference internal" href="#muoncooler">muoncooler</a></p></li>
+<li><p><a class="reference internal" href="#bmcol">bmcol</a></p></li>
 </ul>
 <p>These are detailed in the following sections.</p>
 <section id="simple-example-extend-and-copy">
@@ -1043,7 +1049,7 @@ described by <a class="reference internal" href="dev_fields.html#yoke-multipole-
 </figure>
 <p><cite>decapole</cite> defines a decapole magnet. The strength parameter <span class="math notranslate nohighlight">\(k_4\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
-\[k_{2} = \frac{1}{B \rho}\,\frac{d^{4}B_{y}}{dx^{4}}\,[m^{-5}]\]</div>
+\[k_{4} = \frac{1}{B \rho}\,\frac{d^{4}B_{y}}{dx^{4}}\,[m^{-5}]\]</div>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Parameter</p></td>
@@ -2192,6 +2198,8 @@ used in the case a particle cannot be tracked using the integrator. In this case
 is a perfect dipole field along the local <span class="math notranslate nohighlight">\(z\)</span> axis inside the beam pipe with
 no spatial variation. Outside the beam pipe, in the <em>‘yoke’</em>, a solenoidal field
 according to a cylindrical current source is constructed.</p>
+<div class="math notranslate nohighlight">
+\[ks = \frac{B_0}{B \rho}\,[m^{-1}]\]</div>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Parameter</p></td>
@@ -2577,6 +2585,147 @@ physics must be included in the model’s physicsList. See <a class="reference i
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u1</span><span class="p">:</span> <span class="n">undulator</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="n">undulatorPeriod</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 <span class="n">u2</span><span class="p">:</span> <span class="n">undulator</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">3.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.02</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="n">undulatorPeriod</span><span class="o">=</span><span class="mf">0.16</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">undulatorGap</span><span class="o">=</span><span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">undulatorMagnetHeight</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="gaborlens">
+<h3>gaborlens<a class="headerlink" href="#gaborlens" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/gaborlens.png"><img alt="_images/gaborlens.png" src="_images/gaborlens.png" style="width: 60%;" />
+</a>
+</figure>
+<p><cite>gaborlens</cite> defines a Gabor lens that provides a radially focusing electric field from a confined electron plasma in
+a Penning-Malmberg trap configuration. The lens’ radial electric field along the element has field components:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_{x} ~ &amp;= ~ - \frac{B^2 c^2}{4\ m_p} x \\
+E_{y} ~ &amp;= ~ - \frac{B^2 c^2}{4\ m_p} y \\
+E_{z} ~ &amp;= ~ 0 \\\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(B\)</span> is the magnetic field of an equivalent strength solenoid, and <span class="math notranslate nohighlight">\(m_p\)</span> is the beam particle
+mass. The field is internally calculated from the Gabor lens focusing parameter <cite>Kg</cite>, defined as</p>
+<div class="math notranslate nohighlight">
+\[k_{G} = \frac{e}{2 \epsilon_0} \frac{m_p\ \gamma}{p^2} n_e\]</div>
+<p>where <span class="math notranslate nohighlight">\(e\)</span> is the electron charge, <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the permittivity of free space, <span class="math notranslate nohighlight">\(m_p\)</span> is the beam
+particle mass, <span class="math notranslate nohighlight">\(\gamma\)</span> is the beam particle Lorentz factor, <span class="math notranslate nohighlight">\(p\)</span> is the beam particle momentum, and
+<span class="math notranslate nohighlight">\(n_e\)</span> is the electron plasma density. It is assumed that the electron density in uniform. The Gabor lens plasma
+density depends on the strength of the electric and magnetic confinement fields that confine the plasma axially and
+radially respectively. The nominal electron density <span class="math notranslate nohighlight">\(n_e\)</span> is achieved assuming the maximum axial and radial
+densities are in equilibrium. It is assumed in the <cite>gaborlens</cite> element that this equilibrium condition is met.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The electric and magnetic confinement fields are not constructed in the <cite>gaborlens</cite> element at present.</p>
+</div>
+<p>The Gabor lens geometry is based upon a prototype design by Imperial College. The details of the lens are described
+in <a class="reference external" href="https://doi.org/10.3390/app11104357">https://doi.org/10.3390/app11104357</a>. The internal structure of a Gabor lens is shown below. The main components
+are:</p>
+<ol class="arabic simple">
+<li><p>The outer tube</p></li>
+<li><p>Solenoid coils (copper)</p></li>
+<li><p>Vacuum tube</p></li>
+<li><p>A cylindrical central copper anode</p></li>
+<li><p>End electrodes (copper)</p></li>
+<li><p>Grounding end caps (stainless steel)</p></li>
+</ol>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/gaborlensinterior.png"><img alt="_images/gaborlensinterior.png" src="_images/gaborlensinterior.png" style="width: 60%;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The transverse extent of the electric field from the plasma is limited to the radius of the
+cylindrical anode.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Gabor lens element contains 2 end caps that are crucial for grounding and vacuum in such
+physical devices. In the BDSIM Gabor lenses, both of these are 1cm long. The plasma field does NOT extend
+to within these volumes, and is limited to the length of the vacuum volume. The field length in Z is therefore
+the total element length minus 2cm. This should be accounted for by the user when defining the
+total element length.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The end cap aperture is set equal to the electrode radius as both the anode and electrode must be within
+the beam pipe aperture.</p>
+</div>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Parameter</p></td>
+<td><p>Description</p></td>
+<td><p>Default</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>l</cite></p></td>
+<td><p>Length [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>Kg</cite></p></td>
+<td><p>Gabor Lens focusing parameter</p></td>
+<td><p>0</p></td>
+<td><p>Yes/No*</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>B</cite></p></td>
+<td><p>Solenoid-equivalent B field [T]</p></td>
+<td><p>0</p></td>
+<td><p>Yes/No*</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>anodeLength</cite></p></td>
+<td><p>Anode length [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>anodeRadius</cite></p></td>
+<td><p>Anode radius [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>anodeThickness</cite></p></td>
+<td><p>Anode thickness [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>electrodeLength</cite></p></td>
+<td><p>Electrode length [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>electrodeRadius</cite></p></td>
+<td><p>Electrode radius [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>electrodeThickness</cite></p></td>
+<td><p>Electrode thickness [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>material</cite></p></td>
+<td><p>Gabor lens outer material</p></td>
+<td><p>Iron</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Either <cite>Kg</cite> or <cite>B</cite> can be specified to set the Gabor Lens field strength with <cite>Kg</cite> being the main
+parameter. <cite>B</cite> will only be used if <cite>Kg</cite> is not specifed (0). If both are unspecified, no field will be constructed.</p>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The anode length must be shorter than the vacuum volume length (total element length minus 20 cm).</p></li>
+<li><p>The anode radius + anode thickness must be smaller than the smallest aperture inner extent.</p></li>
+<li><p>The transverse extent of the electric field from the plasma is limited to the radius of the cylindrical anode.</p></li>
+<li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> control the vacuum volume.</p></li>
+<li><p>The electrode length must be smaller than half the vacuum volume length.</p></li>
+<li><p>The electrode radius + thickness must be smaller than the anode radius.</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="p">:</span> <span class="n">gaborlens</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">kg</span><span class="o">=</span><span class="mf">0.289643</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">anodeRadius</span><span class="o">=</span><span class="mi">65</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">anodeLength</span><span class="o">=</span><span class="mf">0.920</span><span class="p">,</span> <span class="n">anodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+    <span class="n">electrodeRadius</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeLength</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+
+<span class="n">g2</span><span class="p">:</span> <span class="n">gaborlens</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">anodeRadius</span><span class="o">=</span><span class="mi">65</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">anodeLength</span><span class="o">=</span><span class="mf">0.920</span><span class="p">,</span> <span class="n">anodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+    <span class="n">electrodeRadius</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeLength</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -3316,6 +3465,240 @@ of wedge absorbers [m]</p></td>
 </table>
 <p>An example of a cooling channel has been provided in <cite>/examples/components/muoncooler.gmad</cite>, and can be used as a template for development.</p>
 </section>
+<section id="bmcol">
+<span id="component-bmcol"></span><h3>bmcol<a class="headerlink" href="#bmcol" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/bmcol.png"><img alt="_images/bmcol.png" src="_images/bmcol.png" style="width: 60%;" />
+</a>
+</figure>
+<p><cite>bmcol</cite> define a beam mask that can be placed in a place in a dispersive section of a beamline in order to separate the
+beam with respect to the energy dispersion of said beam. This mask features two slits (a main slit and a side slit)
+with adjustable sizes and positions.</p>
+<ul class="simple">
+<li><p>The main slit is always centered on the beam mask mount. The side slit position is defined is defined with respect to
+the main one and can be tilted.</p></li>
+<li><p>The whole mount can then have x and y offset inside of the beam pipe.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Default</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>l</cite></p></td>
+<td><p>Length [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>material</cite></p></td>
+<td><p>Outer material</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>horizontalWidth</cite></p></td>
+<td><p>Outer full width [m]</p></td>
+<td><p>0.15 m</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>xsize</cite></p></td>
+<td><p>Horizontal half aperture of main slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>ysize</cite></p></td>
+<td><p>Vertical half aperture of main slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>xsize2</cite></p></td>
+<td><p>Horizontal half aperture of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>ysize2</cite></p></td>
+<td><p>Vertical half aperture of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>offsetX2</cite></p></td>
+<td><p>Horizontal displacement of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>offsetY2</cite></p></td>
+<td><p>Vertical displacement of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>tilt2</cite></p></td>
+<td><p>Clockwise rotation of side slit [rad].</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>outerShape</cite></p></td>
+<td><p>Shape of the outer material
+(circular or rectangular).</p></td>
+<td><p>‘rectangular’</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
+<li><p>The <a class="reference internal" href="#offsets-and-tilts"><span class="std std-ref">Offsets &amp; Tilts - Component Misalignment</span></a> may also be specified.</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="p">:</span> <span class="n">bmcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;G4_W&quot;</span><span class="p">,</span>
+           <span class="n">offsetX</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">offsetY</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">outerShape</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">,</span>
+           <span class="n">offsetX2</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">offsetY2</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">xsize2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize2</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">tilt2</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">rad</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="gascap">
+<span id="component-gascap"></span><h3>gascap<a class="headerlink" href="#gascap" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/gascap.png"><img alt="_images/gascap.png" src="_images/gascap.png" style="width: 60%;" />
+</a>
+</figure>
+<p><cite>gascap</cite> define a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
+This element is composed of an innner cylindrical material (usually it is gas), an outer capillary material and two
+electrodes on each sides (with respect to beam axis).</p>
+<ul class="simple">
+<li><p>The inner gas cell is always center on the beam axis.</p></li>
+<li><p>The electrodes have the same shape and thickness.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Default</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>l</cite></p></td>
+<td><p>Length [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>layerMaterials</cite></p></td>
+<td><p>List of materials in order :
+{Outer, Inner, Electrodes}</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>horizontalWidth</cite></p></td>
+<td><p>Outer full width [m]</p></td>
+<td><p>0.15 m</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>xsize</cite></p></td>
+<td><p>Diameter of inner material [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>materialThickness</cite></p></td>
+<td><p>Thickness of the two electrodes on each sides
+[m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>outerShape</cite></p></td>
+<td><p>Shape of the outer material
+(circular or rectangular).</p></td>
+<td><p>‘rectangular’</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gc</span><span class="p">:</span> <span class="n">gascap</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mf">0.03</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">outerShape</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">,</span>
+            <span class="n">layerMaterials</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;G4_Si&quot;</span><span class="p">,</span> <span class="s2">&quot;G4_Xe&quot;</span> <span class="p">,</span><span class="s2">&quot;G4_C&quot;</span><span class="p">},</span> <span class="n">materialThickness</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="gasjet">
+<span id="component-gasjet"></span><h3>gasjet<a class="headerlink" href="#gasjet" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/gasjet.png"><img alt="_images/gasjet.png" src="_images/gasjet.png" style="width: 60%;" />
+</a>
+</figure>
+<p><cite>gasjet</cite> define a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This element is a box of
+material that can be placed in x and y and angled in all directions with respect to the center of the beam pipe.</p>
+<ul class="simple">
+<li><p>The gas jet size is independent of the beam pipe length. However its position is dependent to the center of the pipe
+along the beam axis.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Default</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>l</cite></p></td>
+<td><p>Length [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>material</cite></p></td>
+<td><p>Material of the jet</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>xdir</cite></p></td>
+<td><p>Size along x axis [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>ydir</cite></p></td>
+<td><p>Size along y axis [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>zdir</cite></p></td>
+<td><p>Size along z axis [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>phi</cite></p></td>
+<td><p>Angle along x axis [rad]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>theta</cite></p></td>
+<td><p>Angle along y axis [rad]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>psi</cite></p></td>
+<td><p>Angle along z axis [rad]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
+<li><p>The <a class="reference internal" href="#offsets-and-tilts"><span class="std std-ref">Offsets &amp; Tilts - Component Misalignment</span></a> may also be specified.</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gj</span><span class="p">:</span> <span class="n">gasjet</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;G4_AIR&quot;</span><span class="p">,</span> <span class="n">offsetX</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">offsetY</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+            <span class="n">xdir</span><span class="o">=</span><span class="mf">0.07</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">ydir</span><span class="o">=</span><span class="mf">0.07</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">zdir</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="offsets-tilts-component-misalignment">
 <span id="offsets-and-tilts"></span><h2>Offsets &amp; Tilts - Component Misalignment<a class="headerlink" href="#offsets-tilts-component-misalignment" title="Link to this heading"></a></h2>
@@ -3848,7 +4231,7 @@ as all BLMs use this scorer.</span><a class="headerlink" href="#id16" title="Lin
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Jul 06, 2025.
+      <span class="lastupdated">Last updated on Oct 13, 2025.
       </span></p>
   </div>
 

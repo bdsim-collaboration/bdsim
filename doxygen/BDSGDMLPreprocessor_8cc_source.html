@@ -400,60 +400,71 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>  <span class="keyword">auto</span> search = std::find(<a class="code hl_variable" href="classBDSGDMLPreprocessor.html#a9c159d3fe529359a41f7789c2fce09a6">ignoreNodes</a>.begin(), <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#a9c159d3fe529359a41f7789c2fce09a6">ignoreNodes</a>.end(), thisNodeName);</div>
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>  <span class="keywordflow">if</span> (search != <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#a9c159d3fe529359a41f7789c2fce09a6">ignoreNodes</a>.end())</div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    {<span class="keywordflow">return</span>;} <span class="comment">// ignore this node</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    {ProcessAttributes(node-&gt;getAttributes(), prefix);}</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>}</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
-<div class="foldopen" id="foldopen00320" data-start="{" data-end="}">
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno"><a class="line" href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">  320</a></span>G4String <a class="code hl_function" href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">BDSGDMLPreprocessor::ProcessedNodeName</a>(<span class="keyword">const</span> G4String&amp; nodeName,</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>                                                <span class="keyword">const</span> G4String&amp; prefix)</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>{<span class="keywordflow">return</span> prefix + <span class="stringliteral">&quot;_&quot;</span> + nodeName;}</div>
-</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (thisNodeName == <span class="stringliteral">&quot;property&quot;</span>)</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    {</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>      ProcessAttributes(node-&gt;getAttributes(), prefix, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    }</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    {ProcessAttributes(node-&gt;getAttributes(), prefix);}</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>}</div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="keywordtype">void</span> BDSGDMLPreprocessor::ProcessAttributes(DOMNamedNodeMap* attributeMap,</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                                            <span class="keyword">const</span> G4String&amp;  prefix)</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>{</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  <span class="keywordflow">if</span> (!attributeMap)</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    {<span class="keywordflow">return</span>;}</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>  <span class="keywordflow">for</span> (XMLSize_t i = 0; i &lt; attributeMap-&gt;getLength(); i++)</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    {</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>      DOMNode* attr = attributeMap-&gt;item(i);</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>      std::string name = XMLString::transcode(attr-&gt;getNodeValue());</div>
+<div class="foldopen" id="foldopen00324" data-start="{" data-end="}">
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno"><a class="line" href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">  324</a></span>G4String <a class="code hl_function" href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">BDSGDMLPreprocessor::ProcessedNodeName</a>(<span class="keyword">const</span> G4String&amp; nodeName,</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                                                <span class="keyword">const</span> G4String&amp; prefix)</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>{<span class="keywordflow">return</span> prefix + <span class="stringliteral">&quot;_&quot;</span> + nodeName;}</div>
+</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="keywordtype">void</span> BDSGDMLPreprocessor::ProcessAttributes(DOMNamedNodeMap* attributeMap,</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>                                            <span class="keyword">const</span> G4String&amp;  prefix,</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>                                            <span class="keywordtype">bool</span>             property)</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>{</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>  <span class="keywordflow">if</span> (!attributeMap)</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    {<span class="keywordflow">return</span>;}</div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>      <span class="keyword">auto</span> search = std::find(<a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ada115421ce369bccfa0b7f77b41cdf11">ignoreAttrs</a>.begin(), <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ada115421ce369bccfa0b7f77b41cdf11">ignoreAttrs</a>.end(), name);</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>      <span class="keywordflow">if</span> (search != <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ada115421ce369bccfa0b7f77b41cdf11">ignoreAttrs</a>.end())</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        {<span class="keywordflow">continue</span>;} <span class="comment">// ignore this attribute</span></div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>      <span class="keywordflow">if</span> (XMLString::compareIString(attr-&gt;getNodeName(),</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>                                    XMLString::transcode(<span class="stringliteral">&quot;name&quot;</span>)) == 0)</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        {</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>          std::string newName = <a class="code hl_function" href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">ProcessedNodeName</a>(name, prefix);</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>          attr-&gt;setNodeValue(XMLString::transcode(newName.c_str()));</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        }</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>      <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        {</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>          std::string expression = XMLString::transcode(attr-&gt;getNodeValue());</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>          <span class="comment">// Iterate over all the names that have been defined.</span></div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; defined_name : <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ac03785a2d3f6986eebd992720129feb1">names</a>)</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            {</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>              <span class="comment">// Check if whole name is found (don&#39;t match substrings).</span></div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>              <span class="comment">// \\b = word boundary.  $&amp; = the matched string.</span></div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>              std::regex whole_name(std::string(<span class="stringliteral">&quot;\\b&quot;</span>) + defined_name + <span class="stringliteral">&quot;\\b&quot;</span>);</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>              expression = std::regex_replace(expression, whole_name, prefix + <span class="stringliteral">&quot;_$&amp;&quot;</span>);</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>            }</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>          attr-&gt;setNodeValue(XMLString::transcode((expression).c_str()));</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        }</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    }</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>}</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="comment">// insert empty function to avoid no symbols warning</span></div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="keywordtype">void</span> _SymbolToPreventWarningGDML(){;}</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>  <span class="keywordflow">for</span> (XMLSize_t i = 0; i &lt; attributeMap-&gt;getLength(); i++)</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    {</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>      DOMNode* attr = attributeMap-&gt;item(i);</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>      std::string name = XMLString::transcode(attr-&gt;getNodeValue());</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>      <span class="keyword">auto</span> search = std::find(<a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ada115421ce369bccfa0b7f77b41cdf11">ignoreAttrs</a>.begin(), <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ada115421ce369bccfa0b7f77b41cdf11">ignoreAttrs</a>.end(), name);</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>      <span class="keywordflow">if</span> (search != <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ada115421ce369bccfa0b7f77b41cdf11">ignoreAttrs</a>.end())</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        {<span class="keywordflow">continue</span>;} <span class="comment">// ignore this attribute</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>      <span class="comment">// the property names should be not appended as Geant4 is expecting RINDEX etc,</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>      <span class="comment">// not prefix_RINDEX</span></div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>      <span class="keywordflow">if</span> (XMLString::compareIString(attr-&gt;getNodeName(),</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>                                    XMLString::transcode(<span class="stringliteral">&quot;name&quot;</span>)) == 0 &amp;&amp; property)</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        {<span class="keywordflow">continue</span>;}</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>      <span class="keywordflow">if</span> (XMLString::compareIString(attr-&gt;getNodeName(),</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                                    XMLString::transcode(<span class="stringliteral">&quot;name&quot;</span>)) == 0)</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        {</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>          std::string newName = <a class="code hl_function" href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">ProcessedNodeName</a>(name, prefix);</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>          attr-&gt;setNodeValue(XMLString::transcode(newName.c_str()));</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        }</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>      <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        {</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>          std::string expression = XMLString::transcode(attr-&gt;getNodeValue());</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>          <span class="comment">// Iterate over all the names that have been defined.</span></div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; defined_name : <a class="code hl_variable" href="classBDSGDMLPreprocessor.html#ac03785a2d3f6986eebd992720129feb1">names</a>)</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>            {</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>              <span class="comment">// Check if whole name is found (don&#39;t match substrings).</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>              <span class="comment">// \\b = word boundary.  $&amp; = the matched string.</span></div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>              std::regex whole_name(std::string(<span class="stringliteral">&quot;\\b&quot;</span>) + defined_name + <span class="stringliteral">&quot;\\b&quot;</span>);</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>              expression = std::regex_replace(expression, whole_name, prefix + <span class="stringliteral">&quot;_$&amp;&quot;</span>);</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>            }</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>          attr-&gt;setNodeValue(XMLString::transcode((expression).c_str()));</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        }</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    }</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>}</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="comment">// insert empty function to avoid no symbols warning</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="keywordtype">void</span> _SymbolToPreventWarningGDML(){;}</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassBDSException_html"><div class="ttname"><a href="classBDSException.html">BDSException</a></div><div class="ttdoc">General exception with possible name of object and message.</div><div class="ttdef"><b>Definition</b> <a href="BDSException_8hh_source.html#l00034">BDSException.hh:35</a></div></div>
 <div class="ttc" id="aclassBDSGDMLPreprocessor_html"><div class="ttname"><a href="classBDSGDMLPreprocessor.html">BDSGDMLPreprocessor</a></div><div class="ttdoc">Process a GDML file to allow multiple file loading.</div><div class="ttdef"><b>Definition</b> <a href="BDSGDMLPreprocessor_8hh_source.html#l00054">BDSGDMLPreprocessor.hh:55</a></div></div>
-<div class="ttc" id="aclassBDSGDMLPreprocessor_html_a646f4108abc550e45281b916fbb11c0e"><div class="ttname"><a href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">BDSGDMLPreprocessor::ProcessedNodeName</a></div><div class="ttdeci">static G4String ProcessedNodeName(const G4String &amp;nodeName, const G4String &amp;prefix)</div><div class="ttdef"><b>Definition</b> <a href="BDSGDMLPreprocessor_8cc_source.html#l00320">BDSGDMLPreprocessor.cc:320</a></div></div>
+<div class="ttc" id="aclassBDSGDMLPreprocessor_html_a646f4108abc550e45281b916fbb11c0e"><div class="ttname"><a href="classBDSGDMLPreprocessor.html#a646f4108abc550e45281b916fbb11c0e">BDSGDMLPreprocessor::ProcessedNodeName</a></div><div class="ttdeci">static G4String ProcessedNodeName(const G4String &amp;nodeName, const G4String &amp;prefix)</div><div class="ttdef"><b>Definition</b> <a href="BDSGDMLPreprocessor_8cc_source.html#l00324">BDSGDMLPreprocessor.cc:324</a></div></div>
 <div class="ttc" id="aclassBDSGDMLPreprocessor_html_a9c159d3fe529359a41f7789c2fce09a6"><div class="ttname"><a href="classBDSGDMLPreprocessor.html#a9c159d3fe529359a41f7789c2fce09a6">BDSGDMLPreprocessor::ignoreNodes</a></div><div class="ttdeci">std::vector&lt; std::string &gt; ignoreNodes</div><div class="ttdoc">Nodes to ignore.</div><div class="ttdef"><b>Definition</b> <a href="BDSGDMLPreprocessor_8hh_source.html#l00079">BDSGDMLPreprocessor.hh:79</a></div></div>
 <div class="ttc" id="aclassBDSGDMLPreprocessor_html_ab15156345034998c42966a06eb62ed13"><div class="ttname"><a href="classBDSGDMLPreprocessor.html#ab15156345034998c42966a06eb62ed13">BDSGDMLPreprocessor::PreprocessFile</a></div><div class="ttdeci">G4String PreprocessFile(const G4String &amp;file, const G4String &amp;prefix, G4bool preprocessSchema=true)</div><div class="ttdef"><b>Definition</b> <a href="BDSGDMLPreprocessor_8cc_source.html#l00138">BDSGDMLPreprocessor.cc:138</a></div></div>
 <div class="ttc" id="aclassBDSGDMLPreprocessor_html_ac03785a2d3f6986eebd992720129feb1"><div class="ttname"><a href="classBDSGDMLPreprocessor.html#ac03785a2d3f6986eebd992720129feb1">BDSGDMLPreprocessor::names</a></div><div class="ttdeci">std::vector&lt; std::string &gt; names</div><div class="ttdoc">Names to replace.</div><div class="ttdef"><b>Definition</b> <a href="BDSGDMLPreprocessor_8hh_source.html#l00081">BDSGDMLPreprocessor.hh:81</a></div></div>
@@ -469,7 +480,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 6 2025 16:37:48 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:13:48 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

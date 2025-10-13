@@ -426,10 +426,22 @@ filter the particles they can handle themselves.</p></li>
 </ul>
 <section id="new-features">
 <h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New Gabor lens beam line component. Constructed with a radial electric field that would be generated
+with a confined plasma in a Penning-Malmberg trap configuration. The electric and magnetic confinement
+fields are not constructed.</p></li>
+</ul>
 <p><strong>Analysis</strong></p>
 <ul class="simple">
 <li><p>New <code class="code docutils literal notranslate"><span class="pre">CreateEmptyBdskimFile</span></code> in the <code class="code docutils literal notranslate"><span class="pre">DataDummyClass</span></code> to give this function in pybdsim
 for easy customised skimming in Python.</p></li>
+</ul>
+<p><strong>Bunch Distributions</strong></p>
+<ul class="simple">
+<li><p>New <code class="code docutils literal notranslate"><span class="pre">slowext</span></code> (slow extraction) distribution for a linear sweep in momentum with time. Also,
+other distributions with each type of Gaussian have been added: <code class="code docutils literal notranslate"><span class="pre">gauss-slow-ext</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">gauss-slow-ext</span></code>, <code class="code docutils literal notranslate"><span class="pre">gauss-twiss-slow-ext</span></code> where the Gaussian part is first generated
+and the slow extraction sweep added on top.</p></li>
 </ul>
 <p><strong>Fields</strong></p>
 <ul class="simple">
@@ -481,6 +493,8 @@ accordingly.</p></td>
 <section id="general-updates">
 <h3>General Updates<a class="headerlink" href="#general-updates" title="Link to this heading"></a></h3>
 <ul class="simple">
+<li><p>Bunch distributions now accepts hyphenated versions of the names, e.g. <code class="code docutils literal notranslate"><span class="pre">gausstwiss</span></code> and
+<code class="code docutils literal notranslate"><span class="pre">gauss-twiss</span></code> are both accepted.</p></li>
 <li><p>Build configuration now requires CMake 3.7 or greater.</p></li>
 <li><p>The interface for custom components has changed due to the new beamline integral class and object.
 The example has been updated accordingly.</p></li>
@@ -4751,7 +4765,7 @@ simpler / increased performance</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Jul 06, 2025.
+      <span class="lastupdated">Last updated on Oct 13, 2025.
       </span></p>
   </div>
 

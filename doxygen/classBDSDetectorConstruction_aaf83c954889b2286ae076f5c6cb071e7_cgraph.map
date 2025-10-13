@@ -1,37 +1,39 @@
 <map id="BDSDetectorConstruction::BuildPhysicsBias" name="BDSDetectorConstruction::BuildPhysicsBias">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,471,192,511"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,507,192,547"/>
 <area shape="rect" id="Node000002" href="$classBDSAcceleratorComponentRegistry.html#a75e897bed4934444d666523e227c0ad9" title=" " alt="" coords="240,5,493,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,470,104,394,124,285,141,225,166,166,198,111,238,62,253,50,256,54,242,66,202,114,170,169,146,227,129,286,109,395,103,471"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,506,101,425,108,368,119,306,137,241,162,176,195,116,238,62,253,50,256,54,242,66,199,119,167,179,142,242,125,307,113,369,107,425,102,506"/>
 <area shape="rect" id="Node000003" href="$classBDSDetectorConstruction.html#a2f02959ae77d329199cae76c0b420827" title="Function that creates physics biasing cross section." alt="" coords="273,120,460,160"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,470,113,412,138,334,156,291,179,250,206,211,238,177,259,162,262,166,242,181,210,214,183,252,161,294,143,335,118,414,106,471"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="100,506,110,443,133,354,152,306,175,259,203,215,238,177,259,162,262,166,242,181,208,219,179,262,156,309,139,356,115,444,105,507"/>
 <area shape="rect" id="Node000005" href="$classBDSParser.html#accf6d777ceb4b8e0123d5652c3799d4a" title="Return biasing list." alt="" coords="588,37,756,62"/>
-<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="98,470,104,399,125,300,142,246,167,194,198,146,238,106,256,98,286,90,372,76,574,55,575,60,373,81,287,95,258,103,242,110,202,150,171,197,147,248,130,301,110,400,103,471"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="97,506,102,430,108,378,120,320,137,261,162,204,195,151,238,106,256,98,286,90,372,76,574,54,575,60,372,81,287,95,258,103,242,110,200,154,167,206,142,263,125,322,114,379,107,430,103,507"/>
 <area shape="rect" id="Node000006" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="596,185,748,210"/>
-<area shape="poly" id="edge24_Node000001_Node000006" title=" " alt="" coords="101,470,114,417,139,348,157,312,180,277,207,246,239,220,265,209,301,200,390,190,490,188,582,190,582,195,490,193,391,195,302,205,267,214,241,225,210,250,184,280,162,314,144,350,119,419,106,471"/>
+<area shape="poly" id="edge25_Node000001_Node000006" title=" " alt="" coords="100,506,110,448,134,368,152,327,175,287,204,250,239,220,265,208,300,199,390,189,490,187,583,189,582,195,490,192,390,195,301,204,267,213,241,225,208,254,179,290,157,329,139,370,115,449,105,507"/>
 <area shape="rect" id="Node000008" href="$classGMAD_1_1FastList.html#ae355744c0dcf1832fc4caf39349fd3e8" title="Whether the list is empty." alt="" coords="281,299,452,325"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="110,469,160,401,196,364,239,334,267,322,269,327,241,338,200,368,164,405,114,472"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="106,505,125,468,153,421,191,373,214,352,239,334,267,321,269,326,241,338,217,356,195,377,158,424,129,471,111,508"/>
 <area shape="rect" id="Node000009" href="$classBDSAcceleratorComponent.html#a8d53ea16ef6262e013a3e98e63e5a008" title="Return a set of logical volumes excluding the ones in the &#39;vacuum&#39; set." alt="" coords="253,349,480,403"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="131,468,181,440,239,412,256,406,258,410,241,417,184,445,134,473"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="118,504,170,459,203,434,239,412,251,406,253,411,241,417,206,438,174,463,122,508"/>
 <area shape="rect" id="Node000011" href="$classBDSAcceleratorComponent.html#a8212b56495a9eb9832cb052370b10f3d" title="Access the &#39;vacuum&#39; volume(s) in this component if any. Default is empty set." alt="" coords="254,427,479,482"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="192,476,240,469,241,474,192,481"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="173,504,251,483,252,488,175,509"/>
 <area shape="rect" id="Node000012" href="$classBDSAcceleratorComponent.html#ad70028a3e8bfb33f5fb4f6be3080e166" title="Access the bias list copied from parser." alt="" coords="267,507,466,547"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="192,501,254,509,253,514,192,506"/>
-<area shape="rect" id="Node000013" href="$classBDSAcceleratorComponent.html#aaac08aeb07aaa282dd2146b506882921" title="Access the bias list copied from parser." alt="" coords="267,571,466,611"/>
-<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="138,509,186,533,241,556,265,564,263,569,239,561,184,538,135,513"/>
-<area shape="rect" id="Node000014" href="$classBDSAcceleratorComponent.html#a297ada7fdf4679780a55566b3d3cddd4" title="The name of the component without modification." alt="" coords="267,635,466,675"/>
-<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="118,509,169,565,203,595,241,620,256,627,253,632,239,625,200,599,165,569,114,513"/>
-<area shape="rect" id="Node000015" href="$classBDSParser.html#a855acf5102edf1b14fc93cb3b3eb1558" title="Return options." alt="" coords="281,699,452,725"/>
-<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="111,510,129,548,157,596,195,644,217,666,241,684,269,698,267,703,239,689,214,670,191,648,153,599,124,551,106,512"/>
-<area shape="rect" id="Node000016" href="$classBDSAcceleratorComponentRegistry.html#a07d343cc778dcae7bc5b378dd8e81c3a" title="Singleton accessor." alt="" coords="240,749,493,789"/>
-<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="108,510,124,556,151,617,190,680,214,709,242,734,251,740,248,745,238,738,210,713,186,683,146,620,119,558,103,512"/>
-<area shape="rect" id="Node000018" href="$classBDSBLMRegistry.html#a274f58a87e200a1f1079c81cb6efb720" title="Accessor for registry." alt="" coords="270,814,463,839"/>
-<area shape="poly" id="edge18_Node000001_Node000018" title=" " alt="" coords="105,510,117,568,141,647,159,689,181,730,209,767,242,799,259,810,256,815,238,803,205,771,177,733,154,692,136,649,112,570,100,511"/>
-<area shape="rect" id="Node000020" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="289,235,445,275"/>
-<area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="106,469,124,430,152,380,191,328,213,305,239,284,275,267,277,271,241,289,217,309,195,332,157,382,129,432,111,471"/>
-<area shape="rect" id="Node000023" href="$namespaceBDS.html#ac14ed2e56cb979567c3979c34699ae15" title="Split a string on whitespace and return a vector of these &#39;words&#39;." alt="" coords="276,863,457,889"/>
-<area shape="poly" id="edge25_Node000001_Node000023" title=" " alt="" coords="104,511,112,577,134,670,152,719,175,768,205,812,242,850,264,863,261,868,238,854,201,815,171,770,147,721,129,671,107,578,99,511"/>
-<area shape="rect" id="Node000024" href="$classBDSAcceleratorModel.html#a13e1cca9ba6aa2d998861ce9cee4614d" title="Returns pointer to a set of logical volumes. If no set by that name exits, create it." alt="" coords="285,913,449,953"/>
-<area shape="poly" id="edge26_Node000001_Node000024" title=" " alt="" coords="103,511,109,584,129,689,147,746,171,802,202,854,242,899,273,918,270,923,238,903,198,857,166,805,142,748,124,691,104,585,98,511"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="192,524,254,524,254,529,192,529"/>
+<area shape="rect" id="Node000013" href="$classBDSAcceleratorComponent.html#a2084beb4b24d8739938785743a14d068" title="Access the bias list copied from parser." alt="" coords="267,571,466,611"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="184,544,270,565,269,570,183,549"/>
+<area shape="rect" id="Node000014" href="$classBDSAcceleratorComponent.html#aaac08aeb07aaa282dd2146b506882921" title="Access the bias list copied from parser." alt="" coords="267,635,466,675"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="125,545,177,583,241,620,260,628,258,633,239,625,174,588,122,549"/>
+<area shape="rect" id="Node000015" href="$classBDSAcceleratorComponent.html#a297ada7fdf4679780a55566b3d3cddd4" title="The name of the component without modification." alt="" coords="267,699,466,739"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="114,545,164,614,200,652,241,684,256,692,253,697,239,689,196,656,160,618,110,548"/>
+<area shape="rect" id="Node000016" href="$classBDSParser.html#a855acf5102edf1b14fc93cb3b3eb1558" title="Return options." alt="" coords="281,763,452,789"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="109,546,126,589,153,645,192,701,215,727,241,748,270,762,267,767,239,753,211,731,187,705,148,647,121,591,104,548"/>
+<area shape="rect" id="Node000017" href="$classBDSAcceleratorComponentRegistry.html#a07d343cc778dcae7bc5b378dd8e81c3a" title="Singleton accessor." alt="" coords="240,813,493,853"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="107,546,121,597,147,666,187,737,212,770,242,798,250,804,247,808,238,802,208,773,182,740,142,668,116,599,102,547"/>
+<area shape="rect" id="Node000019" href="$classBDSBLMRegistry.html#a274f58a87e200a1f1079c81cb6efb720" title="Accessor for registry." alt="" coords="270,878,463,903"/>
+<area shape="poly" id="edge19_Node000001_Node000019" title=" " alt="" coords="105,546,114,609,137,696,155,742,178,787,207,828,242,863,259,874,256,879,238,867,203,831,173,789,150,744,132,697,109,610,99,547"/>
+<area shape="rect" id="Node000021" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="289,235,445,275"/>
+<area shape="poly" id="edge21_Node000001_Node000021" title=" " alt="" coords="103,506,119,460,147,400,186,338,211,309,238,284,274,266,277,271,242,289,214,313,190,341,152,402,124,462,108,508"/>
+<area shape="rect" id="Node000024" href="$namespaceBDS.html#ac14ed2e56cb979567c3979c34699ae15" title="Split a string on whitespace and return a vector of these &#39;words&#39;." alt="" coords="276,927,457,953"/>
+<area shape="poly" id="edge26_Node000001_Node000024" title=" " alt="" coords="103,547,110,618,130,718,148,772,172,824,203,873,242,914,265,928,262,932,238,918,199,876,167,827,143,774,125,719,105,619,98,547"/>
+<area shape="rect" id="Node000025" href="$classBDSAcceleratorModel.html#a13e1cca9ba6aa2d998861ce9cee4614d" title="Returns pointer to a set of logical volumes. If no set by that name exits, create it." alt="" coords="285,977,449,1017"/>
+<area shape="poly" id="edge27_Node000001_Node000025" title=" " alt="" coords="103,547,107,624,114,678,126,737,143,798,168,859,200,915,242,963,273,983,270,987,238,967,196,918,163,861,138,800,121,738,109,679,102,625,97,547"/>
 <area shape="rect" id="Node000004" href="$classGMAD_1_1FastList.html#aeb35ebf343b86b642d59cb0ae9164c2d" title=" " alt="" coords="596,86,748,111"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="460,125,582,108,583,113,460,130"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="442,117,492,99,516,85,540,71,574,61,575,66,542,76,518,89,494,104,444,122"/>
@@ -40,13 +42,13 @@
 <area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="460,140,605,144,605,149,460,145"/>
 <area shape="rect" id="Node000010" href="$classBDSGeometryComponent.html#a6265679c3434f9b57b8fc3eb7e2761fa" title="Return all logical volumes that should be used for biasing minus any that are in the excluded set." alt="" coords="577,356,767,396"/>
 <area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="480,373,563,373,563,379,480,379"/>
-<area shape="rect" id="Node000017" href="$classBDSAcceleratorComponentRegistry.html#adacf13f13f1f0c933179eca7b1472b5f" title="Default constructor is private as singleton." alt="" coords="541,749,803,789"/>
-<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="494,767,527,767,527,772,494,772"/>
-<area shape="rect" id="Node000019" href="$classBDSBLMRegistry.html#a56669586239b295500d7ca6f14444723" title="Private constructor to enforce singleton pattern." alt="" coords="549,814,795,839"/>
-<area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="463,824,535,824,535,829,463,829"/>
-<area shape="poly" id="edge22_Node000020_Node000006" title=" " alt="" coords="444,238,590,210,591,215,445,243"/>
-<area shape="rect" id="Node000021" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="590,235,754,275"/>
-<area shape="poly" id="edge21_Node000020_Node000021" title=" " alt="" coords="445,252,576,252,576,257,445,257"/>
-<area shape="rect" id="Node000022" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="586,299,758,325"/>
-<area shape="poly" id="edge23_Node000020_Node000022" title=" " alt="" coords="445,267,591,294,590,299,444,272"/>
+<area shape="rect" id="Node000018" href="$classBDSAcceleratorComponentRegistry.html#adacf13f13f1f0c933179eca7b1472b5f" title="Default constructor is private as singleton." alt="" coords="541,813,803,853"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="494,831,527,831,527,836,494,836"/>
+<area shape="rect" id="Node000020" href="$classBDSBLMRegistry.html#a56669586239b295500d7ca6f14444723" title="Private constructor to enforce singleton pattern." alt="" coords="549,878,795,903"/>
+<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="463,888,535,888,535,893,463,893"/>
+<area shape="poly" id="edge23_Node000021_Node000006" title=" " alt="" coords="444,238,590,210,591,215,445,243"/>
+<area shape="rect" id="Node000022" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="590,235,754,275"/>
+<area shape="poly" id="edge22_Node000021_Node000022" title=" " alt="" coords="445,252,576,252,576,257,445,257"/>
+<area shape="rect" id="Node000023" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="586,299,758,325"/>
+<area shape="poly" id="edge24_Node000021_Node000023" title=" " alt="" coords="445,267,591,294,590,299,444,272"/>
 </map>
