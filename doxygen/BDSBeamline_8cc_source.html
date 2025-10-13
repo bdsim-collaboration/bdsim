@@ -679,7 +679,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>  <span class="comment">// apply position</span></div>
 <div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>  <span class="comment">// transform the local dx,dy,dz displacement into the global frame then apply</span></div>
 <div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>  G4ThreeVector delta = G4ThreeVector(dx, dy, dz).transform(*<a class="code hl_variable" href="classBDSBeamline.html#a5211af5144b447e51c06c3652b35c904">previousReferenceRotationEnd</a>);</div>
-<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>  <a class="code hl_variable" href="classBDSBeamline.html#a10befc43986ac7e9fd118d8fe11fbc19">previousReferencePositionEnd</a> = <a class="code hl_variable" href="classBDSBeamline.html#a10befc43986ac7e9fd118d8fe11fbc19">previousReferencePositionEnd</a> + G4ThreeVector(dx, dy, dz);</div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>  <a class="code hl_variable" href="classBDSBeamline.html#a10befc43986ac7e9fd118d8fe11fbc19">previousReferencePositionEnd</a> = <a class="code hl_variable" href="classBDSBeamline.html#a10befc43986ac7e9fd118d8fe11fbc19">previousReferencePositionEnd</a> + delta;</div>
 <div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>  </div>
 <div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>  <span class="comment">// apply rotation</span></div>
 <div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>  G4RotationMatrix trRotInverse = component-&gt;rotationMatrix.inverse();</div>
@@ -1221,7 +1221,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2025 20:13:48 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Oct 13 2025 20:40:07 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
