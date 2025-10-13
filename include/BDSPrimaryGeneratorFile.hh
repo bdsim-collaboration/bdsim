@@ -79,6 +79,10 @@ public:
   /// Return whether at least 1 event has passed a filter in the file. If we have no
   /// events in the file that pass then we will loop infinitely to find one.
   G4bool OKToLoopFile() const;
+
+  /// Mark internally that we are recreating and that therefore do not check if any
+  /// particles have been successfully loaded before looping.
+  void SetRecreationOn() {recreate = true;}
   
   /// Accessor.
   G4long NEventsReadThatPassedFilters() const {return nEventsReadThatPassedFilters;}
@@ -100,6 +104,7 @@ protected:
 
   G4bool loopFile;
   BDSBunchEventGenerator* bunch;
+  G4bool recreate;
   G4bool endOfFileReached;
   G4bool vertexGeneratedSuccessfully;
   G4long currentFileEventIndex;
