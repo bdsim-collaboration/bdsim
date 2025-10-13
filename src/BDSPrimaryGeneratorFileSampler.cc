@@ -301,6 +301,6 @@ void BDSPrimaryGeneratorFileSampler::SkipEvents(G4long nEventsToSkip)
       msg += ") in this file.";
       throw BDSException("BDSBunchUserFile::RecreateAdvanceToEvent>", msg);
     }
-  G4long nToSkipSinglePass = nAvailable % nEventsToSkip;
+  G4long nToSkipSinglePass = nEventsToSkip % nEventsInFile;
   currentFileEventIndex = nToSkipSinglePass;
 }
