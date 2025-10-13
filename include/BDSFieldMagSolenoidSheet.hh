@@ -59,8 +59,6 @@ public:
                            G4double tiltX,
                            G4double tiltY,
                            G4double tiltZ,
-                           G4double offsetX,
-                           G4double offsetY,
                            G4double toleranceIn = 0.0);
   virtual ~BDSFieldMagSolenoidSheet(){;}
 
@@ -87,8 +85,6 @@ private:
   G4double rotateX;
   G4double rotateY;
   G4double rotateZ;
-  G4double offsetX;
-  G4double offsetY;
   G4double coilTolerance;
 };
 

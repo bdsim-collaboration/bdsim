@@ -50,8 +50,6 @@ public:
                            G4double tiltXIn,
                            G4double tiltYIn,
                            G4double tiltZIn,
-                           G4double offsetXIn,
-                           G4double offsetYIn,
                            G4double toleranceIn,
                            G4int  nSheetsIn);
   /// Alternative constructor for field factory that uses "field" (i.e. B) strength
@@ -79,8 +77,6 @@ private:
   G4double tiltX;
   G4double tiltY;
   G4double tiltZ;
-  G4double offsetX;
-  G4double offsetY;
   G4double coilTolerance;
   G4int    nSheetsBlock;
   G4double currentDensity;
