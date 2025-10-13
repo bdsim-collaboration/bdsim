@@ -4,7 +4,11 @@ RUN apt install -y libhepmc3-dev
 
 # Python support tools (pybdsim, pymadx, pymad8, pytransport, pyg4ometry)
 RUN python3 -m venv /tmp/venv-bdsim &&\
-    /tmp/venv-bdsim/bin/pip install pybdsim pymadx pymad8 pytransport ipython
+    /tmp/venv-bdsim/bin/pip install ipython &&\
+    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pytransport.git@develop
+    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymad8.git@develop &&\
+    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymadx.git@develop &&\
+    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pybdsim.git@develop
 
 # build BDSIM
 RUN source /tmp/root/bin/thisroot.sh && \
