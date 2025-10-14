@@ -12,7 +12,7 @@ RUN python3 -m venv /tmp/venv-bdsim &&\
 
 
 # build BDSIM
-RUN source /tmp/root/bin/thisroot.sh && \
+RUN source /bdsim/root/bin/thisroot.sh && \
     git clone https://github.com/bdsim-collaboration/bdsim.git &&\
     cd bdsim && git checkout develop && cd ../ &&\
     mkdir bdsim-build && cd bdsim-build &&\
