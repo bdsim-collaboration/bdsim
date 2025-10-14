@@ -36,15 +36,15 @@ class BDSLaser
 {
 public:
   BDSLaser(G4double wavelengthIn,
-	   G4double m2In,
-	   G4double pulseDurationIn,
-	   G4double pulseEnergyIn,
-	   G4double sigma0In,
-  	   G4double laserArrivalTimeIn,
-       G4double T0In,
-       G4ThreeVector polarizationIn,
-       G4bool   ignoreRayleighRangeIn = false);
-  BDSLaser(G4double wavelengthIn);
+					 G4double m2In,
+					 G4double pulseDurationIn,
+					 G4double pulseEnergyIn,
+					 G4double sigma0In,
+					 G4double laserArrivalTimeIn,
+					 G4double T0In,
+					 const G4ThreeVector& polarizationIn,
+					 G4bool   ignoreRayleighRangeIn = false);
+  explicit BDSLaser(G4double wavelengthIn);
   ~BDSLaser();
   
   //this needs to be called based upon particle coordinates
@@ -84,8 +84,8 @@ protected:
   G4double sigma0;
   G4double laserArrivalTime;
   G4double T0;
-  G4bool   ignoreRayleighRange;
   G4ThreeVector polarization;
+	G4bool   ignoreRayleighRange;
 
   const static std::vector<G4double> wavelengths;
   const static std::vector<G4String> colours;
