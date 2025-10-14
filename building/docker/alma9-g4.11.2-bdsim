@@ -3,12 +3,12 @@ FROM bdsim/alma9-g4.11.2
 RUN yum install -y HepMC3-devel
 
 # Python support tools (pybdsim, pymadx, pymad8, pytransport, pyg4ometry)
-RUN python3 -m venv /tmp/venv-bdsim &&\
-    /tmp/venv-bdsim/bin/pip install ipython &&\
-    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pytransport.git@develop &&\
-    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymad8.git@develop &&\
-    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymadx.git@develop &&\
-    /tmp/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pybdsim.git@develop
+RUN python3 -m venv /bdsim/venv-bdsim &&\
+    /bdsim/venv-bdsim/bin/pip install ipython &&\
+    /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pytransport.git@develop &&\
+    /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymad8.git@develop &&\
+    /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymadx.git@develop &&\
+    /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pybdsim.git@develop
 
 # build BDSIM
 RUN source /bdsim/root/bin/thisroot.sh && \
