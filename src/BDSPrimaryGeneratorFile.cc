@@ -48,6 +48,7 @@ BDSPrimaryGeneratorFile::BDSPrimaryGeneratorFile(G4bool loopFileIn,
                                                  BDSBunchEventGenerator* bunchIn):
   loopFile(loopFileIn),
   bunch(bunchIn),
+  recreate(false),
   endOfFileReached(false),
   vertexGeneratedSuccessfully(false),
   currentFileEventIndex(0),
@@ -86,7 +87,7 @@ G4long BDSPrimaryGeneratorFile::NEventsLeftInFile() const
 
 G4bool BDSPrimaryGeneratorFile::OKToLoopFile() const
 {
-  return nEventsReadThatPassedFilters > 0;
+  return nEventsReadThatPassedFilters > 0 || recreate;
 }
 
 BDSPrimaryGeneratorFile* BDSPrimaryGeneratorFile::ConstructGenerator(const GMAD::Beam& beam,
@@ -137,7 +138,10 @@ BDSPrimaryGeneratorFile* BDSPrimaryGeneratorFile::ConstructGenerator(const GMAD:
       
       // common bits
       if (recreate)
-        {generatorFromFile->RecreateAdvanceToEvent(eventOffset);}
+        {
+          generatorFromFile->RecreateAdvanceToEvent(eventOffset);
+          generatorFromFile->SetRecreationOn();
+        }
       if (beam.distrFileMatchLength)
         {
           G4int nEventsPerLoop = (G4int)generatorFromFile->NEventsLeftInFile();

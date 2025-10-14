@@ -134,6 +134,9 @@ Bug Fixes
 * The :code:`userfile` bunch distribution was fixed for different particle species at sub-relativistic
   energies. The mass of the nominal design beam particle was used instead leading to a wrong total energy
   even for the correctly specified momentum in the distribution file.
+* Fix loading of a BDSIM output sampler bunch distribution or a HEPMC file loading when
+  recreating a file and the chosen event offset requires looping the file. It would loop
+  and advance to the same place proplery.
 
 
 Output Changes
