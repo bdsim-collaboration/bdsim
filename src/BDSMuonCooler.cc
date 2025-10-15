@@ -150,7 +150,7 @@ void BDSMuonCooler::BuildCoils()
       coilLV->SetVisAttributes(coilVises[info.material]);
       
       auto coilPV = new G4PVPlacement(nullptr,
-                                      G4ThreeVector(0,0,info.offsetZ),
+                                      G4ThreeVector(info.offsetX,info.offsetY,info.offsetZ),
                                       coilLV,
                                       baseName + "_pv",
                                       containerLogicalVolume,
