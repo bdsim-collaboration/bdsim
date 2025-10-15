@@ -49,7 +49,7 @@ jobs:
           rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake
 
           # ROOT 
-          source /tmp/root/bin/thisroot.sh
+          source /bdsim/root/bin/thisroot.sh
 
           # git trusted dir 
           git config --global --add safe.directory $GITHUB_WORKSPACE
