@@ -154,6 +154,7 @@ BDSOutput::BDSOutput(const G4String& baseFileNameIn,
   storeTrajectoryStepPoints  = g->StoreTrajectoryStepPoints();
   storeTrajectoryStepPointLast = g->StoreTrajectoryStepPointLast();
   storeTrajectoryOptions     = g->StoreTrajectoryOptions();
+  storePerEventHistos        = g->StorePerEventHistos();
   
   // easy option for everything - overwrite bools we've just set individually
   if (g->StoreSamplerAll())

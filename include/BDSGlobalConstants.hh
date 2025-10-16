@@ -290,6 +290,7 @@ public:
   inline G4bool   StoreSamplerRigidity()     const {return G4bool  (options.storeSamplerRigidity);}
   inline G4bool   StoreSamplerIon()          const {return G4bool  (options.storeSamplerIon);}
   inline G4bool   StoreModel()               const {return G4bool  (options.storeModel);}
+  inline G4bool   StorePerEventHistos()      const {return G4bool  (options.storePerEventHistos);}
   inline G4int    SamplersSplitLevel()       const {return G4int   (options.samplersSplitLevel);}
   inline G4int    ModelSplitLevel()          const {return G4int   (options.modelSplitLevel);}
   inline G4int    UprootCompatible()         const {return G4int   (options.uprootCompatible);}
