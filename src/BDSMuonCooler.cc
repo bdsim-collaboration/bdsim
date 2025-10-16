@@ -148,8 +148,12 @@ void BDSMuonCooler::BuildCoils()
       auto coilLV = new G4LogicalVolume(coilSolid, info.material, baseName + "_lv");
       RegisterLogicalVolume(coilLV);
       coilLV->SetVisAttributes(coilVises[info.material]);
-      
-      auto coilPV = new G4PVPlacement(nullptr,
+      G4RotationMatrix* rmCoil = new G4RotationMatrix();
+      rmCoil->rotateX(info.tiltX);
+      rmCoil->rotateY(info.tiltY);
+      rmCoil->rotateZ(info.tiltZ);
+      RegisterRotationMatrix(rmCoil);
+      auto coilPV = new G4PVPlacement(rmCoil,
                                       G4ThreeVector(info.offsetX,info.offsetY,info.offsetZ),
                                       coilLV,
                                       baseName + "_pv",
