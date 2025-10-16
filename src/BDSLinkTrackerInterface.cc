@@ -149,7 +149,7 @@ BDSParticleDefinition* BDSLinkTrackerInterface::prepareBDSParticleDefition(int p
 
 void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double py,
                                           double ct, double deltap, double chi,
-                                          double chargeRatio, double s,
+                                          double chargeRatio, double /*s*/,
                                           int trackid, int pdgid) {
 
   auto q = chargeRatio * referenceParticleDefinition->Charge();
@@ -191,7 +191,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
 
 void BDSLinkTrackerInterface::AddParticle(double x, double y,
                                           double px, double py, double pz,
-                                          double t, double s,
+                                          double t, double /*s*/,
                                           int trackid, int pdgid) {
   auto pdg = 0;
   auto q = 0.0;

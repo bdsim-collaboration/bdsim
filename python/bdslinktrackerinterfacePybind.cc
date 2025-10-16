@@ -281,11 +281,11 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
         }
     }
     // Count the number of secondary particles
-    size_t secondaryCount = 0;
+    int secondaryCount = 0;
     for (size_t i = 0; i < hitsCount; i++)
     {
         auto hit = (*hits)[i];
-        if (hit->externalParticleID != hit->externalParentID) { secondaryCount++; }
+        if (hit->externalParticleID != hit->externalParentID) { secondaryCount = secondaryCount+1; }
     }
 
     // The output arrays have slots for all particles, regardless of lost or not, and for secondary particles
@@ -404,7 +404,7 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
             // which corresponds to the energy in - energy out for this primary
 
             // reconstruct the incoming primary particle energy
-            G4double qprim = charge_ratio_ptr[i] * ref->Charge();
+            // G4double qprim = charge_ratio_ptr[i] * ref->Charge();
             G4double mass_ratio_prim = charge_ratio_ptr[i] / chi_ptr[i];
             G4double p_prim = ref->Momentum() * (delta_ptr[i] + 1) * mass_ratio_prim;
             G4double mass_prim = mass_ratio_prim * ref->Mass();
@@ -539,9 +539,9 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
         p.attr("lifetime") = std::numeric_limits<double>::infinity();
       }
       else if(mass > 0) { // need to have non zero mass
-        auto boosted_lifetime = h->coords.totalEnergy/mass*lifetime;
-        auto sampled_lifetime = -boosted_lifetime * std::log(G4UniformRand());
-        //std::cout << lifetime << " " << h->coords.totalEnergy << " " << mass << std::endl;
+        //vauto boosted_lifetime = h->coords.totalEnergy/mass*lifetime;
+        // auto sampled_lifetime = -boosted_lifetime * std::log(G4UniformRand());
+        // std::cout << lifetime << " " << h->coords.totalEnergy << " " << mass << std::endl;
         // p.attr("lifetime") = py::cast(boosted_lifetime);
 
         p.attr("lifetime") = std::numeric_limits<double>::infinity();
