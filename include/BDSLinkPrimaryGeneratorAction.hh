@@ -41,7 +41,7 @@ class BDSLinkPrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction
 public:
   /// Bunch must have a valid particle definition (ie not nullptr).
   BDSLinkPrimaryGeneratorAction(BDSBunch* bunchIn,
-				int*      currentElementIndexIn,
+                                int*      currentElementIndexIn,
                                 BDSLinkDetectorConstruction* constructionIn,
                                 G4bool    debugIn = false);
   virtual ~BDSLinkPrimaryGeneratorAction();

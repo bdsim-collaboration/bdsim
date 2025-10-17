@@ -37,8 +37,8 @@ class BDSLinkEventAction: public G4UserEventAction
 public:
   BDSLinkEventAction() = delete;
   BDSLinkEventAction(BDSOutput*        outputIn,
-		     BDSLinkRunAction* runActionIn,
-		     G4bool            debugIn = false);
+                     BDSLinkRunAction* runActionIn,
+                     G4bool            debugIn = false);
   virtual ~BDSLinkEventAction();
   
   virtual void BeginOfEventAction(const G4Event* evt);

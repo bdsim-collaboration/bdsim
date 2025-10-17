@@ -22,6 +22,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "parser.h"
 
+#include <exception>
 #include <cstdio>
 #include <iostream>
 
@@ -29,15 +30,20 @@ using namespace GMAD;
 
 int main(int argc, char *argv[])
 {
-  if(argc<2) {
-    std::cout << "GMAD parser needs an input file" << std::endl;
-    return 1;
-  }
-  if(argc>2) {
-    std::cout << "GMAD parser needs only one input file" << std::endl;
-    return 1;
-  }
-  Parser::Instance(std::string(argv[1]));
+  if(argc<2)
+    {
+      std::cout << "GMAD parser needs an input file" << std::endl;
+      return 1;
+    }
+  if(argc>2)
+    {
+      std::cout << "GMAD parser needs only one input file" << std::endl;
+      return 1;
+    }
+  try
+    {Parser::Instance(std::string(argv[1]));}
+  catch (std::exception& e)
+    {std::cerr << e.what() << std::endl; return 1;}
   return 0;
 }
 

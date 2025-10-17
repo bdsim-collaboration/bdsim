@@ -44,8 +44,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 
 BDSLinkEventAction::BDSLinkEventAction(BDSOutput*        outputIn,
-				       BDSLinkRunAction* runActionIn,
-				       G4bool            debugIn):
+                                       BDSLinkRunAction* runActionIn,
+                                       G4bool            debugIn):
   output(outputIn),
   runAction(runActionIn),
   debug(debugIn),

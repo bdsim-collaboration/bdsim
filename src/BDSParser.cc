@@ -41,7 +41,7 @@ BDSParser* BDSParser::Instance(const std::string& name)
 {
   if (instance)
     {
-      std::cerr << "WARNING BDSParser was already initialised!" << std::endl;
+      std::cerr << "WARNING BDSParser was already initialised! " << std::endl;
       delete instance;
     }
   instance = new BDSParser(name);
@@ -55,13 +55,21 @@ bool BDSParser::IsInitialised()
 
 BDSParser::~BDSParser()
 {
+  std::cout << "BDSParser::~BDSParser" << std::endl;
   instance = nullptr;
+  std::cout << "BDSParser::~BDSParser " << instance << std::endl;
 }
 
 BDSParser::BDSParser(const std::string& name):
   GMAD::Parser(name)
 {
   std::cout << __METHOD_NAME__ << "Using input file: "<< name << std::endl;
+}
+
+BDSParser::BDSParser()
+{
+  std::cout << __METHOD_NAME__ << "Only for python " << std::endl;
+  instance = this;
 }
 
 void BDSParser::AmalgamateBeam(const GMAD::Beam& execBeamIn,

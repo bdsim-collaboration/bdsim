@@ -74,7 +74,7 @@ void Material::print()const
 }
 
 // template specialisation for Array pointers, to be merged into templated function
-void Material::set_value(const std::string& property, Array* value)
+void Material::set_value(const std::string& property, Array* value, bool bExit)
 {
 #ifdef BDSDEBUG
   std::cout << "parser> Setting value " << std::setw(25) << std::left << property << std::endl;
@@ -94,6 +94,9 @@ void Material::set_value(const std::string& property, Array* value)
   else
     {
       std::cerr << "Error: parser> unknown material option \"" << property << "\", or doesn't expect vector type" << std::endl;
-      exit(1);
+      if(bExit)
+        {exit(1);}
+      else
+        {std::rethrow_exception(std::current_exception());} // to be caught by python
     }
 }

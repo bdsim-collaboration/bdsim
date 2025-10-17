@@ -50,9 +50,9 @@ public:
 
   /// Append particle to the bunch for tracking.
   void AddParticle(BDSParticleDefinition* particleDefinitionIn,
-		   const BDSParticleCoordsFull& coordsIn,
-		   int   externalParticleID,
-		   int   externalParentID);
+                   const BDSParticleCoordsFull& coordsIn,
+                   int   externalParticleID,
+                   int   externalParentID);
 
   /// Delete all particle objects in the bunch and clear the vector.
   void ClearParticles();

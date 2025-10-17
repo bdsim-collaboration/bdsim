@@ -41,9 +41,9 @@ public:
   virtual void EndOfRunAction(const G4Run* aRun);
 
   void AppendHits(G4int currentEventIndex,
-		              G4int externalParticleID,
-		              G4int externalParentID,
-		              const BDSHitsCollectionSamplerLink* hits);
+                  G4int externalParticleID,
+                  G4int externalParentID,
+                  const BDSHitsCollectionSamplerLink* hits);
 
   BDSHitsCollectionSamplerLink* SamplerHits() const {return allHits;}
   void ClearSamplerHits() {delete allHits; allHits = nullptr;}

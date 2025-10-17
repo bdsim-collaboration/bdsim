@@ -57,9 +57,9 @@ void BDSLinkRunAction::EndOfRunAction(const G4Run* /*aRun*/)
 {;}
 
 void BDSLinkRunAction::AppendHits(G4int currentEventIndex,
-				  G4int externalParticleID,
-				  G4int externalParentID,
-				  const BDSHitsCollectionSamplerLink* hits)
+                                  G4int externalParticleID,
+                                  G4int externalParentID,
+                                  const BDSHitsCollectionSamplerLink* hits)
 {
   if (!hits)
     {return;}

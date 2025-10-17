@@ -33,6 +33,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamPipeFactory.hh"
 #include "BDSBunch.hh"
 #include "BDSBunchFactory.hh"
+#include "BDSLinkBunch.hh"
 #include "BDSBunchSixTrackLink.hh"
 #include "BDSCavityFactory.hh"
 #include "BDSColours.hh"
@@ -83,12 +84,18 @@ BDSIMLink::BDSIMLink(BDSBunch* bunchIn):
   parser(nullptr),
   bdsOutput(nullptr),
   bdsBunch(bunchIn),
+  internalBdsBunch(false),
   runManager(nullptr),
   construction(nullptr),
   runAction(nullptr),
   currentElementIndex(0),
   userPhysicsList(nullptr)
-{;}
+{
+  if(!bdsBunch) {
+    bdsBunch = new BDSLinkBunch();
+    internalBdsBunch = true;
+  }
+}
 
 BDSIMLink::BDSIMLink(int argc, char** argv, bool usualPrintOutIn):
   ignoreSIGINT(false),
@@ -116,7 +123,14 @@ int BDSIMLink::Initialise(int argc,
     bool   protonsAndIonsOnly)
 {
   argcCache = argc;
-  argvCache = argv;
+  argvCache = new char*[argc + 1];  // +1 for null termination (optional)
+  for (int i = 0; i < argc; ++i) {
+    size_t len = std::strlen(argv[i]) + 1;  // +1 for null terminator
+    argvCache[i] = new char[len];
+    std::strcpy(argvCache[i], argv[i]);     // deep copy the string
+  }
+  argvCache[argc] = nullptr;  // optional: null-terminate array like execv expects
+
   usualPrintOut = usualPrintOutIn;
   initialisationResult = Initialise(minimumKineticEnergy, protonsAndIonsOnly);
   return initialisationResult;
@@ -433,6 +447,13 @@ BDSIMLink::~BDSIMLink()
   delete runManager;
   delete parser;
 
+  if (argvCache) {
+    for (int i = 0; i < argcCache; ++i) {
+      delete[] argvCache[i];
+    }
+    delete[] argvCache;
+  }
+
   if (usualPrintOut)
     {G4cout << __METHOD_NAME__ << "End of Run. Thank you for using BDSIM!" << G4endl;}
 }
@@ -488,6 +509,11 @@ double BDSIMLink::GetArcLengthOfLinkElement(const std::string& elementName)
   return GetArcLengthOfLinkElement(beamlineIndex);
 }
 
+BDSBunch* BDSIMLink::GetBunch() const
+{
+  return bdsBunch;
+}
+
 void BDSIMLink::SelectLinkElement(const std::string& elementName, G4bool debug)
 {
   if (debug)
@@ -505,40 +531,41 @@ void BDSIMLink::SelectLinkElement(int index, G4bool debug)
 }
 
 int BDSIMLink::AddLinkCollimatorJaw(const std::string& collimatorName,
-				     const std::string& materialName,
-				     double length,
-				     double halfApertureLeft,
-				     double halfApertureRight,
-				     double rotation,
-				     double xOffset,
-				     double yOffset,
-                     double jawTiltLeft,
-                     double jawTiltRight,
-				     bool   buildLeftJaw,
-				     bool   buildRightJaw,
-				     bool   isACrystal,
-				     double crystalAngle,
-				     bool   sampleIn)
+                                    const std::string& materialName,
+                                    double length,
+                                    double halfApertureLeft,
+                                    double halfApertureRight,
+                                    double rotation,
+                                    double xOffset,
+                                    double yOffset,
+                                    double jawTiltLeft,
+                                    double jawTiltRight,
+                                    bool   buildLeftJaw,
+                                    bool   buildRightJaw,
+                                    bool   isACrystal,
+                                    double crystalAngle,
+                                    bool   sampleIn)
 {
   G4GeometryManager* gm = G4GeometryManager::GetInstance();
   if (gm->IsGeometryClosed())
     {gm->OpenGeometry();}
 
-  G4int linkID = construction->AddLinkCollimatorJaw(collimatorName,
-				     materialName,
-				     length,
-				     halfApertureLeft,
-				     halfApertureRight,
-				     rotation,
-				     xOffset,
-				     yOffset,
-                     jawTiltLeft,
-                     jawTiltRight,
-				     buildLeftJaw,
-				     buildRightJaw,
-				     isACrystal,
-				     crystalAngle,
-				     sampleIn);
+  G4int linkID = construction->AddLinkCollimatorJaw(
+                             collimatorName,
+                             materialName,
+                             length,
+                             halfApertureLeft,
+                             halfApertureRight,
+                             rotation,
+                             xOffset,
+                             yOffset,
+                             jawTiltLeft,
+                             jawTiltRight,
+                             buildLeftJaw,
+                             buildRightJaw,
+                             isACrystal,
+                             crystalAngle,
+                             sampleIn);
   // update this class's nameToElementIndex map
   nameToElementIndex = construction->NameToElementIndex();
   linkIDToBeamlineIndex = construction->LinkIDToBeamlineIndex();
@@ -554,38 +581,38 @@ int BDSIMLink::AddLinkCollimatorJaw(const std::string& collimatorName,
 }
 
 int BDSIMLink::AddLinkCollimatorTipJaw(const std::string& collimatorName,
-				     const std::string& materialName,
-             const std::string& tipMaterialName,
-             double tipThickness,
-				     double length,
-				     double halfApertureLeft,
-				     double halfApertureRight,
-				     double rotation,
-				     double xOffset,
-				     double yOffset,
-                     double jawTiltLeft,
-                     double jawTiltRight,
-				     bool   buildLeftJaw,
-				     bool   buildRightJaw)
+                                       const std::string& materialName,
+                                       const std::string& tipMaterialName,
+                                       double tipThickness,
+                                       double length,
+                                       double halfApertureLeft,
+                                       double halfApertureRight,
+                                       double rotation,
+                                       double xOffset,
+                                       double yOffset,
+                                       double jawTiltLeft,
+                                       double jawTiltRight,
+                                       bool   buildLeftJaw,
+                                       bool   buildRightJaw)
 {
   G4GeometryManager* gm = G4GeometryManager::GetInstance();
   if (gm->IsGeometryClosed())
     {gm->OpenGeometry();}
 
   G4int linkID = construction->AddLinkCollimatorTipJaw(collimatorName,
-				     materialName,
-             tipMaterialName,
-             tipThickness,
-				     length,
-				     halfApertureLeft,
-				     halfApertureRight,
-				     rotation,
-				     xOffset,
-				     yOffset,
-                     jawTiltLeft,
-                     jawTiltRight,
-				     buildLeftJaw,
-				     buildRightJaw);
+                                                       materialName,
+                                                       tipMaterialName,
+                                                       tipThickness,
+                                                       length,
+                                                       halfApertureLeft,
+                                                       halfApertureRight,
+                                                       rotation,
+                                                       xOffset,
+                                                       yOffset,
+                                                       jawTiltLeft,
+                                                       jawTiltRight,
+                                                       buildLeftJaw,
+                                                       buildRightJaw);
   // update this class's nameToElementIndex map
   nameToElementIndex = construction->NameToElementIndex();
   linkIDToBeamlineIndex = construction->LinkIDToBeamlineIndex();
@@ -599,6 +626,28 @@ int BDSIMLink::AddLinkCollimatorTipJaw(const std::string& collimatorName,
     {throw BDSException(__METHOD_NAME__, "error - geometry not closed.");}
   return (int)linkID;
 }
+
+
+int BDSIMLink::AddLinkElement(GMAD::Element &el) {
+  G4GeometryManager* gm = G4GeometryManager::GetInstance();
+  if (gm->IsGeometryClosed())
+  {gm->OpenGeometry();}
+
+  G4int linkID = construction->AddLinkElement(el);
+  // update this class's nameToElementIndex map
+  nameToElementIndex = construction->NameToElementIndex();
+  linkIDToBeamlineIndex = construction->LinkIDToBeamlineIndex();
+
+  if (bdsOutput)
+  {bdsOutput->UpdateSamplers();}
+
+  /// Close the geometry in preparation for running - everything is now fixed.
+  G4bool bCloseGeometry = gm->CloseGeometry();
+  if (!bCloseGeometry)
+  {throw BDSException(__METHOD_NAME__, "error - geometry not closed.");}
+  return (int)linkID;
+}
+
 
 BDSHitsCollectionSamplerLink* BDSIMLink::SamplerHits() const
 {
