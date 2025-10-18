@@ -1,21 +1,23 @@
 <map id="BDSSamplerPlacementRecord::UniqueName" name="BDSSamplerPlacementRecord::UniqueName">
-<area shape="rect" id="Node000001" title="Accessor." alt="" coords="1149,149,1367,189"/>
-<area shape="rect" id="Node000002" href="$classBDSSamplerRegistry.html#aa43e95e7269819332dbc64f88e904836" title="Access all the unique names at once." alt="" coords="889,53,1047,93"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1200,146,1100,107,1046,92,1047,87,1102,102,1202,141"/>
-<area shape="rect" id="Node000008" href="$classBDSSamplerRegistry.html#af7600e231455c668fbc0efdf83aacb83" title="For output in standard C++ types. Also in m for units." alt="" coords="843,117,1093,157"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1136,158,1093,153,1094,148,1136,153"/>
-<area shape="rect" id="Node000009" href="$classBDSSamplerRegistry.html#a34187bc92917f837b6884bd6b7a13b09" title="For output in standard C++ types. Also in m for units." alt="" coords="847,181,1089,221"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1136,185,1089,190,1089,185,1136,179"/>
-<area shape="rect" id="Node000010" href="$classBDSSamplerRegistry.html#a002e6441ec24acc98cb62024dc1e22c6" title="Access all the unique names and their corresponding s position at once." alt="" coords="835,245,1101,285"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1202,197,1102,235,1061,247,1059,242,1100,230,1200,192"/>
-<area shape="rect" id="Node000003" href="$classBDSOutputStructures.html#ac4cfcd2960d5d34da3fd616a32ac2ed5" title="Interface to allow setting up samplers later for dynamic geometry construction a la SixTrack...." alt="" coords="589,53,787,93"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="875,75,787,75,787,70,875,70"/>
-<area shape="rect" id="Node000004" href="$classBDSOutput.html#ae71470ef4a24a69baea3f79bfbd7a2cf" title="Interface to allow updating samplers with dynamic construction. Only for link &#45; not for regular use." alt="" coords="314,35,523,60"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="575,65,523,60,524,55,576,59"/>
-<area shape="rect" id="Node000007" href="$classBDSOutputROOT.html#a4baf304c695d7b3544bcf57011bf2bdd" title="Implementation for ROOT output. Only for link &#45; not for regular use." alt="" coords="296,84,541,109"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="576,85,542,88,541,83,575,80"/>
+<area shape="rect" id="Node000001" title="Accessor." alt="" coords="1149,177,1367,217"/>
+<area shape="rect" id="Node000002" href="$classBDSSamplerRegistry.html#aa43e95e7269819332dbc64f88e904836" title="Access all the unique names at once." alt="" coords="889,81,1047,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1200,174,1100,135,1046,120,1047,115,1102,130,1202,169"/>
+<area shape="rect" id="Node000009" href="$classBDSSamplerRegistry.html#af7600e231455c668fbc0efdf83aacb83" title="For output in standard C++ types. Also in m for units." alt="" coords="843,145,1093,185"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1136,186,1093,181,1094,176,1136,181"/>
+<area shape="rect" id="Node000010" href="$classBDSSamplerRegistry.html#a34187bc92917f837b6884bd6b7a13b09" title="For output in standard C++ types. Also in m for units." alt="" coords="847,209,1089,249"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1136,213,1089,218,1089,213,1136,207"/>
+<area shape="rect" id="Node000011" href="$classBDSSamplerRegistry.html#a002e6441ec24acc98cb62024dc1e22c6" title="Access all the unique names and their corresponding s position at once." alt="" coords="835,273,1101,313"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1202,225,1102,263,1061,275,1059,270,1100,258,1200,220"/>
+<area shape="rect" id="Node000003" href="$classBDSOutputStructures.html#ac4cfcd2960d5d34da3fd616a32ac2ed5" title="Interface to allow setting up samplers later for dynamic geometry construction a la SixTrack...." alt="" coords="589,81,787,121"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="875,103,787,103,787,98,875,98"/>
+<area shape="rect" id="Node000004" href="$classBDSOutput.html#ae71470ef4a24a69baea3f79bfbd7a2cf" title="Interface to allow updating samplers with dynamic construction. Only for link &#45; not for regular use." alt="" coords="314,63,523,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="575,93,523,88,524,83,576,87"/>
+<area shape="rect" id="Node000008" href="$classBDSOutputROOT.html#a4baf304c695d7b3544bcf57011bf2bdd" title="Implementation for ROOT output. Only for link &#45; not for regular use." alt="" coords="296,112,541,137"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="576,113,542,116,541,111,575,108"/>
 <area shape="rect" id="Node000005" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="5,5,248,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="300,38,248,33,248,28,300,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="339,63,192,33,193,28,340,57"/>
 <area shape="rect" id="Node000006" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="17,55,237,95"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="300,61,237,67,237,62,300,56"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="300,78,237,78,237,73,300,73"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="23,120,230,145"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="340,93,297,102,192,123,191,117,295,97,339,88"/>
 </map>

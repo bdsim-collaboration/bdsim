@@ -1,14 +1,16 @@
 <map id="BDS::GetImportanceSamplingWorld" name="BDS::GetImportanceSamplingWorld">
-<area shape="rect" id="Node000001" title="Get importance sampling world from list of all parallel worlds." alt="" coords="641,23,856,63"/>
-<area shape="rect" id="Node000002" href="$namespaceBDS.html#ac7e87cf156a02ca65f9b983108d35448" title="Get store, and prepare importance sampling for importance geometry sampler." alt="" coords="417,5,537,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="628,35,537,26,537,21,628,29"/>
-<area shape="rect" id="Node000006" href="$namespaceBDS.html#a52c3c67ac068c4f53689e076e7215f74" title="Create importance geometry sampler and register importance biasing with physics list." alt="" coords="360,55,593,80"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="628,57,594,60,594,54,627,51"/>
-<area shape="rect" id="Node000003" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,31,312,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="403,29,312,39,312,34,403,23"/>
-<area shape="rect" id="Node000004" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,5,128,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="169,35,128,29,129,24,169,30"/>
-<area shape="rect" id="Node000005" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,55,135,80"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="170,57,135,61,135,56,169,51"/>
-<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="346,56,312,53,313,47,346,51"/>
+<area shape="rect" id="Node000001" title="Get importance sampling world from list of all parallel worlds." alt="" coords="641,47,856,87"/>
+<area shape="rect" id="Node000002" href="$namespaceBDS.html#ac7e87cf156a02ca65f9b983108d35448" title="Get store, and prepare importance sampling for importance geometry sampler." alt="" coords="417,29,537,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="628,59,537,50,537,45,628,53"/>
+<area shape="rect" id="Node000007" href="$namespaceBDS.html#a52c3c67ac068c4f53689e076e7215f74" title="Create importance geometry sampler and register importance biasing with physics list." alt="" coords="360,79,593,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="628,81,594,84,594,78,627,75"/>
+<area shape="rect" id="Node000003" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,55,312,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="403,53,312,63,312,58,403,47"/>
+<area shape="rect" id="Node000004" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,5,128,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="187,53,116,33,117,28,189,48"/>
+<area shape="rect" id="Node000005" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,55,128,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="169,70,128,70,128,65,169,65"/>
+<area shape="rect" id="Node000006" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,104,135,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="189,86,117,106,116,101,187,81"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="346,80,312,77,313,71,346,75"/>
 </map>

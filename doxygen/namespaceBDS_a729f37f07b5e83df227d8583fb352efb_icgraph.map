@@ -1,20 +1,22 @@
 <map id="BDS::DetermineBunchType" name="BDS::DetermineBunchType">
-<area shape="rect" id="Node000001" title="Function that gives corresponding enum value for string (case&#45;insensitive)." alt="" coords="691,140,887,165"/>
-<area shape="rect" id="Node000002" href="$classBDSBunchFactory.html#a98034ad07d3cfa1e08b5d995772166c5" title="factory method" alt="" coords="416,89,643,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="709,140,594,117,595,112,710,135"/>
-<area shape="rect" id="Node000007" href="$classBDSBunchComposite.html#a5dae96af678cb1ca5398040f66c1791a" title=" " alt="" coords="192,129,359,169"/>
-<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="676,154,359,152,359,147,676,149"/>
-<area shape="rect" id="Node000008" href="$classBDSBunchCompositeSDE.html#acf4c8a82fdc4999ecc3f0d9f7acb650b" title=" " alt="" coords="183,193,368,233"/>
-<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="677,168,369,205,368,199,676,163"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="575,80,572,75,564,72,529,68,502,70,488,75,485,80,492,87,488,91,479,81,484,71,501,65,529,63,565,67,575,71,579,77"/>
-<area shape="rect" id="Node000003" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="211,29,340,55"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="461,89,329,57,331,52,462,83"/>
-<area shape="rect" id="Node000006" href="$classBDSIMLink.html#aed5c334e4db2171da99dd381b43da904" title="The main function where everything is constructed." alt="" coords="197,79,353,104"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="402,99,353,97,354,92,403,94"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="446,120,360,136,359,131,445,115"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="493,124,369,183,338,195,337,190,367,178,491,119"/>
-<area shape="rect" id="Node000004" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,5,128,31"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="197,36,128,27,128,22,197,30"/>
-<area shape="rect" id="Node000005" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,55,135,80"/>
-<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="197,54,135,62,134,57,197,49"/>
+<area shape="rect" id="Node000001" title="Function that gives corresponding enum value for string (case&#45;insensitive)." alt="" coords="691,165,887,191"/>
+<area shape="rect" id="Node000002" href="$classBDSBunchFactory.html#a98034ad07d3cfa1e08b5d995772166c5" title="factory method" alt="" coords="416,115,643,140"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="709,165,594,143,595,137,710,160"/>
+<area shape="rect" id="Node000008" href="$classBDSBunchComposite.html#a5dae96af678cb1ca5398040f66c1791a" title=" " alt="" coords="192,154,359,194"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="676,180,359,177,359,172,676,174"/>
+<area shape="rect" id="Node000009" href="$classBDSBunchCompositeSDE.html#acf4c8a82fdc4999ecc3f0d9f7acb650b" title=" " alt="" coords="183,218,368,258"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="677,194,369,230,368,225,676,188"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="575,105,572,101,564,97,529,93,502,95,488,100,485,106,492,113,488,116,479,106,484,96,501,90,529,88,565,92,575,97,579,102"/>
+<area shape="rect" id="Node000003" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="211,55,340,80"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="461,114,329,83,331,77,462,109"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#aed5c334e4db2171da99dd381b43da904" title="The main function where everything is constructed." alt="" coords="197,104,353,129"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="402,125,353,123,354,117,403,119"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="446,145,360,161,359,156,445,140"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="493,149,369,208,338,220,337,215,367,204,491,144"/>
+<area shape="rect" id="Node000004" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,5,128,31"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="208,54,123,33,124,28,209,49"/>
+<area shape="rect" id="Node000005" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,55,128,80"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="197,70,128,70,128,65,197,65"/>
+<area shape="rect" id="Node000006" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,104,135,129"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="209,86,124,107,123,101,208,81"/>
 </map>

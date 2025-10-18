@@ -1,11 +1,15 @@
 <map id="BDSExtent::TiltOffset" name="BDSExtent::TiltOffset">
-<area shape="rect" id="Node000001" title="Provide a new copy of this extent with both a tilt and an offset applied." alt="" coords="559,45,717,70"/>
+<area shape="rect" id="Node000001" title="Provide a new copy of this extent with both a tilt and an offset applied." alt="" coords="559,77,717,102"/>
 <area shape="rect" id="Node000002" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="296,5,511,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="544,47,510,43,511,37,545,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="577,76,477,48,478,43,578,70"/>
 <area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="296,69,511,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="545,73,511,77,510,72,544,67"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="545,92,511,92,511,87,545,87"/>
+<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a184e6d7be757abef7c5e3dce4e941b11" title="Interface to append an element." alt="" coords="296,133,511,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="578,108,478,136,477,131,577,103"/>
 <area shape="rect" id="Node000003" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="5,13,248,38"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
 <area shape="rect" id="Node000005" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="17,69,237,109"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="282,92,237,92,237,87,282,87"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="23,141,230,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="282,156,230,156,230,151,282,151"/>
 </map>

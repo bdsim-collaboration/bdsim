@@ -3730,6 +3730,9 @@ with the following options.
 +------------------------------------+--------------------------------------------------------------------+
 | storeTrajectories                  | An alias to `storeTrajectory`                                      |
 +------------------------------------+--------------------------------------------------------------------+
+| storePerEventHistos                | Whether to store per event histograms. This should be switched off |
+|                                    | when there are large >1D scoring meshes. Default on                |
++------------------------------------+--------------------------------------------------------------------+
 | writeSeedState                     | Writes the seed state of the last event start in a text file       |
 +------------------------------------+--------------------------------------------------------------------+
 

@@ -1,13 +1,19 @@
 <map id="BDSParticleDefinition::UpdateG4ParticleDefinition" name="BDSParticleDefinition::UpdateG4ParticleDefinition">
-<area shape="rect" id="Node000001" title=" " alt="" coords="543,63,749,103"/>
-<area shape="rect" id="Node000002" href="$classBDSBunchSixTrackLink.html#a04aa503475380c7a76cc8e6224da5ccd" title="TBC." alt="" coords="260,5,495,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="538,62,471,48,472,43,539,57"/>
-<area shape="rect" id="Node000003" href="$classBDSBunch.html#ac59bf89183541033bf760fd9719b37e8" title=" " alt="" coords="264,70,491,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="529,85,491,85,491,80,529,80"/>
-<area shape="rect" id="Node000005" href="$classBDSBunchSixTrackLink.html#a4dd9e6dcfedf9a1a38bc3d8510808de3" title="Override method in BDSBunch to use our local currentParticleDefinition member." alt="" coords="292,121,463,161"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="541,108,463,125,462,120,540,103"/>
-<area shape="rect" id="Node000004" href="$classBDSPrimaryGeneratorAction.html#ade62b3c8d63eeb5570027fe5996d6e8f" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="5,60,212,100"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="251,84,212,84,212,78,251,79"/>
-<area shape="rect" id="Node000006" href="$classBDSBunchSixTrackLink.html#a46bb31284330bb3e64e29664e32da618" title="Get the next particle." alt="" coords="23,124,194,164"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="278,145,194,146,194,140,278,140"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="583,127,789,167"/>
+<area shape="rect" id="Node000002" href="$classBDSBunchSixTrackLink.html#a04aa503475380c7a76cc8e6224da5ccd" title="TBC." alt="" coords="290,5,525,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="644,121,593,89,534,60,500,48,501,43,536,55,595,85,647,117"/>
+<area shape="rect" id="Node000003" href="$classBDSLinkBunch.html#a306156346133f7183aa22c5180ec6532" title="TBC." alt="" coords="298,69,517,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="574,126,505,112,506,107,575,121"/>
+<area shape="rect" id="Node000004" href="$classBDSBunch.html#ac59bf89183541033bf760fd9719b37e8" title=" " alt="" coords="294,134,521,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="569,149,521,149,521,144,569,144"/>
+<area shape="rect" id="Node000006" href="$classBDSBunchSixTrackLink.html#a4dd9e6dcfedf9a1a38bc3d8510808de3" title="Override method in BDSBunch to use our local currentParticleDefinition member." alt="" coords="322,184,493,224"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="575,172,493,189,492,184,574,167"/>
+<area shape="rect" id="Node000008" href="$classBDSLinkBunch.html#a26ca3aa8989a4623fb685fda4e6817e5" title="Override method in BDSBunch to use our local currentParticleDefinition member." alt="" coords="280,251,535,277"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="647,177,595,209,536,238,485,254,484,249,534,234,593,205,644,173"/>
+<area shape="rect" id="Node000005" href="$classBDSPrimaryGeneratorAction.html#ade62b3c8d63eeb5570027fe5996d6e8f" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="15,120,222,160"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="280,146,222,145,222,140,280,141"/>
+<area shape="rect" id="Node000007" href="$classBDSBunchSixTrackLink.html#a46bb31284330bb3e64e29664e32da618" title="Get the next particle." alt="" coords="33,184,204,224"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="308,207,204,207,204,201,308,201"/>
+<area shape="rect" id="Node000009" href="$classBDSLinkBunch.html#afa389daaad7277945fa80e30f4c27a27" title="Get the next particle." alt="" coords="5,248,232,288"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="266,269,232,269,232,264,266,263"/>
 </map>

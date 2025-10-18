@@ -132,150 +132,155 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                                 <a class="code hl_class" href="classBDSBunchEventGenerator.html">BDSBunchEventGenerator</a>* bunchIn):</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  loopFile(loopFileIn),</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  bunch(bunchIn),</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  endOfFileReached(false),</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  vertexGeneratedSuccessfully(false),</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  currentFileEventIndex(0),</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  nEventsInFile(0),</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  nEventsReadThatPassedFilters(0),</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  nEventsSkipped(0),</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  worldSolid(nullptr)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{;}</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>BDSPrimaryGeneratorFile::~BDSPrimaryGeneratorFile()</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{;}</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#a4d4f0c38aa463bd4bfe9fc6681b4b782">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#a4d4f0c38aa463bd4bfe9fc6681b4b782">BDSPrimaryGeneratorFile::ThrowExceptionIfRecreateOffsetTooHigh</a>(G4long eventOffset)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  G4int nLoops = bunch-&gt;<a class="code hl_function" href="classBDSBunchFileBased.html#aa4417f9523c14a6f45bd56ffb176f991">DistrFileLoopNTimes</a>();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordflow">if</span> (eventOffset &gt; nEventsInFile*nLoops)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      G4String msg = <span class="stringliteral">&quot;eventOffset (&quot;</span> + std::to_string(eventOffset) + <span class="stringliteral">&quot;) is greater than the number of valid data lines in this file.&quot;</span>;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      <span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, msg);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  recreate(false),</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  endOfFileReached(false),</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  vertexGeneratedSuccessfully(false),</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  currentFileEventIndex(0),</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  nEventsInFile(0),</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  nEventsReadThatPassedFilters(0),</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  nEventsSkipped(0),</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  worldSolid(nullptr)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{;}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>BDSPrimaryGeneratorFile::~BDSPrimaryGeneratorFile()</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{;}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#a4d4f0c38aa463bd4bfe9fc6681b4b782">   64</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#a4d4f0c38aa463bd4bfe9fc6681b4b782">BDSPrimaryGeneratorFile::ThrowExceptionIfRecreateOffsetTooHigh</a>(G4long eventOffset)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  G4int nLoops = bunch-&gt;<a class="code hl_function" href="classBDSBunchFileBased.html#aa4417f9523c14a6f45bd56ffb176f991">DistrFileLoopNTimes</a>();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keywordflow">if</span> (eventOffset &gt; nEventsInFile*nLoops)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      G4String msg = <span class="stringliteral">&quot;eventOffset (&quot;</span> + std::to_string(eventOffset) + <span class="stringliteral">&quot;) is greater than the number of valid data lines in this file.&quot;</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      <span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, msg);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#a202bda4a715d0815343eb5bfc9c270a0">   73</a></span>G4bool <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#a202bda4a715d0815343eb5bfc9c270a0">BDSPrimaryGeneratorFile::GeneratePrimaryVertexSafe</a>(G4Event* event)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  vertexGeneratedSuccessfully = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  GeneratePrimaryVertex(event);<span class="comment">//derived class must update vertexGeneratedSuccessfully</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordflow">if</span> (!vertexGeneratedSuccessfully &amp;&amp; !endOfFileReached)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    {bunch-&gt;IncrementNEventsInFileSkipped();}</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keywordflow">return</span> vertexGeneratedSuccessfully;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#a202bda4a715d0815343eb5bfc9c270a0">   74</a></span>G4bool <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#a202bda4a715d0815343eb5bfc9c270a0">BDSPrimaryGeneratorFile::GeneratePrimaryVertexSafe</a>(G4Event* event)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  vertexGeneratedSuccessfully = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  GeneratePrimaryVertex(event);<span class="comment">//derived class must update vertexGeneratedSuccessfully</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keywordflow">if</span> (!vertexGeneratedSuccessfully &amp;&amp; !endOfFileReached)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {bunch-&gt;IncrementNEventsInFileSkipped();}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keywordflow">return</span> vertexGeneratedSuccessfully;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">   82</a></span>G4long <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">BDSPrimaryGeneratorFile::NEventsLeftInFile</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keywordflow">return</span> nEventsInFile - currentFileEventIndex;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">   83</a></span>G4long <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">BDSPrimaryGeneratorFile::NEventsLeftInFile</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keywordflow">return</span> nEventsInFile - currentFileEventIndex;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#aa2a3d5d2a3a4c78817b667ffb4dc6ffe">   87</a></span>G4bool <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#aa2a3d5d2a3a4c78817b667ffb4dc6ffe">BDSPrimaryGeneratorFile::OKToLoopFile</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keywordflow">return</span> nEventsReadThatPassedFilters &gt; 0;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#aa2a3d5d2a3a4c78817b667ffb4dc6ffe">   88</a></span>G4bool <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#aa2a3d5d2a3a4c78817b667ffb4dc6ffe">BDSPrimaryGeneratorFile::OKToLoopFile</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordflow">return</span> nEventsReadThatPassedFilters &gt; 0 || recreate;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
 </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#af44913dad3c38f71a35ca4deb58f4356">   92</a></span><a class="code hl_class" href="classBDSPrimaryGeneratorFile.html">BDSPrimaryGeneratorFile</a>* <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#af44913dad3c38f71a35ca4deb58f4356">BDSPrimaryGeneratorFile::ConstructGenerator</a>(<span class="keyword">const</span> <a class="code hl_class" href="classGMAD_1_1Beam.html">GMAD::Beam</a>&amp; beam,</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                                                     <a class="code hl_class" href="classBDSBunch.html">BDSBunch</a>* bunchIn,</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                                                     G4bool recreate,</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                                                     G4int eventOffset,</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                                                     G4bool batchMode)</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <a class="code hl_class" href="classBDSPrimaryGeneratorFile.html">BDSPrimaryGeneratorFile</a>* generatorFromFile = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a> egf = BDSBunchType::eventgeneratorfile;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  G4bool useEventGeneratorFile = <a class="code hl_function" href="namespaceBDS.html#a3d2494435d6be46925d1b834e4e8f771">BDS::StrContains</a>(G4String(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>), egf.ToString());</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a> samp = BDSBunchType::bdsimsampler;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  G4bool useSamplerLoader = <a class="code hl_function" href="namespaceBDS.html#a3d2494435d6be46925d1b834e4e8f771">BDS::StrContains</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>, samp.ToString());</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keywordflow">if</span> (useEventGeneratorFile || useSamplerLoader)</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      <span class="keywordflow">if</span> (beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a4989926f37845161abbec5c327cb2c26">distrFile</a>.empty())</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {<span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, <span class="stringliteral">&quot;no distrFile specified for event generator beam distribution.&quot;</span>);}</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      G4String filename = <a class="code hl_function" href="namespaceBDS.html#a4e4c2f64800c7da9ee8a98c7a222499f">BDS::GetFullPath</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a4989926f37845161abbec5c327cb2c26">distrFile</a>, <span class="keyword">false</span>, beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a549f2e8f053b9bc8e2c40a07f7f113d0">distrFileFromExecOptions</a>);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      <a class="code hl_class" href="classBDSBunchEventGenerator.html">BDSBunchEventGenerator</a>* beg = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="classBDSBunchEventGenerator.html">BDSBunchEventGenerator</a>*<span class="keyword">&gt;</span>(bunchIn);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      <span class="keywordflow">if</span> (!beg)</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        {<span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, <span class="stringliteral">&quot;must be used with a BDSBunchEventGenerator instance&quot;</span>);}</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      G4bool shouldLoopFile = beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a655549655e25fcd5c3343deb8561a8ee">distrFileLoop</a> || !batchMode || beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#ac1423ac6dc8051c4caa2fda967957631">distrFileLoopNTimes</a> &gt; 1;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      <span class="keywordflow">if</span> (useEventGeneratorFile)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#ifdef USE_HEPMC3</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>          generatorFromFile = <span class="keyword">new</span> <a class="code hl_class" href="classBDSPrimaryGeneratorFileHEPMC.html">BDSPrimaryGeneratorFileHEPMC</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>,</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                                                               filename,</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                                                               beg,</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                                                               shouldLoopFile,</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                                               beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a689122bdc3f6194a1c0fdb9aa54d9a8c">removeUnstableWithoutDecay</a>,</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                                                               beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a29c7ad55ef249748aa8c327b374655fc">eventGeneratorWarnSkippedParticles</a>);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>          <span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, <span class="stringliteral">&quot;event generator file being used but BDSIM not compiled with HEPMC3&quot;</span>);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>      <span class="keywordflow">else</span> <span class="comment">// must be useSamplerLoader is true</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        {</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>          generatorFromFile = <span class="keyword">new</span> <a class="code hl_class" href="classBDSPrimaryGeneratorFileSampler.html">BDSPrimaryGeneratorFileSampler</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>,</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                                                                 filename,</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                                                                 beg,</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                                                                 shouldLoopFile,</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                                                                 beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a689122bdc3f6194a1c0fdb9aa54d9a8c">removeUnstableWithoutDecay</a>,</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                                                 beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a29c7ad55ef249748aa8c327b374655fc">eventGeneratorWarnSkippedParticles</a>);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>          </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        }</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      <span class="comment">// common bits</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      <span class="keywordflow">if</span> (recreate)</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        {generatorFromFile-&gt;<a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#ab837bf12e23035d6c4c36f441d4ce5ef">RecreateAdvanceToEvent</a>(eventOffset);}</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>      <span class="keywordflow">if</span> (beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#ae41d64bca3289655492ae87887011bc9">distrFileMatchLength</a>)</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        {</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>          G4int nEventsPerLoop = (G4int)generatorFromFile-&gt;<a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">NEventsLeftInFile</a>();</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>          G4int distrFileLoopNTimes = (G4int)beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#ac1423ac6dc8051c4caa2fda967957631">distrFileLoopNTimes</a>;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>          <a class="code hl_function" href="classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c">BDSGlobalConstants::Instance</a>()-&gt;<a class="code hl_function" href="classBDSGlobalConstants.html#a049731d13586ceb23a2997af63cbaa49">SetNumberToGenerate</a>(nEventsPerLoop*distrFileLoopNTimes);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>          G4cout &lt;&lt; __METHOD_NAME__ &lt;&lt; <span class="stringliteral">&quot;distrFileMatchLength is true -&gt; simulating &quot;</span> &lt;&lt; nEventsPerLoop &lt;&lt; <span class="stringliteral">&quot; events&quot;</span>;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>          <span class="keywordflow">if</span> (distrFileLoopNTimes &gt; 1)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            {G4cout &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; distrFileLoopNTimes &lt;&lt; <span class="stringliteral">&quot; times&quot;</span>;}</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>          G4cout &lt;&lt; G4endl;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    }</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  <span class="keywordflow">return</span> generatorFromFile; <span class="comment">// could be nullptr</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>}</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#af44913dad3c38f71a35ca4deb58f4356">   93</a></span><a class="code hl_class" href="classBDSPrimaryGeneratorFile.html">BDSPrimaryGeneratorFile</a>* <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#af44913dad3c38f71a35ca4deb58f4356">BDSPrimaryGeneratorFile::ConstructGenerator</a>(<span class="keyword">const</span> <a class="code hl_class" href="classGMAD_1_1Beam.html">GMAD::Beam</a>&amp; beam,</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                                                     <a class="code hl_class" href="classBDSBunch.html">BDSBunch</a>* bunchIn,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                                                     G4bool recreate,</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                                                     G4int eventOffset,</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                                                     G4bool batchMode)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <a class="code hl_class" href="classBDSPrimaryGeneratorFile.html">BDSPrimaryGeneratorFile</a>* generatorFromFile = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a> egf = BDSBunchType::eventgeneratorfile;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  G4bool useEventGeneratorFile = <a class="code hl_function" href="namespaceBDS.html#a3d2494435d6be46925d1b834e4e8f771">BDS::StrContains</a>(G4String(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>), egf.ToString());</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <a class="code hl_class" href="classBDSTypeSafeEnum.html">BDSBunchType</a> samp = BDSBunchType::bdsimsampler;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  G4bool useSamplerLoader = <a class="code hl_function" href="namespaceBDS.html#a3d2494435d6be46925d1b834e4e8f771">BDS::StrContains</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>, samp.ToString());</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  <span class="keywordflow">if</span> (useEventGeneratorFile || useSamplerLoader)</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>      <span class="keywordflow">if</span> (beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a4989926f37845161abbec5c327cb2c26">distrFile</a>.empty())</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        {<span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, <span class="stringliteral">&quot;no distrFile specified for event generator beam distribution.&quot;</span>);}</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      G4String filename = <a class="code hl_function" href="namespaceBDS.html#a4e4c2f64800c7da9ee8a98c7a222499f">BDS::GetFullPath</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a4989926f37845161abbec5c327cb2c26">distrFile</a>, <span class="keyword">false</span>, beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a549f2e8f053b9bc8e2c40a07f7f113d0">distrFileFromExecOptions</a>);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      <a class="code hl_class" href="classBDSBunchEventGenerator.html">BDSBunchEventGenerator</a>* beg = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="classBDSBunchEventGenerator.html">BDSBunchEventGenerator</a>*<span class="keyword">&gt;</span>(bunchIn);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      <span class="keywordflow">if</span> (!beg)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        {<span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, <span class="stringliteral">&quot;must be used with a BDSBunchEventGenerator instance&quot;</span>);}</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      G4bool shouldLoopFile = beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a655549655e25fcd5c3343deb8561a8ee">distrFileLoop</a> || !batchMode || beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#ac1423ac6dc8051c4caa2fda967957631">distrFileLoopNTimes</a> &gt; 1;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      <span class="keywordflow">if</span> (useEventGeneratorFile)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#ifdef USE_HEPMC3</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>          generatorFromFile = <span class="keyword">new</span> <a class="code hl_class" href="classBDSPrimaryGeneratorFileHEPMC.html">BDSPrimaryGeneratorFileHEPMC</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>,</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                                                               filename,</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                                                               beg,</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                                               shouldLoopFile,</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                                                               beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a689122bdc3f6194a1c0fdb9aa54d9a8c">removeUnstableWithoutDecay</a>,</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                                                               beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a29c7ad55ef249748aa8c327b374655fc">eventGeneratorWarnSkippedParticles</a>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>          <span class="keywordflow">throw</span> <a class="code hl_class" href="classBDSException.html">BDSException</a>(__METHOD_NAME__, <span class="stringliteral">&quot;event generator file being used but BDSIM not compiled with HEPMC3&quot;</span>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>      <span class="keywordflow">else</span> <span class="comment">// must be useSamplerLoader is true</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>          generatorFromFile = <span class="keyword">new</span> <a class="code hl_class" href="classBDSPrimaryGeneratorFileSampler.html">BDSPrimaryGeneratorFileSampler</a>(beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a7429d6081a262433a81cf5b916451789">distrType</a>,</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                                                                 filename,</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                                                                 beg,</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                                                                 shouldLoopFile,</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                                                 beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a689122bdc3f6194a1c0fdb9aa54d9a8c">removeUnstableWithoutDecay</a>,</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                                                                 beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#a29c7ad55ef249748aa8c327b374655fc">eventGeneratorWarnSkippedParticles</a>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>          </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        }</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      <span class="comment">// common bits</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>      <span class="keywordflow">if</span> (recreate)</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>          generatorFromFile-&gt;<a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#ab837bf12e23035d6c4c36f441d4ce5ef">RecreateAdvanceToEvent</a>(eventOffset);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>          generatorFromFile-&gt;<a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#af591f8eccb0e7b0870e3cc71f95973d2">SetRecreationOn</a>();</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>      <span class="keywordflow">if</span> (beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#ae41d64bca3289655492ae87887011bc9">distrFileMatchLength</a>)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>          G4int nEventsPerLoop = (G4int)generatorFromFile-&gt;<a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">NEventsLeftInFile</a>();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>          G4int distrFileLoopNTimes = (G4int)beam.<a class="code hl_variable" href="classGMAD_1_1BeamBase.html#ac1423ac6dc8051c4caa2fda967957631">distrFileLoopNTimes</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>          <a class="code hl_function" href="classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c">BDSGlobalConstants::Instance</a>()-&gt;<a class="code hl_function" href="classBDSGlobalConstants.html#a049731d13586ceb23a2997af63cbaa49">SetNumberToGenerate</a>(nEventsPerLoop*distrFileLoopNTimes);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>          G4cout &lt;&lt; __METHOD_NAME__ &lt;&lt; <span class="stringliteral">&quot;distrFileMatchLength is true -&gt; simulating &quot;</span> &lt;&lt; nEventsPerLoop &lt;&lt; <span class="stringliteral">&quot; events&quot;</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>          <span class="keywordflow">if</span> (distrFileLoopNTimes &gt; 1)</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            {G4cout &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; distrFileLoopNTimes &lt;&lt; <span class="stringliteral">&quot; times&quot;</span>;}</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>          G4cout &lt;&lt; G4endl;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        }</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keywordflow">return</span> generatorFromFile; <span class="comment">// could be nullptr</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}</div>
 </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="foldopen" id="foldopen00156" data-start="{" data-end="}">
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#a6c51b8150d703b54bd4bc27b7334d463">  156</a></span>G4bool <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#a6c51b8150d703b54bd4bc27b7334d463">BDSPrimaryGeneratorFile::VertexInsideWorld</a>(<span class="keyword">const</span> G4ThreeVector&amp; pos)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="keywordflow">if</span> (!worldSolid)</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    {<span class="comment">// cache the world solid</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      G4Navigator* navigator = G4TransportationManager::GetTransportationManager()-&gt;GetNavigatorForTracking();</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      G4VPhysicalVolume* world = navigator-&gt;GetWorldVolume();</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      worldSolid = world-&gt;GetLogicalVolume()-&gt;GetSolid();</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    }</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  EInside qinside = worldSolid-&gt;Inside(pos);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="keywordflow">return</span> qinside == EInside::kInside;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>}</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classBDSPrimaryGeneratorFile.html#a6c51b8150d703b54bd4bc27b7334d463">  160</a></span>G4bool <a class="code hl_function" href="classBDSPrimaryGeneratorFile.html#a6c51b8150d703b54bd4bc27b7334d463">BDSPrimaryGeneratorFile::VertexInsideWorld</a>(<span class="keyword">const</span> G4ThreeVector&amp; pos)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="keywordflow">if</span> (!worldSolid)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    {<span class="comment">// cache the world solid</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      G4Navigator* navigator = G4TransportationManager::GetTransportationManager()-&gt;GetNavigatorForTracking();</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      G4VPhysicalVolume* world = navigator-&gt;GetWorldVolume();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>      worldSolid = world-&gt;GetLogicalVolume()-&gt;GetSolid();</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    }</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  EInside qinside = worldSolid-&gt;Inside(pos);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="keywordflow">return</span> qinside == EInside::kInside;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>}</div>
 </div>
 <div class="ttc" id="aclassBDSBunchEventGenerator_html"><div class="ttname"><a href="classBDSBunchEventGenerator.html">BDSBunchEventGenerator</a></div><div class="ttdoc">A wrapper of BDSBunch to include a filter for the events loaded by an event generator.</div><div class="ttdef"><b>Definition</b> <a href="BDSBunchEventGenerator_8hh_source.html#l00036">BDSBunchEventGenerator.hh:37</a></div></div>
 <div class="ttc" id="aclassBDSBunchFileBased_html_aa4417f9523c14a6f45bd56ffb176f991"><div class="ttname"><a href="classBDSBunchFileBased.html#aa4417f9523c14a6f45bd56ffb176f991">BDSBunchFileBased::DistrFileLoopNTimes</a></div><div class="ttdeci">G4int DistrFileLoopNTimes() const</div><div class="ttdoc">Accessor.</div><div class="ttdef"><b>Definition</b> <a href="BDSBunchFileBased_8hh_source.html#l00056">BDSBunchFileBased.hh:56</a></div></div>
 <div class="ttc" id="aclassBDSBunch_html"><div class="ttname"><a href="classBDSBunch.html">BDSBunch</a></div><div class="ttdoc">The base class for bunch distribution generators.</div><div class="ttdef"><b>Definition</b> <a href="BDSBunch_8hh_source.html#l00046">BDSBunch.hh:47</a></div></div>
 <div class="ttc" id="aclassBDSException_html"><div class="ttname"><a href="classBDSException.html">BDSException</a></div><div class="ttdoc">General exception with possible name of object and message.</div><div class="ttdef"><b>Definition</b> <a href="BDSException_8hh_source.html#l00034">BDSException.hh:35</a></div></div>
-<div class="ttc" id="aclassBDSGlobalConstants_html_a049731d13586ceb23a2997af63cbaa49"><div class="ttname"><a href="classBDSGlobalConstants.html#a049731d13586ceb23a2997af63cbaa49">BDSGlobalConstants::SetNumberToGenerate</a></div><div class="ttdeci">void SetNumberToGenerate(G4int number)</div><div class="ttdoc">Setter.</div><div class="ttdef"><b>Definition</b> <a href="BDSGlobalConstants_8hh_source.html#l00396">BDSGlobalConstants.hh:396</a></div></div>
+<div class="ttc" id="aclassBDSGlobalConstants_html_a049731d13586ceb23a2997af63cbaa49"><div class="ttname"><a href="classBDSGlobalConstants.html#a049731d13586ceb23a2997af63cbaa49">BDSGlobalConstants::SetNumberToGenerate</a></div><div class="ttdeci">void SetNumberToGenerate(G4int number)</div><div class="ttdoc">Setter.</div><div class="ttdef"><b>Definition</b> <a href="BDSGlobalConstants_8hh_source.html#l00397">BDSGlobalConstants.hh:397</a></div></div>
 <div class="ttc" id="aclassBDSGlobalConstants_html_a4d3596dd3075fc5bcc1658d50e46bf0c"><div class="ttname"><a href="classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c">BDSGlobalConstants::Instance</a></div><div class="ttdeci">static BDSGlobalConstants * Instance()</div><div class="ttdoc">Access method.</div><div class="ttdef"><b>Definition</b> <a href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants.cc:60</a></div></div>
 <div class="ttc" id="aclassBDSPrimaryGeneratorFileHEPMC_html"><div class="ttname"><a href="classBDSPrimaryGeneratorFileHEPMC.html">BDSPrimaryGeneratorFileHEPMC</a></div><div class="ttdoc">Loader to use any HepMC3 compatible file.</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFileHEPMC_8hh_source.html#l00055">BDSPrimaryGeneratorFileHEPMC.hh:56</a></div></div>
 <div class="ttc" id="aclassBDSPrimaryGeneratorFileSampler_html"><div class="ttname"><a href="classBDSPrimaryGeneratorFileSampler.html">BDSPrimaryGeneratorFileSampler</a></div><div class="ttdoc">Loader to read a specific sampler from a BDSIM ROOT output file.</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFileSampler_8hh_source.html#l00044">BDSPrimaryGeneratorFileSampler.hh:45</a></div></div>
 <div class="ttc" id="aclassBDSPrimaryGeneratorFile_html"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html">BDSPrimaryGeneratorFile</a></div><div class="ttdoc">Common interface for any primary generators that are file based.</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8hh_source.html#l00049">BDSPrimaryGeneratorFile.hh:50</a></div></div>
-<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_a202bda4a715d0815343eb5bfc9c270a0"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#a202bda4a715d0815343eb5bfc9c270a0">BDSPrimaryGeneratorFile::GeneratePrimaryVertexSafe</a></div><div class="ttdeci">G4bool GeneratePrimaryVertexSafe(G4Event *event)</div><div class="ttdoc">Return false if not able to generate a primary vertex.</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00073">BDSPrimaryGeneratorFile.cc:73</a></div></div>
-<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_a4d4f0c38aa463bd4bfe9fc6681b4b782"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#a4d4f0c38aa463bd4bfe9fc6681b4b782">BDSPrimaryGeneratorFile::ThrowExceptionIfRecreateOffsetTooHigh</a></div><div class="ttdeci">void ThrowExceptionIfRecreateOffsetTooHigh(G4long eventOffset) const</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00063">BDSPrimaryGeneratorFile.cc:63</a></div></div>
-<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_a6c51b8150d703b54bd4bc27b7334d463"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#a6c51b8150d703b54bd4bc27b7334d463">BDSPrimaryGeneratorFile::VertexInsideWorld</a></div><div class="ttdeci">G4bool VertexInsideWorld(const G4ThreeVector &amp;pos) const</div><div class="ttdoc">Utility function for derived classes to check a position is inside the world.</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00156">BDSPrimaryGeneratorFile.cc:156</a></div></div>
-<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_aa2a3d5d2a3a4c78817b667ffb4dc6ffe"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#aa2a3d5d2a3a4c78817b667ffb4dc6ffe">BDSPrimaryGeneratorFile::OKToLoopFile</a></div><div class="ttdeci">G4bool OKToLoopFile() const</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00087">BDSPrimaryGeneratorFile.cc:87</a></div></div>
+<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_a202bda4a715d0815343eb5bfc9c270a0"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#a202bda4a715d0815343eb5bfc9c270a0">BDSPrimaryGeneratorFile::GeneratePrimaryVertexSafe</a></div><div class="ttdeci">G4bool GeneratePrimaryVertexSafe(G4Event *event)</div><div class="ttdoc">Return false if not able to generate a primary vertex.</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00074">BDSPrimaryGeneratorFile.cc:74</a></div></div>
+<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_a4d4f0c38aa463bd4bfe9fc6681b4b782"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#a4d4f0c38aa463bd4bfe9fc6681b4b782">BDSPrimaryGeneratorFile::ThrowExceptionIfRecreateOffsetTooHigh</a></div><div class="ttdeci">void ThrowExceptionIfRecreateOffsetTooHigh(G4long eventOffset) const</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00064">BDSPrimaryGeneratorFile.cc:64</a></div></div>
+<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_a6c51b8150d703b54bd4bc27b7334d463"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#a6c51b8150d703b54bd4bc27b7334d463">BDSPrimaryGeneratorFile::VertexInsideWorld</a></div><div class="ttdeci">G4bool VertexInsideWorld(const G4ThreeVector &amp;pos) const</div><div class="ttdoc">Utility function for derived classes to check a position is inside the world.</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00160">BDSPrimaryGeneratorFile.cc:160</a></div></div>
+<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_aa2a3d5d2a3a4c78817b667ffb4dc6ffe"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#aa2a3d5d2a3a4c78817b667ffb4dc6ffe">BDSPrimaryGeneratorFile::OKToLoopFile</a></div><div class="ttdeci">G4bool OKToLoopFile() const</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00088">BDSPrimaryGeneratorFile.cc:88</a></div></div>
 <div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_ab837bf12e23035d6c4c36f441d4ce5ef"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#ab837bf12e23035d6c4c36f441d4ce5ef">BDSPrimaryGeneratorFile::RecreateAdvanceToEvent</a></div><div class="ttdeci">virtual void RecreateAdvanceToEvent(G4int eventOffset)=0</div><div class="ttdoc">Advance into the file as required.</div></div>
-<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_ad90ef94971259da358a4525149de1b9b"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">BDSPrimaryGeneratorFile::NEventsLeftInFile</a></div><div class="ttdeci">G4long NEventsLeftInFile() const</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00082">BDSPrimaryGeneratorFile.cc:82</a></div></div>
-<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_af44913dad3c38f71a35ca4deb58f4356"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#af44913dad3c38f71a35ca4deb58f4356">BDSPrimaryGeneratorFile::ConstructGenerator</a></div><div class="ttdeci">static BDSPrimaryGeneratorFile * ConstructGenerator(const GMAD::Beam &amp;beam, BDSBunch *bunchIn, G4bool recreate, G4int eventOffset, G4bool batchMode)</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00092">BDSPrimaryGeneratorFile.cc:92</a></div></div>
+<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_ad90ef94971259da358a4525149de1b9b"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#ad90ef94971259da358a4525149de1b9b">BDSPrimaryGeneratorFile::NEventsLeftInFile</a></div><div class="ttdeci">G4long NEventsLeftInFile() const</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00083">BDSPrimaryGeneratorFile.cc:83</a></div></div>
+<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_af44913dad3c38f71a35ca4deb58f4356"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#af44913dad3c38f71a35ca4deb58f4356">BDSPrimaryGeneratorFile::ConstructGenerator</a></div><div class="ttdeci">static BDSPrimaryGeneratorFile * ConstructGenerator(const GMAD::Beam &amp;beam, BDSBunch *bunchIn, G4bool recreate, G4int eventOffset, G4bool batchMode)</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8cc_source.html#l00093">BDSPrimaryGeneratorFile.cc:93</a></div></div>
+<div class="ttc" id="aclassBDSPrimaryGeneratorFile_html_af591f8eccb0e7b0870e3cc71f95973d2"><div class="ttname"><a href="classBDSPrimaryGeneratorFile.html#af591f8eccb0e7b0870e3cc71f95973d2">BDSPrimaryGeneratorFile::SetRecreationOn</a></div><div class="ttdeci">void SetRecreationOn()</div><div class="ttdef"><b>Definition</b> <a href="BDSPrimaryGeneratorFile_8hh_source.html#l00085">BDSPrimaryGeneratorFile.hh:85</a></div></div>
 <div class="ttc" id="aclassBDSTypeSafeEnum_html"><div class="ttname"><a href="classBDSTypeSafeEnum.html">BDSTypeSafeEnum</a></div><div class="ttdoc">Improve type-safety of native enum data type in C++.</div><div class="ttdef"><b>Definition</b> <a href="BDSTypeSafeEnum_8hh_source.html#l00046">BDSTypeSafeEnum.hh:47</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1BeamBase_html_a29c7ad55ef249748aa8c327b374655fc"><div class="ttname"><a href="classGMAD_1_1BeamBase.html#a29c7ad55ef249748aa8c327b374655fc">GMAD::BeamBase::eventGeneratorWarnSkippedParticles</a></div><div class="ttdeci">bool eventGeneratorWarnSkippedParticles</div><div class="ttdoc">fo event generator file filter</div><div class="ttdef"><b>Definition</b> <a href="beamBase_8h_source.html#l00163">beamBase.h:163</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1BeamBase_html_a4989926f37845161abbec5c327cb2c26"><div class="ttname"><a href="classGMAD_1_1BeamBase.html#a4989926f37845161abbec5c327cb2c26">GMAD::BeamBase::distrFile</a></div><div class="ttdeci">std::string distrFile</div><div class="ttdoc">beam parameters</div><div class="ttdef"><b>Definition</b> <a href="beamBase_8h_source.html#l00052">beamBase.h:52</a></div></div>
@@ -291,7 +296,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2025 20:40:08 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Oct 18 2025 18:31:05 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

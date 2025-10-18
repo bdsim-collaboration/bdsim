@@ -53,7 +53,7 @@ var searchData=
   ['plasmaefield_50',['plasmaEfield',['../classBDSFieldGaborLens.html#acdb1093cfd55118808e81b8a9f946154',1,'BDSFieldGaborLens']]],
   ['plasthit_51',['pLastHit',['../classBDSOutputStructures.html#a98064bc5d6eb6a0d1968333ad71ffb47',1,'BDSOutputStructures']]],
   ['pmass_52',['pmass',['../classBDSFieldGaborLens.html#ad55214eb57aad89dc488a558d490ec39',1,'BDSFieldGaborLens']]],
-  ['pointsfile_53',['pointsfile',['../classBDSBeamPipeFactoryPoints.html#ad78b988496c1621bd54a84e93dd170a4',1,'BDSBeamPipeFactoryPoints::pointsFile'],['../classGMAD_1_1Query.html#a9aa93d8c85fd77a2b1b628fa833b42a5',1,'GMAD::Query::pointsFile'],['../classBDSBeamPipeFactory.html#aa92dd9bf7e264e66ad027a8bec439fc7',1,'BDSBeamPipeFactory::pointsfile']]],
+  ['pointsfile_53',['pointsfile',['../classBDSBeamPipeFactory.html#aa92dd9bf7e264e66ad027a8bec439fc7',1,'BDSBeamPipeFactory::pointsfile'],['../classBDSBeamPipeFactoryPoints.html#ad78b988496c1621bd54a84e93dd170a4',1,'BDSBeamPipeFactoryPoints::pointsFile'],['../classGMAD_1_1Query.html#a9aa93d8c85fd77a2b1b628fa833b42a5',1,'GMAD::Query::pointsFile']]],
   ['pointsfilename_54',['pointsFileName',['../classBDSBeamPipeInfo.html#ab89a4997397d4e8417842e298965994d',1,'BDSBeamPipeInfo']]],
   ['pointsunit_55',['pointsunit',['../classBDSBeamPipeFactoryPoints.html#af9f0ce730f2a21078967b96768ab44cd',1,'BDSBeamPipeFactoryPoints::pointsUnit'],['../classBDSBeamPipeInfo.html#a3ad4c29d542f81a49072d0923bd19eb7',1,'BDSBeamPipeInfo::pointsUnit']]],
   ['pointvisb_56',['pointVisB',['../classBDSVisFieldModel.html#aa9043061c65778b4fb358a1958db8856',1,'BDSVisFieldModel']]],

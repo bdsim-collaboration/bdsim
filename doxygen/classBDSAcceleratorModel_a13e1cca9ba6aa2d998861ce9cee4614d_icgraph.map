@@ -12,35 +12,37 @@
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1078,260,1044,255,1044,250,1079,254"/>
 <area shape="rect" id="Node000008" href="$classBDSDetectorConstruction.html#aaf83c954889b2286ae076f5c6cb071e7" title=" " alt="" coords="847,282,1034,322"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1079,286,1034,292,1034,287,1078,280"/>
-<area shape="rect" id="Node000012" href="$classBDSCrystalFactory.html#a0a7f2d2d9f404d46c7c1e942f9fe1c19" title="Common construction tasks." alt="" coords="859,346,1022,386"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1125,299,1045,336,1012,348,1010,343,1043,332,1123,294"/>
-<area shape="rect" id="Node000018" href="$classBDSLinkTrackingAction.html#af45ec78b88fea22c4ab25ec0eae1954e" title="Detect whether track is a primary and if so whether it ended in a collimator." alt="" coords="849,410,1032,450"/>
-<area shape="poly" id="edge21_Node000001_Node000018" title=" " alt="" coords="1151,303,1105,353,1077,378,1045,400,1021,412,1019,407,1043,396,1073,374,1102,349,1147,299"/>
-<area shape="rect" id="Node000019" href="$classBDSTrackingAction.html#a62840d70def168e3ddea2af26d382e2a" title="Detect whether track is a primary and if so whether it ended in a collimator." alt="" coords="853,474,1028,514"/>
-<area shape="poly" id="edge22_Node000001_Node000019" title=" " alt="" coords="1161,304,1143,341,1118,384,1085,427,1046,464,1025,476,1023,472,1042,460,1081,424,1113,381,1139,339,1157,302"/>
-<area shape="rect" id="Node000020" href="$classBDSCollimatorCrystal.html#a0a34e5ccd97c9df7c1d8a4d68d0d26d1" title="Register logical volumes in crystals and collimator sets in accelerator model." alt="" coords="216,498,379,538"/>
-<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="1170,304,1157,356,1134,419,1117,450,1098,480,1074,507,1045,528,1002,551,957,570,911,584,863,594,765,603,667,602,574,591,489,576,356,541,358,535,490,570,575,586,668,596,764,598,862,589,909,579,956,565,1000,547,1043,524,1070,503,1093,477,1113,448,1129,417,1152,355,1165,303"/>
+<area shape="rect" id="Node000013" href="$classBDSCrystalFactory.html#a0a7f2d2d9f404d46c7c1e942f9fe1c19" title="Common construction tasks." alt="" coords="859,346,1022,386"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1125,299,1045,336,1012,348,1010,343,1043,332,1123,294"/>
+<area shape="rect" id="Node000019" href="$classBDSLinkTrackingAction.html#af45ec78b88fea22c4ab25ec0eae1954e" title="Detect whether track is a primary and if so whether it ended in a collimator." alt="" coords="849,410,1032,450"/>
+<area shape="poly" id="edge22_Node000001_Node000019" title=" " alt="" coords="1151,303,1105,353,1077,378,1045,400,1021,412,1019,407,1043,396,1073,374,1102,349,1147,299"/>
+<area shape="rect" id="Node000020" href="$classBDSTrackingAction.html#a62840d70def168e3ddea2af26d382e2a" title="Detect whether track is a primary and if so whether it ended in a collimator." alt="" coords="853,474,1028,514"/>
+<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="1161,304,1143,341,1118,384,1085,427,1046,464,1025,476,1023,472,1042,460,1081,424,1113,381,1139,339,1157,302"/>
+<area shape="rect" id="Node000021" href="$classBDSCollimatorCrystal.html#a0a34e5ccd97c9df7c1d8a4d68d0d26d1" title="Register logical volumes in crystals and collimator sets in accelerator model." alt="" coords="216,499,379,539"/>
+<area shape="poly" id="edge24_Node000001_Node000021" title=" " alt="" coords="1170,304,1157,356,1134,419,1117,450,1098,480,1074,507,1045,528,1003,551,957,570,911,584,863,594,765,604,668,602,575,592,489,577,357,542,358,537,491,571,576,587,668,597,765,598,862,589,909,579,956,565,1000,547,1043,524,1070,503,1093,477,1113,448,1129,417,1152,355,1165,303"/>
 <area shape="rect" id="Node000007" href="$classBDSElement.html#a88f53a91fd12690cb171d98c588b0f76" title=" " alt="" coords="643,225,787,251"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="823,241,787,241,787,235,823,235"/>
-<area shape="rect" id="Node000009" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="650,289,779,315"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="834,305,780,305,780,299,834,299"/>
-<area shape="rect" id="Node000010" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="451,243,567,268"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="644,289,565,271,567,265,645,284"/>
-<area shape="rect" id="Node000011" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="445,292,574,317"/>
-<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="636,306,574,306,574,301,636,300"/>
-<area shape="rect" id="Node000013" href="$classBDSCrystalFactory.html#a649a75c0a0fe674f37bdfbc6b6fc4789" title="Create box geometry for a crystal." alt="" coords="640,402,789,442"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="847,392,790,406,789,401,846,387"/>
-<area shape="rect" id="Node000016" href="$classBDSCrystalFactory.html#a6d356a3f29f051d09b9009e3edb8b481" title="Create cylinder geometry for a crystal." alt="" coords="427,345,592,385"/>
-<area shape="poly" id="edge19_Node000012_Node000016" title=" " alt="" coords="845,368,592,368,592,362,845,363"/>
-<area shape="rect" id="Node000017" href="$classBDSCrystalFactory.html#a9cf79a54540a2f4df6fc71e20cc2099c" title="Create torus geometry for a cyrstal." alt="" coords="435,459,584,499"/>
-<area shape="poly" id="edge20_Node000012_Node000017" title=" " alt="" coords="849,394,839,400,824,414,816,428,807,443,791,456,739,476,685,487,632,491,584,490,584,485,632,485,685,481,738,471,788,452,803,440,812,426,820,411,836,396,846,390"/>
-<area shape="rect" id="Node000014" href="$classBDSCrystalFactory.html#ab20c9ae049eca309ecbc5137f14b0eee" title="Main interface to create a crystal." alt="" coords="223,431,372,471"/>
-<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="626,431,373,449,372,443,626,426"/>
-<area shape="poly" id="edge15_Node000013_Node000016" title=" " alt="" coords="629,401,581,387,582,382,630,396"/>
-<area shape="poly" id="edge17_Node000013_Node000017" title=" " alt="" coords="630,448,582,462,581,457,629,443"/>
-<area shape="rect" id="Node000015" href="$classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="5,466,168,506"/>
-<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="209,469,168,475,168,470,208,463"/>
-<area shape="poly" id="edge16_Node000016_Node000014" title=" " alt="" coords="448,392,348,434,346,429,446,388"/>
-<area shape="poly" id="edge18_Node000017_Node000014" title=" " alt="" coords="420,470,372,464,373,459,421,465"/>
-<area shape="poly" id="edge24_Node000020_Node000015" title=" " alt="" coords="202,506,168,501,169,496,203,501"/>
+<area shape="rect" id="Node000009" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="650,283,779,308"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="834,302,780,300,780,295,834,296"/>
+<area shape="rect" id="Node000010" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="451,247,567,272"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="636,284,567,272,568,267,637,279"/>
+<area shape="rect" id="Node000011" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="451,296,567,321"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="636,303,568,308,567,302,636,298"/>
+<area shape="rect" id="Node000012" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="445,197,574,223"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="670,279,639,264,615,250,591,236,560,225,562,220,593,232,618,245,641,260,672,275"/>
+<area shape="rect" id="Node000014" href="$classBDSCrystalFactory.html#a649a75c0a0fe674f37bdfbc6b6fc4789" title="Create box geometry for a crystal." alt="" coords="640,403,789,443"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="849,392,790,407,789,402,847,387"/>
+<area shape="rect" id="Node000017" href="$classBDSCrystalFactory.html#a6d356a3f29f051d09b9009e3edb8b481" title="Create cylinder geometry for a crystal." alt="" coords="427,461,592,501"/>
+<area shape="poly" id="edge20_Node000013_Node000017" title=" " alt="" coords="849,394,839,400,824,414,816,429,807,444,791,458,742,477,690,488,639,492,592,492,592,486,639,487,689,482,740,472,788,453,803,441,812,426,820,411,836,396,846,390"/>
+<area shape="rect" id="Node000018" href="$classBDSCrystalFactory.html#a9cf79a54540a2f4df6fc71e20cc2099c" title="Create torus geometry for a cyrstal." alt="" coords="435,346,584,386"/>
+<area shape="poly" id="edge21_Node000013_Node000018" title=" " alt="" coords="845,369,584,369,584,363,845,363"/>
+<area shape="rect" id="Node000015" href="$classBDSCrystalFactory.html#ab20c9ae049eca309ecbc5137f14b0eee" title="Main interface to create a crystal." alt="" coords="223,433,372,473"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="626,432,373,450,372,445,626,427"/>
+<area shape="poly" id="edge16_Node000014_Node000017" title=" " alt="" coords="630,450,582,463,581,458,629,445"/>
+<area shape="poly" id="edge18_Node000014_Node000018" title=" " alt="" coords="629,402,581,389,582,383,630,397"/>
+<area shape="rect" id="Node000016" href="$classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="5,467,168,507"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="209,470,168,477,168,471,208,465"/>
+<area shape="poly" id="edge17_Node000017_Node000015" title=" " alt="" coords="413,471,372,465,372,460,413,465"/>
+<area shape="poly" id="edge19_Node000018_Node000015" title=" " alt="" coords="448,394,348,435,346,430,446,389"/>
+<area shape="poly" id="edge25_Node000021_Node000016" title=" " alt="" coords="202,508,168,502,169,497,203,502"/>
 </map>

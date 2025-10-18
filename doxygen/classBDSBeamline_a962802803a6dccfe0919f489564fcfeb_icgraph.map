@@ -1,15 +1,19 @@
 <map id="BDSBeamline::size" name="BDSBeamline::size">
-<area shape="rect" id="Node000001" title="Get the number of elements." alt="" coords="559,77,704,102"/>
+<area shape="rect" id="Node000001" title="Get the number of elements." alt="" coords="559,109,704,134"/>
 <area shape="rect" id="Node000002" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="296,5,511,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="571,75,475,48,476,43,573,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="596,104,510,60,477,48,479,43,512,55,598,99"/>
 <area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="296,69,511,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="544,92,511,92,511,87,544,87"/>
-<area shape="rect" id="Node000006" href="$classBDSOutputROOTEventModel.html#aaa45ba4df41f1c39013de69e481428a1" title="Fill root output." alt="" coords="300,133,507,173"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="573,108,476,136,475,131,571,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="544,112,510,107,511,102,545,107"/>
+<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a184e6d7be757abef7c5e3dce4e941b11" title="Interface to append an element." alt="" coords="296,133,511,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="545,136,511,141,510,136,544,131"/>
+<area shape="rect" id="Node000008" href="$classBDSOutputROOTEventModel.html#aaa45ba4df41f1c39013de69e481428a1" title="Fill root output." alt="" coords="300,197,507,237"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="598,144,512,188,479,200,477,195,510,183,596,139"/>
 <area shape="rect" id="Node000003" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="5,13,248,38"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
 <area shape="rect" id="Node000005" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="17,69,237,109"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="282,92,237,92,237,87,282,87"/>
-<area shape="rect" id="Node000007" href="$classBDSOutput.html#acdee8f26407d81dd1bdeac30bb736e1a" title=" " alt="" coords="47,141,207,166"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="287,156,207,156,207,151,287,151"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="23,141,230,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="282,156,230,156,230,151,282,151"/>
+<area shape="rect" id="Node000009" href="$classBDSOutput.html#acdee8f26407d81dd1bdeac30bb736e1a" title=" " alt="" coords="47,205,207,230"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="287,220,207,220,207,215,287,215"/>
 </map>

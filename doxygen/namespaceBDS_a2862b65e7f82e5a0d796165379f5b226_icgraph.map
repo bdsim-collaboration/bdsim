@@ -10,8 +10,8 @@
 <area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="2633,188,2581,194,2580,189,2633,183"/>
 <area shape="rect" id="Node000021" href="$classBDSBunchFactory.html#a98034ad07d3cfa1e08b5d995772166c5" title="factory method" alt="" coords="2360,362,2587,387"/>
 <area shape="poly" id="edge22_Node000001_Node000021" title=" " alt="" coords="2692,199,2492,364,2489,360,2689,195"/>
-<area shape="rect" id="Node000028" href="$classBDSFieldFactory.html#a164fb62f8a9a06e93327d7a7a65ae698" title="Prepare all required definitions that can be used dynamically." alt="" coords="2381,476,2565,516"/>
-<area shape="poly" id="edge30_Node000001_Node000028" title=" " alt="" coords="2709,203,2669,295,2638,350,2601,402,2556,445,2510,478,2507,473,2552,441,2597,398,2633,347,2664,293,2704,201"/>
+<area shape="rect" id="Node000029" href="$classBDSFieldFactory.html#a164fb62f8a9a06e93327d7a7a65ae698" title="Prepare all required definitions that can be used dynamically." alt="" coords="2381,476,2565,516"/>
+<area shape="poly" id="edge31_Node000001_Node000029" title=" " alt="" coords="2709,203,2669,295,2638,350,2601,402,2556,445,2510,478,2507,473,2552,441,2597,398,2633,347,2664,293,2704,201"/>
 <area shape="rect" id="Node000005" href="$namespaceBDS.html#ac1dfb7b1f5d9c6905b776ca9f3afdffb" title=" " alt="" coords="468,137,593,162"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="945,174,593,155,593,150,946,168"/>
 <area shape="rect" id="Node000007" href="$classBDSElement.html#ab0494422b7120639d8676e6c13a05cfb" title="This does the full construction. Loads the external geometry and field if there is one." alt="" coords="691,184,898,224"/>
@@ -47,41 +47,43 @@
 <area shape="poly" id="edge23_Node000021_Node000021" title=" " alt="" coords="2517,353,2514,348,2506,344,2473,341,2447,343,2433,348,2431,353,2438,360,2434,364,2425,354,2430,344,2446,338,2473,335,2508,339,2517,344,2521,350"/>
 <area shape="rect" id="Node000022" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="2129,313,2258,338"/>
 <area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="2387,362,2258,339,2259,334,2388,357"/>
-<area shape="rect" id="Node000025" href="$classBDSIMLink.html#aed5c334e4db2171da99dd381b43da904" title="The main function where everything is constructed." alt="" coords="2115,362,2271,387"/>
-<area shape="poly" id="edge27_Node000021_Node000025" title=" " alt="" coords="2347,377,2271,377,2271,372,2347,372"/>
-<area shape="rect" id="Node000026" href="$classBDSBunchComposite.html#a5dae96af678cb1ca5398040f66c1791a" title=" " alt="" coords="2110,412,2277,452"/>
-<area shape="poly" id="edge28_Node000021_Node000026" title=" " alt="" coords="2398,393,2278,418,2277,412,2397,388"/>
-<area shape="rect" id="Node000027" href="$classBDSBunchCompositeSDE.html#acf4c8a82fdc4999ecc3f0d9f7acb650b" title=" " alt="" coords="2101,476,2286,516"/>
-<area shape="poly" id="edge29_Node000021_Node000027" title=" " alt="" coords="2440,397,2377,431,2301,466,2268,478,2266,473,2299,462,2374,426,2438,392"/>
-<area shape="rect" id="Node000023" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="1886,289,2002,314"/>
-<area shape="poly" id="edge25_Node000022_Node000023" title=" " alt="" coords="2115,320,2002,310,2003,304,2115,315"/>
-<area shape="rect" id="Node000024" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="1879,338,2009,363"/>
-<area shape="poly" id="edge26_Node000022_Node000024" title=" " alt="" coords="2115,336,2009,347,2009,341,2115,331"/>
-<area shape="rect" id="Node000029" href="$classBDSFieldFactory.html#ac33fb78d5178aef4462bb91d6eafb7dc" title="Private default constructor as singleton class." alt="" coords="2097,540,2289,580"/>
-<area shape="poly" id="edge31_Node000028_Node000029" title=" " alt="" coords="2372,522,2282,543,2281,537,2371,517"/>
-<area shape="rect" id="Node000030" href="$classBDSFieldFactory.html#a48b442f3163d23db2b805c8dc36e89fa" title="Public accessor method for singleton pattern." alt="" coords="1849,518,2039,543"/>
-<area shape="poly" id="edge32_Node000029_Node000030" title=" " alt="" coords="2083,550,2038,544,2039,539,2084,544"/>
-<area shape="poly" id="edge33_Node000030_Node000009" title=" " alt="" coords="1908,514,1833,476,1730,433,1671,413,1609,397,1546,387,1483,383,1257,383,907,383,907,377,1257,377,1483,377,1547,381,1610,392,1672,408,1732,428,1835,471,1910,509"/>
-<area shape="rect" id="Node000031" href="$classBDSComponentFactory.html#ad4d41934377cec6c1a882f2821b856ab" title=" " alt="" coords="1625,481,1796,521"/>
-<area shape="poly" id="edge34_Node000030_Node000031" title=" " alt="" coords="1835,520,1796,515,1796,509,1836,514"/>
-<area shape="rect" id="Node000034" href="$classBDSComponentFactory.html#a7df0b66f3731cf97c6efe44b0ecd9585" title=" " alt="" coords="1173,441,1344,481"/>
-<area shape="poly" id="edge44_Node000030_Node000034" title=" " alt="" coords="1850,548,1754,558,1638,562,1514,557,1452,549,1391,536,1333,513,1286,484,1289,479,1336,508,1393,531,1453,543,1514,551,1638,557,1754,552,1850,542"/>
-<area shape="rect" id="Node000038" href="$classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="1647,597,1774,622"/>
-<area shape="poly" id="edge45_Node000030_Node000038" title=" " alt="" coords="1893,550,1750,599,1748,594,1891,545"/>
-<area shape="rect" id="Node000039" href="$classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="1620,317,1801,342"/>
-<area shape="poly" id="edge46_Node000030_Node000039" title=" " alt="" coords="1926,508,1876,437,1840,398,1800,364,1761,344,1763,340,1803,359,1844,394,1880,433,1930,505"/>
-<area shape="rect" id="Node000032" href="$classBDSComponentFactory.html#a3117748794572246aac9bb89b6b1ba8b" title="Helper method for common magnet construction." alt="" coords="1397,481,1567,521"/>
-<area shape="poly" id="edge35_Node000031_Node000032" title=" " alt="" coords="1612,504,1568,504,1568,499,1612,499"/>
-<area shape="rect" id="Node000033" href="$classBDSComponentFactory.html#acb78cbbc13acafeb40ad17b333d8ed63" title=" " alt="" coords="1392,417,1572,457"/>
-<area shape="poly" id="edge36_Node000031_Node000033" title=" " alt="" coords="1625,480,1553,460,1555,455,1626,475"/>
-<area shape="poly" id="edge37_Node000033_Node000034" title=" " alt="" coords="1379,451,1344,455,1344,450,1378,446"/>
-<area shape="poly" id="edge43_Node000034_Node000034" title=" " alt="" coords="1296,430,1283,423,1259,420,1238,422,1225,427,1220,433,1223,440,1218,442,1215,432,1222,422,1236,417,1259,415,1284,418,1298,425"/>
-<area shape="rect" id="Node000035" href="$classBDSComponentFactory.html#abc3e3a773bea6e5d482dc2fe57834dd6" title=" " alt="" coords="955,417,1125,457"/>
-<area shape="poly" id="edge38_Node000034_Node000035" title=" " alt="" coords="1160,453,1125,449,1126,444,1160,448"/>
-<area shape="poly" id="edge42_Node000035_Node000009" title=" " alt="" coords="943,417,906,408,852,395,853,390,907,403,944,411"/>
-<area shape="rect" id="Node000036" href="$classBDSDetectorConstruction.html#a8e5b24d8a99d199a728d8a97be40f1ab" title=" " alt="" coords="701,417,888,457"/>
-<area shape="poly" id="edge39_Node000035_Node000036" title=" " alt="" coords="941,440,888,440,888,435,941,435"/>
-<area shape="rect" id="Node000037" href="$classBDSDetectorConstruction.html#aa81d7072ee80602ba862eda6c892c87c" title="Build the main beam line and then any other required beam lines." alt="" coords="437,417,624,457"/>
-<area shape="poly" id="edge40_Node000036_Node000037" title=" " alt="" coords="688,440,624,440,624,435,688,435"/>
-<area shape="poly" id="edge41_Node000037_Node000006" title=" " alt="" coords="457,415,426,401,367,371,317,341,320,337,370,366,428,396,460,410"/>
+<area shape="rect" id="Node000026" href="$classBDSIMLink.html#aed5c334e4db2171da99dd381b43da904" title="The main function where everything is constructed." alt="" coords="2115,362,2271,387"/>
+<area shape="poly" id="edge28_Node000021_Node000026" title=" " alt="" coords="2347,377,2271,377,2271,372,2347,372"/>
+<area shape="rect" id="Node000027" href="$classBDSBunchComposite.html#a5dae96af678cb1ca5398040f66c1791a" title=" " alt="" coords="2110,412,2277,452"/>
+<area shape="poly" id="edge29_Node000021_Node000027" title=" " alt="" coords="2398,393,2278,418,2277,412,2397,388"/>
+<area shape="rect" id="Node000028" href="$classBDSBunchCompositeSDE.html#acf4c8a82fdc4999ecc3f0d9f7acb650b" title=" " alt="" coords="2101,476,2286,516"/>
+<area shape="poly" id="edge30_Node000021_Node000028" title=" " alt="" coords="2440,397,2377,431,2301,466,2268,478,2266,473,2299,462,2374,426,2438,392"/>
+<area shape="rect" id="Node000023" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="1886,362,2002,387"/>
+<area shape="poly" id="edge25_Node000022_Node000023" title=" " alt="" coords="2116,343,2003,366,2002,361,2115,338"/>
+<area shape="rect" id="Node000024" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="1886,263,2002,289"/>
+<area shape="poly" id="edge26_Node000022_Node000024" title=" " alt="" coords="2115,313,2002,290,2003,285,2116,307"/>
+<area shape="rect" id="Node000025" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="1879,313,2009,338"/>
+<area shape="poly" id="edge27_Node000022_Node000025" title=" " alt="" coords="2115,328,2009,328,2009,323,2115,323"/>
+<area shape="rect" id="Node000030" href="$classBDSFieldFactory.html#ac33fb78d5178aef4462bb91d6eafb7dc" title="Private default constructor as singleton class." alt="" coords="2097,540,2289,580"/>
+<area shape="poly" id="edge32_Node000029_Node000030" title=" " alt="" coords="2372,522,2282,543,2281,537,2371,517"/>
+<area shape="rect" id="Node000031" href="$classBDSFieldFactory.html#a48b442f3163d23db2b805c8dc36e89fa" title="Public accessor method for singleton pattern." alt="" coords="1849,518,2039,543"/>
+<area shape="poly" id="edge33_Node000030_Node000031" title=" " alt="" coords="2083,550,2038,544,2039,539,2084,544"/>
+<area shape="poly" id="edge34_Node000031_Node000009" title=" " alt="" coords="1908,514,1833,476,1730,433,1671,413,1609,397,1546,387,1483,383,1257,383,907,383,907,377,1257,377,1483,377,1547,381,1610,392,1672,408,1732,428,1835,471,1910,509"/>
+<area shape="rect" id="Node000032" href="$classBDSComponentFactory.html#ad4d41934377cec6c1a882f2821b856ab" title=" " alt="" coords="1625,481,1796,521"/>
+<area shape="poly" id="edge35_Node000031_Node000032" title=" " alt="" coords="1835,520,1796,515,1796,509,1836,514"/>
+<area shape="rect" id="Node000035" href="$classBDSComponentFactory.html#a7df0b66f3731cf97c6efe44b0ecd9585" title=" " alt="" coords="1173,441,1344,481"/>
+<area shape="poly" id="edge45_Node000031_Node000035" title=" " alt="" coords="1850,548,1754,558,1638,562,1514,557,1452,549,1391,536,1333,513,1286,484,1289,479,1336,508,1393,531,1453,543,1514,551,1638,557,1754,552,1850,542"/>
+<area shape="rect" id="Node000039" href="$classBDSIM.html#a5ab3ba839bfeee963894adf148c33593" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="1647,597,1774,622"/>
+<area shape="poly" id="edge46_Node000031_Node000039" title=" " alt="" coords="1893,550,1750,599,1748,594,1891,545"/>
+<area shape="rect" id="Node000040" href="$classBDSIMLink.html#acb6960c2c7c9f2e0573d44cc6604112f" title="The destructor opens the geometry in Geant4 and deletes everything." alt="" coords="1620,317,1801,342"/>
+<area shape="poly" id="edge47_Node000031_Node000040" title=" " alt="" coords="1926,508,1876,437,1840,398,1800,364,1761,344,1763,340,1803,359,1844,394,1880,433,1930,505"/>
+<area shape="rect" id="Node000033" href="$classBDSComponentFactory.html#a3117748794572246aac9bb89b6b1ba8b" title="Helper method for common magnet construction." alt="" coords="1397,481,1567,521"/>
+<area shape="poly" id="edge36_Node000032_Node000033" title=" " alt="" coords="1612,504,1568,504,1568,499,1612,499"/>
+<area shape="rect" id="Node000034" href="$classBDSComponentFactory.html#acb78cbbc13acafeb40ad17b333d8ed63" title=" " alt="" coords="1392,417,1572,457"/>
+<area shape="poly" id="edge37_Node000032_Node000034" title=" " alt="" coords="1625,480,1553,460,1555,455,1626,475"/>
+<area shape="poly" id="edge38_Node000034_Node000035" title=" " alt="" coords="1379,451,1344,455,1344,450,1378,446"/>
+<area shape="poly" id="edge44_Node000035_Node000035" title=" " alt="" coords="1296,430,1283,423,1259,420,1238,422,1225,427,1220,433,1223,440,1218,442,1215,432,1222,422,1236,417,1259,415,1284,418,1298,425"/>
+<area shape="rect" id="Node000036" href="$classBDSComponentFactory.html#a0dffc11cd5167e3777bd9350622d3baf" title=" " alt="" coords="955,417,1125,457"/>
+<area shape="poly" id="edge39_Node000035_Node000036" title=" " alt="" coords="1160,453,1125,449,1126,444,1160,448"/>
+<area shape="poly" id="edge43_Node000036_Node000009" title=" " alt="" coords="943,417,906,408,852,395,853,390,907,403,944,411"/>
+<area shape="rect" id="Node000037" href="$classBDSDetectorConstruction.html#a8e5b24d8a99d199a728d8a97be40f1ab" title=" " alt="" coords="701,417,888,457"/>
+<area shape="poly" id="edge40_Node000036_Node000037" title=" " alt="" coords="941,440,888,440,888,435,941,435"/>
+<area shape="rect" id="Node000038" href="$classBDSDetectorConstruction.html#aa81d7072ee80602ba862eda6c892c87c" title="Build the main beam line and then any other required beam lines." alt="" coords="437,417,624,457"/>
+<area shape="poly" id="edge41_Node000037_Node000038" title=" " alt="" coords="688,440,624,440,624,435,688,435"/>
+<area shape="poly" id="edge42_Node000038_Node000006" title=" " alt="" coords="457,415,426,401,367,371,317,341,320,337,370,366,428,396,460,410"/>
 </map>

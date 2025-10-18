@@ -1,28 +1,32 @@
 <map id="BDSExtent::DZ" name="BDSExtent::DZ">
-<area shape="rect" id="Node000001" title="The difference in a dimension." alt="" coords="755,159,873,185"/>
+<area shape="rect" id="Node000001" title="The difference in a dimension." alt="" coords="755,198,873,223"/>
 <area shape="rect" id="Node000002" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="487,5,702,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="795,150,757,104,733,80,705,60,682,48,684,43,708,55,736,76,761,100,799,146"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="799,187,763,122,737,88,705,59,685,48,687,43,708,55,741,85,768,120,804,184"/>
 <area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="487,69,702,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="775,155,706,124,671,112,672,107,708,119,777,150"/>
-<area shape="rect" id="Node000006" href="$namespaceBDS.html#ac1dfb7b1f5d9c6905b776ca9f3afdffb" title=" " alt="" coords="532,134,657,159"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="741,166,657,157,658,151,742,161"/>
-<area shape="rect" id="Node000008" href="$classBDSElement.html#ab0494422b7120639d8676e6c13a05cfb" title="This does the full construction. Loads the external geometry and field if there is one." alt="" coords="491,233,698,273"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="776,193,708,222,669,236,667,231,706,218,774,188"/>
-<area shape="rect" id="Node000010" href="$namespaceBDS.html#aab422e50ef35240eabc2a479005eb975" title=" " alt="" coords="483,183,707,209"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="741,183,707,186,707,181,741,177"/>
-<area shape="rect" id="Node000011" href="$classBDSMagnetOuterFactory.html#a95d3ad5972f528ed7483c5e829855e4c" title=" " alt="" coords="504,297,685,337"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="798,198,761,243,736,267,708,288,684,300,681,295,705,283,732,263,757,240,794,194"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="790,190,752,156,705,124,679,112,681,107,708,119,756,152,793,186"/>
+<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a184e6d7be757abef7c5e3dce4e941b11" title="Interface to append an element." alt="" coords="487,133,702,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="751,197,671,176,672,171,752,192"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#ac1dfb7b1f5d9c6905b776ca9f3afdffb" title=" " alt="" coords="532,198,657,223"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="741,213,658,213,658,208,741,208"/>
+<area shape="rect" id="Node000010" href="$classBDSElement.html#ab0494422b7120639d8676e6c13a05cfb" title="This does the full construction. Loads the external geometry and field if there is one." alt="" coords="491,297,698,337"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="788,234,751,261,708,286,675,300,673,295,705,282,748,257,785,230"/>
+<area shape="rect" id="Node000012" href="$namespaceBDS.html#aab422e50ef35240eabc2a479005eb975" title=" " alt="" coords="483,247,707,273"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="744,229,653,250,651,245,743,224"/>
+<area shape="rect" id="Node000013" href="$classBDSMagnetOuterFactory.html#a95d3ad5972f528ed7483c5e829855e4c" title=" " alt="" coords="504,361,685,401"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="802,237,765,295,739,325,708,352,686,364,683,359,705,347,735,322,761,291,798,234"/>
 <area shape="rect" id="Node000003" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="192,13,435,38"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="473,28,435,28,435,23,473,23"/>
 <area shape="rect" id="Node000005" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="203,69,423,109"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="473,92,424,92,424,87,473,87"/>
-<area shape="rect" id="Node000007" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="220,155,407,195"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="519,157,407,168,406,163,518,152"/>
-<area shape="rect" id="Node000009" href="$classBDSElement.html#a88f53a91fd12690cb171d98c588b0f76" title=" " alt="" coords="241,241,385,266"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="477,256,385,256,385,251,477,251"/>
-<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="469,189,407,184,407,179,469,184"/>
-<area shape="rect" id="Node000012" href="$classBDSMagnet.html#a7b599c6b9823b3a7dd57e254dbc94226" title=" " alt="" coords="226,305,401,330"/>
-<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="490,320,401,320,401,315,490,315"/>
-<area shape="rect" id="Node000013" href="$classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="5,305,144,330"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="212,320,144,320,144,315,212,315"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="210,141,417,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="474,156,417,156,417,151,474,151"/>
+<area shape="rect" id="Node000009" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="220,215,407,255"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="519,220,407,229,406,224,518,214"/>
+<area shape="rect" id="Node000011" href="$classBDSElement.html#a88f53a91fd12690cb171d98c588b0f76" title=" " alt="" coords="241,305,385,330"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="477,320,385,320,385,315,477,315"/>
+<area shape="poly" id="edge12_Node000012_Node000009" title=" " alt="" coords="469,251,407,246,407,240,469,246"/>
+<area shape="rect" id="Node000014" href="$classBDSMagnet.html#a7b599c6b9823b3a7dd57e254dbc94226" title=" " alt="" coords="226,369,401,394"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="490,384,401,384,401,379,490,379"/>
+<area shape="rect" id="Node000015" href="$classBDSMagnet.html#a6b238cee0bbe7fe73f55dc119be3c263" title=" " alt="" coords="5,369,144,394"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="212,384,144,384,144,379,212,379"/>
 </map>

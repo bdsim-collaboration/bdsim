@@ -1,15 +1,19 @@
 <map id="BDSExtent::TransverseBoundingRadius" name="BDSExtent::TransverseBoundingRadius">
-<area shape="rect" id="Node000001" title="Return a radius that would encompass the maximum x,y extent." alt="" coords="559,69,789,109"/>
+<area shape="rect" id="Node000001" title="Return a radius that would encompass the maximum x,y extent." alt="" coords="559,101,789,141"/>
 <area shape="rect" id="Node000002" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="296,5,511,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="575,69,488,48,489,43,576,63"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="611,99,510,60,473,48,475,43,512,55,613,94"/>
 <area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="296,69,511,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="545,92,511,92,511,87,545,87"/>
-<area shape="rect" id="Node000006" href="$classBDSParallelWorldSampler.html#a759473f9a35d652b3dd4a0894861f353" title="Place a sampler from a single element." alt="" coords="309,133,497,173"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="576,115,489,136,488,131,575,110"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="545,109,511,105,511,99,546,103"/>
+<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a184e6d7be757abef7c5e3dce4e941b11" title="Interface to append an element." alt="" coords="296,133,511,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="546,139,511,143,511,138,545,134"/>
+<area shape="rect" id="Node000008" href="$classBDSParallelWorldSampler.html#a759473f9a35d652b3dd4a0894861f353" title="Place a sampler from a single element." alt="" coords="309,197,497,237"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="613,149,512,188,475,200,473,195,510,183,611,144"/>
 <area shape="rect" id="Node000003" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="5,13,248,38"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
 <area shape="rect" id="Node000005" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="17,69,237,109"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="282,92,237,92,237,87,282,87"/>
-<area shape="rect" id="Node000007" href="$classBDSParallelWorldSampler.html#afd3f7fbe0255b5a5b702a7ad83e753f4" title=" " alt="" coords="33,133,221,173"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="296,156,221,156,221,151,296,151"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="23,141,230,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="282,156,230,156,230,151,282,151"/>
+<area shape="rect" id="Node000009" href="$classBDSParallelWorldSampler.html#afd3f7fbe0255b5a5b702a7ad83e753f4" title=" " alt="" coords="33,197,221,237"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="296,220,221,220,221,215,296,215"/>
 </map>

@@ -4,10 +4,10 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1448,156,1414,156,1414,151,1448,151"/>
 <area shape="rect" id="Node000003" href="$classBDSBunch.html#ad0fe9077dea51a4dedc0158f32264215" title=" " alt="" coords="946,77,1145,102"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1246,140,1099,105,1100,100,1247,135"/>
-<area shape="rect" id="Node000011" href="$classBDSPrimaryGeneratorFileHEPMC.html#ad8f75badab82a6de22276cffe767393a" title="Conversion from HepMC::GenEvent to G4Event." alt="" coords="928,133,1163,173"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1201,156,1163,156,1163,151,1201,151"/>
-<area shape="rect" id="Node000013" href="$classBDSPrimaryGeneratorFileSampler.html#a33d0ac29ec6da2d09aae4d1a70820d37" title="Read sampler hits and put into primary vertices if they pass filters." alt="" coords="924,197,1167,237"/>
-<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="1247,172,1131,200,1130,195,1246,167"/>
+<area shape="rect" id="Node000012" href="$classBDSPrimaryGeneratorFileHEPMC.html#ad8f75badab82a6de22276cffe767393a" title="Conversion from HepMC::GenEvent to G4Event." alt="" coords="928,133,1163,173"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="1201,156,1163,156,1163,151,1201,151"/>
+<area shape="rect" id="Node000014" href="$classBDSPrimaryGeneratorFileSampler.html#a33d0ac29ec6da2d09aae4d1a70820d37" title="Read sampler hits and put into primary vertices if they pass filters." alt="" coords="924,197,1167,237"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="1247,172,1131,200,1130,195,1246,167"/>
 <area shape="rect" id="Node000004" href="$classBDSBunchUserFile.html#a71238fe44c433ad46f68b84f3119352c" title=" " alt="" coords="653,5,857,45"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="973,76,845,48,847,43,974,71"/>
 <area shape="rect" id="Node000005" href="$classBDSBunch.html#adc8a53b966a9dcc0ce402d597a7c9319" title=" " alt="" coords="655,69,854,109"/>
@@ -18,12 +18,14 @@
 <area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="642,104,586,110,585,104,642,98"/>
 <area shape="rect" id="Node000008" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,106,312,131"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="347,121,312,121,312,116,347,116"/>
-<area shape="rect" id="Node000009" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,81,128,106"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="169,110,128,104,129,99,169,105"/>
-<area shape="rect" id="Node000010" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,130,135,155"/>
-<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="170,132,135,137,135,131,169,127"/>
-<area shape="rect" id="Node000012" href="$classBDSPrimaryGeneratorFileHEPMC.html#ab47ec75b1fcf2940d2f1b884c66219de" title=" " alt="" coords="637,133,872,173"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="914,156,872,156,872,151,914,151"/>
-<area shape="rect" id="Node000014" href="$classBDSPrimaryGeneratorFileSampler.html#af5d8f669214c6449600e919d94abce2b" title="Read the next non&#45;empty sampler entry from the file." alt="" coords="633,197,876,237"/>
-<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="911,220,876,220,876,215,911,215"/>
+<area shape="rect" id="Node000009" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,57,128,82"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="187,105,116,85,117,80,189,100"/>
+<area shape="rect" id="Node000010" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,106,128,131"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="169,121,128,121,128,116,169,116"/>
+<area shape="rect" id="Node000011" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,155,135,181"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="189,138,117,158,116,153,187,133"/>
+<area shape="rect" id="Node000013" href="$classBDSPrimaryGeneratorFileHEPMC.html#ab47ec75b1fcf2940d2f1b884c66219de" title=" " alt="" coords="637,133,872,173"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="914,156,872,156,872,151,914,151"/>
+<area shape="rect" id="Node000015" href="$classBDSPrimaryGeneratorFileSampler.html#af5d8f669214c6449600e919d94abce2b" title="Read the next non&#45;empty sampler entry from the file." alt="" coords="633,197,876,237"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="911,220,876,220,876,215,911,215"/>
 </map>

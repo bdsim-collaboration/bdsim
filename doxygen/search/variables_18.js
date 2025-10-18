@@ -11,7 +11,7 @@ var searchData=
   ['ydistrtype_8',['yDistrType',['../classGMAD_1_1BeamBase.html#abd18dd67325b0282a717df3668a60862',1,'GMAD::BeamBase']]],
   ['yhalfheight_9',['yhalfheight',['../classBDSCollimatorTipJaw.html#ad3231a8c44761d2138b9ae257abdfc77',1,'BDSCollimatorTipJaw::yHalfHeight'],['../classBDSCollimatorJaw.html#a9e499f8c2770041c8e9201fb23116cc8',1,'BDSCollimatorJaw::yHalfHeight']]],
   ['yinitial_10',['yInitial',['../classBDSIntegratorDipoleRodrigues.html#ace71a93545ad46341bafdee1de3e76a0',1,'BDSIntegratorDipoleRodrigues']]],
-  ['ymax_11',['ymax',['../classBDSArray4DCoords.html#ab3671d26299ba5809c4ae66ee928f419',1,'BDSArray4DCoords::yMax'],['../classBDSGeometryFactoryBase.html#a004307f0f89a0559715186b2c898b143',1,'BDSGeometryFactoryBase::ymax'],['../classGMAD_1_1Query.html#ad1483d2d524f9bd291c04cc26355380b',1,'GMAD::Query::ymax']]],
+  ['ymax_11',['ymax',['../classBDSGeometryFactoryBase.html#a004307f0f89a0559715186b2c898b143',1,'BDSGeometryFactoryBase::ymax'],['../classGMAD_1_1Query.html#ad1483d2d524f9bd291c04cc26355380b',1,'GMAD::Query::ymax'],['../classBDSArray4DCoords.html#ab3671d26299ba5809c4ae66ee928f419',1,'BDSArray4DCoords::yMax']]],
   ['ymin_12',['ymin',['../classBDSGeometryFactoryBase.html#a962b259a3e07bf7e4dcbf193e992cbfe',1,'BDSGeometryFactoryBase::ymin'],['../classGMAD_1_1Query.html#a650f92121d87193d2cbb0b259abf14b6',1,'GMAD::Query::ymin'],['../classBDSArray4DCoords.html#a0fc7def1840d8b7c873da9e19429ef31',1,'BDSArray4DCoords::yMin']]],
   ['yoffset_13',['yoffset',['../classBDSCollimatorBeamMask.html#a8afaa7293bc7a07c20d2b260a2a20d38',1,'BDSCollimatorBeamMask::yOffset'],['../classBDSGasJet.html#a8963c3ec62ee975c7b13f1ce1de1b930',1,'BDSGasJet::yOffset']]],
   ['yoffsetslit_14',['yOffsetSlit',['../classBDSCollimatorBeamMask.html#a0264aa0cb0603a1b6bbd54b8aeefb44b',1,'BDSCollimatorBeamMask']]],
@@ -22,7 +22,7 @@ var searchData=
   ['yp_19',['yp',['../classEventAnalysisOrbit.html#ae0dc959d33854448d060a685f5b1b65a',1,'EventAnalysisOrbit']]],
   ['yp0_20',['yp0',['../classBDSBunch.html#a29c4a28f5b47aff0d57858eda2f94303',1,'BDSBunch::Yp0'],['../classGMAD_1_1BeamBase.html#aed87f581cc7e322f833efd892dfe7be0',1,'GMAD::BeamBase::Yp0']]],
   ['yp_5fv_21',['yp_v',['../classBDSBunchGaussBase.html#a3a1327b97da12b9f7274d8dbad3415a4',1,'BDSBunchGaussBase']]],
-  ['ysize_22',['ysize',['../structGMAD_1_1Element.html#aae7306d424ed97c1063fd5c749e5fb82',1,'GMAD::Element::ysize'],['../classGMAD_1_1ScorerMesh.html#aba5d36589dd3f24e6d5ccf56753e1753',1,'GMAD::ScorerMesh::ysize'],['../classBDSGasJet.html#a1e71bb5ea6d80c2aa8320c360754f533',1,'BDSGasJet::ySize'],['../classBDSShield.html#ae98c622d0b031544254976b88f8c3726',1,'BDSShield::ySize']]],
+  ['ysize_22',['ysize',['../classBDSGasJet.html#a1e71bb5ea6d80c2aa8320c360754f533',1,'BDSGasJet::ySize'],['../classBDSShield.html#ae98c622d0b031544254976b88f8c3726',1,'BDSShield::ySize'],['../structGMAD_1_1Element.html#aae7306d424ed97c1063fd5c749e5fb82',1,'GMAD::Element::ysize'],['../classGMAD_1_1ScorerMesh.html#aba5d36589dd3f24e6d5ccf56753e1753',1,'GMAD::ScorerMesh::ysize']]],
   ['ysize2_23',['ysize2',['../structGMAD_1_1Element.html#a1d792fccb9368e6e7c19f392effe07b5',1,'GMAD::Element']]],
   ['ysizeout_24',['ysizeOut',['../structGMAD_1_1Element.html#a97ad1c8902757206a439aa780cde0750',1,'GMAD::Element']]],
   ['ystep_25',['yStep',['../classBDSArray4DCoords.html#a238e3072c5c31d22e5d08014e27a72c0',1,'BDSArray4DCoords']]]

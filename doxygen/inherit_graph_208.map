@@ -1,29 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,119,171,145"/>
-<area shape="rect" id="Node000001" href="$classBDSMultiSensitiveDetectorOrdered.html" title="Modified G4MultiSensitiveDetector that retains order and passes hits in sequence." alt="" coords="219,5,417,45"/>
-<area shape="poly" id="edge378_Node000000_Node000001" title=" " alt="" coords="119,110,164,82,218,55,248,43,250,48,220,60,167,87,121,114"/>
-<area shape="rect" id="Node000002" href="$classBDSSDApertureImpacts.html" title="Generates BDSHitsEnergyDepositions from step information &#45; uses curvilinear coords." alt="" coords="231,70,405,95"/>
-<area shape="poly" id="edge379_Node000000_Node000002" title=" " alt="" coords="160,114,257,93,258,98,161,119"/>
-<area shape="rect" id="Node000003" href="$classBDSSDTerminator.html" title="Sensitivity that measures primary particle turns for terminator." alt="" coords="249,119,387,145"/>
-<area shape="poly" id="edge380_Node000000_Node000003" title=" " alt="" coords="184,129,249,129,249,135,184,135"/>
-<area shape="rect" id="Node000004" href="$classBDSSDVolumeExit.html" title="Generates BDSHitEnergyDepositionGlobals if a particle is leaving a volume." alt="" coords="247,169,389,194"/>
-<area shape="poly" id="edge381_Node000000_Node000004" title=" " alt="" coords="161,145,258,166,257,171,160,150"/>
-<area shape="rect" id="Node000005" href="$classBDSSensitiveDetector.html" title="Virtual class to define interface for ordered multi&#45;sensitive detector." alt="" coords="235,218,401,243"/>
-<area shape="poly" id="edge382_Node000000_Node000005" title=" " alt="" coords="121,150,167,177,220,203,258,215,256,221,218,208,164,182,118,155"/>
-<area shape="rect" id="Node000006" href="$classBDSSDCollimator.html" title="The sensitive detector class that provides sensitivity to collimators instances." alt="" coords="510,45,645,70"/>
-<area shape="poly" id="edge383_Node000005_Node000006" title=" " alt="" coords="408,209,415,203,428,189,435,174,438,143,443,111,450,95,464,79,485,66,509,58,511,63,487,71,467,83,454,98,448,112,444,143,440,175,432,192,419,207,412,213"/>
-<area shape="rect" id="Node000007" href="$classBDSSDEnergyDeposition.html" title="Generates BDSHitsEnergyDepositions from step information &#45; uses curvilinear coords." alt="" coords="486,94,669,119"/>
-<area shape="poly" id="edge384_Node000005_Node000007" title=" " alt="" coords="405,210,416,203,431,186,439,167,446,147,464,129,485,117,488,122,467,133,451,150,444,169,436,188,419,207,407,215"/>
-<area shape="rect" id="Node000008" href="$classBDSSDEnergyDepositionGlobal.html" title="Generates BDSHitsEnergyDepositionGlobal from step information." alt="" coords="465,143,689,169"/>
-<area shape="poly" id="edge385_Node000005_Node000008" title=" " alt="" coords="390,212,416,203,440,190,464,178,503,166,505,171,466,182,443,195,418,208,392,217"/>
-<area shape="rect" id="Node000009" href="$classBDSSDSampler.html" title="The sensitive detector class that provides sensitivity to BDSSampler instances." alt="" coords="517,193,638,218"/>
-<area shape="poly" id="edge386_Node000005_Node000009" title=" " alt="" coords="414,219,516,209,517,214,415,224"/>
-<area shape="rect" id="Node000010" href="$classBDSSDSamplerCylinder.html" title="The sensitive detector class that provides sensitivity to BDSSamplerCylinder instances." alt="" coords="490,242,665,267"/>
-<area shape="poly" id="edge387_Node000005_Node000010" title=" " alt="" coords="415,237,490,244,490,249,414,242"/>
-<area shape="rect" id="Node000011" href="$classBDSSDSamplerLink.html" title="The sensitive detector class that provides sensitivity to BDSSamplerLink instances." alt="" coords="503,291,651,317"/>
-<area shape="poly" id="edge388_Node000005_Node000011" title=" " alt="" coords="369,245,466,276,517,289,515,294,465,281,367,250"/>
-<area shape="rect" id="Node000012" href="$classBDSSDSamplerSphere.html" title="The sensitive detector class that provides sensitivity to BDSSamplerSphere instances." alt="" coords="494,341,661,366"/>
-<area shape="poly" id="edge389_Node000005_Node000012" title=" " alt="" coords="346,250,400,289,466,326,504,338,502,343,464,330,397,293,343,254"/>
-<area shape="rect" id="Node000013" href="$classBDSSDThinThing.html" title="The sensitive detector class that provides sensitivity to record thin thing hits." alt="" coords="512,390,643,415"/>
-<area shape="poly" id="edge390_Node000005_Node000013" title=" " alt="" coords="338,253,391,315,427,348,467,375,513,392,511,397,464,380,423,352,387,318,334,256"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,179,105,204"/>
+<area shape="rect" id="Node000001" href="$classBDSSDFilterAnd.html" title="Filter that applies AND to a vector of filters." alt="" coords="188,5,313,31"/>
+<area shape="poly" id="edge371_Node000000_Node000001" title=" " alt="" coords="64,165,96,102,121,68,152,40,187,24,189,29,155,44,125,72,101,105,69,167"/>
+<area shape="rect" id="Node000002" href="$classBDSSDFilterIon.html" title="Filter for only ions." alt="" coords="191,55,311,80"/>
+<area shape="poly" id="edge372_Node000000_Node000002" title=" " alt="" coords="71,166,105,126,128,106,152,89,189,74,191,79,155,94,131,110,109,130,75,169"/>
+<area shape="rect" id="Node000003" href="$classBDSSDFilterLogicalVolume.html" title="SD filter for a particular volume." alt="" coords="153,104,348,129"/>
+<area shape="poly" id="edge373_Node000000_Node000003" title=" " alt="" coords="88,169,152,138,188,127,190,132,154,143,90,174"/>
+<area shape="rect" id="Node000004" href="$classBDSSDFilterMaterial.html" title="SD filter for a particular volume." alt="" coords="173,153,328,179"/>
+<area shape="poly" id="edge374_Node000000_Node000004" title=" " alt="" coords="119,180,173,173,174,179,120,186"/>
+<area shape="rect" id="Node000005" href="$classBDSSDFilterOr.html" title="Filter that applies OR to a vector of filters." alt="" coords="193,203,308,228"/>
+<area shape="poly" id="edge375_Node000000_Node000005" title=" " alt="" coords="119,196,193,206,193,211,119,202"/>
+<area shape="rect" id="Node000006" href="$classBDSSDFilterPDGIDSet.html" title="Filter for a set of PDG IDs (ints)." alt="" coords="169,252,332,277"/>
+<area shape="poly" id="edge376_Node000000_Node000006" title=" " alt="" coords="93,208,154,237,194,249,193,254,152,242,90,213"/>
+<area shape="rect" id="Node000007" href="$classBDSSDFilterPrimary.html" title="Filter for only primary particles." alt="" coords="175,301,326,327"/>
+<area shape="poly" id="edge377_Node000000_Node000007" title=" " alt="" coords="76,214,110,251,155,286,183,299,181,304,152,291,106,255,72,217"/>
+<area shape="rect" id="Node000008" href="$classBDSSDFilterTime.html" title="Filter for time value for a sensitive detector." alt="" coords="184,351,317,376"/>
+<area shape="poly" id="edge378_Node000000_Node000008" title=" " alt="" coords="69,215,101,277,125,309,155,336,185,351,183,355,152,340,122,312,97,280,64,218"/>
 </map>

@@ -6,7 +6,7 @@ var searchData=
   ['qgspbichp_3',['QGSPBICHP',['../classBDSModularPhysicsList.html#a982952f70f8c37e5ddbbca6c8de5d2d7',1,'BDSModularPhysicsList']]],
   ['qil_4',['QIL',['../classBDSVisFieldModel.html#a7b659f657064c10592e86b833719ba5b',1,'BDSVisFieldModel']]],
   ['queries_5',['queries',['../classBDSVisFieldModel.html#a48ebd2d3cf7f30a75bdc4373a604ecfb',1,'BDSVisFieldModel']]],
-  ['query_6',['query',['../classGMAD_1_1Query.html',1,'GMAD::Query'],['../classGMAD_1_1Query.html#a4c1633236bdb9fa8d3fd3572a469889d',1,'GMAD::Query::Query()'],['../classGMAD_1_1Parser.html#aa2a243a7cbed07129bff68d7423bd35e',1,'GMAD::Parser::query']]],
+  ['query_6',['query',['../classGMAD_1_1Query.html',1,'GMAD::Query'],['../classGMAD_1_1Parser.html#aa2a243a7cbed07129bff68d7423bd35e',1,'GMAD::Parser::query'],['../classGMAD_1_1Query.html#a4c1633236bdb9fa8d3fd3572a469889d',1,'GMAD::Query::Query()']]],
   ['query_5flist_7',['query_list',['../classGMAD_1_1Parser.html#ad98c4d19ee12b4490fe63a5a2e7ea955',1,'GMAD::Parser']]],
   ['querydimensioninfo_8',['querydimensioninfo',['../structBDSFieldQueryInfo_1_1QueryDimensionInfo.html',1,'BDSFieldQueryInfo::QueryDimensionInfo'],['../structBDSFieldQueryInfo_1_1QueryDimensionInfo.html#a078cf4f43eaad749880134b5ebbdba76',1,'BDSFieldQueryInfo::QueryDimensionInfo::QueryDimensionInfo()']]],
   ['queryelectricfield_9',['queryElectricField',['../classGMAD_1_1Query.html#add771069d0769879fcb7c12a0f972f73',1,'GMAD::Query']]],

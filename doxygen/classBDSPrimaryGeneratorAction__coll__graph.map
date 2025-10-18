@@ -1,9 +1,9 @@
 <map id="BDSPrimaryGeneratorAction" name="BDSPrimaryGeneratorAction">
-<area shape="rect" id="Node000001" title="Generates primary particle vertices using BDSBunch." alt="" coords="595,14136,829,14441"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="195,13801,423,13866"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="325,13878,343,13929,369,13990,403,14053,445,14110,479,14145,517,14176,597,14228,594,14232,514,14180,475,14149,441,14114,398,14056,364,13992,338,13931,320,13880"/>
+<area shape="rect" id="Node000001" title="Generates primary particle vertices using BDSBunch." alt="" coords="595,14176,829,14481"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="195,13821,423,13886"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,13899,340,13953,366,14019,401,14088,445,14150,479,14185,517,14217,597,14269,594,14273,514,14221,475,14189,441,14154,396,14090,361,14021,335,13955,318,13900"/>
 <area shape="rect" id="Node000003" href="$classBDSBunch.html" title="The base class for bunch distribution generators." alt="" coords="1157,10696,1379,12076"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1271,12076,1271,12400,1271,13835,1268,13875,1259,13913,1245,13949,1227,13983,1205,14016,1179,14046,1119,14101,1052,14148,981,14188,911,14221,845,14248,843,14243,908,14217,978,14184,1049,14144,1116,14097,1175,14042,1201,14012,1223,13981,1241,13947,1254,13912,1262,13874,1265,13835,1265,12400,1265,12076"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1271,12076,1271,12400,1271,13855,1268,13896,1259,13935,1245,13972,1227,14007,1205,14040,1179,14072,1119,14129,1052,14178,981,14221,911,14256,845,14284,843,14279,908,14251,978,14216,1049,14174,1116,14125,1175,14068,1201,14037,1223,14004,1241,13970,1254,13933,1262,13895,1265,13855,1265,12400,1265,12076"/>
 <area shape="rect" id="Node000078" href="$classBDSBunchFileBased.html" title="An intermediate layer for any bunch classes that are file based." alt="" coords="977,12139,1223,12664"/>
 <area shape="poly" id="edge63_Node000078_Node000003" title=" " alt="" coords="1158,12069,1146,12139,1141,12138,1152,12068"/>
 <area shape="rect" id="Node000004" href="$classBDSParticleDefinition.html" title="Wrapper for particle definition." alt="" coords="1473,9568,1700,10633"/>
@@ -29,7 +29,7 @@
 <area shape="rect" id="Node000012" title=" " alt="" coords="830,4975,1101,5040"/>
 <area shape="poly" id="edge12_Node000012_Node000010" title=" " alt="" coords="966,2733,963,2787,963,2831,968,4958,963,4958,957,2831,957,2787,961,2733"/>
 <area shape="rect" id="Node000011" href="$classBDSExtent.html" title="Holder for +&#45; extents in 3 dimensions." alt="" coords="416,135,629,1700"/>
-<area shape="poly" id="edge54_Node000001_Node000011" title=" " alt="" coords="478,1700,468,1985,464,2269,464,13835,467,13877,475,13919,502,14000,542,14076,587,14144,583,14147,537,14079,497,14002,469,13920,461,13878,459,13835,459,2269,463,1985,472,1700"/>
+<area shape="poly" id="edge54_Node000001_Node000011" title=" " alt="" coords="478,1700,468,1985,464,2269,464,13855,467,13899,475,13942,503,14027,542,14106,588,14177,583,14180,538,14109,498,14029,469,13943,461,13899,459,13855,459,2269,463,1985,472,1700"/>
 <area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="632,1682,643,1698,654,1707,666,1711,679,1714,694,1722,753,1782,806,1848,855,1918,897,1989,892,1992,850,1921,802,1852,749,1785,690,1726,677,1719,665,1716,652,1712,639,1702,627,1685"/>
 <area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="963,4975,1009,2749,1014,2749,969,4975"/>
 <area shape="rect" id="Node000013" title=" " alt="" coords="5,885,168,950"/>
@@ -83,7 +83,7 @@
 <area shape="rect" id="Node000062" title=" " alt="" coords="1181,9230,1355,9295"/>
 <area shape="poly" id="edge38_Node000006_Node000062" title=" " alt="" coords="1271,9296,1271,9681,1265,9681,1265,9296"/>
 <area shape="rect" id="Node000063" href="$classBDSOutputLoader.html" title="Loader of ROOT Event output for recreating events." alt="" coords="2844,9050,3009,9475"/>
-<area shape="poly" id="edge39_Node000001_Node000063" title=" " alt="" coords="2844,9285,2725,9317,2572,9367,2401,9435,2313,9476,2227,9523,2144,9574,2065,9632,1994,9695,1931,9763,1879,9838,1839,9919,1825,9962,1814,10006,1808,10052,1805,10099,1805,13835,1798,13874,1776,13911,1741,13947,1695,13982,1640,14015,1577,14046,1434,14105,1276,14157,1118,14201,970,14237,845,14264,844,14259,969,14232,1116,14196,1275,14151,1432,14100,1575,14042,1638,14010,1692,13977,1737,13943,1771,13908,1793,13872,1800,13834,1800,10099,1802,10051,1809,10005,1820,9960,1834,9917,1874,9835,1927,9760,1990,9691,2062,9628,2141,9570,2224,9518,2311,9471,2399,9430,2570,9362,2723,9312,2843,9280"/>
+<area shape="poly" id="edge39_Node000001_Node000063" title=" " alt="" coords="2844,9285,2725,9317,2572,9367,2401,9435,2313,9476,2227,9523,2144,9574,2065,9632,1994,9695,1931,9763,1879,9838,1839,9919,1825,9962,1814,10006,1808,10052,1805,10099,1805,13855,1798,13894,1776,13932,1741,13969,1695,14004,1640,14039,1577,14071,1433,14132,1276,14187,1117,14234,970,14273,845,14302,844,14297,968,14267,1116,14229,1274,14182,1432,14128,1575,14067,1638,14034,1692,14000,1737,13965,1771,13929,1793,13892,1800,13854,1800,10099,1802,10051,1809,10005,1820,9960,1834,9917,1874,9835,1927,9760,1990,9691,2062,9628,2141,9570,2224,9518,2311,9471,2399,9430,2570,9362,2723,9312,2843,9280"/>
 <area shape="rect" id="Node000064" href="$classBDSOutputROOTEventBeam.html" title="Class to store all beam options for a BDSIM run." alt="" coords="3202,8017,3435,8163"/>
 <area shape="poly" id="edge40_Node000063_Node000064" title=" " alt="" coords="3323,8163,3320,8311,3314,8405,3303,8509,3287,8618,3263,8729,3232,8839,3192,8944,3157,9009,3115,9071,3069,9127,3023,9175,3019,9172,3065,9123,3110,9067,3152,9006,3187,8942,3227,8837,3258,8728,3281,8617,3298,8508,3308,8405,3315,8310,3318,8163"/>
 <area shape="rect" id="Node000065" title=" " alt="" coords="2840,4975,2904,5040"/>
@@ -98,7 +98,7 @@
 <area shape="poly" id="edge48_Node000068_Node000069" title=" " alt="" coords="3057,6491,3057,8017,3052,8017,3052,6491"/>
 <area shape="poly" id="edge51_Node000063_Node000070" title=" " alt="" coords="2785,8263,2778,8419,2779,8604,2791,8801,2803,8900,2820,8995,2841,9070,2836,9072,2815,8997,2798,8900,2785,8802,2773,8604,2773,8419,2780,8263"/>
 <area shape="rect" id="Node000071" href="$classBDSPTCOneTurnMap.html" title="Class to load and use PTC 1 turn map." alt="" coords="530,12945,755,13371"/>
-<area shape="poly" id="edge55_Node000001_Node000071" title=" " alt="" coords="633,13371,629,13526,630,13702,639,13889,657,14073,666,14120,660,14121,652,14074,633,13889,625,13702,624,13526,628,13371"/>
+<area shape="poly" id="edge55_Node000001_Node000071" title=" " alt="" coords="633,13371,629,13533,629,13720,638,13917,657,14113,666,14160,660,14161,652,14114,632,13918,624,13720,623,13533,628,13371"/>
 <area shape="rect" id="Node000072" title=" " alt="" coords="794,12369,921,12434"/>
 <area shape="poly" id="edge56_Node000071_Node000072" title=" " alt="" coords="851,12435,710,12930,705,12929,846,12433"/>
 <area shape="rect" id="Node000077" href="$classBDSBunchEventGenerator.html" title="A wrapper of BDSBunch to include a filter for the events loaded by an event generator." alt="" coords="962,12785,1219,13531"/>
@@ -107,10 +107,10 @@
 <area shape="poly" id="edge57_Node000071_Node000073" title=" " alt="" coords="645,12442,645,12929,640,12929,640,12442"/>
 <area shape="rect" id="Node000074" href="$structBDSPTCOneTurnMap_1_1PTCMapTerm.html" title=" " alt="" coords="523,11303,762,11469"/>
 <area shape="poly" id="edge58_Node000073_Node000074" title=" " alt="" coords="645,11469,645,12345,640,12345,640,11469"/>
-<area shape="rect" id="Node000075" href="$classBDSPrimaryGeneratorFile.html" title="Common interface for any primary generators that are file based." alt="" coords="756,13593,996,14073"/>
-<area shape="poly" id="edge59_Node000001_Node000075" title=" " alt="" coords="792,14075,775,14121,770,14119,787,14073"/>
+<area shape="rect" id="Node000075" href="$classBDSPrimaryGeneratorFile.html" title="Common interface for any primary generators that are file based." alt="" coords="756,13593,996,14113"/>
+<area shape="poly" id="edge59_Node000001_Node000075" title=" " alt="" coords="789,14114,772,14162,767,14160,784,14113"/>
 <area shape="rect" id="Node000076" title=" " alt="" coords="780,13125,937,13191"/>
-<area shape="poly" id="edge60_Node000075_Node000076" title=" " alt="" coords="862,13204,873,13593,867,13593,857,13205"/>
-<area shape="poly" id="edge61_Node000075_Node000077" title=" " alt="" coords="975,13532,960,13579,955,13577,969,13530"/>
+<area shape="poly" id="edge60_Node000075_Node000076" title=" " alt="" coords="862,13204,872,13593,867,13593,857,13205"/>
+<area shape="poly" id="edge61_Node000075_Node000077" title=" " alt="" coords="978,13532,964,13578,958,13577,973,13530"/>
 <area shape="poly" id="edge62_Node000077_Node000078" title=" " alt="" coords="1099,12678,1098,12785,1093,12785,1094,12678"/>
 </map>

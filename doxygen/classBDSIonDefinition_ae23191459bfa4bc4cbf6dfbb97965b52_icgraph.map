@@ -1,25 +1,33 @@
 <map id="BDSIonDefinition::Z" name="BDSIonDefinition::Z">
-<area shape="rect" id="Node000001" title="Accessor." alt="" coords="920,152,1069,177"/>
-<area shape="rect" id="Node000002" href="$classBDSOutput.html#a90a68a6389decad657c7eadc084649e3" title=" " alt="" coords="633,31,872,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="970,144,926,106,871,71,836,59,838,54,873,66,929,102,973,140"/>
-<area shape="rect" id="Node000007" href="$classBDSBunchUserFile.html#aec927948533337d0189a4def950e9a95" title="Get the next particle." alt="" coords="651,81,855,121"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="932,151,828,123,830,118,933,146"/>
-<area shape="rect" id="Node000008" href="$classBDSBunchSixTrackLink.html#a04aa503475380c7a76cc8e6224da5ccd" title="TBC." alt="" coords="635,145,870,185"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="906,167,870,167,870,162,906,162"/>
-<area shape="rect" id="Node000009" href="$classBDSBunch.html#ac59bf89183541033bf760fd9719b37e8" title=" " alt="" coords="639,209,866,235"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="934,184,873,199,817,212,815,207,871,194,933,178"/>
-<area shape="rect" id="Node000011" href="$classBDSBunchSixTrackLink.html#a4dd9e6dcfedf9a1a38bc3d8510808de3" title="Override method in BDSBunch to use our local currentParticleDefinition member." alt="" coords="667,261,838,301"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="969,188,926,219,873,250,839,263,837,258,871,245,923,215,966,184"/>
-<area shape="rect" id="Node000003" href="$classBDSIM.html#a8e123509ba0bb36cea10033ebb617646" title=" " alt="" coords="360,31,585,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="620,46,586,46,586,41,620,41"/>
-<area shape="rect" id="Node000004" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,31,312,56"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="347,46,312,46,312,41,347,41"/>
-<area shape="rect" id="Node000005" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,5,128,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="169,35,128,29,129,24,169,30"/>
-<area shape="rect" id="Node000006" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,55,135,80"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="170,57,135,61,135,56,169,51"/>
-<area shape="rect" id="Node000010" href="$classBDSPrimaryGeneratorAction.html#ade62b3c8d63eeb5570027fe5996d6e8f" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="369,199,576,239"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="625,223,576,223,576,218,626,218"/>
-<area shape="rect" id="Node000012" href="$classBDSBunchSixTrackLink.html#a46bb31284330bb3e64e29664e32da618" title="Get the next particle." alt="" coords="387,263,558,303"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="653,284,558,285,558,280,653,279"/>
+<area shape="rect" id="Node000001" title="Accessor." alt="" coords="937,240,1087,265"/>
+<area shape="rect" id="Node000002" href="$classBDSOutput.html#a90a68a6389decad657c7eadc084649e3" title=" " alt="" coords="643,55,881,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="997,229,979,197,955,161,924,125,888,95,862,83,864,78,891,90,928,121,959,158,984,195,1001,226"/>
+<area shape="rect" id="Node000008" href="$classBDSBunchUserFile.html#aec927948533337d0189a4def950e9a95" title="Get the next particle." alt="" coords="660,105,864,145"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="986,232,943,194,888,159,859,147,861,142,891,154,946,190,989,228"/>
+<area shape="rect" id="Node000009" href="$classBDSBunchSixTrackLink.html#a04aa503475380c7a76cc8e6224da5ccd" title="TBC." alt="" coords="645,169,879,209"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="949,239,889,223,842,211,843,206,890,218,951,234"/>
+<area shape="rect" id="Node000010" href="$classBDSLinkBunch.html#a306156346133f7183aa22c5180ec6532" title="TBC." alt="" coords="653,233,871,273"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="924,255,871,255,871,250,924,250"/>
+<area shape="rect" id="Node000011" href="$classBDSBunch.html#ac59bf89183541033bf760fd9719b37e8" title=" " alt="" coords="649,297,875,323"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="952,272,890,287,831,300,830,295,889,282,951,266"/>
+<area shape="rect" id="Node000013" href="$classBDSBunchSixTrackLink.html#a4dd9e6dcfedf9a1a38bc3d8510808de3" title="Override method in BDSBunch to use our local currentParticleDefinition member." alt="" coords="677,347,847,387"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="986,276,943,307,890,336,848,352,846,347,888,332,940,303,983,272"/>
+<area shape="rect" id="Node000015" href="$classBDSLinkBunch.html#a26ca3aa8989a4623fb685fda4e6817e5" title="Override method in BDSBunch to use our local currentParticleDefinition member." alt="" coords="635,415,889,440"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="999,279,957,341,926,374,891,402,856,417,854,412,888,397,923,370,953,338,995,276"/>
+<area shape="rect" id="Node000003" href="$classBDSIM.html#a8e123509ba0bb36cea10033ebb617646" title=" " alt="" coords="361,55,586,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="629,70,586,70,586,65,629,65"/>
+<area shape="rect" id="Node000004" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,55,312,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="347,70,312,70,312,65,347,65"/>
+<area shape="rect" id="Node000005" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,5,128,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="187,53,116,33,117,28,189,48"/>
+<area shape="rect" id="Node000006" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,55,128,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="169,70,128,70,128,65,169,65"/>
+<area shape="rect" id="Node000007" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,104,135,129"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="189,86,117,106,116,101,187,81"/>
+<area shape="rect" id="Node000012" href="$classBDSPrimaryGeneratorAction.html#ade62b3c8d63eeb5570027fe5996d6e8f" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="370,283,577,323"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="635,310,577,308,577,303,635,304"/>
+<area shape="rect" id="Node000014" href="$classBDSBunchSixTrackLink.html#a46bb31284330bb3e64e29664e32da618" title="Get the next particle." alt="" coords="388,347,559,387"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="663,370,559,370,559,365,663,365"/>
+<area shape="rect" id="Node000016" href="$classBDSLinkBunch.html#afa389daaad7277945fa80e30f4c27a27" title="Get the next particle." alt="" coords="360,411,587,451"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="621,432,587,432,587,427,621,427"/>
 </map>

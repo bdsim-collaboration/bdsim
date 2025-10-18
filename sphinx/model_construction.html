@@ -2732,8 +2732,10 @@ parameter. <cite>B</cite> will only be used if <cite>Kg</cite> is not specifed (
 <section id="transform3d">
 <h3>transform3d<a class="headerlink" href="#transform3d" title="Link to this heading"></a></h3>
 <p><cite>transform3d</cite> defines an arbitrary three-dimensional transformation of the curvilinear coordinate
-system at that point in the beam line sequence. The user is responsible for ensuring no overlaps
-in geometry are introduced. The drifts on either side currently will not have matching angular faces.</p>
+system at that point in the beam line sequence. It applies a spatial offset in the cumulative curvilinear
+coordinate frame along the beamline, then it applies the rotation.</p>
+<p>The user is responsible for ensuring no overlaps in geometry are introduced. The drifts on either side
+currently will not have matching angular faces.</p>
 <p>Two representations of rotation can be used. Either Euler angles or Axis Angle where unit vector
 components are supplied to create an axis to rotate around by an angle. Euler is the default.
 To select the axis angle representation, set <code class="code docutils literal notranslate"><span class="pre">axisAngle=1</span></code>.</p>
@@ -3182,7 +3184,7 @@ starting point.</p>
 <p class="admonition-title">Note</p>
 <p>For a correct visualization of the DICOM image, a path to a colourMap.dat file must also be given,
 as the parameter <cite>dicomDataPath</cite>. This file will allow the mapping of each material to a specific color in the
-viewer. Its first line should bethe number of materials used in the simulation. Each material given in the
+viewer. Its first line should be the number of materials used in the simulation. Each material given in the
 <cite>data.dat</cite> file should then have a colour scheme which the user defines via four numbers with the syntax
 <code class="code docutils literal notranslate"><span class="pre">:1MAT</span> <span class="pre">X</span> <span class="pre">Y</span> <span class="pre">Z</span> <span class="pre">A</span></code> where X, Y, Z and A are numbers between 0 and 1 respectively setting the amount of red, green,
 blue and opacity of the colour defined for the material MAT. An example of such a colourMap.dat file is provided in
@@ -3565,7 +3567,7 @@ the main one and can be tilted.</p></li>
 </a>
 </figure>
 <p><cite>gascap</cite> define a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
-This element is composed of an innner cylindrical material (usually it is gas), an outer capillary material and two
+This element is composed of an inner cylindrical material (usually it is gas), an outer capillary material and two
 electrodes on each sides (with respect to beam axis).</p>
 <ul class="simple">
 <li><p>The inner gas cell is always center on the beam axis.</p></li>
@@ -4231,7 +4233,7 @@ as all BLMs use this scorer.</span><a class="headerlink" href="#id16" title="Lin
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 13, 2025.
+      <span class="lastupdated">Last updated on Oct 18, 2025.
       </span></p>
   </div>
 

@@ -125,7 +125,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1NewColour.html#af6a4e4ecb20e9aad956f621c11d9c8dd">clear</a>();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1NewColour.html#a031463699e5045eb85e8d811a8374930">print</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1NewColour.html#a089a7c37d9e3280501ec4b925b252416">set_value</a>(std::string property, T value);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1NewColour.html#a149126483b41ae002149c6f76b2cea6e">set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit=<span class="keyword">true</span>);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1NewColour.html#ae60e8662f5e8bd8a92be50e97104e975">PublishMembers</a>();</div>
@@ -134,27 +134,30 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classGMAD_1_1NewColour.html#a089a7c37d9e3280501ec4b925b252416">   64</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1NewColour.html#a089a7c37d9e3280501ec4b925b252416">NewColour::set_value</a>(std::string property, T value)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classGMAD_1_1NewColour.html#a149126483b41ae002149c6f76b2cea6e">   64</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1NewColour.html#a149126483b41ae002149c6f76b2cea6e">NewColour::set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  {</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#ifdef BDSDEBUG</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;colour&gt; Setting value &quot;</span> &lt;&lt; std::setw(25) &lt;&lt; std::left &lt;&lt; <span class="keyword">property</span> &lt;&lt; value &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;colour&gt; Setting value &quot;</span> &lt;&lt; std::setw(25) &lt;&lt; std::left &lt;&lt; <span class="keyword">property</span> &lt;&lt; value &lt;&lt; std::endl;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      <span class="comment">// member method can throw runtime_error, catch and exit gracefully</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      <span class="keywordflow">try</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        {<a class="code hl_function" href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">set</a>(<span class="keyword">this</span>,property,value);}</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::runtime_error&amp;)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>          std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: crystal&gt; unknown option \&quot;&quot;</span> &lt;&lt; <span class="keyword">property</span> &lt;&lt; <span class="stringliteral">&quot;\&quot; with value \&quot;&quot;</span> &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;\&quot;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>          exit(1);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// member method can throw runtime_error, catch and exit gracefully</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">try</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>      {<a class="code hl_function" href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">set</a>(<span class="keyword">this</span>,property,value);}</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::runtime_error&amp;)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: crystal&gt; unknown option \&quot;&quot;</span> &lt;&lt; <span class="keyword">property</span> &lt;&lt; <span class="stringliteral">&quot;\&quot; with value \&quot;&quot;</span> &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;\&quot;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">if</span> (bExit)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>          {exit(1);}</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>          {std::rethrow_exception(std::current_exception());} <span class="comment">// to be caught by python</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  }</div>
 </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGMAD_1_1NewColour_html"><div class="ttname"><a href="classGMAD_1_1NewColour.html">GMAD::NewColour</a></div><div class="ttdoc">Colour definition for parser.</div><div class="ttdef"><b>Definition</b> <a href="newcolour_8h_source.html#l00039">newcolour.h:40</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1NewColour_html_a031463699e5045eb85e8d811a8374930"><div class="ttname"><a href="classGMAD_1_1NewColour.html#a031463699e5045eb85e8d811a8374930">GMAD::NewColour::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Print some properties.</div><div class="ttdef"><b>Definition</b> <a href="newcolour_8cc_source.html#l00047">newcolour.cc:47</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1NewColour_html_a089a7c37d9e3280501ec4b925b252416"><div class="ttname"><a href="classGMAD_1_1NewColour.html#a089a7c37d9e3280501ec4b925b252416">GMAD::NewColour::set_value</a></div><div class="ttdeci">void set_value(std::string property, T value)</div><div class="ttdoc">Set methods by property name and value.</div><div class="ttdef"><b>Definition</b> <a href="newcolour_8h_source.html#l00064">newcolour.h:64</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1NewColour_html_a149126483b41ae002149c6f76b2cea6e"><div class="ttname"><a href="classGMAD_1_1NewColour.html#a149126483b41ae002149c6f76b2cea6e">GMAD::NewColour::set_value</a></div><div class="ttdeci">void set_value(std::string property, T value, bool bExit=true)</div><div class="ttdoc">Set methods by property name and value.</div><div class="ttdef"><b>Definition</b> <a href="newcolour_8h_source.html#l00064">newcolour.h:64</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1NewColour_html_a543336f7024dd75c64b73f4009834166"><div class="ttname"><a href="classGMAD_1_1NewColour.html#a543336f7024dd75c64b73f4009834166">GMAD::NewColour::NewColour</a></div><div class="ttdeci">NewColour()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="newcolour_8cc_source.html#l00023">newcolour.cc:23</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1NewColour_html_ae60e8662f5e8bd8a92be50e97104e975"><div class="ttname"><a href="classGMAD_1_1NewColour.html#ae60e8662f5e8bd8a92be50e97104e975">GMAD::NewColour::PublishMembers</a></div><div class="ttdeci">void PublishMembers()</div><div class="ttdoc">publish members</div><div class="ttdef"><b>Definition</b> <a href="newcolour_8cc_source.html#l00038">newcolour.cc:38</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1NewColour_html_af6a4e4ecb20e9aad956f621c11d9c8dd"><div class="ttname"><a href="classGMAD_1_1NewColour.html#af6a4e4ecb20e9aad956f621c11d9c8dd">GMAD::NewColour::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Reset.</div><div class="ttdef"><b>Definition</b> <a href="newcolour_8cc_source.html#l00029">newcolour.cc:29</a></div></div>
@@ -164,7 +167,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2025 20:40:07 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

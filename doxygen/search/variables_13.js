@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t_0',['t',['../classBDSHitEnergyDepositionGlobal.html#a02c974b774f4097f7d8490cd669e90dd',1,'BDSHitEnergyDepositionGlobal::T'],['../classGMAD_1_1Field.html#a768e1fff76d118ba775267896bab72e9',1,'GMAD::Field::t'],['../classBDSOutputROOTEventLossWorld.html#a2e1198c348ffa5a137b6880a65350dd3',1,'BDSOutputROOTEventLossWorld::T'],['../classBDSOutputROOTEventAperture.html#ad446196b43b18e3906d7a3223f083cd5',1,'BDSOutputROOTEventAperture::T'],['../classBDSOutputROOTEventLoss.html#af53917a8ec4ab612908e422c15c6d254',1,'BDSOutputROOTEventLoss::T']]],
+  ['t_0',['t',['../classBDSOutputROOTEventAperture.html#ad446196b43b18e3906d7a3223f083cd5',1,'BDSOutputROOTEventAperture::T'],['../classBDSHitEnergyDepositionGlobal.html#a02c974b774f4097f7d8490cd669e90dd',1,'BDSHitEnergyDepositionGlobal::T'],['../classGMAD_1_1Field.html#a768e1fff76d118ba775267896bab72e9',1,'GMAD::Field::t'],['../classBDSOutputROOTEventLoss.html#af53917a8ec4ab612908e422c15c6d254',1,'BDSOutputROOTEventLoss::T'],['../classBDSOutputROOTEventLossWorld.html#a2e1198c348ffa5a137b6880a65350dd3',1,'BDSOutputROOTEventLossWorld::T']]],
   ['t0_1',['t0',['../classBDSModulatorInfo.html#a5bd8317c0a2a87e7239849fc6762e633',1,'BDSModulatorInfo::T0'],['../classBDSBunch.html#a2def5f2a234ae10088da01b13a14458e',1,'BDSBunch::T0'],['../classGMAD_1_1Modulator.html#a15b3fcae0300cf3362903ff319b34a15',1,'GMAD::Modulator::T0'],['../classGMAD_1_1BeamBase.html#afc56030ea121f2e270a4cd84b90d9bd7',1,'GMAD::BeamBase::T0']]],
   ['t1_2',['t1',['../classBDSModulatorInfo.html#a1bdbdffe8b65d1710f2c67fe61cf3771',1,'BDSModulatorInfo::T1'],['../classGMAD_1_1Modulator.html#a4f5a110e4658370a39791978db8c1e0d',1,'GMAD::Modulator::T1']]],
   ['t_5fv_3',['t_v',['../classBDSBunchGaussBase.html#a574a97a0d16364ccf6c3f711f7cc35d1',1,'BDSBunchGaussBase']]],
@@ -41,7 +41,7 @@ var searchData=
   ['tipmaterial_38',['tipMaterial',['../structGMAD_1_1Element.html#a3965fd62fe5d63ba9657ecb502a67c6e',1,'GMAD::Element']]],
   ['tipthickness_39',['tipthickness',['../classBDSCollimatorTipJaw.html#a237f66b77a94bb370d37b7c7760d5df4',1,'BDSCollimatorTipJaw::tipThickness'],['../classBDSTipCollimator.html#ac85c9bca03dad8227346ba9cbc419eb0',1,'BDSTipCollimator::tipThickness'],['../structGMAD_1_1Element.html#ac66675d30493968fb70e620fcbda5181',1,'GMAD::Element::tipThickness']]],
   ['tmax_40',['tmax',['../classGMAD_1_1Query.html#a101ef5e38048737d17b3fd0afe014d7f',1,'GMAD::Query::tmax'],['../classBDSArray4DCoords.html#ad642d25d6953b2d85f448ad869cfd735',1,'BDSArray4DCoords::tMax']]],
-  ['tmin_41',['tmin',['../classBDSArray4DCoords.html#a89bfa1fd2d24d5897e7a827678f39ea9',1,'BDSArray4DCoords::tMin'],['../classGMAD_1_1Query.html#af1a31e80d25cce3ab86bd67330cf6a90',1,'GMAD::Query::tmin']]],
+  ['tmin_41',['tmin',['../classGMAD_1_1Query.html#af1a31e80d25cce3ab86bd67330cf6a90',1,'GMAD::Query::tmin'],['../classBDSArray4DCoords.html#a89bfa1fd2d24d5897e7a827678f39ea9',1,'BDSArray4DCoords::tMin']]],
   ['tmount_42',['tmount',['../structGMAD_1_1Element.html#a86983a6ff9208211402184cc78dff561',1,'GMAD::Element']]],
   ['tmp_5flist_43',['tmp_list',['../classGMAD_1_1Parser.html#aa283c1585b25bab297268af9365c5985',1,'GMAD::Parser']]],
   ['tmparray_44',['tmparray',['../classGMAD_1_1Parser.html#ad7b60b204005afef2fd9b0fc9bd053e2',1,'GMAD::Parser']]],

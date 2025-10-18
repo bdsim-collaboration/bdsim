@@ -187,7 +187,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  G4double particleVelocity = particleBeta.mag()*CLHEP::c_light;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  G4LorentzVector particle4VectorMomentum = ion-&gt;Get4Momentum();</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  particle4VectorMomentum.boost(-particleBeta);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  G4double particleTimePostStepGlobal = track.GetGlobalTime();</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  <span class="comment">//G4double particleTimePostStepGlobal = track.GetGlobalTime();</span></div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  <span class="comment">//######### Get particle position and momentum direction ###############################</span></div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  G4ThreeVector particlePositionPostStepGlobal = track.GetPosition();</div>
@@ -308,7 +308,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2025 20:40:08 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Oct 18 2025 18:31:05 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

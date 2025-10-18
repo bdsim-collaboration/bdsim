@@ -512,6 +512,9 @@ particle in Geant4.</p></li>
 <section id="bug-fixes">
 <h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
 <ul class="simple">
+<li><p>Fix <code class="code docutils literal notranslate"><span class="pre">transform3d</span></code> component applying offsets in a rotate frame that is not
+axis-aligned. It applied the offsets (dx, dy, dz) in the global axis and not the
+local ones.</p></li>
 <li><p>Fix rebdsim’s Spectra command preparing the wrong variables when used on a cylindrical
 or spherical sampler where the variable is “totalEnergy” and not “energy”.</p></li>
 <li><p>Fix a bug where rebdsim would crash if a Spectra command was used on a cylindrical or
@@ -532,6 +535,9 @@ product of the x, y, z weights, whereas before it was always only the x dimensio
 <li><p>The <code class="code docutils literal notranslate"><span class="pre">userfile</span></code> bunch distribution was fixed for different particle species at sub-relativistic
 energies. The mass of the nominal design beam particle was used instead leading to a wrong total energy
 even for the correctly specified momentum in the distribution file.</p></li>
+<li><p>Fix loading of a BDSIM output sampler bunch distribution or a HEPMC file loading when
+recreating a file and the chosen event offset requires looping the file. It would loop
+and advance to the same place proplery.</p></li>
 </ul>
 </section>
 <section id="output-changes">
@@ -4765,7 +4771,7 @@ simpler / increased performance</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 13, 2025.
+      <span class="lastupdated">Last updated on Oct 18, 2025.
       </span></p>
   </div>
 

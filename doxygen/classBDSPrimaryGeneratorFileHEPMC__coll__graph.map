@@ -1,11 +1,11 @@
 <map id="BDSPrimaryGeneratorFileHEPMC" name="BDSPrimaryGeneratorFileHEPMC">
-<area shape="rect" id="Node000001" title="Loader to use any HepMC3 compatible file." alt="" coords="4070,11663,4322,12063"/>
-<area shape="rect" id="Node000002" href="$classBDSPrimaryGeneratorFile.html" title="Common interface for any primary generators that are file based." alt="" coords="3963,11133,4203,11613"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="4144,11626,4152,11662,4147,11663,4139,11627"/>
+<area shape="rect" id="Node000001" title="Loader to use any HepMC3 compatible file." alt="" coords="4070,11703,4322,12103"/>
+<area shape="rect" id="Node000002" href="$classBDSPrimaryGeneratorFile.html" title="Common interface for any primary generators that are file based." alt="" coords="3963,11133,4203,11653"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="4146,11666,4154,11702,4149,11703,4141,11667"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="4004,10665,4161,10731"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="4085,10745,4085,11133,4080,11133,4080,10745"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="4085,10744,4085,11133,4080,11133,4080,10744"/>
 <area shape="rect" id="Node000004" href="$classBDSBunchEventGenerator.html" title="A wrapper of BDSBunch to include a filter for the events loaded by an event generator." alt="" coords="3705,10325,3962,11071"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="3965,11046,3991,11117,3986,11119,3960,11047"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="3965,11056,3986,11117,3981,11119,3960,11058"/>
 <area shape="rect" id="Node000005" href="$classBDSBunchFileBased.html" title="An intermediate layer for any bunch classes that are file based." alt="" coords="3711,9737,3956,10263"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="3836,10276,3836,10325,3831,10325,3831,10276"/>
 <area shape="rect" id="Node000006" href="$classBDSBunch.html" title="The base class for bunch distribution generators." alt="" coords="3709,8308,3931,9688"/>
@@ -103,7 +103,7 @@
 <area shape="rect" id="Node000066" title=" " alt="" coords="3559,9967,3686,10033"/>
 <area shape="poly" id="edge54_Node000004_Node000066" title=" " alt="" coords="3632,10032,3661,10151,3701,10301,3704,10309,3699,10310,3696,10302,3656,10152,3627,10034"/>
 <area shape="rect" id="Node000067" href="$classBDSTypeSafeEnum.html" title=" " alt="" coords="4126,3795,4434,4055"/>
-<area shape="poly" id="edge55_Node000001_Node000067" title=" " alt="" coords="4282,4055,4277,5701,4277,11375,4275,11443,4269,11513,4249,11647,4243,11646,4263,11512,4270,11443,4272,11375,4272,5701,4277,4055"/>
+<area shape="poly" id="edge55_Node000001_Node000067" title=" " alt="" coords="4282,4055,4277,5701,4277,11395,4275,11468,4268,11543,4247,11687,4242,11686,4263,11543,4270,11468,4272,11395,4272,5701,4277,4055"/>
 <area shape="poly" id="edge58_Node000069_Node000067" title=" " alt="" coords="4278,3795,4277,3636,4272,3440,4261,3225,4241,3010,4223,2883,4201,2757,4158,2556,4163,2555,4206,2756,4229,2882,4247,3009,4266,3224,4277,3440,4282,3636,4284,3795"/>
 <area shape="rect" id="Node000068" href="$structeventgeneratorfiletypes__def.html" title="Type definition for event generator file types." alt="" coords="4274,2460,4473,2525"/>
 <area shape="poly" id="edge56_Node000067_Node000068" title=" " alt="" coords="4373,2539,4291,3795,4286,3794,4368,2539"/>

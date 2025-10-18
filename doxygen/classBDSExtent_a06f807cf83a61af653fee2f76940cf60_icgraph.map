@@ -1,6 +1,6 @@
 <map id="BDSExtent::Translate" name="BDSExtent::Translate">
 <area shape="rect" id="Node000001" title="Provide a new copy of this extent with an offset applied." alt="" coords="807,170,965,195"/>
-<area shape="poly" id="edge20_Node000001_Node000001" title=" " alt="" coords="927,161,916,152,886,149,862,151,849,156,846,161,853,168,849,172,841,162,845,152,861,146,886,143,918,147,930,157"/>
+<area shape="poly" id="edge22_Node000001_Node000001" title=" " alt="" coords="927,161,916,152,886,149,862,151,849,156,846,161,853,168,849,172,841,162,845,152,861,146,886,143,918,147,930,157"/>
 <area shape="rect" id="Node000002" href="$classBDSFieldEInterpolated.html#ab765a222af57dae8714f0d069165ab96" title="For now, we will ignore any rotation of the transform. TODO." alt="" coords="575,5,742,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="865,161,819,110,790,83,757,60,734,48,736,43,760,55,793,79,823,106,869,157"/>
 <area shape="rect" id="Node000003" href="$classBDSFieldMagInterpolated.html#a18559cef4e3e30fd4af09008b5f260b5" title="For now, we will ignore any rotation of the transform. TODO." alt="" coords="565,69,752,109"/>
@@ -11,8 +11,8 @@
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="793,197,759,201,758,196,792,191"/>
 <area shape="rect" id="Node000011" href="$classBDSGeometryFactorySQL.html#a0016cf5d8c63efbe50d6548a16436bd3" title=" " alt="" coords="565,248,752,288"/>
 <area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="844,203,760,237,722,251,720,245,758,232,842,198"/>
-<area shape="rect" id="Node000012" href="$classBDSExtent.html#a81f21840ff39948eceb023f0d7acbe1d" title="Provide a new copy of this extent with both a tilt and an offset applied." alt="" coords="579,313,738,338"/>
-<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="868,208,822,256,793,281,760,302,729,315,727,310,757,298,789,277,819,252,864,204"/>
+<area shape="rect" id="Node000012" href="$classBDSExtent.html#a81f21840ff39948eceb023f0d7acbe1d" title="Provide a new copy of this extent with both a tilt and an offset applied." alt="" coords="579,333,738,358"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="866,207,820,254,760,302,728,321,696,335,694,330,725,316,757,298,816,250,862,204"/>
 <area shape="rect" id="Node000006" href="$namespaceBDS.html#a8ea511b9c46d22957a4e79ac5a408b44" title=" " alt="" coords="316,198,491,223"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="545,222,491,222,491,217,545,217"/>
 <area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="504,199,559,199,559,205,504,205"/>
@@ -27,12 +27,16 @@
 <area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="232,164,371,195,369,201,231,169"/>
 <area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="246,199,316,200,316,205,246,204"/>
 <area shape="poly" id="edge13_Node000010_Node000006" title=" " alt="" coords="177,241,315,215,316,220,178,247"/>
-<area shape="rect" id="Node000013" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="296,297,511,337"/>
-<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="566,325,511,323,511,318,566,320"/>
-<area shape="rect" id="Node000015" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="296,361,511,401"/>
-<area shape="poly" id="edge18_Node000012_Node000015" title=" " alt="" coords="587,344,496,364,494,359,586,338"/>
-<area shape="rect" id="Node000014" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="5,305,248,330"/>
-<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="282,320,248,320,248,315,282,315"/>
-<area shape="rect" id="Node000016" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="17,361,237,401"/>
-<area shape="poly" id="edge19_Node000015_Node000016" title=" " alt="" coords="282,384,237,384,237,379,282,379"/>
+<area shape="rect" id="Node000013" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="296,285,511,325"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="565,333,510,325,511,320,566,328"/>
+<area shape="rect" id="Node000015" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="296,349,511,389"/>
+<area shape="poly" id="edge18_Node000012_Node000015" title=" " alt="" coords="566,357,511,362,511,357,565,351"/>
+<area shape="rect" id="Node000017" href="$classBDSLinkDetectorConstruction.html#a184e6d7be757abef7c5e3dce4e941b11" title="Interface to append an element." alt="" coords="296,413,511,453"/>
+<area shape="poly" id="edge20_Node000012_Node000017" title=" " alt="" coords="614,365,512,404,475,416,473,411,510,399,613,361"/>
+<area shape="rect" id="Node000014" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="5,297,248,322"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="282,310,248,310,248,305,282,304"/>
+<area shape="rect" id="Node000016" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="17,349,237,389"/>
+<area shape="poly" id="edge19_Node000015_Node000016" title=" " alt="" coords="282,372,237,372,237,367,282,367"/>
+<area shape="rect" id="Node000018" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="23,421,230,446"/>
+<area shape="poly" id="edge21_Node000017_Node000018" title=" " alt="" coords="282,436,230,436,230,431,282,431"/>
 </map>

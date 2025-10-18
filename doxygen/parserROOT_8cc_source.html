@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BDSIM: /__w/bdsim/bdsim/parser/python.cc Source File</title>
+<title>BDSIM: /__w/bdsim/bdsim/parser/parserROOT.cc Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -79,7 +79,7 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">python.cc</div></div>
+  <div class="headertitle"><div class="title">parserROOT.cc</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* </span></div>
@@ -100,7 +100,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">You should have received a copy of the GNU General Public License</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">along with BDSIM.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;python.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;parserROOT.h&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;parser.h&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
@@ -226,23 +226,23 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  <span class="keywordflow">return</span> it-&gt;beampipeThickness;</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
 </div>
-<div class="ttc" id="anamespaceGMAD_html_a00abccbc7358c59888ecd2fcd647a7bc"><div class="ttname"><a href="namespaceGMAD.html#a00abccbc7358c59888ecd2fcd647a7bc">GMAD::GetBeampipeThickness</a></div><div class="ttdeci">double GetBeampipeThickness(int)</div><div class="ttdoc">Beam Pipe Thickness.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00114">python.cc:114</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_a0f9f8890d8d50cdf8f97573c024eba3f"><div class="ttname"><a href="namespaceGMAD.html#a0f9f8890d8d50cdf8f97573c024eba3f">GMAD::GetName</a></div><div class="ttdeci">const char * GetName(int)</div><div class="ttdoc">Name of element.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00038">python.cc:38</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_a333b231d5bf22922f1aaa292d628aca7"><div class="ttname"><a href="namespaceGMAD.html#a333b231d5bf22922f1aaa292d628aca7">GMAD::GetType</a></div><div class="ttdeci">int GetType(int)</div><div class="ttdoc">Type of element.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00045">python.cc:45</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_a6338148af8a26b86be501ed0cd622ad4"><div class="ttname"><a href="namespaceGMAD.html#a6338148af8a26b86be501ed0cd622ad4">GMAD::GetKs</a></div><div class="ttdeci">double * GetKs(int)</div><div class="ttdoc">All magnetic ks.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00066">python.cc:66</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_a682833ac1521474444f819b931c15549"><div class="ttname"><a href="namespaceGMAD.html#a682833ac1521474444f819b931c15549">GMAD::GetAper3</a></div><div class="ttdeci">double GetAper3(int)</div><div class="ttdoc">Aperture 3.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00093">python.cc:93</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_a7dfbfebee9a4f3e84c783e7ed6b4b0e8"><div class="ttname"><a href="namespaceGMAD.html#a7dfbfebee9a4f3e84c783e7ed6b4b0e8">GMAD::GetAper1</a></div><div class="ttdeci">double GetAper1(int)</div><div class="ttdoc">Aperture 1.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00079">python.cc:79</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_a8d26276047671f192cd8ce70ce27d6e1"><div class="ttname"><a href="namespaceGMAD.html#a8d26276047671f192cd8ce70ce27d6e1">GMAD::GetAper4</a></div><div class="ttdeci">double GetAper4(int)</div><div class="ttdoc">Aperture 4.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00100">python.cc:100</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_aaec90667575307eb021fd795ec4fc201"><div class="ttname"><a href="namespaceGMAD.html#aaec90667575307eb021fd795ec4fc201">GMAD::GmadParser_c</a></div><div class="ttdeci">int GmadParser_c(char *name)</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00027">python.cc:27</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_ab374cc108eda40fed3446794b0817d55"><div class="ttname"><a href="namespaceGMAD.html#ab374cc108eda40fed3446794b0817d55">GMAD::GetNElements</a></div><div class="ttdeci">int GetNElements()</div><div class="ttdoc">Length of list.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00033">python.cc:33</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_ab858985de7b64aeee919e383a08f16b2"><div class="ttname"><a href="namespaceGMAD.html#ab858985de7b64aeee919e383a08f16b2">GMAD::GetLength</a></div><div class="ttdeci">double GetLength(int)</div><div class="ttdoc">Length of element.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00052">python.cc:52</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_abd72d16a63e040f34c70fd2d3e921e8b"><div class="ttname"><a href="namespaceGMAD.html#abd72d16a63e040f34c70fd2d3e921e8b">GMAD::GetAngle</a></div><div class="ttdeci">double GetAngle(int)</div><div class="ttdoc">Angle of element.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00059">python.cc:59</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_ac56bc2f480f1f699bf282d7af15d1cd8"><div class="ttname"><a href="namespaceGMAD.html#ac56bc2f480f1f699bf282d7af15d1cd8">GMAD::GetApertureType</a></div><div class="ttdeci">const char * GetApertureType(int)</div><div class="ttdoc">Aperture Type.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00107">python.cc:107</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html_ade39d2f85ffc0ab7e2a290b869a424f8"><div class="ttname"><a href="namespaceGMAD.html#ade39d2f85ffc0ab7e2a290b869a424f8">GMAD::GetAper2</a></div><div class="ttdeci">double GetAper2(int)</div><div class="ttdoc">Aperture 2.</div><div class="ttdef"><b>Definition</b> <a href="python_8cc_source.html#l00086">python.cc:86</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_a00abccbc7358c59888ecd2fcd647a7bc"><div class="ttname"><a href="namespaceGMAD.html#a00abccbc7358c59888ecd2fcd647a7bc">GMAD::GetBeampipeThickness</a></div><div class="ttdeci">double GetBeampipeThickness(int)</div><div class="ttdoc">Beam Pipe Thickness.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00114">parserROOT.cc:114</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_a0f9f8890d8d50cdf8f97573c024eba3f"><div class="ttname"><a href="namespaceGMAD.html#a0f9f8890d8d50cdf8f97573c024eba3f">GMAD::GetName</a></div><div class="ttdeci">const char * GetName(int)</div><div class="ttdoc">Name of element.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00038">parserROOT.cc:38</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_a333b231d5bf22922f1aaa292d628aca7"><div class="ttname"><a href="namespaceGMAD.html#a333b231d5bf22922f1aaa292d628aca7">GMAD::GetType</a></div><div class="ttdeci">int GetType(int)</div><div class="ttdoc">Type of element.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00045">parserROOT.cc:45</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_a6338148af8a26b86be501ed0cd622ad4"><div class="ttname"><a href="namespaceGMAD.html#a6338148af8a26b86be501ed0cd622ad4">GMAD::GetKs</a></div><div class="ttdeci">double * GetKs(int)</div><div class="ttdoc">All magnetic ks.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00066">parserROOT.cc:66</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_a682833ac1521474444f819b931c15549"><div class="ttname"><a href="namespaceGMAD.html#a682833ac1521474444f819b931c15549">GMAD::GetAper3</a></div><div class="ttdeci">double GetAper3(int)</div><div class="ttdoc">Aperture 3.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00093">parserROOT.cc:93</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_a7dfbfebee9a4f3e84c783e7ed6b4b0e8"><div class="ttname"><a href="namespaceGMAD.html#a7dfbfebee9a4f3e84c783e7ed6b4b0e8">GMAD::GetAper1</a></div><div class="ttdeci">double GetAper1(int)</div><div class="ttdoc">Aperture 1.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00079">parserROOT.cc:79</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_a8d26276047671f192cd8ce70ce27d6e1"><div class="ttname"><a href="namespaceGMAD.html#a8d26276047671f192cd8ce70ce27d6e1">GMAD::GetAper4</a></div><div class="ttdeci">double GetAper4(int)</div><div class="ttdoc">Aperture 4.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00100">parserROOT.cc:100</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_aaec90667575307eb021fd795ec4fc201"><div class="ttname"><a href="namespaceGMAD.html#aaec90667575307eb021fd795ec4fc201">GMAD::GmadParser_c</a></div><div class="ttdeci">int GmadParser_c(char *name)</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00027">parserROOT.cc:27</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_ab374cc108eda40fed3446794b0817d55"><div class="ttname"><a href="namespaceGMAD.html#ab374cc108eda40fed3446794b0817d55">GMAD::GetNElements</a></div><div class="ttdeci">int GetNElements()</div><div class="ttdoc">Length of list.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00033">parserROOT.cc:33</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_ab858985de7b64aeee919e383a08f16b2"><div class="ttname"><a href="namespaceGMAD.html#ab858985de7b64aeee919e383a08f16b2">GMAD::GetLength</a></div><div class="ttdeci">double GetLength(int)</div><div class="ttdoc">Length of element.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00052">parserROOT.cc:52</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_abd72d16a63e040f34c70fd2d3e921e8b"><div class="ttname"><a href="namespaceGMAD.html#abd72d16a63e040f34c70fd2d3e921e8b">GMAD::GetAngle</a></div><div class="ttdeci">double GetAngle(int)</div><div class="ttdoc">Angle of element.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00059">parserROOT.cc:59</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_ac56bc2f480f1f699bf282d7af15d1cd8"><div class="ttname"><a href="namespaceGMAD.html#ac56bc2f480f1f699bf282d7af15d1cd8">GMAD::GetApertureType</a></div><div class="ttdeci">const char * GetApertureType(int)</div><div class="ttdoc">Aperture Type.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00107">parserROOT.cc:107</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html_ade39d2f85ffc0ab7e2a290b869a424f8"><div class="ttname"><a href="namespaceGMAD.html#ade39d2f85ffc0ab7e2a290b869a424f8">GMAD::GetAper2</a></div><div class="ttdeci">double GetAper2(int)</div><div class="ttdoc">Aperture 2.</div><div class="ttdef"><b>Definition</b> <a href="parserROOT_8cc_source.html#l00086">parserROOT.cc:86</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2025 20:40:07 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

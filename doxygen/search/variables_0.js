@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_0',['a',['../structGMAD_1_1Atom.html#a00c1499087ee3422a9558a35bc18a631',1,'GMAD::Atom::A'],['../structBDSOutputROOTParticleData_1_1IonInfo.html#ac0f8aab68ebb6220617c81ce05ac24cb',1,'BDSOutputROOTParticleData::IonInfo::a'],['../structGMAD_1_1Material.html#ada0a2ea5f85e97bcc9db9dc7978bb891',1,'GMAD::Material::A']]],
+  ['a_0',['a',['../structGMAD_1_1Material.html#ada0a2ea5f85e97bcc9db9dc7978bb891',1,'GMAD::Material::A'],['../structGMAD_1_1Atom.html#a00c1499087ee3422a9558a35bc18a631',1,'GMAD::Atom::A'],['../structBDSOutputROOTParticleData_1_1IonInfo.html#ac0f8aab68ebb6220617c81ce05ac24cb',1,'BDSOutputROOTParticleData::IonInfo::a']]],
   ['aborted_1',['aborted',['../classBDSOutputROOTEventInfo.html#a76ac0775051eec4405eb299d03af31e7',1,'BDSOutputROOTEventInfo']]],
   ['acceleratormodel_2',['acceleratorModel',['../classBDSDetectorConstruction.html#a4356be6333ab0d13d478f1e7da92d91b',1,'BDSDetectorConstruction']]],
   ['acceleratorvacuumlv_3',['acceleratorVacuumLV',['../classBDSAcceleratorComponent.html#ad99a9f166866d1605bbbe0f91deecad5',1,'BDSAcceleratorComponent']]],

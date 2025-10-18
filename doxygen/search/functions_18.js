@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['z_0',['z',['../classBDSFourVector.html#a50d42a005cef26b92777fad8bcb3b031',1,'BDSFourVector::z()'],['../classBDSThreeVector.html#a9b32b1b1b8d5f4e84b041aaef21ec04e',1,'BDSThreeVector::z()'],['../classBDSIonDefinition.html#ae23191459bfa4bc4cbf6dfbb97965b52',1,'BDSIonDefinition::Z()']]],
+  ['z_0',['z',['../classBDSIonDefinition.html#ae23191459bfa4bc4cbf6dfbb97965b52',1,'BDSIonDefinition::Z()'],['../classBDSFourVector.html#a50d42a005cef26b92777fad8bcb3b031',1,'BDSFourVector::z()'],['../classBDSThreeVector.html#a9b32b1b1b8d5f4e84b041aaef21ec04e',1,'BDSThreeVector::z()']]],
   ['zerostrengthdipole_1',['ZeroStrengthDipole',['../namespaceBDS.html#a0faf9c6bf5c86f8d98d64942e4d64122',1,'BDS']]],
   ['zfromarraycoords_2',['ZFromArrayCoords',['../classBDSArray4DCoords.html#ae5ab52e6d63941263b3cec79214b450b',1,'BDSArray4DCoords']]],
   ['zneg_3',['ZNeg',['../classBDSExtent.html#af651cd30218d35eb618fced02972a6e4',1,'BDSExtent']]],

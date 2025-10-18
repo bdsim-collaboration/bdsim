@@ -115,15 +115,15 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <a class="code hl_class" href="classBDSLaser.html">BDSLaser</a>(G4double wavelengthIn,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>           G4double m2In,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>           G4double pulseDurationIn,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>           G4double pulseEnergyIn,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>           G4double sigma0In,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>           G4double laserArrivalTimeIn,</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>       G4double T0In,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>       G4ThreeVector polarizationIn,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>       G4bool   ignoreRayleighRangeIn = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_class" href="classBDSLaser.html">BDSLaser</a>(G4double wavelengthIn);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                                         G4double m2In,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                                         G4double pulseDurationIn,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                                         G4double pulseEnergyIn,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                                         G4double sigma0In,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                         G4double laserArrivalTimeIn,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                                         G4double T0In,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                         <span class="keyword">const</span> G4ThreeVector&amp; polarizationIn,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                         G4bool   ignoreRayleighRangeIn = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">explicit</span> <a class="code hl_class" href="classBDSLaser.html">BDSLaser</a>(G4double wavelengthIn);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <a class="code hl_class" href="classBDSLaser.html">~BDSLaser</a>();</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="comment">//this needs to be called based upon particle coordinates</span></div>
@@ -161,8 +161,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  G4double sigma0;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  G4double laserArrivalTime;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  G4double T0;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  G4bool   ignoreRayleighRange;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  G4ThreeVector polarization;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  G4ThreeVector polarization;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        G4bool   ignoreRayleighRange;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;G4double&gt; wavelengths;</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;G4String&gt; colours;</div>
@@ -190,7 +190,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2025 20:40:07 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

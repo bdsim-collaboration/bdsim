@@ -1948,8 +1948,11 @@ transform3d
 ^^^^^^^^^^^
 
 `transform3d` defines an arbitrary three-dimensional transformation of the curvilinear coordinate
-system at that point in the beam line sequence. The user is responsible for ensuring no overlaps
-in geometry are introduced. The drifts on either side currently will not have matching angular faces.
+system at that point in the beam line sequence. It applies a spatial offset in the cumulative curvilinear
+coordinate frame along the beamline, then it applies the rotation.
+
+The user is responsible for ensuring no overlaps in geometry are introduced. The drifts on either side
+currently will not have matching angular faces.
 
 Two representations of rotation can be used. Either Euler angles or Axis Angle where unit vector
 components are supplied to create an axis to rotate around by an angle. Euler is the default.
@@ -2248,7 +2251,7 @@ starting point.
 
 .. note:: For a correct visualization of the DICOM image, a path to a colourMap.dat file must also be given,
     as the parameter `dicomDataPath`. This file will allow the mapping of each material to a specific color in the
-    viewer. Its first line should bethe number of materials used in the simulation. Each material given in the
+    viewer. Its first line should be the number of materials used in the simulation. Each material given in the
     `data.dat` file should then have a colour scheme which the user defines via four numbers with the syntax
     :code:`:1MAT X Y Z A` where X, Y, Z and A are numbers between 0 and 1 respectively setting the amount of red, green,
     blue and opacity of the colour defined for the material MAT. An example of such a colourMap.dat file is provided in
@@ -2504,7 +2507,7 @@ gascap
 	    :align: center
 
 `gascap` define a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
-This element is composed of an innner cylindrical material (usually it is gas), an outer capillary material and two
+This element is composed of an inner cylindrical material (usually it is gas), an outer capillary material and two
 electrodes on each sides (with respect to beam axis).
 
 * The inner gas cell is always center on the beam axis.

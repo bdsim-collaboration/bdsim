@@ -42,7 +42,7 @@ var searchData=
   ['beampipeinneredge_39',['beamPipeInnerEdge',['../classBDSBeamPipeFactoryPoints.html#a13d78af7953ace74d82b03291ae564f4',1,'BDSBeamPipeFactoryPoints']]],
   ['beampipeinnersolid_40',['beamPipeInnerSolid',['../classBDSBeamPipeFactoryPoints.html#a018e08b68cd1ea09d91f21a0a69462c5',1,'BDSBeamPipeFactoryPoints']]],
   ['beampipeisinfiniteabsorber_41',['beamPipeIsInfiniteAbsorber',['../classGMAD_1_1OptionsBase.html#abfe4e5e8cc7189fec26001ab1efd2f95',1,'GMAD::OptionsBase']]],
-  ['beampipematerial_42',['beampipematerial',['../classBDSBeamPipeInfo.html#a2284ca12ad11dfd127d413baf9f3d9d3',1,'BDSBeamPipeInfo::beamPipeMaterial'],['../structGMAD_1_1Element.html#a165d8a1121beb23c4349556a00f9443d',1,'GMAD::Element::beampipeMaterial'],['../classGMAD_1_1OptionsBase.html#ab041f14314520312bedca8a6a4edca13',1,'GMAD::OptionsBase::beampipeMaterial']]],
+  ['beampipematerial_42',['beampipematerial',['../classGMAD_1_1OptionsBase.html#ab041f14314520312bedca8a6a4edca13',1,'GMAD::OptionsBase::beampipeMaterial'],['../classBDSBeamPipeInfo.html#a2284ca12ad11dfd127d413baf9f3d9d3',1,'BDSBeamPipeInfo::beamPipeMaterial'],['../structGMAD_1_1Element.html#a165d8a1121beb23c4349556a00f9443d',1,'GMAD::Element::beampipeMaterial']]],
   ['beampipeouteredge_43',['beamPipeOuterEdge',['../classBDSBeamPipeFactoryPoints.html#ae9375f7144ffc37a4ddffee51fa46011',1,'BDSBeamPipeFactoryPoints']]],
   ['beampipeoutersolid_44',['beamPipeOuterSolid',['../classBDSBeamPipeFactoryPoints.html#a2c4037f96b89bfc2e10f70e0396d51c7',1,'BDSBeamPipeFactoryPoints']]],
   ['beampipeplacementtransform_45',['beamPipePlacementTransform',['../classBDSMagnet.html#a127d16829ae0739ed8416ac7350766c7',1,'BDSMagnet']]],

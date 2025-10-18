@@ -1,114 +1,114 @@
 <map id="BDSAcceleratorComponent::GetAngle" name="BDSAcceleratorComponent::GetAngle">
-<area shape="rect" id="Node000001" title=" " alt="" coords="2364,461,2563,501"/>
-<area shape="rect" id="Node000002" href="$classBDSBeamline.html#aec30dae8d75cc5af7d63d4004c68197e" title=" " alt="" coords="1771,167,2029,193"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2444,450,2423,412,2394,369,2358,325,2314,289,2246,252,2173,224,2098,205,2029,193,2030,188,2100,200,2174,219,2249,247,2318,284,2361,321,2398,365,2428,410,2449,448"/>
-<area shape="rect" id="Node000014" href="$classBDSLinkOpaqueBox.html#a31054bc1cc1411cde6648feebc455e9e" title="Accessor." alt="" coords="2095,579,2299,605"/>
-<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="2420,511,2371,537,2317,562,2256,582,2254,577,2315,558,2369,533,2417,506"/>
-<area shape="rect" id="Node000015" href="$classBDSBeamlineElement.html#a0c2d087ce7d8d5503b11d20cc8af6a01" title="Accessor." alt="" coords="2114,431,2279,471"/>
-<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="2350,471,2279,463,2280,457,2350,466"/>
-<area shape="rect" id="Node000023" href="$classBDSBeamline.html#ad639e6ff494db695d7cfa89fcf1342ac" title=" " alt="" coords="1476,617,1723,657"/>
-<area shape="poly" id="edge27_Node000001_Node000023" title=" " alt="" coords="2351,504,1712,620,1711,615,2350,499"/>
-<area shape="rect" id="Node000051" href="$classBDSLinkOpaqueBox.html#a770ca2052a0608f0705b2baede17695e" title="Place the output sampler." alt="" coords="2077,629,2316,669"/>
-<area shape="poly" id="edge59_Node000001_Node000051" title=" " alt="" coords="2439,514,2387,568,2353,596,2317,620,2291,632,2289,627,2315,615,2350,592,2383,564,2435,510"/>
-<area shape="rect" id="Node000052" href="$classBDSSurvey.html#ac0d59db147f46e77fe31e80e207ff141" title="write line" alt="" coords="2129,299,2265,325"/>
-<area shape="poly" id="edge60_Node000001_Node000052" title=" " alt="" coords="2418,456,2217,327,2219,323,2421,452"/>
-<area shape="rect" id="Node000003" href="$classBDSBeamline.html#a9ea22e2abe29c800aa6e3112fe68824e" title=" " alt="" coords="1490,141,1709,166"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1757,170,1709,166,1709,160,1757,165"/>
-<area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="1200,5,1415,45"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1566,135,1503,97,1427,60,1393,48,1395,43,1429,55,1506,93,1569,131"/>
-<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="1200,69,1415,109"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="1527,140,1399,112,1400,107,1528,135"/>
-<area shape="rect" id="Node000008" href="$classBDSDetectorConstruction.html#a8e5b24d8a99d199a728d8a97be40f1ab" title=" " alt="" coords="906,241,1093,281"/>
-<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="1519,171,1428,188,1093,248,1092,243,1428,183,1518,166"/>
-<area shape="rect" id="Node000011" href="$classBDSTunnelBuilder.html#a0c63e82a5857c7457682f9f121ca6e24" title=" " alt="" coords="1197,133,1417,173"/>
-<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="1476,156,1418,156,1418,151,1476,151"/>
-<area shape="rect" id="Node000005" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="878,13,1121,38"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1186,28,1121,28,1121,23,1186,23"/>
-<area shape="rect" id="Node000007" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="889,69,1109,109"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1186,92,1110,92,1110,87,1186,87"/>
-<area shape="rect" id="Node000009" href="$classBDSDetectorConstruction.html#aa81d7072ee80602ba862eda6c892c87c" title="Build the main beam line and then any other required beam lines." alt="" coords="597,357,784,397"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="894,286,861,296,789,327,728,360,725,355,786,322,859,291,892,280"/>
-<area shape="rect" id="Node000010" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="307,415,493,455"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="584,401,494,419,493,414,583,396"/>
-<area shape="rect" id="Node000012" href="$classBDSDetectorConstruction.html#ab4d9ff089bf5aa4748d241a72f10c9b3" title="Build the tunnel around the already constructed flat beam line." alt="" coords="906,177,1093,217"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1184,174,1093,187,1093,181,1183,168"/>
-<area shape="poly" id="edge14_Node000012_Node000010" title=" " alt="" coords="893,223,861,232,570,348,438,417,436,412,568,343,859,227,892,217"/>
-<area shape="rect" id="Node000013" href="$classBDSDetectorConstruction.html#aa564f0cee84c47e41d7917e11107bc3f" title="Place beam line, tunnel beam line, end pieces and placements in world." alt="" coords="597,195,784,235"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="893,206,784,212,784,207,892,201"/>
-<area shape="poly" id="edge13_Node000013_Node000010" title=" " alt="" coords="624,243,571,272,525,308,482,347,420,416,416,413,478,344,521,304,568,267,621,238"/>
-<area shape="rect" id="Node000016" href="$classBDSCurvilinearBuilder.html#a87f07f71356fb6f4c9bcebe5d48ad3c7" title="Simple interrogation function to determine if an element has a finite angle or not." alt="" coords="1817,400,1983,440"/>
-<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="2100,443,1983,431,1984,426,2100,438"/>
-<area shape="rect" id="Node000019" href="$classBDSCurvilinearBuilder.html#a4a27dc9e1daf820645cbebc02ec766df" title=" " alt="" coords="1516,336,1683,376"/>
-<area shape="poly" id="edge21_Node000015_Node000019" title=" " alt="" coords="2139,428,2086,407,2029,391,1937,375,1844,365,1683,358,1683,353,1845,359,1938,369,2030,385,2088,402,2141,423"/>
-<area shape="rect" id="Node000021" href="$classBDSParallelWorldSampler.html#a759473f9a35d652b3dd4a0894861f353" title="Place a sampler from a single element." alt="" coords="1806,464,1994,504"/>
-<area shape="poly" id="edge25_Node000015_Node000021" title=" " alt="" coords="2101,464,1995,476,1994,471,2100,459"/>
-<area shape="rect" id="Node000017" href="$classBDSCurvilinearBuilder.html#affa1b220a90bb89f1e7596b3c6f16b0f" title=" " alt="" coords="1500,400,1699,440"/>
-<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="1803,423,1699,423,1699,417,1803,417"/>
-<area shape="rect" id="Node000018" href="$classBDSCurvilinearBuilder.html#a777359fa94bb11ae9bd3c52e72f255f4" title="Build a beam line of curvilinear geometry based on another beam line." alt="" coords="1193,363,1422,403"/>
-<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="1486,408,1422,400,1423,395,1486,403"/>
-<area shape="poly" id="edge20_Node000018_Node000008" title=" " alt="" coords="1196,359,1185,353,1169,338,1160,323,1152,309,1137,296,1092,276,1094,272,1140,291,1156,305,1165,320,1173,335,1188,349,1199,355"/>
-<area shape="poly" id="edge22_Node000019_Node000018" title=" " alt="" coords="1503,367,1423,375,1422,370,1502,362"/>
-<area shape="rect" id="Node000020" href="$classBDSCurvilinearBuilder.html#aa7aafa785f99603ee7f9810e0315ff22" title="Build bridging volumes to join the curvilinear ones." alt="" coords="1187,299,1428,339"/>
-<area shape="poly" id="edge23_Node000019_Node000020" title=" " alt="" coords="1502,346,1428,337,1429,331,1503,341"/>
-<area shape="poly" id="edge24_Node000020_Node000008" title=" " alt="" coords="1186,299,1092,281,1093,276,1187,294"/>
-<area shape="rect" id="Node000022" href="$classBDSParallelWorldSampler.html#afd3f7fbe0255b5a5b702a7ad83e753f4" title=" " alt="" coords="905,305,1093,345"/>
-<area shape="poly" id="edge26_Node000021_Node000022" title=" " alt="" coords="1792,496,1665,499,1511,492,1428,482,1345,467,1264,446,1186,417,1170,408,1160,398,1151,388,1137,378,1068,348,1070,343,1140,374,1154,384,1164,395,1174,404,1188,412,1265,440,1346,462,1429,477,1511,486,1665,494,1792,490"/>
-<area shape="rect" id="Node000024" href="$classBDSBunch.html#a02d25c9b2f1c1deb759ba9c73b0b5514" title="Calculate the global coordinates from curvilinear coordinates of a beam line." alt="" coords="1205,864,1410,904"/>
-<area shape="poly" id="edge28_Node000023_Node000024" title=" " alt="" coords="1566,668,1334,866,1331,862,1562,664"/>
-<area shape="rect" id="Node000038" href="$classBDSDetectorConstruction.html#af3112ac2621be0eca9d0d4d8bfaaf36a" title=" " alt="" coords="1204,617,1411,657"/>
-<area shape="poly" id="edge39_Node000023_Node000038" title=" " alt="" coords="1462,640,1411,640,1411,635,1462,635"/>
-<area shape="rect" id="Node000025" href="$classBDSBunch.html#a3f15d3538dbad380e88f47cb64cf1ed5" title=" " alt="" coords="900,1021,1099,1046"/>
-<area shape="poly" id="edge29_Node000024_Node000025" title=" " alt="" coords="1274,915,1214,961,1178,984,1140,1004,1080,1023,1078,1018,1138,999,1175,979,1211,957,1271,911"/>
-<area shape="rect" id="Node000026" href="$classBDSBunch.html#ad0fe9077dea51a4dedc0158f32264215" title=" " alt="" coords="591,957,790,982"/>
-<area shape="poly" id="edge30_Node000025_Node000026" title=" " alt="" coords="923,1020,752,985,753,979,924,1015"/>
-<area shape="rect" id="Node000034" href="$classBDSPrimaryGeneratorFileHEPMC.html#ad8f75badab82a6de22276cffe767393a" title="Conversion from HepMC::GenEvent to G4Event." alt="" coords="573,1013,808,1053"/>
-<area shape="poly" id="edge35_Node000025_Node000034" title=" " alt="" coords="886,1036,808,1036,808,1031,886,1031"/>
-<area shape="rect" id="Node000036" href="$classBDSPrimaryGeneratorFileSampler.html#a33d0ac29ec6da2d09aae4d1a70820d37" title="Read sampler hits and put into primary vertices if they pass filters." alt="" coords="569,1077,812,1117"/>
-<area shape="poly" id="edge37_Node000025_Node000036" title=" " alt="" coords="924,1051,788,1080,787,1075,923,1046"/>
-<area shape="rect" id="Node000027" href="$classBDSBunchUserFile.html#a71238fe44c433ad46f68b84f3119352c" title=" " alt="" coords="298,885,502,925"/>
-<area shape="poly" id="edge31_Node000026_Node000027" title=" " alt="" coords="618,956,491,928,492,923,619,951"/>
-<area shape="rect" id="Node000028" href="$classBDSBunch.html#adc8a53b966a9dcc0ce402d597a7c9319" title=" " alt="" coords="301,949,499,989"/>
-<area shape="poly" id="edge32_Node000026_Node000028" title=" " alt="" coords="577,972,500,972,500,967,577,967"/>
-<area shape="rect" id="Node000029" href="$classBDSPrimaryGeneratorAction.html#ade62b3c8d63eeb5570027fe5996d6e8f" title="Main interface for Geant4. Prepare primary(ies) for the event." alt="" coords="15,921,221,961"/>
-<area shape="poly" id="edge33_Node000028_Node000029" title=" " alt="" coords="287,961,221,954,222,949,287,956"/>
-<area shape="rect" id="Node000030" href="$classBDSIM.html#a8e123509ba0bb36cea10033ebb617646" title=" " alt="" coords="5,986,231,1011"/>
-<area shape="poly" id="edge34_Node000028_Node000030" title=" " alt="" coords="288,984,231,990,231,984,287,978"/>
-<area shape="rect" id="Node000035" href="$classBDSPrimaryGeneratorFileHEPMC.html#ab47ec75b1fcf2940d2f1b884c66219de" title=" " alt="" coords="283,1013,517,1053"/>
-<area shape="poly" id="edge36_Node000034_Node000035" title=" " alt="" coords="560,1036,518,1036,518,1031,560,1031"/>
-<area shape="rect" id="Node000037" href="$classBDSPrimaryGeneratorFileSampler.html#af5d8f669214c6449600e919d94abce2b" title="Read the next non&#45;empty sampler entry from the file." alt="" coords="279,1077,521,1117"/>
-<area shape="poly" id="edge38_Node000036_Node000037" title=" " alt="" coords="556,1100,522,1100,522,1095,556,1095"/>
-<area shape="poly" id="edge40_Node000038_Node000009" title=" " alt="" coords="1276,609,1184,500,1172,478,1164,460,1155,444,1137,429,1095,407,1050,391,1004,379,957,372,865,366,784,369,784,363,865,360,957,366,1005,374,1052,386,1097,402,1140,424,1159,440,1169,457,1176,476,1189,497,1280,605"/>
-<area shape="poly" id="edge50_Node000038_Node000022" title=" " alt="" coords="1273,610,1228,561,1184,500,1170,461,1165,427,1159,397,1151,382,1137,366,1116,351,1092,341,1095,336,1119,347,1140,362,1155,378,1164,395,1171,427,1175,460,1189,497,1232,557,1277,606"/>
-<area shape="rect" id="Node000039" href="$namespaceBDS.html#ac1dfb7b1f5d9c6905b776ca9f3afdffb" title=" " alt="" coords="628,422,753,447"/>
-<area shape="poly" id="edge41_Node000038_Node000039" title=" " alt="" coords="1283,607,1257,574,1224,536,1183,501,1137,473,1088,454,1037,440,984,431,932,426,834,424,754,429,753,424,833,419,932,421,985,426,1038,435,1090,449,1140,468,1186,497,1227,533,1261,570,1287,604"/>
-<area shape="rect" id="Node000040" href="$namespaceBDS.html#aab422e50ef35240eabc2a479005eb975" title=" " alt="" coords="579,471,803,497"/>
-<area shape="poly" id="edge43_Node000038_Node000040" title=" " alt="" coords="1276,609,1216,557,1178,531,1138,512,1053,488,965,476,879,473,803,475,803,470,879,468,965,471,1054,483,1140,507,1181,527,1220,552,1280,605"/>
-<area shape="rect" id="Node000041" href="$classBDSDetectorConstruction.html#affc78e1fe9b5c200d7483d9d568ee0e7" title=" " alt="" coords="860,777,1139,817"/>
-<area shape="poly" id="edge45_Node000038_Node000041" title=" " alt="" coords="1278,669,1217,720,1180,746,1140,768,1109,780,1107,775,1138,763,1177,741,1214,716,1274,665"/>
-<area shape="rect" id="Node000043" href="$classBDSDetectorConstruction.html#a925734ead0b9a003e06ab10c7a2a4dd3" title=" " alt="" coords="880,841,1119,881"/>
-<area shape="poly" id="edge48_Node000038_Node000043" title=" " alt="" coords="1289,671,1264,709,1230,752,1188,796,1140,832,1115,844,1113,839,1137,827,1184,792,1226,749,1260,706,1285,668"/>
-<area shape="rect" id="Node000044" href="$classBDSDetectorConstruction.html#a853abc5870e17bcf4e96951a4a16950f" title="Construct scoring meshes." alt="" coords="904,521,1095,561"/>
-<area shape="poly" id="edge51_Node000038_Node000044" title=" " alt="" coords="1245,615,1138,576,1094,564,1096,559,1139,571,1247,610"/>
-<area shape="rect" id="Node000046" href="$classBDSDetectorConstruction.html#a6d9664cae466e6f59c255ae565b7e53a" title="Create a blm placement from a blm placement." alt="" coords="896,585,1103,625"/>
-<area shape="poly" id="edge53_Node000038_Node000046" title=" " alt="" coords="1190,628,1103,619,1103,613,1191,623"/>
-<area shape="rect" id="Node000047" href="$classBDSDetectorConstruction.html#a7561db2e0b62a5701caa1d6b3639bfd0" title="Create a query placement from a query placement." alt="" coords="896,649,1103,689"/>
-<area shape="poly" id="edge54_Node000038_Node000047" title=" " alt="" coords="1191,652,1103,661,1103,656,1190,647"/>
-<area shape="rect" id="Node000048" href="$classBDSDetectorConstruction.html#a6e42350c4598b468b3ef073fe2dcf0d3" title=" " alt="" coords="896,713,1103,753"/>
-<area shape="poly" id="edge55_Node000038_Node000048" title=" " alt="" coords="1247,665,1139,704,1096,716,1094,711,1138,699,1245,660"/>
-<area shape="rect" id="Node000049" href="$classBDSDetectorConstruction.html#ad3c948d7f3b7e85da0156e8235fb4a16" title="placement and uses the above function." alt="" coords="896,905,1103,945"/>
-<area shape="poly" id="edge56_Node000038_Node000049" title=" " alt="" coords="1296,671,1274,721,1241,782,1196,844,1170,872,1140,896,1104,913,1102,909,1137,891,1166,868,1192,840,1237,780,1270,719,1292,669"/>
-<area shape="rect" id="Node000050" href="$classBDSDetectorConstruction.html#a5a9f3d7b8becbb008bdfa6e3d875ac0b" title="Prepare field queries from parser information." alt="" coords="597,867,784,907"/>
-<area shape="poly" id="edge57_Node000038_Node000050" title=" " alt="" coords="1289,671,1189,853,1178,885,1173,912,1163,937,1140,959,1103,980,1069,992,1037,996,1005,994,940,980,859,960,788,937,727,909,729,904,789,932,861,955,941,974,1006,989,1037,991,1068,986,1101,975,1137,955,1159,934,1168,911,1173,883,1184,851,1285,668"/>
-<area shape="poly" id="edge42_Node000039_Node000010" title=" " alt="" coords="614,437,494,437,494,432,614,432"/>
-<area shape="poly" id="edge44_Node000040_Node000010" title=" " alt="" coords="601,472,493,453,494,448,602,466"/>
-<area shape="rect" id="Node000042" href="$classBDSDetectorConstruction.html#a5bed9e3a301f1db2ef82f147d01ef177" title=" " alt="" coords="597,777,784,817"/>
-<area shape="poly" id="edge46_Node000041_Node000042" title=" " alt="" coords="846,800,784,800,784,795,846,795"/>
-<area shape="poly" id="edge47_Node000042_Node000010" title=" " alt="" coords="663,768,415,457,420,453,667,765"/>
-<area shape="poly" id="edge49_Node000043_Node000042" title=" " alt="" coords="888,841,784,819,785,814,889,836"/>
-<area shape="rect" id="Node000045" href="$classBDSDetectorConstruction.html#ac1c6446c955395e83af2f051174f610f" title="Construct sensitive detectors and fields." alt="" coords="597,521,784,561"/>
-<area shape="poly" id="edge52_Node000044_Node000045" title=" " alt="" coords="890,544,784,544,784,539,890,539"/>
-<area shape="poly" id="edge58_Node000050_Node000010" title=" " alt="" coords="612,863,589,849,567,831,529,785,497,733,470,679,448,624,417,525,402,456,407,455,423,524,453,622,475,676,501,730,533,781,571,827,592,845,615,858"/>
-<area shape="poly" id="edge61_Node000052_Node000008" title=" " alt="" coords="2115,300,2029,289,1763,272,1499,264,1267,261,1093,262,1093,257,1267,256,1499,258,1763,267,2030,284,2115,295"/>
-<area shape="rect" id="Node000053" href="$classBDSSurvey.html#aab16080e9dc69a535ecfb931cbbdb958" title="Write a whole beamline, summary of it and close the file." alt="" coords="1832,299,1968,325"/>
-<area shape="poly" id="edge62_Node000052_Node000053" title=" " alt="" coords="2115,315,1968,315,1968,309,2115,309"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="2091,528,2289,568"/>
+<area shape="rect" id="Node000002" href="$classBDSBeamline.html#aec30dae8d75cc5af7d63d4004c68197e" title=" " alt="" coords="1497,199,1756,225"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2170,517,2149,479,2120,435,2084,391,2041,353,2002,327,1960,305,1872,269,1787,244,1712,227,1713,222,1788,239,1874,264,1962,300,2005,323,2044,349,2087,387,2124,432,2154,476,2175,514"/>
+<area shape="rect" id="Node000016" href="$classBDSLinkOpaqueBox.html#a31054bc1cc1411cde6648feebc455e9e" title="Accessor." alt="" coords="1821,643,2025,669"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="2144,577,2096,603,2044,626,1982,646,1980,641,2042,622,2094,598,2142,573"/>
+<area shape="rect" id="Node000017" href="$classBDSBeamlineElement.html#a0c2d087ce7d8d5503b11d20cc8af6a01" title="Accessor." alt="" coords="1841,499,2006,539"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="2076,538,2006,530,2007,525,2077,533"/>
+<area shape="rect" id="Node000025" href="$classBDSBeamline.html#ad639e6ff494db695d7cfa89fcf1342ac" title=" " alt="" coords="1203,695,1449,735"/>
+<area shape="poly" id="edge29_Node000001_Node000025" title=" " alt="" coords="2077,572,1431,697,1430,692,2076,567"/>
+<area shape="rect" id="Node000054" href="$classBDSLinkOpaqueBox.html#a770ca2052a0608f0705b2baede17695e" title="Place the output sampler." alt="" coords="1804,693,2043,733"/>
+<area shape="poly" id="edge59_Node000001_Node000054" title=" " alt="" coords="2165,581,2113,634,2080,661,2044,684,2017,696,2015,691,2041,679,2076,656,2109,630,2161,577"/>
+<area shape="rect" id="Node000055" href="$classBDSSurvey.html#ac0d59db147f46e77fe31e80e207ff141" title="write line" alt="" coords="1855,363,1991,389"/>
+<area shape="poly" id="edge60_Node000001_Node000055" title=" " alt="" coords="2145,523,1943,391,1946,387,2148,518"/>
+<area shape="rect" id="Node000003" href="$classBDSBeamline.html#a9ea22e2abe29c800aa6e3112fe68824e" title=" " alt="" coords="1217,173,1435,198"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1483,202,1435,198,1436,192,1484,197"/>
+<area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="927,5,1141,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1300,165,1237,112,1196,84,1154,60,1124,48,1126,43,1156,55,1199,80,1240,108,1303,161"/>
+<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="927,69,1141,109"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="1280,170,1154,124,1114,112,1115,107,1156,119,1282,165"/>
+<area shape="rect" id="Node000008" href="$classBDSLinkDetectorConstruction.html#a184e6d7be757abef7c5e3dce4e941b11" title="Interface to append an element." alt="" coords="927,133,1141,173"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="1203,175,1141,168,1142,162,1203,169"/>
+<area shape="rect" id="Node000010" href="$classBDSDetectorConstruction.html#a8e5b24d8a99d199a728d8a97be40f1ab" title=" " alt="" coords="633,305,819,345"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="1284,206,1224,230,1155,252,1067,273,978,291,820,317,819,311,977,286,1066,268,1154,247,1222,225,1282,201"/>
+<area shape="rect" id="Node000013" href="$classBDSTunnelBuilder.html#a0c63e82a5857c7457682f9f121ca6e24" title=" " alt="" coords="924,197,1144,237"/>
+<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="1203,201,1145,208,1144,203,1203,196"/>
+<area shape="rect" id="Node000005" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="605,13,847,38"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="912,28,847,28,847,23,912,23"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="616,69,836,109"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="913,92,836,92,836,87,913,87"/>
+<area shape="rect" id="Node000009" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="623,141,829,166"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="913,156,830,156,830,151,913,151"/>
+<area shape="rect" id="Node000011" href="$classBDSDetectorConstruction.html#aa81d7072ee80602ba862eda6c892c87c" title="Build the main beam line and then any other required beam lines." alt="" coords="324,427,511,467"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="620,349,588,360,513,394,452,429,449,424,511,389,586,355,618,344"/>
+<area shape="rect" id="Node000012" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="33,505,220,545"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="330,473,202,508,201,503,329,468"/>
+<area shape="rect" id="Node000014" href="$classBDSDetectorConstruction.html#ab4d9ff089bf5aa4748d241a72f10c9b3" title="Build the tunnel around the already constructed flat beam line." alt="" coords="633,241,819,281"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="911,238,820,251,819,245,910,232"/>
+<area shape="poly" id="edge16_Node000014_Node000012" title=" " alt="" coords="620,286,588,296,297,417,220,464,156,507,153,503,217,459,295,412,586,291,619,281"/>
+<area shape="rect" id="Node000015" href="$classBDSDetectorConstruction.html#aa564f0cee84c47e41d7917e11107bc3f" title="Place beam line, tunnel beam line, end pieces and placements in world." alt="" coords="324,260,511,300"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="619,270,511,277,511,272,619,265"/>
+<area shape="poly" id="edge15_Node000015_Node000012" title=" " alt="" coords="350,308,298,338,249,380,205,427,144,507,139,504,201,424,245,377,294,334,347,303"/>
+<area shape="rect" id="Node000018" href="$classBDSCurvilinearBuilder.html#a87f07f71356fb6f4c9bcebe5d48ad3c7" title="Simple interrogation function to determine if an element has a finite angle or not." alt="" coords="1543,413,1710,453"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="1839,497,1696,456,1698,451,1841,492"/>
+<area shape="rect" id="Node000021" href="$classBDSCurvilinearBuilder.html#a4a27dc9e1daf820645cbebc02ec766df" title=" " alt="" coords="1243,437,1409,477"/>
+<area shape="poly" id="edge23_Node000017_Node000021" title=" " alt="" coords="1827,512,1409,468,1410,463,1828,506"/>
+<area shape="rect" id="Node000023" href="$classBDSParallelWorldSampler.html#a759473f9a35d652b3dd4a0894861f353" title="Place a sampler from a single element." alt="" coords="1533,528,1721,568"/>
+<area shape="poly" id="edge27_Node000017_Node000023" title=" " alt="" coords="1827,531,1721,541,1721,536,1827,525"/>
+<area shape="rect" id="Node000019" href="$classBDSCurvilinearBuilder.html#affa1b220a90bb89f1e7596b3c6f16b0f" title=" " alt="" coords="1227,373,1425,413"/>
+<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="1529,423,1425,409,1426,404,1530,418"/>
+<area shape="rect" id="Node000020" href="$classBDSCurvilinearBuilder.html#a777359fa94bb11ae9bd3c52e72f255f4" title="Build a beam line of curvilinear geometry based on another beam line." alt="" coords="919,373,1149,413"/>
+<area shape="poly" id="edge21_Node000019_Node000020" title=" " alt="" coords="1213,396,1149,396,1149,391,1213,391"/>
+<area shape="poly" id="edge22_Node000020_Node000010" title=" " alt="" coords="929,373,817,348,818,343,930,368"/>
+<area shape="poly" id="edge24_Node000021_Node000020" title=" " alt="" coords="1229,439,1125,416,1126,411,1230,434"/>
+<area shape="rect" id="Node000022" href="$classBDSCurvilinearBuilder.html#aa7aafa785f99603ee7f9810e0315ff22" title="Build bridging volumes to join the curvilinear ones." alt="" coords="913,437,1155,477"/>
+<area shape="poly" id="edge25_Node000021_Node000022" title=" " alt="" coords="1229,460,1155,460,1155,455,1229,455"/>
+<area shape="poly" id="edge26_Node000022_Node000010" title=" " alt="" coords="921,433,912,427,895,410,887,392,879,375,864,359,842,348,819,339,820,334,844,343,867,355,884,372,892,390,900,407,915,423,924,429"/>
+<area shape="rect" id="Node000024" href="$classBDSParallelWorldSampler.html#afd3f7fbe0255b5a5b702a7ad83e753f4" title=" " alt="" coords="632,369,820,409"/>
+<area shape="poly" id="edge28_Node000023_Node000024" title=" " alt="" coords="1519,565,1391,574,1315,574,1235,571,1153,562,1070,547,989,524,912,492,896,479,886,465,878,451,864,438,837,423,808,412,810,407,839,419,867,434,882,448,891,463,899,476,915,487,991,518,1071,541,1153,557,1235,565,1315,569,1391,569,1519,560"/>
+<area shape="rect" id="Node000026" href="$classBDSBunch.html#a02d25c9b2f1c1deb759ba9c73b0b5514" title="Calculate the global coordinates from curvilinear coordinates of a beam line." alt="" coords="931,903,1137,943"/>
+<area shape="poly" id="edge30_Node000025_Node000026" title=" " alt="" coords="1287,745,1065,905,1062,900,1284,741"/>
+<area shape="rect" id="Node000041" href="$classBDSDetectorConstruction.html#af3112ac2621be0eca9d0d4d8bfaaf36a" title=" " alt="" coords="931,695,1137,735"/>
+<area shape="poly" id="edge39_Node000025_Node000041" title=" " alt="" coords="1189,717,1138,717,1138,712,1189,712"/>
+<area shape="rect" id="Node000027" href="$classBDSBunch.html#a3f15d3538dbad380e88f47cb64cf1ed5" title=" " alt="" coords="627,1087,825,1113"/>
+<area shape="poly" id="edge31_Node000026_Node000027" title=" " alt="" coords="1007,955,947,1013,908,1042,867,1068,836,1081,805,1090,803,1085,834,1076,864,1063,905,1038,943,1008,1004,951"/>
+<area shape="rect" id="Node000028" href="$classBDSBunch.html#ad0fe9077dea51a4dedc0158f32264215" title=" " alt="" coords="318,1094,517,1119"/>
+<area shape="poly" id="edge32_Node000027_Node000028" title=" " alt="" coords="613,1105,517,1107,517,1102,613,1100"/>
+<area shape="rect" id="Node000037" href="$classBDSPrimaryGeneratorFileHEPMC.html#ad8f75badab82a6de22276cffe767393a" title="Conversion from HepMC::GenEvent to G4Event." alt="" coords="300,1180,535,1220"/>
+<area shape="poly" id="edge35_Node000027_Node000037" title=" " alt="" coords="673,1120,481,1182,479,1177,672,1115"/>
+<area shape="rect" id="Node000039" href="$classBDSPrimaryGeneratorFileSampler.html#a33d0ac29ec6da2d09aae4d1a70820d37" title="Read sampler hits and put into primary vertices if they pass filters." alt="" coords="296,1029,539,1069"/>
+<area shape="poly" id="edge37_Node000027_Node000039" title=" " alt="" coords="634,1088,539,1072,539,1067,635,1082"/>
+<area shape="rect" id="Node000029" href="$classBDSBunchUserFile.html#a71238fe44c433ad46f68b84f3119352c" title=" " alt="" coords="25,1055,229,1095"/>
+<area shape="poly" id="edge33_Node000028_Node000029" title=" " alt="" coords="304,1097,229,1089,229,1083,305,1092"/>
+<area shape="rect" id="Node000030" href="$classBDSBunch.html#adc8a53b966a9dcc0ce402d597a7c9319" title=" " alt="" coords="27,1119,226,1159"/>
+<area shape="poly" id="edge34_Node000028_Node000030" title=" " alt="" coords="305,1122,227,1130,226,1125,304,1116"/>
+<area shape="rect" id="Node000038" href="$classBDSPrimaryGeneratorFileHEPMC.html#ab47ec75b1fcf2940d2f1b884c66219de" title=" " alt="" coords="9,1183,244,1223"/>
+<area shape="poly" id="edge36_Node000037_Node000038" title=" " alt="" coords="286,1204,244,1204,244,1199,286,1199"/>
+<area shape="rect" id="Node000040" href="$classBDSPrimaryGeneratorFileSampler.html#af5d8f669214c6449600e919d94abce2b" title="Read the next non&#45;empty sampler entry from the file." alt="" coords="5,991,248,1031"/>
+<area shape="poly" id="edge38_Node000039_Node000040" title=" " alt="" coords="282,1034,248,1029,249,1024,283,1029"/>
+<area shape="poly" id="edge40_Node000041_Node000011" title=" " alt="" coords="1006,685,961,626,911,556,899,531,892,509,883,491,864,474,837,463,801,454,709,445,606,443,511,445,511,439,606,437,709,439,802,449,839,458,867,470,887,488,897,507,904,529,916,553,965,623,1010,682"/>
+<area shape="poly" id="edge50_Node000041_Node000024" title=" " alt="" coords="1003,685,957,627,911,556,897,519,893,487,885,459,877,445,864,430,843,415,819,405,821,400,845,411,867,426,881,441,890,456,898,486,902,518,916,553,962,624,1008,682"/>
+<area shape="rect" id="Node000042" href="$namespaceBDS.html#ac1dfb7b1f5d9c6905b776ca9f3afdffb" title=" " alt="" coords="355,598,480,623"/>
+<area shape="poly" id="edge41_Node000041_Node000042" title=" " alt="" coords="977,692,923,671,865,653,760,634,655,622,480,614,480,608,655,617,761,629,866,648,925,666,979,687"/>
+<area shape="rect" id="Node000043" href="$namespaceBDS.html#aab422e50ef35240eabc2a479005eb975" title=" " alt="" coords="305,915,529,941"/>
+<area shape="poly" id="edge43_Node000041_Node000043" title=" " alt="" coords="1013,748,916,892,904,916,897,937,887,956,867,973,828,992,794,1002,762,1006,731,1004,666,991,586,973,562,965,538,956,486,943,488,938,539,951,563,960,587,968,667,986,732,999,762,1000,793,997,826,987,864,968,883,953,892,935,899,914,911,889,1008,745"/>
+<area shape="rect" id="Node000044" href="$classBDSDetectorConstruction.html#affc78e1fe9b5c200d7483d9d568ee0e7" title=" " alt="" coords="587,548,865,588"/>
+<area shape="poly" id="edge45_Node000041_Node000044" title=" " alt="" coords="995,689,935,648,864,609,813,591,815,586,866,604,938,643,998,684"/>
+<area shape="rect" id="Node000046" href="$classBDSDetectorConstruction.html#a925734ead0b9a003e06ab10c7a2a4dd3" title=" " alt="" coords="607,484,845,524"/>
+<area shape="poly" id="edge48_Node000041_Node000046" title=" " alt="" coords="1010,685,984,650,950,610,910,571,864,538,839,526,841,522,867,534,913,567,954,607,989,647,1014,682"/>
+<area shape="rect" id="Node000047" href="$classBDSDetectorConstruction.html#a853abc5870e17bcf4e96951a4a16950f" title="Construct scoring meshes." alt="" coords="631,855,821,895"/>
+<area shape="poly" id="edge51_Node000041_Node000047" title=" " alt="" coords="1004,746,944,797,906,823,866,845,822,861,821,856,864,840,903,819,940,793,1001,742"/>
+<area shape="rect" id="Node000049" href="$classBDSDetectorConstruction.html#a6d9664cae466e6f59c255ae565b7e53a" title="Create a blm placement from a blm placement." alt="" coords="623,663,829,703"/>
+<area shape="poly" id="edge53_Node000041_Node000049" title=" " alt="" coords="917,705,830,696,830,691,917,700"/>
+<area shape="rect" id="Node000050" href="$classBDSDetectorConstruction.html#a7561db2e0b62a5701caa1d6b3639bfd0" title="Create a query placement from a query placement." alt="" coords="623,727,829,767"/>
+<area shape="poly" id="edge54_Node000041_Node000050" title=" " alt="" coords="917,729,830,739,830,733,917,724"/>
+<area shape="rect" id="Node000051" href="$classBDSDetectorConstruction.html#a6e42350c4598b468b3ef073fe2dcf0d3" title=" " alt="" coords="623,791,829,831"/>
+<area shape="poly" id="edge55_Node000041_Node000051" title=" " alt="" coords="974,742,866,781,822,793,821,788,865,776,972,737"/>
+<area shape="rect" id="Node000052" href="$classBDSDetectorConstruction.html#ad3c948d7f3b7e85da0156e8235fb4a16" title="placement and uses the above function." alt="" coords="623,919,829,959"/>
+<area shape="poly" id="edge56_Node000041_Node000052" title=" " alt="" coords="1016,749,991,786,956,830,915,873,867,909,831,925,829,920,864,904,911,869,952,826,986,783,1011,746"/>
+<area shape="rect" id="Node000053" href="$classBDSDetectorConstruction.html#a5a9f3d7b8becbb008bdfa6e3d875ac0b" title="Prepare field queries from parser information." alt="" coords="324,965,511,1005"/>
+<area shape="poly" id="edge57_Node000041_Node000053" title=" " alt="" coords="1011,747,964,812,916,892,904,926,899,957,891,985,882,998,867,1010,839,1022,803,1028,710,1029,606,1020,511,1005,511,1000,607,1014,710,1024,802,1023,838,1017,864,1006,878,994,886,982,894,956,899,925,911,890,960,809,1007,744"/>
+<area shape="poly" id="edge42_Node000042_Node000012" title=" " alt="" coords="359,597,195,548,196,543,360,591"/>
+<area shape="poly" id="edge44_Node000043_Node000012" title=" " alt="" coords="303,911,294,905,253,864,219,817,191,765,170,713,141,615,128,546,133,545,146,614,175,711,196,763,224,814,257,861,298,901,306,907"/>
+<area shape="rect" id="Node000045" href="$classBDSDetectorConstruction.html#a5bed9e3a301f1db2ef82f147d01ef177" title=" " alt="" coords="324,505,511,545"/>
+<area shape="poly" id="edge46_Node000044_Node000045" title=" " alt="" coords="573,550,510,541,511,536,574,544"/>
+<area shape="poly" id="edge47_Node000045_Node000012" title=" " alt="" coords="310,528,220,528,220,523,310,523"/>
+<area shape="poly" id="edge49_Node000046_Node000045" title=" " alt="" coords="593,516,511,522,511,516,593,511"/>
+<area shape="rect" id="Node000048" href="$classBDSDetectorConstruction.html#ac1c6446c955395e83af2f051174f610f" title="Construct sensitive detectors and fields." alt="" coords="324,851,511,891"/>
+<area shape="poly" id="edge52_Node000047_Node000048" title=" " alt="" coords="617,876,511,875,511,869,617,871"/>
+<area shape="poly" id="edge58_Node000053_Node000012" title=" " alt="" coords="310,966,294,955,250,907,214,852,186,793,165,733,138,622,127,546,132,545,143,621,170,731,191,791,219,850,254,904,298,951,313,962"/>
+<area shape="poly" id="edge61_Node000055_Node000010" title=" " alt="" coords="1841,364,1756,353,1490,336,1226,328,993,325,819,326,819,321,993,320,1226,322,1490,331,1756,348,1842,359"/>
+<area shape="rect" id="Node000056" href="$classBDSSurvey.html#aab16080e9dc69a535ecfb931cbbdb958" title="Write a whole beamline, summary of it and close the file." alt="" coords="1559,363,1695,389"/>
+<area shape="poly" id="edge62_Node000055_Node000056" title=" " alt="" coords="1841,379,1695,379,1695,373,1841,373"/>
 </map>

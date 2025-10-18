@@ -1,11 +1,11 @@
 <map id="BDSPrimaryGeneratorFileSampler" name="BDSPrimaryGeneratorFileSampler">
-<area shape="rect" id="Node000001" title="Loader to read a specific sampler from a BDSIM ROOT output file." alt="" coords="1572,14491,1830,14811"/>
-<area shape="rect" id="Node000002" href="$classBDSPrimaryGeneratorFile.html" title="Common interface for any primary generators that are file based." alt="" coords="1158,13948,1398,14428"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1410,14329,1573,14506,1569,14510,1406,14332"/>
+<area shape="rect" id="Node000001" title="Loader to read a specific sampler from a BDSIM ROOT output file." alt="" coords="1572,14531,1830,14851"/>
+<area shape="rect" id="Node000002" href="$classBDSPrimaryGeneratorFile.html" title="Common interface for any primary generators that are file based." alt="" coords="1158,13948,1398,14468"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1410,14355,1573,14540,1569,14544,1406,14358"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="968,13480,1125,13545"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1057,13558,1088,13705,1111,13795,1139,13884,1164,13947,1159,13949,1134,13886,1106,13796,1083,13706,1052,13559"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1057,13558,1089,13705,1112,13795,1139,13884,1162,13947,1157,13949,1134,13886,1107,13796,1084,13706,1052,13560"/>
 <area shape="rect" id="Node000004" href="$classBDSBunchEventGenerator.html" title="A wrapper of BDSBunch to include a filter for the events loaded by an event generator." alt="" coords="1150,13140,1407,13885"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1281,13886,1281,13932,1276,13932,1276,13886"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1281,13886,1281,13931,1276,13931,1276,13886"/>
 <area shape="rect" id="Node000005" href="$classBDSBunchFileBased.html" title="An intermediate layer for any bunch classes that are file based." alt="" coords="1156,12552,1401,13077"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1281,13091,1281,13140,1276,13140,1276,13091"/>
 <area shape="rect" id="Node000006" href="$classBDSBunch.html" title="The base class for bunch distribution generators." alt="" coords="800,11123,1021,12503"/>
@@ -73,7 +73,7 @@
 <area shape="rect" id="Node000066" title=" " alt="" coords="1004,12782,1131,12847"/>
 <area shape="poly" id="edge30_Node000004_Node000066" title=" " alt="" coords="1077,12847,1106,12966,1146,13115,1149,13123,1143,13125,1141,13117,1101,12967,1072,12848"/>
 <area shape="rect" id="Node000067" href="$classBDSOutputLoaderSampler.html" title="Loader of ROOT Event output for receating events." alt="" coords="1794,10395,2013,10660"/>
-<area shape="poly" id="edge31_Node000001_Node000067" title=" " alt="" coords="1862,10661,1799,10878,1764,11014,1731,11163,1700,11320,1675,11484,1659,11649,1653,11811,1653,14189,1660,14335,1675,14474,1670,14474,1654,14335,1648,14189,1648,11811,1654,11648,1670,11483,1695,11320,1725,11161,1759,11012,1794,10877,1857,10660"/>
+<area shape="poly" id="edge31_Node000001_Node000067" title=" " alt="" coords="1862,10661,1799,10878,1764,11014,1731,11163,1700,11320,1675,11484,1659,11649,1653,11811,1653,14209,1660,14366,1676,14514,1671,14515,1655,14366,1648,14209,1648,11811,1654,11648,1670,11483,1695,11320,1725,11161,1759,11012,1794,10877,1857,10660"/>
 <area shape="rect" id="Node000068" href="$classBDSOutputLoader.html" title="Loader of ROOT Event output for recreating events." alt="" coords="1558,9329,1724,9755"/>
 <area shape="poly" id="edge32_Node000067_Node000068" title=" " alt="" coords="1704,9767,1871,10394,1866,10395,1698,9769"/>
 <area shape="rect" id="Node000069" href="$classBDSOutputROOTEventBeam.html" title="Class to store all beam options for a BDSIM run." alt="" coords="1140,8017,1374,8163"/>
@@ -113,10 +113,10 @@
 <area shape="poly" id="edge61_Node000067_Node000085" title=" " alt="" coords="2059,9933,1944,10380,1939,10378,2054,9931"/>
 <area shape="rect" id="Node000086" title=" " alt="" coords="1964,8057,2121,8123"/>
 <area shape="poly" id="edge64_Node000085_Node000086" title=" " alt="" coords="2041,8123,2028,8279,2015,8526,2012,8671,2014,8823,2023,8977,2040,9128,2041,9135,2035,9136,2034,9128,2018,8977,2009,8823,2007,8671,2009,8526,2022,8278,2036,8123"/>
-<area shape="rect" id="Node000087" title=" " alt="" coords="1688,14148,1930,14228"/>
-<area shape="poly" id="edge68_Node000001_Node000087" title=" " alt="" coords="1802,14229,1745,14475,1739,14474,1797,14228"/>
+<area shape="rect" id="Node000087" title=" " alt="" coords="1688,14168,1930,14248"/>
+<area shape="poly" id="edge68_Node000001_Node000087" title=" " alt="" coords="1803,14249,1743,14515,1738,14514,1798,14248"/>
 <area shape="rect" id="Node000088" href="$structBDSPrimaryGeneratorFileSampler_1_1DisplacedVertex.html" title=" " alt="" coords="1692,13453,1926,13573"/>
-<area shape="poly" id="edge69_Node000087_Node000088" title=" " alt="" coords="1812,13573,1812,14132,1806,14132,1806,13573"/>
-<area shape="rect" id="Node000089" title=" " alt="" coords="1954,14155,2189,14221"/>
-<area shape="poly" id="edge70_Node000001_Node000089" title=" " alt="" coords="2061,14222,2015,14318,1982,14375,1944,14430,1896,14485,1844,14536,1840,14532,1892,14481,1940,14426,1978,14372,2010,14316,2056,14220"/>
+<area shape="poly" id="edge69_Node000087_Node000088" title=" " alt="" coords="1812,13573,1812,14151,1806,14151,1806,13573"/>
+<area shape="rect" id="Node000089" title=" " alt="" coords="1954,14175,2189,14241"/>
+<area shape="poly" id="edge70_Node000001_Node000089" title=" " alt="" coords="2063,14242,2017,14347,1984,14410,1944,14470,1897,14526,1844,14577,1841,14574,1893,14522,1940,14466,1979,14407,2013,14345,2058,14240"/>
 </map>

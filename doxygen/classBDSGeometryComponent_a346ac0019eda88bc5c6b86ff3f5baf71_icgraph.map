@@ -1,35 +1,39 @@
 <map id="BDSGeometryComponent::GetName" name="BDSGeometryComponent::GetName">
-<area shape="rect" id="Node000001" title="Accessor &#45; see member for more info." alt="" coords="1420,99,1609,139"/>
+<area shape="rect" id="Node000001" title="Accessor &#45; see member for more info." alt="" coords="1420,133,1609,173"/>
 <area shape="rect" id="Node000002" href="$classBDSLinkDetectorConstruction.html#a120c664eb87c4cc43a6a630eda5ae4bd" title="Interface to append a collimator of jaw style to the linking." alt="" coords="1136,5,1351,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1459,95,1371,60,1332,48,1333,43,1373,55,1461,90"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1477,127,1428,92,1371,60,1339,48,1341,43,1373,55,1431,87,1480,123"/>
 <area shape="rect" id="Node000004" href="$classBDSLinkDetectorConstruction.html#a075ad13cf603ee3b6d0695911dabe330" title="Interface to append a tip collimator jaw to the linking." alt="" coords="1136,69,1351,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1406,110,1351,104,1351,98,1406,104"/>
-<area shape="rect" id="Node000006" href="$namespaceBDS.html#ac1dfb7b1f5d9c6905b776ca9f3afdffb" title=" " alt="" coords="1181,134,1306,159"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1407,132,1307,143,1306,138,1406,127"/>
-<area shape="rect" id="Node000008" href="$classBDSGeometryComponent.html#ab89a7be986b1c703e60d5d10118fc856" title=" " alt="" coords="1115,191,1372,231"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1449,146,1373,173,1312,193,1310,188,1371,168,1447,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1415,133,1328,112,1329,107,1416,127"/>
+<area shape="rect" id="Node000006" href="$classBDSLinkDetectorConstruction.html#a184e6d7be757abef7c5e3dce4e941b11" title="Interface to append an element." alt="" coords="1136,133,1351,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1406,156,1351,156,1351,151,1406,151"/>
+<area shape="rect" id="Node000008" href="$namespaceBDS.html#ac1dfb7b1f5d9c6905b776ca9f3afdffb" title=" " alt="" coords="1181,198,1306,223"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1414,179,1373,188,1307,201,1306,196,1371,183,1413,174"/>
+<area shape="rect" id="Node000010" href="$classBDSGeometryComponent.html#ab89a7be986b1c703e60d5d10118fc856" title=" " alt="" coords="1115,255,1372,295"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1473,183,1426,212,1373,238,1322,257,1320,252,1371,234,1424,207,1471,179"/>
 <area shape="rect" id="Node000003" href="$classBDSIMLink.html#a41ad07397a765c8e58a16c142d4d626b" title="Use standard C++ types as expected to be used externally." alt="" coords="824,13,1067,38"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1122,28,1067,28,1067,23,1122,23"/>
-<area shape="rect" id="Node000005" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="835,63,1055,103"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1122,89,1055,88,1055,82,1122,84"/>
-<area shape="rect" id="Node000007" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="852,127,1039,167"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1167,149,1039,149,1039,144,1167,144"/>
-<area shape="rect" id="Node000009" href="$classBDSCrystalFactory.html#abf50483e6edd156255e576b8cf5901dd" title="build beampipe and register logical volumes" alt="" coords="871,255,1020,295"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1137,236,1021,261,1020,256,1135,231"/>
-<area shape="rect" id="Node000015" href="$classBDSElement.html#a261a42003b08ac927034b921cf09c686" title="Overloads of functions in BDSGeometryComponent." alt="" coords="841,191,1049,231"/>
-<area shape="poly" id="edge18_Node000008_Node000015" title=" " alt="" coords="1101,213,1050,213,1050,208,1101,208"/>
-<area shape="rect" id="Node000010" href="$classBDSCrystalFactory.html#a649a75c0a0fe674f37bdfbc6b6fc4789" title="Create box geometry for a crystal." alt="" coords="627,255,776,295"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="857,277,776,277,776,272,857,272"/>
-<area shape="rect" id="Node000013" href="$classBDSCrystalFactory.html#a6d356a3f29f051d09b9009e3edb8b481" title="Create cylinder geometry for a crystal." alt="" coords="413,197,579,237"/>
-<area shape="poly" id="edge16_Node000009_Node000013" title=" " alt="" coords="857,259,776,245,579,225,580,220,776,240,858,254"/>
-<area shape="rect" id="Node000014" href="$classBDSCrystalFactory.html#a9cf79a54540a2f4df6fc71e20cc2099c" title="Create torus geometry for a cyrstal." alt="" coords="421,312,571,352"/>
-<area shape="poly" id="edge17_Node000009_Node000014" title=" " alt="" coords="858,295,776,309,669,322,571,330,571,325,668,316,776,304,857,290"/>
-<area shape="rect" id="Node000011" href="$classBDSCrystalFactory.html#ab20c9ae049eca309ecbc5137f14b0eee" title="Main interface to create a crystal." alt="" coords="216,255,365,295"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="613,277,366,277,366,272,613,272"/>
-<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="615,253,567,240,569,235,617,248"/>
-<area shape="poly" id="edge14_Node000010_Node000014" title=" " alt="" coords="617,301,569,315,567,309,615,296"/>
-<area shape="rect" id="Node000012" href="$classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="5,255,168,295"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="202,277,168,277,168,272,202,272"/>
-<area shape="poly" id="edge13_Node000013_Node000011" title=" " alt="" coords="411,244,364,257,362,252,410,239"/>
-<area shape="poly" id="edge15_Node000014_Node000011" title=" " alt="" coords="410,311,362,297,364,292,411,306"/>
+<area shape="rect" id="Node000005" href="$classBDSIMLink.html#aef5e83a039afdadefbb279ec4c3db5b6" title=" " alt="" coords="835,69,1055,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1122,92,1055,92,1055,87,1122,87"/>
+<area shape="rect" id="Node000007" href="$classBDSIMLink.html#ad571ddfec2995ef4988a968babd6bbb7" title=" " alt="" coords="842,141,1049,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1122,156,1049,156,1049,151,1122,151"/>
+<area shape="rect" id="Node000009" href="$classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="852,191,1039,231"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1167,213,1039,213,1039,208,1167,208"/>
+<area shape="rect" id="Node000011" href="$classBDSCrystalFactory.html#abf50483e6edd156255e576b8cf5901dd" title="build beampipe and register logical volumes" alt="" coords="871,255,1020,295"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1101,277,1020,277,1020,272,1101,272"/>
+<area shape="rect" id="Node000017" href="$classBDSElement.html#a261a42003b08ac927034b921cf09c686" title="Overloads of functions in BDSGeometryComponent." alt="" coords="841,319,1049,359"/>
+<area shape="poly" id="edge20_Node000010_Node000017" title=" " alt="" coords="1137,300,1040,321,1038,316,1135,295"/>
+<area shape="rect" id="Node000012" href="$classBDSCrystalFactory.html#a649a75c0a0fe674f37bdfbc6b6fc4789" title="Create box geometry for a crystal." alt="" coords="627,255,776,295"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="857,277,776,277,776,272,857,272"/>
+<area shape="rect" id="Node000015" href="$classBDSCrystalFactory.html#a6d356a3f29f051d09b9009e3edb8b481" title="Create cylinder geometry for a crystal." alt="" coords="413,197,579,237"/>
+<area shape="poly" id="edge18_Node000011_Node000015" title=" " alt="" coords="857,259,776,245,579,225,580,220,776,240,858,254"/>
+<area shape="rect" id="Node000016" href="$classBDSCrystalFactory.html#a9cf79a54540a2f4df6fc71e20cc2099c" title="Create torus geometry for a cyrstal." alt="" coords="421,312,571,352"/>
+<area shape="poly" id="edge19_Node000011_Node000016" title=" " alt="" coords="858,295,776,309,669,322,571,330,571,325,668,316,776,304,857,290"/>
+<area shape="rect" id="Node000013" href="$classBDSCrystalFactory.html#ab20c9ae049eca309ecbc5137f14b0eee" title="Main interface to create a crystal." alt="" coords="216,255,365,295"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="613,277,366,277,366,272,613,272"/>
+<area shape="poly" id="edge14_Node000012_Node000015" title=" " alt="" coords="615,253,567,240,569,235,617,248"/>
+<area shape="poly" id="edge16_Node000012_Node000016" title=" " alt="" coords="617,301,569,315,567,309,615,296"/>
+<area shape="rect" id="Node000014" href="$classBDSCollimatorCrystal.html#a5e07bebffa324b994e84276c702ab828" title="Construct geometry." alt="" coords="5,255,168,295"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="202,277,168,277,168,272,202,272"/>
+<area shape="poly" id="edge15_Node000015_Node000013" title=" " alt="" coords="411,244,364,257,362,252,410,239"/>
+<area shape="poly" id="edge17_Node000016_Node000013" title=" " alt="" coords="410,311,362,297,364,292,411,306"/>
 </map>

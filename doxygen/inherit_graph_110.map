@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBDSParallelWorldInfo.html" title="A simple class to hold what parallel geometry is required for each sequence." alt="" coords="5,5,164,31"/>
+<area shape="rect" id="Node000000" href="$classBDSOutputStructures.html" title="Holder for output information." alt="" coords="5,31,164,56"/>
+<area shape="rect" id="Node000001" href="$classBDSOutput.html" title="Output base class that defines interface for all output types." alt="" coords="212,31,305,56"/>
+<area shape="poly" id="edge262_Node000000_Node000001" title=" " alt="" coords="178,41,212,41,212,46,178,46"/>
+<area shape="rect" id="Node000002" href="$classBDSOutputNone.html" title="No output class." alt="" coords="355,5,482,31"/>
+<area shape="poly" id="edge263_Node000001_Node000002" title=" " alt="" coords="319,31,355,25,355,31,319,36"/>
+<area shape="rect" id="Node000003" href="$classBDSOutputROOT.html" title="ROOT Event output class." alt="" coords="353,55,484,80"/>
+<area shape="poly" id="edge264_Node000001_Node000003" title=" " alt="" coords="319,50,354,55,353,60,318,55"/>
 </map>

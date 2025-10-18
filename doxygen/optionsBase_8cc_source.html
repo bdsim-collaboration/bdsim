@@ -438,59 +438,61 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  </div>
 <div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>  storeModel               = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>  samplersSplitLevel       = 0;</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>  modelSplitLevel          = 1;</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>  uprootCompatible         = 0;</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>  <span class="comment">// circular options</span></div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>  nturns                   = 1;</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>  ptcOneTurnMapFileName    = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  printFractionEvents   = 0.1;</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  printFractionTurns    = 0.2;</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>  printPhysicsProcesses = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>  </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>  <span class="comment">// visualisation</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a5ff0b2130830c7a591cbed14507f52fb">nSegmentsPerCircle</a>       = 50;</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span> </div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>  <span class="comment">// scoring map</span></div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>  nbinsx = 1;</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>  nbinsy = 1;</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>  nbinsz = 1;</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>  nbinse = 1;</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>  xmin   = -0.5;</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>  xmax   = 0.5;</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>  ymin   = -0.5;</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>  ymax   = 0.5;</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>  zmin   = 0;</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>  zmax   = 1;</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>  emin   = 1e-12;</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>  emax   = 1e4;</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>  useScoringMap = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span> </div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>  <span class="comment">// millicharge options</span></div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>  enableMillicharge = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>  millichargeName = <span class="stringliteral">&quot;millicharged&quot;</span>;</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>  millichargeMass = 100;</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>  millichargeCharge = 0.1;</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>  millichargeID = 411000; <span class="comment">// check this pdgID is not in use</span></div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>}</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>  storePerEventHistos      = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>  samplersSplitLevel       = 0;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>  modelSplitLevel          = 1;</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>  uprootCompatible         = 0;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>  <span class="comment">// circular options</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  nturns                   = 1;</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  ptcOneTurnMapFileName    = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>  printFractionEvents   = 0.1;</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>  printFractionTurns    = 0.2;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>  printPhysicsProcesses = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  </div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>  <span class="comment">// visualisation</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>  <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a5ff0b2130830c7a591cbed14507f52fb">nSegmentsPerCircle</a>       = 50;</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>  <span class="comment">// scoring map</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>  nbinsx = 1;</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>  nbinsy = 1;</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>  nbinsz = 1;</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>  nbinse = 1;</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>  xmin   = -0.5;</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>  xmax   = 0.5;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>  ymin   = -0.5;</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>  ymax   = 0.5;</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>  zmin   = 0;</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>  zmax   = 1;</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>  emin   = 1e-12;</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>  emax   = 1e4;</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>  useScoringMap = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>  <span class="comment">// millicharge options</span></div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>  enableMillicharge = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>  millichargeName = <span class="stringliteral">&quot;millicharged&quot;</span>;</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>  millichargeMass = 100;</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>  millichargeCharge = 0.1;</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>  millichargeID = 411000; <span class="comment">// check this pdgID is not in use</span></div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>}</div>
 </div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span> </div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
-<div class="foldopen" id="foldopen00395" data-start="{" data-end="}">
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno"><a class="line" href="classGMAD_1_1OptionsBase.html#abc33ad5fe1823d563c86ca2c035c3926">  395</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1OptionsBase.html#abc33ad5fe1823d563c86ca2c035c3926">OptionsBase::print</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Options                  &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;n particles            : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a0ead323837da12e1330d81a124855ed3">nGenerate</a>                &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;BV sign                : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a403cb2d85c4e0cdf9b7b92a627421d27">ffact</a>                    &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Optical absorption on  : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a7d3f2582167ea0d846d11b7337adbd91">turnOnOpticalAbsorption</a>  &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Mie scattering on      : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#ad2007097369ab9cf5cde37decf2c898d">turnOnMieScattering</a>      &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Rayleigh scattering on : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#ab795027cd4edc4d51bcc6b888c9a6674">turnOnRayleighScattering</a> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Optical surface on     : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a5f332bc22f42cabafe36a3e6e0b60565">turnOnOpticalSurface</a>     &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>}</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="foldopen" id="foldopen00397" data-start="{" data-end="}">
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno"><a class="line" href="classGMAD_1_1OptionsBase.html#abc33ad5fe1823d563c86ca2c035c3926">  397</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1OptionsBase.html#abc33ad5fe1823d563c86ca2c035c3926">OptionsBase::print</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Options                  &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;n particles            : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a0ead323837da12e1330d81a124855ed3">nGenerate</a>                &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;BV sign                : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a403cb2d85c4e0cdf9b7b92a627421d27">ffact</a>                    &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Optical absorption on  : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a7d3f2582167ea0d846d11b7337adbd91">turnOnOpticalAbsorption</a>  &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Mie scattering on      : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#ad2007097369ab9cf5cde37decf2c898d">turnOnMieScattering</a>      &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Rayleigh scattering on : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#ab795027cd4edc4d51bcc6b888c9a6674">turnOnRayleighScattering</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>  std::cout&lt;&lt;<span class="stringliteral">&quot;Optical surface on     : &quot;</span> &lt;&lt; <a class="code hl_variable" href="classGMAD_1_1OptionsBase.html#a5f332bc22f42cabafe36a3e6e0b60565">turnOnOpticalSurface</a>     &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>}</div>
 </div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a034c654409ba4e466ee534315b77819d"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a034c654409ba4e466ee534315b77819d">GMAD::OptionsBase::bdsimPath</a></div><div class="ttdeci">std::string bdsimPath</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00113">optionsBase.h:113</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a051fac73af3e5f7f99a1d78d73ab91d1"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a051fac73af3e5f7f99a1d78d73ab91d1">GMAD::OptionsBase::seedStateFileName</a></div><div class="ttdeci">std::string seedStateFileName</div><div class="ttdoc">Seed state file path.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00100">optionsBase.h:100</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a06e2b8802b752a9243e1275a0c9ebf86"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a06e2b8802b752a9243e1275a0c9ebf86">GMAD::OptionsBase::magnetGeometryType</a></div><div class="ttdeci">std::string magnetGeometryType</div><div class="ttdoc">default magnet geometry parameters</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00155">optionsBase.h:155</a></div></div>
@@ -535,7 +537,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a5cfe74822847b1888bb1a01d459c1a69"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a5cfe74822847b1888bb1a01d459c1a69">GMAD::OptionsBase::verboseRunLevel</a></div><div class="ttdeci">int verboseRunLevel</div><div class="ttdoc">Run level verbosity.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00068">optionsBase.h:68</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a5f332bc22f42cabafe36a3e6e0b60565"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a5f332bc22f42cabafe36a3e6e0b60565">GMAD::OptionsBase::turnOnOpticalSurface</a></div><div class="ttdeci">bool turnOnOpticalSurface</div><div class="ttdoc">Physics processes.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00236">optionsBase.h:236</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a5f79afe2b2c4b1ef75627c5ea2ef91e5"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a5f79afe2b2c4b1ef75627c5ea2ef91e5">GMAD::OptionsBase::prodCutProtons</a></div><div class="ttdeci">double prodCutProtons</div><div class="ttdoc">physics parameters</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00252">optionsBase.h:252</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a5ff0b2130830c7a591cbed14507f52fb"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a5ff0b2130830c7a591cbed14507f52fb">GMAD::OptionsBase::nSegmentsPerCircle</a></div><div class="ttdeci">int nSegmentsPerCircle</div><div class="ttdoc">Number of facets per 2pi in visualisation.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00409">optionsBase.h:409</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a5ff0b2130830c7a591cbed14507f52fb"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a5ff0b2130830c7a591cbed14507f52fb">GMAD::OptionsBase::nSegmentsPerCircle</a></div><div class="ttdeci">int nSegmentsPerCircle</div><div class="ttdoc">Number of facets per 2pi in visualisation.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00411">optionsBase.h:411</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a610c208e0960d878c6a744d2ffe0f766"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a610c208e0960d878c6a744d2ffe0f766">GMAD::OptionsBase::soilMaterial</a></div><div class="ttdeci">std::string soilMaterial</div><div class="ttdoc">tunnel geometry parameters</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00215">optionsBase.h:215</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a6837d69c46b622a6abb6618bc02c6e4d"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a6837d69c46b622a6abb6618bc02c6e4d">GMAD::OptionsBase::preprocessGDML</a></div><div class="ttdeci">bool preprocessGDML</div><div class="ttdoc">geometry control</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00167">optionsBase.h:167</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_a68b531bceca8b2cfb3279a0f3d21a30a"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#a68b531bceca8b2cfb3279a0f3d21a30a">GMAD::OptionsBase::maximumBetaChangePerStep</a></div><div class="ttdeci">int maximumBetaChangePerStep</div><div class="ttdoc">physics parameters</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00242">optionsBase.h:242</a></div></div>
@@ -584,7 +586,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_ab7644c3d64cb557b73e8a904a50a8a73"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#ab7644c3d64cb557b73e8a904a50a8a73">GMAD::OptionsBase::beampipeThickness</a></div><div class="ttdeci">double beampipeThickness</div><div class="ttdoc">default beampipe parameters</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00185">optionsBase.h:185</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_ab795027cd4edc4d51bcc6b888c9a6674"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#ab795027cd4edc4d51bcc6b888c9a6674">GMAD::OptionsBase::turnOnRayleighScattering</a></div><div class="ttdeci">bool turnOnRayleighScattering</div><div class="ttdoc">Physics processes.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00235">optionsBase.h:235</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_ab9d674d4dea0406c7a162f1ba1e822e7"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#ab9d674d4dea0406c7a162f1ba1e822e7">GMAD::OptionsBase::geant4PhysicsMacroFileName</a></div><div class="ttdeci">std::string geant4PhysicsMacroFileName</div><div class="ttdoc">Geant4 physics macro.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00043">optionsBase.h:43</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1OptionsBase_html_abc33ad5fe1823d563c86ca2c035c3926"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#abc33ad5fe1823d563c86ca2c035c3926">GMAD::OptionsBase::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">print some properties</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8cc_source.html#l00395">optionsBase.cc:395</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1OptionsBase_html_abc33ad5fe1823d563c86ca2c035c3926"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#abc33ad5fe1823d563c86ca2c035c3926">GMAD::OptionsBase::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">print some properties</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8cc_source.html#l00397">optionsBase.cc:397</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_abd2e40e784ad9de518ba71fe83fd5950"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#abd2e40e784ad9de518ba71fe83fd5950">GMAD::OptionsBase::visMacroFileName</a></div><div class="ttdeci">std::string visMacroFileName</div><div class="ttdoc">Visualisation filename.</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00041">optionsBase.h:41</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_abd36236e904428ce91dd15f358b8d83c"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#abd36236e904428ce91dd15f358b8d83c">GMAD::OptionsBase::scintYieldFactor</a></div><div class="ttdeci">double scintYieldFactor</div><div class="ttdoc">physics parameters</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00240">optionsBase.h:240</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1OptionsBase_html_abfe4e5e8cc7189fec26001ab1efd2f95"><div class="ttname"><a href="classGMAD_1_1OptionsBase.html#abfe4e5e8cc7189fec26001ab1efd2f95">GMAD::OptionsBase::beamPipeIsInfiniteAbsorber</a></div><div class="ttdeci">bool beamPipeIsInfiniteAbsorber</div><div class="ttdoc">physics parameters</div><div class="ttdef"><b>Definition</b> <a href="optionsBase_8h_source.html#l00263">optionsBase.h:263</a></div></div>
@@ -630,7 +632,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2025 20:40:07 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
