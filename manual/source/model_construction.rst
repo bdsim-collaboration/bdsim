@@ -2414,8 +2414,23 @@ Parameters for these components can be specified as either:
 +------------------------------+-------------------------------+--------------+
 | `coilLengthZ`                | Lengths of coils along Z [m]  | List[Float]  |
 +------------------------------+-------------------------------+--------------+
+| `coilOffsetX`                | X-positions of coil centers   | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `coilOffsetY`                | Y-positions of coil centers   | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
 | `coilOffsetZ`                | Z-positions of coil centers   | List[Float]  |
 |                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `coilTiltX`                  | Tilt angles of coil centers   | List[Float]  |
+|                              | about X axis [rad]            |              |
++------------------------------+-------------------------------+--------------+
+| `coilTiltY`                  | Tilt angles of coil centers   | List[Float]  |
+|                              | about Y axis [rad]            |              |
++------------------------------+-------------------------------+--------------+
+| `coilTiltZ`                  | Tilt angles of coil centers   | List[Float]  |
+|                              | about Z axis [rad]            |              |
 +------------------------------+-------------------------------+--------------+
 | `coilCurrent`                | Currents in [A] (sheet model) | List[Float]  |
 |                              | or densities                  |              |
