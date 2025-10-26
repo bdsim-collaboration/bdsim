@@ -137,6 +137,10 @@ Bug Fixes
 * Fix loading of a BDSIM output sampler bunch distribution or a HEPMC file loading when
   recreating a file and the chosen event offset requires looping the file. It would loop
   and advance to the same place proplery.
+* The cylindrical scoring mesh now takes :code:`rInner` and :code:`rOuter` as the two radial parameters.
+  :code:`rsize` is still accepted and used as :code:`rOuter`. The default for :code:`rInner` is 0.
+  Previously, the mesh was always half the desired size in geometry but with the correct output
+  coordinates in the histogram that mismatched what was simulated.
 
 
 Output Changes

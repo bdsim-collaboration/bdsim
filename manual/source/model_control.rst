@@ -4942,7 +4942,10 @@ example parameter and value pairs. The following parameters may be specified.
 +-------------------------+---------------+------------------------------------------------+
 | zsize                   | Yes           | Full width in local z dimension (m)            |
 +-------------------------+---------------+------------------------------------------------+
-| rsize                   | Yes(*)        | Full width in local r dimension (m)            |
+| rInner                  | No(\*)        | Inner radius for cylindrical mesh (m)          |
+|                         |               | Default: 0.                                    |
++-------------------------+---------------+------------------------------------------------+
+| rOuter                  | Yes(\*)       | Outer radius for cylindrical mesh (m)          |
 +-------------------------+---------------+------------------------------------------------+
 | eScale                  | Yes(\*\*)     | Energy axis scoring type (linear, log, user)   |
 +-------------------------+---------------+------------------------------------------------+
@@ -5074,6 +5077,19 @@ Below is an example contents : ::
     0.5
     1.0
 
+
+Example 4: ::
+
+  edep: scorer, type="despoitedenergy";
+
+  core: scorermesh, geometryType="cylindrical", scoreQuantity="edep",
+                    nr=20, nphi=10, nz=30,
+                    rInner=10*cm, rOuter=20*cm, zsize=30*cm;
+
+In this example, a 3D cylindrical mesh is used that has 20 radial bins starting from a radius
+of 10 cm out to a radius of 20 cm (so 0.5 cm radial bins). There bins along z of 1 cm long and
+there are 10 bins around the axis over :math:`2 pi`.
+    
 
 Visualising a Scoring Mesh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
