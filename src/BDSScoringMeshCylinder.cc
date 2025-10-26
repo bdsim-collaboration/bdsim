@@ -64,10 +64,13 @@ BDSScoringMeshCylinder::BDSScoringMeshCylinder(const G4String&          name,
 
 
 BDSScoringMeshCylinder::BDSScoringMeshCylinder(const G4String&         name,
-                                     const G4ThreeVector&    translation,
-                                     const G4RotationMatrix& rotation):
+                                               const G4ThreeVector&    translation,
+                                               const G4RotationMatrix& rotation):
   G4ScoringCylinder(name),
-  mapper(nullptr)
+  mapper(nullptr),
+  scorerSize{0,0,0},
+  nSegment{1,1,1},
+  nEnergySegments(0)
 {
   fRotationMatrix = new G4RotationMatrix(rotation.inverse());
   fCenterPosition = translation;
