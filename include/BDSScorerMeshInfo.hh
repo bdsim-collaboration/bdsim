@@ -73,7 +73,6 @@ public:
   inline G4double  ScoringMeshX() const {return 0.5*(xHigh-xLow);}
   inline G4double  ScoringMeshY() const {return 0.5*(yHigh-yLow);}
   inline G4double  ScoringMeshZ() const {return 0.5*(zHigh-zLow);}
-  inline G4double  ScoringMeshR() const {return 0.5*(rHigh-rLow);}
   inline G4double  ScoringMeshE() const {return 0.5*(eHigh-eLow);}
   inline BDSExtent Extent()      const {return extent;}
 
