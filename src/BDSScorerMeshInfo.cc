@@ -92,6 +92,11 @@ BDSScorerMeshInfo::BDSScorerMeshInfo(const GMAD::ScorerMesh& mesh)
                      yLow, yHigh,
                      zLow, zHigh);
 
+  BDSExtent extentCylindrical(-rOuter, rOuter,
+                              -rOuter, rOuter,
+                              zLow, zHigh);
+  extent.ExpandToEncompass(extentCylindrical);
+
   if (eScale == "user")
     {// In future we can move RBDS::BinLoader to a separate library and use that both here and in rebdsim
       std::string const BinsEdgesFile(mesh.eBinsEdgesFilenamePath);
