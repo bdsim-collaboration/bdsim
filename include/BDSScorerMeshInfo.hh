@@ -60,8 +60,8 @@ public:
   G4double yHigh;
   G4double zLow;
   G4double zHigh;
-  G4double rLow;
-  G4double rHigh;
+  G4double rInner;
+  G4double rOuter;
   G4double eLow;
   G4double eHigh;
   std::string eScale;

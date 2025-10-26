@@ -66,8 +66,8 @@ BDSScorerMeshInfo::BDSScorerMeshInfo(const GMAD::ScorerMesh& mesh)
    {
      if (!BDS::IsFinite(mesh.zsize))
        {throw BDSException(__METHOD_NAME__, "zsize must be > 0 and finite in mesh \"" + mesh.name + "\"");}
-     if (!BDS::IsFinite(mesh.rsize))
-       {throw BDSException(__METHOD_NAME__, "rsize must be > 0 and finite in mesh \"" + mesh.name + "\"");}
+     if (!BDS::IsFinite(mesh.rOuter))
+       {throw BDSException(__METHOD_NAME__, "rHigh must be > 0 and finite in mesh \"" + mesh.name + "\"");}
      if (!BDS::IsFinite(nBinsZ))
        {throw BDSException(__METHOD_NAME__, "nz must be > 0 and finite in mesh \"" + mesh.name + "\"");}
      if (!BDS::IsFinite(nBinsPhi))
@@ -82,10 +82,10 @@ BDSScorerMeshInfo::BDSScorerMeshInfo(const GMAD::ScorerMesh& mesh)
   yHigh =  0.5*mesh.ysize * CLHEP::m;
   zLow  = -0.5*mesh.zsize * CLHEP::m;
   zHigh =  0.5*mesh.zsize * CLHEP::m;
-  rLow  = 0 * CLHEP::m;
-  rHigh = mesh.rsize * CLHEP::m;
-  eLow  =  mesh.eLow* CLHEP::GeV;
-  eHigh =  mesh.eHigh* CLHEP::GeV;
+  rInner = mesh.rInner * CLHEP::m;
+  rOuter = mesh.rOuter * CLHEP::m;
+  eLow   =  mesh.eLow * CLHEP::GeV;
+  eHigh  =  mesh.eHigh * CLHEP::GeV;
   eScale = mesh.eScale;
 
   extent = BDSExtent(xLow, xHigh,

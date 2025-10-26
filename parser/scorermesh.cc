@@ -41,7 +41,8 @@ void ScorerMesh::clear()
   xsize = 0;
   ysize = 0;
   zsize = 0;
-  rsize = 0;
+  rInner = 0;
+  rOuter = 0;
   eLow  = 1e-12;
   eHigh = 1e4;
   eScale = "linear";
@@ -77,7 +78,9 @@ void ScorerMesh::PublishMembers()
   publish("xsize",         &ScorerMesh::xsize);
   publish("ysize",         &ScorerMesh::ysize);
   publish("zsize",         &ScorerMesh::zsize);
-  publish("rsize",         &ScorerMesh::rsize);
+  publish("rInner",        &ScorerMesh::rInner);
+  publish("rOuter",        &ScorerMesh::rOuter);
+  publish("rsize",         &ScorerMesh::rOuter);
   publish("eLow",          &ScorerMesh::eLow);
   publish("eHigh",         &ScorerMesh::eHigh);
   publish("eScale",        &ScorerMesh::eScale);
@@ -111,6 +114,8 @@ void ScorerMesh::print()const
             << "xsize "         << xsize         << std::endl
             << "ysize "         << ysize         << std::endl
             << "zsize "         << zsize         << std::endl
+            << "rInner "        << rInner        << std::endl
+            << "rOuter "        << rOuter        << std::endl
             << "eLow "          << eLow          << std::endl
             << "eHigh "         << eHigh         << std::endl
             << "eScale "        << eScale        << std::endl
