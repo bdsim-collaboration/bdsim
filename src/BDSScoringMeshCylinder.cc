@@ -33,7 +33,7 @@ BDSScoringMeshCylinder::BDSScoringMeshCylinder(const G4String&          name,
 {
   // size of the scoring mesh
 #if G4VERSION_NUMBER < 1100
-  scorerSize[0] = recipe.rHigh; // RMax
+  scorerSize[0] = recipe.rOuter; // RMax
   if (recipe.rInner > 0)
     {
       G4String msg = "For Geant4 < v11.0, the cylindrical scoring mesh does not support rInner\n";
