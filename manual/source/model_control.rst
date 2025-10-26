@@ -5013,7 +5013,7 @@ Scoring Examples
 Example 1: ::
 
   neutronPopulation: scorer, type="population", particleName="neutron";
-	  
+
   meshAir: scorermesh, nx=40, ny=20, nz=20, xsize=40*cm, ysize=20*cm, zsize=20*cm,
                        scoreQuantity="neutronPopulation", z=20.75*m;
 
@@ -5026,13 +5026,13 @@ Example 2: ::
   neutronPopulation: scorer, type="population", particleName="neutron";
 
   protonAmbient: scorer, type="cellfluxscaledperparticle",
-	    	         particleName="proton",
-		         minimumKineticEnergy=20*MeV,
-		         maximumKineticEnergy=1*GeV,
-		         minimumTime=0*s,
-		         maximumTime=1*s,
-		         conversionFactorFile="h10protons.txt";
-	  
+                         particleName="proton",
+                         minimumKineticEnergy=20*MeV,
+                         maximumKineticEnergy=1*GeV,
+                         minimumTime=0*s,
+                         maximumTime=1*s,
+                         conversionFactorFile="h10protons.txt";
+
   meshAir: scorermesh, nx=40, ny=20, nz=20, xsize=40*cm, ysize=20*cm, zsize=20*cm,
                        scoreQuantity="neutronPopulation protonAmbient", z=20.75*m;
 
@@ -5046,24 +5046,29 @@ Example 3: ::
   neutron_flux_4D: scorer, type="cellflux4d",
                          particleName="neutron";
 
-  meshAir_4D_linear: scorermesh, nx=40, ny=20, nz=20, ne= 100, xsize=40*cm, ysize=20*cm, zsize=20*cm, eScale="linear",
+  meshAir_4D_linear: scorermesh, nx=40, ny=20, nz=20, ne= 100,
+                     xsize=40*cm, ysize=20*cm, zsize=20*cm, eScale="linear",
                      eLow=1e-12*GeV,eHigh=1*GeV,
                      scoreQuantity="neutron_flux_4D",
                      z=20.75*m;
 
-  meshAir_4D_log: scorermesh, nx=40, ny=20, nz=20, ne= 100, xsize=40*cm, ysize=20*cm, zsize=20*cm, eScale="log",
+  meshAir_4D_log: scorermesh, nx=40, ny=20, nz=20, ne= 100,
+                  xsize=40*cm, ysize=20*cm, zsize=20*cm, eScale="log",
                   eLow=1e-3*GeV,eHigh=1*GeV,
                   scoreQuantity="neutron_flux_4D",
                   z=20.75*m;
 
-  meshAir_4d_variable: scorermesh, nx=40, ny=20, nz=20, xsize=40*cm, ysize=20*cm, zsize=20*cm, eScale="user",
+  meshAir_4d_variable: scorermesh, nx=40, ny=20, nz=20, xsize=40*cm,
+                       ysize=20*cm, zsize=20*cm, eScale="user",
                        eBinsEdgesFilenamePath="./eBins.txt",
                        scoreQuantity="neutron_flux_4D",
                        z=20.75*m;
 
 
-In this example, three 4D meshes similar to the mesh of the Example 1 are used with each of them using a different scaling type for the energy axis.
-They respectively use the "linear", "log" and "user" type. The file "eBins.txt" is required by the "user" scaling type for the energy bin edges definition.
+In this example, three 4D meshes similar to the mesh of the Example 1 are used with each
+of them using a different scaling type for the energy axis. They respectively use the "linear",
+"log" and "user" type. The file "eBins.txt" is required by the "user" scaling type for the energy
+bin edges definition.
 
 Column of the eBins.txt file is:
 
@@ -5125,16 +5130,16 @@ best way is to merge the histograms per-event into an average. This can be done 
   down menu should be set to "lego2" for example, then re-click on the 3D histogram as shown below.
 
 .. figure:: figures/scoring-root-file-view.png
-	    :width: 95%
-	    :align: center
+            :width: 95%
+            :align: center
 
-	    View of a ROOT TBrowser showing an average 3D histogram from a scoring mesh using
-	    the "lego2" visualisation option. This is based on 100 events from the example
-	    `scoring-filter-material-include.gmad`. Here a material filter is used to score only
-	    the coils of a quadrupole - the 8 coils can be seen lying in 8 clusters in an
-	    x,y plane with z (along the beam line) being vertically.
+            View of a ROOT TBrowser showing an average 3D histogram from a scoring mesh using
+            the "lego2" visualisation option. This is based on 100 events from the example
+            `scoring-filter-material-include.gmad`. Here a material filter is used to score only
+            the coils of a quadrupole - the 8 coils can be seen lying in 8 clusters in an
+            x,y plane with z (along the beam line) being vertically.
 
-	     
+
 .. _controlling-simulation-speed:
 
 Controlling Simulation Speed
