@@ -30,4 +30,4 @@ PYBIND11_MODULE(bdsoutputrooteventsampler, m) {
   py::class_<BDSOutputROOTEventSampler<double>>(m,"BDSOutputROOTEventSampler_double");
 
   py::class_<BDSOutputROOTEventSampler<float>>(m,"BDSOutputROOTEventSampler_float");
-};
+}
