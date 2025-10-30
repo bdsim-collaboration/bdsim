@@ -52,7 +52,8 @@ namespace GMAD
     double xsize;       ///< X total width.
     double ysize;       ///< Y total width.
     double zsize;       ///< Z total width.
-    double rsize;       ///< R total length.
+    double rInner;      ///< Inner radius of cylindrical scoring mesh.
+    double rOuter;      ///< Outer radius of cylindrical scoring mesh.
     double eLow;        ///< E Low limit.
     double eHigh;       ///< E High limit.
     std::string eScale; ///< E scaling type.

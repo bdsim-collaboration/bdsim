@@ -606,7 +606,7 @@ void BDSOutput::CreateHistograms()
                   histID = Create3DHistogram(def.outputName, def.outputName,
                                              def.nBinsZ, def.zLow/CLHEP::m, def.zHigh/CLHEP::m,
                                              def.nBinsPhi, 0, CLHEP::twopi,
-                                             def.nBinsR, def.rLow/CLHEP::m, def.rHigh/CLHEP::m);
+                                             def.nBinsR, def.rInner / CLHEP::m, def.rOuter / CLHEP::m);
                 }
               
               histIndices3D[def.uniqueName] = histID;
@@ -625,10 +625,10 @@ void BDSOutput::CreateHistograms()
                 }
               else if (def.geometryType == "cylindrical")
                 {
-                  histID = Create4DHistogram(def.outputName+"-"+def.eScale, def.outputName, def.eScale,def.eBinsEdges,
+                  histID = Create4DHistogram(def.outputName+"-"+def.eScale, def.outputName, def.eScale, def.eBinsEdges,
                                              def.nBinsZ, def.zLow/CLHEP::m, def.zHigh/CLHEP::m,
                                              def.nBinsPhi, 0, CLHEP::twopi,
-                                             def.nBinsR, def.rLow/CLHEP::m, def.rHigh/CLHEP::m,
+                                             def.nBinsR, def.rInner / CLHEP::m, def.rOuter / CLHEP::m,
                                              def.nBinsE, def.eLow/CLHEP::GeV, def.eHigh/CLHEP::GeV);
                 }
               
