@@ -4,10 +4,11 @@ use, l1;
 
 neutronPopulation: scorer, type="population", particleName="neutron";
 
+! old syntax is "rsize"
 cylindrical_mesh: scorermesh, geometryType="cylindrical",
                   nr=40, nphi=30, nz=10,
                   scoreQuantity="neutronPopulation",
-                  rInner=10*cm, rOuter=30*cm, zsize=1.5*cm,
+                  rsize=30*cm, zsize=1.5*cm,
                   z=20.75*cm;
 
 beam, particle="proton",
