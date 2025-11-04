@@ -8,7 +8,8 @@ RUN python3 -m venv /bdsim/venv-bdsim &&\
     /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pytransport.git@develop &&\
     /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymad8.git@develop &&\
     /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymadx.git@develop &&\
-    /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pybdsim.git@develop
+    /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pybdsim.git@develop &&\
+    /bdsim/venv-bdsim/bin/pip install uproot
 
 # build BDSIM
 RUN source /bdsim/root/bin/thisroot.sh && \
