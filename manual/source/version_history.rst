@@ -46,6 +46,8 @@ New Features
   other distributions with each type of Gaussian have been added: :code:`gauss-slow-ext`,
   :code:`gauss-slow-ext`, :code:`gauss-twiss-slow-ext` where the Gaussian part is first generated
   and the slow extraction sweep added on top.
+* The :code:`ring` distribution can now make a circular ring also in `rp` (i.e. in `xp`, `yp`). By
+  default the old behaviour is retained and no angle is produced.
 
 **Fields**
 
@@ -163,7 +165,7 @@ Output Class Versions
 +===================================+=============+=================+=================+
 | BDSOutputROOTEventAperture        | N           | 1               | 1               |
 +-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventBeam            | N           | 6               | 6               |
+| BDSOutputROOTEventBeam            | N           | 6               | 7               |
 +-----------------------------------+-------------+-----------------+-----------------+
 | BDSOutputROOTEventCavityInfo      | N           | 1               | 1               |
 +-----------------------------------+-------------+-----------------+-----------------+
