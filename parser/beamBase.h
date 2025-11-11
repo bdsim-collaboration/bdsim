@@ -118,6 +118,7 @@ namespace GMAD
       
       ///@{ for the ring beam distribution
       double Rmin, Rmax;
+      double Rpmin, Rpmax;
       ///@}
       
       ///@{ for the halo distribution
@@ -169,7 +170,6 @@ namespace GMAD
       double dPStart;
       double dPStop;
       /// @}
-      
   
       /// A list of all the keys that have been set in this instance.
       std::vector<std::string> setKeys;
@@ -177,7 +177,6 @@ namespace GMAD
       double polarization1;
       double polarization2;
       double polarization3;
-
     };
 }
 

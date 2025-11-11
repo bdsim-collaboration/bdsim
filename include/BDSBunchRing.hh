@@ -52,6 +52,10 @@ public:
 protected:
   G4double rMin;
   G4double rMax;
+  G4double rpMin;
+  G4double rpMax;
+  G4bool nonZeroRp;
+  G4bool generateRp;
 };
 
 #endif
