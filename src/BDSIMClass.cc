@@ -241,11 +241,12 @@ int BDSIM::Initialise()
   auto parallelWorldPhysics = BDS::ConstructParallelWorldPhysics(parallelWorldsRequiringPhysics);
   G4int physicsVerbosity = globals->PhysicsVerbosity();
   G4VModularPhysicsList* physList;
-  if(BDSGlobalConstants::Instance()->enableMillicharge())
+  if (BDSGlobalConstants::Instance()->EnableMillicharge())
     {
       G4cout << "Using millicharged physics" << G4endl;
       physList = new FTFP_BERT();
-      physList->ReplacePhysics(new BDSPhysicsMilli("G4millicharged",physicsVerbosity));
+      auto name = BDSGlobalConstants::Instance()->MillichargeName();
+      physList->ReplacePhysics(new BDSPhysicsMilli(name, physicsVerbosity));
     }
   else if (userPhysicsList)
     {

@@ -2422,10 +2422,10 @@ Example: ::
         kineticEnergy=100*GeV;
 
   option, enableMillicharge=1,
-        millichargeName="millie",
-        millichargeMass=10*GeV,
-        millichargeCharge=0.01,
-        millichargeID=411000;
+          millichargeName="millie",
+          millichargeMass=10*GeV,
+          millichargeCharge=0.01,
+          millichargeID=411000;
         
 
 .. _physics-biasing:
