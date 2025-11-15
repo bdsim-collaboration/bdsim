@@ -116,6 +116,9 @@ namespace BDS
   /// Build muon splitting biasing and wrap the various processes in the physics list.
   void BuildMuonBiasing(G4VModularPhysicsList* physicsList);
 
+  /// Extend the default pi+- decay channels in Geant4.
+  void ExtendPionDecayChannels(G4VModularPhysicsList* physicsList);
+
 #if G4VERSION_NUMBER > 1039
   /// Build the physics required for channelling to work correctly.
   G4VModularPhysicsList* ChannellingPhysicsComplete(G4bool useEMD  = false,

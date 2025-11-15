@@ -258,7 +258,9 @@ int BDSIM::Initialise()
   // create geometry sampler and register importance sampling biasing. Has to be here
   // before physicsList is "initialised" in run manager.
   if (BDSGlobalConstants::Instance()->UseImportanceSampling())
-    {BDS::RegisterImportanceBiasing(parallelWorldsRequiringPhysics,physList);}
+    {BDS::RegisterImportanceBiasing(parallelWorldsRequiringPhysics, physList);}
+  if (BDSGlobalConstants::Instance()->ExtendPionDecayChannels())
+    {BDS::ExtendPionDecayChannels(physList);}
 
   // Construction of the physics lists defines the necessary particles and therefore
   // we can calculate the beam rigidity for the particle the beam is designed w.r.t. This
