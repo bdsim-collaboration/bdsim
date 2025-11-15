@@ -70,6 +70,8 @@ New Features
 * New :code:`ftf_bic` modular physics list.
 * New :code:`dna_chemistry`, :code:`dna_chemistry_1`, :code:`dna_chemistry_2`, :code:`dna_chemistry_3`
   physics lists.
+* New ability to turn off muon decays with :code:`option, turnOffMuonDecay=1;`
+* New option :code:`extendPionDecays` to add extra decay channels to charged pions.
 
 
 New Options
