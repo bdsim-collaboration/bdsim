@@ -40,19 +40,20 @@ BDSPhysicsMilli::BDSPhysicsMilli(const G4String& millichargeNameIn,
   millichargeName(millichargeNameIn),
   verbose(verboseIn)
 {
-    G4EmParameters* param = G4EmParameters::Instance();
-    param->SetDefaults();
-    param->SetVerbose(verbose);
-    param->SetMinEnergy(100*eV);
-    param->SetMaxEnergy(10*TeV);
-    //param->SetLowestElectronEnergy(10*eV);
-    //param->SetNumberOfBinsPerDecade(20);
-    //param->ActivateAngularGeneratorForIonisation(true);
-    //param->SetMscThetaLimit(0.0);
-    //param->SetFluo(true);
-    //param->SetAuger(true);
-    //param->SetPixe(true);
-    SetPhysicsType(bElectromagnetic);
+  SetVerboseLevel(verbose); // base class method
+  G4EmParameters* param = G4EmParameters::Instance();
+  param->SetDefaults();
+  param->SetVerbose(verbose);
+  param->SetMinEnergy(100*CLHEP::eV);
+  param->SetMaxEnergy(10*CLHEP::TeV);
+  //param->SetLowestElectronEnergy(10*eV);
+  //param->SetNumberOfBinsPerDecade(20);
+  //param->ActivateAngularGeneratorForIonisation(true);
+  //param->SetMscThetaLimit(0.0);
+  //param->SetFluo(true);
+  //param->SetAuger(true);
+  //param->SetPixe(true);
+  SetPhysicsType((G4int)G4BuilderType::bElectromagnetic);
 }
 
 BDSPhysicsMilli::~BDSPhysicsMilli()
@@ -60,7 +61,7 @@ BDSPhysicsMilli::~BDSPhysicsMilli()
 
 void BDSPhysicsMilli::ConstructParticle()
 {
-    ParticleMilli::MillichargeDefinition();
+  ParticleMilli::MillichargeDefinition();
 }
 
 void BDSPhysicsMilli::ConstructProcess()
@@ -78,21 +79,21 @@ void BDSPhysicsMilli::ConstructProcess()
     G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
 
 #if G4VERSION_NUMBER > 1029
-    auto aParticleIterator = GetParticleIterator();
+  auto aParticleIterator = GetParticleIterator();
 #endif
-    aParticleIterator->reset();
-
-    while( (*aParticleIterator)() )
+  aParticleIterator->reset();
+  
+  while( (*aParticleIterator)() )
     {
-        G4ParticleDefinition* particle = aParticleIterator->value();
-        G4String particleName = particle->GetParticleName();
-
-        if(particleName == BDSGlobalConstants::Instance()->millichargeName())
+      G4ParticleDefinition* particle = aParticleIterator->value();
+      G4String particleName = particle->GetParticleName();
+      
+      if (particleName == millichargeName)
         {
-            //ph->RegisterProcess(hCoul, particle);
-            ph->RegisterProcess(hMpl, particle);
-            ph->RegisterProcess(new G4StepLimiter(), particle);
-            continue;
+          //ph->RegisterProcess(hCoul, particle);
+          ph->RegisterProcess(hMpl, particle);
+          ph->RegisterProcess(new G4StepLimiter(), particle);
+          continue;
         }
     }
 }
