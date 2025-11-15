@@ -16,8 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "BDSParticleMilli.hh"
 #include "BDSGlobalConstants.hh"
+#include "BDSParticleMilli.hh"
 
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleTable.hh"
@@ -27,7 +27,8 @@ ParticleMilli* ParticleMilli::theInstance = nullptr;
 
 ParticleMilli* ParticleMilli::Definition()
 {
-  if (theInstance !=0) return theInstance;
+  if (theInstance)
+    {return theInstance;}
   
   G4String name = BDSGlobalConstants::Instance()->MillichargeName();
   // search in particle table
@@ -51,12 +52,12 @@ ParticleMilli* ParticleMilli::Definition()
       //             shortlived      subType    anti_encoding
       
       anInstance = new G4ParticleDefinition(
-                                            name,       mass*MeV,     0.0*MeV,    charge*eplus,
-                                            1,            0,           0,
-                                            0,          0,         0,
-                                            "fermion",    0,           0,         pdgID,
-                                            true,        -1.0,       NULL,
-                                            false,    "none"
+                                            name,       mass*MeV,    0.0*MeV,   charge*eplus,
+                                            1,          0,           0,
+                                            0,          0,           0,
+                                            "fermion",  0,           0,         pdgID,
+                                            true,       -1.0,        nullptr,
+                                            false,      "none"
                                             );
       
       // mag_moment = 0.5 * g * q * h_bar * spin / m_q
