@@ -360,11 +360,11 @@ public:
   inline G4double ScaleFactorLaser()         const {return G4double (options.scaleFactorLaser);}
 
   // millicharge options
-  inline G4bool enableMillicharge()          const {return G4bool  (options.enableMillicharge);}
-  inline G4String millichargeName()          const {return G4String(options.millichargeName);}
-  inline G4double millichargeMass()          const {return G4double(options.millichargeMass*CLHEP::GeV);}
-  inline G4double millichargeCharge()        const {return G4double(options.millichargeCharge);}
-  inline G4int millichargeID()               const {return G4int   (options.millichargeID);}
+  inline G4bool   EnableMillicharge()        const {return G4bool  (options.enableMillicharge);}
+  inline G4String MillichargeName()          const {return G4String(options.millichargeName);}
+  inline G4double MillichargeMass()          const {return G4double(options.millichargeMass * CLHEP::GeV);}
+  inline G4double MillichargeCharge()        const {return G4double(options.millichargeCharge);}
+  inline G4int    MillichargeID()            const {return G4int   (options.millichargeID);}
 
   /// @{ options that require some implementation.
   G4bool StoreTrajectoryTransportationSteps() const;
