@@ -47,9 +47,7 @@ BDSPhysicsCherenkov::~BDSPhysicsCherenkov()
 
 void BDSPhysicsCherenkov::ConstructParticle()
 {
-  G4LeptonConstructor leptons;
-  leptons.ConstructParticle();
-
+  G4LeptonConstructor::ConstructParticle();
   G4Gamma::Gamma();
   G4OpticalPhoton::OpticalPhotonDefinition();
 }
