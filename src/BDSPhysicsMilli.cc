@@ -16,28 +16,29 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-#include "BDSDebug.hh"
-#include "BDSGlobalConstants.hh"
 #include "BDSParticleMilli.hh"
 #include "BDSPhysicsMilli.hh"
 
-#include "G4SystemOfUnits.hh"
-#include "G4ParticleDefinition.hh"
-#include "G4ParticleTable.hh"
-#include "G4LossTableManager.hh"
-#include "G4EmParameters.hh"
-#include "G4PhysicsListHelper.hh"
-#include "G4Version.hh"
+#include "G4AutoDelete.hh"
 #include "G4BuilderType.hh"
-
-//#include "G4CoulombScattering.hh"
 #include "G4hMultipleScattering.hh"
-#include "G4WentzelVIModel.hh"
+#include "G4ParticleDefinition.hh"
+#include "G4ParticleTable.hh" // for iterator
+#include "G4PhysicsListHelper.hh"
 #include "G4ProcessManager.hh"
+#include "G4WentzelVIModel.hh"
 #include "G4StepLimiter.hh"
+#include "G4String.hh"
+#include "G4Version.hh"
 
-BDSPhysicsMilli::BDSPhysicsMilli(const G4String&, G4int ver): G4VPhysicsConstructor("G4millicharged"), verbose(ver)
+#include "CLHEP/Units/SystemOfUnits.h"
+
+
+BDSPhysicsMilli::BDSPhysicsMilli(const G4String& millichargeNameIn,
+                                 G4int verboseIn):
+  G4VPhysicsConstructor("G4millicharged"),
+  millichargeName(millichargeNameIn),
+  verbose(verboseIn)
 {
     G4EmParameters* param = G4EmParameters::Instance();
     param->SetDefaults();
