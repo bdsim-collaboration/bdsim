@@ -1,0 +1,11 @@
+d1: drift, l=100*m, aper1=2*m;
+l1: line=(d1);
+use, l1;
+
+sample, all;
+
+beam, particle="mu+",
+      momentum=1*GeV;
+
+option, physicsList="g4FTFP_BERT",
+        turnOffMuonDecay=1;

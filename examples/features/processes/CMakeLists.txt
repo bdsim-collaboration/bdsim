@@ -1,3 +1,4 @@
+add_subdirectory(decay)
 add_subdirectory(macros)
 add_subdirectory(physicslists)
 add_subdirectory(regions)
