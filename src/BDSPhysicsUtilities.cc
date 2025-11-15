@@ -29,6 +29,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 #include "BDSPhysicsCutsAndLimits.hh"
 #include "BDSPhysicsEMDissociation.hh"
+#include "BDSPhysicsMilli.hh"
 #include "BDSPhysicsMuonSplitting.hh"
 #include "BDSPhysicsUtilities.hh"
 #include "BDSUtilities.hh"
@@ -125,9 +126,16 @@ G4VModularPhysicsList* BDS::BuildPhysics(const G4String& physicsList, G4int verb
   G4String physicsListNameLower = BDS::LowerCase(physicsList);
   G4bool useGeant4Physics = BDS::StrContains(physicsListNameLower, "g4");
   G4bool completePhysics  = BDS::StrContains(physicsListNameLower, "complete");
-  if (useGeant4Physics)
+  if (g->EnableMillicharge())
     {
-      // strip off G4_ prefix - from original as G4 factory case sensitive
+      G4cout << "Using millicharged physics" << G4endl;
+      result = new FTFP_BERT();
+      auto name = BDSGlobalConstants::Instance()->MillichargeName();
+      result->ReplacePhysics(new BDSPhysicsMilli(name, verbosity));
+    }
+  else if (useGeant4Physics)
+    {
+      // strip off G4_ prefix - from original as G4 factory case-sensitive
       G4String geant4PhysicsList = physicsList.substr(2);
       G4PhysListFactory factory;
       if (!factory.IsReferencePhysList(geant4PhysicsList))

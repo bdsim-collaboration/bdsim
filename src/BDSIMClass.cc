@@ -82,8 +82,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSVisManager.hh"
 #include "BDSWarning.hh"
 
-#include "FTFP_BERT.hh"
-#include "BDSPhysicsMilli.hh"
 
 BDSIM::BDSIM():
   ignoreSIGINT(false),
@@ -241,14 +239,7 @@ int BDSIM::Initialise()
   auto parallelWorldPhysics = BDS::ConstructParallelWorldPhysics(parallelWorldsRequiringPhysics);
   G4int physicsVerbosity = globals->PhysicsVerbosity();
   G4VModularPhysicsList* physList;
-  if (BDSGlobalConstants::Instance()->EnableMillicharge())
-    {
-      G4cout << "Using millicharged physics" << G4endl;
-      physList = new FTFP_BERT();
-      auto name = BDSGlobalConstants::Instance()->MillichargeName();
-      physList->ReplacePhysics(new BDSPhysicsMilli(name, physicsVerbosity));
-    }
-  else if (userPhysicsList)
+  if (userPhysicsList)
     {
       G4cout << "Using externally registered user defined physics list" << G4endl;
       physList = userPhysicsList;
