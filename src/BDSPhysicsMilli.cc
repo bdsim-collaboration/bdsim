@@ -66,18 +66,17 @@ void BDSPhysicsMilli::ConstructParticle()
 
 void BDSPhysicsMilli::ConstructProcess()
 {
-    //G4CoulombScattering* hCoul = nullptr;
-    //hCoul = new G4CoulombScattering();
-
-    G4hMultipleScattering* hMpl = nullptr;
-    hMpl = new G4hMultipleScattering();
-    G4WentzelVIModel* modelmpl = nullptr;
-    modelmpl = new G4WentzelVIModel();
-    modelmpl->SetActivationLowEnergyLimit(1.*MeV);
-    hMpl->SetEmModel(modelmpl, 1);
-
-    G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
-
+  //G4CoulombScattering* hCoul = nullptr;
+  //hCoul = new G4CoulombScattering();
+  auto* hMpl = new G4hMultipleScattering();
+  G4AutoDelete::Register(hMpl);
+  auto* modelmpl = new G4WentzelVIModel();
+  G4AutoDelete::Register(modelmpl);
+  modelmpl->SetActivationLowEnergyLimit(1.0*CLHEP::MeV);
+  hMpl->SetEmModel(modelmpl, 1);
+  
+  G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
+  
 #if G4VERSION_NUMBER > 1029
   auto aParticleIterator = GetParticleIterator();
 #endif
