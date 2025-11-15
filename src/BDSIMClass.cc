@@ -261,6 +261,8 @@ int BDSIM::Initialise()
     {BDS::RegisterImportanceBiasing(parallelWorldsRequiringPhysics, physList);}
   if (BDSGlobalConstants::Instance()->ExtendPionDecayChannels())
     {BDS::ExtendPionDecayChannels(physList);}
+  if (BDSGlobalConstants::Instance()->TurnOffMuonDecay())
+    {BDS::TurnOffMuonDecay();}
 
   // Construction of the physics lists defines the necessary particles and therefore
   // we can calculate the beam rigidity for the particle the beam is designed w.r.t. This

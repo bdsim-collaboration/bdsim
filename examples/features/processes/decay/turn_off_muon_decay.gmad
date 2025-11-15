@@ -1,11 +1,12 @@
-d1: drift, l=100*m, aper1=2*m;
+mdecay: xsecBias, particle="mu+", proc="Decay", xsecfact=100, flag=2;
+d1: drift, l=100*m, aper1=2*m, biasVacuum="mdecay";
 l1: line=(d1);
 use, l1;
 
 sample, all;
 
 beam, particle="mu+",
-      momentum=1*GeV;
+      momentum=0.1*GeV;
 
 option, physicsList="g4FTFP_BERT",
         turnOffMuonDecay=1;

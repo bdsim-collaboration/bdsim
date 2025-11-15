@@ -539,6 +539,13 @@ void BDS::ExtendPionDecayChannels(G4VModularPhysicsList* physicsList)
   physicsList->RegisterPhysics(new BDSPhysicsPionExtendedDecays());
 }
 
+void BDS::TurnOffMuonDecay()
+{
+  BDS::Warning("Muon decays disabled -> muons are artificially stable");
+  G4MuonPlus::Definition()->SetPDGStable(true);
+  G4MuonMinus::Definition()->SetPDGStable(true);
+}
+
 void BDS::PrintDefinedParticles()
 {
   G4cout << __METHOD_NAME__ << "Defined particles: " << G4endl;

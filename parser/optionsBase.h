@@ -271,6 +271,7 @@ namespace GMAD
     double   muonSplittingExclusionWeight;
     double   xrayAllSurfaceRoughness;
     bool     extendPionDecayChannels;
+    bool     turnOffMuonDecay;
     ///@}
 
     // biasing options

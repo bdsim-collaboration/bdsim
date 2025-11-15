@@ -356,6 +356,7 @@ void Options::PublishMembers()
   publish("muonSplittingExclusionWeight",    &Options::muonSplittingExclusionWeight);
   publish("xrayAllSurfaceRoughness",         &Options::xrayAllSurfaceRoughness);
   publish("extendPionDecayChannels",         &Options::extendPionDecayChannels);
+  publish("turnOffMuonDecay",                &Options::turnOffMuonDecay);
   
   // bias options
   publish("scaleFactorLaser",    &Options::scaleFactorLaser);

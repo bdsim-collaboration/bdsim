@@ -197,6 +197,7 @@ public:
   inline G4double MuonSplittingExclusionWeight() const {return G4double(options.muonSplittingExclusionWeight);}
   inline G4double XrayAllSurfaceRoughness()  const {return G4double(options.xrayAllSurfaceRoughness*CLHEP::m);}
   inline G4bool   ExtendPionDecayChannels()  const {return G4bool  (options.extendPionDecayChannels);}
+  inline G4bool   TurnOffMuonDecay()         const {return G4bool  (options.turnOffMuonDecay);}
   inline G4String BiasForWorldVolume()       const {return G4String(options.biasForWorldVolume);}
   inline G4String BiasForWorldContents()     const {return G4String(options.biasForWorldContents);}
   inline G4String BiasForWorldVacuum()       const {return G4String(options.biasForWorldVacuum);}

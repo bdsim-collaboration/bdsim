@@ -119,6 +119,9 @@ namespace BDS
   /// Extend the default pi+- decay channels in Geant4.
   void ExtendPionDecayChannels(G4VModularPhysicsList* physicsList);
 
+  /// Set mu+- as stable so they won't decay.
+  void TurnOffMuonDecay();
+
 #if G4VERSION_NUMBER > 1039
   /// Build the physics required for channelling to work correctly.
   G4VModularPhysicsList* ChannellingPhysicsComplete(G4bool useEMD  = false,
