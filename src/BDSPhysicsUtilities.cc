@@ -420,7 +420,7 @@ void BDS::ConstructBeamParticleG4(const G4String& name)
     {G4NeutrinoTau::NeutrinoTauDefinition();}
   else if (name == "anti_nu_tau")
     {G4AntiNeutrinoTau::AntiNeutrinoTauDefinition();}
-  else if (name == BDSGlobalConstants::Instance()->millichargeName())
+  else if (name == BDSGlobalConstants::Instance()->MillichargeName())
     {ParticleMilli::MillichargeDefinition();}
   else
     {
