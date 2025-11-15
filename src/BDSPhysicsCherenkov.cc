@@ -35,7 +35,12 @@ BDSPhysicsCherenkov::BDSPhysicsCherenkov(G4int    maxPhotonsPerStepIn,
   G4VPhysicsConstructor("BDSPhysicsCherenkov"),
   maxPhotonsPerStep(maxPhotonsPerStepIn),
   maxBetaChangePerStep(maxBetaChangePerStepIn)
-{;}
+{
+  if (maxBetaChangePerStep > 100.0)
+    {throw BDSException(__METHOD_NAME__, "the option 'maxBetaChangePerStep' must be less than 100 %");}
+  if (maxBetaChangePerStep < 0)
+    {throw BDSException(__METHOD_NAME__, "the option 'maxBetaChangePerStep' must be >= 0 %");}
+}
 
 BDSPhysicsCherenkov::~BDSPhysicsCherenkov()
 {;}
