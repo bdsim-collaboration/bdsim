@@ -63,8 +63,8 @@ void BDSPhysicsCherenkov::ConstructProcess()
   // reduce memory profile
   cherenkov->SetTrackSecondariesFirst(true);
 
-  // common settings (similar to optical physics)
-  if (maxPhotonsPerStep > 0)
+  // common settings (similar to optical physics) - 0 allowed
+  if (maxPhotonsPerStep > -1)
     {cherenkov->SetMaxNumPhotonsPerStep(maxPhotonsPerStep);}
   cherenkov->SetMaxBetaChangePerStep(maxBetaChangePerStep);
 
@@ -79,7 +79,7 @@ void BDSPhysicsCherenkov::ConstructProcess()
       G4ParticleDefinition* particle = aParticleIterator->value();
       
       if (cherenkov->IsApplicable(*particle))
-	{ph->RegisterProcess(cherenkov, particle);}
+        {ph->RegisterProcess(cherenkov, particle);}
     }
 
   SetActivated();
