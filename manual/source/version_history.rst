@@ -141,6 +141,8 @@ Bug Fixes
   :code:`rsize` is still accepted and used as :code:`rOuter`. The default for :code:`rInner` is 0.
   Previously, the mesh was always half the desired size in geometry but with the correct output
   coordinates in the histogram that mismatched what was simulated.
+* Document the options :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` as well
+  as fix their number type internally.
 
 
 Output Changes
