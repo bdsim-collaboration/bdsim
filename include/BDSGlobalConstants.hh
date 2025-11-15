@@ -303,7 +303,7 @@ public:
   inline G4double MinimumRadiusOfCurvature() const {return G4double(options.minimumRadiusOfCurvature*CLHEP::m);}
   inline G4double ScintYieldFactor()         const {return G4double(options.scintYieldFactor);}
   inline G4int    MaximumPhotonsPerStep()    const {return G4int   (options.maximumPhotonsPerStep);}
-  inline G4int    MaximumBetaChangePerStep() const {return G4int   (options.maximumBetaChangePerStep);}
+  inline G4double MaximumBetaChangePerStep() const {return G4int   (options.maximumBetaChangePerStep);}
   inline G4long   MaximumTracksPerEvent()    const {return G4long  (options.maximumTracksPerEvent);}
   inline G4double MinimumKineticEnergy()     const {return G4double(options.minimumKineticEnergy*CLHEP::GeV);}
   inline G4double MinimumKineticEnergyTunnel() const {return G4double(options.minimumKineticEnergyTunnel)*CLHEP::GeV;}

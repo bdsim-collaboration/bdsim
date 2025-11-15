@@ -16,9 +16,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "BDSDebug.hh"
+#include "BDSException.hh"
 #include "BDSPhysicsCherenkov.hh"
 
-#include "globals.hh" // geant4 types / globals
 #include "G4AutoDelete.hh"
 #include "G4Cerenkov.hh"
 #include "G4Gamma.hh"
@@ -28,8 +29,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4PhysicsListHelper.hh"
 #include "G4Version.hh"
 
-BDSPhysicsCherenkov::BDSPhysicsCherenkov(G4double maxPhotonsPerStepIn,
-					 G4double maxBetaChangePerStepIn):
+
+BDSPhysicsCherenkov::BDSPhysicsCherenkov(G4int    maxPhotonsPerStepIn,
+                                         G4double maxBetaChangePerStepIn):
   G4VPhysicsConstructor("BDSPhysicsCherenkov"),
   maxPhotonsPerStep(maxPhotonsPerStepIn),
   maxBetaChangePerStep(maxBetaChangePerStepIn)
