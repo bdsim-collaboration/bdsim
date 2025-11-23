@@ -1734,22 +1734,23 @@ Notes:
 	     and this could result in the curvilinear world being made very small.
 
 The offsets are with respect to the centre of the beam pipe section the wire is placed inside.
-This should therefore be less than half the element length `l`. The usual beam pipe parameters
-can be specified and apply the to the beam pipe. For example, `material` is used for the beam
-pipe material whereas `wireMaterial` is used for the material of the wire.
+This should therefore be less than half the element length `l`.  For example, `beampipeMaterial`
+is used for the beam pipe material whereas `material` is used for the material of the wire.
 
 The user should take care to define a wire long enough to intercept the beam but be sufficiently
 short to fit inside the beam pipe given the offsets in x, y and z. Checks are made on the end
 points of the wire.
 
+* The :ref:`aperture-parameters` can be specified and apply the to the beampipe.
+
 Examples: ::
 
     ws45Deg: wirescanner, l=4*cm, wireDiameter=0.1*mm, wireLength=5*cm,
-                          wireOffsetX=1*cm, angle=pi/4, wireMaterial="C",
+                          wireOffsetX=1*cm, angle=pi/4, material="C",
 			  aper1=5*cm;
 
     wsVertical: wirescanner, l=4*cm, wireDiameter=0.1*mm, wireLength=5*cm,
-                             wireOffsetX=1*cm, wireOffsetZ=1.6*cm, wireMaterial="C";
+                             wireOffsetX=1*cm, wireOffsetZ=1.6*cm, material="C";
 
 
 laser
