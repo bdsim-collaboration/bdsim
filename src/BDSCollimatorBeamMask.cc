@@ -156,11 +156,15 @@ void BDSCollimatorBeamMask::BuildInner()
                             chordLength);             // z half length
   // z half length long for unambiguous subtraction
 
-  G4ThreeVector Trans(xOffsetSlit, yOffsetSlit, 0);
-  G4RotationMatrix* Rot = new G4RotationMatrix;
-  Rot->rotateZ(tiltSlit);
+  G4ThreeVector trans(xOffsetSlit, yOffsetSlit, 0);
+  G4RotationMatrix* rot = new G4RotationMatrix;
+  rot->rotateZ(tiltSlit);
 
-  innerSolid = new G4UnionSolid(name + "_inner_solid_union", inner1, inner2, Rot, Trans);
+  innerSolid = new G4UnionSolid(name + "_inner_solid_union", inner1, inner2, rot, trans);
+  RegisterSolid(innerSolid);
+  RegisterSolid(inner1);
+  RegisterSolid(inner2);
+  RegisterRotationMatrix(rot);
 
   G4Box* vacuum1 = new G4Box(name + "_vacuum_solid_1",   // name
                              xAperture - lengthSafety, // x half width
@@ -172,9 +176,7 @@ void BDSCollimatorBeamMask::BuildInner()
                              yApertureSlit - lengthSafety, // y half width
                              chordLength*0.5);         // z half length
 
-  vacuumSolid = new G4UnionSolid(name + "_vacuum_solid_union", vacuum1, vacuum2, Rot, Trans);
-    
-  RegisterSolid(innerSolid);
+  vacuumSolid = new G4UnionSolid(name + "_vacuum_solid_union", vacuum1, vacuum2, rot, trans);
   RegisterSolid(vacuumSolid);
 }
 
@@ -183,8 +185,8 @@ void BDSCollimatorBeamMask::Build()
   CheckParameters();
   BDSAcceleratorComponent::Build(); // calls BuildContainer and sets limits and vis for container
 
-  G4RotationMatrix* Rot = new G4RotationMatrix;
-  G4ThreeVector Trans(xOffset, yOffset, 0);
+  G4RotationMatrix* rot = new G4RotationMatrix;
+  G4ThreeVector trans(xOffset, yOffset, 0);
 
   G4VSolid* outerSolid;
   if (circularOuter)
@@ -234,8 +236,8 @@ void BDSCollimatorBeamMask::Build()
   if (sensitiveOuter)
     {RegisterSensitiveVolume(collimatorLV, BDSSDType::collimatorcomplete);}
 
-  G4PVPlacement* collPV = new G4PVPlacement(Rot,               // rotation
-                                            Trans,         // position
+  G4PVPlacement* collPV = new G4PVPlacement(rot,                     // rotation
+                                            trans,                   // position
                                             collimatorLV,            // its logical volume
                                             name + "_collimator_pv", // its name
                                             containerLogicalVolume,  // its mother  volume
