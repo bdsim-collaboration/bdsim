@@ -196,6 +196,7 @@ void Element::PublishMembers()
   publish("zdir",        &Element::zdir);
   publish("wavelength",  &Element::wavelength);
   publish("waveLength",  &Element::wavelength);
+  alternativeNames["waveLength"] = "wavelength";
   publish("phi",         &Element::phi);
   publish("theta",       &Element::theta);
   publish("psi",         &Element::psi);
