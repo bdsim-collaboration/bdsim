@@ -121,7 +121,10 @@ void BDSSurvey::Write(BDSBeamlineElement* beamlineElement)
   G4ThreeVector pos    = beamlineElement->GetPositionMiddle();
 
   BDSBeamPipeInfo* beamPipeInfo = acceleratorComponent->GetBeamPipeInfo();
-  
+
+  G4String ty = acceleratorComponent->GetType();
+  if (ty.empty())
+    {ty = "unknown";}
   survey << std::left << std::setprecision(6) << std::fixed
          << setw(15) << acceleratorComponent->GetType()             << " "
          << setw(40) << acceleratorComponent->GetName()             << " "
