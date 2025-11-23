@@ -1766,7 +1766,7 @@ points of the wire.
 Examples: ::
 
     ws45Deg: wirescanner, l=4*cm, wireDiameter=0.1*mm, wireLength=5*cm,
-                          wireOffsetX=1*cm, angle=pi/4, material="C",
+                          wireOffsetX=1*cm, wireAngle=pi/4, material="C",
 			  aper1=5*cm;
 
     wsVertical: wirescanner, l=4*cm, wireDiameter=0.1*mm, wireLength=5*cm,
@@ -1883,7 +1883,7 @@ Examples: ::
 			bendingAngleYAxis = 0.1*rad,
 			bendingAngleZAxis = 0;
 
-   col1 : crystalcol, l=6*mm, apertureType="rectangular", aper1=0.25*cm, aper2=5*cm,
+   col1 : crystalcol, l=6*mm, apertureType="rectangular", aper1=10*cm, aper2=10*cm,
                       crystalBoth="lovelycrystal", crystalAngleYAxisLeft=-0.1*rad,
 		      crystalAngleYAxisRight=-0.1*rad, xsize=2*mm;
 
@@ -2024,10 +2024,10 @@ Notes:
 Examples: ::
 
  g1: gaborlens, l=1.0*m, kg=0.289643, material="copper", anodeRadius=65*mm, anodeLength=0.920, anodeThickness=1.6*mm,
-     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm;
+     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm, aper1=10*cm;
 
  g2: gaborlens, l=1.0*m, B=0.6*T, material="copper", anodeRadius=65*mm, anodeLength=0.920, anodeThickness=1.6*mm,
-     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm;
+     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm, aper1=10*cm;
 
 
 transform3d
@@ -2133,7 +2133,7 @@ Parameter         Description                     Default     Required
 
 Examples: ::
 
-   rm1: rmatrix, rmat12=0.997, rmat21=-0.924;
+   r1: rmatrix, rmat11=1, rmat12=0.0, rmat21=500, rmat22=1, rmat33=0, rmat34=500, rmat43=0, rmat44=1, l=0.25;
 
 thinrmatrix
 ^^^^^^^^^^^
