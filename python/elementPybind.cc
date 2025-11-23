@@ -136,7 +136,7 @@ PYBIND11_MODULE(element, m)
     .def_readwrite("ydir", &GMAD::Element::ydir)
     .def_readwrite("zdir", &GMAD::Element::zdir)
 
-    .def_readwrite("waveLength", &GMAD::Element::waveLength)
+    .def_readwrite("wavelength", &GMAD::Element::wavelength)
     .def_readwrite("phi", &GMAD::Element::phi)
     .def_readwrite("theta", &GMAD::Element::theta)
     .def_readwrite("psi", &GMAD::Element::psi)
