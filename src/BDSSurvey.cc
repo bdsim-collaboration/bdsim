@@ -33,7 +33,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 using std::setw;
 
-BDSSurvey::BDSSurvey(G4String filename):
+BDSSurvey::BDSSurvey(const G4String& filename):
   nullStrength(new BDSMagnetStrength()),
   gp(14)
 {
