@@ -1574,6 +1574,11 @@ Notes:
 * The :ref:`aperture-parameters` may also be specified.
 * No field is constructed if B is the default 0.
 
+Examples::
+
+  musp2 : muonspoiler,l=5*m, aper1=1*cm, outerDiameter=240*cm, B=1.5;
+  musp3 : muonspoiler, l=2*m, aper1=3*cm, beampipeThickness=10*cm, horizontalWidth=50*cm;
+
 
 shield
 ^^^^^^
@@ -1600,6 +1605,21 @@ Parameter          Description                          Default     Required
 Notes:
 
 * The :ref:`aperture-parameters` may also be specified.
+
+Examples::
+
+  sh1 : shield, l=0.2*m,
+              aper1=3*cm,
+              aper2=1.5*cm,
+              apertureType="rectangular",
+              outerDiameter=50*cm,
+              beampipeThickness=1*mm,
+              xsize=7*cm,
+              ysize=7*cm,
+              material="concrete",
+              beampipeMaterial="stainlesssteel",
+              colour="iron";
+
 
 dump
 ^^^^
