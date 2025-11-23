@@ -37,7 +37,7 @@ BDSSurvey::BDSSurvey(const G4String& filename):
   nullStrength(new BDSMagnetStrength()),
   gp(14)
 {
-  magnetKeys = nullStrength->AllKeys();
+  magnetKeys = BDSMagnetStrength::AllKeys();
   
   G4cout << __METHOD_NAME__ << "Generating Survey: " << filename << " ..." << G4endl;
   survey.open(filename);
@@ -82,7 +82,7 @@ void BDSSurvey::WriteHeader()
   
   for (auto const& key : magnetKeys)
     {
-      const G4String unit = nullStrength->UnitName(key);
+      const G4String unit = BDSMagnetStrength::UnitName(key);
       if (!unit.empty())
 	{survey << " " << setw(18) << key + "[" + unit + "]";}
       else
