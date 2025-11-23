@@ -38,15 +38,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <cmath>
 
-BDSWireScanner::BDSWireScanner(G4String         nameIn,
-			       G4double         lengthIn,
-			       BDSBeamPipeInfo* beamPipeInfoIn,
-			       G4Material*      wireMaterialIn,
-			       G4double         wireDiameterIn,
-			       G4double         wireLengthIn,
-			       G4double         wireAngleIn,
-			       G4ThreeVector    wireOffsetIn,
-			       G4Colour*        wireColourIn):
+BDSWireScanner::BDSWireScanner(const G4String&      nameIn,
+                               G4double             lengthIn,
+                               BDSBeamPipeInfo*     beamPipeInfoIn,
+                               G4Material*          wireMaterialIn,
+                               G4double             wireDiameterIn,
+                               G4double             wireLengthIn,
+                               G4double             wireAngleIn,
+                               const G4ThreeVector& wireOffsetIn,
+                               G4Colour*            wireColourIn):
   BDSAcceleratorComponent(nameIn, lengthIn, 0, "wirescanner", beamPipeInfoIn),
   wireMaterial(wireMaterialIn),
   wireDiameter(wireDiameterIn),
@@ -142,7 +142,6 @@ G4VSolid* BDSWireScanner::BuildWireSolid()
   RegisterSolid(wire);
   return wire;
 }
-
 
 G4LogicalVolume* BDSWireScanner::BuildWireLV(G4VSolid* solid)
 {

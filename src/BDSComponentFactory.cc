@@ -1774,13 +1774,13 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateWireScanner()
 					   element->wireOffsetZ * CLHEP::m);
   
   return (new BDSWireScanner(elementName,
-			     element->l*CLHEP::m,
-			     PrepareBeamPipeInfo(element),
-			     PrepareMaterial(element),
-			     element->wireDiameter*CLHEP::m,
-			     element->wireLength*CLHEP::m,
-			     element->wireAngle*CLHEP::rad,
-			     wireOffset));
+                             element->l*CLHEP::m,
+                             PrepareBeamPipeInfo(element),
+                             PrepareMaterial(element),
+                             element->wireDiameter*CLHEP::m,
+                             element->wireLength*CLHEP::m,
+                             element->wireAngle*CLHEP::rad,
+                             wireOffset));
 }
 
 BDSAcceleratorComponent* BDSComponentFactory::CreateUndulator()
@@ -1934,7 +1934,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateLaser()
   G4ThreeVector direction = G4ThreeVector(element->xdir,element->ydir,element->zdir);
   G4ThreeVector position  = G4ThreeVector(0,0,0);
 
-  return (new BDSLaserWire(elementName, length, lambda, direction) );       
+  return (new BDSLaserWire(elementName, length, lambda, direction) );
 }
 
 BDSAcceleratorComponent* BDSComponentFactory::CreateScreen()
@@ -2236,30 +2236,27 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateGaborLens()
 
 BDSAcceleratorComponent* BDSComponentFactory::CreateLaserwire(G4double syncrhonousTime)
 {
-    if(!HasSufficientMinimumLength(element))
+  if(!HasSufficientMinimumLength(element))
     {return nullptr;}
 
-    BDSLaser* laser = PrepareLaser(element);
-    laser->SetT0(syncrhonousTime);
-
-
-
+  BDSLaser* laser = PrepareLaser(element);
+  laser->SetT0(syncrhonousTime);
+  
   G4ThreeVector laserOffset = G4ThreeVector(element->laserOffsetX * CLHEP::m,
-					    element->laserOffsetY * CLHEP::m,
-					    element->laserOffsetZ * CLHEP::m);
+                                            element->laserOffsetY * CLHEP::m,
+                                            element->laserOffsetZ * CLHEP::m);
   G4String colour = laser->GetLaserColour();
-
-
-    return (new BDSLaserWireNew(elementName,
-			      element->l*CLHEP::m,
-			      PrepareBeamPipeInfo(element),
-			      laser,
-			      30.0*laser->Sigma0(),
-			      element->wireLength*CLHEP::m,
-			      element->laserOffsetTheta*CLHEP::rad,
-			      element->laserOffsetPhi*CLHEP::rad,
-			      laserOffset,
-			      BDSColours::Instance()->GetColour(colour)));
+  
+  return (new BDSLaserWireNew(elementName,
+                              element->l*CLHEP::m,
+                              PrepareBeamPipeInfo(element),
+                              laser,
+                              30.0*laser->Sigma0(),
+                              element->wireLength*CLHEP::m,
+                              element->laserOffsetTheta*CLHEP::rad,
+                              element->laserOffsetPhi*CLHEP::rad,
+                              laserOffset,
+                              BDSColours::Instance()->GetColour(colour)));
 }
 
 BDSMagnet* BDSComponentFactory::CreateMagnet(const GMAD::Element* el,
@@ -2580,8 +2577,8 @@ G4Material* BDSComponentFactory::PrepareVacuumMaterial(Element const* el) const
 }
 
 BDSBeamPipeInfo* BDSComponentFactory::PrepareBeamPipeInfo(Element const* el,
-							  const G4ThreeVector& inputFaceNormalIn,
-							  const G4ThreeVector& outputFaceNormalIn)
+                                                          const G4ThreeVector& inputFaceNormalIn,
+                                                          const G4ThreeVector& outputFaceNormalIn)
 {
   BDSBeamPipeInfo* defaultModel = BDSGlobalConstants::Instance()->DefaultBeamPipeModel();
   BDSBeamPipeInfo* result; 
@@ -2701,11 +2698,11 @@ void BDSComponentFactory::PrepareLasers()
     {
       G4double sigma0 = 0;
       if (BDS::IsFinite(laser.w0))
-	{sigma0 = 0.5 * laser.w0;}
+        {sigma0 = 0.5 * laser.w0;}
       else if (BDS::IsFinite(laser.sigma0))
-	{sigma0 = laser.sigma0;}
+        {sigma0 = laser.sigma0;}
       else
-	{throw BDSException(__METHOD_NAME__, "Neither \"w0\" or \"sigma0\" are defined  \"" + laser.name + "\"");}
+        {throw BDSException(__METHOD_NAME__, "Neither \"w0\" or \"sigma0\" are defined  \"" + laser.name + "\"");}
       sigma0 *= CLHEP::m;
       G4ThreeVector polarization(laser.laserPolarization1,laser.laserPolarization2,laser.laserPolarization3);
       BDSLaser* las = new BDSLaser(laser.wavelength*CLHEP::m,
@@ -2714,9 +2711,9 @@ void BDSComponentFactory::PrepareLasers()
                                    laser.pulseEnergy*CLHEP::joule,
                                    sigma0,
                                    laser.laserArrivalTime*CLHEP::s,
-                                    0,
-                                    polarization,
-                                    laser.ignoreRayleighRange);
+                                   0,
+                                   polarization,
+                                   laser.ignoreRayleighRange);
       lasers[laser.name] = las;
     }
 }

@@ -29,29 +29,36 @@ class G4Material;
 /**
  * @brief A class for a beam mask collimator.
  *
+ * This does not inherit BDSCollimator but implements some of the same functionality.
+ *
  * @author Marin Deniaud based on BDSCollimatorRectangular
  */
 
 class BDSCollimatorBeamMask: public BDSAcceleratorComponent
 {
 public:
-    BDSCollimatorBeamMask(const G4String&  name,
-                          G4double         length,
-                          BDSBeamPipeInfo* beamPipeInfoIn,
-                          G4double         horizontalWidth,
-                          G4Material*      collimatorMaterial,
-                          G4Material*      vacuumMaterial,
-                          G4double         xApertureIn     = 0,
-                          G4double         yApertureIn     = 0,
-                          G4double         xApertureSlitIn = 0,
-                          G4double         yApertureSlitIn = 0,
-                          G4double         xOffsetIn       = 0,
-                          G4double         yOffsetIn       = 0,
-                          G4double         xOffsetSlitIn   = 0,
-                          G4double         yOffsetSlitIn   = 0,
-                          G4double         tiltSlitIn      = 0,
-                          G4Colour*        colourIn       = nullptr,
-                          G4bool           circularOuterIn = false);
+  BDSCollimatorBeamMask() = delete;
+  BDSCollimatorBeamMask(const G4String&  name,
+                        G4double         length,
+                        BDSBeamPipeInfo* beamPipeInfoIn,
+                        G4double         horizontalWidth,
+                        G4Material*      collimatorMaterial,
+                        G4Material*      vacuumMaterial,
+                        G4double         xApertureIn     = 0,
+                        G4double         yApertureIn     = 0,
+                        G4double         xApertureSlitIn = 0,
+                        G4double         yApertureSlitIn = 0,
+                        G4double         xOffsetIn       = 0,
+                        G4double         yOffsetIn       = 0,
+                        G4double         xOffsetSlitIn   = 0,
+                        G4double         yOffsetSlitIn   = 0,
+                        G4double         tiltSlitIn      = 0,
+                        G4Colour*        colourIn       = nullptr,
+                        G4bool           circularOuterIn = false);
+  /// @{ Assignment and copy constructor not implemented nor used
+  BDSCollimatorBeamMask& operator=(const BDSCollimatorBeamMask&) = delete;
+  BDSCollimatorBeamMask(BDSCollimatorBeamMask&) = delete;
+  ///@}
   virtual ~BDSCollimatorBeamMask(){;};
 
   /// @{ Accessor.
@@ -97,18 +104,6 @@ protected:
   G4Colour*   colour;             ///< Colour of beam mask.
   G4double    minKineticEnergy;   ///< Optional minimum kinetic energy for collimator materials.
   G4bool      circularOuter;      ///< Shape of the outer solid
-
-
-
-
-private:
-  /// Private default constructor to force the use of the supplied one.
-  BDSCollimatorBeamMask();
-
-  /// @{ Assignment and copy constructor not implemented nor used
-  BDSCollimatorBeamMask& operator=(const BDSCollimatorBeamMask&) = delete;
-    BDSCollimatorBeamMask(BDSCollimatorBeamMask&) = delete;
-  ///@}
 };
 
 #endif
