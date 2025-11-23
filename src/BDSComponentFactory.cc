@@ -1817,15 +1817,15 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateUndulator()
     {vacuumFieldInfo->SetUserLimits(ul);}
 
   return (new BDSUndulator(elementName,
-			   element->l * CLHEP::m,
-			   element->undulatorPeriod * CLHEP::m,
-			   element->undulatorMagnetHeight * CLHEP::m,
-			   PrepareHorizontalWidth(element),
-			   element->undulatorGap * CLHEP::m,
-			   bpInfo,
-			   vacuumFieldInfo,
-			   outerFieldInfo,
-			   element->material));
+                           element->l * CLHEP::m,
+                           element->undulatorPeriod * CLHEP::m,
+                           element->undulatorMagnetHeight * CLHEP::m,
+                           PrepareHorizontalWidth(element),
+                           element->undulatorGap * CLHEP::m,
+                           bpInfo,
+                           vacuumFieldInfo,
+                           outerFieldInfo,
+                           PrepareMaterial(element, "iron")));
 }
 
 BDSAcceleratorComponent* BDSComponentFactory::CreateDump()

@@ -40,15 +40,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 
 BDSUndulator::BDSUndulator(const G4String&  nameIn,
-			   G4double         lengthIn,
-			   G4double         periodIn,
-			   G4double         undulatorMagnetHeightIn,
-			   G4double         horizontalWidthIn,
-			   G4double         undulatorGapIn,
-			   BDSBeamPipeInfo* beamPipeInfoIn,
-			   BDSFieldInfo*    vacuumFieldInfoIn,
-			   BDSFieldInfo*    outerFieldInfoIn,
-			   const G4String&  materialIn):
+                           G4double         lengthIn,
+                           G4double         periodIn,
+                           G4double         undulatorMagnetHeightIn,
+                           G4double         horizontalWidthIn,
+                           G4double         undulatorGapIn,
+                           BDSBeamPipeInfo* beamPipeInfoIn,
+                           BDSFieldInfo*    vacuumFieldInfoIn,
+                           BDSFieldInfo*    outerFieldInfoIn,
+                           G4Material*      materialIn):
   BDSAcceleratorComponent(nameIn, lengthIn, 0, "undulator", beamPipeInfoIn),
   vacuumFieldInfo(vacuumFieldInfoIn),
   outerFieldInfo(outerFieldInfoIn),
@@ -56,16 +56,9 @@ BDSUndulator::BDSUndulator(const G4String&  nameIn,
   horizontalWidth(horizontalWidthIn),
   undulatorMagnetHeight(undulatorMagnetHeightIn),
   undulatorGap(undulatorGapIn),
-  numMagnets(0)
+  numMagnets(0),
+  material(materialIn)
 {
-  if (materialIn.empty())
-    {
-      BDS::Warning(__METHOD_NAME__, "element \"" + name + "\" no material set for undulator magnet - using iron");
-      material = "iron";
-    }
-  else
-    {material = materialIn;}
-
   if (vacuumFieldInfo)
     {vacuumFieldInfo->SetBeamPipeRadius(beamPipeInfoIn->IndicativeRadius());}
 }
@@ -142,15 +135,13 @@ void BDSUndulator::Build()
                             0.5*singleMagnetLength);
   RegisterSolid(magnet);
 
-  G4Material* materialBox  = BDSMaterials::Instance()->GetMaterial(material);
-
   G4LogicalVolume* lowerBoxLV = new G4LogicalVolume(magnet,
-						    materialBox,
-						    name + "_lower_box_lv");
+                                                    material,
+                                                    name + "_lower_box_lv");
   
   G4LogicalVolume* upperBoxLV = new G4LogicalVolume(magnet,
-						    materialBox,
-						    name + "_upper_box_lv");
+                                                    material,
+                                                    name + "_upper_box_lv");
   RegisterLogicalVolume(lowerBoxLV);
   RegisterLogicalVolume(upperBoxLV);
   if (sensitiveOuter)
