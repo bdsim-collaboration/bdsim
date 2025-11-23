@@ -1,0 +1,141 @@
+d1: drift, l=0.3*m;
+
+sb: sbend, l=3*m, angle=1*mrad;
+rb: rbend, l=3*m, angle=-2*mrad;
+q1: quadrupole, l=0.5*m, k1=0.003;
+s1: sextupole, l=0.2*m, k2=0.000001;
+o1: octupole, l=0.2*m, k3=0.000000004;
+dc1: decapole, l=0.3*m, k4=1e-5;
+mul: multipole, l=0.5*m, knl={5.1,13.2,20.3}, ksl={5.1,13.2,20.3};
+tmul : thinmultipole, l=0.1, knl={-0.13, 1.2, 0.5} , ksl={0.0014,0,0};
+vk: vkicker, l=0.1, vkick=1e-5;
+hk: hkicker, l=0.1, hkick=-2e-5;
+tk: tkicker, l=0.2, vkick=1.2e-6, hkick=1.3e-5;
+rfc: rfcavity, frequency=801.5800401, gradient=43.93916836576668, l=0.09350048;
+rf1: rfx, l=20*cm, gradient=12*MV/m, frequency=450*MHz;
+rf2: rfy, l=20*cm, gradient=2*MV/m, frequency=451*MHz;
+t1: target, l=1*m, material="H";
+col1: rcol, l=1*m, xsize=1*cm, ysize=2*cm, material="Cu";
+col2: ecol, l=1*m, xsize=1*cm, ysize=2*cm, material="Cu";
+col3: jcol, l=1*m, xsize=1*cm, ysize=10*cm, material="Cu";
+col4: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=1.5*cm;
+
+bm: bmcol, l=2*mm, aper1=0.15*m, horizontalWidth=0.15*m, material="G4_W",
+           offsetX=0*mm, offsetY=0*mm, xsize=5*mm, ysize=30*mm, outerShape="rectangular",
+           offsetX2=20*mm, offsetY2=0*mm, xsize2=1*mm, ysize2=30*mm, tilt2=0.3*rad;
+
+deg1: degrader, l=0.25*m, material="C", numberWedges=5, wedgeLength=100*mm,
+                degraderHeight=100*mm, materialThickness=200*mm;
+
+musp: muonspoiler,l=5*m, aper1=1*cm, outerDiameter=240*cm, B=1.5;
+
+sh1 : shield, l=0.2*m, aper1=3*cm, aper2=1.5*cm, apertureType="rectangular",
+              outerDiameter=50*cm, beampipeThickness=1*mm, xsize=7*cm, ysize=7*cm,
+              material="concrete", beampipeMaterial="stainlesssteel", colour="iron";
+
+du3: dump, l=0.3*m, horizontalWidth=40*cm, apertureType="rectangular";
+
+sol: solenoid, l=2*m, ks=0.0001;
+
+ws45Deg: wirescanner, l=4*cm, wireDiameter=0.1*mm, wireLength=5*cm,
+                      wireOffsetX=1*cm, wireAngle=pi/4, material="C", aper1=5*cm;
+
+lw: laser, l=1*um, x=1, y=0, z=0, wavelength=532*nm;
+
+g1: gap, l=2*m;
+
+lovelycrystal: crystal, material = "G4_Si", data = "crystal-data/Si220pl", shape = "box",
+                      lengthY = 5*cm, lengthX = 0.5*mm, lengthZ = 4*mm,
+                      sizeA = 5.43*ang, sizeB = 5.43*ang, sizeC = 5.43*ang,
+                      alpha = 1, beta  = 1, gamma = 1,
+                      spaceGroup = 227, bendingAngleYAxis = 0.1*rad, bendingAngleZAxis = 0;
+
+ccol : crystalcol, l=6*mm, apertureType="rectangular", aper1=10*cm, aper2=10*cm,
+                   crystalBoth="lovelycrystal", crystalAngleYAxisLeft=-0.1*rad,
+                   crystalAngleYAxisRight=-0.1*rad, xsize=2*mm;
+
+und1: undulator, l=2.0*m, B=0.1*T, undulatorPeriod=0.2*m;
+
+gab1: gaborlens, l=1.0*m, kg=0.289643, material="copper", anodeRadius=65*mm,
+      anodeLength=0.920, anodeThickness=1.6*mm, electrodeRadius=30*mm,
+      electrodeLength=45*mm, electrodeThickness=1.6*mm, aper1=10*cm;
+
+tr1: transform3d, x=2*mm, axisAngle=1, axisY=1, angle=pi/10;
+
+rm1: rmatrix, rmat11=1, rmat12=0.0, rmat21=500, rmat22=1, rmat33=0, rmat34=500, rmat43=0, rmat44=1, l=0.25;
+
+trm: thinrmatrix, rmat11=1.0, rmat12=9.8e-17, rmat13=0.0, rmat14=0.0,
+                  rmat21=-1.5, rmat22=1.0001, rmat23=0.0, rmat24=0.0,
+                  rmat31=0.0, rmat32=0.0, rmat33=1.0, rmat34=1.0243e-16,
+                  rmat41=0.0, rmat42=0.0, rmat43=-1.56, rmat44=0.9999;
+
+generic: element, l=3.2*m, geometryFile="gdml:gdmls/QNLX0610009.gdml";
+
+!dicom: ct, l=1*m, dicomDataPath="./", dicomDataFile="data.dat";
+
+cooldef1:   coolingchannel, 
+            nCoils=6,
+            coilInnerRadius = {0.3*m},
+            coilRadialThickness = {0.1*m},
+            coilLengthZ = {0.1333333*m},
+            coilOffsetZ ={-1.3153, -0.6847, -0.3153, 0.3153, 0.6847, 1.3153},
+            coilCurrent = {4900000, -4900000, 4900000, -4900000, 4900000, -4900000},
+            coilMaterial = {"G4_Cu"},
+            onAxisTolerance=1e-7,
+            nSheets=20,!not used yet
+	    nDipoles = 1,
+	    dipoleAperture= {0.2},
+            dipoleLengthZ = {0.1},
+            dipoleFieldStrength = {1.0},
+	    dipoleEngeCoefficient = {4},
+            dipoleOffsetZ = {0.0},
+            nAbsorbers = 2,
+            absorberType = {"cylinder"},
+            absorberMaterial = {"G4_LITHIUM_HYDRIDE"},
+            absorberOffsetZ = {-0.5, 0.5},
+            absorberCylinderLength = {3.42*cm},
+            absorberCylinderRadius = {20*cm},
+            absorberWedgeOpeningAngle = {0},
+            absorberWedgeHeight = {0},
+            absorberWedgeRotationAngle = {0},
+            absorberWedgeOffsetX = {0},
+            absorberWedgeOffsetY = {0},
+            absorberWedgeApexToBase = {0},
+            nRFCavities = 8,
+            rfOffsetZ = {-0.1875, -0.0625, 0.0625, 0.1875, 0.8125, 0.9375, 1.0625, 1.1875},
+	    rfTimeOffset={4.951413722820539, 5.422976934517734, 5.894540146214927, 6.366103357912122, 8.723919416398093, 9.195482628095286, 9.66704583979248, 10.138609051489675},
+            rfLength  = {0.124*m},
+            rfVoltage = {14.85},
+            rfPhase= {-3.141592653589793/2},
+	    rfFrequency = {0.704*GHz},
+            rfWindowThickness = {0*um},
+            rfWindowMaterial = {"G4_Be"},
+            rfWindowRadius = {15*cm},
+            rfCavityMaterial = {"G4_Cu"},
+            rfCavityVacuumMaterial = {"vacuum"},
+            rfCavityRadius = {163*mm},
+            rfCavityThickness = {3*mm},
+            magneticFieldModel="solenoidsheet",
+            dipoleFieldModel="dipoleenge",
+            electricFieldModel="rfpillbox";
+                
+mc1: muoncooler, l=3.0*m, horizontalWidth=2.2*m, coolingDefinition="cooldef1";
+
+gc: gascap, l=0.5*m, aper1=0.15*m, horizontalWidth=0.1*m, xsize=0.03*m, outerShape="circular",
+            layerMaterials={"G4_Si", "G4_Xe" ,"G4_C"}, materialThickness=0.01*m;
+
+gj: gasjet, l=0.15*m, aper1=0.15*m, material="G4_AIR", offsetX=0*m, offsetY=0*m,
+            xdir=0.07*m, ydir=0.07*m, zdir=0.01*m, phi=0, theta=1, psi=0;
+
+l1: line=(d1, rfc, d1, sb, d1, rb, d1, q1, d1, s1, d1, o1, d1, dc1, d1,
+          mul, d1, tmul, d1, vk, d1, hk, d1, tk, d1, rfc, d1, rf1, d1, rf2,
+          d1, t1, d1, col1, d1, col2, d1, col3, d1, col4, d1, bm, d1,
+          deg1, d1, musp, d1, sh1, d1, sol, d1, ws45Deg, d1, lw,
+          d1, g1, d1, ccol, d1, und1, d1, gab1, d1, tr1, d1, rm1, trm, d1,
+          generic, d1, mc1, d1, gc, d1, gj, d1, du3);
+use, l1;
+
+beam, particle="e-",
+      momentum=10*GeV;
+
+sample, all;
