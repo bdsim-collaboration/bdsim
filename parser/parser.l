@@ -139,7 +139,6 @@ ct { return CT; }
 target { return TARGET; }
 gaborlens { return GABORLENS; }
 laserwire   { return LASERWIRE; }
-
 cavitymodel {return CAVITYMODEL; }
 cutsregion { return REGION; }
 newcolour { return NEWCOLOUR; }

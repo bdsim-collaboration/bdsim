@@ -1783,7 +1783,7 @@ of photons.
 Parameter         Description                                        Default     Required
 `l`               Length of drift section [m]                        0           Yes
 `x`, `y`, `z`     Components of laser direction vector (normalised)  (1,0,0)     yes
-`waveLength`      Laser wavelength [m]                               532*nm      Yes
+`wavelength`      Laser wavelength [m]                               532*nm      Yes
 ================  =================================================  ==========  ===========
 
 Examples: ::

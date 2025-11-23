@@ -1,5 +1,5 @@
 d1: drift, l=0.5;
-laserWire : laser, l=1*um,x=1,y=0,z=0,waveLength=532*nm;
+laserWire : laser, l=1*um,x=1,y=0,z=0,wavelength=532*nm;
 d2: drift, l=0.5;
 
 lat : line = (d1,laserWire,d2);

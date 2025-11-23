@@ -143,7 +143,7 @@ Parameters::Parameters()
   setMap["xdir"]               = false;
   setMap["ydir"]               = false;
   setMap["zdir"]               = false;
-  setMap["waveLength"]         = false;
+  setMap["wavelength"]         = false;
   setMap["gradient"]           = false;
   setMap["phi"]                = false;
   setMap["theta"]              = false;
