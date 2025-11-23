@@ -1774,7 +1774,10 @@ gap
 ^^^
 
 `gap` defines a gap where no physical geometry is placed. It will be a region of the world,
-composed of the same material as the world volume.
+composed of the same material as the world volume. No geometry is built but the beamline
+cumulative coordinates advanced by that much when building the model. If an angle is specified,
+it behaves like an `sbend` and a gap according to a smooth arc of that angle is created. By
+default, the angle is 0 and it is a straight gap.
 
 .. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
 
@@ -1786,7 +1789,7 @@ Parameter              Description                              Default     Requ
 
 Examples: ::
 
-    GAP1: gap, l=0.25*m, angle=0.01*rad;
+    g1: gap, l=0.25*m, angle=0.01*rad;
 
 .. _element-crystal-col:
     
