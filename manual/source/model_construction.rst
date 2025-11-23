@@ -205,14 +205,16 @@ The following elements may be defined
 * :ref:`component-rfx-rfy`
 * `target`_
 * `rcol`_
+* `ecol`_
 * `jcol`_
 * `jcoltip`_
-* `ecol`_
+* `bmcol`_
 * `degrader`_
 * `muspoiler`_
 * `shield`_
 * `dump`_
 * `solenoid`_
+* `wirescanner`_
 * `laser`_
 * `gap`_
 * `crystalcol`_
@@ -223,10 +225,11 @@ The following elements may be defined
 * `thinrmatrix`_
 * `element`_
 * `marker`_
-* `wirescanner`_
 * `ct`_
 * `muoncooler`_
-* `bmcol`_
+* `gascap`_
+* `gasjet`_
+
 
 .. TODO add screen, awakescreen
 
@@ -1426,6 +1429,65 @@ Examples: ::
    j2: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=2*m;
 
 
+
+.. _component-bmcol:
+
+bmcol
+^^^^^
+
+.. figure:: figures/bmcol.png
+	    :width: 60%
+	    :align: center
+
+A `bmcol` defines a beam mask that consists of solid material with two apertures ('slits') with
+adjustable sizes and positions. The main slit is always centered on the beam axis. The secondary
+slit position is defined with respect to the main one and can be tilted.
+
+* The whole mount can then have x and y offset inside of the beam pipe.
+
+.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
+
++-------------------+------------------------------------------------+----------------+---------------+
+| **Parameter**     | **Description**                                | **Default**    | **Required**  |
++===================+================================================+================+===============+
+| `l`               | Length [m]                                     | 0              | Yes           |
++-------------------+------------------------------------------------+----------------+---------------+
+| `material`        | Outer material                                 | None           | Yes           |
++-------------------+------------------------------------------------+----------------+---------------+
+| `horizontalWidth` | Outer full width [m]                           | 0.15 m         | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `xsize`           | Horizontal half aperture of main slit [m]      | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `ysize`           | Vertical half aperture of main slit [m]        | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `xsize2`          | Horizontal half aperture of side slit [m]      | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `ysize2`          | Vertical half aperture of side slit [m]        | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `offsetX2`        | Horizontal displacement of side slit [m]       | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `offsetY2`        | Vertical displacement of side slit [m]         | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `tilt2`           | Clockwise rotation of side slit [rad].         | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `outerShape`      | Shape of the outer material                    | 'rectangular'  | No            |
+|                   | (circular or rectangular).                     |                |               |
++-------------------+------------------------------------------------+----------------+---------------+
+
+Notes:
+
+* The :ref:`aperture-parameters` may also be specified.
+* The :ref:`offsets-and-tilts` may also be specified.
+
+Examples: ::
+
+  bm: bmcol, l=2*mm, aper1=0.15*m, horizontalWidth=0.15*m, material="G4_W",
+             offsetX=0*mm, offsetY=0*mm, xsize=5*mm, ysize=30*mm, outerShape="rectangular",
+             offsetX2=20*mm, offsetY2=0*mm, xsize2=1*mm, ysize2=30*mm, tilt2=0.3*rad;
+
+
+.. _component-degrader:
+
 degrader
 ^^^^^^^^
 
@@ -2437,64 +2499,6 @@ Parameters for these components can be specified as either:
 +------------------------------+-------------------------------+--------------+
 
 An example of a cooling channel has been provided in `/examples/components/muoncooler.gmad`, and can be used as a template for development.
-
-
-.. _component-bmcol:
-
-bmcol
-^^^^^
-
-.. figure:: figures/bmcol.png
-	    :width: 60%
-	    :align: center
-
-`bmcol` define a beam mask that can be placed in a place in a dispersive section of a beamline in order to separate the
-beam with respect to the energy dispersion of said beam. This mask features two slits (a main slit and a side slit)
-with adjustable sizes and positions.
-
-* The main slit is always centered on the beam mask mount. The side slit position is defined is defined with respect to
-  the main one and can be tilted.
-* The whole mount can then have x and y offset inside of the beam pipe.
-
-.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
-
-+-------------------+------------------------------------------------+----------------+---------------+
-| **Parameter**     | **Description**                                | **Default**    | **Required**  |
-+===================+================================================+================+===============+
-| `l`               | Length [m]                                     | 0              | Yes           |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `material`        | Outer material                                 | None           | Yes           |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `horizontalWidth` | Outer full width [m]                           | 0.15 m         | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `xsize`           | Horizontal half aperture of main slit [m]      | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `ysize`           | Vertical half aperture of main slit [m]        | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `xsize2`          | Horizontal half aperture of side slit [m]      | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `ysize2`          | Vertical half aperture of side slit [m]        | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `offsetX2`        | Horizontal displacement of side slit [m]       | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `offsetY2`        | Vertical displacement of side slit [m]         | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `tilt2`           | Clockwise rotation of side slit [rad].         | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `outerShape`      | Shape of the outer material                    | 'rectangular'  | No            |
-|                   | (circular or rectangular).                     |                |               |
-+-------------------+------------------------------------------------+----------------+---------------+
-
-Notes:
-
-* The :ref:`aperture-parameters` may also be specified.
-* The :ref:`offsets-and-tilts` may also be specified.
-
-Examples: ::
-
-  bm: bmcol, l=2*mm, aper1=0.15*m, horizontalWidth=0.15*m, material="G4_W",
-             offsetX=0*mm, offsetY=0*mm, xsize=5*mm, ysize=30*mm, outerShape="rectangular",
-             offsetX2=20*mm, offsetY2=0*mm, xsize2=1*mm, ysize2=30*mm, tilt2=0.3*rad;
 
 
 .. _component-gascap:
