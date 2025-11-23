@@ -2510,8 +2510,8 @@ gascap
 	    :width: 60%
 	    :align: center
 
-`gascap` define a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
-This element is composed of an inner cylindrical material (usually it is gas), an outer capillary material and two
+A `gascap` defines a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
+This element is composed of an inner cylindrical material (e.g. gas), an outer capillary material and two
 electrodes on each sides (with respect to beam axis).
 
 * The inner gas cell is always center on the beam axis.
@@ -2557,11 +2557,12 @@ gasjet
 	    :width: 60%
 	    :align: center
 
-`gasjet` define a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This element is a box of
-material that can be placed in x and y and angled in all directions with respect to the center of the beam pipe.
+A `gasjet` defines a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This
+element is a box of material that can be placed in x and y with respect to the beam axis and angled in
+all directions with respect to the center of the beam pipe.
 
-* The gas jet size is independent of the beam pipe length. However its position is dependent to the center of the pipe
-  along the beam axis.
+* The gas jet size is independent of the beam pipe length. However, its position is relative to the
+  center of the pipe along the beam axis.
 
 .. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
 
