@@ -25,6 +25,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSDebug.hh"
 #include "BDSMagnet.hh"
 #include "BDSMagnetStrength.hh"
+#include "BDSVersion.hh"
 
 #include <fstream>
 #include <iomanip>
@@ -57,10 +58,11 @@ void BDSSurvey::WriteHeader()
   time(&currenttime);
   std::string timestring = asctime(localtime(&currenttime));
   timestring = timestring.substr(0,timestring.size()-1);
-  
-  survey << "### BDSIM output - created "<< timestring << G4endl;
+
+  survey << "# BDSIM survey - created at "<< timestring << " with BDSIM version " << BDSIM_GIT_VERSION << G4endl;
+  survey << "# Note: this information is written to the ROOT file and loadable with pybdsim -> this is the preferred path to this data." << G4endl;
   survey << std::left 
-         << setw(15) << "Type          " << " "
+         << setw(20) << "Type          " << " "
          << setw(40) << "Name          " << " "
          << setw(gp) << "SStart[m]     " << " "
          << setw(gp) << "SMid[m]       " << " "
@@ -100,9 +102,8 @@ void BDSSurvey::Write(BDSBeamline* beamline)
 {
   for (auto element : *beamline)
     {Write(element);}
-
-  survey << "### Total length = " << beamline->GetTotalChordLength()/CLHEP::m << "m" << G4endl;
-  survey << "### Total arc length = " <<  beamline->GetTotalArcLength()/CLHEP::m << "m" << G4endl;
+  survey << "# Total length = " << beamline->GetTotalChordLength()/CLHEP::m << "m" << G4endl;
+  survey << "# Total arc length = " <<  beamline->GetTotalArcLength()/CLHEP::m << "m" << G4endl;
   survey.close();
 }
 
@@ -126,7 +127,7 @@ void BDSSurvey::Write(BDSBeamlineElement* beamlineElement)
   if (ty.empty())
     {ty = "unknown";}
   survey << std::left << std::setprecision(6) << std::fixed
-         << setw(15) << acceleratorComponent->GetType()             << " "
+         << setw(20) << ty                                          << " "
          << setw(40) << acceleratorComponent->GetName()             << " "
          << setw(gp) << sStart                                      << " "
          << setw(gp) << sMiddle                                     << " "
