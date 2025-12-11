@@ -14,8 +14,6 @@ public:
   void SetNoNeutralParticles(bool val) { noNeutralParticles = val; }
   bool GetNoNeutralParticles() const { return noNeutralParticles; }
 
-  void ClearXtrackData();
-
   ~BDSLinkTrackerInterface() = default;
 
   static BDSLinkTrackerInterface* GetInstance(std::string bdsimConfigFileIn,
@@ -39,13 +37,17 @@ public:
   BDSLinkBunch* GetBunchLink() {return linkBunch;}
   BDSIMLink* GetBDSIMLink() {return linkBDSIM;}
 
-  BDSParticleDefinition* GetReferenceParticleDefinition() const;
+  BDSParticleDefinition* GetReferenceParticleDefinition() const {return referenceParticleDefinition;}
   void SetReferenceParticleDefinition(BDSParticleDefinition *rpd) {referenceParticleDefinition = rpd;}
 
-  BDSParticleDefinition* prepareBDSParticleDefition(int pdg,
-                                                    double momentum,
-                                                    double kineticEnergy,
-                                                    int ionCharge);
+  BDSParticleDefinition* PrepareBDSParticleDefinition(int pdg,
+                                                      double momentum,
+                                                      double kineticEnergy,
+                                                      int ionCharge);
+  BDSParticleDefinition* PrepareBDSParticleDefinition_Bjorn(int pdg,
+                                                            double momentum,
+                                                            double kineticEnergy,
+                                                            int ionCharge);
   void AddParticle(double x, double y, double px, double py,
                    double ct, double deltap, double chi,
                    double chargeRatio, double s,
@@ -59,6 +61,8 @@ public:
                     std::vector<double> chi, std::vector<double> chargeRatio,
                     std::vector<double> s, std::vector<int> trackid,
                     std::vector<int> pdgid);
+
+  void ClearData();
 
   // TODO is this needed?
   std::vector<bool>& GetParticleActiveState() { return particleActiveState; }

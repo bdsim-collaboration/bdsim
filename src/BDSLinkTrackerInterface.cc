@@ -7,11 +7,14 @@
 
 #include "G4ParticleTable.hh"
 #include "G4IonTable.hh"
+#include "G4Electron.hh"
 
 #include "BDSLinkTrackerInterface.hh"
 #include "BDSLinkBunch.hh"
 #include "BDSIMLink.hh"
 #include "BDSParticleDefinition.hh"
+#include "BDSException.hh"
+
 
 BDSLinkTrackerInterface* BDSLinkTrackerInterface::singleton = nullptr;
 
@@ -107,13 +110,13 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                         minimumKineticEnergy/CLHEP::GeV,
                         false);
 
-  referenceParticleDefinition = prepareBDSParticleDefition(referenceParticlePDG, 0, referenceKineticEnergy, static_cast<double>(referenceIonCharge));
+  referenceParticleDefinition = PrepareBDSParticleDefinition(referenceParticlePDG, 0, referenceKineticEnergy, static_cast<double>(referenceIonCharge));
 }
 
-BDSParticleDefinition* BDSLinkTrackerInterface::prepareBDSParticleDefition(int pdg,
-                                                                           double momentum,
-                                                                           double kineticEnergy,
-                                                                           int ionCharge) {
+BDSParticleDefinition* BDSLinkTrackerInterface::PrepareBDSParticleDefinition(int pdg,
+                                                                             double momentum,
+                                                                             double kineticEnergy,
+                                                                             int ionCharge) {
   G4ParticleDefinition *particleDefGeant = nullptr;
   BDSParticleDefinition *particleDefinition = nullptr;
   BDSIonDefinition* ionDef = nullptr;
@@ -147,6 +150,58 @@ BDSParticleDefinition* BDSLinkTrackerInterface::prepareBDSParticleDefition(int p
   return particleDefinition;
 }
 
+BDSParticleDefinition* BDSLinkTrackerInterface::PrepareBDSParticleDefinition_Bjorn(int pdgIDIn,
+                                                                                   double momentumIn,
+                                                                                   double kineticEnergyIn,
+                                                                                   int ionChargeIn)
+{
+  G4int pdgID = (G4int) pdgIDIn;
+
+  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+  G4ParticleDefinition* particleDefGeant;
+
+  // Wrap in our class that calculates momentum and kinetic energy.
+  // Requires that one of E, Ek, P be non-zero (only one).
+  BDSParticleDefinition* particleDefinition = nullptr;
+  BDSIonDefinition* ionDef = nullptr;
+
+  // PDG for ions = 10LZZZAAAI
+  if (pdgID > 1000000000) // is an ion
+  {
+
+    G4IonTable* ionTable = particleTable->GetIonTable();
+    particleDefGeant = ionTable->GetIon(pdgID);
+    if (!particleDefGeant)
+    {throw BDSException("BDSXtrackInterface> Ion \"" + std::to_string(pdgID) + "\" not found");}
+
+    G4int ionCharge = ionChargeIn==0 ? particleDefGeant->GetAtomicNumber() : (G4int) ionChargeIn;
+    ionDef = new BDSIonDefinition(particleDefGeant->GetAtomicMass(),
+                                  particleDefGeant->GetAtomicNumber(),
+                                  ionCharge);
+
+    // correct the particle mass in the case of partially-stripped ions
+    G4double mass   = ionTable->GetIonMass(ionDef->Z(), ionDef->A());
+    G4double charge = ionDef->Charge(); // correct even if overridden
+    mass += ionDef->NElectrons()*G4Electron::Definition()->GetPDGMass();
+    // The constructor with a custom name requires the bdsim name of the ion
+    std::string bdsimPartName = "ion " + std::to_string(static_cast<int>(ionDef->A()))
+                                + " " + std::to_string(static_cast<int>(ionDef->Z()))
+                                + " " + std::to_string(static_cast<int>(charge));
+
+    particleDefinition = new BDSParticleDefinition(bdsimPartName, mass, charge, 0,
+                                                   kineticEnergyIn, momentumIn, 1, ionDef, pdgID);
+  }
+  else
+  {
+    particleDefGeant = particleTable->FindParticle(pdgID);
+    if (!particleDefGeant)
+    {throw BDSException("BDSXtrackInterface> Particle \"" + std::to_string(pdgID) + "\" not found");}
+    particleDefinition = new BDSParticleDefinition(particleDefGeant, 0, kineticEnergyIn, momentumIn, 1, nullptr);
+  }
+
+  return particleDefinition;
+}
+
 void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double py,
                                           double ct, double deltap, double chi,
                                           double chargeRatio, double /*s*/,
@@ -162,7 +217,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
   else
     pdg = pdgid;
 
-  auto partDef = prepareBDSParticleDefition(pdg, p, 0, q);
+  auto partDef = PrepareBDSParticleDefinition(pdg, p, 0, q);
   auto t = - ct * CLHEP::m / (referenceParticleDefinition->Beta() * CLHEP::c_light);
   auto oneplusdelta = (1 + deltap);
   auto xp = px / oneplusdelta;
@@ -208,7 +263,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y,
   auto p = std::sqrt(std::pow(px,2) +
                              std::pow(py,2) +
                              std::pow(pz,2));
-  auto partDef = prepareBDSParticleDefition(pdg, p, 0, q);
+  auto partDef = PrepareBDSParticleDefinition(pdg, p, 0, q);
   auto xp = px / pz;
   auto yp = py / pz;
   auto zp = pz / p;
@@ -238,4 +293,14 @@ void BDSLinkTrackerInterface::AddParticles(std::vector<double> x, std::vector<do
     AddParticle(x[i], y[i], px[i], py[i], ct[i], deltap[i],
                 chi[i], chargeRatio[i], s[i], trackid[i], pdgid[i]);
   }
+}
+
+void BDSLinkTrackerInterface::ClearData() // TODO separate ClearSamplerHits to another function and add to top of track function
+{
+  auto* link = GetBDSIMLink();  // Retrieve pointer to BDSIMLink
+  link->ClearSamplerHits();
+  auto* bunch = GetBunchLink();  // Retrieve pointer to BDSBunch
+  bunch->ClearParticles();
+  auto& active_state = GetParticleActiveState();  // Retrieve reference
+  std::vector<bool>().swap(active_state);  // Efficient clear
 }

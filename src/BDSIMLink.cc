@@ -521,6 +521,10 @@ void BDSIMLink::SelectLinkElement(const std::string& elementName, G4bool debug)
   currentElementIndex = GetLinkIndex(elementName);
   if (debug)
     {G4cout << ", Index " << currentElementIndex << G4endl;}
+
+  // Check if the element exists by querying the index: -1 means it doesn't exist
+  if (currentElementIndex == -1)
+    {throw std::runtime_error("Element not found " + elementName);}
 }
 
 void BDSIMLink::SelectLinkElement(int index, G4bool debug)
