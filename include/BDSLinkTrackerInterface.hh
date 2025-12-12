@@ -43,6 +43,7 @@ public:
   void SetReferenceParticleDefinition(BDSParticleDefinition *rpd) {referenceParticleDefinition = rpd;}
 
   BDSParticleDefinition* PrepareBDSParticleDefinition(int pdg,
+                                                      double totalEnergy,
                                                       double momentum,
                                                       double kineticEnergy,
                                                       int ionCharge);
