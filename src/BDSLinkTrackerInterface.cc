@@ -120,6 +120,7 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
 BDSParticleDefinition* BDSLinkTrackerInterface::PrepareBDSParticleDefinition(int pdg,
                                                                              double totalEnergy,
                                                                              double kineticEnergy,
+                                                                             double momentum,
                                                                              int ionCharge) {
   G4ParticleDefinition *particleDefGeant = nullptr;
   BDSParticleDefinition *particleDefinition = nullptr;
