@@ -26,6 +26,8 @@ public:
   static BDSLinkTrackerInterface* GetInstance();
 
   std::string GetBDSIMConfigFile() {return bdsimConfigFile;}
+
+  BDSParticleDefinition* GetReferenceParticleDefinition() {return referenceParticleDefinition;}
   int GetReferenceParticlePDG() {return referenceParticlePDG;}
   double GetReferenceParticleKineticEnergy() {return referenceKineticEnergy;}
   double GetRelativeEnergyCut() {return relativeEnergyCut;}
