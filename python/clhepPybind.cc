@@ -68,6 +68,5 @@ PYBIND11_MODULE(clhep, m) {
   m.attr("second") = py::cast(CLHEP::second);
   m.attr("s") = py::cast(CLHEP::second);
 
-
   m.attr("c_light") = py::cast(CLHEP::c_light);
 }
