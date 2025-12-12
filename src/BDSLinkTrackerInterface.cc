@@ -64,13 +64,13 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                                                  int seedIn,
                                                  int referenceIonChargeIn,
                                                  bool batchModeIn) :
-                                                  bdsimConfigFile(bdsimConfigFileIn),
-                                                  referenceParticlePDG(referenceParticlePDGIn),
-                                                  referenceKineticEnergy(referenceKineticEnergyIn),
-                                                  relativeEnergyCut(relativeEnergyCutIn),
-                                                  seed(seedIn),
-                                                  referenceIonCharge(referenceIonChargeIn),
-                                                  batchMode(batchModeIn)
+                                                 bdsimConfigFile(bdsimConfigFileIn),
+                                                 referenceParticlePDG(referenceParticlePDGIn),
+                                                 referenceKineticEnergy(referenceKineticEnergyIn),
+                                                 relativeEnergyCut(relativeEnergyCutIn),
+                                                 seed(seedIn),
+                                                 referenceIonCharge(referenceIonChargeIn),
+                                                 batchMode(batchModeIn)
 {
   // keep local tables for ease
   g4particle_table = G4ParticleTable::GetParticleTable();
