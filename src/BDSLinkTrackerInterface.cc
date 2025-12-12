@@ -110,7 +110,11 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                         minimumKineticEnergy/CLHEP::GeV,
                         false);
 
-  referenceParticleDefinition = PrepareBDSParticleDefinition(referenceParticlePDG, 0, referenceKineticEnergy, static_cast<double>(referenceIonCharge));
+  referenceParticleDefinition = PrepareBDSParticleDefinition(referenceParticlePDG,
+                                                             /* totalEnergy */ 0,
+                                                             referenceKineticEnergy,
+                                                             /* momentum= */ 0 ,
+                                                             static_cast<double>(referenceIonCharge));
 }
 
 BDSParticleDefinition* BDSLinkTrackerInterface::PrepareBDSParticleDefinition(int pdg,
