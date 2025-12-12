@@ -76,10 +76,6 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                                     seed,
                                                     referenceIonCharge,
                                                     batchMode);
-        obj->SetReferenceParticleDefinition(obj->PrepareBDSParticleDefinition(referenceParticlePDG,
-                                                                              0,
-                                                                              referenceKineticEnergy,
-                                                                              referenceIonCharge));
         obj->SetNoNeutralParticles(no_neutral_particles);
         return obj;
     },
