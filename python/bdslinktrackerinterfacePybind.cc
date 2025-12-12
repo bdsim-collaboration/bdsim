@@ -90,8 +90,54 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                     py::return_value_policy::reference)
       .def_static("GetInstance", []() {return BDSLinkTrackerInterface::GetInstance();},
                   py::return_value_policy::reference)
+      .def("GetReferenceParticleDefinition", [](BDSLinkTrackerInterface &ti) {
+        return ti.GetReferenceParticleDefinition();
+      }, py::return_value_policy::reference)
       .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink,py::return_value_policy::reference)
       .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink,py::return_value_policy::reference)
+      .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
+                            double ct, double deltap, double chi, double chargeRatio,
+                            double s, int trackid, int pdgid) {
+        ti.AddParticle(x,y, px, py, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
+      py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
+      py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
+                            double pz, double t, double s,
+                            int trackid, int pdgid) {
+        ti.AddParticle(x, y, px, py, pz, t, s, trackid, pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
+      py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("AddParticles",[](BDSLinkTrackerInterface &ti,
+                             std::vector<double> &x,
+                             std::vector<double> &y,
+                             std::vector<double> &xp,
+                             std::vector<double> &yp,
+                             std::vector<double> &ct,
+                             std::vector<double> &deltap,
+                             std::vector<double> &chi,
+                             std::vector<double> &chargeRatio,
+                             std::vector<double> &s,
+                             std::vector<int> &trackid,
+                             std::vector<int> &pdgid) {
+        ti.AddParticles(x,y,xp,yp, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
+      py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
+      py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("AddParticles",[](BDSLinkTrackerInterface &ti,
+                             std::vector<double> x,
+                             std::vector<double> y,
+                             std::vector<double> px,
+                             std::vector<double> py,
+                             std::vector<double> pz,
+                             std::vector<double> t,
+                             std::vector<double> s,
+                             std::vector<int> trackid,
+                             std::vector<int> pdgid) {
+        ti.AddParticles(x,y,px,py,pz,t,s,trackid,pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
+      py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("ClearData",&BDSLinkTrackerInterface::ClearData)
       .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
           int iElement,
           std::string elementName,
