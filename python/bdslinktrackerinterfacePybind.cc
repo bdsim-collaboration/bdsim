@@ -217,7 +217,11 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
             G4double mass_ratio = charge_ratio_ptr[i] / chi_ptr[i];
             G4double p = ref->Momentum() * (delta_ptr[i] + 1) * mass_ratio;
 
-            auto partDef = tracker_interface->PrepareBDSParticleDefinition(pdgid_ptr[i], p, 0, q);
+            auto partDef = tracker_interface->PrepareBDSParticleDefinition(pdgid_ptr[i],
+                                                                           /*totalEnergy */ 0,
+                                                                           p,
+                                                                           /* kineticEnergy */ 0,
+                                                                           q);
             G4double t = - zeta_ptr[i] * CLHEP::m / (ref->Beta() * CLHEP::c_light);
 
             G4double oneplusdelta = (1 + delta_ptr[i]) * mass_ratio;
