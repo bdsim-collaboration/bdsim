@@ -63,6 +63,11 @@ public:
                     std::vector<double> chi, std::vector<double> chargeRatio,
                     std::vector<double> s, std::vector<int> trackid,
                     std::vector<int> pdgid);
+  void AddParticles(std::vector<double> x, std::vector<double> y,
+                    std::vector<double> px, std::vector<double> py,
+                    std::vector<double> pz, std::vector<double> t,
+                    std::vector<double> s, std::vector<int> trackid,
+                    std::vector<int> pdgid);
 
   void ClearData();
 
