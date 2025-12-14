@@ -251,8 +251,8 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
   if (sqrtarg >=0)
     { zp = std::sqrt(sqrtarg); }
 
-  auto coords = BDSParticleCoordsFull(x * CLHEP::m,
-                                      y * CLHEP::m,
+  auto coords = BDSParticleCoordsFull(x,
+                                      y,
                                       0,
                                       xp,
                                       yp,
