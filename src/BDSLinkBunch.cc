@@ -44,14 +44,14 @@ BDSLinkBunch::~BDSLinkBunch()
 
 BDSParticleCoordsFull BDSLinkBunch::GetNextParticleLocal()
 {
+  if (Size() == 0)
+  {throw BDSException(__METHOD_NAME__,"No particles have been added");}
+
   if (currentIndex >= size)
     {
       G4cout << __METHOD_NAME__ << "looping to start of bunch" << G4endl;
       currentIndex = 0;
     }
-
-  if (Size() == 0)
-    {throw BDSException(__METHOD_NAME__,"No particles have been added");}
 
   G4int ci = currentIndex;
   currentIndex++;
