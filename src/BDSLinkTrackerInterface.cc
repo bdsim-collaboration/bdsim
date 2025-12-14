@@ -339,3 +339,17 @@ void BDSLinkTrackerInterface::ClearData() // TODO separate ClearSamplerHits to a
   auto& active_state = GetParticleActiveState();  // Retrieve reference
   std::vector<bool>().swap(active_state);  // Efficient clear
 }
+
+double BDSLinkTrackerInterface::GetParticlePDGMass(int pdgid) {
+
+  G4ParticleDefinition *particleDefGeant = nullptr;
+
+  if (pdgid < 1000000000) {  // Not an ion
+    particleDefGeant = g4particle_table->FindParticle(pdgid);
+  }
+  else {
+    particleDefGeant = g4ion_table->GetIon(pdgid);
+  }
+
+  return particleDefGeant->GetPDGMass();
+}

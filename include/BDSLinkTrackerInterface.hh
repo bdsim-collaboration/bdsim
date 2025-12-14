@@ -73,6 +73,8 @@ public:
 
   void ClearData();
 
+  double GetParticlePDGMass(int pdgid);
+
   // TODO is this needed?
   std::vector<bool>& GetParticleActiveState() { return particleActiveState; }
 
