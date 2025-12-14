@@ -73,7 +73,12 @@ public:
 
   void ClearData();
 
+  G4ParticleDefinition* GetParticleDefinition(int pdgid);
   double GetParticlePDGMass(int pdgid);
+  double GetParticlePDGCharge(int pdgid);
+  double GetChargeRatio(int pdgid);
+  double GetMassRatio(int pdgid);
+  double GetChi(int pdgid);
 
   // TODO is this needed?
   std::vector<bool>& GetParticleActiveState() { return particleActiveState; }

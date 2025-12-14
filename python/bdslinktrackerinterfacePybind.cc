@@ -151,7 +151,12 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
       }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
       py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
       .def("ClearData",&BDSLinkTrackerInterface::ClearData)
+      .def("GetParticleDefinition", &BDSLinkTrackerInterface::GetParticleDefinition,py::keep_alive<1, 2>())
       .def("GetParticlePDGMass",&BDSLinkTrackerInterface::GetParticlePDGMass)
+      .def("GetParticlePDGCharge", &BDSLinkTrackerInterface::GetParticlePDGCharge)
+      .def("GetChargeRatio", &BDSLinkTrackerInterface::GetChargeRatio)
+      .def("GetMassRatio",&BDSLinkTrackerInterface::GetMassRatio)
+      .def("GetChi", &BDSLinkTrackerInterface::GetChi)
       .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
           int iElement,
           std::string elementName,

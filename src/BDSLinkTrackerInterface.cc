@@ -340,8 +340,7 @@ void BDSLinkTrackerInterface::ClearData() // TODO separate ClearSamplerHits to a
   std::vector<bool>().swap(active_state);  // Efficient clear
 }
 
-double BDSLinkTrackerInterface::GetParticlePDGMass(int pdgid) {
-
+G4ParticleDefinition* BDSLinkTrackerInterface::GetParticleDefinition(int pdgid) {
   G4ParticleDefinition *particleDefGeant = nullptr;
 
   if (pdgid < 1000000000) {  // Not an ion
@@ -350,6 +349,25 @@ double BDSLinkTrackerInterface::GetParticlePDGMass(int pdgid) {
   else {
     particleDefGeant = g4ion_table->GetIon(pdgid);
   }
+  return particleDefGeant;
+}
 
-  return particleDefGeant->GetPDGMass();
+double BDSLinkTrackerInterface::GetParticlePDGMass(int pdgid) {
+  return GetParticleDefinition(pdgid)->GetPDGMass();
+}
+
+double BDSLinkTrackerInterface::GetParticlePDGCharge(int pdgid) {
+  return GetParticleDefinition(pdgid)->GetPDGCharge();
+}
+
+double BDSLinkTrackerInterface::GetChargeRatio(int pdgid) {
+  return GetParticlePDGCharge(pdgid)/referenceParticleDefinition->Charge();
+}
+
+double BDSLinkTrackerInterface::GetMassRatio(int pdgid) {
+  return GetParticlePDGMass(pdgid)/referenceParticleDefinition->Mass();
+}
+
+double BDSLinkTrackerInterface::GetChi(int pdgid) {
+  return GetChargeRatio(pdgid)/ GetMassRatio(pdgid);
 }
