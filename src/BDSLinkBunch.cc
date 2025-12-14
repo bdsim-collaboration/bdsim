@@ -50,6 +50,9 @@ BDSParticleCoordsFull BDSLinkBunch::GetNextParticleLocal()
       currentIndex = 0;
     }
 
+  if (Size() == 0)
+    {throw BDSException(__METHOD_NAME__,"No particles have been added");}
+
   G4int ci = currentIndex;
   currentIndex++;
   
