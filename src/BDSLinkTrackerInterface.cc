@@ -117,6 +117,17 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                                                              static_cast<double>(referenceIonCharge));
 }
 
+BDSLinkTrackerInterface::~BDSLinkTrackerInterface() {
+  std::cout << "BDSLinkTrackerInterface::~BDSLinkTrackerInterface" << std::endl;
+  delete linkBunch;
+  delete linkBDSIM;
+};
+
+void BDSLinkTrackerInterface::Reset() {
+  delete singleton;
+  singleton = nullptr;
+}
+
 BDSParticleDefinition* BDSLinkTrackerInterface::PrepareBDSParticleDefinition(int pdg,
                                                                              double totalEnergy,
                                                                              double kineticEnergy,

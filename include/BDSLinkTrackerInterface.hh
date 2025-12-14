@@ -11,10 +11,6 @@ class BDSParticleDefinition;
 
 class BDSLinkTrackerInterface {
 public:
-  void SetNoNeutralParticles(bool val) { noNeutralParticles = val; }
-  bool GetNoNeutralParticles() const { return noNeutralParticles; }
-
-  ~BDSLinkTrackerInterface() = default;
 
   static BDSLinkTrackerInterface* GetInstance(std::string bdsimConfigFileIn,
                                               int referenceParticlePDGIn = 11,
@@ -25,22 +21,8 @@ public:
                                               bool batchModeIn = true);
   static BDSLinkTrackerInterface* GetInstance();
 
-  std::string GetBDSIMConfigFile() {return bdsimConfigFile;}
-
-  BDSParticleDefinition* GetReferenceParticleDefinition() {return referenceParticleDefinition;}
-  int GetReferenceParticlePDG() {return referenceParticlePDG;}
-  double GetReferenceParticleKineticEnergy() {return referenceKineticEnergy;}
-  double GetRelativeEnergyCut() {return relativeEnergyCut;}
-  int GetSeed() {return seed;}
-  int GetReferenceIonCharge() {return referenceIonCharge;}
-  bool GetBatchMode() {return batchMode;}
-  double GetMinimumKineticEnergy() {return minimumKineticEnergy;}
-
-  BDSLinkBunch* GetBunchLink() {return linkBunch;}
-  BDSIMLink* GetBDSIMLink() {return linkBDSIM;}
-
-  BDSParticleDefinition* GetReferenceParticleDefinition() const {return referenceParticleDefinition;}
-  void SetReferenceParticleDefinition(BDSParticleDefinition *rpd) {referenceParticleDefinition = rpd;}
+  ~BDSLinkTrackerInterface();
+  void Reset();
 
   BDSParticleDefinition* PrepareBDSParticleDefinition(int pdg,
                                                       double totalEnergy,
@@ -51,6 +33,25 @@ public:
                                                             double momentum,
                                                             double kineticEnergy,
                                                             int ionCharge);
+
+  BDSParticleDefinition* GetReferenceParticleDefinition() {return referenceParticleDefinition;}
+  void SetReferenceParticleDefinition(BDSParticleDefinition *rpd) {referenceParticleDefinition = rpd;}
+
+  std::string GetBDSIMConfigFile() {return bdsimConfigFile;}
+  int GetReferenceParticlePDG() {return referenceParticlePDG;}
+  double GetReferenceParticleKineticEnergy() {return referenceKineticEnergy;}
+  double GetRelativeEnergyCut() {return relativeEnergyCut;}
+  int GetSeed() {return seed;}
+  int GetReferenceIonCharge() {return referenceIonCharge;}
+  bool GetBatchMode() {return batchMode;}
+  double GetMinimumKineticEnergy() {return minimumKineticEnergy;}
+
+  void SetNoNeutralParticles(bool val) { noNeutralParticles = val; }
+  bool GetNoNeutralParticles() const { return noNeutralParticles; }
+
+  BDSLinkBunch* GetBunchLink() {return linkBunch;}
+  BDSIMLink* GetBDSIMLink() {return linkBDSIM;}
+
   void AddParticle(double x, double y, double px, double py,
                    double ct, double deltap, double chi,
                    double chargeRatio, double s,
@@ -76,14 +77,6 @@ public:
   std::vector<bool>& GetParticleActiveState() { return particleActiveState; }
 
 protected:
-    bool noNeutralParticles = true;  // default value
-  // singleton pointer
-  static BDSLinkTrackerInterface* singleton;
-
-  // singleton pattern
-  BDSLinkTrackerInterface() = default;
-  BDSLinkTrackerInterface(const BDSLinkTrackerInterface&) = delete;
-  BDSLinkTrackerInterface& operator=(const BDSLinkTrackerInterface&) = delete;
 
   // singleton private constructor
   BDSLinkTrackerInterface(std::string bdsimConfigFileIn = "trackerInterface.gmad",
@@ -94,6 +87,14 @@ protected:
                           int referenceIonChargeIn = 1,
                           bool batchModeIn = true);
 
+  // singleton pointer
+  static BDSLinkTrackerInterface* singleton;
+
+  // singleton pattern
+  BDSLinkTrackerInterface() = default;
+  BDSLinkTrackerInterface(const BDSLinkTrackerInterface&) = delete;
+  BDSLinkTrackerInterface& operator=(const BDSLinkTrackerInterface&) = delete;
+
   // configuration parameters
   std::string bdsimConfigFile;
   int referenceParticlePDG;
@@ -102,6 +103,9 @@ protected:
   int seed;
   int referenceIonCharge;
   bool batchMode;
+
+  // other parameters
+  bool noNeutralParticles = true;  // default value
 
   // derived parmeters
   double minimumKineticEnergy;

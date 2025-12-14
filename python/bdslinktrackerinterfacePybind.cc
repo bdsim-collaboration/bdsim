@@ -90,9 +90,22 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                     py::return_value_policy::reference)
       .def_static("GetInstance", []() {return BDSLinkTrackerInterface::GetInstance();},
                   py::return_value_policy::reference)
+      .def("Reset", &BDSLinkTrackerInterface::Reset)
+      .def("PrepareBDSParticleDefinition", &BDSLinkTrackerInterface::PrepareBDSParticleDefinition)
       .def("GetReferenceParticleDefinition", [](BDSLinkTrackerInterface &ti) {
         return ti.GetReferenceParticleDefinition();
       }, py::return_value_policy::reference)
+      .def("SetReferenceParticleDefinition",&BDSLinkTrackerInterface::SetReferenceParticleDefinition, py::arg("particleDefinition"))
+      .def("GetBDSIMConfigFile", &BDSLinkTrackerInterface::GetBDSIMConfigFile)
+      .def("GetReferenceParticlePDG", &BDSLinkTrackerInterface::GetReferenceParticlePDG)
+      .def("GetReferenceParticleKineticEnergy", &BDSLinkTrackerInterface::GetReferenceParticleKineticEnergy)
+      .def("GetRelativeEnergyCut", &BDSLinkTrackerInterface::GetRelativeEnergyCut)
+      .def("GetSeed", &BDSLinkTrackerInterface::GetSeed)
+      .def("GetReferenceIonCharge", &BDSLinkTrackerInterface::GetReferenceIonCharge)
+      .def("GetBatchMode", &BDSLinkTrackerInterface::GetBatchMode)
+      .def("GetMinimumKineticEnergy", &BDSLinkTrackerInterface::GetMinimumKineticEnergy)
+      .def("SetNoNeutralParticles", &BDSLinkTrackerInterface::SetNoNeutralParticles)
+      .def("GetNoNeutralParticles", &BDSLinkTrackerInterface::GetNoNeutralParticles)
       .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink,py::return_value_policy::reference)
       .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink,py::return_value_policy::reference)
       .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
