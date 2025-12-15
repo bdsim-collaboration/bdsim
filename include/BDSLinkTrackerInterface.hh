@@ -52,12 +52,16 @@ public:
   BDSLinkBunch* GetBunchLink() {return linkBunch;}
   BDSIMLink* GetBDSIMLink() {return linkBDSIM;}
 
+  /// Add particle to simulation in accelerator coordinates
+  /// units of position (x,y, ct) are Geant4 (mm), deltap unitless,
+  /// chi is (q/q_ref)/(mass/mass_ref)
   void AddParticle(double x, double y, double px, double py,
                    double ct, double deltap, double chi,
                    double chargeRatio, double s,
                    int trackid, int pdgid);
+  /// Add particle to simulation in momenta in MeV
   void AddParticle(double x, double y, double px, double py,
-                   double ct, double pc, double s,
+                   double pz, double t, double s,
                    int trackid, int pdgid);
   void AddParticles(std::vector<double> x, std::vector<double> y,
                     std::vector<double> px, std::vector<double> py,
@@ -73,12 +77,19 @@ public:
 
   void ClearData();
 
+  // Geant4 particle definition for pdgid
   G4ParticleDefinition* GetParticleDefinition(int pdgid);
+  // PDG mass for particle with pdgid
   double GetParticlePDGMass(int pdgid);
+  // PDG charge for particle with pdgid
   double GetParticlePDGCharge(int pdgid);
+  /// Ratio of charge between pdgid particle and reference particle
   double GetChargeRatio(int pdgid);
+  /// Ratio of mass between pdgid particle and reference particle
   double GetMassRatio(int pdgid);
+  /// Ratio of charge ratio to mass ratio between pdgid particle and reference particle
   double GetChi(int pdgid);
+
 
   // TODO is this needed?
   std::vector<bool>& GetParticleActiveState() { return particleActiveState; }
