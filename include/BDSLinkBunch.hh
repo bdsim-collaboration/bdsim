@@ -57,6 +57,8 @@ public:
   inline int    CurrentExternalParentID()   const {return currentExternalParentID;}
   /// @}
 
+  /// Access the current particle definition of the current particle local coords in the bunch.
+  inline const BDSParticleCoordsFull ParticleLocal()  {return particles[currentIndex]->coords;}
   /// Access the current particle definition of the current particle in the bunch.
   inline virtual const BDSParticleDefinition* ParticleDefinition() const {return currentParticleDefinition;}
 
