@@ -286,8 +286,8 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y,
                      std::pow(py,2) +
                      std::pow(pz,2));
   auto partDef = PrepareBDSParticleDefinition(pdg, 0, 0, p, q);
-  auto xp = px / pz;
-  auto yp = py / pz;
+  auto xp = px / p;
+  auto yp = py / p;
   auto zp = pz / p;
 
   auto coords = BDSParticleCoordsFull(x,
