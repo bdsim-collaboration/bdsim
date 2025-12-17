@@ -42,6 +42,8 @@ PYBIND11_MODULE(bdslinkbunch, m) {
     .def("CurrentExternalParentID", &BDSLinkBunch::CurrentExternalParentID)
     .def("ParticleLocal", &BDSLinkBunch::ParticleLocal)
     .def("ParticleDefinition", &BDSLinkBunch::ParticleDefinition)
+    .def("SetCurrentIndex",&BDSLinkBunch::SetCurrentIndex)
+    .def("Reset", &BDSLinkBunch::Reset)
     .def("UpdateGeant4ParticleDefinition", &BDSLinkBunch::UpdateGeant4ParticleDefinition)
     .def("UpdateIonDefinition", &BDSLinkBunch::UpdateIonDefinition);
 }
