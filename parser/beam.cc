@@ -342,8 +342,8 @@ void Beam::PublishMembers()
   publish("dPStop",  &Beam::dPStop);
 
   //polarization
-  publish("polarization1",        &Beam::polarization1);
-  publish("polarization2",         &Beam::polarization2);
-  publish("polarization3",          &Beam::polarization3);
+  publish("polarization1", &Beam::polarization1);
+  publish("polarization2", &Beam::polarization2);
+  publish("polarization3", &Beam::polarization3);
 
 }
