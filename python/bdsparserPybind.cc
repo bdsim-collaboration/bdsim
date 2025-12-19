@@ -27,7 +27,7 @@ namespace py = pybind11;
 #include "BDSParser.hh"
 
 PYBIND11_MODULE(bdsparser, m) {
-  py::class_<BDSParser>(m,"BDSParser")
+  py::class_<BDSParser, GMAD::Parser>(m,"BDSParser")
     .def(py::init<>())
     .def_static("Instance",[](std::string fileName) {return BDSParser::Instance(fileName);})// ,py::return_value_policy::reference)
     .def_static("Instance",[]() {return BDSParser::Instance();})

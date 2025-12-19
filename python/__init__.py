@@ -19,6 +19,7 @@ from .bdsimlink import *
 from .bdsoutputrooteventsampler import *
 from .bdsparticlecoords import *
 from .bdsparticlecoordsfull import *
+from .parser import *
 from .bdsparser import *
 from .bdsparticledefinition import *
 from .bdsiondefinition import *
@@ -36,7 +37,6 @@ from .modulator import *
 from .newcolour import *
 from .options import *
 from .parameters import *
-from .parser import *
 from .physicsbiasing import *
 from .placement import *
 from .query import *
