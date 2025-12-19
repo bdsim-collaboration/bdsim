@@ -100,8 +100,8 @@ PYBIND11_MODULE(parser, m) {
        .def("Add_ScorerMesh",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::ScorerMesh, GMAD::FastList<GMAD::ScorerMesh>>(unique, className);})
        .def("Add_Tunnel",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Tunnel, GMAD::FastList<GMAD::Tunnel>>(unique, className);})
 
-       .def("GetGlobal_Atom",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Atom>();})
        .def("GetGlobal_Aperture",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Aperture>();})
+       .def("GetGlobal_Atom",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Atom>();}, py::return_value_policy::reference)
        .def("GetGlobal_Beam",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Beam>();})
        .def("GetGlobal_BLMPlacement",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::BLMPlacement>();})
        .def("GetGlobal_CavityModel",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::CavityModel>();})
