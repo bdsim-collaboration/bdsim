@@ -52,7 +52,7 @@ void Aperture::PublishMembers()
   publish("aperture4",     &Aperture::aper4); // alternative
 }
 
-void Aperture::print()const
+void Aperture::print() const
 {
   std::cout << "Aperture: "
 	    << "name "          << name          << std::endl
