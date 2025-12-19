@@ -1104,7 +1104,7 @@ BDSExtent BDSDetectorConstruction::CalculateExtentOfScorerMesh(const GMAD::Score
 BDSExtentGlobal BDSDetectorConstruction::CalculateExtentOfScorerMeshes(const BDSBeamline* beamLine) const
 {
   BDSExtentGlobal result;
-  std::vector<GMAD::ScorerMesh> scorerMeshes = BDSParser::Instance()->GetScorerMesh();
+  std::vector<GMAD::ScorerMesh> scorerMeshes = BDSParser::Instance()->GetScorerMeshes();
   for (const auto& mesh : scorerMeshes)
     {
       BDSExtent meshExtent = CalculateExtentOfScorerMesh(mesh);
@@ -1364,7 +1364,7 @@ void BDSDetectorConstruction::ConstructScoringMeshes()
   // needed for filtering
   G4LogicalVolume* worldLV = acceleratorModel->WorldLV();
 
-  std::vector<GMAD::ScorerMesh> scoringMeshes = BDSParser::Instance()->GetScorerMesh();
+  std::vector<GMAD::ScorerMesh> scoringMeshes = BDSParser::Instance()->GetScorerMeshes();
   std::vector<GMAD::Scorer> scorers = BDSParser::Instance()->GetScorers();
 
   if (scoringMeshes.empty())

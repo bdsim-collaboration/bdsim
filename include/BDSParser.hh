@@ -109,7 +109,7 @@ public:
   inline std::vector<GMAD::Region> GetRegions() const {return region_list.getVector();}
   inline std::vector<GMAD::SamplerPlacement> GetSamplerPlacements() const {return samplerplacement_list.getVector();}
   inline std::vector<GMAD::Scorer> GetScorers() const {return scorer_list.getVector();}
-  inline std::vector<GMAD::ScorerMesh> GetScorerMesh() const {return scorermesh_list.getVector();}
+  inline std::vector<GMAD::ScorerMesh> GetScorerMeshes() const {return scorermesh_list.getVector();}
   inline std::vector<GMAD::BLMPlacement> GetBLMs() const {return blm_list.getVector();}
   inline std::vector<GMAD::Modulator> GetModulators() const {return modulator_list.getVector();}
   inline std::vector<GMAD::Aperture> GetApertures() const {return aperture_list.getVector();}
