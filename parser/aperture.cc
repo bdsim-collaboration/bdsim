@@ -59,6 +59,6 @@ void Aperture::print()const
 	    << "apertureType "  << apertureType  << std::endl
 	    << "aper1 "         << aper1         << std::endl
 	    << "aper2 "         << aper2         << std::endl
-    	    << "aper3 "         << aper3         << std::endl
-    	    << "aper4 "         << aper4         << std::endl;
+      << "aper3 "         << aper3         << std::endl
+      << "aper4 "         << aper4         << std::endl;
 }
