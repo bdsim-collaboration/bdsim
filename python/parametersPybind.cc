@@ -30,7 +30,7 @@ namespace py = pybind11;
 PYBIND11_MODULE(parameters, m) {
   py::class_<GMAD::Parameters, GMAD::Element, GMAD::Published<GMAD::Element> >(m,"Parameters")
     .def(py::init<>())
-    .def_readwrite("setMap",&GMAD::Parameters::setMap)
+    .def_readonly("setMap",&GMAD::Parameters::setMap)
     .def("flush",&GMAD::Parameters::flush)
     .def("inherit_properties",&GMAD::Parameters::inherit_properties)
 

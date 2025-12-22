@@ -37,12 +37,12 @@ PYBIND11_MODULE(region, m) {
     .def("clear",&GMAD::Region::clear)
     .def("print",&GMAD::Region::print)
 
-    .def_readwrite("name",&GMAD::Region::name)
-    .def_readwrite("defaultRangeCut",&GMAD::Region::defaultRangeCut)
-    .def_readwrite("prodCutPhotons",&GMAD::Region::prodCutPhotons)
-    .def_readwrite("prodCutElectrons",&GMAD::Region::prodCutElectrons)
-    .def_readwrite("prodCutPositrons",&GMAD::Region::prodCutPositrons)
-    .def_readwrite("prodCutProtons",&GMAD::Region::prodCutProtons)
+    .def_readonly("name",&GMAD::Region::name)
+    .def_readonly("defaultRangeCut",&GMAD::Region::defaultRangeCut)
+    .def_readonly("prodCutPhotons",&GMAD::Region::prodCutPhotons)
+    .def_readonly("prodCutElectrons",&GMAD::Region::prodCutElectrons)
+    .def_readonly("prodCutPositrons",&GMAD::Region::prodCutPositrons)
+    .def_readonly("prodCutProtons",&GMAD::Region::prodCutProtons)
 
     .def("set_value",[](GMAD::Region &region,std::string name,std::string value) {region.set_value<std::string>(name,value,false);})
     .def("set_value",[](GMAD::Region &region,std::string name,int value) {region.set_value<int>(name,value,false);})

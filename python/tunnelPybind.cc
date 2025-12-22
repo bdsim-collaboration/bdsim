@@ -37,20 +37,20 @@ PYBIND11_MODULE(tunnel, m) {
     .def("clear",&GMAD::Tunnel::clear)
     .def("print",&GMAD::Tunnel::print)
 
-    .def_readwrite("name",&GMAD::Tunnel::name)
-    .def_readwrite("type",&GMAD::Tunnel::type)
+    .def_readonly("name",&GMAD::Tunnel::name)
+    .def_readonly("type",&GMAD::Tunnel::type)
 
-    .def_readwrite("aper1",&GMAD::Tunnel::aper1)
-    .def_readwrite("aper2",&GMAD::Tunnel::aper2)
+    .def_readonly("aper1",&GMAD::Tunnel::aper1)
+    .def_readonly("aper2",&GMAD::Tunnel::aper2)
 
-    .def_readwrite("offsetX",&GMAD::Tunnel::offsetX)
-    .def_readwrite("offsetY",&GMAD::Tunnel::offsetY)
+    .def_readonly("offsetX",&GMAD::Tunnel::offsetX)
+    .def_readonly("offsetY",&GMAD::Tunnel::offsetY)
 
-    .def_readwrite("thickness",&GMAD::Tunnel::thickness)
-    .def_readwrite("soilThickness",&GMAD::Tunnel::soilThickness)
-    .def_readwrite("floorOffset",&GMAD::Tunnel::floorOffset)
+    .def_readonly("thickness",&GMAD::Tunnel::thickness)
+    .def_readonly("soilThickness",&GMAD::Tunnel::soilThickness)
+    .def_readonly("floorOffset",&GMAD::Tunnel::floorOffset)
 
-    .def_readwrite("visible",&GMAD::Tunnel::visible)
+    .def_readonly("visible",&GMAD::Tunnel::visible)
 
     .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,std::string value) {tunnel.set_value<std::string>(name,value,false);})
     .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,int value) {tunnel.set_value<int>(name,value,false);})

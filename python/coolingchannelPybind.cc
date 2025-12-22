@@ -36,7 +36,7 @@ PYBIND11_MODULE(coolingchannel, m) {
     .def("clear",&GMAD::CoolingChannel::clear)
     .def("print", &GMAD::CoolingChannel::print)
 
-    .def_readwrite("name", &GMAD::CoolingChannel::name)
+    .def_readonly("name", &GMAD::CoolingChannel::name)
     .def_readonly("nCells", &GMAD::CoolingChannel::nCells)
     .def_readonly("cellLengthZ", &GMAD::CoolingChannel::cellLengthZ)
     .def_readonly("nCoils", &GMAD::CoolingChannel::nCoils)

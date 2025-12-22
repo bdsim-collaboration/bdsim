@@ -38,12 +38,12 @@ PYBIND11_MODULE(physicsbiasing, m) {
     .def("clear",&GMAD::PhysicsBiasing::clear)
     .def("print",&GMAD::PhysicsBiasing::print)
 
-    .def_readwrite("name",&GMAD::PhysicsBiasing::name)
-    .def_readwrite("particle",&GMAD::PhysicsBiasing::particle)
-    .def_readwrite("process",&GMAD::PhysicsBiasing::process)
-    .def_readwrite("processList",&GMAD::PhysicsBiasing::processList)
-    .def_readwrite("factor",&GMAD::PhysicsBiasing::factor)
-    .def_readwrite("flag",&GMAD::PhysicsBiasing::flag)
+    .def_readonly("name",&GMAD::PhysicsBiasing::name)
+    .def_readonly("particle",&GMAD::PhysicsBiasing::particle)
+    .def_readonly("process",&GMAD::PhysicsBiasing::process)
+    .def_readonly("processList",&GMAD::PhysicsBiasing::processList)
+    .def_readonly("factor",&GMAD::PhysicsBiasing::factor)
+    .def_readonly("flag",&GMAD::PhysicsBiasing::flag)
 
     .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, double value) {biasing.set_value(property,value);})
     .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, GMAD::Array* value) {biasing.set_value(property,value);})

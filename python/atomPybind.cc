@@ -36,10 +36,10 @@ PYBIND11_MODULE(atom, m) {
     .def("clear",&GMAD::Atom::clear)
     .def("print",&GMAD::Atom::print)
 
-    .def_readwrite("name", &GMAD::Atom::name)
-    .def_readwrite("A", &GMAD::Atom::A)
-    .def_readwrite("Z", &GMAD::Atom::Z)
-    .def_readwrite("symbol", &GMAD::Atom::symbol)
+    .def_readonly("name", &GMAD::Atom::name)
+    .def_readonly("A", &GMAD::Atom::A)
+    .def_readonly("Z", &GMAD::Atom::Z)
+    .def_readonly("symbol", &GMAD::Atom::symbol)
 
     .def("set_value",[](GMAD::Atom &atom,std::string name,std::string value) {atom.set_value<std::string>(name,value);})
     .def("set_value",[](GMAD::Atom &atom,std::string name,int value) {atom.set_value<int>(name,value);})

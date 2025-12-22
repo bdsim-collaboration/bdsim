@@ -36,11 +36,11 @@ PYBIND11_MODULE(newcolour, m) {
   .def("clear",&GMAD::NewColour::clear)
   .def("print",&GMAD::NewColour::print)
 
-  .def_readwrite("name",&GMAD::NewColour::name)
-  .def_readwrite("red",&GMAD::NewColour::red)
-  .def_readwrite("green",&GMAD::NewColour::green)
-  .def_readwrite("blue",&GMAD::NewColour::blue)
-  .def_readwrite("alpha",&GMAD::NewColour::alpha)
+  .def_readonly("name",&GMAD::NewColour::name)
+  .def_readonly("red",&GMAD::NewColour::red)
+  .def_readonly("green",&GMAD::NewColour::green)
+  .def_readonly("blue",&GMAD::NewColour::blue)
+  .def_readonly("alpha",&GMAD::NewColour::alpha)
 
   .def("set_value",[](GMAD::NewColour &newcolour,std::string name,std::string value) {newcolour.set_value<std::string>(name,value, false);})
   .def("set_value",[](GMAD::NewColour &newcolour,std::string name,double value) {newcolour.set_value<double>(name,value, false);})
