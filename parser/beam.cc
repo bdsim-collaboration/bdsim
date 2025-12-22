@@ -347,3 +347,20 @@ void Beam::PublishMembers()
   publish("polarization3", &Beam::polarization3);
 
 }
+
+void Beam::print() const
+{
+  std::cout << "Beam: "
+            << "particle "          << particle           << std::endl
+            << "particleName "      << beamParticleName   << std::endl
+            << "beamEnergy "        << beamEnergy         << std::endl
+            << "beamKineticEnergy " << beamKineticEnergy  << std::endl
+            << "beamMomentum "      << beamMomentum       << std::endl
+            << "distrType "         << distrType          << std::endl
+            << "xDistrType "        << xDistrType         << std::endl
+            << "yDistrType "        << yDistrType         << std::endl
+            << "zDistrType "        << zDistrType         << std::endl
+            << "spaceDistrType "    << spaceDistrType     << std::endl
+            << "directionDistrType "<< directionDistrType << std::endl;
+
+}

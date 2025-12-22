@@ -26,6 +26,7 @@ namespace py = pybind11;
 #include "atom.h"
 #include "aperture.h"
 #include "beam.h"
+#include "coolingchannel.h"
 #include "element.h"
 #include "options.h"
 #include "region.h"
@@ -64,10 +65,11 @@ PYBIND11_MODULE(parser, m) {
 
        .def("ClearParams",&GMAD::Parser::ClearParams)
 
-       .def("Add_Atom",[](GMAD::Parser *parser) {parser->Add<GMAD::Atom, GMAD::FastList<GMAD::Atom>>();})
        .def("Add_Aperture",[](GMAD::Parser *parser) {parser->Add<GMAD::Aperture, GMAD::FastList<GMAD::Aperture>>();})
+       .def("Add_Atom",[](GMAD::Parser *parser) {parser->Add<GMAD::Atom, GMAD::FastList<GMAD::Atom>>();})
        .def("Add_BLMPlacement",[](GMAD::Parser *parser) {parser->Add<GMAD::BLMPlacement, GMAD::FastList<GMAD::BLMPlacement>>();})
        .def("Add_CavityModel",[](GMAD::Parser *parser) {parser->Add<GMAD::CavityModel, GMAD::FastList<GMAD::CavityModel>>();})
+       .def("Add_CoolingChannel",[](GMAD::Parser *parser) {parser->Add<GMAD::CoolingChannel, GMAD::FastList<GMAD::CoolingChannel>>(false, std::string("CoolingChannel"));}) // TODO why is the regular template not found
        .def("Add_Crystal",[](GMAD::Parser *parser) {parser->Add<GMAD::Crystal, GMAD::FastList<GMAD::Crystal>>();})
        .def("Add_Field",[](GMAD::Parser *parser) {parser->Add<GMAD::Field, GMAD::FastList<GMAD::Field>>();})
        .def("Add_Material",[](GMAD::Parser *parser) {parser->Add<GMAD::Material, GMAD::FastList<GMAD::Material>>();})
@@ -82,10 +84,11 @@ PYBIND11_MODULE(parser, m) {
        .def("Add_ScorerMesh",[](GMAD::Parser *parser) {parser->Add<GMAD::ScorerMesh, GMAD::FastList<GMAD::ScorerMesh>>();})
        .def("Add_Tunnel",[](GMAD::Parser *parser) {parser->Add<GMAD::Tunnel, GMAD::FastList<GMAD::Tunnel>>();})
 
-       .def("Add_Atom",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Atom, GMAD::FastList<GMAD::Atom>>(unique, className);})
        .def("Add_Aperture",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Aperture, GMAD::FastList<GMAD::Aperture>>(unique, className);})
+       .def("Add_Atom",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Atom, GMAD::FastList<GMAD::Atom>>(unique, className);})
        .def("Add_BLMPlacement",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::BLMPlacement, GMAD::FastList<GMAD::BLMPlacement>>(unique, className);})
        .def("Add_CavityModel",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::CavityModel, GMAD::FastList<GMAD::CavityModel>>(unique, className);})
+       .def("Add_CoolingChannel",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::CoolingChannel, GMAD::FastList<GMAD::CoolingChannel>>(unique, className);})
        .def("Add_Crystal",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Crystal, GMAD::FastList<GMAD::Crystal>>(unique, className);})
        .def("Add_Field",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Field, GMAD::FastList<GMAD::Field>>(unique, className);})
        .def("Add_Material",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Material, GMAD::FastList<GMAD::Material>>(unique, className);})
@@ -100,31 +103,33 @@ PYBIND11_MODULE(parser, m) {
        .def("Add_ScorerMesh",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::ScorerMesh, GMAD::FastList<GMAD::ScorerMesh>>(unique, className);})
        .def("Add_Tunnel",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Tunnel, GMAD::FastList<GMAD::Tunnel>>(unique, className);})
 
-       .def("GetGlobal_Aperture",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Aperture>();})
+       .def("GetGlobal_Aperture",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Aperture>();}, py::return_value_policy::reference)
        .def("GetGlobal_Atom",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Atom>();}, py::return_value_policy::reference)
-       .def("GetGlobal_Beam",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Beam>();})
-       .def("GetGlobal_BLMPlacement",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::BLMPlacement>();})
-       .def("GetGlobal_CavityModel",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::CavityModel>();})
-       .def("GetGlobal_Crystal",[](GMAD::Parser parser) {return parser.GetGlobalPtr<GMAD::Crystal>();})
-       .def("GetGlobal_Field",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Field>();})
-       .def("GetGlobal_Material",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Material>();})
-       .def("GetGlobal_Modulator",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Modulator>();})
-       .def("GetGlobal_NewColour",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::NewColour>();})
-       .def("GetGlobal_Options",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Options>();})
-       .def("GetGlobal_Parameters",[](GMAD::Parser parser) {return parser.GetGlobal<GMAD::Parameters>();})
-       .def("GetGlobal_PhysicsBias",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::PhysicsBiasing>();})
-       .def("GetGlobal_Placement",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Placement>();})
-       .def("GetGlobal_Query",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Query>();})
-       .def("GetGlobal_Region",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Region>();})
-       .def("GetGlobal_SpamplerPlacement",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::SamplerPlacement>();})
-       .def("GetGlobal_Scorer",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Scorer>();})
-       .def("GetGlobal_ScorerMesh",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::ScorerMesh>();})
-       .def("GetGlobal_Tunnel",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Tunnel>();})
+       .def("GetGlobal_Beam",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Beam>();}, py::return_value_policy::reference)
+       .def("GetGlobal_BLMPlacement",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::BLMPlacement>();}, py::return_value_policy::reference)
+       .def("GetGlobal_CavityModel",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::CavityModel>();}, py::return_value_policy::reference)
+       .def("GetGlobal_CoolingChannel",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::CoolingChannel>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Crystal",[](GMAD::Parser parser) {return parser.GetGlobal<GMAD::Crystal>();}, py::return_value_policy::reference) // TODO why does passing back by reference work here?
+       .def("GetGlobal_Field",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Field>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Material",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Material>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Modulator",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Modulator>();}, py::return_value_policy::reference)
+       .def("GetGlobal_NewColour",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::NewColour>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Options",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Options>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Parameters",[](GMAD::Parser parser) {return parser.GetGlobal<GMAD::Parameters>();}, py::return_value_policy::reference)
+       .def("GetGlobal_PhysicsBias",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::PhysicsBiasing>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Placement",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Placement>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Query",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Query>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Region",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Region>();}, py::return_value_policy::reference)
+       .def("GetGlobal_SamplerPlacement",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::SamplerPlacement>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Scorer",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Scorer>();}, py::return_value_policy::reference)
+       .def("GetGlobal_ScorerMesh",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::ScorerMesh>();}, py::return_value_policy::reference)
+       .def("GetGlobal_Tunnel",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Tunnel>();}, py::return_value_policy::reference)
 
-       .def("GetList_Atom",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Atom, GMAD::FastList<GMAD::Atom>>();})
        .def("GetList_Aperture",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Aperture, GMAD::FastList<GMAD::Aperture>>();})
+       .def("GetList_Atom",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Atom, GMAD::FastList<GMAD::Atom>>();})
        .def("GetList_BLMPlacement",[](GMAD::Parser *parser) {return parser->GetList<GMAD::BLMPlacement, GMAD::FastList<GMAD::BLMPlacement>>();})
        .def("GetList_CavityModel",[](GMAD::Parser *parser) {return parser->GetList<GMAD::CavityModel, GMAD::FastList<GMAD::CavityModel>>();})
+       .def("GetList_CoolingChannel",[](GMAD::Parser *parser) {return parser->GetList<GMAD::CoolingChannel, GMAD::FastList<GMAD::CoolingChannel>>();})
        .def("GetList_Crystal",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Crystal, GMAD::FastList<GMAD::Crystal>>();})
        .def("GetList_Field",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Field, GMAD::FastList<GMAD::Field>>();})
        .def("GetList_Material",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Material, GMAD::FastList<GMAD::Material>>();})
@@ -136,6 +141,7 @@ PYBIND11_MODULE(parser, m) {
        .def("GetList_SamplerPlacement",[](GMAD::Parser *parser) {return parser->GetList<GMAD::SamplerPlacement, GMAD::FastList<GMAD::SamplerPlacement>>();})
        .def("GetList_Scorer",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Scorer, GMAD::FastList<GMAD::Scorer>>();})
        .def("GetList_ScorerMesh",[](GMAD::Parser *parser) {return parser->GetList<GMAD::ScorerMesh, GMAD::FastList<GMAD::ScorerMesh>>();})
+       .def("GetList_Tunnel",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Tunnel, GMAD::FastList<GMAD::Tunnel>>();})
 
        .def("GetSamplerFilters",&GMAD::Parser::GetSamplerFilters)
        .def("GetSamplerFilterIDToSet",&GMAD::Parser::GetSamplerFilterIDToSet)

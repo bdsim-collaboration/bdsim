@@ -26,7 +26,19 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 using namespace GMAD;
 
-PhysicsBiasing::PhysicsBiasing(){}
+PhysicsBiasing::PhysicsBiasing(){
+  PublishMembers();
+}
+
+void PhysicsBiasing::PublishMembers()
+{
+  publish("name",  &PhysicsBiasing::name);
+  publish("particle", &PhysicsBiasing::particle);
+  publish("process", &PhysicsBiasing::process);
+  publish("processList", &PhysicsBiasing::processList);
+  publish("factor", &PhysicsBiasing::factor);
+  publish("flag", &PhysicsBiasing::flag);
+}
 
 void PhysicsBiasing::clear()
 {
@@ -51,7 +63,7 @@ void PhysicsBiasing::print() const
   std::cout << std::endl;
 }
 
-void PhysicsBiasing::set_value(const std::string& property, double value )
+void PhysicsBiasing::set_value(const std::string& property, double value, bool bExit)
 {
 #ifdef BDSDEBUG
   std::cout << "parser> Setting value " << std::setw(25) << std::left << property << value << std::endl;
@@ -61,10 +73,13 @@ void PhysicsBiasing::set_value(const std::string& property, double value )
   if (property=="xsecfact") {factor.push_back(value); return;}
   
   std::cerr << "Error: parser> unknown physicsbiasing option \"" << property << "\" with value " << value << std::endl; 
-  exit(1);
+  if(bExit)
+    exit(1);
+  else
+    std::rethrow_exception(std::current_exception());
 }
 
-void PhysicsBiasing::set_value(const std::string& property, Array* value)
+void PhysicsBiasing::set_value(const std::string& property, Array* value, bool bExit)
 {
   if (property=="flag")
     {
@@ -77,13 +92,17 @@ void PhysicsBiasing::set_value(const std::string& property, Array* value)
     {
       std::cerr << "Error: parser> unknown physicsbiasing option \"" << property << "\" with value ";
       for (const auto& i : value->GetData())
-	{std::cout << i << " ";}
+        {std::cout << i << " ";}
+
       std::cout << std::endl;
-      exit(1);
+      if(bExit)
+        exit(1);
+      else
+        std::rethrow_exception(std::current_exception());
     }
 }
 
-void PhysicsBiasing::set_value(const std::string& property, std::string value)
+void PhysicsBiasing::set_value(const std::string& property, std::string value, bool bExit)
 {
 #ifdef BDSDEBUG
   std::cout << "parser> Setting value " << std::setw(25) << std::left << property << value << std::endl;
@@ -99,13 +118,16 @@ void PhysicsBiasing::set_value(const std::string& property, std::string value)
       std::stringstream ss(process);
       std::string tok;
       while(ss >> tok)
-	{processList.push_back(tok);}
+        {processList.push_back(tok);}
       return;
     }
   else
     {
       std::cerr << "Error: parser> unknown physicsbiasing option \"" << property
-		<< "\" with value " << value << std::endl;
-      exit(1);
+                << "\" with value " << value << std::endl;
+      if(bExit)
+        exit(1);
+      else
+        std::rethrow_exception(std::current_exception());
     }
 }

@@ -120,7 +120,8 @@ namespace GMAD
       for (auto value : data)
 	{
 	  dst.push_back((T)value);
-#ifdef BDSDEBUG 
+
+#ifdef BDSDEBUG
 	  std::cout << (T)value << " ";
 #endif
 	}

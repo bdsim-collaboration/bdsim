@@ -28,10 +28,15 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(scorer, m) {
     py::class_<GMAD::Published<GMAD::Scorer>>(m,"PublishedScorer")
-      .def("NameExists",&GMAD::Scorer::NameExists);
+      .def("NameExists", &GMAD::Scorer::NameExists)
+      .def("AllNames", &GMAD::Scorer::AllNames);
 
-    py::class_<GMAD::Scorer>(m,"Scorer")
+    py::class_<GMAD::Scorer, GMAD::Published<GMAD::Scorer>>(m,"Scorer")
       .def (py::init<>())
+
+      .def("clear",&GMAD::Scorer::clear)
+      .def("print",&GMAD::Scorer::print)
+
       .def_readwrite("name",&GMAD::Scorer::name)
       .def_readwrite("type",&GMAD::Scorer::type)
       .def_readwrite("particleName",&GMAD::Scorer::particleName)
@@ -47,12 +52,16 @@ PYBIND11_MODULE(scorer, m) {
       .def_readwrite("scoreWorldVolumeOnly",&GMAD::Scorer::scoreWorldVolumeOnly)
       .def_readwrite("scorePrimariesOnly",&GMAD::Scorer::scorePrimariesOnly)
 
-      .def("clear",&GMAD::Scorer::clear)
-      .def("print",&GMAD::Scorer::print)
-
       .def("set_value",[](GMAD::Scorer &scorer,std::string name,std::string value) {scorer.set_value<std::string>(name,value,false);})
       .def("set_value",[](GMAD::Scorer &scorer,std::string name,int value) {scorer.set_value<int>(name,value,false);})
       .def("set_value",[](GMAD::Scorer &scorer,std::string name,bool value) {scorer.set_value<bool>(name,value,false);})
       .def("set_value",[](GMAD::Scorer &scorer,std::string name,long int value) {scorer.set_value<long int>(name,value,false);})
-      .def("set_value",[](GMAD::Scorer &scorer,std::string name,double value) {scorer.set_value<double>(name,value,false);});
+      .def("set_value",[](GMAD::Scorer &scorer,std::string name,double value) {scorer.set_value<double>(name,value,false);})
+
+      .def("keys", [](GMAD::Scorer &self) {return self.AllNames();})
+      .def("__len__", [](GMAD::Scorer &self) {return self.AllNames().size();})
+      .def("__setitem__", [](GMAD::Scorer &self, const std::string& key, int value) {self.set_value(key,value, false);})
+      .def("__setitem__", [](GMAD::Scorer &self, const std::string& key, double value) {self.set_value(key,value, false);})
+      .def("__setitem__", [](GMAD::Scorer &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+      .def("_ipython_key_completions_", [](GMAD::Scorer &self) {return self.AllNames();});
 }

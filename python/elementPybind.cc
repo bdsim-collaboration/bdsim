@@ -28,7 +28,9 @@ namespace py = pybind11;
 PYBIND11_MODULE(element, m)
 {
   py::class_<GMAD::Published<GMAD::Element>>(m,"PublishedElement")
-    .def("NameExists", &GMAD::Element::NameExists);
+    .def("NameExists", &GMAD::Element::NameExists)
+    .def("AllNames", &GMAD::Element::AllNames);
+
 
   py::class_<GMAD::Element, GMAD::Published<GMAD::Element>>(m,"Element")
     .def(py::init<>())
@@ -113,6 +115,13 @@ PYBIND11_MODULE(element, m)
     .def_readwrite("offsetX", &GMAD::Element::offsetX)
     .def_readwrite("offsetY", &GMAD::Element::offsetY)
 
+    .def_readonly("xsize2", &GMAD::Element::xsize2)
+    .def_readonly("ysize2", &GMAD::Element::ysize2)
+    .def_readonly("offsetX2", &GMAD::Element::offsetX2)
+    .def_readonly("offsetY2", &GMAD::Element::offsetY2)
+    .def_readonly("tilt2", &GMAD::Element::tilt2)
+    .def_readonly("outerShape", &GMAD::Element::outerShape)
+
     .def_readwrite("tscint", &GMAD::Element::tscint)
     .def_readwrite("twindow", &GMAD::Element::twindow)
     .def_readwrite("tmount", &GMAD::Element::tmount)
@@ -161,6 +170,16 @@ PYBIND11_MODULE(element, m)
     .def_readwrite("undulatorPeriod", &GMAD::Element::undulatorPeriod)
     .def_readwrite("undulatorGap", &GMAD::Element::undulatorGap)
     .def_readwrite("undulatorMagnetHeight", &GMAD::Element::undulatorMagnetHeight)
+
+    .def_readonly("anodeLength", &GMAD::Element::anodeLength)
+    .def_readonly("anodeRadius", &GMAD::Element::anodeRadius)
+    .def_readonly("anodeThickness", &GMAD::Element::anodeThickness)
+    .def_readonly("electrodeLength", &GMAD::Element::electrodeLength)
+    .def_readonly("electrodeRadius", &GMAD::Element::electrodeRadius)
+    .def_readonly("electrodeThickness", &GMAD::Element::electrodeThickness)
+
+    .def_readonly("tipThickness", &GMAD::Element::tipThickness)
+    .def_readonly("tipMaterial", &GMAD::Element::tipMaterial)
 
     .def_readwrite("bias", &GMAD::Element::bias)
     .def_readwrite("biasMaterial", &GMAD::Element::biasMaterial)
@@ -223,5 +242,13 @@ PYBIND11_MODULE(element, m)
     .def("set_value",[](GMAD::Element& element, std::string name, int value) {element.set_value<int>(name, value, true);})
     .def("set_value",[](GMAD::Element& element, std::string name, bool value) {element.set_value<bool>(name, value, true);})
     .def("set_value",[](GMAD::Element& element, std::string name, long int value) {element.set_value<long int>(name, value, true);})
-    .def("set_value",[](GMAD::Element& element, std::string name, double value) {element.set_value<double>(name, value, true);});
+    .def("set_value",[](GMAD::Element& element, std::string name, double value) {element.set_value<double>(name, value, true);})
+
+    .def("keys", [](GMAD::Element &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::Element &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Element &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Element &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Element &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::Element &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::Element &self) {return self.AllNames();});
 }

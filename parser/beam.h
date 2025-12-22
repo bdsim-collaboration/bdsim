@@ -45,10 +45,13 @@ namespace GMAD
   public:
     Beam();
     explicit Beam(const GMAD::BeamBase& options);
-    
+
+    /// Print some properties
+    void print() const;
+
     /// set methods by property name
     template<typename T>
-    void set_value(std::string name, T value);
+    void set_value(std::string name, T value, bool bExit = true);
     
     /// get method (only for doubles)
     double get_value(std::string name) const;
@@ -73,7 +76,7 @@ namespace GMAD
   };
 
   template<typename T>
-  void Beam::set_value(std::string name, T value)
+  void Beam::set_value(std::string name, T value, bool bExit)
   {
 #ifdef BDSDEBUG
     std::cout << "beam> setting value " << std::setw(25) << std::left << name << value << std::endl;
@@ -87,7 +90,10 @@ namespace GMAD
     catch (const std::runtime_error&)
       {
         std::cerr << "Error: beam> unknown beam parameter \"" << name << "\" with value \"" << value << "\"" << std::endl;
-        exit(1);
+        if(bExit)
+          {exit(1);}
+        else
+          {std::rethrow_exception(std::current_exception());}
       }
   }
 }

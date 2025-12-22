@@ -28,10 +28,13 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(modulator, m) {
   py::class_<GMAD::Published<GMAD::Modulator>>(m,"PublishedModulator")
-    .def("NameExists",&GMAD::Modulator::NameExists);
+    .def("NameExists", &GMAD::Modulator::NameExists)
+    .def("AllNames", &GMAD::Modulator::AllNames);
 
-  py::class_<GMAD::Modulator>(m,"Modulator")
+  py::class_<GMAD::Modulator, GMAD::Published<GMAD::Modulator>>(m,"Modulator")
     .def (py::init<>())
+    .def("clear",&GMAD::Modulator::clear)
+    .def("print",&GMAD::Modulator::print)
 
     .def_readwrite("name",&GMAD::Modulator::name)
     .def_readwrite("type",&GMAD::Modulator::type)
@@ -44,12 +47,17 @@ PYBIND11_MODULE(modulator, m) {
     .def_readwrite("T0",&GMAD::Modulator::T0)
     .def_readwrite("T1",&GMAD::Modulator::T1)
 
-    .def("clear",&GMAD::Modulator::clear)
-    .def("print",&GMAD::Modulator::print)
-
     .def("set_value",[](GMAD::Modulator &modulator,std::string name,std::string value) {modulator.set_value<std::string>(name,value,false);})
     .def("set_value",[](GMAD::Modulator &modulator,std::string name,int value) {modulator.set_value<int>(name,value,false);})
     .def("set_value",[](GMAD::Modulator &modulator,std::string name,bool value) {modulator.set_value<bool>(name,value,false);})
     .def("set_value",[](GMAD::Modulator &modulator,std::string name,long int value) {modulator.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::Modulator &modulator,std::string name,double value) {modulator.set_value<double>(name,value,false);});
+    .def("set_value",[](GMAD::Modulator &modulator,std::string name,double value) {modulator.set_value<double>(name,value,false);})
+
+    .def("keys", [](GMAD::Modulator &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::Modulator &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Modulator &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Modulator &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Modulator &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::Modulator &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::Modulator &self) {return self.AllNames();});
 }

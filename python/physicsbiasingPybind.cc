@@ -28,8 +28,16 @@ namespace py = pybind11;
 #include "array.h"
 
 PYBIND11_MODULE(physicsbiasing, m) {
-  py::class_<GMAD::PhysicsBiasing>(m,"PhysicsBiasing")
+  py::class_<GMAD::Published<GMAD::PhysicsBiasing>>(m, "PublishedPhysicsBiasing")
+    .def("NameExists", &GMAD::PhysicsBiasing::NameExists)
+    .def("AllNames",&GMAD::PhysicsBiasing::AllNames);
+
+  py::class_<GMAD::PhysicsBiasing, GMAD::Published<GMAD::PhysicsBiasing>>(m,"PhysicsBiasing")
     .def(py::init<>())
+
+    .def("clear",&GMAD::PhysicsBiasing::clear)
+    .def("print",&GMAD::PhysicsBiasing::print)
+
     .def_readwrite("name",&GMAD::PhysicsBiasing::name)
     .def_readwrite("particle",&GMAD::PhysicsBiasing::particle)
     .def_readwrite("process",&GMAD::PhysicsBiasing::process)
@@ -37,9 +45,15 @@ PYBIND11_MODULE(physicsbiasing, m) {
     .def_readwrite("factor",&GMAD::PhysicsBiasing::factor)
     .def_readwrite("flag",&GMAD::PhysicsBiasing::flag)
 
-    .def("clear",&GMAD::PhysicsBiasing::clear)
-    .def("print",&GMAD::PhysicsBiasing::print)
     .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, double value) {biasing.set_value(property,value);})
     .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, GMAD::Array* value) {biasing.set_value(property,value);})
-    .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, std::string value) {biasing.set_value(property,value);});
+    .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, std::string value) {biasing.set_value(property,value);})
+
+    .def("keys", [](GMAD::PhysicsBiasing &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::PhysicsBiasing &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::PhysicsBiasing &self) {return self.AllNames();});
 }

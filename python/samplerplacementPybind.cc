@@ -28,10 +28,14 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(samplerplacement, m) {
   py::class_<GMAD::Published<GMAD::SamplerPlacement>>(m,"PublishedSamplerPlacement")
-    .def("NameExists",&GMAD::SamplerPlacement::NameExists);
+    .def("NameExists", &GMAD::SamplerPlacement::NameExists)
+    .def("AllNames", &GMAD::SamplerPlacement::AllNames);
 
-  py::class_<GMAD::SamplerPlacement>(m,"SamplerPlacement")
+  py::class_<GMAD::SamplerPlacement, GMAD::Published<GMAD::SamplerPlacement>>(m,"SamplerPlacement")
     .def (py::init<>())
+
+    .def("clear",&GMAD::SamplerPlacement::clear)
+    .def("print",&GMAD::SamplerPlacement::print)
 
     .def_readwrite("name",&GMAD::SamplerPlacement::name)
     .def_readwrite("samplerType",&GMAD::SamplerPlacement::samplerType)
@@ -68,12 +72,16 @@ PYBIND11_MODULE(samplerplacement, m) {
     .def_readwrite("partID",&GMAD::SamplerPlacement::partID)
     .def_readwrite("partIDSetID",&GMAD::SamplerPlacement::partIDSetID)
 
-    .def("clear",&GMAD::SamplerPlacement::clear)
-    .def("print",&GMAD::SamplerPlacement::print)
-
     .def("set_value",[](GMAD::SamplerPlacement &samplerplacement,std::string name,std::string value) {samplerplacement.set_value<std::string>(name,value,false);})
     .def("set_value",[](GMAD::SamplerPlacement &samplerplacement,std::string name,int value) {samplerplacement.set_value<int>(name,value,false);})
     .def("set_value",[](GMAD::SamplerPlacement &samplerplacement,std::string name,bool value) {samplerplacement.set_value<bool>(name,value,false);})
     .def("set_value",[](GMAD::SamplerPlacement &samplerplacement,std::string name,long int value) {samplerplacement.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::SamplerPlacement &samplerplacement,std::string name,double value) {samplerplacement.set_value<double>(name,value,false);});
+    .def("set_value",[](GMAD::SamplerPlacement &samplerplacement,std::string name,double value) {samplerplacement.set_value<double>(name,value,false);})
+
+    .def("keys", [](GMAD::SamplerPlacement &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::SamplerPlacement &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::SamplerPlacement &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::SamplerPlacement &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::SamplerPlacement &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::SamplerPlacement &self) {return self.AllNames();});
 }

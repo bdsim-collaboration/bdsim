@@ -28,6 +28,7 @@ from .beam import *
 from .blmplacement import *
 from .cavitymodel import *
 from .crystal import *
+from .coolingchannel import *
 from .element import *
 from .elementtype import *
 from .fastlist import *
@@ -42,11 +43,13 @@ from .placement import *
 from .query import *
 from .region import *
 from .samplerplacement import *
+from .scorer import *
 from .scorermesh import *
 from .sym_table import *
 from .tunnel import *
 from .bdsim import *
 from .convert import *
+from .developer import *
 
 try :
     from .ocelot import *

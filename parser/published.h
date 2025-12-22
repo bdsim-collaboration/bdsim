@@ -49,7 +49,8 @@ class Published
 {
 public:
   bool NameExists(const std::string& name) const {return allNames.count(name) > 0;}
-  
+  std::set<std::string> AllNames() {return allNames;}
+
 protected:
   /// Make pointer to member from class C and type T with accessible with a name
   template<typename T>

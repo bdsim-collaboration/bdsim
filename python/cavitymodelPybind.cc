@@ -28,10 +28,14 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(cavitymodel, m) {
   py::class_<GMAD::Published<GMAD::CavityModel>>(m,"PublishedCavityModel")
-  .def("NameExists",&GMAD::CavityModel::NameExists);
+  .def("NameExists",&GMAD::CavityModel::NameExists)
+  .def("AllNames", &GMAD::CavityModel::AllNames);
 
   py::class_<GMAD::CavityModel, GMAD::Published<GMAD::CavityModel>>(m,"CavityModel")
   .def(py::init<>())
+  .def("clear",&GMAD::CavityModel::clear)
+  .def("print", &GMAD::CavityModel::print)
+
   .def_readwrite("name", &GMAD::CavityModel::name)
   .def_readwrite("type", &GMAD::CavityModel::type)
   .def_readwrite("material", &GMAD::CavityModel::material)
@@ -46,14 +50,17 @@ PYBIND11_MODULE(cavitymodel, m) {
   .def_readwrite("thickness", &GMAD::CavityModel::thickness)
   .def_readwrite("numberOfPoints", &GMAD::CavityModel::numberOfPoints)
   .def_readwrite("numberOfCells", &GMAD::CavityModel::numberOfCells)
-  .def("clear",&GMAD::CavityModel::clear)
-  .def("PublishMembers", &GMAD::CavityModel::PublishMembers)
-  .def("print", &GMAD::CavityModel::print)
 
   .def("set_value",[](GMAD::CavityModel &cm,std::string name,std::string value) {cm.set_value<std::string>(name,value);})
   .def("set_value",[](GMAD::CavityModel &cm,std::string name,int value) {cm.set_value<int>(name,value);})
   .def("set_value",[](GMAD::CavityModel &cm,std::string name,long int value) {cm.set_value<long int>(name,value);})
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,double value) {cm.set_value<double>(name,value);});
+  .def("set_value",[](GMAD::CavityModel &cm,std::string name,double value) {cm.set_value<double>(name,value);})
 
+  .def("keys", [](GMAD::CavityModel &self) {return self.AllNames();})
+  .def("__len__", [](GMAD::CavityModel &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, int value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, double value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+  .def("_ipython_key_completions_", [](GMAD::CavityModel &self) {return self.AllNames();});
 
 }

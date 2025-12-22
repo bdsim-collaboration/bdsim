@@ -88,7 +88,7 @@ namespace GMAD
     void print()const;
     /// set methods by property name and value
     template <typename T>
-    void set_value(std::string property, T value, bool exceptionSafe = false);
+    void set_value(std::string property, T value, bool bExit = true);
 
   private:
     /// publish members
@@ -96,7 +96,7 @@ namespace GMAD
   };
   
   template <typename T>
-  void ScorerMesh::set_value(std::string property, T value, bool exceptionSafe)
+  void ScorerMesh::set_value(std::string property, T value, bool bExit)
   {
 #ifdef BDSDEBUG
     std::cout << "scorermesh> Setting value " << std::setw(25) << std::left
@@ -110,10 +110,10 @@ namespace GMAD
         std::stringstream ss;
         ss << "Error: scorermesh> unknown property \"" << property
            << "\" with value \"" << value << "\" in definition \"" << this->name << "\"";
-        if (!exceptionSafe)
-          {throw std::invalid_argument(ss.str());}
+        if (bExit)
+          {exit(1);}
         else
-          {std::cout << ss.str() << std::endl;}
+          {throw std::invalid_argument(ss.str());}
       }
   }
 }

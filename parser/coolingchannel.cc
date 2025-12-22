@@ -251,7 +251,7 @@ std::ostream& operator<<(std::ostream& out, const std::list<T>& l)
   return out;
 }
 
-void CoolingChannel::set_value(const std::string& property, Array* value)
+void CoolingChannel::set_value(const std::string& property, Array* value, bool bExit)
 {
   auto search = attribute_map_list_double.find(property);
   if (search != attribute_map_list_double.end())
@@ -264,7 +264,10 @@ void CoolingChannel::set_value(const std::string& property, Array* value)
       else
         {
           std::cerr << "Error: parser> unknown coolingchannel option \"" << property << "\", or doesn't expect vector type" << std::endl;
-          exit(1);
+          if(bExit)
+            {exit(1);}
+          else
+            {std::rethrow_exception(std::current_exception());}
         }
     }
 }

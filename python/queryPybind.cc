@@ -28,10 +28,15 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(query, m) {
   py::class_<GMAD::Published<GMAD::Query>>(m,"PublishedQuery")
-    .def("NameExists",&GMAD::Query::NameExists);
+    .def("NameExists", &GMAD::Query::NameExists)
+    .def("AllNames", &GMAD::Query::AllNames);
 
-  py::class_<GMAD::Query>(m,"Query")
+  py::class_<GMAD::Query, GMAD::Published<GMAD::Query>>(m,"Query")
     .def (py::init<>())
+
+    .def("clear",&GMAD::Query::clear)
+    .def("print",&GMAD::Query::print)
+
     .def_readwrite("name",&GMAD::Query::name)
     .def_readwrite("nx",&GMAD::Query::nx)
     .def_readwrite("ny",&GMAD::Query::ny)
@@ -82,12 +87,17 @@ PYBIND11_MODULE(query, m) {
 
     .def_readwrite("checkParameters",&GMAD::Query::checkParameters)
 
-    .def("clear",&GMAD::Query::clear)
-    .def("print",&GMAD::Query::print)
-
     .def("set_value",[](GMAD::Query &query,std::string name,std::string value) {query.set_value<std::string>(name,value,false);})
     .def("set_value",[](GMAD::Query &query,std::string name,int value) {query.set_value<int>(name,value,false);})
     .def("set_value",[](GMAD::Query &query,std::string name,bool value) {query.set_value<bool>(name,value,false);})
     .def("set_value",[](GMAD::Query &query,std::string name,long int value) {query.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::Query &query,std::string name,double value) {query.set_value<double>(name,value,false);});
+    .def("set_value",[](GMAD::Query &query,std::string name,double value) {query.set_value<double>(name,value,false);})
+
+    .def("keys", [](GMAD::Query &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::Query &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Query &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Query &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Query &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::Query &self) {return self.AllNames();});
+
 }

@@ -28,10 +28,14 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(field, m) {
   py::class_<GMAD::Published<GMAD::Field>>(m,"PublishedField")
-  .def("NameExists",&GMAD::Field::NameExists);
+  .def("NameExists",&GMAD::Field::NameExists)
+  .def("AllNames", &GMAD::Field::AllNames);
 
   py::class_<GMAD::Field, GMAD::Published<GMAD::Field>>(m,"Field")
   .def(py::init<>())
+
+  .def("clear",&GMAD::Field::clear)
+  .def("print",&GMAD::Field::print)
 
   .def_readwrite("name", &GMAD::Field::name)
   .def_readwrite("type", &GMAD::Field::type)
@@ -64,11 +68,18 @@ PYBIND11_MODULE(field, m) {
   .def_readwrite("magneticReflection", &GMAD::Field::magneticReflection)
   .def_readwrite("electricReflection", &GMAD::Field::electricReflection)
   .def_readwrite("fieldParameters", &GMAD::Field::fieldParameters)
-  .def("clear",&GMAD::Field::clear)
-  .def("print",&GMAD::Field::print)
+
   .def("set_value",[](GMAD::Field &field,std::string name,std::string value) {field.set_value<std::string>(name,value, false);})
   .def("set_value",[](GMAD::Field &field,std::string name,int value) {field.set_value<int>(name,value, false);})
   .def("set_value",[](GMAD::Field &field,std::string name,bool value) {field.set_value<bool>(name,value, false);})
   .def("set_value",[](GMAD::Field &field,std::string name,long int value) {field.set_value<long int>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,double value) {field.set_value<double>(name,value, false);});
+  .def("set_value",[](GMAD::Field &field,std::string name,double value) {field.set_value<double>(name,value, false);})
+
+  .def("keys", [](GMAD::Field &self) {return self.AllNames();})
+  .def("__len__", [](GMAD::Field &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, int value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, double value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+  .def("_ipython_key_completions_", [](GMAD::Field &self) {return self.AllNames();});
 }

@@ -28,10 +28,15 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(crystal, m) {
   py::class_<GMAD::Published<GMAD::Crystal>>(m,"PublishedCrystal")
-  .def("NameExists",&GMAD::Crystal::NameExists);
+  .def("NameExists",&GMAD::Crystal::NameExists)
+  .def("AllNames", &GMAD::Crystal::AllNames);
 
   py::class_<GMAD::Crystal, GMAD::Published<GMAD::Crystal>>(m,"Crystal")
   .def(py::init<>())
+
+  .def("clear",&GMAD::Crystal::clear)
+  .def("print",&GMAD::Crystal::print)
+
   .def_readwrite("name", &GMAD::Crystal::name)
   .def_readwrite("material", &GMAD::Crystal::material)
   .def_readwrite("data", &GMAD::Crystal::data)
@@ -49,12 +54,18 @@ PYBIND11_MODULE(crystal, m) {
   .def_readwrite("bendingAngleYAxis", &GMAD::Crystal::bendingAngleYAxis)
   .def_readwrite("bendingAngleZAxis", &GMAD::Crystal::bendingAngleZAxis)
   .def_readwrite("miscutAngleY", &GMAD::Crystal::miscutAngleY)
-  .def("clear",&GMAD::Crystal::clear)
-  .def("print",&GMAD::Crystal::print)
+
   .def("set_value",[](GMAD::Crystal &crystal,std::string name,std::string value) {crystal.set_value<std::string>(name,value);})
   .def("set_value",[](GMAD::Crystal &crystal,std::string name,int value) {crystal.set_value<int>(name,value);})
   .def("set_value",[](GMAD::Crystal &crystal,std::string name,bool value) {crystal.set_value<bool>(name,value);})
   .def("set_value",[](GMAD::Crystal &crystal,std::string name,long int value) {crystal.set_value<long int>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,double value) {crystal.set_value<double>(name,value);});
+  .def("set_value",[](GMAD::Crystal &crystal,std::string name,double value) {crystal.set_value<double>(name,value);})
 
+  .def("keys", [](GMAD::Crystal &self) {return self.AllNames();})
+  .def("__len__", [](GMAD::Crystal &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, int value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, double value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+  .def("_ipython_key_completions_", [](GMAD::Crystal &self) {return self.AllNames();});
 }

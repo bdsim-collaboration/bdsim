@@ -28,12 +28,16 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(tunnel, m) {
   py::class_<GMAD::Published<GMAD::Tunnel>>(m,"PublishedTunnel")
-    .def("NameExists",&GMAD::Tunnel::NameExists);
+    .def("NameExists", &GMAD::Tunnel::NameExists)
+    .def("AllNames", &GMAD::Tunnel::AllNames);
 
-  py::class_<GMAD::Tunnel>(m,"Tunnel")
+  py::class_<GMAD::Tunnel, GMAD::Published<GMAD::Tunnel>>(m,"Tunnel")
     .def (py::init<>())
-    .def_readwrite("name",&GMAD::Tunnel::name)
 
+    .def("clear",&GMAD::Tunnel::clear)
+    .def("print",&GMAD::Tunnel::print)
+
+    .def_readwrite("name",&GMAD::Tunnel::name)
     .def_readwrite("type",&GMAD::Tunnel::type)
 
     .def_readwrite("aper1",&GMAD::Tunnel::aper1)
@@ -48,12 +52,16 @@ PYBIND11_MODULE(tunnel, m) {
 
     .def_readwrite("visible",&GMAD::Tunnel::visible)
 
-    .def("clear",&GMAD::Tunnel::clear)
-    .def("print",&GMAD::Tunnel::print)
-
     .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,std::string value) {tunnel.set_value<std::string>(name,value,false);})
     .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,int value) {tunnel.set_value<int>(name,value,false);})
     .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,bool value) {tunnel.set_value<bool>(name,value,false);})
     .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,long int value) {tunnel.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,double value) {tunnel.set_value<double>(name,value,false);});
+    .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,double value) {tunnel.set_value<double>(name,value,false);})
+
+    .def("keys", [](GMAD::Tunnel &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::Tunnel &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Tunnel &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Tunnel &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Tunnel &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::Tunnel &self) {return self.AllNames();});
 }

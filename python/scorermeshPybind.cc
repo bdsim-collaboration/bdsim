@@ -26,10 +26,15 @@ namespace py = pybind11;
 PYBIND11_MODULE(scorermesh, m)
 {
   py::class_<GMAD::Published<GMAD::ScorerMesh>>(m,"PublishedScorerMesh")
-    .def("NameExists",&GMAD::ScorerMesh::NameExists);
+    .def("NameExists", &GMAD::ScorerMesh::NameExists)
+    .def("AllNames", &GMAD::ScorerMesh::AllNames);
 
-  py::class_<GMAD::ScorerMesh>(m,"ScorerMesh")
+  py::class_<GMAD::ScorerMesh, GMAD::Published<GMAD::ScorerMesh>>(m,"ScorerMesh")
     .def (py::init<>())
+
+    .def("clear", &GMAD::ScorerMesh::clear)
+    .def("print", &GMAD::ScorerMesh::print)
+
     .def_readwrite("name", &GMAD::ScorerMesh::name)
     .def_readwrite("scoreQuantity", &GMAD::ScorerMesh::scoreQuantity)
     .def_readwrite("geometryType", &GMAD::ScorerMesh::geometryType)
@@ -69,12 +74,16 @@ PYBIND11_MODULE(scorermesh, m)
 
     .def_readwrite("axisAngle", &GMAD::ScorerMesh::axisAngle)
 
-    .def("clear", &GMAD::ScorerMesh::clear)
-    .def("print", &GMAD::ScorerMesh::print)
-
     .def("set_value",[](GMAD::ScorerMesh& scorermesh, std::string name, std::string value) {scorermesh.set_value<std::string>(name, value, true);})
     .def("set_value",[](GMAD::ScorerMesh& scorermesh, std::string name, int value) {scorermesh.set_value<int>(name, value, true);})
     .def("set_value",[](GMAD::ScorerMesh& scorermesh, std::string name, bool value) {scorermesh.set_value<bool>(name, value, true);})
     .def("set_value",[](GMAD::ScorerMesh& scorermesh, std::string name, long int value) {scorermesh.set_value<long int>(name, value, true);})
-    .def("set_value",[](GMAD::ScorerMesh& scorermesh, std::string name, double value) {scorermesh.set_value<double>(name, value, true);});
+    .def("set_value",[](GMAD::ScorerMesh& scorermesh, std::string name, double value) {scorermesh.set_value<double>(name, value, true);})
+
+    .def("keys", [](GMAD::ScorerMesh &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::ScorerMesh &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::ScorerMesh &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::ScorerMesh &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::ScorerMesh &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::ScorerMesh &self) {return self.AllNames();});
 }

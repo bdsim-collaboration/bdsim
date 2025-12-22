@@ -970,13 +970,13 @@ namespace GMAD {
   template<> CavityModel* Parser::GetGlobalPtr(){return &cavitymodel;}
   template<> FastList<CavityModel>& Parser::GetList<CavityModel>(){return cavitymodel_list;}
 
-  template<> NewColour& Parser::GetGlobal(){return colour;}
-  template<> NewColour* Parser::GetGlobalPtr(){return &colour;}
-  template<> FastList<NewColour>& Parser::GetList<NewColour>(){return colour_list;}
-
   template<> CoolingChannel& Parser::GetGlobal(){return coolingchannel;}
   template<> CoolingChannel* Parser::GetGlobalPtr(){return &coolingchannel;}
   template<> FastList<CoolingChannel>& Parser::GetList<CoolingChannel>(){return coolingchannel_list;}
+
+  template<> NewColour& Parser::GetGlobal(){return colour;}
+  template<> NewColour* Parser::GetGlobalPtr(){return &colour;}
+  template<> FastList<NewColour>& Parser::GetList<NewColour>(){return colour_list;}
 
   template<> Crystal& Parser::GetGlobal(){return crystal;}
   template<> Crystal* Parser::GetGlobalPtr(){return &crystal;}
@@ -986,14 +986,13 @@ namespace GMAD {
   template<> Field* Parser::GetGlobalPtr(){return &field;}
   template<> FastList<Field>& Parser::GetList<Field>(){return field_list;}
 
+  template<> Laser& Parser::GetGlobal(){return laser;}
+  template<> Laser* Parser::GetGlobalPtr(){return &laser;}
+  template<> FastList<Laser>& Parser::GetList<Laser>(){return laser_list;}
 
   template<> Material& Parser::GetGlobal(){return material;}
   template<> Material* Parser::GetGlobalPtr(){return &material;}
   template<> FastList<Material>& Parser::GetList<Material>(){return material_list;}
-
-  template<> Laser& Parser::GetGlobal(){return laser;}
-  template<> Laser* Parser::GetGlobalPtr(){return &laser;}
-  template<> FastList<Laser>& Parser::GetList<Laser>(){return laser_list;}
 
   template<> Modulator& Parser::GetGlobal() {return modulator;}
   template<> Modulator* Parser::GetGlobalPtr() {return &modulator;}
@@ -1005,13 +1004,13 @@ namespace GMAD {
   template<> Parameters& Parser::GetGlobal(){return params;}
   template<> Parameters* Parser::GetGlobalPtr(){return &params;}
 
-  template<> PhysicsBiasing& Parser::GetGlobal(){return xsecbias;}
-  template<> PhysicsBiasing* Parser::GetGlobalPtr(){return &xsecbias;}
-  template<> FastList<PhysicsBiasing>& Parser::GetList<PhysicsBiasing, FastList<PhysicsBiasing>>(){return xsecbias_list;}
-
   template<> Placement& Parser::GetGlobal(){return placement;}
   template<> Placement* Parser::GetGlobalPtr(){return &placement;}
   template<> FastList<Placement>& Parser::GetList<Placement>(){return placement_list;}
+
+  template<> PhysicsBiasing& Parser::GetGlobal(){return xsecbias;}
+  template<> PhysicsBiasing* Parser::GetGlobalPtr(){return &xsecbias;}
+  template<> FastList<PhysicsBiasing>& Parser::GetList<PhysicsBiasing, FastList<PhysicsBiasing>>(){return xsecbias_list;}
 
   template<> Query& Parser::GetGlobal(){return query;}
   template<> Query* Parser::GetGlobalPtr(){return &query;}
