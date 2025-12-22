@@ -52,11 +52,11 @@ PYBIND11_MODULE(tunnel, m) {
 
     .def_readonly("visible",&GMAD::Tunnel::visible)
 
-    .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,std::string value) {tunnel.set_value<std::string>(name,value,false);})
-    .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,int value) {tunnel.set_value<int>(name,value,false);})
-    .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,bool value) {tunnel.set_value<bool>(name,value,false);})
-    .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,long int value) {tunnel.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::Tunnel &tunnel,std::string name,double value) {tunnel.set_value<double>(name,value,false);})
+    .def("set_value",[](GMAD::Tunnel &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
+    .def("set_value",[](GMAD::Tunnel &self,std::string name,int value) {self.set_value<int>(name,value,false);})
+    .def("set_value",[](GMAD::Tunnel &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
+    .def("set_value",[](GMAD::Tunnel &self,std::string name,double value) {self.set_value<double>(name,value,false);})
+    .def("set_value",[](GMAD::Tunnel &self,std::string name,std::string value) {self.set_value<std::string>(name,value,false);})
 
     .def("keys", [](GMAD::Tunnel &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Tunnel &self) {return self.AllNames().size();})

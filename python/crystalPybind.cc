@@ -55,11 +55,11 @@ PYBIND11_MODULE(crystal, m) {
   .def_readonly("bendingAngleZAxis", &GMAD::Crystal::bendingAngleZAxis)
   .def_readonly("miscutAngleY", &GMAD::Crystal::miscutAngleY)
 
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,std::string value) {crystal.set_value<std::string>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,int value) {crystal.set_value<int>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,bool value) {crystal.set_value<bool>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,long int value) {crystal.set_value<long int>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,double value) {crystal.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,int value) {self.set_value<int>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,double value) {self.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
 
   .def("keys", [](GMAD::Crystal &self) {return self.AllNames();})
   .def("__len__", [](GMAD::Crystal &self) {return self.AllNames().size();})

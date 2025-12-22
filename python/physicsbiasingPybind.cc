@@ -46,8 +46,8 @@ PYBIND11_MODULE(physicsbiasing, m) {
     .def_readonly("flag",&GMAD::PhysicsBiasing::flag)
 
     .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, double value) {biasing.set_value(property,value);})
-    .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, GMAD::Array* value) {biasing.set_value(property,value);})
     .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, std::string value) {biasing.set_value(property,value);})
+    .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, GMAD::Array* value) {biasing.set_value(property,value);})
 
     .def("keys", [](GMAD::PhysicsBiasing &self) {return self.AllNames();})
     .def("__len__", [](GMAD::PhysicsBiasing &self) {return self.AllNames().size();})

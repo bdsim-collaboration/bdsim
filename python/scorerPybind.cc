@@ -52,11 +52,11 @@ PYBIND11_MODULE(scorer, m) {
       .def_readonly("scoreWorldVolumeOnly",&GMAD::Scorer::scoreWorldVolumeOnly)
       .def_readonly("scorePrimariesOnly",&GMAD::Scorer::scorePrimariesOnly)
 
-      .def("set_value",[](GMAD::Scorer &scorer,std::string name,std::string value) {scorer.set_value<std::string>(name,value,false);})
-      .def("set_value",[](GMAD::Scorer &scorer,std::string name,int value) {scorer.set_value<int>(name,value,false);})
-      .def("set_value",[](GMAD::Scorer &scorer,std::string name,bool value) {scorer.set_value<bool>(name,value,false);})
-      .def("set_value",[](GMAD::Scorer &scorer,std::string name,long int value) {scorer.set_value<long int>(name,value,false);})
-      .def("set_value",[](GMAD::Scorer &scorer,std::string name,double value) {scorer.set_value<double>(name,value,false);})
+      .def("set_value",[](GMAD::Scorer &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
+      .def("set_value",[](GMAD::Scorer &self,std::string name,int value) {self.set_value<int>(name,value,false);})
+      .def("set_value",[](GMAD::Scorer &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
+      .def("set_value",[](GMAD::Scorer &self,std::string name,double value) {self.set_value<double>(name,value,false);})
+      .def("set_value",[](GMAD::Scorer &self,std::string name,std::string value) {self.set_value<std::string>(name,value,false);})
 
       .def("keys", [](GMAD::Scorer &self) {return self.AllNames();})
       .def("__len__", [](GMAD::Scorer &self) {return self.AllNames().size();})

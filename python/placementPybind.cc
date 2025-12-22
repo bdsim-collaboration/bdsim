@@ -75,11 +75,11 @@ PYBIND11_MODULE(placement, m) {
 
     .def_readonly("fieldAll", &GMAD::Placement::fieldAll)
 
-    .def("set_value",[](GMAD::Placement &placement,std::string name,std::string value) {placement.set_value<std::string>(name,value);})
-    .def("set_value",[](GMAD::Placement &placement,std::string name,int value) {placement.set_value<int>(name,value);})
-    .def("set_value",[](GMAD::Placement &placement,std::string name,bool value) {placement.set_value<bool>(name,value);})
-    .def("set_value",[](GMAD::Placement &placement,std::string name,long int value) {placement.set_value<long int>(name,value);})
-    .def("set_value",[](GMAD::Placement &placement,std::string name,double value) {placement.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::Placement &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+    .def("set_value",[](GMAD::Placement &self,std::string name,int value) {self.set_value<int>(name,value);})
+    .def("set_value",[](GMAD::Placement &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+    .def("set_value",[](GMAD::Placement &self,std::string name,double value) {self.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::Placement &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
 
     .def("keys", [](GMAD::Placement &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Placement &self) {return self.AllNames().size();})

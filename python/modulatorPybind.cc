@@ -47,11 +47,12 @@ PYBIND11_MODULE(modulator, m) {
     .def_readonly("T0",&GMAD::Modulator::T0)
     .def_readonly("T1",&GMAD::Modulator::T1)
 
-    .def("set_value",[](GMAD::Modulator &modulator,std::string name,std::string value) {modulator.set_value<std::string>(name,value,false);})
-    .def("set_value",[](GMAD::Modulator &modulator,std::string name,int value) {modulator.set_value<int>(name,value,false);})
-    .def("set_value",[](GMAD::Modulator &modulator,std::string name,bool value) {modulator.set_value<bool>(name,value,false);})
-    .def("set_value",[](GMAD::Modulator &modulator,std::string name,long int value) {modulator.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::Modulator &modulator,std::string name,double value) {modulator.set_value<double>(name,value,false);})
+    .def("set_value",[](GMAD::Modulator &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
+    .def("set_value",[](GMAD::Modulator &self,std::string name,int value) {self.set_value<int>(name,value,false);})
+    .def("set_value",[](GMAD::Modulator &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
+    .def("set_value",[](GMAD::Modulator &self,std::string name,double value) {self.set_value<double>(name,value,false);})
+    .def("set_value",[](GMAD::Modulator &self,std::string name,std::string value) {self.set_value<std::string>(name,value,false);})
+
 
     .def("keys", [](GMAD::Modulator &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Modulator &self) {return self.AllNames().size();})

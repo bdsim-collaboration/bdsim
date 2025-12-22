@@ -46,12 +46,12 @@ PYBIND11_MODULE(material, m) {
   .def_readonly("componentsFractions", &GMAD::Material::componentsFractions)
   .def_readonly("componentsWeights", &GMAD::Material::componentsWeights)
 
-  .def("set_value",[](GMAD::Material &material,std::string name,std::string value) {material.set_value<std::string>(name,value, false);})
-  .def("set_value",[](GMAD::Material &material,std::string name,int value) {material.set_value<int>(name,value, false);})
-  .def("set_value",[](GMAD::Material &material,std::string name,bool value) {material.set_value<bool>(name,value, false);})
-  .def("set_value",[](GMAD::Material &material,std::string name,long int value) {material.set_value<long int>(name,value, false);})
-  .def("set_value",[](GMAD::Material &material,std::string name,double value) {material.set_value<double>(name,value, false);})
-  .def("set_value",[](GMAD::Material &material,std::string name,GMAD::Array *value) {material.set_value(name,value, false);})
+  .def("set_value",[](GMAD::Material &self,std::string name,bool value) {self.set_value<bool>(name,value, false);})
+  .def("set_value",[](GMAD::Material &self,std::string name,int value) {self.set_value<int>(name,value, false);})
+  .def("set_value",[](GMAD::Material &self,std::string name,long int value) {self.set_value<long int>(name,value, false);})
+  .def("set_value",[](GMAD::Material &self,std::string name,double value) {self.set_value<double>(name,value, false);})
+  .def("set_value",[](GMAD::Material &self,std::string name,GMAD::Array *value) {self.set_value(name,value, false);})
+  .def("set_value",[](GMAD::Material &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
 
   .def("keys", [](GMAD::Material &self) {return self.AllNames();})
   .def("__len__", [](GMAD::Material &self) {return self.AllNames().size();})

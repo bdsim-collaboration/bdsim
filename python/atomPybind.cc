@@ -41,12 +41,12 @@ PYBIND11_MODULE(atom, m) {
     .def_readonly("Z", &GMAD::Atom::Z)
     .def_readonly("symbol", &GMAD::Atom::symbol)
 
-    .def("set_value",[](GMAD::Atom &atom,std::string name,std::string value) {atom.set_value<std::string>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,int value) {atom.set_value<int>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,bool value) {atom.set_value<bool>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,long int value) {atom.set_value<long int>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,double value) {atom.set_value<double>(name,value);})
-    .def("copy_from",[](GMAD::Atom &self, GMAD::Atom &other) {
+    .def("set_value",[](GMAD::Atom &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,int value) {self.set_value<int>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,double value) {self.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+    .def("copy_from",[](GMAD::Atom &self,GMAD::Atom &other) {
       self.name = other.name;
       self.A = other.A;
       self.Z = other.Z;

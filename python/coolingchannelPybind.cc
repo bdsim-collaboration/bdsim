@@ -90,11 +90,12 @@ PYBIND11_MODULE(coolingchannel, m) {
     .def_readonly("electricFieldModel",&GMAD::CoolingChannel::electricFieldModel)
     .def_readonly("dipoleFieldModel",&GMAD::CoolingChannel::dipoleFieldModel)
 
-    .def("set_value",[](GMAD::CoolingChannel &cc,std::string name,std::string value) {cc.set_value<std::string>(name,value);})
-    .def("set_value",[](GMAD::CoolingChannel &cc,std::string name,int value) {cc.set_value<int>(name,value);})
-    .def("set_value",[](GMAD::CoolingChannel &cc,std::string name,long int value) {cc.set_value<long int>(name,value);})
-    .def("set_value",[](GMAD::CoolingChannel &cc,std::string name,double value) {cc.set_value<double>(name,value);})
-    .def("set_value",[](GMAD::CoolingChannel &cc,std::string name,GMAD::Array *value) {cc.set_value(name,value);})
+    .def("set_value",[](GMAD::CoolingChannel &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+    .def("set_value",[](GMAD::CoolingChannel &self,std::string name,int value) {self.set_value<int>(name,value);})
+    .def("set_value",[](GMAD::CoolingChannel &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+    .def("set_value",[](GMAD::CoolingChannel &self,std::string name,double value) {self.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::CoolingChannel &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+    .def("set_value",[](GMAD::CoolingChannel &self,std::string name,GMAD::Array *value) {self.set_value(name,value);})
 
     .def("keys", [](GMAD::CoolingChannel &self) {return self.AllNames();})
     .def("__len__", [](GMAD::CoolingChannel &self) {return self.AllNames().size();})

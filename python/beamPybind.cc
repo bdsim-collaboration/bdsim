@@ -196,11 +196,11 @@ py::class_<GMAD::Beam, GMAD::Published<GMAD::BeamBase>, GMAD::BeamBase>(m,"Beam"
   .def("HasBeenSet", &GMAD::Beam::HasBeenSet)
   .def("KeysOfSetValues", &GMAD::Beam::KeysOfSetValues)
 
-  .def("set_value",[](GMAD::Beam &beam,std::string name,std::string value) {beam.set_value<std::string>(name,value);})
-  .def("set_value",[](GMAD::Beam &beam,std::string name,int value) {beam.set_value<int>(name, value);})
-  .def("set_value",[](GMAD::Beam &beam,std::string name,bool value) {beam.set_value<bool>(name,value);})
-  .def("set_value",[](GMAD::Beam &beam,std::string name,long int value) {beam.set_value<long int>(name,value);})
-  .def("set_value",[](GMAD::Beam &beam,std::string name,double value) {beam.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::Beam &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+  .def("set_value",[](GMAD::Beam &self,std::string name,int value) {self.set_value<int>(name, value);})
+  .def("set_value",[](GMAD::Beam &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+  .def("set_value",[](GMAD::Beam &self,std::string name,double value) {self.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::Beam &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
   .def("get_value", &GMAD::Beam::get_value)
 
   .def("keys", [](GMAD::Beam &self) {return self.AllNames();})

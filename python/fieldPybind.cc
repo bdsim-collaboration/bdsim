@@ -69,11 +69,11 @@ PYBIND11_MODULE(field, m) {
   .def_readonly("electricReflection", &GMAD::Field::electricReflection)
   .def_readonly("fieldParameters", &GMAD::Field::fieldParameters)
 
-  .def("set_value",[](GMAD::Field &field,std::string name,std::string value) {field.set_value<std::string>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,int value) {field.set_value<int>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,bool value) {field.set_value<bool>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,long int value) {field.set_value<long int>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,double value) {field.set_value<double>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,bool value) {self.set_value<bool>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,int value) {self.set_value<int>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,long int value) {self.set_value<long int>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,double value) {self.set_value<double>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
 
   .def("keys", [](GMAD::Field &self) {return self.AllNames();})
   .def("__len__", [](GMAD::Field &self) {return self.AllNames().size();})

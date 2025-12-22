@@ -46,11 +46,12 @@ PYBIND11_MODULE(aperture, m)
     .def_readonly("aper3", &GMAD::Aperture::aper3)
     .def_readonly("aper4", &GMAD::Aperture::aper4)
 
-    .def("set_value",[](GMAD::Aperture &aperture,std::string name,std::string value) {aperture.set_value<std::string>(name,value);})
-    .def("set_value",[](GMAD::Aperture &aperture,std::string name,int value) {aperture.set_value<int>(name,value);})
-    .def("set_value",[](GMAD::Aperture &aperture,std::string name,bool value) {aperture.set_value<bool>(name,value);})
-    .def("set_value",[](GMAD::Aperture &aperture,std::string name,long int value) {aperture.set_value<long int>(name,value);})
-    .def("set_value",[](GMAD::Aperture &aperture,std::string name,double value) {aperture.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::Aperture &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+    .def("set_value",[](GMAD::Aperture &self,std::string name,int value) {self.set_value<int>(name,value);})
+    .def("set_value",[](GMAD::Aperture &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+    .def("set_value",[](GMAD::Aperture &self,std::string name,double value) {self.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::Aperture &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+
     .def("copy_from",[](GMAD::Aperture &self, GMAD::Aperture &other) {
       self.name = other.name;
       self.apertureType = other.apertureType;

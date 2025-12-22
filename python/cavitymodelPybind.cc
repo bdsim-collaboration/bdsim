@@ -51,10 +51,11 @@ PYBIND11_MODULE(cavitymodel, m) {
   .def_readonly("numberOfPoints", &GMAD::CavityModel::numberOfPoints)
   .def_readonly("numberOfCells", &GMAD::CavityModel::numberOfCells)
 
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,std::string value) {cm.set_value<std::string>(name,value);})
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,int value) {cm.set_value<int>(name,value);})
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,long int value) {cm.set_value<long int>(name,value);})
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,double value) {cm.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,int value) {self.set_value<int>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,double value) {self.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
 
   .def("keys", [](GMAD::CavityModel &self) {return self.AllNames();})
   .def("__len__", [](GMAD::CavityModel &self) {return self.AllNames().size();})

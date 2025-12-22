@@ -44,11 +44,11 @@ PYBIND11_MODULE(region, m) {
     .def_readonly("prodCutPositrons",&GMAD::Region::prodCutPositrons)
     .def_readonly("prodCutProtons",&GMAD::Region::prodCutProtons)
 
-    .def("set_value",[](GMAD::Region &region,std::string name,std::string value) {region.set_value<std::string>(name,value,false);})
-    .def("set_value",[](GMAD::Region &region,std::string name,int value) {region.set_value<int>(name,value,false);})
-    .def("set_value",[](GMAD::Region &region,std::string name,bool value) {region.set_value<bool>(name,value,false);})
-    .def("set_value",[](GMAD::Region &region,std::string name,long int value) {region.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::Region &region,std::string name,double value) {region.set_value<double>(name,value,false);})
+    .def("set_value",[](GMAD::Region &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
+    .def("set_value",[](GMAD::Region &self,std::string name,int value) {self.set_value<int>(name,value,false);})
+    .def("set_value",[](GMAD::Region &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
+    .def("set_value",[](GMAD::Region &self,std::string name,double value) {self.set_value<double>(name,value,false);})
+    .def("set_value",[](GMAD::Region &self,std::string name,std::string value) {self.set_value<std::string>(name,value,false);})
 
     .def("keys", [](GMAD::Region &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Region &self) {return self.AllNames().size();})

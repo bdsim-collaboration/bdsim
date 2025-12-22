@@ -42,8 +42,11 @@ PYBIND11_MODULE(newcolour, m) {
   .def_readonly("blue",&GMAD::NewColour::blue)
   .def_readonly("alpha",&GMAD::NewColour::alpha)
 
-  .def("set_value",[](GMAD::NewColour &newcolour,std::string name,std::string value) {newcolour.set_value<std::string>(name,value, false);})
-  .def("set_value",[](GMAD::NewColour &newcolour,std::string name,double value) {newcolour.set_value<double>(name,value, false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,int value) {self.set_value<int>(name,value,false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,double value) {self.set_value<double>(name,value, false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
 
   .def("keys", [](GMAD::NewColour &self) {return self.AllNames();})
   .def("__len__", [](GMAD::NewColour &self) {return self.AllNames().size();})

@@ -69,11 +69,11 @@ PYBIND11_MODULE(blmplacement, m) {
     .def_readonly("scoreQuantity", &GMAD::BLMPlacement::scoreQuantity)
     .def_readonly("bias", &GMAD::BLMPlacement::bias)
 
-    .def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,std::string value) {blmp.set_value<std::string>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,int value) {blmp.set_value<int>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,bool value) {blmp.set_value<bool>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,long int value) {blmp.set_value<long int>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,double value) {blmp.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,int value) {self.set_value<int>(name,value);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,double value) {self.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
 
     .def("keys", [](GMAD::BLMPlacement &self) {return self.AllNames();})
     .def("__len__", [](GMAD::BLMPlacement &self) {return self.AllNames().size();})
