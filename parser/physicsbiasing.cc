@@ -88,6 +88,10 @@ void PhysicsBiasing::set_value(const std::string& property, Array* value, bool b
     }
   else if (property=="xsecfact")
     {value->set_vector(factor);}
+  else if (property=="factor")
+    {value->set_vector(factor);}
+  else if (property=="processList")
+    {value->set_vector(processList);}
   else
     {
       std::cerr << "Error: parser> unknown physicsbiasing option \"" << property << "\" with value ";

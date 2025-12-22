@@ -255,12 +255,18 @@ void CoolingChannel::set_value(const std::string& property, Array* value, bool b
 {
   auto search = attribute_map_list_double.find(property);
   if (search != attribute_map_list_double.end())
-    {value->set_vector(*search->second);}
+    {
+      (*search->second).clear();
+      value->set_vector(*search->second);
+    }
   else
     {
       auto search2 = attribute_map_list_string.find(property);
       if (search2 != attribute_map_list_string.end())
-        {value->set_vector(*search2->second);}
+        {
+          (*search->second).clear();
+          value->set_vector(*search2->second);
+        }
       else
         {
           std::cerr << "Error: parser> unknown coolingchannel option \"" << property << "\", or doesn't expect vector type" << std::endl;

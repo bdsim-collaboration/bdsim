@@ -59,5 +59,12 @@ PYBIND11_MODULE(material, m) {
   .def("__setitem__", [](GMAD::Material &self, const std::string& key, double value) {self.set_value(key,value, false);})
   .def("__setitem__", [](GMAD::Material &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
   .def("__setitem__", [](GMAD::Material &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::Material &self, const std::string& key, py::list &value) {
+    py::module_ m = py::module_::import("bdsim");
+    py::object cls = m.attr("Array");  // get the class
+    py::object obj = cls(value);       // call constructor
+    auto array = obj.cast<GMAD::Array*>();
+    self.set_value(key, array, false);
+  })
   .def("_ipython_key_completions_", [](GMAD::Material &self) {return self.AllNames();});
 }

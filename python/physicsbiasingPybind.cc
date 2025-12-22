@@ -45,9 +45,9 @@ PYBIND11_MODULE(physicsbiasing, m) {
     .def_readonly("factor",&GMAD::PhysicsBiasing::factor)
     .def_readonly("flag",&GMAD::PhysicsBiasing::flag)
 
-    .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, double value) {biasing.set_value(property,value);})
-    .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, std::string value) {biasing.set_value(property,value);})
-    .def("set_value",[](GMAD::PhysicsBiasing &biasing, const std::string& property, GMAD::Array* value) {biasing.set_value(property,value);})
+    .def("set_value",[](GMAD::PhysicsBiasing &self, const std::string& property, double value) {self.set_value(property,value,false);})
+    .def("set_value",[](GMAD::PhysicsBiasing &self, const std::string& property, std::string value) {self.set_value(property,value,false);})
+    .def("set_value",[](GMAD::PhysicsBiasing &self, const std::string& property, GMAD::Array* value) {self.set_value(property,value,false);})
 
     .def("keys", [](GMAD::PhysicsBiasing &self) {return self.AllNames();})
     .def("__len__", [](GMAD::PhysicsBiasing &self) {return self.AllNames().size();})
@@ -55,5 +55,12 @@ PYBIND11_MODULE(physicsbiasing, m) {
     .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::PhysicsBiasing &self, const std::string& key, py::list &value) {
+      py::module_ m = py::module_::import("bdsim");
+      py::object cls = m.attr("Array");  // get the class
+      py::object obj = cls(value);       // call constructor
+      auto array = obj.cast<GMAD::Array*>();
+      self.set_value(key, array, false);
+    })
     .def("_ipython_key_completions_", [](GMAD::PhysicsBiasing &self) {return self.AllNames();});
 }
