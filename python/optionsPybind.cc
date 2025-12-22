@@ -376,13 +376,14 @@ PYBIND11_MODULE(options, m) {
 
     .def("set_value",[](GMAD::Options &options,std::string name,std::string value) {options.set_value<std::string>(name,value, false);})
     .def("set_value",[](GMAD::Options &options,std::string name,int value) {options.set_value<int>(name,value, false);})
-    .def("set_value",[](GMAD::Options &options,std::string name,bool value) {options.set_value<bool>(name,value, false);})
+    .def("set_value",[](GMAD::Options &options,std::string name,bool value) {options.set_value<double>(name,static_cast<double>(value), false);})
     .def("set_value",[](GMAD::Options &options,std::string name,long int value) {options.set_value<long int>(name,value, false);})
     .def("set_value",[](GMAD::Options &options,std::string name,double value) {options.set_value<double>(name,value, false);})
     .def("get_value", &GMAD::Options::get_value)
 
     .def("keys", [](GMAD::Options &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Options &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Options &self, const std::string& key, bool value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Options &self, const std::string& key, int value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Options &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Options &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
