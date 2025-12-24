@@ -24,6 +24,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <list>
 #include <map>
 #include <string>
+#include <variant>
 
 #include "published.h"
 
