@@ -68,3 +68,42 @@ except :
 
 # singleton bdslink for rftrack, ocelot and xsuite
 bdslink_singleton = None
+
+classes = ['Aperture', 'Atom', 'Beam', 'BLMPlacement', 'CavityModel', 'CoolingChannel', 'Crystal',
+           'Element', 'Field', 'Material', 'Modulator', 'NewColour', 'Options', 'PhysicsBiasing',
+           'Placement', 'Query', 'Region', 'SamplerPlacement', 'ScorerMesh', 'Scorer', 'Tunnel']
+classes_with_stl_parameters = ['Material','CoolinChannel','PhysicsBiasing','SamplerPlacement']
+
+def install_functions() :
+
+    # function to give dict behaviour
+    def dict_getitem(self, name) :
+        return self.get_value(name)
+
+    # function to copy data from one bind object to another
+    def dict_copy_from(self, other) :
+        for n in self.AllNames() :
+            self[n] = other[n]
+
+    def dict_repr(self) :
+        s = self.__class__.__name__ + "(\n"
+
+        names = list(self.AllNames())
+        names.sort()
+
+        for n in names :
+            sv = str(self[n])
+            if sv == '':
+                sv = "''"
+            s += n + "=" + sv +"\n"
+        s += ")"
+        return s
+
+    for c in classes :
+        cls = getattr(__import__(__name__), c)
+        cls.copy_from = dict_copy_from
+        cls.__getitem__ = dict_getitem
+        cls.__repr__ = dict_repr
+
+
+install_functions()

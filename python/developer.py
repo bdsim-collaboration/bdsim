@@ -3,6 +3,7 @@ class developer :
     classes = ['Aperture', 'Atom', 'Beam', 'BLMPlacement', 'CavityModel', 'CoolingChannel', 'Crystal',
                'Element', 'Field', 'Material', 'Modulator', 'NewColour', 'Options', 'PhysicsBiasing',
                'Placement', 'Query', 'Region', 'SamplerPlacement', 'ScorerMesh', 'Scorer', 'Tunnel']
+    classes_with_stl_parameters = ['Material','CoolinChannel','PhysicsBiasing']
 
     @staticmethod
     def check_published_attributes(obj) :

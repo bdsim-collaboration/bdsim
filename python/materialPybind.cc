@@ -52,6 +52,47 @@ PYBIND11_MODULE(material, m) {
   .def("set_value",[](GMAD::Material &self,std::string name,double value) {self.set_value<double>(name,value, false);})
   .def("set_value",[](GMAD::Material &self,std::string name,GMAD::Array *value) {self.set_value(name,value, false);})
   .def("set_value",[](GMAD::Material &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
+  .def("get_value_array",[](GMAD::Material &self, std::string name) {return self.get_value_array(name);})
+  .def("get_value",[](GMAD::Material &self,std::string name) {
+    std::variant<bool, int, double, std::string, py::list> retval;
+
+    try {
+      retval = self.get<bool>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<int>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<double>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<std::string>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      auto arrval = self.get_value_array(name);
+      py::list result;
+      for (const auto& value : arrval) {
+        result.append(value);
+      }
+      retval = result;
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    throw std::runtime_error("name not found : "+name);
+  })
 
   .def("keys", [](GMAD::Material &self) {return self.AllNames();})
   .def("__len__", [](GMAD::Material &self) {return self.AllNames().size();})

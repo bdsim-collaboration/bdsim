@@ -126,3 +126,39 @@ void SamplerPlacement::print()const
   std::cout << "}" << std::endl
   << "partIDSet ID " << partIDSetID << std::endl;
 }
+
+void SamplerPlacement::set_value(const std::string& property, Array* value, bool bExit)
+{
+#ifdef BDSDEBUG
+  std::cout << "parser> Setting value " << std::setw(25) << std::left << property << std::endl;
+#endif
+  if(property=="partID")
+  {
+    value->set_vector(partID);
+  }
+  else
+  {
+    std::cerr << "Error: parser> unknown material option \"" << property << "\", or doesn't expect vector type" << std::endl;
+    if(bExit)
+      {exit(1);}
+    else
+      {std::rethrow_exception(std::current_exception());} // to be caught by python
+  }
+}
+
+std::list<std::variant<bool, int, double, std::string>> SamplerPlacement::get_value_array(const std::string & property) {
+  std::list<std::variant<bool, int, double, std::string>> retval;
+
+  if(property=="partID")
+  {
+    retval.resize(partID.size());
+    std::copy(partID.begin(),partID.end(), retval.begin());
+  }
+
+  else
+  {
+    std::cerr << "Error: parser> unknown material option \"" << property << "\", or doesn't expect vector type" << std::endl;
+  }
+
+  return retval;
+}

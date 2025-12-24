@@ -22,6 +22,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <variant>
 
 #include "published.h"
 
@@ -62,6 +63,8 @@ namespace GMAD
     // Template overloading for Array pointers
     /// Set method for lists
     void set_value(const std::string& property, Array* value, bool bExit = true);
+    /// Get method for lists
+    std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
 
   private:
     /// publish members so these can be looked up from parser

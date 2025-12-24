@@ -92,6 +92,35 @@ PYBIND11_MODULE(query, m) {
     .def("set_value",[](GMAD::Query &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
     .def("set_value",[](GMAD::Query &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
     .def("set_value",[](GMAD::Query &self,std::string name,double value) {self.set_value<double>(name,value,false);})
+    .def("get_value",[](GMAD::Query &self,std::string name) {
+      std::variant<bool, int, double, std::string, py::list> retval;
+
+      try {
+        retval = self.get<bool>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<int>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<double>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<std::string>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+name);
+    })
 
     .def("keys", [](GMAD::Query &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Query &self) {return self.AllNames().size();})

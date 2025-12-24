@@ -135,3 +135,31 @@ void PhysicsBiasing::set_value(const std::string& property, std::string value, b
         std::rethrow_exception(std::current_exception());
     }
 }
+
+std::list<std::variant<bool, int, double, std::string>> PhysicsBiasing::get_value_array(const std::string & property) {
+  std::list<std::variant<bool, int, double, std::string>> retval;
+
+  if(property=="processList")
+  {
+    retval.resize(processList.size());
+    std::copy(processList.begin(),processList.end(), retval.begin());
+  }
+  else if(property=="factor")
+  {
+    retval.resize(factor.size());
+    std::copy(factor.begin(),factor.end(), retval.begin());
+  }
+  else if(property=="flag")
+  {
+    //retval.resize(factor.size());
+    for(auto e : flag) {
+      retval.push_back((int)e);
+    }
+  }
+  else
+  {
+    std::cerr << "Error: parser> unknown PhysicsBiasing property \"" << property << "\", or doesn't expect vector type" << std::endl;
+  }
+
+  return retval;
+}

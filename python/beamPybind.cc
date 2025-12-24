@@ -201,159 +201,41 @@ py::class_<GMAD::Beam, GMAD::Published<GMAD::BeamBase>, GMAD::BeamBase>(m,"Beam"
   .def("set_value",[](GMAD::Beam &self,std::string name,long int value) {self.set_value<long int>(name,value);})
   .def("set_value",[](GMAD::Beam &self,std::string name,double value) {self.set_value<double>(name,value);})
   .def("set_value",[](GMAD::Beam &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
-  .def("get_value", &GMAD::Beam::get_value)
+  .def("get_value",[](GMAD::Beam &self,std::string name) {
+    std::variant<bool, int, double, std::string, py::list> retval;
+
+    try {
+      retval = self.get<bool>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<int>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<double>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<std::string>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    throw std::runtime_error("name not found : "+name);
+})
+
 
   .def("keys", [](GMAD::Beam &self) {return self.AllNames();})
   .def("__len__", [](GMAD::Beam &self) {return self.AllNames().size();})
   .def("__setitem__", [](GMAD::Beam &self, const std::string& key, int value) {self.set_value(key, value, false);})
   .def("__setitem__", [](GMAD::Beam &self, const std::string& key, double value) {self.set_value(key, value, false);})
   .def("__setitem__", [](GMAD::Beam &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
-  .def("_ipython_key_completions_", [](GMAD::Beam &self) {return self.AllNames();})
-
-  .def("copy_from",[](GMAD::Beam &self, GMAD::Beam &other) {
-    self.particle = other.particle;
-    self.beamParticleName = other.beamParticleName;
-    self.beamEnergy = other.beamEnergy;
-    self.beamKineticEnergy = other.beamKineticEnergy;
-    self.beamMomentum = other.beamMomentum;
-    self.distrType = other.distrType;
-    self.xDistrType = other.xDistrType;
-    self.zDistrType = other.zDistrType;
-    self.spaceDistrType = other.spaceDistrType;
-    self.directionDistrType = other.directionDistrType;
-    self.distrFile = other.distrFile;
-    self.distrFileFormat = other.distrFileFormat;
-    self.distrFileMatchLength = other.distrFileMatchLength;
-    self.distrFileLoop = other.distrFileLoop;
-    self.removeUnstableWithoutDecay = other.removeUnstableWithoutDecay;
-    self.nlinesIgnore = other.nlinesIgnore;
-    self.nlinesSkip = other.nlinesSkip;
-
-    self.bunchFrequency = other.bunchFrequency;
-    self.bunchPeriod = other.bunchPeriod;
-    self.eventsPerBunch = other.eventsPerBunch;
-
-    self.X0 = other.X0;
-    self.Y0 = other.Y0;
-    self.Z0 = other.Z0;
-    self.T0 = other.T0;
-    self.E0 = other.E0;
-    self.Ek0 = other.Ek0;
-    self.P0 = other.P0;
-
-    self.tilt = other.tilt;
-
-    self.sigmaE = other.sigmaE;
-    self.sigmaEk = other.sigmaEk;
-    self.sigmaP = other.sigmaP;
-
-    self.betx = other.betx;
-    self.bety = other.bety;
-    self.alfx = other.alfx;
-    self.alfy = other.alfy;
-    self.emitx = other.emitx;
-    self.emity = other.emity;
-    self.dispx = other.dispx;
-    self.dispy = other.dispy;
-    self.dispxp = other.dispxp;
-    self.dispyp = other.dispyp;
-    self.emitNX = other.emitNX;
-    self.emitNY = other.emitNY;
-
-    self.sigmaX = other.sigmaX;
-    self.sigmaXp = other.sigmaXp;
-    self.sigmaY = other.sigmaY;
-    self.sigmaYp = other.sigmaYp;
-
-    self.envelopeX = other.envelopeX;
-    self.envelopeXp = other.envelopeXp;
-    self.envelopeY = other.envelopeY;
-    self.envelopeYp = other.envelopeYp;
-    self.envelopeZ = other.envelopeZ;
-    self.envelopeZp = other.envelopeZp;
-    self.envelopeT = other.envelopeT;
-    self.envelopeRp = other.envelopeRp;
-    self.zFromT = other.zFromT;
-
-    self.sigma11 = other.sigma11;
-    self.sigma12 = other.sigma12;
-    self.sigma13 = other.sigma13;
-    self.sigma14 = other.sigma14;
-    self.sigma15 = other.sigma15;
-    self.sigma16 = other.sigma16;
-    self.sigma22 = other.sigma22;
-    self.sigma23 = other.sigma23;
-    self.sigma24 = other.sigma24;
-    self.sigma25 = other.sigma25;
-    self.sigma26 = other.sigma26;
-    self.sigma33 = other.sigma33;
-    self.sigma34 = other.sigma34;
-    self.sigma35 = other.sigma35;
-    self.sigma36 = other.sigma36;
-    self.sigma44 = other.sigma44;
-    self.sigma45 = other.sigma45;
-    self.sigma46 = other.sigma46;
-    self.sigma55 = other.sigma55;
-    self.sigma56 = other.sigma56;
-    self.sigma66 = other.sigma66;
-
-    self.shellX = other.shellX;
-    self.shellXp = other.shellXp;
-    self.shellY = other.shellY;
-    self.shellYp = other.shellYp;
-    self.shellXWidth = other.shellXWidth;
-    self.shellXpWidth = other.shellXpWidth;
-    self.shellYWidth = other.shellYpWidth;
-
-    self.Rmin = other.Rmin;
-    self.Rmax = other.Rmax;
-
-    self.haloNSigmaXInner = other.haloNSigmaXInner;
-    self.haloNSigmaXOuter = other.haloNSigmaXOuter;
-    self.haloNSigmaYInner = other.haloNSigmaYInner;
-    self.haloNSigmaYOuter = other.haloNSigmaYOuter;
-    self.haloXCutInner = other.haloXCutInner;
-    self.haloYCutInner = other.haloYCutInner;
-    self.haloXCutOuter = other.haloXCutOuter;
-    self.haloYCutOuter = other.haloYCutOuter;
-    self.haloXpCutInner = other.haloXpCutInner;
-    self.haloYpCutInner = other.haloYpCutInner;
-    self.haloXpCutOuter = other.haloXpCutOuter;
-    self.haloYpCutOuter = other.haloYpCutOuter;
-    self.haloPSWeightParameter = other.haloPSWeightParameter;
-    self.haloPSWeightFunction = other.haloPSWeightFunction;
-
-    self.offsetSampleMean = other.offsetSampleMean;
-
-    self.eventGeneratorNEventsSkip = other.eventGeneratorNEventsSkip;
-    self.eventGeneratorMinX = other.eventGeneratorMinX;
-    self.eventGeneratorMaxX = other.eventGeneratorMaxX;
-    self.eventGeneratorMinY = other.eventGeneratorMinY;
-    self.eventGeneratorMaxY = other.eventGeneratorMaxY;
-    self.eventGeneratorMinZ = other.eventGeneratorMinZ;
-    self.eventGeneratorMaxZ = other.eventGeneratorMaxZ;
-    self.eventGeneratorMinXp = other.eventGeneratorMinXp;
-    self.eventGeneratorMaxXp = other.eventGeneratorMaxXp;
-    self.eventGeneratorMinYp = other.eventGeneratorMinYp;
-    self.eventGeneratorMaxYp = other.eventGeneratorMaxYp;
-    self.eventGeneratorMinZp = other.eventGeneratorMinZp;
-    self.eventGeneratorMaxZp = other.eventGeneratorMaxZp;
-    self.eventGeneratorMinRp = other.eventGeneratorMinRp;
-    self.eventGeneratorMaxRp = other.eventGeneratorMaxRp;
-    self.eventGeneratorMinT = other.eventGeneratorMinT;
-    self.eventGeneratorMaxT = other.eventGeneratorMaxT;
-    self.eventGeneratorMinEK = other.eventGeneratorMinEK;
-    self.eventGeneratorMaxEK = other.eventGeneratorMaxEK;
-    self.eventGeneratorParticles = other.eventGeneratorParticles;
-    self.eventGeneratorWarnSkippedParticles = other.eventGeneratorWarnSkippedParticles;
-
-    self.dTStart = other.dTStart;
-    self.dTStop = other.dTStop;
-    self.dPStart = other.dPStart;
-    self.dPStop = other.dPStop;
-
-    self.polarization1 = other.polarization1;
-    self.polarization2 = other.polarization2;
-    self.polarization3 = other.polarization3;
-  });
+  .def("_ipython_key_completions_", [](GMAD::Beam &self) {return self.AllNames();});
 }

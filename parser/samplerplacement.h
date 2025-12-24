@@ -83,6 +83,10 @@ namespace GMAD
     /// set methods by property name and value
     template <typename T>
     void set_value(std::string property, T value, bool bExit = true);
+    /// Set method for lists
+    void set_value(const std::string& property, Array* value, bool bExit = true);
+    /// Get method for lists
+    std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
 
   private:
     /// publish members

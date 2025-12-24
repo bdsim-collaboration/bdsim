@@ -51,21 +51,42 @@ PYBIND11_MODULE(aperture, m)
     .def("set_value",[](GMAD::Aperture &self,std::string name,long int value) {self.set_value<long int>(name,value);})
     .def("set_value",[](GMAD::Aperture &self,std::string name,double value) {self.set_value<double>(name,value);})
     .def("set_value",[](GMAD::Aperture &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+    .def("get_value",[](GMAD::Aperture &self,std::string name) {
+      std::variant<bool, int, double, std::string, py::list> retval;
 
-    .def("copy_from",[](GMAD::Aperture &self, GMAD::Aperture &other) {
-      self.name = other.name;
-      self.apertureType = other.apertureType;
-      self.aper1 = other.aper1;
-      self.aper2 = other.aper2;
-      self.aper3 = other.aper3;
-      self.aper4 = other.aper4;
-    })
+      try {
+        retval = self.get<bool>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<int>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<double>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<std::string>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+name);
+})
 
     .def("keys", [](GMAD::Aperture &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Aperture &self) {return self.AllNames().size();})
     .def("__setitem__", [](GMAD::Aperture &self, const std::string& key, int value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Aperture &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Aperture &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    // __getitem__ is installed later in the init
     .def("_ipython_key_completions_", [](GMAD::Aperture &self) {return self.AllNames();});
 }
 

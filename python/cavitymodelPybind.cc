@@ -56,6 +56,35 @@ PYBIND11_MODULE(cavitymodel, m) {
   .def("set_value",[](GMAD::CavityModel &self,std::string name,long int value) {self.set_value<long int>(name,value);})
   .def("set_value",[](GMAD::CavityModel &self,std::string name,double value) {self.set_value<double>(name,value);})
   .def("set_value",[](GMAD::CavityModel &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+  .def("get_value",[](GMAD::CavityModel &self,std::string name) {
+    std::variant<bool, int, double, std::string, py::list> retval;
+
+    try {
+      retval = self.get<bool>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<int>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<double>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<std::string>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    throw std::runtime_error("name not found : "+name);
+})
 
   .def("keys", [](GMAD::CavityModel &self) {return self.AllNames();})
   .def("__len__", [](GMAD::CavityModel &self) {return self.AllNames().size();})
@@ -63,5 +92,4 @@ PYBIND11_MODULE(cavitymodel, m) {
   .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, double value) {self.set_value(key, value, false);})
   .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
   .def("_ipython_key_completions_", [](GMAD::CavityModel &self) {return self.AllNames();});
-
 }

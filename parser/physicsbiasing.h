@@ -68,6 +68,8 @@ namespace GMAD
     void set_value(const std::string& property, Array* value, bool bExit = true);
     /// set methods by property name, string values
     void set_value(const std::string& property, std::string value, bool bExit = true);
+    /// Get method for lists
+    std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
   };
 
 }

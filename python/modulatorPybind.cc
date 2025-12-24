@@ -43,6 +43,35 @@ PYBIND11_MODULE(modulator, m) {
     .def_readonly("tOffset",&GMAD::Modulator::tOffset)
     .def_readonly("amplitudeOffset",&GMAD::Modulator::amplitudeOffset)
     .def_readonly("amplitudeScale",&GMAD::Modulator::amplitudeScale)
+    .def("get_value",[](GMAD::Modulator &self,std::string name) {
+      std::variant<bool, int, double, std::string, py::list> retval;
+
+      try {
+        retval = self.get<bool>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<int>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<double>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<std::string>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+name);
+    })
 
     .def_readonly("T0",&GMAD::Modulator::T0)
     .def_readonly("T1",&GMAD::Modulator::T1)

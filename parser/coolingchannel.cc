@@ -256,7 +256,6 @@ void CoolingChannel::set_value(const std::string& property, Array* value, bool b
   auto search = attribute_map_list_double.find(property);
   if (search != attribute_map_list_double.end())
     {
-      (*search->second).clear();
       value->set_vector(*search->second);
     }
   else
@@ -264,7 +263,6 @@ void CoolingChannel::set_value(const std::string& property, Array* value, bool b
       auto search2 = attribute_map_list_string.find(property);
       if (search2 != attribute_map_list_string.end())
         {
-          (*search->second).clear();
           value->set_vector(*search2->second);
         }
       else
@@ -276,4 +274,24 @@ void CoolingChannel::set_value(const std::string& property, Array* value, bool b
             {std::rethrow_exception(std::current_exception());}
         }
     }
+}
+
+std::list<std::variant<bool, int, double, std::string>> CoolingChannel::get_value_array(const std::string & property) {
+  std::list<std::variant<bool, int, double, std::string>> retval;
+
+  // search string list
+  auto search1 = attribute_map_list_string.find(property);
+  if (search1 != attribute_map_list_string.end()) {
+    retval.resize((*search1).second->size());
+    std::copy((*search1).second->begin(),(*search1).second->end(), retval.begin());
+  }
+
+  // search double list
+  auto search2 = attribute_map_list_double.find(property);
+  if (search2 != attribute_map_list_double.end()) {
+    retval.resize((*search2).second->size());
+    std::copy((*search2).second->begin(),(*search2).second->end(), retval.begin());
+  }
+
+  return retval;
 }
