@@ -1465,7 +1465,7 @@ void BDSDetectorConstruction::ConstructScoringMeshes()
 std::vector<BDSFieldQueryInfo*> BDSDetectorConstruction::PrepareFieldQueries(const BDSBeamline* mainBeamline)
 {
   std::vector<BDSFieldQueryInfo*> result;
-  const std::vector<GMAD::Query>& parserQueries = BDSParser::Instance()->GetQuery();
+  const std::vector<GMAD::Query>& parserQueries = BDSParser::Instance()->GetQueries();
   for (const auto& def : parserQueries)
     {
       G4bool assumeQueryMagnetic = false;

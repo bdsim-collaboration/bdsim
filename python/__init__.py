@@ -72,7 +72,6 @@ bdslink_singleton = None
 classes = ['Aperture', 'Atom', 'Beam', 'BLMPlacement', 'CavityModel', 'CoolingChannel', 'Crystal',
            'Element', 'Field', 'Material', 'Modulator', 'NewColour', 'Options', 'PhysicsBiasing',
            'Placement', 'Query', 'Region', 'SamplerPlacement', 'ScorerMesh', 'Scorer', 'Tunnel']
-classes_with_stl_parameters = ['Material','CoolinChannel','PhysicsBiasing','SamplerPlacement']
 
 def install_functions() :
 
@@ -84,6 +83,14 @@ def install_functions() :
     def dict_copy_from(self, other) :
         for n in self.AllNames() :
             self[n] = other[n]
+
+
+    def dict_eq(self, other) :
+        for n in self.AllNames() :
+            if self[n] != other[n] :
+                return False
+
+        return True
 
     def dict_repr(self) :
         s = self.__class__.__name__ + "(\n"
@@ -104,6 +111,17 @@ def install_functions() :
         cls.copy_from = dict_copy_from
         cls.__getitem__ = dict_getitem
         cls.__repr__ = dict_repr
+        cls.__eq__ = dict_eq
 
+def install_stl_functions() :
+    classes_with_stl_parameters = ['CoolingChannel','Element','Material','PhysicsBiasing','SamplerPlacement']
+
+    def dict_list_setitem(self, name, lst) :
+        array = Array(lst)
+        self.set_value(key, array, false);
+
+    for c in classes_with_stl_parameters :
+        cls = getattr(__import__(__name__), c)
 
 install_functions()
+install_stl_functions()

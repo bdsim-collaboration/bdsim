@@ -33,8 +33,8 @@ PYBIND11_MODULE(element, m)
 
   py::class_<GMAD::Element, GMAD::Published<GMAD::Element>>(m,"Element")
     .def(py::init<>())
-    .def_readonly("type", &GMAD::Element::type)
-    .def_readonly("name", &GMAD::Element::name)
+    .def_readwrite("type", &GMAD::Element::type) // TODO inconsistent interface
+    .def_readwrite("name", &GMAD::Element::name) // TODO inconsistent interface
     .def_readonly("userTypeName", &GMAD::Element::userTypeName)
     .def_readonly("userParameters", &GMAD::Element::userParameters)
     .def_readonly("l", &GMAD::Element::l)
@@ -242,6 +242,8 @@ PYBIND11_MODULE(element, m)
     .def("set_value",[](GMAD::Element& self, std::string name, long int value) {self.set_value<long int>(name, value, true);})
     .def("set_value",[](GMAD::Element& self, std::string name, double value) {self.set_value<double>(name, value, true);})
     .def("set_value",[](GMAD::Element& self, std::string name, std::string value) {self.set_value<std::string>(name, value, true);})
+    .def("set_value",[](GMAD::Element& self, std::string name, GMAD::Array *value) {self.set_value(name,value,true);})
+    .def("get_value_array",[](GMAD::Element &self, std::string name) {return self.get_value_array(name);})
     .def("get_value",[](GMAD::Element &self,std::string name) {
       std::variant<bool, int, double, std::string, py::list> retval;
 
@@ -269,14 +271,33 @@ PYBIND11_MODULE(element, m)
       }
       catch (const std::runtime_error&) {}
 
+      try {
+        auto arrval = self.get_value_array(name);
+        py::list result;
+        for (const auto& value : arrval) {
+          result.append(value);
+        }
+        retval = result;
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
       throw std::runtime_error("name not found : "+name);
     })
 
     .def("keys", [](GMAD::Element &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Element &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Element &self, const std::string& key, bool value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, int value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::Element &self, const std::string& key, py::list &value) {
+      py::module_ m = py::module_::import("bdsim");
+      py::object cls = m.attr("Array");  // get the class
+      py::object obj = cls(value);       // call constructor
+      auto array = obj.cast<GMAD::Array*>();
+      self.set_value(key, array, false);
+    })
     .def("_ipython_key_completions_", [](GMAD::Element &self) {return self.AllNames();});
 }

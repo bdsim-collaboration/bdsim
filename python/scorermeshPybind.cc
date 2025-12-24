@@ -111,6 +111,7 @@ PYBIND11_MODULE(scorermesh, m)
 
     .def("keys", [](GMAD::ScorerMesh &self) {return self.AllNames();})
     .def("__len__", [](GMAD::ScorerMesh &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::ScorerMesh &self, const std::string& key, bool value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::ScorerMesh &self, const std::string& key, int value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::ScorerMesh &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::ScorerMesh &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})

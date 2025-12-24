@@ -26,6 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <map>
 #include <sstream>
 #include <string>
+#include <variant>
 
 #include "published.h"
 
@@ -310,7 +311,11 @@ namespace GMAD
     /// Set methods by property name and value
     template <typename T>
     void set_value(std::string property, T value, bool exceptionSafe = false);
- 
+    /// Set method for lists
+    void set_value(const std::string& property, Array* value, bool bExit = true);
+    /// Get method for lists
+    std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
+
     /// constructor
     Element();
 
@@ -319,6 +324,10 @@ namespace GMAD
     void PublishMembers();
     /// map that translates between alternative parser names for members, could be made static
     std::map<std::string,std::string> alternativeNames;
+
+    std::map<std::string, std::list<int>*> attribute_map_list_int;
+    std::map<std::string, std::list<double>*> attribute_map_list_double;
+    std::map<std::string, std::list<std::string>*> attribute_map_list_string;
 
   protected:
     /// returns 'official' member name for property

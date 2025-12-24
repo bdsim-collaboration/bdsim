@@ -234,6 +234,7 @@ py::class_<GMAD::Beam, GMAD::Published<GMAD::BeamBase>, GMAD::BeamBase>(m,"Beam"
 
   .def("keys", [](GMAD::Beam &self) {return self.AllNames();})
   .def("__len__", [](GMAD::Beam &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::Beam &self, const std::string& key, bool value) {self.set_value(key, value, false);})
   .def("__setitem__", [](GMAD::Beam &self, const std::string& key, int value) {self.set_value(key, value, false);})
   .def("__setitem__", [](GMAD::Beam &self, const std::string& key, double value) {self.set_value(key, value, false);})
   .def("__setitem__", [](GMAD::Beam &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})

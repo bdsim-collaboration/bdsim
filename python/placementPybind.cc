@@ -112,6 +112,7 @@ PYBIND11_MODULE(placement, m) {
 
     .def("keys", [](GMAD::Placement &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Placement &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Placement &self, const std::string& key, bool value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Placement &self, const std::string& key, int value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Placement &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Placement &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})

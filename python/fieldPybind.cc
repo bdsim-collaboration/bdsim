@@ -106,6 +106,7 @@ PYBIND11_MODULE(field, m) {
 
   .def("keys", [](GMAD::Field &self) {return self.AllNames();})
   .def("__len__", [](GMAD::Field &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, bool value) {self.set_value(key,value, false);})
   .def("__setitem__", [](GMAD::Field &self, const std::string& key, int value) {self.set_value(key,value, false);})
   .def("__setitem__", [](GMAD::Field &self, const std::string& key, double value) {self.set_value(key,value, false);})
   .def("__setitem__", [](GMAD::Field &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})

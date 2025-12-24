@@ -141,6 +141,7 @@ PYBIND11_MODULE(coolingchannel, m) {
 
     .def("keys", [](GMAD::CoolingChannel &self) {return self.AllNames();})
     .def("__len__", [](GMAD::CoolingChannel &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::CoolingChannel &self, const std::string& key, bool value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::CoolingChannel &self, const std::string& key, int value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::CoolingChannel &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::CoolingChannel &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})

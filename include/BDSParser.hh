@@ -105,7 +105,7 @@ public:
   inline std::vector<GMAD::Laser>GetLasers() const {return laser_list.getVector();}
   inline std::vector<GMAD::Material> GetMaterials() const {return material_list.getVector();}
   inline std::vector<GMAD::Placement> GetPlacements() const {return placement_list.getVector();}
-  inline std::vector<GMAD::Query> GetQuery() const {return query_list.getVector();}
+  inline std::vector<GMAD::Query> GetQueries() const {return query_list.getVector();}
   inline std::vector<GMAD::Region> GetRegions() const {return region_list.getVector();}
   inline std::vector<GMAD::SamplerPlacement> GetSamplerPlacements() const {return samplerplacement_list.getVector();}
   inline std::vector<GMAD::Scorer> GetScorers() const {return scorer_list.getVector();}
@@ -113,6 +113,8 @@ public:
   inline std::vector<GMAD::BLMPlacement> GetBLMs() const {return blm_list.getVector();}
   inline std::vector<GMAD::Modulator> GetModulators() const {return modulator_list.getVector();}
   inline std::vector<GMAD::Aperture> GetApertures() const {return aperture_list.getVector();}
+  inline std::vector<GMAD::Tunnel> GetTunnels() const {return tunnel_list.getVector();}
+
   /// @}
 
   /// Return a cooling channel object by name. Throws an exception if it doesn't exist.

@@ -137,6 +137,7 @@ PYBIND11_MODULE(parser, m) {
        .def("GetList_NewColour",[](GMAD::Parser *parser) {return parser->GetList<GMAD::NewColour, GMAD::FastList<GMAD::NewColour>>();})
        .def("GetList_PhysicsBias",[](GMAD::Parser *parser) {return parser->GetList<GMAD::PhysicsBiasing, GMAD::FastList<GMAD::PhysicsBiasing>>();})
        .def("GetList_Placement",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Placement, GMAD::FastList<GMAD::Placement>>();})
+       .def("GetList_Query",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Query, GMAD::FastList<GMAD::Query>>();})
        .def("GetList_Region",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Region, GMAD::FastList<GMAD::Region>>();})
        .def("GetList_SamplerPlacement",[](GMAD::Parser *parser) {return parser->GetList<GMAD::SamplerPlacement, GMAD::FastList<GMAD::SamplerPlacement>>();})
        .def("GetList_Scorer",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Scorer, GMAD::FastList<GMAD::Scorer>>();})

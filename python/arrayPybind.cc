@@ -29,6 +29,14 @@ PYBIND11_MODULE(array, m) {
     .def(py::init<>())
     .def(py::init<GMAD::Symtab*>())
     .def(py::init([](py::list &l) {
+
+      auto a = new GMAD::Array();
+
+      // if empty list
+      if(l.size() == 0) {
+        return a;
+      }
+
       auto first_type = l[0].get_type();
 
       bool homogeneous = true;
@@ -43,7 +51,7 @@ PYBIND11_MODULE(array, m) {
         throw std::runtime_error("Array is not homogeneous");
       }
 
-      auto a = new GMAD::Array();
+
       if(py::isinstance<py::int_>(l[0])) {
         auto s = l.cast<std::vector<int>>();
         a->Copy(s);

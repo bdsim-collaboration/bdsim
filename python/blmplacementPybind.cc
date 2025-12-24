@@ -69,11 +69,11 @@ PYBIND11_MODULE(blmplacement, m) {
     .def_readonly("scoreQuantity", &GMAD::BLMPlacement::scoreQuantity)
     .def_readonly("bias", &GMAD::BLMPlacement::bias)
 
-    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,bool value) {self.set_value<bool>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,int value) {self.set_value<int>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,long int value) {self.set_value<long int>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,double value) {self.set_value<double>(name,value);})
-    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,bool value) {self.set_value<bool>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,int value) {self.set_value<int>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,long int value) {self.set_value<long int>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,double value) {self.set_value<double>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
     .def("get_value",[](GMAD::BLMPlacement &self,std::string name) {
       std::variant<bool, int, double, std::string, py::list> retval;
 
@@ -106,6 +106,7 @@ PYBIND11_MODULE(blmplacement, m) {
 
     .def("keys", [](GMAD::BLMPlacement &self) {return self.AllNames();})
     .def("__len__", [](GMAD::BLMPlacement &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, bool value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, int value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, double value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})

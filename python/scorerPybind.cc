@@ -89,6 +89,7 @@ PYBIND11_MODULE(scorer, m) {
 
       .def("keys", [](GMAD::Scorer &self) {return self.AllNames();})
       .def("__len__", [](GMAD::Scorer &self) {return self.AllNames().size();})
+      .def("__setitem__", [](GMAD::Scorer &self, const std::string& key, bool value) {self.set_value(key,value, false);})
       .def("__setitem__", [](GMAD::Scorer &self, const std::string& key, int value) {self.set_value(key,value, false);})
       .def("__setitem__", [](GMAD::Scorer &self, const std::string& key, double value) {self.set_value(key,value, false);})
       .def("__setitem__", [](GMAD::Scorer &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})

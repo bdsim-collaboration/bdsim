@@ -375,13 +375,26 @@ PYBIND11_MODULE(options, m) {
     .def("KeysOfSetValues", &GMAD::Options::KeysOfSetValues)
 
     .def("set_value",[](GMAD::Options &self,std::string name,bool value) {self.set_value<double>(name,static_cast<double>(value), false);})
-    .def("set_value",[](GMAD::Options &self,std::string name,int value) {self.set_value<int>(name,value, false);})
-    .def("set_value",[](GMAD::Options &self,std::string name,long int value) {self.set_value<long int>(name,value, false);})
+    .def("set_value",[](GMAD::Options &self,std::string name,int value) {
+      try {
+        self.set_value<int>(name, value, false);
+        return;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        self.set_value<long int>(name, value, false);
+        return;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+name);
+    })
     .def("set_value",[](GMAD::Options &self,std::string name,double value) {self.set_value<double>(name,value, false);})
     .def("set_value",[](GMAD::Options &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
-    .def("get_value", &GMAD::Options::get_value)
+    .def("get_value_string", &GMAD::Options::get_value_string)
     .def("get_value",[](GMAD::Options &self,std::string name) {
-      std::variant<bool, int, double, std::string, py::list> retval;
+      std::variant<bool, int, long int, double, std::string, py::list> retval;
 
       try {
         retval = self.get<bool>(&self,name);
@@ -396,13 +409,19 @@ PYBIND11_MODULE(options, m) {
       catch (const std::runtime_error&) {}
 
       try {
+        retval = self.get<long int>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
         retval = self.get<double>(&self,name);
         return retval;
       }
       catch (const std::runtime_error&) {}
 
       try {
-        retval = self.get<std::string>(&self,name);
+        retval = self.get_value_string(name);
         return retval;
       }
       catch (const std::runtime_error&) {}
@@ -413,7 +432,21 @@ PYBIND11_MODULE(options, m) {
     .def("keys", [](GMAD::Options &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Options &self) {return self.AllNames().size();})
     .def("__setitem__", [](GMAD::Options &self, const std::string& key, bool value) {self.set_value(key,value, false);})
-    .def("__setitem__", [](GMAD::Options &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Options &self, const std::string& key, int value) {
+      try {
+        self.set_value<int>(key, value, false);
+        return;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        self.set_value<long int>(key, value, false);
+        return;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+key);
+    })
     .def("__setitem__", [](GMAD::Options &self, const std::string& key, double value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Options &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
     .def("_ipython_key_completions_", [](GMAD::Options &self) {return self.AllNames();});
