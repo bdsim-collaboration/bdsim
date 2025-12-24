@@ -36,15 +36,12 @@ endif()
 add_library(gmad-object-lib OBJECT ${GMAD_PARSER_SOURCES} ${BISON_PARSER_OUTPUTS} ${FLEX_SCANNER_OUTPUTS})
 # Shared libraries need PIC
 set_target_properties(gmad-object-lib PROPERTIES POSITION_INDEPENDENT_CODE 1)
-set_target_properties(gmad-object-lib PROPERTIES CXX_STANDARD 17  CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
 
 if (BDSIM_BUILD_STATIC_LIBS)
   add_library(${GMAD_LIB_NAME_STATIC} STATIC $<TARGET_OBJECTS:gmad-object-lib>)
   generate_export_header(${GMAD_LIB_NAME_STATIC})
-  set_target_properties(${GMAD_LIB_NAME_STATIC} PROPERTIES CXX_STANDARD 17  CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
 endif()
 add_library(${GMAD_LIB_NAME} SHARED $<TARGET_OBJECTS:gmad-object-lib>)
-set_target_properties(${GMAD_LIB_NAME} PROPERTIES CXX_STANDARD 17  CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
 generate_export_header(${GMAD_LIB_NAME})
 
 if($ENV{VERBOSE})
