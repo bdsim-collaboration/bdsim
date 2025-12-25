@@ -22,6 +22,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <version>
 #ifdef __cpp_lib_variant
 #include <variant>
 #endif
