@@ -822,7 +822,7 @@ void Element::setSamplerInfo(std::string samplerTypeIn,
   samplerParticleSetID = particleSetIDIn;
 }
 
-void Element::set_value(const std::string& property, Array* value, bool bExit)
+void Element::set_value_array(const std::string& property, Array* value, bool bExit)
 {
   auto search1 = attribute_map_list_int.find(property);
   if (search1 != attribute_map_list_int.end())
@@ -830,7 +830,6 @@ void Element::set_value(const std::string& property, Array* value, bool bExit)
     value->set_vector(*search1->second);
     return;
   }
-
 
   auto search2 = attribute_map_list_double.find(property);
   if (search2 != attribute_map_list_double.end())

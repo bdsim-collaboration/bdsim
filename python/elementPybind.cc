@@ -242,7 +242,7 @@ PYBIND11_MODULE(element, m)
     .def("set_value",[](GMAD::Element& self, std::string name, long int value) {self.set_value<long int>(name, value, true);})
     .def("set_value",[](GMAD::Element& self, std::string name, double value) {self.set_value<double>(name, value, true);})
     .def("set_value",[](GMAD::Element& self, std::string name, std::string value) {self.set_value<std::string>(name, value, true);})
-    .def("set_value",[](GMAD::Element& self, std::string name, GMAD::Array *value) {self.set_value(name,value,true);})
+    .def("set_value",[](GMAD::Element& self, std::string name, GMAD::Array *value) {self.set_value_array(name,value,true);})
     .def("get_value_array",[](GMAD::Element &self, std::string name) {return self.get_value_array(name);})
     .def("get_value",[](GMAD::Element &self,std::string name) {
       std::variant<bool, int, double, std::string, py::list> retval;
@@ -297,7 +297,7 @@ PYBIND11_MODULE(element, m)
       py::object cls = m.attr("Array");  // get the class
       py::object obj = cls(value);       // call constructor
       auto array = obj.cast<GMAD::Array*>();
-      self.set_value(key, array, false);
+      self.set_value_array(key, array, false);
     })
     .def("_ipython_key_completions_", [](GMAD::Element &self) {return self.AllNames();});
 }
