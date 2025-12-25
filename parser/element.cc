@@ -851,7 +851,7 @@ void Element::set_value_array(const std::string& property, Array* value, bool bE
     {std::rethrow_exception(std::current_exception());}
 }
 
-#ifdef __cpp_lib_variant
+#if __cplusplus >= 201703L
 std::list<std::variant<bool, int, double, std::string>> Element::get_value_array(const std::string & property) {
   std::list<std::variant<bool, int, double, std::string>> retval;
 

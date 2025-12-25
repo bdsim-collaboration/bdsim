@@ -101,7 +101,7 @@ void Material::set_value(const std::string& property, Array* value, bool bExit)
     }
 }
 
-#ifdef __cpp_lib_variant
+#if __cplusplus >= 201703L
 std::list<std::variant<bool, int, double, std::string>> Material::get_value_array(const std::string & property) {
   std::list<std::variant<bool, int, double, std::string>> retval(components.size());
 

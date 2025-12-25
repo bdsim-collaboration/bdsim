@@ -24,8 +24,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <list>
 #include <map>
 #include <string>
-#include <version>
-#ifdef __cpp_lib_variant
+#if __cplusplus >= 201703L
 #include <variant>
 #endif
 
@@ -113,7 +112,7 @@ namespace GMAD
     /// Set method for lists
     void set_value(const std::string& property, Array* value, bool bExit = true);
     /// Get method for lists
-#ifdef __cpp_lib_variant
+#if __cplusplus >= 201703L
     std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
 #endif
 

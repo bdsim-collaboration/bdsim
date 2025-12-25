@@ -146,7 +146,7 @@ void SamplerPlacement::set_value(const std::string& property, Array* value, bool
   }
 }
 
-#ifdef __cpp_lib_variant
+#if __cplusplus >= 201703L
 std::list<std::variant<bool, int, double, std::string>> SamplerPlacement::get_value_array(const std::string & property) {
   std::list<std::variant<bool, int, double, std::string>> retval;
 
