@@ -208,9 +208,6 @@ link_directories(${CMAKE_CURRENT_SOURCE_DIR}/parser)
 option( USE_PYTHON_BINDINGS "Build pybind11 bindings"  OFF )
 if (USE_PYTHON_BINDINGS)
   add_subdirectory(python)
-  set(CMAKE_CXX_STANDARD 17)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  message(STATUS "pybind11 requested -> changing to C++17 for BDSIM")
 endif()
 
 # TBC - don't think is needed...
