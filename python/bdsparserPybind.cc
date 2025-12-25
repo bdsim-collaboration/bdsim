@@ -32,6 +32,10 @@ PYBIND11_MODULE(bdsparser, m) {
     .def_static("Instance",[](std::string fileName) {return BDSParser::Instance(fileName);})// ,py::return_value_policy::reference)
     .def_static("Instance",[]() {return BDSParser::Instance();})
     .def_static("IsInitialised",&BDSParser::IsInitialised)
+    .def("AmalgamateOptions", &BDSParser::AmalgamateOptions)
+    .def("AmgalgamateBeam", &BDSParser::AmalgamateBeam)
+    .def("CheckOptions", &BDSParser::CheckOptions)
+
     .def("GetApertures", &BDSParser::GetApertures)
     .def("GetAtoms", &BDSParser::GetAtoms)
     .def("GetBeam",[](BDSParser &bdsp) {return &bdsp.GetBeam();}, py::return_value_policy::reference)

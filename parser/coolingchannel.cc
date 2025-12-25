@@ -276,6 +276,7 @@ void CoolingChannel::set_value(const std::string& property, Array* value, bool b
     }
 }
 
+#ifdef __cpp_lib_variant
 std::list<std::variant<bool, int, double, std::string>> CoolingChannel::get_value_array(const std::string & property) {
   std::list<std::variant<bool, int, double, std::string>> retval;
 
@@ -295,3 +296,4 @@ std::list<std::variant<bool, int, double, std::string>> CoolingChannel::get_valu
 
   return retval;
 }
+#endif

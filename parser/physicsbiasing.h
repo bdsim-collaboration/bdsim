@@ -22,7 +22,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <list>
 #include <vector>
+#ifdef __cpp_lib_variant
 #include <variant>
+#endif
 #include "published.h"
 
 
