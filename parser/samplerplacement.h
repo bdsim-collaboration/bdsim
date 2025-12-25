@@ -23,7 +23,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <iostream>
 #include <list>
 #include <string>
-#include <version>
 #if __cplusplus >= 201703L
 #include <variant>
 #endif

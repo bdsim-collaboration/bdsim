@@ -26,7 +26,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <map>
 #include <sstream>
 #include <string>
-#include <version>
 #if __cplusplus >= 201703L
 #include <variant>
 #endif
