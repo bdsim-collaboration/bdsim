@@ -40,7 +40,7 @@ namespace GMAD
    * 
    * @author Jochem Snuverink
    */
-  class PhysicsBiasing : public Published<PhysicsBiasing> { // TODO check with Laurie if it ok to Published template
+  class PhysicsBiasing : public Published<PhysicsBiasing> {
     
   public:
     std::string name; ///< name
