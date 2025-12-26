@@ -215,7 +215,8 @@ namespace GMAD
     ///@}
     /// Beamline Access.
     const FastList<Element>& GetBeamline() const;
-    
+
+    std::string GetCallSequenceLog();
   private:
     /// Set sampler
     void set_sampler(const std::string& name,
@@ -339,6 +340,9 @@ namespace GMAD
     std::set<std::set<int>> samplerFilters;
     std::map<int, std::set<int>> samplerFilterIDToSet;
     std::map<std::set<int>, int> setToSamplerFilterID;
+
+    /// execution log to understand call order (not an error or debug log)
+    std::stringstream *call_sequence_log = new std::stringstream();
   };
 
   template <class C, typename T>

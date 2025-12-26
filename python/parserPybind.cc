@@ -186,5 +186,7 @@ PYBIND11_MODULE(parser, m) {
        .def_readwrite("current_start", &GMAD::Parser::current_start)
        .def_readwrite("current_end", &GMAD::Parser::current_end)
        //
-       .def("GetBeamline",&GMAD::Parser::GetBeamline);
+       .def("GetBeamline", &GMAD::Parser::GetBeamline)
+
+       .def("GetCallSequenceLog", &GMAD::Parser::GetCallSequenceLog);
 }
