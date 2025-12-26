@@ -492,7 +492,11 @@ void Parser::expand_line(FastList<Element>& target,
     {target.push_back(*itTunnel);}
 }
 
-const FastList<Element>& Parser::get_sequence(const std::string& name)
+std::vector<std::string>& Parser::get_sequences() {
+  return sequences;
+}
+
+const FastList<Element>& Parser::get_sequence(const std::string& name, bool bExit)
 {
   // search for previously queried beamlines
   const auto search = expandedSequences.find(name);

@@ -121,6 +121,9 @@ namespace GMAD
                      const std::string& start,
                      const std::string& end);
 
+    /// Get names of the available sequences
+    std::vector<std::string>& get_sequences();
+
     /// Find the sequence defined in the parser and expand it if not already
     /// done so. Cache result in map of fastlists.
     const FastList<Element>& get_sequence(const std::string& name, bool bExit = true);

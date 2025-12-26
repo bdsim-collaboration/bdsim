@@ -60,8 +60,10 @@ PYBIND11_MODULE(parser, m) {
                              const std::string name,
                              std::string start,
                              std::string end) {parser.expand_line(name,start,end);})
-       .def("get_sequence",&GMAD::Parser::get_sequence)
-
+       .def("get_sequences", &GMAD::Parser::get_sequences)
+       .def("get_sequence",[](GMAD::Parser &self, const std::string name) {
+         self.get_sequence(name, false);
+       })
 
        .def("ClearParams",&GMAD::Parser::ClearParams)
 
