@@ -499,7 +499,14 @@ const FastList<Element>& Parser::get_sequence(const std::string& name)
   if (search != expandedSequences.end())
     {return *(search->second);}
   else
-    {std::cerr << "parser> no such sequence \"" << name << "\"" << std::endl; exit(1);} 
+    {
+      std::cerr << "parser> no such sequence \"" << name << "\"" << std::endl;
+      if(bExit)
+        {exit(1);}
+      else {
+        throw std::runtime_error("parser> no such sequence "+name);
+      }
+    }
 }
 
 void Parser::set_sampler(const std::string& name,
