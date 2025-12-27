@@ -113,7 +113,9 @@ extern FILE *yyin;
 Parser* Parser::instance = nullptr;
 
 Parser::Parser() {
+  (*call_sequence_log) << "Parser::Parser "  << std::endl;
 
+  Initialise();
 }
 
 Parser* Parser::Instance()
