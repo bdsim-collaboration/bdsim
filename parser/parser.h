@@ -109,6 +109,8 @@ namespace GMAD
     /// Method that transfers parameters to element properties
     void write_table(std::string* name, ElementType type, bool isLine=false);
 
+    /// Expand all sequences define with 'line' into FastLists.
+    void expand_sequences();
     /// Expand a sequence by name from start to end into the target list. This
     /// removes sublines from the beamline into one LINE.
     void expand_line(FastList<Element>& target,
@@ -227,9 +229,6 @@ namespace GMAD
     /// Add function to parser
     void add_func(std::string name, double (*func)(double));
     void add_var(std::string name, double value, int is_reserved = 0);
-
-    /// Expand all sequences define with 'line' into FastLists.
-    void expand_sequences();
 
     // protected implementation (for inheritance to BDSParser - hackish)
   protected:

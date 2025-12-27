@@ -46,24 +46,22 @@ PYBIND11_MODULE(parser, m) {
       /// Method that transfers parameters to element properties
       .def("write_table",&GMAD::Parser::write_table)
 
-       /// Expand a sequence by name from start to end into the target list. This
-       /// removes sublines from the beamline into one LINE.
-       ///@{ Add value to front of temporary list
-       //
-       .def("expand_line",[](GMAD::Parser &parser,
-                             GMAD::FastList<GMAD::Element>& target,
-                             const std::string& name,
-                             std::string        start = "",
-                             std::string        end   = "") {parser.expand_line(target,name,start,end);})
+      /// Expand sequenes
+      .def("expand_sequences", &GMAD::Parser::expand_sequences)
+      .def("expand_line",[](GMAD::Parser &parser,
+                            GMAD::FastList<GMAD::Element>& target,
+                            const std::string& name,
+                            std::string        start = "",
+                            std::string        end   = "") {parser.expand_line(target,name,start,end);})
        /// Expand the main beamline as defined by the use command.
-       .def("expand_line",[](GMAD::Parser &parser,
-                             const std::string name,
-                             std::string start,
-                             std::string end) {parser.expand_line(name,start,end);})
-       .def("get_sequences", &GMAD::Parser::get_sequences)
-       .def("get_sequence",[](GMAD::Parser &self, const std::string name) {
+      .def("expand_line",[](GMAD::Parser &parser,
+                            const std::string name,
+                            std::string start,
+                            std::string end) {parser.expand_line(name,start,end);})
+      .def("get_sequences", &GMAD::Parser::get_sequences)
+      .def("get_sequence",[](GMAD::Parser &self, const std::string name) {
          self.get_sequence(name, false);
-       })
+      })
 
        .def("ClearParams",&GMAD::Parser::ClearParams)
 
