@@ -56,6 +56,8 @@ namespace GMAD
     /// Set method by property name and value
     template <typename T>
     void set_value(std::string property, T value, bool bExit = true);
+    /// Set method for lists
+    void set_value_array(const std::string& property, Array* value, bool bExit = true); // TODO keep separate as template calling order
 
     /// Constructor
     Parameters();

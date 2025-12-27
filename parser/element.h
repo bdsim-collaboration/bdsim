@@ -328,13 +328,14 @@ namespace GMAD
     /// map that translates between alternative parser names for members, could be made static
     std::map<std::string,std::string> alternativeNames;
 
-    std::map<std::string, std::list<int>*> attribute_map_list_int;
-    std::map<std::string, std::list<double>*> attribute_map_list_double;
-    std::map<std::string, std::list<std::string>*> attribute_map_list_string;
 
   protected:
     /// returns 'official' member name for property
     std::string getPublishedName(const std::string& name) const;
+
+    std::map<std::string, std::list<int>*> attribute_map_list_int;
+    std::map<std::string, std::list<double>*> attribute_map_list_double;
+    std::map<std::string, std::list<std::string>*> attribute_map_list_string;
   };
 
   template <typename T>

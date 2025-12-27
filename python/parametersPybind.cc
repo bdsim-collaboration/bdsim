@@ -39,5 +39,23 @@ PYBIND11_MODULE(parameters, m) {
     .def("set_value",[](GMAD::Parameters &parameters,std::string name,GMAD::ElementType value) {parameters.set_value<GMAD::ElementType>(name,value, false);})
     .def("set_value",[](GMAD::Parameters &parameters,std::string name,bool value) {parameters.set_value<bool>(name,value, false);})
     .def("set_value",[](GMAD::Parameters &parameters,std::string name,long int value) {parameters.set_value<long int>(name,value, false);})
-    .def("set_value",[](GMAD::Parameters &parameters,std::string name,double value) {parameters.set_value<double>(name,value, false);});
+    .def("set_value",[](GMAD::Parameters &parameters,std::string name,double value) {parameters.set_value<double>(name,value, false);})
+    .def("set_value",[](GMAD::Parameters& self, std::string name, GMAD::Array *value) {self.set_value_array(name,value,true);})
+
+
+    .def("keys", [](GMAD::Parameters &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::Parameters &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, bool value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, GMAD::Array *value) {self.set_value_array(key, value, false);})
+    .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, py::list &value) {
+      py::module_ m = py::module_::import("bdsim");
+      py::object cls = m.attr("Array");  // get the class
+      py::object obj = cls(value);       // call constructor
+      auto array = obj.cast<GMAD::Array*>();
+      self.set_value_array(key, array, false);
+    })
+    .def("_ipython_key_completions_", [](GMAD::Parameters &self) {return self.AllNames();});
 }

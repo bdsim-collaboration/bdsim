@@ -262,3 +262,39 @@ void Parameters::inherit_properties(const Element& e)
 	}
     }
 }
+
+void Parameters::set_value_array(const std::string& property, Array* value, bool bExit)
+{
+  auto search1 = attribute_map_list_int.find(property);
+  if (search1 != attribute_map_list_int.end())
+  {
+    value->set_vector(*search1->second);
+    std::string publishedName = getPublishedName(property);
+    setMap.at(publishedName) = true;
+    return;
+  }
+
+  auto search2 = attribute_map_list_double.find(property);
+  if (search2 != attribute_map_list_double.end())
+  {
+    value->set_vector(*search2->second);
+    std::string publishedName = getPublishedName(property);
+    setMap.at(publishedName) = true;
+    return;
+  }
+
+  auto search3 = attribute_map_list_string.find(property);
+  if (search3 != attribute_map_list_string.end()) {
+    value->set_vector(*search3->second);
+    std::string publishedName = getPublishedName(property);
+    setMap.at(publishedName) = true;
+    return;
+  }
+
+  std::cerr << "Error: parser> unknown element option \"" << property << "\", or doesn't expect vector type" << std::endl;
+  if(bExit)
+  {exit(1);}
+  else
+  {std::rethrow_exception(std::current_exception());}
+
+}
