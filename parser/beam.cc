@@ -288,8 +288,10 @@ void Beam::PublishMembers()
   publish("shellYpWidth",&Beam::shellYpWidth);
 
   // options for beam distrType="ring"
-  publish("Rmin",&Beam::Rmin);
-  publish("Rmax",&Beam::Rmax);
+  publish("Rmin", &Beam::Rmin);
+  publish("Rmax", &Beam::Rmax);
+  publish("Rpmin", &Beam::Rpmin);
+  publish("Rpmax", &Beam::Rpmax);
 
   // options for beam distrType="halo"
   publish("haloNSigmaXInner",      &Beam::haloNSigmaXInner);

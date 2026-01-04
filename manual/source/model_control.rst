@@ -773,22 +773,32 @@ ring
 
 The ring distribution randomly and uniformly distributes particles around a circle in `x` and `y`. Then,
 for a given x,y the radius is randomly and uniformly in density distributed in that annulus. For
-all other parameters, the `reference`_ coordinates are used, i.e. `xp`, `yp` etc.
+all other parameters, the `reference`_ coordinates are used. Optionally, a similar distribution in
+`xp` and `yp` can be provided between two radii. If not specified, then no angle is given.
 
 
 * All parameters from `reference`_ distribution are used as centroids.
 
 .. tabularcolumns:: |p{5cm}|p{10cm}|
 
-+----------------------------------+-------------------------------------------------------+
-| **Variable**                     | **Description**                                       |
-+==================================+=======================================================+
-| `Rmin`                           | Minimum radius in `x` and `y` [m]                     |
-+----------------------------------+-------------------------------------------------------+
-| `Rmax`                           | Maximum radius in `x` and `y` [m]                     |
-+----------------------------------+-------------------------------------------------------+
++--------------------+------------------------------------+------------------+
+| **Variable**       | **Description**                    | **Range**        |
++====================+====================================+==================+
+| `Rmin`             | Minimum radius in `x` and `y` [m]  | 0 - inf.         |
++--------------------+------------------------------------+------------------+
+| `Rmax`             | Maximum radius in `x` and `y` [m]  | 0 - inf.         |
++--------------------+------------------------------------+------------------+
+| `Rpmin`            | Minimum radius in `rp` (optional)  | 0 - 1            |
++--------------------+------------------------------------+------------------+
+| `Rpmax`            | Maximum radius in `rp` (optional)  | 0 - 1            |
++--------------------+------------------------------------+------------------+
 
-* No variation in `z`, `xp`, `yp`, `t`, `s` and total energy. Only central values.
+* No variation in `z`, `t`, `s` and total energy. Only central values.
+* `Rpmin` and `Rpmax` are the radial component of the unit momentum vector, akin to `xp` and `yp`
+  and should be < 1.
+* `Rpmin` must be less than or equal to `Rpmax`.
+* If only one single, non-zero, value of `Rp` is required, both `Rpmin` and `Rpmax`
+  should be set to the same value.
 
 
 eshell
