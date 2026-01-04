@@ -1,0 +1,16 @@
+beam,  particle="e-",
+       energy=1.0 * GeV,
+       distrType="ring",
+       Rmin  = 5.0*mm, 
+       Rmax  = 5.1*mm,
+       Rpmin = 60*mrad,
+       Rpmax = 50*mrad,
+       sigmaT  = 1e-9,
+       sigmaE  = 1e-5;
+
+! rpmin > rpmax
+
+include options.gmad
+include fodo.gmad;
+
+option, ngenerate=10;

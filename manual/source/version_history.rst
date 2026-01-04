@@ -46,6 +46,8 @@ New Features
   other distributions with each type of Gaussian have been added: :code:`gauss-slow-ext`,
   :code:`gauss-slow-ext`, :code:`gauss-twiss-slow-ext` where the Gaussian part is first generated
   and the slow extraction sweep added on top.
+* The :code:`ring` distribution can now make a circular ring also in `rp` (i.e. in `xp`, `yp`). By
+  default the old behaviour is retained and no angle is produced.
 
 **Fields**
 
@@ -143,6 +145,8 @@ Bug Fixes
   :code:`rsize` is still accepted and used as :code:`rOuter`. The default for :code:`rInner` is 0.
   Previously, the mesh was always half the desired size in geometry but with the correct output
   coordinates in the histogram that mismatched what was simulated.
+* Document the options :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` as well
+  as fix their number type internally.
 
 
 Output Changes
@@ -165,7 +169,7 @@ Output Class Versions
 +===================================+=============+=================+=================+
 | BDSOutputROOTEventAperture        | N           | 1               | 1               |
 +-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventBeam            | N           | 6               | 6               |
+| BDSOutputROOTEventBeam            | N           | 6               | 7               |
 +-----------------------------------+-------------+-----------------+-----------------+
 | BDSOutputROOTEventCavityInfo      | N           | 1               | 1               |
 +-----------------------------------+-------------+-----------------+-----------------+

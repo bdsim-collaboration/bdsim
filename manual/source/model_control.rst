@@ -773,22 +773,32 @@ ring
 
 The ring distribution randomly and uniformly distributes particles around a circle in `x` and `y`. Then,
 for a given x,y the radius is randomly and uniformly in density distributed in that annulus. For
-all other parameters, the `reference`_ coordinates are used, i.e. `xp`, `yp` etc.
+all other parameters, the `reference`_ coordinates are used. Optionally, a similar distribution in
+`xp` and `yp` can be provided between two radii. If not specified, then no angle is given.
 
 
 * All parameters from `reference`_ distribution are used as centroids.
 
 .. tabularcolumns:: |p{5cm}|p{10cm}|
 
-+----------------------------------+-------------------------------------------------------+
-| **Variable**                     | **Description**                                       |
-+==================================+=======================================================+
-| `Rmin`                           | Minimum radius in `x` and `y` [m]                     |
-+----------------------------------+-------------------------------------------------------+
-| `Rmax`                           | Maximum radius in `x` and `y` [m]                     |
-+----------------------------------+-------------------------------------------------------+
++--------------------+------------------------------------+------------------+
+| **Variable**       | **Description**                    | **Range**        |
++====================+====================================+==================+
+| `Rmin`             | Minimum radius in `x` and `y` [m]  | 0 - inf.         |
++--------------------+------------------------------------+------------------+
+| `Rmax`             | Maximum radius in `x` and `y` [m]  | 0 - inf.         |
++--------------------+------------------------------------+------------------+
+| `Rpmin`            | Minimum radius in `rp` (optional)  | 0 - 1            |
++--------------------+------------------------------------+------------------+
+| `Rpmax`            | Maximum radius in `rp` (optional)  | 0 - 1            |
++--------------------+------------------------------------+------------------+
 
-* No variation in `z`, `xp`, `yp`, `t`, `s` and total energy. Only central values.
+* No variation in `z`, `t`, `s` and total energy. Only central values.
+* `Rpmin` and `Rpmax` are the radial component of the unit momentum vector, akin to `xp` and `yp`
+  and should be < 1.
+* `Rpmin` must be less than or equal to `Rpmax`.
+* If only one single, non-zero, value of `Rp` is required, both `Rpmin` and `Rpmax`
+  should be set to the same value.
 
 
 eshell
@@ -2422,10 +2432,10 @@ Example: ::
         kineticEnergy=100*GeV;
 
   option, enableMillicharge=1,
-        millichargeName="millie",
-        millichargeMass=10*GeV,
-        millichargeCharge=0.01,
-        millichargeID=411000;
+          millichargeName="millie",
+          millichargeMass=10*GeV,
+          millichargeCharge=0.01,
+          millichargeID=411000;
         
 
 .. _physics-biasing:
@@ -3391,6 +3401,17 @@ Physics Processes
 | g4PhysicsUseBDSIMRangeCuts          | If on, this will apply the BDSIM range cut lengths    |
 |                                     | to the Geant4 physics list used. This is off by       |
 |                                     | default.                                              |
++-------------------------------------+-------------------------------------------------------+
+| maximumPhotonsPerStep               | For the `cherenkov` modular physics list, this is the |
+|                                     | maximum integer number of photons produced in one     |
+|                                     | step of the generating particle. Not used if -1. The  |
+|                                     | default in Geant4 is 100 if not set here. 0 is        |
+|                                     | technically allowed.                                  |
++-------------------------------------+-------------------------------------------------------+
+| maximumBetaChangePerStep            | The maximum allowed change in Lorentz beta per step   |
+|                                     | for the `cherenkov` physics process when used in the  |
+|                                     | `cherenkov` modular physics list. A percentage, e.g.  |
+|                                     | 5.0 would be 5%. Default in Geant4 is 10%.            |
 +-------------------------------------+-------------------------------------------------------+
 | minimumKineticEnergy                | A particle below this energy will be killed and the   |
 |                                     | energy deposition recorded at that location. [GeV]    |

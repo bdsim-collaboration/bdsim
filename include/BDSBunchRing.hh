@@ -42,16 +42,23 @@ public:
   BDSBunchRing(BDSBunchRing&) = delete;
   /// @}
   virtual void SetOptions(const BDSParticleDefinition* beamParticle,
-			  const GMAD::Beam& beam,
-			  const BDSBunchType& distrType,
-			  G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
-			  const G4double beamlineS = 0);
+                          const GMAD::Beam& beam,
+                          const BDSBunchType& distrType,
+                          G4Transform3D beamlineTransformIn = G4Transform3D::Identity,
+                          const G4double beamlineS = 0);
   virtual void CheckParameters();
   virtual BDSParticleCoordsFull GetNextParticleLocal();
   
 protected:
   G4double rMin;
   G4double rMax;
+  /// @{ Used for a range of rp.
+  G4double rpMin;
+  G4double rpMax;
+  /// @}
+  G4double rpSingleValue;
+  G4bool anyNonZeroRp;
+  G4bool useRpRange;
 };
 
 #endif

@@ -16,24 +16,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+#ifndef BDSPARTICLEMILLI_H
+#define BDSPARTICLEMILLI_H
 
-#ifndef BDSParticleMilli_H
-#define BDSParticleMilli_H
-
-#include "globals.hh"
 #include "G4ParticleDefinition.hh"
 
-class ParticleMilli : public G4ParticleDefinition
+/**
+ * @brief A millicharged particle definition.
+ *
+ * @author Alex Keyken
+ */
+
+class ParticleMilli: public G4ParticleDefinition
 {
 private:
-    static ParticleMilli* theInstance;
-    ParticleMilli(){}
-    ~ParticleMilli(){}
-
+  static ParticleMilli* theInstance;
+  ParticleMilli(){;}
+  ~ParticleMilli(){;}
+  
 public:
-    static ParticleMilli* Definition();
-    static ParticleMilli* MillichargeDefinition();
-    static ParticleMilli* Millicharge();
+  static ParticleMilli* Definition();
+  static ParticleMilli* MillichargeDefinition();
+  static ParticleMilli* Millicharge();
 };
 
 #endif

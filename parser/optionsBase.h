@@ -239,7 +239,7 @@ namespace GMAD
     ///@{ physics parameters
     double   scintYieldFactor;
     int      maximumPhotonsPerStep;
-    int      maximumBetaChangePerStep;
+    double   maximumBetaChangePerStep;
     long     maximumTracksPerEvent;
     double   minimumKineticEnergy;
     double   minimumKineticEnergyTunnel;
