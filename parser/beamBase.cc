@@ -114,6 +114,8 @@ BeamBase::BeamBase()
 
   Rmin = 0.0;
   Rmax = 0.0;
+  Rpmin = 0.0;
+  Rpmax = 0.0;
 
   haloNSigmaXInner      = 0.0;
   haloNSigmaXOuter      = 1e9;
@@ -162,5 +164,4 @@ BeamBase::BeamBase()
   polarization1 = 0;
   polarization2 = 0;
   polarization3 = 0;
-
 }
