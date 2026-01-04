@@ -1,6 +1,9 @@
 add_subdirectory(macros)
 add_subdirectory(physicslists)
+add_subdirectory(processes_old)
+add_subdirectory(protonDiffraction)
 add_subdirectory(regions)
+
 add_subdirectory(1_em)
 add_subdirectory(2_hadronic)
 add_subdirectory(3_sr)
@@ -11,11 +14,9 @@ add_subdirectory(7_beamGas)
 #add_subdirectory(8_xSection)
 add_subdirectory(9_cherenkov)
 add_subdirectory(10_importanceSampling)
-add_subdirectory(processes_old)
-add_subdirectory(protonDiffraction)
 add_subdirectory(11_photodetachment)
 add_subdirectory(12_ionExcitation)
-
+add_subdirectory(13_millicharges)
 
 # (REMOVED) simple_testing(physics-energy-limit-high  "--file=physics_energy_limit_high.gmad" "")
 simple_testing(physics-energy-limit-low   "--file=physics_energy_limit_low.gmad"  "")

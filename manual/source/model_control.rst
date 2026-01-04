@@ -2432,10 +2432,10 @@ Example: ::
         kineticEnergy=100*GeV;
 
   option, enableMillicharge=1,
-        millichargeName="millie",
-        millichargeMass=10*GeV,
-        millichargeCharge=0.01,
-        millichargeID=411000;
+          millichargeName="millie",
+          millichargeMass=10*GeV,
+          millichargeCharge=0.01,
+          millichargeID=411000;
         
 
 .. _physics-biasing:
@@ -3395,6 +3395,17 @@ Physics Processes
 | g4PhysicsUseBDSIMRangeCuts          | If on, this will apply the BDSIM range cut lengths    |
 |                                     | to the Geant4 physics list used. This is off by       |
 |                                     | default.                                              |
++-------------------------------------+-------------------------------------------------------+
+| maximumPhotonsPerStep               | For the `cherenkov` modular physics list, this is the |
+|                                     | maximum integer number of photons produced in one     |
+|                                     | step of the generating particle. Not used if -1. The  |
+|                                     | default in Geant4 is 100 if not set here. 0 is        |
+|                                     | technically allowed.                                  |
++-------------------------------------+-------------------------------------------------------+
+| maximumBetaChangePerStep            | The maximum allowed change in Lorentz beta per step   |
+|                                     | for the `cherenkov` physics process when used in the  |
+|                                     | `cherenkov` modular physics list. A percentage, e.g.  |
+|                                     | 5.0 would be 5%. Default in Geant4 is 10%.            |
 +-------------------------------------+-------------------------------------------------------+
 | minimumKineticEnergy                | A particle below this energy will be killed and the   |
 |                                     | energy deposition recorded at that location. [GeV]    |

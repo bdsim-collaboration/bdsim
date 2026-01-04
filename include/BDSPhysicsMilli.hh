@@ -16,35 +16,37 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSPhysicsMilli_H
-#define BDSPhysicsMilli_H
+#ifndef BDSPHYSICSMILLI_H
+#define BDSPHYSICSMILLI_H
 
+#include "G4String.hh"
+#include "G4Types.hh"
 #include "G4VPhysicsConstructor.hh"
-#include "globals.hh"
 
 /**
  * @brief EM processes for millicharged particles.
- * 
- * Constructs:
-
  *
  * Uses the G4PhysicsListHelper to set and order processes.
  *
+ * @author Alex Keyken
  */
 
 class BDSPhysicsMilli: public G4VPhysicsConstructor
 {
 public:
-    explicit BDSPhysicsMilli(const G4String& name="", G4int ver=1);
-    virtual ~BDSPhysicsMilli();
-
-    /// Overloaded particle constructor to construct millicharged.
-    virtual void ConstructParticle();
-
-    /// Construct and attach the physics processes.
-    virtual void ConstructProcess();
-
+  BDSPhysicsMilli() = delete;
+  BDSPhysicsMilli(const G4String& millichargeNameIn,
+                  G4int verboseIn=1);
+  virtual ~BDSPhysicsMilli();
+  
+  /// Overloaded particle constructor to construct millicharged.
+  virtual void ConstructParticle();
+  
+  /// Construct and attach the physics processes.
+  virtual void ConstructProcess();
+  
 private:
-    G4int verbose;
+  G4String millichargeName;
+  G4int verbose;
 };
 #endif

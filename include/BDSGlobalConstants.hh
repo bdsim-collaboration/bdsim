@@ -303,7 +303,7 @@ public:
   inline G4double MinimumRadiusOfCurvature() const {return G4double(options.minimumRadiusOfCurvature*CLHEP::m);}
   inline G4double ScintYieldFactor()         const {return G4double(options.scintYieldFactor);}
   inline G4int    MaximumPhotonsPerStep()    const {return G4int   (options.maximumPhotonsPerStep);}
-  inline G4int    MaximumBetaChangePerStep() const {return G4int   (options.maximumBetaChangePerStep);}
+  inline G4double MaximumBetaChangePerStep() const {return G4int   (options.maximumBetaChangePerStep);}
   inline G4long   MaximumTracksPerEvent()    const {return G4long  (options.maximumTracksPerEvent);}
   inline G4double MinimumKineticEnergy()     const {return G4double(options.minimumKineticEnergy*CLHEP::GeV);}
   inline G4double MinimumKineticEnergyTunnel() const {return G4double(options.minimumKineticEnergyTunnel)*CLHEP::GeV;}
@@ -360,11 +360,11 @@ public:
   inline G4double ScaleFactorLaser()         const {return G4double (options.scaleFactorLaser);}
 
   // millicharge options
-  inline G4bool enableMillicharge()          const {return G4bool  (options.enableMillicharge);}
-  inline G4String millichargeName()          const {return G4String(options.millichargeName);}
-  inline G4double millichargeMass()          const {return G4double(options.millichargeMass*CLHEP::GeV);}
-  inline G4double millichargeCharge()        const {return G4double(options.millichargeCharge);}
-  inline G4int millichargeID()               const {return G4int   (options.millichargeID);}
+  inline G4bool   EnableMillicharge()        const {return G4bool  (options.enableMillicharge);}
+  inline G4String MillichargeName()          const {return G4String(options.millichargeName);}
+  inline G4double MillichargeMass()          const {return G4double(options.millichargeMass * CLHEP::GeV);}
+  inline G4double MillichargeCharge()        const {return G4double(options.millichargeCharge);}
+  inline G4int    MillichargeID()            const {return G4int   (options.millichargeID);}
 
   /// @{ options that require some implementation.
   G4bool StoreTrajectoryTransportationSteps() const;
