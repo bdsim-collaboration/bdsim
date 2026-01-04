@@ -52,10 +52,13 @@ public:
 protected:
   G4double rMin;
   G4double rMax;
+  /// @{ Used for a range of rp.
   G4double rpMin;
   G4double rpMax;
-  G4bool nonZeroRp;
-  G4bool generateRp;
+  /// @}
+  G4double rpSingleValue;
+  G4bool anyNonZeroRp;
+  G4bool useRpRange;
 };
 
 #endif

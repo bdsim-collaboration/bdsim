@@ -37,8 +37,9 @@ BDSBunchRing::BDSBunchRing():
   rMax(0),
   rpMin(0),
   rpMax(0),
-  nonZeroRp(false),
-  generateRp(false)
+  rpSingleValue(0),
+  anyNonZeroRp(false),
+  useRpRange(false)
 {;}
 
 BDSBunchRing::~BDSBunchRing()
@@ -55,8 +56,10 @@ void BDSBunchRing::SetOptions(const BDSParticleDefinition* beamParticle,
   rMax = beam.Rmax * CLHEP::m;
   rpMin = beam.Rpmin * CLHEP::rad;
   rpMax = beam.Rpmax * CLHEP::rad;
-  nonZeroRp = rpMin > 0 || rpMax > 0;
-  generateRp = rpMin != rpMax;
+  anyNonZeroRp = rpMin > 0 || rpMax > 0;
+  useRpRange = rpMin != rpMax;
+  if (anyNonZeroRp)
+    {rpSingleValue = BDS::IsFinite(rpMin) ? rpMin : rpMax;}
 }
 
 void BDSBunchRing::CheckParameters()
@@ -88,18 +91,17 @@ BDSParticleCoordsFull BDSBunchRing::GetNextParticleLocal()
   G4double y   = Y0 + r * std::cos(phi);
   G4double xp = Xp0;
   G4double yp = Yp0;
-  if (generateRp)
+  if (useRpRange)
     {
       G4double rp   = std::sqrt(G4RandFlat::shoot(std::pow(rpMin,2), std::pow(rpMax,2)));
       xp += rp * std::sin(phi);
       yp += rp * std::cos(phi);
     }
-  else if (nonZeroRp)
+  else if (anyNonZeroRp)
     {
-      G4double rp = BDS::IsFinite(rpMin) ? rpMin : rpMax;
-      xp += rp * std::sin(phi);
-      yp += rp * std::cos(phi);
-    }
+      xp += rpSingleValue * std::sin(phi);
+      yp += rpSingleValue * std::cos(phi);
+    } // else no rp used
   G4double zp = CalculateZp(xp,yp,Zp0);
   return BDSParticleCoordsFull(x,y,Z0,xp,yp,zp,T0,S0,E0,/*weight=*/1.0);
 }
