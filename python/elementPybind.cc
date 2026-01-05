@@ -144,7 +144,7 @@ PYBIND11_MODULE(element, m)
     .def_readonly("ydir", &GMAD::Element::ydir)
     .def_readonly("zdir", &GMAD::Element::zdir)
 
-    .def_readonly("waveLength", &GMAD::Element::waveLength)
+    .def_readonly("wavelength", &GMAD::Element::wavelength)
     .def_readonly("phi", &GMAD::Element::phi)
     .def_readonly("theta", &GMAD::Element::theta)
     .def_readonly("psi", &GMAD::Element::psi)
