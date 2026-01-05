@@ -31,6 +31,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSPhysicsEMDissociation.hh"
 #include "BDSPhysicsMilli.hh"
 #include "BDSPhysicsMuonSplitting.hh"
+#include "BDSPhysicsPionExtendedDecays.hh"
 #include "BDSPhysicsUtilities.hh"
 #include "BDSUtilities.hh"
 #include "BDSWarning.hh"
@@ -67,19 +68,18 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4NeutrinoTau.hh"
 #include "G4Neutron.hh"
 #include "G4ParticleTable.hh"
-#include "G4ParticleTableIterator.hh"
+#include "G4PhysListFactory.hh"
 #include "G4PionMinus.hh"
 #include "G4PionPlus.hh"
 #include "G4PionZero.hh"
 #include "G4Positron.hh"
-#include "G4ProductionCutsTable.hh"
-#include "G4Proton.hh"
-#include "G4PhysListFactory.hh"
 #include "G4ProcessManager.hh"
 #include "G4ProcessVector.hh"
+#include "G4ProductionCutsTable.hh"
 #include "G4Proton.hh"
 #include "G4String.hh"
 #include "G4UImanager.hh"
+#include "G4VDecayChannel.hh"
 #if G4VERSION_NUMBER > 1049
 #include "G4ParticleDefinition.hh"
 #include "G4CoupledTransportation.hh"
@@ -536,6 +536,22 @@ void BDS::BuildMuonBiasing(G4VModularPhysicsList* physicsList)
                                                                muonSplittingFactor2, muonSplittingThresholdParentEk2,
                                                                excludeW1P, globals->MuonSplittingExclusionWeight()));
     }
+}
+
+void BDS::ExtendPionDecayChannels(G4VModularPhysicsList* physicsList)
+{
+  G4cout << "Extending pion decay channels to include BR ~1e-4" << G4endl;
+  // Appended to list of physics lists. Does not matter that the G4Decay process
+  // is constructed and then the decay table is updated. It is read at the decay
+  // time during the simulation by G4Decay.
+  physicsList->RegisterPhysics(new BDSPhysicsPionExtendedDecays());
+}
+
+void BDS::TurnOffMuonDecay()
+{
+  BDS::Warning("Muon decays disabled -> muons are artificially stable");
+  G4MuonPlus::Definition()->SetPDGStable(true);
+  G4MuonMinus::Definition()->SetPDGStable(true);
 }
 
 void BDS::PrintDefinedParticles()

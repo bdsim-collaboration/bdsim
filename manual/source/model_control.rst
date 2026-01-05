@@ -3381,6 +3381,12 @@ Physics Processes
 |                                     | cut. Overwrites other production cuts unless these    |
 |                                     | are explicitly set (default 1e-3) [m].                |
 +-------------------------------------+-------------------------------------------------------+
+| extendPionDecayChannels             | Add the decay channels of pi+ -> gamma, mu+, nu_mu    |
+|                                     | and pi+ -> e+, nu_e as well as the charge conjugate   |
+|                                     | products for pi-. The branching ratios are 2e-4 and   |
+|                                     | 1.23e-4 as taken from the PDG. These are not normally |
+|                                     | included in the Geant4 decays of pions.               |
++-------------------------------------+-------------------------------------------------------+
 | geant4PhysicsMacroFileName          | The name of a text macro file with commands that are  |
 |                                     | suitable for the Geant4 interpreter that will be      |
 |                                     | executed after the physics list is constructed but    |
@@ -3474,6 +3480,9 @@ Physics Processes
 +-------------------------------------+-------------------------------------------------------+
 | tunnelIsInfiniteAbsorber            | Whether all particles entering the tunnel material    |
 |                                     | should be killed or not (default = false)             |
++-------------------------------------+-------------------------------------------------------+
+| turnOffMuonDecay                    | Makes both charge of muons artificially stable so     |
+|                                     | they won't decay.                                     |
 +-------------------------------------+-------------------------------------------------------+
 | turnOnCerenkov                      | Whether to produce Cherenkov radiation                |
 +-------------------------------------+-------------------------------------------------------+

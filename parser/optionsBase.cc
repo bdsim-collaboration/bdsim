@@ -231,6 +231,8 @@ OptionsBase::OptionsBase()
   muonSplittingExcludeWeight1Particles = false;
   muonSplittingExclusionWeight = 1e99;
   xrayAllSurfaceRoughness = 0;
+  extendPionDecayChannels = false;
+  turnOffMuonDecay = false;
   
   // biasing options
   scaleFactorLaser         = 1;

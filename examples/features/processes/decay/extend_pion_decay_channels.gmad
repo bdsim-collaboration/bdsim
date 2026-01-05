@@ -1,0 +1,17 @@
+! use a high momentum so things are boosted forwarded and easy to observe
+! in a sampler, but use biasing to make sure the decay happens
+
+pdecay: xsecBias, particle="pi+", proc="Decay", xsecfact=100, flag=2;
+d1: drift, l=100*m, aper1=2*m, biasVacuum="pdecay";
+l1: line=(d1);
+use, l1;
+
+sample, all;
+
+beam, particle="pi+",
+      momentum=50*GeV;
+
+option, physicsList="g4FTFP_BERT",
+        extendPionDecayChannels=1;
+
+!option, ngenerate=1000;
