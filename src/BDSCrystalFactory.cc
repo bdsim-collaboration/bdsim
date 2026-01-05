@@ -103,7 +103,7 @@ void BDSCrystalFactory::CommonConstruction(const G4String&       nameIn,
 
   // only in g4.10.4 onwards do we build the crystal extensions - otherwise regular LV
 #if G4VERSION_NUMBER > 1039
-  G4ExtendedMaterial* crystalMat = new G4ExtendedMaterial("crystal.material", recipe->material);
+  G4ExtendedMaterial* crystalMat = new G4ExtendedMaterial(nameIn+"_crystal.material", recipe->material);
   
   crystalMat->RegisterExtension(std::unique_ptr<G4CrystalExtension>(new G4CrystalExtension(crystalMat)));
   G4CrystalExtension* crystalExtension = dynamic_cast<G4CrystalExtension*>(crystalMat->RetrieveExtension("crystal"));

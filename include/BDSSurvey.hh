@@ -38,7 +38,10 @@ class BDSMagnetStrength;
 class BDSSurvey
 {
 public:
-  explicit BDSSurvey(G4String filename);  
+  explicit BDSSurvey(const G4String& filename);
+  BDSSurvey() = delete;
+  BDSSurvey(const BDSSurvey&) = delete;
+  BDSSurvey& operator=(const BDSSurvey&) = delete;
   ~BDSSurvey();
 
   /// write line
@@ -48,10 +51,6 @@ public:
   void Write(BDSBeamline* beamline);
   
 private:
-  BDSSurvey() = delete;
-  BDSSurvey(const BDSSurvey&) = delete;
-  BDSSurvey& operator=(const BDSSurvey&) = delete;
-
   /// Write header
   void WriteHeader();
   

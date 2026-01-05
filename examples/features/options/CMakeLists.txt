@@ -38,7 +38,7 @@ simple_testing(option-executable-startFromEvent          "--file=sm.gmad --start
 simple_testing(option-executable-writeSeedState          "--file=sm.gmad --writeSeedState"             "")
 simple_testing(option-executable-seedState               "--file=sm.gmad --seedState=example-seed-state.txt"         "")
 simple_testing(option-executable-seedStateFileName       "--file=sm.gmad --seedStateFileName=example-seed-state.txt" "")
-simple_testing(option-executable-survey                  "--file=sm.gmad --survey=survey.dat"          "")
+simple_testing(option-executable-survey                  "--file=oneOfEach.gmad --survey=survey.dat"   "")
 simple_testing(option-executable-ngenerate               "--file=sm.gmad --ngenerate=2"                "")
 simple_testing(option-executable-nGenerate               "--file=sm.gmad --nGenerate=2"                "")
 simple_testing(option-executable-nturns                  "--file=sm.gmad --nturns=2"                   "")

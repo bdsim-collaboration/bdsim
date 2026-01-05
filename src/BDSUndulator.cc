@@ -40,15 +40,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 
 BDSUndulator::BDSUndulator(const G4String&  nameIn,
-			   G4double         lengthIn,
-			   G4double         periodIn,
-			   G4double         undulatorMagnetHeightIn,
-			   G4double         horizontalWidthIn,
-			   G4double         undulatorGapIn,
-			   BDSBeamPipeInfo* beamPipeInfoIn,
-			   BDSFieldInfo*    vacuumFieldInfoIn,
-			   BDSFieldInfo*    outerFieldInfoIn,
-			   const G4String&  materialIn):
+                           G4double         lengthIn,
+                           G4double         periodIn,
+                           G4double         undulatorMagnetHeightIn,
+                           G4double         horizontalWidthIn,
+                           G4double         undulatorGapIn,
+                           BDSBeamPipeInfo* beamPipeInfoIn,
+                           BDSFieldInfo*    vacuumFieldInfoIn,
+                           BDSFieldInfo*    outerFieldInfoIn,
+                           G4Material*      materialIn):
   BDSAcceleratorComponent(nameIn, lengthIn, 0, "undulator", beamPipeInfoIn),
   vacuumFieldInfo(vacuumFieldInfoIn),
   outerFieldInfo(outerFieldInfoIn),
@@ -56,16 +56,9 @@ BDSUndulator::BDSUndulator(const G4String&  nameIn,
   horizontalWidth(horizontalWidthIn),
   undulatorMagnetHeight(undulatorMagnetHeightIn),
   undulatorGap(undulatorGapIn),
-  numMagnets(0)
+  numMagnets(0),
+  material(materialIn)
 {
-  if (materialIn.empty())
-    {
-      BDS::Warning(__METHOD_NAME__, "element \"" + name + "\" no material set for undulator magnet - using iron");
-      material = "iron";
-    }
-  else
-    {material = materialIn;}
-
   if (vacuumFieldInfo)
     {vacuumFieldInfo->SetBeamPipeRadius(beamPipeInfoIn->IndicativeRadius());}
 }
@@ -84,8 +77,8 @@ void BDSUndulator::BuildContainerLogicalVolume()
   if (BDS::IsFinite(std::fmod(chordLength, undulatorPeriod)))
     {throw BDSException(__METHOD_NAME__, "undulator length \"arcLength\" does not divide into an integer number of\n undulator periods (length \"undulatorPeriod\".");}
   
-  // can now cast num magnets to integer as above check should catch if it isnt an integer.
-  numMagnets = (G4int) 2*chordLength/undulatorPeriod;
+  // can now cast num magnets to integer as above check should catch if it isn't an integer.
+  numMagnets = (G4int)(2*chordLength/undulatorPeriod);
 
   G4double beampipeThickness = BDSGlobalConstants::Instance()->DefaultBeamPipeModel()->beamPipeThickness;
   if (!BDS::IsFinite(undulatorGap))
@@ -113,9 +106,9 @@ void BDSUndulator::BuildContainerLogicalVolume()
 
   G4double halfWidth  = 0.5 * (horizontalWidth + lengthSafetyLarge);
   containerSolid = new G4Box(name + "_container_solid",
-			     halfWidth,
-			     halfWidth,
-			     chordLength*0.5);
+                             halfWidth,
+                             halfWidth,
+                             chordLength*0.5);
 
   containerLogicalVolume = new G4LogicalVolume(containerSolid,
                                                emptyMaterial,
@@ -137,20 +130,18 @@ void BDSUndulator::Build()
 
   // magnet geometry
   G4Box* magnet = new G4Box(name + "_single_magnet_solid",
-			    0.5*horizontalWidth - 2*lengthSafetyLarge,
-			    0.5*undulatorMagnetHeight - 2*lengthSafetyLarge,
-			    0.5*singleMagnetLength);
+                            0.5*horizontalWidth - 2*lengthSafetyLarge,
+                            0.5*undulatorMagnetHeight - 2*lengthSafetyLarge,
+                            0.5*singleMagnetLength);
   RegisterSolid(magnet);
 
-  G4Material* materialBox  = BDSMaterials::Instance()->GetMaterial(material);
-
   G4LogicalVolume* lowerBoxLV = new G4LogicalVolume(magnet,
-						    materialBox,
-						    name + "_lower_box_lv");
+                                                    material,
+                                                    name + "_lower_box_lv");
   
   G4LogicalVolume* upperBoxLV = new G4LogicalVolume(magnet,
-						    materialBox,
-						    name + "_upper_box_lv");
+                                                    material,
+                                                    name + "_upper_box_lv");
   RegisterLogicalVolume(lowerBoxLV);
   RegisterLogicalVolume(upperBoxLV);
   if (sensitiveOuter)
@@ -180,22 +171,22 @@ void BDSUndulator::Build()
       G4ThreeVector lowerBoxPos(0, -verticalOffset, (0.5*chordLength - undulatorPeriod/4.0) -  ((i-1) *undulatorPeriod/2.0));
       
       G4PVPlacement* upperBoxPV = new G4PVPlacement(nullptr,                  // rotation
-						    upperBoxPos,              // position
-						    uVol,                     // logical volume
-						    name + "_upper_pos_" + std::to_string(i) +  "_pv", // name
-						    containerLogicalVolume,   // mother volume
-						    false,                    // no boolean operation
-						    i,                        // copy number
-						    checkOverlaps);
+                                                    upperBoxPos,              // position
+                                                    uVol,                     // logical volume
+                                                    name + "_upper_pos_" + std::to_string(i) +  "_pv", // name
+                                                    containerLogicalVolume,   // mother volume
+                                                    false,                    // no boolean operation
+                                                    i,                        // copy number
+                                                    checkOverlaps);
       
       G4PVPlacement* lowerBoxPV= new G4PVPlacement(nullptr,
-						   lowerBoxPos,
-						   lVol,
-						   name + "_lower_pos_" + std::to_string(i) +  "_pv",
-						   containerLogicalVolume,
-						   false,
-						   i,
-						   checkOverlaps);
+                                                   lowerBoxPos,
+                                                   lVol,
+                                                   name + "_lower_pos_" + std::to_string(i) +  "_pv",
+                                                   containerLogicalVolume,
+                                                   false,
+                                                   i,
+                                                   checkOverlaps);
       RegisterPhysicalVolume(upperBoxPV);
       RegisterPhysicalVolume(lowerBoxPV);
     }

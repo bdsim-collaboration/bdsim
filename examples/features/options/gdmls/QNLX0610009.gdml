@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+	<define/>
+	<materials>
+		<material name="CuH2O">
+			<D value="7.368000000000001"/>
+			<fraction ref="G4_WATER" n="0.2"/>
+			<fraction ref="G4_Cu" n="0.8"/>
+		</material>
+		<material name="EAVacuum">
+			<T value="293.15" unit="K"/>
+			<P value="9.869232667160128e-07" unit="bar"/>
+			<D value="1.189035282506785e-09"/>
+			<fraction ref="G4_AIR" n="1.0"/>
+		</material>
+	</materials>
+	<solids>
+		<tube name="beampipe" rmin="39.0" rmax="40.0" z="2990.0" startphi="0.0" deltaphi="6.283185307179586" lunit="mm" aunit="rad"/>
+		<tube name="beampipeVacuum" rmin="0.0" rmax="39.0" z="2990.0" startphi="0.0" deltaphi="6.283185307179586" lunit="mm" aunit="rad"/>
+		<box name="worldSolid" x="608.001" y="804.001" z="2990.000002" lunit="mm"/>
+		<xtru name="yokeSolid" lunit="mm">
+			<twoDimVertex x="0.0" y="402.0"/>
+			<twoDimVertex x="280.0" y="402.0"/>
+			<twoDimVertex x="280.0" y="0.0"/>
+			<twoDimVertex x="247.0" y="0.0"/>
+			<twoDimVertex x="247.0" y="85.5"/>
+			<twoDimVertex x="219.0" y="85.5"/>
+			<twoDimVertex x="71.8" y="11.9"/>
+			<twoDimVertex x="65.0" y="11.9"/>
+			<twoDimVertex x="55.0" y="14.545454545454545"/>
+			<twoDimVertex x="50.955" y="15.700127563536455"/>
+			<twoDimVertex x="46.91" y="17.053933063312726"/>
+			<twoDimVertex x="42.865" y="18.663245071736846"/>
+			<twoDimVertex x="38.82" y="20.607934054611025"/>
+			<twoDimVertex x="34.775" y="23.005032350826745"/>
+			<twoDimVertex x="30.73" y="26.033192320208265"/>
+			<twoDimVertex x="26.685000000000002" y="29.97938916994566"/>
+			<twoDimVertex x="22.64" y="35.3356890459364"/>
+			<twoDimVertex x="18.595" y="43.02231782737295"/>
+			<twoDimVertex x="14.549999999999997" y="54.98281786941582"/>
+			<twoDimVertex x="11.9" y="65.0"/>
+			<twoDimVertex x="11.9" y="71.8"/>
+			<twoDimVertex x="85.5" y="219.0"/>
+			<twoDimVertex x="85.5" y="247.0"/>
+			<twoDimVertex x="0.0" y="247.0"/>
+			<section zOrder="0" zPosition="-1495.0" xOffset="0.0" yOffset="0.0" scalingFactor="1.0"/>
+			<section zOrder="1" zPosition="1495.0" xOffset="0.0" yOffset="0.0" scalingFactor="1.0"/>
+		</xtru>
+		<xtru name="coil1Solid" lunit="mm">
+			<twoDimVertex x="3.0" y="69.8"/>
+			<twoDimVertex x="3.0" y="241.0"/>
+			<twoDimVertex x="79.5" y="241.0"/>
+			<twoDimVertex x="79.5" y="219.0"/>
+			<twoDimVertex x="10.0" y="69.8"/>
+			<section zOrder="0" zPosition="-1495.0" xOffset="0.0" yOffset="0.0" scalingFactor="1.0"/>
+			<section zOrder="1" zPosition="1495.0" xOffset="0.0" yOffset="0.0" scalingFactor="1.0"/>
+		</xtru>
+		<xtru name="coil2Solid" lunit="mm">
+			<twoDimVertex x="69.8" y="10.0"/>
+			<twoDimVertex x="219.0" y="79.5"/>
+			<twoDimVertex x="241.0" y="79.5"/>
+			<twoDimVertex x="241.0" y="3.0"/>
+			<twoDimVertex x="69.8" y="3.0"/>
+			<section zOrder="0" zPosition="-1495.0" xOffset="0.0" yOffset="0.0" scalingFactor="1.0"/>
+			<section zOrder="1" zPosition="1495.0" xOffset="0.0" yOffset="0.0" scalingFactor="1.0"/>
+		</xtru>
+	</solids>
+	<structure>
+		<volume name="yokeLogical">
+			<materialref ref="G4_Fe"/>
+			<solidref ref="yokeSolid"/>
+		</volume>
+		<volume name="coil1Logical">
+			<materialref ref="CuH2O"/>
+			<solidref ref="coil1Solid"/>
+		</volume>
+		<volume name="coil2Logical">
+			<materialref ref="CuH2O"/>
+			<solidref ref="coil2Solid"/>
+		</volume>
+		<volume name="beampipeLogical">
+			<materialref ref="G4_STAINLESS-STEEL"/>
+			<solidref ref="beampipe"/>
+		</volume>
+		<volume name="beampipeVacuumLogical">
+			<materialref ref="EAVacuum"/>
+			<solidref ref="beampipeVacuum"/>
+		</volume>
+		<volume name="worldLogic">
+			<materialref ref="G4_AIR"/>
+			<solidref ref="worldSolid"/>
+			<physvol name="yokePhysical">
+				<volumeref ref="yokeLogical"/>
+				<position name="yokePhysical_pos" x="0.000500000000000" y="0.000500000000000" z="0.000000000000000" unit="mm"/>
+			</physvol>
+			<physvol name="coil1Physical">
+				<volumeref ref="coil1Logical"/>
+			</physvol>
+			<physvol name="coil2Physical">
+				<volumeref ref="coil2Logical"/>
+			</physvol>
+			<physvol name="beampipePhysical">
+				<volumeref ref="beampipeLogical"/>
+			</physvol>
+			<physvol name="beampipeVacuumPhysical">
+				<volumeref ref="beampipeVacuumLogical"/>
+			</physvol>
+			<physvol name="yokePhysical1">
+				<volumeref ref="yokeLogical"/>
+				<position name="yokePhysical1_pos" x="-0.000500000000000" y="0.000500000000000" z="0.000000000000000" unit="mm"/>
+				<scale name="yokePhysical1_sca" x="-1.000000000000000" y="1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="coil1Physical1">
+				<volumeref ref="coil1Logical"/>
+				<scale name="coil1Physical1_sca" x="-1.000000000000000" y="1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="coil2Physical1">
+				<volumeref ref="coil2Logical"/>
+				<scale name="coil2Physical1_sca" x="-1.000000000000000" y="1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="yokePhysical2">
+				<volumeref ref="yokeLogical"/>
+				<position name="yokePhysical2_pos" x="0.000500000000000" y="-0.000500000000000" z="0.000000000000000" unit="mm"/>
+				<scale name="yokePhysical2_sca" x="1.000000000000000" y="-1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="coil1Physical2">
+				<volumeref ref="coil1Logical"/>
+				<scale name="coil1Physical2_sca" x="1.000000000000000" y="-1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="coil2Physical2">
+				<volumeref ref="coil2Logical"/>
+				<scale name="coil2Physical2_sca" x="1.000000000000000" y="-1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="yokePhysical3">
+				<volumeref ref="yokeLogical"/>
+				<position name="yokePhysical3_pos" x="-0.000500000000000" y="-0.000500000000000" z="0.000000000000000" unit="mm"/>
+				<scale name="yokePhysical3_sca" x="-1.000000000000000" y="-1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="coil1Physical3">
+				<volumeref ref="coil1Logical"/>
+				<scale name="coil1Physical3_sca" x="-1.000000000000000" y="-1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+			<physvol name="coil2Physical3">
+				<volumeref ref="coil2Logical"/>
+				<scale name="coil2Physical3_sca" x="-1.000000000000000" y="-1.000000000000000" z="1.000000000000000"/>
+			</physvol>
+		</volume>
+	</structure>
+	<setup name="Default" version="1.0">
+		<world ref="worldLogic"/>
+	</setup>
+</gdml>

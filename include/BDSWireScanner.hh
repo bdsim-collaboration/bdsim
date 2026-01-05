@@ -40,20 +40,22 @@ class G4VSolid;
 class BDSWireScanner: public BDSAcceleratorComponent
 {
 public:
-  BDSWireScanner(G4String         nameIn,
-		 G4double         lengthIn,
-		 BDSBeamPipeInfo* beamPipeInfoIn,
-		 G4Material*      wireMaterialIn,
-		 G4double         wireDiameterIn,
-		 G4double         wireLengthIn,
-		 G4double         wireAngleIn  = 0,
-		 G4ThreeVector    wireOffsetIn = G4ThreeVector(),
-		 G4Colour*        wireColourIn = nullptr
-
-  );
-
+  BDSWireScanner(const G4String&      nameIn,
+                 G4double             lengthIn,
+                 BDSBeamPipeInfo*     beamPipeInfoIn,
+                 G4Material*          wireMaterialIn,
+                 G4double             wireDiameterIn,
+                 G4double             wireLengthIn,
+                 G4double             wireAngleIn  = 0,
+                 const G4ThreeVector& wireOffsetIn = G4ThreeVector(),
+                 G4Colour*            wireColourIn = nullptr);
+  BDSWireScanner() = delete;
+  /// @{ Assignment and copy constructor not implemented nor used
+  BDSWireScanner& operator=(const BDSWireScanner&) = delete;
+  BDSWireScanner(BDSWireScanner&) = delete;
+  ///@}
   virtual ~BDSWireScanner(){;}
-
+  
   /// Return the name of a material - in this case the wire is the most relevant.
   virtual G4String Material() const {return wireMaterial->GetName();}
   
@@ -72,15 +74,6 @@ protected:
   G4double      wireAngle;
   G4ThreeVector wireOffset;
   G4Colour*     wireColour;
-
-private:
-  /// Private default constructor to force the use of the supplied one.
-  BDSWireScanner() = delete;
-
-  /// @{ Assignment and copy constructor not implemented nor used
-  BDSWireScanner& operator=(const BDSWireScanner&) = delete;
-  BDSWireScanner(BDSWireScanner&) = delete;
-  ///@}
 };
 
 #endif

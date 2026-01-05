@@ -82,41 +82,41 @@ BDSCollimatorBeamMask::BDSCollimatorBeamMask(const G4String& nameIn,
 void BDSCollimatorBeamMask::CheckParameters()
 {
   if ((xAperture > 0.5 * horizontalWidth) || (yAperture > 0.5 * horizontalWidth))
-  {
-    G4cerr << __METHOD_NAME__ << "half aperture bigger than width or height!" << G4endl;
-    G4cerr << "Full horizontal width is " << horizontalWidth << " mm for component named: \""
-           << name << "\"" << G4endl;
-    G4cerr << "x (half) aperture " << xAperture << " mm, y (half) aperture " << yAperture << " mm" << G4endl;
-    throw BDSException(__METHOD_NAME__, "Error in beam mask");
-  }
+    {
+      G4cerr << __METHOD_NAME__ << "half aperture bigger than width or height!" << G4endl;
+      G4cerr << "Full horizontal width is " << horizontalWidth << " mm for component named: \""
+             << name << "\"" << G4endl;
+      G4cerr << "x (half) aperture " << xAperture << " mm, y (half) aperture " << yAperture << " mm" << G4endl;
+      throw BDSException(__METHOD_NAME__, "Error in beam mask");
+    }
 
   if (! BDS::IsFinite(xAperture) || xAperture <= 0 || ! BDS::IsFinite(yAperture) || yAperture <= 0)
-  {
-    G4cerr << __METHOD_NAME__ << "no aperture set for the main slit!" << G4endl;
-    G4cerr << "In element named "  << name << " we have a x (half) aperture " << xAperture <<
-    " mm, y (half) aperture " << yAperture << " mm" << G4endl;
-    throw BDSException(__METHOD_NAME__, "Error in beam mask");
-  }
+    {
+      G4cerr << __METHOD_NAME__ << "no aperture set for the main slit!" << G4endl;
+      G4cerr << "In element named "  << name << " we have a x (half) aperture " << xAperture
+             << " mm, y (half) aperture " << yAperture << " mm" << G4endl;
+      throw BDSException(__METHOD_NAME__, "Error in beam mask");
+    }
 
   if (! BDS::IsFinite(xApertureSlit) || xApertureSlit <= 0 ||
       ! BDS::IsFinite(yApertureSlit) || yApertureSlit <= 0)
-  {
-    G4cerr << __METHOD_NAME__ << "no aperture set for the side slit!" << G4endl;
-    G4cerr << "In element named "  << name << " we have a x (half) aperture " << xApertureSlit <<
-           " mm, y (half) aperture " << yApertureSlit << " mm" << G4endl;
-    throw BDSException(__METHOD_NAME__, "Error in beam mask");
-  }
+    {
+      G4cerr << __METHOD_NAME__ << "no aperture set for the side slit!" << G4endl;
+      G4cerr << "In element named "  << name << " we have a x (half) aperture " << xApertureSlit
+             << " mm, y (half) aperture " << yApertureSlit << " mm" << G4endl;
+      throw BDSException(__METHOD_NAME__, "Error in beam mask");
+    }
 
   if (!colour)
-  {colour = BDSColours::Instance()->GetColour("collimator");}
+    {colour = BDSColours::Instance()->GetColour("collimator");}
 }
 
 G4String BDSCollimatorBeamMask::Material() const
 {
   if (collimatorMaterial)
-  {return collimatorMaterial->GetName();}
+    {return collimatorMaterial->GetName();}
   else
-  {return "none";}
+    {return "none";}
 }
 
 void BDSCollimatorBeamMask::BuildContainerLogicalVolume()
@@ -156,11 +156,15 @@ void BDSCollimatorBeamMask::BuildInner()
                             chordLength);             // z half length
   // z half length long for unambiguous subtraction
 
-  G4ThreeVector Trans(xOffsetSlit, yOffsetSlit, 0);
-  G4RotationMatrix* Rot = new G4RotationMatrix;
-  Rot->rotateZ(tiltSlit);
+  G4ThreeVector trans(xOffsetSlit, yOffsetSlit, 0);
+  G4RotationMatrix* rot = new G4RotationMatrix;
+  rot->rotateZ(tiltSlit);
 
-  innerSolid = new G4UnionSolid(name + "_inner_solid_union", inner1, inner2, Rot, Trans);
+  innerSolid = new G4UnionSolid(name + "_inner_solid_union", inner1, inner2, rot, trans);
+  RegisterSolid(innerSolid);
+  RegisterSolid(inner1);
+  RegisterSolid(inner2);
+  RegisterRotationMatrix(rot);
 
   G4Box* vacuum1 = new G4Box(name + "_vacuum_solid_1",   // name
                              xAperture - lengthSafety, // x half width
@@ -172,9 +176,7 @@ void BDSCollimatorBeamMask::BuildInner()
                              yApertureSlit - lengthSafety, // y half width
                              chordLength*0.5);         // z half length
 
-  vacuumSolid = new G4UnionSolid(name + "_vacuum_solid_union", vacuum1, vacuum2, Rot, Trans);
-    
-  RegisterSolid(innerSolid);
+  vacuumSolid = new G4UnionSolid(name + "_vacuum_solid_union", vacuum1, vacuum2, rot, trans);
   RegisterSolid(vacuumSolid);
 }
 
@@ -183,47 +185,45 @@ void BDSCollimatorBeamMask::Build()
   CheckParameters();
   BDSAcceleratorComponent::Build(); // calls BuildContainer and sets limits and vis for container
 
-  G4RotationMatrix* Rot = new G4RotationMatrix;
-  G4ThreeVector Trans(xOffset, yOffset, 0);
+  G4RotationMatrix* rot = new G4RotationMatrix;
+  G4ThreeVector trans(xOffset, yOffset, 0);
 
   G4VSolid* outerSolid;
   if (circularOuter)
-  {
-    outerSolid = new G4Tubs(name + "_outer_solid",
-                            0,
-                            horizontalWidth * 0.5 - lengthSafety,
-                            chordLength * 0.5 - lengthSafety,
-                            0,
-                            CLHEP::twopi);
-  }
+    {
+      outerSolid = new G4Tubs(name + "_outer_solid",
+                              0,
+                              horizontalWidth * 0.5 - lengthSafety,
+                              chordLength * 0.5 - lengthSafety,
+                              0,
+                              CLHEP::twopi);
+    }
   else
-  {
-    outerSolid = new G4Box(name + "_outer_solid",
-                           horizontalWidth * 0.5 - lengthSafety,
-                           horizontalWidth * 0.5 - lengthSafety,
-                           chordLength * 0.5 - lengthSafety);
-  }
+    {
+      outerSolid = new G4Box(name + "_outer_solid",
+                             horizontalWidth * 0.5 - lengthSafety,
+                             horizontalWidth * 0.5 - lengthSafety,
+                             chordLength * 0.5 - lengthSafety);
+    }
   RegisterSolid(outerSolid);
 
   G4bool buildVacuumAndAperture = (BDS::IsFinite(xAperture) && BDS::IsFinite(yAperture));
 
   // only do subtraction if aperture actually set
   if (buildVacuumAndAperture)
-  {
-    BuildInner();
-
-    collimatorSolid = new G4SubtractionSolid(name + "_collimator_solid", // name
-                                             outerSolid,                 // solid 1
-                                             innerSolid);                // minus solid 2
-    RegisterSolid(collimatorSolid);
-  }
+    {
+      BuildInner();
+      collimatorSolid = new G4SubtractionSolid(name + "_collimator_solid", // name
+                                               outerSolid,                 // solid 1
+                                               innerSolid);                // minus solid 2
+      RegisterSolid(collimatorSolid);
+    }
   else
-  {collimatorSolid = outerSolid;}
+    {collimatorSolid = outerSolid;}
 
   G4LogicalVolume* collimatorLV = new G4LogicalVolume(collimatorSolid,          // solid
                                                       collimatorMaterial,       // material
                                                       name + "_collimator_lv"); // name
-
 
   G4VisAttributes* collimatorVisAttr = new G4VisAttributes(*colour);
   collimatorLV->SetVisAttributes(collimatorVisAttr);
@@ -234,57 +234,56 @@ void BDSCollimatorBeamMask::Build()
   // register with base class (BDSGeometryComponent)
   RegisterLogicalVolume(collimatorLV);
   if (sensitiveOuter)
-  {RegisterSensitiveVolume(collimatorLV, BDSSDType::collimatorcomplete);}
+    {RegisterSensitiveVolume(collimatorLV, BDSSDType::collimatorcomplete);}
 
-  G4PVPlacement* collPV = new G4PVPlacement(Rot,               // rotation
-                                            Trans,         // position
+  G4PVPlacement* collPV = new G4PVPlacement(rot,                     // rotation
+                                            trans,                   // position
                                             collimatorLV,            // its logical volume
                                             name + "_collimator_pv", // its name
                                             containerLogicalVolume,  // its mother  volume
-                                            false,		     // no boolean operation
-                                            0,		             // copy number
+                                            false,		               // no boolean operation
+                                            0,		                   // copy number
                                             checkOverlaps);
 
   RegisterPhysicalVolume(collPV);
 
   if (buildVacuumAndAperture)
-  {
-    G4LogicalVolume* vacuumLV = new G4LogicalVolume(vacuumSolid,          // solid
-                                                    vacuumMaterial,       // material
-                                                    name + "_vacuum_lv"); // name
+    {
+      G4LogicalVolume* vacuumLV = new G4LogicalVolume(vacuumSolid,          // solid
+                                                      vacuumMaterial,       // material
+                                                      name + "_vacuum_lv"); // name
 
-    vacuumLV->SetVisAttributes(containerVisAttr);
-    // user limits - provided by BDSAcceleratorComponent
-    vacuumLV->SetUserLimits(userLimits);
-    SetAcceleratorVacuumLogicalVolume(vacuumLV);
-    RegisterLogicalVolume(vacuumLV);
-    if (sensitiveVacuum)
-    {RegisterSensitiveVolume(vacuumLV, BDSSDType::energydepvacuum);}
+      vacuumLV->SetVisAttributes(containerVisAttr);
+      // user limits - provided by BDSAcceleratorComponent
+      vacuumLV->SetUserLimits(userLimits);
+      SetAcceleratorVacuumLogicalVolume(vacuumLV);
+      RegisterLogicalVolume(vacuumLV);
+      if (sensitiveVacuum)
+        {RegisterSensitiveVolume(vacuumLV, BDSSDType::energydepvacuum);}
 
-    G4PVPlacement* vacPV = new G4PVPlacement(Rot,               // rotation
-                                             Trans,       // position
-                                             vacuumLV,                // its logical volume
-                                             name + "_vacuum_pv",     // its name
-                                             containerLogicalVolume,  // its mother  volume
-                                             false,                   // no boolean operation
-                                             0,                       // copy number
-                                             checkOverlaps);
-
-    RegisterPhysicalVolume(vacPV);
-  }
+      G4PVPlacement* vacPV = new G4PVPlacement(rot,               // rotation
+                                               trans,       // position
+                                               vacuumLV,                // its logical volume
+                                               name + "_vacuum_pv",     // its name
+                                               containerLogicalVolume,  // its mother  volume
+                                               false,                   // no boolean operation
+                                               0,                       // copy number
+                                               checkOverlaps);
+      RegisterPhysicalVolume(vacPV);
+    }
 }
 
 G4UserLimits* BDSCollimatorBeamMask::CollimatorUserLimits()
 {
   if (BDS::IsFinite(minKineticEnergy))
-  {
-    // copy default ones with correct length and global time etc provided
-    // by BDSAcceleratorComponent
-    G4UserLimits* collUserLimits = new G4UserLimits(*userLimits);
-    collUserLimits->SetUserMinEkine(minKineticEnergy);
-    RegisterUserLimits(collUserLimits);
-    return collUserLimits;
-  }
+    {
+      // copy default ones with correct length and global time etc provided
+      // by BDSAcceleratorComponent
+      G4UserLimits* collUserLimits = new G4UserLimits(*userLimits);
+      collUserLimits->SetUserMinEkine(minKineticEnergy);
+      RegisterUserLimits(collUserLimits);
+      return collUserLimits;
+    }
   else // user limits - provided by BDSAcceleratorComponent
-  {return userLimits;}
+    {return userLimits;}
 }

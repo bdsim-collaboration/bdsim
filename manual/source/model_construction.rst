@@ -205,14 +205,16 @@ The following elements may be defined
 * :ref:`component-rfx-rfy`
 * `target`_
 * `rcol`_
+* `ecol`_
 * `jcol`_
 * `jcoltip`_
-* `ecol`_
+* `bmcol`_
 * `degrader`_
 * `muspoiler`_
 * `shield`_
 * `dump`_
 * `solenoid`_
+* `wirescanner`_
 * `laser`_
 * `gap`_
 * `crystalcol`_
@@ -223,10 +225,11 @@ The following elements may be defined
 * `thinrmatrix`_
 * `element`_
 * `marker`_
-* `wirescanner`_
 * `ct`_
 * `muoncooler`_
-* `bmcol`_
+* `gascap`_
+* `gasjet`_
+
 
 .. TODO add screen, awakescreen
 
@@ -1426,6 +1429,65 @@ Examples: ::
    j2: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=2*m;
 
 
+
+.. _component-bmcol:
+
+bmcol
+^^^^^
+
+.. figure:: figures/bmcol.png
+	    :width: 60%
+	    :align: center
+
+A `bmcol` defines a beam mask that consists of solid material with two apertures ('slits') with
+adjustable sizes and positions. The main slit is always centered on the beam axis. The secondary
+slit position is defined with respect to the main one and can be tilted.
+
+* The whole mount can then have x and y offset inside of the beam pipe.
+
+.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
+
++-------------------+------------------------------------------------+----------------+---------------+
+| **Parameter**     | **Description**                                | **Default**    | **Required**  |
++===================+================================================+================+===============+
+| `l`               | Length [m]                                     | 0              | Yes           |
++-------------------+------------------------------------------------+----------------+---------------+
+| `material`        | Outer material                                 | None           | Yes           |
++-------------------+------------------------------------------------+----------------+---------------+
+| `horizontalWidth` | Outer full width [m]                           | 0.15 m         | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `xsize`           | Horizontal half aperture of main slit [m]      | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `ysize`           | Vertical half aperture of main slit [m]        | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `xsize2`          | Horizontal half aperture of side slit [m]      | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `ysize2`          | Vertical half aperture of side slit [m]        | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `offsetX2`        | Horizontal displacement of side slit [m]       | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `offsetY2`        | Vertical displacement of side slit [m]         | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `tilt2`           | Clockwise rotation of side slit [rad].         | 0              | No            |
++-------------------+------------------------------------------------+----------------+---------------+
+| `outerShape`      | Shape of the outer material                    | 'rectangular'  | No            |
+|                   | (circular or rectangular).                     |                |               |
++-------------------+------------------------------------------------+----------------+---------------+
+
+Notes:
+
+* The :ref:`aperture-parameters` may also be specified.
+* The :ref:`offsets-and-tilts` may also be specified.
+
+Examples: ::
+
+  bm: bmcol, l=2*mm, aper1=0.15*m, horizontalWidth=0.15*m, material="G4_W",
+             offsetX=0*mm, offsetY=0*mm, xsize=5*mm, ysize=30*mm, outerShape="rectangular",
+             offsetX2=20*mm, offsetY2=0*mm, xsize2=1*mm, ysize2=30*mm, tilt2=0.3*rad;
+
+
+.. _component-degrader:
+
 degrader
 ^^^^^^^^
 
@@ -1512,6 +1574,11 @@ Notes:
 * The :ref:`aperture-parameters` may also be specified.
 * No field is constructed if B is the default 0.
 
+Examples::
+
+  musp2 : muonspoiler,l=5*m, aper1=1*cm, outerDiameter=240*cm, B=1.5;
+  musp3 : muonspoiler, l=2*m, aper1=3*cm, beampipeThickness=10*cm, horizontalWidth=50*cm;
+
 
 shield
 ^^^^^^
@@ -1538,6 +1605,21 @@ Parameter          Description                          Default     Required
 Notes:
 
 * The :ref:`aperture-parameters` may also be specified.
+
+Examples::
+
+  sh1 : shield, l=0.2*m,
+              aper1=3*cm,
+              aper2=1.5*cm,
+              apertureType="rectangular",
+              outerDiameter=50*cm,
+              beampipeThickness=1*mm,
+              xsize=7*cm,
+              ysize=7*cm,
+              material="concrete",
+              beampipeMaterial="stainlesssteel",
+              colour="iron";
+
 
 dump
 ^^^^
@@ -1672,22 +1754,23 @@ Notes:
 	     and this could result in the curvilinear world being made very small.
 
 The offsets are with respect to the centre of the beam pipe section the wire is placed inside.
-This should therefore be less than half the element length `l`. The usual beam pipe parameters
-can be specified and apply the to the beam pipe. For example, `material` is used for the beam
-pipe material whereas `wireMaterial` is used for the material of the wire.
+This should therefore be less than half the element length `l`.  For example, `beampipeMaterial`
+is used for the beam pipe material whereas `material` is used for the material of the wire.
 
 The user should take care to define a wire long enough to intercept the beam but be sufficiently
 short to fit inside the beam pipe given the offsets in x, y and z. Checks are made on the end
 points of the wire.
 
+* The :ref:`aperture-parameters` can be specified and apply the to the beampipe.
+
 Examples: ::
 
     ws45Deg: wirescanner, l=4*cm, wireDiameter=0.1*mm, wireLength=5*cm,
-                          wireOffsetX=1*cm, angle=pi/4, wireMaterial="C",
+                          wireOffsetX=1*cm, wireAngle=pi/4, material="C",
 			  aper1=5*cm;
 
     wsVertical: wirescanner, l=4*cm, wireDiameter=0.1*mm, wireLength=5*cm,
-                             wireOffsetX=1*cm, wireOffsetZ=1.6*cm, wireMaterial="C";
+                             wireOffsetX=1*cm, wireOffsetZ=1.6*cm, material="C";
 
 
 laser
@@ -1700,7 +1783,7 @@ of photons.
 Parameter         Description                                        Default     Required
 `l`               Length of drift section [m]                        0           Yes
 `x`, `y`, `z`     Components of laser direction vector (normalised)  (1,0,0)     yes
-`waveLength`      Laser wavelength [m]                               532*nm      Yes
+`wavelength`      Laser wavelength [m]                               532*nm      Yes
 ================  =================================================  ==========  ===========
 
 Examples: ::
@@ -1712,7 +1795,10 @@ gap
 ^^^
 
 `gap` defines a gap where no physical geometry is placed. It will be a region of the world,
-composed of the same material as the world volume.
+composed of the same material as the world volume. No geometry is built but the beamline
+cumulative coordinates advanced by that much when building the model. If an angle is specified,
+it behaves like an `sbend` and a gap according to a smooth arc of that angle is created. By
+default, the angle is 0 and it is a straight gap.
 
 .. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
 
@@ -1724,7 +1810,7 @@ Parameter              Description                              Default     Requ
 
 Examples: ::
 
-    GAP1: gap, l=0.25*m, angle=0.01*rad;
+    g1: gap, l=0.25*m, angle=0.01*rad;
 
 .. _element-crystal-col:
     
@@ -1797,7 +1883,7 @@ Examples: ::
 			bendingAngleYAxis = 0.1*rad,
 			bendingAngleZAxis = 0;
 
-   col1 : crystalcol, l=6*mm, apertureType="rectangular", aper1=0.25*cm, aper2=5*cm,
+   col1 : crystalcol, l=6*mm, apertureType="rectangular", aper1=10*cm, aper2=10*cm,
                       crystalBoth="lovelycrystal", crystalAngleYAxisLeft=-0.1*rad,
 		      crystalAngleYAxisRight=-0.1*rad, xsize=2*mm;
 
@@ -1938,10 +2024,10 @@ Notes:
 Examples: ::
 
  g1: gaborlens, l=1.0*m, kg=0.289643, material="copper", anodeRadius=65*mm, anodeLength=0.920, anodeThickness=1.6*mm,
-     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm;
+     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm, aper1=10*cm;
 
  g2: gaborlens, l=1.0*m, B=0.6*T, material="copper", anodeRadius=65*mm, anodeLength=0.920, anodeThickness=1.6*mm,
-     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm;
+     electrodeRadius=30*mm, electrodeLength=45*mm, electrodeThickness=1.6*mm, aper1=10*cm;
 
 
 transform3d
@@ -2047,7 +2133,7 @@ Parameter         Description                     Default     Required
 
 Examples: ::
 
-   rm1: rmatrix, rmat12=0.997, rmat21=-0.924;
+   r1: rmatrix, rmat11=1, rmat12=0.0, rmat21=500, rmat22=1, rmat33=0, rmat34=500, rmat43=0, rmat44=1, l=0.25;
 
 thinrmatrix
 ^^^^^^^^^^^
@@ -2439,64 +2525,6 @@ Parameters for these components can be specified as either:
 An example of a cooling channel has been provided in `/examples/components/muoncooler.gmad`, and can be used as a template for development.
 
 
-.. _component-bmcol:
-
-bmcol
-^^^^^
-
-.. figure:: figures/bmcol.png
-	    :width: 60%
-	    :align: center
-
-`bmcol` define a beam mask that can be placed in a place in a dispersive section of a beamline in order to separate the
-beam with respect to the energy dispersion of said beam. This mask features two slits (a main slit and a side slit)
-with adjustable sizes and positions.
-
-* The main slit is always centered on the beam mask mount. The side slit position is defined is defined with respect to
-  the main one and can be tilted.
-* The whole mount can then have x and y offset inside of the beam pipe.
-
-.. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
-
-+-------------------+------------------------------------------------+----------------+---------------+
-| **Parameter**     | **Description**                                | **Default**    | **Required**  |
-+===================+================================================+================+===============+
-| `l`               | Length [m]                                     | 0              | Yes           |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `material`        | Outer material                                 | None           | Yes           |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `horizontalWidth` | Outer full width [m]                           | 0.15 m         | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `xsize`           | Horizontal half aperture of main slit [m]      | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `ysize`           | Vertical half aperture of main slit [m]        | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `xsize2`          | Horizontal half aperture of side slit [m]      | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `ysize2`          | Vertical half aperture of side slit [m]        | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `offsetX2`        | Horizontal displacement of side slit [m]       | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `offsetY2`        | Vertical displacement of side slit [m]         | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `tilt2`           | Clockwise rotation of side slit [rad].         | 0              | No            |
-+-------------------+------------------------------------------------+----------------+---------------+
-| `outerShape`      | Shape of the outer material                    | 'rectangular'  | No            |
-|                   | (circular or rectangular).                     |                |               |
-+-------------------+------------------------------------------------+----------------+---------------+
-
-Notes:
-
-* The :ref:`aperture-parameters` may also be specified.
-* The :ref:`offsets-and-tilts` may also be specified.
-
-Examples: ::
-
-  bm: bmcol, l=2*mm, aper1=0.15*m, horizontalWidth=0.15*m, material="G4_W",
-             offsetX=0*mm, offsetY=0*mm, xsize=5*mm, ysize=30*mm, outerShape="rectangular",
-             offsetX2=20*mm, offsetY2=0*mm, xsize2=1*mm, ysize2=30*mm, tilt2=0.3*rad;
-
-
 .. _component-gascap:
 
 gascap
@@ -2506,8 +2534,8 @@ gascap
 	    :width: 60%
 	    :align: center
 
-`gascap` define a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
-This element is composed of an inner cylindrical material (usually it is gas), an outer capillary material and two
+A `gascap` defines a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
+This element is composed of an inner cylindrical material (e.g. gas), an outer capillary material and two
 electrodes on each sides (with respect to beam axis).
 
 * The inner gas cell is always center on the beam axis.
@@ -2553,11 +2581,12 @@ gasjet
 	    :width: 60%
 	    :align: center
 
-`gasjet` define a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This element is a box of
-material that can be placed in x and y and angled in all directions with respect to the center of the beam pipe.
+A `gasjet` defines a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This
+element is a box of material that can be placed in x and y with respect to the beam axis and angled in
+all directions with respect to the center of the beam pipe.
 
-* The gas jet size is independent of the beam pipe length. However its position is dependent to the center of the pipe
-  along the beam axis.
+* The gas jet size is independent of the beam pipe length. However, its position is relative to the
+  center of the pipe along the beam axis.
 
 .. tabularcolumns:: |p{4cm}|p{4cm}|p{2cm}|p{2cm}|
 

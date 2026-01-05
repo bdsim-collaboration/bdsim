@@ -3,7 +3,7 @@ option, beampipeRadius = 3.8 * cm,
 
 laser1 : laser, l=10*cm,
 		x=1, y=0, z=0, ! set direction of laser to {1,0,0} wrt beam axis
-		waveLength=532e-9*m; ! set wavelength of laser to 532nm
+		wavelength=532e-9*m; ! set wavelength of laser to 532nm
 
 !		spotsize=1e-6*m, intensity=10e6, position={0,0,0}; ! not yet implemented
 

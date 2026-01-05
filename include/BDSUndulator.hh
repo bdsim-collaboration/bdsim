@@ -16,7 +16,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 #ifndef BDSUNDULATOR_H
 #define BDSUNDULATOR_H
 
@@ -24,6 +23,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "globals.hh"
 
+class G4Material;
 class BDSBeamPipeInfo;
 class BDSFieldInfo;
 
@@ -38,6 +38,7 @@ class BDSFieldInfo;
 class BDSUndulator: public BDSAcceleratorComponent
 {
 public:
+  BDSUndulator() = delete;
   BDSUndulator(const G4String&  nameIn,
                G4double         lengthIn,
                G4double         periodIn,
@@ -47,8 +48,11 @@ public:
                BDSBeamPipeInfo* beamPipeInfoIn,
                BDSFieldInfo*    vacuumFieldInfoIn,
                BDSFieldInfo*    outerFieldInfoIn,
-               const G4String&  materialIn = "iron");
-
+               G4Material*      materialIn);
+  /// @{ Assignment and copy constructor not implemented nor used
+  BDSUndulator& operator=(const BDSUndulator&) = delete;
+  BDSUndulator(BDSUndulator&) = delete;
+  /// @}
   virtual ~BDSUndulator();
 
 protected:
@@ -63,7 +67,7 @@ protected:
   G4double undulatorMagnetHeight; ///< Full magnet box height
   G4double undulatorGap;          ///< Full undulator gap
   G4int    numMagnets;            ///< Total number of magnets (1 undulator period is 2 magnets)
-  G4String material;              ///< Undulator magnet material
+  G4Material* material;              ///< Undulator magnet material
 };
 
 #endif

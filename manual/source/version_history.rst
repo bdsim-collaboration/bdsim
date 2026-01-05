@@ -145,6 +145,11 @@ Bug Fixes
   :code:`rsize` is still accepted and used as :code:`rOuter`. The default for :code:`rInner` is 0.
   Previously, the mesh was always half the desired size in geometry but with the correct output
   coordinates in the histogram that mismatched what was simulated.
+* Fixed a bug where BDSIM would complain about duplicate materials if a crystal collimator was used
+  at the same time as a GDML file loaded elsewhere in the model.
+* Fixed many component examples in the manual that had wrongly described parameters.
+* Fixed empty column for 'type' in text survey output.
+* Fixed possibly duplicated file extensions for text survey output.
 * Document the options :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` as well
   as fix their number type internally.
 

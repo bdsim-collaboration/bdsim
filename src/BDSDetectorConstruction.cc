@@ -545,9 +545,12 @@ BDSBeamlineSet BDSDetectorConstruction::BuildBeamline(const GMAD::FastList<GMAD:
   
   if (BDSGlobalConstants::Instance()->Survey())
     {
-      G4String surveyFileName = BDSGlobalConstants::Instance()->SurveyFileName() + ".dat";
+      G4String fn = BDSGlobalConstants::Instance()->SurveyFileName();
+      if (BDS::EndsWith(fn, ".dat"))
+        {fn = fn.erase(fn.length()-4);}
+      G4String surveyFileName = fn + ".dat";
       if (isPlacementBeamline)
-        {surveyFileName = BDSGlobalConstants::Instance()->SurveyFileName() + "_" + name + ".dat";}
+        {surveyFileName = fn + "_" + name + ".dat";}
       BDSSurvey* survey = new BDSSurvey(surveyFileName);
       survey->Write(massWorld);
       delete survey;
