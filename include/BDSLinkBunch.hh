@@ -62,7 +62,11 @@ public:
   /// Access the current particle definition of the current particle in the bunch.
   inline virtual const BDSParticleDefinition* ParticleDefinition() const {return currentParticleDefinition;}
   /// Set current particles index
-  void SetCurrentIndex(int iIndex) {currentIndex = iIndex;}
+  void SetCurrentIndex(size_t iIndex)
+    {
+      if(iIndex >= 0 && iIndex < particles.size())
+        {currentIndex = iIndex;}
+    }
   /// Reset current particle index
   void Reset() {currentIndex = 0;}
 

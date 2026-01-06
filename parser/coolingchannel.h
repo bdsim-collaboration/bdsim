@@ -26,6 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #if __cplusplus >= 201703L
 #include <variant>
+#include <algorithm>
 #endif
 
 #include "published.h"

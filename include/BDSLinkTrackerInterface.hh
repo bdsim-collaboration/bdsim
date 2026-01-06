@@ -34,8 +34,8 @@ public:
                                                             double kineticEnergy,
                                                             int ionCharge);
 
-  BDSParticleDefinition* GetReferenceParticleDefinition() {return referenceParticleDefinition;}
-  void SetReferenceParticleDefinition(BDSParticleDefinition *rpd) {referenceParticleDefinition = rpd;}
+  const BDSParticleDefinition* GetReferenceParticleDefinition() {return referenceParticleDefinition;}
+  void SetReferenceParticleDefinition(BDSParticleDefinition* rpd) {referenceParticleDefinition = rpd;}
 
   std::string GetBDSIMConfigFile() {return bdsimConfigFile;}
   int GetReferenceParticlePDG() {return referenceParticlePDG;}
@@ -63,17 +63,17 @@ public:
   void AddParticle(double x, double y, double px, double py,
                    double pz, double t, double s,
                    int trackid, int pdgid);
-  void AddParticles(std::vector<double> x, std::vector<double> y,
-                    std::vector<double> px, std::vector<double> py,
-                    std::vector<double> ct, std::vector<double> deltap,
-                    std::vector<double> chi, std::vector<double> chargeRatio,
-                    std::vector<double> s, std::vector<int> trackid,
-                    std::vector<int> pdgid);
-  void AddParticles(std::vector<double> x, std::vector<double> y,
-                    std::vector<double> px, std::vector<double> py,
-                    std::vector<double> pz, std::vector<double> t,
-                    std::vector<double> s, std::vector<int> trackid,
-                    std::vector<int> pdgid);
+  void AddParticles(std::vector<double> &x, std::vector<double> &y,
+                    std::vector<double> &px, std::vector<double> &py,
+                    std::vector<double> &ct, std::vector<double> &deltap,
+                    std::vector<double> &chi, std::vector<double> &chargeRatio,
+                    std::vector<double> &s, std::vector<int> &trackid,
+                    std::vector<int> &pdgid);
+  void AddParticles(std::vector<double> &x, std::vector<double> &y,
+                    std::vector<double> &px, std::vector<double> &py,
+                    std::vector<double> &pz, std::vector<double> &t,
+                    std::vector<double> &s, std::vector<int> &trackid,
+                    std::vector<int> &pdgid);
 
   void ClearData();
 
