@@ -239,7 +239,7 @@ std::string BDSMessenger::BDSSamplerToString(int iSampler)
 
 void BDSMessenger::ListQueries()
 {
-  auto queries = BDSParser::Instance()->GetQuery();
+  auto queries = BDSParser::Instance()->GetQueries();
   for (const auto& qu : queries)
     {G4cout << qu.name << G4endl;}
 }

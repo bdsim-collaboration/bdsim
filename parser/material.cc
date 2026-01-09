@@ -73,7 +73,7 @@ void Material::print()const
 	    << std::endl;
 }
 
-// template specialisation for Array pointers, to be merged into templated function
+// TODO template specialisation for Array pointers, to be merged into templated function
 void Material::set_value(const std::string& property, Array* value, bool bExit)
 {
 #ifdef BDSDEBUG
@@ -100,3 +100,28 @@ void Material::set_value(const std::string& property, Array* value, bool bExit)
         {std::rethrow_exception(std::current_exception());} // to be caught by python
     }
 }
+
+#if __cplusplus >= 201703L
+std::list<std::variant<bool, int, double, std::string>> Material::get_value_array(const std::string & property) {
+  std::list<std::variant<bool, int, double, std::string>> retval(components.size());
+
+  if(property=="components")
+  {
+    std::copy(components.begin(),components.end(), retval.begin());
+  }
+  else if(property=="componentsWeights")
+  {
+    std::copy(componentsWeights.begin(),componentsWeights.end(), retval.begin());
+  }
+  else if(property=="componentsFractions")
+  {
+    std::copy(componentsFractions.begin(),componentsFractions.end(), retval.begin());
+  }
+  else
+  {
+    std::cerr << "Error: parser> unknown material option \"" << property << "\", or doesn't expect vector type" << std::endl;
+  }
+
+  return retval;
+}
+#endif

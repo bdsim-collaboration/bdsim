@@ -27,6 +27,7 @@ namespace py = pybind11;
 #include "aperture.h"
 #include "blmplacement.h"
 #include "cavitymodel.h"
+#include "coolingchannel.h"
 #include "crystal.h"
 #include "element.h"
 #include "field.h"
@@ -68,6 +69,12 @@ PYBIND11_MODULE(fastlist, m) {
   py::class_<GMAD::FastList<GMAD::CavityModel>>(m,"FastList_CavityModel")
     .def(py::init<>())
     .def("__iter__", [](const GMAD::FastList<GMAD::CavityModel> &s)
+    { return py::make_iterator(s.begin(), s.end()); },
+    py::keep_alive<0,1>());
+
+  py::class_<GMAD::FastList<GMAD::CoolingChannel>>(m,"FastList_CoolingChannel")
+    .def(py::init<>())
+    .def("__iter__", [](const GMAD::FastList<GMAD::CoolingChannel> &s)
     { return py::make_iterator(s.begin(), s.end()); },
     py::keep_alive<0,1>());
 

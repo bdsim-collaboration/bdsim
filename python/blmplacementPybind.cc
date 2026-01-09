@@ -27,51 +27,88 @@ namespace py = pybind11;
 #include "blmplacement.h"
 
 PYBIND11_MODULE(blmplacement, m) {
-py::class_<GMAD::Published<GMAD::BLMPlacement>>(m,
-"PublishedBLMPlacement")
-.def("NameExists",&GMAD::BLMPlacement::NameExists);
+  py::class_<GMAD::Published<GMAD::BLMPlacement>>(m,
+  "PublishedBLMPlacement")
+    .def("NameExists",&GMAD::BLMPlacement::NameExists)
+    .def("AllNames", &GMAD::BLMPlacement::AllNames);
 
-py::class_<GMAD::BLMPlacement, GMAD::Published<GMAD::BLMPlacement> >(m,
-"BLMPlacement")
-.def (py::init<>())
-.def_readwrite("name", &GMAD::BLMPlacement::name)
-.def_readwrite("referenceElement", &GMAD::BLMPlacement::referenceElement)
-.def_readwrite("referenceElementNumber", &GMAD::BLMPlacement::referenceElementNumber)
+  py::class_<GMAD::BLMPlacement, GMAD::Published<GMAD::BLMPlacement> >(m,"BLMPlacement")
+    .def(py::init<>())
+    .def("clear", &GMAD::BLMPlacement::clear)
+    .def("print", &GMAD::BLMPlacement::print)
 
-.def_readwrite("s", &GMAD::BLMPlacement::s)
-.def_readwrite("x", &GMAD::BLMPlacement::x)
-.def_readwrite("y", &GMAD::BLMPlacement::y)
-.def_readwrite("z", &GMAD::BLMPlacement::z)
+    .def_readonly("name", &GMAD::BLMPlacement::name)
+    .def_readonly("referenceElement", &GMAD::BLMPlacement::referenceElement)
+    .def_readonly("referenceElementNumber", &GMAD::BLMPlacement::referenceElementNumber)
 
+    .def_readonly("s", &GMAD::BLMPlacement::s)
+    .def_readonly("x", &GMAD::BLMPlacement::x)
+    .def_readonly("y", &GMAD::BLMPlacement::y)
+    .def_readonly("z", &GMAD::BLMPlacement::z)
 
-.def_readwrite("phi", &GMAD::BLMPlacement::phi)
-.def_readwrite("theta", &GMAD::BLMPlacement::theta)
-.def_readwrite("psi", &GMAD::BLMPlacement::psi)
+    .def_readonly("phi", &GMAD::BLMPlacement::phi)
+    .def_readonly("theta", &GMAD::BLMPlacement::theta)
+    .def_readonly("psi", &GMAD::BLMPlacement::psi)
 
+    .def_readonly("axisX", &GMAD::BLMPlacement::axisX)
+    .def_readonly("axisY", &GMAD::BLMPlacement::axisY)
+    .def_readonly("axisZ", &GMAD::BLMPlacement::axisZ)
+    .def_readonly("angle", &GMAD::BLMPlacement::angle)
 
-.def_readwrite("axisX", &GMAD::BLMPlacement::axisX)
-.def_readwrite("axisY", &GMAD::BLMPlacement::axisY)
-.def_readwrite("axisZ", &GMAD::BLMPlacement::axisZ)
-.def_readwrite("angle", &GMAD::BLMPlacement::angle)
+    .def_readonly("axisAngle", &GMAD::BLMPlacement::axisAngle)
+    .def_readonly("side", &GMAD::BLMPlacement::side)
+    .def_readonly("sideOffset", &GMAD::BLMPlacement::sideOffset)
 
-.def_readwrite("axisAngle", &GMAD::BLMPlacement::axisAngle)
-.def_readwrite("side", &GMAD::BLMPlacement::side)
-.def_readwrite("sideOffset", &GMAD::BLMPlacement::sideOffset)
+    .def_readonly("geometryFile", &GMAD::BLMPlacement::geometryFile)
+    .def_readonly("geometryType", &GMAD::BLMPlacement::geometryType)
+    .def_readonly("blmMaterial", &GMAD::BLMPlacement::blmMaterial)
+    .def_readonly("blm1", &GMAD::BLMPlacement::blm1)
+    .def_readonly("blm2", &GMAD::BLMPlacement::blm2)
+    .def_readonly("blm3", &GMAD::BLMPlacement::blm3)
+    .def_readonly("blm4", &GMAD::BLMPlacement::blm4)
+    .def_readonly("scoreQuantity", &GMAD::BLMPlacement::scoreQuantity)
+    .def_readonly("bias", &GMAD::BLMPlacement::bias)
 
-.def_readwrite("geometryFile", &GMAD::BLMPlacement::geometryFile)
-.def_readwrite("geometryType", &GMAD::BLMPlacement::geometryType)
-.def_readwrite("blmMaterial", &GMAD::BLMPlacement::blmMaterial)
-.def_readwrite("blm1", &GMAD::BLMPlacement::blm1)
-.def_readwrite("blm2", &GMAD::BLMPlacement::blm2)
-.def_readwrite("blm3", &GMAD::BLMPlacement::blm3)
-.def_readwrite("blm4", &GMAD::BLMPlacement::blm4)
-.def_readwrite("scoreQuantity", &GMAD::BLMPlacement::scoreQuantity)
-.def_readwrite("bias", &GMAD::BLMPlacement::bias)
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,bool value) {self.set_value<bool>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,int value) {self.set_value<int>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,long int value) {self.set_value<long int>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,double value) {self.set_value<double>(name,value, false);})
+    .def("set_value",[](GMAD::BLMPlacement &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
+    .def("get_value",[](GMAD::BLMPlacement &self,std::string name) {
+      std::variant<bool, int, double, std::string, py::list> retval;
 
-.def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,std::string value) {blmp.set_value<std::string>(name,value);})
-.def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,int value) {blmp.set_value<int>(name,value);})
-.def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,bool value) {blmp.set_value<bool>(name,value);})
-.def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,long int value) {blmp.set_value<long int>(name,value);})
-.def("set_value",[](GMAD::BLMPlacement &blmp,std::string name,double value) {blmp.set_value<double>(name,value);});
+      try {
+        retval = self.get<bool>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
 
+      try {
+        retval = self.get<int>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<double>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<std::string>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+name);
+    })
+
+    .def("keys", [](GMAD::BLMPlacement &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::BLMPlacement &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, bool value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, int value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, double value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::BLMPlacement &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::BLMPlacement &self) {return self.AllNames();});
 }

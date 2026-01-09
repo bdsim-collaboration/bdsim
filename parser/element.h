@@ -26,6 +26,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <map>
 #include <sstream>
 #include <string>
+#if __cplusplus >= 201703L
+#include <variant>
+#endif
 
 #include "published.h"
 
@@ -309,8 +312,13 @@ namespace GMAD
     ///@}
     /// Set methods by property name and value
     template <typename T>
-    void set_value(std::string property, T value, bool exceptionSafe = false);
- 
+    void set_value(std::string property, T value, bool exceptionSafe = true);
+    /// Set method for lists
+    void set_value_array(const std::string& property, Array* value, bool bExit = true); // TODO keep separate as template calling order
+    /// Get method for lists
+#if __cplusplus >= 201703L
+    std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
+#endif
     /// constructor
     Element();
 
@@ -320,9 +328,14 @@ namespace GMAD
     /// map that translates between alternative parser names for members, could be made static
     std::map<std::string,std::string> alternativeNames;
 
+
   protected:
     /// returns 'official' member name for property
     std::string getPublishedName(const std::string& name) const;
+
+    std::map<std::string, std::list<int>*> attribute_map_list_int;
+    std::map<std::string, std::list<double>*> attribute_map_list_double;
+    std::map<std::string, std::list<std::string>*> attribute_map_list_string;
   };
 
   template <typename T>

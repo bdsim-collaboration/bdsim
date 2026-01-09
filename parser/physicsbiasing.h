@@ -22,6 +22,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <list>
 #include <vector>
+#if __cplusplus >= 201703L
+#include <variant>
+#endif
+#include "published.h"
+
 
 namespace GMAD
 {
@@ -37,7 +42,7 @@ namespace GMAD
    * 
    * @author Jochem Snuverink
    */
-  class PhysicsBiasing {
+  class PhysicsBiasing : public Published<PhysicsBiasing> {
     
   public:
     std::string name; ///< name
@@ -53,17 +58,23 @@ namespace GMAD
     
     /// constructor
     PhysicsBiasing();
+    /// publish members
+    void PublishMembers();
     /// reset
     void clear();
     /// print some properties
     void print()const;
 
     /// set methods by property name, numeric values
-    void set_value(const std::string& property, double value);
+    void set_value(const std::string& property, double value, bool bExit = true);
     /// set methods by property name, list of numeric values
-    void set_value(const std::string& property, Array* value);
+    void set_value(const std::string& property, Array* value, bool bExit = true);
     /// set methods by property name, string values
-    void set_value(const std::string& property, std::string value);
+    void set_value(const std::string& property, std::string value, bool bExit = true);
+    /// Get method for lists
+#if __cplusplus >= 201703L
+    std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
+#endif
   };
 
 }

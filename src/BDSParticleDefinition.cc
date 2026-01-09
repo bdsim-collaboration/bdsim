@@ -36,12 +36,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 
 BDSParticleDefinition::BDSParticleDefinition(G4ParticleDefinition* particleIn,
-					     G4double              totalEnergyIn,
-					     G4double              kineticEnergyIn,
-					     G4double              momentumIn,
-					     G4double              ffactIn,
-					     BDSIonDefinition*     ionDefinitionIn,
-					     G4int                 ionPDGIDIn):
+                                             G4double              totalEnergyIn,
+                                             G4double              kineticEnergyIn,
+                                             G4double              momentumIn,
+                                             G4double              ffactIn,
+                                             BDSIonDefinition*     ionDefinitionIn,
+                                             G4int                 ionPDGIDIn):
   particle(particleIn),
   ionDefinition(nullptr),
   ionPDGID(ionPDGIDIn),
@@ -68,14 +68,14 @@ BDSParticleDefinition::BDSParticleDefinition(G4ParticleDefinition* particleIn,
 }
 
 BDSParticleDefinition::BDSParticleDefinition(const G4String&   nameIn,
-					     G4double          massIn,
-					     G4double          chargeIn,
-					     G4double          totalEnergyIn,
-					     G4double          kineticEnergyIn,
-					     G4double          momentumIn,
-					     G4double          ffactIn,
-					     BDSIonDefinition* ionDefinitionIn,
-					     G4int             ionPDGIDIn):
+                                             G4double          massIn,
+                                             G4double          chargeIn,
+                                             G4double          totalEnergyIn,
+                                             G4double          kineticEnergyIn,
+                                             G4double          momentumIn,
+                                             G4double          ffactIn,
+                                             BDSIonDefinition* ionDefinitionIn,
+                                             G4int             ionPDGIDIn):
   particle(nullptr),
   ionDefinition(nullptr),
   ionPDGID(ionPDGIDIn),

@@ -246,7 +246,7 @@ void Element::PublishMembers()
 
   // for jaw collimator with tip
   publish("tipThickness",     &Element::tipThickness);
-  publish("tipMaterial",     &Element::tipMaterial);
+  publish("tipMaterial",      &Element::tipMaterial);
 
   // bias
   publish("bias",                &Element::bias);
@@ -296,6 +296,15 @@ void Element::PublishMembers()
   publish("crystalAngleYAxisRight", &Element::crystalAngleYAxisRight);
 
   publish("coolingDefinition",      &Element::coolingDefinition);
+
+  attribute_map_list_double["knl"]                = &knl;
+  attribute_map_list_double["ksl"]                = &ksl;
+  attribute_map_list_double["layerThicknesses"]   = &layerThicknesses;
+  attribute_map_list_string["layerMaterials"]     = &layerMaterials;
+  attribute_map_list_int["layerIsSampler"]        = &layerIsSampler;
+  attribute_map_list_string["biasMaterialList"]   = &biasMaterialList;
+  attribute_map_list_string["biasVacuumList"]     = &biasVacuumList;
+  attribute_map_list_string["biasMaterialLVList"] = &biasMaterialLVList;
 }
 
 std::string Element::getPublishedName(const std::string& nameIn) const
@@ -812,3 +821,61 @@ void Element::setSamplerInfo(std::string samplerTypeIn,
   samplerRadius = samplerRadiusIn;
   samplerParticleSetID = particleSetIDIn;
 }
+
+void Element::set_value_array(const std::string& property, Array* value, bool bExit)
+{
+  auto search1 = attribute_map_list_int.find(property);
+  if (search1 != attribute_map_list_int.end())
+  {
+    value->set_vector(*search1->second);
+    return;
+  }
+
+  auto search2 = attribute_map_list_double.find(property);
+  if (search2 != attribute_map_list_double.end())
+  {
+    value->set_vector(*search2->second);
+    return;
+  }
+
+  auto search3 = attribute_map_list_string.find(property);
+  if (search3 != attribute_map_list_string.end()) {
+    value->set_vector(*search3->second);
+    return;
+  }
+
+  std::cerr << "Error: parser> unknown element option \"" << property << "\", or doesn't expect vector type" << std::endl;
+  if(bExit)
+    {exit(1);}
+  else
+    {std::rethrow_exception(std::current_exception());}
+}
+
+#if __cplusplus >= 201703L
+std::list<std::variant<bool, int, double, std::string>> Element::get_value_array(const std::string & property) {
+  std::list<std::variant<bool, int, double, std::string>> retval;
+
+  // search int list
+  auto search1 = attribute_map_list_int.find(property);
+  if (search1 != attribute_map_list_int.end()) {
+    retval.resize((*search1).second->size());
+    std::copy((*search1).second->begin(),(*search1).second->end(), retval.begin());
+  }
+
+  // search double list
+  auto search2 = attribute_map_list_double.find(property);
+  if (search2 != attribute_map_list_double.end()) {
+    retval.resize((*search2).second->size());
+    std::copy((*search2).second->begin(),(*search2).second->end(), retval.begin());
+  }
+
+  // search string list
+  auto search3 = attribute_map_list_string.find(property);
+  if (search3 != attribute_map_list_string.end()) {
+    retval.resize((*search3).second->size());
+    std::copy((*search3).second->begin(),(*search3).second->end(), retval.begin());
+  }
+
+  return retval;
+}
+#endif

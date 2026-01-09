@@ -15,7 +15,7 @@ file(GLOB GMAD_PARSER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cc)
 
 list(APPEND pythonBindingSrcs
         aperture array atom beam blmplacement cavitymodel
-        crystal element elementtype fastlist field material modulator
+        crystal coolingchannel element elementtype fastlist field material modulator
         newcolour options parameters parser physicsbiasing placement
         query region samplerplacement scorer scorermesh
         sym_table tunnel)
@@ -44,7 +44,7 @@ foreach(rootBindingSrc IN ZIP_LISTS rootBindingSrcs)
     bdsim_install_python(${rootBindingSrc_0})
 endforeach()
 
-install(FILES __init__.py bdsim.py convert.py
+install(FILES __init__.py bdsim.py convert.py developer.py
         DESTINATION lib/python/bdsim
         COMPONENT python)
 

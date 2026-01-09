@@ -49,10 +49,10 @@ namespace GMAD
     /// set methods by property name
     template<typename T>
     void set_value(std::string name, T value, bool bExit = false);
-    
+
     /// get method (only for doubles)
     double get_value(std::string property_name) const;
-
+    /// get method (only for strings)
     std::string get_value_string(std::string property_name) const;
 
     /// Take another instance of options and copy the values that have

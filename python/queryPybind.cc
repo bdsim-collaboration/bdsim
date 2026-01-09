@@ -28,66 +28,106 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(query, m) {
   py::class_<GMAD::Published<GMAD::Query>>(m,"PublishedQuery")
-    .def("NameExists",&GMAD::Query::NameExists);
+    .def("NameExists", &GMAD::Query::NameExists)
+    .def("AllNames", &GMAD::Query::AllNames);
 
-  py::class_<GMAD::Query>(m,"Query")
+  py::class_<GMAD::Query, GMAD::Published<GMAD::Query>>(m,"Query")
     .def (py::init<>())
-    .def_readwrite("name",&GMAD::Query::name)
-    .def_readwrite("nx",&GMAD::Query::nx)
-    .def_readwrite("ny",&GMAD::Query::ny)
-    .def_readwrite("nz",&GMAD::Query::nz)
-    .def_readwrite("nt",&GMAD::Query::nt)
-    .def_readwrite("xmin",&GMAD::Query::xmin)
-    .def_readwrite("xmax",&GMAD::Query::xmax)
-    .def_readwrite("ymin",&GMAD::Query::ymin)
-    .def_readwrite("ymax",&GMAD::Query::ymax)
-    .def_readwrite("zmin",&GMAD::Query::zmin)
-    .def_readwrite("zmax",&GMAD::Query::zmax)
-    .def_readwrite("tmin",&GMAD::Query::tmin)
-    .def_readwrite("tmax",&GMAD::Query::tmax)
-    .def_readwrite("outfileMagnetic",&GMAD::Query::outfileMagnetic)
-    .def_readwrite("outfileElectric",&GMAD::Query::outfileElectric)
-    .def_readwrite("fieldObject",&GMAD::Query::fieldObject)
-
-    .def_readwrite("queryMagneticField",&GMAD::Query::queryMagneticField)
-    .def_readwrite("queryElectricField",&GMAD::Query::queryElectricField)
-
-    .def_readwrite("overwriteExistingFiles",&GMAD::Query::overwriteExistingFiles)
-    .def_readwrite("printTransform",&GMAD::Query::printTransform)
-
-    .def_readwrite("drawArrows",&GMAD::Query::drawArrows)
-    .def_readwrite("drawZeroValuePoints",&GMAD::Query::drawZeroValuePoints)
-    .def_readwrite("drawBoxes",&GMAD::Query::drawBoxes)
-    .def_readwrite("boxAlpha",&GMAD::Query::boxAlpha)
-
-    .def_readwrite("pointsFile",&GMAD::Query::pointsFile)
-
-    .def_readwrite("referenceElement",&GMAD::Query::referenceElement)
-    .def_readwrite("referenceElementNumber",&GMAD::Query::referenceElementNumber)
-    .def_readwrite("s",&GMAD::Query::s)
-    .def_readwrite("x",&GMAD::Query::x)
-    .def_readwrite("y",&GMAD::Query::y)
-    .def_readwrite("z",&GMAD::Query::z)
-
-    .def_readwrite("phi",&GMAD::Query::phi)
-    .def_readwrite("theta",&GMAD::Query::theta)
-    .def_readwrite("psi",&GMAD::Query::psi)
-
-    .def_readwrite("axisX",&GMAD::Query::axisX)
-    .def_readwrite("axisY",&GMAD::Query::axisY)
-    .def_readwrite("axisZ",&GMAD::Query::axisZ)
-    .def_readwrite("angle",&GMAD::Query::angle)
-
-    .def_readwrite("axisAngle",&GMAD::Query::axisAngle)
-
-    .def_readwrite("checkParameters",&GMAD::Query::checkParameters)
 
     .def("clear",&GMAD::Query::clear)
     .def("print",&GMAD::Query::print)
 
-    .def("set_value",[](GMAD::Query &query,std::string name,std::string value) {query.set_value<std::string>(name,value,false);})
-    .def("set_value",[](GMAD::Query &query,std::string name,int value) {query.set_value<int>(name,value,false);})
-    .def("set_value",[](GMAD::Query &query,std::string name,bool value) {query.set_value<bool>(name,value,false);})
-    .def("set_value",[](GMAD::Query &query,std::string name,long int value) {query.set_value<long int>(name,value,false);})
-    .def("set_value",[](GMAD::Query &query,std::string name,double value) {query.set_value<double>(name,value,false);});
+    .def_readonly("name",&GMAD::Query::name)
+    .def_readonly("nx",&GMAD::Query::nx)
+    .def_readonly("ny",&GMAD::Query::ny)
+    .def_readonly("nz",&GMAD::Query::nz)
+    .def_readonly("nt",&GMAD::Query::nt)
+    .def_readonly("xmin",&GMAD::Query::xmin)
+    .def_readonly("xmax",&GMAD::Query::xmax)
+    .def_readonly("ymin",&GMAD::Query::ymin)
+    .def_readonly("ymax",&GMAD::Query::ymax)
+    .def_readonly("zmin",&GMAD::Query::zmin)
+    .def_readonly("zmax",&GMAD::Query::zmax)
+    .def_readonly("tmin",&GMAD::Query::tmin)
+    .def_readonly("tmax",&GMAD::Query::tmax)
+    .def_readonly("outfileMagnetic",&GMAD::Query::outfileMagnetic)
+    .def_readonly("outfileElectric",&GMAD::Query::outfileElectric)
+    .def_readonly("fieldObject",&GMAD::Query::fieldObject)
+
+    .def_readonly("queryMagneticField",&GMAD::Query::queryMagneticField)
+    .def_readonly("queryElectricField",&GMAD::Query::queryElectricField)
+
+    .def_readonly("overwriteExistingFiles",&GMAD::Query::overwriteExistingFiles)
+    .def_readonly("printTransform",&GMAD::Query::printTransform)
+
+    .def_readonly("drawArrows",&GMAD::Query::drawArrows)
+    .def_readonly("drawZeroValuePoints",&GMAD::Query::drawZeroValuePoints)
+    .def_readonly("drawBoxes",&GMAD::Query::drawBoxes)
+    .def_readonly("boxAlpha",&GMAD::Query::boxAlpha)
+
+    .def_readonly("pointsFile",&GMAD::Query::pointsFile)
+
+    .def_readonly("referenceElement",&GMAD::Query::referenceElement)
+    .def_readonly("referenceElementNumber",&GMAD::Query::referenceElementNumber)
+    .def_readonly("s",&GMAD::Query::s)
+    .def_readonly("x",&GMAD::Query::x)
+    .def_readonly("y",&GMAD::Query::y)
+    .def_readonly("z",&GMAD::Query::z)
+
+    .def_readonly("phi",&GMAD::Query::phi)
+    .def_readonly("theta",&GMAD::Query::theta)
+    .def_readonly("psi",&GMAD::Query::psi)
+
+    .def_readonly("axisX",&GMAD::Query::axisX)
+    .def_readonly("axisY",&GMAD::Query::axisY)
+    .def_readonly("axisZ",&GMAD::Query::axisZ)
+    .def_readonly("angle",&GMAD::Query::angle)
+
+    .def_readonly("axisAngle",&GMAD::Query::axisAngle)
+
+    .def_readonly("checkParameters",&GMAD::Query::checkParameters)
+
+    .def("set_value",[](GMAD::Query &self,std::string name,std::string value) {self.set_value<std::string>(name,value,false);})
+    .def("set_value",[](GMAD::Query &self,std::string name,int value) {self.set_value<int>(name,value,false);})
+    .def("set_value",[](GMAD::Query &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
+    .def("set_value",[](GMAD::Query &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
+    .def("set_value",[](GMAD::Query &self,std::string name,double value) {self.set_value<double>(name,value,false);})
+    .def("get_value",[](GMAD::Query &self,std::string name) {
+      std::variant<bool, int, double, std::string, py::list> retval;
+
+      try {
+        retval = self.get<bool>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<int>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<double>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<std::string>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+name);
+    })
+
+    .def("keys", [](GMAD::Query &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::Query &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Query &self, const std::string& key, bool value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Query &self, const std::string& key, int value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Query &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Query &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::Query &self) {return self.AllNames();});
+
 }

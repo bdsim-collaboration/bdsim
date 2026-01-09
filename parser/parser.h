@@ -109,6 +109,8 @@ namespace GMAD
     /// Method that transfers parameters to element properties
     void write_table(std::string* name, ElementType type, bool isLine=false);
 
+    /// Expand all sequences define with 'line' into FastLists.
+    void expand_sequences();
     /// Expand a sequence by name from start to end into the target list. This
     /// removes sublines from the beamline into one LINE.
     void expand_line(FastList<Element>& target,
@@ -121,9 +123,12 @@ namespace GMAD
                      const std::string& start,
                      const std::string& end);
 
+    /// Get names of the available sequences
+    std::vector<std::string>& get_sequences();
+
     /// Find the sequence defined in the parser and expand it if not already
     /// done so. Cache result in map of fastlists.
-    const FastList<Element>& get_sequence(const std::string& name);
+    const FastList<Element>& get_sequence(const std::string& name, bool bExit = true);
 
     /// Add a particle set for a sampler and return a unique integer ID for that set. If no list
     /// or empty list given, returns -1, the default for 'no filter'.
@@ -212,7 +217,8 @@ namespace GMAD
     ///@}
     /// Beamline Access.
     const FastList<Element>& GetBeamline() const;
-    
+
+    std::string GetCallSequenceLog();
   private:
     /// Set sampler
     void set_sampler(const std::string& name,
@@ -223,9 +229,6 @@ namespace GMAD
     /// Add function to parser
     void add_func(std::string name, double (*func)(double));
     void add_var(std::string name, double value, int is_reserved = 0);
-
-    /// Expand all sequences define with 'line' into FastLists.
-    void expand_sequences();
 
     // protected implementation (for inheritance to BDSParser - hackish)
   protected:
@@ -336,6 +339,9 @@ namespace GMAD
     std::set<std::set<int>> samplerFilters;
     std::map<int, std::set<int>> samplerFilterIDToSet;
     std::map<std::set<int>, int> setToSamplerFilterID;
+
+    /// execution log to understand call order (not an error or debug log)
+    std::stringstream *call_sequence_log = new std::stringstream();
   };
 
   template <class C, typename T>

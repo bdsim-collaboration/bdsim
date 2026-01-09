@@ -49,7 +49,11 @@ class Published
 {
 public:
   bool NameExists(const std::string& name) const {return allNames.count(name) > 0;}
-  
+  std::set<std::string> AllNames() {return allNames;}
+  /// Get method for class C
+  template <typename T>
+  T get(const C* instance, const std::string& name) const;
+
 protected:
   /// Make pointer to member from class C and type T with accessible with a name
   template<typename T>
@@ -73,11 +77,7 @@ protected:
   /// Access method to static map for type T and class C
   template <typename T>
   AttributeMap<T>& attribute_map() const;
-  
-  /// Get method for class C
-  template <typename T>
-  T get(const C* instance, const std::string& name) const;
-  
+
 private:
   /// Access to member pointer
   template<typename T>

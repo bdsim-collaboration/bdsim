@@ -26,5 +26,65 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(array, m) {
   py::class_<GMAD::Array>(m,"Array")
-    .def(py::init<>());
+    .def(py::init<>())
+    .def(py::init<GMAD::Symtab*>())
+    .def(py::init([](py::list &l) {
+
+      auto a = new GMAD::Array();
+
+      // if empty list
+      if(l.size() == 0) {
+        return a;
+      }
+
+      auto first_type = l[0].get_type();
+
+      bool homogeneous = true;
+      for (py::handle item : l) {
+        if (!item.get_type().is(first_type)) {
+          homogeneous = false;
+          break;
+        }
+      }
+
+      if(! homogeneous) {
+        throw std::runtime_error("Array is not homogeneous");
+      }
+
+
+      if(py::isinstance<py::int_>(l[0])) {
+        auto s = l.cast<std::vector<int>>();
+        a->Copy(s);
+      }
+      else if(py::isinstance<py::float_>(l[0])) {
+        auto s = l.cast<std::vector<double>>();
+        a->Copy(s);
+      }
+      else if(py::isinstance<py::str>(l[0])) {
+        auto s = l.cast<std::vector<std::string>>();
+        a->Copy(s);
+      }
+      return a;
+    }))
+    // TODO static constructors
+    .def("GetSymbols", &GMAD::Array::GetSymbols)
+    .def("GetSymbolsList", &GMAD::Array::GetSymbolsList)
+    .def("GetData", &GMAD::Array::GetData)
+    .def("GetDataList", &GMAD::Array::GetDataList)
+    .def("Clear", &GMAD::Array::Clear)
+    .def("Print", &GMAD::Array::Print)
+    .def("Copy", [](GMAD::Array &self, std::list<std::string> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::list<int> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::list<long int> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::list<float> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::list<double> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::vector<std::string> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::vector<int> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::vector<long int> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::vector<float> value) {self.Copy(value);})
+    .def("Copy", [](GMAD::Array &self, std::vector<double> value) {self.Copy(value);});
+
+
+    // TODO copy of STL into array
+    // TODO copy of array into STL
 }

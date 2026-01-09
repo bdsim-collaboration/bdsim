@@ -251,20 +251,49 @@ std::ostream& operator<<(std::ostream& out, const std::list<T>& l)
   return out;
 }
 
-void CoolingChannel::set_value(const std::string& property, Array* value)
+void CoolingChannel::set_value(const std::string& property, Array* value, bool bExit)
 {
   auto search = attribute_map_list_double.find(property);
   if (search != attribute_map_list_double.end())
-    {value->set_vector(*search->second);}
+    {
+      value->set_vector(*search->second);
+    }
   else
     {
       auto search2 = attribute_map_list_string.find(property);
       if (search2 != attribute_map_list_string.end())
-        {value->set_vector(*search2->second);}
+        {
+          value->set_vector(*search2->second);
+        }
       else
         {
           std::cerr << "Error: parser> unknown coolingchannel option \"" << property << "\", or doesn't expect vector type" << std::endl;
-          exit(1);
+          if(bExit)
+            {exit(1);}
+          else
+            {std::rethrow_exception(std::current_exception());}
         }
     }
 }
+
+#if __cplusplus >= 201703L
+std::list<std::variant<bool, int, double, std::string>> CoolingChannel::get_value_array(const std::string & property) {
+  std::list<std::variant<bool, int, double, std::string>> retval;
+
+  // search string list
+  auto search1 = attribute_map_list_string.find(property);
+  if (search1 != attribute_map_list_string.end()) {
+    retval.resize((*search1).second->size());
+    std::copy((*search1).second->begin(),(*search1).second->end(), retval.begin());
+  }
+
+  // search double list
+  auto search2 = attribute_map_list_double.find(property);
+  if (search2 != attribute_map_list_double.end()) {
+    retval.resize((*search2).second->size());
+    std::copy((*search2).second->begin(),(*search2).second->end(), retval.begin());
+  }
+
+  return retval;
+}
+#endif

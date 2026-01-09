@@ -28,32 +28,68 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(cavitymodel, m) {
   py::class_<GMAD::Published<GMAD::CavityModel>>(m,"PublishedCavityModel")
-  .def("NameExists",&GMAD::CavityModel::NameExists);
+  .def("NameExists",&GMAD::CavityModel::NameExists)
+  .def("AllNames", &GMAD::CavityModel::AllNames);
 
   py::class_<GMAD::CavityModel, GMAD::Published<GMAD::CavityModel>>(m,"CavityModel")
   .def(py::init<>())
-  .def_readwrite("name", &GMAD::CavityModel::name)
-  .def_readwrite("type", &GMAD::CavityModel::type)
-  .def_readwrite("material", &GMAD::CavityModel::material)
-  .def_readwrite("irisRadius", &GMAD::CavityModel::irisRadius)
-  .def_readwrite("equatorRadius", &GMAD::CavityModel::equatorRadius)
-  .def_readwrite("halfCellLength", &GMAD::CavityModel::halfCellLength)
-  .def_readwrite("equatorHorizontalAxis", &GMAD::CavityModel::equatorHorizontalAxis)
-  .def_readwrite("equatorVerticalAxis", &GMAD::CavityModel::equatorVerticalAxis)
-  .def_readwrite("irisHorizontalAxis",&GMAD::CavityModel::irisHorizontalAxis)
-  .def_readwrite("irisVerticalAxis", &GMAD::CavityModel::irisVerticalAxis)
-  .def_readwrite("tangetLineAngle", &GMAD::CavityModel::tangentLineAngle)
-  .def_readwrite("thickness", &GMAD::CavityModel::thickness)
-  .def_readwrite("numberOfPoints", &GMAD::CavityModel::numberOfPoints)
-  .def_readwrite("numberOfCells", &GMAD::CavityModel::numberOfCells)
   .def("clear",&GMAD::CavityModel::clear)
-  .def("PublishMembers", &GMAD::CavityModel::PublishMembers)
   .def("print", &GMAD::CavityModel::print)
 
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,std::string value) {cm.set_value<std::string>(name,value);})
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,int value) {cm.set_value<int>(name,value);})
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,long int value) {cm.set_value<long int>(name,value);})
-  .def("set_value",[](GMAD::CavityModel &cm,std::string name,double value) {cm.set_value<double>(name,value);});
+  .def_readonly("name", &GMAD::CavityModel::name)
+  .def_readonly("type", &GMAD::CavityModel::type)
+  .def_readonly("material", &GMAD::CavityModel::material)
+  .def_readonly("irisRadius", &GMAD::CavityModel::irisRadius)
+  .def_readonly("equatorRadius", &GMAD::CavityModel::equatorRadius)
+  .def_readonly("halfCellLength", &GMAD::CavityModel::halfCellLength)
+  .def_readonly("equatorHorizontalAxis", &GMAD::CavityModel::equatorHorizontalAxis)
+  .def_readonly("equatorVerticalAxis", &GMAD::CavityModel::equatorVerticalAxis)
+  .def_readonly("irisHorizontalAxis",&GMAD::CavityModel::irisHorizontalAxis)
+  .def_readonly("irisVerticalAxis", &GMAD::CavityModel::irisVerticalAxis)
+  .def_readonly("tangetLineAngle", &GMAD::CavityModel::tangentLineAngle)
+  .def_readonly("thickness", &GMAD::CavityModel::thickness)
+  .def_readonly("numberOfPoints", &GMAD::CavityModel::numberOfPoints)
+  .def_readonly("numberOfCells", &GMAD::CavityModel::numberOfCells)
 
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,int value) {self.set_value<int>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,double value) {self.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::CavityModel &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+  .def("get_value",[](GMAD::CavityModel &self,std::string name) {
+    std::variant<bool, int, double, std::string, py::list> retval;
 
+    try {
+      retval = self.get<bool>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<int>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<double>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<std::string>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    throw std::runtime_error("name not found : "+name);
+})
+
+  .def("keys", [](GMAD::CavityModel &self) {return self.AllNames();})
+  .def("__len__", [](GMAD::CavityModel &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, int value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, double value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::CavityModel &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+  .def("_ipython_key_completions_", [](GMAD::CavityModel &self) {return self.AllNames();});
 }

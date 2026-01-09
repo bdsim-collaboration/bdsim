@@ -49,7 +49,7 @@ namespace GMAD
     void print()const;
     /// set methods by property name and value
     template <typename T>
-    void set_value(std::string property, T value);
+    void set_value(std::string property, T value, bool bExit = false);
 
   private:
     /// publish members so these can be looked up from parser
@@ -57,7 +57,7 @@ namespace GMAD
   };
 
   template <typename T>
-  void Atom::set_value(std::string property, T value)
+  void Atom::set_value(std::string property, T value, bool bExit )
   {
 #ifdef BDSDEBUG
     std::cout << "parser> Setting value " << std::setw(25) << std::left << property << value << std::endl;
@@ -68,7 +68,10 @@ namespace GMAD
     catch(const std::runtime_error&)
       {
         std::cerr << "Error: parser> unknown atom option \"" << property << "\" with value \"" << value << "\"" << std::endl;
-        exit(1);
+        if(bExit)
+          {exit(1);}
+        else
+          {std::rethrow_exception(std::current_exception());}
       }
   }
 }

@@ -24,6 +24,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <list>
 #include <map>
 #include <string>
+#if __cplusplus >= 201703L
+#include <variant>
+#include <algorithm>
+#endif
 
 #include "published.h"
 
@@ -104,10 +108,14 @@ namespace GMAD
     void print()const;
     /// Set methods by property name and value
     template <typename T>
-    void set_value(const std::string& property, T value);
+    void set_value(const std::string& property, T value, bool bExit = true);
     // Template overloading for Array pointers
     /// Set method for lists
-    void set_value(const std::string& property, Array* value);
+    void set_value(const std::string& property, Array* value, bool bExit = true);
+    /// Get method for lists
+#if __cplusplus >= 201703L
+    std::list<std::variant<bool, int, double, std::string>> get_value_array(const std::string &);
+#endif
 
   private:
     /// publish members
@@ -118,7 +126,7 @@ namespace GMAD
   };
   
   template <typename T>
-  void CoolingChannel::set_value(const std::string& property, T value)
+  void CoolingChannel::set_value(const std::string& property, T value, bool bExit)
     {
 #ifdef BDSDEBUG
       std::cout << "coolingchannel> Setting value " << std::setw(25) << std::left << property << value << std::endl;
@@ -129,7 +137,10 @@ namespace GMAD
       catch(const std::runtime_error&)
         {
           std::cerr << "Error: coolingchannel> unknown option \"" << property << "\" with value " << value  << std::endl;
-          exit(1);
+          if(bExit)
+            {exit(1);}
+          else
+            {std::rethrow_exception(std::current_exception());}
         }
     }
 }

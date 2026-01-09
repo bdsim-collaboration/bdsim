@@ -28,13 +28,11 @@ namespace py = pybind11;
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4IonTable.hh"
-#include "G4Electron.hh"
 #include "Randomize.hh"
 
 #include "BDSLinkTrackerInterface.hh"
 #include "BDSIMLink.hh"
 #include "BDSLinkBunch.hh"
-#include "BDSException.hh"
 #include "BDSSamplerCustom.hh"
 
 
@@ -56,81 +54,10 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
                  std::string elementName,
                  py::object particles,
                  float referenceKineticEnergy);
+
 void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface,
                   py::object particles);
 
-void SelectElement(BDSIMLink* link, const std::string& elementName)
-{
-  // This doesn't throw an error if the element doesn't exist
-  std::cout << "Selecting collimator " << elementName << std::endl;
-  link->SelectLinkElement(elementName);
-
-  // Check if the element exists by querying the index: -1 means it doesn't exist
-  if (link->GetLinkIndex(elementName) == -1)
-    {throw std::runtime_error("Element not found " + elementName);}
-}
-
-BDSParticleDefinition* PrepareBDSParticleDefinition(long long int pdgIDIn, double momentumIn,
-                                                    double kineticEnergyIn, double ionChargeIn)
-{
-  G4int pdgID = (G4int) pdgIDIn;
-
-  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-  G4ParticleDefinition* particleDefGeant;
-
-  // Wrap in our class that calculates momentum and kinetic energy.
-  // Requires that one of E, Ek, P be non-zero (only one).
-  BDSParticleDefinition* particleDefinition = nullptr;
-  BDSIonDefinition* ionDef = nullptr;
-
-  // PDG for ions = 10LZZZAAAI
-  if (pdgID > 1000000000) // is an ion
-  {
-
-    G4IonTable* ionTable = particleTable->GetIonTable();
-    particleDefGeant = ionTable->GetIon(pdgID);
-    if (!particleDefGeant)
-    {throw BDSException("BDSXtrackInterface> Ion \"" + std::to_string(pdgID) + "\" not found");}
-
-    G4int ionCharge = ionChargeIn==0 ? particleDefGeant->GetAtomicNumber() : (G4int) ionChargeIn;
-    ionDef = new BDSIonDefinition(particleDefGeant->GetAtomicMass(),
-                                  particleDefGeant->GetAtomicNumber(),
-                                  ionCharge);
-
-    // correct the particle mass in the case of partially-stripped ions
-    G4double mass   = ionTable->GetIonMass(ionDef->Z(), ionDef->A());
-    G4double charge = ionDef->Charge(); // correct even if overridden
-    mass += ionDef->NElectrons()*G4Electron::Definition()->GetPDGMass();
-    // The constructor with a custom name requires the bdsim name of the ion
-    std::string bdsimPartName = "ion " + std::to_string(static_cast<int>(ionDef->A()))
-                                + " " + std::to_string(static_cast<int>(ionDef->Z()))
-                                + " " + std::to_string(static_cast<int>(charge));
-
-    particleDefinition = new BDSParticleDefinition(bdsimPartName, mass, charge, 0,
-                                                   kineticEnergyIn, momentumIn, 1, ionDef, pdgID);
-  }
-  else
-  {
-    particleDefGeant = particleTable->FindParticle(pdgID);
-    if (!particleDefGeant)
-    {throw BDSException("BDSXtrackInterface> Particle \"" + std::to_string(pdgID) + "\" not found");}
-    particleDefinition = new BDSParticleDefinition(particleDefGeant, 0, kineticEnergyIn, momentumIn, 1, nullptr);
-  }
-
-  return particleDefinition;
-}
-
-BDSParticleDefinition* BDSLinkTrackerInterface::GetReferenceParticleDefinition() const { return referenceParticleDefinition; }
-
-void BDSLinkTrackerInterface::ClearXtrackData() // TODO separate ClearSamplerHits to another function and add to top of track function
-{
-  auto* link = GetBDSIMLink();  // Retrieve pointer to BDSIMLink
-  link->ClearSamplerHits();
-  auto* bunch = GetBunchLink();  // Retrieve pointer to BDSBunch
-  bunch->ClearParticles();
-  auto& active_state = GetParticleActiveState();  // Retrieve reference
-  std::vector<bool>().swap(active_state);  // Efficient clear
-}
 
 PYBIND11_MODULE(bdslinktrackerinterface, m) {
   py::class_<BDSLinkTrackerInterface>(m,"BDSLinkTrackerInterface")
@@ -149,10 +76,6 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                                     seed,
                                                     referenceIonCharge,
                                                     batchMode);
-        obj->SetReferenceParticleDefinition(PrepareBDSParticleDefinition(referenceParticlePDG,
-                                                                     0,
-                                                                     referenceKineticEnergy,
-                                                                     referenceIonCharge));
         obj->SetNoNeutralParticles(no_neutral_particles);
         return obj;
     },
@@ -167,8 +90,73 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                     py::return_value_policy::reference)
       .def_static("GetInstance", []() {return BDSLinkTrackerInterface::GetInstance();},
                   py::return_value_policy::reference)
+      .def("Reset", &BDSLinkTrackerInterface::Reset)
+      .def("PrepareBDSParticleDefinition", &BDSLinkTrackerInterface::PrepareBDSParticleDefinition)
+      .def("GetReferenceParticleDefinition", [](BDSLinkTrackerInterface &ti) {
+        return ti.GetReferenceParticleDefinition();
+      }, py::return_value_policy::reference)
+      .def("SetReferenceParticleDefinition",&BDSLinkTrackerInterface::SetReferenceParticleDefinition, py::arg("particleDefinition"))
+      .def("GetBDSIMConfigFile", &BDSLinkTrackerInterface::GetBDSIMConfigFile)
+      .def("GetReferenceParticlePDG", &BDSLinkTrackerInterface::GetReferenceParticlePDG)
+      .def("GetReferenceParticleKineticEnergy", &BDSLinkTrackerInterface::GetReferenceParticleKineticEnergy)
+      .def("GetRelativeEnergyCut", &BDSLinkTrackerInterface::GetRelativeEnergyCut)
+      .def("GetSeed", &BDSLinkTrackerInterface::GetSeed)
+      .def("GetReferenceIonCharge", &BDSLinkTrackerInterface::GetReferenceIonCharge)
+      .def("GetBatchMode", &BDSLinkTrackerInterface::GetBatchMode)
+      .def("GetMinimumKineticEnergy", &BDSLinkTrackerInterface::GetMinimumKineticEnergy)
+      .def("SetNoNeutralParticles", &BDSLinkTrackerInterface::SetNoNeutralParticles)
+      .def("GetNoNeutralParticles", &BDSLinkTrackerInterface::GetNoNeutralParticles)
       .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink,py::return_value_policy::reference)
       .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink,py::return_value_policy::reference)
+      .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
+                            double ct, double deltap, double chi, double chargeRatio,
+                            double s, int trackid, int pdgid) {
+        ti.AddParticle(x,y, px, py, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
+      py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
+      py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
+                            double pz, double t, double s,
+                            int trackid, int pdgid) {
+        ti.AddParticle(x, y, px, py, pz, t, s, trackid, pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
+      py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("AddParticles",[](BDSLinkTrackerInterface &ti,
+                             std::vector<double> &x,
+                             std::vector<double> &y,
+                             std::vector<double> &xp,
+                             std::vector<double> &yp,
+                             std::vector<double> &ct,
+                             std::vector<double> &deltap,
+                             std::vector<double> &chi,
+                             std::vector<double> &chargeRatio,
+                             std::vector<double> &s,
+                             std::vector<int> &trackid,
+                             std::vector<int> &pdgid) {
+        ti.AddParticles(x,y,xp,yp, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
+      py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
+      py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("AddParticles",[](BDSLinkTrackerInterface &ti,
+                             std::vector<double> x,
+                             std::vector<double> y,
+                             std::vector<double> px,
+                             std::vector<double> py,
+                             std::vector<double> pz,
+                             std::vector<double> t,
+                             std::vector<double> s,
+                             std::vector<int> trackid,
+                             std::vector<int> pdgid) {
+        ti.AddParticles(x,y,px,py,pz,t,s,trackid,pdgid);
+      }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
+      py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+      .def("ClearData",&BDSLinkTrackerInterface::ClearData)
+      .def("GetParticleDefinition", &BDSLinkTrackerInterface::GetParticleDefinition,py::keep_alive<1, 2>())
+      .def("GetParticlePDGMass",&BDSLinkTrackerInterface::GetParticlePDGMass)
+      .def("GetParticlePDGCharge", &BDSLinkTrackerInterface::GetParticlePDGCharge)
+      .def("GetChargeRatio", &BDSLinkTrackerInterface::GetChargeRatio)
+      .def("GetMassRatio",&BDSLinkTrackerInterface::GetMassRatio)
+      .def("GetChi", &BDSLinkTrackerInterface::GetChi)
       .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
           int iElement,
           std::string elementName,
@@ -248,7 +236,11 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
             G4double mass_ratio = charge_ratio_ptr[i] / chi_ptr[i];
             G4double p = ref->Momentum() * (delta_ptr[i] + 1) * mass_ratio;
 
-            auto partDef = PrepareBDSParticleDefinition(pdgid_ptr[i], p, 0, q);
+            auto partDef = tracker_interface->PrepareBDSParticleDefinition(pdgid_ptr[i],
+                                                                           /*totalEnergy */ 0,
+                                                                           p,
+                                                                           /* kineticEnergy */ 0,
+                                                                           q);
             G4double t = - zeta_ptr[i] * CLHEP::m / (ref->Beta() * CLHEP::c_light);
 
             G4double oneplusdelta = (1 + delta_ptr[i]) * mass_ratio;
@@ -273,7 +265,7 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
     // run n particles
     auto link = tracker_interface->GetBDSIMLink();
     std::cout << "beam on with: " << bunch->Size() << std::endl;
-    SelectElement(link, elementName);
+    link->SelectLinkElement(elementName);
     link->BeamOn((G4int)bunch->Size());
     std::cout << "finished tracking" << std::endl;
     // get sampler data
@@ -445,7 +437,7 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
     std::cout << "ref energy is: " << ref->Momentum() << std::endl;
     std::cout << "ref energy submitted in GeV is: " << referenceKineticEnergy / CLHEP::GeV << std::endl;
     // clean BDSLinkBunch of particles
-    tracker_interface->ClearXtrackData();
+    tracker_interface->ClearData();
 }
 
 void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {

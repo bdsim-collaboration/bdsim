@@ -27,20 +27,59 @@ namespace py = pybind11;
 #include "atom.h"
 
 PYBIND11_MODULE(atom, m) {
-py::class_<GMAD::Published<GMAD::Atom>>(m,"PublishedAtom")
-.def("NameExists",&GMAD::Atom::NameExists);
+  py::class_<GMAD::Published<GMAD::Atom>>(m,"PublishedAtom")
+    .def("NameExists",&GMAD::Atom::NameExists)
+    .def("AllNames", &GMAD::Atom::AllNames);
 
   py::class_<GMAD::Atom, GMAD::Published<GMAD::Atom>>(m,"Atom")
     .def(py::init<>())
-    .def_readwrite("name", &GMAD::Atom::name)
-    .def_readwrite("A", &GMAD::Atom::A)
-    .def_readwrite("Z", &GMAD::Atom::Z)
-    .def_readwrite("symbol", &GMAD::Atom::symbol)
     .def("clear",&GMAD::Atom::clear)
     .def("print",&GMAD::Atom::print)
-    .def("set_value",[](GMAD::Atom &atom,std::string name,std::string value) {atom.set_value<std::string>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,int value) {atom.set_value<int>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,bool value) {atom.set_value<bool>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,long int value) {atom.set_value<long int>(name,value);})
-    .def("set_value",[](GMAD::Atom &atom,std::string name,double value) {atom.set_value<double>(name,value);});
+
+    .def_readonly("name", &GMAD::Atom::name)
+    .def_readonly("A", &GMAD::Atom::A)
+    .def_readonly("Z", &GMAD::Atom::Z)
+    .def_readonly("symbol", &GMAD::Atom::symbol)
+
+    .def("set_value",[](GMAD::Atom &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,int value) {self.set_value<int>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,double value) {self.set_value<double>(name,value);})
+    .def("set_value",[](GMAD::Atom &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+    .def("get_value",[](GMAD::Atom &self,std::string name) {
+      std::variant<bool, int, double, std::string, py::list> retval;
+
+      try {
+        retval = self.get<bool>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<int>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<double>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      try {
+        retval = self.get<std::string>(&self,name);
+        return retval;
+      }
+      catch (const std::runtime_error&) {}
+
+      throw std::runtime_error("name not found : "+name);
+})
+
+    .def("keys", [](GMAD::Atom &self) {return self.AllNames();})
+    .def("__len__", [](GMAD::Atom &self) {return self.AllNames().size();})
+    .def("__setitem__", [](GMAD::Atom &self, const std::string& key, int value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::Atom &self, const std::string& key, double value) {self.set_value(key, value, false);})
+    .def("__setitem__", [](GMAD::Atom &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+    .def("_ipython_key_completions_", [](GMAD::Atom &self) {return self.AllNames();});
 }

@@ -69,7 +69,7 @@ namespace GMAD
     double blm4;
     std::string scoreQuantity;
     std::string bias;
-        
+
     /// constructor
     BLMPlacement();
     /// reset
@@ -78,15 +78,15 @@ namespace GMAD
     void print()const;
     /// set methods by property name and value
     template <typename T>
-    void set_value(std::string property, T value);
+    void set_value(std::string property, T value, bool bExit = true);
 
   private:
     /// publish members
     void PublishMembers();
   };
-  
+
   template <typename T>
-  void BLMPlacement::set_value(std::string property, T value)
+  void BLMPlacement::set_value(std::string property, T value, bool bExit)
     {
 #ifdef BDSDEBUG
       std::cout << "blmplacement> Setting value " << std::setw(25) << std::left
@@ -94,13 +94,16 @@ namespace GMAD
 #endif
       // member method can throw runtime_error, catch and exit gracefully
       try
-	{set(this,property,value);}
+        {set(this,property,value);}
       catch (const std::runtime_error&)
-	{
-	  std::cerr << "Error: blmplacement> unknown option \"" << property
-		    << "\" with value \"" << value << "\"" << std::endl;
-	  exit(1);
-	}
+        {
+          std::cerr << "Error: blmplacement> unknown option \"" << property
+                    << "\" with value \"" << value << "\"" << std::endl;
+          if(bExit)
+            {exit(1);}
+          else
+            {std::rethrow_exception(std::current_exception());}
+        }
     }
 }
 

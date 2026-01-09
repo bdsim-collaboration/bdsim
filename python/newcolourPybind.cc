@@ -28,17 +28,60 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(newcolour, m) {
   py::class_<GMAD::Published<GMAD::NewColour>>(m,"PublishedNewColour")
-  .def("NameExists",&GMAD::NewColour::NameExists);
+  .def("NameExists", &GMAD::NewColour::NameExists)
+  .def("AllNames", &GMAD::NewColour::AllNames);
 
   py::class_<GMAD::NewColour, GMAD::Published<GMAD::NewColour>>(m,"NewColour")
   .def(py::init<>())
-  .def_readwrite("name",&GMAD::NewColour::name)
-  .def_readwrite("red",&GMAD::NewColour::red)
-  .def_readwrite("green",&GMAD::NewColour::green)
-  .def_readwrite("blue",&GMAD::NewColour::blue)
-  .def_readwrite("alpha",&GMAD::NewColour::alpha)
   .def("clear",&GMAD::NewColour::clear)
   .def("print",&GMAD::NewColour::print)
-  .def("set_value",[](GMAD::NewColour &newcolour,std::string name,std::string value) {newcolour.set_value<std::string>(name,value, false);})
-  .def("set_value",[](GMAD::NewColour &newcolour,std::string name,double value) {newcolour.set_value<double>(name,value, false);});
+
+  .def_readonly("name",&GMAD::NewColour::name)
+  .def_readonly("red",&GMAD::NewColour::red)
+  .def_readonly("green",&GMAD::NewColour::green)
+  .def_readonly("blue",&GMAD::NewColour::blue)
+  .def_readonly("alpha",&GMAD::NewColour::alpha)
+
+  .def("set_value",[](GMAD::NewColour &self,std::string name,bool value) {self.set_value<bool>(name,value,false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,int value) {self.set_value<int>(name,value,false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,long int value) {self.set_value<long int>(name,value,false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,double value) {self.set_value<double>(name,value, false);})
+  .def("set_value",[](GMAD::NewColour &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
+  .def("get_value",[](GMAD::NewColour &self,std::string name) {
+    std::variant<bool, int, double, std::string, py::list> retval;
+
+    try {
+      retval = self.get<bool>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<int>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<double>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<std::string>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    throw std::runtime_error("name not found : "+name);
+  })
+
+  .def("keys", [](GMAD::NewColour &self) {return self.AllNames();})
+  .def("__len__", [](GMAD::NewColour &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::NewColour &self, const std::string& key, int value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::NewColour &self, const std::string& key, double value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::NewColour &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+  .def("_ipython_key_completions_", [](GMAD::NewColour &self) {return self.AllNames();});
+
 }

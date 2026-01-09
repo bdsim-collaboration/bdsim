@@ -57,8 +57,18 @@ public:
   inline int    CurrentExternalParentID()   const {return currentExternalParentID;}
   /// @}
 
+  /// Access the current particle definition of the current particle local coords in the bunch.
+  inline const BDSParticleCoordsFull ParticleLocal()  {return particles[currentIndex]->coords;}
   /// Access the current particle definition of the current particle in the bunch.
   inline virtual const BDSParticleDefinition* ParticleDefinition() const {return currentParticleDefinition;}
+  /// Set current particles index
+  void SetCurrentIndex(size_t iIndex)
+    {
+      if(iIndex >= 0 && iIndex < particles.size())
+        {currentIndex = iIndex;}
+    }
+  /// Reset current particle index
+  void Reset() {currentIndex = 0;}
 
   /// TBC
   void UpdateGeant4ParticleDefinition(G4int pdgID);

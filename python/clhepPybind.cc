@@ -31,7 +31,11 @@ namespace py = pybind11;
 #include "CLHEP/Units/PhysicalConstants.h"
 
 PYBIND11_MODULE(clhep, m) {
+  m.attr("keV") = py::cast(CLHEP::keV);
+  m.attr("MeV") = py::cast(CLHEP::MeV);
   m.attr("GeV") = py::cast(CLHEP::GeV);
+  m.attr("TeV") = py::cast(CLHEP::TeV);
+  m.attr("PeV") = py::cast(CLHEP::PeV);
 
   m.attr("nanometer") = py::cast(CLHEP::nanometer);
   m.attr("nm") = py::cast(CLHEP::nanometer);
@@ -63,7 +67,6 @@ PYBIND11_MODULE(clhep, m) {
   m.attr("ms") = py::cast(CLHEP::millisecond);
   m.attr("second") = py::cast(CLHEP::second);
   m.attr("s") = py::cast(CLHEP::second);
-
 
   m.attr("c_light") = py::cast(CLHEP::c_light);
 }

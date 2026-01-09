@@ -28,47 +28,88 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(field, m) {
   py::class_<GMAD::Published<GMAD::Field>>(m,"PublishedField")
-  .def("NameExists",&GMAD::Field::NameExists);
+  .def("NameExists",&GMAD::Field::NameExists)
+  .def("AllNames", &GMAD::Field::AllNames);
 
   py::class_<GMAD::Field, GMAD::Published<GMAD::Field>>(m,"Field")
   .def(py::init<>())
 
-  .def_readwrite("name", &GMAD::Field::name)
-  .def_readwrite("type", &GMAD::Field::type)
-  .def_readwrite("eScaling", &GMAD::Field::eScaling)
-  .def_readwrite("bScaling", &GMAD::Field::bScaling)
-  .def_readwrite("integrator", &GMAD::Field::integrator)
-  .def_readwrite("globalTransform", &GMAD::Field::globalTransform)
-  .def_readwrite("magneticFile", &GMAD::Field::magneticFile)
-  .def_readwrite("magneticInterpolator", &GMAD::Field::magneticInterpolator)
-  .def_readwrite("electricFile", &GMAD::Field::electricFile)
-  .def_readwrite("electricInterpolator", &GMAD::Field::electricInterpolator)
-  .def_readwrite("fieldModulator", &GMAD::Field::fieldModulator)
-
-  .def_readwrite("x", &GMAD::Field::x)
-  .def_readwrite("y", &GMAD::Field::y)
-  .def_readwrite("z", &GMAD::Field::z)
-  .def_readwrite("t", &GMAD::Field::t)
-  .def_readwrite("phi", &GMAD::Field::phi)
-  .def_readwrite("theta", &GMAD::Field::theta)
-  .def_readwrite("psi", &GMAD::Field::psi)
-  .def_readwrite("axisX", &GMAD::Field::axisX)
-  .def_readwrite("axisY", &GMAD::Field::axisY)
-  .def_readwrite("axisZ", &GMAD::Field::axisZ)
-  .def_readwrite("angle", &GMAD::Field::angle)
-  .def_readwrite("axisAngle", &GMAD::Field::axisAngle)
-  .def_readwrite("autoScale", &GMAD::Field::autoScale)
-  .def_readwrite("maximumStepLength", &GMAD::Field::maximumStepLength)
-  .def_readwrite("magneticSubField", &GMAD::Field::magneticSubField)
-  .def_readwrite("electricSubField", &GMAD::Field::electricSubField)
-  .def_readwrite("magneticReflection", &GMAD::Field::magneticReflection)
-  .def_readwrite("electricReflection", &GMAD::Field::electricReflection)
-  .def_readwrite("fieldParameters", &GMAD::Field::fieldParameters)
   .def("clear",&GMAD::Field::clear)
   .def("print",&GMAD::Field::print)
-  .def("set_value",[](GMAD::Field &field,std::string name,std::string value) {field.set_value<std::string>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,int value) {field.set_value<int>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,bool value) {field.set_value<bool>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,long int value) {field.set_value<long int>(name,value, false);})
-  .def("set_value",[](GMAD::Field &field,std::string name,double value) {field.set_value<double>(name,value, false);});
+
+  .def_readonly("name", &GMAD::Field::name)
+  .def_readonly("type", &GMAD::Field::type)
+  .def_readonly("eScaling", &GMAD::Field::eScaling)
+  .def_readonly("bScaling", &GMAD::Field::bScaling)
+  .def_readonly("integrator", &GMAD::Field::integrator)
+  .def_readonly("globalTransform", &GMAD::Field::globalTransform)
+  .def_readonly("magneticFile", &GMAD::Field::magneticFile)
+  .def_readonly("magneticInterpolator", &GMAD::Field::magneticInterpolator)
+  .def_readonly("electricFile", &GMAD::Field::electricFile)
+  .def_readonly("electricInterpolator", &GMAD::Field::electricInterpolator)
+  .def_readonly("fieldModulator", &GMAD::Field::fieldModulator)
+
+  .def_readonly("x", &GMAD::Field::x)
+  .def_readonly("y", &GMAD::Field::y)
+  .def_readonly("z", &GMAD::Field::z)
+  .def_readonly("t", &GMAD::Field::t)
+  .def_readonly("phi", &GMAD::Field::phi)
+  .def_readonly("theta", &GMAD::Field::theta)
+  .def_readonly("psi", &GMAD::Field::psi)
+  .def_readonly("axisX", &GMAD::Field::axisX)
+  .def_readonly("axisY", &GMAD::Field::axisY)
+  .def_readonly("axisZ", &GMAD::Field::axisZ)
+  .def_readonly("angle", &GMAD::Field::angle)
+  .def_readonly("axisAngle", &GMAD::Field::axisAngle)
+  .def_readonly("autoScale", &GMAD::Field::autoScale)
+  .def_readonly("maximumStepLength", &GMAD::Field::maximumStepLength)
+  .def_readonly("magneticSubField", &GMAD::Field::magneticSubField)
+  .def_readonly("electricSubField", &GMAD::Field::electricSubField)
+  .def_readonly("magneticReflection", &GMAD::Field::magneticReflection)
+  .def_readonly("electricReflection", &GMAD::Field::electricReflection)
+  .def_readonly("fieldParameters", &GMAD::Field::fieldParameters)
+
+  .def("set_value",[](GMAD::Field &self,std::string name,bool value) {self.set_value<bool>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,int value) {self.set_value<int>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,long int value) {self.set_value<long int>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,double value) {self.set_value<double>(name,value, false);})
+  .def("set_value",[](GMAD::Field &self,std::string name,std::string value) {self.set_value<std::string>(name,value, false);})
+  .def("get_value",[](GMAD::Field &self,std::string name) {
+    std::variant<bool, int, double, std::string, py::list> retval;
+
+    try {
+      retval = self.get<bool>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<int>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<double>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<std::string>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    throw std::runtime_error("name not found : "+name);
+  })
+
+  .def("keys", [](GMAD::Field &self) {return self.AllNames();})
+  .def("__len__", [](GMAD::Field &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, bool value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, int value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, double value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::Field &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+  .def("_ipython_key_completions_", [](GMAD::Field &self) {return self.AllNames();});
 }

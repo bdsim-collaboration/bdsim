@@ -28,33 +28,73 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(crystal, m) {
   py::class_<GMAD::Published<GMAD::Crystal>>(m,"PublishedCrystal")
-  .def("NameExists",&GMAD::Crystal::NameExists);
+  .def("NameExists",&GMAD::Crystal::NameExists)
+  .def("AllNames", &GMAD::Crystal::AllNames);
 
   py::class_<GMAD::Crystal, GMAD::Published<GMAD::Crystal>>(m,"Crystal")
   .def(py::init<>())
-  .def_readwrite("name", &GMAD::Crystal::name)
-  .def_readwrite("material", &GMAD::Crystal::material)
-  .def_readwrite("data", &GMAD::Crystal::data)
-  .def_readwrite("shape", &GMAD::Crystal::shape)
-  .def_readwrite("lengthX", &GMAD::Crystal::lengthX)
-  .def_readwrite("lengthY", &GMAD::Crystal::lengthY)
-  .def_readwrite("lengthZ", &GMAD::Crystal::lengthZ)
-  .def_readwrite("sizeA", &GMAD::Crystal::sizeA)
-  .def_readwrite("sizeB", &GMAD::Crystal::sizeB)
-  .def_readwrite("sizeC", &GMAD::Crystal::sizeC)
-  .def_readwrite("alpha", &GMAD::Crystal::alpha)
-  .def_readwrite("beta", &GMAD::Crystal::beta)
-  .def_readwrite("gamma", &GMAD::Crystal::gamma)
-  .def_readwrite("spaceGroup", &GMAD::Crystal::spaceGroup)
-  .def_readwrite("bendingAngleYAxis", &GMAD::Crystal::bendingAngleYAxis)
-  .def_readwrite("bendingAngleZAxis", &GMAD::Crystal::bendingAngleZAxis)
-  .def_readwrite("miscutAngleY", &GMAD::Crystal::miscutAngleY)
+
   .def("clear",&GMAD::Crystal::clear)
   .def("print",&GMAD::Crystal::print)
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,std::string value) {crystal.set_value<std::string>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,int value) {crystal.set_value<int>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,bool value) {crystal.set_value<bool>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,long int value) {crystal.set_value<long int>(name,value);})
-  .def("set_value",[](GMAD::Crystal &crystal,std::string name,double value) {crystal.set_value<double>(name,value);});
 
+  .def_readonly("name", &GMAD::Crystal::name)
+  .def_readonly("material", &GMAD::Crystal::material)
+  .def_readonly("data", &GMAD::Crystal::data)
+  .def_readonly("shape", &GMAD::Crystal::shape)
+  .def_readonly("lengthX", &GMAD::Crystal::lengthX)
+  .def_readonly("lengthY", &GMAD::Crystal::lengthY)
+  .def_readonly("lengthZ", &GMAD::Crystal::lengthZ)
+  .def_readonly("sizeA", &GMAD::Crystal::sizeA)
+  .def_readonly("sizeB", &GMAD::Crystal::sizeB)
+  .def_readonly("sizeC", &GMAD::Crystal::sizeC)
+  .def_readonly("alpha", &GMAD::Crystal::alpha)
+  .def_readonly("beta", &GMAD::Crystal::beta)
+  .def_readonly("gamma", &GMAD::Crystal::gamma)
+  .def_readonly("spaceGroup", &GMAD::Crystal::spaceGroup)
+  .def_readonly("bendingAngleYAxis", &GMAD::Crystal::bendingAngleYAxis)
+  .def_readonly("bendingAngleZAxis", &GMAD::Crystal::bendingAngleZAxis)
+  .def_readonly("miscutAngleY", &GMAD::Crystal::miscutAngleY)
+
+  .def("set_value",[](GMAD::Crystal &self,std::string name,bool value) {self.set_value<bool>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,int value) {self.set_value<int>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,long int value) {self.set_value<long int>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,double value) {self.set_value<double>(name,value);})
+  .def("set_value",[](GMAD::Crystal &self,std::string name,std::string value) {self.set_value<std::string>(name,value);})
+  .def("get_value",[](GMAD::Crystal &self,std::string name) {
+    std::variant<bool, int, double, std::string, py::list> retval;
+
+    try {
+      retval = self.get<bool>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<int>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<double>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    try {
+      retval = self.get<std::string>(&self,name);
+      return retval;
+    }
+    catch (const std::runtime_error&) {}
+
+    throw std::runtime_error("name not found : "+name);
+  })
+
+  .def("keys", [](GMAD::Crystal &self) {return self.AllNames();})
+  .def("__len__", [](GMAD::Crystal &self) {return self.AllNames().size();})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, int value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, double value) {self.set_value(key,value, false);})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
+  .def("__setitem__", [](GMAD::Crystal &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
+  .def("_ipython_key_completions_", [](GMAD::Crystal &self) {return self.AllNames();});
 }
