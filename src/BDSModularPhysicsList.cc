@@ -514,6 +514,9 @@ void BDSModularPhysicsList::ConfigurePhysics()
 void BDSModularPhysicsList::ConfigureOptical()
 {
   G4long maxPhotonsPerStep = globals->MaximumPhotonsPerStep();
+  G4double maxBetaChangePerStep = globals->MaximumBetaChangePerStep();
+  if (maxBetaChangePerStep > 100.0)
+    {throw BDSException(__METHOD_NAME__, "the option 'maxBetaChangePerStep' must be less than 100 %");}
 #if G4VERSION_NUMBER < 1079
   // cherenkov turned on with optical even if it's not on as separate list
   opticalPhysics->Configure(G4OpticalProcessIndex::kCerenkov, true);
@@ -526,6 +529,7 @@ void BDSModularPhysicsList::ConfigureOptical()
   opticalPhysics->SetScintillationYieldFactor(globals->ScintYieldFactor());
   if (maxPhotonsPerStep >= 0)
     {opticalPhysics->SetMaxNumPhotonsPerStep(maxPhotonsPerStep);}
+  opticalPhysics->SetMaxBetaChangePerStep(maxBetaChangePerStep);
 #else
   G4OpticalParameters* opticalParameters = G4OpticalParameters::Instance();
   opticalParameters->SetProcessActivation(G4OpticalProcessName(G4OpticalProcessIndex::kCerenkov), true);
@@ -537,6 +541,7 @@ void BDSModularPhysicsList::ConfigureOptical()
   opticalParameters->SetProcessActivation(G4OpticalProcessName(G4OpticalProcessIndex::kWLS), true);
   if (maxPhotonsPerStep >= 0)
     {opticalParameters->SetCerenkovMaxPhotonsPerStep((G4int)maxPhotonsPerStep);}
+  opticalParameters->SetCerenkovMaxBetaChange(maxBetaChangePerStep);
 #endif
 }
 
