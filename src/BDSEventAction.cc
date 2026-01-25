@@ -485,32 +485,31 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
       std::transform(trajVec->begin(), trajVec->end(), std::back_inserter(trajVecBDS),
                      [](G4VTrajectory* a) { return static_cast<BDSTrajectory*>(a); });
       
-      // build trackID map, depth map
+      // build trackID map
       std::map<int, BDSTrajectory*> trackIDMap;
+      for (auto* tr : trajVecBDS)
+        {trackIDMap[tr->GetTrackID()] = tr;}
+      trackIDMap[0] = nullptr; // primary has no parent
+
+#ifdef BDSDEBUG
+      for (auto* tr : trajVecBDS)
+        {G4cout << tr->GetTrackID() << " " << tr->GetParentID() << G4endl;}
+#endif
+
+      // build depth map
       std::map<BDSTrajectory*, int> depthMap;
-      for (auto iT1 : *trajVec)
+      for (auto* tr : trajVecBDS)
         {
-          BDSTrajectory* traj = static_cast<BDSTrajectory*>(iT1);
-          
-          // fill track ID map
-          trackIDMap[traj->GetTrackID()] = traj;
-          
-          // fill depth map
-          G4int depth = traj->GetParentID() == 0 ? 0 : depthMap.at(trackIDMap.at(traj->GetParentID())) + 1;
-          traj->SetDepth(depth);
-          if (traj->GetParentID() == 0) 
-            {depthMap[traj] = 0;}
-          else
-            {depthMap[traj] = depthMap.at(trackIDMap.at(traj->GetParentID())) + 1;}
-        }
-      
-      // fill parent pointer - this can only be done once the map in the previous loop has been made
-      for (auto iT1 : *trajVec) 
-        {
-          BDSTrajectory* traj = static_cast<BDSTrajectory*>(iT1);
-          // the parent ID may be 0 and therefore it may not be in the map but the [] operator
-          // will default-construct it giving therefore a nullptr
-          traj->SetParent(trackIDMap[iT1->GetParentID()]);
+          G4int depth = 0;
+          BDSTrajectory* ct = tr;
+          // recurse up to a primary trackID and count the number of parents
+          while (ct->GetParentID() != 0)
+            {
+              ct = trackIDMap[ct->GetParentID()];
+              depth++;
+            }
+          depthMap[tr] = depth;
+          tr->SetParent(trackIDMap[tr->GetParentID()]);
         }
       
       // loop over trajectories and determine if it should be stored
