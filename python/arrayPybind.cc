@@ -37,11 +37,11 @@ PYBIND11_MODULE(array, m) {
         return a;
       }
 
-      auto first_type = l[0].get_type();
+      auto first_type = py::type::of(l[0]);
 
       bool homogeneous = true;
       for (py::handle item : l) {
-        if (!item.get_type().is(first_type)) {
+        if (!py::type::of(item).is(first_type)) {
           homogeneous = false;
           break;
         }
