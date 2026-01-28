@@ -161,10 +161,11 @@ G4double BDSComptonScatteringEngine::PolarizationCrossSectionPhi(G4double theta,
 
 G4double BDSComptonScatteringEngine::PolarizationCrossSectionMaxPhi(G4double theta ,G4double Ep)
 {
-  G4double numer = -incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep*std::sin(theta)*incomingElectronPolarization.p2() -
+  G4double Ep1 = Ep/particleMass;
+  G4double numer = -incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep1*std::sin(theta)*incomingElectronPolarization.p2() -
                         std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p2();
   G4double denom = std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p1()+
-                    incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep*std::sin(theta)*incomingElectronPolarization.p1();
+                    incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep1*std::sin(theta)*incomingElectronPolarization.p1();
   G4double phiVal = std::atan(numer/denom);
   if (phiVal<0)
     {phiVal+=CLHEP::pi;}
