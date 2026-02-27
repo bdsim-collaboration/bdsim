@@ -142,7 +142,7 @@ G4VParticleChange* BDSLaserPhotoDetachment::PostStepDoIt(const G4Track& track,
   G4double ionStepTime = (ionTimePostStepGlobal - ionTimePreStepGlobal)/ionGamma;
   G4double intensityBoosted = laser->DopplerShiftedScale(photonUnit.dot(ionBeta),ionGamma);
 
-  G4double NeutralisationProbability = 1.0-std::exp(-crossSection*intensityBoosted*intensityBoosted*photonFlux*ionStepTime/ionGamma);
+  G4double NeutralisationProbability = 1.0-std::exp(-crossSection*intensityBoosted*intensityBoosted*photonFlux*ionStepTime);
   const BDSGlobalConstants* g = BDSGlobalConstants::Instance();
   G4double scaleFactor = g->ScaleFactorLaser();
   G4double randomNumber = G4UniformRand();
