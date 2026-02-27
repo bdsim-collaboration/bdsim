@@ -107,6 +107,12 @@ G4double BDSLaser::Intensity(const G4ThreeVector& xyz) const
   return (2.0*peakPower)/(CLHEP::pi*wofz2) * std::exp(-(1.0*(2.0*r2))/wofz2);
 }
 
+G4double BDSLaser::DopplerShiftedScale(G4double betaCosTheta, G4double lorentzGamma) const
+{
+  G4double dopplerShift = lorentzGamma*(1.0-betaCosTheta);
+  return dopplerShift;
+}
+
 G4double BDSLaser::Radius() const
 {
   return std::sqrt((W0()*std::log(1.0/(CLHEP::e_squared)))/-2.0);
@@ -128,8 +134,7 @@ G4double BDSLaser::HyperbolicAngle() const
 G4double BDSLaser::TemporalProfileGaussian(G4double particleGlobalTime, G4double particleZCoord) const
 {
     G4double mu = (particleGlobalTime-(T0+laserArrivalTime)); // can be negative - locates the peak of the pulse in time for a given particleGlobalTime
-    G4double sigmaT = pulseDuration/(2.0 * std::sqrt(2.0 * std::log(2.0))) ;
-    return std::exp(-((particleZCoord/CLHEP::c_light - mu)*(particleZCoord/CLHEP::c_light-mu)) / (2.0 * sigmaT * sigmaT));
+    return std::exp(-((particleZCoord/CLHEP::c_light - mu)*(particleZCoord/CLHEP::c_light-mu)) / (2.0 * pulseDuration * pulseDuration));
 }
 
 G4String BDSLaser::GetLaserColour() const

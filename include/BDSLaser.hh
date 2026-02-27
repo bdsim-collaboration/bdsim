@@ -50,7 +50,8 @@ public:
   //this needs to be called based upon particle coordinates
   G4double W(G4double z) const;
   G4double Sigma(G4double z) const {return 0.5*W(z);}
-  G4double Intensity(G4double x,double y,double z) const;
+  G4double DopplerShiftedScale(G4double angle, G4double LorentzGamma) const;
+  G4double Intensity(G4double x, G4double y, G4double z) const;
   G4double Intensity(const G4ThreeVector& xyz) const;
   G4double Radius() const;
   G4double TemporalProfileGaussian(G4double particleGlobalTime, G4double particleZCoord) const;

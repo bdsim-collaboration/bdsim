@@ -127,19 +127,22 @@ G4VParticleChange* BDSLaserPhotoDetachment::PostStepDoIt(const G4Track& track,
   G4ThreeVector ionMomentum = ion->GetMomentum();
   G4double ionMass = ion->GetMass();
   G4ThreeVector ionBeta = ionMomentum/ionEnergy;
-  //G4double ionGamma = ionEnergy/ionMass;
-  //G4double ionVelocity = ionBeta.mag()*CLHEP::c_light;
+  G4double ionGamma = ionEnergy/ionMass;
   photonLorentz.boost(-ionBeta);
   G4double photonEnergyLorentz = photonLorentz.e();
   G4double crossSection = photoDetachmentEngine->CrossSection(photonEnergyLorentz);
 
-  G4double particleTimePostStepGlobal = track.GetGlobalTime();
+  G4double ionTimePostStepGlobal = track.GetGlobalTime();
+  G4double ionTimePreStepGlobal = step.GetPreStepPoint()->GetGlobalTime();
+
   G4double intensity =laser->Intensity(particlePositionLocal);
-  G4double timeProfile=laser->TemporalProfileGaussian(particleTimePostStepGlobal,particlePositionLocal.z());
+  G4double timeProfile=laser->TemporalProfileGaussian(ionTimePostStepGlobal,particlePositionLocal.z());
   G4double photonFlux = (intensity/photonEnergyLorentz)*timeProfile;
 
-  G4double ionTime = track.GetStep()->GetPreStepPoint()->GetGlobalTime();
-  G4double NeutralisationProbability = 1.0-std::exp(-crossSection*photonFlux*ionTime);
+  G4double ionStepTime = (ionTimePostStepGlobal - ionTimePreStepGlobal)/ionGamma;
+  G4double intensityBoosted = laser->DopplerShiftedScale(photonUnit.dot(ionBeta),ionGamma);
+
+  G4double NeutralisationProbability = 1.0-std::exp(-crossSection*intensityBoosted*intensityBoosted*photonFlux*ionStepTime/ionGamma);
   const BDSGlobalConstants* g = BDSGlobalConstants::Instance();
   G4double scaleFactor = g->ScaleFactorLaser();
   G4double randomNumber = G4UniformRand();

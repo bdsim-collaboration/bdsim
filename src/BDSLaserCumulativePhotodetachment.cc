@@ -103,7 +103,7 @@ G4VParticleChange* BDSLaserCumulativePhotodetachment::PostStepDoIt(const G4Track
   G4double particleVelocity = particleBeta.mag()*CLHEP::c_light;
   G4LorentzVector particle4VectorMomentum = ion->Get4Momentum();
   particle4VectorMomentum.boost(-particleBeta);
-  //G4double particleTimePostStepGlobal = track.GetGlobalTime();
+  G4double particleTimePostStepGlobal = track.GetGlobalTime();
 
   //######### Get particle position and momentum direction ###############################
   G4ThreeVector particlePositionPostStepGlobal = track.GetPosition();
@@ -134,23 +134,24 @@ G4VParticleChange* BDSLaserCumulativePhotodetachment::PostStepDoIt(const G4Track
 
   std::vector<G4double> fluxArray;
   std::vector<G4LorentzVector> trajectoryPositions;
+  G4double intensityBoosted = laser->DopplerShiftedScale(photonUnit.dot(particleBeta),particleGamma);
 
 
   for(G4int i = 0;i<=99;i++)
   {
         G4ThreeVector stepPositionGlobal = particlePositionPreStepGlobal+float(i)*(stepMagnitude/100.)*particleMomentumDirectionPreStepGlobal;
         G4ThreeVector stepPositionLocal = transform.TransformPoint(stepPositionGlobal);
-        G4double stepTimeGlobal = particleTimePreStepGlobal+(float(i)*(stepMagnitude/100.)/particleVelocity);
-        G4double stepIntensity  = ((laser->Intensity(stepPositionLocal)/photonEnergyLorentz)
-                                   * laser->TemporalProfileGaussian(stepTimeGlobal,stepPositionLocal.z()));
+        G4double ionStepGlobalTime = particleTimePreStepGlobal+(float(i)*(stepMagnitude/100.)/particleVelocity);
+        G4double stepIntensity  = ((intensityBoosted*intensityBoosted*laser->Intensity(stepPositionLocal)/photonEnergyLorentz)
+            * laser->TemporalProfileGaussian(ionStepGlobalTime,stepPositionLocal.z()));
         photonFluxSum = photonFluxSum + stepIntensity;
         fluxArray.push_back(stepIntensity);
   }
 
   G4double crossSection = photoDetachmentEngine->CrossSection(photonEnergyLorentz);
 
-  G4double stepTime = stepMagnitude/particleVelocity;
-  G4double cumulativeProbability = 1.0 - std::exp((-1.0*crossSection*photonFluxSum*(stepTime/100.)*particleGamma));
+  G4double stepTime = ((particleTimePostStepGlobal-particleTimePreStepGlobal)/particleGamma)/100.;//divide by 100 for the 100 steps taken
+  G4double cumulativeProbability = 1.0 - std::exp(-1.0*crossSection*photonFluxSum*stepTime);
 
   G4double secondaryStepPosition;
   
