@@ -2399,7 +2399,7 @@ Parameters for these components can be specified as either:
 
 **Rotations and Offsets**
 
-Rotations follow the right-hand rule using axis-angle representation applied in XYZ order about the X, Y, and Z axes respectively. The reference frame assumes the solenoid is initially centered at the origin with its axis aligned along the z-direction. The position offsets then translate this solenoid center from the origin to an arbitrary location in the global coordinate system of the cooling channel.
+Rotations follow the right-hand rule using axis-angle representation applied in XYZ order about the X, Y, and Z axes respectively. The reference frame assumes the solenoid is initially centered at the origin with its axis aligned along the z-direction. The position offsets translate this solenoid center from the origin to an arbitrary location in the coordinate frame of the cooling channel element.
 
 **Table of Parameters**
 

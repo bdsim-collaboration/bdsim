@@ -21,6 +21,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "BDSFieldMag.hh"
 
+#include "G4RotationMatrix.hh"
 #include "G4ThreeVector.hh"
 #include "G4Types.hh"
 
@@ -82,10 +83,10 @@ private:
   G4double I;
   G4double spatialLimit;
   G4double normalisation;
-  G4double rotateX;
-  G4double rotateY;
-  G4double rotateZ;
   G4double coilTolerance;
+  G4bool hasTilt;
+  G4RotationMatrix rotation;
+  G4RotationMatrix inverseRotation;
 };
 
 #endif

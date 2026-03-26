@@ -40,20 +40,18 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
                                                    G4bool   strengthIsCurrent,
                                                    G4double sheetRadius,
                                                    G4double fullLength,
-                                                    G4double tiltX,
-                                                    G4double tiltY,
-                                                    G4double tiltZ,
+                                                   G4double tiltXIn,
+                                                   G4double tiltYIn,
+                                                   G4double tiltZIn,
                                                    G4double toleranceIn):
   a(sheetRadius),
   halfLength(0.5*fullLength),
   B0(0.0),
   I(0.0),
   spatialLimit(std::min(1e-5*sheetRadius, 1e-5*fullLength)),
-  normalisation(1.0) ,
-  rotateX(tiltX),
-  rotateY(tiltY),
-  rotateZ(tiltZ),
-  coilTolerance(toleranceIn)
+  normalisation(1.0),
+  coilTolerance(toleranceIn),
+  hasTilt(BDS::IsFinite(tiltXIn) || BDS::IsFinite(tiltYIn) || BDS::IsFinite(tiltZIn))
 {
   finiteStrength = BDS::IsFinite(std::abs(strength));
   // apply relationship B0 = mu_0 I / 2 a for on-axis rho=0,z=0
@@ -73,6 +71,17 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
   // cylinder sheet. So we evaluate it here then normalise. ~<1% adjustment in magnitude.
   //G4double testBz = OnAxisBz(halfLength, -halfLength);
   //normalisation = B0 / testBz;
+
+  if (hasTilt)
+    {
+      // Build forward rotation matrix (local -> global): apply Rx, then Ry, then Rz.
+      // With CLHEP post-multiply convention (M = M * Ri), build as Rz * Ry * Rx
+      // by calling rotateZ first, rotateY second, rotateX third.
+      rotation.rotateZ(tiltZIn);
+      rotation.rotateY(tiltYIn);
+      rotation.rotateX(tiltXIn);
+      inverseRotation = rotation.inverse();
+    }
 }
 
 G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
@@ -83,14 +92,8 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
   //G4double rotationY = 0.0;
   //G4double rotationZ = 0.0;
   
-  // Transform position from global to local coordinates (inverse rotation)
-  G4ThreeVector localPosition = position;
-
-  // Apply inverse rotations in reverse order (Z -> Y -> X)
-  // to transform from global frame to solenoid's local frame
-  localPosition.rotateZ(-rotateZ);
-  localPosition.rotateY(-rotateY);
-  localPosition.rotateX(-rotateX);
+  // Transform position to solenoid's local frame using precomputed inverse rotation.
+  G4ThreeVector localPosition = hasTilt ? inverseRotation * position : position;
   G4double z = localPosition.z();
   G4double rho = localPosition.perp();
   G4double phi = localPosition.phi(); // angle about z axis
@@ -149,15 +152,9 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
   // so unit rho is in the x direction.
   G4ThreeVector localField = G4ThreeVector(Brho,0,Bz) * normalisation;
   localField = localField.rotateZ(phi);
-  
-  // Transform field from local back to global coordinates (forward rotation)
-  // Apply rotations in forward order (X -> Y -> Z)
-  G4ThreeVector globalField = localField;
-  globalField.rotateX(rotateX);
-  globalField.rotateY(rotateY);
-  globalField.rotateZ(rotateZ);
 
-  return globalField;
+  // Transform field back to element frame using precomputed forward rotation.
+  return hasTilt ? rotation * localField : localField;
 }
 
 G4double BDSFieldMagSolenoidSheet::OnAxisBz(G4double zp,
