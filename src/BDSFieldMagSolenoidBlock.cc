@@ -92,9 +92,9 @@ G4ThreeVector BDSFieldMagSolenoidBlock::GetField(const G4ThreeVector& position,
                                                          true,
                                                          a + (sheet * dr) + dr / 2,
                                                          fullLengthZ,
-                                                          tiltX,
-                                                          tiltY,
-                                                          tiltZ,
+                                                         tiltX,
+                                                         tiltY,
+                                                         tiltZ,
                                                          coilTolerance);
       sheetField = field->GetField(position);
       if (sheetField == G4ThreeVector(0, 0, 0))
