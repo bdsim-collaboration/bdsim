@@ -102,6 +102,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdexcept>
 #include <string> // for stoi
 
+#include "BDSPhysicsSynchrotronRadiationCut.hh"
+
 G4bool BDS::IsIon(const G4ParticleDefinition* particle)
 {
   return G4IonTable::IsIon(particle) && particle!=G4Proton::Definition();
@@ -536,6 +538,15 @@ void BDS::BuildMuonBiasing(G4VModularPhysicsList* physicsList)
                                                                muonSplittingFactor2, muonSplittingThresholdParentEk2,
                                                                excludeW1P, globals->MuonSplittingExclusionWeight()));
     }
+}
+
+void BDS::BuildSynchrotronRadiaitonEnergyCut(G4VModularPhysicsList* physicsList)
+{
+  auto globals = BDSGlobalConstants::Instance();
+  G4double energyCut = globals->SynchrotronRadiationEnergyCut();
+  G4cout << "BDSPhysicsSynchrotronRadiationCut -> using synchrotron radiation energy cut wrapper -> cut of: " << energyCut << G4endl;
+  physicsList->RegisterPhysics(new BDSPhysicsSynchrotronRadiationCut(energyCut));
+
 }
 
 void BDS::ExtendPionDecayChannels(G4VModularPhysicsList* physicsList)

@@ -116,6 +116,9 @@ namespace BDS
   /// Build muon splitting biasing and wrap the various processes in the physics list.
   void BuildMuonBiasing(G4VModularPhysicsList* physicsList);
 
+  /// Build synchrotron radiation energy cut to wrap synchrotron radiation process in physics list
+  void BuildSynchrotronRadiaitonEnergyCut(G4VModularPhysicsList* physicsList);
+
   /// Extend the default pi+- decay channels in Geant4.
   void ExtendPionDecayChannels(G4VModularPhysicsList* physicsList);
 
