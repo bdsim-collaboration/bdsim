@@ -68,13 +68,12 @@ void BDSPhysicsSynchrotronRadiationCut::ConstructProcess()
       continue;
 
     G4ProcessVector* processVector = pManager->GetProcessList();
-
     G4VProcess* processToWrap = nullptr;
 
     for (G4int i=0; i < (G4int)processVector->entries(); ++i)
     {
       G4VProcess* process = (*processVector)[i];
-      if (process->GetProcessName() == "SynchrotronRadiation")
+      if (process->GetProcessName() == "SynRad")
       {
         processToWrap = process;
         break;

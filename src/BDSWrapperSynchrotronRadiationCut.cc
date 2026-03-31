@@ -37,7 +37,7 @@ BDSWrapperSynchrotronRadiationCut::BDSWrapperSynchrotronRadiationCut(G4VProcess*
 {
     RegisterProcess(originalProcess);
     theProcessSubType = originalProcess->GetProcessSubType();
-    theProcessName = "ScintillationReductionWrapper("+originalProcess->GetProcessName()+")";
+    theProcessName = "SynchrotronRadiationCut("+originalProcess->GetProcessName()+")";
 
 }
 
