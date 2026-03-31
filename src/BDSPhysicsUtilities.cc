@@ -543,7 +543,7 @@ void BDS::BuildMuonBiasing(G4VModularPhysicsList* physicsList)
 void BDS::BuildSynchrotronRadiaitonEnergyCut(G4VModularPhysicsList* physicsList)
 {
   auto globals = BDSGlobalConstants::Instance();
-  G4double energyCut = globals->SynchrotronRadiationEnergyCut();
+  G4double energyCut = globals->SynchrotronRadiationEnergyCut()*CLHEP::GeV;
   G4cout << "BDSPhysicsSynchrotronRadiationCut -> using synchrotron radiation energy cut wrapper -> cut of: " << energyCut << G4endl;
   physicsList->RegisterPhysics(new BDSPhysicsSynchrotronRadiationCut(energyCut));
 
