@@ -12,7 +12,7 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
-v1.8.0 - 2025 / XX / XX
+v1.8.0 - 2026 / XX / XX
 =======================
 
 The BDSIM source code has moved to Github and is available here: https://github.com/bdsim-collaboration/bdsim
@@ -57,6 +57,8 @@ New Features
 * The option :code:`cavityFieldType` may be used to set the default field model for all `rf`
   elements.
 * The "rfcavity" field is now "rfpillbox".
+* Fix a reference particle perfectly on axis in a muon sweeper field that would cause Nans
+  and crashes in tracking.
 
 **General**
 
