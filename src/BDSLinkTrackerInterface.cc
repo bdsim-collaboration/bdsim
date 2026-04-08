@@ -266,7 +266,6 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
                                       1);
 
   linkBunch->AddParticle(partDef, coords, trackid, trackid);
-  return;
 }
 
 void BDSLinkTrackerInterface::AddParticle(double x, double y,
@@ -308,7 +307,6 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y,
                                       1);
 
   linkBunch->AddParticle(partDef, coords, trackid, trackid);
-  return;
 }
 
 void BDSLinkTrackerInterface::AddParticles(std::vector<double>& x, std::vector<double>& y,
