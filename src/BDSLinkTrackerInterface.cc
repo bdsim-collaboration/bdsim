@@ -104,7 +104,7 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
     {c_args.push_back(const_cast<char*>(arg.c_str()));}
 
   // initialise link object
-  linkBDSIM->Initialise(c_args.size(),
+  linkBDSIM->Initialise((int)c_args.size(),
                         c_args.data(),
                         true,
                         minimumKineticEnergy/CLHEP::GeV,
@@ -114,7 +114,7 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                                                              /* totalEnergy */ 0,
                                                              referenceKineticEnergy,
                                                              /* momentum= */ 0 ,
-                                                             static_cast<double>(referenceIonCharge));
+                                                             static_cast<int>(referenceIonCharge));
 }
 
 BDSLinkTrackerInterface::~BDSLinkTrackerInterface() {
@@ -242,7 +242,7 @@ void BDSLinkTrackerInterface::AddParticle(double x, double y, double px, double 
   else
     {pdg = pdgid;}
 
-  auto partDef = PrepareBDSParticleDefinition(pdg, 0, 0, p, q);
+  auto partDef = PrepareBDSParticleDefinition(pdg, 0, 0, p, (int)q);
   auto t = - ct * CLHEP::m / (referenceParticleDefinition->Beta() * CLHEP::c_light);
   auto oneplusdelta = (1 + deltap);
   auto xp = px / oneplusdelta;
