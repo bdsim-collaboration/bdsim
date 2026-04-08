@@ -1232,16 +1232,12 @@ void BDSOutput::CopyFromHistToHist1D(const G4String& sourceName,
 {
   TH1D* sourceEvt      = evtHistos->Get1DHistogram(histIndices1D[sourceName]);
   TH1D* destinationEvt = evtHistos->Get1DHistogram(histIndices1D[destinationName]);
-  // for the run ones we are overwriting but this is ok
-  TH1D* sourceRun      = runHistos->Get1DHistogram(histIndices1D[sourceName]);
-  TH1D* destinationRun = runHistos->Get1DHistogram(histIndices1D[destinationName]);
-  G4int binIndex = 1; // starts at 1 for TH1; 0 is underflow
+  G4int destBinIndex = 1; // starts at 1 for TH1; 0 is underflow
   for (const auto index : indices)
     {
-      destinationEvt->SetBinContent(binIndex, sourceEvt->GetBinContent(index + 1));
-      destinationEvt->SetBinError(binIndex,   sourceEvt->GetBinError(index + 1));
-      destinationRun->SetBinContent(binIndex, sourceRun->GetBinContent(index + 1));
-      destinationRun->SetBinError(binIndex,   sourceRun->GetBinError(index + 1));
-      binIndex++;
+      destinationEvt->SetBinContent(destBinIndex, sourceEvt->GetBinContent(index + 1));
+      destinationEvt->SetBinError(destBinIndex,   sourceEvt->GetBinError(index + 1));
+      eventAndRunHistos1D[histIndices1D[destinationName]].binsFilledThisEvent.insert(index);
+      destBinIndex++;
     }
 }
