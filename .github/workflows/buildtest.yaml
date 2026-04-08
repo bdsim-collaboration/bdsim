@@ -87,7 +87,7 @@ jobs:
 
           # run tests
           cd /tmp/bdsim-build
-          ctest -j1
+          ctest -j1 -VV
 
   btmac:
     name: bt mac
@@ -202,4 +202,4 @@ jobs:
 
           # run tests          
           cd /tmp/bdsim-build
-          ctest -j1 --output-on-failure
+          ctest -j1 -VV
