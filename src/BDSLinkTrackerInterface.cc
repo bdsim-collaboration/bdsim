@@ -117,11 +117,12 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                                                              static_cast<int>(referenceIonCharge));
 }
 
-BDSLinkTrackerInterface::~BDSLinkTrackerInterface() {
+BDSLinkTrackerInterface::~BDSLinkTrackerInterface()
+{
   std::cout << "BDSLinkTrackerInterface::~BDSLinkTrackerInterface" << std::endl;
   delete linkBunch;
   delete linkBDSIM;
-};
+}
 
 void BDSLinkTrackerInterface::Reset()
 {
