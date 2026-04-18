@@ -17,7 +17,15 @@ l1: line=(d1, col1, d1, col2, d1, col3, d1, col4, d1, col5, d1, col6, d1, col7, 
 use, l1;
 
 beam, particle="e+",
-      energy=1*GeV,
+      energy=100*GeV,
       distrType="gauss",
       sigmaX = 2*cm,
       sigmaY = 2*cm;
+
+
+option, storeCollimatorInfo=1,
+        storeCollimatorHitsAll=1,
+        storeCollimatorHitsLinks=1;
+
+option, physicsList="g4FTFP_BERT",
+        minimumKineticEnergy=1*GeV;

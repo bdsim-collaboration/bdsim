@@ -152,6 +152,7 @@ Bug Fixes
 * Fixed possibly duplicated file extensions for text survey output.
 * Document the options :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` as well
   as fix their number type internally.
+* Fix a crash when using :code:`jcoltip` with collimator-specific output options.
 
 
 Output Changes
