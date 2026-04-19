@@ -4,6 +4,10 @@ cmake_policy(SET CMP0057 NEW)
 if (CMAKE_VERSION VERSION_LESS 3.9.0)
   cmake_policy(SET CMP0042 OLD)
 endif()
+if (CMAKE_VERSION VERSION_GREATER 4.1.0)
+  # for FindROOT.cmake -> GCCXML which is deprecated in favour of CastXML.
+  cmake_policy(SET CMP0188 OLD)
+endif()
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

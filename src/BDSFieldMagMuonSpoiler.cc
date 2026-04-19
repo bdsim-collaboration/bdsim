@@ -41,11 +41,17 @@ G4ThreeVector BDSFieldMagMuonSpoiler::GetField(const G4ThreeVector &position,
 { 
   G4double x = position.x();
   G4double y = position.y();
-  G4double r = std::hypot(x,y);
+  G4double r = std::hypot(std::abs(x), std::abs(y));
 
   G4ThreeVector localField;
-  localField[0] =  y/r * bField;
-  localField[1] = -x/r * bField;
+  G4double cyor = y/r;
+  if (std::isnan(cyor))
+    {cyor = 0;}
+  G4double cxor = -x/r;
+  if (std::isnan(cxor))
+    {cxor = 0;}
+  localField[0] = cyor * bField;
+  localField[1] = cxor * bField;
   localField[2] = 0;
 
   return localField;
