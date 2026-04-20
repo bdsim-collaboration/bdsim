@@ -120,6 +120,7 @@ Bug Fixes
 * Fix :code:`transform3d` component applying offsets in a rotate frame that is not
   axis-aligned. It applied the offsets (dx, dy, dz) in the global axis and not the
   local ones.
+* Fix repeated transforms in a sequence. Previously, only the first one would be applied.
 * Fix rebdsim's Spectra command preparing the wrong variables when used on a cylindrical
   or spherical sampler where the variable is "totalEnergy" and not "energy".
 * Fix a bug where rebdsim would crash if a Spectra command was used on a cylindrical or
