@@ -130,7 +130,7 @@ TH1* HistogramAccumulatorFast::Terminate()
     case 2:
     case 3:
       {
-        for (int j = 0; j < (int)binEventCount.size(); j++)
+        for (Int_t j = 0; j < (Int_t)binEventCount.size(); j++)
           {
             mn  = mean->GetBinContent(j);
             var = variance->GetBinContent(j);

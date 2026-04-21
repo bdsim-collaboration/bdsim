@@ -98,7 +98,7 @@ public:
   virtual void Flush();
 
 protected:
-  std::vector<unsigned long int> binEventCount;
+  std::vector<Int_t> binEventCount;
 
   ClassDef(HistogramAccumulatorFast,1);
 };

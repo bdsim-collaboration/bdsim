@@ -78,7 +78,7 @@ void HistogramAccumulatorMerge::Accumulate(TH1* newValue)
 	TH1D* h1  = dynamic_cast<TH1D*>(mean);
 	TH1D* h1e = dynamic_cast<TH1D*>(variance);
 	TH1D* ht  = dynamic_cast<TH1D*>(newValue);
-	for (int j = 0; j <= h1->GetNbinsX() + 1; ++j)
+	for (Int_t j = 0; j <= h1->GetNbinsX() + 1; ++j)
 	  {
 	    var = std::pow(ht->GetBinError(j), 2) * factor;
 	    AccumulateSingleValue(h1->GetBinContent(j),
@@ -97,9 +97,9 @@ void HistogramAccumulatorMerge::Accumulate(TH1* newValue)
 	TH2D* h1  = dynamic_cast<TH2D*>(mean);
 	TH2D* h1e = dynamic_cast<TH2D*>(variance);
 	TH2D* ht  = dynamic_cast<TH2D*>(newValue);
-	for (int j = 0; j <= h1->GetNbinsX() + 1; ++j)
+	for (Int_t j = 0; j <= h1->GetNbinsX() + 1; ++j)
 	  {
-	    for (int k = 0; k <= h1->GetNbinsY() + 1; ++k)
+	    for (Int_t k = 0; k <= h1->GetNbinsY() + 1; ++k)
 	      {
 		var = std::pow(ht->GetBinError(j,k), 2) * factor;
 		AccumulateSingleValue(h1->GetBinContent(j,k),
@@ -119,11 +119,11 @@ void HistogramAccumulatorMerge::Accumulate(TH1* newValue)
 	TH3D* h1  = dynamic_cast<TH3D*>(mean);
 	TH3D* h1e = dynamic_cast<TH3D*>(variance);
 	TH3D* ht  = dynamic_cast<TH3D*>(newValue);
-	for (int j = 0; j <= h1->GetNbinsX() + 1; ++j)
+	for (Int_t j = 0; j <= h1->GetNbinsX() + 1; ++j)
 	  {
-	    for (int k = 0; k <= h1->GetNbinsY() + 1; ++k)
+	    for (Int_t k = 0; k <= h1->GetNbinsY() + 1; ++k)
 	      {
-		for (int l = 0; l <= h1->GetNbinsZ() + 1; ++l)
+		for (Int_t l = 0; l <= h1->GetNbinsZ() + 1; ++l)
 		  {
 		    var = std::pow(ht->GetBinError(j,k,l), 2) * factor;
 		    AccumulateSingleValue(h1->GetBinContent(j,k,l),
@@ -179,20 +179,20 @@ void HistogramAccumulatorMerge::Accumulate(TH1* newValue)
     }
   else
     {
-      mean->SetEntries(newTotalEntries);
-      variance->SetEntries(newTotalEntries);
+      mean->SetEntries((Double_t)newTotalEntries);
+      variance->SetEntries((Double_t)newTotalEntries);
     }
   n = newTotalEntries; // updated to Terminate() works correctly
 }
 
 void HistogramAccumulatorMerge::AccumulateSingleValue(double        oldMean,
-						      double        oldVari,
-						      double        x,
-						      double        xVari,
-						      unsigned long nEntriesAccumulated,
-						      unsigned long nEntriesToAccumulate,
-						      double&       newMean,
-						      double&       newVari) const
+                                                      double        oldVari,
+                                                      double        x,
+                                                      double        xVari,
+                                                      unsigned long nEntriesAccumulated,
+                                                      unsigned long nEntriesToAccumulate,
+                                                      double&       newMean,
+                                                      double&       newVari) const
 {
   double dMean  = x - oldMean;
   double dMean2 = std::pow(dMean, 2);
