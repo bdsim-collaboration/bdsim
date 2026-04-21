@@ -1080,9 +1080,12 @@ void BDSOutput::FillCollimatorHits(const BDSHitsCollectionCollimator* hits,
 
   // after all collimator hits have been filled, we summarise whether the primary
   // interacted in a histogram
-  G4int histIndex = histIndices1D["CollPInteractedPE"];
-  for (G4int i = 0; i < (G4int)collimators.size(); i++)
-    {Fill1DHistogram(histIndex, i, (int)collimators[i]->primaryInteracted);}
+  if (storeCollimatorInfo && nCollimators > 0)
+    {
+      G4int histIndex = histIndices1D["CollPInteractedPE"];
+      for (G4int i = 0; i < (G4int)collimators.size(); i++)
+        {Fill1DHistogram(histIndex, i, (int)collimators[i]->primaryInteracted);}
+    }
 
 
   // loop over collimators and count the number that were interacted with in this event
