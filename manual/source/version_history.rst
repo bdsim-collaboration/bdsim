@@ -12,7 +12,7 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
-v1.8.0 - 2025 / XX / XX
+v1.8.0 - 2026 / XX / XX
 =======================
 
 The BDSIM source code has moved to Github and is available here: https://github.com/bdsim-collaboration/bdsim
@@ -57,6 +57,8 @@ New Features
 * The option :code:`cavityFieldType` may be used to set the default field model for all `rf`
   elements.
 * The "rfcavity" field is now "rfpillbox".
+* Fix a reference particle perfectly on axis in a muon sweeper field that would cause Nans
+  and crashes in tracking.
 
 **General**
 
@@ -118,6 +120,7 @@ Bug Fixes
 * Fix :code:`transform3d` component applying offsets in a rotate frame that is not
   axis-aligned. It applied the offsets (dx, dy, dz) in the global axis and not the
   local ones.
+* Fix repeated transforms in a sequence. Previously, only the first one would be applied.
 * Fix rebdsim's Spectra command preparing the wrong variables when used on a cylindrical
   or spherical sampler where the variable is "totalEnergy" and not "energy".
 * Fix a bug where rebdsim would crash if a Spectra command was used on a cylindrical or
@@ -152,6 +155,7 @@ Bug Fixes
 * Fixed possibly duplicated file extensions for text survey output.
 * Document the options :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` as well
   as fix their number type internally.
+* Fix a crash when using :code:`jcoltip` with collimator-specific output options.
 
 
 Output Changes

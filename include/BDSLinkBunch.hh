@@ -63,8 +63,8 @@ public:
   inline virtual const BDSParticleDefinition* ParticleDefinition() const {return currentParticleDefinition;}
   /// Set current particles index
   void SetCurrentIndex(size_t iIndex)
-    {
-      if(iIndex >= 0 && iIndex < particles.size())
+    {// size_t is unsigned so any negative number will always be cast to positive
+      if (iIndex < particles.size())
         {currentIndex = iIndex;}
     }
   /// Reset current particle index
