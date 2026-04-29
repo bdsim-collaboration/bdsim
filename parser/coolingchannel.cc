@@ -49,6 +49,7 @@ void CoolingChannel::clear()
   mirrorCoils = false;
   onAxisTolerance = 0;
   nSheets = 0;
+  gridPointsPerMm = 1;
 
   nDipoles = 0;
   dipoleAperture.clear();
@@ -89,6 +90,8 @@ void CoolingChannel::clear()
   magneticFieldModel = "solenoidblock";
   electricFieldModel = "rfcavity";
   dipoleFieldModel = "dipole";
+  magneticFieldMethod = "analytic";
+  interpolator = "linear";
 }
 
 void CoolingChannel::PublishMembers()
@@ -114,6 +117,7 @@ void CoolingChannel::PublishMembers()
   publish("mirrorCoils",          &CoolingChannel::mirrorCoils);
   publish("onAxisTolerance",      &CoolingChannel::onAxisTolerance);
   publish("nSheets",              &CoolingChannel::nSheets);
+  publish("gridPointsPerMm",      &CoolingChannel::gridPointsPerMm);
 
   publish("nDipoles",             &CoolingChannel::nDipoles);
   publish("dipoleAperture",       &CoolingChannel::dipoleAperture);
@@ -150,10 +154,12 @@ void CoolingChannel::PublishMembers()
   publish("rfCavityThickness", &CoolingChannel::rfCavityThickness);
   publish("rfTimeOffset",      &CoolingChannel::rfTimeOffset);
 
-  publish("integrator",        &CoolingChannel::integrator);
-  publish("magneticFieldModel",&CoolingChannel::magneticFieldModel);
-  publish("electricFieldModel",&CoolingChannel::electricFieldModel);
-  publish("dipoleFieldModel",  &CoolingChannel::dipoleFieldModel);
+  publish("integrator",          &CoolingChannel::integrator);
+  publish("magneticFieldModel",  &CoolingChannel::magneticFieldModel);
+  publish("electricFieldModel",  &CoolingChannel::electricFieldModel);
+  publish("dipoleFieldModel",    &CoolingChannel::dipoleFieldModel);
+  publish("magneticFieldMethod", &CoolingChannel::magneticFieldMethod);
+  publish("interpolator",        &CoolingChannel::interpolator);
 
   attribute_map_list_double["coilInnerRadius"]     = &coilInnerRadius;
   attribute_map_list_double["coilRadialThickness"] = &coilRadialThickness;
@@ -253,7 +259,10 @@ void CoolingChannel::print()const
             << "integrator "                 << integrator                 << std::endl
             << "magneticFieldModel "         << magneticFieldModel         << std::endl
             << "electricFieldModel "         << electricFieldModel         << std::endl
-            << "dipoleFieldModel "           << dipoleFieldModel           << std::endl;
+            << "dipoleFieldModel "           << dipoleFieldModel           << std::endl
+            << "magneticFieldMethod "        << magneticFieldMethod        << std::endl
+            << "gridPointsPerMm "            << gridPointsPerMm            << std::endl
+            << "interpolator "               << interpolator               << std::endl;
 }
 
 template <class T>

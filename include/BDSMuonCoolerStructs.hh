@@ -19,6 +19,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSMUONCOOLERSTRUCTS_H
 #define BDSMUONCOOLERSTRUCTS_H
 
+#include "globals.hh"
 #include "G4ThreeVector.hh"
 #include "G4Types.hh"
 
@@ -43,7 +44,10 @@ namespace BDS
     G4double tiltZ;
     G4Material* material;
     G4double onAxisTolerance;
-    G4int   nSheets;
+    G4int    nSheets;
+    G4bool   useGrid;
+    G4int    gridPointsPerMm;
+    G4String interpolator;
   };
 
   struct MuonCoolerDipoleInfo
@@ -53,6 +57,9 @@ namespace BDS
     G4double fieldStrength;
     G4double engeCoefficient;
     G4double offsetZ;
+    G4bool   useGrid;
+    G4int    gridPointsPerMm;
+    G4String interpolator;
   };
 
   struct MuonCoolerCavityInfo

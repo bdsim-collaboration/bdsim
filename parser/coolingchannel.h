@@ -64,6 +64,7 @@ namespace GMAD
     bool                   mirrorCoils;
     double                 onAxisTolerance;
     int                    nSheets;
+    double                 gridPointsPerMm;
 
     int                    nDipoles;
     std::list<double>      dipoleAperture;
@@ -104,6 +105,8 @@ namespace GMAD
     std::string magneticFieldModel;
     std::string electricFieldModel;
     std::string dipoleFieldModel;
+    std::string magneticFieldMethod;
+    std::string interpolator;
 
     /// Constructor
     CoolingChannel();

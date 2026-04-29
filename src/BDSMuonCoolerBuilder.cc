@@ -157,6 +157,26 @@ std::vector<BDS::MuonCoolerCoilInfo> BDS::BuildMuonCoolerCoilInfos(const GMAD::C
                           nCoils,
                           coilVarsV);
 
+  G4bool useGrid = (definition.magneticFieldMethod == "grid");
+  G4int  gridPointsPerMm = static_cast<G4int>(std::round(definition.gridPointsPerMm));
+  G4String interpolator = G4String(definition.interpolator);
+
+  if (!useGrid)
+    {
+      if (definition.gridPointsPerMm != 1.0)
+        {
+          G4String msg = "error in coolingchannel definition \"" + definition.name + "\"\n";
+          msg += "gridPointsPerMm must be 1 when magneticFieldMethod is \"analytic\"";
+          throw BDSException(__METHOD_NAME__, msg);
+        }
+      if (definition.interpolator != "linear")
+        {
+          G4String msg = "error in coolingchannel definition \"" + definition.name + "\"\n";
+          msg += "interpolator must be \"linear\" when magneticFieldMethod is \"analytic\"";
+          throw BDSException(__METHOD_NAME__, msg);
+        }
+    }
+
   std::vector<G4Material*> coilMaterials;
   BDS::MuonParamsToMaterials(definition.name,
                              "coilMaterial",
@@ -164,6 +184,10 @@ std::vector<BDS::MuonCoolerCoilInfo> BDS::BuildMuonCoolerCoilInfos(const GMAD::C
                              nCoils,
                              coilMaterials);
   
+  G4int nSheets = definition.nSheets;
+  if (nSheets == 0 && definition.magneticFieldModel == "solenoidblock")
+    {nSheets = 10;}
+
   // build coil infos
   for (G4int i = 0; i < nCoils; i++)
     {
@@ -177,10 +201,12 @@ std::vector<BDS::MuonCoolerCoilInfo> BDS::BuildMuonCoolerCoilInfos(const GMAD::C
                                       coilVarsV[7][i],                 // tiltX
                                       coilVarsV[8][i],                 // tiltY
                                       coilVarsV[9][i],                 // tiltZ
-                                      coilMaterials[i],        // no material for now
+                                      coilMaterials[i],
                                       definition.onAxisTolerance * CLHEP::tesla, // onAxisTolerance
-                                      definition.nSheets
-
+                                      nSheets,
+                                      useGrid,
+                                      gridPointsPerMm,
+                                      interpolator
       };
       result.push_back(info);
     }
@@ -267,15 +293,37 @@ std::vector<BDS::MuonCoolerDipoleInfo> BDS::BuildMuonCoolerDipoleInfos(const GMA
                           nDipoles,
                           dipoleVarsV);
 
-  // build dipole infos
+  G4bool useGrid = (definition.magneticFieldMethod == "grid");
+  G4int  gridPointsPerMm = static_cast<G4int>(std::round(definition.gridPointsPerMm));
+  G4String interpolator = G4String(definition.interpolator);
 
+  if (!useGrid)
+    {
+      if (definition.gridPointsPerMm != 1.0)
+        {
+          G4String msg = "error in coolingchannel definition \"" + definition.name + "\"\n";
+          msg += "gridPointsPerMm must be 1 when magneticFieldMethod is \"analytic\"";
+          throw BDSException(__METHOD_NAME__, msg);
+        }
+      if (definition.interpolator != "linear")
+        {
+          G4String msg = "error in coolingchannel definition \"" + definition.name + "\"\n";
+          msg += "interpolator must be \"linear\" when magneticFieldMethod is \"analytic\"";
+          throw BDSException(__METHOD_NAME__, msg);
+        }
+    }
+
+  // build dipole infos
   for (G4int i = 0; i < nDipoles; i++)
     {
       BDS::MuonCoolerDipoleInfo info = {dipoleVarsV[0][i] * CLHEP::m,      // apertureRadius
                                         dipoleVarsV[1][i] * CLHEP::m,      // lengthZ
                                         dipoleVarsV[2][i] * CLHEP::tesla,  // fieldStrength
-                                        dipoleVarsV[3][i],                 // enge Coeff
-                                        dipoleVarsV[4][i] * CLHEP::m      // offsetZ
+                                        dipoleVarsV[3][i],                 // engeCoeff
+                                        dipoleVarsV[4][i] * CLHEP::m,     // offsetZ
+                                        useGrid,
+                                        gridPointsPerMm,
+                                        interpolator
       };
       result.push_back(info);
     }
@@ -503,12 +551,33 @@ void BDS::MuonParamsToVector(const G4String&                              defini
   paramsV.reserve(params.size());
   for (auto l: params)
     {paramsV.emplace_back(std::vector<double>{std::cbegin(*l), std::cend(*l)});}
-  
+
   // check lengths are either 1 or nCoils
   for (G4int i = 0; i < (G4int) paramsV.size(); i++)
     {
       auto& v = paramsV[i];
-      if (((G4int) v.size() != nExpectedParams && v.size() != 1) || v.empty())
+      bool isOptional = (paramNames[i].find("Tilt") != std::string::npos ||
+                         paramNames[i].find("Offset") != std::string::npos ||
+                         paramNames[i].find("GridPoints") != std::string::npos);
+
+      if (v.empty())
+        {
+          if (isOptional)
+            {
+              double defaultVal = 0.0;
+              if (paramNames[i].find("GridPoints") != std::string::npos)
+                {defaultVal = 1.0;}
+              v.push_back(defaultVal);
+            }
+          else
+            {
+              G4String msg = "error in coolingchannel definition \"" + definitionName + "\"\n";
+              msg += "number of " + paramNames[i] + " doesn't match expected number (" + std::to_string(nExpectedParams) + ") or isn't 1";
+              throw BDSException(__METHOD_NAME__, msg);
+            }
+        }
+
+      if (((G4int) v.size() != nExpectedParams && v.size() != 1))
         {
           G4String msg = "error in coolingchannel definition \"" + definitionName + "\"\n";
           msg += "number of " + paramNames[i] + " doesn't match expected number (" + std::to_string(nExpectedParams) + ") or isn't 1";

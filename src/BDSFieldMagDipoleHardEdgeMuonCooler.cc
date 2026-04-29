@@ -44,12 +44,14 @@ G4ThreeVector BDSFieldMagDipoleHardEdgeMuonCooler::GetField(const G4ThreeVector&
 					                          const G4double       /*t*/) const
 {
   G4double z = position.z();
-  G4double rho = position.perp();
 
   G4double By = 0;
-    
-  if (rho > D*0.5 || std::abs(z) > halfLength)  
-    { return G4ThreeVector();}
+
+  if (std::abs(z) > halfLength)
+    {return G4ThreeVector();}
+  G4double rho = position.perp();
+  if (rho > D*0.5)
+    {return G4ThreeVector();}
   else
     { By = B0;}
 

@@ -21,6 +21,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSMagnetStrength.hh"
 #include "BDSSpecialFunctions.hh"
 #include "BDSUtilities.hh"
+#include "BDSArray2DCoords.hh"
+#include "BDSInterpolatorRoutines.hh"
+#include "BDSFieldValue.hh"
 
 #include "G4ThreeVector.hh"
 #include "G4Types.hh"
@@ -30,138 +33,227 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+#include <limits>
+#include <map>
+#include <tuple>
+#include <memory>
+#include <utility>
+#include <vector>
+
+
+std::pair<G4double,G4double> BDSFieldMagSolenoidSheet::ComputeAnalyticField(
+    G4double rho, G4double z, G4double a, G4double halfLength, G4double spatialLimit)
+{
+  G4double zp = z + halfLength;
+  G4double zm = z - halfLength;
+  if (std::abs(rho - a) < spatialLimit && std::abs(z) < halfLength + 2*spatialLimit)
+    {return {0, 0};}
+  if (std::abs(rho) < spatialLimit)
+    {
+      G4double f1 = zp / std::sqrt(zp*zp + a*a);
+      G4double f2 = zm / std::sqrt(zm*zm + a*a);
+      return {0, 0.5 * CLHEP::pi * (f1 - f2)};
+    }
+  G4double zpSq        = zp*zp,        zmSq        = zm*zm;
+  G4double rhoPlusA    = rho + a,       rhoPlusASq  = rhoPlusA * rhoPlusA;
+  G4double aMinusRho   = a - rho,       aMinusRhoSq = aMinusRho * aMinusRho;
+  G4double denominatorP = std::sqrt(zpSq + rhoPlusASq);
+  G4double denominatorM = std::sqrt(zmSq + rhoPlusASq);
+  G4double alphap = a / denominatorP,   alpham = a / denominatorM;
+  G4double betap  = zp / denominatorP,  betam  = zm / denominatorM;
+  G4double gamma  = aMinusRho / rhoPlusA;
+  G4double gammaSq = gamma * gamma;
+  G4double kp = std::sqrt(zpSq + aMinusRhoSq) / denominatorP;
+  G4double km = std::sqrt(zmSq + aMinusRhoSq) / denominatorM;
+  G4double Brho = alphap * BDS::CEL(kp, 1, 1, -1) - alpham * BDS::CEL(km, 1, 1, -1);
+  G4double Bz   = (a / rhoPlusA) * (betap * BDS::CEL(kp, gammaSq, 1, gamma)
+                                  - betam * BDS::CEL(km, gammaSq, 1, gamma));
+  if (std::isnan(Brho)) {Brho = 0;}
+  if (std::isnan(Bz))   {Bz   = 1.0;}
+  return {Brho, Bz};
+}
+
+BDSArray2DCoords* BDSFieldMagSolenoidSheet::BuildGrid(
+    G4double a, G4double halfLength, G4double zExtent, G4double spatialLimit, G4int pointsPerMm)
+{
+  const G4int NRho = std::max(2, (G4int)std::round(a)       * pointsPerMm);
+  const G4int NZ   = std::max(2, (G4int)std::round(zExtent) * pointsPerMm);
+  G4double rhoMax  = a;
+  G4double zMax    = zExtent;
+  G4double drho    = rhoMax / (NRho - 1);
+  G4double dz      = 2.0 * zMax / (NZ - 1);
+  auto* array = new BDSArray2DCoords(NRho, NZ, 0.0, rhoMax, -zMax, zMax);
+  
+  for (G4int iRho = 0; iRho < NRho; iRho++)
+    {
+      G4double rho = iRho * drho;
+      for (G4int iZ = 0; iZ < NZ; iZ++)
+        {
+          G4double z = -zMax + iZ * dz;
+          auto [normBrho, normBz] = BDSFieldMagSolenoidSheet::ComputeAnalyticField(rho, z, a, halfLength, spatialLimit);
+          (*array)(iRho, iZ) = BDSFieldValue(normBrho, 0.0, normBz);
+        }
+    }
+
+  return array;
+}
+
+BDSArray2DCoords* BDSFieldMagSolenoidSheet::GetGrid(
+    G4double a, G4double halfLength, G4double /*B0*/, G4double zExtent, G4double spatialLimit, G4int pointsPerMm)
+{
+  static std::map<std::tuple<G4double,G4double,G4double,G4int>,
+                  std::unique_ptr<BDSArray2DCoords>> gridCache;
+  G4double aKey          = std::round(a);
+  G4double halfLengthKey = std::round(halfLength);
+  G4double zExtentKey    = std::round(zExtent);
+
+  auto key = std::make_tuple(aKey, halfLengthKey, zExtentKey, pointsPerMm);
+  auto it = gridCache.find(key);
+  if (it != gridCache.end())
+    {return it->second.get();}
+  auto result = gridCache.emplace(key, BuildGrid(a, halfLength, zExtent, spatialLimit, pointsPerMm));
+  return result.first->second.get();
+}
 
 BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(BDSMagnetStrength const* strength,
-                                                   G4double radiusIn,G4double toleranceIn):
+                                                   G4double radiusIn,
+                                                   G4double toleranceIn):
   BDSFieldMagSolenoidSheet((*strength)["field"], false, radiusIn, (*strength)["length"], 0.0, 0.0, 0.0, toleranceIn)
 {;}
 
-BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
-                                                   G4bool   strengthIsCurrent,
-                                                   G4double sheetRadius,
-                                                   G4double fullLength,
-                                                   G4double tiltXIn,
-                                                   G4double tiltYIn,
-                                                   G4double tiltZIn,
-                                                   G4double toleranceIn):
+BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double        strength,
+                                                   G4bool          strengthIsCurrent,
+                                                   G4double        sheetRadius,
+                                                   G4double        fullLength,
+                                                   G4double        tiltXIn,
+                                                   G4double        tiltYIn,
+                                                   G4double        tiltZIn,
+                                                   G4double        toleranceIn,
+                                                   G4int           gridPointsPerMmIn,
+                                                   const G4String& interpolatorIn):
   a(sheetRadius),
   halfLength(0.5*fullLength),
   B0(0.0),
   I(0.0),
   spatialLimit(std::min(1e-5*sheetRadius, 1e-5*fullLength)),
-  normalisation(1.0),
-  coilTolerance(toleranceIn),
-  hasTilt(BDS::IsFinite(tiltXIn) || BDS::IsFinite(tiltYIn) || BDS::IsFinite(tiltZIn))
+  coilTolerance(std::max(1e-6, toleranceIn)),
+  zHalfExtent(std::numeric_limits<G4double>::max()),
+  hasTilt(BDS::IsFinite(tiltXIn) || BDS::IsFinite(tiltYIn) || BDS::IsFinite(tiltZIn)),
+  useGrid(false),
+  interpolator(interpolatorIn),
+  grid(nullptr)
 {
   finiteStrength = BDS::IsFinite(std::abs(strength));
-  // apply relationship B0 = mu_0 I / 2 a for on-axis rho=0,z=0
   if (strengthIsCurrent)
     {
       I = strength;
       B0 = CLHEP::mu0 * strength / (CLHEP::pi*2* halfLength);
     }
   else
-    {// strength is B0 -> calculate current
+    {
       B0 = strength;
-      I = B0 *(CLHEP::pi*2* halfLength) / CLHEP::mu0; 
+      I = B0 *(CLHEP::pi*2* halfLength) / CLHEP::mu0;
     }
-  
-  // The field inside the current cylinder is actually slightly parabolic in rho.
-  // The equation for the field takes B0 as the peak magnetic field at the current
-  // cylinder sheet. So we evaluate it here then normalise. ~<1% adjustment in magnitude.
-  //G4double testBz = OnAxisBz(halfLength, -halfLength);
-  //normalisation = B0 / testBz;
+
+  zHalfExtent = GetZHalfExtent() + 2*halfLength;
 
   if (hasTilt)
     {
-      // Build forward rotation matrix (local -> global): apply Rx, then Ry, then Rz.
-      // With CLHEP post-multiply convention (M = M * Ri), build as Rz * Ry * Rx
-      // by calling rotateZ first, rotateY second, rotateX third.
       rotation.rotateZ(tiltZIn);
       rotation.rotateY(tiltYIn);
       rotation.rotateX(tiltXIn);
       inverseRotation = rotation.inverse();
     }
+
+  if (gridPointsPerMmIn > 0)
+    {
+      grid = GetGrid(a, halfLength, B0, zHalfExtent, spatialLimit, gridPointsPerMmIn);
+      useGrid = true;
+    }
+}
+
+BDSFieldMagSolenoidSheet::~BDSFieldMagSolenoidSheet()
+{
 }
 
 G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
                                                  const G4double       /*t*/) const
 {
-  // Rotation angles - to be moved to struct later
-  //G4double rotationX = CLHEP::pi/4; // 45 degrees to put solenoid along z axis
-  //G4double rotationY = 0.0;
-  //G4double rotationZ = 0.0;
-  
-  // Transform position to solenoid's local frame using precomputed inverse rotation.
   G4ThreeVector localPosition = hasTilt ? inverseRotation * position : position;
   G4double z = localPosition.z();
   G4double rho = localPosition.perp();
-  G4double phi = localPosition.phi(); // angle about z axis
-  // check if close to current source - function not well-behaved at exactly the rho of
-  // the current source or at the boundary of +- halfLength
-  if (std::abs(rho - a) < spatialLimit && (std::abs(z) < halfLength+2*spatialLimit))
-    {return G4ThreeVector();} // close to radius and inside +- z
-  G4double zp = z + halfLength;
-  G4double zm = z - halfLength;
 
-  G4double Brho = 0;
-  G4double Bz   = 0;
+  if (std::abs(rho - a) < spatialLimit && (std::abs(z) < zHalfExtent))
+    {return G4ThreeVector();}
 
-  // approximation for on-axis
-  if (std::abs(OnAxisBz(zp, zm))< coilTolerance)
-    { 
-      Brho = 0.0;
-      Bz = 0.0;
+  G4double Brho = 0.0;
+  G4double Bz   = 0.0;
+
+  if (rho < spatialLimit || (useGrid && rho < grid->XStep()))
+    {
+      Bz = OnAxisBz(z);
     }
-  else if (std::abs(rho) < spatialLimit)
-    {Bz = OnAxisBz(zp, zm);}
+  else if (useGrid)
+  {
+    if (rho <= grid->XMax() && std::abs(z) <= grid->YMax())
+      {
+        G4double fx, fy;
+        BDSFieldValue result;
+        if (interpolator == "cubic")
+          {
+            BDSFieldValue localData[4][4];
+            grid->ExtractSection4x4(rho, z, localData, fx, fy);
+            result = BDS::Cubic2D(localData, fx, fy);
+          }
+        else
+          {
+            BDSFieldValue localData[2][2];
+            grid->ExtractSection2x2(rho, z, localData, fx, fy);
+            result = BDS::Linear2D(localData, fx, fy);
+          }
+        Brho = B0 * result.x();
+        Bz   = B0 * result.z();
+      }
+    else
+      {return G4ThreeVector();}
+  }
+
   else
     {
-      G4double zpSq = zp*zp;
-      G4double zmSq = zm*zm;
-      
-      G4double rhoPlusA = rho + a;
-      G4double rhoPlusASq = rhoPlusA * rhoPlusA;
-      G4double aMinusRho = a - rho;
-      G4double aMinusRhoSq = aMinusRho*aMinusRho;
-      
-      G4double denominatorP = std::sqrt(zpSq + rhoPlusASq);
-      G4double denominatorM = std::sqrt(zmSq + rhoPlusASq);
-      
-      G4double alphap = a / denominatorP;
-      G4double alpham = a / denominatorM;
-      
-      G4double betap = zp / denominatorP;
-      G4double betam = zm / denominatorM;
-      
-      G4double gamma = (a - rho) / (rhoPlusA);
-      G4double gammaSq = gamma * gamma;
-
-      G4double kp = std::sqrt(zpSq + aMinusRhoSq) / denominatorP;
-      G4double km = std::sqrt(zmSq + aMinusRhoSq) / denominatorM;
-      
-      Brho = B0 * (alphap * BDS::CEL(kp, 1, 1, -1) - alpham * BDS::CEL(km, 1, 1, -1));
-      Bz = ((B0 * a) / (rhoPlusA)) * (betap * BDS::CEL(kp, gammaSq, 1, gamma) - betam * BDS::CEL(km, gammaSq, 1, gamma));
-      // technically possible for integral to return nan, so protect against it and default to B0 along z
-      if (std::isnan(Brho))
-        {Brho = 0;}
-      if (std::isnan(Bz))
-        {Bz = B0;}
+      auto [normBrho, normBz] = ComputeAnalyticField(rho, z, a, halfLength, spatialLimit);
+      Brho = B0 * normBrho;
+      Bz   = B0 * normBz;
     }
-  // we have to be consistent with the phi we calculated at the beginning,
-  // so unit rho is in the x direction.
-  G4ThreeVector localField = G4ThreeVector(Brho,0,Bz) * normalisation;
-  localField = localField.rotateZ(phi);
 
-  // Transform field back to element frame using precomputed forward rotation.
+  G4double Bx = (rho > spatialLimit) ? Brho * localPosition.x() / rho : 0.0;
+  G4double By = (rho > spatialLimit) ? Brho * localPosition.y() / rho : 0.0;
+  G4ThreeVector localField = G4ThreeVector(Bx, By, Bz);
+
   return hasTilt ? rotation * localField : localField;
 }
 
-G4double BDSFieldMagSolenoidSheet::OnAxisBz(G4double zp,
-                                            G4double zm) const
+G4double BDSFieldMagSolenoidSheet::OnAxisBz(G4double z) const
 {
+  G4double zp = z + halfLength;
+  G4double zm = z - halfLength;
   G4double f1 = zp / std::sqrt( zp*zp + a*a );
   G4double f2 = zm / std::sqrt( zm*zm + a*a );
   G4double Bz = 0.5*B0 *CLHEP::pi* (f1 - f2);
   return Bz;
+}
+
+G4double BDSFieldMagSolenoidSheet::GetZHalfExtent() const
+{
+
+  G4double L      = 2.0 * halfLength;
+  G4double absB0  = std::abs(B0);
+  G4double cubed  = (absB0 * CLHEP::pi * a * a * L) / (2.0 * std::max(coilTolerance, 1e-6));
+
+  if (!BDS::IsFinite(cubed) || cubed <= 0)
+    {return halfLength;} 
+
+  G4double z = std::cbrt(cubed);
+
+  return std::max(z, halfLength);
 }
