@@ -2393,9 +2393,18 @@ Parameters for these components can be specified as either:
 
 **Electric and Magnetic Field Models**
 
-- The **solenoid field model** can be either a **sheet model** (`solenoidsheet`) or a **block model** (`solenoidblock`).
-- For dipoles, two models exist currently: `dipole` and `dipoleenge`. The `dipole` model is a simple hard-edge dipole field, while the `dipoleenge` model includes Enge-type fringe fields and follows the treatment outlined in: Muratori, B.D. et al (2015) ‘Analytical expressions for fringe fields in multipole magnets’, *Physical Review Special Topics - Accelerators and Beams*, 18(6). https://doi.org/10.1103/physrevstab.18.064001
-- For the RF cavities, a simple RF pillbox (`rfpillbox`) model has been implemented.
+- The **solenoid field model** (``magneticFieldModel``) can be either a **sheet model** (``solenoidsheet``) or a **block model** (``solenoidblock``). The block model approximates the coil as a stack of ``nSheets`` concentric current sheets; if ``nSheets`` is not supplied it defaults to 10.
+- For dipoles, two models are available via ``dipoleFieldModel``: ``dipole`` (hard-edge) and ``dipoleenge``, which includes Enge-type fringe fields following: Muratori, B.D. et al (2015) ‘Analytical expressions for fringe fields in multipole magnets’, *Physical Review Special Topics - Accelerators and Beams*, 18(6). https://doi.org/10.1103/physrevstab.18.064001
+- For the RF cavities, a simple RF pillbox (``rfpillbox``) model has been implemented.
+
+**Field Computation Method**
+
+Both solenoid models and the ``dipoleenge`` dipole model support two computation methods, controlled by ``magneticFieldMethod``:
+
+- ``"analytic"`` *(default)* — field is evaluated analytically at every tracking step. No grid parameters are used.
+- ``"grid"`` — field is pre-computed on a 2D lookup grid at construction time and interpolated during tracking. The resolution and interpolation scheme are controlled by ``gridPointsPerMm`` and ``interpolator``.
+
+When ``magneticFieldMethod`` is ``"analytic"``, any supplied ``gridPointsPerMm`` or ``interpolator`` values are ignored. Grid parameters are only meaningful when ``magneticFieldMethod="grid"``.
 
 **Rotations and Offsets**
 
@@ -2443,6 +2452,10 @@ Rotations follow the right-hand rule using axis-angle representation applied in 
 +------------------------------+-------------------------------+--------------+
 | `onAxisTolerance`            | on-axis Tolerance for         | Float        |
 |                              | CEL integral calculation [T]  |              |
++------------------------------+-------------------------------+--------------+
+| `nSheets`                    | Number of current sheets for  | Integer      |
+|                              | ``solenoidblock`` model       |              |
+|                              | (default: 10)                 |              |
 +------------------------------+-------------------------------+--------------+
 | `nDipoles`                   | Number of dipoles             | Integer      |
 +------------------------------+-------------------------------+--------------+
@@ -2528,8 +2541,33 @@ Rotations follow the right-hand rule using axis-angle representation applied in 
 |                              | [m]                           |              |
 +------------------------------+-------------------------------+--------------+
 | `magneticFieldModel`         | Model for solenoid field      | String       |
+|                              | (``solenoidsheet``,           |              |
+|                              | ``solenoidblock``,            |              |
+|                              | ``solenoidloop``)             |              |
++------------------------------+-------------------------------+--------------+
+| `magneticFieldMethod`        | Computation method for        | String       |
+|                              | solenoid and ``dipoleenge``   |              |
+|                              | fields: ``"analytic"``        |              |
+|                              | (default) or ``"grid"``.      |              |
+|                              | If ``"analytic"``,            |              |
+|                              | ``gridPointsPerMm`` and       |              |
+|                              | ``interpolator`` are          |              |
+|                              | overridden and ignored.       |              |
++------------------------------+-------------------------------+--------------+
+| `gridPointsPerMm`            | Grid resolution in points per | Float        |
+|                              | mm; only used when            |              |
+|                              | ``magneticFieldMethod="grid"``|              |
+|                              | (default: 1)                  |              |
++------------------------------+-------------------------------+--------------+
+| `interpolator`               | Interpolation scheme for grid | String       |
+|                              | lookup: ``"linear"``          |              |
+|                              | (default) or ``"cubic"``;     |              |
+|                              | only used when                |              |
+|                              | ``magneticFieldMethod="grid"``|              |
 +------------------------------+-------------------------------+--------------+
 | `dipoleFieldModel`           | Model for dipole field        | String       |
+|                              | (``dipole``,                  |              |
+|                              | ``dipoleenge``)               |              |
 +------------------------------+-------------------------------+--------------+
 | `electricFieldModel`         | Model for RF electric field   | String       |
 +------------------------------+-------------------------------+--------------+
