@@ -158,7 +158,7 @@ std::vector<BDS::MuonCoolerCoilInfo> BDS::BuildMuonCoolerCoilInfos(const GMAD::C
                           coilVarsV);
 
   G4bool useGrid = (definition.magneticFieldMethod == "grid");
-  G4int  gridPointsPerMm = static_cast<G4int>(std::round(definition.gridPointsPerMm));
+  G4double gridPointsPerMm = definition.gridPointsPerMm;
   G4String interpolator = G4String(definition.interpolator);
 
   if (!useGrid)
@@ -294,7 +294,7 @@ std::vector<BDS::MuonCoolerDipoleInfo> BDS::BuildMuonCoolerDipoleInfos(const GMA
                           dipoleVarsV);
 
   G4bool useGrid = (definition.magneticFieldMethod == "grid");
-  G4int  gridPointsPerMm = static_cast<G4int>(std::round(definition.gridPointsPerMm));
+  G4double gridPointsPerMm = definition.gridPointsPerMm;
   G4String interpolator = G4String(definition.interpolator);
 
   if (!useGrid)

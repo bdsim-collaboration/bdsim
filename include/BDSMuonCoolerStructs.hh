@@ -46,7 +46,7 @@ namespace BDS
     G4double onAxisTolerance;
     G4int    nSheets;
     G4bool   useGrid;
-    G4int    gridPointsPerMm;
+    G4double gridPointsPerMm;
     G4String interpolator;
   };
 
@@ -58,7 +58,7 @@ namespace BDS
     G4double engeCoefficient;
     G4double offsetZ;
     G4bool   useGrid;
-    G4int    gridPointsPerMm;
+    G4double gridPointsPerMm;
     G4String interpolator;
   };
 

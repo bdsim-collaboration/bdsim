@@ -67,7 +67,7 @@ public:
                            G4double        tiltY,
                            G4double        tiltZ,
                            G4double        toleranceIn      = 0.0,
-                           G4int           gridPointsPerMmIn = 0,
+                           G4double        gridPointsPerMmIn = 1.0,
                            const G4String& interpolatorIn   = "linear");
   virtual ~BDSFieldMagSolenoidSheet();
 
@@ -86,8 +86,8 @@ public:
                                                            G4double halfLength, G4double spatialLimit);
 
 private:
-  static BDSArray2DCoords* BuildGrid(G4double a, G4double halfLength, G4double zExtent, G4double spatialLimit, G4int pointsPerMm);
-  static BDSArray2DCoords* GetGrid(G4double a, G4double halfLength, G4double B0, G4double zExtent, G4double spatialLimit, G4int pointsPerMm);
+  static BDSArray2DCoords* BuildGrid(G4double a, G4double halfLength, G4double zHalfExtent, G4double spatialLimit, G4double pointsPerMm);
+  static BDSArray2DCoords* GetGrid(G4double a, G4double halfLength, G4double B0, G4double zHalfExtent, G4double spatialLimit, G4double pointsPerMm);
 
   G4double OnAxisBz(G4double z) const;
 

@@ -75,12 +75,12 @@ std::pair<G4double,G4double> BDSFieldMagSolenoidSheet::ComputeAnalyticField(
 }
 
 BDSArray2DCoords* BDSFieldMagSolenoidSheet::BuildGrid(
-    G4double a, G4double halfLength, G4double zExtent, G4double spatialLimit, G4int pointsPerMm)
+    G4double a, G4double halfLength, G4double zHalfExtent, G4double spatialLimit, G4double pointsPerMm)
 {
-  const G4int NRho = std::max(2, (G4int)std::round(a)       * pointsPerMm);
-  const G4int NZ   = std::max(2, (G4int)std::round(zExtent) * pointsPerMm);
+  const G4int NRho = std::max(2, (G4int)(std::round(a)               * pointsPerMm));
+  const G4int NZ   = std::max(2, (G4int)(std::round(2.0 * zHalfExtent) * pointsPerMm));
   G4double rhoMax  = a;
-  G4double zMax    = zExtent;
+  G4double zMax    = zHalfExtent;
   G4double drho    = rhoMax / (NRho - 1);
   G4double dz      = 2.0 * zMax / (NZ - 1);
   auto* array = new BDSArray2DCoords(NRho, NZ, 0.0, rhoMax, -zMax, zMax);
@@ -100,19 +100,19 @@ BDSArray2DCoords* BDSFieldMagSolenoidSheet::BuildGrid(
 }
 
 BDSArray2DCoords* BDSFieldMagSolenoidSheet::GetGrid(
-    G4double a, G4double halfLength, G4double /*B0*/, G4double zExtent, G4double spatialLimit, G4int pointsPerMm)
+    G4double a, G4double halfLength, G4double /*B0*/, G4double zHalfExtent, G4double spatialLimit, G4double pointsPerMm)
 {
-  static std::map<std::tuple<G4double,G4double,G4double,G4int>,
+  static std::map<std::tuple<G4double,G4double,G4double,G4double>,
                   std::unique_ptr<BDSArray2DCoords>> gridCache;
-  G4double aKey          = std::round(a);
-  G4double halfLengthKey = std::round(halfLength);
-  G4double zExtentKey    = std::round(zExtent);
+  G4double aKey             = std::round(a);
+  G4double halfLengthKey    = std::round(halfLength);
+  G4double zHalfExtentKey   = std::round(zHalfExtent);
 
-  auto key = std::make_tuple(aKey, halfLengthKey, zExtentKey, pointsPerMm);
+  auto key = std::make_tuple(aKey, halfLengthKey, zHalfExtentKey, pointsPerMm);
   auto it = gridCache.find(key);
   if (it != gridCache.end())
     {return it->second.get();}
-  auto result = gridCache.emplace(key, BuildGrid(a, halfLength, zExtent, spatialLimit, pointsPerMm));
+  auto result = gridCache.emplace(key, BuildGrid(a, halfLength, zHalfExtent, spatialLimit, pointsPerMm));
   return result.first->second.get();
 }
 
@@ -130,7 +130,7 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double        strength,
                                                    G4double        tiltYIn,
                                                    G4double        tiltZIn,
                                                    G4double        toleranceIn,
-                                                   G4int           gridPointsPerMmIn,
+                                                   G4double        gridPointsPerMmIn,
                                                    const G4String& interpolatorIn):
   a(sheetRadius),
   halfLength(0.5*fullLength),

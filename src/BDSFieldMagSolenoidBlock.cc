@@ -59,7 +59,7 @@ BDSFieldMagSolenoidBlock::BDSFieldMagSolenoidBlock(G4double        strength,
                                                    G4double        tiltZIn,
                                                    G4double        toleranceIn,
                                                    G4int           nSheetsIn,
-                                                   G4int           gridPointsPerMmIn,
+                                                   G4double        gridPointsPerMmIn,
                                                    const G4String& interpolatorIn):
   a(innerRadiusIn),
   radialThickness(radialThicknessIn),
@@ -147,13 +147,13 @@ BDSFieldMagSolenoidBlock::SumSheetFields(G4double rho, G4double z,
 
 BDSArray2DCoords* BDSFieldMagSolenoidBlock::BuildGrid(
     G4double innerRadius, G4double radialThicknessIn, G4double fullLengthZIn,
-    G4int nSheets, G4double currentDensityIn, G4double zExtent, G4double spatialLimitIn,
-    G4int pointsPerMm)
+    G4int nSheets, G4double currentDensityIn, G4double zHalfExtent, G4double spatialLimitIn,
+    G4double pointsPerMm)
 {
-  const G4int NRho = std::max(2, (G4int)std::round(innerRadius) * pointsPerMm);
-  const G4int NZ   = std::max(2, (G4int)std::round(zExtent)    * pointsPerMm);
+  const G4int NRho = std::max(2, (G4int)(std::round(innerRadius)           * pointsPerMm));
+  const G4int NZ   = std::max(2, (G4int)(std::round(2.0 * zHalfExtent)    * pointsPerMm));
   G4double rhoMax  = innerRadius;
-  G4double zMax    = zExtent;
+  G4double zMax    = zHalfExtent;
   G4double drho    = rhoMax / (NRho - 1);
   G4double dz      = 2.0 * zMax / (NZ - 1);
 
@@ -177,10 +177,10 @@ BDSArray2DCoords* BDSFieldMagSolenoidBlock::BuildGrid(
 
 BDSArray2DCoords* BDSFieldMagSolenoidBlock::GetGrid(
     G4double innerRadius, G4double radialThicknessIn, G4double fullLengthZIn,
-    G4int nSheets, G4double currentDensityIn, G4double zExtent, G4double spatialLimitIn,
-    G4int pointsPerMm)
+    G4int nSheets, G4double currentDensityIn, G4double zHalfExtent, G4double spatialLimitIn,
+    G4double pointsPerMm)
 {
-  static std::map<std::tuple<G4double,G4double,G4double,G4int,G4double,G4int>,
+  static std::map<std::tuple<G4double,G4double,G4double,G4int,G4double,G4double>,
                   std::unique_ptr<BDSArray2DCoords>> gridCache;
 
   G4double aKey  = std::round(innerRadius);
@@ -195,7 +195,7 @@ BDSArray2DCoords* BDSFieldMagSolenoidBlock::GetGrid(
 
   auto result = gridCache.emplace(key,
       BuildGrid(innerRadius, radialThicknessIn, fullLengthZIn,
-                nSheets, currentDensityIn, zExtent, spatialLimitIn, pointsPerMm));
+                nSheets, currentDensityIn, zHalfExtent, spatialLimitIn, pointsPerMm));
   return result.first->second.get();
 }
 

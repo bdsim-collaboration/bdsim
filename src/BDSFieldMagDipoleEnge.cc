@@ -39,7 +39,7 @@ BDSFieldMagDipoleEnge::BDSFieldMagDipoleEnge(G4double        strength,
                                              G4double        coilLength,
                                              G4double        engeCoefficient,
                                              G4bool          useGridIn,
-                                             G4int           gridPointsPerMmIn,
+                                             G4double        gridPointsPerMmIn,
                                              const G4String& interpolatorIn):
   D(2*apertureRadius),
   halfLength(0.5*coilLength),
@@ -64,13 +64,13 @@ BDSArray2DCoords* BDSFieldMagDipoleEnge::BuildGrid(G4double D,
                                                    G4double halfLength,
                                                    G4double engeOverD,
                                                    G4double zHalfExtent,
-                                                   G4int    pointsPerMm)
+                                                   G4double pointsPerMm)
 {
   G4double yMax = 0.5 * D;
   G4double zMax = zHalfExtent;
 
-  const G4int NY = std::max(2, (G4int)std::round(yMax) * pointsPerMm);
-  const G4int NZ = std::max(2, (G4int)std::round(zMax) * pointsPerMm);
+  const G4int NY = std::max(2, (G4int)(std::round(2.0 * yMax) * pointsPerMm));
+  const G4int NZ = std::max(2, (G4int)(std::round(2.0 * zMax) * pointsPerMm));
 
   G4double dy = 2.0 * yMax / (NY - 1);
   G4double dz = 2.0 * zMax / (NZ - 1);
@@ -108,9 +108,9 @@ BDSArray2DCoords* BDSFieldMagDipoleEnge::GetGrid(G4double D,
                                                  G4double halfLength,
                                                  G4double engeOverD,
                                                  G4double zHalfExtent,
-                                                 G4int    pointsPerMm)
+                                                 G4double pointsPerMm)
 {
-  static std::map<std::tuple<G4double,G4double,G4double,G4int>,
+  static std::map<std::tuple<G4double,G4double,G4double,G4double>,
                   std::unique_ptr<BDSArray2DCoords>> gridCache;
 
   auto key = std::make_tuple(std::round(D),

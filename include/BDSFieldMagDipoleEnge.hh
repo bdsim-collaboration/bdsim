@@ -50,7 +50,7 @@ public:
                         G4double        coilLength,
                         G4double        engeCoefficient,
                         G4bool          useGridIn         = false,
-                        G4int           gridPointsPerMmIn = 1,
+                        G4double        gridPointsPerMmIn = 1.0,
                         const G4String& interpolatorIn    = "linear");
 
   virtual ~BDSFieldMagDipoleEnge() = default;
@@ -69,13 +69,13 @@ private:
                                      G4double halfLength,
                                      G4double engeOverD,
                                      G4double zHalfExtent,
-                                     G4int    pointsPerMm);
+                                     G4double pointsPerMm);
 
   static BDSArray2DCoords* GetGrid(G4double D,
                                    G4double halfLength,
                                    G4double engeOverD,
                                    G4double zHalfExtent,
-                                   G4int    pointsPerMm);
+                                   G4double pointsPerMm);
 
   G4double D;
   G4double halfLength;

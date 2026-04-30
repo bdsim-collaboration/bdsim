@@ -114,7 +114,7 @@ void BDSFieldEMMuonCooler::BuildMagnets(const BDSFieldInfoExtraMuonCooler* info)
       {
         for (const auto& ci : info->coilInfos)
           {
-            G4int gridPts = ci.useGrid ? ci.gridPointsPerMm : 0;
+            G4double gridPts = ci.useGrid ? ci.gridPointsPerMm : 0.0;
             auto* f = new BDSFieldMagSolenoidBlock(ci.current,
                                                    true,
                                                    ci.innerRadius,
@@ -140,7 +140,7 @@ void BDSFieldEMMuonCooler::BuildMagnets(const BDSFieldInfoExtraMuonCooler* info)
       {
         for (const auto& ci : info->coilInfos)
           {
-            G4int gridPts = ci.useGrid ? ci.gridPointsPerMm : 0;
+            G4double gridPts = ci.useGrid ? ci.gridPointsPerMm : 0.0;
             auto* f = new BDSFieldMagSolenoidSheet(ci.current,
                                                    true,
                                                    ci.innerRadius + 0.5*ci.radialThickness,
