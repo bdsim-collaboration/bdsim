@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(GenerateExportHeader)
 
-project(bdsim)
+project(bdsim LANGUAGES CXX)
 
 # project version
 set( BDSIM_MAJOR_VERSION 1 )
