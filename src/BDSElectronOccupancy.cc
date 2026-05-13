@@ -30,8 +30,8 @@ BDSElectronOccupancy::BDSElectronOccupancy(G4int maxn)
     {
         for(G4int j=0; j<i; j++)
         {
-            G4double jSpinOrbit1 = abs(j+spinUp);
-            G4double jSpinOrbit2 = abs(j+spinDown);
+            G4double jSpinOrbit1 = std::abs(j+spinUp);
+            G4double jSpinOrbit2 = std::abs(j+spinDown);
             if(jSpinOrbit1==jSpinOrbit2)
             {
                 stateList.push_back(new BDSElectronQuantumLevel(i,j,jSpinOrbit1));
