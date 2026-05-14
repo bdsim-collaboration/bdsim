@@ -662,8 +662,7 @@ void Config::ParseBinning(const std::string& binning,
         {// try to match ranges
           auto rangeBegin = std::sregex_iterator(matchS.begin(), matchS.end(), oneDim);
           auto rangeEnd   = std::sregex_iterator();
-          int counterRange = 0;
-          for (auto j = rangeBegin; j != rangeEnd; ++j, ++counterRange)
+          for (auto j = rangeBegin; j != rangeEnd; ++j)
             {// iterate over all matches and pull out first and second number
               std::smatch matchR = *j;
               try
