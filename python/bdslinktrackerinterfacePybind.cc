@@ -34,6 +34,7 @@ namespace py = pybind11;
 #include "BDSIMLink.hh"
 #include "BDSLinkBunch.hh"
 #include "BDSSamplerCustom.hh"
+#include "BDSParser.hh"
 
 
 template <typename T>
@@ -70,103 +71,130 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                     bool batchMode,
                                     bool no_neutral_particles) {
         auto* obj = BDSLinkTrackerInterface::GetInstance(bdsimConfigFile,
-                                                    referenceParticlePDG,
-                                                    referenceKineticEnergy,
-                                                    relativeEnergyCut,
-                                                    seed,
-                                                    referenceIonCharge,
-                                                    batchMode);
+                                                         referenceParticlePDG,
+                                                         referenceKineticEnergy,
+                                                         relativeEnergyCut,
+                                                         seed,
+                                                         referenceIonCharge,
+                                                         batchMode);
         obj->SetNoNeutralParticles(no_neutral_particles);
         return obj;
-    },
-                                    py::arg("bdsimConfigFileIn") = "trackerInterface.gmad",
-                                    py::arg("referenceParticlePDG") =11,
-                                    py::arg("referenceKineticEnergy") = 100,
-                                    py::arg("relativeEnergyCut") = 0.01,
-                                    py::arg("seed") = 1234,
-                                    py::arg("referenceIonCharge") = 1,
-                                    py::arg("batchMode") = true,
-                                    py::arg("no_neutral_particles") = true,
-                                    py::return_value_policy::reference)
-      .def_static("GetInstance", []() {return BDSLinkTrackerInterface::GetInstance();},
+    },            py::arg("bdsimConfigFileIn") = "trackerInterface.gmad",
+                  py::arg("referenceParticlePDG") =11,
+                  py::arg("referenceKineticEnergy") = 100,
+                  py::arg("relativeEnergyCut") = 0.01,
+                  py::arg("seed") = 1234,
+                  py::arg("referenceIonCharge") = 1,
+                  py::arg("batchMode") = true,
+                  py::arg("no_neutral_particles") = true,
                   py::return_value_policy::reference)
-      .def("Reset", &BDSLinkTrackerInterface::Reset)
-      .def("PrepareBDSParticleDefinition", &BDSLinkTrackerInterface::PrepareBDSParticleDefinition)
-      .def("GetReferenceParticleDefinition", [](BDSLinkTrackerInterface &ti) {
-        return ti.GetReferenceParticleDefinition();
-      }, py::return_value_policy::reference)
-      .def("SetReferenceParticleDefinition",&BDSLinkTrackerInterface::SetReferenceParticleDefinition, py::arg("particleDefinition"))
-      .def("GetBDSIMConfigFile", &BDSLinkTrackerInterface::GetBDSIMConfigFile)
-      .def("GetReferenceParticlePDG", &BDSLinkTrackerInterface::GetReferenceParticlePDG)
-      .def("GetReferenceParticleKineticEnergy", &BDSLinkTrackerInterface::GetReferenceParticleKineticEnergy)
-      .def("GetRelativeEnergyCut", &BDSLinkTrackerInterface::GetRelativeEnergyCut)
-      .def("GetSeed", &BDSLinkTrackerInterface::GetSeed)
-      .def("GetReferenceIonCharge", &BDSLinkTrackerInterface::GetReferenceIonCharge)
-      .def("GetBatchMode", &BDSLinkTrackerInterface::GetBatchMode)
-      .def("GetMinimumKineticEnergy", &BDSLinkTrackerInterface::GetMinimumKineticEnergy)
-      .def("SetNoNeutralParticles", &BDSLinkTrackerInterface::SetNoNeutralParticles)
-      .def("GetNoNeutralParticles", &BDSLinkTrackerInterface::GetNoNeutralParticles)
-      .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink,py::return_value_policy::reference)
-      .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink,py::return_value_policy::reference)
-      .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
-                            double ct, double deltap, double chi, double chargeRatio,
-                            double s, int trackid, int pdgid) {
-        ti.AddParticle(x,y, px, py, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
-      }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
-      py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
-      py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
-      .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
-                            double pz, double t, double s,
-                            int trackid, int pdgid) {
-        ti.AddParticle(x, y, px, py, pz, t, s, trackid, pdgid);
-      }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
-      py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
-      .def("AddParticles",[](BDSLinkTrackerInterface &ti,
-                             std::vector<double> &x,
-                             std::vector<double> &y,
-                             std::vector<double> &xp,
-                             std::vector<double> &yp,
-                             std::vector<double> &ct,
-                             std::vector<double> &deltap,
-                             std::vector<double> &chi,
-                             std::vector<double> &chargeRatio,
-                             std::vector<double> &s,
-                             std::vector<int> &trackid,
-                             std::vector<int> &pdgid) {
-        ti.AddParticles(x,y,xp,yp, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
-      }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
-      py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
-      py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
-      .def("AddParticles",[](BDSLinkTrackerInterface &ti,
-                             std::vector<double> x,
-                             std::vector<double> y,
-                             std::vector<double> px,
-                             std::vector<double> py,
-                             std::vector<double> pz,
-                             std::vector<double> t,
-                             std::vector<double> s,
-                             std::vector<int> trackid,
-                             std::vector<int> pdgid) {
-        ti.AddParticles(x,y,px,py,pz,t,s,trackid,pdgid);
-      }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
-      py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
-      .def("ClearData",&BDSLinkTrackerInterface::ClearData)
-      .def("GetParticleDefinition", &BDSLinkTrackerInterface::GetParticleDefinition,py::keep_alive<1, 2>())
-      .def("GetParticlePDGMass",&BDSLinkTrackerInterface::GetParticlePDGMass)
-      .def("GetParticlePDGCharge", &BDSLinkTrackerInterface::GetParticlePDGCharge)
-      .def("GetChargeRatio", &BDSLinkTrackerInterface::GetChargeRatio)
-      .def("GetMassRatio",&BDSLinkTrackerInterface::GetMassRatio)
-      .def("GetChi", &BDSLinkTrackerInterface::GetChi)
-      .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
-          int iElement,
-          std::string elementName,
-          py::object particles,
-          float referenceKineticEnergy) {
-        TrackXSuite(tracker_interface, iElement, elementName, particles, referenceKineticEnergy);
-      })
-      .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
-        TrackRFTrack(tracker_interface, bunch6d);
-      });
+
+    .def_static("GetInstance", [](BDSParser* parser,
+                                  int referenceParticlePDG,
+                                  double referenceKineticEnergy,
+                                  double relativeEnergyCut,
+                                  int seed,
+                                  int referenceIonCharge,
+                                  bool batchMode,
+                                  bool no_neutral_particles) {
+      auto* obj = BDSLinkTrackerInterface::GetInstance(parser,
+                                                       referenceParticlePDG,
+                                                       referenceKineticEnergy,
+                                                       relativeEnergyCut,
+                                                       seed,
+                                                       referenceIonCharge,
+                                                       batchMode);
+      obj->SetNoNeutralParticles(no_neutral_particles);
+      return obj;
+    }, py::arg("parser") = nullptr,
+       py::arg("referenceParticlePDG") =11,
+       py::arg("referenceKineticEnergy") = 100,
+       py::arg("relativeEnergyCut") = 0.01,
+       py::arg("seed") = 1234,
+       py::arg("referenceIonCharge") = 1,
+       py::arg("batchMode") = true,
+       py::arg("no_neutral_particles") = true,
+       py::return_value_policy::reference)
+
+    .def_static("GetInstance", []() {return BDSLinkTrackerInterface::GetInstance();},
+                py::return_value_policy::reference)
+    .def("Reset", &BDSLinkTrackerInterface::Reset)
+    .def("PrepareBDSParticleDefinition", &BDSLinkTrackerInterface::PrepareBDSParticleDefinition)
+    .def("GetReferenceParticleDefinition", [](BDSLinkTrackerInterface &ti) {
+      return ti.GetReferenceParticleDefinition();
+    }, py::return_value_policy::reference)
+    .def("SetReferenceParticleDefinition",&BDSLinkTrackerInterface::SetReferenceParticleDefinition, py::arg("particleDefinition"))
+    .def("GetBDSIMConfigFile", &BDSLinkTrackerInterface::GetBDSIMConfigFile)
+    .def("GetReferenceParticlePDG", &BDSLinkTrackerInterface::GetReferenceParticlePDG)
+    .def("GetReferenceParticleKineticEnergy", &BDSLinkTrackerInterface::GetReferenceParticleKineticEnergy)
+    .def("GetRelativeEnergyCut", &BDSLinkTrackerInterface::GetRelativeEnergyCut)
+    .def("GetSeed", &BDSLinkTrackerInterface::GetSeed)
+    .def("GetReferenceIonCharge", &BDSLinkTrackerInterface::GetReferenceIonCharge)
+    .def("GetBatchMode", &BDSLinkTrackerInterface::GetBatchMode)
+    .def("GetMinimumKineticEnergy", &BDSLinkTrackerInterface::GetMinimumKineticEnergy)
+    .def("SetNoNeutralParticles", &BDSLinkTrackerInterface::SetNoNeutralParticles)
+    .def("GetNoNeutralParticles", &BDSLinkTrackerInterface::GetNoNeutralParticles)
+    .def("GetBunchLink",&BDSLinkTrackerInterface::GetBunchLink,py::return_value_policy::reference)
+    .def("GetBDSIMLink",&BDSLinkTrackerInterface::GetBDSIMLink,py::return_value_policy::reference)
+    .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
+                          double ct, double deltap, double chi, double chargeRatio,
+                          double s, int trackid, int pdgid) {
+      ti.AddParticle(x,y, px, py, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
+    }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
+    py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
+    py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+    .def("AddParticle",[](BDSLinkTrackerInterface &ti, double x, double y, double px, double py,
+                          double pz, double t, double s,
+                          int trackid, int pdgid) {
+      ti.AddParticle(x, y, px, py, pz, t, s, trackid, pdgid);
+    }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
+    py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+    .def("AddParticles",[](BDSLinkTrackerInterface &ti,
+                           std::vector<double> &x,
+                           std::vector<double> &y,
+                           std::vector<double> &xp,
+                           std::vector<double> &yp,
+                           std::vector<double> &ct,
+                           std::vector<double> &deltap,
+                           std::vector<double> &chi,
+                           std::vector<double> &chargeRatio,
+                           std::vector<double> &s,
+                           std::vector<int> &trackid,
+                           std::vector<int> &pdgid) {
+      ti.AddParticles(x,y,xp,yp, ct, deltap, chi, chargeRatio, s, trackid, pdgid);
+    }, py::arg("x"), py::arg("y"), py::arg("xp"), py::arg("yp"),
+    py::arg("ct"), py::arg("deltap"), py::arg("chi"), py::arg("chargeRatio"),
+    py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+    .def("AddParticles",[](BDSLinkTrackerInterface &ti,
+                           std::vector<double> x,
+                           std::vector<double> y,
+                           std::vector<double> px,
+                           std::vector<double> py,
+                           std::vector<double> pz,
+                           std::vector<double> t,
+                           std::vector<double> s,
+                           std::vector<int> trackid,
+                           std::vector<int> pdgid) {
+      ti.AddParticles(x,y,px,py,pz,t,s,trackid,pdgid);
+    }, py::arg("x"), py::arg("y"), py::arg("px"), py::arg("py"), py::arg("pz"),
+    py::arg("t"), py::arg("s"), py::arg("trackid"), py::arg("pdgid"))
+    .def("ClearData",&BDSLinkTrackerInterface::ClearData)
+    .def("GetParticleDefinition", &BDSLinkTrackerInterface::GetParticleDefinition,py::keep_alive<1, 2>())
+    .def("GetParticlePDGMass",&BDSLinkTrackerInterface::GetParticlePDGMass)
+    .def("GetParticlePDGCharge", &BDSLinkTrackerInterface::GetParticlePDGCharge)
+    .def("GetChargeRatio", &BDSLinkTrackerInterface::GetChargeRatio)
+    .def("GetMassRatio",&BDSLinkTrackerInterface::GetMassRatio)
+    .def("GetChi", &BDSLinkTrackerInterface::GetChi)
+    .def("TrackXSuite",[](BDSLinkTrackerInterface *tracker_interface,
+        int iElement,
+        std::string elementName,
+        py::object particles,
+        float referenceKineticEnergy) {
+      TrackXSuite(tracker_interface, iElement, elementName, particles, referenceKineticEnergy);
+    })
+    .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
+      TrackRFTrack(tracker_interface, bunch6d);
+    });
 }
 
 void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
