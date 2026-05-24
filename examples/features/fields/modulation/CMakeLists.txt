@@ -1,5 +1,5 @@
 simple_testing(field-modulation-sint-rf           "--file=modulation-sint-rfx.gmad"            "")
-# (TODO REMOVED) simple_testing(field-modulation-singlobalt-rf     "--file=modulation-singlobalt-rfx.gmad"      "")
+# (TODO REMOVED OVERLAP) simple_testing(field-modulation-singlobalt-rf     "--file=modulation-singlobalt-rfx.gmad"      "")
 simple_testing(field-modulation-emap              "--file=modulation-emap-sint.gmad"              "")
 simple_testing(field-modulation-lineart           "--file=modulation-lineart.gmad"              "")
 
