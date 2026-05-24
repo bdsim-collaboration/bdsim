@@ -106,7 +106,7 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
                                                        batchMode);
       obj->SetNoNeutralParticles(no_neutral_particles);
       return obj;
-    }, py::arg("parser") = nullptr,
+    }, py::arg("parser"),
        py::arg("referenceParticlePDG") =11,
        py::arg("referenceKineticEnergy") = 100,
        py::arg("relativeEnergyCut") = 0.01,
