@@ -52,7 +52,7 @@ PYBIND11_MODULE(bdsparser, m) {
     .def("GetElement", [](BDSParser &bdsp, const std::string& name) { return bdsp.GetElement(name);})
     .def("GetFields", &BDSParser::GetFields,py::return_value_policy::reference_internal)
     .def("GetOptions", [](BDSParser &bdsp) {return &bdsp.GetOptions();}, py::return_value_policy::reference_internal)
-    .def("GetOptionsBase", &BDSParser::GetBeamBase, py::return_value_policy::reference_internal)
+    .def("GetOptionsBase", &BDSParser::GetOptionsBase, py::return_value_policy::reference_internal)
     .def("GetLasers", &BDSParser::GetLasers,py::return_value_policy::reference_internal)
     .def("GetMaterials", &BDSParser::GetMaterials,py::return_value_policy::reference_internal)
     .def("GetModulators", &BDSParser::GetModulators, py::return_value_policy::reference_internal)
