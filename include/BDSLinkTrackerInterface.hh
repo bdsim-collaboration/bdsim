@@ -8,6 +8,7 @@ class G4IonTable;
 class BDSLinkBunch;
 class BDSIMLink;
 class BDSParticleDefinition;
+class BDSParser;
 
 class BDSLinkTrackerInterface {
 public:
@@ -19,6 +20,15 @@ public:
                                               int seedIn = 1234,
                                               int referenceIonChargeIn = 1,
                                               bool batchModeIn = true);
+
+  static BDSLinkTrackerInterface* GetInstance(BDSParser* parserIn,
+                                              int referenceParticlePDGIn = 11,
+                                              double referenceKineticEnergyIn = 100,
+                                              double relativeEnergyCutIn = 0.01,
+                                              int seedIn = 1234,
+                                              int referenceIonChargeIn = 1,
+                                              bool batchModeIn = true);
+
   static BDSLinkTrackerInterface* GetInstance();
 
   ~BDSLinkTrackerInterface();
@@ -98,6 +108,15 @@ protected:
 
   // singleton private constructor
   BDSLinkTrackerInterface(std::string bdsimConfigFileIn = "trackerInterface.gmad",
+                          int referenceParticlePDGIn = 11,
+                          double referenceKineticEnergyIn = 100,
+                          double relativeEnergyCutIn = 0.01,
+                          int seedIn = 1234,
+                          int referenceIonChargeIn = 1,
+                          bool batchModeIn = true);
+
+  // singleton private constructor
+  BDSLinkTrackerInterface(BDSParser* parser,
                           int referenceParticlePDGIn = 11,
                           double referenceKineticEnergyIn = 100,
                           double relativeEnergyCutIn = 0.01,

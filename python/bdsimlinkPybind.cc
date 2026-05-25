@@ -30,12 +30,13 @@ namespace py = pybind11;
 #include "BDSIMLink.hh"
 #include "BDSBunch.hh"
 #include "BDSLinkComponent.hh"
+#include "BDSParser.hh"
 
 PYBIND11_MODULE(bdsimlink, m) {
   py::class_<BDSIMLink>(m, "BDSIMLink")
-      .def(py::init([](BDSBunch *bunch) {
-        return new BDSIMLink(bunch);
-      }), pybind11::arg("bunch") = nullptr)
+      .def(py::init([](BDSBunch *bunch, BDSParser *parser) {
+        return new BDSIMLink(bunch, parser);
+      }), pybind11::arg("bunch") = nullptr, pybind11::arg("parser") = nullptr)
       .def("Initialise",[](BDSIMLink *link,
                            py::list py_argv,
                            bool usualPrintOut,
