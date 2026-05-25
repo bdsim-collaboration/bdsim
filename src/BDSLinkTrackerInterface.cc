@@ -26,12 +26,6 @@ BDSLinkTrackerInterface* BDSLinkTrackerInterface::GetInstance(std::string bdsimC
                                                               int referenceIonChargeIn,
                                                               bool batchModeIn)
 {
-  // TODO does not work on all platforms
-  //if (!std::filesystem::exists(bdsimConfigFileIn)) {
-  //  std::cout << "File does not exist.\n";
-  //  return nullptr;
-  //}
-
   if (singleton)
     {return singleton;}
   else
@@ -45,6 +39,29 @@ BDSLinkTrackerInterface* BDSLinkTrackerInterface::GetInstance(std::string bdsimC
                                               batchModeIn);
       return singleton;
     }
+}
+
+BDSLinkTrackerInterface* BDSLinkTrackerInterface::GetInstance(BDSParser* parserIn,
+                                                              int referenceParticlePDGIn,
+                                                              double referenceKineticEnergyIn,
+                                                              double relativeEnergyCutIn,
+                                                              int seedIn,
+                                                              int referenceIonChargeIn,
+                                                              bool batchModeIn)
+{
+  if (singleton)
+  {return singleton;}
+  else
+  {
+    singleton = new BDSLinkTrackerInterface(parserIn,
+                                            referenceParticlePDGIn,
+                                            referenceKineticEnergyIn,
+                                            relativeEnergyCutIn,
+                                            seedIn,
+                                            referenceIonChargeIn,
+                                            batchModeIn);
+    return singleton;
+  }
 }
 
 BDSLinkTrackerInterface* BDSLinkTrackerInterface::GetInstance()
@@ -65,13 +82,13 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
                                                  int seedIn,
                                                  int referenceIonChargeIn,
                                                  bool batchModeIn) :
-                                                 bdsimConfigFile(bdsimConfigFileIn),
-                                                 referenceParticlePDG(referenceParticlePDGIn),
-                                                 referenceKineticEnergy(referenceKineticEnergyIn),
-                                                 relativeEnergyCut(relativeEnergyCutIn),
-                                                 seed(seedIn),
-                                                 referenceIonCharge(referenceIonChargeIn),
-                                                 batchMode(batchModeIn)
+   bdsimConfigFile(bdsimConfigFileIn),
+   referenceParticlePDG(referenceParticlePDGIn),
+   referenceKineticEnergy(referenceKineticEnergyIn),
+   relativeEnergyCut(relativeEnergyCutIn),
+   seed(seedIn),
+   referenceIonCharge(referenceIonChargeIn),
+   batchMode(batchModeIn)
 {
   // keep local tables for ease
   g4particle_table = G4ParticleTable::GetParticleTable();
@@ -102,6 +119,65 @@ BDSLinkTrackerInterface::BDSLinkTrackerInterface(std::string bdsimConfigFileIn,
   std::vector<char*> c_args;
   for (auto& arg : bdsim_args)
     {c_args.push_back(const_cast<char*>(arg.c_str()));}
+
+  // initialise link object
+  linkBDSIM->Initialise((int)c_args.size(),
+                        c_args.data(),
+                        true,
+                        minimumKineticEnergy/CLHEP::GeV,
+                        false);
+
+  referenceParticleDefinition = PrepareBDSParticleDefinition(referenceParticlePDG,
+                                                             /* totalEnergy */ 0,
+                                                             referenceKineticEnergy,
+                                                             /* momentum= */ 0 ,
+                                                             static_cast<int>(referenceIonCharge));
+}
+
+
+BDSLinkTrackerInterface::BDSLinkTrackerInterface(BDSParser *parserIn,
+                                                 int referenceParticlePDGIn,
+                                                 double referenceKineticEnergyIn,
+                                                 double relativeEnergyCutIn,
+                                                 int seedIn,
+                                                 int referenceIonChargeIn,
+                                                 bool batchModeIn) :
+  bdsimConfigFile(""),
+  referenceParticlePDG(referenceParticlePDGIn),
+  referenceKineticEnergy(referenceKineticEnergyIn),
+  relativeEnergyCut(relativeEnergyCutIn),
+  seed(seedIn),
+  referenceIonCharge(referenceIonChargeIn),
+  batchMode(batchModeIn)
+{
+  // keep local tables for ease
+  g4particle_table = G4ParticleTable::GetParticleTable();
+  g4ion_table = g4particle_table->GetIonTable();
+
+  // create link objects
+  linkBunch = new BDSLinkBunch();
+  linkBDSIM = new BDSIMLink(linkBunch, parserIn);
+
+  std::vector<std::string> bdsim_args;
+  bdsim_args.push_back("bdsim");
+  bdsim_args.push_back("--seed="+std::to_string(seed));
+  bdsim_args.push_back("--output=None");
+
+  // append batch configuration
+  if (batchMode)
+  {bdsim_args.push_back(std::string("--batch"));}
+  else
+  {bdsim_args.push_back(std::string("--vis_mac=vis.mac"));}
+
+  // set minimum kinetic energy
+  if (relativeEnergyCut < 1e-6)
+  {relativeEnergyCut = 1.0;}
+  minimumKineticEnergy = relativeEnergyCut * referenceKineticEnergy;
+
+  // Create a vector of char* pointing to c_str()
+  std::vector<char*> c_args;
+  for (auto& arg : bdsim_args)
+  {c_args.push_back(const_cast<char*>(arg.c_str()));}
 
   // initialise link object
   linkBDSIM->Initialise((int)c_args.size(),

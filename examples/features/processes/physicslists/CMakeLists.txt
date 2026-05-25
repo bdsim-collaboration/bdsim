@@ -123,7 +123,7 @@ else()
 endif()
 
 #if (G4_MINOR_VERSION GREATER 1 AND G4_MAJOR_VERSION GREATER 10)
-# (REMOVED)  simple_testing(physics-xray-reflection  "--file=xray_reflection.gmad"   ${OVERLAP_CHECK})
+# (TODO REMOVED)  simple_testing(physics-xray-reflection  "--file=xray_reflection.gmad"   ${OVERLAP_CHECK})
 #endif()
 
 #aliases
