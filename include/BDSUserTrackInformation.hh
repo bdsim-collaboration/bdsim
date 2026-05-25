@@ -28,11 +28,14 @@ class G4DynamicParticle;
 class BDSUserTrackInformation: public G4VUserTrackInformation
 {
 public:
-  BDSUserTrackInformation(const G4DynamicParticle* particle);
+  BDSUserTrackInformation() = delete;
+  explicit BDSUserTrackInformation(const G4DynamicParticle* particle);
   virtual ~BDSUserTrackInformation();
+
   BDSElectronOccupancy* GetElectronOccupancy();
   BDSPolarizationState* GetPolarizationState();
-  G4bool inline GetComptonScattered() {return comptonScattered;};
+  G4bool inline GetComptonScattered() const {return comptonScattered;};
+
   void inline setComptonScatteredTrue() {comptonScattered = true;};
   void inline setComptonScatteredFalse() {comptonScattered = false;};
 
