@@ -33,10 +33,14 @@ class BDSElectronQuantumLevel;
 class BDSElectronOccupancy
 {
 public:
-  BDSElectronOccupancy(G4int maxn);
+  BDSElectronOccupancy() = delete;
+  explicit BDSElectronOccupancy(G4int maxn);
   ~BDSElectronOccupancy();
+
   void CreateNewLevel(G4int n, G4int l, G4int j);
-  static G4bool CompareEnergy(BDSElectronQuantumLevel* level1, BDSElectronQuantumLevel* level2);
+
+  static G4bool CompareEnergy(const BDSElectronQuantumLevel* level1, const BDSElectronQuantumLevel* level2);
+
   void PopulateLevels();
   void AddElectrons(G4int number);
   void AddElectrons(G4int n, G4int l,G4double j, G4int number);
@@ -49,7 +53,7 @@ public:
   G4double GetTimeOfExcitation(G4int n, G4int l, G4double j);
   
   // setters
-  inline void SetTotalElectrons(G4int totalElectronsIn)   {totalElectrons=totalElectronsIn;}
+  inline void SetTotalElectrons(G4int totalElectronsIn) {totalElectrons=totalElectronsIn;}
   
 private:
   std::vector<BDSElectronQuantumLevel*> stateList;
