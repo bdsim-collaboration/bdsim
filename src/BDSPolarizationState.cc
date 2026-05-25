@@ -19,6 +19,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSPolarizationState.hh"
 
 
+BDSPolarizationState::BDSPolarizationState():
+  polarization({0,0,0})
+{;}
+
 BDSPolarizationState::BDSPolarizationState(const GMAD::Beam& beamDefinition)
 {
   polarization.set(beamDefinition.polarization1, beamDefinition.polarization2, beamDefinition.polarization3);

@@ -32,9 +32,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 class BDSPolarizationState
 {
 public:
-  BDSPolarizationState() = delete;
+  BDSPolarizationState();
   explicit BDSPolarizationState(const GMAD::Beam& beamDefinition);
   ~BDSPolarizationState() = default;
+
+  BDSPolarizationState(const BDSPolarizationState&) = default;
 
   inline void SetPolarization(const G4ThreeVector& polarizationIn) {polarization = polarizationIn;}
   inline G4ThreeVector GetPolarization() const {return polarization;}

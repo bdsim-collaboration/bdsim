@@ -28,8 +28,13 @@ BDSUserTrackInformation::BDSUserTrackInformation(const G4DynamicParticle* partic
                                                  const BDSPolarizationState* defaultPolarizationStateIn):
   G4VUserTrackInformation("BDSUserTrackInformation"),
   electronOccupancy(nullptr),
-  polarizationState(new BDSPolarizationState(*defaultPolarizationStateIn))
+  polarizationState(nullptr)
 {
+  if (defaultPolarizationStateIn)
+    {polarizationState = new BDSPolarizationState(*defaultPolarizationStateIn);}
+  else
+    {polarizationState = new BDSPolarizationState();}
+
   // copy the default polarization state for this track so it can be updated as it propagates
   if (particle->GetTotalOccupancy() > 0)
     {
