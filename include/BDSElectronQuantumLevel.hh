@@ -16,12 +16,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSElectronQuantumLevel_H
-#define BDSElectronQuantumLevel_H
-
-#include "G4ElectronOccupancy.hh"
-#include <vector>
-#include <tuple>
+#ifndef BDSELECTRONQUANTUMLEVEL_H
+#define BDSELECTRONQUANTUMLEVEL_H
+#include "G4Types.hh"
 
 /**
  * @brief Electron Quantum levels for more than just n quantum number

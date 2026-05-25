@@ -18,10 +18,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef BDSELECTRONOCCUPANCY_H
 #define BDSELECTRONOCCUPANCY_H
-#include "globals.hh"
-#include "G4ElectronOccupancy.hh"
+#include "G4Types.hh"
 
-#include <tuple>
 #include <vector>
 
 class BDSElectronQuantumLevel;
