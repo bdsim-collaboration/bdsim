@@ -29,7 +29,8 @@ class BDSUserTrackInformation: public G4VUserTrackInformation
 {
 public:
   BDSUserTrackInformation() = delete;
-  explicit BDSUserTrackInformation(const G4DynamicParticle* particle);
+  BDSUserTrackInformation(const G4DynamicParticle* particle,
+                          const BDSPolarizationState* polarizationStateIn);
   virtual ~BDSUserTrackInformation();
 
   BDSElectronOccupancy* GetElectronOccupancy();

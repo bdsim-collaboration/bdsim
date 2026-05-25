@@ -20,21 +20,17 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSPolarizationState.hh"
 
 #include "BDSUserTrackInformation.hh"
-#include "BDSParser.hh"
 
-#include "globals.hh"
 #include "G4DynamicParticle.hh"
 
 
-BDSUserTrackInformation::BDSUserTrackInformation(const G4DynamicParticle* particle):
+BDSUserTrackInformation::BDSUserTrackInformation(const G4DynamicParticle* particle,
+                                                 const BDSPolarizationState* defaultPolarizationStateIn):
   G4VUserTrackInformation("BDSUserTrackInformation"),
   electronOccupancy(nullptr),
-  polarizationState(nullptr)
+  polarizationState(new BDSPolarizationState(*defaultPolarizationStateIn))
 {
-  auto beamDefinition = BDSParser::Instance()->GetBeam();
-
-  polarizationState = new BDSPolarizationState(beamDefinition);
-  
+  // copy the default polarization state for this track so it can be updated as it propagates
   if (particle->GetTotalOccupancy() > 0)
     {
       totalElectrons = particle->GetTotalOccupancy();
