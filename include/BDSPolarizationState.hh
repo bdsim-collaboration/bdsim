@@ -18,8 +18,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef BDSPOLARIZATIONSTATE_H
 #define BDSPOLARIZATIONSTATE_H
-#include "globals.hh"
 #include "G4ThreeVector.hh"
+#include "G4Types.hh"
+
 #include "parser/beam.h"
 
 /**
@@ -27,7 +28,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author Siobhan Alden
  */
-
 
 class BDSPolarizationState
 {
