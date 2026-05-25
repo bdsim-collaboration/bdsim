@@ -44,15 +44,15 @@ public:
   void PopulateLevels();
   void AddElectrons(G4int number);
   void AddElectrons(G4int n, G4int l,G4double j, G4int number);
-  //void RemoveElectrons(G4int number);
+
   void RemoveElectrons(G4int n, G4int l,G4double j, G4int number);
+
   void SetStateLifetime(G4int n, G4int l, G4double lifetime);
-  G4double GetStateLifetime(G4int n, G4int l, G4double j);
-  G4bool StatePopulated(G4int n, G4int l, G4double j);
   void SetTimeOfExciation(G4double timeOfExcitationIn, G4int n, G4int l, G4double j);
-  G4double GetTimeOfExcitation(G4int n, G4int l, G4double j);
-  
-  // setters
+
+  G4bool StatePopulated(G4int n, G4int l, G4double j) const;
+  G4double GetStateLifetime(G4int n, G4int l, G4double j) const;
+  G4double GetTimeOfExcitation(G4int n, G4int l, G4double j) const;
   inline void SetTotalElectrons(G4int totalElectronsIn) {totalElectrons=totalElectronsIn;}
   
 private:
