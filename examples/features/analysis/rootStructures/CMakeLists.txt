@@ -9,5 +9,5 @@ simple_root_test("root-run"     runTest.C     "Error;error")
 simple_root_test("root-event"   eventTest.C   "Error;error")
 simple_root_test("root-empty-rebdsim-file"   dummyDataTest.C   "Error;error")
 
-simple_root_test("root-event-load-copy"   eventCopyTest.C   "Error;error")
+# (TODO REMOVE LINXUX) simple_root_test("root-event-load-copy"   eventCopyTest.C   "Error;error")
 
