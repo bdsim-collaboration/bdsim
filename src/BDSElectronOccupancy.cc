@@ -68,28 +68,7 @@ G4bool BDSElectronOccupancy::CompareEnergy(const BDSElectronQuantumLevel* level1
 
 void BDSElectronOccupancy::PopulateLevels()
 {
-  G4int currentElectrons = totalElectrons;
-  for (G4int i = 0; i < (G4int)stateList.size(); i++)
-    {
-      if (currentElectrons > 0)
-        {
-          G4int max = stateList[i]->GetMaxOccupancy();
-          G4int current = stateList[i]->GetCurrentOccupancy();
-          if (max > current)
-            {
-              if ((max - current) < currentElectrons)
-                {
-                  stateList[i]->AddElectrons(max - current);
-                  currentElectrons = currentElectrons - (max - current);
-                }
-              else
-                {
-                  stateList[i]->AddElectrons(currentElectrons);
-                  currentElectrons = 0;
-                }
-            }
-        }
-    }
+  AddElectrons(totalElectrons);
 }
 
 void BDSElectronOccupancy::AddElectrons(G4int number)
