@@ -62,7 +62,8 @@ class BDSIMLink
 public:
   /// Construct an instance but don't initialise. Requires initialisation with
   /// arguments argc and arv
-  explicit BDSIMLink(BDSBunch* bunchIn = nullptr);
+  explicit BDSIMLink(BDSBunch* bunchIn = nullptr,
+                     BDSParser* parserIn = nullptr);
 
   /// Initialise everything given these arguments. The minimumKinetic energy should be in GeV.
   int Initialise(int argc,
@@ -72,7 +73,7 @@ public:
                  bool   protonsAndIonsOnly   = false);
 
   /// Construct and initialise BDSIM.
-  BDSIMLink(int argc, char** argv, bool usualPrintOut=true);
+  BDSIMLink(int argc, char** argv, bool usualPrintOut=true, BDSParser *parserIn = nullptr);
 
   /// The destructor opens the geometry in Geant4 and deletes everything.
   ~BDSIMLink();
