@@ -73,7 +73,10 @@ BDSUserTrackInformation::BDSUserTrackInformation(const G4DynamicParticle* partic
 }
 
 BDSUserTrackInformation::~BDSUserTrackInformation()
-{;}
+{
+  delete electronOccupancy;
+  delete polarizationState;
+}
 
 BDSPolarizationState* BDSUserTrackInformation::GetPolarizationState()
 {
