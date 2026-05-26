@@ -18,8 +18,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef BDSPOLARIZATIONSTATE_H
 #define BDSPOLARIZATIONSTATE_H
-#include "globals.hh"
 #include "G4ThreeVector.hh"
+#include "G4Types.hh"
+
 #include "parser/beam.h"
 
 /**
@@ -28,29 +29,20 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * @author Siobhan Alden
  */
 
-
 class BDSPolarizationState
 {
 public:
-    BDSPolarizationState(const GMAD::Beam& beamDefinition);
-    ~BDSPolarizationState();
-    inline void SetPol1(G4double pol1In){pol1=pol1In;}
-    inline void SetPol2(G4double pol2In){pol1=pol2In;}
-    inline void SetPol3(G4double pol3In){pol1=pol3In;}
-    inline G4double GetPol1() {return pol1;}
-    inline G4double GetPol2() {return pol2;}
-    inline G4double GetPol3() {return pol3;}
-    inline void SetPolarization(G4ThreeVector polarizationIn){polarization=polarizationIn;}
-    inline G4ThreeVector GetPolarization() {return polarization;}
+  BDSPolarizationState();
+  explicit BDSPolarizationState(const GMAD::Beam& beamDefinition);
+  ~BDSPolarizationState() = default;
+
+  BDSPolarizationState(const BDSPolarizationState&) = default;
+
+  inline void SetPolarization(const G4ThreeVector& polarizationIn) {polarization = polarizationIn;}
+  inline G4ThreeVector GetPolarization() const {return polarization;}
 
 private:
-    G4double pol1=0;
-    G4double pol2=0;
-    G4double pol3=0;
-    G4ThreeVector polarization;
-
+  G4ThreeVector polarization;
 };
-
-
 
 #endif

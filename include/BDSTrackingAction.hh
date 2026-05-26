@@ -26,6 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4UserTrackingAction.hh"
 
 class BDSEventAction;
+class BDSPolarizationState;
 class G4Track;
 
 /**
@@ -36,15 +37,16 @@ class BDSTrackingAction: public G4UserTrackingAction
 {
 public:
   BDSTrackingAction(G4bool batchMode,
-		    G4bool storeTrajectoryIn,
-		    const BDS::TrajectoryOptions& storeTrajectoryOptionsIn,
-		    BDSEventAction* eventActionIn,
-		    G4int  verboseSteppingEventStartIn,
-		    G4int  verboseSteppingEventStopIn,
-		    G4bool verboseSteppingPrimaryOnlyIn,
-		    G4int  verboseSteppingLevelIn);
+                    G4bool storeTrajectoryIn,
+                    const BDS::TrajectoryOptions& storeTrajectoryOptionsIn,
+                    BDSEventAction* eventActionIn,
+                    G4int  verboseSteppingEventStartIn,
+                    G4int  verboseSteppingEventStopIn,
+                    G4bool verboseSteppingPrimaryOnlyIn,
+                    G4int  verboseSteppingLevelIn,
+                    BDSPolarizationState* defaultPolarisationIn = nullptr);
   
-  virtual ~BDSTrackingAction(){;}
+  virtual ~BDSTrackingAction();
 
   /// Used to decide whether or not to store trajectories.
   virtual void PreUserTrackingAction(const G4Track* track);
@@ -70,6 +72,7 @@ private:
   G4int  verboseSteppingEventStop;
   G4bool verboseSteppingPrimaryOnly;
   G4int  verboseSteppingLevel;
+  BDSPolarizationState* defaultPolarisation;
 };
 
 #endif
