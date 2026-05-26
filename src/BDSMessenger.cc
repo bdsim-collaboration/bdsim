@@ -136,8 +136,7 @@ std::string BDSMessenger::BDSBeamlineElementToString(G4int iElement)
 void BDSMessenger::ElementNameSearch(std::string name)
 {
   const BDSBeamline* beamline = BDSAcceleratorModel::Instance()->BeamlineMain();
-  int j=0;
-  for (auto i = beamline->begin(); i != beamline->end(); ++i, ++j)
+  for (auto i = beamline->begin(); i != beamline->end(); ++i)
     {
       if(BDS::StrContains((*i)->GetName(), name))
         {G4cout << (*i)->GetName() << G4endl;}

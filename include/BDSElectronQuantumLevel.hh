@@ -16,12 +16,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BDSElectronQuantumLevel_H
-#define BDSElectronQuantumLevel_H
-
-#include "G4ElectronOccupancy.hh"
-#include <vector>
-#include <tuple>
+#ifndef BDSELECTRONQUANTUMLEVEL_H
+#define BDSELECTRONQUANTUMLEVEL_H
+#include "G4Types.hh"
 
 /**
  * @brief Electron Quantum levels for more than just n quantum number
@@ -29,38 +26,42 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * @author Siobhan Alden
  */
 
-class BDSElectronQuantumLevel{
+class BDSElectronQuantumLevel
+{
 public:
+	BDSElectronQuantumLevel() = delete;
 	BDSElectronQuantumLevel(G4int n, G4int l, G4double j);
-	~BDSElectronQuantumLevel();
-    G4double DiracEnergyNJ(G4int n, G4int j);
+	~BDSElectronQuantumLevel() = default;
+
+	G4double DiracEnergyNJ(G4int n, G4int j) const;
 	void AddElectrons(G4int number);
 	void RemoveElectrons(G4int number);
+
 	// setters
-	inline void SetnPrincipleNumber(G4int nPrincipleNumberIn)		{nPrincipleNumber=nPrincipleNumberIn;}
-	inline void SetlAngularNumber(G4int lAngularNumberIn)			{lAngularNumber=lAngularNumberIn;}
+	inline void SetnPrincipleNumber(G4int nPrincipleNumberIn)	{nPrincipleNumber=nPrincipleNumberIn;}
+	inline void SetlAngularNumber(G4int lAngularNumberIn)	{lAngularNumber=lAngularNumberIn;}
+	inline void SetExcitedLifetime(G4double excitedLifetimeIn) {excitedLifetime=excitedLifetimeIn;}
+	inline void SetTimeOfExcitement(G4double timeOfExcitementIn) {timeOfExcitement=timeOfExcitementIn;}
+
 	// getters
-	inline G4int		GetnPrincipleNumnber() 								{return nPrincipleNumber;}
-	inline G4int 		GetlAngularNumber()									{return lAngularNumber;}
-	inline G4double 	GetjSpinOrbitCoupling()								{return jSpinOrbitCoupling;}
-	inline G4int 		GetMaxOccupancy()									{return maxOccupancy;}
-	inline G4int 		GetCurrentOccupancy()								{return currentOccupancy;}
-	inline G4double 	GetLevelEnergy()									{return levelEnergy;}
-	inline void 		SetExcitedLifetime(G4double excitedLifetimeIn)		{excitedLifetime=excitedLifetimeIn;}
-	inline void 		SetTimeOfExcitement(G4double timeOfExcitementIn)	{timeOfExcitement=timeOfExcitementIn;}
-	inline G4double 	GetExcitedLifetime()								{return excitedLifetime;}
-	inline G4double 	GetTimeOfExcitement()								{return timeOfExcitement;}
+	inline G4int    GetnPrincipleNumnber() const {return nPrincipleNumber;}
+	inline G4int    GetlAngularNumber() const {return lAngularNumber;}
+	inline G4double GetjSpinOrbitCoupling() const {return jSpinOrbitCoupling;}
+	inline G4int    GetMaxOccupancy() const {return maxOccupancy;}
+	inline G4int    GetCurrentOccupancy()	const {return currentOccupancy;}
+	inline G4double GetLevelEnergy() const {return levelEnergy;}
+	inline G4double GetExcitedLifetime() const {return excitedLifetime;}
+	inline G4double GetTimeOfExcitement()	const	{return timeOfExcitement;}
 
 private:
-	G4int		nPrincipleNumber;
-	G4int		lAngularNumber;
-	G4double 	jSpinOrbitCoupling;
-	G4double	levelEnergy;
-	G4int 		maxOccupancy;
-	G4int		currentOccupancy;
-	G4double 	excitedLifetime;
-	G4double 	timeOfExcitement;
-
+	G4int    nPrincipleNumber;
+	G4int    lAngularNumber;
+	G4double jSpinOrbitCoupling;
+	G4double levelEnergy;
+	G4int    maxOccupancy;
+	G4int    currentOccupancy;
+	G4double excitedLifetime;
+	G4double timeOfExcitement;
 };
 
 #endif

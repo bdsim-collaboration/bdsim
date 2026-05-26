@@ -68,6 +68,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSParser.hh" // Parser
 #include "BDSParticleDefinition.hh"
 #include "BDSPhysicsUtilities.hh"
+#include "BDSPolarizationState.hh"
 #include "BDSPrimaryGeneratorAction.hh"
 #include "BDSRandom.hh" // for random number generator from CLHEP
 #include "BDSRunAction.hh"
@@ -353,7 +354,8 @@ int BDSIM::Initialise()
                                                   verboseSteppingEventStart,
                                                   verboseSteppingEventStop,
                                                   globals->VerboseSteppingPrimaryOnly(),
-                                                  globals->VerboseSteppingLevel()));
+                                                  globals->VerboseSteppingLevel(),
+                                                  new BDSPolarizationState(parser->GetBeam())));
 
   runManager->SetUserAction(new BDSStackingAction(globals));
   

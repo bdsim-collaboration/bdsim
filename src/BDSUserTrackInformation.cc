@@ -20,66 +20,69 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSPolarizationState.hh"
 
 #include "BDSUserTrackInformation.hh"
-#include "BDSParser.hh"
 
-#include "globals.hh"
 #include "G4DynamicParticle.hh"
 
-BDSUserTrackInformation::BDSUserTrackInformation(const G4DynamicParticle* particle):
+
+BDSUserTrackInformation::BDSUserTrackInformation(const G4DynamicParticle* particle,
+                                                 const BDSPolarizationState* defaultPolarizationStateIn):
   G4VUserTrackInformation("BDSUserTrackInformation"),
   electronOccupancy(nullptr),
   polarizationState(nullptr)
 {
-    auto beamDefinition = BDSParser::Instance()->GetBeam();
+  if (defaultPolarizationStateIn)
+    {polarizationState = new BDSPolarizationState(*defaultPolarizationStateIn);}
+  else
+    {polarizationState = new BDSPolarizationState();}
 
-    polarizationState = new BDSPolarizationState(beamDefinition);
-
-    if(particle->GetTotalOccupancy()>0)
+  // copy the default polarization state for this track so it can be updated as it propagates
+  if (particle->GetTotalOccupancy() > 0)
     {
       totalElectrons = particle->GetTotalOccupancy();
-      if(totalElectrons <= 2)
+      if (totalElectrons <= 2)
         {
-	  electronOccupancy = new BDSElectronOccupancy(1);
-	  electronOccupancy->SetTotalElectrons(totalElectrons);
-	  electronOccupancy->PopulateLevels();
+          electronOccupancy = new BDSElectronOccupancy(1);
+          electronOccupancy->SetTotalElectrons(totalElectrons);
+          electronOccupancy->PopulateLevels();
         }
       else if (totalElectrons <= 10)
         {
-	  electronOccupancy = new BDSElectronOccupancy(2);
-	  electronOccupancy->SetTotalElectrons(totalElectrons);
-	  electronOccupancy->PopulateLevels();
+          electronOccupancy = new BDSElectronOccupancy(2);
+          electronOccupancy->SetTotalElectrons(totalElectrons);
+          electronOccupancy->PopulateLevels();
         }
       else if (totalElectrons <= 30)
         {
-	  electronOccupancy = new BDSElectronOccupancy(3);
-	  electronOccupancy->SetTotalElectrons(totalElectrons);
-	  electronOccupancy->PopulateLevels();
+          electronOccupancy = new BDSElectronOccupancy(3);
+          electronOccupancy->SetTotalElectrons(totalElectrons);
+          electronOccupancy->PopulateLevels();
         }
       else if (totalElectrons <= 64)
         {
-	  electronOccupancy = new BDSElectronOccupancy(4);
-	  electronOccupancy->SetTotalElectrons(totalElectrons);
-	  electronOccupancy->PopulateLevels();
+          electronOccupancy = new BDSElectronOccupancy(4);
+          electronOccupancy->SetTotalElectrons(totalElectrons);
+          electronOccupancy->PopulateLevels();
         }
       else
         {
-	  electronOccupancy = new BDSElectronOccupancy(7);
-	  electronOccupancy->SetTotalElectrons(totalElectrons);
-	  electronOccupancy->PopulateLevels();
+          electronOccupancy = new BDSElectronOccupancy(7);
+          electronOccupancy->SetTotalElectrons(totalElectrons);
+          electronOccupancy->PopulateLevels();
         }
     }
-	comptonScattered=false;
+  comptonScattered = false;
 }
 
-
 BDSUserTrackInformation::~BDSUserTrackInformation()
-{;}
+{
+  delete electronOccupancy;
+  delete polarizationState;
+}
 
 BDSPolarizationState* BDSUserTrackInformation::GetPolarizationState()
 {
-    return polarizationState;
+  return polarizationState;
 }
-
 
 BDSElectronOccupancy* BDSUserTrackInformation::GetElectronOccupancy()
 {

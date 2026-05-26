@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 3.10)
 cmake_policy(SET CMP0042 NEW)
 cmake_policy(SET CMP0057 NEW)
 if (CMAKE_VERSION VERSION_LESS 3.9.0)
@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(GenerateExportHeader)
 
-project(bdsim)
+project(bdsim LANGUAGES CXX)
 
 # project version
 set( BDSIM_MAJOR_VERSION 1 )
