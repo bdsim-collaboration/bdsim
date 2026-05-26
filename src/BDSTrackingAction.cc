@@ -20,6 +20,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSDebug.hh"
 #include "BDSEventAction.hh"
 #include "BDSGlobalConstants.hh"
+#include "BDSPhysicsUtilities.hh"
+#include "BDSPolarizationState.hh"
 #include "BDSIntegratorMag.hh"
 #include "BDSTrackingAction.hh"
 #include "BDSTrajectory.hh"
@@ -36,14 +38,16 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 class G4LogicalVolume;
 
+
 BDSTrackingAction::BDSTrackingAction(G4bool batchMode,
-				     G4bool storeTrajectoryIn,
-				     const BDS::TrajectoryOptions& storeTrajectoryOptionsIn,
-				     BDSEventAction* eventActionIn,
-				     G4int  verboseSteppingEventStartIn,
-				     G4int  verboseSteppingEventStopIn,
-				     G4bool verboseSteppingPrimaryOnlyIn,
-				     G4int  verboseSteppingLevelIn):
+                                     G4bool storeTrajectoryIn,
+                                     const BDS::TrajectoryOptions& storeTrajectoryOptionsIn,
+                                     BDSEventAction* eventActionIn,
+                                     G4int  verboseSteppingEventStartIn,
+                                     G4int  verboseSteppingEventStopIn,
+                                     G4bool verboseSteppingPrimaryOnlyIn,
+                                     G4int  verboseSteppingLevelIn,
+                                     BDSPolarizationState* defaultPolarisationIn):
   interactive(!batchMode),
   storeTrajectory(storeTrajectoryIn),
   storeTrajectoryOptions(storeTrajectoryOptionsIn),
@@ -51,8 +55,14 @@ BDSTrackingAction::BDSTrackingAction(G4bool batchMode,
   verboseSteppingEventStart(verboseSteppingEventStartIn),
   verboseSteppingEventStop(verboseSteppingEventStopIn),
   verboseSteppingPrimaryOnly(verboseSteppingPrimaryOnlyIn),
-  verboseSteppingLevel(verboseSteppingLevelIn)
+  verboseSteppingLevel(verboseSteppingLevelIn),
+  defaultPolarisation(defaultPolarisationIn)
 {;}
+
+BDSTrackingAction::~BDSTrackingAction()
+{
+  delete defaultPolarisation;
+}
 
 void BDSTrackingAction::PreUserTrackingAction(const G4Track* track)
 {
@@ -71,15 +81,15 @@ void BDSTrackingAction::PreUserTrackingAction(const G4Track* track)
     {// ie secondary particle
       // only store if we want to or interactive
       if (storeTrajectory || interactive)
-	{
-	  auto traj = new BDSTrajectory(track,
-					interactive,
-					storeTrajectoryOptions);
-	  fpTrackingManager->SetStoreTrajectory(1);
-	  fpTrackingManager->SetTrajectory(traj);
-	}
+        {
+          auto traj = new BDSTrajectory(track,
+                                        interactive,
+                                        storeTrajectoryOptions);
+          fpTrackingManager->SetStoreTrajectory(1);
+          fpTrackingManager->SetTrajectory(traj);
+        }
       else // mark as don't store
-	{fpTrackingManager->SetStoreTrajectory(0);}
+        {fpTrackingManager->SetStoreTrajectory(0);}
     }
   else
     {// it's a primary particle
@@ -88,20 +98,19 @@ void BDSTrackingAction::PreUserTrackingAction(const G4Track* track)
       // trajectory points or we're using the visualiser.
       G4bool storePoints = storeTrajectory || interactive;
       auto traj = new BDSTrajectoryPrimary(track,
-					   interactive,
-					   storeTrajectoryOptions,
-					   storePoints);
+                                           interactive,
+                                           storeTrajectoryOptions,
+                                           storePoints);
       eventAction->RegisterPrimaryTrajectory(traj);
       fpTrackingManager->SetStoreTrajectory(1);
       fpTrackingManager->SetTrajectory(traj);
     }
 
-  //if ion add BDSElectronOccupancy
-
-
-  BDSUserTrackInformation* trackInfo = new BDSUserTrackInformation(track->GetDynamicParticle());
-  track->SetUserInformation(trackInfo);
-
+  if (BDS::IsIon(track->GetParticleDefinition()))
+    {
+      auto* trackInfo = new BDSUserTrackInformation(track->GetDynamicParticle(), defaultPolarisation);
+      track->SetUserInformation(trackInfo);
+    }
 }
 
 void BDSTrackingAction::PostUserTrackingAction(const G4Track* track)
@@ -116,18 +125,18 @@ void BDSTrackingAction::PostUserTrackingAction(const G4Track* track)
       auto status = track->GetTrackStatus();
       G4String name;
       switch (status)
-	{
-	case G4TrackStatus::fAlive:
-	  {name = "fAlive"; break;}
-	case G4TrackStatus::fStopButAlive:
-	  {name = "fStopButAlive"; break;}
-	case G4TrackStatus::fKillTrackAndSecondaries:
-	  {name = "fKillTrackAndSecondaries"; break;}
-	case G4TrackStatus::fStopAndKill:
-	  {name = "fStopAndKill"; break;}
-	default:
-	  {name = "other"; break;}
-	}  
+        {
+        case G4TrackStatus::fAlive:
+          {name = "fAlive"; break;}
+        case G4TrackStatus::fStopButAlive:
+          {name = "fStopButAlive"; break;}
+        case G4TrackStatus::fKillTrackAndSecondaries:
+          {name = "fKillTrackAndSecondaries"; break;}
+        case G4TrackStatus::fStopAndKill:
+          {name = "fStopAndKill"; break;}
+        default:
+          {name = "other"; break;}
+        }  
       G4cout << "track ID " << trackID << " status " << name << G4endl;
     }
 #endif
@@ -136,6 +145,6 @@ void BDSTrackingAction::PostUserTrackingAction(const G4Track* track)
       G4LogicalVolume* lv = track->GetVolume()->GetLogicalVolume();
       std::set<G4LogicalVolume*>* collimators = BDSAcceleratorModel::Instance()->VolumeSet("collimators");
       if (collimators->find(lv) != collimators->end())
-	{eventAction->SetPrimaryAbsorbedInCollimator(true);}
+        {eventAction->SetPrimaryAbsorbedInCollimator(true);}
     }
 }

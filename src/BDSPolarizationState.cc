@@ -17,17 +17,13 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSPolarizationState.hh"
-#include "BDSUtilities.hh"
 
-#include "G4Types.hh"
+
+BDSPolarizationState::BDSPolarizationState():
+  polarization({0,0,0})
+{;}
 
 BDSPolarizationState::BDSPolarizationState(const GMAD::Beam& beamDefinition)
 {
-    pol1=beamDefinition.polarization1;
-    pol2=beamDefinition.polarization2;
-    pol3=beamDefinition.polarization3;
-    polarization.set(pol1,pol2,pol3);
+  polarization.set(beamDefinition.polarization1, beamDefinition.polarization2, beamDefinition.polarization3);
 }
-
-BDSPolarizationState::~BDSPolarizationState()
-{;}
