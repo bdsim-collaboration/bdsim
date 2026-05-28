@@ -36,8 +36,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <set>
 
-#include "BDSEventInfo.hh"
-
 class G4LogicalVolume;
 
 
@@ -117,11 +115,11 @@ void BDSTrackingAction::PreUserTrackingAction(const G4Track* track)
   const G4ParticleDefinition *particle = track->GetParticleDefinition();
   G4ProcessManager* pmanager = particle->GetProcessManager();
   G4VProcess* process = pmanager->GetProcess("laserCumulativeCompton");
-  
+
   if (process)
-  {
-    auto* trackInfo = new BDSUserTrackInformation(track->GetDynamicParticle(), defaultPolarisation);
-    track->SetUserInformation(trackInfo);
+    {
+      auto* trackInfo = new BDSUserTrackInformation(track->GetDynamicParticle(), defaultPolarisation);
+      track->SetUserInformation(trackInfo);
     }
 }
 
