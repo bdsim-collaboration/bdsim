@@ -111,6 +111,16 @@ void BDSTrackingAction::PreUserTrackingAction(const G4Track* track)
       auto* trackInfo = new BDSUserTrackInformation(track->GetDynamicParticle(), defaultPolarisation);
       track->SetUserInformation(trackInfo);
     }
+
+  const G4ParticleDefinition *particle = track->GetParticleDefinition();
+  G4ProcessManager* pmanager = particle->GetProcessManager();
+  G4VProcess* process = pmanager->GetProcess("laserCumulativeCompton");
+
+  if (process)
+    {
+      auto* trackInfo = new BDSUserTrackInformation(track->GetDynamicParticle(), defaultPolarisation);
+      track->SetUserInformation(trackInfo);
+    }
 }
 
 void BDSTrackingAction::PostUserTrackingAction(const G4Track* track)
