@@ -25,6 +25,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <map>
 #include <set>
+#include <iomanip>
 
 BDSPhysicalVolumeInfoRegistry* BDSPhysicalVolumeInfoRegistry::instance = nullptr;
 
@@ -35,7 +36,8 @@ BDSPhysicalVolumeInfoRegistry* BDSPhysicalVolumeInfoRegistry::Instance()
   return instance;
 }
 
-BDSPhysicalVolumeInfoRegistry::BDSPhysicalVolumeInfoRegistry()
+BDSPhysicalVolumeInfoRegistry::BDSPhysicalVolumeInfoRegistry():
+  subElementIDCounter(0)
 {
   readOutSearch = readOutRegister.begin();
   backupSearch  = backupRegister.begin();
@@ -181,4 +183,48 @@ const std::set<G4VPhysicalVolume*>* BDSPhysicalVolumeInfoRegistry::PVsForBeamlin
 {
   auto search = pvsForAGivenElement.find(element);
   return search != pvsForAGivenElement.end() ? &search->second : nullptr;
+}
+
+void BDSPhysicalVolumeInfoRegistry::RegisterSubElementID(G4VPhysicalVolume* pv,
+                                                         const G4String&    name)
+{
+  if (pvToSubElementID.find(pv) != pvToSubElementID.end())
+  {return;}
+  pvToSubElementID[pv] = subElementIDCounter;
+  subElementIDToName[subElementIDCounter] = name;
+  subElementIDCounter++;
+}
+
+G4int BDSPhysicalVolumeInfoRegistry::GetSubElementID(G4VPhysicalVolume* pv) const
+{
+  auto it = pvToSubElementID.find(pv);
+  if (it == pvToSubElementID.end())
+  {return -1;}
+  return it->second;
+}
+
+G4String BDSPhysicalVolumeInfoRegistry::GetSubElementName(G4int id) const
+{
+  auto it = subElementIDToName.find(id);
+  if (it == subElementIDToName.end())
+  {return "";}
+  return it->second;
+}
+
+void BDSPhysicalVolumeInfoRegistry::PrintSubElementMap() const
+{
+  G4cout << "\n--- Sub Element ID Map ---" << G4endl;
+  G4cout << std::setw(10) << std::left << "ID"
+         << std::setw(40) << std::left << "Name"
+         << std::setw(20) << "Address"
+         << G4endl;
+  G4cout << std::string(70, '-') << G4endl;
+  for (const auto& entry : pvToSubElementID)
+  {
+    G4cout << std::setw(10) << std::left << entry.second
+           << std::setw(40) << std::left << entry.first->GetName()
+           << std::setw(20) << entry.first
+           << G4endl;
+  }
+  G4cout << std::string(70, '-') << G4endl;
 }

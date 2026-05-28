@@ -789,6 +789,7 @@ void BDSDetectorConstruction::ComponentPlacement(G4VPhysicalVolume* worldPV)
       PlaceBeamlineInWorld(bl.second.massWorld, worldPV, checkOverlaps, false, false, false, false, true);
       PlaceBeamlineInWorld(bl.second.endPieces, worldPV, checkOverlaps);
     }
+  BDSPhysicalVolumeInfoRegistry::Instance()->PrintSubElementMap();
 }
 
 void BDSDetectorConstruction::PlaceBeamlineInWorld(BDSBeamline*          beamline,
@@ -831,7 +832,20 @@ void BDSDetectorConstruction::PlaceBeamlineInWorld(BDSBeamline*          beamlin
       G4String placementName = element->GetPlacementName() + "_pv";
       std::set<G4VPhysicalVolume*> pvs = element->PlaceElement(placementName, containerPV, useCLPlacementTransform,
                                                                copyNumber, checkOverlaps);
-      
+    G4bool isMassWorld = (containerPV->GetName() == "World");
+    if (isMassWorld)
+    {
+      for (auto pv : pvs)
+      {
+        BDSPhysicalVolumeInfoRegistry::Instance()->RegisterSubElementID(pv, pv->GetName());
+        auto lv = pv->GetLogicalVolume();
+        for (int d = 0; d < (int)lv->GetNoDaughters(); d++)
+        {
+          auto daughter = lv->GetDaughter(d);
+          BDSPhysicalVolumeInfoRegistry::Instance()->RegisterSubElementID(daughter, daughter->GetName());
+        }
+      }
+    }
       if (registerInfo)
         {
 	  BDSPhysicalVolumeInfo* theinfo = new BDSPhysicalVolumeInfo(element->GetName(),

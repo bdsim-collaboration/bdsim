@@ -39,7 +39,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4VPhysicalVolume.hh"
 #include "G4VTouchable.hh"
 #include "Randomize.hh"
-
+#include <map>
 
 BDSSDEnergyDeposition::BDSSDEnergyDeposition(const G4String& name,
                                              G4bool          storeExtrasIn,
@@ -117,6 +117,21 @@ G4bool BDSSDEnergyDeposition::ProcessHits(G4Step* aStep,
   G4double y = eDepPosLocal.y();
   G4double z = eDepPosLocal.z();
 
+  G4VPhysicalVolume* preStepPV = aStep->GetPreStepPoint()->GetPhysicalVolume();
+  if (preStepPV)
+  {
+    auto it = fVolumeHitCount.find(preStepPV);
+    if (it == fVolumeHitCount.end())
+    {
+      G4cout << "New volume: "
+             << std::setw(40) << std::left << preStepPV->GetName()
+             << "  address: " << preStepPV
+             << G4endl;
+      fVolumeHitCount[preStepPV] = {preStepPV->GetName(), 1};
+    }
+    else
+    {it->second.second++;}
+  }
   // Just as the energy deposition is attributed to a uniformly random
   // point between the preStep and the postStep positions, attribute the
   // deposition to random time between preStep and postStep times,
@@ -344,4 +359,25 @@ G4VHit* BDSSDEnergyDeposition::last() const
 {
   BDSHitEnergyDeposition* lastHit = hits->GetVector()->back();
   return dynamic_cast<G4VHit*>(lastHit);
+}
+
+void BDSSDEnergyDeposition::EndOfEvent(G4HCofThisEvent*)
+{
+  if (fVolumeHitCount.empty())
+  {return;}
+  G4cout << "\n--- Energy Deposition Volume Summary ---" << G4endl;
+  G4cout << std::setw(40) << std::left << "Volume Name"
+         << std::setw(20) << "Address"
+         << std::setw(10) << "Hits"
+         << G4endl;
+  G4cout << std::string(70, '-') << G4endl;
+  for (const auto& entry : fVolumeHitCount)
+  {
+    G4cout << std::setw(40) << std::left << entry.second.first
+           << std::setw(20) << entry.first
+           << std::setw(10) << entry.second.second
+           << G4endl;
+  }
+  G4cout << std::string(70, '-') << G4endl;
+  fVolumeHitCount.clear();
 }
