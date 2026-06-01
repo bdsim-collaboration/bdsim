@@ -100,7 +100,9 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
 
   /////////////////////////////// Get Particle Info //////////////////////////
   BDSUserTrackInformation* trackInfo = dynamic_cast<BDSUserTrackInformation*>(track.GetUserInformation());
-  if (trackInfo->GetComptonScattered())
+  if (!trackInfo)
+    {return pParticleChange;}
+  else if (trackInfo->GetComptonScattered())
     {return pParticleChange;}
   else
     {
