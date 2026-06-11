@@ -17,6 +17,6 @@ RUN source /bdsim/root/bin/thisroot.sh && \
     cd bdsim && git checkout develop && cd ../ &&\
     mkdir bdsim-build && cd bdsim-build &&\
     rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake && \
-    cmake ../bdsim -DUSE_HEPMC3=ON && make -j12 install &&\
+    cmake ../bdsim -DUSE_PYTHON_BINDINGS=ON -DUSE_HEPMC3=ON && make -j12 install &&\
     echo 'source /usr/local/bin/bdsim.sh' >> ~/.bashrc
     
