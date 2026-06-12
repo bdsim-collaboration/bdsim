@@ -58,7 +58,7 @@ void BDSBunchGaussMatrix::SetOptions(const BDSParticleDefinition* beamParticle,
   sigmaGM[4][4] = beam.sigma55;
   sigmaGM[4][5] = beam.sigma56;
   sigmaGM[5][5] = beam.sigma66;
-  if (BDS::IsFinite(beam.sigma55))
+  if (BDS::IsFinite(beam.sigma55, 1e-50))
     {finiteSigmaT = true;}
   if (BDS::IsFinite(beam.sigma66))
     {finiteSigmaE = true;}
