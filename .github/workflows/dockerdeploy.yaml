@@ -15,7 +15,7 @@ jobs:
     # ensure workflow on runs on main bdsim repo and not forks 
     if: github.repository == 'bdsim-collaboration/bdsim'
 
-    name: Push alma9 bdsim docker images to Docker Hub
+    name: Push bdsim docker images to Docker Hub
     runs-on: ubuntu-latest
 
     strategy:
