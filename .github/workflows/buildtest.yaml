@@ -48,6 +48,8 @@ jobs:
           #
           rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake
           rm -rfv /usr/local/lib/Geant4-11.0.4/Geant4PackageCache.cmake
+          rm -rfv /usr/local/lib64/Geant4-10.7.4/Geant4PackageCache.cmake
+          rm -rfv /usr/local/lib64/Geant4-11.0.4/Geant4PackageCache.cmake
 
           # ROOT 
           source /bdsim/root/bin/thisroot.sh
