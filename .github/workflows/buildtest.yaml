@@ -139,8 +139,8 @@ jobs:
       - name: Build bdsim
         shell: bash
         run: |
-          rm -rfv /tmp/geant4-v11.0.4/lib/Geant4-11.0.4/Geant4PackageCache.cmake
           rm -rfv /tmp/geant4-v10.7.4/lib/Geant4-10.7.4/Geant4PackageCache.cmake
+          rm -rfv /tmp/geant4-v11.0.4/lib/Geant4-11.0.4/Geant4PackageCache.cmake
 
           # source geant4 setup
           source /tmp/geant4-${{ matrix.geant4-version }}/bin/geant4.sh
