@@ -13,7 +13,7 @@ RUN python3.13 -m venv /bdsim/venv-bdsim &&\
 
 # build BDSIM
 RUN source /bdsim/root/bin/thisroot.sh && \
-    rm -rfv /tmp/geant4-v10.7.4/lib/Geant4-10.7.4/Geant4PackageCache.cmake
+    rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake
     git clone https://github.com/bdsim-collaboration/bdsim.git &&\
     cd bdsim && git checkout develop && cd ../ &&\
     mkdir bdsim-build && cd bdsim-build &&\

@@ -12,7 +12,7 @@ RUN python3.13 -m venv /bdsim/venv-bdsim &&\
     /bdsim/venv-bdsim/bin/pip install uproot
 
 # build BDSIM
-RUN rm -rfv /tmp/geant4-v11.0.4/lib/Geant4-11.0.4/Geant4PackageCache.cmake
+RUN rm -rfv /usr/local/lib/Geant4-11.0.4/Geant4PackageCache.cmake
     source /bdsim/root/bin/thisroot.sh && \
     git clone https://github.com/bdsim-collaboration/bdsim.git &&\
     cd bdsim && git checkout develop && cd ../ &&\
