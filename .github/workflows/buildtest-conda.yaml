@@ -10,7 +10,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-  jobs:
+jobs:
     linux:
       name: linux conda build
       runs-on: ubuntu-latest
