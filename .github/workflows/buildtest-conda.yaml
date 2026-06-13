@@ -53,12 +53,3 @@ jobs:
         run: |
           conda install -y cmake pybdind11 
           conda install -y -c conda-forge geant4=${{ matrix.geant4-version }} root=${{ matrix.root-version }} 
-
-      - name: Build bdsim
-        shell: bash
-        run: |
-          cmake -DCMAKE_CXX_STANDARD=17 \
-          -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
-          -DUSE_PYTHON_BINDINGS=ON \
-          -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
-          $GITHUB_WORKSPACE
