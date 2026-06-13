@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   linux:
-    name: linux conda build
+    name: linux conda build ${{ matrix.geant4-version }} ${{ matrix.root-version }} ${{ matrix.python-version }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -46,7 +46,7 @@ jobs:
           echo "Python version: ${{ matrix.python-version }}"
           echo "ROOT version: ${{ matrix.root-version }}"
           echo "Geant4 version: ${{ matrix.geant4-version }}"
-          echo "G++ version: $(g++ --version | head -n 1)"
+          echo "C++ version: $(g++ --version | head -n 1)"
 
       - name: Install deps
         shell: bash -el {0}
