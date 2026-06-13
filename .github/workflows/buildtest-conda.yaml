@@ -18,9 +18,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        root-version: [ 6.30.04, 6.32.04, 6.34.04, 6.36.04 ]
-        geant4-version: [ 10.7.3, 11.0.3, 11.1.3, 11.2.2, 11.3.1, 11.3.2, 11.4.1 ]
-        python-version: [ 3.10, 3.11, 3.12, 3.13]
+        root-version: [ "6.30.04", "6.32.04", "6.34.04", "6.36.04" ]
+        geant4-version: [ "10.7.3", "11.0.3", "11.1.3", "11.2.2", "11.3.1", "11.3.2", "11.4.1" ]
+        python-version: [ "3.10", "3.11", "3.12", "3.13"]
 
     steps:
       - uses: conda-incubator/setup-miniconda@v4
@@ -55,7 +55,7 @@ jobs:
           conda install -y -c conda-forge geant4=${{ matrix.geant4-version }} root=${{ matrix.root-version }} 
 
       - name: Build bdsim
-        shell: bash
+        shell: bash -el {0}
         run: |
           cmake -DCMAKE_CXX_STANDARD=17 \
           -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
