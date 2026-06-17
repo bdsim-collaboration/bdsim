@@ -311,6 +311,8 @@ OptionsBase::OptionsBase()
   storeElossPreStepKineticEnergy = false;
   storeElossModelID          = false;
   storeElossPhysicsProcesses = false;
+  storeEventLevelHistograms  = true;
+  storeEventLevelMeshes      = false;
   storeParticleData          = true;
   storePrimaries             = true;
   storePrimaryHistograms     = true;

@@ -16,38 +16,40 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef HISTOGRAMMEANFROMFILE_H
-#define HISTOGRAMMEANFROMFILE_H
+#ifndef HISTOGRAMCOMBINEFROMFILE_H
+#define HISTOGRAMCOMBINEFROMFILE_H
 
 #include <vector>
 
 #include "Rtypes.h" // for classdef
 
-class HistogramAccumulator;
+class HistogramAccumulatorMerge;
 
 class BDSOutputROOTEventHistograms;
 
 class TDirectory;
 
 /**
- * @brief Accumulator to merge pre-made per-entry histograms.
+ * @brief Accumulator to merge pre-made run histograms, i.e. combine samples
  *
  * Operate on a stored series of histograms to merge them. Single
- * use only.
+ * use only. HistogramMeanFromFile uses the HistogramAccumulator for accumulating
+ * per-entry histograms. However, this class uses the HistogramAccumulatorMerge to
+ * accumulate run-level samples.
  * 
- * @author Stewart Boogert.
+ * @author Laurie Nevay
  */
 
-class HistogramMeanFromFile
+class HistogramCombineFromFile
 {
 public:
   /// Public constructor only for compatibility with ROOT - not intended for use.
-  HistogramMeanFromFile();
+  HistogramCombineFromFile();
 
   /// Use this constructor.
-  HistogramMeanFromFile(BDSOutputROOTEventHistograms* h);
+  HistogramCombineFromFile(BDSOutputROOTEventHistograms* h);
 
-  virtual ~HistogramMeanFromFile();
+  virtual ~HistogramCombineFromFile();
 
   /// Add a new set of histograms to the running total. Assume
   /// exact same structure in BDSOutputROOTEventHistogams input.
@@ -61,12 +63,12 @@ public:
 
 private:
   
-  std::vector<HistogramAccumulator*> histograms1d;
-  std::vector<HistogramAccumulator*> histograms2d;
-  std::vector<HistogramAccumulator*> histograms3d;
-  std::vector<HistogramAccumulator*> histograms4d;
+  std::vector<HistogramAccumulatorMerge*> histograms1d;
+  std::vector<HistogramAccumulatorMerge*> histograms2d;
+  std::vector<HistogramAccumulatorMerge*> histograms3d;
+  std::vector<HistogramAccumulatorMerge*> histograms4d;
 
-  ClassDef(HistogramMeanFromFile, 1);
+  ClassDef(HistogramCombineFromFile, 1);
 };
 
 #endif

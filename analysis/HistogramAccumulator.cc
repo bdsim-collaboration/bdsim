@@ -332,7 +332,7 @@ TH1* HistogramAccumulator::Terminate()
     default:
       {break;}
     }
-  if(nDimensions==4)
+  if (nDimensions == 4)
     {dynamic_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
   else
     {result->SetEntries((double)n);}
@@ -351,4 +351,13 @@ void HistogramAccumulator::AccumulateSingleValue(double         oldMean,
 {
   newMean = oldMean + ((x - oldMean) / (double)nEntriesAccumulated);
   newVari = oldVari + ((x - oldMean) * (x - newMean));
+}
+
+void HistogramAccumulator::Flush()
+{
+  mean->Reset();
+  variance->Reset();
+  result->Reset();
+  n = 0;
+  terminated = false;
 }

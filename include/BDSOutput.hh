@@ -172,6 +172,8 @@ protected:
   G4bool storeELossVacuum;
   G4bool storeELossWorld; // for both world and world exit
   G4bool storeELossWorldContents;
+  G4bool storeEventLevelHistograms;
+  G4bool storeEventLevelMeshes;
   G4bool storeApertureImpacts;
   G4bool storeApertureImpactsHistograms;
   G4bool storePrimaries;

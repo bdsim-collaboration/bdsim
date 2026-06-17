@@ -45,6 +45,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSSamplerRegistry.hh"
 #include "BDSTrajectoryPoint.hh"
 
+#include "analysis/HistogramAccumulatorFast.hh"
+
 #include "globals.hh"
 #include "G4Material.hh"
 #include "G4MaterialTable.hh"
@@ -53,9 +55,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <algorithm>
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 #include <utility>
+
+#include "TH1.h"
+#include "TH2.h"
+#include "TH3.h"
+
 
 BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
   nCollimators(0),
@@ -84,14 +92,14 @@ BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
   modelOutput   = new BDSOutputROOTEventModel(storeCollimatorInfo, storeCavityInfo);
 
   eLoss       = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
-					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+                                           storeGlobal, storeTime, storeStepLength,
+                                           storePreStepKineticEnergy, storeELPhysics);
   eLossVacuum = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
-					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+                                           storeGlobal, storeTime, storeStepLength,
+                                           storePreStepKineticEnergy, storeELPhysics);
   eLossTunnel = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
-					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+                                           storeGlobal, storeTime, storeStepLength,
+                                           storePreStepKineticEnergy, storeELPhysics);
   eLossWorld         = new BDSOutputROOTEventLossWorld();
   eLossWorldExit     = new BDSOutputROOTEventLossWorld();
   eLossWorldContents = new BDSOutputROOTEventLossWorld();
@@ -103,6 +111,9 @@ BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
   
   traj       = new BDSOutputROOTEventTrajectory();
   evtHistos  = new BDSOutputROOTEventHistograms();
+  evtHistosOnly = new BDSOutputROOTEventHistograms();
+  evtHistosMeshesOnly = new BDSOutputROOTEventHistograms();
+  evtHistosNone = new BDSOutputROOTEventHistograms();
   evtInfo    = new BDSOutputROOTEventInfo();
   runHistos  = new BDSOutputROOTEventHistograms();
   runInfo    = new BDSOutputROOTEventRunInfo();
@@ -134,6 +145,9 @@ BDSOutputStructures::~BDSOutputStructures()
   delete apertureImpacts;
   delete traj;
   delete evtHistos;
+  delete evtHistosOnly;
+  delete evtHistosMeshesOnly;
+  delete evtHistosNone;
   delete evtInfo;
   delete runHistos;
   delete runInfo;
@@ -148,61 +162,131 @@ BDSOutputStructures::~BDSOutputStructures()
   delete primary;
 }
 
-G4int BDSOutputStructures::Create1DHistogram(G4String name, G4String title,
-					     G4int nbins, G4double xmin, G4double xmax)
+G4int BDSOutputStructures::Create1DHistogram(const G4String& name, const G4String& title,
+                                             G4int nbins, G4double xmin, G4double xmax)
 {
   G4int result = evtHistos->Create1DHistogram(name, title, nbins, xmin, xmax);
-  // index from runHistos will be the same as used only through interfaces in this class
-  runHistos->Create1DHistogram(name, title, nbins, xmin, xmax);
+  TH1* eh = evtHistos->Get1DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos1D.push_back(erh);
   return result;
 }
 
-G4int BDSOutputStructures::Create1DHistogram(G4String name, G4String title,
-					     std::vector<double>& edges)
+G4int BDSOutputStructures::Create1DHistogram(const G4String& name,
+                                             const G4String& title,
+                                             const std::vector<double>& edges)
 {
-  G4int result = evtHistos->Create1DHistogram(name,title,edges);
-  runHistos->Create1DHistogram(name,title,edges);
+  G4int result = evtHistos->Create1DHistogram(name, title, edges);
+  TH1* eh = evtHistos->Get1DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos1D.push_back(erh);
   return result;
 }
 
-G4int BDSOutputStructures::Create3DHistogram(G4String name, G4String title,
-					     G4int nBinsX, G4double xMin, G4double xMax,
-					     G4int nBinsY, G4double yMin, G4double yMax,
-					     G4int nBinsZ, G4double zMin, G4double zMax)
+void BDSOutputStructures::Fill1DHistogram(G4int histoId,
+                                          G4double value,
+                                          G4double weight)
+{
+  Int_t globalBinFilled = evtHistos->histograms1D[histoId]->Fill(value, weight);
+  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
+}
+
+G4int BDSOutputStructures::Create2DHistogram(const G4String& name,
+                                             const G4String& title,
+                                             G4int nBinsX, G4double xMin, G4double xMax,
+                                             G4int nBinsY, G4double yMin, G4double yMax)
+{
+  G4int result = evtHistos->Create2DHistogram(name, title,
+                                              nBinsX, xMin, xMax,
+                                              nBinsY, yMin, yMax);
+  TH1* eh = evtHistos->Get2DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos2D.push_back(erh);
+  return result;
+}
+
+void BDSOutputStructures::Fill2DHistogram(G4int histoId,
+                                          G4double x,
+                                          G4double y,
+                                          G4double weight)
+{
+  Int_t globalBinFilled = evtHistos->histograms2D[histoId]->Fill(x, y, weight);
+  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
+}
+
+G4int BDSOutputStructures::Create3DHistogram(const G4String& name,
+                                             const G4String& title,
+                                             G4int nBinsX, G4double xMin, G4double xMax,
+                                             G4int nBinsY, G4double yMin, G4double yMax,
+                                             G4int nBinsZ, G4double zMin, G4double zMax)
 {
   G4int result = evtHistos->Create3DHistogram(name, title,
-					      nBinsX, xMin, xMax,
-					      nBinsY, yMin, yMax,
-					      nBinsZ, zMin, zMax);
-  // index from runHistos will be the same as used only through interfaces in this class
-  runHistos->Create3DHistogram(name, title,
-			       nBinsX, xMin, xMax,
-			       nBinsY, yMin, yMax,
-			       nBinsZ, zMin, zMax);
+                                              nBinsX, xMin, xMax,
+                                              nBinsY, yMin, yMax,
+                                              nBinsZ, zMin, zMax);
+  TH1* eh = evtHistos->Get3DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos3D.push_back(erh);
   return result;
+}
+
+void BDSOutputStructures::Fill3DHistogram(G4int    histoId,
+                                          G4double x,
+                                          G4double y,
+                                          G4double z,
+                                          G4double weight)
+{
+  Int_t globalBinFilled = evtHistos->histograms3D[histoId]->Fill(x, y, z, weight);
+  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 
 G4int BDSOutputStructures::Create4DHistogram(const G4String& name,
-					     const G4String& title,
-					     const G4String& eScale,
-					     const std::vector<double>& eBinsEdges,
-					     G4int nBinsX, G4double xMin, G4double xMax,
-					     G4int nBinsY, G4double yMin, G4double yMax,
-					     G4int nBinsZ, G4double zMin, G4double zMax,
-					     G4int nBinsE, G4double eMin, G4double eMax)
+                                             const G4String& title,
+                                             const G4String& eScale,
+                                             const std::vector<double>& eBinsEdges,
+                                             G4int nBinsX, G4double xMin, G4double xMax,
+                                             G4int nBinsY, G4double yMin, G4double yMax,
+                                             G4int nBinsZ, G4double zMin, G4double zMax,
+                                             G4int nBinsE, G4double eMin, G4double eMax)
 {
   G4int result = evtHistos->Create4DHistogram(name, title, eScale, eBinsEdges,
-					      nBinsX, xMin, xMax,
-					      nBinsY, yMin, yMax,
-					      nBinsZ, zMin, zMax,
-					      nBinsE, eMin, eMax);
-  
-  runHistos->Create4DHistogram(name, title, eScale, eBinsEdges,
-			       nBinsX, xMin, xMax,
-			       nBinsY, yMin, yMax,
-			       nBinsZ, zMin, zMax,
-			       nBinsE, eMin, eMax);
+                                              nBinsX, xMin, xMax,
+                                              nBinsY, yMin, yMax,
+                                              nBinsZ, zMin, zMax,
+                                              nBinsE, eMin, eMax);
+  TH1* eh = evtHistos->Get4DHistogram(result);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  EventRunHist erh = {eh, {}, acc};
+  eventAndRunHistos4D.push_back(erh);
   return result;
+}
+
+void BDSOutputStructures::HistogramMarkEndOfEvent()
+{
+  for (auto& erh : eventAndRunHistos1D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+  for (auto& erh : eventAndRunHistos2D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+  for (auto& erh : eventAndRunHistos3D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+  for (auto& erh : eventAndRunHistos4D)
+    {erh.runAccumulator->AccumulateBinsThatWereFilledOnly(erh.eventHist, erh.binsFilledThisEvent);}
+}
+
+void BDSOutputStructures::TerminateRunHistogramAccumulators()
+{
+  for (G4int i = 0; i < (G4int)eventAndRunHistos1D.size(); i++)
+    {runHistos->histograms1D.push_back(dynamic_cast<TH1D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
+  for (G4int i = 0; i < (G4int)eventAndRunHistos2D.size(); i++)
+    {runHistos->histograms2D.push_back(dynamic_cast<TH2D*>(eventAndRunHistos2D[i].runAccumulator->Terminate()));}
+  for (G4int i = 0; i < (G4int)eventAndRunHistos3D.size(); i++)
+    {runHistos->histograms3D.push_back(dynamic_cast<TH3D*>(eventAndRunHistos3D[i].runAccumulator->Terminate()));}
+  for (G4int i = 0; i < (G4int)eventAndRunHistos4D.size(); i++)
+    {runHistos->histograms4D.push_back(dynamic_cast<BDSBH4DBase*>(eventAndRunHistos4D[i].runAccumulator->Terminate()));}
 }
 
 void BDSOutputStructures::InitialiseSamplers()
@@ -228,43 +312,43 @@ void BDSOutputStructures::InitialiseSamplers()
       for (const auto& samplerName : sNames)
         {
 #ifndef __ROOTDOUBLE__
-	  BDSOutputROOTEventSampler<float>*  res = new BDSOutputROOTEventSampler<float>(samplerName);
+          BDSOutputROOTEventSampler<float>*  res = new BDSOutputROOTEventSampler<float>(samplerName);
 #else
-	  BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
+          BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
 #endif
-	  samplerTrees.push_back(res);
-	  samplerNames.push_back(samplerName);
+          samplerTrees.push_back(res);
+          samplerNames.push_back(samplerName);
         }
       const auto planeIDs = samplerRegistry->GetSamplerIDsPlane();
       G4int i = 0;
       for (const auto& ID : planeIDs)
-	{samplerIDToIndexPlane[ID] = i; i++;}
+        {samplerIDToIndexPlane[ID] = i; i++;}
       
       // cylindrical samplers
       const auto scNames = samplerRegistry->GetUniqueNamesCylinder();
       samplerCTrees.reserve(scNames.size());
       for (const auto& samplerName : scNames)
         {
-	  samplerCTrees.emplace_back(new BDSOutputROOTEventSamplerC(samplerName));
-	  samplerCNames.emplace_back(samplerName);
+          samplerCTrees.emplace_back(new BDSOutputROOTEventSamplerC(samplerName));
+          samplerCNames.emplace_back(samplerName);
         }
       const auto cylinderIDs = samplerRegistry->GetSamplerIDsCylinder();
       i = 0;
       for (const auto& ID : cylinderIDs)
-	{samplerIDToIndexCylinder[ID] = i; i++;}
+        {samplerIDToIndexCylinder[ID] = i; i++;}
       
       // spherical samplers
       const auto ssNames = samplerRegistry->GetUniqueNamesSphere();
       samplerSTrees.reserve(ssNames.size());
       for (const auto& samplerName : ssNames)
         {
-	  samplerSTrees.emplace_back(new BDSOutputROOTEventSamplerS(samplerName));
-	  samplerSNames.emplace_back(samplerName);
+          samplerSTrees.emplace_back(new BDSOutputROOTEventSamplerS(samplerName));
+          samplerSNames.emplace_back(samplerName);
         }
       const auto sphereIDs = samplerRegistry->GetSamplerIDsSphere();
       i = 0;
       for (const auto& ID : sphereIDs)
-	{samplerIDToIndexSphere[ID] = i; i++;}
+        {samplerIDToIndexSphere[ID] = i; i++;}
     }
 }
 
@@ -301,16 +385,16 @@ void BDSOutputStructures::InitialiseMaterialMap()
       
       auto search = nameCount.find(matName);
       if (search != nameCount.end())
-	{
-	  search->second += 1;
-	  matNameUnique = matName + std::to_string(search->second);
-	  matToUniqueName[mat] = matNameUnique;
-	}
+        {
+          search->second += 1;
+          matNameUnique = matName + std::to_string(search->second);
+          matToUniqueName[mat] = matNameUnique;
+        }
       else
-	{
-	  nameCount[matName] = 0;
-	  matToUniqueName[mat] = matName;
-	}
+        {
+          nameCount[matName] = 0;
+          matToUniqueName[mat] = matName;
+        }
       sortingMap[std::make_pair(matNameUnique, mat->GetDensity())] = mat;
     }
   
@@ -329,16 +413,16 @@ G4int BDSOutputStructures::UpdateSamplerStructures()
   for (auto const& samplerName : BDSSamplerRegistry::Instance()->GetUniqueNames())
     {// only put it in if it doesn't exist already
       if (std::find(samplerNames.begin(), samplerNames.end(), samplerName) == samplerNames.end())
-	{
-	  result++;
+        {
+          result++;
 #ifndef __ROOTDOUBLE__
-	  BDSOutputROOTEventSampler<float>* res = new BDSOutputROOTEventSampler<float>(samplerName);
+          BDSOutputROOTEventSampler<float>* res = new BDSOutputROOTEventSampler<float>(samplerName);
 #else
-	  BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
+          BDSOutputROOTEventSampler<double>* res = new BDSOutputROOTEventSampler<double>(samplerName);
 #endif
-	  samplerTrees.push_back(res);
-	  samplerNames.push_back(samplerName);
-	}
+          samplerTrees.push_back(res);
+          samplerNames.push_back(samplerName);
+        }
     }
   /// TBC - does not do cylinder or spheres
   return result;
@@ -410,7 +494,7 @@ void BDSOutputStructures::InitialiseCollimators()
     {
       localCollimatorsInitialised = true;
       for (int i = 0; i < (int)collimatorIndices.size(); i++)
-	{collimators.push_back(new BDSOutputROOTEventCollimator());}
+        {collimators.push_back(new BDSOutputROOTEventCollimator());}
     }
 }
 
@@ -463,9 +547,27 @@ void BDSOutputStructures::ClearStructuresEventLevel()
   traj->Flush();
   evtHistos->Flush();
   evtInfo->Flush();
+  for (auto& erh : eventAndRunHistos1D)
+    {erh.binsFilledThisEvent.clear();}
+  for (auto& erh : eventAndRunHistos3D)
+    {erh.binsFilledThisEvent.clear();}
+  for (auto& erh : eventAndRunHistos4D)
+    {erh.binsFilledThisEvent.clear();}
 }
 
 void BDSOutputStructures::ClearStructuresRunLevel()
 {
   runInfo->Flush();
+  // Even though we flush the accumulation would overwrite these objects
+  // if we were to have another run and therefore leak the first set of histograms.
+  // However, can't delete theme as root would then have trouble writing after this.
+  runHistos->Flush();
+  for (auto& erh : eventAndRunHistos1D)
+    {erh.runAccumulator->Flush();}
+  for (auto& erh : eventAndRunHistos2D)
+    {erh.runAccumulator->Flush();}
+  for (auto& erh : eventAndRunHistos3D)
+    {erh.runAccumulator->Flush();}
+  for (auto& erh : eventAndRunHistos4D)
+    {erh.runAccumulator->Flush();}
 }

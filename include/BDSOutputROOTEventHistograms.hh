@@ -47,42 +47,43 @@ class TH3D;
 class BDSOutputROOTEventHistograms: public TObject
 {
 public:
+  friend class BDSOutputStructures;
   BDSOutputROOTEventHistograms();
   BDSOutputROOTEventHistograms(const BDSOutputROOTEventHistograms &h);
   BDSOutputROOTEventHistograms& operator=(const BDSOutputROOTEventHistograms&) = delete;
   BDSOutputROOTEventHistograms(std::vector<TH1D*>& histogram1DIn,
-			       std::vector<TH2D*>& histogram2DIn,
-			       std::vector<TH3D*>& histogram3DIn,
-			       std::vector<BDSBH4DBase*>& histograms4DIn);
+                               std::vector<TH2D*>& histogram2DIn,
+                               std::vector<TH3D*>& histogram3DIn,
+                               std::vector<BDSBH4DBase*>& histograms4DIn);
   virtual ~BDSOutputROOTEventHistograms();
 
   /// Interface function to create a 1D histogram using only standard types.
-  int Create1DHistogramSTD(std::string name, std::string title,
-			   int nbins, double xmin, double xmax);
+  int Create1DHistogramSTD(const std::string& name, const std::string& title,
+                           int nbins, double xmin, double xmax);
 
 #ifndef __ROOTBUILD__
-  G4int Create1DHistogram(G4String name, G4String title,
+  G4int Create1DHistogram(const G4String& name, const G4String& title,
                           G4int nbins, G4double xmin, G4double xmax);
-  G4int Create1DHistogram(G4String name, G4String title,
-                          std::vector<double>& edges);
-  G4int Create2DHistogram(G4String name, G4String title,
+  G4int Create1DHistogram(const G4String& name, const G4String& title,
+                          const std::vector<double>& edges);
+  G4int Create2DHistogram(const G4String& name, const G4String& title,
                           G4int nxbins, G4double xmin, G4double xmax,
                           G4int nybins, G4double ymin, G4double ymax);
-  G4int Create2DHistogram(G4String name, G4String title,
-                          std::vector<double>& xedges,
-                          std::vector<double>& yedges);
-  G4int Create3DHistogram(G4String name, G4String title,
-			  G4int nxbins, G4double xmin, G4double xmax,
-			  G4int nybins, G4double ymin, G4double ymax,
-			  G4int nzbins, G4double zmin, G4double zmax);
-  G4int Create3DHistogram(G4String name, G4String title,
-			  std::vector<double>& xedges,
-			  std::vector<double>& yedges,
-			  std::vector<double>& zedges);
+  G4int Create2DHistogram(const G4String& name, const G4String& title,
+                          const std::vector<double>& xedges,
+                          const std::vector<double>& yedges);
+  G4int Create3DHistogram(const G4String& name, const G4String& title,
+                          G4int nxbins, G4double xmin, G4double xmax,
+                          G4int nybins, G4double ymin, G4double ymax,
+                          G4int nzbins, G4double zmin, G4double zmax);
+  G4int Create3DHistogram(const G4String& name, const G4String& title,
+                          const std::vector<double>& xedges,
+                          const std::vector<double>& yedges,
+                          const std::vector<double>& zedges);
   G4int Create4DHistogram(const G4String& name,
-			  const G4String& title,
-			  const G4String& eScale,
-			  const std::vector<double>& eBinsEdges,
+                          const G4String& title,
+                          const G4String& eScale,
+                          const std::vector<double>& eBinsEdges,
                           unsigned int nxbins, G4double xmin, G4double xmax,
                           unsigned int nybins, G4double ymin, G4double ymax,
                           unsigned int nzbins, G4double zmin, G4double zmax,
@@ -95,20 +96,20 @@ public:
   
   /// Set the value of a bin by (ROOT!!) global bin index. Note the TH3 function should
   /// be used to get ROOT's idea of a global bin index.
-  void Set3DHistogramBinContent(G4int    histoId,
-				G4int    globalBinID,
-				G4double value);
+  void Set3DHistogramBinContent(G4int histoId,
+                                G4int globalBinID,
+                                G4double value);
 
-  void Set4DHistogramBinContent(G4int   histoId,
-                G4int    x,
-                G4int    y,
-                G4int    z,
-                G4int    e,
-                G4double value);
+  void Set4DHistogramBinContent(G4int histoId,
+                                G4int x,
+                                G4int y,
+                                G4int z,
+                                G4int e,
+                                G4double value);
   
   /// Add the values from one supplied 3D histogram to another. Uses TH3-Add().
   void AccumulateHistogram3D(G4int histoId,
-			     TH3D* otherHistogram);
+                             TH3D* otherHistogram);
   void AccumulateHistogram4D(G4int histoId,
                              BDSBH4DBase* otherHistogram);
 #endif
@@ -120,6 +121,13 @@ public:
 
   /// Copy (without using the TH->Clone) method from another instance. (Quicker).
   void FillSimple(const BDSOutputROOTEventHistograms* rhs);
+
+  /// Copy the pointers from another instance for filling purposes. Doesn't own the histograms.
+  void CopyPointersOnly(BDSOutputROOTEventHistograms* other,
+                        bool copy1D = false,
+                        bool copy2D = false,
+                        bool copy3D = false,
+                        bool copy4D = false);
 
   /// @{ Accessors.
   std::vector<TH1D*>& Get1DHistograms() {return histograms1D;}

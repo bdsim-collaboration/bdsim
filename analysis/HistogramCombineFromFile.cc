@@ -16,8 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "HistogramAccumulator.hh"
-#include "HistogramMeanFromFile.hh"
+#include "HistogramAccumulatorMerge.hh"
+#include "HistogramCombineFromFile.hh"
 
 #include "BDSOutputROOTEventHistograms.hh"
 
@@ -33,45 +33,45 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <vector>
 
-ClassImp(HistogramMeanFromFile)
+ClassImp(HistogramCombineFromFile)
 
-HistogramMeanFromFile::HistogramMeanFromFile()
+HistogramCombineFromFile::HistogramCombineFromFile()
 {;}
 
-HistogramMeanFromFile::HistogramMeanFromFile(BDSOutputROOTEventHistograms* h)
+HistogramCombineFromFile::HistogramCombineFromFile(BDSOutputROOTEventHistograms* h)
 {
   for (auto hist : h->Get1DHistograms())
     {
       std::string name  = std::string(hist->GetName());
       std::string title = std::string(hist->GetTitle());
-      histograms1d.push_back(new HistogramAccumulator(hist, 1, name, title));
+      histograms1d.push_back(new HistogramAccumulatorMerge(hist, 1, name, title));
     }
 
   for (auto hist : h->Get2DHistograms())
     {
       std::string name  = std::string(hist->GetName());
       std::string title = std::string(hist->GetTitle());
-      histograms2d.push_back(new HistogramAccumulator(hist, 2, name, title));
+      histograms2d.push_back(new HistogramAccumulatorMerge(hist, 2, name, title));
     }
 
   for (auto hist : h->Get3DHistograms())
     {
       std::string name  = std::string(hist->GetName());
       std::string title = std::string(hist->GetTitle());
-      histograms3d.push_back(new HistogramAccumulator(hist, 3, name, title));
+      histograms3d.push_back(new HistogramAccumulatorMerge(hist, 3, name, title));
     }
 
   for (auto hist : h->Get4DHistograms())
     {
       std::string name  = hist->GetName();
       std::string title = hist->GetTitle();
-      histograms4d.push_back(new HistogramAccumulator(hist, 4, name, title));
+      histograms4d.push_back(new HistogramAccumulatorMerge(hist, 4, name, title));
     }
 
   Accumulate(h);
 }
 
-HistogramMeanFromFile::~HistogramMeanFromFile()
+HistogramCombineFromFile::~HistogramCombineFromFile()
 {
   for (auto h : histograms1d)
     {delete h;}
@@ -83,7 +83,7 @@ HistogramMeanFromFile::~HistogramMeanFromFile()
     {delete h;}
 }
 
-void HistogramMeanFromFile::Accumulate(BDSOutputROOTEventHistograms* hNew)
+void HistogramCombineFromFile::Accumulate(BDSOutputROOTEventHistograms* hNew)
 {
   auto h1i = hNew->Get1DHistograms();
   for (unsigned int i = 0; i < (unsigned int)histograms1d.size(); ++i)
@@ -99,7 +99,7 @@ void HistogramMeanFromFile::Accumulate(BDSOutputROOTEventHistograms* hNew)
     {histograms4d[i]->Accumulate(h4i[i]);}
 }
 
-void HistogramMeanFromFile::Terminate()
+void HistogramCombineFromFile::Terminate()
 {
   // terminate each accumulator
   // this returns a pointer to the result but no need to store
@@ -113,7 +113,7 @@ void HistogramMeanFromFile::Terminate()
     {h->Terminate();}
 }
 
-void HistogramMeanFromFile::Write(TDirectory* dir)
+void HistogramCombineFromFile::Write(TDirectory* dir)
 {
   if (dir)
     {// move to directory in output file

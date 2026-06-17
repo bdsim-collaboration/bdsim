@@ -55,7 +55,33 @@ These are discussed each in:
 See :ref:`basic-data-inspection` for how to view the data and make the most basic
 on-the-fly histograms.
 
-Strategies on the workflow and use of the tools is discussed in :ref:`output-analysis-efficiency`.
+The typical workflow is shown in the following section. Strategies on parallelising the workflow and use of the
+tools is discussed in :ref:`output-analysis-efficiency`.
+
+
+Typical Workflow
+================
+
+The basic workflow of using BDSIM and tools is shown in the figure below.
+
+.. figure:: figures/workflow.pdf
+            :width: 100%
+            :align: center
+
+            Schematic of typical workflow using BDSIM. The top version shows generating
+            a raw output file and then analysing it with rebdsim. The bottom version shows
+            the simpler version where only pre-made histograms in the raw file are merged.
+
+The most common workflow is:
+
+1) Prepare input model in gmad text file.
+2) Run BDSIM with the gmad file, which produces a ROOT output file with the 'raw' layout.
+3) Write an analysis.txt file for REBDSIM that specifies which histograms to make
+4) Run REBDSIM on the raw data using the analysis.txt
+5) Load the histograms in ipython using our pybdsim library and make plots with matplotlib.
+
+Optionally, just the pre-made histograms can be merged and viewed.
+
 
 .. _output-analysis-setup:
 
@@ -170,125 +196,37 @@ Load Raw Data
    >>> for event in d.GetEventTree():
    ...:    print(event.Summary.duration)
 
-.. _bdskim-tool:
 
-bdskim - Skimming Tool
-======================
+.. _rebdsim-histo-merge-tool:
 
-A tool called "bdskim" is included that allows us to "skim" or reduce the raw BDSIM data according
-to an event selection. This tool creates a new file but containing only select events. The other trees
-(Header, Options, etc) are copied.
+rebdsimHistoMerge - Simple Histogram Merging
+============================================
 
-This may be used to vastly reduce the size of an output file to included only the events of interest
-if they are rare.
+BDSIM, by default, records a few histograms per event that typically include the primary
+particle impact and loss location as well as the energy deposition. The histograms are
+stored in vectors inside the Event tree of the output. These cannot be viewed directly
+in the ROOT TBrowser as they are in a vector. Even then, each histogram is for one event
+only. To view the average of all the histograms, a dedicated tool is provided that provides
+a subset of the `rebdsim` functionality. `rebdsim` would automatically combine these
+histograms while performing analysis.
 
-* This program takes a BDSIM output format file and produces one of the same format.
-* The selection is a text string without spaces that could normally be used with :code:`TTree::Draw` in ROOT.
-* The selection is supplied in a text file, the name of which is given as an argument (e.g. `skimselection.txt`).
+A tool `rebdsimHistoMerge` is provided to take the average of only the already existing
+histograms without the need to prepare an analysis configuration file. It is run as
+follows::
 
-Usage: ::
+  rebdsimHistoMerge output.root results.root
 
-  bdskim <skimselection.txt> <input_bdsim_raw.root> (<output_bdsim_raw.root>)
-
-e.g. ::
-
-  bdskim skimselection.txt 1234.root  1234-skim.root
+or ::
   
-  bdskim skimselection.txt 1234.root
+  rebdsimHistoMerge output.root
 
+This creates a ROOT file called (first example) "results.root" and (second example)
+"output_histos.root", that contains the average histograms
+across all events.  This can only operate on BDSIM output files, not `rebdsim`
+output files.
 
-The second version uses :code:`1234_skiimed.root` as the default output file name by adding "_skimmed"
-to the name of the input file.
+* The output file name is optional and will default to :code:`inputfilename_histos.root.`
 
-As an example, if we use the data sample included in :code:`bdsim/examples/features/data`: ::
-  
-  bdskim skimselection.txt sample1.root sample1-skimmed.root
-
-This reduces the sample1.root data file from containing 10 events to 4 events of interest. The contents
-of `skimselection.txt` are: ::
-
-  dq1_1.n>30
-
-
-* The output file name is optional and will default to :code:`inputfilename_skimmed.root.`
-* Any line starting with :code:`#` will be treated as a comment and ignored.
-* Any empty line will be ignored.
-* Only one selection should be specified in the file.
-* The selection must not contain any white space between characters, i.e. there is only 1 'word' on the line.
-* Run information is not recalculated (e.g. histograms) and is simply copied from the original file.
-
-.. _bdsim-combine-tool:
-  
-bdsimCombine - Combine BDSIM Output Files
-=========================================
-
-One may wish to combine multiple small output files from several BDSIM runs into a single file. The
-included tool :code:`bdsimCombine` achieves this. It is extremely similar to ROOT's :code:`hadd`
-program but does not also merge the other trees in the output duplicating their data (e.g. we don't
-need N copies of the options or model).
-
-Usage: ::
-
-  bdsimCombine <result.root> <file1.root> <file2.root> ...
-
-where `<result.root>` is the desired name of the merged output file and `<fileX.root>` etc.
-are input files to be merged.
-
-Example from :code:`bdsim/examples/features/data/`: ::
-
-  bdsimCombine combined-raw.root sample*
-
-This will add another TTree to the output called :code:`EventCombineInfo`. This has one
-number in it that is the file index that each event originally came from. This separate
-TTree has the same number of events as the Event tree. It is, in ROOT terminology, a
-"friend" tree, which means its variables can be used as if they are in the Event tree.
-The index can be used to find the original file name in the header in the variable
-:code:`combinedFiles` (see :ref:`output-header-tree`).
-
-Notes:
-
-* More than 1 file must be merged otherwise the program will stop
-* You may use a *glob* command for the input file argument (e.g. :code:`"*.root"`)
-* Original and skimmed files may be used and mixed
-* **Run** information is not summed or updated and are only taken from the first file
-* Zombie files will be tolerated, but at least 1 valid file is required
-* The ParticleData, Beam, Options, Model and Run trees are copied from the 1st (valid) file
-  and do not represent merged information from all files, i.e. the run histograms are not
-  recalculated.
-* The Header contains the :code:`nOriginalEvents` which is added up in either case of an
-  original or skimmed file being used. In the case of original files, this is commonly 0,
-  but the data is inspected to provide an accurate total in the merged file.
-* The variable :code:`skimmedFile` is the logical `OR` of all the files loaded, so if
-  one file is skimmed, then this will be true.
-* Note, ROOT has a default threshold of 100GB per file, after which it will start a new
-  file. `bdsimCombine` will only add the other Trees to the first file. This threshold
-  is controllable in ROOT (`TTree::SetMaxTreeSize`) but no control over this is currently
-  provided with `bdsimCombine`.
-
-.. note:: This tool is distinct from :ref:`rebdsim-combine-tool` as this tool only handles
-          raw BDSIM output data. `rebdsimCombine` handles output from the analysis
-          tool `rebdsim`.
-
-To merge files together in small chunks to reduce a data size (e.g. every 10 files into 1), a utility
-function in pybdsim is provided. See :code:`pybdsim.Run.Reduce` and :code:`pybdsim.Run.ReduceParallel`.
-This allows us to reduce a data set into fewer files in parallel. Note, this may cause intensive disk
-usage, but usually using some parallel processes will be significantly faster than just one.
-
-Example: ::
-
-  python
-  > import chunkermp
-  > chunkermp.ReduceRun("datafiles/*.root", 10, "outputdir/", nCPUs=4)
-
-
-This will combine the glob result of :code:`datafiles/*.root` in chunks of 10 files at a time to :code:`outputdir`
-using 4 processes. Note, the trailing "/" must be present if it is a directory.
-
-A single threaded version is included in :code:`bdsim/utils/chunker.py` that could be used potentially
-for Python2 but is untested.
-
-This script simply builds and executes the system commands, so `bdsimCombine` must therefore be
-available as a command (i.e. :code:`source <bdsim-install-dir>/bin/bdsim.sh` before using).
 
 .. _rebdsim-analysis-tool:
 
@@ -655,7 +593,7 @@ Variable bin widths in histograms may also be used. These may be used in one or 
 in combination with logarithmic binning. Uneven binning is specified by supplying a text file
 with a single column of **bin edges** per dimension. These are the lower bin edges as well as the
 upper most one. Therefore, at least **2** bin edges are required to define the minimum 1 bin. e.g.
-a histogram with 1 single bin of width 2 centred at 3 would be defined by a text file containing
+a histogram with 1 single bin of width 2 centered at 3 would be defined by a text file containing
 the 2 lines: ::
 
   1.0
@@ -781,37 +719,6 @@ where `<result.root>` is the desired name of the merged output file and `<fileX.
 are input files to be merged. This workflow is shown schematically in the figure below.
 
 
-.. _rebdsim-histo-merge-tool:
-
-rebdsimHistoMerge - Simple Histogram Merging
-============================================
-
-BDSIM, by default, records a few histograms per event that typically include the primary
-particle impact and loss location as well as the energy deposition. The histograms are
-stored in vectors inside the Event tree of the output. These cannot be viewed directly
-in the ROOT TBrowser as they are in a vector. Even then, each histogram is for one event
-only. To view the average of all the histograms, a dedicated tool is provided that provides
-a subset of the `rebdsim` functionality. `rebdsim` would automatically combine these
-histograms while performing analysis.
-
-A tool `rebdsimHistoMerge` is provided to take the average of only the already existing
-histograms without the need to prepare an analysis configuration file. It is run as
-follows::
-
-  rebdsimHistoMerge output.root results.root
-
-or ::
-  
-  rebdsimHistoMerge output.root
-
-This creates a ROOT file called (first example) "results.root" and (second example)
-"output_histos.root", that contains the average histograms
-across all events.  This can only operate on BDSIM output files, not `rebdsim`
-output files.
-
-* The output file name is optional and will default to :code:`inputfilename_histos.root.`
-
-
 .. _rebdsim-optics-tool:
   
 rebdsimOptics - Optical Functions
@@ -865,6 +772,127 @@ The argument `output.root` is a BDSIM raw file. The output of this program is a 
 that can be loaded with the pybdsim Python utility.
 
 
+.. _bdskim-tool:
+
+bdskim - Skimming Tool
+======================
+
+A tool called "bdskim" is included that allows us to "skim" or reduce the raw BDSIM data according
+to an event selection. This tool creates a new file but containing only select events. The other trees
+(Header, Options, etc) are copied.
+
+This may be used to vastly reduce the size of an output file to included only the events of interest
+if they are rare.
+
+* This program takes a BDSIM output format file and produces one of the same format.
+* The selection is a text string without spaces that could normally be used with :code:`TTree::Draw` in ROOT.
+* The selection is supplied in a text file, the name of which is given as an argument (e.g. `skimselection.txt`).
+
+Usage: ::
+
+  bdskim <skimselection.txt> <input_bdsim_raw.root> (<output_bdsim_raw.root>)
+
+e.g. ::
+
+  bdskim skimselection.txt 1234.root  1234-skim.root
+  
+  bdskim skimselection.txt 1234.root
+
+
+The second version uses :code:`1234_skiimed.root` as the default output file name by adding "_skimmed"
+to the name of the input file.
+
+As an example, if we use the data sample included in :code:`bdsim/examples/features/data`: ::
+  
+  bdskim skimselection.txt sample1.root sample1-skimmed.root
+
+This reduces the sample1.root data file from containing 10 events to 4 events of interest. The contents
+of `skimselection.txt` are: ::
+
+  dq1_1.n>30
+
+
+* The output file name is optional and will default to :code:`inputfilename_skimmed.root.`
+* Any line starting with :code:`#` will be treated as a comment and ignored.
+* Any empty line will be ignored.
+* Only one selection should be specified in the file.
+* The selection must not contain any white space between characters, i.e. there is only 1 'word' on the line.
+* Run information is not recalculated (e.g. histograms) and is simply copied from the original file.
+
+.. _bdsim-combine-tool:
+  
+bdsimCombine - Combine BDSIM Output Files
+=========================================
+
+One may wish to combine multiple small output files from several BDSIM runs into a single file. The
+included tool :code:`bdsimCombine` achieves this. It is extremely similar to ROOT's :code:`hadd`
+program but does not also merge the other trees in the output duplicating their data (e.g. we don't
+need N copies of the options or model).
+
+Usage: ::
+
+  bdsimCombine <result.root> <file1.root> <file2.root> ...
+
+where `<result.root>` is the desired name of the merged output file and `<fileX.root>` etc.
+are input files to be merged.
+
+Example from :code:`bdsim/examples/features/data/`: ::
+
+  bdsimCombine combined-raw.root sample*
+
+This will add another TTree to the output called :code:`EventCombineInfo`. This has one
+number in it that is the file index that each event originally came from. This separate
+TTree has the same number of events as the Event tree. It is, in ROOT terminology, a
+"friend" tree, which means its variables can be used as if they are in the Event tree.
+The index can be used to find the original file name in the header in the variable
+:code:`combinedFiles` (see :ref:`output-header-tree`).
+
+Notes:
+
+* More than 1 file must be merged otherwise the program will stop
+* You may use a *glob* command for the input file argument (e.g. :code:`"*.root"`)
+* Original and skimmed files may be used and mixed
+* **Run** information is not summed or updated and are only taken from the first file
+* Zombie files will be tolerated, but at least 1 valid file is required
+* The ParticleData, Beam, Options, Model and Run trees are copied from the 1st (valid) file
+  and do not represent merged information from all files, i.e. the run histograms are not
+  recalculated.
+* The Header contains the :code:`nOriginalEvents` which is added up in either case of an
+  original or skimmed file being used. In the case of original files, this is commonly 0,
+  but the data is inspected to provide an accurate total in the merged file.
+* The variable :code:`skimmedFile` is the logical `OR` of all the files loaded, so if
+  one file is skimmed, then this will be true.
+* Note, ROOT has a default threshold of 100GB per file, after which it will start a new
+  file. `bdsimCombine` will only add the other Trees to the first file. This threshold
+  is controllable in ROOT (`TTree::SetMaxTreeSize`) but no control over this is currently
+  provided with `bdsimCombine`.
+
+.. note:: This tool is distinct from :ref:`rebdsim-combine-tool` as this tool only handles
+          raw BDSIM output data. `rebdsimCombine` handles output from the analysis
+          tool `rebdsim`.
+
+To merge files together in small chunks to reduce a data size (e.g. every 10 files into 1), a utility
+function in pybdsim is provided. See :code:`pybdsim.Run.Reduce` and :code:`pybdsim.Run.ReduceParallel`.
+This allows us to reduce a data set into fewer files in parallel. Note, this may cause intensive disk
+usage, but usually using some parallel processes will be significantly faster than just one.
+
+Example: ::
+
+  python
+  > import chunkermp
+  > chunkermp.ReduceRun("datafiles/*.root", 10, "outputdir/", nCPUs=4)
+
+
+This will combine the glob result of :code:`datafiles/*.root` in chunks of 10 files at a time to :code:`outputdir`
+using 4 processes. Note, the trailing "/" must be present if it is a directory.
+
+A single threaded version is included in :code:`bdsim/utils/chunker.py` that could be used potentially
+for Python2 but is untested.
+
+This script simply builds and executes the system commands, so `bdsimCombine` must therefore be
+available as a command (i.e. :code:`source <bdsim-install-dir>/bin/bdsim.sh` before using).
+
+
 .. _output-analysis-efficiency:
 
 Data Workflows - Speed & Efficiency
@@ -881,6 +909,7 @@ easily result in slow running analysis. To combat this, only the minimal variabl
 should be loaded that need to be. `rebdsim` automatically activates only the 'ROOT
 branches' it needs for the analysis. A few possible ways to improve performance are:
 
+* A minimum duration of 1 ms can be assumed for analysing an event with rebdsim.
 * Reduce number of 2D or 3D histograms if possible. Analysis is linear in time with number
   of bins.
 * Remove unnecessary histograms from your analysis configuration file.
@@ -905,8 +934,8 @@ Scaling Up - Parallelising Analysis
 -----------------------------------
 
 For high-statistics studies, it's common to run multiple instances of BDSIM with different
-seeds (different seeds ensures different results) on a high throughout the computer cluster.
-Key parameters to consider are:
+seeds (different seeds ensures different, statistically independent, results) on a high
+throughout the computer cluster. Key parameters to consider are:
 
 #. the total number of events being analysed
 #. the total volume (Mb, Gb, Tb) of data being analysed
@@ -933,7 +962,7 @@ Below are 3 example strategies that can be used and for which tools are included
 Low-Data Volume
 ---------------
 
-* *e.g. simulation slow, output data low volume*
+* *e.g. simulation slow, output data low volume (i.e. low number of events)*
 
 If the overall output data volume is relatively low, it is recommend to analyse all of the
 output files at once with `rebdsim`. In the analysis configuration file,
@@ -962,7 +991,7 @@ numbers might be < 10000 events and < 10 GB of data).
 High-Data Volume
 ----------------
 
-* *e.g. simulation slow, output data high volume*
+* *e.g. simulation slow, output data high volume (i.e. high number of events)*
 
 In this case, it is better to analyse each output file with `rebdsim` separately and then
 combine the results. In the case of per-event histograms, `rebdsim` provides the mean
@@ -1639,3 +1668,48 @@ The mean is calculated as:
 .. math::
 
    \mathrm{for}~ i~ [1\, ... \,n_{rebdsim\, files}]
+
+
+
+On-The-Fly Averaging of Histograms
+----------------------------------
+
+BDSIM, by default, does not store the per-event 3D mesh histograms as they use a lot of disk space.
+Additionally, the per-event mean of any 1D, 2D, and 3D histograms that are pre-made by BDSIM are
+calculated during the simulation run. The "run" histogram at the end is the average across all
+events.
+
+For efficiency, only the bins that were filled during that event are accumulated. For 2D and 3D
+histograms (i.e. scoring meshes), only a small fraction of the bins are filled and this gives a
+significant performance improvement. At the end of the run, each bin is averaged with N zero entries
+for the events that bin was not filled. This gives a numerically identical result for the mean and
+variance of a given bin across all events as if they were accumulated (even if zero contents).
+
+Practically, two features are implemented to do this. Firstly, when each ROOT histogram is filled,
+the global bin index (in ROOT's numbering scheme) is recorded in a set, which avoids repeated
+bin indices. These are the then the only bins that will be accumulated into the run average at
+the end of the event. Secondly, a duplicate histogram is created where either a 1 or a 0 is filled for the
+whole event marking it was filled at all or not (even if multiple entries). At the end of the run
+the number of event zeros to average into that bin is :math:`N_{\mathrm{events}} - N_{\mathrm{events~filled}}`.
+
+The final mean and variance are calculated using a modified version of the above merging algorithm.
+
+.. math::
+   
+   \delta &= 0 - \bar{x}_{\mathrm{filled~only}}\\
+   \bar{x}_{\mathrm{final}} &= \bar{x}_{\mathrm{filled~only}} + n_{zeros}\frac{\delta}{n_{\mathrm{filled~only}} + n_{\mathrm{zeros}}}
+
+
+.. math::
+   
+   Var\,(x)_{\mathrm{final}} = Var\,(x)_{\mathrm{filled~only}} + 0 + (n_{\mathrm{filled~only}}\,n_{\mathrm{zeros}} \frac{\delta^{2}}{n_{\mathrm{filled~only}} + n_{\mathrm{zeros}}})
+
+
+In the traditional analysis, every bin must be accumulated for every event meaning a lot of repeated looping
+over the bins, which is time consuming. Doing this on-the-fly reduces the computation time and we can
+afford to not store by default the per-event histograms, saving disk space. All whilst giving a numerically
+identical result.
+
+It is not possible to do this for user-supplied histogram definitions such as those given to rebdsim as
+we require ROOT's ability to loop over the stored data in an event as read from the TTree. This is not
+possible do without first writing the tree then reading it again.

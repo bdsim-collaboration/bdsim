@@ -98,6 +98,7 @@ protected:
   bool                        debug;    ///< Whether debug print out is used or not.
   long int                    entries;  ///< Number of entries in the chain.
   bool                        perEntry; ///< Whether to analyse each entry in the tree in a for loop or not.
+  int nPerEntryHistoDefinitions;
   
 private:
   /// No default constructor for this base class.

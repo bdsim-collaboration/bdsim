@@ -22,9 +22,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "globals.hh"
 
 #include <map>
+#include <set>
 #include <string>
 #include <utility>
 #include <vector>
+
+#include "Rtypes.h"
 
 // forward declarations
 class BDSGlobalConstants;
@@ -48,6 +51,8 @@ class BDSOutputROOTEventSamplerS;
 class BDSOutputROOTEventTrajectory;
 class BDSOutputROOTParticleData;
 class G4Material;
+class HistogramAccumulatorFast;
+class TH1;
 
 /**
  * @brief Holder for output information.
@@ -106,29 +111,60 @@ protected:
   /// Clear the local structures in this class in preparation for a new run.
   void ClearStructuresRunLevel();
   
-  ///@{ Create histograms for both evtHistos and runHistos. Return index from evtHistos.
-  G4int Create1DHistogram(G4String name,
-			  G4String title,
-			  G4int    nbins,
-			  G4double xmin,
-			  G4double xmax);
-  G4int Create1DHistogram(G4String name,
-			  G4String title,
-			  std::vector<double>& edges);
-  G4int Create3DHistogram(G4String name,
-			  G4String title,
-			  G4int    nBinsX, G4double xMin, G4double xMax,
-			  G4int    nBinsY, G4double yMin, G4double yMax,
-			  G4int    nBinsZ, G4double zMin, G4double zMax);
+  ///@{ Create histograms in evtHistos and create a per-run accumulator. Return index from evtHistos.
+  G4int Create1DHistogram(const G4String& name,
+                          const G4String& title,
+                          G4int nbins,
+                          G4double xmin,
+                          G4double xmax);
+  G4int Create1DHistogram(const G4String& name,
+                          const G4String& title,
+                          const std::vector<double>& edges);
+  G4int Create2DHistogram(const G4String& name,
+                          const G4String& title,
+                          G4int nBinsX, G4double xMin, G4double xMax,
+                          G4int nBinsY, G4double yMin, G4double yMax);
+  G4int Create3DHistogram(const G4String& name,
+                          const G4String& title,
+                          G4int nBinsX, G4double xMin, G4double xMax,
+                          G4int nBinsY, G4double yMin, G4double yMax,
+                          G4int nBinsZ, G4double zMin, G4double zMax);
   G4int Create4DHistogram(const G4String& name,
-			  const G4String& title,
-			  const G4String& eScale,
-			  const std::vector<double>& eBinsEdges,
-			  G4int    nBinsX, G4double xMin, G4double xMax,
-			  G4int    nBinsY, G4double yMin, G4double yMax,
-			  G4int    nBinsZ, G4double zMin, G4double zMax,
-			  G4int    nBinsE, G4double eMin, G4double eMax);
+                          const G4String& title,
+                          const G4String& eScale,
+                          const std::vector<double>& eBinsEdges,
+                          G4int nBinsX, G4double xMin, G4double xMax,
+                          G4int nBinsY, G4double yMin, G4double yMax,
+                          G4int nBinsZ, G4double zMin, G4double zMax,
+                          G4int nBinsE, G4double eMin, G4double eMax);
   ///@}
+
+  /// @{ Fill the appropriate histogram in the event vector of histograms, but
+  /// also cache which bin was filled in a set here, for efficient
+  /// accumulation at the end of event.
+  void Fill1DHistogram(G4int    histoId,
+                       G4double value,
+                       G4double weight = 1.0);
+
+  void Fill2DHistogram(G4int    histoId,
+                       G4double x,
+                       G4double y,
+                       G4double weight = 1.0);
+
+  void Fill3DHistogram(G4int    histoId,
+                       G4double x,
+                       G4double y,
+                       G4double z,
+                       G4double weight = 1.0);
+  /// @}
+
+  /// For accumulation purposes, accumulate this event onto the rolling
+  /// mean for the corresponding run histograms.
+  void HistogramMarkEndOfEvent();
+
+  /// At the end of the run, finalise the per-run histograms and put them
+  /// in the output vector of run histograms.
+  void TerminateRunHistogramAccumulators();
 
   BDSOutputROOTParticleData* particleDataOutput; ///< Geant4 information / particle tables.
   BDSOutputROOTEventHeader*  headerOutput;     ///< Information about the file.
@@ -170,7 +206,10 @@ protected:
   BDSOutputROOTEventLossWorld*  eLossWorldContents; ///< Externally supplied world contents hits.
   BDSOutputROOTEventAperture*   apertureImpacts;    ///< Impacts on the aperture.
   BDSOutputROOTEventTrajectory* traj;               ///< Trajectories.
-  BDSOutputROOTEventHistograms* evtHistos;          ///< Event level histograms.
+  BDSOutputROOTEventHistograms* evtHistos;          ///< All event level histograms - for use in accumulation.
+  BDSOutputROOTEventHistograms* evtHistosOnly;      ///< Copy of pointers for all but 3d mesh histograms.
+  BDSOutputROOTEventHistograms* evtHistosMeshesOnly; ///< Copy of pointers for only 3d mesh histograms and no regular ones.
+  BDSOutputROOTEventHistograms* evtHistosNone;      ///< Always empty set of histograms to link to but avoid writing.
   BDSOutputROOTEventInfo*       evtInfo;            ///< Event information.
 
   // collimator specific output
@@ -193,6 +232,23 @@ protected:
 
   std::map<G4Material*, short int> materialToID;
   std::map<short int, G4String>    materialIDToNameUnique;
+
+  /// Holder for the pointer to the specific per-event histogram, a
+  /// set of the global bin indices filled this event and the run
+  /// accumulator.
+  struct EventRunHist
+  {
+    TH1* eventHist;
+    std::set<Int_t> binsFilledThisEvent;
+    HistogramAccumulatorFast* runAccumulator;
+  };
+
+  /// @{ Cache of run accumulators linked to per-event histograms.
+  std::vector<EventRunHist> eventAndRunHistos1D;
+  std::vector<EventRunHist> eventAndRunHistos2D;
+  std::vector<EventRunHist> eventAndRunHistos3D;
+  std::vector<EventRunHist> eventAndRunHistos4D;
+  /// @}
   
 private:
   /// Whether we've set up the member vector of samplers. Can only be done once the geometry

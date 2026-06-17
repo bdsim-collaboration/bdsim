@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
   // check input
   if (argc < 2 || argc > 3)
     {
-      std::cout << "usage: rebdsim <datafile> (<outputFile>)" << std::endl;
+      std::cout << "usage: rebdsimHistoMerge <datafile> (<outputFile>)" << std::endl;
       std::cout << " <datafile> - root file to operate on" << std::endl;
       std::cout << " <outputfile> - output file name for analysis" << std::endl;
       std::cout << " <outputfile> is optional - default is <datafile>_histos.root" << std::endl;
@@ -85,19 +85,22 @@ int main(int argc, char *argv[])
                                                      dl->GetEventTree(),
                                                      config->PerEntryEvent(),
                                                      config->ProcessSamplers(),
+                                                     dl->DataVersion() < 10,
                                                      debug,
                                                      config->PrintOut(),
                                                      config->PrintModuloFraction(),
                                                      config->GetOptionBool("emittanceonthefly"));
       
       RunAnalysis* runAnalysis = new RunAnalysis(dl->GetRun(),
-						 dl->GetRunTree(),
-						 config->PerEntryRun(),
-						 debug);
+                                                 dl->GetRunTree(),
+                                                 config->PerEntryRun(),
+                                                 debug);
+
       OptionsAnalysis* optAnalysis = new OptionsAnalysis(dl->GetOptions(),
                                                          dl->GetOptionsTree(),
                                                          config->PerEntryOption(),
                                                          debug);
+
       ModelAnalysis*   modAnalysis = new ModelAnalysis(dl->GetModel(),
                                                        dl->GetModelTree(),
                                                        config->PerEntryModel(),
@@ -143,7 +146,13 @@ int main(int argc, char *argv[])
       headerTree->Write("", TObject::kOverwrite);
       
       for (auto& analysis : analyses)
-	{analysis->Write(outputFile);}
+        {analysis->Write(outputFile);}
+
+      // For the latest data, we copy the run histograms over as these are already
+      // the per-event average across the run. The EventAnalysis just doesn't produce
+      // them if the data is v10 or above.
+      if (dl->DataVersion() > 9)
+        {dl->CombineRunHistogramsAndCopyToEventMerged(outputFile);}
 
       // copy the model over and rename to avoid conflicts with Model directory
       auto modelTree = dl->GetModelTree();
