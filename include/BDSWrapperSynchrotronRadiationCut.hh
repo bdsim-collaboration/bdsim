@@ -19,6 +19,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSWRAPPERSYNCHROTRONRADIATIONCUT_H
 #define BDSWRAPPERSYNCHROTRONRADIATIONCUT_H
 #include "BDSWrapperProcess.hh"
+#include <G4Field.hh>
+#include "G4SynchrotronRadiation.hh"
 
 #include "G4Types.hh"
 
@@ -45,12 +47,22 @@ public:
                             G4double    energyCutIn);
     virtual ~BDSWrapperSynchrotronRadiationCut();
 
+
+
     /// Do the splitting operation.
     virtual G4VParticleChange* PostStepDoIt(const G4Track& track,
                                             const G4Step& step);
 
-
-
+    G4double RecursiveEnergyCall(
+     G4int& count,
+     G4SynchrotronRadiation* processSR,
+     const G4Field* pField,
+     const G4ThreeVector& preStepPosition,
+     const G4ThreeVector& unitMomentum,
+     G4double gamma,
+     G4double mass,
+     const G4Step& step,
+     G4double energySRPhoton);
 private:
     G4double energyCut;
 };
