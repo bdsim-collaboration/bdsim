@@ -40,6 +40,7 @@ namespace GMAD {
     double m2{};
     double pulseEnergy{};
     double pulseDuration{};
+    double pulseFWHM{};
     double w0{};
     double sigma0{};
     double laserArrivalTime{};

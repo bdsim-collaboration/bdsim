@@ -65,6 +65,7 @@ public:
   inline G4double Wavelength()    const {return wavelength;}
   inline G4double M2()            const {return m2;}
   inline G4double PulseDuration() const {return pulseDuration;}
+	 inline G4double FWHM()										const {return (2.0*std::sqrt(2.0*std::log(2.0)))*pulseDuration;}
   inline G4double PulseEnergy()   const {return pulseEnergy;}
   inline G4double Sigma0()        const {return sigma0;}
   inline G4double RayleighRange() const {return rayleighRange;}
@@ -86,7 +87,7 @@ protected:
   G4double laserArrivalTime;
   G4double T0;
   G4ThreeVector polarization;
-	G4bool   ignoreRayleighRange;
+	 G4bool   ignoreRayleighRange;
 
   const static std::vector<G4double> wavelengths;
   const static std::vector<G4String> colours;

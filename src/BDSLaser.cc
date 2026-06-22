@@ -71,7 +71,7 @@ BDSLaser::BDSLaser(G4double wavelengthIn,
 {
   if(!BDS::IsFinite(sigma0In))
     {throw BDSException(__METHOD_NAME__, "Laser waist sigma0 is zero.");}
-  peakPower = pulseEnergy / ((2.0*std::sqrt(2.0*std::log(2.0)))*pulseDuration);
+  peakPower = pulseEnergy / FWHM();
   rayleighRange = (CLHEP::pi * (2.0*sigma0)*(2.0*sigma0)) / (wavelength * m2);
 }
 
