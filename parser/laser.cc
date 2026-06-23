@@ -33,6 +33,7 @@ void Laser::clear()
   m2               = 0;
   pulseEnergy      = 0;
   pulseDuration    = 0;
+	 pulseFWHM        = 0;
   w0               = 0;
   sigma0           = 0;
   laserArrivalTime = 0;
