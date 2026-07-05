@@ -31,6 +31,12 @@ jobs:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
 
+      - name: Install deps
+        shell: bash -el {0}
+        run: |
+          conda install -y cmake pybdind11 
+          conda install -y -c conda-forge geant4=${{ matrix.geant4-version }} root=${{ matrix.root-version }} 
+
       - name: Checkout bdsim
         uses: actions/checkout@v7
         id: checkout
