@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   linux:
-    name: linux conda build ${{ matrix.geant4-version }} ${{ matrix.root-version }} ${{ matrix.python-version }}
+    name: linux conda build g4-${{ matrix.geant4-version }} ro-${{ matrix.root-version }} py-${{ matrix.python-version }}
     runs-on: ubuntu-latest
 
     strategy:
