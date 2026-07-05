@@ -27,38 +27,3 @@ jobs:
         with:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
-
-      - name: Checkout bdsim
-        uses: actions/checkout@v4
-        id: checkout
-
-      - name: Get number of CPU cores
-        uses: SimenB/github-actions-cpu-cores@v2
-        id: cpu-cores
-
-      - name: Echo number of cores
-        shell: bash
-        run: echo "Number of cores ${{ steps.cpu-cores.outputs.count }}"
-
-      - name: Echo compilation environment
-        shell: bash
-        run: |
-          echo "Python version: ${{ matrix.python-version }}"
-          echo "ROOT version: ${{ matrix.root-version }}"
-          echo "Geant4 version: ${{ matrix.geant4-version }}"
-          echo "C++ version: $(g++ --version | head -n 1)"
-
-      - name: Install deps
-        shell: bash -el {0}
-        run: |
-          conda install -y cmake pybdind11 
-          conda install -y -c conda-forge geant4=${{ matrix.geant4-version }} root=${{ matrix.root-version }} 
-
-      - name: Build bdsim
-        shell: bash -el {0}
-        run: |
-          cmake -DCMAKE_CXX_STANDARD=17 \
-          -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
-          -DUSE_PYTHON_BINDINGS=ON \
-          -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
-          $GITHUB_WORKSPACE
