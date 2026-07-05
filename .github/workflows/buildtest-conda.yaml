@@ -34,7 +34,7 @@ jobs:
       - name: Install deps
         shell: bash -el {0}
         run: |
-          conda install -y cmake pybdind11 -c conda-forge
+          conda install -y cmake pybind11 
           conda install -y -c conda-forge geant4=${{ matrix.geant4-version }} root=${{ matrix.root-version }} 
 
       - name: Checkout bdsim
