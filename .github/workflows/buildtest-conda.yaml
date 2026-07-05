@@ -48,10 +48,10 @@ jobs:
       - name: Build bdsim
         shell: bash -el {0}
         run: |
+          #-DUSE_PYTHON_BINDINGS=ON 
+          #-DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH 
           cmake -DCMAKE_CXX_STANDARD=17 \
           -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
-          #-DUSE_PYTHON_BINDINGS=ON \
-          #-DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
           $GITHUB_WORKSPACE 
           make -j${{ steps.cpu-cores.outputs.count }} install
 
