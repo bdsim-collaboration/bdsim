@@ -53,7 +53,7 @@ jobs:
           cmake -DCMAKE_CXX_STANDARD=17 \
           -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
           $GITHUB_WORKSPACE 
-          make -j${{ steps.cpu-cores.outputs.count }}
+          VERBOSE=1 make -j${{ steps.cpu-cores.outputs.count }}
           make install 
 
       - name: Test bdsim
