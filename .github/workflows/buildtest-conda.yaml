@@ -32,5 +32,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Checkout bdsim
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         id: checkout
+
+      - name: Get number of CPU cores
+        uses: SimenB/github-actions-cpu-cores@v3
+        id: cpu-cores
