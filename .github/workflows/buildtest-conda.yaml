@@ -54,3 +54,13 @@ jobs:
           -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
           $GITHUB_WORKSPACE 
           make -j${{ steps.cpu-cores.outputs.count }} install
+
+      - name: Test bdsim
+        shell: bash
+        run: |
+          # Set up bdsim 
+          source /tmp/bdsim-install/bin/bdsim.sh
+
+          # run tests
+          cd /tmp/bdsim-build
+          ctest -j1
