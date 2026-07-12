@@ -90,14 +90,18 @@ Parameters::Parameters()
   setMap["rmat44"]     = false;
 
   setMap["beampipeThickness"]  = false;
-  setMap["aperture"]           = false;
+  setMap["apertureParams"]     = false;
+  setMap["apertureParamsOut"]  = false;
   setMap["aper1"]              = false;
   setMap["aper2"]              = false;
   setMap["aper3"]              = false;
   setMap["aper4"]              = false;
   setMap["apertureType"]       = false;
+  setMap["apertureTypeOut"]    = false;
   setMap["beampipeMaterial"]   = false;
   setMap["vacuumMaterial"]     = false;
+  setMap["apertureModel"]      = false;
+  setMap["apertureModelOut"]   = false;
   
   setMap["magnetGeometryType"] = false;
   setMap["horizontalWidth"]    = false;
