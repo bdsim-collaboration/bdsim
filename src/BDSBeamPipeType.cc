@@ -61,6 +61,18 @@ BDSBeamPipeType BDS::DetermineBeamPipeType(G4String apertureType)
   types["pointsfile"]     = BDSBeamPipeType::pointsfile; // added only so the error print out will be correct
   types["rhombus"]        = BDSBeamPipeType::rhombus;
 
+  // aperture types
+  types["circle"]       = BDSBeamPipeType::circular;
+  types["ellipse"]      = BDSBeamPipeType::elliptical;
+  types["rectangle"]    = BDSBeamPipeType::rectangular;
+  types["rectcircle"]   = BDSBeamPipeType::lhc;
+  types["rectellipse"]  = BDSBeamPipeType::rectellipse;
+  types["racetrack"]    = BDSBeamPipeType::racetrack;
+  types["octagon"]      = BDSBeamPipeType::octagonal;
+  types["clicpcl"]      = BDSBeamPipeType::clicpcl;
+  types["rhombus"]      = BDSBeamPipeType::rhombus;
+  types["points"]       = BDSBeamPipeType::pointsfile;
+
   apertureType = BDS::LowerCase(apertureType);
 
   // string will be pointsfile:somefile.dat, so we specially
