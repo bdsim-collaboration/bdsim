@@ -200,6 +200,7 @@ private:
   /// @}
   /// @{ Specialisation for particular solids for hollow solid.
   Product HollowCircleToCircle(G4double thickness) const;
+  Product HollowVariedCircleToCircle(G4double thickness) const;
   Product HollowEllipseToEllipse(G4double thickness) const;
   Product HollowRectangleToRectangle(G4double thickness) const;
   Product HollowRectCircleToRectCircle(G4double thickness) const;
@@ -238,6 +239,9 @@ private:
 
   /// Map of unique aperture type pairs to member function pointers for hollow constructors.
   std::map<std::pair<BDSApertureType, BDSApertureType>, HollowConstructor> hollowSpecialisations;
+
+  /// Map of unique aperture type pairs to member function pointers for hollow constructors.
+  std::map<std::pair<BDSApertureType, BDSApertureType>, HollowConstructor> hollowVariedSpecialisations;
 };
 
 

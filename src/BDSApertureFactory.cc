@@ -90,7 +90,9 @@ BDSApertureFactory::BDSApertureFactory(G4double nPointsPerTwoPiIn):
     {MakePair(BDSApertureType::rectellipse, BDSApertureType::rectellipse), &BDSApertureFactory::HollowRectEllipseToRectEllipse},
   };
 
-  // TBC other specialisations possible given combination of available solids in Geant4
+  hollowVariedSpecialisations = {
+    {MakePair(BDSApertureType::circle, BDSApertureType::circle), &BDSApertureFactory::HollowVariedCircleToCircle},
+  };
 }
 
 BDSApertureFactory::~BDSApertureFactory()
@@ -239,6 +241,34 @@ BDSAperture* BDSApertureFactory::CreateApertureSingle(BDSApertureType at,
   return result;
 }
 
+std::pair<BDSAperture*, BDSAperture*> BDSApertureFactory::CreateAperture(BDSApertureType at,
+                                                                         G4double        a1,
+                                                                         G4double        a2,
+                                                                         G4double        a3,
+                                                                         G4double        a4,
+                                                                         G4double        tilt,
+                                                                         G4double        offsetX,
+                                                                         G4double        offsetY,
+                                                                         unsigned int    nPoints,
+                                                                         const G4String& pointsFileString,
+                                                                         const G4String& apertureTypeOut,
+                                                                         const std::vector<G4double>* apertureOut) const
+{
+  auto* aIn = CreateApertureSingle(at, a1, a2, a3, a4, tilt, offsetX, offsetY, nPoints, pointsFileString);
+  BDSAperture* aOut = nullptr;
+  if (!apertureTypeOut.empty())
+    {
+      BDSApertureType atOut = BDS::DetermineApertureType(apertureTypeOut);
+      if (!apertureOut)
+        {throw BDSException(__METHOD_NAME__, "apertureOut must be filled if using apertureTypeOut");}
+      if (apertureOut->size() != 8)
+        {throw BDSException(__METHOD_NAME__, "apertureOut must have all 8 variables given");}
+      auto v = *apertureOut;
+      aOut = CreateApertureSingle(atOut, v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], apertureTypeOut);
+    }
+  return std::make_pair(aIn, aOut);
+}
+
 G4double BDSApertureFactory::RequiredLengthForBoolean(G4double angle,
                                                       G4double radius) const
 {
@@ -380,13 +410,28 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4Str
   
   // check specialisations - these are more optimal combinations
   auto key    = MakePair(productApertureIn->apertureType, productApertureOut->apertureType);
+
+  // varied specialisations
+  if (variedAperture)
+    {
+      auto search = hollowVariedSpecialisations.find(key);
+      if (search != hollowVariedSpecialisations.end())
+        {
+          auto mem = search->second;
+          return (this->*mem)(thickness);
+        }
+    }
+
+  // constant aperture specialisations
   auto search = hollowSpecialisations.find(key);
   if (search != hollowSpecialisations.end())
     {
       auto mem = search->second;
       return (this->*mem)(thickness);
     }
-  else if (!variedAperture)
+
+  // otherwise if not varied, then just subtract an inner from an outer
+  if (!variedAperture)
     {// use two instances of the same shape but with one expanded to make a subtraction
       Product result;
       Product inner = CreateSolid(productName+"_inner", length + productLengthExtra,
@@ -439,7 +484,8 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInnerVariableThic
   // If the apertures are twisted, it would be possible to create a shape where both the inner apertures
   // were smaller than the outer apertures, but part way through they're bigger due to the rotation. This
   // should be handled.
-  
+
+  // TBC
   return {nullptr, {}};
 }
 
@@ -683,6 +729,32 @@ BDSApertureFactory::Product BDSApertureFactory::HollowCircleToCircle(G4double th
       G4VSolid* product = new G4CutTubs(productName+"_so", ap->radius, ap->radius + thickness,
                                         0.5*productLength, 0, CLHEP::twopi,
                                         productNormalIn, productNormalOut);
+      return {product, {}};
+    }
+}
+
+BDSApertureFactory::Product BDSApertureFactory::HollowVariedCircleToCircle(G4double thickness) const
+{
+  const BDSApertureCircle* ap1 = dynamic_cast<const BDSApertureCircle*>(productApertureIn);
+  const BDSApertureCircle* ap2 = dynamic_cast<const BDSApertureCircle*>(productApertureOut);
+  if (!ap1 || !ap2)
+    {return {nullptr, {}};}
+  G4VSolid* product;
+  if (angledFaces)
+    {
+      // make longer cone, then intersect with cut tubs
+      G4Cons* cons = new G4Cons(productName+"_base_cons_so", ap1->radius, ap1->radius+thickness,
+                                ap2->radius, ap2->radius+thickness,
+                                0.5*(productLength + productLengthExtra), 0, CLHEP::twopi);
+      G4double maxRadius = std::max(ap1->radius, ap2->radius);
+      G4VSolid* cut = CutSolid(productName+"_cut_so", productLength, maxRadius);
+      product = new G4IntersectionSolid(productName+"_so", cons, cut);
+      return {product, {cons, cut}};
+    }
+  else
+    {
+      product = new G4Cons(productName+"_so", ap1->radius, ap1->radius+thickness, ap2->radius,
+                           ap2->radius+thickness, 0.5*productLength, 0, CLHEP::twopi);
       return {product, {}};
     }
 }
