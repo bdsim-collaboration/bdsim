@@ -45,25 +45,25 @@ BDSBeamPipeFactoryBase* BDSBeamPipeFactory::GetAppropriateFactory(BDSBeamPipeTyp
   BDSBeamPipeFactoryBase* result;
   switch(type.underlying())
     {
-    case BDSBeamPipeType::circular:
-    case BDSBeamPipeType::elliptical:
-    case BDSBeamPipeType::rectangular:
-    case BDSBeamPipeType::lhc:
-    case BDSBeamPipeType::rectellipse:
-    case BDSBeamPipeType::racetrack:
-    case BDSBeamPipeType::octagonal:
-    case BDSBeamPipeType::circularvacuum:
-    case BDSBeamPipeType::clicpcl:
-    case BDSBeamPipeType::pointsfile:
-    case BDSBeamPipeType::rhombus:
-      {result = general; break;}
-    case BDSBeamPipeType::lhcdetailed:
-      {result = lhcdetailed; break;}
-    default:
-      {
-        throw BDSException(__METHOD_NAME__, "unimplemented beam pipe type.");
-        break;
-      }
+      case BDSBeamPipeType::circular:
+      case BDSBeamPipeType::elliptical:
+      case BDSBeamPipeType::rectangular:
+      case BDSBeamPipeType::lhc:
+      case BDSBeamPipeType::rectellipse:
+      case BDSBeamPipeType::racetrack:
+      case BDSBeamPipeType::octagonal:
+      case BDSBeamPipeType::circularvacuum:
+      case BDSBeamPipeType::clicpcl:
+      case BDSBeamPipeType::pointsfile:
+      case BDSBeamPipeType::rhombus:
+        {result = general; break;}
+      case BDSBeamPipeType::lhcdetailed:
+        {result = lhcdetailed; break;}
+      default:
+        {
+          throw BDSException(__METHOD_NAME__, "unimplemented beam pipe type.");
+          break;
+        }
     }
   return result;
 }
