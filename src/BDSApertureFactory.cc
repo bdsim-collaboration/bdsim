@@ -707,8 +707,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateDifferentEndsCircleToCircl
   else
     {
       product = new G4Cons(productName+"_so", 0, ap1->radius, 0, ap2->radius,
-                           0.5*(productLength + productLengthExtra),
-                           0, CLHEP::twopi);
+                           0.5*productLength, 0, CLHEP::twopi);
       return {product, {}};
     }
 }
