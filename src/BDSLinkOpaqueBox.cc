@@ -165,9 +165,9 @@ G4int BDSLinkOpaqueBox::PlaceOutputSampler()
   G4String samplerName = component->GetName() + "_out";
 
   BDSApertureFactory apFac;
-  BDSAperture* circularAp = apFac.CreateAperture(BDSApertureType::circle,
-                                                 outputSamplerRadius, 0, 0, 0,
-                                                 0, 0, 0, 0);
+  BDSAperture* circularAp = apFac.CreateApertureSingle(BDSApertureType::circle,
+                                                       outputSamplerRadius, 0, 0, 0,
+                                                       0, 0, 0, 0);
   sampler = new BDSSamplerCustom(samplerName, circularAp);
   sampler->GetContainerLogicalVolume()->SetSensitiveDetector(BDSSDManager::Instance()->SamplerLink());
   sampler->MakeMaterialValidForUseInMassWorld();

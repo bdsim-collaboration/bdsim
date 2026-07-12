@@ -26,9 +26,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4TwoVector.hh"
 #include "G4Types.hh"
 
+#include <list>
 #include <map>
 #include <utility>
 #include <set>
+#include <utility>
+#include <vector>
 
 class BDSAperture;
 class G4VSolid;
@@ -42,6 +45,12 @@ namespace GMAD
 
 /**
  * @brief Main interface for building basic shapes described by apertures.
+ *
+ * One part of the factory builds aperture definitions. The other builds either full
+ * or hollow solids.
+ *
+ * For the aperture definitions, two are given: one for the incoming edge and one for
+ * the outgoing edge. The second may be a nullptr, in which case the first is constant.
  * 
  * @author Laurie Nevay
  */
@@ -54,9 +63,9 @@ public:
   ~BDSApertureFactory();
 
   /// Create an aperture from a parser element definition but fall back to a default model.
-  BDSAperture* CreateAperture(BDSBeamPipeType bpt,
-                              const GMAD::Element& el,
-                              G4bool useElementVariables) const;
+  std::pair<BDSAperture*, BDSAperture*> CreateAperture(BDSBeamPipeType bpt,
+                                                       const GMAD::Element& el,
+                                                       G4bool useElementVariables) const;
 
   /// Create it from a complete parser object.
   BDSAperture* CreateAperture(const GMAD::Aperture& ap) const;
@@ -64,17 +73,31 @@ public:
   /// From a sampler definition.
   BDSAperture* CreateAperture(const GMAD::SamplerPlacement& sp) const;
 
-  /// Full explicit constructor that is used by many of the above.
-  BDSAperture* CreateAperture(BDSApertureType at,
-                              G4double        a1,
-                              G4double        a2,
-                              G4double        a3,
-                              G4double        a4,
-                              G4double        tilt = 0,
-                              G4double        offsetX = 0,
-                              G4double        offsetY = 0,
-                              unsigned int    nPoints = 0,
-                              const G4String& pointsFileAndString = "") const;
+  /// Full explicit constructor for a single instance that is used by many of the above.
+  BDSAperture* CreateApertureSingle(BDSApertureType at,
+                                    G4double        a1,
+                                    G4double        a2,
+                                    G4double        a3,
+                                    G4double        a4,
+                                    G4double        tilt = 0,
+                                    G4double        offsetX = 0,
+                                    G4double        offsetY = 0,
+                                    unsigned int    nPoints = 0,
+                                    const G4String& pointsFileAndString = "") const;
+
+  /// Full explicit constructor for double instance that is used by many of the above.
+  std::pair<BDSAperture*, BDSAperture*> CreateAperture(BDSApertureType at,
+                                                       G4double        a1,
+                                                       G4double        a2,
+                                                       G4double        a3,
+                                                       G4double        a4,
+                                                       G4double        tilt = 0,
+                                                       G4double        offsetX = 0,
+                                                       G4double        offsetY = 0,
+                                                       unsigned int    nPoints = 0,
+                                                       const G4String& pointsFileAndString = "",
+                                                       const G4String& apertureTypeOut = "",
+                                                       const std::vector<G4double>* apertureOut = nullptr) const;
 
   /// Return type to give both the final solid but any transient solids on the way.
   struct Product
@@ -123,6 +146,8 @@ public:
                                                 const G4ThreeVector* normalIn  = nullptr,
                                                 const G4ThreeVector* normalOut = nullptr,
                                                 G4double           lengthExtraForBoolean = 0);
+
+  static std::vector<G4double> ApertureListToVector(const std::list<double>& l);
 
 private:
   G4double CalculateExtraLength(G4double lengthExtraForBoolean);

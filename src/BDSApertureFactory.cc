@@ -113,11 +113,23 @@ G4int BDSApertureFactory::DefaultNPoints(BDSApertureType apt) const
   return npoints.at(apt);
 }
 
-BDSAperture* BDSApertureFactory::CreateAperture(BDSBeamPipeType bpt,
-                                                const GMAD::Element& el,
-                                                G4bool useElementVariables) const
+std::vector<G4double> BDSApertureFactory::ApertureListToVector(const std::list<double>& l)
+{
+  G4double m = CLHEP::m;
+  std::vector<G4double> values = {0, 0, 0, 0, 0, 0, 0, 0};
+  std::vector<G4double> apertures = {l.begin(), l.end()};
+  std::vector<G4double> units = {m, m, m, m, CLHEP::rad, m, m, 1};
+  for (G4int i = 0; i < (G4int)apertures.size(); i++)
+    {values[i] = apertures[i] * units[i];}
+  return values;
+}
+
+std::pair<BDSAperture*, BDSAperture*> BDSApertureFactory::CreateAperture(BDSBeamPipeType bpt,
+                                                                         const GMAD::Element& el,
+                                                                         G4bool useElementVariables) const
 {
   BDSApertureType apt = BDS::ApertureTypeFromBeamPipeType(bpt);
+  auto apOut = ApertureListToVector(el.apertureParamsOut);
   if (bpt == BDSBeamPipeType::pointsfile)
     {return CreateAperture(apt, 0, 0, 0, 0, 0, 0, 0, 0, el.apertureType);}
   else if (useElementVariables)
@@ -128,61 +140,61 @@ BDSAperture* BDSApertureFactory::CreateAperture(BDSBeamPipeType bpt,
                             el.aper3 * CLHEP::m,
                             el.aper4 * CLHEP::m,
                             0, 0, 0, 0,
-                            el.apertureType);
+                            el.apertureType,
+                            el.apertureTypeOut,
+                            &apOut);
     }
   else
     {
-      G4double m = CLHEP::m;
-      std::vector<G4double> values = {0, 0, 0, 0, 0, 0, 0, 0};
-      std::vector<G4double> apertures = {el.aperture.begin(), el.aperture.end()};
-      std::vector<G4double> units = {m, m, m, m, CLHEP::rad, m, m, 1};
-      for (G4int i = 0; i < (G4int)apertures.size(); i++)
-        {values[i] = apertures[i] * units[i];}
+      auto values = ApertureListToVector(el.apertureParams);
       return CreateAperture(apt, values[0], values[1], values[2], values[3],
-                            values[4], values[5], values[6], (G4int)values[7]);
+                            values[4], values[5], values[6], (G4int)values[7],
+                            el.apertureType,
+                            el.apertureTypeOut,
+                            &apOut);
     }
 }
 
 BDSAperture* BDSApertureFactory::CreateAperture(const GMAD::Aperture& ap) const
 {
   CheckNPoints(ap.nPoints, "aperture", ap.name);
-  return CreateAperture(BDS::DetermineApertureType(ap.apertureType),
-                        ap.aper1 * CLHEP::m,
-                        ap.aper2 * CLHEP::m,
-                        ap.aper3 * CLHEP::m,
-                        ap.aper4 * CLHEP::m,
-                        ap.tilt  * CLHEP::rad,
-                        ap.offsetX * CLHEP::m,
-                        ap.offsetY * CLHEP::m,
-                        (unsigned int)ap.nPoints,
-                        ap.apertureType);
+  return CreateApertureSingle(BDS::DetermineApertureType(ap.apertureType),
+                              ap.aper1 * CLHEP::m,
+                              ap.aper2 * CLHEP::m,
+                              ap.aper3 * CLHEP::m,
+                              ap.aper4 * CLHEP::m,
+                              ap.tilt  * CLHEP::rad,
+                              ap.offsetX * CLHEP::m,
+                              ap.offsetY * CLHEP::m,
+                              (unsigned int)ap.nPoints,
+                              ap.apertureType);
 }
 
 BDSAperture* BDSApertureFactory::CreateAperture(const GMAD::SamplerPlacement& sp) const
 {
   CheckNPoints(sp.nPoints, "samplerplacement", sp.name);
-  return CreateAperture(BDS::DetermineApertureType(sp.shape),
-                        sp.aper1 * CLHEP::m,
-                        sp.aper2 * CLHEP::m,
-                        sp.aper3 * CLHEP::m,
-                        sp.aper4 * CLHEP::m,
-                        sp.tilt  * CLHEP::rad,
-                        0,
-                        0,
-                        (unsigned int)sp.nPoints,
-                        sp.shape);
+  return CreateApertureSingle(BDS::DetermineApertureType(sp.shape),
+                              sp.aper1 * CLHEP::m,
+                              sp.aper2 * CLHEP::m,
+                              sp.aper3 * CLHEP::m,
+                              sp.aper4 * CLHEP::m,
+                              sp.tilt  * CLHEP::rad,
+                              0,
+                              0,
+                              (unsigned int)sp.nPoints,
+                              sp.shape);
 }
 
-BDSAperture* BDSApertureFactory::CreateAperture(BDSApertureType at,
-                                                G4double        a1,
-                                                G4double        a2,
-                                                G4double        a3,
-                                                G4double        a4,
-                                                G4double        tilt,
-                                                G4double        offsetX,
-                                                G4double        offsetY,
-                                                unsigned int    nPoints,
-                                                const G4String& pointsFileString) const
+BDSAperture* BDSApertureFactory::CreateApertureSingle(BDSApertureType at,
+                                                      G4double        a1,
+                                                      G4double        a2,
+                                                      G4double        a3,
+                                                      G4double        a4,
+                                                      G4double        tilt,
+                                                      G4double        offsetX,
+                                                      G4double        offsetY,
+                                                      unsigned int    nPoints,
+                                                      const G4String& pointsFileString) const
 {
   BDSAperture* result = nullptr;
   if (nPoints == 0)
@@ -816,7 +828,6 @@ BDSApertureFactory::Product BDSApertureFactory::HollowRectEllipseToRectEllipse(G
       return {product, {ellipseInside, rectInside, inner, ellipseOutside, rectOutside, outer, straight, cut}};
     }
 }
-
 
 std::pair<BDSApertureType,BDSApertureType> BDSApertureFactory::MakePair(BDSApertureType a1,
                                                                         BDSApertureType a2) const

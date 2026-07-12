@@ -905,11 +905,11 @@ BDSMagnetOuter* BDSMagnetOuterFactoryLHC::CreateLHCDipole(const G4String&    nam
 
   //use beampipe factories to create another beampipe (note no magnetic field for now...)
   BDSApertureFactory apFac;
-  BDSAperture* ap = apFac.CreateAperture(BDSApertureType::rectcircle,
-                                         2.202*CLHEP::cm,
-                                         1.714*CLHEP::cm,
-                                         2.202*CLHEP::cm,
-                                         0,0,0,0,0);
+  BDSAperture* ap = apFac.CreateApertureSingle(BDSApertureType::rectcircle,
+                                               2.202*CLHEP::cm,
+                                               1.714*CLHEP::cm,
+                                               2.202*CLHEP::cm,
+                                               0,0,0,0,0);
   BDSBeamPipeInfo* bpi2;
   if (flatFaces)
     {bpi2 = new BDSBeamPipeInfo(BDSBeamPipeType::lhcdetailed, ap, vacuumMaterial, 1*CLHEP::mm, stainlesssteel_316LN_2K);}
@@ -1502,11 +1502,11 @@ BDSMagnetOuter* BDSMagnetOuterFactoryLHC::CreateQuadrupole(G4String      name,
   
   //use beampipe factories to create another beampipe (note no magnetic field for now...)
   BDSApertureFactory apFac;
-  BDSAperture* ap = apFac.CreateAperture(BDSApertureType::rectcircle,
-                                         2.202*CLHEP::cm,
-                                         1.714*CLHEP::cm,
-                                         2.202*CLHEP::cm,
-                                         0,0,0,0,0);
+  BDSAperture* ap = apFac.CreateApertureSingle(BDSApertureType::rectcircle,
+                                               2.202*CLHEP::cm,
+                                               1.714*CLHEP::cm,
+                                               2.202*CLHEP::cm,
+                                               0,0,0,0,0);
   BDSBeamPipeInfo* bpi2 = new BDSBeamPipeInfo(BDSBeamPipeType::lhcdetailed, ap, vacuumMaterial, 1*CLHEP::mm, stainlesssteel_316LN_2K);
   BDSBeamPipeFactory factory;
   BDSBeamPipe* secondBP = factory.CreateBeamPipe(name, length-2*lengthSafety, bpi2);

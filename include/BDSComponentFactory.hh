@@ -35,7 +35,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "CLHEP/Units/PhysicalConstants.h"
 
+#include <list>
 #include <map>
+#include <vector>
 
 class G4Colour;
 class G4Material;
@@ -113,18 +115,15 @@ public:
   /// from the curvilinear coordinates for the tilt and offset of the magnet.
   static G4Transform3D CreateFieldTransform(GMAD::Element const* el);
 
-  BDSBeamPipeInfo* PrepareBeamPipeInfoStraight(GMAD::Element const* el,
-                                               const G4String& overrideBeamPipeType = "") const;
+  BDSBeamPipeInfo* PrepareBeamPipeInfoStraight(GMAD::Element const* el) const;
 
   BDSBeamPipeInfo* PrepareBeamPipeInfo(GMAD::Element const* el,
                                        const G4ThreeVector& inputFaceNormalIn  = G4ThreeVector(0,0,-1),
-                                       const G4ThreeVector& outputFaceNormalIn = G4ThreeVector(0,0,1),
-                                       const G4String& overrideBeamPipeType = "") const;
+                                       const G4ThreeVector& outputFaceNormalIn = G4ThreeVector(0,0,1)) const;
   
   BDSBeamPipeInfo* PrepareBeamPipeInfo(GMAD::Element const* el,
                                        G4double angleIn,
-                                       G4double angleOut,
-                                       const G4String& overrideBeamPipeType = "") const;
+                                       G4double angleOut) const;
 
   /// Determine which side the yoke of an asymmetric bend should go on based on the angle
   /// of the bend and the overriding setting in the element.
@@ -335,10 +334,14 @@ private:
 
   /// Test the component length is sufficient for practical construction.
   G4bool HasSufficientMinimumLength(GMAD::Element const* el,
-				    G4bool               printWarning = true);
+                                    G4bool               printWarning = true);
 
   /// Prepare the vacuum material from the element or resort to default in options.
   G4Material* PrepareVacuumMaterial(GMAD::Element const* el) const;
+
+  /// Search the prepared apertures and if found return a copy. Will return nullptr
+  /// if none found.
+  BDSAperture* FindApertureModel(const G4String& apertureModelName) const;
 
   /// Prepare all aperture definitions from the parser.
   void PrepareApertures();
