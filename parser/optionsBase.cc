@@ -150,9 +150,9 @@ OptionsBase::OptionsBase()
   cavityFieldType = "constantinz";
   
   // beam pipe / aperture
-  beampipeThickness    = 0.0025;
+  beampipeThickness    = 0.002;
   apertureType         = "circular";
-  aper1                = 0.025; // also beampipeRadius
+  aper1                = 0.050; // also beampipeRadius
   aper2                = 0;
   aper3                = 0;
   aper4                = 0;
