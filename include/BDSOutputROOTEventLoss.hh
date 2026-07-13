@@ -51,6 +51,7 @@ public:
   std::vector<int>          parentID;///< ParentID that created the deposit
   
   std::vector<int>          modelID; ///< Geometry model index
+	std::vector<int> 					subElementID;
   std::vector<int>          turn;    ///< Turn number
 
   /// @{ Local coordinate
