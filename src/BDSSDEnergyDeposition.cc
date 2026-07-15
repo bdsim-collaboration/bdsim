@@ -231,7 +231,8 @@ G4bool BDSSDEnergyDeposition::ProcessHits(G4Step* aStep,
                                                            stepLength,
                                                            beamlineIndex,
                                                            postStepProcessType,
-                                                           postStepProcessSubType);
+                                                           postStepProcessSubType,
+														   subElementID);
   
   // don't worry, won't add 0 energy tracks as filtered at top by if statement
   hits->insert(hit);
@@ -351,7 +352,8 @@ G4bool BDSSDEnergyDeposition::ProcessHitsTrack(const G4Track* track,
                                                            stepLength,
                                                            beamlineIndex,
                                                            postStepProcessType,
-                                                           postStepProcessSubType);
+                                                           postStepProcessSubType,
+														   -1);
   
   // don't worry, won't add 0 energy tracks as filtered at top by if statement
   hits->insert(hit);
