@@ -172,14 +172,14 @@ configure_file(${PROJECT_SOURCE_DIR}/src/BDSVisManager.cc ${CMAKE_BINARY_DIR}/sr
 
 BDSIM_COLLATE_APPLICATION_SOURCES(bdsim_sources)
 if(NOT USE_GDML)
-  list(REMOVE_ITEM bdsim_sources ${CMAKE_CURRENT_SOURCE_DIR}/src/BDSGeometryGDML.cc)
+  list(FILTER bdsim_sources EXCLUDE REGEX ".*/BDSGeometryGDML\\.cc$")
 endif()
+list(FILTER bdsim_sources EXCLUDE REGEX ".*/BDSExecOptions\\.cc$")
 list(APPEND bdsim_sources ${CMAKE_CURRENT_BINARY_DIR}/src/BDSExecOptions.cc)
-list(REMOVE_ITEM bdsim_sources ${CMAKE_CURRENT_SOURCE_DIR}/src/BDSExecOptions.cc)
 list(FILTER bdsim_sources EXCLUDE REGEX ".*/BDSIMClass\\.cc$")
 list(APPEND bdsim_sources ${CMAKE_CURRENT_BINARY_DIR}/src/BDSIMClass.cc)
+list(FILTER bdsim_sources EXCLUDE REGEX ".*/BDSVisManager\\.cc$")
 list(APPEND bdsim_sources ${CMAKE_CURRENT_BINARY_DIR}/src/BDSVisManager.cc)
-list(REMOVE_ITEM bdsim_sources ${CMAKE_CURRENT_SOURCE_DIR}/src/BDSVisManager.cc)
 
 # Add Modules
 add_subdirectory(modules)
@@ -245,6 +245,11 @@ if (USE_PLASMA_HDF5)
   target_link_libraries(${BDSIM_LIB_NAME} ${HDF5_CXX_LIBRARIES})
 endif()
 
+add_executable(bdsimExec ${CMAKE_BINARY_DIR}/bdsim.cc)
+
+set_target_properties(bdsimExec PROPERTIES OUTPUT_NAME "bdsim" VERSION ${BDSIM_VERSION})
+target_link_libraries(bdsimExec ${BDSIM_LIB_NAME} gmad)
+
 if (USE_GZSTREAM)
   #preprocessor flag
   add_definitions("-DUSE_GZSTREAM")
@@ -273,10 +278,6 @@ target_link_libraries(${BDSIM_LIB_NAME} ${ROOT_LIBRARIES})
 if(${CMAKE_BUILD_TYPE} STREQUAL "DebugCoverage")
     target_link_libraries(${BDSIM_LIB_NAME} gcov)
 endif()
-
-add_executable(bdsimExec ${CMAKE_BINARY_DIR}/bdsim.cc)
-set_target_properties(bdsimExec PROPERTIES OUTPUT_NAME "bdsim" VERSION ${BDSIM_VERSION})
-target_link_libraries(bdsimExec ${BDSIM_LIB_NAME} gmad)
 
 # set binary name for testing usage
 get_target_property(binaryname bdsimExec OUTPUT_NAME)
