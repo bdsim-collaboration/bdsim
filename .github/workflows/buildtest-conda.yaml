@@ -18,11 +18,10 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        root-version: [ "6.36.04" ]
         geant4-version: [ "10.7.3", "11.0.3", "11.1.3", "11.2.2", "11.3.2", "11.4.1" ]
         include:
         - geant4-version: 10.7.3
-          python-version: '3.9'
+          python-version: '3.10.0'
 
     steps:
       - uses: conda-incubator/setup-miniconda@v4
@@ -34,7 +33,7 @@ jobs:
         shell: bash -el {0}
         run: |
           conda install -y cmake pybind11 
-          conda install -y -c conda-forge geant4=${{ matrix.geant4-version }} root=${{ matrix.root-version }} 
+          conda install -y -c conda-forge geant4=${{ matrix.geant4-version }} root 
 
       - name: Checkout bdsim
         uses: actions/checkout@v7
