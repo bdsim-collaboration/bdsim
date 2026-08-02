@@ -274,14 +274,13 @@ if(${CMAKE_BUILD_TYPE} STREQUAL "DebugCoverage")
     target_link_libraries(${BDSIM_LIB_NAME} gcov)
 endif()
 
+add_executable(bdsimExec ${CMAKE_BINARY_DIR}/bdsim.cc)
+set_target_properties(bdsimExec PROPERTIES OUTPUT_NAME "bdsim" VERSION ${BDSIM_VERSION})
+target_link_libraries(bdsimExec ${BDSIM_LIB_NAME} gmad)
+
 # set binary name for testing usage
 get_target_property(binaryname bdsimExec OUTPUT_NAME)
 set(bdsimBinary ${CMAKE_CURRENT_BINARY_DIR}/${binaryname})
-
-add_executable(bdsimExec ${CMAKE_BINARY_DIR}/bdsim.cc)
-
-set_target_properties(bdsimExec PROPERTIES OUTPUT_NAME "bdsim" VERSION ${BDSIM_VERSION})
-target_link_libraries(bdsimExec ${BDSIM_LIB_NAME} gmad)
 
 # ROOT Event Library
 set(bdsimRootEventSources ${root_dicts} ${root_files}
