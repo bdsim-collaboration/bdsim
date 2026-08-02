@@ -45,12 +45,11 @@ jobs:
       - name: Build bdsim
         shell: bash -el {0}
         run: |
-          #-DUSE_PYTHON_BINDINGS=ON 
-          #-DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH 
+          PYTHON_CMAKE_PATH=$(pybind11-config  --cmakedir)
           cd /tmp/
           mkdir bdsim-build 
           cd bdsim-build
-          cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
+          cmake -DUSE_PYTHON_BINDINGS=ON -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
           $GITHUB_WORKSPACE 
           VERBOSE=1 make -j${{ steps.cpu-cores.outputs.count }}
           make install 
