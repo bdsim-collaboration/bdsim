@@ -22,8 +22,10 @@ jobs:
         include:
         - geant4-version: 10.7.3
           python-version: '3.10.0'
+        - geant4-version: 11.1.3
+          python-version: '3.14.0'
         - geant4-version: 11.2.2
-          python-version: '3.12.0'
+          python-version: '3.14.0'
 
     steps:
       - uses: conda-incubator/setup-miniconda@v4
