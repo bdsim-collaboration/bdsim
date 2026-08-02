@@ -66,4 +66,4 @@ jobs:
 
           # run tests
           cd /tmp/bdsim-build
-          ctest -j1
+          ctest -V -j1
