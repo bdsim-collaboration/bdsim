@@ -53,7 +53,7 @@ jobs:
           # VERBOSE=1 make -j${{ steps.cpu-cores.outputs.count }}
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
           $GITHUB_WORKSPACE 
-          VERBOSE=1 make -j1
+          VERBOSE=1 make -j${{ steps.cpu-cores.outputs.count }}
           make install 
 
       - name: Test bdsim
