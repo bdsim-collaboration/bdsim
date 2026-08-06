@@ -88,7 +88,7 @@ jobs:
 
           # run tests
           cd /tmp/bdsim-build
-          ctest -j1
+          ctest -j${{ steps.cpu-cores.outputs.count }} --output-on-failure
 
   btmac:
     name: bt mac
@@ -201,4 +201,4 @@ jobs:
 
           # run tests          
           cd /tmp/bdsim-build
-          ctest -j1 --output-on-failure
+          ctest -j${{ steps.cpu-cores.outputs.count }} --output-on-failure
