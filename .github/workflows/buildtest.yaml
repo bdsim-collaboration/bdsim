@@ -19,8 +19,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        container: [ubuntu24-g4.10.7, ubuntu24-g4.11.0, ubuntu24-g4.11.1, ubuntu24-g4.11.2, ubuntu24-g4.11.3,
-                    alma9-g4.10.7, alma9-g4.11.0, alma9-g4.11.1, alma9-g4.11.2, alma9-g4.11.3]
+        container: [ubuntu24-g4.10.7, ubuntu24-g4.11.0, ubuntu24-g4.11.1, ubuntu24-g4.11.2, ubuntu24-g4.11.3, ubuntu24-g4.11.4,
+                    alma9-g4.10.7, alma9-g4.11.0, alma9-g4.11.1, alma9-g4.11.2, alma9-g4.11.3, alma9-g4.11.4]
     steps:
       - name: Checkout bdsim
         uses: actions/checkout@v4
@@ -97,7 +97,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        geant4-version: ["v10.7.4", "v11.0.4", "v11.1.3", "v11.2.2", "v11.3.2"]
+        geant4-version: ["v10.7.4", "v11.0.4", "v11.1.3", "v11.2.2", "v11.3.2", "v11.4.2"]
         os: [macOS-15]
 
     steps:
@@ -130,7 +130,7 @@ jobs:
         shell: bash
         run: |
           # download geant4 build
-          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.26/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
+          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.28/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
           # unpack geant4
           tar zxf geant4-${{ matrix.os }}-${{ matrix.geant4-version }}.tgz -C /tmp/
 
