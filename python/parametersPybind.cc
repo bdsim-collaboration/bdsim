@@ -51,8 +51,8 @@ PYBIND11_MODULE(parameters, m) {
     .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, GMAD::Array *value) {self.set_value_array(key, value, false);})
     .def("__setitem__", [](GMAD::Parameters &self, const std::string& key, py::list &value) {
-      py::module_ m = py::module_::import("bdsim");
-      py::object cls = m.attr("Array");  // get the class
+      py::module_ mbdsim = py::module_::import("bdsim");
+      py::object cls = mbdsim.attr("Array");  // get the class
       py::object obj = cls(value);       // call constructor
       auto array = obj.cast<GMAD::Array*>();
       self.set_value_array(key, array, false);
