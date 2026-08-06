@@ -56,7 +56,7 @@ jobs:
           if [[ "${{ matrix.container }}" == "ubuntu24"* ]]; then
             PYBIND_CMAKE_PATH=$(/bdsim/venv-bdsim/bin/python -m pybind11 --cmakedir)
           elif [[ "${{ matrix.container }}" == "alma9"* ]]; then
-            PYBIND_CMAKE_PATH=$(python3.13 -m pybind11 --cmakedir)
+            PYBIND_CMAKE_PATH=$(python3.12 -m pybind11 --cmakedir)
           else 
             PYBIND_CMAKE_PATH=$(python3 -m pybind11 --cmakedir)
           fi
