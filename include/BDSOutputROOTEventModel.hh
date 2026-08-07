@@ -192,6 +192,9 @@ public:
 
   std::map<short int, std::string> materialIDToName;
   std::map<std::string, short int> materialNameToID;
+
+	std::vector<int>         subElementIDs;
+	std::vector<std::string> subElementNames;
   
   std::vector<std::string> samplerNamesUnique;
   std::vector<double>      samplerSPosition;

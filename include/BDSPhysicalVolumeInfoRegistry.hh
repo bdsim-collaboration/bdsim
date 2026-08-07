@@ -111,6 +111,9 @@ public:
 
   void PrintSubElementMap() const;
 
+  const std::map<G4int, G4String>& GetSubElementIDToNameMap() const {return subElementIDToName;}
+
+
 private:
   /// Default constructor is private as singleton
   G4int subElementIDCounter;
