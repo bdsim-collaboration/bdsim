@@ -9,20 +9,24 @@ on:
     branches:
       - 'develop'  
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
 
   docker-bdsim:
     # ensure workflow on runs on main bdsim repo and not forks 
     if: github.repository == 'bdsim-collaboration/bdsim'
 
-    name: Push alma9 bdsim docker images to Docker Hub
+    name: Push bdsim docker images to Docker Hub
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        container: [alma9-g4.10.7-bdsim, alma9-g4.11.0-bdsim, alma9-g4.11.1-bdsim, alma9-g4.11.2-bdsim, alma9-g4.11.3-bdsim,
-                    ubuntu24-g4.10.7-bdsim, ubuntu24-g4.11.0-bdsim, ubuntu24-g4.11.1-bdsim, ubuntu24-g4.11.2-bdsim, ubuntu24-g4.11.3-bdsim]
+        container: [alma9-g4.10.7-bdsim, alma9-g4.11.0-bdsim, alma9-g4.11.1-bdsim, alma9-g4.11.2-bdsim, alma9-g4.11.3-bdsim, alma9-g4.11.4-bdsim,
+                    ubuntu24-g4.10.7-bdsim, ubuntu24-g4.11.0-bdsim, ubuntu24-g4.11.1-bdsim, ubuntu24-g4.11.2-bdsim, ubuntu24-g4.11.3-bdsim, ubuntu24-g4.11.4-bdsim]
 
     steps:
       - name: Dump job context

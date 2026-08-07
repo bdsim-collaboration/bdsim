@@ -19,12 +19,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        container: [ubuntu20-g4.10.7, ubuntu20-g4.11.0, ubuntu20-g4.11.1, ubuntu20-g4.11.2, ubuntu20-g4.11.3,
-                    ubuntu22-g4.10.7, ubuntu22-g4.11.0, ubuntu22-g4.11.1, ubuntu22-g4.11.2, ubuntu22-g4.11.3,
-                    ubuntu24-g4.10.7, ubuntu24-g4.11.0, ubuntu24-g4.11.1, ubuntu24-g4.11.2, ubuntu24-g4.11.3,
-                    centos8-g4.10.7, centos8-g4.11.0, centos8-g4.11.1, centos8-g4.11.2, centos8-g4.11.3,
-                    alma9-g4.10.7, alma9-g4.11.0, alma9-g4.11.1, alma9-g4.11.2, alma9-g4.11.3]
-#        container: [ubuntu20-g4.11.0]
+        container: [ubuntu24-g4.10.7, ubuntu24-g4.11.0, ubuntu24-g4.11.1, ubuntu24-g4.11.2, ubuntu24-g4.11.3, ubuntu24-g4.11.4,
+                    alma9-g4.10.7, alma9-g4.11.0, alma9-g4.11.1, alma9-g4.11.2, alma9-g4.11.3, alma9-g4.11.4]
     steps:
       - name: Checkout bdsim
         uses: actions/checkout@v4
@@ -47,6 +43,9 @@ jobs:
         run: |
           #
           rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake
+          rm -rfv /usr/local/lib/Geant4-11.0.4/Geant4PackageCache.cmake
+          rm -rfv /usr/local/lib64/Geant4-10.7.4/Geant4PackageCache.cmake
+          rm -rfv /usr/local/lib64/Geant4-11.0.4/Geant4PackageCache.cmake
 
           # ROOT 
           source /bdsim/root/bin/thisroot.sh
@@ -56,6 +55,8 @@ jobs:
 
           if [[ "${{ matrix.container }}" == "ubuntu24"* ]]; then
             PYBIND_CMAKE_PATH=$(/bdsim/venv-bdsim/bin/python -m pybind11 --cmakedir)
+          elif [[ "${{ matrix.container }}" == "alma9"* ]]; then
+            PYBIND_CMAKE_PATH=$(python3.12 -m pybind11 --cmakedir)
           else 
             PYBIND_CMAKE_PATH=$(python3 -m pybind11 --cmakedir)
           fi
@@ -87,7 +88,7 @@ jobs:
 
           # run tests
           cd /tmp/bdsim-build
-          ctest -j1
+          ctest -j${{ steps.cpu-cores.outputs.count }} --output-on-failure
 
   btmac:
     name: bt mac
@@ -96,10 +97,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        geant4-version: ["v10.7.4", "v11.0.4", "v11.1.3", "v11.2.2", "v11.3.2"]
-        os: [macOS-14, macOS-15, macOS-15-intel]
-#        geant4-version: ["v11.3.2"]
-#        os: [macOS-15, macOS-15-intel]
+        geant4-version: ["v10.7.4", "v11.0.4", "v11.1.3", "v11.2.2", "v11.3.2", "v11.4.2"]
+        os: [macOS-15]
 
     steps:
       - uses: actions/checkout@v4
@@ -131,7 +130,7 @@ jobs:
         shell: bash
         run: |
           # download geant4 build
-          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.26/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
+          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.28/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
           # unpack geant4
           tar zxf geant4-${{ matrix.os }}-${{ matrix.geant4-version }}.tgz -C /tmp/
 
@@ -139,8 +138,8 @@ jobs:
       - name: Build bdsim
         shell: bash
         run: |
-          rm -rfv /tmp/geant4-v11.0.4/lib/Geant4-11.0.4/Geant4PackageCache.cmake
           rm -rfv /tmp/geant4-v10.7.4/lib/Geant4-10.7.4/Geant4PackageCache.cmake
+          rm -rfv /tmp/geant4-v11.0.4/lib/Geant4-11.0.4/Geant4PackageCache.cmake
 
           # source geant4 setup
           source /tmp/geant4-${{ matrix.geant4-version }}/bin/geant4.sh
@@ -202,4 +201,4 @@ jobs:
 
           # run tests          
           cd /tmp/bdsim-build
-          ctest -j1 --output-on-failure
+          ctest -j${{ steps.cpu-cores.outputs.count }} --output-on-failure

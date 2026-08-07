@@ -4517,8 +4517,10 @@ Examples: ::
 Sphere Shape
 ************
 
-There are two types of spherical sampler: a `sphere` and `sphereforward`. The later
-is orientated more conveniently so Cartesian `z` is by default aligned with `phi` = 0
+There are two types of spherical sampler: a `sphere` and `sphereforward`. `sphere`
+is orientated with the pole of the sphere aligned with the local `y` axis. `sphereforward`
+rotates this forward (rotated about local `x` axis) so that the pole is aligned with
+local `z`. This is provided so Cartesian `z` is by default aligned with `phi` = 0
 and `theta` = 0. In both cases, the default is to make a complete sphere. Optionally,
 parameters can be specified to reduce this to a fraction of that.
 
