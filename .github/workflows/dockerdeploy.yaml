@@ -25,8 +25,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container: [alma9-g4.10.7-bdsim, alma9-g4.11.0-bdsim, alma9-g4.11.1-bdsim, alma9-g4.11.2-bdsim, alma9-g4.11.3-bdsim, alma9-g4.11.4-bdsim,
-                    ubuntu24-g4.10.7-bdsim, ubuntu24-g4.11.0-bdsim, ubuntu24-g4.11.1-bdsim, ubuntu24-g4.11.2-bdsim, ubuntu24-g4.11.3-bdsim, ubuntu24-g4.11.4-bdsim]
+        container: [alma9-g4.10.7-bdsim, alma9-g4.11.0-bdsim, alma9-g4.11.1-bdsim,
+                    alma9-g4.11.2-bdsim, alma9-g4.11.3-bdsim, alma9-g4.11.4-bdsim,
+                    alma10-g4.10.7-bdsim, alma10-g4.11.0-bdsim, alma10-g4.11.1-bdsim,
+                    alma10-g4.11.2-bdsim, alma10-g4.11.3-bdsim, alma10-g4.11.4-bdsim,
+                    ubuntu24-g4.10.7-bdsim, ubuntu24-g4.11.0-bdsim, ubuntu24-g4.11.1-bdsim,
+                    ubuntu24-g4.11.2-bdsim, ubuntu24-g4.11.3-bdsim, ubuntu24-g4.11.4-bdsim]
 
     steps:
       - name: Dump job context
