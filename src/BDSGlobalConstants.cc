@@ -165,6 +165,9 @@ BDSGlobalConstants::BDSGlobalConstants(const GMAD::Options& opt):
         {"storeCollimatorHitsIons",            &o.storeCollimatorHitsIons},
         {"storeCollimatorHitsAll",             &o.storeCollimatorHitsAll},
         {"storePrimaryHistograms",             &o.storePrimaryHistograms},
+        {"storePrimaryFirstHit",               &o.storePrimaryFirstHit},
+        {"storePrimaryLastHit",                &o.storePrimaryLastHit},
+        {"storeSummary",                       &o.storeSummary},
         {"storeTrajectoryTransportationSteps", &o.storeTrajectoryTransportationSteps},
         {"storeModel",                         &o.storeModel}
       };
