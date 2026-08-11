@@ -230,6 +230,9 @@ public:
   inline G4bool   StoreMinimalData()         const {return G4bool  (options.storeMinimalData);}
   inline G4bool   StorePrimaries()           const {return G4bool  (options.storePrimaries);}
   inline G4bool   StorePrimaryHistograms()   const {return G4bool  (options.storePrimaryHistograms);}
+  inline G4bool   StorePrimaryFirstHit()     const {return G4bool  (options.storePrimaryFirstHit);}
+  inline G4bool   StorePrimaryLastHit()      const {return G4bool  (options.storePrimaryLastHit);}
+  inline G4bool   StoreSummary()             const {return G4bool  (options.storeSummary);}
   inline G4bool   StoreApertureImpacts()     const {return G4bool  (options.storeApertureImpacts);}
   inline G4bool   StoreApertureImpactsIons() const {return G4bool  (options.storeApertureImpactsIons);}
   inline G4bool   StoreApertureImpactsAll()  const {return G4bool  (options.storeApertureImpactsAll);}
