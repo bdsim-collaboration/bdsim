@@ -7,7 +7,7 @@ if (USE_BOOST)
   set(Boost_USE_STATIC_LIBS OFF)
   set(Boost_USE_MULTITHREADED ON)
   set(Boost_USE_STATIC_RUNTIME OFF)
-  find_package(Boost 1.71.0 REQUIRED) # header only libraries must not be added here
+  find_package(Boost 1.71.0 REQUIRED COMPONENTS system) # header only libraries must not be added here
 
   if(Boost_FOUND)
     #message(STATUS "Found Boost ${Boost_VERSION} ${Boost_INCLUDE_DIRS}")
