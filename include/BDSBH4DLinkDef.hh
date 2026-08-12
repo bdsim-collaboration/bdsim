@@ -16,7 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#pragma link C++ class BDSBH4D<TH1D>+;
+
+// #pragma link C++ class BDSBH4D<TH1D>+;
 
 #ifdef USE_BOOST
 #ifndef __ROOTDOUBLE__

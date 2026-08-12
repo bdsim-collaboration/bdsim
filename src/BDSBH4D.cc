@@ -298,3 +298,5 @@ template class BDSBH4D<boost_histogram_log>;
 template class BDSBH4D<boost_histogram_variable>;
 
 #endif
+
+// template class BDSBH4D<TH1D>;
