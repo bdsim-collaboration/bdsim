@@ -76,8 +76,8 @@ jobs:
                   -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
                   -DUSE_PLASMA_HDF5=ON \
                   -DUSE_HEPMC3=ON \         
-                  -DUSE_BOOST=ON \ 
-                  $GITHUB_WORKSPACE          
+                  -DUSE_BOOST=ON \
+                  "$GITHUB_WORKSPACE"          
           fi
           
           make -j${{ steps.cpu-cores.outputs.count }} install
@@ -168,7 +168,7 @@ jobs:
                 -DUSE_PLASMA_HDF5=ON \
                 -DUSE_HEPMC3=ON \
                 -DUSE_BOOST=ON \
-                $GITHUB_WORKSPACE
+                "$GITHUB_WORKSPACE"
           make -j${{ steps.cpu-cores.outputs.count }} install
 
       - name: Test bdsim
