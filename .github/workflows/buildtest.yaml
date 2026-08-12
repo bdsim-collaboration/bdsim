@@ -71,6 +71,7 @@ jobs:
           else 
             cmake -DCMAKE_CXX_STANDARD=17 \
                   -DCMAKE_INSTALL_PREFIX=/bdsim/bdsim-install \
+                  -DUSE_BOOST=ON \ 
                   -DUSE_PYTHON_BINDINGS=ON \
                   -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
                   -DUSE_PLASMA_HDF5=ON \
@@ -79,7 +80,6 @@ jobs:
           fi
           
           make -j${{ steps.cpu-cores.outputs.count }} install
-
 
       - name: Test bdsim
         shell: bash
@@ -137,7 +137,7 @@ jobs:
           tar zxf geant4-${{ matrix.os }}-${{ matrix.geant4-version }}.tgz -C /tmp/
 
 
-      - name: Build bdsi9
+      - name: Build bdsim
         shell: bash
         run: |
           rm -rfv /tmp/geant4-v10.7.4/lib/Geant4-10.7.4/Geant4PackageCache.cmake
@@ -160,6 +160,7 @@ jobs:
           mkdir /tmp/bdsim-install
           cd /tmp/bdsim-build
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
+                -DUSE_BOOST=ON \ 
                 -DBISON_EXECUTABLE=$BISON_PATH \
                 -DUSE_PYTHON_BINDINGS=ON \
                 -DCMAKE_PREFIX_PATH="$(python3 -m pybind11 --cmakedir)" \
