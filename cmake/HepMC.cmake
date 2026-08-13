@@ -1,7 +1,7 @@
 # quietly detect if we have HepMC library available - not required
 
 option( USE_HEPMC3 "Include HepMC3 library support." OFF)
-option( USE_HEPMC3_ROOTIO "Use ROOT IO support of HEPMC3." OFF)
+
 if (USE_HEPMC3)
   message(STATUS "Using HepMC3")
   find_package(HepMC3 REQUIRED HINTS HepMC3_DIR)
