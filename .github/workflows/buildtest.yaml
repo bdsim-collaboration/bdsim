@@ -74,7 +74,7 @@ jobs:
                   -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
                   -DUSE_PYTHON_BINDINGS=ON \
                   -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
-                  -DUSE_PLASMA_HDF5=ON \          
+                  -DUSE_PLASMA_HDF5=ON \         
                   $GITHUB_WORKSPACE          
           fi
           
