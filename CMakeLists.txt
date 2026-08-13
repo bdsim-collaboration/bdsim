@@ -137,7 +137,6 @@ if (USE_HEPMC3)
   #TBC - need to test if we can just use this
   #set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)
   set(CMAKE_INSTALL_RPATH "${Geant4_LIBRARY_DIR};${CMAKE_INSTALL_PREFIX}/lib;${HEPMC3_ROOT_DIR}/lib;${ROOT_LIBRARY_DIR}")
-  #message(STATUS "rpath = ${CMAKE_INSTALL_RPATH}")
 else()
   set(CMAKE_INSTALL_RPATH "${Geant4_LIBRARY_DIR};${CMAKE_INSTALL_PREFIX}/lib;${ROOT_LIBRARY_DIR}")
   #message(STATUS "rpath = ${CMAKE_INSTALL_RPATH}")

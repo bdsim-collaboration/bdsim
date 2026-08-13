@@ -18,7 +18,7 @@ RUN source /bdsim/root/bin/thisroot.sh && \
     cd bdsim && git checkout develop && cd ../ &&\
     mkdir bdsim-build && cd bdsim-build &&\
     rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake && \
-    cmake ../bdsim -DUSE_PYTHON_BINDINGS=ON -DCMAKE_PREFIX_PATH="$(/bdsim/venv-bdsim/bin/python -m pybind11 --cmakedir)" -DUSE_PLASMA_HDF5=ON -DUSE_HEPMC3_ROOTIO=ON && \
+    cmake ../bdsim -DUSE_PYTHON_BINDINGS=ON -DCMAKE_PREFIX_PATH="$(/bdsim/venv-bdsim/bin/python -m pybind11 --cmakedir)" -DUSE_PLASMA_HDF5=ON -DUSE_HEPMC3=ON && \
     make -j12 install &&\
     echo 'source /usr/local/bin/bdsim.sh' >> ~/.bashrc
     
