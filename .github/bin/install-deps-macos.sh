@@ -23,4 +23,4 @@ cmake -DHEPMC3_ENABLE_ROOTIO:BOOL=ON             \
       -DHEPMC3_ENABLE_PYTHON:BOOL=OFF            \
       ../HepMC3-3.3.1                          &&\
 make -j4                                       &&\
-make install
+sudo make install
