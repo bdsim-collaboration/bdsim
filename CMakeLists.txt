@@ -242,6 +242,7 @@ endif()
 target_link_libraries(${BDSIM_LIB_NAME} gmad)
 generate_export_header(${BDSIM_LIB_NAME})
 if (USE_PLASMA_HDF5)
+  target_include_directories(${BDSIM_LIB_NAME} SYSTEM PUBLIC ${HDF5_INCLUDE_DIRS})
   target_link_libraries(${BDSIM_LIB_NAME} ${HDF5_CXX_LIBRARIES})
 endif()
 
