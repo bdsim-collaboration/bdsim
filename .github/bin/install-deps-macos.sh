@@ -10,6 +10,6 @@ brew install python pybind11
 brew install wget clhep bison xerces-c root hdf5
 
 # hepmc3
-brew tap davidchall/hepmc3
+brew tap davidchall/hep
 brew trust davidchall/hep
 brew install hepmc3
