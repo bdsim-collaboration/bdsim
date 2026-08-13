@@ -8,3 +8,8 @@ brew install python pybind11
 
 # install BDSIM deps
 brew install wget clhep bison xerces-c root hdf5
+
+# hepmc3
+brew tap davidchall/hepmc3
+brew trust davidchall/hep
+brew install hepmc3
