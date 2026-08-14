@@ -10,6 +10,13 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/root)
 file(GLOB linkHeaders ${CMAKE_CURRENT_SOURCE_DIR}/include/*LinkDef.hh)
 # for loop over link definitions
 foreach(header ${linkHeaders})
+  # The BDSBH4D dictionary only carries Boost-based 4D-histogram classes; its
+  # LinkDef is entirely #ifdef USE_BOOST. Without Boost it preprocesses to an
+  # empty selection file, which ROOT >= 6.40 rejects ("No selection rules
+  # specified"). Skip generating it when Boost support is off.
+  if(NOT USE_BOOST AND header MATCHES "BDSBH4DLinkDef")
+    continue()
+  endif()
   # remove LinkDef.hh
   string(FIND ${header} "LinkDef.hh" pos REVERSE)
   string(FIND ${header} "/" dir REVERSE)
