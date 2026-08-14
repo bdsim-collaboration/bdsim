@@ -1,7 +1,5 @@
 FROM bdsim/ubuntu24-g4.11.4
 
-RUN apt install -y libhepmc3-dev
-
 # Python support tools (pybdsim, pymadx, pymad8, pytransport, pyg4ometry)
 RUN python3 -m venv /bdsim/venv-bdsim &&\
     /bdsim/venv-bdsim/bin/pip install ipython &&\
