@@ -1,7 +1,5 @@
 FROM bdsim/alma9-g4.11.4
 
-RUN yum install -y HepMC3-devel
-
 # Python support tools (pybdsim, pymadx, pymad8, pytransport, pyg4ometry)
 RUN python3.12 -m venv /bdsim/venv-bdsim &&\
     /bdsim/venv-bdsim/bin/pip install ipython &&\
