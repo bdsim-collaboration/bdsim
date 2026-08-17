@@ -431,7 +431,9 @@ PYBIND11_MODULE(options, m) {
 
     .def("keys", [](GMAD::Options &self) {return self.AllNames();})
     .def("__len__", [](GMAD::Options &self) {return self.AllNames().size();})
-    .def("__setitem__", [](GMAD::Options &self, const std::string& key, bool value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Options &self, const std::string& key, bool value) {
+      self.set_value<bool>(key,value, false);
+    })
     .def("__setitem__", [](GMAD::Options &self, const std::string& key, int value) {
       try {
         self.set_value<int>(key, value, false);
