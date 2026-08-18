@@ -1,0 +1,134 @@
+//
+// ********************************************************************
+// * License and Disclaimer                                           *
+// *                                                                  *
+// * The  Geant4 software  is  copyright of the Copyright Holders  of *
+// * the Geant4 Collaboration.  It is provided  under  the terms  and *
+// * conditions of the Geant4 Software License,  included in the file *
+// * LICENSE and available at  http://cern.ch/geant4/license .  These *
+// * include a list of copyright holders.                             *
+// *                                                                  *
+// * Neither the authors of this software system, nor their employing *
+// * institutes,nor the agencies providing financial support for this *
+// * work  make  any representation or  warranty, express or implied, *
+// * regarding  this  software system or assume any liability for its *
+// * use.  Please see the license in the file  LICENSE  and URL above *
+// * for the full disclaimer and the limitation of liability.         *
+// *                                                                  *
+// * This  code  implementation is the result of  the  scientific and *
+// * technical work of the GEANT4 collaboration.                      *
+// * By using,  copying,  modifying or  distributing the software (or *
+// * any work based  on the software)  you  agree  to acknowledge its *
+// * use  in  resulting  scientific  publications,  and indicate your *
+// * acceptance of all terms of the Geant4 Software license.          *
+// ********************************************************************
+//
+// ------------------------------------------------------------
+//      GEANT 4 class header file
+//
+//      History:
+//      21-5-98  1 version , V. Grichine
+//      28-05-01, V.Ivanchenko minor changes to provide ANSI -wall compilation
+//      23-05-06, H. Burkhardt: Energy spectrum from function rather than table
+//      14-07-26, G. Broggi: exact Schwinger angular sampling, replacing the
+//                delegation to G4VEmAngularDistribution (G4DipBustGenerator);
+//                optional production threshold, see SetLowestPhotonEnergy()
+//      24-07-26, angular sampling optimised (fast series/Chebyshev
+//                evaluation of K_1/3, K_2/3;
+//
+// ------------------------------------------------------------
+
+#ifndef G4SynchrotronRadiation_h
+#define G4SynchrotronRadiation_h 1
+
+#include "globals.hh"
+#include "G4Step.hh"
+#include "G4ThreeVector.hh"
+#include "G4Track.hh"
+#include "G4VDiscreteProcess.hh"
+
+class G4LossTableManager;
+class G4ParticleDefinition;
+class G4PropagatorInField;
+class G4GenericMessenger;
+
+class G4SynchrotronRadiation : public G4VDiscreteProcess
+{
+ public:
+  explicit G4SynchrotronRadiation(const G4String& pName = "SynRad",
+                                  G4ProcessType type    = fElectromagnetic);
+
+  virtual ~G4SynchrotronRadiation();
+
+  G4SynchrotronRadiation& operator=(const G4SynchrotronRadiation& right) =
+    delete;
+  G4SynchrotronRadiation(const G4SynchrotronRadiation&) = delete;
+
+  virtual G4double GetMeanFreePath(const G4Track& track,
+                                   G4double previousStepSize,
+                                   G4ForceCondition* condition) override;
+
+  virtual G4VParticleChange* PostStepDoIt(const G4Track& track,
+                                          const G4Step& Step) override;
+
+  G4double GetPhotonEnergy(const G4Track& trackData, const G4Step& stepData);
+
+  G4double GetRandomEnergySR(G4double gamma, G4double perpB,
+                            G4double mass_c2, G4double& critEnergy);
+
+  G4double InvSynFracInt(G4double x);
+  G4double Chebyshev(G4double a, G4double b, const G4double c[], G4int n,
+                     G4double x);
+
+  virtual G4bool IsApplicable(const G4ParticleDefinition&) override;
+  virtual void BuildPhysicsTable(const G4ParticleDefinition&) override;
+
+  void ProcessDescription(std::ostream&) const override;
+  void DumpInfo() const override { ProcessDescription(G4cout); };
+
+  // Optional production threshold: SR photons below this energy are not
+  // produced. Default: 0, i.e. no user threshold. An internal,
+  // gamma-dependent floor is always applied in any case, corresponding to
+  // the limit of validity of the small-angle Schwinger formalism.
+  // Setting E_min removes a fraction ~1.23 (E_min/E_c)^(1/3) of the
+  // photons, carrying a fraction ~(E_min/E_c)^(4/3) of the radiated
+  // energy; that energy is not transferred to the charged particle, so
+  // E_min should be kept well below the critical energy E_c.
+  static void SetLowestPhotonEnergy(G4double val)
+  {
+    fLowestPhotonEnergy = (val > 0.0) ? val : 0.0;
+  }
+  static G4double GetLowestPhotonEnergy() { return fLowestPhotonEnergy; }
+
+ private:
+  G4LossTableManager* theManager;
+  G4ParticleDefinition* theGamma;
+  G4PropagatorInField* fFieldPropagator;
+
+  static G4double fLowestPhotonEnergy;
+
+  G4bool FirstTime;
+  G4bool FirstTime1;
+
+  G4int secID = -1;  // creator modelID
+};
+
+//////////////////////////  INLINE METHODS  /////////////////////////////
+
+inline G4double G4SynchrotronRadiation::Chebyshev(G4double a, G4double b,
+                                                  const G4double c[], G4int n,
+                                                  G4double x)
+{
+  G4double y;
+  G4double y2 = 2.0 * (y = (2.0 * x - a - b) / (b - a));  // Change of variable.
+  G4double d = 0., dd = 0.;
+  for(G4int j = n - 1; j >= 1; --j)  // Clenshaw's recurrence.
+  {
+    G4double sv = d;
+    d           = y2 * d - dd + c[j];
+    dd          = sv;
+  }
+  return y * d - dd + 0.5 * c[0];
+}
+
+#endif  // end of G4SynchrotronRadiation.hh
