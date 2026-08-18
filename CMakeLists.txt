@@ -181,7 +181,7 @@ list(APPEND bdsim_sources ${CMAKE_CURRENT_BINARY_DIR}/src/BDSVisManager.cc)
 list(REMOVE_ITEM bdsim_sources ${CMAKE_CURRENT_SOURCE_DIR}/src/BDSVisManager.cc)
 
 # Add G4SynchRadiation
-list(APPEND bdsim_sources ${CMAKE_CURRENT_BINARY_DIR}/src/G4SynchrotronRadiationFix.cc)
+list(APPEND bdsim_sources ${CMAKE_CURRENT_SOURCE_DIR}/src/G4SynchrotronRadiationFix.cc)
 
 # Add Modules
 add_subdirectory(modules)
