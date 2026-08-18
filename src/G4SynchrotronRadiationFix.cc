@@ -85,7 +85,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////
 
-#include "G4SynchrotronRadiation.hh"
+#include "G4SynchrotronRadiationFix.hh"
 
 #include "G4Electron.hh"
 #include "G4EmProcessSubType.hh"
