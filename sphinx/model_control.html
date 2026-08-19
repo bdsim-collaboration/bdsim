@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model Control &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -279,8 +279,8 @@ and the simulation is not reproducible. Therefore we prevent this behaviour at c
 number engine used in Geant4 until recently. Now, Geant4 uses CLHEP’s MixMax engine. BDSIM explicitly
 sets the engine to HepJamesRandom so the same engine is used by Geant4 and BDSIM.</p>
 <p>This behaviour can be controlled by the option <code class="code docutils literal notranslate"><span class="pre">randomEngine</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">randomEngine</span><span class="o">=</span><span class="s2">&quot;hepjames&quot;</span><span class="p">;</span>
-<span class="n">option</span><span class="p">,</span> <span class="n">randomEngine</span><span class="o">=</span><span class="s2">&quot;mixmax&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">randomEngine</span><span class="o">=</span><span class="s2">"hepjames"</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">randomEngine</span><span class="o">=</span><span class="s2">"mixmax"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Examples are included in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/beam/random-engine*</span></code>.</p>
@@ -321,13 +321,13 @@ the rest mass of the particle.</p>
 <li><p>If no distribution is specified, the <a class="reference internal" href="#reference">reference</a> distribution is the default.</p></li>
 </ul>
 <p>A few minimal examples of beam definition are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mf">34.2</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;2212&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"2212"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">230</span><span class="o">*</span><span class="n">MeV</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">momentum</span><span class="o">=</span><span class="mi">600</span><span class="o">*</span><span class="n">MeV</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -367,17 +367,17 @@ physics processes registered to that particle.</p>
 <section id="ion-beams">
 <h4>Ion Beams<a class="headerlink" href="#ion-beams" title="Link to this heading"></a></h4>
 <p>The user may also specify any ion with the following syntax:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;ion A Z&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"ion A Z"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;ion A Z Q&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"ion A Z Q"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>where <cite>A</cite>, <cite>Z</cite> and <cite>Q</cite> should be replaced by the atomic mass number (an integer),
 the number of protons in the nucleus, and the charge respectively. The charge is
 optional and by default is Z (i.e. a fully ionised ion).  For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;ion 12 6&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"ion 12 6"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mi">52</span> <span class="o">*</span> <span class="n">GeV</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -397,25 +397,25 @@ often useful to simulate a beam of other particles.  To specify a different part
 <code class="code docutils literal notranslate"><span class="pre">beamParticleName</span></code> should be used. For a different energy or kinetic energy or momentum, (only)
 one of <code class="code docutils literal notranslate"><span class="pre">E0</span></code>, <code class="code docutils literal notranslate"><span class="pre">Ek0</span></code>, <code class="code docutils literal notranslate"><span class="pre">P0</span></code> should be used.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">beamParticleName</span><span class="o">=</span><span class="s2">&quot;e+&quot;</span><span class="p">;</span>
+      <span class="n">beamParticleName</span><span class="o">=</span><span class="s2">"e+"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This (above) specifies that the magnet field strengths are calculated with respect to a 100 GeV electron
 but the beam fired into the model is a 100 GeV positron beam (along with any other relevant distribution
 parameters).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">beamParticleName</span><span class="o">=</span><span class="s2">&quot;e+&quot;</span><span class="p">,</span>
+      <span class="n">beamParticleName</span><span class="o">=</span><span class="s2">"e+"</span><span class="p">,</span>
       <span class="n">E0</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This (above) specifies that the magnet field strengths are calculated with respect to a 100 GeV electron
 and the beam fired into the model is a 20 GeV positron beam.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">momentum</span><span class="o">=</span><span class="mf">20.3</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">beamParticleName</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">;</span>
+      <span class="n">beamParticleName</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This (above) defines a machine designed with respect to an electron beam with 20.3 GeV of momentum but
@@ -552,9 +552,9 @@ the particle in the model at the start of an event.</p>
 <code class="code docutils literal notranslate"><span class="pre">eventsPerBunch</span></code> is greater than 0 which implies we want bunches.</p></li>
 </ul>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;gauss&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"gauss"</span><span class="p">,</span>
       <span class="n">sigmaX</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
       <span class="n">sigmaY</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
       <span class="n">sigmaT</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">ps</span><span class="p">,</span>
@@ -586,9 +586,9 @@ rotation is in a right-handed coordinate system.</p>
 positive pi/2 will become zero X0 and finite Y0. Looking along the beam direction, the rotation
 is clockwise. This is irrespective of particle charge.</p>
 <p>The parameter that controls this is <cite>tilt</cite> in the beam command and is in radians. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;gauss&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"gauss"</span><span class="p">,</span>
       <span class="n">sigmaX</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
       <span class="n">sigmaY</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
       <span class="n">sigmaXp</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
@@ -712,15 +712,15 @@ coordinates are with respect to the curvilinear frame at that point in the beam 
 Each set of coordinates will be stored in the output under <cite>Primary</cite> (local) and <cite>PrimaryGlobal</cite> (global).</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;reference&quot;</span><span class="p">;</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"reference"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Generates a beam with all coordinates=0 at the nominal energy.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;reference&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"reference"</span><span class="p">,</span>
       <span class="n">X0</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
       <span class="n">Y0</span> <span class="o">=</span> <span class="mf">3.5</span><span class="o">*</span><span class="n">um</span><span class="p">;</span>
 </pre></div>
@@ -756,9 +756,9 @@ elements are symmetric across the diagonal.</p></li>
 <p>The user should take care to ensure they specify a positive definite matrix. BDSIM will
 emit an error and stop running if this is not the case.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;gaussmatrix&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"gaussmatrix"</span><span class="p">,</span>
       <span class="n">sigma11</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
       <span class="n">sigma22</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
       <span class="n">sigma33</span> <span class="o">=</span> <span class="mi">50</span><span class="o">*</span><span class="n">um</span><span class="p">,</span>
@@ -1006,9 +1006,9 @@ energy is also uniformly distributed between <span class="math notranslate nohig
 behaviour, <cite>t</cite> was sampled uniformly, then <cite>z</cite> calculated from <span class="math notranslate nohighlight">\(c * t\)</span>. To restore this
 behaviour, the parameter <cite>zFromT</cite> can be used. e.g. <code class="code docutils literal notranslate"><span class="pre">beam,</span> <span class="pre">zFromT=1;</span></code>.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;square&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"square"</span><span class="p">,</span>
       <span class="n">envelopeX</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
       <span class="n">envelopeXp</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
       <span class="n">envelopeY</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
@@ -1021,7 +1021,8 @@ behaviour, the parameter <cite>zFromT</cite> can be used. e.g. <code class="code
 <h4>ring<a class="headerlink" href="#ring" title="Link to this heading"></a></h4>
 <p>The ring distribution randomly and uniformly distributes particles around a circle in <cite>x</cite> and <cite>y</cite>. Then,
 for a given x,y the radius is randomly and uniformly in density distributed in that annulus. For
-all other parameters, the <a class="reference internal" href="#reference">reference</a> coordinates are used, i.e. <cite>xp</cite>, <cite>yp</cite> etc.</p>
+all other parameters, the <a class="reference internal" href="#reference">reference</a> coordinates are used. Optionally, a similar distribution in
+<cite>xp</cite> and <cite>yp</cite> can be provided between two radii. If not specified, then no angle is given.</p>
 <ul class="simple">
 <li><p>All parameters from <a class="reference internal" href="#reference">reference</a> distribution are used as centroids.</p></li>
 </ul>
@@ -1029,19 +1030,35 @@ all other parameters, the <a class="reference internal" href="#reference">refere
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Range</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>Rmin</cite></p></td>
 <td><p>Minimum radius in <cite>x</cite> and <cite>y</cite> [m]</p></td>
+<td><p>0 - inf.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>Rmax</cite></p></td>
 <td><p>Maximum radius in <cite>x</cite> and <cite>y</cite> [m]</p></td>
+<td><p>0 - inf.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>Rpmin</cite></p></td>
+<td><p>Minimum radius in <cite>rp</cite> (optional)</p></td>
+<td><p>0 - 1</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>Rpmax</cite></p></td>
+<td><p>Maximum radius in <cite>rp</cite> (optional)</p></td>
+<td><p>0 - 1</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li><p>No variation in <cite>z</cite>, <cite>xp</cite>, <cite>yp</cite>, <cite>t</cite>, <cite>s</cite> and total energy. Only central values.</p></li>
+<li><p>No variation in <cite>z</cite>, <cite>t</cite>, <cite>s</cite> and total energy. Only central values.</p></li>
+<li><p><cite>Rpmin</cite> and <cite>Rpmax</cite> are the radial component of the unit momentum vector, akin to <cite>xp</cite> and <cite>yp</cite>
+and should be &lt; 1.</p></li>
+<li><p><cite>Rpmin</cite> must be less than or equal to <cite>Rpmax</cite>.</p></li>
+<li><p>If only one single, non-zero, value of <cite>Rp</cite> is required, both <cite>Rpmin</cite> and <cite>Rpmax</cite>
+should be set to the same value.</p></li>
 </ul>
 </section>
 <section id="eshell">
@@ -1116,9 +1133,9 @@ Marsaglia (1972) method.</p>
 </ul>
 <p>If an energy spread is desired, please use a <a class="reference internal" href="#beam-composite"><span class="std std-ref">composite</span></a> distribution.</p>
 <p>An example can be found in <cite>bdsim/examples/features/beam/sphere.gmad</cite>. Below is an example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mf">1.2</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"sphere"</span><span class="p">,</span>
       <span class="n">X0</span> <span class="o">=</span> <span class="mi">9</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
       <span class="n">Z0</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
@@ -1271,9 +1288,9 @@ f_{\rm haloWeight}(\epsilon_{\rm SP}) &amp; = \exp\left(-\frac{\epsilon_{SP}-\ep
 <li><p>No variation in <cite>t</cite>, total energy, <cite>z</cite> and <cite>s</cite>. Only central values.</p></li>
 </ul>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span>              <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span>              <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span>                <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span>             <span class="o">=</span> <span class="s2">&quot;halo&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span>             <span class="o">=</span> <span class="s2">"halo"</span><span class="p">,</span>
       <span class="n">betx</span>                  <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
       <span class="n">bety</span>                  <span class="o">=</span> <span class="mf">1.2</span><span class="p">,</span>
       <span class="n">alfx</span>                  <span class="o">=</span> <span class="o">-</span><span class="mf">0.023</span><span class="p">,</span>
@@ -1285,7 +1302,7 @@ f_{\rm haloWeight}(\epsilon_{\rm SP}) &amp; = \exp\left(-\frac{\epsilon_{SP}-\ep
       <span class="n">haloNSigmaYInner</span>      <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
       <span class="n">haloNSigmaYOuter</span>      <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
       <span class="n">haloPSWeightParameter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="n">haloPSWeightFunction</span>  <span class="o">=</span> <span class="s2">&quot;oneoverr&quot;</span><span class="p">;</span>
+      <span class="n">haloPSWeightFunction</span>  <span class="o">=</span> <span class="s2">"oneoverr"</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -1358,9 +1375,9 @@ re-weighting in post-processing.</p>
 <li><p>Generating a beam in a dispersive region will result in incorrect optics.</p></li>
 </ul>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span>              <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span>              <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span>                <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span>             <span class="o">=</span> <span class="s2">&quot;halosigma&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span>             <span class="o">=</span> <span class="s2">"halosigma"</span><span class="p">,</span>
       <span class="n">betx</span>                  <span class="o">=</span> <span class="mf">9.701136465</span><span class="p">,</span>
       <span class="n">bety</span>                  <span class="o">=</span> <span class="mf">46.95602673</span><span class="p">,</span>
       <span class="n">alfx</span>                  <span class="o">=</span> <span class="o">-</span><span class="mf">0.5542165316</span><span class="p">,</span>
@@ -1413,9 +1430,9 @@ moemntum values both be above or below the nominal value.</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">momentum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;slowext&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"slowext"</span><span class="p">,</span>
       <span class="n">dTStart</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
       <span class="n">dTStop</span> <span class="o">=</span> <span class="mf">2.4</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
       <span class="n">dPStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -1431,9 +1448,9 @@ moemntum values both be above or below the nominal value.</p>
 <p>This distribution first uses the parameters of <a class="reference internal" href="#beam-gauss"><span class="std std-ref">gauss</span></a> (i.e. an uncorrelated Gaussian),
 and then <strong>adds</strong> to that the P-T correlation of <a class="reference internal" href="#beam-slowext"><span class="std std-ref">slowext</span></a>. The parameters of both can be used.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span> <span class="o">=</span> <span class="s2">"proton"</span><span class="p">,</span>
        <span class="n">momentum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-       <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;gaussslowext&quot;</span><span class="p">,</span>
+       <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"gaussslowext"</span><span class="p">,</span>
        <span class="n">sigmaX</span>  <span class="o">=</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
        <span class="n">sigmaY</span>  <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
        <span class="n">sigmaXp</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span>
@@ -1455,9 +1472,9 @@ and then <strong>adds</strong> to that the P-T correlation of <a class="referenc
 <p>This distribution first uses the parameters of <a class="reference internal" href="#beam-gauss-matrix"><span class="std std-ref">gaussmatrix</span></a> and then <strong>adds</strong> to that
 the P-T correlation of <a class="reference internal" href="#beam-slowext"><span class="std std-ref">slowext</span></a>. The parameters of both can be used.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span> <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
        <span class="n">energy</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-       <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;gaussmatrixslowext&quot;</span><span class="p">,</span>
+       <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"gaussmatrixslowext"</span><span class="p">,</span>
        <span class="n">sigma11</span> <span class="o">=</span> <span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="o">*</span><span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
        <span class="n">sigma22</span> <span class="o">=</span> <span class="mf">0.09</span><span class="o">*</span><span class="mf">0.005</span><span class="o">*</span><span class="mf">0.09</span><span class="o">*</span><span class="mf">0.005</span><span class="p">,</span>
        <span class="n">sigma33</span> <span class="o">=</span> <span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="o">*</span><span class="mf">0.002</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
@@ -1479,9 +1496,9 @@ the P-T correlation of <a class="reference internal" href="#beam-slowext"><span 
 <p>This distribution first uses the parameters of <a class="reference internal" href="#beam-gauss-twiss"><span class="std std-ref">gausstwiss</span></a> and then <strong>adds</strong> to that
 the P-T correlation of <a class="reference internal" href="#beam-slowext"><span class="std std-ref">slowext</span></a>. The parameters of both can be used.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;gausstwissslowext&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"gausstwissslowext"</span><span class="p">,</span>
       <span class="n">betx</span><span class="o">=</span><span class="mf">4.60000</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
       <span class="n">bety</span><span class="o">=</span><span class="mf">2.60000</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
       <span class="n">alfx</span><span class="o">=-</span><span class="mf">0.3083824</span><span class="p">,</span>
@@ -1535,12 +1552,12 @@ and gaussTwiss (parameter set 2) for y. They will have the same settings as (for
 only one betx can be specified.</p>
 </div>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">3500</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;composite&quot;</span><span class="p">,</span>
-      <span class="n">xDistrType</span><span class="o">=</span><span class="s2">&quot;eshell&quot;</span><span class="p">,</span>
-      <span class="n">yDistrType</span><span class="o">=</span><span class="s2">&quot;gausstwiss&quot;</span><span class="p">,</span>
-      <span class="n">zDistrType</span><span class="o">=</span><span class="s2">&quot;gausstwiss&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"composite"</span><span class="p">,</span>
+      <span class="n">xDistrType</span><span class="o">=</span><span class="s2">"eshell"</span><span class="p">,</span>
+      <span class="n">yDistrType</span><span class="o">=</span><span class="s2">"gausstwiss"</span><span class="p">,</span>
+      <span class="n">zDistrType</span><span class="o">=</span><span class="s2">"gausstwiss"</span><span class="p">,</span>
       <span class="n">betx</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
       <span class="n">bety</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
       <span class="n">alfx</span> <span class="o">=</span> <span class="mf">0.00001234</span><span class="p">,</span>
@@ -1602,11 +1619,11 @@ and box (parameter set 2) for y. They will have the same settings as (for exampl
 only one betx can be specified.</p>
 </div>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="n">MeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;compositespacedirectionenergy&quot;</span><span class="p">,</span>
-      <span class="n">spaceDistrType</span> <span class="o">=</span> <span class="s2">&quot;box&quot;</span><span class="p">,</span>
-      <span class="n">directionDistrType</span> <span class="o">=</span> <span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"compositespacedirectionenergy"</span><span class="p">,</span>
+      <span class="n">spaceDistrType</span> <span class="o">=</span> <span class="s2">"box"</span><span class="p">,</span>
+      <span class="n">directionDistrType</span> <span class="o">=</span> <span class="s2">"sphere"</span><span class="p">,</span>
       <span class="n">envelopeX</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
       <span class="n">envelopeY</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
       <span class="n">envelopeZ</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
@@ -1665,8 +1682,8 @@ is used and the default file matching is turned on. The executable option <cite>
 must therefore be used, or file length matching turned off.</p>
 </div>
 <p><strong>Normal Behaviour - No Looping</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;somedistributionhere...&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span><span class="o">=</span><span class="s2">&quot;somefile.dat&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">distrType</span><span class="o">=</span><span class="s2">"somedistributionhere..."</span><span class="p">,</span>
+      <span class="n">distrFile</span><span class="o">=</span><span class="s2">"somefile.dat"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The number of events will be generate as matches number of entries in the file.</p>
@@ -1680,8 +1697,8 @@ if the number requested is greater than the number in the file and looping is no
 on in the input GMAD beam definition.</p>
 <p><strong>Loop as Needed up to N Events</strong></p>
 <p>We must explicitly turn off file length matching and turn on looping.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;somedistributionhere...&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span><span class="o">=</span><span class="s2">&quot;somefile.dat&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">distrType</span><span class="o">=</span><span class="s2">"somedistributionhere..."</span><span class="p">,</span>
+      <span class="n">distrFile</span><span class="o">=</span><span class="s2">"somefile.dat"</span><span class="p">,</span>
       <span class="n">distrFileMatchLength</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
       <span class="n">distrFileLoop</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 
@@ -1702,8 +1719,8 @@ and may bias the final result.</p>
 for the physics so even with the same initial particles or coordinates, a different
 outcome will happen according to the physics processes. Therefore, it is useful to
 sometimes repeat the same distribution multiple times.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;somedistributionhere...&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span><span class="o">=</span><span class="s2">&quot;somefile.dat&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">distrType</span><span class="o">=</span><span class="s2">"somedistributionhere..."</span><span class="p">,</span>
+      <span class="n">distrFile</span><span class="o">=</span><span class="s2">"somefile.dat"</span><span class="p">,</span>
       <span class="n">distrFileLoopNTimes</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -1884,18 +1901,18 @@ not to be used in conjunction with “z”.</p></td>
 <p><strong>Time Units</strong>
 “s”, “ms”, “mus”, “us”, “ns”, “mm/c”, “nm/c”</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span>  <span class="o">=</span> <span class="s2">&quot;userfile&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span>  <span class="o">=</span> <span class="s2">&quot;Userbeamdata.dat&quot;</span><span class="p">,</span>
-      <span class="n">distrFileFormat</span> <span class="o">=</span> <span class="s2">&quot;x[mum]:xp[mrad]:y[mum]:yp[mrad]:z[cm]:E[MeV]&quot;</span><span class="p">;</span>
+      <span class="n">distrType</span>  <span class="o">=</span> <span class="s2">"userfile"</span><span class="p">,</span>
+      <span class="n">distrFile</span>  <span class="o">=</span> <span class="s2">"Userbeamdata.dat"</span><span class="p">,</span>
+      <span class="n">distrFileFormat</span> <span class="o">=</span> <span class="s2">"x[mum]:xp[mrad]:y[mum]:yp[mrad]:z[cm]:E[MeV]"</span><span class="p">;</span>
 
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span>  <span class="o">=</span> <span class="s2">&quot;userfile&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span>  <span class="o">=</span> <span class="s2">&quot;Userbeamdata.dat&quot;</span><span class="p">,</span>
-      <span class="n">distrFileFormat</span> <span class="o">=</span> <span class="s2">&quot;x[mum]:xp[mrad]:y[mum]:yp[mrad]:z[cm]:E[MeV]&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span>  <span class="o">=</span> <span class="s2">"userfile"</span><span class="p">,</span>
+      <span class="n">distrFile</span>  <span class="o">=</span> <span class="s2">"Userbeamdata.dat"</span><span class="p">,</span>
+      <span class="n">distrFileFormat</span> <span class="o">=</span> <span class="s2">"x[mum]:xp[mrad]:y[mum]:yp[mrad]:z[cm]:E[MeV]"</span><span class="p">,</span>
       <span class="n">distrMatchFileLength</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
       <span class="n">distrFileLoop</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">ngenerate</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
@@ -2079,27 +2096,27 @@ same thing.</p>
 <code class="code docutils literal notranslate"><span class="pre">distrType=&quot;eventgeneratorfile:hepmc2&quot;;</span></code>.</p>
 <p>Examples can be found in <cite>bdsim/examples/features/beam/eventgeneratorfile</cite>. Below are some
 examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;g4FTFP_BERT&quot;</span><span class="p">;</span>
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"g4FTFP_BERT"</span><span class="p">;</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mf">6.5</span><span class="o">*</span><span class="n">TeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;eventgeneratorfile:hepmc3&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span> <span class="o">=</span> <span class="s2">&quot;/Users/nevay/physics/lhcip1/sample1.dat&quot;</span><span class="p">;</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"eventgeneratorfile:hepmc3"</span><span class="p">,</span>
+      <span class="n">distrFile</span> <span class="o">=</span> <span class="s2">"/Users/nevay/physics/lhcip1/sample1.dat"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>For only forward particles:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mf">6.5</span><span class="o">*</span><span class="n">TeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;eventgeneratorfile:hepmc3&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span> <span class="o">=</span> <span class="s2">&quot;/Users/nevay/physics/lhcip1/sample1.dat&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"eventgeneratorfile:hepmc3"</span><span class="p">,</span>
+      <span class="n">distrFile</span> <span class="o">=</span> <span class="s2">"/Users/nevay/physics/lhcip1/sample1.dat"</span><span class="p">,</span>
       <span class="n">eventGeneratorMinZp</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>For only pions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span> <span class="o">=</span> <span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">energy</span> <span class="o">=</span> <span class="mf">6.5</span><span class="o">*</span><span class="n">TeV</span><span class="p">,</span>
-      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">&quot;eventgeneratorfile:hepmc3&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span> <span class="o">=</span> <span class="s2">&quot;/Users/nevay/physics/lhcip1/sample1.dat&quot;</span><span class="p">,</span>
-      <span class="n">eventGeneratorParticles</span><span class="o">=</span><span class="s2">&quot;111 211 -211&quot;</span><span class="p">;</span>
+      <span class="n">distrType</span> <span class="o">=</span> <span class="s2">"eventgeneratorfile:hepmc3"</span><span class="p">,</span>
+      <span class="n">distrFile</span> <span class="o">=</span> <span class="s2">"/Users/nevay/physics/lhcip1/sample1.dat"</span><span class="p">,</span>
+      <span class="n">eventGeneratorParticles</span><span class="o">=</span><span class="s2">"111 211 -211"</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -2148,20 +2165,20 @@ to generate more.</p></li>
 <li><p>Remember, a design particle must still be specified in the beam command for the magnets.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;bdsimsampler:d1_1&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span><span class="o">=</span><span class="s2">&quot;../../data/sample1.root&quot;</span><span class="p">;</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"bdsimsampler:d1_1"</span><span class="p">,</span>
+      <span class="n">distrFile</span><span class="o">=</span><span class="s2">"../../data/sample1.root"</span><span class="p">;</span>
 
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;bdsimsampler:d1_1&quot;</span><span class="p">,</span>
-      <span class="n">distrFile</span><span class="o">=</span><span class="s2">&quot;../../data/sample1.root&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"bdsimsampler:d1_1"</span><span class="p">,</span>
+      <span class="n">distrFile</span><span class="o">=</span><span class="s2">"../../data/sample1.root"</span><span class="p">,</span>
       <span class="n">eventGeneratorMinZp</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
       <span class="n">eventGeneratorMinEK</span><span class="o">=</span><span class="mf">1.5</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
       <span class="n">eventGeneratorMaxEK</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">TeV</span><span class="p">,</span>
-      <span class="n">eventGeneratorParticles</span><span class="o">=</span><span class="s2">&quot;111 211 -211 12 -12 proton&quot;</span><span class="p">;</span>
+      <span class="n">eventGeneratorParticles</span><span class="o">=</span><span class="s2">"111 211 -211 12 -12 proton"</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -2190,7 +2207,7 @@ majority of those in BDSIM are simple shortcuts to the Geant4 ones.</p>
 <p>There are 3 ways to specify physics lists in BDSIM:</p>
 <ol class="arabic">
 <li><p>BDSIM’s modular physics lists as described in <a class="reference internal" href="#physics-modular-physics-lists"><span class="std std-ref">Modular Physics Lists</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">&quot;em qgsp_bert&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">"em qgsp_bert"</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
@@ -2202,7 +2219,7 @@ to a Geant4 reference physics list using BDSIM’s modular approach as internall
 the same thing.</p>
 <ol class="arabic" start="2">
 <li><p>Geant4’s reference physics lists as described in <a class="reference internal" href="#physics-geant4-lists"><span class="std std-ref">Geant4 Reference Physics Lists</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">&quot;g4FTFP_BERT&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">"g4FTFP_BERT"</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
@@ -2215,13 +2232,13 @@ and pattern 2) as Geant4 reference physics lists.</p>
 <ol class="arabic" start="3">
 <li><p>A <em>complete</em> physics list. This is a custom solution for a particular application that is
 hard coded in BDSIM. These all start with ‘complete’. See <a class="reference internal" href="#physics-complete-lists"><span class="std std-ref">Complete Physics Lists</span></a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">&quot;completechannelling&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">"completechannelling"</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>For general high energy hadron physics it is recommended to use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">&quot;g4FTFP_BERT&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span> <span class="o">=</span> <span class="s2">"g4FTFP_BERT"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>For similar high-energy studies, but concerned with muons it is recommended to use a <a class="reference internal" href="#physics-macro-file"><span class="std std-ref">Physics Macro File</span></a>
@@ -2248,7 +2265,7 @@ by contacting the developers - see <a class="reference internal" href="support.h
 <p>Using the option <code class="code docutils literal notranslate"><span class="pre">geant4PhysicsMacroFileName</span></code> a macro file can be specified that will be executed
 and interpreted by Geant4 <strong>after</strong> the construction of the physics list but before the start of the run
 (in the INIT state). From <code class="code docutils literal notranslate"><span class="pre">examples/features/processes/macros/physics-em-geant4-macro.gmad</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">geant4PhysicsMacroFileName</span><span class="o">=</span><span class="s2">&quot;emextraphysics.mac&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">geant4PhysicsMacroFileName</span><span class="o">=</span><span class="s2">"emextraphysics.mac"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Inside this file, the following commands were used:</p>
@@ -2278,9 +2295,9 @@ are independent.</p>
 <li><p>The strings for the modular physics list are case-insensitive.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;em ftfp_bert&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"em ftfp_bert"</span><span class="p">;</span>
 
-<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;em_low decay ion hadron_elastic qgsp_bert em_extra;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"em_low decay ion hadron_elastic qgsp_bert em_extra;</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -2643,7 +2660,7 @@ See <a class="reference internal" href="#physics-process-options"><span class="s
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;em em_extra&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"em em_extra"</span><span class="p">,</span>
         <span class="n">useMuonNuclear</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">useGammaToMuMu</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -2751,23 +2768,23 @@ prefixed with “g4” in order to work in BDSIM.</p>
 <li><p>__SS</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;g4QBBC&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"g4QBBC"</span><span class="p">;</span>
 
-<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;g4QBBC_EMV&quot;</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"g4QBBC_EMV"</span><span class="p">;</span>
 
-<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;g4FTFP_BERT_PEN&quot;</span><span class="p">,</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"g4FTFP_BERT_PEN"</span><span class="p">,</span>
         <span class="n">g4PhysicsUseBDSIMCutsAndLimits</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This last example turns off the minimum kinetic energy and also the maximum step length
 limit which is by default 110% the length of the element. If bad tracking behaviour
 is experienced (stuck particles etc.) this should be considered.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;g4FTFP_BERT&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"g4FTFP_BERT"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This following example will enforce a minimum kinetic energy but also limit the maximum step length
 (consequently) to 110% the length of the component and provide more robust tracking.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;g4FTFP_BERT&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"g4FTFP_BERT"</span><span class="p">,</span>
         <span class="n">minimumKineticEnergy</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2820,10 +2837,10 @@ than v11.1, this will have no effect and the original Geant4 code must be patche
 </div>
 <p>This only has an effect when the FTFP hadronic model is used. i.e. with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! the complete reference physics list from Geant4 including em and decay etc.
-option, physicsList=&quot;g4FTFP_BERT&quot;;
+option, physicsList="g4FTFP_BERT";
 
 ! the modular hadronic only physics as turned on by BDSIM
-option, physicsList=&quot;ftfp_bert&quot;;
+option, physicsList="ftfp_bert";
 </pre></div>
 </div>
 <p>A comparison is shown below with this option on and off for a 7TeV proton incident on a 40cm
@@ -2891,14 +2908,14 @@ To simulate millicharged particles, the following options may be specified:</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;millie&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"millie"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
 <span class="n">option</span><span class="p">,</span> <span class="n">enableMillicharge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-      <span class="n">millichargeName</span><span class="o">=</span><span class="s2">&quot;millie&quot;</span><span class="p">,</span>
-      <span class="n">millichargeMass</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">millichargeCharge</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
-      <span class="n">millichargeID</span><span class="o">=</span><span class="mi">411000</span><span class="p">;</span>
+        <span class="n">millichargeName</span><span class="o">=</span><span class="s2">"millie"</span><span class="p">,</span>
+        <span class="n">millichargeMass</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
+        <span class="n">millichargeCharge</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+        <span class="n">millichargeID</span><span class="o">=</span><span class="mi">411000</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -2992,18 +3009,18 @@ with the desired physics list, or a complete Geant4 one such as
 <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">physicsList=&quot;g4FTFP_BERT&quot;;</span></code> to see all particles and processes.</p></li>
 </ul>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">biasDef1</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
-<span class="n">biasDef2</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;eBrem eIoni msc&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span> <span class="n">flag</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">};</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">biasDef1</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">biasDef2</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e+"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"eBrem eIoni msc"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span> <span class="n">flag</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">};</span>
 </pre></div>
 </div>
 <p>The process can also be attached to a specific element using the keywords <code class="code docutils literal notranslate"><span class="pre">biasVacuum</span></code> or
 <code class="code docutils literal notranslate"><span class="pre">biasMaterial</span></code> for the biasing to be attached the vacuum volume or everything outside the
 vacuum respectively. Alternatively the process can be attached to a specific logical volume of an element
 by using the keyword <code class="code docutils literal notranslate"><span class="pre">biasMaterialLV</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>q1: quadrupole, l=1*m, material=&quot;Iron&quot;, biasVacuum=&quot;biasDef1 biasDef2&quot;; ! uses the process biasDef1 and biasDef2
-q2: quadrupole, l=0.5*m, biasMaterial=&quot;biasDef2&quot;;
-q3: quadrupole, l=20*cm, k1=0.25, bias=&quot;biasDef1&quot;;
-q4: quadrupole, l=20*cm, k1=0.25, biasMaterialLV=&quot;container:biasDef1&quot;;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>q1: quadrupole, l=1*m, material="Iron", biasVacuum="biasDef1 biasDef2"; ! uses the process biasDef1 and biasDef2
+q2: quadrupole, l=0.5*m, biasMaterial="biasDef2";
+q3: quadrupole, l=20*cm, k1=0.25, bias="biasDef1";
+q4: quadrupole, l=20*cm, k1=0.25, biasMaterialLV="container:biasDef1";
 </pre></div>
 </div>
 <ul class="simple">
@@ -3063,9 +3080,9 @@ physical volumes and their corresponding importance values</p></td>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:shielding-world.gdml&quot;</span><span class="p">,</span>
-        <span class="n">importanceWorldGeometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:importance-cell-world.gdml&quot;</span><span class="p">,</span>
-        <span class="n">importanceVolumeMap</span><span class="o">=</span><span class="s2">&quot;importanceValues.dat&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">"gdml:shielding-world.gdml"</span><span class="p">,</span>
+        <span class="n">importanceWorldGeometryFile</span><span class="o">=</span><span class="s2">"gdml:importance-cell-world.gdml"</span><span class="p">,</span>
+        <span class="n">importanceVolumeMap</span><span class="o">=</span><span class="s2">"importanceValues.dat"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>An example of the world volume geometry (top), the importance sampling world geometry (middle), and
@@ -3328,17 +3345,17 @@ using the following syntax:</p>
 <p>Examples (of fictional options):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">numericalOption</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">numericalOption</span> <span class="o">=</span> <span class="mf">1.23e2</span><span class="p">;</span>
-<span class="n">option</span><span class="p">,</span> <span class="n">stringOption</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">stringOption</span> <span class="o">=</span> <span class="s2">"value"</span><span class="p">;</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">booleanOptionOn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">booleanOptionOff</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Multiple options can be defined at once separated by commans and new lines are tolerated. The declaration
 should end in a semi-colon. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">anOption</span> <span class="o">=</span> <span class="mi">123</span><span class="p">,</span> <span class="n">anotherOption</span> <span class="o">=</span> <span class="s2">&quot;bananas&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">anOption</span> <span class="o">=</span> <span class="mi">123</span><span class="p">,</span> <span class="n">anotherOption</span> <span class="o">=</span> <span class="s2">"bananas"</span><span class="p">;</span>
 
 <span class="n">option</span><span class="p">,</span> <span class="n">anOption</span> <span class="o">=</span> <span class="mi">123</span><span class="p">,</span>
-        <span class="n">anotherOption</span> <span class="o">=</span> <span class="s2">&quot;bananas&quot;</span><span class="p">;</span>
+        <span class="n">anotherOption</span> <span class="o">=</span> <span class="s2">"bananas"</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -3954,111 +3971,135 @@ material of components outside the vacuum by default</p></td>
 cut. Overwrites other production cuts unless these
 are explicitly set (default 1e-3) [m].</p></td>
 </tr>
-<tr class="row-even"><td><p>geant4PhysicsMacroFileName</p></td>
+<tr class="row-even"><td><p>extendPionDecayChannels</p></td>
+<td><p>Add the decay channels of pi+ -&gt; gamma, mu+, nu_mu
+and pi+ -&gt; e+, nu_e as well as the charge conjugate
+products for pi-. The branching ratios are 2e-4 and
+1.23e-4 as taken from the PDG. These are not normally
+included in the Geant4 decays of pions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>geant4PhysicsMacroFileName</p></td>
 <td><p>The name of a text macro file with commands that are
 suitable for the Geant4 interpreter that will be
 executed after the physics list is constructed but
 before a run.</p></td>
 </tr>
-<tr class="row-odd"><td><p>g4PhysicsUseBDSIMCutsAndLimits</p></td>
+<tr class="row-even"><td><p>g4PhysicsUseBDSIMCutsAndLimits</p></td>
 <td><p>If on, the maximum step length will be limited to
 110% of the component length - this makes the
 tracking more robust and is the default with a
 regular BDSIM physics list. The minimum kinetic
 option is also obeyed. Default off.</p></td>
 </tr>
-<tr class="row-even"><td><p>g4PhysicsUseBDSIMRangeCuts</p></td>
+<tr class="row-odd"><td><p>g4PhysicsUseBDSIMRangeCuts</p></td>
 <td><p>If on, this will apply the BDSIM range cut lengths
 to the Geant4 physics list used. This is off by
 default.</p></td>
 </tr>
-<tr class="row-odd"><td><p>minimumKineticEnergy</p></td>
+<tr class="row-even"><td><p>maximumPhotonsPerStep</p></td>
+<td><p>For the <cite>cherenkov</cite> modular physics list, this is the
+maximum integer number of photons produced in one
+step of the generating particle. Not used if -1. The
+default in Geant4 is 100 if not set here. 0 is
+technically allowed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>maximumBetaChangePerStep</p></td>
+<td><p>The maximum allowed change in Lorentz beta per step
+for the <cite>cherenkov</cite> physics process when used in the
+<cite>cherenkov</cite> modular physics list. A percentage, e.g.
+5.0 would be 5%. Default in Geant4 is 10%.</p></td>
+</tr>
+<tr class="row-even"><td><p>minimumKineticEnergy</p></td>
 <td><p>A particle below this energy will be killed and the
 energy deposition recorded at that location. [GeV]
 See also, <cite>particlesToExcludeFromCuts</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p>minimumKineticEnergyTunnel</p></td>
+<tr class="row-odd"><td><p>minimumKineticEnergyTunnel</p></td>
 <td><p>A particle below this energy in any BDSIM-generated
 tunnel sections will be killed and the energy
 deposition recorded at that location [GeV]</p></td>
 </tr>
-<tr class="row-odd"><td><p>minimumRange</p></td>
+<tr class="row-even"><td><p>minimumRange</p></td>
 <td><p>A particle that would not travel this range
 (a distance) in the current material will be cut [m]</p></td>
 </tr>
-<tr class="row-even"><td><p>muonSplittingFactor</p></td>
+<tr class="row-odd"><td><p>muonSplittingFactor</p></td>
 <td><p>An integer of 1 or greater. Number of muons to split
 a muon into (biasing) for select processes. See
 physics biasing for an explanation. 1 = no effect.
 1-206 (depends on Geant4) is acceptable.</p></td>
 </tr>
-<tr class="row-odd"><td><p>neutronTimeLimit</p></td>
+<tr class="row-even"><td><p>neutronTimeLimit</p></td>
 <td><p>Maximum allowed tracking time for a neutron when
 using the <cite>neutron_tracking_cut</cite> physics list [s]</p></td>
 </tr>
-<tr class="row-even"><td><p>neutronKineticEnergyLimit</p></td>
+<tr class="row-odd"><td><p>neutronKineticEnergyLimit</p></td>
 <td><p>Minimum allowed energy for neutrons when using the
 <cite>neutron_tracking_cut</cite> physics list [GeV]</p></td>
 </tr>
-<tr class="row-odd"><td><p>particlesToExcludeFromCuts</p></td>
+<tr class="row-even"><td><p>particlesToExcludeFromCuts</p></td>
 <td><p>A white space separated string containing PDG IDs for
 particles to be excluded from <cite>minimumKineticEnergy</cite>,
 <cite>minimumRange</cite>, <cite>maximumTrackingTime</cite>, and
 <cite>maximumTrackLength</cite>. e.g. <cite>“13 -13”</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p>physicsEnergyLimitLow</p></td>
+<tr class="row-odd"><td><p>physicsEnergyLimitLow</p></td>
 <td><p>Optional lower energy level for all physics models.
 This is usually 990 eV by default in Geant4. The user
 may change this if required. Warning, this must
 be used only if the user understands how this will
 affect the running of Geant4. [GeV]</p></td>
 </tr>
-<tr class="row-odd"><td><p>physicsEnergyLimitHigh (*)</p></td>
+<tr class="row-even"><td><p>physicsEnergyLimitHigh (*)</p></td>
 <td><p>Optional upper energy level for all physics models.
 This is usually 100 TeV by default in Geant4. The
 user may change this if required. Warning, this must
 be used only if the user understands how this will
 affect the running of Geant4. [GeV]</p></td>
 </tr>
-<tr class="row-even"><td><p>physicsList</p></td>
+<tr class="row-odd"><td><p>physicsList</p></td>
 <td><p>Which physics lists to use - default tracking only</p></td>
 </tr>
-<tr class="row-odd"><td><p>physicsVerbose</p></td>
+<tr class="row-even"><td><p>physicsVerbose</p></td>
 <td><p>Prints out all processes linked to primary particle
 and all physics processes registered in general</p></td>
 </tr>
-<tr class="row-even"><td><p>physicsVerbosity</p></td>
+<tr class="row-odd"><td><p>physicsVerbosity</p></td>
 <td><p>Set the physics verbosity for Geant4 (0,1,2).</p></td>
 </tr>
-<tr class="row-odd"><td><p>prodCutPhotons</p></td>
+<tr class="row-even"><td><p>prodCutPhotons</p></td>
 <td><p>Standard overall production cuts for photons
 (default 1e-3) [m]</p></td>
 </tr>
-<tr class="row-even"><td><p>prodCutElectrons</p></td>
+<tr class="row-odd"><td><p>prodCutElectrons</p></td>
 <td><p>Standard overall production cuts for electrons
 (default 1e-3) [m]</p></td>
 </tr>
-<tr class="row-odd"><td><p>prodCutPositrons</p></td>
+<tr class="row-even"><td><p>prodCutPositrons</p></td>
 <td><p>Standard overall production cuts for positrons
 (default 1e-3) [m]</p></td>
 </tr>
-<tr class="row-even"><td><p>prodCutProtons</p></td>
+<tr class="row-odd"><td><p>prodCutProtons</p></td>
 <td><p>Standard overall production cuts for protons
 (default 1e-3) [m]</p></td>
 </tr>
-<tr class="row-odd"><td><p>restoreFTPFDiffractionForAGreater10</p></td>
+<tr class="row-even"><td><p>restoreFTPFDiffractionForAGreater10</p></td>
 <td><p>Turn back on diffractive outcomes of hadronic
 models. Default is <strong>on</strong>.</p></td>
 </tr>
-<tr class="row-even"><td><p>stopSecondaries</p></td>
+<tr class="row-odd"><td><p>stopSecondaries</p></td>
 <td><p>Whether to stop secondaries or not (default = false)</p></td>
 </tr>
-<tr class="row-odd"><td><p>synchRadOn</p></td>
+<tr class="row-even"><td><p>synchRadOn</p></td>
 <td><p>Whether to use synchrotron radiation processes</p></td>
 </tr>
-<tr class="row-even"><td><p>tunnelIsInfiniteAbsorber</p></td>
+<tr class="row-odd"><td><p>tunnelIsInfiniteAbsorber</p></td>
 <td><p>Whether all particles entering the tunnel material
 should be killed or not (default = false)</p></td>
+</tr>
+<tr class="row-even"><td><p>turnOffMuonDecay</p></td>
+<td><p>Makes both charge of muons artificially stable so
+they won’t decay.</p></td>
 </tr>
 <tr class="row-odd"><td><p>turnOnCerenkov</p></td>
 <td><p>Whether to produce Cherenkov radiation</p></td>
@@ -5139,7 +5180,7 @@ for coordinate transforms (cylinders).</p>
 A branch in the Event output will be created with the name of the <cite>samplerplacement</cite>. The
 user may define an arbitrary number of <cite>samplerplacement</cite> s.  A <cite>samplerplacement</cite> is defined
 with the following syntax:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">&quot;d1&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">"d1"</span><span class="p">,</span>
                       <span class="n">referenceElementNumber</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                       <span class="n">x</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>
@@ -5213,7 +5254,7 @@ and vertical respectively.</p></li>
 </ul>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
-                      <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">,</span>
+                      <span class="n">shape</span><span class="o">=</span><span class="s2">"rectangular"</span><span class="p">,</span>
                       <span class="n">aper1</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -5271,9 +5312,9 @@ is aligned with Cartesian <cite>z</cite>. In both cases, the default is to make 
 </table>
 <p>This only responds to <cite>sweepAnglePhi</cite> and it spread out symmetrically from the forward direction.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s3</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">&quot;cylinder&quot;</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
-<span class="n">s4</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">&quot;cylinder&quot;</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">startAnglePhi</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="n">sweepAnglePhi</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
-<span class="n">s5</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">&quot;cylinderforward&quot;</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">sweepAnglePhi</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s3</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">"cylinder"</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<span class="n">s4</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">"cylinder"</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">startAnglePhi</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="n">sweepAnglePhi</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">s5</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">"cylinderforward"</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">sweepAnglePhi</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -5282,8 +5323,10 @@ is aligned with Cartesian <cite>z</cite>. In both cases, the default is to make 
 </section>
 <section id="sphere-shape">
 <h4>Sphere Shape<a class="headerlink" href="#sphere-shape" title="Link to this heading"></a></h4>
-<p>There are two types of spherical sampler: a <cite>sphere</cite> and <cite>sphereforward</cite>. The later
-is orientated more conveniently so Cartesian <cite>z</cite> is by default aligned with <cite>phi</cite> = 0
+<p>There are two types of spherical sampler: a <cite>sphere</cite> and <cite>sphereforward</cite>. <cite>sphere</cite>
+is orientated with the pole of the sphere aligned with the local <cite>y</cite> axis. <cite>sphereforward</cite>
+rotates this forward (rotated about local <cite>x</cite> axis) so that the pole is aligned with
+local <cite>z</cite>. This is provided so Cartesian <cite>z</cite> is by default aligned with <cite>phi</cite> = 0
 and <cite>theta</cite> = 0. In both cases, the default is to make a complete sphere. Optionally,
 parameters can be specified to reduce this to a fraction of that.</p>
 <p>Geometry parameters for <code class="code docutils literal notranslate"><span class="pre">samplerType=&quot;sphere&quot;</span></code>:</p>
@@ -5332,11 +5375,11 @@ parameters can be specified to reduce this to a fraction of that.</p>
 </table>
 <p>This only responds to <cite>sweepAnglePhi</cite> and it spread out symmetrically from the forward direction.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s6</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
-<span class="n">s7</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s6</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">"sphere"</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+<span class="n">s7</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">"sphere"</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">startAnglePhi</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="n">sweepAnglePhi</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
                                   <span class="n">startAngleTheta</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="n">sweepAngleTheta</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
-<span class="n">s8</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">&quot;sphereforward&quot;</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+<span class="n">s8</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">samplerType</span><span class="o">=</span><span class="s2">"sphereforward"</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">sweepAnglePhi</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">sweepAngleTheta</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -5472,7 +5515,7 @@ range from <span class="math notranslate nohighlight">\((0 \to \pi]\)</span>.</p
 <section id="examples">
 <h4>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h4>
 <p>The following are examples of <cite>samplerplacement</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">&quot;d1&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">"d1"</span><span class="p">,</span>
                       <span class="n">referenceElementNumber</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                       <span class="n">x</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>
@@ -5486,7 +5529,7 @@ centre of the beam line element rotation) by an angle of <span class="math notra
 be circular (by default) with a radius of 10 cm.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span><span class="p">:</span> <span class="n">samplerplacement</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">30.123</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
                       <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">angle</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>
-                      <span class="n">aper1</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">;</span>
+                      <span class="n">aper1</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s2">"rectangular"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This will place a sampler called “s2” in global Cartesian coordinates approximately 30 m
@@ -5534,10 +5577,10 @@ scoring mesh in a parallel world.</p>
 <li><p>A <a class="reference internal" href="#scoring-mesh"><span class="std std-ref">Scorer Mesh</span></a> to define the 3D grid and histogram where information is recorded.</p></li>
 </ol>
 <p>e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">allParticleDose</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;depositeddose&quot;</span><span class="p">;</span>
-<span class="n">collimatorDose</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;allParticleDose&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">allParticleDose</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"depositeddose"</span><span class="p">;</span>
+<span class="n">collimatorDose</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"allParticleDose"</span><span class="p">,</span>
                 <span class="n">nx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">50</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">50</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
-                <span class="n">referenceElement</span><span class="o">=</span><span class="s2">&quot;col1&quot;</span><span class="p">;</span>
+                <span class="n">referenceElement</span><span class="o">=</span><span class="s2">"col1"</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -5624,13 +5667,13 @@ included in scoring (GeV)</p></td>
 </tr>
 <tr class="row-odd"><td><p>minimumTime</p></td>
 <td><p>No</p></td>
-<td><p>Minimum time coordinate of particles to be
-included in scoring (s)</p></td>
+<td><p>Minimum time (global) coordinate of particles
+to be included in scoring (s)</p></td>
 </tr>
 <tr class="row-even"><td><p>maximumTime</p></td>
 <td><p>No</p></td>
-<td><p>Maximum time coordinate of particles to be
-included in scoring (s)</p></td>
+<td><p>Maximum time (global) coordinate of particles
+to be included in scoring (s)</p></td>
 </tr>
 <tr class="row-odd"><td><p>conversionFactorFile</p></td>
 <td><p>No</p></td>
@@ -5828,83 +5871,88 @@ example parameter and value pairs. The following parameters may be specified.</p
 <td><p>Yes</p></td>
 <td><p>Full width in local z dimension (m)</p></td>
 </tr>
-<tr class="row-odd"><td><p>rsize</p></td>
-<td><p>Yes(*)</p></td>
-<td><p>Full width in local r dimension (m)</p></td>
+<tr class="row-odd"><td><p>rInner</p></td>
+<td><p>No(*)</p></td>
+<td><p>Inner radius for cylindrical mesh (m)
+Default: 0.</p></td>
 </tr>
-<tr class="row-even"><td><p>eScale</p></td>
+<tr class="row-even"><td><p>rOuter</p></td>
+<td><p>Yes(*)</p></td>
+<td><p>Outer radius for cylindrical mesh (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>eScale</p></td>
 <td><p>Yes(**)</p></td>
 <td><p>Energy axis scoring type (linear, log, user)</p></td>
 </tr>
-<tr class="row-odd"><td><p>eLow</p></td>
+<tr class="row-even"><td><p>eLow</p></td>
 <td><p>Yes(**)</p></td>
 <td><p>Low limit value for the energy axis binning</p></td>
 </tr>
-<tr class="row-even"><td><p>eHigh</p></td>
+<tr class="row-odd"><td><p>eHigh</p></td>
 <td><p>Yes(**)</p></td>
 <td><p>High limit value for the energy axis binning</p></td>
 </tr>
-<tr class="row-odd"><td><p>eBinsEdgesFilenamePath</p></td>
+<tr class="row-even"><td><p>eBinsEdgesFilenamePath</p></td>
 <td><p>Yes(**)</p></td>
 <td><p>Path to the energy bin edges .txt file(***)</p></td>
 </tr>
-<tr class="row-even"><td><p>referenceElement</p></td>
+<tr class="row-odd"><td><p>referenceElement</p></td>
 <td><p>No</p></td>
 <td><p>Name of beam line element to place with
 respect to</p></td>
 </tr>
-<tr class="row-odd"><td><p>referenceElementNumber</p></td>
+<tr class="row-even"><td><p>referenceElementNumber</p></td>
 <td><p>No</p></td>
 <td><p>Occurrence of <cite>referenceElement</cite> to place
 with respect to if it used more than once in
 sequence - zero counting</p></td>
 </tr>
-<tr class="row-even"><td><p>s</p></td>
+<tr class="row-odd"><td><p>s</p></td>
 <td><p>No</p></td>
 <td><p>curvilinear s coordinate (global | local
 depending on parameters used</p></td>
 </tr>
-<tr class="row-odd"><td><p>x</p></td>
+<tr class="row-even"><td><p>x</p></td>
 <td><p>No</p></td>
 <td><p>Offset in (global or local) x</p></td>
 </tr>
-<tr class="row-even"><td><p>y</p></td>
+<tr class="row-odd"><td><p>y</p></td>
 <td><p>No</p></td>
 <td><p>Offset in (global or local) y</p></td>
 </tr>
-<tr class="row-odd"><td><p>z</p></td>
+<tr class="row-even"><td><p>z</p></td>
 <td><p>No</p></td>
 <td><p>Offset in global z</p></td>
 </tr>
-<tr class="row-even"><td><p>phi</p></td>
+<tr class="row-odd"><td><p>phi</p></td>
 <td><p>No</p></td>
 <td><p>Euler angle phi for rotation</p></td>
 </tr>
-<tr class="row-odd"><td><p>theta</p></td>
+<tr class="row-even"><td><p>theta</p></td>
 <td><p>No</p></td>
 <td><p>Euler angle theta for rotation</p></td>
 </tr>
-<tr class="row-even"><td><p>psi</p></td>
+<tr class="row-odd"><td><p>psi</p></td>
 <td><p>No</p></td>
 <td><p>Euler angle psi for rotation</p></td>
 </tr>
-<tr class="row-odd"><td><p>axisX</p></td>
+<tr class="row-even"><td><p>axisX</p></td>
 <td><p>No</p></td>
 <td><p>Axis angle rotation x-component of unit vector</p></td>
 </tr>
-<tr class="row-even"><td><p>axisY</p></td>
+<tr class="row-odd"><td><p>axisY</p></td>
 <td><p>No</p></td>
 <td><p>Axis angle rotation y-component of unit vector</p></td>
 </tr>
-<tr class="row-odd"><td><p>axisZ</p></td>
+<tr class="row-even"><td><p>axisZ</p></td>
 <td><p>No</p></td>
 <td><p>Axis angle rotation z-component of unit vector</p></td>
 </tr>
-<tr class="row-even"><td><p>angle</p></td>
+<tr class="row-odd"><td><p>angle</p></td>
 <td><p>No</p></td>
 <td><p>Axis angle, angle to rotate about unit vector</p></td>
 </tr>
-<tr class="row-odd"><td><p>axisAngle</p></td>
+<tr class="row-even"><td><p>axisAngle</p></td>
 <td><p>No</p></td>
 <td><p>Boolean whether to use the axis angle rotation
 scheme (default false)</p></td>
@@ -5939,28 +5987,28 @@ inside the string.</p></li>
 <li><p>Examples can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/scoring</span></code>.</p></li>
 </ul>
 <p>Example 1:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neutronPopulation</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">particleName</span><span class="o">=</span><span class="s2">&quot;neutron&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neutronPopulation</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"population"</span><span class="p">,</span> <span class="n">particleName</span><span class="o">=</span><span class="s2">"neutron"</span><span class="p">;</span>
 
 <span class="n">meshAir</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-                     <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;neutronPopulation&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">20.75</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+                     <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"neutronPopulation"</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">20.75</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This defines a scoring mesh that counts the population of neutrons in a 40 x 20 x 20 cm mesh
 with 40 x 20 x 20 cells (so each cell is 1 x 1 x 1 cm) that is aligned to global Cartesian
 x, y, z and displaced in z by 20.75 m.</p>
 <p>Example 2:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neutronPopulation</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">particleName</span><span class="o">=</span><span class="s2">&quot;neutron&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neutronPopulation</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"population"</span><span class="p">,</span> <span class="n">particleName</span><span class="o">=</span><span class="s2">"neutron"</span><span class="p">;</span>
 
-<span class="n">protonAmbient</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cellfluxscaledperparticle&quot;</span><span class="p">,</span>
-                       <span class="n">particleName</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<span class="n">protonAmbient</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"cellfluxscaledperparticle"</span><span class="p">,</span>
+                       <span class="n">particleName</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span>
                        <span class="n">minimumKineticEnergy</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">MeV</span><span class="p">,</span>
                        <span class="n">maximumKineticEnergy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
                        <span class="n">minimumTime</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
                        <span class="n">maximumTime</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span>
-                       <span class="n">conversionFactorFile</span><span class="o">=</span><span class="s2">&quot;h10protons.txt&quot;</span><span class="p">;</span>
+                       <span class="n">conversionFactorFile</span><span class="o">=</span><span class="s2">"h10protons.txt"</span><span class="p">;</span>
 
 <span class="n">meshAir</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-                     <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;neutronPopulation protonAmbient&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">20.75</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+                     <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"neutronPopulation protonAmbient"</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">20.75</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>In this example, a similar mesh as Example 1 is used, but two 3D histograms are made. One for
@@ -5968,27 +6016,32 @@ the neutron population and one for the ambient dose (using the “h10protons.txt
 file) for protons between 20 MeV and 1 GeV in kinetic energy and that exist between 0 s
 (the start of the simulation) and 1 s in time of flight.</p>
 <p>Example 3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neutron_flux_4D</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cellflux4d&quot;</span><span class="p">,</span>
-                       <span class="n">particleName</span><span class="o">=</span><span class="s2">&quot;neutron&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neutron_flux_4D</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"cellflux4d"</span><span class="p">,</span>
+                       <span class="n">particleName</span><span class="o">=</span><span class="s2">"neutron"</span><span class="p">;</span>
 
-<span class="n">meshAir_4D_linear</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ne</span><span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">eScale</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+<span class="n">meshAir_4D_linear</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ne</span><span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                   <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">eScale</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">,</span>
                    <span class="n">eLow</span><span class="o">=</span><span class="mf">1e-12</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span><span class="n">eHigh</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-                   <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;neutron_flux_4D&quot;</span><span class="p">,</span>
+                   <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"neutron_flux_4D"</span><span class="p">,</span>
                    <span class="n">z</span><span class="o">=</span><span class="mf">20.75</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 
-<span class="n">meshAir_4D_log</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ne</span><span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">eScale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">,</span>
+<span class="n">meshAir_4D_log</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ne</span><span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">eScale</span><span class="o">=</span><span class="s2">"log"</span><span class="p">,</span>
                 <span class="n">eLow</span><span class="o">=</span><span class="mf">1e-3</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span><span class="n">eHigh</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-                <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;neutron_flux_4D&quot;</span><span class="p">,</span>
+                <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"neutron_flux_4D"</span><span class="p">,</span>
                 <span class="n">z</span><span class="o">=</span><span class="mf">20.75</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 
-<span class="n">meshAir_4d_variable</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">eScale</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
-                     <span class="n">eBinsEdgesFilenamePath</span><span class="o">=</span><span class="s2">&quot;./eBins.txt&quot;</span><span class="p">,</span>
-                     <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;neutron_flux_4D&quot;</span><span class="p">,</span>
+<span class="n">meshAir_4d_variable</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+                     <span class="n">ysize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">eScale</span><span class="o">=</span><span class="s2">"user"</span><span class="p">,</span>
+                     <span class="n">eBinsEdgesFilenamePath</span><span class="o">=</span><span class="s2">"./eBins.txt"</span><span class="p">,</span>
+                     <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"neutron_flux_4D"</span><span class="p">,</span>
                      <span class="n">z</span><span class="o">=</span><span class="mf">20.75</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>In this example, three 4D meshes similar to the mesh of the Example 1 are used with each of them using a different scaling type for the energy axis.
-They respectively use the “linear”, “log” and “user” type. The file “eBins.txt” is required by the “user” scaling type for the energy bin edges definition.</p>
+<p>In this example, three 4D meshes similar to the mesh of the Example 1 are used with each
+of them using a different scaling type for the energy axis. They respectively use the “linear”,
+“log” and “user” type. The file “eBins.txt” is required by the “user” scaling type for the energy
+bin edges definition.</p>
 <p>Column of the eBins.txt file is:</p>
 <ol class="arabic simple">
 <li><p>Kinetic energy in <strong>GeV</strong></p></li>
@@ -6001,6 +6054,17 @@ They respectively use the “linear”, “log” and “user” type. The file 
 <span class="mf">1.0</span>
 </pre></div>
 </div>
+<p>Example 4:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edep</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"despoitedenergy"</span><span class="p">;</span>
+
+<span class="n">core</span><span class="p">:</span> <span class="n">scorermesh</span><span class="p">,</span> <span class="n">geometryType</span><span class="o">=</span><span class="s2">"cylindrical"</span><span class="p">,</span> <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"edep"</span><span class="p">,</span>
+                  <span class="n">nr</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nphi</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                  <span class="n">rInner</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">rOuter</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">zsize</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In this example, a 3D cylindrical mesh is used that has 20 radial bins starting from a radius
+of 10 cm out to a radius of 20 cm (so 0.5 cm radial bins). There bins along z of 1 cm long and
+there are 10 bins around the axis over <span class="math notranslate nohighlight">\(2 pi\)</span>.</p>
 </section>
 <section id="visualising-a-scoring-mesh">
 <h3>Visualising a Scoring Mesh<a class="headerlink" href="#visualising-a-scoring-mesh" title="Link to this heading"></a></h3>
@@ -6096,7 +6160,7 @@ energy deposition of a particle showering in a material will be different.</p>
 where 1, 2, 3 are the PDG IDs of the particles to be excluded separated by white space in a string.
 For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">minimumKineticEnergy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-        <span class="n">particlesToExcludeFromCuts</span><span class="o">=</span><span class="s2">&quot;13 -13&quot;</span><span class="p">;</span>
+        <span class="n">particlesToExcludeFromCuts</span><span class="o">=</span><span class="s2">"13 -13"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This will remove all particles below 1 GeV kinetic energy apart from muons (both charges) which will
@@ -6226,8 +6290,8 @@ result may not entirely match that if using the <cite>bdsimmatrix</cite> set due
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

@@ -31,11 +31,12 @@ var searchData=
   ['published_3c_20modulator_20_3e_28',['Published&lt; Modulator &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
   ['published_3c_20newcolour_20_3e_29',['Published&lt; NewColour &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
   ['published_3c_20optionsbase_20_3e_30',['Published&lt; OptionsBase &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
-  ['published_3c_20placement_20_3e_31',['Published&lt; Placement &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
-  ['published_3c_20query_20_3e_32',['Published&lt; Query &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
-  ['published_3c_20region_20_3e_33',['Published&lt; Region &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
-  ['published_3c_20samplerplacement_20_3e_34',['Published&lt; SamplerPlacement &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
-  ['published_3c_20scorer_20_3e_35',['Published&lt; Scorer &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
-  ['published_3c_20scorermesh_20_3e_36',['Published&lt; ScorerMesh &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
-  ['published_3c_20tunnel_20_3e_37',['Published&lt; Tunnel &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]]
+  ['published_3c_20physicsbiasing_20_3e_31',['Published&lt; PhysicsBiasing &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
+  ['published_3c_20placement_20_3e_32',['Published&lt; Placement &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
+  ['published_3c_20query_20_3e_33',['Published&lt; Query &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
+  ['published_3c_20region_20_3e_34',['Published&lt; Region &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
+  ['published_3c_20samplerplacement_20_3e_35',['Published&lt; SamplerPlacement &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
+  ['published_3c_20scorer_20_3e_36',['Published&lt; Scorer &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
+  ['published_3c_20scorermesh_20_3e_37',['Published&lt; ScorerMesh &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]],
+  ['published_3c_20tunnel_20_3e_38',['Published&lt; Tunnel &gt;',['../classGMAD_1_1Published.html',1,'GMAD']]]
 ];

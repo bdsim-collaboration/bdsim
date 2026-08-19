@@ -11,7 +11,7 @@ var searchData=
   ['zerostrengthdipole_8',['ZeroStrengthDipole',['../namespaceBDS.html#a0faf9c6bf5c86f8d98d64942e4d64122',1,'BDS']]],
   ['zfromarraycoords_9',['ZFromArrayCoords',['../classBDSArray4DCoords.html#ae5ab52e6d63941263b3cec79214b450b',1,'BDSArray4DCoords']]],
   ['zfromt_10',['zFromT',['../classGMAD_1_1BeamBase.html#a971db438c84bc038ce2f9b81ec138caf',1,'GMAD::BeamBase']]],
-  ['zmax_11',['zmax',['../classBDSArray4DCoords.html#a72ecedb896689a58c84ad2914f8c4776',1,'BDSArray4DCoords::zMax'],['../classGMAD_1_1Query.html#a5cd4023d20fba6d1aaaf641a30e592e2',1,'GMAD::Query::zmax'],['../classBDSGeometryFactoryBase.html#adfd6d93fb6df01e42f22910cfa15f4a1',1,'BDSGeometryFactoryBase::zmax']]],
+  ['zmax_11',['zmax',['../classBDSGeometryFactoryBase.html#adfd6d93fb6df01e42f22910cfa15f4a1',1,'BDSGeometryFactoryBase::zmax'],['../classBDSArray4DCoords.html#a72ecedb896689a58c84ad2914f8c4776',1,'BDSArray4DCoords::zMax'],['../classGMAD_1_1Query.html#a5cd4023d20fba6d1aaaf641a30e592e2',1,'GMAD::Query::zmax']]],
   ['zmin_12',['zmin',['../classBDSArray4DCoords.html#a9968ae397bb50e264bfde6a686921072',1,'BDSArray4DCoords::zMin'],['../classBDSGeometryFactoryBase.html#abf09d7b9d136664b3d05ad5c2e32c18c',1,'BDSGeometryFactoryBase::zmin'],['../classGMAD_1_1Query.html#a23b1d974f696aced5c1eb204f73ba1aa',1,'GMAD::Query::zmin']]],
   ['zneg_13',['ZNeg',['../classBDSExtent.html#af651cd30218d35eb618fced02972a6e4',1,'BDSExtent']]],
   ['znegglobal_14',['ZNegGlobal',['../classBDSExtentGlobal.html#acd829e816e8df61ec1d70ed7c120e46a',1,'BDSExtentGlobal']]],

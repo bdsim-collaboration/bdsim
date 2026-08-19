@@ -45,6 +45,7 @@ var searchData=
   ['tstep_42',['TStep',['../classBDSArray4DCoords.html#ad7831254a6106e2e3a9746c20d6e6d54',1,'BDSArray4DCoords']]],
   ['tunnel_43',['Tunnel',['../classGMAD_1_1Tunnel.html#ab3472a34f430de4819c12134f818e25f',1,'GMAD::Tunnel']]],
   ['tunnelbeamline_44',['TunnelBeamline',['../classBDSAcceleratorModel.html#a6707c0415f942cc60dbdd71efca2316a',1,'BDSAcceleratorModel']]],
-  ['type_45',['Type',['../classBDSSamplerPlacementRecord.html#a1603bca65d018e68687a8f3656a1cc35',1,'BDSSamplerPlacementRecord']]],
-  ['typestr_46',['typestr',['../namespaceGMAD.html#acb4c2aad7803238ed0f5ea2bbe1c2bf5',1,'GMAD']]]
+  ['turnoffmuondecay_45',['TurnOffMuonDecay',['../namespaceBDS.html#a9405cb2956652ede1f053caffb0b3c15',1,'BDS']]],
+  ['type_46',['Type',['../classBDSSamplerPlacementRecord.html#a1603bca65d018e68687a8f3656a1cc35',1,'BDSSamplerPlacementRecord']]],
+  ['typestr_47',['typestr',['../namespaceGMAD.html#acb4c2aad7803238ed0f5ea2bbe1c2bf5',1,'GMAD']]]
 ];

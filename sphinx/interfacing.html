@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interfacing &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -126,7 +126,7 @@ to create a C++ application using BDSIM.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cmake_minimum_required (VERSION 3.2)
 project (externalcpp)
 
-# point cmake to my own custom installation directory that&#39;s not a system dir
+# point cmake to my own custom installation directory that's not a system dir
 # this is where BDSIMConfig.cmake exists
 set(CMAKE_PREFIX_PATH /Users/nevay/physics/reps/bdsim-develop-install/lib/cmake/bdsim)
 
@@ -142,7 +142,7 @@ target_link_libraries(customprogram ${BDSIM_LIBRARIES})
 </pre></div>
 </div>
 <p>Along with this is a single C++ file called customprogram.cc. Below are the contents of this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &quot;BDSIMClass.hh&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include "BDSIMClass.hh"
 
 #include &lt;iostream&gt;
 
@@ -150,9 +150,9 @@ int main(int argc, char** argv)
 {
   BDSIM* bds = new BDSIM(argc, argv);
   if (!bds-&gt;Initialised())
-    {std::cout &lt;&lt; &quot;Intialisation failed&quot; &lt;&lt; std::endl; return 1;}
+    {std::cout &lt;&lt; "Intialisation failed" &lt;&lt; std::endl; return 1;}
 
-  std::cout &lt;&lt; &quot;Custom stuff here&quot; &lt;&lt; std::endl;
+  std::cout &lt;&lt; "Custom stuff here" &lt;&lt; std::endl;
 
   bds-&gt;BeamOn();
   delete bds;
@@ -252,7 +252,7 @@ for any other element may be used. These are defined in <code class="code docuti
 parameters may be supplied via the element member string “userParameters”. This should
 be a string with space delimited parameter value sets where each parameter and value are
 separated by a colon. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">userParameters</span><span class="o">=</span><span class="s2">&quot;variable1:0.4 variable2:bananas&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">userParameters</span><span class="o">=</span><span class="s2">"variable1:0.4 variable2:bananas"</span>
 </pre></div>
 </div>
 <p>The utility function <code class="code docutils literal notranslate"><span class="pre">BDS::GetUserParametersMap</span></code> from
@@ -321,8 +321,8 @@ this, we can make a wrapper program for bdsim and ‘register’ the desired phy
 class to an instance of BDSIM, i.e. <code class="code docutils literal notranslate"><span class="pre">BDSIMClass</span></code>.</p>
 <p>An example is given in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/interfaces/userphysicslist</span></code>.</p>
 <p>The contents of the main program are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &quot;BDSIMClass.hh&quot; // bdsim interface
-#include &quot;SimplePhysics.hh&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include "BDSIMClass.hh" // bdsim interface
+#include "SimplePhysics.hh"
 #include &lt;iostream&gt;
 
 int main(int argc, char** argv)
@@ -336,7 +336,7 @@ int main(int argc, char** argv)
   // construct geometry and physics
   bds-&gt;Initialise(argc, argv);
   if (!bds-&gt;Initialised()) // check if there was a problem.
-    {std::cout &lt;&lt; &quot;Intialisation failed&quot; &lt;&lt; std::endl; return 1;}
+    {std::cout &lt;&lt; "Intialisation failed" &lt;&lt; std::endl; return 1;}
 
   bds-&gt;BeamOn(); // run the simulation
   delete bds;    // clean up
@@ -392,8 +392,8 @@ of one particle through all beam line elements.</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accelerator Test Facility 2 - KEK, Japan &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -201,7 +201,7 @@ with a compressed TFS file without the need to decompress it.</p>
 <p>We can inspect the model as provided by MAD-X with pymadx in Python.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pymadx</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">pymadx</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Tfs</span><span class="p">(</span><span class="s2">&quot;atf2-nominal-twiss-v5.2.tfs.tar.gz&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">pymadx</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Tfs</span><span class="p">(</span><span class="s2">"atf2-nominal-twiss-v5.2.tfs.tar.gz"</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">ReportPopulations</span><span class="p">()</span>
 <span class="n">Filename</span> <span class="o">&gt;</span> <span class="n">atf2</span><span class="o">-</span><span class="n">nominal</span><span class="o">-</span><span class="n">twiss</span><span class="o">-</span><span class="n">v5</span><span class="mf">.2</span><span class="o">.</span><span class="n">tfs</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">items</span> <span class="o">&gt;</span> <span class="mi">1032</span>
@@ -218,13 +218,13 @@ with a compressed TFS file without the need to decompress it.</p>
 </pre></div>
 </div>
 <p>We can also inspect the strengths of all the sextupoles for example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sextupoles</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">GetElementsOfType</span><span class="p">(</span><span class="s1">&#39;SEXTUPOLE&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sextupoles</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">GetElementsOfType</span><span class="p">(</span><span class="s1">'SEXTUPOLE'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">sextupoles</span><span class="p">)</span>
 <span class="go">18</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">sextupoles</span><span class="p">)</span>
 <span class="go">pymadx.Data.Tfs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sextupoles</span><span class="o">.</span><span class="n">GetColumn</span><span class="p">(</span><span class="s2">&quot;K2L&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">sextupoles</span><span class="o">.</span><span class="n">GetColumn</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sextupoles</span><span class="o">.</span><span class="n">GetColumn</span><span class="p">(</span><span class="s2">"K2L"</span><span class="p">)</span><span class="o">/</span><span class="n">sextupoles</span><span class="o">.</span><span class="n">GetColumn</span><span class="p">(</span><span class="s2">"L"</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>This produces the following figure:</p>
@@ -238,7 +238,7 @@ with a compressed TFS file without the need to decompress it.</p>
 <p>The model can be converted to BDSIM’s GMAD syntax with the converter provided in <cite>pybdsim</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s1">&#39;atf2-nominal-twiss-v5.2.tfs.tar.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;atf2bdsim&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s1">'atf2-nominal-twiss-v5.2.tfs.tar.gz'</span><span class="p">,</span> <span class="s1">'atf2bdsim'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The converter will automatically generate a Twiss beam distribution based on the first element
@@ -246,7 +246,7 @@ of the lattice. If the first element is <strong>not a marker</strong> the beam w
 functions from MAD-X are typically at the end of each element (they can be set to the middle too,
 but not to the beginning). The user should check the distribution.</p>
 <p>This converts the model as is. We can also prepare a linear only version of the model:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s1">&#39;atf2-nominal-twiss-v5.2.tfs.tar.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;atf2bdsimlinear&#39;</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s1">'atf2-nominal-twiss-v5.2.tfs.tar.gz'</span><span class="p">,</span> <span class="s1">'atf2bdsimlinear'</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Several gmad files are created:</p>
@@ -283,7 +283,7 @@ have therefore been converted correctly.</p>
 <p>We can now compare the optical functions using <cite>pybdsim</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Compare</span><span class="o">.</span><span class="n">MadxVsBDSIM</span><span class="p">(</span><span class="s1">&#39;atf2-nominal-twiss-v5.2-sige0.tfs&#39;</span><span class="p">,</span> <span class="s1">&#39;optics.root&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Compare</span><span class="o">.</span><span class="n">MadxVsBDSIM</span><span class="p">(</span><span class="s1">'atf2-nominal-twiss-v5.2-sige0.tfs'</span><span class="p">,</span> <span class="s1">'optics.root'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This produces a series of plots comparing beam size and optical functions such as the following:</p>
@@ -347,7 +347,7 @@ designed to have a hollow outermost ‘world’ volume so that it does not overl
 beam line - both exist at the same level in the hierarchy. If the tunnel container were not
 hollow, the beam line would overlap with the tunnel geometry and tracking would be invalid.</p>
 <p>In the main GMAD file, we define a placement of the geometry with the appropriate transform.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tun</span> <span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:atf2_tunnel.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">4.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">49</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tun</span> <span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:atf2_tunnel.gdml"</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">4.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">49</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The example GDML file (“atf2_tunnel.gdml”) is provided in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/atf2/</span></code>. An example
@@ -392,18 +392,18 @@ according to the Gaussian.</p>
       <span class="n">alfy</span><span class="o">=-</span><span class="mf">1.907222942</span><span class="p">,</span>
       <span class="n">betx</span><span class="o">=</span><span class="mf">6.848560987</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
       <span class="n">bety</span><span class="o">=</span><span class="mf">2.935758992</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;halo&quot;</span><span class="p">,</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"halo"</span><span class="p">,</span>
       <span class="n">emitx</span><span class="o">=</span><span class="mf">2e-09</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
       <span class="n">emity</span><span class="o">=</span><span class="mf">1.195785323e-11</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mf">1.282</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-      <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+      <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">sigmaE</span><span class="o">=</span><span class="mf">0.0008</span><span class="p">,</span>
       <span class="n">haloNSigmaXInner</span>      <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
       <span class="n">haloNSigmaXOuter</span>      <span class="o">=</span> <span class="mi">80</span><span class="p">,</span>
       <span class="n">haloNSigmaYInner</span>      <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
       <span class="n">haloNSigmaYOuter</span>      <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
       <span class="n">haloPSWeightParameter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="n">haloPSWeightFunction</span>  <span class="o">=</span> <span class="s2">&quot;oneoverr&quot;</span><span class="p">;</span>
+      <span class="n">haloPSWeightFunction</span>  <span class="o">=</span> <span class="s2">"oneoverr"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>To validate this distribution and visualise it, we can generate only the particles without
@@ -417,7 +417,7 @@ Here 10000 were generated in approximately 10s.</p>
 for the primary particle distribution:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">PrimaryPhaseSpace</span><span class="p">(</span><span class="s1">&#39;haloprimaries.root&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">PrimaryPhaseSpace</span><span class="p">(</span><span class="s1">'haloprimaries.root'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This produces the following figures. The user of course can create their own plots by loading the data.</p>
@@ -432,7 +432,7 @@ for the primary particle distribution:</p>
 <p>The raw data can be loaded from any sampler manually:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;haloprimaries.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"haloprimaries.root"</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">psd</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">PhaseSpaceData</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">allData</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">SamplerData</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -442,8 +442,8 @@ including weights, PDG ID, track ID etc.</p>
 <p>The object “psd” here contains a member dictionary called “data” that has a numpy array for each
 key inside it.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">psd</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-<span class="go">[&#39;energy&#39;, &#39;T&#39;, &#39;yp&#39;, &#39;y&#39;, &#39;x&#39;, &#39;xp&#39;, &#39;z&#39;, &#39;zp&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">psd</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="go">['energy', 'T', 'yp', 'y', 'x', 'xp', 'z', 'zp']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">psd</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -455,7 +455,7 @@ is useful for efficient tracking and optical validation but not useful for a phy
 We therefore specify a physics list. For a 1.3GeV electron, the basic electromagnetic
 physics list from Geant4 as well as the decay physics and some muon specific processes
 are useful. The full set of physics lists are described in <a class="reference internal" href="model_control.html#physics-processes"><span class="std std-ref">Physics Processes</span></a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;em decay muon&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"em decay muon"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>By default, samplers are attached to everything. Whilst suitable for optical comparison
@@ -467,7 +467,7 @@ it out with an exclamation mark.</p>
 <p>We have now specified the halo distribution as described above, a default aperture and
 physics processes. One final step is to turn off sensitivity to the tunnel geometry as
 this is not required.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tun</span> <span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:../atf2_tunnel.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">4.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">49</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">sensitive</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tun</span> <span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:../atf2_tunnel.gdml"</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">4.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">49</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">sensitive</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The input gmad file prepared is supplied in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/atf2/nlsige/atf2-halo.gmad</span></code>.</p>
@@ -564,7 +564,7 @@ analysisConfig.txt used is provided in <code class="code docutils literal notran
 make our own plots.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;10khalo_ana.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"10khalo_ana.root"</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span>
 <span class="n">d</span><span class="o">.</span><span class="n">ConvertToPybdsimHistograms</span> <span class="n">d</span><span class="o">.</span><span class="n">histograms1dpy</span>             <span class="n">d</span><span class="o">.</span><span class="n">histograms3dpy</span>
 <span class="n">d</span><span class="o">.</span><span class="n">filename</span>                   <span class="n">d</span><span class="o">.</span><span class="n">histograms2d</span>               <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
@@ -577,26 +577,26 @@ called “histogramsXd” where “X” is the number of dimensions. All exist i
 are also automatically converted to numpy arrays and held in classes provided by <cite>pybdsim</cite> in
 the same members suffixed with “py” such as “d.histograms1dpy”. Calling these dictionaries
 shows the name of the histogram that is the full path inside the file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;Event/MergedHistograms/ElossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;ElossHisto&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cfba20</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/MergedHistograms/ElossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;ElossPEHisto&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a1970000</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/MergedHistograms/PhitsHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;PhitsHisto&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cfa8e0</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/MergedHistograms/PhitsPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;PhitsPEHisto&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a1a00640</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/MergedHistograms/PlossHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;PlossHisto&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cfb310</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/MergedHistograms/PlossPEHisto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;PlossPEHisto&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a1a00a30</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/XElectrons&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;XElectrons&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd89b0</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/XFlux&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;XFlux&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0c94300</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/XFlux-Energy-Weighted&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;XFlux-Energy-Weighted&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd70f0</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/XPhotons&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;XPhotons&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd8320</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/XPositrons&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;XPositrons&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd95a0</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/XYFlux&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;XYFlux&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f839c5ef200</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/XYFlux-Energy-Weighted&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;XYFlux-Energy-Weighted&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f839c5eb000</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/YFlux&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;YFlux&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd74e0</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="s1">&#39;Event/PerEntryHistograms/YFlux-Energy-Weighted&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">&quot;YFlux-Energy-Weighted&quot;</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd7de0</span><span class="o">&gt;</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'Event/MergedHistograms/ElossHisto'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"ElossHisto"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cfba20</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/MergedHistograms/ElossPEHisto'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"ElossPEHisto"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a1970000</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/MergedHistograms/PhitsHisto'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"PhitsHisto"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cfa8e0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/MergedHistograms/PhitsPEHisto'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"PhitsPEHisto"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a1a00640</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/MergedHistograms/PlossHisto'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"PlossHisto"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cfb310</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/MergedHistograms/PlossPEHisto'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"PlossPEHisto"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a1a00a30</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/XElectrons'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"XElectrons"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd89b0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/XFlux'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"XFlux"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0c94300</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/XFlux-Energy-Weighted'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"XFlux-Energy-Weighted"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd70f0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/XPhotons'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"XPhotons"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd8320</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/XPositrons'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"XPositrons"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd95a0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/XYFlux'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"XYFlux"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f839c5ef200</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/XYFlux-Energy-Weighted'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"XYFlux-Energy-Weighted"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f839c5eb000</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/YFlux'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"YFlux"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd74e0</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="s1">'Event/PerEntryHistograms/YFlux-Energy-Weighted'</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span> <span class="nb">object</span> <span class="p">(</span><span class="s2">"YFlux-Energy-Weighted"</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x7f83a0cd7de0</span><span class="o">&gt;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The Python versions can be easily plotted using <cite>pybdsim</cite>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram1D</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">histograms1dpy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/XElectrons&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram2D</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">histograms2dpy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/XYFlux&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram1D</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">histograms1dpy</span><span class="p">[</span><span class="s1">'Event/PerEntryHistograms/XElectrons'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram2D</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">histograms2dpy</span><span class="p">[</span><span class="s1">'Event/PerEntryHistograms/XYFlux'</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>These produce the following figures.</p>
@@ -611,7 +611,7 @@ shows the name of the histogram that is the full path inside the file.</p>
 <p>We leave it to the user to create the plots they desire. However, the primary particle impact, loss
 and associated energy deposition is a useful standard plot that is provided in <cite>pybdsim</cite>. The optional
 survey arguments allow a machine diagram to be added on top of the plot.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">LossAndEnergyDeposition</span><span class="p">(</span><span class="s1">&#39;10khalo_ana.root&#39;</span><span class="p">,</span> <span class="n">tfssurvey</span><span class="o">=</span><span class="s1">&#39;../atf2-nominal-twiss-v5.2.tfs.tar.gz&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">LossAndEnergyDeposition</span><span class="p">(</span><span class="s1">'10khalo_ana.root'</span><span class="p">,</span> <span class="n">tfssurvey</span><span class="o">=</span><span class="s1">'../atf2-nominal-twiss-v5.2.tfs.tar.gz'</span><span class="p">)</span>
 </pre></div>
 </div>
 <figure class="align-center" id="id10">
@@ -622,7 +622,7 @@ survey arguments allow a machine diagram to be added on top of the plot.</p>
 </figcaption>
 </figure>
 <p>Just the energy deposition can be plotted.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">EnergyDeposition</span><span class="p">(</span><span class="s1">&#39;10khalo_ana.root&#39;</span><span class="p">,</span> <span class="n">tfssurvey</span><span class="o">=</span><span class="s1">&#39;../atf2-nominal-twiss-v5.2.tfs.tar.gz&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">EnergyDeposition</span><span class="p">(</span><span class="s1">'10khalo_ana.root'</span><span class="p">,</span> <span class="n">tfssurvey</span><span class="o">=</span><span class="s1">'../atf2-nominal-twiss-v5.2.tfs.tar.gz'</span><span class="p">)</span>
 </pre></div>
 </div>
 <figure class="align-center" id="id11">
@@ -646,8 +646,8 @@ survey arguments allow a machine diagram to be added on top of the plot.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

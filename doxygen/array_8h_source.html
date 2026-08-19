@@ -186,20 +186,21 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> value : <a class="code hl_variable" href="classGMAD_1_1Array.html#ab80757e5fa2ccece97597196d6dfb906">data</a>)</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        {</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>          dst.push_back((T)value);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#ifdef BDSDEBUG </span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>          std::cout &lt;&lt; (T)value &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#ifdef BDSDEBUG </span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>      std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#ifdef BDSDEBUG</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>          std::cout &lt;&lt; (T)value &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#ifdef BDSDEBUG </span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
 </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  };</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  };</div>
 </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGMAD_1_1Array_html"><div class="ttname"><a href="classGMAD_1_1Array.html">GMAD::Array</a></div><div class="ttdoc">Representation of arrays used in tokens.</div><div class="ttdef"><b>Definition</b> <a href="array_8h_source.html#l00040">array.h:40</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1Array_html_a047f47ddc23409bbff1ff31c80a2ab87"><div class="ttname"><a href="classGMAD_1_1Array.html#a047f47ddc23409bbff1ff31c80a2ab87">GMAD::Array::GetSymbols</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; &amp; GetSymbols() const</div><div class="ttdoc">Access.</div><div class="ttdef"><b>Definition</b> <a href="array_8h_source.html#l00074">array.h:74</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1Array_html_a05d2ae71acbb567e761f4f8f024a3f1b"><div class="ttname"><a href="classGMAD_1_1Array.html#a05d2ae71acbb567e761f4f8f024a3f1b">GMAD::Array::Copy</a></div><div class="ttdeci">void Copy(Container&lt; std::string, std::allocator&lt; std::string &gt; &gt; &amp;cpy)</div><div class="ttdoc">Copy STL string containers into symbols.</div><div class="ttdef"><b>Definition</b> <a href="array_8h_source.html#l00086">array.h:86</a></div></div>
@@ -221,7 +222,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Aug 19 2026 14:22:51 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -192,7 +192,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  <span class="comment">// only in g4.10.4 onwards do we build the crystal extensions - otherwise regular LV</span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#if G4VERSION_NUMBER &gt; 1039</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  G4ExtendedMaterial* crystalMat = <span class="keyword">new</span> G4ExtendedMaterial(<span class="stringliteral">&quot;crystal.material&quot;</span>, recipe-&gt;<a class="code hl_variable" href="classBDSCrystalInfo.html#a621b66586328a92a9ada84f3d7af15e5">material</a>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  G4ExtendedMaterial* crystalMat = <span class="keyword">new</span> G4ExtendedMaterial(nameIn+<span class="stringliteral">&quot;_crystal.material&quot;</span>, recipe-&gt;<a class="code hl_variable" href="classBDSCrystalInfo.html#a621b66586328a92a9ada84f3d7af15e5">material</a>);</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  </div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  crystalMat-&gt;RegisterExtension(std::unique_ptr&lt;G4CrystalExtension&gt;(<span class="keyword">new</span> G4CrystalExtension(crystalMat)));</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  G4CrystalExtension* crystalExtension = <span class="keyword">dynamic_cast&lt;</span>G4CrystalExtension*<span class="keyword">&gt;</span>(crystalMat-&gt;RetrieveExtension(<span class="stringliteral">&quot;crystal&quot;</span>));</div>
@@ -538,7 +538,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Aug 19 2026 14:22:52 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

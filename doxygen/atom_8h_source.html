@@ -123,7 +123,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Atom.html#a8e25b753994348135bde1d059498a3b1">clear</a>();</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Atom.html#a2602ab34352899b375954ae4c97b740d">print</a>()<span class="keyword">const</span>;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Atom.html#ac03f4cfa1701c3f5885be1fb78fb18a6">set_value</a>(std::string property, T value);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Atom.html#a0c2045902eee1f5125b44b7f5a6578ea">set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit = <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Atom.html#ae09cd400cad5d80ab5cc70f3a63f26f4">PublishMembers</a>();</div>
@@ -132,7 +132,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structGMAD_1_1Atom.html#ac03f4cfa1701c3f5885be1fb78fb18a6">   60</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Atom.html#ac03f4cfa1701c3f5885be1fb78fb18a6">Atom::set_value</a>(std::string property, T value)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structGMAD_1_1Atom.html#a0c2045902eee1f5125b44b7f5a6578ea">   60</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Atom.html#a0c2045902eee1f5125b44b7f5a6578ea">Atom::set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit )</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  {</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#ifdef BDSDEBUG</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;parser&gt; Setting value &quot;</span> &lt;&lt; std::setw(25) &lt;&lt; std::left &lt;&lt; <span class="keyword">property</span> &lt;&lt; value &lt;&lt; std::endl;</div>
@@ -143,28 +143,31 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::runtime_error&amp;)</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      {</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: parser&gt; unknown atom option \&quot;&quot;</span> &lt;&lt; <span class="keyword">property</span> &lt;&lt; <span class="stringliteral">&quot;\&quot; with value \&quot;&quot;</span> &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;\&quot;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        exit(1);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">if</span>(bExit)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>          {exit(1);}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>          {std::rethrow_exception(std::current_exception());}</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  }</div>
 </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGMAD_1_1Published_html"><div class="ttname"><a href="classGMAD_1_1Published.html">GMAD::Published</a></div><div class="ttdoc">Class that provides introspection to its members.</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00048">published.h:49</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1Published_html_acd8e3cc34a66f2902752250cd2a9ff30"><div class="ttname"><a href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">GMAD::Published&lt; Atom &gt;::set</a></div><div class="ttdeci">void set(Atom *instance, const std::string &amp;name, double value)</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00060">published.h:101</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1Published_html_acd8e3cc34a66f2902752250cd2a9ff30"><div class="ttname"><a href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">GMAD::Published&lt; Atom &gt;::set</a></div><div class="ttdeci">void set(Atom *instance, const std::string &amp;name, double value)</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00064">published.h:101</a></div></div>
 <div class="ttc" id="anamespaceGMAD_html"><div class="ttname"><a href="namespaceGMAD.html">GMAD</a></div><div class="ttdoc">Parser namespace for GMAD language. Combination of Geant4 and MAD.</div><div class="ttdef"><b>Definition</b> <a href="BDSBeamlineIntegral_8hh_source.html#l00026">BDSBeamlineIntegral.hh:27</a></div></div>
 <div class="ttc" id="astructGMAD_1_1Atom_html"><div class="ttname"><a href="structGMAD_1_1Atom.html">GMAD::Atom</a></div><div class="ttdoc">Atom class.</div><div class="ttdef"><b>Definition</b> <a href="atom_8h_source.html#l00036">atom.h:36</a></div></div>
 <div class="ttc" id="astructGMAD_1_1Atom_html_a00c1499087ee3422a9558a35bc18a631"><div class="ttname"><a href="structGMAD_1_1Atom.html#a00c1499087ee3422a9558a35bc18a631">GMAD::Atom::A</a></div><div class="ttdeci">double A</div><div class="ttdoc">g*mol^-1</div><div class="ttdef"><b>Definition</b> <a href="atom_8h_source.html#l00040">atom.h:40</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Atom_html_a0c2045902eee1f5125b44b7f5a6578ea"><div class="ttname"><a href="structGMAD_1_1Atom.html#a0c2045902eee1f5125b44b7f5a6578ea">GMAD::Atom::set_value</a></div><div class="ttdeci">void set_value(std::string property, T value, bool bExit=false)</div><div class="ttdoc">set methods by property name and value</div><div class="ttdef"><b>Definition</b> <a href="atom_8h_source.html#l00060">atom.h:60</a></div></div>
 <div class="ttc" id="astructGMAD_1_1Atom_html_a2602ab34352899b375954ae4c97b740d"><div class="ttname"><a href="structGMAD_1_1Atom.html#a2602ab34352899b375954ae4c97b740d">GMAD::Atom::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">printout</div><div class="ttdef"><b>Definition</b> <a href="atom_8cc_source.html#l00045">atom.cc:45</a></div></div>
 <div class="ttc" id="astructGMAD_1_1Atom_html_a8e25b753994348135bde1d059498a3b1"><div class="ttname"><a href="structGMAD_1_1Atom.html#a8e25b753994348135bde1d059498a3b1">GMAD::Atom::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">reset</div><div class="ttdef"><b>Definition</b> <a href="atom_8cc_source.html#l00029">atom.cc:29</a></div></div>
 <div class="ttc" id="astructGMAD_1_1Atom_html_aa0147d7e49ab90f559b66e38d3d12863"><div class="ttname"><a href="structGMAD_1_1Atom.html#aa0147d7e49ab90f559b66e38d3d12863">GMAD::Atom::Atom</a></div><div class="ttdeci">Atom()</div><div class="ttdoc">constructor</div><div class="ttdef"><b>Definition</b> <a href="atom_8cc_source.html#l00023">atom.cc:23</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Atom_html_ac03f4cfa1701c3f5885be1fb78fb18a6"><div class="ttname"><a href="structGMAD_1_1Atom.html#ac03f4cfa1701c3f5885be1fb78fb18a6">GMAD::Atom::set_value</a></div><div class="ttdeci">void set_value(std::string property, T value)</div><div class="ttdoc">set methods by property name and value</div><div class="ttdef"><b>Definition</b> <a href="atom_8h_source.html#l00060">atom.h:60</a></div></div>
 <div class="ttc" id="astructGMAD_1_1Atom_html_acf45fe41b66321324819dff335a6ab86"><div class="ttname"><a href="structGMAD_1_1Atom.html#acf45fe41b66321324819dff335a6ab86">GMAD::Atom::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">name</div><div class="ttdef"><b>Definition</b> <a href="atom_8h_source.html#l00038">atom.h:38</a></div></div>
 <div class="ttc" id="astructGMAD_1_1Atom_html_ae09cd400cad5d80ab5cc70f3a63f26f4"><div class="ttname"><a href="structGMAD_1_1Atom.html#ae09cd400cad5d80ab5cc70f3a63f26f4">GMAD::Atom::PublishMembers</a></div><div class="ttdeci">void PublishMembers()</div><div class="ttdoc">publish members so these can be looked up from parser</div><div class="ttdef"><b>Definition</b> <a href="atom_8cc_source.html#l00037">atom.cc:37</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Aug 19 2026 14:22:51 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

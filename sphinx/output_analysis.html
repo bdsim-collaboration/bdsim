@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Output Analysis &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -263,9 +263,9 @@ details.</p>
 loading in root by finding and editing the <code class="code docutils literal notranslate"><span class="pre">rootlogon.C</span></code> in your
 <code class="code docutils literal notranslate"><span class="pre">&lt;root-install-dir&gt;/macros/</span></code> directory.  Example text would be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Loading rebdsim libraries&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
-  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">);</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">"Loading rebdsim libraries"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"librebdsim"</span><span class="p">);</span>
+  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"libbdsimRootEvent"</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -301,7 +301,7 @@ to find the library.</p>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">LossAndEnergyDeposition</span><span class="p">(</span><span class="s2">&quot;results.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">LossAndEnergyDeposition</span><span class="p">(</span><span class="s2">"results.root"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -314,8 +314,8 @@ to find the library.</p>
 <li><p>Scan with condition.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">-</span><span class="n">l</span> <span class="n">myfile</span><span class="o">.</span><span class="n">root</span>
-<span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">_file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">&quot;Summary.index&quot;</span><span class="p">,</span> <span class="s2">&quot;PrimaryLastHit.S&gt;10&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">_file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">"Event"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">"Summary.index"</span><span class="p">,</span> <span class="s2">"PrimaryLastHit.S&gt;10"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The syntax is <code class="code docutils literal notranslate"><span class="pre">evt-&gt;Scan(&quot;Summary.index&quot;,</span> <span class="pre">&quot;selection&quot;)</span></code>. This will print out
@@ -329,16 +329,16 @@ return key printing out the next few and <code class="code docutils literal notr
 <p>In ROOT terminology we can ‘scan’ a tree to see a variable. The option, <code class="code docutils literal notranslate"><span class="pre">colsize</span></code>
 (as a string for the 3rd argument) allows us to increase the precision printed out.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">-</span><span class="n">l</span> <span class="n">myfile</span><span class="o">.</span><span class="n">root</span>
-<span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">_file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">&quot;Summary.index&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">&quot;Summary.index&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;colsize=20&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">_file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">"Event"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">"Summary.index"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">evt</span><span class="o">-&gt;</span><span class="n">Scan</span><span class="p">(</span><span class="s2">"Summary.index"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"colsize=20"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="load-raw-data">
 <h3>Load Raw Data<a class="headerlink" href="#load-raw-data" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;results.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"results.root"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">():</span>
 <span class="go">...:    print(event.Summary.duration)</span>
 </pre></div>
@@ -442,7 +442,7 @@ usage, but usually using some parallel processes will be significantly faster th
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 <span class="o">&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">chunkermp</span>
-<span class="o">&gt;</span> <span class="n">chunkermp</span><span class="o">.</span><span class="n">ReduceRun</span><span class="p">(</span><span class="s2">&quot;datafiles/*.root&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;outputdir/&quot;</span><span class="p">,</span> <span class="n">nCPUs</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">chunkermp</span><span class="o">.</span><span class="n">ReduceRun</span><span class="p">(</span><span class="s2">"datafiles/*.root"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"outputdir/"</span><span class="p">,</span> <span class="n">nCPUs</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This will combine the glob result of <code class="code docutils literal notranslate"><span class="pre">datafiles/*.root</span></code> in chunks of 10 files at a time to <code class="code docutils literal notranslate"><span class="pre">outputdir</span></code>
@@ -471,7 +471,7 @@ specified) is the output file name that the resultant analysis will be written t
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span>
 <span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span>
 <span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
-<span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="s2">&quot;*.root&quot;</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
+<span class="n">rebdsim</span> <span class="n">analysisConfig</span><span class="o">.</span><span class="n">txt</span> <span class="s2">"*.root"</span> <span class="n">results</span><span class="o">.</span><span class="n">root</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1367,8 +1367,8 @@ trying to import ROOT - there should be no errors.</p>
 </div>
 <p>The library containing the analysis classes may be then loaded:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ROOT</span><span class="o">.</span><span class="n">gSystem</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ROOT</span><span class="o">.</span><span class="n">gSystem</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ROOT</span><span class="o">.</span><span class="n">gSystem</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"librebdsim"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ROOT</span><span class="o">.</span><span class="n">gSystem</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"libbdsimRootEvent"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The classes in <code class="code docutils literal notranslate"><span class="pre">bdsim/analysis</span></code> will now be available inside ROOT in Python.</p>
@@ -1388,7 +1388,7 @@ case) will be shown.</p>
 <p>For any object, function or class, type a question mark after it to see the doc-string
 associated with it.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;combined-ana.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"combined-ana.root"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span>
 <span class="go">d.ConvertToPybdsimHistograms d.histograms2d</span>
 <span class="go">d.filename                   d.histograms2dpy</span>
@@ -1402,7 +1402,7 @@ associated with it.</p>
 <h4>Raw Data Loading<a class="headerlink" href="#raw-data-loading" title="Link to this heading"></a></h4>
 <p>Any output file from the BDSIM set of tools can be loaded with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;myoutputfile.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"myoutputfile.root"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This will work for files from BDSIM, <cite>rebdsim</cite>, <cite>rebdsimCombine</cite>, <cite>rebdsimHistoMerge</cite>
@@ -1426,41 +1426,41 @@ held in dictionaries suffixed with ‘py’. The histograms are loaded into dict
 where the key is a string with the full path and name of the histogram in the <cite>rebdsim</cite>
 output file. The value is the histogram from the file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;rebdsimoutputfile.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"rebdsimoutputfile.root"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">histograms</span>
-<span class="go">{&#39;Event/MergedHistograms/ElossHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossHisto&quot;) at 0x7fbe365e9520&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/ElossPEHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossPEHisto&quot;) at 0x7fbe365ea750&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/ElossTunnelHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossTunnelHisto&quot;) at 0x7fbe365eab40&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/ElossTunnelPEHisto&#39;: &lt;ROOT.TH1D object (&quot;ElossTunnelPEHisto&quot;) at 0x7fbe365eaf30&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PhitsHisto&#39;: &lt;ROOT.TH1D object (&quot;PhitsHisto&quot;) at 0x7fbe365e8bd0&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PhitsPEHisto&#39;: &lt;ROOT.TH1D object (&quot;PhitsPEHisto&quot;) at 0x7fbe365e9cb0&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PlossHisto&#39;: &lt;ROOT.TH1D object (&quot;PlossHisto&quot;) at 0x7fbe365e8fc0&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PlossPEHisto&#39;: &lt;ROOT.TH1D object (&quot;PlossPEHisto&quot;) at 0x7fbe365ea0a0&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/EnergyLossManual&#39;: &lt;ROOT.TH1D object (&quot;EnergyLossManual&quot;) at 0x7fbe365a3a50&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/EnergySpectrum&#39;: &lt;ROOT.TH1D object (&quot;EnergySpectrum&quot;) at 0x7fbe365a2e20&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/EventDuration&#39;: &lt;ROOT.TH1D object (&quot;EventDuration&quot;) at 0x7fbe325907b0&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/TunnelDeposition&#39;: &lt;ROOT.TH3D object (&quot;TunnelDeposition&quot;) at 0x7fbe35e2c800&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/TunnelLossManual&#39;: &lt;ROOT.TH1D object (&quot;TunnelLossManual&quot;) at 0x7fbe365a40b0&gt;,</span>
-<span class="go">&#39;Event/SimpleHistograms/Primaryx&#39;: &lt;ROOT.TH1D object (&quot;Primaryx&quot;) at 0x7fbe325cf9d0&gt;,</span>
-<span class="go">&#39;Event/SimpleHistograms/Primaryy&#39;: &lt;ROOT.TH1D object (&quot;Primaryy&quot;) at 0x7fbe325d0230&gt;,</span>
-<span class="go">&#39;Event/SimpleHistograms/TunnelHitsTransverse&#39;: &lt;ROOT.TH2D object (&quot;TunnelHitsTransverse&quot;) at 0x7fbe30a7fe00&gt;}</span>
+<span class="go">{'Event/MergedHistograms/ElossHisto': &lt;ROOT.TH1D object ("ElossHisto") at 0x7fbe365e9520&gt;,</span>
+<span class="go">'Event/MergedHistograms/ElossPEHisto': &lt;ROOT.TH1D object ("ElossPEHisto") at 0x7fbe365ea750&gt;,</span>
+<span class="go">'Event/MergedHistograms/ElossTunnelHisto': &lt;ROOT.TH1D object ("ElossTunnelHisto") at 0x7fbe365eab40&gt;,</span>
+<span class="go">'Event/MergedHistograms/ElossTunnelPEHisto': &lt;ROOT.TH1D object ("ElossTunnelPEHisto") at 0x7fbe365eaf30&gt;,</span>
+<span class="go">'Event/MergedHistograms/PhitsHisto': &lt;ROOT.TH1D object ("PhitsHisto") at 0x7fbe365e8bd0&gt;,</span>
+<span class="go">'Event/MergedHistograms/PhitsPEHisto': &lt;ROOT.TH1D object ("PhitsPEHisto") at 0x7fbe365e9cb0&gt;,</span>
+<span class="go">'Event/MergedHistograms/PlossHisto': &lt;ROOT.TH1D object ("PlossHisto") at 0x7fbe365e8fc0&gt;,</span>
+<span class="go">'Event/MergedHistograms/PlossPEHisto': &lt;ROOT.TH1D object ("PlossPEHisto") at 0x7fbe365ea0a0&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/EnergyLossManual': &lt;ROOT.TH1D object ("EnergyLossManual") at 0x7fbe365a3a50&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/EnergySpectrum': &lt;ROOT.TH1D object ("EnergySpectrum") at 0x7fbe365a2e20&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/EventDuration': &lt;ROOT.TH1D object ("EventDuration") at 0x7fbe325907b0&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/TunnelDeposition': &lt;ROOT.TH3D object ("TunnelDeposition") at 0x7fbe35e2c800&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/TunnelLossManual': &lt;ROOT.TH1D object ("TunnelLossManual") at 0x7fbe365a40b0&gt;,</span>
+<span class="go">'Event/SimpleHistograms/Primaryx': &lt;ROOT.TH1D object ("Primaryx") at 0x7fbe325cf9d0&gt;,</span>
+<span class="go">'Event/SimpleHistograms/Primaryy': &lt;ROOT.TH1D object ("Primaryy") at 0x7fbe325d0230&gt;,</span>
+<span class="go">'Event/SimpleHistograms/TunnelHitsTransverse': &lt;ROOT.TH2D object ("TunnelHitsTransverse") at 0x7fbe30a7fe00&gt;}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
-<span class="go">{&#39;Event/MergedHistograms/ElossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682fa10&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/ElossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f850&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/ElossTunnelHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f690&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/ElossTunnelPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f990&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PhitsHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f890&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PhitsPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f950&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PlossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f7d0&gt;,</span>
-<span class="go">&#39;Event/MergedHistograms/PlossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x12682f5d0&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/EnergyLossManual&#39;: &lt;pybdsim.Data.TH1 at 0x12682f810&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/EnergySpectrum&#39;: &lt;pybdsim.Data.TH1 at 0x122d577d0&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/EventDuration&#39;: &lt;pybdsim.Data.TH1 at 0x12682f910&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/TunnelDeposition&#39;: &lt;pybdsim.Data.TH3 at 0x116abe090&gt;,</span>
-<span class="go">&#39;Event/PerEntryHistograms/TunnelLossManual&#39;: &lt;pybdsim.Data.TH1 at 0x122d67190&gt;,</span>
-<span class="go">&#39;Event/SimpleHistograms/Primaryx&#39;: &lt;pybdsim.Data.TH1 at 0x12682f710&gt;,</span>
-<span class="go">&#39;Event/SimpleHistograms/Primaryy&#39;: &lt;pybdsim.Data.TH1 at 0x12682f790&gt;,</span>
-<span class="go">&#39;Event/SimpleHistograms/TunnelHitsTransverse&#39;: &lt;pybdsim.Data.TH2 at 0x12682fa50&gt;}</span>
+<span class="go">{'Event/MergedHistograms/ElossHisto': &lt;pybdsim.Data.TH1 at 0x12682fa10&gt;,</span>
+<span class="go">'Event/MergedHistograms/ElossPEHisto': &lt;pybdsim.Data.TH1 at 0x12682f850&gt;,</span>
+<span class="go">'Event/MergedHistograms/ElossTunnelHisto': &lt;pybdsim.Data.TH1 at 0x12682f690&gt;,</span>
+<span class="go">'Event/MergedHistograms/ElossTunnelPEHisto': &lt;pybdsim.Data.TH1 at 0x12682f990&gt;,</span>
+<span class="go">'Event/MergedHistograms/PhitsHisto': &lt;pybdsim.Data.TH1 at 0x12682f890&gt;,</span>
+<span class="go">'Event/MergedHistograms/PhitsPEHisto': &lt;pybdsim.Data.TH1 at 0x12682f950&gt;,</span>
+<span class="go">'Event/MergedHistograms/PlossHisto': &lt;pybdsim.Data.TH1 at 0x12682f7d0&gt;,</span>
+<span class="go">'Event/MergedHistograms/PlossPEHisto': &lt;pybdsim.Data.TH1 at 0x12682f5d0&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/EnergyLossManual': &lt;pybdsim.Data.TH1 at 0x12682f810&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/EnergySpectrum': &lt;pybdsim.Data.TH1 at 0x122d577d0&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/EventDuration': &lt;pybdsim.Data.TH1 at 0x12682f910&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/TunnelDeposition': &lt;pybdsim.Data.TH3 at 0x116abe090&gt;,</span>
+<span class="go">'Event/PerEntryHistograms/TunnelLossManual': &lt;pybdsim.Data.TH1 at 0x122d67190&gt;,</span>
+<span class="go">'Event/SimpleHistograms/Primaryx': &lt;pybdsim.Data.TH1 at 0x12682f710&gt;,</span>
+<span class="go">'Event/SimpleHistograms/Primaryy': &lt;pybdsim.Data.TH1 at 0x12682f790&gt;,</span>
+<span class="go">'Event/SimpleHistograms/TunnelHitsTransverse': &lt;pybdsim.Data.TH2 at 0x12682fa50&gt;}</span>
 </pre></div>
 </div>
 </section>
@@ -1470,7 +1470,7 @@ output file. The value is the histogram from the file.</p>
 pybdsim.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;myoutputfile.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"myoutputfile.root"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">eventTree</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">eventTree</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">Primary</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
@@ -1516,7 +1516,7 @@ load it with:</p>
 <p>This is the basic usage of HistogramAccumulator in Python:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span><span class="p">(</span><span class="s2">&quot;HistogramNameForFileBASE&quot;</span><span class="p">,</span> <span class="s2">&quot;A Nice Title&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># 100 bins from 0 to 20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span><span class="p">(</span><span class="s2">"HistogramNameForFileBASE"</span><span class="p">,</span> <span class="s2">"A Nice Title"</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># 100 bins from 0 to 20</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ha</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">HistogramAccumulator</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">GetName</span><span class="p">()[:</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="n">h</span><span class="o">.</span><span class="n">GetTitle</span><span class="p">())</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
@@ -1543,8 +1543,8 @@ by stripping it off (<code class="code docutils literal notranslate"><span class
 </div>
 <p>An example in a loop:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;mytastydata.root&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span><span class="p">(</span><span class="s2">&quot;HistogramNameForFileBASE&quot;</span><span class="p">,</span> <span class="s2">&quot;A Nice Title&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># 100 bins from 0 to 20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"mytastydata.root"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1D</span><span class="p">(</span><span class="s2">"HistogramNameForFileBASE"</span><span class="p">,</span> <span class="s2">"A Nice Title"</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># 100 bins from 0 to 20</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ha</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">HistogramAccumulator</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">GetName</span><span class="p">()[:</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="n">h</span><span class="o">.</span><span class="n">GetTitle</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">():</span>
 <span class="go">        h.Reset()</span>
@@ -1552,8 +1552,8 @@ by stripping it off (<code class="code docutils literal notranslate"><span class
 <span class="go">            h.Fill(event.someSampler.x, event.someSampler.weight)</span>
 <span class="go">        ha.Accumulate(h)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">Terminate</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">CreateEmptyRebdsimFile</span><span class="p">(</span><span class="s2">&quot;somehistograms.root&quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">nOriginalEvents</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">WriteROOTHistogramsToDirectory</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;Event/PerEntryHistograms&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">result</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">CreateEmptyRebdsimFile</span><span class="p">(</span><span class="s2">"somehistograms.root"</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">nOriginalEvents</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">WriteROOTHistogramsToDirectory</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">"Event/PerEntryHistograms"</span><span class="p">,</span> <span class="p">[</span><span class="n">result</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1567,8 +1567,8 @@ but we wrote our own ROOT file with our own histograms. How do we proceed?</p>
 <p>pybdsim has a utility function that will create a rebdsim file that you can write your own histograms
 too. This isn’t required, but then allows you to use rebdsimCombine.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">CreateEmptyRebdsimFile</span><span class="p">(</span><span class="s2">&quot;outfilename.root&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">WriteROOTHistogramsToDirectory</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;Event/PerEntryHistograms&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">th1Object</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">CreateEmptyRebdsimFile</span><span class="p">(</span><span class="s2">"outfilename.root"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">WriteROOTHistogramsToDirectory</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">"Event/PerEntryHistograms"</span><span class="p">,</span> <span class="p">[</span><span class="n">th1Object</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1598,32 +1598,32 @@ rebdsim again in Python as an example of data analysis.</p>
 output file using pybdsim:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;myoutputfile.root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"myoutputfile.root"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">primaries</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">SamplerData</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">primaries</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-<span class="go">[&#39;weight&#39;,</span>
-<span class="go">&#39;trackID&#39;,</span>
-<span class="go">&#39;energy&#39;,</span>
-<span class="go">&#39;turnNumber&#39;,</span>
-<span class="go">&#39;parentID&#39;,</span>
-<span class="go">&#39;xp&#39;,</span>
-<span class="go">&#39;zp&#39;,</span>
-<span class="go">&#39;rigidity&#39;,</span>
-<span class="go">&#39;ionZ&#39;,</span>
-<span class="go">&#39;charge&#39;,</span>
-<span class="go">&#39;ionA&#39;,</span>
-<span class="go">&#39;modelID&#39;,</span>
-<span class="go">&#39;S&#39;,</span>
-<span class="go">&#39;T&#39;,</span>
-<span class="go">&#39;yp&#39;,</span>
-<span class="go">&#39;partID&#39;,</span>
-<span class="go">&#39;n&#39;,</span>
-<span class="go">&#39;mass&#39;,</span>
-<span class="go">&#39;y&#39;,</span>
-<span class="go">&#39;x&#39;,</span>
-<span class="go">&#39;z&#39;,</span>
-<span class="go">&#39;isIon&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">primaries</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="go">['weight',</span>
+<span class="go">'trackID',</span>
+<span class="go">'energy',</span>
+<span class="go">'turnNumber',</span>
+<span class="go">'parentID',</span>
+<span class="go">'xp',</span>
+<span class="go">'zp',</span>
+<span class="go">'rigidity',</span>
+<span class="go">'ionZ',</span>
+<span class="go">'charge',</span>
+<span class="go">'ionA',</span>
+<span class="go">'modelID',</span>
+<span class="go">'S',</span>
+<span class="go">'T',</span>
+<span class="go">'yp',</span>
+<span class="go">'partID',</span>
+<span class="go">'n',</span>
+<span class="go">'mass',</span>
+<span class="go">'y',</span>
+<span class="go">'x',</span>
+<span class="go">'z',</span>
+<span class="go">'isIon']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">primaries</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span>
 <span class="go">array([0.001, 0.001, 0.001, ..., 0.001, 0.001, 0.001])</span>
 </pre></div>
 </div>
@@ -1654,17 +1654,17 @@ ROOT. Here, we show their usage using ROOT interactively.</p>
 <p>When using ROOT’s interpreter, you can use the functionality of the BDSIM classes
 dynamically. First, you must load the shared library (if not done so in your ROOT logon
 macro) to provide the classes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
-<span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"librebdsim"</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"libbdsimRootEvent"</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Loading this library exposes all classes that are found in <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim&gt;/analysis</span></code>. If you
 are familiar with ROOT, you may use the ROOT file as you would any other given the
 classes provided by the library:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">TFile</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">,</span> <span class="s2">&quot;READ&quot;</span><span class="p">);</span>
-<span class="n">root</span><span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">eventTree</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event&quot;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">TFile</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s2">"output.root"</span><span class="p">,</span> <span class="s2">"READ"</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">eventTree</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">"Event"</span><span class="p">);</span>
 <span class="n">root</span><span class="o">&gt;</span> <span class="n">BDSOutputROOTEventLoss</span><span class="o">*</span> <span class="n">elosslocal</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BDSOutputROOTEventLoss</span><span class="p">();</span>
-<span class="n">root</span><span class="o">&gt;</span> <span class="n">eventTree</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s2">&quot;Eloss.&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">elosslocal</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">eventTree</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s2">"Eloss."</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">elosslocal</span><span class="p">);</span>
 <span class="n">root</span><span class="o">&gt;</span> <span class="n">eventTree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="n">root</span><span class="o">&gt;</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">elosslocal</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
       <span class="mi">345</span>
@@ -1678,9 +1678,9 @@ of each class.</p>
 <p>This would of course be fairly tedious to load all the structures in the output. Therefore,
 a data loader class is provided that constructs local instances of all the objects and
 sets the branch address on them (links them to the open file). For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
-<span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">);</span>
-<span class="n">root</span><span class="o">&gt;</span> <span class="n">DataLoader</span><span class="o">*</span> <span class="n">dl</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataLoader</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"librebdsim"</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"libbdsimRootEvent"</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">DataLoader</span><span class="o">*</span> <span class="n">dl</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataLoader</span><span class="p">(</span><span class="s2">"output.root"</span><span class="p">);</span>
 <span class="n">root</span><span class="o">&gt;</span> <span class="n">Event</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEvent</span><span class="p">();</span>
 <span class="n">root</span><span class="o">&gt;</span> <span class="n">TTree</span><span class="o">*</span> <span class="n">evtTree</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEventTree</span><span class="p">();</span>
 </pre></div>
@@ -1690,8 +1690,8 @@ sets the branch address on them (links them to the open file). For example:</p>
 <section id="id2">
 <h4>REBDSIM Histogram Loading<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
 <p>To load histograms, the user should open the ROOT file and access the histograms directly.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">TFile</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">);</span>
-<span class="n">root</span><span class="o">&gt;</span> <span class="n">TH1D</span><span class="o">*</span> <span class="n">eloss</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1D</span><span class="o">*</span><span class="p">)</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event/MergedHistograms/ElossHisto&quot;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">TFile</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s2">"output.root"</span><span class="p">);</span>
+<span class="n">root</span><span class="o">&gt;</span> <span class="n">TH1D</span><span class="o">*</span> <span class="n">eloss</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1D</span><span class="o">*</span><span class="p">)</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">"Event/MergedHistograms/ElossHisto"</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>It is recommended to use a TBrowser to get the exact names of objects in the file.</p>
@@ -1715,8 +1715,8 @@ classes are designed to have the same structure as the output file. Look at
 <p>One may manually loop over the events in a macro:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">DoLoop</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsim&quot;</span><span class="p">);</span>
-  <span class="n">DataLoader</span><span class="o">*</span> <span class="n">dl</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataLoader</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">);</span>
+  <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"librebdsim"</span><span class="p">);</span>
+  <span class="n">DataLoader</span><span class="o">*</span> <span class="n">dl</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataLoader</span><span class="p">(</span><span class="s2">"output.root"</span><span class="p">);</span>
   <span class="n">Event</span><span class="o">*</span> <span class="n">evt</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEvent</span><span class="p">();</span>
   <span class="n">TTree</span><span class="o">*</span> <span class="n">evtTree</span> <span class="o">=</span> <span class="n">dl</span><span class="o">-&gt;</span><span class="n">GetEventTree</span><span class="p">();</span>
   <span class="nb">int</span> <span class="n">nentries</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="n">evtTree</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">();</span>
@@ -1825,8 +1825,8 @@ Var\,(x)_{i+1} &amp;= Var\,(x)_{i} + Var\,(x)_{i+1} + (n_{i}\,n_{i+1} \frac{\del
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

@@ -436,6 +436,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a8105370a7800caa35f93c8595d7b1bb7" id="r_a8105370a7800caa35f93c8595d7b1bb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBDS.html#a8105370a7800caa35f93c8595d7b1bb7">BuildMuonBiasing</a> (G4VModularPhysicsList *physicsList)</td></tr>
 <tr class="memdesc:a8105370a7800caa35f93c8595d7b1bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build muon splitting biasing and wrap the various processes in the physics list.  <br /></td></tr>
 <tr class="separator:a8105370a7800caa35f93c8595d7b1bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6277b73de1e31034e8e7a28ccfae0f70" id="r_a6277b73de1e31034e8e7a28ccfae0f70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBDS.html#a6277b73de1e31034e8e7a28ccfae0f70">ExtendPionDecayChannels</a> (G4VModularPhysicsList *physicsList)</td></tr>
+<tr class="memdesc:a6277b73de1e31034e8e7a28ccfae0f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extend the default pi+- decay channels in Geant4.  <br /></td></tr>
+<tr class="separator:a6277b73de1e31034e8e7a28ccfae0f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9405cb2956652ede1f053caffb0b3c15" id="r_a9405cb2956652ede1f053caffb0b3c15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBDS.html#a9405cb2956652ede1f053caffb0b3c15">TurnOffMuonDecay</a> ()</td></tr>
+<tr class="memdesc:a9405cb2956652ede1f053caffb0b3c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set mu+- as stable so they won't decay.  <br /></td></tr>
+<tr class="separator:a9405cb2956652ede1f053caffb0b3c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbeac5dd082e5ba08726e930f192eca6" id="r_afbeac5dd082e5ba08726e930f192eca6"><td class="memItemLeft" align="right" valign="top">G4VModularPhysicsList *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBDS.html#afbeac5dd082e5ba08726e930f192eca6">ChannellingPhysicsComplete</a> (G4bool useEMD=false, G4bool regular=false, G4bool em4=false, G4bool emss=false)</td></tr>
 <tr class="memdesc:afbeac5dd082e5ba08726e930f192eca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build the physics required for channelling to work correctly.  <br /></td></tr>
 <tr class="separator:afbeac5dd082e5ba08726e930f192eca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -710,7 +716,7 @@ Laurie Nevay</dd></dl>
 
 <p class="reference">References <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00147">BDSParallelWorldImportance::AddIStore()</a>, and <a class="el" href="BDSParallelWorldUtilities_8cc_source.html#l00195">GetImportanceSamplingWorld()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -928,7 +934,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00480">480</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00488">488</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 </div>
 </div>
@@ -962,7 +968,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00057">57</a> of file <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html">BDSBeamlineBLMBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSBeamline_8cc_source.html#l00590">BDSBeamline::AddBeamlineElement()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BDSGeometryFactory::BuildGeometry()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00848">BDSDetectorConstruction::CreatePlacementTransform()</a>, <a class="el" href="BDSScorerFactory_8cc_source.html#l00054">BDSScorerFactory::CreateScorer()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00085">BDSExtent::DZ()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00101">BDSGeometryComponent::GetExtent()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00094">BDSGeometryComponent::GetName()</a>, <a class="el" href="BDSParser_8hh_source.html#l00111">BDSParser::GetScorers()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00113">BDSAcceleratorComponent::Initialise()</a>, <a class="el" href="BDSBLMRegistry_8cc_source.html#l00028">BDSBLMRegistry::Instance()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00042">BDSGeometryFactory::Instance()</a>, <a class="el" href="BDSParser_8cc_source.html#l00030">BDSParser::Instance()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSScorerInfo_8hh_source.html#l00061">BDSScorerInfo::name</a>, <a class="el" href="BDSSDManager_8cc_source.html#l00390">BDSSDManager::RegisterPrimitiveScorerNames()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00472">SplitOnWhiteSpace()</a>.</p>
+<p class="reference">References <a class="el" href="BDSBeamline_8cc_source.html#l00590">BDSBeamline::AddBeamlineElement()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BDSGeometryFactory::BuildGeometry()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00851">BDSDetectorConstruction::CreatePlacementTransform()</a>, <a class="el" href="BDSScorerFactory_8cc_source.html#l00054">BDSScorerFactory::CreateScorer()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00085">BDSExtent::DZ()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00101">BDSGeometryComponent::GetExtent()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00094">BDSGeometryComponent::GetName()</a>, <a class="el" href="BDSParser_8hh_source.html#l00111">BDSParser::GetScorers()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00113">BDSAcceleratorComponent::Initialise()</a>, <a class="el" href="BDSBLMRegistry_8cc_source.html#l00028">BDSBLMRegistry::Instance()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00042">BDSGeometryFactory::Instance()</a>, <a class="el" href="BDSParser_8cc_source.html#l00030">BDSParser::Instance()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSScorerInfo_8hh_source.html#l00061">BDSScorerInfo::name</a>, <a class="el" href="BDSSDManager_8cc_source.html#l00390">BDSSDManager::RegisterPrimitiveScorerNames()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00472">SplitOnWhiteSpace()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00236">BDSDetectorConstruction::Construct()</a>.</p>
 <div class="dynheader">
@@ -1167,7 +1173,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSBendBuilder_8cc_source.html#l00799">799</a> of file <a class="el" href="BDSBendBuilder_8cc_source.html">BDSBendBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00107">BDSBeamPipeInfo::beamPipeType</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02644">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02582">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02442">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, and <a class="el" href="BDSFieldInfo_8cc_source.html#l00329">BDSFieldInfo::SetFieldAsThin()</a>.</p>
+<p class="reference">References <a class="el" href="BDSBeamPipeInfo_8hh_source.html#l00107">BDSBeamPipeInfo::beamPipeType</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02641">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02579">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02439">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, and <a class="el" href="BDSFieldInfo_8cc_source.html#l00329">BDSFieldInfo::SetFieldAsThin()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSBendBuilder_8cc_source.html#l00548">BuildRBendLine()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00053">BuildSBendLine()</a>.</p>
 <div class="dynheader">
@@ -1407,11 +1413,11 @@ Here is the caller graph for this function:</div>
 
 <p>Build muon splitting biasing and wrap the various processes in the physics list. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00509">509</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00517">517</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1500,7 +1506,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00050">50</a> of file <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html">BDSMuonCoolerBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00273">BuildMuonCoolerAbsorberInfo()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00127">BuildMuonCoolerCoilInfos()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00184">CheckMuonCoolerCoilInfosForOverlaps()</a>, <a class="el" href="BDSMaterials_8cc_source.html#l01043">BDSMaterials::GetMaterial()</a>, <a class="el" href="BDSMaterials_8cc_source.html#l00040">BDSMaterials::Instance()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00465">MuonCoolerSquaresFromCavities()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00451">MuonCoolerSquaresFromCoils()</a>, and <a class="el" href="coolingchannel_8h_source.html#l00041">GMAD::CoolingChannel::name</a>.</p>
+<p class="reference">References <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00273">BuildMuonCoolerAbsorberInfo()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00127">BuildMuonCoolerCoilInfos()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00184">CheckMuonCoolerCoilInfosForOverlaps()</a>, <a class="el" href="BDSMaterials_8cc_source.html#l01043">BDSMaterials::GetMaterial()</a>, <a class="el" href="BDSMaterials_8cc_source.html#l00040">BDSMaterials::Instance()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00465">MuonCoolerSquaresFromCavities()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00451">MuonCoolerSquaresFromCoils()</a>, and <a class="el" href="coolingchannel_8h_source.html#l00045">GMAD::CoolingChannel::name</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1561,7 +1567,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00273">273</a> of file <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html">BDSMuonCoolerBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00512">MuonParamsToMaterials()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00481">MuonParamsToVector()</a>, and <a class="el" href="coolingchannel_8h_source.html#l00041">GMAD::CoolingChannel::name</a>.</p>
+<p class="reference">References <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00512">MuonParamsToMaterials()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00481">MuonParamsToVector()</a>, and <a class="el" href="coolingchannel_8h_source.html#l00045">GMAD::CoolingChannel::name</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00050">BuildMuonCooler()</a>.</p>
 <div class="dynheader">
@@ -1639,7 +1645,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00127">127</a> of file <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html">BDSMuonCoolerBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00512">MuonParamsToMaterials()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00481">MuonParamsToVector()</a>, and <a class="el" href="coolingchannel_8h_source.html#l00041">GMAD::CoolingChannel::name</a>.</p>
+<p class="reference">References <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00512">MuonParamsToMaterials()</a>, <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00481">MuonParamsToVector()</a>, and <a class="el" href="coolingchannel_8h_source.html#l00045">GMAD::CoolingChannel::name</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSMuonCoolerBuilder_8cc_source.html#l00050">BuildMuonCooler()</a>.</p>
 <div class="dynheader">
@@ -1797,11 +1803,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Detect whether we're using a Geant4 provided physics list or whether we'll use the <a class="el" href="classBDSIM.html" title="Interface class to use BDSIM.">BDSIM</a> modular physics and construct it. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00114">114</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00115">115</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00544">ChannellingPhysicsComplete()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00633">CheckAndSetEnergyValidityRange()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00433">ConstructMinimumParticleSet()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00213">GetFullPath()</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee">LowerCase()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00588">SetRangeCuts()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00066">StrContains()</a>.</p>
+<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00568">ChannellingPhysicsComplete()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00657">CheckAndSetEnergyValidityRange()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00441">ConstructMinimumParticleSet()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00213">GetFullPath()</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee">LowerCase()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00612">SetRangeCuts()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00066">StrContains()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1905,7 +1911,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSBeamlinePlacementBuilder_8cc_source.html#l00053">53</a> of file <a class="el" href="BDSBeamlinePlacementBuilder_8cc_source.html">BDSBeamlinePlacementBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSBeamline_8cc_source.html#l00590">BDSBeamline::AddBeamlineElement()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BDSGeometryFactory::BuildGeometry()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00171">BDSComponentFactory::CreateComponent()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00848">BDSDetectorConstruction::CreatePlacementTransform()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00085">BDSExtent::DZ()</a>, <a class="el" href="BDSAcceleratorComponent_8hh_source.html#l00142">BDSAcceleratorComponent::GetChordLength()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00095">BDSGeometryComponent::GetContainerSolid()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00101">BDSGeometryComponent::GetExtent()</a>, <a class="el" href="BDSAcceleratorComponent_8hh_source.html#l00137">BDSAcceleratorComponent::GetName()</a>, <a class="el" href="BDSParser_8hh_source.html#l00090">BDSParser::GetPlacementElement()</a>, <a class="el" href="BDSAcceleratorComponent_8hh_source.html#l00159">BDSAcceleratorComponent::HasAField()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00113">BDSAcceleratorComponent::Initialise()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00164">BDSFieldFactory::Instance()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00042">BDSGeometryFactory::Instance()</a>, <a class="el" href="BDSParser_8cc_source.html#l00030">BDSParser::Instance()</a>, <a class="el" href="BDSFieldInfo_8hh_source.html#l00126">BDSFieldInfo::NameOfParserDefinition()</a>, <a class="el" href="BDSAcceleratorModel_8hh_source.html#l00098">BDSAcceleratorModel::RegisterPlacementFieldPlacements()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00140">BDSAcceleratorComponent::SetField()</a>, and <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00204">BDSAcceleratorComponent::SetFieldUsePlacementWorldTransform()</a>.</p>
+<p class="reference">References <a class="el" href="BDSBeamline_8cc_source.html#l00590">BDSBeamline::AddBeamlineElement()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BDSGeometryFactory::BuildGeometry()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00171">BDSComponentFactory::CreateComponent()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00851">BDSDetectorConstruction::CreatePlacementTransform()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00085">BDSExtent::DZ()</a>, <a class="el" href="BDSAcceleratorComponent_8hh_source.html#l00142">BDSAcceleratorComponent::GetChordLength()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00095">BDSGeometryComponent::GetContainerSolid()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00101">BDSGeometryComponent::GetExtent()</a>, <a class="el" href="BDSAcceleratorComponent_8hh_source.html#l00137">BDSAcceleratorComponent::GetName()</a>, <a class="el" href="BDSParser_8hh_source.html#l00090">BDSParser::GetPlacementElement()</a>, <a class="el" href="BDSAcceleratorComponent_8hh_source.html#l00159">BDSAcceleratorComponent::HasAField()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00113">BDSAcceleratorComponent::Initialise()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00164">BDSFieldFactory::Instance()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00042">BDSGeometryFactory::Instance()</a>, <a class="el" href="BDSParser_8cc_source.html#l00030">BDSParser::Instance()</a>, <a class="el" href="BDSFieldInfo_8hh_source.html#l00126">BDSFieldInfo::NameOfParserDefinition()</a>, <a class="el" href="BDSAcceleratorModel_8hh_source.html#l00098">BDSAcceleratorModel::RegisterPlacementFieldPlacements()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00140">BDSAcceleratorComponent::SetField()</a>, and <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00204">BDSAcceleratorComponent::SetFieldUsePlacementWorldTransform()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00236">BDSDetectorConstruction::Construct()</a>.</p>
 <div class="dynheader">
@@ -2127,7 +2133,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSBendBuilder_8cc_source.html#l00548">548</a> of file <a class="el" href="BDSBendBuilder_8cc_source.html">BDSBendBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSLine_8cc_source.html#l00028">BDSLine::AddComponent()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00799">BuildDipoleFringe()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02644">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="element_8h_source.html#l00062">GMAD::Element::e1</a>, <a class="el" href="element_8h_source.html#l00063">GMAD::Element::e2</a>, <a class="el" href="element_8h_source.html#l00064">GMAD::Element::fint</a>, <a class="el" href="element_8h_source.html#l00065">GMAD::Element::fintx</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="element_8h_source.html#l00068">GMAD::Element::hgap</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSIntegratorSet_8hh_source.html#l00111">BDSIntegratorSet::IsMatrixIntegratorSet()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02582">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02371">BDSComponentFactory::PrepareMagnetOuterFieldInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02442">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02366">BDSComponentFactory::ScalingFieldOuter()</a>, <a class="el" href="element_8h_source.html#l00046">GMAD::Element::type</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02339">BDSComponentFactory::YokeOnLeft()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
+<p class="reference">References <a class="el" href="BDSLine_8cc_source.html#l00028">BDSLine::AddComponent()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00799">BuildDipoleFringe()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02641">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="element_8h_source.html#l00065">GMAD::Element::e1</a>, <a class="el" href="element_8h_source.html#l00066">GMAD::Element::e2</a>, <a class="el" href="element_8h_source.html#l00067">GMAD::Element::fint</a>, <a class="el" href="element_8h_source.html#l00068">GMAD::Element::fintx</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="element_8h_source.html#l00071">GMAD::Element::hgap</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSIntegratorSet_8hh_source.html#l00111">BDSIntegratorSet::IsMatrixIntegratorSet()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02579">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02368">BDSComponentFactory::PrepareMagnetOuterFieldInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02439">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02363">BDSComponentFactory::ScalingFieldOuter()</a>, <a class="el" href="element_8h_source.html#l00049">GMAD::Element::type</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02336">BDSComponentFactory::YokeOnLeft()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2301,7 +2307,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSBendBuilder_8cc_source.html#l00053">53</a> of file <a class="el" href="BDSBendBuilder_8cc_source.html">BDSBendBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSLine_8cc_source.html#l00028">BDSLine::AddComponent()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00799">BuildDipoleFringe()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00496">BuildSingleSBend()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00840">CalculateNSBendSegments()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02657">BDSComponentFactory::CheckBendLengthAngleWidthCombo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02644">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="element_8h_source.html#l00062">GMAD::Element::e1</a>, <a class="el" href="element_8h_source.html#l00063">GMAD::Element::e2</a>, <a class="el" href="element_8h_source.html#l00064">GMAD::Element::fint</a>, <a class="el" href="element_8h_source.html#l00065">GMAD::Element::fintx</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="element_8h_source.html#l00068">GMAD::Element::hgap</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSIntegratorSet_8hh_source.html#l00111">BDSIntegratorSet::IsMatrixIntegratorSet()</a>, <a class="el" href="element_8h_source.html#l00051">GMAD::Element::l</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02582">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02558">BDSComponentFactory::PrepareHorizontalWidth()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02371">BDSComponentFactory::PrepareMagnetOuterFieldInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02442">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02366">BDSComponentFactory::ScalingFieldOuter()</a>, <a class="el" href="element_8h_source.html#l00046">GMAD::Element::type</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02339">BDSComponentFactory::YokeOnLeft()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
+<p class="reference">References <a class="el" href="BDSLine_8cc_source.html#l00028">BDSLine::AddComponent()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00799">BuildDipoleFringe()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00496">BuildSingleSBend()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00840">CalculateNSBendSegments()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02654">BDSComponentFactory::CheckBendLengthAngleWidthCombo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02641">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="element_8h_source.html#l00065">GMAD::Element::e1</a>, <a class="el" href="element_8h_source.html#l00066">GMAD::Element::e2</a>, <a class="el" href="element_8h_source.html#l00067">GMAD::Element::fint</a>, <a class="el" href="element_8h_source.html#l00068">GMAD::Element::fintx</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="element_8h_source.html#l00071">GMAD::Element::hgap</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSIntegratorSet_8hh_source.html#l00111">BDSIntegratorSet::IsMatrixIntegratorSet()</a>, <a class="el" href="element_8h_source.html#l00054">GMAD::Element::l</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02579">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02555">BDSComponentFactory::PrepareHorizontalWidth()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02368">BDSComponentFactory::PrepareMagnetOuterFieldInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02439">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02363">BDSComponentFactory::ScalingFieldOuter()</a>, <a class="el" href="element_8h_source.html#l00049">GMAD::Element::type</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02336">BDSComponentFactory::YokeOnLeft()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2498,7 +2504,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSBendBuilder_8cc_source.html#l00496">496</a> of file <a class="el" href="BDSBendBuilder_8cc_source.html">BDSBendBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSComponentFactory_8cc_source.html#l02644">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02582">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02442">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
+<p class="reference">References <a class="el" href="BDSComponentFactory_8cc_source.html#l02641">BDSComponentFactory::CreateFieldTransform()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02579">BDSComponentFactory::PrepareBeamPipeInfo()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02439">BDSComponentFactory::PrepareMagnetOuterInfo()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSBendBuilder_8cc_source.html#l00053">BuildSBendLine()</a>.</p>
 <div class="dynheader">
@@ -2598,7 +2604,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00134">CalculateOrientation()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSCurvilinearFactory_8cc_source.html#l00108">BDSCurvilinearFactory::CreateCurvilinearVolume()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00083">BDSMagnetOuterFactoryLHC::CreateLHCDipole()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00093">BDSMagnetOuterFactoryCylindrical::CreateRectangularBend()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00059">BDSMagnetOuterFactoryCylindrical::CreateSectorBend()</a>, <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00097">BDSTunnelFactoryBase::CreateTunnelSectionAngledInOut()</a>, and <a class="el" href="BDSComponentFactory_8cc_source.html#l02620">BDSComponentFactory::PrepareBeamPipeInfo()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSCurvilinearFactory_8cc_source.html#l00108">BDSCurvilinearFactory::CreateCurvilinearVolume()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00083">BDSMagnetOuterFactoryLHC::CreateLHCDipole()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00093">BDSMagnetOuterFactoryCylindrical::CreateRectangularBend()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00059">BDSMagnetOuterFactoryCylindrical::CreateSectorBend()</a>, <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00097">BDSTunnelFactoryBase::CreateTunnelSectionAngledInOut()</a>, and <a class="el" href="BDSComponentFactory_8cc_source.html#l02617">BDSComponentFactory::PrepareBeamPipeInfo()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3158,11 +3164,11 @@ Here is the caller graph for this function:</div>
 
 <p>Build the physics required for channelling to work correctly. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00544">544</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00568">568</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00114">BuildPhysics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00115">BuildPhysics()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3218,11 +3224,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Check if the user has requested a changed energy validity range and set the appropriate variables in the G4ProductionCutsTable. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00633">633</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00657">657</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00114">BuildPhysics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00115">BuildPhysics()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3559,11 +3565,11 @@ Here is the caller graph for this function:</div>
 
 <p>Throw an exception if too few or too many parameters are set for the supplied keys. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00226">226</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00234">234</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="beam_8cc_source.html#l00039">GMAD::Beam::get_value()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00248">ConstructDesignAndBeamParticle()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00175">BDSBunch::SetEmittances()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00256">ConstructDesignAndBeamParticle()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00175">BDSBunch::SetEmittances()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3684,7 +3690,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, and <a class="el" href="BDSParallelWorldUtilities_8cc_source.html#l00052">NumberOfExtraWorldsRequired()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3706,7 +3712,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="455,168,489,171,489,176,455,174"/>
 <area shape="rect" href="classBDSParser.html#a170247bd34ff09a0f68b411302c2d072" title="Return sequence." alt="" coords="509,218,692,243"/>
 <area shape="poly" title=" " alt="" coords="423,182,503,204,534,212,533,217,502,209,422,187"/>
-<area shape="rect" href="classGMAD_1_1Parser.html#ac17262d0663d364985d62571328451a7" title=" " alt="" coords="747,218,956,243"/>
+<area shape="rect" href="classGMAD_1_1Parser.html#a96100ac2fcb5e7b9f2f2e875a5ac1e93" title=" " alt="" coords="747,218,956,243"/>
 <area shape="poly" title=" " alt="" coords="692,228,733,228,733,233,692,233"/>
 <area shape="rect" href="classGMAD_1_1FastList.html#aeb35ebf343b86b642d59cb0ae9164c2d" title=" " alt="" coords="1004,218,1156,243"/>
 <area shape="poly" title=" " alt="" coords="956,228,990,228,990,233,956,233"/>
@@ -3750,11 +3756,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Ensure required beam particle has been constructed for Geant4 purposes. Expects lowercase letters, not the Geant4 exact string. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00375">375</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00383">383</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00296">ConstructParticleDefinition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00304">ConstructParticleDefinition()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3841,11 +3847,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Construct the design and beam particle definitions. Even if these are the same, unique objects are created for and must be deleted elsewhere. Two pointers are passed by reference that will be updated with the allocated objects. The Boolean by reference argument is to tell whether they definitions (although unique objects) define the same particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00248">248</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00256">256</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="beamBase_8h_source.html#l00042">GMAD::BeamBase::beamEnergy</a>, <a class="el" href="beamBase_8h_source.html#l00043">GMAD::BeamBase::beamKineticEnergy</a>, <a class="el" href="beamBase_8h_source.html#l00044">GMAD::BeamBase::beamMomentum</a>, <a class="el" href="beamBase_8h_source.html#l00041">GMAD::BeamBase::beamParticleName</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00226">ConflictingParametersSet()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00296">ConstructParticleDefinition()</a>, <a class="el" href="beamBase_8h_source.html#l00073">GMAD::BeamBase::E0</a>, <a class="el" href="beamBase_8h_source.html#l00074">GMAD::BeamBase::Ek0</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00217">NBeamParametersSet()</a>, <a class="el" href="beamBase_8h_source.html#l00075">GMAD::BeamBase::P0</a>, and <a class="el" href="beamBase_8h_source.html#l00040">GMAD::BeamBase::particle</a>.</p>
+<p class="reference">References <a class="el" href="beamBase_8h_source.html#l00042">GMAD::BeamBase::beamEnergy</a>, <a class="el" href="beamBase_8h_source.html#l00043">GMAD::BeamBase::beamKineticEnergy</a>, <a class="el" href="beamBase_8h_source.html#l00044">GMAD::BeamBase::beamMomentum</a>, <a class="el" href="beamBase_8h_source.html#l00041">GMAD::BeamBase::beamParticleName</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00234">ConflictingParametersSet()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00304">ConstructParticleDefinition()</a>, <a class="el" href="beamBase_8h_source.html#l00073">GMAD::BeamBase::E0</a>, <a class="el" href="beamBase_8h_source.html#l00074">GMAD::BeamBase::Ek0</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00225">NBeamParametersSet()</a>, <a class="el" href="beamBase_8h_source.html#l00075">GMAD::BeamBase::P0</a>, and <a class="el" href="beamBase_8h_source.html#l00040">GMAD::BeamBase::particle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3915,9 +3921,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Construct all leptons, pi+- K+- K. Utility function for when we expect other possible beam particles. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00451">451</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00459">459</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -3953,9 +3959,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Construct the minimum particle set required (gamma, electron, positron, proton and anti-proton. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00433">433</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00441">441</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00114">BuildPhysics()</a>, and <a class="el" href="BDSModularPhysicsList_8cc_source.html#l00382">BDSModularPhysicsList::ConstructParticle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00115">BuildPhysics()</a>, and <a class="el" href="BDSModularPhysicsList_8cc_source.html#l00382">BDSModularPhysicsList::ConstructParticle()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -4001,7 +4007,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSParallelWorldUtilities_8cc_source.html#l00159">159</a> of file <a class="el" href="BDSParallelWorldUtilities_8cc_source.html">BDSParallelWorldUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -4069,11 +4075,11 @@ Here is the caller graph for this function:</div>
 <p>Construct particle definition. Ensure that particle is instantiated from a Geant4 point of view. 'ffact' is typically 1 or -1 used to flip the sign of the rigidity for difference between convention and what's required. Only one of totalEnergy, kineticEnergy and momentum should be non-zero. </p>
 <p>cache this here in case the particle definition isn't available until during a run</p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00296">296</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00304">304</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00375">ConstructBeamParticleG4()</a>, <a class="el" href="namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee">LowerCase()</a>, and <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00533">PrintDefinedParticles()</a>.</p>
+<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00383">ConstructBeamParticleG4()</a>, <a class="el" href="namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee">LowerCase()</a>, and <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00557">PrintDefinedParticles()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00248">ConstructDesignAndBeamParticle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00256">ConstructDesignAndBeamParticle()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -4969,7 +4975,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee">LowerCase()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSComponentFactory_8cc_source.html#l02671">BDSComponentFactory::PrepareCavityModels()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSComponentFactory_8cc_source.html#l02668">BDSComponentFactory::PrepareCavityModels()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -5015,7 +5021,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee">LowerCase()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSComponentFactory_8cc_source.html#l02757">BDSComponentFactory::PrepareCrystals()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSComponentFactory_8cc_source.html#l02754">BDSComponentFactory::PrepareCrystals()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -5719,7 +5725,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="namespaceBDS.html#a6abcf917829e034eb4de9a8ddf8c70ee">LowerCase()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00066">StrContains()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGlobalConstants_8cc_source.html#l00072">BDSGlobalConstants::BDSGlobalConstants()</a>, and <a class="el" href="BDSComponentFactory_8cc_source.html#l02459">BDSComponentFactory::MagnetGeometryType()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGlobalConstants_8cc_source.html#l00072">BDSGlobalConstants::BDSGlobalConstants()</a>, and <a class="el" href="BDSComponentFactory_8cc_source.html#l02456">BDSComponentFactory::MagnetGeometryType()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -6095,6 +6101,22 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8hh_source.html#l00278">278</a> of file <a class="el" href="BDSUtilities_8hh_source.html">BDSUtilities.hh</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00422">BDSDetectorConstruction::BuildBeamline()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceBDS_a4ff4e0b54fa31dec91821b5018baf4e1_icgraph.png" border="0" usemap="#anamespaceBDS_a4ff4e0b54fa31dec91821b5018baf4e1_icgraph" alt=""/></div>
+<map name="anamespaceBDS_a4ff4e0b54fa31dec91821b5018baf4e1_icgraph" id="anamespaceBDS_a4ff4e0b54fa31dec91821b5018baf4e1_icgraph">
+<area shape="rect" title="Return true if a string &quot;expression&quot; ends with &quot;suffix&quot;." alt="" coords="709,13,828,38"/>
+<area shape="rect" href="classBDSDetectorConstruction.html#a8e5b24d8a99d199a728d8a97be40f1ab" title=" " alt="" coords="475,5,661,45"/>
+<area shape="poly" title=" " alt="" coords="695,28,661,28,661,23,695,23"/>
+<area shape="rect" href="classBDSDetectorConstruction.html#aa81d7072ee80602ba862eda6c892c87c" title="Build the main beam line and then any other required beam lines." alt="" coords="240,5,427,45"/>
+<area shape="poly" title=" " alt="" coords="461,28,427,28,427,23,461,23"/>
+<area shape="rect" href="classBDSDetectorConstruction.html#aecc9dd2cc52d76b1904307a96220d80b" title=" " alt="" coords="5,5,192,45"/>
+<area shape="poly" title=" " alt="" coords="227,28,192,28,192,23,227,23"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a8dbf382bb29843a4904f8b5e6b141b1d" name="a8dbf382bb29843a4904f8b5e6b141b1d"></a>
@@ -6243,6 +6265,46 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="861,473,762,451,763,445,862,468"/>
 <area shape="rect" href="classBDSCavityFactory.html#ac65585d5bdd37c2434a3490b1c717a0c" title="Main function to create a piece of cavity geometry." alt="" coords="311,415,499,455"/>
 <area shape="poly" title=" " alt="" coords="572,473,498,457,499,452,573,468"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6277b73de1e31034e8e7a28ccfae0f70" name="a6277b73de1e31034e8e7a28ccfae0f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6277b73de1e31034e8e7a28ccfae0f70">&#9670;&#160;</a></span>ExtendPionDecayChannels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BDS::ExtendPionDecayChannels </td>
+          <td>(</td>
+          <td class="paramtype">G4VModularPhysicsList *&#160;</td>
+          <td class="paramname"><em>physicsList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extend the default pi+- decay channels in Geant4. </p>
+
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00541">541</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceBDS_a6277b73de1e31034e8e7a28ccfae0f70_icgraph.png" border="0" usemap="#anamespaceBDS_a6277b73de1e31034e8e7a28ccfae0f70_icgraph" alt=""/></div>
+<map name="anamespaceBDS_a6277b73de1e31034e8e7a28ccfae0f70_icgraph" id="anamespaceBDS_a6277b73de1e31034e8e7a28ccfae0f70_icgraph">
+<area shape="rect" title="Extend the default pi+&#45; decay channels in Geant4." alt="" coords="360,55,591,80"/>
+<area shape="rect" href="classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,55,312,80"/>
+<area shape="poly" title=" " alt="" coords="346,70,313,70,313,65,346,65"/>
+<area shape="rect" href="classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,5,128,31"/>
+<area shape="poly" title=" " alt="" coords="187,53,116,33,117,28,189,48"/>
+<area shape="rect" href="classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,55,128,80"/>
+<area shape="poly" title=" " alt="" coords="169,70,128,70,128,65,169,65"/>
+<area shape="rect" href="classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,104,135,129"/>
+<area shape="poly" title=" " alt="" coords="189,86,117,106,116,101,187,81"/>
 </map>
 </div>
 
@@ -6413,9 +6475,9 @@ Here is the caller graph for this function:</div>
 
 <p>Taken from Geant4 field01 example. Get the two possible transportation processes. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00713">713</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00737">737</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00682">FixGeant105ThreshholdsForParticle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00706">FixGeant105ThreshholdsForParticle()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -6465,9 +6527,9 @@ Here is the caller graph for this function:</div>
 
 <p>Apply FixGeant105ThreshholdsForParticle to the beam particle definition. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00676">676</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00700">700</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00682">FixGeant105ThreshholdsForParticle()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00098">BDSParticleDefinition::ParticleDefinition()</a>.</p>
+<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00706">FixGeant105ThreshholdsForParticle()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00098">BDSParticleDefinition::ParticleDefinition()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -6502,11 +6564,11 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Set 1keV, 10keV and 1500 for warning energy, important energy and number of trials in Geant4's looping thresholds. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00682">682</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00706">706</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00713">FindTransportation()</a>.</p>
+<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00737">FindTransportation()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00676">FixGeant105ThreshholdsForBeamParticle()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00086">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00086">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00389">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00119">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00119">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00700">FixGeant105ThreshholdsForBeamParticle()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00086">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00089">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00389">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00119">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00122">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -6675,7 +6737,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00372">372</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -6914,7 +6976,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">865</a> of file <a class="el" href="BDSBendBuilder_8cc_source.html">BDSBendBuilder.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSIntegratorSet_8cc_source.html#l00285">BDSIntegratorSet::Integrator()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, and <a class="el" href="element_8h_source.html#l00056">GMAD::Element::k1</a>.</p>
+<p class="reference">References <a class="el" href="BDSIntegratorSet_8cc_source.html#l00285">BDSIntegratorSet::Integrator()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">IsFinite()</a>, and <a class="el" href="element_8h_source.html#l00059">GMAD::Element::k1</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="BDSBendBuilder_8cc_source.html#l00548">BuildRBendLine()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00053">BuildSBendLine()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00496">BuildSingleSBend()</a>.</p>
 <div class="dynheader">
@@ -7046,7 +7108,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00178">GetCurrentDir()</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00259">SplitPathAndFileName()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPSCellFluxScaled3D_8cc_source.html#l00065">BDSPSCellFluxScaled3D::BDSPSCellFluxScaled3D()</a>, <a class="el" href="BDSPSPopulationScaled_8cc_source.html#l00050">BDSPSPopulationScaled::BDSPSPopulationScaled()</a>, <a class="el" href="BDSPTCOneTurnMap_8cc_source.html#l00038">BDSPTCOneTurnMap::BDSPTCOneTurnMap()</a>, <a class="el" href="BDSGeometryFactorySQL_8cc_source.html#l00146">BDSGeometryFactorySQL::Build()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BDSGeometryFactory::BuildGeometry()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00114">BuildPhysics()</a>, <a class="el" href="BDSCrystalFactory_8cc_source.html#l00099">BDSCrystalFactory::CommonConstruction()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00062">BDSParallelWorldImportance::Construct()</a>, <a class="el" href="BDSPrimaryGeneratorFile_8cc_source.html#l00093">BDSPrimaryGeneratorFile::ConstructGenerator()</a>, <a class="el" href="BDSAperturePointsLoader_8cc_source.html#l00127">LoadAperturePoints()</a>, <a class="el" href="BDSFieldLoaderQueryPoints_8cc_source.html#l00183">LoadFieldQueryPoints()</a>, <a class="el" href="BDSExecOptions_8cc_source.html#l00075">BDSExecOptions::Parse()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00194">BDSFieldFactory::PrepareFieldDefinitions()</a>, <a class="el" href="BDSBunchPtc_8cc_source.html#l00143">BDSBunchPtc::SetOptions()</a>, <a class="el" href="BDSBunchUserFile_8cc_source.html#l00305">BDSBunchUserFile&lt; T &gt;::SetOptions()</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">BDSGeometryWriter::WriteToGDML()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPSCellFluxScaled3D_8cc_source.html#l00065">BDSPSCellFluxScaled3D::BDSPSCellFluxScaled3D()</a>, <a class="el" href="BDSPSPopulationScaled_8cc_source.html#l00050">BDSPSPopulationScaled::BDSPSPopulationScaled()</a>, <a class="el" href="BDSPTCOneTurnMap_8cc_source.html#l00038">BDSPTCOneTurnMap::BDSPTCOneTurnMap()</a>, <a class="el" href="BDSGeometryFactorySQL_8cc_source.html#l00146">BDSGeometryFactorySQL::Build()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BDSGeometryFactory::BuildGeometry()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00115">BuildPhysics()</a>, <a class="el" href="BDSCrystalFactory_8cc_source.html#l00099">BDSCrystalFactory::CommonConstruction()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00062">BDSParallelWorldImportance::Construct()</a>, <a class="el" href="BDSPrimaryGeneratorFile_8cc_source.html#l00093">BDSPrimaryGeneratorFile::ConstructGenerator()</a>, <a class="el" href="BDSAperturePointsLoader_8cc_source.html#l00127">LoadAperturePoints()</a>, <a class="el" href="BDSFieldLoaderQueryPoints_8cc_source.html#l00183">LoadFieldQueryPoints()</a>, <a class="el" href="BDSExecOptions_8cc_source.html#l00075">BDSExecOptions::Parse()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00194">BDSFieldFactory::PrepareFieldDefinitions()</a>, <a class="el" href="BDSBunchPtc_8cc_source.html#l00143">BDSBunchPtc::SetOptions()</a>, <a class="el" href="BDSBunchUserFile_8cc_source.html#l00305">BDSBunchUserFile&lt; T &gt;::SetOptions()</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">BDSGeometryWriter::WriteToGDML()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -7605,7 +7667,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00293">293</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00412">BDSIM::BeamOn()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00367">BDSIMLink::BeamOn()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00410">BDSIM::BeamOn()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00371">BDSIMLink::BeamOn()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -8574,7 +8636,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00311">311</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamline_8cc_source.html#l00211">BDSBeamline::AddSingleComponent()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8cc_source.html#l00156">BDSIntegratorDipoleRodrigues2::AdvanceHelixForSpiralling()</a>, <a class="el" href="BDSLinkOpaqueBox_8hh_source.html#l00064">BDSLinkOpaqueBox::Angled()</a>, <a class="el" href="BDSCurvilinearBuilder_8hh_source.html#l00144">BDSCurvilinearBuilder::Angled()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00154">BDSAcceleratorComponent::AngledInputFace()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00162">BDSAcceleratorComponent::AngledOutputFace()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03255">BDSComponentFactory::AngleFromField()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00267">BDSParticleDefinition::ApplyChangeInKineticEnergy()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00708">ArcLengthFromChordLength()</a>, <a class="el" href="BDSIntegratorDipoleFringe_8cc_source.html#l00119">BDSIntegratorDipoleFringe::BaseStepper()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00049">BDSAcceleratorComponent::BDSAcceleratorComponent()</a>, <a class="el" href="BDSApertureInfo_8cc_source.html#l00060">BDSApertureInfo::BDSApertureInfo()</a>, <a class="el" href="BDSBeamPipeInfo_8cc_source.html#l00086">BDSBeamPipeInfo::BDSBeamPipeInfo()</a>, <a class="el" href="BDSFieldESinusoid_8cc_source.html#l00038">BDSFieldESinusoid::BDSFieldESinusoid()</a>, <a class="el" href="BDSFieldMagDipole_8cc_source.html#l00036">BDSFieldMagDipole::BDSFieldMagDipole()</a>, <a class="el" href="BDSFieldMagDipole_8cc_source.html#l00027">BDSFieldMagDipole::BDSFieldMagDipole()</a>, <a class="el" href="BDSFieldMagSolenoidBlock_8cc_source.html#l00042">BDSFieldMagSolenoidBlock::BDSFieldMagSolenoidBlock()</a>, <a class="el" href="BDSFieldMagSolenoidLoop_8cc_source.html#l00037">BDSFieldMagSolenoidLoop::BDSFieldMagSolenoidLoop()</a>, <a class="el" href="BDSFieldMagSolenoidSheet_8cc_source.html#l00039">BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet()</a>, <a class="el" href="BDSSamplerCylinder_8cc_source.html#l00055">BDSSamplerCylinder::BDSSamplerCylinder()</a>, <a class="el" href="BDSTunnelBuilder_8cc_source.html#l00059">BDSTunnelBuilder::BreakTunnel()</a>, <a class="el" href="BDSCollimator_8cc_source.html#l00143">BDSCollimator::Build()</a>, <a class="el" href="BDSCollimatorBeamMask_8cc_source.html#l00181">BDSCollimatorBeamMask::Build()</a>, <a class="el" href="BDSCollimatorCrystal_8cc_source.html#l00079">BDSCollimatorCrystal::Build()</a>, <a class="el" href="BDSTipCollimator_8cc_source.html#l00151">BDSTipCollimator::Build()</a>, <a class="el" href="BDSUndulator_8cc_source.html#l00128">BDSUndulator::Build()</a>, <a class="el" href="BDSCollimatorJaw_8cc_source.html#l00150">BDSCollimatorJaw::Build()</a>, <a class="el" href="BDSCollimatorTipJaw_8cc_source.html#l00156">BDSCollimatorTipJaw::Build()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00422">BDSDetectorConstruction::BuildBeamline()</a>, <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00057">BuildBLMs()</a>, <a class="el" href="BDSUndulator_8cc_source.html#l00076">BDSUndulator::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSMagnet_8cc_source.html#l00231">BDSMagnet::BuildOuterField()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00548">BuildRBendLine()</a>, <a class="el" href="BDSParallelWorldSampler_8cc_source.html#l00165">BDSParallelWorldSampler::BuildSampler()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00053">BuildSBendLine()</a>, <a class="el" href="BDSShield_8cc_source.html#l00074">BDSShield::BuildShield()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00496">BuildSingleSBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02945">BDSComponentFactory::CalculateAngleAndFieldRBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03264">BDSComponentFactory::CalculateAngleAndFieldSBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03420">BDSComponentFactory::CalculateGaborLensStrength()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00249">BDSParticleDefinition::CalculateRigidity()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00682">CalculateSafeAngledVolumeLength()</a>, <a class="el" href="BDSSpecialFunctions_8cc_source.html#l00028">CEL()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00633">CheckAndSetEnergyValidityRange()</a>, <a class="el" href="BDSFieldQuery_8cc_source.html#l00184">BDSFieldQuery::CheckNStepsAndRange()</a>, <a class="el" href="BDSParser_8cc_source.html#l00094">BDSParser::CheckOptions()</a>, <a class="el" href="BDSCollimator_8cc_source.html#l00074">BDSCollimator::CheckParameters()</a>, <a class="el" href="BDSCollimatorBeamMask_8cc_source.html#l00082">BDSCollimatorBeamMask::CheckParameters()</a>, <a class="el" href="BDSCollimatorElliptical_8cc_source.html#l00045">BDSCollimatorElliptical::CheckParameters()</a>, <a class="el" href="BDSGasCapillary_8cc_source.html#l00079">BDSGasCapillary::CheckParameters()</a>, <a class="el" href="BDSGasJet_8cc_source.html#l00064">BDSGasJet::CheckParameters()</a>, <a class="el" href="BDSTipCollimator_8cc_source.html#l00080">BDSTipCollimator::CheckParameters()</a>, <a class="el" href="BDSCollimatorJaw_8cc_source.html#l00075">BDSCollimatorJaw::CheckParameters()</a>, <a class="el" href="BDSCollimatorTipJaw_8cc_source.html#l00080">BDSCollimatorTipJaw::CheckParameters()</a>, <a class="el" href="BDSApertureInfo_8cc_source.html#l00186">BDSApertureInfo::CheckRequiredParametersSet()</a>, <a class="el" href="BDSBeamPipeInfo_8cc_source.html#l00283">BDSBeamPipeInfo::CheckRequiredParametersSet()</a>, <a class="el" href="BDSCollimator_8cc_source.html#l00253">BDSCollimator::CollimatorUserLimits()</a>, <a class="el" href="BDSCollimatorBeamMask_8cc_source.html#l00277">BDSCollimatorBeamMask::CollimatorUserLimits()</a>, <a class="el" href="BDSTipCollimator_8cc_source.html#l00261">BDSTipCollimator::CollimatorUserLimits()</a>, <a class="el" href="BDSCurvilinearBuilder_8cc_source.html#l00263">BDSCurvilinearBuilder::CreateBridgeSection()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00171">BDSComponentFactory::CreateComponent()</a>, <a class="el" href="BDSCrystalFactory_8cc_source.html#l00252">BDSCrystalFactory::CreateCrystalCylinder()</a>, <a class="el" href="BDSCrystalFactory_8cc_source.html#l00296">BDSCrystalFactory::CreateCrystalTorus()</a>, <a class="el" href="BDSCurvilinearBuilder_8cc_source.html#l00197">BDSCurvilinearBuilder::CreateCurvilinearElement()</a>, <a class="el" href="BDSCurvilinearFactory_8cc_source.html#l00063">BDSCurvilinearFactory::CreateCurvilinearVolume()</a>, <a class="el" href="BDSScorerFactory_8cc_source.html#l00148">BDSScorerFactory::CreateFilter()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00464">BDSOutput::CreateHistograms()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00083">BDSMagnetOuterFactoryLHC::CreateLHCDipole()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00848">BDSDetectorConstruction::CreatePlacementTransform()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00093">BDSMagnetOuterFactoryCylindrical::CreateRectangularBend()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00059">BDSMagnetOuterFactoryCylindrical::CreateSectorBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02629">BDSComponentFactory::CreateTiltOffset()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00591">CreateUserLimits()</a>, <a class="el" href="BDSCurvilinearBuilder_8cc_source.html#l00183">BDSCurvilinearBuilder::CurvilinearRadius()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02896">BDSComponentFactory::EFieldFromElement()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03246">BDSComponentFactory::FieldFromAngle()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00184">BDSParallelWorldImportance::GetCellImportanceValue()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="BDSBeamline_8cc_source.html#l00617">BDSBeamline::GetGlobalEuclideanTransform()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00842">BDSComponentFactory::GetKickValue()</a>, <a class="el" href="BDSBeamPipe_8cc_source.html#l00050">BDSBeamPipe::GetVolumesForField()</a>, <a class="el" href="BDSAuxiliaryNavigator_8cc_source.html#l00312">BDSAuxiliaryNavigator::GlobalToCurvilinear()</a>, <a class="el" href="BDSTiltOffset_8cc_source.html#l00053">BDSTiltOffset::HasFiniteOffset()</a>, <a class="el" href="BDSTiltOffset_8cc_source.html#l00058">BDSTiltOffset::HasFiniteTilt()</a>, <a class="el" href="BDSPrimaryGeneratorFileHEPMC_8cc_source.html#l00242">BDSPrimaryGeneratorFileHEPMC::HepMC2G4()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03359">BDSComponentFactory::IncomingFaceAngle()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00055">BDSBeamlineIntegral::Integrate()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00327">IsFinite()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00322">IsFiniteStrength()</a>, <a class="el" href="BDSIntegratorMultipoleThin_8cc_source.html#l00122">BDSIntegratorMultipoleThin::OneStep()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03312">BDSComponentFactory::OutgoingFaceAngle()</a>, <a class="el" href="BDSParallelWorldSampler_8cc_source.html#l00330">BDSParallelWorldSampler::Place()</a>, <a class="el" href="BDSLinkOpaqueBox_8cc_source.html#l00162">BDSLinkOpaqueBox::PlaceOutputSampler()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02845">BDSComponentFactory::PrepareCavityModelInfoForElement()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03004">BDSComponentFactory::PrepareCavityStrength()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00194">BDSFieldFactory::PrepareFieldDefinitions()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02698">BDSComponentFactory::PrepareLasers()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03184">BDSComponentFactory::PrepareMagnetStrengthForMultipoles()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00388">BDSFieldFactory::PrepareModulatorDefinitions()</a>, <a class="el" href="BDSSDSampler_8cc_source.html#l00071">BDSSDSampler::ProcessHits()</a>, <a class="el" href="BDSSDSamplerCylinder_8cc_source.html#l00071">BDSSDSamplerCylinder::ProcessHits()</a>, <a class="el" href="BDSSDSamplerSphere_8cc_source.html#l00071">BDSSDSamplerSphere::ProcessHits()</a>, <a class="el" href="BDSSDEnergyDeposition_8cc_source.html#l00075">BDSSDEnergyDeposition::ProcessHits()</a>, <a class="el" href="BDSSDEnergyDepositionGlobal_8cc_source.html#l00074">BDSSDEnergyDepositionGlobal::ProcessHits()</a>, <a class="el" href="BDSSDThinThing_8cc_source.html#l00074">BDSSDThinThing::ProcessHitsOrdered()</a>, <a class="el" href="BDSSDEnergyDeposition_8cc_source.html#l00223">BDSSDEnergyDeposition::ProcessHitsTrack()</a>, <a class="el" href="BDSSDEnergyDepositionGlobal_8cc_source.html#l00140">BDSSDEnergyDepositionGlobal::ProcessHitsTrack()</a>, <a class="el" href="BDSPrimaryGeneratorFileSampler_8cc_source.html#l00170">BDSPrimaryGeneratorFileSampler::ReadSingleEvent()</a>, <a class="el" href="BDSBunchEventGenerator_8cc_source.html#l00192">BDSBunchEventGenerator::ReferenceBeamMomentumOffset()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00562">RotateToReferenceFrame()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00145">BDSAcceleratorComponent::Sagitta()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00175">BDSBunch::SetEmittances()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">BDSParticleDefinition::SetEnergies()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>, <a class="el" href="BDSBunchGaussMatrix_8cc_source.html#l00032">BDSBunchGaussMatrix::SetOptions()</a>, <a class="el" href="BDSBunchSlowExt_8cc_source.html#l00048">BDSBunchSlowExt::SetOptions()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00993">BDSDetectorConstruction::SideToLocalOffset()</a>, <a class="el" href="BDSBunchUserFile_8cc_source.html#l00258">BDSBunchUserFile&lt; T &gt;::SkipNLinesIgnoreIntoFile()</a>, <a class="el" href="BDSBunchUserFile_8cc_source.html#l00281">BDSBunchUserFile&lt; T &gt;::SkipNLinesSkip()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">BDSIntegratorDipoleQuadrupole::Stepper()</a>, <a class="el" href="BDSIntegratorEulerOld_8cc_source.html#l00034">BDSIntegratorEulerOld::Stepper()</a>, <a class="el" href="BDSIntegratorKickerThin_8cc_source.html#l00091">BDSIntegratorKickerThin::Stepper()</a>, <a class="el" href="BDSTrajectoryPoint_8cc_source.html#l00255">BDSTrajectoryPoint::StoreExtrasLink()</a>, <a class="el" href="BDSTunnelFactoryRectAboveGround_8cc_source.html#l00219">BDSTunnelFactoryRectAboveGround::TestInputParameters()</a>, <a class="el" href="BDSExtent_8cc_source.html#l00121">BDSExtent::Tilted()</a>, <a class="el" href="BDSCollimatorCrystal_8cc_source.html#l00265">BDSCollimatorCrystal::TransverseOffsetToEdge()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01345">BDSDetectorConstruction::UnsuitableFirstElement()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00173">BDSDetectorConstruction::UpdateSamplerDiameterAndCountSamplers()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00493">WillIntersect()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02339">BDSComponentFactory::YokeOnLeft()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamline_8cc_source.html#l00211">BDSBeamline::AddSingleComponent()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8cc_source.html#l00156">BDSIntegratorDipoleRodrigues2::AdvanceHelixForSpiralling()</a>, <a class="el" href="BDSLinkOpaqueBox_8hh_source.html#l00064">BDSLinkOpaqueBox::Angled()</a>, <a class="el" href="BDSCurvilinearBuilder_8hh_source.html#l00144">BDSCurvilinearBuilder::Angled()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00154">BDSAcceleratorComponent::AngledInputFace()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00162">BDSAcceleratorComponent::AngledOutputFace()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03252">BDSComponentFactory::AngleFromField()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00267">BDSParticleDefinition::ApplyChangeInKineticEnergy()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00708">ArcLengthFromChordLength()</a>, <a class="el" href="BDSIntegratorDipoleFringe_8cc_source.html#l00119">BDSIntegratorDipoleFringe::BaseStepper()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00049">BDSAcceleratorComponent::BDSAcceleratorComponent()</a>, <a class="el" href="BDSApertureInfo_8cc_source.html#l00060">BDSApertureInfo::BDSApertureInfo()</a>, <a class="el" href="BDSBeamPipeInfo_8cc_source.html#l00086">BDSBeamPipeInfo::BDSBeamPipeInfo()</a>, <a class="el" href="BDSFieldESinusoid_8cc_source.html#l00038">BDSFieldESinusoid::BDSFieldESinusoid()</a>, <a class="el" href="BDSFieldMagDipole_8cc_source.html#l00036">BDSFieldMagDipole::BDSFieldMagDipole()</a>, <a class="el" href="BDSFieldMagDipole_8cc_source.html#l00027">BDSFieldMagDipole::BDSFieldMagDipole()</a>, <a class="el" href="BDSFieldMagSolenoidBlock_8cc_source.html#l00042">BDSFieldMagSolenoidBlock::BDSFieldMagSolenoidBlock()</a>, <a class="el" href="BDSFieldMagSolenoidLoop_8cc_source.html#l00037">BDSFieldMagSolenoidLoop::BDSFieldMagSolenoidLoop()</a>, <a class="el" href="BDSFieldMagSolenoidSheet_8cc_source.html#l00039">BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet()</a>, <a class="el" href="BDSSamplerCylinder_8cc_source.html#l00055">BDSSamplerCylinder::BDSSamplerCylinder()</a>, <a class="el" href="BDSTunnelBuilder_8cc_source.html#l00059">BDSTunnelBuilder::BreakTunnel()</a>, <a class="el" href="BDSCollimator_8cc_source.html#l00143">BDSCollimator::Build()</a>, <a class="el" href="BDSCollimatorBeamMask_8cc_source.html#l00183">BDSCollimatorBeamMask::Build()</a>, <a class="el" href="BDSCollimatorCrystal_8cc_source.html#l00079">BDSCollimatorCrystal::Build()</a>, <a class="el" href="BDSTipCollimator_8cc_source.html#l00151">BDSTipCollimator::Build()</a>, <a class="el" href="BDSUndulator_8cc_source.html#l00121">BDSUndulator::Build()</a>, <a class="el" href="BDSCollimatorJaw_8cc_source.html#l00150">BDSCollimatorJaw::Build()</a>, <a class="el" href="BDSCollimatorTipJaw_8cc_source.html#l00156">BDSCollimatorTipJaw::Build()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00422">BDSDetectorConstruction::BuildBeamline()</a>, <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00057">BuildBLMs()</a>, <a class="el" href="BDSUndulator_8cc_source.html#l00069">BDSUndulator::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSMagnet_8cc_source.html#l00231">BDSMagnet::BuildOuterField()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00548">BuildRBendLine()</a>, <a class="el" href="BDSParallelWorldSampler_8cc_source.html#l00165">BDSParallelWorldSampler::BuildSampler()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00053">BuildSBendLine()</a>, <a class="el" href="BDSShield_8cc_source.html#l00074">BDSShield::BuildShield()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00496">BuildSingleSBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02942">BDSComponentFactory::CalculateAngleAndFieldRBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03261">BDSComponentFactory::CalculateAngleAndFieldSBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03417">BDSComponentFactory::CalculateGaborLensStrength()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00249">BDSParticleDefinition::CalculateRigidity()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00682">CalculateSafeAngledVolumeLength()</a>, <a class="el" href="BDSSpecialFunctions_8cc_source.html#l00028">CEL()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00657">CheckAndSetEnergyValidityRange()</a>, <a class="el" href="BDSFieldQuery_8cc_source.html#l00184">BDSFieldQuery::CheckNStepsAndRange()</a>, <a class="el" href="BDSParser_8cc_source.html#l00094">BDSParser::CheckOptions()</a>, <a class="el" href="BDSCollimator_8cc_source.html#l00074">BDSCollimator::CheckParameters()</a>, <a class="el" href="BDSCollimatorBeamMask_8cc_source.html#l00082">BDSCollimatorBeamMask::CheckParameters()</a>, <a class="el" href="BDSCollimatorElliptical_8cc_source.html#l00045">BDSCollimatorElliptical::CheckParameters()</a>, <a class="el" href="BDSGasCapillary_8cc_source.html#l00079">BDSGasCapillary::CheckParameters()</a>, <a class="el" href="BDSGasJet_8cc_source.html#l00064">BDSGasJet::CheckParameters()</a>, <a class="el" href="BDSTipCollimator_8cc_source.html#l00080">BDSTipCollimator::CheckParameters()</a>, <a class="el" href="BDSCollimatorJaw_8cc_source.html#l00075">BDSCollimatorJaw::CheckParameters()</a>, <a class="el" href="BDSCollimatorTipJaw_8cc_source.html#l00080">BDSCollimatorTipJaw::CheckParameters()</a>, <a class="el" href="BDSApertureInfo_8cc_source.html#l00186">BDSApertureInfo::CheckRequiredParametersSet()</a>, <a class="el" href="BDSBeamPipeInfo_8cc_source.html#l00283">BDSBeamPipeInfo::CheckRequiredParametersSet()</a>, <a class="el" href="BDSCollimator_8cc_source.html#l00253">BDSCollimator::CollimatorUserLimits()</a>, <a class="el" href="BDSCollimatorBeamMask_8cc_source.html#l00276">BDSCollimatorBeamMask::CollimatorUserLimits()</a>, <a class="el" href="BDSTipCollimator_8cc_source.html#l00261">BDSTipCollimator::CollimatorUserLimits()</a>, <a class="el" href="BDSCurvilinearBuilder_8cc_source.html#l00263">BDSCurvilinearBuilder::CreateBridgeSection()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00171">BDSComponentFactory::CreateComponent()</a>, <a class="el" href="BDSCrystalFactory_8cc_source.html#l00252">BDSCrystalFactory::CreateCrystalCylinder()</a>, <a class="el" href="BDSCrystalFactory_8cc_source.html#l00296">BDSCrystalFactory::CreateCrystalTorus()</a>, <a class="el" href="BDSCurvilinearBuilder_8cc_source.html#l00197">BDSCurvilinearBuilder::CreateCurvilinearElement()</a>, <a class="el" href="BDSCurvilinearFactory_8cc_source.html#l00063">BDSCurvilinearFactory::CreateCurvilinearVolume()</a>, <a class="el" href="BDSScorerFactory_8cc_source.html#l00148">BDSScorerFactory::CreateFilter()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00464">BDSOutput::CreateHistograms()</a>, <a class="el" href="BDSMagnetOuterFactoryLHC_8cc_source.html#l00083">BDSMagnetOuterFactoryLHC::CreateLHCDipole()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00851">BDSDetectorConstruction::CreatePlacementTransform()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00093">BDSMagnetOuterFactoryCylindrical::CreateRectangularBend()</a>, <a class="el" href="BDSMagnetOuterFactoryCylindrical_8cc_source.html#l00059">BDSMagnetOuterFactoryCylindrical::CreateSectorBend()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02626">BDSComponentFactory::CreateTiltOffset()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00591">CreateUserLimits()</a>, <a class="el" href="BDSCurvilinearBuilder_8cc_source.html#l00183">BDSCurvilinearBuilder::CurvilinearRadius()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02893">BDSComponentFactory::EFieldFromElement()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03243">BDSComponentFactory::FieldFromAngle()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00184">BDSParallelWorldImportance::GetCellImportanceValue()</a>, <a class="el" href="BDSBendBuilder_8cc_source.html#l00865">GetDipoleIntegratorType()</a>, <a class="el" href="BDSBeamline_8cc_source.html#l00617">BDSBeamline::GetGlobalEuclideanTransform()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00842">BDSComponentFactory::GetKickValue()</a>, <a class="el" href="BDSBeamPipe_8cc_source.html#l00050">BDSBeamPipe::GetVolumesForField()</a>, <a class="el" href="BDSAuxiliaryNavigator_8cc_source.html#l00312">BDSAuxiliaryNavigator::GlobalToCurvilinear()</a>, <a class="el" href="BDSTiltOffset_8cc_source.html#l00053">BDSTiltOffset::HasFiniteOffset()</a>, <a class="el" href="BDSTiltOffset_8cc_source.html#l00058">BDSTiltOffset::HasFiniteTilt()</a>, <a class="el" href="BDSPrimaryGeneratorFileHEPMC_8cc_source.html#l00242">BDSPrimaryGeneratorFileHEPMC::HepMC2G4()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03356">BDSComponentFactory::IncomingFaceAngle()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00055">BDSBeamlineIntegral::Integrate()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00327">IsFinite()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00322">IsFiniteStrength()</a>, <a class="el" href="BDSIntegratorMultipoleThin_8cc_source.html#l00122">BDSIntegratorMultipoleThin::OneStep()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03309">BDSComponentFactory::OutgoingFaceAngle()</a>, <a class="el" href="BDSParallelWorldSampler_8cc_source.html#l00330">BDSParallelWorldSampler::Place()</a>, <a class="el" href="BDSLinkOpaqueBox_8cc_source.html#l00162">BDSLinkOpaqueBox::PlaceOutputSampler()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02842">BDSComponentFactory::PrepareCavityModelInfoForElement()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03001">BDSComponentFactory::PrepareCavityStrength()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00194">BDSFieldFactory::PrepareFieldDefinitions()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02695">BDSComponentFactory::PrepareLasers()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03181">BDSComponentFactory::PrepareMagnetStrengthForMultipoles()</a>, <a class="el" href="BDSFieldFactory_8cc_source.html#l00388">BDSFieldFactory::PrepareModulatorDefinitions()</a>, <a class="el" href="BDSSDSampler_8cc_source.html#l00071">BDSSDSampler::ProcessHits()</a>, <a class="el" href="BDSSDSamplerCylinder_8cc_source.html#l00071">BDSSDSamplerCylinder::ProcessHits()</a>, <a class="el" href="BDSSDSamplerSphere_8cc_source.html#l00071">BDSSDSamplerSphere::ProcessHits()</a>, <a class="el" href="BDSSDEnergyDeposition_8cc_source.html#l00075">BDSSDEnergyDeposition::ProcessHits()</a>, <a class="el" href="BDSSDEnergyDepositionGlobal_8cc_source.html#l00074">BDSSDEnergyDepositionGlobal::ProcessHits()</a>, <a class="el" href="BDSSDThinThing_8cc_source.html#l00074">BDSSDThinThing::ProcessHitsOrdered()</a>, <a class="el" href="BDSSDEnergyDeposition_8cc_source.html#l00223">BDSSDEnergyDeposition::ProcessHitsTrack()</a>, <a class="el" href="BDSSDEnergyDepositionGlobal_8cc_source.html#l00140">BDSSDEnergyDepositionGlobal::ProcessHitsTrack()</a>, <a class="el" href="BDSPrimaryGeneratorFileSampler_8cc_source.html#l00170">BDSPrimaryGeneratorFileSampler::ReadSingleEvent()</a>, <a class="el" href="BDSBunchEventGenerator_8cc_source.html#l00192">BDSBunchEventGenerator::ReferenceBeamMomentumOffset()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00562">RotateToReferenceFrame()</a>, <a class="el" href="BDSAcceleratorComponent_8cc_source.html#l00145">BDSAcceleratorComponent::Sagitta()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00175">BDSBunch::SetEmittances()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">BDSParticleDefinition::SetEnergies()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>, <a class="el" href="BDSBunchGaussMatrix_8cc_source.html#l00032">BDSBunchGaussMatrix::SetOptions()</a>, <a class="el" href="BDSBunchRing_8cc_source.html#l00048">BDSBunchRing::SetOptions()</a>, <a class="el" href="BDSBunchSlowExt_8cc_source.html#l00048">BDSBunchSlowExt::SetOptions()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00996">BDSDetectorConstruction::SideToLocalOffset()</a>, <a class="el" href="BDSBunchUserFile_8cc_source.html#l00258">BDSBunchUserFile&lt; T &gt;::SkipNLinesIgnoreIntoFile()</a>, <a class="el" href="BDSBunchUserFile_8cc_source.html#l00281">BDSBunchUserFile&lt; T &gt;::SkipNLinesSkip()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">BDSIntegratorDipoleQuadrupole::Stepper()</a>, <a class="el" href="BDSIntegratorEulerOld_8cc_source.html#l00034">BDSIntegratorEulerOld::Stepper()</a>, <a class="el" href="BDSIntegratorKickerThin_8cc_source.html#l00091">BDSIntegratorKickerThin::Stepper()</a>, <a class="el" href="BDSTrajectoryPoint_8cc_source.html#l00255">BDSTrajectoryPoint::StoreExtrasLink()</a>, <a class="el" href="BDSTunnelFactoryRectAboveGround_8cc_source.html#l00219">BDSTunnelFactoryRectAboveGround::TestInputParameters()</a>, <a class="el" href="BDSExtent_8cc_source.html#l00121">BDSExtent::Tilted()</a>, <a class="el" href="BDSCollimatorCrystal_8cc_source.html#l00265">BDSCollimatorCrystal::TransverseOffsetToEdge()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01348">BDSDetectorConstruction::UnsuitableFirstElement()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00173">BDSDetectorConstruction::UpdateSamplerDiameterAndCountSamplers()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00493">WillIntersect()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02336">BDSComponentFactory::YokeOnLeft()</a>, and <a class="el" href="BDSBendBuilder_8cc_source.html#l00046">ZeroStrengthDipole()</a>.</p>
 
 </div>
 </div>
@@ -8723,9 +8785,9 @@ Here is the caller graph for this function:</div>
 
 <p>Calls IsIon above but also a proton with any bound electrons is considered an ion. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00109">109</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00110">110</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00104">IsIon()</a>.</p>
+<p class="reference">References <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00105">IsIon()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -8757,27 +8819,29 @@ Here is the call graph for this function:</div>
 
 <p>Whether a particle is an ion. A proton is counted NOT as an ion. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00104">104</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00105">105</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSLinkStackingAction_8cc_source.html#l00053">BDSLinkStackingAction::ClassifyNewTrack()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00109">IsIon()</a>, <a class="el" href="BDSSDSamplerLink_8cc_source.html#l00067">BDSSDSamplerLink::ProcessHits()</a>, and <a class="el" href="BDSTrajectoryPoint_8cc_source.html#l00268">BDSTrajectoryPoint::StoreExtrasIon()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSLinkStackingAction_8cc_source.html#l00053">BDSLinkStackingAction::ClassifyNewTrack()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00110">IsIon()</a>, <a class="el" href="BDSTrackingAction_8cc_source.html#l00067">BDSTrackingAction::PreUserTrackingAction()</a>, <a class="el" href="BDSSDSamplerLink_8cc_source.html#l00067">BDSSDSamplerLink::ProcessHits()</a>, and <a class="el" href="BDSTrajectoryPoint_8cc_source.html#l00268">BDSTrajectoryPoint::StoreExtrasIon()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceBDS_ae13fec78008a9f4c4be12f34c729e1b8_icgraph.png" border="0" usemap="#anamespaceBDS_ae13fec78008a9f4c4be12f34c729e1b8_icgraph" alt=""/></div>
 <map name="anamespaceBDS_ae13fec78008a9f4c4be12f34c729e1b8_icgraph" id="anamespaceBDS_ae13fec78008a9f4c4be12f34c729e1b8_icgraph">
-<area shape="rect" title="Whether a particle is an ion. A proton is counted NOT as an ion." alt="" coords="488,95,576,121"/>
+<area shape="rect" title="Whether a particle is an ion. A proton is counted NOT as an ion." alt="" coords="488,127,576,153"/>
 <area shape="rect" href="classBDSLinkStackingAction.html#a3c3f322117ce468d1fe6a1145d162634" title=" " alt="" coords="237,5,411,45"/>
-<area shape="poly" title=" " alt="" coords="498,91,439,60,405,48,407,43,441,55,501,86"/>
+<area shape="poly" title=" " alt="" coords="509,119,478,88,439,60,410,47,412,42,441,55,481,84,513,115"/>
 <area shape="rect" href="namespaceBDS.html#a659127eade09ea94d4610200f7995aea" title="Calls IsIon above but also a proton with any bound electrons is considered an ion." alt="" coords="280,70,368,95"/>
-<area shape="poly" title=" " alt="" coords="474,104,368,91,369,85,475,98"/>
-<area shape="rect" href="classBDSSDSamplerLink.html#ab64a5d24471c269ce1337fa4a7b768c6" title=" " alt="" coords="208,119,440,145"/>
-<area shape="poly" title=" " alt="" coords="474,117,434,122,434,117,474,112"/>
-<area shape="rect" href="classBDSTrajectoryPoint.html#a1cef85e27169cf4132e52e184c2d8bc6" title="Utility function to prepare and fill extra ion variables." alt="" coords="251,169,397,209"/>
-<area shape="poly" title=" " alt="" coords="499,130,441,158,399,173,397,168,439,154,496,125"/>
-<area shape="rect" href="classBDSTrajectoryPoint.html#a6c133730db8eefa3acdd652c6013c94a" title=" " alt="" coords="5,137,160,177"/>
-<area shape="poly" title=" " alt="" coords="237,181,160,170,161,165,237,175"/>
-<area shape="rect" href="classBDSTrajectoryPoint.html#a061a3cabe9b001774ae9019f6c62af8e" title=" " alt="" coords="5,201,160,241"/>
-<area shape="poly" title=" " alt="" coords="237,203,161,214,160,208,237,198"/>
+<area shape="poly" title=" " alt="" coords="484,125,439,111,367,93,369,88,441,105,486,120"/>
+<area shape="rect" href="classBDSTrackingAction.html#a57bd9de1b9675a0a47ebdb17b708b74d" title="Used to decide whether or not to store trajectories." alt="" coords="240,120,408,160"/>
+<area shape="poly" title=" " alt="" coords="474,143,408,143,408,137,474,137"/>
+<area shape="rect" href="classBDSSDSamplerLink.html#ab64a5d24471c269ce1337fa4a7b768c6" title=" " alt="" coords="208,185,440,210"/>
+<area shape="poly" title=" " alt="" coords="486,160,441,175,390,187,389,182,439,169,484,155"/>
+<area shape="rect" href="classBDSTrajectoryPoint.html#a1cef85e27169cf4132e52e184c2d8bc6" title="Utility function to prepare and fill extra ion variables." alt="" coords="251,235,397,275"/>
+<area shape="poly" title=" " alt="" coords="512,165,481,196,441,224,399,241,397,237,439,219,477,191,508,161"/>
+<area shape="rect" href="classBDSTrajectoryPoint.html#a6c133730db8eefa3acdd652c6013c94a" title=" " alt="" coords="5,203,160,243"/>
+<area shape="poly" title=" " alt="" coords="237,246,160,236,161,230,237,241"/>
+<area shape="rect" href="classBDSTrajectoryPoint.html#a061a3cabe9b001774ae9019f6c62af8e" title=" " alt="" coords="5,267,160,307"/>
+<area shape="poly" title=" " alt="" coords="237,269,161,279,160,274,237,263"/>
 </map>
 </div>
 
@@ -9816,7 +9880,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00164">FileExists()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00213">GetFullPath()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01462">BDSDetectorConstruction::PrepareFieldQueries()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01465">BDSDetectorConstruction::PrepareFieldQueries()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -10084,7 +10148,7 @@ template&lt;typename K , typename V &gt; </div>
 
 <p class="reference">References <a class="el" href="BDSExtent_8hh_source.html#l00065">BDSExtent::XNeg()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00066">BDSExtent::XPos()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00067">BDSExtent::YNeg()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00068">BDSExtent::YPos()</a>, <a class="el" href="BDSExtent_8hh_source.html#l00069">BDSExtent::ZNeg()</a>, and <a class="el" href="BDSExtent_8hh_source.html#l00070">BDSExtent::ZPos()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00993">BDSDetectorConstruction::SideToLocalOffset()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00996">BDSDetectorConstruction::SideToLocalOffset()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -10404,11 +10468,11 @@ Here is the caller graph for this function:</div>
 
 <p>Count how many out of the set of keys in a beam instance are set. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00217">217</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00225">225</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="beam_8cc_source.html#l00142">GMAD::Beam::HasBeenSet()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00248">ConstructDesignAndBeamParticle()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00175">BDSBunch::SetEmittances()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00256">ConstructDesignAndBeamParticle()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00175">BDSBunch::SetEmittances()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -10709,7 +10773,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="208,65,249,65,249,70,208,70"/>
 <area shape="rect" href="classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="278,104,430,129"/>
 <area shape="poly" title=" " alt="" coords="208,85,277,99,276,104,207,90"/>
-<area shape="rect" href="classGMAD_1_1Parser.html#ac17262d0663d364985d62571328451a7" title=" " alt="" coords="500,55,709,80"/>
+<area shape="rect" href="classGMAD_1_1Parser.html#a96100ac2fcb5e7b9f2f2e875a5ac1e93" title=" " alt="" coords="500,55,709,80"/>
 <area shape="poly" title=" " alt="" coords="446,65,486,65,486,70,446,70"/>
 <area shape="rect" href="classGMAD_1_1FastList.html#aeb35ebf343b86b642d59cb0ae9164c2d" title=" " alt="" coords="757,55,909,80"/>
 <area shape="poly" title=" " alt="" coords="710,65,744,65,744,70,710,70"/>
@@ -11050,9 +11114,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Print all constructed particle names. Note, this should only be done after the physics lists are fully constructed. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00533">533</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00557">557</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00296">ConstructParticleDefinition()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>, and <a class="el" href="BDSBunchEventGenerator_8cc_source.html#l00125">BDSBunchEventGenerator::ParseAcceptedParticleIDs()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00304">ConstructParticleDefinition()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>, and <a class="el" href="BDSBunchEventGenerator_8cc_source.html#l00125">BDSBunchEventGenerator::ParseAcceptedParticleIDs()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -11109,9 +11173,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Print all the processes by name as registered to the primary particle type. Note, this should only be done after the physics lists are fully constructed. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00461">461</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00469">469</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -11259,7 +11323,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="BDSParallelWorldUtilities_8cc_source.html#l00195">GetImportanceSamplingWorld()</a>, and <a class="el" href="BDSParallelWorldImportance_8hh_source.html#l00074">BDSParallelWorldImportance::GetWorldVolume()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -11321,7 +11385,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSParallelWorldUtilities_8cc_source.html#l00167">167</a> of file <a class="el" href="BDSParallelWorldUtilities_8cc_source.html">BDSParallelWorldUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -11573,11 +11637,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Set the range cuts on a physics list. This is split into a separate function to allow it to be applied to physics lists both from <a class="el" href="classBDSIM.html" title="Interface class to use BDSIM.">BDSIM</a>'s modular physics list and other sources with the same mechanism. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00588">588</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00612">612</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00114">BuildPhysics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00115">BuildPhysics()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -11828,7 +11892,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00472">472</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSScorerInfo_8cc_source.html#l00039">BDSScorerInfo::BDSScorerInfo()</a>, <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00057">BuildBLMs()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01174">BDSDetectorConstruction::BuildPhysicsBias()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00587">BDSDetectorConstruction::BuildWorld()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01359">BDSDetectorConstruction::ConstructScoringMeshes()</a>, <a class="el" href="BDSArrayReflectionType_8cc_source.html#l00086">DetermineArrayReflectionTypeSet()</a>, and <a class="el" href="BDSAperturePointsLoader_8cc_source.html#l00054">BDSAperturePointsLoader&lt; T &gt;::Load()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSScorerInfo_8cc_source.html#l00039">BDSScorerInfo::BDSScorerInfo()</a>, <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00057">BuildBLMs()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01177">BDSDetectorConstruction::BuildPhysicsBias()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00590">BDSDetectorConstruction::BuildWorld()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01362">BDSDetectorConstruction::ConstructScoringMeshes()</a>, <a class="el" href="BDSArrayReflectionType_8cc_source.html#l00086">DetermineArrayReflectionTypeSet()</a>, and <a class="el" href="BDSAperturePointsLoader_8cc_source.html#l00054">BDSAperturePointsLoader&lt; T &gt;::Load()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -12226,7 +12290,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00066">66</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactoryBase_8cc_source.html#l00049">BDSGeometryFactoryBase::ApplyColourMapping()</a>, <a class="el" href="BDSScorerInfo_8cc_source.html#l00039">BDSScorerInfo::BDSScorerInfo()</a>, <a class="el" href="BDSGeometryFactorySQL_8cc_source.html#l00146">BDSGeometryFactorySQL::Build()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00114">BuildPhysics()</a>, <a class="el" href="BDSBeamPipeInfo_8cc_source.html#l00148">BDSBeamPipeInfo::CheckAndSetPointsInfo()</a>, <a class="el" href="BDSPrimaryGeneratorFile_8cc_source.html#l00093">BDSPrimaryGeneratorFile::ConstructGenerator()</a>, <a class="el" href="BDSBunchFactory_8cc_source.html#l00059">BDSBunchFactory::CreateBunch()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00464">BDSOutput::CreateHistograms()</a>, <a class="el" href="BDSBeamPipeType_8cc_source.html#l00047">DetermineBeamPipeType()</a>, <a class="el" href="BDSMagnetGeometryType_8cc_source.html#l00045">DetermineMagnetGeometryType()</a>, <a class="el" href="BDSOutput_8cc_source.html#l01146">BDSOutput::FillScorerHitsIndividual()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00184">BDSParallelWorldImportance::GetCellImportanceValue()</a>, <a class="el" href="BDSColourFromMaterial_8cc_source.html#l00099">BDSColourFromMaterial::GetColour()</a>, <a class="el" href="BDSColours_8cc_source.html#l00231">BDSColours::GetColour()</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">BDSGeometryWriter::WriteToGDML()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactoryBase_8cc_source.html#l00049">BDSGeometryFactoryBase::ApplyColourMapping()</a>, <a class="el" href="BDSScorerInfo_8cc_source.html#l00039">BDSScorerInfo::BDSScorerInfo()</a>, <a class="el" href="BDSGeometryFactorySQL_8cc_source.html#l00146">BDSGeometryFactorySQL::Build()</a>, <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00115">BuildPhysics()</a>, <a class="el" href="BDSBeamPipeInfo_8cc_source.html#l00148">BDSBeamPipeInfo::CheckAndSetPointsInfo()</a>, <a class="el" href="BDSPrimaryGeneratorFile_8cc_source.html#l00093">BDSPrimaryGeneratorFile::ConstructGenerator()</a>, <a class="el" href="BDSBunchFactory_8cc_source.html#l00059">BDSBunchFactory::CreateBunch()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00464">BDSOutput::CreateHistograms()</a>, <a class="el" href="BDSBeamPipeType_8cc_source.html#l00047">DetermineBeamPipeType()</a>, <a class="el" href="BDSMagnetGeometryType_8cc_source.html#l00045">DetermineMagnetGeometryType()</a>, <a class="el" href="BDSOutput_8cc_source.html#l01146">BDSOutput::FillScorerHitsIndividual()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00184">BDSParallelWorldImportance::GetCellImportanceValue()</a>, <a class="el" href="BDSColourFromMaterial_8cc_source.html#l00099">BDSColourFromMaterial::GetColour()</a>, <a class="el" href="BDSColours_8cc_source.html#l00231">BDSColours::GetColour()</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">BDSGeometryWriter::WriteToGDML()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -12381,7 +12445,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00098">98</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01117">BDSDetectorConstruction::BuildCrossSectionBias()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01120">BDSDetectorConstruction::BuildCrossSectionBias()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -12394,6 +12458,45 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="581,70,547,70,547,65,581,65"/>
 <area shape="rect" href="classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,55,312,80"/>
 <area shape="poly" title=" " alt="" coords="346,70,313,70,313,65,346,65"/>
+<area shape="rect" href="classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,5,128,31"/>
+<area shape="poly" title=" " alt="" coords="187,53,116,33,117,28,189,48"/>
+<area shape="rect" href="classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,55,128,80"/>
+<area shape="poly" title=" " alt="" coords="169,70,128,70,128,65,169,65"/>
+<area shape="rect" href="classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,104,135,129"/>
+<area shape="poly" title=" " alt="" coords="189,86,117,106,116,101,187,81"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9405cb2956652ede1f053caffb0b3c15" name="a9405cb2956652ede1f053caffb0b3c15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9405cb2956652ede1f053caffb0b3c15">&#9670;&#160;</a></span>TurnOffMuonDecay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BDS::TurnOffMuonDecay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set mu+- as stable so they won't decay. </p>
+
+<p class="definition">Definition at line <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00550">550</a> of file <a class="el" href="BDSPhysicsUtilities_8cc_source.html">BDSPhysicsUtilities.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceBDS_a9405cb2956652ede1f053caffb0b3c15_icgraph.png" border="0" usemap="#anamespaceBDS_a9405cb2956652ede1f053caffb0b3c15_icgraph" alt=""/></div>
+<map name="anamespaceBDS_a9405cb2956652ede1f053caffb0b3c15_icgraph" id="anamespaceBDS_a9405cb2956652ede1f053caffb0b3c15_icgraph">
+<area shape="rect" title="Set mu+&#45; as stable so they won&#39;t decay." alt="" coords="360,55,540,80"/>
+<area shape="rect" href="classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,55,312,80"/>
+<area shape="poly" title=" " alt="" coords="346,70,312,70,312,65,346,65"/>
 <area shape="rect" href="classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,5,128,31"/>
 <area shape="poly" title=" " alt="" coords="187,53,116,33,117,28,189,48"/>
 <area shape="rect" href="classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,55,128,80"/>
@@ -12494,7 +12597,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00647">647</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -12552,7 +12655,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="BDSUtilities_8cc_source.html#l00658">658</a> of file <a class="el" href="BDSUtilities_8cc_source.html">BDSUtilities.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSLinkTrackingAction_8cc_source.html#l00053">BDSLinkTrackingAction::PreUserTrackingAction()</a>, <a class="el" href="BDSTrackingAction_8cc_source.html#l00057">BDSTrackingAction::PreUserTrackingAction()</a>, and <a class="el" href="BDSSteppingAction_8cc_source.html#l00049">BDSSteppingAction::UserSteppingAction()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSLinkTrackingAction_8cc_source.html#l00053">BDSLinkTrackingAction::PreUserTrackingAction()</a>, <a class="el" href="BDSTrackingAction_8cc_source.html#l00067">BDSTrackingAction::PreUserTrackingAction()</a>, and <a class="el" href="BDSSteppingAction_8cc_source.html#l00049">BDSSteppingAction::UserSteppingAction()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -13186,7 +13289,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 18 2025 18:31:08 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Aug 19 2026 14:22:56 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

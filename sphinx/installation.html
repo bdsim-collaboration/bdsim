@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Installation &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -310,7 +310,7 @@ uses some docker commands.</p>
 <li><p>Adapt and use the run script <code class="code docutils literal notranslate"><span class="pre">run-centos-bdsim.sh</span></code> which is made for Mac / unix.</p></li>
 </ol>
 <p>The last step can commonly be made into an alias in your profile. On the developer’s Mac, this is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">bdsimdocker</span><span class="o">=</span><span class="s2">&quot;docker run -t -i -v `pwd`:/hostfs -e DISPLAY=`ipconfig getifaddr en0`:0 --rm bdsim bash</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">bdsimdocker</span><span class="o">=</span><span class="s2">"docker run -t -i -v `pwd`:/hostfs -e DISPLAY=`ipconfig getifaddr en0`:0 --rm bdsim bash</span>
 </pre></div>
 </div>
 <p>This will start a terminal prompt that is a BASH shell ‘inside’ the container, so Centos7, with
@@ -688,9 +688,9 @@ installation:</p>
 -- Geant4 Use File: /Users/nevay/physics/packages/geant4-jai/geant4-10.7-jaidev-install/lib/Geant4-10.7.1/UseGeant4.cmake
 -- Geant4 Definitions: -DG4UI_USE_TCSH;-DG4INTY_USE_XT;-DG4VIS_USE_RAYTRACERX;-DG4INTY_USE_QT;-DG4UI_USE_QT;-DG4VIS_USE_OPENGLQT;-DG4VIS_USE_OPENGLX;-DG4VIS_USE_OPENGL;-DG4VIS_USE_QT3D
 -- G4_VERSION: 10.7.1
--- Found Doxygen: /opt/local/bin/doxygen (found version &quot;1.9.1&quot;) found components: doxygen dot
--- Found BISON: /opt/local/bin/bison (found suitable version &quot;3.7.6&quot;, minimum required is &quot;2.4&quot;)
--- Found FLEX: /opt/local/bin/flex (found version &quot;2.6.4&quot;)
+-- Found Doxygen: /opt/local/bin/doxygen (found version "1.9.1") found components: doxygen dot
+-- Found BISON: /opt/local/bin/bison (found suitable version "3.7.6", minimum required is "2.4")
+-- Found FLEX: /opt/local/bin/flex (found version "2.6.4")
 -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
 -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
 -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
@@ -741,9 +741,9 @@ should adapt this if they use a C-shell.</p>
 <p>If the analysis will be regularly used interactively, it is worth automating the library
 loading in root by finding and editing the <code class="code docutils literal notranslate"><span class="pre">rootlogon.C</span></code> in your
 <code class="code docutils literal notranslate"><span class="pre">&lt;root-install-dir&gt;/macros/</span></code> directory.  Example text would be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Loading rebdsim libraries&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;librebdsimLib&quot;</span><span class="p">);</span>
-<span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;libbdsimRootEvent&quot;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">"Loading rebdsim libraries"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"librebdsimLib"</span><span class="p">);</span>
+<span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="s2">"libbdsimRootEvent"</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1030,7 +1030,7 @@ screen or worse, bits of the interface double size. The user must use Qt 5.12.1
 or greater for these issues to be resolved. This issue is documented here:
 <a class="reference external" href="https://bugzilla-geant4.kek.jp/show_bug.cgi?id=2104">https://bugzilla-geant4.kek.jp/show_bug.cgi?id=2104</a></p></li>
 <li><p>Visualisation does not work:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;parameter value is not listed in the candidate List.&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"parameter value is not listed in the candidate List."</span>
 </pre></div>
 </div>
 <p>Check which graphics systems BDSIM has available. This is shown in the terminal when
@@ -1062,7 +1062,7 @@ recompile Geant4, then recompile bdsim.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
 <span class="n">d</span> <span class="o">=</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;run1.root&quot;</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"run1.root"</span><span class="p">)</span>
 
 <span class="n">Error</span> <span class="ow">in</span> <span class="n">cling</span><span class="p">::</span><span class="n">AutoloadingVisitor</span><span class="p">::</span><span class="n">InsertIntoAutoloadingState</span><span class="p">:</span>
 <span class="n">Missing</span> <span class="n">FileEntry</span> <span class="k">for</span> <span class="o">../</span><span class="n">parser</span><span class="o">/</span><span class="n">beamBase</span><span class="o">.</span><span class="n">h</span>
@@ -1070,12 +1070,12 @@ recompile Geant4, then recompile bdsim.</p>
 <span class="n">Error</span> <span class="ow">in</span> <span class="n">cling</span><span class="p">::</span><span class="n">AutoloadingVisitor</span><span class="p">::</span><span class="n">InsertIntoAutoloadingState</span><span class="p">:</span>
 <span class="n">Missing</span> <span class="n">FileEntry</span> <span class="k">for</span> <span class="o">../</span><span class="n">parser</span><span class="o">/</span><span class="n">optionsBase</span><span class="o">.</span><span class="n">h</span>
 <span class="n">requested</span> <span class="n">to</span> <span class="n">autoload</span> <span class="nb">type</span> <span class="n">GMAD</span><span class="p">::</span><span class="n">OptionsBase</span>
-<span class="n">HeaderDict</span> <span class="n">dictionary</span> <span class="n">payload</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span> <span class="n">fatal</span> <span class="n">error</span><span class="p">:</span> <span class="s1">&#39;BDSOutputROOTEventHeader.hh&#39;</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span>
-<span class="c1">#include &quot;BDSOutputROOTEventHeader.hh&quot;</span>
+<span class="n">HeaderDict</span> <span class="n">dictionary</span> <span class="n">payload</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span> <span class="n">fatal</span> <span class="n">error</span><span class="p">:</span> <span class="s1">'BDSOutputROOTEventHeader.hh'</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="c1">#include "BDSOutputROOTEventHeader.hh"</span>
           <span class="o">^~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
 <span class="n">Error</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">TInterpreter</span><span class="p">::</span><span class="n">AutoParse</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">Error</span> <span class="n">parsing</span> <span class="n">payload</span> <span class="n">code</span> <span class="k">for</span> <span class="k">class</span><span class="w"> </span><span class="nc">Header</span> <span class="k">with</span> <span class="n">content</span><span class="p">:</span>
 
-<span class="c1">#line 1 &quot;HeaderDict dictionary payload&quot;</span>
+<span class="c1">#line 1 "HeaderDict dictionary payload"</span>
 
 <span class="c1">#ifndef G__VECTOR_HAS_CLASS_ITERATOR</span>
   <span class="c1">#define G__VECTOR_HAS_CLASS_ITERATOR 1</span>
@@ -1106,11 +1106,11 @@ recompile Geant4, then recompile bdsim.</p>
 <span class="c1">#ifndef ANALYSISHEADER_H</span>
 <span class="c1">#define ANALYSISHEADER_H</span>
 
-<span class="c1">#include &quot;TROOT.h&quot;</span>
+<span class="c1">#include "TROOT.h"</span>
 
-<span class="c1">#include &quot;BDSOutputROOTEventHeader.hh&quot;</span>
+<span class="c1">#include "BDSOutputROOTEventHeader.hh"</span>
 
-<span class="c1">#include &quot;RebdsimTypes.hh&quot;</span>
+<span class="c1">#include "RebdsimTypes.hh"</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">TTree</span><span class="p">;</span>
 
@@ -1148,11 +1148,11 @@ recompile Geant4, then recompile bdsim.</p>
 <span class="o">---------------------------------------------------------------------------</span>
 <span class="ne">RuntimeError</span>                              <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">ab00b7718588</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;run1.root&quot;</span><span class="p">)</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"run1.root"</span><span class="p">)</span>
 
 <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">nevay</span><span class="o">/</span><span class="n">physics</span><span class="o">/</span><span class="n">reps</span><span class="o">/</span><span class="n">pybdsim</span><span class="o">/</span><span class="n">pybdsim</span><span class="o">/</span><span class="n">Data</span><span class="o">.</span><span class="n">pyc</span> <span class="ow">in</span> <span class="n">Load</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
      <span class="mi">60</span>         <span class="k">return</span> <span class="n">_LoadAscii</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-     <span class="mi">61</span>     <span class="k">elif</span> <span class="n">extension</span> <span class="o">==</span> <span class="s1">&#39;root&#39;</span><span class="p">:</span>
+     <span class="mi">61</span>     <span class="k">elif</span> <span class="n">extension</span> <span class="o">==</span> <span class="s1">'root'</span><span class="p">:</span>
 <span class="o">---&gt;</span> <span class="mi">62</span>         <span class="k">return</span> <span class="n">_LoadRoot</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
      <span class="mi">63</span>         <span class="k">try</span><span class="p">:</span>
      <span class="mi">64</span>             <span class="k">return</span> <span class="n">_LoadRoot</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
@@ -1162,11 +1162,11 @@ recompile Geant4, then recompile bdsim.</p>
     <span class="mi">150</span>
 <span class="o">--&gt;</span> <span class="mi">151</span>     <span class="n">fileType</span> <span class="o">=</span> <span class="n">_ROOTFileType</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="c1">#throws warning if not a bdsim file</span>
     <span class="mi">152</span>
-    <span class="mi">153</span>     <span class="k">if</span> <span class="n">fileType</span> <span class="o">==</span> <span class="s2">&quot;BDSIM&quot;</span><span class="p">:</span>
+    <span class="mi">153</span>     <span class="k">if</span> <span class="n">fileType</span> <span class="o">==</span> <span class="s2">"BDSIM"</span><span class="p">:</span>
 
 <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">nevay</span><span class="o">/</span><span class="n">physics</span><span class="o">/</span><span class="n">reps</span><span class="o">/</span><span class="n">pybdsim</span><span class="o">/</span><span class="n">pybdsim</span><span class="o">/</span><span class="n">Data</span><span class="o">.</span><span class="n">pyc</span> <span class="ow">in</span> <span class="n">_ROOTFileType</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
     <span class="mi">133</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">htree</span><span class="p">:</span>
-    <span class="mi">134</span>         <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s2">&quot;ROOT file </span><span class="se">\&quot;</span><span class="si">{}</span><span class="se">\&quot;</span><span class="s2"> is not a BDSIM one&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fileToCheck</span><span class="p">))</span>
+    <span class="mi">134</span>         <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s2">"ROOT file </span><span class="se">\"</span><span class="si">{}</span><span class="se">\"</span><span class="s2"> is not a BDSIM one"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fileToCheck</span><span class="p">))</span>
 <span class="o">--&gt;</span> <span class="mi">135</span>     <span class="n">h</span> <span class="o">=</span> <span class="n">_ROOT</span><span class="o">.</span><span class="n">Header</span><span class="p">()</span>
     <span class="mi">136</span>     <span class="n">h</span><span class="o">.</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="n">htree</span><span class="p">)</span>
     <span class="mi">137</span>     <span class="n">htree</span><span class="o">.</span><span class="n">GetEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1206,7 +1206,7 @@ and possibly reinstall them. For Ubuntu for example, run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Linking</span> <span class="n">CXX</span> <span class="n">executable</span> <span class="n">bdsim</span>
 <span class="o">/</span><span class="n">afs</span><span class="o">/</span><span class="n">cern</span><span class="o">.</span><span class="n">ch</span><span class="o">/</span><span class="n">sw</span><span class="o">/</span><span class="n">lcg</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">geant4</span><span class="o">/</span><span class="mf">9.6</span><span class="o">.</span><span class="n">p02</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">slc6</span><span class="o">-</span><span class="n">gcc46</span><span class="o">-</span><span class="n">opt</span>
 <span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">libG4analysis</span><span class="o">.</span><span class="n">so</span><span class="p">:</span> <span class="n">undefined</span> <span class="n">reference</span> <span class="n">to</span>
-<span class="s1">&#39;std::__detail::_List_node_base::_M_unhook()@GLIBCXX_3.4.15&#39;</span>
+<span class="s1">'std::__detail::_List_node_base::_M_unhook()@GLIBCXX_3.4.15'</span>
 </pre></div>
 </div>
 <p>This means that the compiler version for BDSIM is different from the one used to compile Geant4.
@@ -1214,7 +1214,7 @@ Make sure it is the same compiler version. Remember to start from a clean build 
 CMake does <strong>NOT</strong> update the compiler version.</p>
 </li>
 <li><p>Build does not work - linker errors with xml and zlib like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/usr/lib/../lib64/libxml2.so: undefined reference to `gzdirect@ZLIB_1.2.2.3&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/usr/lib/../lib64/libxml2.so: undefined reference to `gzdirect@ZLIB_1.2.2.3'
 collect2: error: ld returned 1 exit status
 </pre></div>
 </div>
@@ -1372,8 +1372,8 @@ required by pyg4ometry.</p></td>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

@@ -344,39 +344,71 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>}</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
 <div class="foldopen" id="foldopen00254" data-start="{" data-end="}">
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="classGMAD_1_1CoolingChannel.html#a374da66763b350727a3ed3321e5a9534">  254</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1CoolingChannel.html#aee51c9b34fcd5805a68f6817b3868290">CoolingChannel::set_value</a>(<span class="keyword">const</span> std::string&amp; property, <a class="code hl_class" href="classGMAD_1_1Array.html">Array</a>* value)</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="classGMAD_1_1CoolingChannel.html#a5fdcd00445505a89038caed463b628f0">  254</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classGMAD_1_1CoolingChannel.html#a0763ccfa00d47bae34a66c5cc64e603e">CoolingChannel::set_value</a>(<span class="keyword">const</span> std::string&amp; property, <a class="code hl_class" href="classGMAD_1_1Array.html">Array</a>* value, <span class="keywordtype">bool</span> bExit)</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>{</div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  <span class="keyword">auto</span> search = attribute_map_list_double.find(property);</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>  <span class="keywordflow">if</span> (search != attribute_map_list_double.end())</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    {value-&gt;<a class="code hl_function" href="classGMAD_1_1Array.html#a13fbe0b3df2594de3b2106e4399faf97">set_vector</a>(*search-&gt;second);}</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>  <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    {</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>      <span class="keyword">auto</span> search2 = attribute_map_list_string.find(property);</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>      <span class="keywordflow">if</span> (search2 != attribute_map_list_string.end())</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        {value-&gt;<a class="code hl_function" href="classGMAD_1_1Array.html#a13fbe0b3df2594de3b2106e4399faf97">set_vector</a>(*search2-&gt;second);}</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>      <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    {</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>      value-&gt;<a class="code hl_function" href="classGMAD_1_1Array.html#a13fbe0b3df2594de3b2106e4399faf97">set_vector</a>(*search-&gt;second);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    }</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    {</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>      <span class="keyword">auto</span> search2 = attribute_map_list_string.find(property);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>      <span class="keywordflow">if</span> (search2 != attribute_map_list_string.end())</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        {</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>          std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: parser&gt; unknown coolingchannel option \&quot;&quot;</span> &lt;&lt; <span class="keyword">property</span> &lt;&lt; <span class="stringliteral">&quot;\&quot;, or doesn&#39;t expect vector type&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>          exit(1);</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        }</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    }</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>}</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>          value-&gt;<a class="code hl_function" href="classGMAD_1_1Array.html#a13fbe0b3df2594de3b2106e4399faf97">set_vector</a>(*search2-&gt;second);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        }</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>      <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        {</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>          std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: parser&gt; unknown coolingchannel option \&quot;&quot;</span> &lt;&lt; <span class="keyword">property</span> &lt;&lt; <span class="stringliteral">&quot;\&quot;, or doesn&#39;t expect vector type&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>          <span class="keywordflow">if</span>(bExit)</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            {exit(1);}</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>          <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            {std::rethrow_exception(std::current_exception());}</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        }</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    }</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>}</div>
 </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="preprocessor">#if __cplusplus &gt;= 201703L</span></div>
+<div class="foldopen" id="foldopen00280" data-start="{" data-end="}">
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="classGMAD_1_1CoolingChannel.html#a27f87407f8a70313f9b3334e82697e9b">  280</a></span>std::list&lt;std::variant&lt;bool, int, double, std::string&gt;&gt; <a class="code hl_function" href="classGMAD_1_1CoolingChannel.html#a27f87407f8a70313f9b3334e82697e9b">CoolingChannel::get_value_array</a>(<span class="keyword">const</span> std::string &amp; property) {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>  std::list&lt;std::variant&lt;bool, int, double, std::string&gt;&gt; retval;</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>  <span class="comment">// search string list</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>  <span class="keyword">auto</span> search1 = attribute_map_list_string.find(property);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>  <span class="keywordflow">if</span> (search1 != attribute_map_list_string.end()) {</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    retval.resize((*search1).second-&gt;size());</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    std::copy((*search1).second-&gt;begin(),(*search1).second-&gt;end(), retval.begin());</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>  }</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>  <span class="comment">// search double list</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>  <span class="keyword">auto</span> search2 = attribute_map_list_double.find(property);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>  <span class="keywordflow">if</span> (search2 != attribute_map_list_double.end()) {</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    retval.resize((*search2).second-&gt;size());</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    std::copy((*search2).second-&gt;begin(),(*search2).second-&gt;end(), retval.begin());</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  }</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>  <span class="keywordflow">return</span> retval;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>}</div>
+</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGMAD_1_1Array_html"><div class="ttname"><a href="classGMAD_1_1Array.html">GMAD::Array</a></div><div class="ttdoc">Representation of arrays used in tokens.</div><div class="ttdef"><b>Definition</b> <a href="array_8h_source.html#l00040">array.h:40</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1Array_html_a13fbe0b3df2594de3b2106e4399faf97"><div class="ttname"><a href="classGMAD_1_1Array.html#a13fbe0b3df2594de3b2106e4399faf97">GMAD::Array::set_vector</a></div><div class="ttdeci">void set_vector(Container&lt; std::string, std::allocator&lt; std::string &gt; &gt; &amp;dst) const</div><div class="ttdoc">Copy symbols into STL string containers.</div><div class="ttdef"><b>Definition</b> <a href="array_8h_source.html#l00102">array.h:102</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_a0763ccfa00d47bae34a66c5cc64e603e"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#a0763ccfa00d47bae34a66c5cc64e603e">GMAD::CoolingChannel::set_value</a></div><div class="ttdeci">void set_value(const std::string &amp;property, T value, bool bExit=true)</div><div class="ttdoc">Set methods by property name and value.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8h_source.html#l00129">coolingchannel.h:129</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_a27f87407f8a70313f9b3334e82697e9b"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#a27f87407f8a70313f9b3334e82697e9b">GMAD::CoolingChannel::get_value_array</a></div><div class="ttdeci">std::list&lt; std::variant&lt; bool, int, double, std::string &gt; &gt; get_value_array(const std::string &amp;)</div><div class="ttdoc">Get method for lists.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8cc_source.html#l00280">coolingchannel.cc:280</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_a4336701ec48f38af8a966fca522f535b"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#a4336701ec48f38af8a966fca522f535b">GMAD::CoolingChannel::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Print some properties.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8cc_source.html#l00189">coolingchannel.cc:189</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_a81bada76e874f2b48d7340dc5121649c"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#a81bada76e874f2b48d7340dc5121649c">GMAD::CoolingChannel::CoolingChannel</a></div><div class="ttdeci">CoolingChannel()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8cc_source.html#l00023">coolingchannel.cc:23</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_ab63698f43ebdb333cc4b4d01ca3a979a"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#ab63698f43ebdb333cc4b4d01ca3a979a">GMAD::CoolingChannel::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">Object name.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8h_source.html#l00041">coolingchannel.h:41</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_ab63698f43ebdb333cc4b4d01ca3a979a"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#ab63698f43ebdb333cc4b4d01ca3a979a">GMAD::CoolingChannel::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">Object name.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8h_source.html#l00045">coolingchannel.h:45</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_aceba0354c310e982a4a635f942c79e05"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#aceba0354c310e982a4a635f942c79e05">GMAD::CoolingChannel::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Reset.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8cc_source.html#l00029">coolingchannel.cc:29</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_aeb821a5f8e4a26638e15b9d8c4b0228c"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#aeb821a5f8e4a26638e15b9d8c4b0228c">GMAD::CoolingChannel::PublishMembers</a></div><div class="ttdeci">void PublishMembers()</div><div class="ttdoc">publish members</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8cc_source.html#l00089">coolingchannel.cc:89</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1CoolingChannel_html_aee51c9b34fcd5805a68f6817b3868290"><div class="ttname"><a href="classGMAD_1_1CoolingChannel.html#aee51c9b34fcd5805a68f6817b3868290">GMAD::CoolingChannel::set_value</a></div><div class="ttdeci">void set_value(const std::string &amp;property, T value)</div><div class="ttdoc">Set methods by property name and value.</div><div class="ttdef"><b>Definition</b> <a href="coolingchannel_8h_source.html#l00121">coolingchannel.h:121</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1Published_html_a331905cc3a5f5baa2a6440db86ca093a"><div class="ttname"><a href="classGMAD_1_1Published.html#a331905cc3a5f5baa2a6440db86ca093a">GMAD::Published&lt; CoolingChannel &gt;::publish</a></div><div class="ttdeci">void publish(const std::string &amp;name, T C::*mp)</div><div class="ttdoc">Make pointer to member from class C and type T with accessible with a name.</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00056">published.h:94</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1Published_html_a331905cc3a5f5baa2a6440db86ca093a"><div class="ttname"><a href="classGMAD_1_1Published.html#a331905cc3a5f5baa2a6440db86ca093a">GMAD::Published&lt; CoolingChannel &gt;::publish</a></div><div class="ttdeci">void publish(const std::string &amp;name, T C::*mp)</div><div class="ttdoc">Make pointer to member from class C and type T with accessible with a name.</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00060">published.h:94</a></div></div>
 <div class="ttc" id="anamespaceGMAD_html"><div class="ttname"><a href="namespaceGMAD.html">GMAD</a></div><div class="ttdoc">Parser namespace for GMAD language. Combination of Geant4 and MAD.</div><div class="ttdef"><b>Definition</b> <a href="BDSBeamlineIntegral_8hh_source.html#l00026">BDSBeamlineIntegral.hh:27</a></div></div>
 <div class="ttc" id="anamespaceGMAD_html_ab29c2fe1c9234b3014e849fcbbf912a6"><div class="ttname"><a href="namespaceGMAD.html#ab29c2fe1c9234b3014e849fcbbf912a6">GMAD::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, ElementType type)</div><div class="ttdoc">output operator</div><div class="ttdef"><b>Definition</b> <a href="elementtype_8cc_source.html#l00024">elementtype.cc:24</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Aug 19 2026 14:22:51 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

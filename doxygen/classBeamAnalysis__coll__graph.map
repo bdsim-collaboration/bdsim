@@ -1,36 +1,36 @@
 <map id="BeamAnalysis" name="BeamAnalysis">
-<area shape="rect" id="Node000001" title="Analysis of the options tree." alt="" coords="559,5793,702,5939"/>
-<area shape="rect" id="Node000002" href="$classAnalysis.html" title="Base class for any TTree analysis." alt="" coords="638,5365,884,5731"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="683,5745,662,5794,657,5792,678,5743"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="484,135,563,200"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="563,168,622,173,697,184,782,202,869,228,950,265,986,288,1017,315,1044,345,1064,379,1076,417,1081,459,1081,5211,1077,5253,1065,5292,1046,5329,1022,5363,994,5395,964,5424,899,5474,896,5470,960,5420,990,5391,1018,5360,1041,5326,1060,5290,1071,5252,1076,5211,1076,459,1071,418,1059,381,1039,348,1014,319,983,293,947,270,867,233,781,207,697,189,621,179,563,173"/>
-<area shape="rect" id="Node000007" href="$classPerEntryHistogram.html" title="Holder for information to calculate per entry histograms." alt="" coords="410,2725,608,2991"/>
-<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="526,200,512,2709,507,2709,521,200"/>
-<area shape="rect" id="Node000008" href="$classHistogramAccumulator.html" title="Class to accumulate and merge histograms in different ways." alt="" coords="629,277,829,643"/>
-<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="552,199,612,276,622,289,617,292,608,279,548,202"/>
-<area shape="rect" id="Node000014" href="$classGMAD_1_1BeamBase.html" title="Options for a beam distribution." alt="" coords="144,705,373,5011"/>
-<area shape="poly" id="edge17_Node000014_Node000003" title=" " alt="" coords="485,176,394,189,283,210,228,224,180,240,142,259,118,279,89,325,74,367,69,407,74,447,96,535,108,585,118,642,126,673,134,705,144,769,139,769,129,706,121,675,113,643,103,587,91,536,68,448,64,407,68,365,84,322,114,276,139,254,178,235,227,219,281,205,393,183,484,170"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="297,427,476,493"/>
-<area shape="poly" id="edge19_Node000015_Node000003" title=" " alt="" coords="485,185,455,201,430,226,407,270,393,320,387,368,386,411,381,411,382,368,388,319,402,269,425,222,452,197,482,180"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="458,5,589,85"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="526,99,526,134,521,134,521,99"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="890,5177,1040,5243"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="948,5244,882,5353,878,5350,943,5241"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="386,5177,632,5243"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="535,5241,630,5368,626,5372,531,5244"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="512,2991,512,5161,506,5161,506,2991"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="638,644,622,706,583,991,553,1284,532,1575,518,1855,510,2118,507,2353,508,2709,503,2709,501,2353,505,2118,513,1855,526,1574,547,1283,577,991,617,705,633,642"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="632,2825,906,2891"/>
-<area shape="poly" id="edge12_Node000010_Node000008" title=" " alt="" coords="735,643,771,2809,765,2809,729,643"/>
-<area shape="rect" id="Node000009" href="$classHistogramMeanFromFile.html" title="Accumulator to merge pre&#45;made per&#45;entry histograms." alt="" coords="656,5117,866,5303"/>
-<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="764,5303,764,5348,758,5348,758,5303"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="771,2891,764,5101,759,5101,766,2891"/>
-<area shape="rect" id="Node000011" href="$classBeam.html" title="Beam loader." alt="" coords="440,5475,597,5621"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="546,5620,602,5776,597,5778,541,5622"/>
-<area shape="rect" id="Node000012" href="$classBDSOutputROOTEventBeam.html" title="Class to store all beam options for a BDSIM run." alt="" coords="128,5137,362,5283"/>
-<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="305,5281,452,5461,448,5464,301,5285"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="56,2825,120,2891"/>
-<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="83,2905,66,3028,45,3216,24,3456,11,3737,8,3889,9,4046,15,4206,26,4369,43,4532,66,4695,96,4854,134,5010,160,5076,195,5136,190,5138,155,5078,129,5011,91,4855,60,4695,37,4533,21,4369,10,4206,4,4046,3,3889,5,3737,19,3456,39,3215,61,3027,78,2904"/>
-<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="249,5024,248,5137,243,5137,243,5024"/>
-<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="387,493,376,694,371,694,382,493"/>
+<area shape="rect" id="Node000001" title="Analysis of the options tree." alt="" coords="561,5873,704,6019"/>
+<area shape="rect" id="Node000002" href="$classAnalysis.html" title="Base class for any TTree analysis." alt="" coords="640,5445,886,5811"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="685,5825,664,5874,660,5872,680,5823"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="486,135,565,200"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="565,168,624,173,699,184,784,202,871,228,952,265,988,288,1019,315,1046,345,1066,379,1078,417,1083,459,1083,5291,1079,5333,1067,5372,1048,5409,1024,5443,996,5475,966,5504,901,5554,898,5550,962,5500,992,5471,1020,5440,1043,5406,1062,5370,1073,5332,1078,5291,1078,459,1073,418,1061,381,1041,348,1016,319,985,293,949,270,869,233,783,207,699,189,623,179,565,173"/>
+<area shape="rect" id="Node000007" href="$classPerEntryHistogram.html" title="Holder for information to calculate per entry histograms." alt="" coords="412,2765,610,3031"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="528,200,514,2749,509,2749,523,200"/>
+<area shape="rect" id="Node000008" href="$classHistogramAccumulator.html" title="Class to accumulate and merge histograms in different ways." alt="" coords="631,277,831,643"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="554,199,614,276,624,289,619,292,610,279,550,202"/>
+<area shape="rect" id="Node000014" href="$classGMAD_1_1BeamBase.html" title="Options for a beam distribution." alt="" coords="146,705,375,5091"/>
+<area shape="poly" id="edge17_Node000014_Node000003" title=" " alt="" coords="487,176,396,189,285,210,230,224,182,240,144,259,120,279,91,325,76,367,71,407,76,447,98,535,110,585,120,642,128,673,136,705,146,769,141,770,131,706,123,675,115,643,105,587,93,536,70,448,66,407,70,365,86,322,116,276,141,254,180,235,229,219,283,205,395,183,486,170"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="299,427,478,493"/>
+<area shape="poly" id="edge19_Node000015_Node000003" title=" " alt="" coords="487,185,457,201,432,226,409,270,395,320,389,368,388,411,383,411,384,368,390,319,404,269,427,222,454,197,485,180"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="460,5,591,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="528,99,528,134,523,134,523,99"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="892,5257,1042,5323"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="950,5324,884,5433,880,5430,945,5321"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="388,5257,634,5323"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="537,5321,632,5448,628,5452,533,5324"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="514,3031,514,5241,508,5241,508,3031"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="640,644,624,706,584,997,554,1296,533,1592,519,1879,511,2146,508,2386,510,2748,505,2748,503,2386,506,2146,513,1879,527,1592,548,1295,579,997,619,705,635,642"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="634,2865,908,2931"/>
+<area shape="poly" id="edge12_Node000010_Node000008" title=" " alt="" coords="737,643,773,2849,768,2849,731,643"/>
+<area shape="rect" id="Node000009" href="$classHistogramMeanFromFile.html" title="Accumulator to merge pre&#45;made per&#45;entry histograms." alt="" coords="658,5197,868,5383"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="766,5383,766,5428,760,5428,760,5383"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="774,2931,766,5181,761,5181,768,2931"/>
+<area shape="rect" id="Node000011" href="$classBeam.html" title="Beam loader." alt="" coords="442,5555,599,5701"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="548,5700,604,5856,599,5858,543,5702"/>
+<area shape="rect" id="Node000012" href="$classBDSOutputROOTEventBeam.html" title="Class to store all beam options for a BDSIM run." alt="" coords="130,5217,364,5363"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="307,5361,454,5541,450,5544,303,5365"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="58,2865,122,2931"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="85,2945,68,3070,46,3261,25,3506,11,3792,8,3947,9,4107,15,4270,26,4436,43,4603,66,4768,97,4931,136,5090,162,5156,197,5216,192,5218,157,5158,131,5091,92,4932,61,4769,38,4603,21,4437,10,4271,4,4107,3,3947,6,3792,20,3506,40,3260,62,3069,80,2944"/>
+<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="251,5105,250,5217,245,5217,245,5105"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="389,493,378,699,373,699,384,493"/>
 </map>

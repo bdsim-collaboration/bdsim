@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model Construction &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -88,6 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#ecol">ecol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jcol">jcol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jcoltip">jcoltip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bmcol">bmcol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#degrader">degrader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#muspoiler">muspoiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shield">shield</a></li>
@@ -106,7 +107,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#marker">marker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ct">ct</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#muoncooler">muoncooler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bmcol">bmcol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gascap">gascap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gasjet">gasjet</a></li>
 </ul>
@@ -318,7 +318,7 @@ if it ends up being similar (e.g. through the input parameters) to the starting 
 <span id="lattice-elements"></span><h2>Beamline Elements<a class="headerlink" href="#beamline-elements" title="Link to this heading"></a></h2>
 <p>BDSIM provides a variety of different elements each with their own function, geometry and
 potential fields. Any element in BDSIM is described with the following pattern</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="s2">"string"</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -346,14 +346,16 @@ Spaces will be ignored.</p>
 <li><p><a class="reference internal" href="#component-rfx-rfy"><span class="std std-ref">rfx &amp; rfy</span></a></p></li>
 <li><p><a class="reference internal" href="#target">target</a></p></li>
 <li><p><a class="reference internal" href="#rcol">rcol</a></p></li>
+<li><p><a class="reference internal" href="#ecol">ecol</a></p></li>
 <li><p><a class="reference internal" href="#jcol">jcol</a></p></li>
 <li><p><a class="reference internal" href="#jcoltip">jcoltip</a></p></li>
-<li><p><a class="reference internal" href="#ecol">ecol</a></p></li>
+<li><p><a class="reference internal" href="#bmcol">bmcol</a></p></li>
 <li><p><a class="reference internal" href="#degrader">degrader</a></p></li>
 <li><p><a class="reference internal" href="#muspoiler">muspoiler</a></p></li>
 <li><p><a class="reference internal" href="#shield">shield</a></p></li>
 <li><p><a class="reference internal" href="#dump">dump</a></p></li>
 <li><p><a class="reference internal" href="#solenoid">solenoid</a></p></li>
+<li><p><a class="reference internal" href="#wirescanner">wirescanner</a></p></li>
 <li><p><a class="reference internal" href="#laser">laser</a></p></li>
 <li><p><a class="reference internal" href="#gap">gap</a></p></li>
 <li><p><a class="reference internal" href="#crystalcol">crystalcol</a></p></li>
@@ -364,10 +366,10 @@ Spaces will be ignored.</p>
 <li><p><a class="reference internal" href="#thinrmatrix">thinrmatrix</a></p></li>
 <li><p><a class="reference internal" href="#element">element</a></p></li>
 <li><p><a class="reference internal" href="#marker">marker</a></p></li>
-<li><p><a class="reference internal" href="#wirescanner">wirescanner</a></p></li>
 <li><p><a class="reference internal" href="#ct">ct</a></p></li>
 <li><p><a class="reference internal" href="#muoncooler">muoncooler</a></p></li>
-<li><p><a class="reference internal" href="#bmcol">bmcol</a></p></li>
+<li><p><a class="reference internal" href="#gascap">gascap</a></p></li>
+<li><p><a class="reference internal" href="#gasjet">gasjet</a></p></li>
 </ul>
 <p>These are detailed in the following sections.</p>
 <section id="simple-example-extend-and-copy">
@@ -401,7 +403,7 @@ To easily scale the strengths, every beam line element has the parameter <cite>s
 its strength to be directly scaled.</p>
 <p>In the case of a dipole, this scales the field but not the angle (the field may be calculated
 from the angle if none is specified). For example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
 <span class="n">sb1</span><span class="p">:</span> <span class="n">sbend</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.1</span><span class="p">;</span>
@@ -447,7 +449,7 @@ factor (e.g. 1.0 is the default).</p>
 <span class="n">l1</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">q1</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">q2</span><span class="p">,</span><span class="n">d1</span><span class="p">);</span>
 <span class="n">use</span><span class="p">,</span> <span class="n">l1</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span> <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span> <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
 <span class="n">option</span><span class="p">,</span> <span class="n">scalingFieldOuter</span><span class="o">=</span><span class="mf">2.0</span><span class="p">;</span>
 </pre></div>
@@ -891,7 +893,7 @@ is to match the behaviour of MAD-X; i.e. a positive pole face angle reduces the 
 the bend (the side furthest from the centre of curvature).</p></li>
 </ol>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">:</span> <span class="n">sbend</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">14.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;lhcright&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">:</span> <span class="n">sbend</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">14.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"lhcright"</span><span class="p">;</span>
 <span class="n">mb201x</span><span class="p">:</span> <span class="n">sbend</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">304.2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.5</span><span class="o">*</span><span class="n">Tesla</span><span class="p">;</span>
 <span class="n">SB17A</span><span class="p">:</span> <span class="n">sbend</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.61</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.016</span><span class="p">,</span> <span class="n">e1</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">e2</span><span class="o">=</span><span class="mf">0.09</span>
 </pre></div>
@@ -1422,8 +1424,8 @@ a cylindrical pill-box cavity may be used. A cavity object (described in more de
 below) is used to specify the field type. All other cavity parameters may be safely ignored
 and only the field type will be used. The field is described in <a class="reference internal" href="dev_fields.html#field-pill-box"><span class="std std-ref">Pill-Box Cavity</span></a>.</p>
 <p>Pill-box field example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rffield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;rfcavity&quot;</span><span class="p">;</span>
-<span class="n">rf4</span><span class="p">:</span> <span class="n">rf</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">kV</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">1.2</span><span class="o">*</span><span class="n">GHz</span><span class="p">,</span> <span class="n">fieldVacuum</span><span class="o">=</span><span class="s2">&quot;rffield&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rffield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"rfcavity"</span><span class="p">;</span>
+<span class="n">rf4</span><span class="p">:</span> <span class="n">rf</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">kV</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">1.2</span><span class="o">*</span><span class="n">GHz</span><span class="p">,</span> <span class="n">fieldVacuum</span><span class="o">=</span><span class="s2">"rffield"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Elliptical SRF cavity geometry is also provided and may be specified by use of another
@@ -1638,12 +1640,12 @@ user should specify an energy greater than the total beam energy.</p></li>
 </ul>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Standard
-TCP15: rcol, l=1.22*m, material=&quot;graphite&quot;, xsize=104*um, ysize=5*cm;
+TCP15: rcol, l=1.22*m, material="graphite", xsize=104*um, ysize=5*cm;
 
 ! Tapered
-TCP16: rcol, l=1.22*m, material=&quot;graphite&quot;, xsize=104*um, ysize=5*cm, xsizeOut=208*um, ysizeOut=10*cm;
+TCP16: rcol, l=1.22*m, material="graphite", xsize=104*um, ysize=5*cm, xsizeOut=208*um, ysizeOut=10*cm;
 ! with kinetic energy limit
-TCP6CD: rcol, l=0.6*m, material=&quot;C&quot;, xsize=200*um, ysize=5*cm, minimumKineticEnergy=10*MeV;
+TCP6CD: rcol, l=0.6*m, material="C", xsize=200*um, ysize=5*cm, minimumKineticEnergy=10*MeV;
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1655,7 +1657,7 @@ parameters. In future this will be improved and generalised for any inner and ou
 other outer shapes are supported just now.</p>
 </div>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Cu&quot;</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"Cu"</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">"circular"</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -1784,13 +1786,13 @@ user should specify an energy greater than the total beam energy.</p></li>
 </ul>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! standard
-TCP15: jcol, l=1.22*m, material=&quot;graphite&quot;, xsize=0.1*cm, ysize=5*cm;
+TCP15: jcol, l=1.22*m, material="graphite", xsize=0.1*cm, ysize=5*cm;
 
 ! two separately specified jaws
-j1: jcol, l=1*m, horizontalWidth=1*m, material=&quot;Cu&quot;, xsizeLeft=1*cm, xsizeRight=1.5*cm;
+j1: jcol, l=1*m, horizontalWidth=1*m, material="Cu", xsizeLeft=1*cm, xsizeRight=1.5*cm;
 
 ! only left jaw
-j2: jcol, l=0.9*m, horizontalWidth=1*m, material=&quot;Cu&quot;, xsizeLeft=1*cm, xsizeRight=2*m;
+j2: jcol, l=0.9*m, horizontalWidth=1*m, material="Cu", xsizeLeft=1*cm, xsizeRight=2*m;
 </pre></div>
 </div>
 </section>
@@ -1907,18 +1909,109 @@ user should specify an energy greater than the total beam energy.</p></li>
 </ul>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! standard
-col: jcoltip, l=1.22*m, material=&quot;Cu&quot;, tipMaterial=&quot;W&quot;, tipThickness=1*cm, xsize=0.1*cm, ysize=5*cm;
+col: jcoltip, l=1.22*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsize=0.1*cm, ysize=5*cm;
 
 ! two separately specified jaws with tip material
-j1: jcoltip, l=1*m, horizontalWidth=1*m, material=&quot;Cu&quot;, tipMaterial=&quot;W&quot;, tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=1.5*cm;
+j1: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=1.5*cm;
 
 ! only left jaw with tip
-j2: jcoltip, l=1*m, horizontalWidth=1*m, material=&quot;Cu&quot;, tipMaterial=&quot;W&quot;, tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=2*m;
+j2: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=2*m;
+</pre></div>
+</div>
+</section>
+<section id="bmcol">
+<span id="component-bmcol"></span><h3>bmcol<a class="headerlink" href="#bmcol" title="Link to this heading"></a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/bmcol.png"><img alt="_images/bmcol.png" src="_images/bmcol.png" style="width: 60%;" />
+</a>
+</figure>
+<p>A <cite>bmcol</cite> defines a beam mask that consists of solid material with two apertures (‘slits’) with
+adjustable sizes and positions. The main slit is always centered on the beam axis. The secondary
+slit position is defined with respect to the main one and can be tilted.</p>
+<ul class="simple">
+<li><p>The whole mount can then have x and y offset inside of the beam pipe.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Default</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>l</cite></p></td>
+<td><p>Length [m]</p></td>
+<td><p>0</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>material</cite></p></td>
+<td><p>Outer material</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>horizontalWidth</cite></p></td>
+<td><p>Outer full width [m]</p></td>
+<td><p>0.15 m</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>xsize</cite></p></td>
+<td><p>Horizontal half aperture of main slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>ysize</cite></p></td>
+<td><p>Vertical half aperture of main slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>xsize2</cite></p></td>
+<td><p>Horizontal half aperture of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>ysize2</cite></p></td>
+<td><p>Vertical half aperture of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>offsetX2</cite></p></td>
+<td><p>Horizontal displacement of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>offsetY2</cite></p></td>
+<td><p>Vertical displacement of side slit [m]</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>tilt2</cite></p></td>
+<td><p>Clockwise rotation of side slit [rad].</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>outerShape</cite></p></td>
+<td><p>Shape of the outer material
+(circular or rectangular).</p></td>
+<td><p>‘rectangular’</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
+<li><p>The <a class="reference internal" href="#offsets-and-tilts"><span class="std std-ref">Offsets &amp; Tilts - Component Misalignment</span></a> may also be specified.</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="p">:</span> <span class="n">bmcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"G4_W"</span><span class="p">,</span>
+           <span class="n">offsetX</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">offsetY</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">outerShape</span><span class="o">=</span><span class="s2">"rectangular"</span><span class="p">,</span>
+           <span class="n">offsetX2</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">offsetY2</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">xsize2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize2</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">tilt2</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">rad</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="degrader">
-<h3>degrader<a class="headerlink" href="#degrader" title="Link to this heading"></a></h3>
+<span id="component-degrader"></span><h3>degrader<a class="headerlink" href="#degrader" title="Link to this heading"></a></h3>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/degrader.png"><img alt="_images/degrader.png" src="_images/degrader.png" style="width: 60%;" />
 </a>
@@ -2024,8 +2117,8 @@ Negative offsets causes BDSIM to exit.</p>
 than the wedgeLength.</p>
 </div>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEG1</span><span class="p">:</span> <span class="n">degrader</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;carbon&quot;</span><span class="p">,</span> <span class="n">numberWedges</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wedgeLength</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">degraderHeight</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">materialThickness</span><span class="o">=</span><span class="mi">200</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
-<span class="n">DEG2</span><span class="p">:</span> <span class="n">degrader</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;carbon&quot;</span><span class="p">,</span> <span class="n">numberWedges</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wedgeLength</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">degraderHeight</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">degraderOffset</span><span class="o">=</span><span class="mi">50</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEG1</span><span class="p">:</span> <span class="n">degrader</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"carbon"</span><span class="p">,</span> <span class="n">numberWedges</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wedgeLength</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">degraderHeight</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">materialThickness</span><span class="o">=</span><span class="mi">200</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<span class="n">DEG2</span><span class="p">:</span> <span class="n">degrader</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"carbon"</span><span class="p">,</span> <span class="n">numberWedges</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wedgeLength</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">degraderHeight</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">degraderOffset</span><span class="o">=</span><span class="mi">50</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -2071,6 +2164,11 @@ a beam pipe in the middle. There is no magnetic field in the beam pipe.</p>
 <li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
 <li><p>No field is constructed if B is the default 0.</p></li>
 </ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">musp2</span> <span class="p">:</span> <span class="n">muonspoiler</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">outerDiameter</span><span class="o">=</span><span class="mi">240</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
+<span class="n">musp3</span> <span class="p">:</span> <span class="n">muonspoiler</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">50</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
+</pre></div>
+</div>
 </section>
 <section id="shield">
 <h3>shield<a class="headerlink" href="#shield" title="Link to this heading"></a></h3>
@@ -2125,6 +2223,20 @@ are greater than the aperture, the beam pipe will not be created.</p>
 <ul class="simple">
 <li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
 </ul>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sh1</span> <span class="p">:</span> <span class="n">shield</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+            <span class="n">aper1</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+            <span class="n">aper2</span><span class="o">=</span><span class="mf">1.5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+            <span class="n">apertureType</span><span class="o">=</span><span class="s2">"rectangular"</span><span class="p">,</span>
+            <span class="n">outerDiameter</span><span class="o">=</span><span class="mi">50</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+            <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+            <span class="n">xsize</span><span class="o">=</span><span class="mi">7</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+            <span class="n">ysize</span><span class="o">=</span><span class="mi">7</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+            <span class="n">material</span><span class="o">=</span><span class="s2">"concrete"</span><span class="p">,</span>
+            <span class="n">beampipeMaterial</span><span class="o">=</span><span class="s2">"stainlesssteel"</span><span class="p">,</span>
+            <span class="n">colour</span><span class="o">=</span><span class="s2">"iron"</span><span class="p">;</span>
+</pre></div>
+</div>
 </section>
 <section id="dump">
 <h3>dump<a class="headerlink" href="#dump" title="Link to this heading"></a></h3>
@@ -2177,8 +2289,8 @@ will be improved in future when any shape can be used.</p>
 </div>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">dump</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
-<span class="n">d2</span><span class="p">:</span> <span class="n">dump</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">;</span>
-<span class="n">d3</span><span class="p">:</span> <span class="n">dump</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">;</span>
+<span class="n">d2</span><span class="p">:</span> <span class="n">dump</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">"circular"</span><span class="p">;</span>
+<span class="n">d3</span><span class="p">:</span> <span class="n">dump</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">"rectangular"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Here, <cite>d1</cite> is a rectangular block 20 cm wide (full width) and 1 mm long in z. <cite>d2</cite> is a
@@ -2328,19 +2440,21 @@ positive S direction (the usually direction of the beam).</p></li>
 and this could result in the curvilinear world being made very small.</p>
 </div>
 <p>The offsets are with respect to the centre of the beam pipe section the wire is placed inside.
-This should therefore be less than half the element length <cite>l</cite>. The usual beam pipe parameters
-can be specified and apply the to the beam pipe. For example, <cite>material</cite> is used for the beam
-pipe material whereas <cite>wireMaterial</cite> is used for the material of the wire.</p>
+This should therefore be less than half the element length <cite>l</cite>.  For example, <cite>beampipeMaterial</cite>
+is used for the beam pipe material whereas <cite>material</cite> is used for the material of the wire.</p>
 <p>The user should take care to define a wire long enough to intercept the beam but be sufficiently
 short to fit inside the beam pipe given the offsets in x, y and z. Checks are made on the end
 points of the wire.</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> can be specified and apply the to the beampipe.</p></li>
+</ul>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ws45Deg</span><span class="p">:</span> <span class="n">wirescanner</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">wireDiameter</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">wireLength</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-                      <span class="n">wireOffsetX</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">wireMaterial</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span>
+                      <span class="n">wireOffsetX</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">wireAngle</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"C"</span><span class="p">,</span>
                       <span class="n">aper1</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
 
 <span class="n">wsVertical</span><span class="p">:</span> <span class="n">wirescanner</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">wireDiameter</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">wireLength</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-                         <span class="n">wireOffsetX</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">wireOffsetZ</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">wireMaterial</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">;</span>
+                         <span class="n">wireOffsetX</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">wireOffsetZ</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"C"</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -2365,7 +2479,7 @@ of photons.</p>
 <td><p>(1,0,0)</p></td>
 <td><p>yes</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>waveLength</cite></p></td>
+<tr class="row-even"><td><p><cite>wavelength</cite></p></td>
 <td><p>Laser wavelength [m]</p></td>
 <td><p>532*nm</p></td>
 <td><p>Yes</p></td>
@@ -2380,7 +2494,10 @@ of photons.</p>
 <section id="gap">
 <h3>gap<a class="headerlink" href="#gap" title="Link to this heading"></a></h3>
 <p><cite>gap</cite> defines a gap where no physical geometry is placed. It will be a region of the world,
-composed of the same material as the world volume.</p>
+composed of the same material as the world volume. No geometry is built but the beamline
+cumulative coordinates advanced by that much when building the model. If an angle is specified,
+it behaves like an <cite>sbend</cite> and a gap according to a smooth arc of that angle is created. By
+default, the angle is 0 and it is a straight gap.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Parameter</p></td>
@@ -2401,7 +2518,7 @@ composed of the same material as the world volume.</p>
 </tbody>
 </table>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GAP1</span><span class="p">:</span> <span class="n">gap</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">rad</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="p">:</span> <span class="n">gap</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">rad</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -2495,9 +2612,9 @@ will not be used and the crystal will not channel particles.</p>
 <li><p>See <a class="reference internal" href="model_customisation.html#crystals"><span class="std std-ref">Crystals</span></a> for the definition of a crystal object.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lovelycrystal</span><span class="p">:</span> <span class="n">crystal</span><span class="p">,</span> <span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;G4_Si&quot;</span><span class="p">,</span>
-                      <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;data/Si220pl&quot;</span><span class="p">,</span>
-                      <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;box&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lovelycrystal</span><span class="p">:</span> <span class="n">crystal</span><span class="p">,</span> <span class="n">material</span> <span class="o">=</span> <span class="s2">"G4_Si"</span><span class="p">,</span>
+                      <span class="n">data</span> <span class="o">=</span> <span class="s2">"data/Si220pl"</span><span class="p">,</span>
+                      <span class="n">shape</span> <span class="o">=</span> <span class="s2">"box"</span><span class="p">,</span>
                       <span class="n">lengthY</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">lengthX</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
                       <span class="n">lengthZ</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
@@ -2511,8 +2628,8 @@ will not be used and the crystal will not channel particles.</p>
                       <span class="n">bendingAngleYAxis</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">rad</span><span class="p">,</span>
                       <span class="n">bendingAngleZAxis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
- <span class="n">col1</span> <span class="p">:</span> <span class="n">crystalcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-                    <span class="n">crystalBoth</span><span class="o">=</span><span class="s2">&quot;lovelycrystal&quot;</span><span class="p">,</span> <span class="n">crystalAngleYAxisLeft</span><span class="o">=-</span><span class="mf">0.1</span><span class="o">*</span><span class="n">rad</span><span class="p">,</span>
+ <span class="n">col1</span> <span class="p">:</span> <span class="n">crystalcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">"rectangular"</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">aper2</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
+                    <span class="n">crystalBoth</span><span class="o">=</span><span class="s2">"lovelycrystal"</span><span class="p">,</span> <span class="n">crystalAngleYAxisLeft</span><span class="o">=-</span><span class="mf">0.1</span><span class="o">*</span><span class="n">rad</span><span class="p">,</span>
                     <span class="n">crystalAngleYAxisRight</span><span class="o">=-</span><span class="mf">0.1</span><span class="o">*</span><span class="n">rad</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2721,11 +2838,11 @@ parameter. <cite>B</cite> will only be used if <cite>Kg</cite> is not specifed (
 <li><p>The electrode radius + thickness must be smaller than the anode radius.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="p">:</span> <span class="n">gaborlens</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">kg</span><span class="o">=</span><span class="mf">0.289643</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">anodeRadius</span><span class="o">=</span><span class="mi">65</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">anodeLength</span><span class="o">=</span><span class="mf">0.920</span><span class="p">,</span> <span class="n">anodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
-    <span class="n">electrodeRadius</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeLength</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="p">:</span> <span class="n">gaborlens</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">kg</span><span class="o">=</span><span class="mf">0.289643</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"copper"</span><span class="p">,</span> <span class="n">anodeRadius</span><span class="o">=</span><span class="mi">65</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">anodeLength</span><span class="o">=</span><span class="mf">0.920</span><span class="p">,</span> <span class="n">anodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+    <span class="n">electrodeRadius</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeLength</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
 
-<span class="n">g2</span><span class="p">:</span> <span class="n">gaborlens</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">anodeRadius</span><span class="o">=</span><span class="mi">65</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">anodeLength</span><span class="o">=</span><span class="mf">0.920</span><span class="p">,</span> <span class="n">anodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
-    <span class="n">electrodeRadius</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeLength</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<span class="n">g2</span><span class="p">:</span> <span class="n">gaborlens</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"copper"</span><span class="p">,</span> <span class="n">anodeRadius</span><span class="o">=</span><span class="mi">65</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">anodeLength</span><span class="o">=</span><span class="mf">0.920</span><span class="p">,</span> <span class="n">anodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
+    <span class="n">electrodeRadius</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeLength</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">electrodeThickness</span><span class="o">=</span><span class="mf">1.6</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -2942,7 +3059,7 @@ y'_0   \\
 </tbody>
 </table>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm1</span><span class="p">:</span> <span class="n">rmatrix</span><span class="p">,</span> <span class="n">rmat12</span><span class="o">=</span><span class="mf">0.997</span><span class="p">,</span> <span class="n">rmat21</span><span class="o">=-</span><span class="mf">0.924</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span><span class="p">:</span> <span class="n">rmatrix</span><span class="p">,</span> <span class="n">rmat11</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rmat12</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">rmat21</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">rmat22</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rmat33</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rmat34</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">rmat43</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rmat44</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.25</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -3107,16 +3224,16 @@ than the size required for the geometry, the beam may be mismatched into the res
 the accelerator. A common practice is to add a nanometer to the length of the geometry.</p>
 </div>
 <p>Simple example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:atlasreduced.gdml&quot;</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">44</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:atlasreduced.gdml"</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">44</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Example with field:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detectorfield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap2d&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detectorfield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap2d"</span><span class="p">,</span>
                       <span class="n">bScaling</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
-                      <span class="n">magneticFile</span> <span class="o">=</span> <span class="s2">&quot;bdsim2d:/Path/To/File.dat&quot;</span><span class="p">;</span>
+                      <span class="n">magneticFile</span> <span class="o">=</span> <span class="s2">"bdsim2d:/Path/To/File.dat"</span><span class="p">;</span>
 
-<span class="n">detec</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:twoboxes.gdml&quot;</span><span class="p">,</span>
-                <span class="n">fieldAll</span><span class="o">=</span><span class="s2">&quot;detectorfield&quot;</span><span class="p">,</span>
+<span class="n">detec</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:twoboxes.gdml"</span><span class="p">,</span>
+                <span class="n">fieldAll</span><span class="o">=</span><span class="s2">"detectorfield"</span><span class="p">,</span>
                 <span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
                 <span class="n">horizontalWidth</span><span class="o">=</span><span class="mf">0.76</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
@@ -3124,8 +3241,8 @@ the accelerator. A common practice is to add a nanometer to the length of the ge
 <p>Here, in the field definition, cubic interpolation (2D to match the field type) by default and
 the integrator (for the particle motion) will be the default “g4classicalrk4” (4th order Runge Kutta).</p>
 <p>Or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">specialbend</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:MBR_dipole.gdml&quot;</span><span class="p">,</span>
-                      <span class="n">fieldAll</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">specialbend</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:MBR_dipole.gdml"</span><span class="p">,</span>
+                      <span class="n">fieldAll</span><span class="o">=</span><span class="s2">"f1"</span><span class="p">,</span>
                       <span class="n">angle</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span>
                       <span class="n">e1</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">20</span><span class="p">,</span>
                       <span class="n">e2</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">20</span><span class="p">,</span>
@@ -3198,7 +3315,7 @@ the HUs data from the images. Information to download and install DCMTK can be f
 here: <a class="reference external" href="https://dicom.offis.de/dcmtk.php.en">https://dicom.offis.de/dcmtk.php.en</a>.</p>
 </div>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DICOM</span><span class="p">:</span> <span class="n">ct</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">dicomDataPath</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="n">dicomDataFile</span><span class="o">=</span><span class="s2">&quot;data.dat&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DICOM</span><span class="p">:</span> <span class="n">ct</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">dicomDataPath</span><span class="o">=</span><span class="s2">"./"</span><span class="p">,</span> <span class="n">dicomDataFile</span><span class="o">=</span><span class="s2">"data.dat"</span><span class="p">;</span>
 </pre></div>
 </div>
 <table class="docutils align-default">
@@ -3467,107 +3584,14 @@ of wedge absorbers [m]</p></td>
 </table>
 <p>An example of a cooling channel has been provided in <cite>/examples/components/muoncooler.gmad</cite>, and can be used as a template for development.</p>
 </section>
-<section id="bmcol">
-<span id="component-bmcol"></span><h3>bmcol<a class="headerlink" href="#bmcol" title="Link to this heading"></a></h3>
-<figure class="align-center">
-<a class="reference internal image-reference" href="_images/bmcol.png"><img alt="_images/bmcol.png" src="_images/bmcol.png" style="width: 60%;" />
-</a>
-</figure>
-<p><cite>bmcol</cite> define a beam mask that can be placed in a place in a dispersive section of a beamline in order to separate the
-beam with respect to the energy dispersion of said beam. This mask features two slits (a main slit and a side slit)
-with adjustable sizes and positions.</p>
-<ul class="simple">
-<li><p>The main slit is always centered on the beam mask mount. The side slit position is defined is defined with respect to
-the main one and can be tilted.</p></li>
-<li><p>The whole mount can then have x and y offset inside of the beam pipe.</p></li>
-</ul>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Default</strong></p></th>
-<th class="head"><p><strong>Required</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><cite>l</cite></p></td>
-<td><p>Length [m]</p></td>
-<td><p>0</p></td>
-<td><p>Yes</p></td>
-</tr>
-<tr class="row-odd"><td><p><cite>material</cite></p></td>
-<td><p>Outer material</p></td>
-<td><p>None</p></td>
-<td><p>Yes</p></td>
-</tr>
-<tr class="row-even"><td><p><cite>horizontalWidth</cite></p></td>
-<td><p>Outer full width [m]</p></td>
-<td><p>0.15 m</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-odd"><td><p><cite>xsize</cite></p></td>
-<td><p>Horizontal half aperture of main slit [m]</p></td>
-<td><p>0</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-even"><td><p><cite>ysize</cite></p></td>
-<td><p>Vertical half aperture of main slit [m]</p></td>
-<td><p>0</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-odd"><td><p><cite>xsize2</cite></p></td>
-<td><p>Horizontal half aperture of side slit [m]</p></td>
-<td><p>0</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-even"><td><p><cite>ysize2</cite></p></td>
-<td><p>Vertical half aperture of side slit [m]</p></td>
-<td><p>0</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-odd"><td><p><cite>offsetX2</cite></p></td>
-<td><p>Horizontal displacement of side slit [m]</p></td>
-<td><p>0</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-even"><td><p><cite>offsetY2</cite></p></td>
-<td><p>Vertical displacement of side slit [m]</p></td>
-<td><p>0</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-odd"><td><p><cite>tilt2</cite></p></td>
-<td><p>Clockwise rotation of side slit [rad].</p></td>
-<td><p>0</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-even"><td><p><cite>outerShape</cite></p></td>
-<td><p>Shape of the outer material
-(circular or rectangular).</p></td>
-<td><p>‘rectangular’</p></td>
-<td><p>No</p></td>
-</tr>
-</tbody>
-</table>
-<p>Notes:</p>
-<ul class="simple">
-<li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
-<li><p>The <a class="reference internal" href="#offsets-and-tilts"><span class="std std-ref">Offsets &amp; Tilts - Component Misalignment</span></a> may also be specified.</p></li>
-</ul>
-<p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="p">:</span> <span class="n">bmcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;G4_W&quot;</span><span class="p">,</span>
-           <span class="n">offsetX</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">offsetY</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">outerShape</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">,</span>
-           <span class="n">offsetX2</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">offsetY2</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">xsize2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">ysize2</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="n">tilt2</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">rad</span><span class="p">;</span>
-</pre></div>
-</div>
-</section>
 <section id="gascap">
 <span id="component-gascap"></span><h3>gascap<a class="headerlink" href="#gascap" title="Link to this heading"></a></h3>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/gascap.png"><img alt="_images/gascap.png" src="_images/gascap.png" style="width: 60%;" />
 </a>
 </figure>
-<p><cite>gascap</cite> define a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
-This element is composed of an inner cylindrical material (usually it is gas), an outer capillary material and two
+<p>A <cite>gascap</cite> defines a gas capillary that can be used to perform beam-gas interaction and/or plasma wake field acceleration.
+This element is composed of an inner cylindrical material (e.g. gas), an outer capillary material and two
 electrodes on each sides (with respect to beam axis).</p>
 <ul class="simple">
 <li><p>The inner gas cell is always center on the beam axis.</p></li>
@@ -3622,8 +3646,8 @@ electrodes on each sides (with respect to beam axis).</p>
 <li><p>The <a class="reference internal" href="model_customisation.html#aperture-parameters"><span class="std std-ref">Aperture Parameters</span></a> may also be specified.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gc</span><span class="p">:</span> <span class="n">gascap</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mf">0.03</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">outerShape</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">,</span>
-            <span class="n">layerMaterials</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;G4_Si&quot;</span><span class="p">,</span> <span class="s2">&quot;G4_Xe&quot;</span> <span class="p">,</span><span class="s2">&quot;G4_C&quot;</span><span class="p">},</span> <span class="n">materialThickness</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gc</span><span class="p">:</span> <span class="n">gascap</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mf">0.03</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">outerShape</span><span class="o">=</span><span class="s2">"circular"</span><span class="p">,</span>
+            <span class="n">layerMaterials</span><span class="o">=</span><span class="p">{</span><span class="s2">"G4_Si"</span><span class="p">,</span> <span class="s2">"G4_Xe"</span> <span class="p">,</span><span class="s2">"G4_C"</span><span class="p">},</span> <span class="n">materialThickness</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -3633,11 +3657,12 @@ electrodes on each sides (with respect to beam axis).</p>
 <a class="reference internal image-reference" href="_images/gasjet.png"><img alt="_images/gasjet.png" src="_images/gasjet.png" style="width: 60%;" />
 </a>
 </figure>
-<p><cite>gasjet</cite> define a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This element is a box of
-material that can be placed in x and y and angled in all directions with respect to the center of the beam pipe.</p>
+<p>A <cite>gasjet</cite> defines a gas jet that can be used to perform beam-gas interaction inside a beam pipe. This
+element is a box of material that can be placed in x and y with respect to the beam axis and angled in
+all directions with respect to the center of the beam pipe.</p>
 <ul class="simple">
-<li><p>The gas jet size is independent of the beam pipe length. However its position is dependent to the center of the pipe
-along the beam axis.</p></li>
+<li><p>The gas jet size is independent of the beam pipe length. However, its position is relative to the
+center of the pipe along the beam axis.</p></li>
 </ul>
 <table class="docutils align-default">
 <thead>
@@ -3696,7 +3721,7 @@ along the beam axis.</p></li>
 <li><p>The <a class="reference internal" href="#offsets-and-tilts"><span class="std std-ref">Offsets &amp; Tilts - Component Misalignment</span></a> may also be specified.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gj</span><span class="p">:</span> <span class="n">gasjet</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;G4_AIR&quot;</span><span class="p">,</span> <span class="n">offsetX</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">offsetY</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gj</span><span class="p">:</span> <span class="n">gasjet</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.15</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"G4_AIR"</span><span class="p">,</span> <span class="n">offsetX</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">offsetY</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
             <span class="n">xdir</span><span class="o">=</span><span class="mf">0.07</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">ydir</span><span class="o">=</span><span class="mf">0.07</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">zdir</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -3875,11 +3900,11 @@ is given below the example.</p>
 
 <span class="n">use</span><span class="p">,</span> <span class="n">mainLine</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
-<span class="n">auxLine1Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="s2">&quot;auxLine1&quot;</span><span class="p">,</span>
-                          <span class="n">referenceElement</span> <span class="o">=</span> <span class="s2">&quot;d2&quot;</span> <span class="p">,</span>
+<span class="n">auxLine1Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="s2">"auxLine1"</span><span class="p">,</span>
+                          <span class="n">referenceElement</span> <span class="o">=</span> <span class="s2">"d2"</span> <span class="p">,</span>
                           <span class="n">referenceElementNumber</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
                           <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                           <span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
@@ -3887,8 +3912,8 @@ is given below the example.</p>
                           <span class="n">axisY</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                           <span class="n">angle</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">;</span>
 
-<span class="n">auxLine2Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="s2">&quot;auxLine2&quot;</span><span class="p">,</span>
-                          <span class="n">referenceElement</span> <span class="o">=</span> <span class="s2">&quot;d2&quot;</span><span class="p">,</span>
+<span class="n">auxLine2Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="s2">"auxLine2"</span><span class="p">,</span>
+                          <span class="n">referenceElement</span> <span class="o">=</span> <span class="s2">"d2"</span><span class="p">,</span>
                           <span class="n">referenceElementNumber</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
                           <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                           <span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
@@ -3896,7 +3921,7 @@ is given below the example.</p>
                           <span class="n">axisY</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                           <span class="n">angle</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">;</span>
 
-<span class="n">auxLine3Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="s2">&quot;auxLine3&quot;</span><span class="p">,</span>
+<span class="n">auxLine3Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="s2">"auxLine3"</span><span class="p">,</span>
                           <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
                           <span class="n">axisAngle</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                           <span class="n">axisY</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -3915,8 +3940,8 @@ then the placement of secondary beam lines.</p>
 <p>The first placement <cite>auxLine1Place</cite> is a placement that will place the sequence named
 <cite>auxLine1</cite> with respect to the third instance of the element <cite>d2</cite> in the primary sequence
 (<cite>mainLine</cite>).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">auxLine1Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;auxLine1&quot;</span><span class="p">,</span>
-                          <span class="n">referenceElement</span><span class="o">=</span><span class="s2">&quot;d2&quot;</span> <span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">auxLine1Place</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">"auxLine1"</span><span class="p">,</span>
+                          <span class="n">referenceElement</span><span class="o">=</span><span class="s2">"d2"</span> <span class="p">,</span>
                           <span class="n">referenceElementNumber</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -4108,42 +4133,42 @@ histograms such as the usual energy deposition histogram. There is 1 histogram p
 BLM. All BLM histograms have the same number of bins which is the total number of BLMs in the model and
 they are in the order they are constructed in the input. Here is an example that will clarify. This
 example can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/detectors/blms/blm-output-example.gmad</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">horizontalWidth</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"Al"</span><span class="p">;</span>
 <span class="n">l1</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">r1</span><span class="p">);</span>
 <span class="n">use</span><span class="p">,</span> <span class="n">l1</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
-<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">&quot;em&quot;</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">physicsList</span><span class="o">=</span><span class="s2">"em"</span><span class="p">;</span>
 
-<span class="n">chrg</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cellcharge&quot;</span><span class="p">;</span>
-<span class="n">dose</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;depositeddose&quot;</span><span class="p">;</span>
-<span class="n">eDep</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;depositedenergy&quot;</span><span class="p">;</span>
+<span class="n">chrg</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"cellcharge"</span><span class="p">;</span>
+<span class="n">dose</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"depositeddose"</span><span class="p">;</span>
+<span class="n">eDep</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"depositedenergy"</span><span class="p">;</span>
 
 <span class="n">BLM_t1</span><span class="p">:</span> <span class="n">blm</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-             <span class="n">side</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span>
-             <span class="n">geometryType</span><span class="o">=</span><span class="s2">&quot;cylinder&quot;</span><span class="p">,</span>
-             <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span>
+             <span class="n">side</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span>
+             <span class="n">geometryType</span><span class="o">=</span><span class="s2">"cylinder"</span><span class="p">,</span>
+             <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">"Al"</span><span class="p">,</span>
              <span class="n">blm1</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
              <span class="n">blm2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-             <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;eDep dose chrg&quot;</span><span class="p">;</span>
+             <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"eDep dose chrg"</span><span class="p">;</span>
 
 <span class="n">BLM_t2</span><span class="p">:</span> <span class="n">blm</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-             <span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
-             <span class="n">geometryType</span><span class="o">=</span><span class="s2">&quot;cylinder&quot;</span><span class="p">,</span>
-             <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span>
+             <span class="n">side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+             <span class="n">geometryType</span><span class="o">=</span><span class="s2">"cylinder"</span><span class="p">,</span>
+             <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">"Al"</span><span class="p">,</span>
              <span class="n">blm1</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
              <span class="n">blm2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-             <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;dose eDep&quot;</span><span class="p">;</span>
+             <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"dose eDep"</span><span class="p">;</span>
 
 <span class="n">BLM_t3</span><span class="p">:</span> <span class="n">blm</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-             <span class="n">side</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span>
-             <span class="n">geometryType</span><span class="o">=</span><span class="s2">&quot;cylinder&quot;</span><span class="p">,</span>
-             <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span>
+             <span class="n">side</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span>
+             <span class="n">geometryType</span><span class="o">=</span><span class="s2">"cylinder"</span><span class="p">,</span>
+             <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">"Al"</span><span class="p">,</span>
              <span class="n">blm1</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
              <span class="n">blm2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-             <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">&quot;chrg dose&quot;</span><span class="p">;</span>
+             <span class="n">scoreQuantity</span><span class="o">=</span><span class="s2">"chrg dose"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This model creates a scene with 1x 10m long block of aluminium (a closed rcol) and a beam of 10 GeV
@@ -4189,29 +4214,29 @@ as all BLMs use this scorer.</span><a class="headerlink" href="#id16" title="Lin
 <li><p>A simple sphere made of nitrogen. It’s placed at 2.3 metres along the beam line with a transverse offset
 (in curvilinear coordinates) of 40 cm horizontally and 25 cm vertically. The sphere radius is 20 cm.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minidetector</span><span class="p">:</span> <span class="n">blm</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">2.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.4</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
-              <span class="n">geometryType</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
-              <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">&quot;N&quot;</span><span class="p">,</span>
+              <span class="n">geometryType</span><span class="o">=</span><span class="s2">"sphere"</span><span class="p">,</span>
+              <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">"N"</span><span class="p">,</span>
               <span class="n">blm1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 <li><p>A simple cylinder made of silicon. It’s placed globally with an offset in x of 3.2 m and y of 25 cm.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minidetector</span><span class="p">:</span> <span class="n">blm</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">3.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
-              <span class="n">geometryType</span><span class="o">=</span><span class="s2">&quot;cylinder&quot;</span><span class="p">,</span>
-              <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">&quot;Si&quot;</span><span class="p">,</span>
+              <span class="n">geometryType</span><span class="o">=</span><span class="s2">"cylinder"</span><span class="p">,</span>
+              <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">"Si"</span><span class="p">,</span>
               <span class="n">blm1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
               <span class="n">blm2</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 <li><p>User defined geometry in a GDML file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">blmdose</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;depositedenery&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">blmdose</span><span class="p">:</span> <span class="n">scorer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"depositedenery"</span><span class="p">;</span>
 <span class="n">minidetector</span><span class="p">:</span> <span class="n">blm</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.4</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.25</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
-              <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:simpleshape.gdml&quot;</span><span class="p">,</span>
-              <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">&quot;N&quot;</span><span class="p">,</span>
+              <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:simpleshape.gdml"</span><span class="p">,</span>
+              <span class="n">blmMaterial</span><span class="o">=</span><span class="s2">"N"</span><span class="p">,</span>
               <span class="n">blm1</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
               <span class="n">blm2</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-              <span class="n">scorerQuantity</span><span class="o">=</span><span class="s2">&quot;blmdose&quot;</span><span class="p">;</span>
+              <span class="n">scorerQuantity</span><span class="o">=</span><span class="s2">"blmdose"</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
@@ -4232,8 +4257,8 @@ as all BLMs use this scorer.</span><a class="headerlink" href="#id16" title="Lin
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

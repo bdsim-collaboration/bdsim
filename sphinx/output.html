@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Output &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -166,7 +166,7 @@ executing BDSIM with:</p>
 </pre></div>
 </div>
 <p>The output file name can be specified with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="s2">&quot;mydesiredname&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdsim</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=</span><span class="s2">"mydesiredname"</span>
 </pre></div>
 </div>
 <p>with no extension.</p>
@@ -422,8 +422,8 @@ simple questions like, “where are muons produced that reach my detector (i.e. 
 to storing muon trajectories with the option that links them to a particular sampler and we would
 histogram the first point in each trajectory afterwards.  e.g.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">storeTrajectories</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">storeTrajectoryParticleID</span><span class="o">=</span><span class="s2">&quot;13 -13&quot;</span><span class="p">,</span>
-        <span class="n">storeTrajectorySamplerID</span><span class="o">=</span><span class="s2">&quot;samplername&quot;</span><span class="p">,</span>
+        <span class="n">storeTrajectoryParticleID</span><span class="o">=</span><span class="s2">"13 -13"</span><span class="p">,</span>
+        <span class="n">storeTrajectorySamplerID</span><span class="o">=</span><span class="s2">"samplername"</span><span class="p">,</span>
         <span class="n">trajectoryFilterLogicAND</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2968,10 +2968,10 @@ would see in the visualiser. GDML auxiliary information is written out with the 
 such as whether a volume is visible or not, the colour and the transparency. This information will
 be loaded by any GDML loader irrespective of BDSIM and not interfere with that loading.</p>
 <p>The information is written like the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">volume</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;q2_outer_pole_lv0x600003006e40&quot;</span><span class="o">&gt;</span>
-   <span class="o">&lt;</span><span class="n">materialref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;G4_Fe0x147912550&quot;</span><span class="o">/&gt;</span>
-   <span class="o">&lt;</span><span class="n">solidref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;q2_outer_pole_solid0x600003006bc0&quot;</span><span class="o">/&gt;</span>
-   <span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">&quot;bds_vrgba&quot;</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">&quot;1 0.82 0.1 0.1 1&quot;</span><span class="o">/&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">volume</span> <span class="n">name</span><span class="o">=</span><span class="s2">"q2_outer_pole_lv0x600003006e40"</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">materialref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">"G4_Fe0x147912550"</span><span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">solidref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">"q2_outer_pole_solid0x600003006bc0"</span><span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">"bds_vrgba"</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">"1 0.82 0.1 0.1 1"</span><span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">volume</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -2992,8 +2992,8 @@ value is these numbers in sequence of type <code class="code docutils literal no
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

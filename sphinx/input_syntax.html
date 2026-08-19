@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Input Syntax &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -193,7 +193,7 @@ can be updated first then (if appropriate) “type” can be set.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="mf">8e5</span><span class="p">;</span>
-<span class="n">mat</span> <span class="o">=</span> <span class="s2">&quot;copper&quot;</span><span class="p">;</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="s2">"copper"</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -206,7 +206,7 @@ to the nearest integer.</p>
 <section id="common-pitfalls">
 <h3>Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Link to this heading"></a></h3>
 <p>The following is an example of a common mistake that’s not easy to spot:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">TeV</span><span class="p">;</span>
       <span class="n">E0</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">TeV</span><span class="p">;</span>
 </pre></div>
@@ -215,7 +215,7 @@ to the nearest integer.</p>
 the bunch. 3 TeV is used to calculate the magnet strengths and it’s expected to fire a 1 TeV electron.
 However, the E0 parameter here just defines a variable called E0 that isn’t used. The indentation (white-space)
 is ignored. The error is the semi-colon at the end of the second line. This is the correct version:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">TeV</span><span class="p">,</span>
       <span class="n">E0</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">TeV</span><span class="p">;</span>
 </pre></div>
@@ -467,8 +467,8 @@ Both are equivalent.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

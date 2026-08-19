@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model Customisation &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -215,10 +215,10 @@ can be chosen given knowledge of the smoothness of the field or the application 
 a 4th order Runge Kutta). BDSIM also provides a selection of 1-4D interpolators that are used
 to provide the field value in between the data points in the supplied field map.</p>
 <p>To overlay a field, one must define a field ‘object’ in the parser and then ‘attach’ it to an element.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap3d&quot;</span><span class="p">,</span> <span class="n">magneticFile</span><span class="o">=</span><span class="s2">&quot;bdsim3d:fieldmap.dat.gz&quot;</span><span class="p">;</span>
-<span class="n">e1</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:aPieceOfGeometry.gdml&quot;</span><span class="p">,</span> <span class="n">fieldAll</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">;</span>
-<span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">fieldOuter</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">;</span>
-<span class="n">h1</span><span class="p">:</span> <span class="n">hkicker</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">fieldVacuum</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap3d"</span><span class="p">,</span> <span class="n">magneticFile</span><span class="o">=</span><span class="s2">"bdsim3d:fieldmap.dat.gz"</span><span class="p">;</span>
+<span class="n">e1</span><span class="p">:</span> <span class="n">element</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:aPieceOfGeometry.gdml"</span><span class="p">,</span> <span class="n">fieldAll</span><span class="o">=</span><span class="s2">"f1"</span><span class="p">;</span>
+<span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">fieldOuter</span><span class="o">=</span><span class="s2">"f1"</span><span class="p">;</span>
+<span class="n">h1</span><span class="p">:</span> <span class="n">hkicker</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">fieldVacuum</span><span class="o">=</span><span class="s2">"f1"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>These are all different uses of the same field map. <cite>e1</cite> uses a generic element with externally
@@ -282,24 +282,24 @@ as described in <a class="reference internal" href="visualisation.html#visualisa
 <section id="minimal-example">
 <h3>Minimal Example<a class="headerlink" href="#minimal-example" title="Link to this heading"></a></h3>
 <p>Here is a minimal example of a magnetic field in BDSIM format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detfield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap3d&quot;</span><span class="p">,</span>
-                 <span class="n">magneticFile</span><span class="o">=</span><span class="s2">&quot;bdsim3d:fieldmap.dat.gz&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detfield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap3d"</span><span class="p">,</span>
+                 <span class="n">magneticFile</span><span class="o">=</span><span class="s2">"bdsim3d:fieldmap.dat.gz"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This will use the “g4classicalrk4” integrator for the particle motion and the “cubic” (in 3D) interpolation
 by default.</p>
 <p>Here is example syntax to define a field object named ‘somefield’ in the parser and overlay it onto
 a drift pipe where it covers the full volume of the drift (not outside it though):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">somefield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;ebmap2d&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">somefield</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"ebmap2d"</span><span class="p">,</span>
                   <span class="n">eScaling</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">,</span>
                   <span class="n">bScaling</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span>
-                  <span class="n">integrator</span> <span class="o">=</span> <span class="s2">&quot;g4classicalrk4&quot;</span><span class="p">,</span>
-                  <span class="n">magneticFile</span> <span class="o">=</span> <span class="s2">&quot;poisson2d:/Path/To/File.TXT&quot;</span><span class="p">,</span>
-                  <span class="n">magneticInterpolator</span> <span class="o">=</span> <span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
-                  <span class="n">electricFile</span> <span class="o">=</span> <span class="s2">&quot;poisson2d:/Another/File.TXT&quot;</span><span class="p">,</span>
-                  <span class="n">electricInterpolator</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">;</span>
+                  <span class="n">integrator</span> <span class="o">=</span> <span class="s2">"g4classicalrk4"</span><span class="p">,</span>
+                  <span class="n">magneticFile</span> <span class="o">=</span> <span class="s2">"poisson2d:/Path/To/File.TXT"</span><span class="p">,</span>
+                  <span class="n">magneticInterpolator</span> <span class="o">=</span> <span class="s2">"nearest"</span><span class="p">,</span>
+                  <span class="n">electricFile</span> <span class="o">=</span> <span class="s2">"poisson2d:/Another/File.TXT"</span><span class="p">,</span>
+                  <span class="n">electricInterpolator</span> <span class="o">=</span> <span class="s2">"linear"</span><span class="p">;</span>
 
-<span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">fieldAll</span><span class="o">=</span><span class="s2">&quot;somefield&quot;</span><span class="p">;</span>
+<span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">fieldAll</span><span class="o">=</span><span class="s2">"somefield"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Each beam line element will allow “fieldAll”, “fieldVacuum” and “fieldOuter” to be specified.</p>
@@ -443,8 +443,8 @@ This overrides <cite>maximumStepLength</cite> and the one calculated.</p></td>
 </tbody>
 </table>
 <p>Simple example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detectorField</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap2d&quot;</span><span class="p">,</span>
-                      <span class="n">magneticFile</span><span class="o">=</span><span class="s2">&quot;bdsim2d:fieldmap.dat&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detectorField</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap2d"</span><span class="p">,</span>
+                      <span class="n">magneticFile</span><span class="o">=</span><span class="s2">"bdsim2d:fieldmap.dat"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This will use a BDSIM format magnetic (only) field map. By default it will have cubic
@@ -480,12 +480,12 @@ match the (normalised) strength of the magnet, e.g. <cite>k1</cite> for a quadru
 <p>This only works when <cite>autoScale=1</cite> is used in the field definition and when the field is specified
 for the <cite>fieldOuter</cite> parameter of a magnet such as a quadrupole, sextupole, or octupole.</p>
 <p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap2d&quot;</span><span class="p">,</span> <span class="n">magnetifFile</span><span class="o">=</span><span class="s2">&quot;bdsim:fieldmap.dat&quot;</span><span class="p">;</span>
-<span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.99</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">fieldOuter</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="n">k1</span><span class="o">=-</span><span class="mf">0.03571027562065992</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap2d"</span><span class="p">,</span> <span class="n">magnetifFile</span><span class="o">=</span><span class="s2">"bdsim:fieldmap.dat"</span><span class="p">;</span>
+<span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.99</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">fieldOuter</span><span class="o">=</span><span class="s2">"f1"</span><span class="p">,</span> <span class="n">k1</span><span class="o">=-</span><span class="mf">0.03571027562065992</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Example print out when running BDSIM would be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BDSIM</span> <span class="n">Field</span> <span class="n">Format</span><span class="o">&gt;</span> <span class="n">Loading</span> <span class="s2">&quot;/Users/lnevay/Desktop/gradient/QNRX0610005_-192.59A.map&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BDSIM</span> <span class="n">Field</span> <span class="n">Format</span><span class="o">&gt;</span> <span class="n">Loading</span> <span class="s2">"/Users/lnevay/Desktop/gradient/QNRX0610005_-192.59A.map"</span>
 <span class="n">BDSIM</span> <span class="n">Field</span> <span class="n">Format</span><span class="o">&gt;</span> <span class="n">Loaded</span> <span class="mi">2099</span> <span class="n">lines</span> <span class="kn">from</span><span class="w"> </span><span class="nn">file</span>
 <span class="n">BDSIM</span> <span class="n">Field</span> <span class="n">Format</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">Min</span> <span class="o">|</span> <span class="n">Max</span><span class="p">)</span> <span class="n">field</span> <span class="n">magnitudes</span> <span class="ow">in</span> <span class="n">loaded</span> <span class="n">file</span> <span class="p">(</span><span class="n">before</span> <span class="n">scaling</span><span class="p">):</span> <span class="p">(</span><span class="mi">0</span> <span class="o">|</span> <span class="mf">4.12849187851</span><span class="p">)</span>
 <span class="n">autoScale</span><span class="o">&gt;</span> <span class="n">Calculated</span> <span class="n">k1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0430970787713</span>
@@ -566,7 +566,7 @@ field definition must be exactly one of the internal names used for the field na
 <li><p>Normalised field strengths are used with respect to the beam particle and design energy.</p></li>
 </ul>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dipole&quot;</span><span class="p">,</span> <span class="n">fieldParameters</span><span class="o">=</span><span class="s2">&quot;field=1.2 by=1.0&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"dipole"</span><span class="p">,</span> <span class="n">fieldParameters</span><span class="o">=</span><span class="s2">"field=1.2 by=1.0"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>For a dipole field with value 1.2 T and along the unit Y axis (local). The other
@@ -696,8 +696,8 @@ for the array look up. Then the value found at that location is changed as follo
 such as the LHC dipole magnets where the dipole fields in each pipe have
 opposite directions to bend the counter-circulating beams.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magneticReflection</span><span class="o">=</span><span class="s2">&quot;flipx&quot;</span><span class="p">;</span>
-<span class="n">magneticReflection</span><span class="o">=</span><span class="s2">&quot;flipx flipy&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magneticReflection</span><span class="o">=</span><span class="s2">"flipx"</span><span class="p">;</span>
+<span class="n">magneticReflection</span><span class="o">=</span><span class="s2">"flipx flipy"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>There are many practical examples in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/maps_transformed/*.gmad</span></code>
@@ -739,8 +739,8 @@ is multiplied by the (scalar) numerical factor from the modulator.</p></li>
 </pre></div>
 </div>
 <p>The modulator is then ‘attahced’ to the beam line element in its definition:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span><span class="p">:</span> <span class="n">modulator</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;sint&quot;</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">kHz</span><span class="p">,</span> <span class="n">amplitudeOffset</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-<span class="n">rf1</span><span class="p">:</span> <span class="n">rfcavity</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">450</span><span class="o">*</span><span class="n">MHz</span><span class="p">,</span> <span class="n">fieldModulator</span><span class="o">=</span><span class="s2">&quot;m1&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span><span class="p">:</span> <span class="n">modulator</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"sint"</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">kHz</span><span class="p">,</span> <span class="n">amplitudeOffset</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">rf1</span><span class="p">:</span> <span class="n">rfcavity</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">450</span><span class="o">*</span><span class="n">MHz</span><span class="p">,</span> <span class="n">fieldModulator</span><span class="o">=</span><span class="s2">"m1"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The function is described by the <code class="code docutils literal notranslate"><span class="pre">type</span></code> parameter which can be one of the following:</p>
@@ -1150,17 +1150,17 @@ main outer field.</p></li>
 will always take precedence for any z value as long as x and y are inside its limits.</p></li>
 </ul>
 <p>Below is an example of a sub-field that can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/subfield</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fpipe</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap2d&quot;</span><span class="p">,</span>
-              <span class="n">magneticFile</span><span class="o">=</span><span class="s2">&quot;bdsim2d:inner.dat&quot;</span><span class="p">,</span>
-              <span class="n">magneticInterpolator</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fpipe</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap2d"</span><span class="p">,</span>
+              <span class="n">magneticFile</span><span class="o">=</span><span class="s2">"bdsim2d:inner.dat"</span><span class="p">,</span>
+              <span class="n">magneticInterpolator</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">,</span>
               <span class="n">x</span><span class="o">=-</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">;</span>
 
-<span class="n">fyoke</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap2d&quot;</span><span class="p">,</span>
-              <span class="n">magneticFile</span><span class="o">=</span><span class="s2">&quot;bdsim2d:outer.dat&quot;</span><span class="p">,</span>
-              <span class="n">magneticInterpolator</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span>
-              <span class="n">magneticSubField</span><span class="o">=</span><span class="s2">&quot;fpipe&quot;</span><span class="p">;</span>
+<span class="n">fyoke</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap2d"</span><span class="p">,</span>
+              <span class="n">magneticFile</span><span class="o">=</span><span class="s2">"bdsim2d:outer.dat"</span><span class="p">,</span>
+              <span class="n">magneticInterpolator</span><span class="o">=</span><span class="s2">"cubic"</span><span class="p">,</span>
+              <span class="n">magneticSubField</span><span class="o">=</span><span class="s2">"fpipe"</span><span class="p">;</span>
 
-<span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">fieldAll</span><span class="o">=</span><span class="s2">&quot;fyoke&quot;</span><span class="p">;</span>
+<span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">aper1</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">fieldAll</span><span class="o">=</span><span class="s2">"fyoke"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>First a smaller field map is defined called “fpipe”. Secondly, a larger coarser field map is created
@@ -1441,7 +1441,7 @@ from the reference axis of the accelerator.</p></li>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quA</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=-</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
             <span class="n">ny</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=-</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
             <span class="n">queryMagneticField</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">outfileMagnetic</span><span class="o">=</span><span class="s2">&quot;out_query_2d_bfield_xy.dat&quot;</span><span class="p">,</span>
+            <span class="n">outfileMagnetic</span><span class="o">=</span><span class="s2">"out_query_2d_bfield_xy.dat"</span><span class="p">,</span>
             <span class="n">z</span><span class="o">=</span><span class="mf">1.1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
             <span class="n">overwriteExistingFiles</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -1517,9 +1517,9 @@ field map, we are still interpolating values in the field map, but we are just
 reducing the ‘resolution’ of the field map.</p></li>
 </ul>
 <p>Example in one gmad file called <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/fields/maps_bdsim/2d_cubic.gmad</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;bmap2d&quot;</span><span class="p">,</span>
-               <span class="n">magneticFile</span> <span class="o">=</span> <span class="s2">&quot;bdsim2d:2dexample.dat&quot;</span><span class="p">,</span>
-               <span class="n">magneticInterpolator</span> <span class="o">=</span> <span class="s2">&quot;cubic&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"bmap2d"</span><span class="p">,</span>
+               <span class="n">magneticFile</span> <span class="o">=</span> <span class="s2">"bdsim2d:2dexample.dat"</span><span class="p">,</span>
+               <span class="n">magneticInterpolator</span> <span class="o">=</span> <span class="s2">"cubic"</span><span class="p">;</span>
 
 <span class="n">q1</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
            <span class="n">xmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
@@ -1527,8 +1527,8 @@ reducing the ‘resolution’ of the field map.</p></li>
            <span class="n">ny</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
            <span class="n">ymin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">ymax</span> <span class="o">=</span> <span class="mi">50</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
-           <span class="n">outfileMagnetic</span> <span class="o">=</span> <span class="s2">&quot;2d_interpolated_linear.dat&quot;</span><span class="p">,</span>
-           <span class="n">fieldObject</span> <span class="o">=</span> <span class="s2">&quot;f1&quot;</span><span class="p">;</span>
+           <span class="n">outfileMagnetic</span> <span class="o">=</span> <span class="s2">"2d_interpolated_linear.dat"</span><span class="p">,</span>
+           <span class="n">fieldObject</span> <span class="o">=</span> <span class="s2">"f1"</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -1550,7 +1550,7 @@ block.</p>
 <section id="single-element">
 <h3>Single Element<a class="headerlink" href="#single-element" title="Link to this heading"></a></h3>
 <p>In the case of an element, the chemical symbol can be specified:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rc1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mf">1.2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;W&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rc1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mf">1.2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"W"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>These are automatically prefixed with <code class="code docutils literal notranslate"><span class="pre">G4_</span></code> and retrieved from the NIST database of
@@ -1630,7 +1630,7 @@ the following syntax can be used:</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NbTi</span> <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">5.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Nb&quot;</span><span class="p">,</span><span class="s2">&quot;Ti&quot;</span><span class="p">],</span> <span class="n">componentsWeights</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NbTi</span> <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">5.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">"Nb"</span><span class="p">,</span><span class="s2">"Ti"</span><span class="p">],</span> <span class="n">componentsWeights</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
 </pre></div>
 </div>
 </section>
@@ -1657,7 +1657,7 @@ following syntax can be used:</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SmCo</span> <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">8.4</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Sm&quot;</span><span class="p">,</span><span class="s2">&quot;Co&quot;</span><span class="p">],</span> <span class="n">componentsFractions</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.338</span><span class="p">,</span><span class="mf">0.662</span><span class="p">};</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SmCo</span> <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">8.4</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">"Sm"</span><span class="p">,</span><span class="s2">"Co"</span><span class="p">],</span> <span class="n">componentsFractions</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.338</span><span class="p">,</span><span class="mf">0.662</span><span class="p">};</span>
 </pre></div>
 </div>
 <p>The second syntax can also be used to define materials which are composed by
@@ -1688,9 +1688,9 @@ brackets for the list of weights or fractions.</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myNiobium</span>  <span class="p">:</span> <span class="n">atom</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;myNb&quot;</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">41</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">92.906</span><span class="p">;</span>
-<span class="n">myTitanium</span> <span class="p">:</span> <span class="n">atom</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;myTi&quot;</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">47.867</span><span class="p">;</span>
-<span class="n">myNbTi</span>     <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">5.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;myNb&quot;</span><span class="p">,</span><span class="s2">&quot;myTi&quot;</span><span class="p">],</span> <span class="n">componentsWeights</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myNiobium</span>  <span class="p">:</span> <span class="n">atom</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">"myNb"</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">41</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">92.906</span><span class="p">;</span>
+<span class="n">myTitanium</span> <span class="p">:</span> <span class="n">atom</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">"myTi"</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">47.867</span><span class="p">;</span>
+<span class="n">myNbTi</span>     <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">5.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">"myNb"</span><span class="p">,</span><span class="s2">"myTi"</span><span class="p">],</span> <span class="n">componentsWeights</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
 </pre></div>
 </div>
 </section>
@@ -2047,7 +2047,7 @@ Phys. Rev. ST Accel. Beams <strong>12</strong>, 021001 (2009).</p>
 <p>A circular aperture is defined by one parameter, <code class="code docutils literal notranslate"><span class="pre">aper1</span></code>. The beam pipe
 thickness is added outside this radius.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"circular"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
 </pre></div>
@@ -2066,7 +2066,7 @@ thickness is added outside this radius.</p>
 half width, and <code class="code docutils literal notranslate"><span class="pre">aper2</span></code> for the vertical half width. The beam pipe
 thickness is added outside this aperture.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"rectangular"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper2</span><span class="o">=</span><span class="mf">2.1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
@@ -2084,7 +2084,7 @@ thickness is added outside this aperture.</p>
 semi-axis, and <code class="code docutils literal notranslate"><span class="pre">aper2</span></code> for the vertical semi-axis. The beam pipe
 thickness is added outside this aperture.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;elliptical&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"elliptical"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper2</span><span class="o">=</span><span class="mf">2.1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
@@ -2108,7 +2108,7 @@ edges. If <code class="code docutils literal notranslate"><span class="pre">aper
 image shown. The beam pipe thickness is added outside this aperture.
 |</p>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;lhc&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"lhc"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mf">2.202</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper2</span><span class="o">=</span><span class="mf">1.714</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper3</span><span class="o">=</span><span class="mf">2.202</span><span class="o">*</span><span class="n">cm</span>
@@ -2133,7 +2133,7 @@ circle, it is the intersection of a rectangle and an ellipse. <code class="code 
 <code class="code docutils literal notranslate"><span class="pre">aper2</span></code> define the rectangle, and <code class="code docutils literal notranslate"><span class="pre">aper3</span></code> and <code class="code docutils literal notranslate"><span class="pre">aper4</span></code> define the
 ellipse. The beam pipe thickness is added outside this aperture.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;rectellipse&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"rectellipse"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper3</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
@@ -2156,7 +2156,7 @@ thickness is added outside this aperture.
 |
 |</p>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;racetrack&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"racetrack"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper3</span><span class="o">=</span><span class="mf">2.4</span><span class="o">*</span><span class="n">cm</span>
@@ -2182,7 +2182,7 @@ The MADX community wanted to change this but it is kept for backwards
 compatibility.</p>
 </div>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;octagonal&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"octagonal"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper2</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper3</span><span class="o">=</span><span class="mf">1.1</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
@@ -2202,7 +2202,7 @@ a circle used for the curved corners. Therefore, a small amount of width is lost
 The figure shows a rhombus where <code class="code docutils literal notranslate"><span class="pre">aper1</span> <span class="pre">=</span> <span class="pre">aper2</span></code>, however, these can be unequal.
 The beam pipe thickness is added outside this aperture.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">&quot;rhombus&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">aperType</span><span class="o">=</span><span class="s2">"rhombus"</span><span class="p">,</span>
            <span class="n">aper1</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper2</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
            <span class="n">aper3</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">cm</span>
@@ -2231,8 +2231,8 @@ colon and units are optional and if not supplied will be mm.</p>
 (the order of the points) and BDSIM will internally make it clockwise, which is
 necessary to calculate the expansion of the polygon for the beam pipe shape.</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">&quot;pointsfile:12_points.dat:cm&quot;</span><span class="p">,</span> <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
-<span class="n">d2</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">&quot;pointsfile:12_points.dat&quot;</span><span class="p">,</span> <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">"pointsfile:12_points.dat:cm"</span><span class="p">,</span> <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<span class="n">d2</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">apertureType</span><span class="o">=</span><span class="s2">"pointsfile:12_points.dat"</span><span class="p">,</span> <span class="n">beampipeThickness</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -2435,13 +2435,13 @@ this. These are described in <a class="reference internal" href="dev_fields.html
 </tbody>
 </table>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">magnetGeometryType</span> <span class="o">=</span> <span class="s2">&quot;polesfacetcrop&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">magnetGeometryType</span> <span class="o">=</span> <span class="s2">"polesfacetcrop"</span><span class="p">,</span>
         <span class="n">horizontalWidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
                 <span class="n">k1</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-                <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;gdml:geometryfiles/quad.gdml&quot;</span><span class="p">,</span>
+                <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"gdml:geometryfiles/quad.gdml"</span><span class="p">,</span>
                 <span class="n">horizontalWidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2639,12 +2639,12 @@ a cylinder cut out of it, i.e. a Boolean solid.</p>
 <p>This will work for <cite>solenoid</cite>, <cite>sbend</cite>, <cite>rbend</cite>, <cite>quadrupole</cite>, <cite>sextupole</cite>, <cite>octupole</cite>,
 <cite>decapole</cite>, <cite>multipole</cite>, <cite>muonspoiler</cite>, <cite>vkicker</cite>, <cite>hkicker</cite> element types in BDSIM.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.0235</span><span class="p">,</span> <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;gdml:mygeometry/atf2quad.gdml&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.0235</span><span class="p">,</span> <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"gdml:mygeometry/atf2quad.gdml"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><code class="code docutils literal notranslate"><span class="pre">autoColour=1</span></code> can also be used to automatically colour the supplied geometry by
 density if desired. This is on by default.  Example to turn it off:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.0235</span><span class="p">,</span> <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;gdml:mygeometry/atf2quad.gdml&quot;</span><span class="p">,</span> <span class="n">autoColour</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q1</span><span class="p">:</span> <span class="n">quadrupole</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.0235</span><span class="p">,</span> <span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"gdml:mygeometry/atf2quad.gdml"</span><span class="p">,</span> <span class="n">autoColour</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -2721,7 +2721,7 @@ to a cavity object:</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shinyCavity</span><span class="p">:</span> <span class="n">cavitymodel</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;elliptical&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shinyCavity</span><span class="p">:</span> <span class="n">cavitymodel</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"elliptical"</span><span class="p">,</span>
                      <span class="n">irisRadius</span> <span class="o">=</span> <span class="mi">35</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
                      <span class="n">equatorRadius</span> <span class="o">=</span> <span class="mf">103.3</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
                      <span class="n">halfCellLength</span> <span class="o">=</span> <span class="mf">57.7</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
@@ -2849,15 +2849,15 @@ also be checked for overlaps.</p></li>
 <h4>Auxiliary Colour Information<a class="headerlink" href="#auxiliary-colour-information" title="Link to this heading"></a></h4>
 <p>When preparing a GDML file for input to BDSIM, you can supply extra information in the form of
 an auxiliary tag in GDML. This is attached the <code class="code docutils literal notranslate"><span class="pre">volume</span></code> and an example is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">volume</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;q2_outer_pole_lv0x600003006e40&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">materialref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;G4_Fe0x147912550&quot;</span><span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="n">solidref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;q2_outer_pole_solid0x600003006bc0&quot;</span><span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">&quot;bds_vrgba&quot;</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">&quot;1 0.82 0.1 0.1 1&quot;</span><span class="o">/&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">volume</span> <span class="n">name</span><span class="o">=</span><span class="s2">"q2_outer_pole_lv0x600003006e40"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">materialref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">"G4_Fe0x147912550"</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">solidref</span> <span class="n">ref</span><span class="o">=</span><span class="s2">"q2_outer_pole_solid0x600003006bc0"</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">"bds_vrgba"</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">"1 0.82 0.1 0.1 1"</span><span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">volume</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>The format should be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">&quot;bds_vrgba&quot;</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">&quot;v r g b a&quot;</span><span class="o">/&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">"bds_vrgba"</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">"v r g b a"</span><span class="o">/&gt;</span>
 </pre></div>
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">v</span></code> is a 1 or 0 for visible or not. <code class="code docutils literal notranslate"><span class="pre">r</span> <span class="pre">g</span> <span class="pre">b</span> <span class="pre">a</span></code> are double values for the
@@ -2899,8 +2899,8 @@ is found.</p>
 Unlike Geant4’s C++ classes where names to do not matter, in GDML, each object is identified by
 name. An example of some GDML defining solids is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">solids</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">box</span> <span class="n">lunit</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;box&quot;</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;20&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;30&quot;</span> <span class="n">z</span><span class="o">=</span><span class="s2">&quot;40&quot;</span><span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="n">box</span> <span class="n">lunit</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;world&quot;</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;200&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;200&quot;</span> <span class="n">z</span><span class="o">=</span><span class="s2">&quot;200&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">box</span> <span class="n">lunit</span><span class="o">=</span><span class="s2">"mm"</span> <span class="n">name</span><span class="o">=</span><span class="s2">"box"</span> <span class="n">x</span><span class="o">=</span><span class="s2">"20"</span> <span class="n">y</span><span class="o">=</span><span class="s2">"30"</span> <span class="n">z</span><span class="o">=</span><span class="s2">"40"</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">box</span> <span class="n">lunit</span><span class="o">=</span><span class="s2">"mm"</span> <span class="n">name</span><span class="o">=</span><span class="s2">"world"</span> <span class="n">x</span><span class="o">=</span><span class="s2">"200"</span> <span class="n">y</span><span class="o">=</span><span class="s2">"200"</span> <span class="n">z</span><span class="o">=</span><span class="s2">"200"</span><span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">solids</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -2935,8 +2935,8 @@ file is updated, it has to be preprocessed again and copied and the input edited
 <p>The <strong>Schema</strong> is a set of rules of what is allowed in the GDML file that generally uses the
 XML syntax. It defines which <em>tags</em> are allowed and what parameters they can have. This is
 directed to by the URL at the very top of the file and is found online.  e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;gdml xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd&quot;&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version="1.0" ?&gt;
+&lt;gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd"&gt;
 </pre></div>
 </div>
 <p>If however, you need <strong>offline access</strong>, then BDSIM includes a copy of the latest GDML Schema.
@@ -2962,8 +2962,8 @@ for example for the current working directory.</p></li>
 <p>The BDSIM GDML preprocessor has some limitations. We cannot support variables in values.
 In this case, the user should load a GDML file with Geant4 and re-export it. This will
 ‘flatten’ / resolve any variables, e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">variable</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;offsetX&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">position</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;offsetX+3&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">z</span><span class="o">=</span><span class="s2">&quot;-3|/&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">variable</span> <span class="n">name</span><span class="o">=</span><span class="s2">"offsetX"</span> <span class="n">value</span><span class="o">=</span><span class="s2">"3"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">position</span> <span class="n">x</span><span class="o">=</span><span class="s2">"offsetX+3"</span> <span class="n">y</span><span class="o">=</span><span class="s2">"0"</span> <span class="n">z</span><span class="o">=</span><span class="s2">"-3|/&gt;</span>
 </pre></div>
 </div>
 <p>would not work, as the <em>variable</em> “offsetX” is referred to in the <em>value</em> “x” in the position tag.</p>
@@ -2974,7 +2974,7 @@ In this case, the user should load a GDML file with Geant4 and re-export it. Thi
 <p>External geometry can be supplied as the world volume with the option <cite>worldGeometryFile</cite>
 (see <a class="reference internal" href="model_control.html#options-geometry"><span class="std std-ref">Geometry Options</span></a>). The BDSIM beamline will be placed inside this world volume
 provided in the file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:myworld.gdml&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">"gdml:myworld.gdml"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Unlike the standard BDSIM world volume whose size is
@@ -3169,19 +3169,19 @@ was:</p>
 </pre></div>
 </div>
 <p>and we wanted to place with respect to the first element, we would use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">&quot;d1&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">"d1"</span><span class="p">,</span>
                <span class="n">referenceElementNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>And the <cite>referenceElementNumber</cite> argument is optional as the default is 0. If we want to place with respect to
 the fourth usage of “d2”, we would use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">&quot;d2&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">referenceElement</span><span class="o">=</span><span class="s2">"d2"</span><span class="p">,</span>
                <span class="n">referenceElementNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>If we want to placement at some coordinates with an axis-angle rotation (easier to perceive), we
 would use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:anExampleFile.gdml&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:anExampleFile.gdml"</span><span class="p">,</span>
                <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
                <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -3216,15 +3216,15 @@ the default units for offsets and angles in BDSIM.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">leadblock</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
                       <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">z</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
-                      <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:mygeometry/detector.gdml&quot;</span><span class="p">;</span>
+                      <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:mygeometry/detector.gdml"</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="bdsim-component">
 <h3>BDSIM Component<a class="headerlink" href="#bdsim-component" title="Link to this heading"></a></h3>
 <p>The following is an example of placing a <strong>single</strong> BDSIM-generated component at an arbitrary position:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">block1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Cu&quot;</span><span class="p">;</span>
-<span class="n">pl1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">bdsimElement</span><span class="o">=</span><span class="s2">&quot;block1&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">block1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"Cu"</span><span class="p">;</span>
+<span class="n">pl1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">bdsimElement</span><span class="o">=</span><span class="s2">"block1"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -3449,9 +3449,9 @@ to construct a cylinder with an infinite bending radius.</p>
 <p>It is entirely possible to add more shapes to the code. Please contact the developers
 <a class="reference internal" href="support.html#feature-request"><span class="std std-ref">Feature Request</span></a>.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lovelycrystal</span><span class="p">:</span> <span class="n">crystal</span><span class="p">,</span> <span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;G4_Si&quot;</span><span class="p">,</span>
-                      <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;data/Si220pl&quot;</span><span class="p">,</span>
-                      <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;box&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lovelycrystal</span><span class="p">:</span> <span class="n">crystal</span><span class="p">,</span> <span class="n">material</span> <span class="o">=</span> <span class="s2">"G4_Si"</span><span class="p">,</span>
+                      <span class="n">data</span> <span class="o">=</span> <span class="s2">"data/Si220pl"</span><span class="p">,</span>
+                      <span class="n">shape</span> <span class="o">=</span> <span class="s2">"box"</span><span class="p">,</span>
                       <span class="n">lengthY</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">lengthX</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
                       <span class="n">lengthZ</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
@@ -3465,9 +3465,9 @@ to construct a cylinder with an infinite bending radius.</p>
                       <span class="n">bendingAngleYAxis</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">rad</span><span class="p">,</span>
                       <span class="n">bendingAngleZAxis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-<span class="n">uglycrystal</span><span class="p">:</span> <span class="n">crystal</span><span class="p">,</span> <span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;G4_Si&quot;</span><span class="p">,</span>
-                      <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;data/Si220pl&quot;</span><span class="p">,</span>
-                      <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;box&quot;</span><span class="p">,</span>
+<span class="n">uglycrystal</span><span class="p">:</span> <span class="n">crystal</span><span class="p">,</span> <span class="n">material</span> <span class="o">=</span> <span class="s2">"G4_Si"</span><span class="p">,</span>
+                      <span class="n">data</span> <span class="o">=</span> <span class="s2">"data/Si220pl"</span><span class="p">,</span>
+                      <span class="n">shape</span> <span class="o">=</span> <span class="s2">"box"</span><span class="p">,</span>
                       <span class="n">lengthY</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span>
                       <span class="n">lengthX</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
                       <span class="n">lengthZ</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">mm</span><span class="p">,</span>
@@ -3495,7 +3495,7 @@ to 255. Once defined, a colour may not be redefined. The syntax to define a colo
 </div>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">purple</span><span class="p">:</span> <span class="n">newcolour</span><span class="p">,</span> <span class="n">red</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">green</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">blue</span><span class="o">=</span><span class="mi">128</span><span class="p">;</span>
-<span class="n">col1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">;</span>
+<span class="n">col1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">"purple"</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"copper"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>and:</p>
@@ -3505,17 +3505,17 @@ to 255. Once defined, a colour may not be redefined. The syntax to define a colo
 
 <span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 <span class="n">basebend</span><span class="p">:</span> <span class="n">sbend</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.9</span><span class="p">;</span>
-<span class="n">sb1</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">;</span>
-<span class="n">sb3</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">&quot;nicegreen&quot;</span><span class="p">;</span>
-<span class="n">sb4</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">;</span>
-<span class="n">sb5</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">;</span>
-<span class="n">sb6</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+<span class="n">sb1</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">"purple"</span><span class="p">;</span>
+<span class="n">sb3</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">"nicegreen"</span><span class="p">;</span>
+<span class="n">sb4</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">"yellow"</span><span class="p">;</span>
+<span class="n">sb5</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">"orange"</span><span class="p">;</span>
+<span class="n">sb6</span><span class="p">:</span> <span class="n">basebend</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s2">"red"</span><span class="p">;</span>
 
 <span class="n">beamline</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">sb1</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">basebend</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">sb3</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">sb4</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">sb5</span><span class="p">,</span><span class="n">d1</span><span class="p">,</span><span class="n">sb6</span><span class="p">,</span><span class="n">d1</span><span class="p">);</span>
 <span class="n">use</span><span class="p">,</span> <span class="n">beamline</span><span class="p">;</span>
 <span class="n">sample</span><span class="p">,</span> <span class="nb">all</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span>  <span class="n">particle</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span>
        <span class="n">energy</span><span class="o">=</span> <span class="mi">50</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -4039,7 +4039,7 @@ beam line elements. For example:</p>
                              <span class="n">prodCutPositrons</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
                              <span class="n">prodCutPhotons</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
 
-<span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="s2">&quot;precisionRegion&quot;</span><span class="p">;</span>
+<span class="n">d1</span><span class="p">:</span> <span class="n">drift</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="s2">"precisionRegion"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The following parameters are available in the <cite>cutsregion</cite> object and as global options:</p>
@@ -4115,12 +4115,12 @@ in MAD-X with the following</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PTC_CREATE_UNIVERSE</span><span class="p">;</span>
 <span class="n">PTC_CREATE_LAYOUT</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">exact</span><span class="o">=</span><span class="n">true</span><span class="p">,</span> <span class="n">resplit</span><span class="p">,</span> <span class="n">xbend</span><span class="p">;</span>
 <span class="n">PTC_NORMAL</span><span class="p">,</span><span class="n">maptable</span><span class="p">,</span><span class="n">icase</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">no</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
-<span class="n">write</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s2">&quot;map_table&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;my_oneturn_map_file&quot;</span><span class="p">;</span>
+<span class="n">write</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s2">"map_table"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s2">"my_oneturn_map_file"</span><span class="p">;</span>
 <span class="n">PTC_END</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>To use then use the one turn map with BDSIM</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">ptcOneTurnMapFileName</span><span class="o">=</span><span class="s2">&quot;path/to/my_oneturn_map_file&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">ptcOneTurnMapFileName</span><span class="o">=</span><span class="s2">"path/to/my_oneturn_map_file"</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -4140,8 +4140,8 @@ in MAD-X with the following</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

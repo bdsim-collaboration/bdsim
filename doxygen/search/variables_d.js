@@ -63,6 +63,6 @@ var searchData=
   ['nummagnets_60',['numMagnets',['../classBDSUndulator.html#a86a441b6a7dfc3a3c83032fedebc7d6c',1,'BDSUndulator']]],
   ['nvariables_61',['nVariables',['../classBDSIntegratorMag.html#ae69541e1918b2056297a00b4cdfe85f7',1,'BDSIntegratorMag']]],
   ['nx_62',['nx',['../classBDSArray4D.html#ad87cee8358b26b2c29a2731c5b06d09b',1,'BDSArray4D::nX'],['../classGMAD_1_1Query.html#ab390b09b7823caabc2989ffed86f5398',1,'GMAD::Query::nx'],['../classGMAD_1_1ScorerMesh.html#a399d6a5ff1ccbfda2d490894dbb9ef5d',1,'GMAD::ScorerMesh::nx']]],
-  ['ny_63',['ny',['../classBDSArray4D.html#a9f9775efc3647de2757becde65e5a967',1,'BDSArray4D::nY'],['../classGMAD_1_1Query.html#ab1081f52384a4d89f9462ce6c677435d',1,'GMAD::Query::ny'],['../classGMAD_1_1ScorerMesh.html#a19a21c4db9c8bcbe08add2373572f923',1,'GMAD::ScorerMesh::ny']]],
+  ['ny_63',['ny',['../classGMAD_1_1Query.html#ab1081f52384a4d89f9462ce6c677435d',1,'GMAD::Query::ny'],['../classGMAD_1_1ScorerMesh.html#a19a21c4db9c8bcbe08add2373572f923',1,'GMAD::ScorerMesh::ny'],['../classBDSArray4D.html#a9f9775efc3647de2757becde65e5a967',1,'BDSArray4D::nY']]],
   ['nz_64',['nz',['../classBDSArray4D.html#a6a66887f0117e391d059abf13cee3563',1,'BDSArray4D::nZ'],['../classGMAD_1_1Query.html#a9fd52bb2266ec7a4cb27aa6ccbd09a5c',1,'GMAD::Query::nz'],['../classGMAD_1_1ScorerMesh.html#a4e20fb8aa5789aea60adc356496604b8',1,'GMAD::ScorerMesh::nz']]]
 ];

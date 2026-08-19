@@ -1,9 +1,11 @@
 <map id="BDSTrackingAction::PreUserTrackingAction" name="BDSTrackingAction::PreUserTrackingAction">
-<area shape="rect" id="Node000001" title="Used to decide whether or not to store trajectories." alt="" coords="5,69,173,109"/>
+<area shape="rect" id="Node000001" title="Used to decide whether or not to store trajectories." alt="" coords="5,92,173,132"/>
 <area shape="rect" id="Node000002" href="$classBDSEventAction.html#a1ae647c89645afbd75611172e5a9721d" title="Interface for tracking action to increment the number of tracks in each event." alt="" coords="221,5,423,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,67,235,46,236,52,164,72"/>
-<area shape="rect" id="Node000003" href="$classBDSEventAction.html#ad9ce21a667ad99780be079e9a294c624" title="Append this trajectory to vector of primaries we keep to avoid sifting at the end of event." alt="" coords="227,69,417,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,87,214,87,214,92,174,92"/>
-<area shape="rect" id="Node000004" href="$namespaceBDS.html#ab7628866cf26e12c0dcc77cc73a6eeaa" title="Logic of whether this event should be verbose or not. Code here so it&#39;s not duplicated." alt="" coords="235,134,409,159"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,107,257,128,256,133,170,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,89,220,55,242,47,244,52,222,60,137,94"/>
+<area shape="rect" id="Node000003" href="$namespaceBDS.html#ae13fec78008a9f4c4be12f34c729e1b8" title="Whether a particle is an ion. A proton is counted NOT as an ion." alt="" coords="278,70,366,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,99,264,87,265,92,174,104"/>
+<area shape="rect" id="Node000004" href="$classBDSEventAction.html#ad9ce21a667ad99780be079e9a294c624" title="Append this trajectory to vector of primaries we keep to avoid sifting at the end of event." alt="" coords="227,120,417,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="174,119,214,124,214,130,173,125"/>
+<area shape="rect" id="Node000005" href="$namespaceBDS.html#ab7628866cf26e12c0dcc77cc73a6eeaa" title="Logic of whether this event should be verbose or not. Code here so it&#39;s not duplicated." alt="" coords="235,185,409,210"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="130,130,222,170,251,178,249,184,220,174,128,134"/>
 </map>

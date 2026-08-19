@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model Model - Single Pass &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=106dc6df"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -211,19 +211,19 @@ produced in the collimation section.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">makecollimatorgaps</span>
 
 <span class="c1"># aperture information</span>
-<span class="n">ap</span> <span class="o">=</span> <span class="n">pymadx</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Aperture</span><span class="p">(</span><span class="s1">&#39;../madx/ring_aperture.tfs.gz&#39;</span><span class="p">)</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">pymadx</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Aperture</span><span class="p">(</span><span class="s1">'../madx/ring_aperture.tfs.gz'</span><span class="p">)</span>
 <span class="n">ap</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">RemoveBelowValue</span><span class="p">(</span><span class="mf">0.005</span><span class="p">)</span>
 
 <span class="c1"># collimator settings</span>
 <span class="c1"># uses pybdsim.Data.BDSAsciiData which behaves like dictionaries of dictionaries</span>
-<span class="n">cols</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s1">&#39;collimatorSettings.dat&#39;</span><span class="p">)</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s1">'collimatorSettings.dat'</span><span class="p">)</span>
 
-<span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s2">&quot;../madx/ring_from_collimation.tfs.gz&quot;</span><span class="p">,</span>
-                                   <span class="s2">&quot;singlepass/bmm-sp&quot;</span><span class="p">,</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Convert</span><span class="o">.</span><span class="n">MadxTfs2Gmad</span><span class="p">(</span><span class="s2">"../madx/ring_from_collimation.tfs.gz"</span><span class="p">,</span>
+                                   <span class="s2">"singlepass/bmm-sp"</span><span class="p">,</span>
                                    <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                    <span class="n">aperturedict</span><span class="o">=</span><span class="n">ap</span><span class="p">,</span>
                                    <span class="n">collimatordict</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span>
-                                   <span class="n">stopname</span><span class="o">=</span><span class="s2">&quot;QUAD.F.H_17&quot;</span><span class="p">,</span>
+                                   <span class="n">stopname</span><span class="o">=</span><span class="s2">"QUAD.F.H_17"</span><span class="p">,</span>
                                    <span class="n">samplers</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -241,14 +241,14 @@ include bmm-sp.gmad;
 
 ! now we go to town with the options
 
-! let&#39;s up the energy for more muons
+! let's up the energy for more muons
 beam, energy=450*GeV;
 
 ! physics options - full physics and high cuts as we want to look at high energy muons
-option, physicsList=&quot;g4FTFP_BERT&quot;,
+option, physicsList="g4FTFP_BERT",
         defaultRangeCut=10*cm,
         minimumKineticEnergy=10*GeV,
-        geant4PhysicsMacroFileName = &quot;emextraphysics.mac&quot;;
+        geant4PhysicsMacroFileName = "emextraphysics.mac";
 
 ! geometry - include a big tunnel
 option, buildTunnel=1,
@@ -260,11 +260,11 @@ option, buildTunnel=1,
         tunnelSoilThickness=20*m,
         tunnelMaxSegmentLength=20*m;
 
-! set beam distribution to halo so it&#39;ll smash deep in the collimators that are at 7 sigma
-beam, distrType=&quot;composite&quot;,
-      xDistrType=&quot;halo&quot;,
-      yDistrType=&quot;halo&quot;,
-      zDistrType=&quot;gausstwiss&quot;,
+! set beam distribution to halo so it'll smash deep in the collimators that are at 7 sigma
+beam, distrType="composite",
+      xDistrType="halo",
+      yDistrType="halo",
+      zDistrType="gausstwiss",
       haloNSigmaXInner=8,
       haloNSigmaXOuter=12,
       haloNSigmaYInner=8,
@@ -283,53 +283,53 @@ option, storeMinimalData=1,
 option, storeTrajectory=1,
         trajectoryConnect=1,
         trajectoryFilterLogicAND=1,
-        storeTrajectoryParticleID=&quot;12 -12 13 -13 14 -14&quot;,
-        storeTrajectorySamplerID=&quot;detector&quot;,
+        storeTrajectoryParticleID="12 -12 13 -13 14 -14",
+        storeTrajectorySamplerID="detector",
         storeTrajectoryProcesses=1,
         storeTrajectoryTransportationSteps=0;
 
 ! detector-like sampler in front of where our proposed detector would be
-! so here it&#39;s just straight ahead but in solid rock as we haven&#39;t &#39;built&#39; a tunnel yet
-detector: samplerplacement, z=500*m, apertureType=&quot;rectangular&quot;, aper1=2*m, aper2=2*m;
+! so here it's just straight ahead but in solid rock as we haven't 'built' a tunnel yet
+detector: samplerplacement, z=500*m, apertureType="rectangular", aper1=2*m, aper2=2*m;
 
 ! biasing - hadronic inelastic is much more likely than decay for pions
 ! most muons come from decay - balance this out a bit so we more efficiently
 ! simulate muons that reach our detector
-! note, we don&#39;t bias so heavily in vacuum as hadronic inelastic is much less likely there
-piPlusHighBias:  xsecBias, particle=&quot;pi+&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
-piMinusHighBias: xsecBias, particle=&quot;pi-&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
-piPlusLowBias:   xsecBias, particle=&quot;pi+&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
-piMinusLowBias:  xsecBias, particle=&quot;pi-&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
+! note, we don't bias so heavily in vacuum as hadronic inelastic is much less likely there
+piPlusHighBias:  xsecBias, particle="pi+", proc="Decay", xsecfact=1e3, flag=1;
+piMinusHighBias: xsecBias, particle="pi-", proc="Decay", xsecfact=1e3, flag=1;
+piPlusLowBias:   xsecBias, particle="pi+", proc="Decay", xsecfact=50, flag=1;
+piMinusLowBias:  xsecBias, particle="pi-", proc="Decay", xsecfact=50, flag=1;
 
 ! pi0 decays very very quickly - no need for biasing
 
 ! kaons are another big source of muons
-kaPlusHighBias:  xsecBias, particle=&quot;kaon+&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
-kaMinusHighBias: xsecBias, particle=&quot;kaon-&quot;, proc=&quot;Decay&quot;, xsecfact=1e3, flag=1;
-kaPlusLowBias:   xsecBias, particle=&quot;kaon+&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
-kaMinusLowBias:  xsecBias, particle=&quot;kaon-&quot;, proc=&quot;Decay&quot;, xsecfact=50, flag=1;
+kaPlusHighBias:  xsecBias, particle="kaon+", proc="Decay", xsecfact=1e3, flag=1;
+kaMinusHighBias: xsecBias, particle="kaon-", proc="Decay", xsecfact=1e3, flag=1;
+kaPlusLowBias:   xsecBias, particle="kaon+", proc="Decay", xsecfact=50, flag=1;
+kaMinusLowBias:  xsecBias, particle="kaon-", proc="Decay", xsecfact=50, flag=1;
 
 ! attach to various places in the model
 ! accelerator vacuum
-option, defaultBiasVacuum=&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;;
+option, defaultBiasVacuum="piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias";
 ! magnet outer
-option, defaultBiasMaterial=&quot;piPlusHighBias piMinusHighBias kaPlusHighBias kaMinusHighBias&quot;;
+option, defaultBiasMaterial="piPlusHighBias piMinusHighBias kaPlusHighBias kaMinusHighBias";
 ! the air
-option, biasForWorldVolume=&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;;
+option, biasForWorldVolume="piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias";
 </pre></div>
 </div>
 </section>
 <section id="physics-options">
 <h2>Physics Options<a class="headerlink" href="#physics-options" title="Link to this heading"></a></h2>
 <p>In the job file, we include several physics options.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! let&#39;s up the energy for more muons
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! let's up the energy for more muons
 beam, energy=450*GeV;
 
 ! physics options - full physics and high cuts as we want to look at high energy muons
-option, physicsList=&quot;g4FTFP_BERT&quot;,
+option, physicsList="g4FTFP_BERT",
         defaultRangeCut=10*cm,
         minimumKineticEnergy=10*GeV,
-        geant4PhysicsMacroFileName = &quot;emextraphysics.mac&quot;;
+        geant4PhysicsMacroFileName = "emextraphysics.mac";
 </pre></div>
 </div>
 <ul class="simple">
@@ -392,11 +392,11 @@ the simulations we must normalise to the ratio of this halo as a fraction of the
 population (not done here).</p>
 </div>
 <p>The following beam commands update and effectively overwrite some variables from the original model.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! set beam distribution to halo so it&#39;ll smash deep in the collimators that are at 7 sigma
-beam, distrType=&quot;composite&quot;,
-      xDistrType=&quot;halo&quot;,
-      yDistrType=&quot;halo&quot;,
-      zDistrType=&quot;gausstwiss&quot;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! set beam distribution to halo so it'll smash deep in the collimators that are at 7 sigma
+beam, distrType="composite",
+      xDistrType="halo",
+      yDistrType="halo",
+      zDistrType="gausstwiss",
       haloNSigmaXInner=8,
       haloNSigmaXOuter=12,
       haloNSigmaYInner=8,
@@ -415,7 +415,7 @@ emittance ellipse at each amplitude.</p>
 <p>This takes about 20s on the developer’s computer. We can then plot it using <cite>pybdsim</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">PhaseSpaceFromFile</span><span class="p">(</span><span class="s2">&quot;primaries.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">PhaseSpaceFromFile</span><span class="p">(</span><span class="s2">"primaries.root"</span><span class="p">)</span>
 </pre></div>
 </div>
 <figure class="align-center">
@@ -445,14 +445,14 @@ option, storeMinimalData=1,
 option, storeTrajectory=1,
         trajectoryConnect=1,
         trajectoryFilterLogicAND=1,
-        storeTrajectoryParticleID=&quot;12 -12 13 -13 14 -14&quot;,
-        storeTrajectorySamplerID=&quot;detector&quot;,
+        storeTrajectoryParticleID="12 -12 13 -13 14 -14",
+        storeTrajectorySamplerID="detector",
         storeTrajectoryProcesses=1,
         storeTrajectoryTransportationSteps=0;
 
 ! detector-like sampler in front of where our proposed detector would be
-! so here it&#39;s just straight ahead but in solid rock as we haven&#39;t &#39;built&#39; a tunnel yet
-detector: samplerplacement, z=500*m, apertureType=&quot;rectangular&quot;, aper1=2*m, aper2=2*m;
+! so here it's just straight ahead but in solid rock as we haven't 'built' a tunnel yet
+detector: samplerplacement, z=500*m, apertureType="rectangular", aper1=2*m, aper2=2*m;
 </pre></div>
 </div>
 <p>We will use a sampler placement (see <a class="reference internal" href="../model_control.html#user-sampler-placement"><span class="std std-ref">Output at an Arbitrary Plane - User Placed Sampler</span></a>) for the ‘detector’ plane
@@ -541,20 +541,20 @@ want all particles to decay within a few metres in vacuum. If this happened, we
 would under-sample decays that would in reality happen further along in the geometry
 of the model.</p>
 <p>We defined some biasing ‘rules’ or objects for the most relevant particles and processes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">piPlusHighBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">piMinusHighBias</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">piPlusLowBias</span><span class="p">:</span>   <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">piMinusLowBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;pi-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">kaPlusHighBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">kaMinusHighBias</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">kaPlusLowBias</span><span class="p">:</span>   <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon+&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">kaMinusLowBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;kaon-&quot;</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">&quot;Decay&quot;</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">piPlusHighBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"pi+"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">piMinusHighBias</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"pi-"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">piPlusLowBias</span><span class="p">:</span>   <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"pi+"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">piMinusLowBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"pi-"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaPlusHighBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"kaon+"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaMinusHighBias</span><span class="p">:</span> <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"kaon-"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaPlusLowBias</span><span class="p">:</span>   <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"kaon+"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">kaMinusLowBias</span><span class="p">:</span>  <span class="n">xsecBias</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"kaon-"</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="s2">"Decay"</span><span class="p">,</span> <span class="n">xsecfact</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>We then attach these (think paint-by-numbers) to different categories of geometry:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">defaultBiasVacuum</span><span class="o">=</span><span class="s2">&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;</span><span class="p">;</span>
-<span class="n">option</span><span class="p">,</span> <span class="n">defaultBiasMaterial</span><span class="o">=</span><span class="s2">&quot;piPlusHighBias piMinusHighBias kaPlusHighBias kaMinusHighBias&quot;</span><span class="p">;</span>
-<span class="n">option</span><span class="p">,</span> <span class="n">biasForWorldVolume</span><span class="o">=</span><span class="s2">&quot;piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">defaultBiasVacuum</span><span class="o">=</span><span class="s2">"piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias"</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">defaultBiasMaterial</span><span class="o">=</span><span class="s2">"piPlusHighBias piMinusHighBias kaPlusHighBias kaMinusHighBias"</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">biasForWorldVolume</span><span class="o">=</span><span class="s2">"piPlusLowBias piMinusLowBias kaPlusLowBias kaMinusLowBias"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>These attach biases to the accelerator vacuum volumes, the magnets and the surrounding air
@@ -681,8 +681,8 @@ and example script is provided in <code class="code docutils literal notranslate
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

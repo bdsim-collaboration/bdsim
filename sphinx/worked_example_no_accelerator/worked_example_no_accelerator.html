@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>No Accelerator Model &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=106dc6df"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -178,12 +178,12 @@ can only be used in accelerator components or <cite>placements</cite> of geometr
 <p>BDSIM can build a model by simply loading a geometry file for the world and building
 no beam line. This will be passive geometry only (i.e. no fields). An example is provided
 in <code class="code docutils literal notranslate"><span class="pre">world.gmad</span></code> and contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
     <span class="n">energy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">,</span>
-    <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
+    <span class="n">distrType</span><span class="o">=</span><span class="s2">"sphere"</span><span class="p">,</span>
     <span class="n">Z0</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 
-<span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:tunnel.gdml&quot;</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">"gdml:tunnel.gdml"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>A random direction beam is also illustrated as a point-like source of particles in the
@@ -225,10 +225,10 @@ geometry where we want the tunnel. Here is the model as contained in the file
 <span class="n">l2</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">);</span>
 <span class="n">use</span><span class="p">,</span> <span class="n">l2</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
-<span class="n">tunnelPlacement</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:tunnel.gdml&quot;</span><span class="p">;</span>
+<span class="n">tunnelPlacement</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:tunnel.gdml"</span><span class="p">;</span>
 
 <span class="n">option</span><span class="p">,</span> <span class="n">checkOverlaps</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -271,7 +271,7 @@ Checking overlaps for volume d1_0_pv (G4Tubs) ...
      issued by : G4PVPlacement::CheckOverlaps()
      Overlap with volume already placed !
         Overlap is detected for volume d1_0_pv:0 (G4Tubs)
-        with tunnelPlacmenet_tunnelPlacmenet_container_lv_0_pv:0 (G4Box) volume&#39;s
+        with tunnelPlacmenet_tunnelPlacmenet_container_lv_0_pv:0 (G4Box) volume's
         local point (3.18274,-27.3172,251.806), overlapping by at least: 24.7482 m
 NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
 *** This is just a warning message. ***
@@ -303,10 +303,10 @@ the beam line from 0,0,0 and in direction 0,0,1). The example is provided in
 <span class="n">l2</span><span class="p">:</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">l1</span><span class="p">);</span>
 <span class="n">use</span><span class="p">,</span> <span class="n">l2</span><span class="p">;</span>
 
-<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;e-&quot;</span><span class="p">,</span>
+<span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"e-"</span><span class="p">,</span>
       <span class="n">energy</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">GeV</span><span class="p">;</span>
 
-<span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:tunnel.gdml&quot;</span><span class="p">;</span>
+<span class="n">option</span><span class="p">,</span> <span class="n">worldGeometryFile</span><span class="o">=</span><span class="s2">"gdml:tunnel.gdml"</span><span class="p">;</span>
 
 <span class="n">option</span><span class="p">,</span> <span class="n">checkOverlaps</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -327,14 +327,14 @@ overlaps as expected! The model is therefore safe to generate physics results fr
 <p>We can make placements of geometry and let BDSIM generate a world box sufficiently big
 to encompass each placement. This is shown in the example file <code class="code docutils literal notranslate"><span class="pre">placements-only.gmad</span></code>,
 which contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">&quot;proton&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam</span><span class="p">,</span> <span class="n">particle</span><span class="o">=</span><span class="s2">"proton"</span><span class="p">,</span>
       <span class="n">kineticEnergy</span><span class="o">=</span><span class="mi">200</span><span class="o">*</span><span class="n">MeV</span><span class="p">,</span>
-      <span class="n">distrType</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">;</span>
+      <span class="n">distrType</span><span class="o">=</span><span class="s2">"sphere"</span><span class="p">;</span>
 
-<span class="n">b1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:boxofwater.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
-<span class="n">b2</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:boxofwater.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<span class="n">b1</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:boxofwater.gdml"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<span class="n">b2</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:boxofwater.gdml"</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=-</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
 
-<span class="n">b3</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">&quot;gdml:boxofwater.gdml&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+<span class="n">b3</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span> <span class="n">geometryFile</span><span class="o">=</span><span class="s2">"gdml:boxofwater.gdml"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.3</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
     <span class="n">axisAngle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">angle</span><span class="o">=-</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
     <span class="n">axisY</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
@@ -423,8 +423,8 @@ and just for the sake of the simplest geometry to illustrate code features.</p><
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

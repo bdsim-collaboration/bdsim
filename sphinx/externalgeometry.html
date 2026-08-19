@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>External Geometry Formats &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -154,7 +154,7 @@ included with the examples.</p>
 <h3>GDML Colours<a class="headerlink" href="#gdml-colours" title="Link to this heading"></a></h3>
 <p>BDSIM can read auxiliary information tags in GDML attached to logical volumes. The following
 information is optionally interpreted if available in the <code class="code docutils literal notranslate"><span class="pre">&lt;volume&gt;</span></code> tag:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">&quot;colour&quot;</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">&quot;0.39215686274509803 0.5490196078431373 0.596078431372549 1&quot;</span><span class="o">/&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">auxiliary</span> <span class="n">auxtype</span><span class="o">=</span><span class="s2">"colour"</span> <span class="n">auxvalue</span><span class="o">=</span><span class="s2">"0.39215686274509803 0.5490196078431373 0.596078431372549 1"</span><span class="o">/&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="code docutils literal notranslate"><span class="pre">auxvalue</span></code> should be a white-space separated list of 4 values from 0 to 1 for
@@ -209,7 +209,7 @@ created using the following  MySQL compliant commands:</p>
 <p>Once a table has been created, values must be entered into it in order to define the solids and
 position them. The insertion command must appear after the table creation and must be followed
 by the MySQL compliant table insertion command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">TABLE</span><span class="o">-</span><span class="n">NAME_GEOMETRY</span><span class="o">-</span><span class="n">TYPE</span> <span class="n">VALUES</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="s2">&quot;char-value&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">TABLE</span><span class="o">-</span><span class="n">NAME_GEOMETRY</span><span class="o">-</span><span class="n">TYPE</span> <span class="n">VALUES</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="s2">"char-value"</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The values must be inserted in the same order, as their corresponding parameter types are described
@@ -232,8 +232,8 @@ length z = 50mm, positioned at x=1m, y=0, z=0.5m and with zero rotation:</p>
 <span class="n">ROTPHI</span> <span class="n">DOUBLE</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="p">);</span>
 
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">mytable_BOX</span> <span class="n">VALUES</span><span class="p">(</span><span class="s2">&quot;a_box&quot;</span><span class="p">,</span><span class="s2">&quot;vacuum&quot;</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">mytable_BOX</span> <span class="n">VALUES</span><span class="p">(</span><span class="s2">&quot;another_box&quot;</span><span class="p">,</span><span class="s2">&quot;iron&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">mytable_BOX</span> <span class="n">VALUES</span><span class="p">(</span><span class="s2">"a_box"</span><span class="p">,</span><span class="s2">"vacuum"</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">mytable_BOX</span> <span class="n">VALUES</span><span class="p">(</span><span class="s2">"another_box"</span><span class="p">,</span><span class="s2">"iron"</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Further examples of the Mokka geometry implementation can be found in the examples/features/geometry/Mokka/General directory. See the common table parameters and solid type sections below for more information on the table parameters available for use.</p>
@@ -635,8 +635,8 @@ Mokka element. An example of a geometry list containing ’boxes.sql’ and ’c
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

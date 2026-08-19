@@ -1,33 +1,34 @@
 <map id="BDSBunchRing::SetOptions" name="BDSBunchRing::SetOptions">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,234,203,259"/>
-<area shape="rect" id="Node000002" href="$classBDSBunch.html#abbc32e9978a9355b24200fc4c48b77e3" title=" " alt="" coords="251,234,419,259"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,244,237,244,237,249,203,249"/>
-<area shape="rect" id="Node000003" href="$classBDSParticleDefinition.html#a5326a28127fbc5c233bee697612a7cc1" title="Accessor." alt="" coords="497,5,657,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="339,233,355,197,382,149,419,99,441,75,465,55,483,44,486,49,468,60,444,79,423,102,386,152,360,200,344,235"/>
-<area shape="rect" id="Node000004" href="$classBDSBunch.html#ad74b5dcfc33ef0839ced17146ec33fe6" title="Calculate zp safely based on other components." alt="" coords="490,70,665,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="342,232,389,170,424,134,465,104,478,98,481,103,468,109,428,138,393,174,346,235"/>
-<area shape="rect" id="Node000005" href="$namespaceBDS.html#a6b650bc7f85b5852e7f592dd2f40f7b6" title="Throw an exception if too few or too many parameters are set for the supplied keys." alt="" coords="467,119,688,145"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="349,232,398,194,431,173,466,155,490,146,492,151,468,160,434,177,402,198,352,236"/>
-<area shape="rect" id="Node000007" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="499,169,655,209"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="389,231,485,208,487,213,390,237"/>
-<area shape="rect" id="Node000011" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="525,234,629,259"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="419,244,512,244,512,249,419,249"/>
-<area shape="rect" id="Node000012" href="$classBDSParticleDefinition.html#a25a8f7a5f1bd20184e7854048c0b80fc" title="Accessor." alt="" coords="497,284,657,324"/>
-<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="390,257,484,279,483,285,389,262"/>
-<area shape="rect" id="Node000013" href="$classBDSParticleDefinition.html#a1b38f24d079e38cf00eb537e861ee610" title="Accessor." alt="" coords="497,348,657,388"/>
-<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="353,257,402,295,468,334,486,341,483,346,465,338,399,299,350,262"/>
-<area shape="rect" id="Node000014" href="$namespaceBDS.html#ad153d7d16b858fd465306e9bf4461a6e" title="Count how many out of the set of keys in a beam instance are set." alt="" coords="477,413,677,438"/>
-<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="345,258,391,325,426,365,468,398,483,405,481,410,465,402,422,369,386,329,341,261"/>
-<area shape="rect" id="Node000016" href="$classBDSParticleDefinition.html#acaeaeb4b994d51e516e90a7f5bbd9785" title="Accessor." alt="" coords="497,463,657,503"/>
-<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="343,258,358,296,384,347,421,402,443,427,468,449,486,459,483,464,465,453,440,431,417,405,380,350,353,298,338,260"/>
-<area shape="rect" id="Node000006" href="$classGMAD_1_1Beam.html#a5d5c8bc6d12280790172db2de50a0a77" title="get method (only for doubles)" alt="" coords="743,91,925,117"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="688,117,729,113,730,118,689,123"/>
-<area shape="rect" id="Node000008" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="752,141,916,181"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="655,178,738,169,738,174,656,184"/>
-<area shape="rect" id="Node000009" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="758,206,910,231"/>
-<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="656,196,745,206,744,211,655,201"/>
-<area shape="rect" id="Node000010" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="748,255,920,281"/>
-<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="653,207,689,219,737,240,766,249,764,254,735,245,687,224,651,212"/>
-<area shape="rect" id="Node000015" href="$classGMAD_1_1Beam.html#acbe26b95bbe89cb1d943b368ef5cb767" title="Whether a parameter has been set using the set_value method or not." alt="" coords="736,413,932,438"/>
-<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="678,423,722,423,722,428,678,428"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,173,203,199"/>
+<area shape="rect" id="Node000002" href="$namespaceBDS.html#acb214b565c673e05a246b0ed92259f39" title=" " alt="" coords="525,5,629,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,171,274,111,368,74,466,41,511,29,512,34,467,46,370,79,276,116,134,176"/>
+<area shape="rect" id="Node000003" href="$classBDSBunch.html#abbc32e9978a9355b24200fc4c48b77e3" title=" " alt="" coords="251,199,419,224"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,194,238,198,237,203,202,199"/>
+<area shape="poly" id="edge11_Node000003_Node000002" title=" " alt="" coords="345,197,416,107,437,71,448,56,465,41,487,30,511,22,512,28,489,35,468,46,452,60,442,74,421,110,349,200"/>
+<area shape="rect" id="Node000004" href="$classBDSParticleDefinition.html#a5326a28127fbc5c233bee697612a7cc1" title="Accessor." alt="" coords="497,55,657,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="347,197,396,152,429,127,465,105,483,97,485,102,468,110,432,131,399,156,350,201"/>
+<area shape="rect" id="Node000005" href="$classBDSBunch.html#ad74b5dcfc33ef0839ced17146ec33fe6" title="Calculate zp safely based on other components." alt="" coords="490,120,665,145"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="361,196,409,175,466,154,495,146,497,151,467,159,411,180,364,201"/>
+<area shape="rect" id="Node000006" href="$namespaceBDS.html#a6b650bc7f85b5852e7f592dd2f40f7b6" title="Throw an exception if too few or too many parameters are set for the supplied keys." alt="" coords="467,169,688,195"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="419,199,459,194,459,199,419,204"/>
+<area shape="rect" id="Node000008" href="$classBDSGlobalConstants.html#a4d3596dd3075fc5bcc1658d50e46bf0c" title="Access method." alt="" coords="499,219,655,259"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="419,218,486,226,485,231,419,224"/>
+<area shape="rect" id="Node000012" href="$classBDSParticleDefinition.html#a25a8f7a5f1bd20184e7854048c0b80fc" title="Accessor." alt="" coords="497,283,657,323"/>
+<area shape="poly" id="edge12_Node000003_Node000012" title=" " alt="" coords="362,222,468,269,490,277,488,282,466,274,360,227"/>
+<area shape="rect" id="Node000013" href="$classBDSParticleDefinition.html#a1b38f24d079e38cf00eb537e861ee610" title="Accessor." alt="" coords="497,347,657,387"/>
+<area shape="poly" id="edge13_Node000003_Node000013" title=" " alt="" coords="348,223,396,276,430,307,468,333,486,342,483,347,465,338,427,311,392,280,344,226"/>
+<area shape="rect" id="Node000014" href="$namespaceBDS.html#ad153d7d16b858fd465306e9bf4461a6e" title="Count how many out of the set of keys in a beam instance are set." alt="" coords="477,412,677,437"/>
+<area shape="poly" id="edge14_Node000003_Node000014" title=" " alt="" coords="343,223,359,258,386,306,422,356,444,378,468,397,480,404,478,409,465,402,441,382,418,359,381,309,355,261,339,225"/>
+<area shape="rect" id="Node000016" href="$classBDSParticleDefinition.html#acaeaeb4b994d51e516e90a7f5bbd9785" title="Accessor." alt="" coords="497,462,657,502"/>
+<area shape="poly" id="edge16_Node000003_Node000016" title=" " alt="" coords="342,224,355,267,380,328,418,392,441,422,468,448,486,459,483,464,465,452,437,426,413,395,375,330,350,269,337,225"/>
+<area shape="rect" id="Node000007" href="$classGMAD_1_1Beam.html#a5d5c8bc6d12280790172db2de50a0a77" title="get method (only for doubles)" alt="" coords="743,141,925,167"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="688,167,729,163,730,168,689,173"/>
+<area shape="rect" id="Node000009" href="$classBDSGlobalConstants.html#ab1632aaad9c914c64a0c18bd3d464918" title="Unused default constructors." alt="" coords="752,191,916,231"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="655,228,738,219,738,224,656,234"/>
+<area shape="rect" id="Node000010" href="$classBDSParser.html#a3e1b13443daddb6464d0074d4e66f7ce" title="Access method." alt="" coords="758,256,910,281"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="656,246,745,256,744,261,655,251"/>
+<area shape="rect" id="Node000011" href="$classBDSParser.html#a81246cf7be88e6834daa45ba34e6aa9a" title="Returns if parser is initialised." alt="" coords="748,305,920,331"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="653,257,689,269,737,290,766,299,764,304,735,295,687,274,651,262"/>
+<area shape="rect" id="Node000015" href="$classGMAD_1_1Beam.html#acbe26b95bbe89cb1d943b368ef5cb767" title="Whether a parameter has been set using the set_value method or not." alt="" coords="736,412,932,437"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="678,422,722,422,722,427,678,427"/>
 </map>

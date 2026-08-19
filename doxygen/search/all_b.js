@@ -1,7 +1,7 @@
 var searchData=
 [
   ['l_0',['l',['../structGMAD_1_1Element.html#aba7777c98bfe2147a8d8b1e980e35dcd',1,'GMAD::Element']]],
-  ['laser_1',['laser',['../classGMAD_1_1Laser.html',1,'GMAD::Laser'],['../classBDSLogicalVolumeLaser.html#a2478607862cf442d0746b04bdbfa4d89',1,'BDSLogicalVolumeLaser::Laser()'],['../classGMAD_1_1Laser.html#a68465e89283dffcc29a37e94693c6f87',1,'GMAD::Laser::Laser()'],['../classBDSLogicalVolumeLaser.html#acecace4c585f0710e02f59bacd6035d7',1,'BDSLogicalVolumeLaser::laser'],['../classGMAD_1_1Parser.html#a26f5168d238b94989d2db59868d7aa4e',1,'GMAD::Parser::laser']]],
+  ['laser_1',['laser',['../classGMAD_1_1Laser.html',1,'GMAD::Laser'],['../classBDSLogicalVolumeLaser.html#acecace4c585f0710e02f59bacd6035d7',1,'BDSLogicalVolumeLaser::laser'],['../classGMAD_1_1Parser.html#a26f5168d238b94989d2db59868d7aa4e',1,'GMAD::Parser::laser'],['../classBDSLogicalVolumeLaser.html#a2478607862cf442d0746b04bdbfa4d89',1,'BDSLogicalVolumeLaser::Laser()'],['../classGMAD_1_1Laser.html#a68465e89283dffcc29a37e94693c6f87',1,'GMAD::Laser::Laser()']]],
   ['laser_5flist_2',['laser_list',['../classGMAD_1_1Parser.html#aea4ec0a328ac79dad515f900c497b160',1,'GMAD::Parser']]],
   ['laserarrivaltime_3',['LaserArrivalTime',['../classBDSLaser.html#a89048ff06172a13a3054d4d4f2397e0a',1,'BDSLaser']]],
   ['laserbeam_4',['laserBeam',['../structGMAD_1_1Element.html#ad07a5a146122b87d34d978fb43426436',1,'GMAD::Element']]],
@@ -19,7 +19,7 @@ var searchData=
   ['laserwire_16',['LaserWire',['../classBDSModularPhysicsList.html#a3c58e782daadd2303c47c57ae3b5245d',1,'BDSModularPhysicsList']]],
   ['last_17',['last',['../classBDSSensitiveDetector.html#a526e37e74762d05b390e8ef4ff529121',1,'BDSSensitiveDetector::last()'],['../classBDSSDSamplerSphere.html#ab5abf140893aaca29a9081e420a8a0cb',1,'BDSSDSamplerSphere::last()'],['../classBDSSDThinThing.html#a62fdbf8912b5480f0ac578cceb1166ab',1,'BDSSDThinThing::last()'],['../classBDSSDSamplerLink.html#a5cf58469bf1d9ec17a5b93dfdaea2cc6',1,'BDSSDSamplerLink::last()'],['../classBDSSDSamplerCylinder.html#a0be756aafd8860ff72f79146c1931164',1,'BDSSDSamplerCylinder::last()'],['../classBDSSDEnergyDepositionGlobal.html#a5cd1e23e7df391fb7d6fb9f0f6cae631',1,'BDSSDEnergyDepositionGlobal::last()'],['../classBDSSDEnergyDeposition.html#ae9abfae7e33d1f18260cf4d3b5809be8',1,'BDSSDEnergyDeposition::last()'],['../classBDSSDCollimator.html#a7f3cfb714f5362307fabe59edc6a546e',1,'BDSSDCollimator::last()'],['../classBDSSDSampler.html#a976ce1e6e1b2e9044e5f56a717fafcd8',1,'BDSSDSampler::last()']]],
   ['lastlayer_18',['LastLayer',['../classBDSMultilayerScreen.html#af7a1e74cb7e12a58d8bc8a69db85e25b',1,'BDSMultilayerScreen']]],
-  ['lastpoint_19',['lastpoint',['../classBDSTrajectoryPrimary.html#a497316714ef7a8d3643c883fb8d3f75e',1,'BDSTrajectoryPrimary::lastPoint'],['../classBDSTrajectoryPrimary.html#a0d62298380c584f67f68a55ce34b425a',1,'BDSTrajectoryPrimary::LastPoint() const']]],
+  ['lastpoint_19',['lastpoint',['../classBDSTrajectoryPrimary.html#a0d62298380c584f67f68a55ce34b425a',1,'BDSTrajectoryPrimary::LastPoint() const'],['../classBDSTrajectoryPrimary.html#a497316714ef7a8d3643c883fb8d3f75e',1,'BDSTrajectoryPrimary::lastPoint']]],
   ['layerissampler_20',['layerIsSampler',['../structGMAD_1_1Element.html#aa7827aec24d9e74f3c5aad54a038e540',1,'GMAD::Element']]],
   ['layermaterials_21',['layerMaterials',['../structGMAD_1_1Element.html#a3198d690922fe329624113863d638fcc',1,'GMAD::Element']]],
   ['layerthicknesses_22',['layerThicknesses',['../structGMAD_1_1Element.html#af1bc07c35eafb0f97337f3db16965981',1,'GMAD::Element']]],

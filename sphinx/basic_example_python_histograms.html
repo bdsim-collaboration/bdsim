@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Histograms in Python &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -173,7 +173,7 @@ Init signature: pybdsim.Data.TH1(hist, extractData=True)
 Docstring:
 Wrapper for a ROOT TH1 instance. Converts to numpy data.
 
-&gt;&gt;&gt; h = file.Get(&quot;histogramName&quot;)
+&gt;&gt;&gt; h = file.Get("histogramName")
 &gt;&gt;&gt; hpy = TH1(h)
 File:           ~/physics/reps/pybdsim/pybdsim/Data.py
 Type:           type
@@ -202,7 +202,7 @@ can be used before plotting.</p>
 <p>We recommend using pybdsim for this.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;bdsim/examples/features/data/combined-ana.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"bdsim/examples/features/data/combined-ana.root"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here, <code class="code docutils literal notranslate"><span class="pre">d</span></code> is an instance of a pybdsim class that holds the data. The Load
@@ -219,25 +219,25 @@ typing <code class="code docutils literal notranslate"><span class="pre">d.histo
 The string is the path of the histogram inside the file. We can have a look
 by simply typing <code class="code docutils literal notranslate"><span class="pre">d.histogram</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">histograms</span>
-<span class="go">{&#39;Event/PerEntryHistograms/PrimaryX&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb4566d69c0&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/EventDuration&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb44cb98810&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/EnergySpectrum&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb44cb98fd0&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/EnergyLossManual&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb44cb999b0&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/TunnelLossManual&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb44cb9a360&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/AperImpactXInRange&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb44cb9ac60&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/PrimaryXY&#39;: &lt;cppyy.gbl.TH2D object at 0x7fb44e8c2800&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/D2XYEnergy&#39;: &lt;cppyy.gbl.TH3D object at 0x7fb44e8c4e00&gt;,</span>
-<span class="go"> &#39;Event/SimpleHistograms/PrimaryYSimple&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a19c50&gt;,</span>
-<span class="go"> &#39;Event/SimpleHistograms/PrimaryXYSimple&#39;: &lt;cppyy.gbl.TH2D object at 0x7fb44b11fe00&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PhitsHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1b920&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PlossHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1c120&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1c6c0&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PhitsPEHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1d0b0&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PlossPEHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1d970&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossPEHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1e390&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PFirstAIHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1e780&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossTunnelHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1ee30&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossTunnelPEHisto&#39;: &lt;cppyy.gbl.TH1D object at 0x7fb459a1f4d0&gt;}</span>
+<span class="go">{'Event/PerEntryHistograms/PrimaryX': &lt;cppyy.gbl.TH1D object at 0x7fb4566d69c0&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/EventDuration': &lt;cppyy.gbl.TH1D object at 0x7fb44cb98810&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/EnergySpectrum': &lt;cppyy.gbl.TH1D object at 0x7fb44cb98fd0&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/EnergyLossManual': &lt;cppyy.gbl.TH1D object at 0x7fb44cb999b0&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/TunnelLossManual': &lt;cppyy.gbl.TH1D object at 0x7fb44cb9a360&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/AperImpactXInRange': &lt;cppyy.gbl.TH1D object at 0x7fb44cb9ac60&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/PrimaryXY': &lt;cppyy.gbl.TH2D object at 0x7fb44e8c2800&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/D2XYEnergy': &lt;cppyy.gbl.TH3D object at 0x7fb44e8c4e00&gt;,</span>
+<span class="go"> 'Event/SimpleHistograms/PrimaryYSimple': &lt;cppyy.gbl.TH1D object at 0x7fb459a19c50&gt;,</span>
+<span class="go"> 'Event/SimpleHistograms/PrimaryXYSimple': &lt;cppyy.gbl.TH2D object at 0x7fb44b11fe00&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PhitsHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1b920&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PlossHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1c120&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1c6c0&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PhitsPEHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1d0b0&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PlossPEHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1d970&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossPEHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1e390&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PFirstAIHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1e780&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossTunnelHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1ee30&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossTunnelPEHisto': &lt;cppyy.gbl.TH1D object at 0x7fb459a1f4d0&gt;}</span>
 </pre></div>
 </div>
 <p>Here, we have loaded the example file <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/data/combined-ana.root</span></code>,
@@ -247,25 +247,25 @@ a ROOT histogram object through ROOT’s Python interface.</p>
 <p>pybdsim also provides a python version of each of these in similar dictionaries, but
 with the suffix “py”.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span>
-<span class="go">{&#39;Event/PerEntryHistograms/PrimaryX&#39;: &lt;pybdsim.Data.TH1 at 0x15cb04e20&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/EventDuration&#39;: &lt;pybdsim.Data.TH1 at 0x15cb04d60&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/EnergySpectrum&#39;: &lt;pybdsim.Data.TH1 at 0x15cb170d0&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/EnergyLossManual&#39;: &lt;pybdsim.Data.TH1 at 0x15cb180a0&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/TunnelLossManual&#39;: &lt;pybdsim.Data.TH1 at 0x15cb180d0&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/AperImpactXInRange&#39;: &lt;pybdsim.Data.TH1 at 0x15cb18100&gt;,</span>
-<span class="go"> &#39;Event/SimpleHistograms/PrimaryYSimple&#39;: &lt;pybdsim.Data.TH1 at 0x15cb18130&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PhitsHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb18160&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PlossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb18190&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb181c0&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PhitsPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb181f0&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PlossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb18220&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb18250&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/PFirstAIHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb18280&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossTunnelHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb182b0&gt;,</span>
-<span class="go"> &#39;Event/MergedHistograms/ElossTunnelPEHisto&#39;: &lt;pybdsim.Data.TH1 at 0x15cb182e0&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/PrimaryXY&#39;: &lt;pybdsim.Data.TH2 at 0x15cb18310&gt;,</span>
-<span class="go"> &#39;Event/SimpleHistograms/PrimaryXYSimple&#39;: &lt;pybdsim.Data.TH2 at 0x15cb18340&gt;,</span>
-<span class="go"> &#39;Event/PerEntryHistograms/D2XYEnergy&#39;: &lt;pybdsim.Data.TH3 at 0x15cb18370&gt;}</span>
+<span class="go">{'Event/PerEntryHistograms/PrimaryX': &lt;pybdsim.Data.TH1 at 0x15cb04e20&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/EventDuration': &lt;pybdsim.Data.TH1 at 0x15cb04d60&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/EnergySpectrum': &lt;pybdsim.Data.TH1 at 0x15cb170d0&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/EnergyLossManual': &lt;pybdsim.Data.TH1 at 0x15cb180a0&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/TunnelLossManual': &lt;pybdsim.Data.TH1 at 0x15cb180d0&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/AperImpactXInRange': &lt;pybdsim.Data.TH1 at 0x15cb18100&gt;,</span>
+<span class="go"> 'Event/SimpleHistograms/PrimaryYSimple': &lt;pybdsim.Data.TH1 at 0x15cb18130&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PhitsHisto': &lt;pybdsim.Data.TH1 at 0x15cb18160&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PlossHisto': &lt;pybdsim.Data.TH1 at 0x15cb18190&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossHisto': &lt;pybdsim.Data.TH1 at 0x15cb181c0&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PhitsPEHisto': &lt;pybdsim.Data.TH1 at 0x15cb181f0&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PlossPEHisto': &lt;pybdsim.Data.TH1 at 0x15cb18220&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossPEHisto': &lt;pybdsim.Data.TH1 at 0x15cb18250&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/PFirstAIHisto': &lt;pybdsim.Data.TH1 at 0x15cb18280&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossTunnelHisto': &lt;pybdsim.Data.TH1 at 0x15cb182b0&gt;,</span>
+<span class="go"> 'Event/MergedHistograms/ElossTunnelPEHisto': &lt;pybdsim.Data.TH1 at 0x15cb182e0&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/PrimaryXY': &lt;pybdsim.Data.TH2 at 0x15cb18310&gt;,</span>
+<span class="go"> 'Event/SimpleHistograms/PrimaryXYSimple': &lt;pybdsim.Data.TH2 at 0x15cb18340&gt;,</span>
+<span class="go"> 'Event/PerEntryHistograms/D2XYEnergy': &lt;pybdsim.Data.TH3 at 0x15cb18370&gt;}</span>
 </pre></div>
 </div>
 <p>Here, all the names are the same but we can see the objects are instances of pybdsim
@@ -306,7 +306,7 @@ in a dictionary for each dimensionality.</p>
 </tbody>
 </table>
 <p>Each histogram can be accessed from the dictionary by its name:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histograms</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/PrimaryX&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histograms</span><span class="p">[</span><span class="s1">'Event/PerEntryHistograms/PrimaryX'</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>The pybdsim ones contain numpy arrays and only Python types.</p>
@@ -316,8 +316,8 @@ in a dictionary for each dimensionality.</p>
 <p>In Python, we can also load ROOT histograms using ROOT’s Python interface.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">ROOT</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="s2">&quot;bdsim/examples/features/data/combined-ana.root&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;Event/PerEntryHistograms/PrimaryX&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="s2">"bdsim/examples/features/data/combined-ana.root"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">"Event/PerEntryHistograms/PrimaryX"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -328,8 +328,8 @@ in a dictionary for each dimensionality.</p>
 user may of course, write their own in Python or ROOT.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;bdsim/examples/features/data/cmobined-ana.root&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/PrimaryX&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"bdsim/examples/features/data/cmobined-ana.root"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histogramspy</span><span class="p">[</span><span class="s1">'Event/PerEntryHistograms/PrimaryX'</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Plot</span><span class="o">.</span><span class="n">Histogram1D</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -348,10 +348,10 @@ user may of course, write their own in Python or ROOT.</p>
 convert to a pybdsim one for plotting.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;bdsim/examples/features/data/ana1.root&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;bdsim/examples/features/data/ana1.root&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histograms</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/PrimaryX&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histograms</span><span class="p">[</span><span class="s1">&#39;Event/PerEntryHistograms/PrimaryX&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"bdsim/examples/features/data/ana1.root"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"bdsim/examples/features/data/ana1.root"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histograms</span><span class="p">[</span><span class="s1">'Event/PerEntryHistograms/PrimaryX'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">histograms</span><span class="p">[</span><span class="s1">'Event/PerEntryHistograms/PrimaryX'</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">htotal</span> <span class="o">=</span> <span class="n">h1</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -363,7 +363,7 @@ events in each histogram).</p>
 <p>Multiplication in ROOT is called “scale”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pybdsim</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">&quot;bdsim/examples/features/data/ana1.root&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">pybdsim</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"bdsim/examples/features/data/ana1.root"</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -408,8 +408,8 @@ then add each to that one.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

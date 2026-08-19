@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Version History &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -70,7 +70,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Version History</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#planned-development">Planned Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#v1-8-0-2025-xx-xx">v1.8.0 - 2025 / XX / XX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v1-8-0-2026-xx-xx">v1.8.0 - 2026 / XX / XX</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-options">New Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#general-updates">General Updates</a></li>
@@ -409,8 +409,8 @@ if you’d like to give us feedback or help in the development.  See <a class="r
 <li><p>Any aperture shape can be used for both the inside and the outside of a collimator.</p></li>
 </ul>
 </section>
-<section id="v1-8-0-2025-xx-xx">
-<h2>v1.8.0 - 2025 / XX / XX<a class="headerlink" href="#v1-8-0-2025-xx-xx" title="Link to this heading"></a></h2>
+<section id="v1-8-0-2026-xx-xx">
+<h2>v1.8.0 - 2026 / XX / XX<a class="headerlink" href="#v1-8-0-2026-xx-xx" title="Link to this heading"></a></h2>
 <p>The BDSIM source code has moved to Github and is available here: <a class="reference external" href="https://github.com/bdsim-collaboration/bdsim">https://github.com/bdsim-collaboration/bdsim</a></p>
 <p>This move was done due to better provision of testing resources and interfaces. All issues
 should now be launched here. A more modern approach of pull-requests is being used and
@@ -442,6 +442,8 @@ for easy customised skimming in Python.</p></li>
 other distributions with each type of Gaussian have been added: <code class="code docutils literal notranslate"><span class="pre">gauss-slow-ext</span></code>,
 <code class="code docutils literal notranslate"><span class="pre">gauss-slow-ext</span></code>, <code class="code docutils literal notranslate"><span class="pre">gauss-twiss-slow-ext</span></code> where the Gaussian part is first generated
 and the slow extraction sweep added on top.</p></li>
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">ring</span></code> distribution can now make a circular ring also in <cite>rp</cite> (i.e. in <cite>xp</cite>, <cite>yp</cite>). By
+default the old behaviour is retained and no angle is produced.</p></li>
 </ul>
 <p><strong>Fields</strong></p>
 <ul class="simple">
@@ -451,6 +453,8 @@ definition.</p></li>
 <li><p>The option <code class="code docutils literal notranslate"><span class="pre">cavityFieldType</span></code> may be used to set the default field model for all <cite>rf</cite>
 elements.</p></li>
 <li><p>The “rfcavity” field is now “rfpillbox”.</p></li>
+<li><p>Fix a reference particle perfectly on axis in a muon sweeper field that would cause Nans
+and crashes in tracking.</p></li>
 </ul>
 <p><strong>General</strong></p>
 <ul class="simple">
@@ -466,6 +470,8 @@ common particles.</p></li>
 <li><p>New <code class="code docutils literal notranslate"><span class="pre">ftf_bic</span></code> modular physics list.</p></li>
 <li><p>New <code class="code docutils literal notranslate"><span class="pre">dna_chemistry</span></code>, <code class="code docutils literal notranslate"><span class="pre">dna_chemistry_1</span></code>, <code class="code docutils literal notranslate"><span class="pre">dna_chemistry_2</span></code>, <code class="code docutils literal notranslate"><span class="pre">dna_chemistry_3</span></code>
 physics lists.</p></li>
+<li><p>New ability to turn off muon decays with <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">turnOffMuonDecay=1;</span></code></p></li>
+<li><p>New option <code class="code docutils literal notranslate"><span class="pre">extendPionDecays</span></code> to add extra decay channels to charged pions.</p></li>
 </ul>
 </section>
 <section id="new-options">
@@ -515,6 +521,7 @@ particle in Geant4.</p></li>
 <li><p>Fix <code class="code docutils literal notranslate"><span class="pre">transform3d</span></code> component applying offsets in a rotate frame that is not
 axis-aligned. It applied the offsets (dx, dy, dz) in the global axis and not the
 local ones.</p></li>
+<li><p>Fix repeated transforms in a sequence. Previously, only the first one would be applied.</p></li>
 <li><p>Fix rebdsim’s Spectra command preparing the wrong variables when used on a cylindrical
 or spherical sampler where the variable is “totalEnergy” and not “energy”.</p></li>
 <li><p>Fix a bug where rebdsim would crash if a Spectra command was used on a cylindrical or
@@ -538,6 +545,18 @@ even for the correctly specified momentum in the distribution file.</p></li>
 <li><p>Fix loading of a BDSIM output sampler bunch distribution or a HEPMC file loading when
 recreating a file and the chosen event offset requires looping the file. It would loop
 and advance to the same place proplery.</p></li>
+<li><p>The cylindrical scoring mesh now takes <code class="code docutils literal notranslate"><span class="pre">rInner</span></code> and <code class="code docutils literal notranslate"><span class="pre">rOuter</span></code> as the two radial parameters.
+<code class="code docutils literal notranslate"><span class="pre">rsize</span></code> is still accepted and used as <code class="code docutils literal notranslate"><span class="pre">rOuter</span></code>. The default for <code class="code docutils literal notranslate"><span class="pre">rInner</span></code> is 0.
+Previously, the mesh was always half the desired size in geometry but with the correct output
+coordinates in the histogram that mismatched what was simulated.</p></li>
+<li><p>Fixed a bug where BDSIM would complain about duplicate materials if a crystal collimator was used
+at the same time as a GDML file loaded elsewhere in the model.</p></li>
+<li><p>Fixed many component examples in the manual that had wrongly described parameters.</p></li>
+<li><p>Fixed empty column for ‘type’ in text survey output.</p></li>
+<li><p>Fixed possibly duplicated file extensions for text survey output.</p></li>
+<li><p>Document the options <code class="code docutils literal notranslate"><span class="pre">maximumPhotonsPerStep</span></code> and <code class="code docutils literal notranslate"><span class="pre">maximumBetaChangePerStep</span></code> as well
+as fix their number type internally.</p></li>
+<li><p>Fix a crash when using <code class="code docutils literal notranslate"><span class="pre">jcoltip</span></code> with collimator-specific output options.</p></li>
 </ul>
 </section>
 <section id="output-changes">
@@ -572,7 +591,7 @@ along the beamline.</p></li>
 <tr class="row-odd"><td><p>BDSOutputROOTEventBeam</p></td>
 <td><p>N</p></td>
 <td><p>6</p></td>
-<td><p>6</p></td>
+<td><p>7</p></td>
 </tr>
 <tr class="row-even"><td><p>BDSOutputROOTEventCavityInfo</p></td>
 <td><p>N</p></td>
@@ -1234,7 +1253,7 @@ factor is now always print out for feedback.</p></li>
 <li><p>Fix spectra in rebdsim when used with a selection. The selection would be built up wrongly and wouldn’t
 work in the past.</p></li>
 <li><p>Fix warning when using sampler data in analysis in Python:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_line_154</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">instantiation</span> <span class="n">of</span> <span class="n">variable</span> <span class="s1">&#39;BDSOutputROOTEventSampler&lt;float&gt;::particleTable&#39;</span> <span class="n">required</span> <span class="n">here</span><span class="p">,</span> <span class="n">but</span> <span class="n">no</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_line_154</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">instantiation</span> <span class="n">of</span> <span class="n">variable</span> <span class="s1">'BDSOutputROOTEventSampler&lt;float&gt;::particleTable'</span> <span class="n">required</span> <span class="n">here</span><span class="p">,</span> <span class="n">but</span> <span class="n">no</span>
   <span class="n">definition</span> <span class="ow">is</span> <span class="n">available</span> <span class="p">[</span><span class="o">-</span><span class="n">Wundefined</span><span class="o">-</span><span class="n">var</span><span class="o">-</span><span class="n">template</span><span class="p">]</span>
 <span class="n">BDSOutputROOTEventSampler</span><span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;</span><span class="p">::</span><span class="n">particleTable</span><span class="p">;</span>
                                <span class="o">^</span>
@@ -1242,7 +1261,7 @@ work in the past.</p></li>
 <span class="n">static</span> <span class="n">BDSOutputROOTParticleData</span><span class="o">*</span> <span class="n">particleTable</span><span class="p">;</span>
                                 <span class="o">^</span>
 <span class="n">input_line_154</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="n">note</span><span class="p">:</span> <span class="n">add</span> <span class="n">an</span> <span class="n">explicit</span> <span class="n">instantiation</span> <span class="n">declaration</span> <span class="n">to</span> <span class="n">suppress</span> <span class="n">this</span> <span class="n">warning</span> <span class="k">if</span>
-<span class="s1">&#39;BDSOutputROOTEventSampler&lt;float&gt;::particleTable&#39;</span> <span class="ow">is</span> <span class="n">explicitly</span> <span class="n">instantiated</span> <span class="ow">in</span> <span class="n">another</span>
+<span class="s1">'BDSOutputROOTEventSampler&lt;float&gt;::particleTable'</span> <span class="ow">is</span> <span class="n">explicitly</span> <span class="n">instantiated</span> <span class="ow">in</span> <span class="n">another</span>
 <span class="n">translation</span> <span class="n">unit</span>
 <span class="n">BDSOutputROOTEventSampler</span><span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;</span><span class="p">::</span><span class="n">particleTable</span><span class="p">;</span>
 </pre></div>
@@ -4770,8 +4789,8 @@ simpler / increased performance</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

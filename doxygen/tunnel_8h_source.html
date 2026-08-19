@@ -159,15 +159,16 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>          <span class="keywordflow">if</span> (bExit)</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            {exit(1);}</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>          <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            {std::rethrow_exception(std::current_exception());} <span class="comment">// to be caught by python</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        }</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>              std::rethrow_exception(std::current_exception());} <span class="comment">// to be caught by python</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
 </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGMAD_1_1Published_html"><div class="ttname"><a href="classGMAD_1_1Published.html">GMAD::Published</a></div><div class="ttdoc">Class that provides introspection to its members.</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00048">published.h:49</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1Published_html_acd8e3cc34a66f2902752250cd2a9ff30"><div class="ttname"><a href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">GMAD::Published&lt; Tunnel &gt;::set</a></div><div class="ttdeci">void set(Tunnel *instance, const std::string &amp;name, double value)</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00060">published.h:101</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1Published_html_acd8e3cc34a66f2902752250cd2a9ff30"><div class="ttname"><a href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">GMAD::Published&lt; Tunnel &gt;::set</a></div><div class="ttdeci">void set(Tunnel *instance, const std::string &amp;name, double value)</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00064">published.h:101</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1Tunnel_html"><div class="ttname"><a href="classGMAD_1_1Tunnel.html">GMAD::Tunnel</a></div><div class="ttdoc">Tunnel class for parser.</div><div class="ttdef"><b>Definition</b> <a href="tunnel_8h_source.html#l00035">tunnel.h:35</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1Tunnel_html_a11d585da0cc81a34a67d836d920a26fd"><div class="ttname"><a href="classGMAD_1_1Tunnel.html#a11d585da0cc81a34a67d836d920a26fd">GMAD::Tunnel::aper1</a></div><div class="ttdeci">double aper1</div><div class="ttdoc">radius, aperture parameters</div><div class="ttdef"><b>Definition</b> <a href="tunnel_8h_source.html#l00043">tunnel.h:43</a></div></div>
 <div class="ttc" id="aclassGMAD_1_1Tunnel_html_a418f0a44f986d1ccd9aba7498cdff216"><div class="ttname"><a href="classGMAD_1_1Tunnel.html#a418f0a44f986d1ccd9aba7498cdff216">GMAD::Tunnel::set_value</a></div><div class="ttdeci">void set_value(std::string property, T value, bool bExit=true)</div><div class="ttdoc">set methods by property name and value</div><div class="ttdef"><b>Definition</b> <a href="tunnel_8h_source.html#l00079">tunnel.h:79</a></div></div>
@@ -187,7 +188,7 @@ $(document).ready(function() { init_codefold(0); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 18 2025 18:31:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Aug 19 2026 14:22:51 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

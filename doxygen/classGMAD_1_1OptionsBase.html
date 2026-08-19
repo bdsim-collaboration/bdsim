@@ -762,9 +762,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:aace5f229184919a9873126af0b84b08f" id="r_aace5f229184919a9873126af0b84b08f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1OptionsBase.html#aace5f229184919a9873126af0b84b08f">maximumPhotonsPerStep</a></td></tr>
 <tr class="memdesc:aace5f229184919a9873126af0b84b08f"><td class="mdescLeft">&#160;</td><td class="mdescRight">physics parameters  <br /></td></tr>
 <tr class="separator:aace5f229184919a9873126af0b84b08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68b531bceca8b2cfb3279a0f3d21a30a" id="r_a68b531bceca8b2cfb3279a0f3d21a30a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1OptionsBase.html#a68b531bceca8b2cfb3279a0f3d21a30a">maximumBetaChangePerStep</a></td></tr>
-<tr class="memdesc:a68b531bceca8b2cfb3279a0f3d21a30a"><td class="mdescLeft">&#160;</td><td class="mdescRight">physics parameters  <br /></td></tr>
-<tr class="separator:a68b531bceca8b2cfb3279a0f3d21a30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ff10b2d121ca38cc38ecad7715974b" id="r_a89ff10b2d121ca38cc38ecad7715974b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1OptionsBase.html#a89ff10b2d121ca38cc38ecad7715974b">maximumBetaChangePerStep</a></td></tr>
+<tr class="memdesc:a89ff10b2d121ca38cc38ecad7715974b"><td class="mdescLeft">&#160;</td><td class="mdescRight">physics parameters  <br /></td></tr>
+<tr class="separator:a89ff10b2d121ca38cc38ecad7715974b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85374440b37b030800d7d65f0d51b321" id="r_a85374440b37b030800d7d65f0d51b321"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1OptionsBase.html#a85374440b37b030800d7d65f0d51b321">maximumTracksPerEvent</a></td></tr>
 <tr class="memdesc:a85374440b37b030800d7d65f0d51b321"><td class="mdescLeft">&#160;</td><td class="mdescRight">physics parameters  <br /></td></tr>
 <tr class="separator:a85374440b37b030800d7d65f0d51b321"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -852,6 +852,12 @@ Data Fields</h2></td></tr>
 <tr class="memitem:af2e49a7fe7842d0e4773380a10fab53b" id="r_af2e49a7fe7842d0e4773380a10fab53b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1OptionsBase.html#af2e49a7fe7842d0e4773380a10fab53b">xrayAllSurfaceRoughness</a></td></tr>
 <tr class="memdesc:af2e49a7fe7842d0e4773380a10fab53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">physics parameters  <br /></td></tr>
 <tr class="separator:af2e49a7fe7842d0e4773380a10fab53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88025d1d61528aa50c2a84eee48d976" id="r_ad88025d1d61528aa50c2a84eee48d976"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1OptionsBase.html#ad88025d1d61528aa50c2a84eee48d976">extendPionDecayChannels</a></td></tr>
+<tr class="memdesc:ad88025d1d61528aa50c2a84eee48d976"><td class="mdescLeft">&#160;</td><td class="mdescRight">physics parameters  <br /></td></tr>
+<tr class="separator:ad88025d1d61528aa50c2a84eee48d976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab90b5a43aefa94c53ff1575e7db33ac7" id="r_ab90b5a43aefa94c53ff1575e7db33ac7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMAD_1_1OptionsBase.html#ab90b5a43aefa94c53ff1575e7db33ac7">turnOffMuonDecay</a></td></tr>
+<tr class="memdesc:ab90b5a43aefa94c53ff1575e7db33ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">physics parameters  <br /></td></tr>
+<tr class="separator:ab90b5a43aefa94c53ff1575e7db33ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Basic options class independent of Geant4. </p>
@@ -879,7 +885,7 @@ Data Fields</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8cc_source.html#l00025">25</a> of file <a class="el" href="optionsBase_8cc_source.html">optionsBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="optionsBase_8h_source.html#l00187">aper1</a>, <a class="el" href="optionsBase_8h_source.html#l00188">aper2</a>, <a class="el" href="optionsBase_8h_source.html#l00189">aper3</a>, <a class="el" href="optionsBase_8h_source.html#l00190">aper4</a>, <a class="el" href="optionsBase_8h_source.html#l00186">apertureType</a>, <a class="el" href="optionsBase_8h_source.html#l00308">backupStepperMomLimit</a>, <a class="el" href="optionsBase_8h_source.html#l00060">batch</a>, <a class="el" href="optionsBase_8h_source.html#l00113">bdsimPath</a>, <a class="el" href="optionsBase_8h_source.html#l00142">beamlineAngle</a>, <a class="el" href="optionsBase_8h_source.html#l00143">beamlineAxisAngle</a>, <a class="el" href="optionsBase_8h_source.html#l00139">beamlineAxisX</a>, <a class="el" href="optionsBase_8h_source.html#l00140">beamlineAxisY</a>, <a class="el" href="optionsBase_8h_source.html#l00141">beamlineAxisZ</a>, <a class="el" href="optionsBase_8h_source.html#l00136">beamlinePhi</a>, <a class="el" href="optionsBase_8h_source.html#l00138">beamlinePsi</a>, <a class="el" href="optionsBase_8h_source.html#l00144">beamlineS</a>, <a class="el" href="optionsBase_8h_source.html#l00137">beamlineTheta</a>, <a class="el" href="optionsBase_8h_source.html#l00133">beamlineX</a>, <a class="el" href="optionsBase_8h_source.html#l00134">beamlineY</a>, <a class="el" href="optionsBase_8h_source.html#l00135">beamlineZ</a>, <a class="el" href="optionsBase_8h_source.html#l00263">beamPipeIsInfiniteAbsorber</a>, <a class="el" href="optionsBase_8h_source.html#l00191">beampipeMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00185">beampipeThickness</a>, <a class="el" href="optionsBase_8h_source.html#l00209">buildTunnel</a>, <a class="el" href="optionsBase_8h_source.html#l00216">buildTunnelFloor</a>, <a class="el" href="optionsBase_8h_source.html#l00210">buildTunnelStraight</a>, <a class="el" href="optionsBase_8h_source.html#l00150">checkOverlaps</a>, <a class="el" href="optionsBase_8h_source.html#l00091">circular</a>, <a class="el" href="optionsBase_8h_source.html#l00264">collimatorsAreInfiniteAbsorbers</a>, <a class="el" href="optionsBase_8h_source.html#l00248">defaultRangeCut</a>, <a class="el" href="optionsBase_8h_source.html#l00171">dontSplitSBends</a>, <a class="el" href="optionsBase_8h_source.html#l00196">emptyMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00124">eventOffset</a>, <a class="el" href="optionsBase_8h_source.html#l00108">exportFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00106">exportGeometry</a>, <a class="el" href="optionsBase_8h_source.html#l00107">exportType</a>, <a class="el" href="optionsBase_8h_source.html#l00130">ffact</a>, <a class="el" href="optionsBase_8h_source.html#l00042">geant4MacroFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00043">geant4PhysicsMacroFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00103">generatePrimariesOnly</a>, <a class="el" href="optionsBase_8h_source.html#l00159">hStyle</a>, <a class="el" href="optionsBase_8h_source.html#l00192">ignoreLocalAperture</a>, <a class="el" href="optionsBase_8h_source.html#l00040">inputFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00155">magnetGeometryType</a>, <a class="el" href="optionsBase_8h_source.html#l00242">maximumBetaChangePerStep</a>, <a class="el" href="optionsBase_8h_source.html#l00241">maximumPhotonsPerStep</a>, <a class="el" href="optionsBase_8h_source.html#l00290">maximumStepLength</a>, <a class="el" href="optionsBase_8h_source.html#l00289">maximumTrackingTime</a>, <a class="el" href="optionsBase_8h_source.html#l00291">maximumTrackLength</a>, <a class="el" href="optionsBase_8h_source.html#l00243">maximumTracksPerEvent</a>, <a class="el" href="optionsBase_8h_source.html#l00244">minimumKineticEnergy</a>, <a class="el" href="optionsBase_8h_source.html#l00245">minimumKineticEnergyTunnel</a>, <a class="el" href="optionsBase_8h_source.html#l00303">minimumRadiusOfCurvature</a>, <a class="el" href="optionsBase_8h_source.html#l00246">minimumRange</a>, <a class="el" href="optionsBase_8h_source.html#l00270">muonSplittingExcludeWeight1Particles</a>, <a class="el" href="optionsBase_8h_source.html#l00271">muonSplittingExclusionWeight</a>, <a class="el" href="optionsBase_8h_source.html#l00266">muonSplittingFactor</a>, <a class="el" href="optionsBase_8h_source.html#l00268">muonSplittingFactor2</a>, <a class="el" href="optionsBase_8h_source.html#l00267">muonSplittingThresholdParentEk</a>, <a class="el" href="optionsBase_8h_source.html#l00269">muonSplittingThresholdParentEk2</a>, <a class="el" href="optionsBase_8h_source.html#l00254">neutronKineticEnergyLimit</a>, <a class="el" href="optionsBase_8h_source.html#l00253">neutronTimeLimit</a>, <a class="el" href="optionsBase_8h_source.html#l00094">nGenerate</a>, <a class="el" href="optionsBase_8h_source.html#l00305">nominalMatrixRelativeMomCut</a>, <a class="el" href="optionsBase_8h_source.html#l00411">nSegmentsPerCircle</a>, <a class="el" href="optionsBase_8h_source.html#l00052">outputCompressionLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00051">outputDoublePrecision</a>, <a class="el" href="optionsBase_8h_source.html#l00049">outputFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00050">outputFormat</a>, <a class="el" href="optionsBase_8h_source.html#l00247">particlesToExcludeFromCuts</a>, <a class="el" href="optionsBase_8h_source.html#l00116">physicsList</a>, <a class="el" href="optionsBase_8h_source.html#l00167">preprocessGDML</a>, <a class="el" href="optionsBase_8h_source.html#l00250">prodCutElectrons</a>, <a class="el" href="optionsBase_8h_source.html#l00249">prodCutPhotons</a>, <a class="el" href="optionsBase_8h_source.html#l00251">prodCutPositrons</a>, <a class="el" href="optionsBase_8h_source.html#l00252">prodCutProtons</a>, <a class="el" href="optionsBase_8h_source.html#l00093">randomEngine</a>, <a class="el" href="optionsBase_8h_source.html#l00095">recreate</a>, <a class="el" href="optionsBase_8h_source.html#l00096">recreateFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00125">recreateSeedState</a>, <a class="el" href="optionsBase_8h_source.html#l00261">restoreFTPFDiffractionForAGreater10</a>, <a class="el" href="optionsBase_8h_source.html#l00240">scintYieldFactor</a>, <a class="el" href="optionsBase_8h_source.html#l00092">seed</a>, <a class="el" href="optionsBase_8h_source.html#l00100">seedStateFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00215">soilMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00097">startFromEvent</a>, <a class="el" href="optionsBase_8h_source.html#l00056">survey</a>, <a class="el" href="optionsBase_8h_source.html#l00057">surveyFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00306">teleporterFullTransform</a>, <a class="el" href="optionsBase_8h_source.html#l00368">trajNoTransportation</a>, <a class="el" href="optionsBase_8h_source.html#l00218">tunnelAper1</a>, <a class="el" href="optionsBase_8h_source.html#l00219">tunnelAper2</a>, <a class="el" href="optionsBase_8h_source.html#l00217">tunnelFloorOffset</a>, <a class="el" href="optionsBase_8h_source.html#l00265">tunnelIsInfiniteAbsorber</a>, <a class="el" href="optionsBase_8h_source.html#l00214">tunnelMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00223">tunnelMaxSegmentLength</a>, <a class="el" href="optionsBase_8h_source.html#l00221">tunnelOffsetX</a>, <a class="el" href="optionsBase_8h_source.html#l00222">tunnelOffsetY</a>, <a class="el" href="optionsBase_8h_source.html#l00213">tunnelSoilThickness</a>, <a class="el" href="optionsBase_8h_source.html#l00212">tunnelThickness</a>, <a class="el" href="optionsBase_8h_source.html#l00211">tunnelType</a>, <a class="el" href="optionsBase_8h_source.html#l00220">tunnelVisible</a>, <a class="el" href="optionsBase_8h_source.html#l00234">turnOnMieScattering</a>, <a class="el" href="optionsBase_8h_source.html#l00233">turnOnOpticalAbsorption</a>, <a class="el" href="optionsBase_8h_source.html#l00236">turnOnOpticalSurface</a>, <a class="el" href="optionsBase_8h_source.html#l00235">turnOnRayleighScattering</a>, <a class="el" href="optionsBase_8h_source.html#l00099">useASCIISeedState</a>, <a class="el" href="optionsBase_8h_source.html#l00256">useElectroNuclear</a>, <a class="el" href="optionsBase_8h_source.html#l00258">useGammaToMuMu</a>, <a class="el" href="optionsBase_8h_source.html#l00255">useLENDGammaNuclear</a>, <a class="el" href="optionsBase_8h_source.html#l00257">useMuonNuclear</a>, <a class="el" href="optionsBase_8h_source.html#l00260">usePositronToHadrons</a>, <a class="el" href="optionsBase_8h_source.html#l00259">usePositronToMuMu</a>, <a class="el" href="optionsBase_8h_source.html#l00195">vacMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00065">verbose</a>, <a class="el" href="optionsBase_8h_source.html#l00071">verboseEventBDSIM</a>, <a class="el" href="optionsBase_8h_source.html#l00074">verboseEventContinueFor</a>, <a class="el" href="optionsBase_8h_source.html#l00072">verboseEventLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00073">verboseEventStart</a>, <a class="el" href="optionsBase_8h_source.html#l00068">verboseRunLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00080">verboseSteppingBDSIM</a>, <a class="el" href="optionsBase_8h_source.html#l00083">verboseSteppingEventContinueFor</a>, <a class="el" href="optionsBase_8h_source.html#l00082">verboseSteppingEventStart</a>, <a class="el" href="optionsBase_8h_source.html#l00081">verboseSteppingLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00084">verboseSteppingPrimaryOnly</a>, <a class="el" href="optionsBase_8h_source.html#l00077">verboseTrackingLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00045">visDebug</a>, <a class="el" href="optionsBase_8h_source.html#l00041">visMacroFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00046">visVerbosity</a>, <a class="el" href="optionsBase_8h_source.html#l00204">worldVolumeMargin</a>, <a class="el" href="optionsBase_8h_source.html#l00098">writeSeedState</a>, <a class="el" href="optionsBase_8h_source.html#l00272">xrayAllSurfaceRoughness</a>, and <a class="el" href="optionsBase_8h_source.html#l00152">xsize</a>.</p>
+<p class="reference">References <a class="el" href="optionsBase_8h_source.html#l00187">aper1</a>, <a class="el" href="optionsBase_8h_source.html#l00188">aper2</a>, <a class="el" href="optionsBase_8h_source.html#l00189">aper3</a>, <a class="el" href="optionsBase_8h_source.html#l00190">aper4</a>, <a class="el" href="optionsBase_8h_source.html#l00186">apertureType</a>, <a class="el" href="optionsBase_8h_source.html#l00310">backupStepperMomLimit</a>, <a class="el" href="optionsBase_8h_source.html#l00060">batch</a>, <a class="el" href="optionsBase_8h_source.html#l00113">bdsimPath</a>, <a class="el" href="optionsBase_8h_source.html#l00142">beamlineAngle</a>, <a class="el" href="optionsBase_8h_source.html#l00143">beamlineAxisAngle</a>, <a class="el" href="optionsBase_8h_source.html#l00139">beamlineAxisX</a>, <a class="el" href="optionsBase_8h_source.html#l00140">beamlineAxisY</a>, <a class="el" href="optionsBase_8h_source.html#l00141">beamlineAxisZ</a>, <a class="el" href="optionsBase_8h_source.html#l00136">beamlinePhi</a>, <a class="el" href="optionsBase_8h_source.html#l00138">beamlinePsi</a>, <a class="el" href="optionsBase_8h_source.html#l00144">beamlineS</a>, <a class="el" href="optionsBase_8h_source.html#l00137">beamlineTheta</a>, <a class="el" href="optionsBase_8h_source.html#l00133">beamlineX</a>, <a class="el" href="optionsBase_8h_source.html#l00134">beamlineY</a>, <a class="el" href="optionsBase_8h_source.html#l00135">beamlineZ</a>, <a class="el" href="optionsBase_8h_source.html#l00263">beamPipeIsInfiniteAbsorber</a>, <a class="el" href="optionsBase_8h_source.html#l00191">beampipeMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00185">beampipeThickness</a>, <a class="el" href="optionsBase_8h_source.html#l00209">buildTunnel</a>, <a class="el" href="optionsBase_8h_source.html#l00216">buildTunnelFloor</a>, <a class="el" href="optionsBase_8h_source.html#l00210">buildTunnelStraight</a>, <a class="el" href="optionsBase_8h_source.html#l00150">checkOverlaps</a>, <a class="el" href="optionsBase_8h_source.html#l00091">circular</a>, <a class="el" href="optionsBase_8h_source.html#l00264">collimatorsAreInfiniteAbsorbers</a>, <a class="el" href="optionsBase_8h_source.html#l00248">defaultRangeCut</a>, <a class="el" href="optionsBase_8h_source.html#l00171">dontSplitSBends</a>, <a class="el" href="optionsBase_8h_source.html#l00196">emptyMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00124">eventOffset</a>, <a class="el" href="optionsBase_8h_source.html#l00108">exportFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00106">exportGeometry</a>, <a class="el" href="optionsBase_8h_source.html#l00107">exportType</a>, <a class="el" href="optionsBase_8h_source.html#l00273">extendPionDecayChannels</a>, <a class="el" href="optionsBase_8h_source.html#l00130">ffact</a>, <a class="el" href="optionsBase_8h_source.html#l00042">geant4MacroFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00043">geant4PhysicsMacroFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00103">generatePrimariesOnly</a>, <a class="el" href="optionsBase_8h_source.html#l00159">hStyle</a>, <a class="el" href="optionsBase_8h_source.html#l00192">ignoreLocalAperture</a>, <a class="el" href="optionsBase_8h_source.html#l00040">inputFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00155">magnetGeometryType</a>, <a class="el" href="optionsBase_8h_source.html#l00242">maximumBetaChangePerStep</a>, <a class="el" href="optionsBase_8h_source.html#l00241">maximumPhotonsPerStep</a>, <a class="el" href="optionsBase_8h_source.html#l00292">maximumStepLength</a>, <a class="el" href="optionsBase_8h_source.html#l00291">maximumTrackingTime</a>, <a class="el" href="optionsBase_8h_source.html#l00293">maximumTrackLength</a>, <a class="el" href="optionsBase_8h_source.html#l00243">maximumTracksPerEvent</a>, <a class="el" href="optionsBase_8h_source.html#l00244">minimumKineticEnergy</a>, <a class="el" href="optionsBase_8h_source.html#l00245">minimumKineticEnergyTunnel</a>, <a class="el" href="optionsBase_8h_source.html#l00305">minimumRadiusOfCurvature</a>, <a class="el" href="optionsBase_8h_source.html#l00246">minimumRange</a>, <a class="el" href="optionsBase_8h_source.html#l00270">muonSplittingExcludeWeight1Particles</a>, <a class="el" href="optionsBase_8h_source.html#l00271">muonSplittingExclusionWeight</a>, <a class="el" href="optionsBase_8h_source.html#l00266">muonSplittingFactor</a>, <a class="el" href="optionsBase_8h_source.html#l00268">muonSplittingFactor2</a>, <a class="el" href="optionsBase_8h_source.html#l00267">muonSplittingThresholdParentEk</a>, <a class="el" href="optionsBase_8h_source.html#l00269">muonSplittingThresholdParentEk2</a>, <a class="el" href="optionsBase_8h_source.html#l00254">neutronKineticEnergyLimit</a>, <a class="el" href="optionsBase_8h_source.html#l00253">neutronTimeLimit</a>, <a class="el" href="optionsBase_8h_source.html#l00094">nGenerate</a>, <a class="el" href="optionsBase_8h_source.html#l00307">nominalMatrixRelativeMomCut</a>, <a class="el" href="optionsBase_8h_source.html#l00413">nSegmentsPerCircle</a>, <a class="el" href="optionsBase_8h_source.html#l00052">outputCompressionLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00051">outputDoublePrecision</a>, <a class="el" href="optionsBase_8h_source.html#l00049">outputFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00050">outputFormat</a>, <a class="el" href="optionsBase_8h_source.html#l00247">particlesToExcludeFromCuts</a>, <a class="el" href="optionsBase_8h_source.html#l00116">physicsList</a>, <a class="el" href="optionsBase_8h_source.html#l00167">preprocessGDML</a>, <a class="el" href="optionsBase_8h_source.html#l00250">prodCutElectrons</a>, <a class="el" href="optionsBase_8h_source.html#l00249">prodCutPhotons</a>, <a class="el" href="optionsBase_8h_source.html#l00251">prodCutPositrons</a>, <a class="el" href="optionsBase_8h_source.html#l00252">prodCutProtons</a>, <a class="el" href="optionsBase_8h_source.html#l00093">randomEngine</a>, <a class="el" href="optionsBase_8h_source.html#l00095">recreate</a>, <a class="el" href="optionsBase_8h_source.html#l00096">recreateFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00125">recreateSeedState</a>, <a class="el" href="optionsBase_8h_source.html#l00261">restoreFTPFDiffractionForAGreater10</a>, <a class="el" href="optionsBase_8h_source.html#l00240">scintYieldFactor</a>, <a class="el" href="optionsBase_8h_source.html#l00092">seed</a>, <a class="el" href="optionsBase_8h_source.html#l00100">seedStateFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00215">soilMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00097">startFromEvent</a>, <a class="el" href="optionsBase_8h_source.html#l00056">survey</a>, <a class="el" href="optionsBase_8h_source.html#l00057">surveyFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00308">teleporterFullTransform</a>, <a class="el" href="optionsBase_8h_source.html#l00370">trajNoTransportation</a>, <a class="el" href="optionsBase_8h_source.html#l00218">tunnelAper1</a>, <a class="el" href="optionsBase_8h_source.html#l00219">tunnelAper2</a>, <a class="el" href="optionsBase_8h_source.html#l00217">tunnelFloorOffset</a>, <a class="el" href="optionsBase_8h_source.html#l00265">tunnelIsInfiniteAbsorber</a>, <a class="el" href="optionsBase_8h_source.html#l00214">tunnelMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00223">tunnelMaxSegmentLength</a>, <a class="el" href="optionsBase_8h_source.html#l00221">tunnelOffsetX</a>, <a class="el" href="optionsBase_8h_source.html#l00222">tunnelOffsetY</a>, <a class="el" href="optionsBase_8h_source.html#l00213">tunnelSoilThickness</a>, <a class="el" href="optionsBase_8h_source.html#l00212">tunnelThickness</a>, <a class="el" href="optionsBase_8h_source.html#l00211">tunnelType</a>, <a class="el" href="optionsBase_8h_source.html#l00220">tunnelVisible</a>, <a class="el" href="optionsBase_8h_source.html#l00274">turnOffMuonDecay</a>, <a class="el" href="optionsBase_8h_source.html#l00234">turnOnMieScattering</a>, <a class="el" href="optionsBase_8h_source.html#l00233">turnOnOpticalAbsorption</a>, <a class="el" href="optionsBase_8h_source.html#l00236">turnOnOpticalSurface</a>, <a class="el" href="optionsBase_8h_source.html#l00235">turnOnRayleighScattering</a>, <a class="el" href="optionsBase_8h_source.html#l00099">useASCIISeedState</a>, <a class="el" href="optionsBase_8h_source.html#l00256">useElectroNuclear</a>, <a class="el" href="optionsBase_8h_source.html#l00258">useGammaToMuMu</a>, <a class="el" href="optionsBase_8h_source.html#l00255">useLENDGammaNuclear</a>, <a class="el" href="optionsBase_8h_source.html#l00257">useMuonNuclear</a>, <a class="el" href="optionsBase_8h_source.html#l00260">usePositronToHadrons</a>, <a class="el" href="optionsBase_8h_source.html#l00259">usePositronToMuMu</a>, <a class="el" href="optionsBase_8h_source.html#l00195">vacMaterial</a>, <a class="el" href="optionsBase_8h_source.html#l00065">verbose</a>, <a class="el" href="optionsBase_8h_source.html#l00071">verboseEventBDSIM</a>, <a class="el" href="optionsBase_8h_source.html#l00074">verboseEventContinueFor</a>, <a class="el" href="optionsBase_8h_source.html#l00072">verboseEventLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00073">verboseEventStart</a>, <a class="el" href="optionsBase_8h_source.html#l00068">verboseRunLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00080">verboseSteppingBDSIM</a>, <a class="el" href="optionsBase_8h_source.html#l00083">verboseSteppingEventContinueFor</a>, <a class="el" href="optionsBase_8h_source.html#l00082">verboseSteppingEventStart</a>, <a class="el" href="optionsBase_8h_source.html#l00081">verboseSteppingLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00084">verboseSteppingPrimaryOnly</a>, <a class="el" href="optionsBase_8h_source.html#l00077">verboseTrackingLevel</a>, <a class="el" href="optionsBase_8h_source.html#l00045">visDebug</a>, <a class="el" href="optionsBase_8h_source.html#l00041">visMacroFileName</a>, <a class="el" href="optionsBase_8h_source.html#l00046">visVerbosity</a>, <a class="el" href="optionsBase_8h_source.html#l00204">worldVolumeMargin</a>, <a class="el" href="optionsBase_8h_source.html#l00098">writeSeedState</a>, <a class="el" href="optionsBase_8h_source.html#l00272">xrayAllSurfaceRoughness</a>, and <a class="el" href="optionsBase_8h_source.html#l00152">xsize</a>.</p>
 
 </div>
 </div>
@@ -901,11 +907,11 @@ Data Fields</h2></td></tr>
 
 <p>print some properties </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8cc_source.html#l00397">397</a> of file <a class="el" href="optionsBase_8cc_source.html">optionsBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8cc_source.html#l00399">399</a> of file <a class="el" href="optionsBase_8cc_source.html">optionsBase.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="optionsBase_8h_source.html#l00130">ffact</a>, <a class="el" href="optionsBase_8h_source.html#l00094">nGenerate</a>, <a class="el" href="optionsBase_8h_source.html#l00234">turnOnMieScattering</a>, <a class="el" href="optionsBase_8h_source.html#l00233">turnOnOpticalAbsorption</a>, <a class="el" href="optionsBase_8h_source.html#l00236">turnOnOpticalSurface</a>, and <a class="el" href="optionsBase_8h_source.html#l00235">turnOnRayleighScattering</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="parser_8cc_source.html#l00869">GMAD::Parser::PrintOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="parser_8cc_source.html#l00986">GMAD::Parser::PrintOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1012,7 +1018,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00323">323</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00325">325</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1072,7 @@ Here is the caller graph for this function:</div>
 
 <p>Fractional momentum limit for reverting to backup steppers. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00308">308</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00310">310</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -1423,7 +1429,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00280">280</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00282">282</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1439,7 +1445,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00281">281</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00283">283</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1455,7 +1461,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00279">279</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00281">281</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1583,7 +1589,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00292">292</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00294">294</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1599,7 +1605,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00293">293</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00295">295</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1667,7 +1673,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00330">330</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00332">332</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1703,7 +1709,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00278">278</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00280">280</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1719,7 +1725,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00277">277</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00279">279</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1755,7 +1761,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00294">294</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00296">296</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1771,7 +1777,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00299">299</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00301">301</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1787,7 +1793,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00307">307</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00309">309</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1839,7 +1845,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00425">425</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00427">427</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1855,7 +1861,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00424">424</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00426">426</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1891,7 +1897,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00429">429</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00431">431</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -1991,6 +1997,26 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ad88025d1d61528aa50c2a84eee48d976" name="ad88025d1d61528aa50c2a84eee48d976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad88025d1d61528aa50c2a84eee48d976">&#9670;&#160;</a></span>extendPionDecayChannels</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GMAD::OptionsBase::extendPionDecayChannels</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>physics parameters </p>
+
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00273">273</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+
+</div>
+</div>
 <a id="a403cb2d85c4e0cdf9b7b92a627421d27" name="a403cb2d85c4e0cdf9b7b92a627421d27"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a403cb2d85c4e0cdf9b7b92a627421d27">&#9670;&#160;</a></span>ffact</h2>
 
@@ -2007,7 +2033,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00130">130</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00397">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00399">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -2023,7 +2049,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00286">286</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00288">288</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2319,7 +2345,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00285">285</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00287">287</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2335,7 +2361,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00302">302</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00304">304</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2351,7 +2377,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00301">301</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00303">303</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2367,7 +2393,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00287">287</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00289">289</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2383,7 +2409,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00288">288</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00290">290</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2407,14 +2433,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a68b531bceca8b2cfb3279a0f3d21a30a" name="a68b531bceca8b2cfb3279a0f3d21a30a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68b531bceca8b2cfb3279a0f3d21a30a">&#9670;&#160;</a></span>maximumBetaChangePerStep</h2>
+<a id="a89ff10b2d121ca38cc38ecad7715974b" name="a89ff10b2d121ca38cc38ecad7715974b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89ff10b2d121ca38cc38ecad7715974b">&#9670;&#160;</a></span>maximumBetaChangePerStep</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int GMAD::OptionsBase::maximumBetaChangePerStep</td>
+          <td class="memname">double GMAD::OptionsBase::maximumBetaChangePerStep</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2439,7 +2465,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00296">296</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00298">298</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2455,7 +2481,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00298">298</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00300">300</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2493,7 +2519,7 @@ Here is the caller graph for this function:</div>
 
 <p>Maximum permitted step length in any volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00290">290</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00292">292</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -2513,7 +2539,7 @@ Here is the caller graph for this function:</div>
 
 <p>Maximum tracking time per track [s]. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00289">289</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00291">291</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -2533,7 +2559,7 @@ Here is the caller graph for this function:</div>
 
 <p>Maximum permitted track length [m]. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00291">291</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00293">293</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -2571,7 +2597,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00432">432</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00434">434</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2587,7 +2613,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00433">433</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00435">435</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2603,7 +2629,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00431">431</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00433">433</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2619,7 +2645,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00430">430</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00432">432</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2635,7 +2661,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00295">295</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00297">297</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2651,7 +2677,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00297">297</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00299">299</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2709,7 +2735,7 @@ Here is the caller graph for this function:</div>
 
 <p>Minimum allowed radius of curvature. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00303">303</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00305">305</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -2747,7 +2773,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00399">399</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00401">401</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2883,7 +2909,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00417">417</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00419">419</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2899,7 +2925,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00414">414</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00416">416</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2915,7 +2941,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00415">415</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00417">417</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2931,7 +2957,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00416">416</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00418">418</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -2991,7 +3017,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00094">94</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGlobalConstants_8cc_source.html#l00072">BDSGlobalConstants::BDSGlobalConstants()</a>, <a class="el" href="BDSParser_8cc_source.html#l00094">BDSParser::CheckOptions()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00397">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGlobalConstants_8cc_source.html#l00072">BDSGlobalConstants::BDSGlobalConstants()</a>, <a class="el" href="BDSParser_8cc_source.html#l00094">BDSParser::CheckOptions()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00399">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -3009,7 +3035,7 @@ Here is the caller graph for this function:</div>
 
 <p>Momentum threshold for nominal dipole matrix tracking. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00305">305</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00307">307</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -3029,7 +3055,7 @@ Here is the caller graph for this function:</div>
 
 <p>Number of facets per 2pi in visualisation. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00411">411</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00413">413</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -3047,7 +3073,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00403">403</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00405">405</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3063,7 +3089,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00315">315</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00317">317</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3231,7 +3257,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00116">116</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -3315,7 +3341,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00406">406</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00408">408</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3331,7 +3357,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00407">407</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00409">409</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3347,7 +3373,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00408">408</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00410">410</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3443,7 +3469,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00404">404</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00406">406</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3483,7 +3509,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00095">95</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParser_8cc_source.html#l00086">BDSParser::AmalgamateOptions()</a>, <a class="el" href="BDSExecOptions_8cc_source.html#l00039">BDSExecOptions::BDSExecOptions()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParser_8cc_source.html#l00086">BDSParser::AmalgamateOptions()</a>, <a class="el" href="BDSExecOptions_8cc_source.html#l00039">BDSExecOptions::BDSExecOptions()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -3575,7 +3601,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00304">304</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00306">306</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3607,7 +3633,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00398">398</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00400">400</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3623,7 +3649,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00276">276</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00278">278</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3715,7 +3741,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00312">312</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00314">314</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3731,7 +3757,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00311">311</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00313">313</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3749,7 +3775,7 @@ Here is the caller graph for this function:</div>
 
 <p>A list of all the keys that have been set in this instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00439">439</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00441">441</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="options_8cc_source.html#l00098">GMAD::Options::Amalgamate()</a>, <a class="el" href="options_8cc_source.html#l00139">GMAD::Options::HasBeenSet()</a>, and <a class="el" href="options_8h_source.html#l00076">GMAD::Options::set_value()</a>.</p>
 
@@ -3807,7 +3833,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00300">300</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00302">302</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3823,7 +3849,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00319">319</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00321">321</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3839,7 +3865,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00321">321</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00323">323</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3855,7 +3881,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00322">322</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00324">324</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3871,7 +3897,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00320">320</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00322">322</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3887,7 +3913,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00324">324</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00326">326</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3903,7 +3929,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00326">326</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00328">328</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3919,7 +3945,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00329">329</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00331">331</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3935,7 +3961,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00328">328</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00330">330</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3951,7 +3977,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00327">327</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00329">329</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3967,7 +3993,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00325">325</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00327">327</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3983,7 +4009,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00331">331</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00333">333</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -3999,7 +4025,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00344">344</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00346">346</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4015,7 +4041,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00332">332</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00334">334</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4031,7 +4057,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00342">342</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00344">344</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4047,7 +4073,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00343">343</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00345">345</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4063,7 +4089,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00348">348</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00350">350</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4079,7 +4105,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00349">349</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00351">351</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4095,7 +4121,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00347">347</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00349">349</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4111,7 +4137,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00346">346</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00348">348</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4127,7 +4153,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00345">345</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00347">347</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4143,7 +4169,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00335">335</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00337">337</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4159,7 +4185,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00336">336</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00338">338</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4175,7 +4201,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00341">341</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00343">343</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4191,7 +4217,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00333">333</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00335">335</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4207,7 +4233,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00334">334</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00336">336</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4223,7 +4249,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00337">337</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00339">339</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4239,7 +4265,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00339">339</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00341">341</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4255,7 +4281,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00340">340</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00342">342</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4271,7 +4297,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00338">338</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00340">340</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4287,7 +4313,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00317">317</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00319">319</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4303,7 +4329,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00394">394</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00396">396</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4319,7 +4345,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00350">350</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00352">352</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4335,7 +4361,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00396">396</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00398">398</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4351,7 +4377,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00351">351</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00353">353</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4367,7 +4393,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00352">352</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00354">354</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4383,7 +4409,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00382">382</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00384">384</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4399,7 +4425,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00384">384</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00386">386</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4415,7 +4441,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00388">388</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00390">390</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4431,7 +4457,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00385">385</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00387">387</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4447,7 +4473,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00386">386</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00388">388</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4463,7 +4489,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00383">383</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00385">385</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4479,7 +4505,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00387">387</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00389">389</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4495,7 +4521,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00354">354</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00356">356</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4511,7 +4537,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00377">377</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00379">379</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4527,7 +4553,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00356">356</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00358">358</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4543,7 +4569,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00364">364</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00366">366</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4559,7 +4585,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00362">362</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00364">364</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4575,7 +4601,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00375">375</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00377">377</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4591,7 +4617,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00369">369</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00371">371</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4607,7 +4633,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00374">374</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00376">376</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4623,7 +4649,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00373">373</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00375">375</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4639,7 +4665,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00376">376</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00378">378</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4655,7 +4681,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00370">370</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00372">372</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4671,7 +4697,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00359">359</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00361">361</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4687,7 +4713,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00360">360</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00362">362</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4703,7 +4729,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00371">371</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00373">373</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4719,7 +4745,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00363">363</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00365">365</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4735,7 +4761,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00361">361</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00363">363</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4751,7 +4777,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00358">358</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00360">360</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4767,7 +4793,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00357">357</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00359">359</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4783,7 +4809,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00372">372</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00374">374</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4799,7 +4825,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00367">367</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00369">369</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4857,7 +4883,7 @@ Here is the caller graph for this function:</div>
 
 <p>Whether to use the new Transform3D method for the teleporter. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00306">306</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00308">308</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
@@ -4907,7 +4933,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00392">392</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00394">394</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4923,7 +4949,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00390">390</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00392">392</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4939,7 +4965,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00391">391</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00393">393</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4955,7 +4981,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00380">380</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00382">382</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -4973,7 +4999,7 @@ Here is the caller graph for this function:</div>
 
 <p>kept only for backwards compatibility. </p>
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00368">368</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00370">370</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>, and <a class="el" href="BDSGlobalConstants_8cc_source.html#l00375">BDSGlobalConstants::StoreTrajectoryTransportationSteps()</a>.</p>
 
@@ -5219,6 +5245,26 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ab90b5a43aefa94c53ff1575e7db33ac7" name="ab90b5a43aefa94c53ff1575e7db33ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab90b5a43aefa94c53ff1575e7db33ac7">&#9670;&#160;</a></span>turnOffMuonDecay</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GMAD::OptionsBase::turnOffMuonDecay</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>physics parameters </p>
+
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00274">274</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+
+</div>
+</div>
 <a id="ad2007097369ab9cf5cde37decf2c898d" name="ad2007097369ab9cf5cde37decf2c898d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad2007097369ab9cf5cde37decf2c898d">&#9670;&#160;</a></span>turnOnMieScattering</h2>
 
@@ -5235,7 +5281,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00234">234</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00397">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00399">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -5255,7 +5301,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00233">233</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00397">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00399">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -5275,7 +5321,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00236">236</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00397">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00399">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -5295,7 +5341,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00235">235</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00397">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, <a class="el" href="optionsBase_8cc_source.html#l00399">print()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -5311,7 +5357,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00400">400</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00402">402</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -5483,7 +5529,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00426">426</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00428">428</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -5539,7 +5585,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00065">65</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00150">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00139">BDSIMLink::Initialise()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>, <a class="el" href="optionsBase_8cc_source.html#l00025">OptionsBase()</a>, and <a class="el" href="options_8cc_source.html#l00144">GMAD::Options::PublishMembers()</a>.</p>
 
 </div>
 </div>
@@ -5915,7 +5961,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00282">282</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00284">284</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -5971,7 +6017,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00419">419</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00421">421</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -5987,7 +6033,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00418">418</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00420">420</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -6043,7 +6089,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00421">421</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00423">423</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -6059,7 +6105,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00420">420</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00422">422</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -6123,7 +6169,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00423">423</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00425">425</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -6139,7 +6185,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00422">422</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="optionsBase_8h_source.html#l00424">424</a> of file <a class="el" href="optionsBase_8h_source.html">optionsBase.h</a>.</p>
 
 </div>
 </div>
@@ -6150,7 +6196,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 18 2025 18:31:08 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Aug 19 2026 14:22:56 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Magnet Geometry &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=106dc6df"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -125,7 +125,7 @@ BDSIM. Each example demonstrates a different geometry possible.</p>
 <section id="cylindrical-gmad">
 <h2>1_cylindrical.gmad<a class="headerlink" href="#cylindrical-gmad" title="Link to this heading"></a></h2>
 <p>Key code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;cylindrical&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"cylindrical"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This example uses the sequence of magnets defined in one_of_each_base.gmad
@@ -143,7 +143,7 @@ as the default is cylindrical.</p>
 <section id="poles-circular-gmad">
 <h2>2_poles_circular.gmad<a class="headerlink" href="#poles-circular-gmad" title="Link to this heading"></a></h2>
 <p>Key code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;polescircular&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"polescircular"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>As above but with poled geometry and a circular yoke.</p>
@@ -159,7 +159,7 @@ as the default is cylindrical.</p>
 <section id="poles-square-gmad">
 <h2>3_poles_square.gmad<a class="headerlink" href="#poles-square-gmad" title="Link to this heading"></a></h2>
 <p>Key code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;polessquare&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"polessquare"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>As above but with poled geometry and a square yoke.</p>
@@ -175,7 +175,7 @@ as the default is cylindrical.</p>
 <section id="poles-face-gmad">
 <h2>4_poles_face.gmad<a class="headerlink" href="#poles-face-gmad" title="Link to this heading"></a></h2>
 <p>Key code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;polesfacet&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"polesfacet"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>As above but with poled geometry and a square yoke rotated by 45 degrees.</p>
@@ -191,7 +191,7 @@ as the default is cylindrical.</p>
 <section id="poles-face-crop-gmad">
 <h2>5_poles_face_crop.gmad<a class="headerlink" href="#poles-face-crop-gmad" title="Link to this heading"></a></h2>
 <p>Key code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;polesfacetcrop&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"polesfacetcrop"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>As above but with poled geometry and a square yoke rotated by 45 degrees.
@@ -209,8 +209,8 @@ edges, where <span class="math notranslate nohighlight">\(n\)</span> is the numb
 <section id="lhcleft-gmad-7-lhcright-gmad">
 <h2>6_lhcleft.gmad &amp; 7_lhcright.gmad<a class="headerlink" href="#lhcleft-gmad-7-lhcright-gmad" title="Link to this heading"></a></h2>
 <p>Key code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;lhcleft&quot;</span><span class="p">;</span>
-<span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;lhcright&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"lhcleft"</span><span class="p">;</span>
+<span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"lhcright"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>LHC cyrogenic magnet for dipoles and quadrupoles.  Given the two beam nature
@@ -224,7 +224,7 @@ the ‘active’ beam pipe.</p>
 <section id="none-gmad">
 <h2>8_none.gmad<a class="headerlink" href="#none-gmad" title="Link to this heading"></a></h2>
 <p>Key code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnetGeometryType</span><span class="o">=</span><span class="s2">"none"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>No magnet outer geometry is built around the beam pipe - only the beam pipe exists.</p>
@@ -423,8 +423,8 @@ or not the coils at the end of a magnet.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

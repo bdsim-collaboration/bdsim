@@ -1,65 +1,68 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBDSSingleUse.html" title="Class to provide single use functionality." alt="" coords="35,480,149,505"/>
-<area shape="rect" id="Node000001" href="$classBDSPhysicsAnnihiToMuMu.html" title="High energy muon processes." alt="" coords="270,628,463,653"/>
-<area shape="poly" id="edge268_Node000000_Node000001" title=" " alt="" coords="163,504,180,515,192,527,199,540,205,566,211,591,217,602,228,613,248,625,271,633,269,638,246,630,225,617,213,606,206,593,200,567,194,542,188,530,177,519,161,508"/>
-<area shape="rect" id="Node000004" href="$classBDSPhysicsChannelling.html" title="Channelling physics process." alt="" coords="279,677,454,703"/>
-<area shape="poly" id="edge269_Node000000_Node000004" title=" " alt="" coords="164,503,180,515,195,534,202,553,205,591,207,628,214,646,228,663,252,678,280,686,278,691,250,682,225,667,209,649,202,630,199,592,197,554,191,536,177,519,161,507"/>
-<area shape="rect" id="Node000005" href="$classBDSPhysicsCherenkov.html" title="Cherenkov physics process constructor." alt="" coords="283,727,450,752"/>
-<area shape="poly" id="edge270_Node000000_Node000005" title=" " alt="" coords="163,502,181,515,198,540,206,566,207,591,204,617,202,642,203,666,211,689,228,712,254,728,284,737,282,742,252,733,225,716,206,692,198,667,196,641,199,616,201,591,201,567,194,542,177,519,160,507"/>
-<area shape="rect" id="Node000006" href="$classBDSPhysicsCutsAndLimits.html" title="Physics processes required for user tracking limits." alt="" coords="271,776,463,801"/>
-<area shape="poly" id="edge271_Node000000_Node000006" title=" " alt="" coords="164,502,181,515,202,547,210,579,209,610,204,642,199,673,199,703,207,732,229,761,248,775,271,784,269,789,246,780,225,765,203,735,194,704,194,672,199,641,204,610,204,579,197,549,177,518,160,506"/>
-<area shape="rect" id="Node000007" href="$classBDSPhysicsEMDissociation.html" title="Electromagnetic dissociation for high energy ions." alt="" coords="267,825,466,851"/>
-<area shape="poly" id="edge272_Node000000_Node000007" title=" " alt="" coords="164,502,181,515,195,534,205,553,213,591,211,629,204,667,197,704,195,740,204,776,214,793,229,811,247,824,268,833,266,838,244,829,225,815,210,796,199,778,190,741,191,703,198,666,206,629,208,592,200,555,191,537,177,519,160,506"/>
-<area shape="rect" id="Node000008" href="$classBDSPhysicsGammaToMuMu.html" title="High energy muon processes." alt="" coords="265,875,469,900"/>
-<area shape="poly" id="edge273_Node000000_Node000008" title=" " alt="" coords="164,502,181,515,197,537,208,559,214,582,217,604,213,648,203,692,194,735,191,777,194,798,200,819,212,839,229,860,245,873,266,882,263,887,243,878,225,864,207,842,196,821,189,799,186,777,189,734,198,691,208,647,211,604,209,583,203,561,193,540,177,519,160,506"/>
-<area shape="rect" id="Node000009" href="$classBDSPhysicsIonisation.html" title="Only ionisation from G4EmStandardPhysics." alt="" coords="285,924,448,949"/>
-<area shape="poly" id="edge274_Node000000_Node000009" title=" " alt="" coords="164,502,181,515,199,540,211,566,218,591,220,617,215,667,203,717,191,766,187,814,190,838,197,862,210,886,228,909,255,927,286,936,284,941,252,932,225,913,205,889,192,864,184,839,182,814,186,765,198,715,210,666,215,617,213,592,206,568,195,543,177,519,161,506"/>
-<area shape="rect" id="Node000010" href="$classBDSPhysicsLaserComptonScattering.html" title=" " alt="" coords="237,5,496,31"/>
-<area shape="poly" id="edge275_Node000000_Node000010" title=" " alt="" coords="90,466,92,384,98,328,109,268,125,206,149,146,182,90,225,41,243,29,246,33,228,45,186,93,154,148,130,208,114,269,103,329,98,384,95,467"/>
-<area shape="rect" id="Node000011" href="$classBDSPhysicsLaserCumulativeCompton.html" title=" " alt="" coords="263,55,471,95"/>
-<area shape="poly" id="edge276_Node000000_Node000011" title=" " alt="" coords="91,466,98,394,118,297,135,245,158,194,188,146,225,105,242,93,261,84,264,89,245,98,228,109,192,150,163,196,140,246,124,298,104,395,97,467"/>
-<area shape="rect" id="Node000012" href="$classBDSPhysicsLaserCumulativePhotodetachment.html" title=" " alt="" coords="263,119,471,159"/>
-<area shape="poly" id="edge277_Node000000_Node000012" title=" " alt="" coords="94,466,104,405,127,324,144,282,166,241,193,202,225,169,261,149,264,154,228,173,197,206,170,243,149,284,132,326,110,406,99,467"/>
-<area shape="rect" id="Node000013" href="$classBDSPhysicsLaserIonExcitation.html" title=" " alt="" coords="257,184,476,209"/>
-<area shape="poly" id="edge278_Node000000_Node000013" title=" " alt="" coords="95,466,109,413,133,345,150,310,171,276,196,245,225,218,256,203,258,207,228,223,200,249,175,279,155,313,138,347,114,414,101,467"/>
-<area shape="rect" id="Node000014" href="$classBDSPhysicsLaserPhotoDetachment.html" title=" " alt="" coords="241,233,492,259"/>
-<area shape="poly" id="edge279_Node000000_Node000014" title=" " alt="" coords="98,466,114,422,140,368,177,313,200,289,225,268,246,256,249,261,228,272,203,293,181,316,145,371,119,424,103,468"/>
-<area shape="rect" id="Node000015" href="$classBDSPhysicsLaserWire.html" title="Constructor for BDSLaserCompton process." alt="" coords="285,283,448,308"/>
-<area shape="poly" id="edge280_Node000000_Node000015" title=" " alt="" coords="103,466,122,432,149,391,183,350,225,317,254,304,284,296,286,302,256,309,228,322,187,354,153,394,126,434,107,469"/>
-<area shape="rect" id="Node000017" href="$classBDSPhysicsMuon.html" title="High energy muon processes." alt="" coords="299,332,434,357"/>
-<area shape="poly" id="edge281_Node000000_Node000017" title=" " alt="" coords="109,467,157,415,190,388,225,366,262,353,299,346,300,351,263,358,228,371,193,393,161,419,113,471"/>
-<area shape="rect" id="Node000018" href="$classBDSPhysicsMuonInelastic.html" title="Only nuclear interactions for mu+&#45;." alt="" coords="272,381,461,407"/>
-<area shape="poly" id="edge282_Node000000_Node000018" title=" " alt="" coords="121,470,169,441,226,415,271,403,272,408,228,421,171,446,124,475"/>
-<area shape="rect" id="Node000019" href="$classBDSPhysicsMuonSplitting.html" title="High energy muon processes." alt="" coords="273,431,461,456"/>
-<area shape="poly" id="edge283_Node000000_Node000019" title=" " alt="" coords="162,477,226,465,290,453,291,459,227,470,163,482"/>
-<area shape="rect" id="Node000020" href="$classBDSPhysicsRadioactivation.html" title="Radioactivation processes." alt="" coords="267,480,467,505"/>
-<area shape="poly" id="edge284_Node000000_Node000020" title=" " alt="" coords="163,490,266,490,266,495,163,495"/>
-<area shape="rect" id="Node000021" href="$classBDSPhysicsSynchRad.html" title="A physics constructor that only constructs Synchrotron Radiation." alt="" coords="285,529,448,555"/>
-<area shape="poly" id="edge285_Node000000_Node000021" title=" " alt="" coords="163,503,295,527,295,532,163,508"/>
-<area shape="rect" id="Node000022" href="$classBDSPhysicsXrayReflection.html" title="Xray reflection." alt="" coords="270,579,463,604"/>
-<area shape="poly" id="edge286_Node000000_Node000022" title=" " alt="" coords="164,506,180,514,195,527,205,540,213,553,228,564,271,579,269,584,225,568,210,556,200,543,191,531,177,519,161,511"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,529,179,555"/>
-<area shape="poly" id="edge288_Node000002_Node000001" title=" " alt="" coords="125,560,172,588,228,613,273,625,272,631,226,618,169,592,122,564"/>
-<area shape="poly" id="edge289_Node000002_Node000004" title=" " alt="" coords="114,564,162,615,193,641,228,662,280,680,278,685,226,667,190,645,158,619,110,567"/>
-<area shape="poly" id="edge290_Node000002_Node000005" title=" " alt="" coords="107,566,126,600,153,640,187,679,228,712,255,724,284,732,283,737,253,729,225,716,184,683,149,643,122,602,103,568"/>
-<area shape="poly" id="edge291_Node000002_Node000006" title=" " alt="" coords="104,567,120,611,146,664,182,717,203,741,228,761,249,772,271,780,270,785,247,777,225,766,200,745,177,721,141,666,115,613,99,569"/>
-<area shape="poly" id="edge292_Node000002_Node000007" title=" " alt="" coords="101,567,114,620,138,686,155,721,175,754,200,785,228,811,247,822,268,829,266,834,245,827,225,815,196,788,171,757,150,723,133,688,109,621,95,569"/>
-<area shape="poly" id="edge293_Node000002_Node000008" title=" " alt="" coords="99,568,109,629,131,709,148,751,170,791,196,828,228,860,246,871,266,879,264,884,243,876,225,864,192,832,165,794,143,753,126,711,104,630,93,569"/>
-<area shape="poly" id="edge294_Node000002_Node000009" title=" " alt="" coords="97,568,104,638,124,731,141,780,164,828,192,872,228,909,255,925,286,934,284,939,253,930,225,913,188,875,159,830,136,782,119,732,99,639,92,569"/>
-<area shape="poly" id="edge295_Node000002_Node000010" title=" " alt="" coords="172,519,177,515,187,498,195,476,202,419,202,352,198,279,195,206,196,138,204,82,213,59,225,42,240,29,243,33,229,45,217,62,209,83,201,139,200,206,204,278,207,352,207,419,200,477,192,500,181,518,176,523"/>
-<area shape="poly" id="edge296_Node000002_Node000011" title=" " alt="" coords="172,519,177,515,195,489,207,464,214,438,216,413,211,362,198,311,186,260,182,209,184,183,192,157,205,131,225,105,242,91,261,81,264,86,245,96,229,109,210,134,197,159,190,184,187,209,192,259,204,310,216,361,221,413,219,439,212,465,200,492,181,518,176,523"/>
-<area shape="poly" id="edge297_Node000002_Node000012" title=" " alt="" coords="172,519,177,515,192,493,203,472,211,429,208,386,199,343,190,300,187,257,189,235,196,213,208,191,225,169,242,155,261,146,264,150,245,160,229,173,212,194,201,215,195,236,192,257,195,299,204,342,213,386,217,429,208,474,197,496,181,518,176,523"/>
-<area shape="poly" id="edge298_Node000002_Node000013" title=" " alt="" coords="172,520,177,515,190,496,200,478,207,441,205,404,198,367,191,330,189,293,199,255,209,237,225,219,239,207,256,199,258,204,242,212,229,223,214,240,204,257,195,293,196,329,203,366,210,404,213,442,205,480,195,499,181,518,176,523"/>
-<area shape="poly" id="edge299_Node000002_Node000014" title=" " alt="" coords="172,520,177,515,197,484,204,454,203,423,198,392,194,361,193,330,202,298,225,268,239,257,243,261,229,272,207,301,199,330,199,360,204,391,208,423,209,455,201,487,181,518,175,524"/>
-<area shape="poly" id="edge300_Node000002_Node000015" title=" " alt="" coords="171,520,177,515,193,491,201,467,201,442,199,417,196,392,197,366,206,342,225,317,253,300,285,291,286,296,255,305,228,321,211,344,203,367,202,392,204,416,206,442,206,467,198,493,181,518,175,524"/>
-<area shape="poly" id="edge302_Node000002_Node000017" title=" " alt="" coords="171,520,177,515,190,497,197,479,199,441,201,404,209,385,225,367,241,355,260,347,299,340,300,345,262,352,244,360,228,371,214,387,207,405,204,442,202,480,195,500,181,519,174,524"/>
-<area shape="poly" id="edge303_Node000002_Node000018" title=" " alt="" coords="169,521,177,515,188,503,194,491,199,466,205,440,213,428,225,416,247,403,271,395,273,400,249,408,228,420,217,431,210,442,205,467,199,493,192,506,180,519,172,525"/>
-<area shape="poly" id="edge304_Node000002_Node000019" title=" " alt="" coords="162,522,177,514,191,502,200,490,210,477,225,465,272,449,273,454,228,470,213,481,205,493,195,506,180,519,165,527"/>
-<area shape="poly" id="edge305_Node000002_Node000020" title=" " alt="" coords="172,524,226,514,290,503,291,508,227,519,173,529"/>
-<area shape="poly" id="edge306_Node000002_Node000021" title=" " alt="" coords="192,539,285,539,285,545,192,545"/>
-<area shape="poly" id="edge307_Node000002_Node000022" title=" " alt="" coords="177,555,296,576,295,581,177,560"/>
-<area shape="rect" id="Node000003" href="$classBDSEmStandardPhysicsOp4Channelling.html" title="Copy of crystal channelling em physics from Geant4." alt="" coords="227,1023,507,1048"/>
-<area shape="poly" id="edge287_Node000002_Node000003" title=" " alt="" coords="100,568,116,666,144,800,162,867,182,928,204,977,229,1009,244,1020,241,1024,225,1013,200,980,177,930,157,869,139,801,111,667,94,569"/>
-<area shape="rect" id="Node000016" href="$classBDSPhysicsMilli.html" title="EM processes for millicharged particles." alt="" coords="303,973,430,999"/>
-<area shape="poly" id="edge301_Node000002_Node000016" title=" " alt="" coords="96,568,100,646,106,698,117,753,134,810,157,865,188,916,228,960,245,971,263,979,303,986,303,991,262,984,242,976,225,964,184,920,153,868,129,812,112,754,101,699,94,647,90,569"/>
+<area shape="rect" id="Node000000" href="$classBDSSingleUse.html" title="Class to provide single use functionality." alt="" coords="35,493,149,518"/>
+<area shape="rect" id="Node000001" href="$classBDSPhysicsAnnihiToMuMu.html" title="High energy muon processes." alt="" coords="270,627,463,653"/>
+<area shape="poly" id="edge268_Node000000_Node000001" title=" " alt="" coords="151,521,180,539,197,559,204,578,212,596,228,613,248,623,271,631,269,636,246,628,225,617,207,599,199,580,192,562,177,543,148,526"/>
+<area shape="rect" id="Node000004" href="$classBDSPhysicsChannelling.html" title="Channelling physics process." alt="" coords="279,677,454,702"/>
+<area shape="poly" id="edge269_Node000000_Node000004" title=" " alt="" coords="156,522,181,539,193,556,200,572,204,604,208,634,215,648,228,662,252,676,280,685,278,690,250,681,225,666,211,651,203,636,198,605,194,574,188,558,177,543,153,526"/>
+<area shape="rect" id="Node000005" href="$classBDSPhysicsCherenkov.html" title="Cherenkov physics process constructor." alt="" coords="283,726,450,751"/>
+<area shape="poly" id="edge270_Node000000_Node000005" title=" " alt="" coords="158,522,181,540,196,563,203,585,203,630,202,651,204,672,212,692,228,711,254,727,284,736,283,741,252,732,225,715,208,694,199,673,197,651,198,630,197,586,191,565,177,543,155,526"/>
+<area shape="rect" id="Node000006" href="$classBDSPhysicsCutsAndLimits.html" title="Physics processes required for user tracking limits." alt="" coords="271,775,463,801"/>
+<area shape="poly" id="edge271_Node000000_Node000006" title=" " alt="" coords="159,522,181,540,199,569,206,598,206,627,202,655,199,682,200,709,209,735,229,761,248,775,271,783,270,788,246,779,225,765,204,737,195,710,194,682,197,654,200,627,200,599,194,571,177,543,156,526"/>
+<area shape="rect" id="Node000007" href="$classBDSPhysicsEMDissociation.html" title="Electromagnetic dissociation for high energy ions." alt="" coords="267,825,466,850"/>
+<area shape="poly" id="edge272_Node000000_Node000007" title=" " alt="" coords="160,522,181,540,202,576,209,612,207,646,202,680,196,714,196,746,205,778,229,810,247,824,268,832,266,837,244,828,225,814,201,781,191,747,191,713,196,680,202,646,204,612,197,578,177,543,157,526"/>
+<area shape="rect" id="Node000008" href="$classBDSPhysicsGammaToMuMu.html" title="High energy muon processes." alt="" coords="265,874,469,899"/>
+<area shape="poly" id="edge273_Node000000_Node000008" title=" " alt="" coords="161,522,181,540,195,561,204,583,212,625,209,666,201,706,193,745,192,783,202,822,213,840,229,859,246,873,266,881,264,886,243,877,225,863,208,843,197,824,187,784,188,744,196,705,204,665,207,625,199,584,190,564,177,543,157,526"/>
+<area shape="rect" id="Node000009" href="$classBDSPhysicsIonisation.html" title="Only ionisation from G4EmStandardPhysics." alt="" coords="285,923,448,949"/>
+<area shape="poly" id="edge274_Node000000_Node000009" title=" " alt="" coords="161,522,181,540,197,565,207,589,213,614,215,638,210,685,200,731,190,776,188,821,191,843,198,865,211,887,228,909,255,927,286,935,284,941,252,931,225,913,206,890,194,867,186,844,183,821,185,775,195,730,205,684,210,638,208,614,202,591,192,567,177,543,157,526"/>
+<area shape="rect" id="Node000010" href="$classBDSPhysicsLaserComptonScattering.html" title=" " alt="" coords="237,973,496,998"/>
+<area shape="poly" id="edge275_Node000000_Node000010" title=" " alt="" coords="161,522,181,540,199,568,210,596,216,624,218,651,212,704,199,756,187,807,184,858,187,883,195,908,208,933,229,958,243,970,240,974,225,962,204,936,190,910,182,884,178,858,182,807,194,755,207,703,213,651,211,624,205,598,194,570,177,543,158,526"/>
+<area shape="rect" id="Node000011" href="$classBDSPhysicsLaserCumulativeCompton.html" title=" " alt="" coords="263,5,471,45"/>
+<area shape="poly" id="edge276_Node000000_Node000011" title=" " alt="" coords="90,479,93,397,99,342,110,282,127,221,151,161,183,104,225,55,242,43,261,34,264,38,245,47,228,59,187,107,156,163,132,223,115,284,105,343,99,397,95,479"/>
+<area shape="rect" id="Node000012" href="$classBDSPhysicsLaserCumulativePhotodetachment.html" title=" " alt="" coords="263,69,471,109"/>
+<area shape="poly" id="edge277_Node000000_Node000012" title=" " alt="" coords="92,478,99,407,119,310,136,258,158,207,188,160,225,119,242,107,261,98,264,103,245,112,228,123,192,163,163,210,141,260,124,311,104,407,97,479"/>
+<area shape="rect" id="Node000013" href="$classBDSPhysicsLaserIonExcitation.html" title=" " alt="" coords="257,134,476,159"/>
+<area shape="poly" id="edge278_Node000000_Node000013" title=" " alt="" coords="93,479,102,415,124,330,141,286,163,242,191,203,225,169,256,152,258,156,228,173,195,206,168,245,146,288,129,332,107,416,98,480"/>
+<area shape="rect" id="Node000014" href="$classBDSPhysicsLaserPhotoDetachment.html" title=" " alt="" coords="241,183,492,209"/>
+<area shape="poly" id="edge279_Node000000_Node000014" title=" " alt="" coords="95,479,107,423,131,352,148,315,169,279,195,246,225,218,244,206,247,211,228,222,199,250,174,282,153,317,136,354,112,425,100,480"/>
+<area shape="rect" id="Node000015" href="$classBDSPhysicsLaserWire.html" title="Constructor for BDSLaserCompton process." alt="" coords="285,233,448,258"/>
+<area shape="poly" id="edge280_Node000000_Node000015" title=" " alt="" coords="98,478,113,432,139,374,175,316,199,289,225,267,254,253,284,245,286,250,256,258,228,272,202,293,180,319,143,376,118,434,103,480"/>
+<area shape="rect" id="Node000017" href="$classBDSPhysicsMuon.html" title="High energy muon processes." alt="" coords="299,282,434,307"/>
+<area shape="poly" id="edge281_Node000000_Node000017" title=" " alt="" coords="101,479,119,442,146,397,182,353,225,316,261,301,299,293,300,298,263,306,228,321,185,357,151,400,124,444,106,481"/>
+<area shape="rect" id="Node000018" href="$classBDSPhysicsMuonInelastic.html" title="Only nuclear interactions for mu+&#45;." alt="" coords="272,331,461,357"/>
+<area shape="poly" id="edge282_Node000000_Node000018" title=" " alt="" coords="107,480,155,421,188,391,225,366,271,349,273,354,228,370,191,395,159,425,111,483"/>
+<area shape="rect" id="Node000019" href="$classBDSPhysicsMuonSplitting.html" title="High energy muon processes." alt="" coords="273,381,461,406"/>
+<area shape="poly" id="edge283_Node000000_Node000019" title=" " alt="" coords="117,482,166,447,226,415,272,401,273,406,228,420,168,451,120,486"/>
+<area shape="rect" id="Node000020" href="$classBDSPhysicsPionExtendedDecays.html" title="A physics constructor to extend the pion decay modes." alt="" coords="249,430,484,455"/>
+<area shape="poly" id="edge284_Node000000_Node000020" title=" " alt="" coords="146,486,226,464,282,453,283,458,227,469,147,491"/>
+<area shape="rect" id="Node000021" href="$classBDSPhysicsRadioactivation.html" title="Radioactivation processes." alt="" coords="267,479,467,505"/>
+<area shape="poly" id="edge285_Node000000_Node000021" title=" " alt="" coords="163,499,266,494,266,500,163,505"/>
+<area shape="rect" id="Node000022" href="$classBDSPhysicsSynchRad.html" title="A physics constructor that only constructs Synchrotron Radiation." alt="" coords="285,529,448,554"/>
+<area shape="poly" id="edge286_Node000000_Node000022" title=" " alt="" coords="163,512,286,528,285,533,163,517"/>
+<area shape="rect" id="Node000023" href="$classBDSPhysicsXrayReflection.html" title="Xray reflection." alt="" coords="270,578,463,603"/>
+<area shape="poly" id="edge287_Node000000_Node000023" title=" " alt="" coords="138,521,180,539,203,552,228,563,276,575,274,581,226,568,201,557,177,544,136,526"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,554,179,579"/>
+<area shape="poly" id="edge289_Node000002_Node000001" title=" " alt="" coords="138,582,227,612,284,625,282,630,226,617,136,587"/>
+<area shape="poly" id="edge290_Node000002_Node000004" title=" " alt="" coords="118,587,166,626,196,645,228,662,280,677,278,682,226,666,194,650,163,630,115,591"/>
+<area shape="poly" id="edge291_Node000002_Node000005" title=" " alt="" coords="110,589,157,652,190,684,228,711,255,723,284,730,282,735,253,728,225,716,187,688,153,655,106,592"/>
+<area shape="poly" id="edge292_Node000002_Node000006" title=" " alt="" coords="106,592,123,630,150,677,185,723,228,760,249,771,271,779,270,784,247,776,225,765,181,726,145,679,118,633,101,594"/>
+<area shape="poly" id="edge293_Node000002_Node000007" title=" " alt="" coords="102,592,117,640,142,699,179,760,202,787,228,810,247,821,268,828,266,833,245,826,225,814,198,791,174,763,137,702,112,641,97,593"/>
+<area shape="poly" id="edge294_Node000002_Node000008" title=" " alt="" coords="100,593,112,649,135,722,152,760,173,797,198,831,228,859,246,870,265,878,264,883,243,875,225,863,194,834,168,800,147,763,130,724,106,651,94,594"/>
+<area shape="poly" id="edge295_Node000002_Node000009" title=" " alt="" coords="98,593,107,658,128,744,145,790,167,834,194,874,228,909,255,924,286,933,285,938,253,929,225,913,190,877,162,836,140,792,123,746,101,659,92,593"/>
+<area shape="poly" id="edge296_Node000002_Node000010" title=" " alt="" coords="96,593,102,666,121,766,138,819,161,870,191,917,228,958,247,970,244,975,225,962,186,921,156,873,133,821,116,767,97,667,91,593"/>
+<area shape="poly" id="edge297_Node000002_Node000011" title=" " alt="" coords="156,546,177,528,186,510,193,487,200,431,200,363,197,291,195,219,196,152,205,96,213,74,225,56,242,41,261,31,264,36,245,46,229,59,218,76,210,97,201,153,200,219,202,291,205,363,205,431,198,488,191,512,181,531,160,550"/>
+<area shape="poly" id="edge298_Node000002_Node000012" title=" " alt="" coords="156,546,177,528,193,501,204,474,210,448,212,423,207,372,195,322,184,272,180,222,184,196,192,171,205,145,225,119,242,105,261,95,264,100,245,110,229,123,209,148,197,173,189,197,186,222,189,271,200,321,212,371,218,423,216,449,209,476,198,503,181,531,159,550"/>
+<area shape="poly" id="edge299_Node000002_Node000013" title=" " alt="" coords="156,546,177,528,192,504,201,481,209,435,204,390,195,346,185,302,183,257,187,235,194,213,207,191,225,169,239,157,256,149,258,153,242,161,229,173,211,194,199,215,192,236,188,258,191,301,200,345,210,390,214,435,207,483,196,507,181,531,159,550"/>
+<area shape="poly" id="edge300_Node000002_Node000014" title=" " alt="" coords="155,546,177,528,190,508,199,488,206,448,203,410,195,371,188,333,187,294,198,256,209,237,225,218,239,207,242,211,229,222,213,240,203,258,193,295,194,332,201,370,208,409,211,449,204,489,194,510,181,531,159,550"/>
+<area shape="poly" id="edge301_Node000002_Node000015" title=" " alt="" coords="154,546,177,528,196,494,203,461,201,429,196,396,191,364,192,331,201,299,225,267,253,249,284,241,286,246,255,254,228,271,206,302,197,332,197,363,201,395,207,428,208,462,201,496,181,531,158,550"/>
+<area shape="poly" id="edge303_Node000002_Node000017" title=" " alt="" coords="154,546,177,528,193,501,200,474,200,448,197,421,194,395,196,369,205,342,225,317,241,305,260,296,299,289,300,294,261,301,244,309,229,321,209,345,201,370,200,395,202,421,205,447,205,475,198,503,181,531,157,550"/>
+<area shape="poly" id="edge304_Node000002_Node000018" title=" " alt="" coords="153,546,177,528,190,507,197,487,198,446,200,406,208,386,225,366,247,352,271,343,273,348,249,357,228,370,213,388,205,407,203,446,202,488,195,509,181,531,156,550"/>
+<area shape="poly" id="edge305_Node000002_Node000019" title=" " alt="" coords="150,546,177,527,188,513,194,500,198,471,204,443,212,429,225,415,247,402,272,394,273,399,250,407,228,419,216,432,209,445,204,472,199,501,192,516,181,531,153,550"/>
+<area shape="poly" id="edge306_Node000002_Node000020" title=" " alt="" coords="144,546,177,527,191,511,199,495,208,479,225,464,249,453,252,458,228,469,212,483,204,498,196,514,180,531,147,551"/>
+<area shape="poly" id="edge307_Node000002_Node000021" title=" " alt="" coords="133,546,226,513,276,502,277,507,227,519,135,551"/>
+<area shape="poly" id="edge308_Node000002_Node000022" title=" " alt="" coords="192,555,285,546,285,551,193,560"/>
+<area shape="poly" id="edge309_Node000002_Node000023" title=" " alt="" coords="193,573,270,580,269,585,192,578"/>
+<area shape="rect" id="Node000003" href="$classBDSEmStandardPhysicsOp4Channelling.html" title="Copy of crystal channelling em physics from Geant4." alt="" coords="227,1022,507,1047"/>
+<area shape="poly" id="edge288_Node000002_Node000003" title=" " alt="" coords="95,593,98,675,104,729,115,787,131,848,155,906,187,961,228,1007,246,1020,243,1024,225,1011,183,964,150,909,126,849,109,788,99,729,93,675,90,593"/>
+<area shape="rect" id="Node000016" href="$classBDSPhysicsMilli.html" title="EM processes for millicharged particles." alt="" coords="303,1071,430,1097"/>
+<area shape="poly" id="edge302_Node000002_Node000016" title=" " alt="" coords="99,593,115,696,142,836,160,908,181,972,203,1024,229,1058,245,1070,263,1077,304,1085,303,1090,262,1083,242,1074,225,1062,199,1026,176,974,155,909,137,838,110,697,94,594"/>
 </map>

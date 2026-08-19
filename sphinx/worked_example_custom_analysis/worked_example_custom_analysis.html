@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom Analysis &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=106dc6df"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -183,24 +183,24 @@ script is in <code class="code docutils literal notranslate"><span class="pre">b
 
 <span class="n">particles</span>    <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">]</span>
 <span class="n">particlesStr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">]</span>
-<span class="n">names</span>        <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu^-$&#39;</span><span class="p">,</span>     <span class="sa">r</span><span class="s1">&#39;$\mu^+$&#39;</span><span class="p">,</span>
-                <span class="sa">r</span><span class="s1">&#39;$\nu_{\mu}$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\overline{\nu}_{\mu}$&#39;</span><span class="p">]</span>
+<span class="n">names</span>        <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">'$\mu^-$'</span><span class="p">,</span>     <span class="sa">r</span><span class="s1">'$\mu^+$'</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s1">'$\nu_{\mu}$'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'$\overline{\nu}_{\mu}$'</span><span class="p">]</span>
 
 <span class="c1"># setup histograms - 1x 2D histogram in X,Z for each particle</span>
 <span class="n">oZX</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">ps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span><span class="n">particlesStr</span><span class="p">):</span>
     <span class="c1"># x dimension of histogram: 50 bins in Z from 0 to 10m</span>
     <span class="c1"># y dimension of histogram: 50 bins in X from -1 to 1 m</span>
-    <span class="c1"># note the histogram has no concept of units - it&#39;s purely just a</span>
+    <span class="c1"># note the histogram has no concept of units - it's purely just a</span>
     <span class="c1"># number so we need to choose ranges appropriately</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span><span class="p">(</span><span class="s2">&quot;Origin_ZX_&quot;</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span> <span class="s2">&quot;Origin of &quot;</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span><span class="p">(</span><span class="s2">"Origin_ZX_"</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span> <span class="s2">"Origin of "</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span>
                   <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
                   <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
     <span class="n">oZX</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
 
 <span class="n">eventTree</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">()</span>
 <span class="c1"># using this python syntax for name in thing, ROOT will make the variable</span>
-<span class="c1"># &#39;name&#39; (&#39;event&#39;) here, have the exact same layout as we see in a TBrowser</span>
+<span class="c1"># 'name' ('event') here, have the exact same layout as we see in a TBrowser</span>
 <span class="c1"># and as is in the file.</span>
 <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">eventTree</span><span class="p">:</span>
     <span class="c1"># now loop over the trajectories stored for this event</span>
@@ -208,7 +208,7 @@ script is in <code class="code docutils literal notranslate"><span class="pre">b
         <span class="c1"># get the particle ID of the trajectory</span>
         <span class="n">partID</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">partID</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">partID</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">:</span>
-            <span class="k">continue</span> <span class="c1"># skip ones we don&#39;t want to histogram</span>
+            <span class="k">continue</span> <span class="c1"># skip ones we don't want to histogram</span>
 
         <span class="c1"># i-th trajectory and the 0th (ie first) point of the trajectory position vector</span>
         <span class="n">originPos</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -218,7 +218,7 @@ script is in <code class="code docutils literal notranslate"><span class="pre">b
         <span class="n">oZX</span><span class="p">[</span><span class="n">partID</span><span class="p">]</span><span class="o">.</span><span class="n">Fill</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
 
 <span class="c1"># now write histograms out to a new ROOT file</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="n">outputfilename</span><span class="p">,</span> <span class="s2">&quot;RECREATE&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="n">outputfilename</span><span class="p">,</span> <span class="s2">"RECREATE"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">pid</span><span class="p">,</span><span class="n">histogram</span> <span class="ow">in</span> <span class="n">oZX</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">histogram</span><span class="o">.</span><span class="n">AddDirectory</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># bdsim / rebdsim classes turn off AddDirectory by default</span>
     <span class="n">histogram</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>
@@ -252,8 +252,8 @@ are created as in the earlier part of this example but are a per-event average.<
 
     <span class="n">particles</span>    <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">]</span>
     <span class="n">particlesStr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">]</span>
-    <span class="n">names</span>        <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu^-$&#39;</span><span class="p">,</span>     <span class="sa">r</span><span class="s1">&#39;$\mu^+$&#39;</span><span class="p">,</span>
-                    <span class="sa">r</span><span class="s1">&#39;$\nu_{\mu}$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\overline{\nu}_{\mu}$&#39;</span><span class="p">]</span>
+    <span class="n">names</span>        <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">'$\mu^-$'</span><span class="p">,</span>     <span class="sa">r</span><span class="s1">'$\mu^+$'</span><span class="p">,</span>
+                    <span class="sa">r</span><span class="s1">'$\nu_{\mu}$'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'$\overline{\nu}_{\mu}$'</span><span class="p">]</span>
 
     <span class="c1"># setup histograms - 1x 2D histogram in X,Z for each particle</span>
     <span class="c1"># a base hsitogram is one we will use for each event and empty it afterwards</span>
@@ -261,21 +261,21 @@ are created as in the earlier part of this example but are a per-event average.<
     <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">ps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span><span class="n">particlesStr</span><span class="p">):</span>
         <span class="c1"># x dimension of histogram: 50 bins in Z from 0 to 10m</span>
         <span class="c1"># y dimension of histogram: 50 bins in X from -1 to 1 m</span>
-        <span class="c1"># note the histogram has no concept of units - it&#39;s purely just a</span>
+        <span class="c1"># note the histogram has no concept of units - it's purely just a</span>
         <span class="c1"># number so we need to choose ranges appropriately</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span><span class="p">(</span><span class="s2">&quot;Origin_ZX_&quot;</span><span class="o">+</span><span class="n">ps</span><span class="o">+</span><span class="s2">&quot;BASE&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin of &quot;</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH2D</span><span class="p">(</span><span class="s2">"Origin_ZX_"</span><span class="o">+</span><span class="n">ps</span><span class="o">+</span><span class="s2">"BASE"</span><span class="p">,</span> <span class="s2">"Origin of "</span><span class="o">+</span><span class="n">ps</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
         <span class="n">baseHistograms</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
 
     <span class="c1"># make accumulators that calculate a rolling average for each histogram</span>
     <span class="n">accumulators</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">hist</span> <span class="ow">in</span> <span class="n">baseHistograms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="c1"># note we must have a different name for the resultant accumulated histogram, so we strip</span>
-        <span class="c1"># off the &#39;BASE&#39; suffix we added (knowingly) to the base histogram</span>
-        <span class="n">accumulators</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">HistogramAccumulator</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;BASE&quot;</span><span class="p">),</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetTitle</span><span class="p">())</span>
+        <span class="c1"># off the 'BASE' suffix we added (knowingly) to the base histogram</span>
+        <span class="n">accumulators</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">HistogramAccumulator</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"BASE"</span><span class="p">),</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetTitle</span><span class="p">())</span>
 
     <span class="n">eventTree</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">GetEventTree</span><span class="p">()</span>
     <span class="c1"># using this python syntax for name in thing, ROOT will make the variable</span>
-    <span class="c1"># &#39;name&#39; (&#39;event&#39;) here, have the exact same layout as we see in a TBrowser</span>
+    <span class="c1"># 'name' ('event') here, have the exact same layout as we see in a TBrowser</span>
     <span class="c1"># and as is in the file.</span>
     <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">eventTree</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">baseHistograms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -286,7 +286,7 @@ are created as in the earlier part of this example but are a per-event average.<
             <span class="c1"># get the particle ID of the trajectory</span>
             <span class="n">partID</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">partID</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">partID</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">:</span>
-                <span class="k">continue</span> <span class="c1"># skip ones we don&#39;t want to histogram</span>
+                <span class="k">continue</span> <span class="c1"># skip ones we don't want to histogram</span>
 
             <span class="c1"># i-th trajectory and the 0th (ie first) point of the trajectory position vector</span>
             <span class="n">originPos</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">XYZ</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -295,7 +295,7 @@ are created as in the earlier part of this example but are a per-event average.<
 
             <span class="n">baseHistograms</span><span class="p">[</span><span class="n">partID</span><span class="p">]</span><span class="o">.</span><span class="n">Fill</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
 
-        <span class="c1"># at the end of the event we &#39;accumulate&#39; one event</span>
+        <span class="c1"># at the end of the event we 'accumulate' one event</span>
         <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">baseHistograms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">accumulators</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">Accumulate</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 
@@ -305,7 +305,7 @@ are created as in the earlier part of this example but are a per-event average.<
         <span class="n">results</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Terminate</span><span class="p">()</span>
 
     <span class="c1"># now write histograms out to a new ROOT file</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="n">outputfilename</span><span class="p">,</span> <span class="s2">&quot;RECREATE&quot;</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="n">outputfilename</span><span class="p">,</span> <span class="s2">"RECREATE"</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">h</span><span class="o">.</span><span class="n">AddDirectory</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># bdsim / rebdsim classes turn off AddDirectory by default</span>
         <span class="n">h</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>
@@ -331,8 +331,8 @@ we use the same base histogram again but we reset it to empty it.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

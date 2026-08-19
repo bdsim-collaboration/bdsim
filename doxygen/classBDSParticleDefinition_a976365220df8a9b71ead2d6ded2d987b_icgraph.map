@@ -1,15 +1,19 @@
 <map id="BDSParticleDefinition::PDGID" name="BDSParticleDefinition::PDGID">
-<area shape="rect" id="Node000001" title=" " alt="" coords="920,47,1080,87"/>
-<area shape="rect" id="Node000002" href="$classBDSOutput.html#a90a68a6389decad657c7eadc084649e3" title=" " alt="" coords="633,55,872,80"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="906,70,872,70,872,65,906,65"/>
-<area shape="rect" id="Node000003" href="$classBDSIM.html#a8e123509ba0bb36cea10033ebb617646" title=" " alt="" coords="360,55,585,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="620,70,586,70,586,65,620,65"/>
-<area shape="rect" id="Node000004" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,55,312,80"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="347,70,312,70,312,65,347,65"/>
-<area shape="rect" id="Node000005" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,5,128,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="187,53,116,33,117,28,189,48"/>
-<area shape="rect" id="Node000006" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,55,128,80"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="169,70,128,70,128,65,169,65"/>
-<area shape="rect" id="Node000007" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,104,135,129"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="189,86,117,106,116,101,187,81"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="920,69,1080,109"/>
+<area shape="rect" id="Node000002" href="$classBDSLinkTrackerInterface.html#af1fdce930ad0f7dda99e592c182ffa29" title=" " alt="" coords="663,5,843,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="908,68,830,48,831,43,909,63"/>
+<area shape="rect" id="Node000003" href="$classBDSLinkTrackerInterface.html#a200c2a2ed9da76e75c040915fb271fa4" title="Add particle to simulation in momenta in MeV." alt="" coords="663,69,843,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="906,92,843,92,843,87,906,87"/>
+<area shape="rect" id="Node000004" href="$classBDSOutput.html#a90a68a6389decad657c7eadc084649e3" title=" " alt="" coords="633,134,872,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="909,115,873,124,816,137,815,131,871,119,907,110"/>
+<area shape="rect" id="Node000005" href="$classBDSIM.html#a8e123509ba0bb36cea10033ebb617646" title=" " alt="" coords="360,134,585,159"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="620,149,586,149,586,144,620,144"/>
+<area shape="rect" id="Node000006" href="$classBDSIM.html#a52fe8ee0bf085bca2d1a92f43b7df535" title="The main function where everything is constructed." alt="" coords="183,134,312,159"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="347,149,312,149,312,144,347,144"/>
+<area shape="rect" id="Node000007" href="$classBDSIM.html#aae8a6f2b3b205abb8ff9d96a36427059" title=" " alt="" coords="12,85,128,110"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="187,133,116,113,117,108,189,128"/>
+<area shape="rect" id="Node000008" href="$classBDSIM.html#a0be52eb7119d17fffdd7fe664bb0d542" title="Construct and initialise BDSIM." alt="" coords="12,134,128,159"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="169,149,128,149,128,144,169,144"/>
+<area shape="rect" id="Node000009" href="$classBDSIM.html#a779b04d13d5e3c44c68e2811e9aabdc8" title="Initialise everything given these arguments." alt="" coords="5,183,135,209"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="189,166,117,186,116,181,187,161"/>
 </map>

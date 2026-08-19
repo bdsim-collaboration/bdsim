@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wavelength_0',['waveLength',['../structGMAD_1_1Element.html#a69471e7aab0efefa0f5d9f5f9ce3cae4',1,'GMAD::Element']]],
+  ['wavelength_0',['wavelength',['../structGMAD_1_1Element.html#abf8b5e255eb648b48eeacefdb17b1f5e',1,'GMAD::Element']]],
   ['wavenumber_1',['wavenumber',['../classBDSFieldMagUndulator.html#a2472af2984732594830a13beed480c74',1,'BDSFieldMagUndulator']]],
   ['wedgelength_2',['wedgeLength',['../structGMAD_1_1Element.html#a6801b21c25aa5b7850dc29bad1a97e29',1,'GMAD::Element']]],
   ['weight_3',['weight',['../classBDSOutputROOTEventAperture.html#ac9fa6f23f506290832d40b433a6c2920',1,'BDSOutputROOTEventAperture::weight'],['../classBDSOutputROOTEventLoss.html#a4dd00700fed77e8ef012037cbb4af161',1,'BDSOutputROOTEventLoss::weight'],['../classBDSOutputROOTEventLossWorld.html#a9c4a1b73dbf13de617f889773b872ece',1,'BDSOutputROOTEventLossWorld::weight'],['../classBDSSDEnergyDepositionGlobal.html#a4bbeef9bf6215aad1de951806ec0f469',1,'BDSSDEnergyDepositionGlobal::weight']]],

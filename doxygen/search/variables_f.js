@@ -115,7 +115,7 @@ var searchData=
   ['previousreferencerotationend_112',['previousReferenceRotationEnd',['../classBDSBeamline.html#a5211af5144b447e51c06c3652b35c904',1,'BDSBeamline']]],
   ['previousspositionend_113',['previousSPositionEnd',['../classBDSBeamline.html#a3b868fc93f422543a688bc99407764e7',1,'BDSBeamline']]],
   ['preweight_114',['preWeight',['../classBDSTrajectoryPoint.html#ad17e6e0c4c9200e5c7dee0b7b339f651',1,'BDSTrajectoryPoint']]],
-  ['primary_115',['primary',['../classEvent.html#a69af3fa734355eb6627307d8bffa3ccd',1,'Event::Primary'],['../classEvent.html#aa955e71c9ce80427bb8884bd6d891761',1,'Event::Primary'],['../classBDSOutputStructures.html#a23623f0f9bcedf3df5df1f54eb8b84ec',1,'BDSOutputStructures::primary']]],
+  ['primary_115',['primary',['../classBDSOutputStructures.html#a23623f0f9bcedf3df5df1f54eb8b84ec',1,'BDSOutputStructures::primary'],['../classEvent.html#a69af3fa734355eb6627307d8bffa3ccd',1,'Event::Primary'],['../classEvent.html#aa955e71c9ce80427bb8884bd6d891761',1,'Event::Primary']]],
   ['primaryabsorbedincollimator_116',['primaryabsorbedincollimator',['../classBDSEventAction.html#a1e4615d9feb382891477f1afc72e98ff',1,'BDSEventAction::primaryAbsorbedInCollimator'],['../classBDSOutputROOTEventInfo.html#af96d9412b184315e42b1ba7bee7cce14',1,'BDSOutputROOTEventInfo::primaryAbsorbedInCollimator']]],
   ['primaryfirsthit_117',['PrimaryFirstHit',['../classEvent.html#a8f765de6ea14e18e6bba1ead16323197',1,'Event']]],
   ['primarygeneratoraction_118',['primaryGeneratorAction',['../classBDSFieldFactory.html#a3c1f1390e5fa73846ee4c8f301044827',1,'BDSFieldFactory']]],

@@ -1,15 +1,17 @@
 <map id="BDS::IsIon" name="BDS::IsIon">
-<area shape="rect" id="Node000001" title="Whether a particle is an ion. A proton is counted NOT as an ion." alt="" coords="488,95,576,121"/>
+<area shape="rect" id="Node000001" title="Whether a particle is an ion. A proton is counted NOT as an ion." alt="" coords="488,127,576,153"/>
 <area shape="rect" id="Node000002" href="$classBDSLinkStackingAction.html#a3c3f322117ce468d1fe6a1145d162634" title=" " alt="" coords="237,5,411,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="498,91,439,60,405,48,407,43,441,55,501,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="509,119,478,88,439,60,410,47,412,42,441,55,481,84,513,115"/>
 <area shape="rect" id="Node000003" href="$namespaceBDS.html#a659127eade09ea94d4610200f7995aea" title="Calls IsIon above but also a proton with any bound electrons is considered an ion." alt="" coords="280,70,368,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="474,104,368,91,369,85,475,98"/>
-<area shape="rect" id="Node000004" href="$classBDSSDSamplerLink.html#ab64a5d24471c269ce1337fa4a7b768c6" title=" " alt="" coords="208,119,440,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="474,117,434,122,434,117,474,112"/>
-<area shape="rect" id="Node000005" href="$classBDSTrajectoryPoint.html#a1cef85e27169cf4132e52e184c2d8bc6" title="Utility function to prepare and fill extra ion variables." alt="" coords="251,169,397,209"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="499,130,441,158,399,173,397,168,439,154,496,125"/>
-<area shape="rect" id="Node000006" href="$classBDSTrajectoryPoint.html#a6c133730db8eefa3acdd652c6013c94a" title=" " alt="" coords="5,137,160,177"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="237,181,160,170,161,165,237,175"/>
-<area shape="rect" id="Node000007" href="$classBDSTrajectoryPoint.html#a061a3cabe9b001774ae9019f6c62af8e" title=" " alt="" coords="5,201,160,241"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="237,203,161,214,160,208,237,198"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="484,125,439,111,367,93,369,88,441,105,486,120"/>
+<area shape="rect" id="Node000004" href="$classBDSTrackingAction.html#a57bd9de1b9675a0a47ebdb17b708b74d" title="Used to decide whether or not to store trajectories." alt="" coords="240,120,408,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="474,143,408,143,408,137,474,137"/>
+<area shape="rect" id="Node000005" href="$classBDSSDSamplerLink.html#ab64a5d24471c269ce1337fa4a7b768c6" title=" " alt="" coords="208,185,440,210"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="486,160,441,175,390,187,389,182,439,169,484,155"/>
+<area shape="rect" id="Node000006" href="$classBDSTrajectoryPoint.html#a1cef85e27169cf4132e52e184c2d8bc6" title="Utility function to prepare and fill extra ion variables." alt="" coords="251,235,397,275"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="512,165,481,196,441,224,399,241,397,237,439,219,477,191,508,161"/>
+<area shape="rect" id="Node000007" href="$classBDSTrajectoryPoint.html#a6c133730db8eefa3acdd652c6013c94a" title=" " alt="" coords="5,203,160,243"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="237,246,160,236,161,230,237,241"/>
+<area shape="rect" id="Node000008" href="$classBDSTrajectoryPoint.html#a061a3cabe9b001774ae9019f6c62af8e" title=" " alt="" coords="5,267,160,307"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="237,269,161,279,160,274,237,263"/>
 </map>

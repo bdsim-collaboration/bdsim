@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testing &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -200,14 +200,14 @@ then next time the build is run. Prefer to edit the original, then update the bu
 <p>Why so pedantic about this? With (currently) around 800 tests, being wasteful in individual tests
 quickly adds up.  1s extra on each tests would add up to 13 minutes of extra execution time.</p>
 <p>To add a test, add a line in the CMakeLists.txt beside that example. The syntax is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simple_testing</span><span class="p">(</span><span class="n">testname</span>   <span class="s2">&quot;--file=inputfile.gmad&quot;</span>  <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simple_testing</span><span class="p">(</span><span class="n">testname</span>   <span class="s2">"--file=inputfile.gmad"</span>  <span class="s2">""</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The last argument is any string to match in the print out from the test that should cause it to fail,
 e.g. “overlap”. <code class="code docutils literal notranslate"><span class="pre">${OVERLAP_CHECK}</span></code> defines a pre-made set of overlap keywords. It can be left
 empty.</p>
 <p>To add a purposively failing test, i.e. a test that the program should complain and exit, is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simple_fail</span><span class="p">(</span><span class="n">testname</span>  <span class="s2">&quot;--file=inputfile.gmad&quot;</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simple_fail</span><span class="p">(</span><span class="n">testname</span>  <span class="s2">"--file=inputfile.gmad"</span> <span class="s2">""</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -219,7 +219,7 @@ typically polluted example directory when developing the code.</p>
 </div>
 <p>To add a test that passes by finding some text explicitly in the print out (i.e. a test that should
 provide a warning but maybe not return 1 error code), use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simple_testing_w_string</span><span class="p">(</span><span class="n">testname</span>  <span class="s2">&quot;--file=inputfile.gmad&quot;</span>  <span class="s2">&quot;regex_expression&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simple_testing_w_string</span><span class="p">(</span><span class="n">testname</span>  <span class="s2">"--file=inputfile.gmad"</span>  <span class="s2">"regex_expression"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Steps:</p>
@@ -299,7 +299,7 @@ and resubmit if there are in fact changes to the repository with the necessary h
 This website is hosted on the (virtual machine) server <code class="code docutils literal notranslate"><span class="pre">jaiserv1.pp.rhul.ac.uk</span></code> that is only internally accessible
 in Royal Holloway for security reasons.</p>
 <p>To access the website it is convenient to use a tunnel. The following is added to the developer’s bash profile:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">jaiserv</span><span class="o">=</span><span class="s2">&quot;ssh -L 8080:jaiserv1.pp.rhul.ac.uk:80 lnevay@linappserv2.pp.rhul.ac.uk&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">jaiserv</span><span class="o">=</span><span class="s2">"ssh -L 8080:jaiserv1.pp.rhul.ac.uk:80 lnevay@linappserv2.pp.rhul.ac.uk"</span>
 </pre></div>
 </div>
 <p>The command “jaiserv” can then be executed from any terminal. Then the following website can be accessed.</p>
@@ -329,8 +329,8 @@ has not been pursued to be fixed.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 

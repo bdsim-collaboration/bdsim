@@ -9,7 +9,7 @@ var searchData=
   ['zero_6',['zero',['../classBDSMagnetStrength.html#ab7f7856ce934f6d9d06e9eb5d8b0330a',1,'BDSMagnetStrength']]],
   ['zerostrength_7',['zerostrength',['../classBDSIntegratorDipoleFringe.html#a19f46968732ba8bead0ab387f51a0340',1,'BDSIntegratorDipoleFringe::zeroStrength'],['../classBDSIntegratorMag.html#a4599222af8345ef7211a16b3e40eecbd',1,'BDSIntegratorMag::zeroStrength']]],
   ['zfromt_8',['zFromT',['../classGMAD_1_1BeamBase.html#a971db438c84bc038ce2f9b81ec138caf',1,'GMAD::BeamBase']]],
-  ['zmax_9',['zmax',['../classBDSArray4DCoords.html#a72ecedb896689a58c84ad2914f8c4776',1,'BDSArray4DCoords::zMax'],['../classBDSGeometryFactoryBase.html#adfd6d93fb6df01e42f22910cfa15f4a1',1,'BDSGeometryFactoryBase::zmax'],['../classGMAD_1_1Query.html#a5cd4023d20fba6d1aaaf641a30e592e2',1,'GMAD::Query::zmax']]],
+  ['zmax_9',['zmax',['../classBDSGeometryFactoryBase.html#adfd6d93fb6df01e42f22910cfa15f4a1',1,'BDSGeometryFactoryBase::zmax'],['../classGMAD_1_1Query.html#a5cd4023d20fba6d1aaaf641a30e592e2',1,'GMAD::Query::zmax'],['../classBDSArray4DCoords.html#a72ecedb896689a58c84ad2914f8c4776',1,'BDSArray4DCoords::zMax']]],
   ['zmin_10',['zmin',['../classBDSArray4DCoords.html#a9968ae397bb50e264bfde6a686921072',1,'BDSArray4DCoords::zMin'],['../classGMAD_1_1Query.html#a23b1d974f696aced5c1eb204f73ba1aa',1,'GMAD::Query::zmin'],['../classBDSGeometryFactoryBase.html#abf09d7b9d136664b3d05ad5c2e32c18c',1,'BDSGeometryFactoryBase::zmin']]],
   ['zp0_11',['zp0',['../classBDSBunch.html#a97143e90759026eafeef2c4e3f48496d',1,'BDSBunch::Zp0'],['../classGMAD_1_1BeamBase.html#abd57f8fd68213be89cdc9c9530761686',1,'GMAD::BeamBase::Zp0']]],
   ['zp_5fv_12',['zp_v',['../classBDSBunchGaussBase.html#a4c3e1a867ea8ea9ab0fe344c91f09c7d',1,'BDSBunchGaussBase']]],

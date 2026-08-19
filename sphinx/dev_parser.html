@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parser &mdash; BDSIM 1.7.7.develop documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=106dc6df"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -200,7 +200,7 @@ and a layer of self-inspection provided by the Published class. The struct-like 
 <p>The grammar rules define a syntax tree. Bison is a bottom-up parser. It tries, by shifts and reductions, to reduce the entire input down to a single grouping whose symbol is the grammar’s start symbol, which in our case is <em>input</em>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">every</span> <span class="n">statement</span> <span class="n">ends</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">semicolon</span>
 <span class="nb">input</span> <span class="p">:</span>
-      <span class="o">|</span> <span class="nb">input</span> <span class="n">stmt</span> <span class="s1">&#39;;&#39;</span>
+      <span class="o">|</span> <span class="nb">input</span> <span class="n">stmt</span> <span class="s1">';'</span>
 </pre></div>
 </div>
 <p>This rule is split into two parts:</p>
@@ -212,15 +212,15 @@ and a layer of self-inspection provided by the Published class. The struct-like 
 <p>Another example are the atomic statements (single lines without if constructs):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">atomic</span> <span class="n">statements</span> <span class="n">can</span> <span class="n">be</span> <span class="n">an</span> <span class="n">mathematical</span> <span class="n">expression</span><span class="p">,</span> <span class="n">a</span> <span class="n">declaration</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">command</span>
 <span class="n">atomic_stmt</span> <span class="p">:</span>
-<span class="o">|</span> <span class="n">expr</span>     <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">ECHO_GRAMMAR</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;atomic_stmt -&gt; expr</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span> <span class="p">}</span>
-<span class="o">|</span> <span class="n">command</span>  <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">ECHO_GRAMMAR</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;atomic_stmt -&gt; command</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span> <span class="p">}</span>
-<span class="o">|</span> <span class="n">decl</span>     <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">ECHO_GRAMMAR</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;atomic_stmt -&gt; decl</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span> <span class="p">}</span>
+<span class="o">|</span> <span class="n">expr</span>     <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">ECHO_GRAMMAR</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s2">"atomic_stmt -&gt; expr</span><span class="se">\n</span><span class="s2">"</span><span class="p">);</span> <span class="p">}</span>
+<span class="o">|</span> <span class="n">command</span>  <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">ECHO_GRAMMAR</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s2">"atomic_stmt -&gt; command</span><span class="se">\n</span><span class="s2">"</span><span class="p">);</span> <span class="p">}</span>
+<span class="o">|</span> <span class="n">decl</span>     <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">ECHO_GRAMMAR</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s2">"atomic_stmt -&gt; decl</span><span class="se">\n</span><span class="s2">"</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>The part inside the brackets is the actual C-code, which is only debug printout in this case.
 The rules for <em>expr</em>, <em>command</em> and <em>decl</em> are defined elsewhere.</p>
 <p>Rules can be tokens and types as well, and can have a value. For example, the rule for addition looks like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aexpr   | aexpr &#39;+&#39; aexpr      { $$ = $1 + $3;}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aexpr   | aexpr '+' aexpr      { $$ = $1 + $3;}
 </pre></div>
 </div>
 <p><em>aexpr</em> is a variable of type double. The rule reduces the syntax “number + number” to a single number.
@@ -257,8 +257,8 @@ For debugging there are several options in <code class="code docutils literal no
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2025.
-      <span class="lastupdated">Last updated on Oct 18, 2025.
+    <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
+      <span class="lastupdated">Last updated on Aug 19, 2026.
       </span></p>
   </div>
 
