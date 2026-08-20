@@ -2,9 +2,9 @@ name: manual deploy
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-    - 'v*'
+  release:
+    types:
+      - published
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
