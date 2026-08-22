@@ -6,9 +6,15 @@ BDSIM=`cd $BDSIM && pwd`/..
 # set path for executables
 export PATH=$BDSIM/bin:$PATH
 @BDSIM_LIB_PATH_SETUP@
+
+@GEANT4_LIB_PATH_SETUP@
+@GEANT4_SETUP_SCRIPT@
+@BDSIM_PYTHON_PATH_SETUP@
+
 # required for ROOT to find headers of classes
 if [ -z "${ROOT_INCLUDE_PATH}" ]; then
     export ROOT_INCLUDE_PATH=@BDSIM_ROOT_INCLUDE_PATH@
 else
     export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH}:@BDSIM_ROOT_INCLUDE_PATH@
 fi
+
