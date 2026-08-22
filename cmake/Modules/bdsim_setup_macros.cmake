@@ -68,6 +68,6 @@ if (${USE_PYTHON_BINDINGS})
   set(BDSIM_PYTHON_PATH_SETUP "# set library path")
   _append_path(BDSIM_PYTHON_PATH_SETUP
                PYTHONPATH
-               "$BDSIM/lib/python")
+               "$BDSIM/lib/bdsim-python")
 endif()
 
