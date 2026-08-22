@@ -63,7 +63,6 @@ jobs:
           
           # build
           mkdir /tmp/bdsim-build
-          mkdir /tmp/bdsim-install
           cd /tmp/bdsim-build
           if [[ "${{ matrix.container }}" == "centos8-g4.10.7" ]]; then
             cmake -DCMAKE_CXX_STANDARD=17 \
