@@ -48,7 +48,7 @@ jobs:
           rm -rfv /usr/local/lib64/Geant4-11.0.4/Geant4PackageCache.cmake
 
           # ROOT 
-          source /bdsim/root/bin/thisroot.sh
+          source /bdsim/setup.sh
 
           # git trusted dir 
           git config --global --add safe.directory $GITHUB_WORKSPACE
@@ -63,15 +63,14 @@ jobs:
           
           # build
           mkdir /tmp/bdsim-build
-          mkdir /tmp/bdsim-install
           cd /tmp/bdsim-build
           if [[ "${{ matrix.container }}" == "centos8-g4.10.7" ]]; then
             cmake -DCMAKE_CXX_STANDARD=17 \
-                  -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
+                  -DCMAKE_INSTALL_PREFIX=/bdsim/bdsim-install \
                   "$GITHUB_WORKSPACE"
           else 
             cmake -DCMAKE_CXX_STANDARD=17 \
-                  -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
+                  -DCMAKE_INSTALL_PREFIX=/bdsim/bdsim-install \
                   -DUSE_PYTHON_BINDINGS=ON \
                   -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
                   -DUSE_PLASMA_HDF5=ON \
@@ -81,12 +80,13 @@ jobs:
           
           make -j${{ steps.cpu-cores.outputs.count }} install
 
+
       - name: Test bdsim
         shell: bash
         run: |
           # Set upt geant4 and bdsim 
-          source /usr/local/bin/geant4.sh
-          source /tmp/bdsim-install/bin/bdsim.sh
+          source /bdsim/setup.sh
+          source /bdsim/bdsim-install/bin/bdsim.sh
 
           # run tests
           cd /tmp/bdsim-build
@@ -132,12 +132,12 @@ jobs:
         shell: bash
         run: |
           # download geant4 build
-          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.28/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
+          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.29/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
           # unpack geant4
           tar zxf geant4-${{ matrix.os }}-${{ matrix.geant4-version }}.tgz -C /tmp/
 
 
-      - name: Build bdsim
+      - name: Build bdsi9
         shell: bash
         run: |
           rm -rfv /tmp/geant4-v10.7.4/lib/Geant4-10.7.4/Geant4PackageCache.cmake
