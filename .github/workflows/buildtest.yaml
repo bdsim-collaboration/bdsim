@@ -132,12 +132,12 @@ jobs:
         shell: bash
         run: |
           # download geant4 build
-          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.28/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
+          wget -q https://github.com/bdsim-collaboration/mac_geant4/releases/download/v0.0.29/geant4-${{ matrix.os}}-${{ matrix.geant4-version }}.tgz
           # unpack geant4
           tar zxf geant4-${{ matrix.os }}-${{ matrix.geant4-version }}.tgz -C /tmp/
 
 
-      - name: Build bdsim
+      - name: Build bdsi9
         shell: bash
         run: |
           rm -rfv /tmp/geant4-v10.7.4/lib/Geant4-10.7.4/Geant4PackageCache.cmake
