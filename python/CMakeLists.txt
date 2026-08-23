@@ -1,8 +1,19 @@
-# -DPython_FIND_VIRTUALENV=ONLY
-find_package(Python 3.8 COMPONENTS Interpreter Development.Module REQUIRED)
-message(STATUS "Found python ${Python_VERSION}")
-message(STATUS "Python executable ${Python_EXECUTABLE}")
-message(STATUS "Is python executable the one you plan to use? If not use -DPython_EXECUTABLE=")
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+message(STATUS "Found python ${Python3_VERSION}")
+message(STATUS "Python executable ${Python3_EXECUTABLE}")
+message(STATUS "Is python executable the one you plan to use? If not use -DPython3_EXECUTABLE=")
+
+if (NOT Python3_FOUND)
+    message(FATAL_ERROR "Python3 not found. Please install Python3 and try again.")
+endif()
+
+# Find the pybind11 for the discovered python executable
+execute_process(
+        COMMAND "${Python3_EXECUTABLE}" -m pybind11 --cmakedir
+        OUTPUT_VARIABLE pybind11_DIR
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+message(STATUS "pybind11_DIR: ${pybind11_DIR}")
 
 find_package(pybind11 CONFIG REQUIRED)
 message(STATUS "Found pybind11 ${pybind11_VERSION}")
@@ -31,7 +42,7 @@ list(APPEND rootBindingSrcs
 foreach(pythonBindingSrc IN ZIP_LISTS pythonBindingSrcs)
     # MESSAGE(STATUS ${pythonBindingSrc_0})
     pybind11_add_module(${pythonBindingSrc_0} ${CMAKE_CURRENT_SOURCE_DIR}/${pythonBindingSrc_0}Pybind.cc)
-    target_link_libraries(${pythonBindingSrc_0} PUBLIC ${GMAD_LIB_NAME} Python::Module)
+    target_link_libraries(${pythonBindingSrc_0} PUBLIC ${GMAD_LIB_NAME} Python3::Module)
     set_property(TARGET ${pythonBindingSrc_0} PROPERTY CXX_VISIBILITY_PRESET "default")
     bdsim_install_python(${pythonBindingSrc_0})
 endforeach()
@@ -39,7 +50,7 @@ endforeach()
 foreach(rootBindingSrc IN ZIP_LISTS rootBindingSrcs)
     # MESSAGE(STATUS ${rootBindingSrc_0})
     pybind11_add_module(${rootBindingSrc_0} ${CMAKE_CURRENT_SOURCE_DIR}/${rootBindingSrc_0}Pybind.cc)
-    target_link_libraries(${rootBindingSrc_0} PUBLIC ${GMAD_LIB_NAME} ${BDSIM_LIB_NAME} Python::Module)
+    target_link_libraries(${rootBindingSrc_0} PUBLIC ${GMAD_LIB_NAME} ${BDSIM_LIB_NAME} Python3::Module)
     target_include_directories(${rootBindingSrc_0} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include/)
     bdsim_install_python(${rootBindingSrc_0})
 endforeach()
