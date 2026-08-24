@@ -54,17 +54,14 @@ _prepend_path(BDSIM_LIB_PATH_SETUP
   "$BDSIM/lib"
   )
 
-if (NOT ${Geant4_PREFIX})
-  set(GEANT4_LIB_PATH_SETUP "# set library path")
-  _append_path(GEANT4_LIB_PATH_SETUP
-               ${_libpathname}
-               "${Geant4_PREFIX}/lib/")
+if (Geant4_PREFIX)
   set(GEANT4_SETUP_SCIPT_SETUP "# source geant4")
   _source_script(GEANT4_SETUP_SCRIPT
                  "${Geant4_PREFIX}/bin/geant4.sh")
 endif()
 
-if (${USE_PYTHON_BINDINGS})
+if (USE_PYTHON_BINDINGS)
+  MESSAGE(STATUS "Adding bdsim python to PYTHONPATH")
   set(BDSIM_PYTHON_PATH_SETUP "# set library path")
   _append_path(BDSIM_PYTHON_PATH_SETUP
                PYTHONPATH
