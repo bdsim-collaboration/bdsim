@@ -166,6 +166,7 @@ private:
 
   /// @{ Cache of main object in BDSIM.
   BDSParser*    parser;
+  bool          internalParser; ///< True only when BDSIMLink acquired the parser itself.
   BDSOutput*    bdsOutput;
   BDSBunch*     bdsBunch;
   bool          internalBdsBunch;
