@@ -5,6 +5,7 @@ BDSIM=`cd $BDSIM && pwd`/..
 
 # set path for executables
 export PATH=$BDSIM/bin:$PATH
+export BDSIM_DATA_DIR=$BDSIM/share/bdsim
 @BDSIM_LIB_PATH_SETUP@
 
 @GEANT4_SETUP_SCRIPT@
@@ -16,4 +17,3 @@ if [ -z "${ROOT_INCLUDE_PATH}" ]; then
 else
     export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH}:@BDSIM_ROOT_INCLUDE_PATH@
 fi
-

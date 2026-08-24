@@ -17,17 +17,22 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorModel.hh"
+#include "BDSAuxiliaryNavigator.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamlineIntegral.hh"
+#include "BDSBeamlineSet.hh"
 #include "BDSCollimatorJaw.hh"
 #include "BDSCollimatorTipJaw.hh"
 #include "BDSComponentFactory.hh"
 #include "BDSCrystalInfo.hh"
+#include "BDSCurvilinearBuilder.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
 #include "BDSExtent.hh"
 #include "BDSExtentGlobal.hh"
+#include "BDSFieldBuilder.hh"
+#include "BDSFieldQuery.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSLinkComponent.hh"
 #include "BDSLinkDetectorConstruction.hh"
@@ -91,6 +96,57 @@ BDSLinkDetectorConstruction::~BDSLinkDetectorConstruction()
   delete integral;
 }
 
+BDSAcceleratorComponent* BDSLinkDetectorConstruction::BuildLinkComponent(
+  const GMAD::Element& element,
+  BDSComponentFactory* componentFactory)
+{
+  if (!designParticle)
+    {throw BDSException(__METHOD_NAME__, "designParticle must be set first");}
+
+  static const std::set<GMAD::ElementType> testedTypes = {
+    GMAD::ElementType::_DRIFT,
+    GMAD::ElementType::_RF,
+    GMAD::ElementType::_SBEND,
+    GMAD::ElementType::_RBEND,
+    GMAD::ElementType::_QUAD,
+    GMAD::ElementType::_SEXTUPOLE,
+    GMAD::ElementType::_OCTUPOLE,
+    GMAD::ElementType::_DECAPOLE,
+    GMAD::ElementType::_RCOL,
+    GMAD::ElementType::_ELEMENT,
+    GMAD::ElementType::_HKICKER,
+    GMAD::ElementType::_VKICKER,
+    GMAD::ElementType::_KICKER,
+    GMAD::ElementType::_LASERWIRE
+  };
+  static std::set<GMAD::ElementType> warnedTypes;
+  if (testedTypes.find(element.type) == testedTypes.end() &&
+      warnedTypes.insert(element.type).second)
+    {
+      G4cerr << "WARNING: " << __METHOD_NAME__
+             << "BDSIM element type \"" << GMAD::typestr(element.type)
+             << "\" has no verified BDSLink transport regression. Its "
+                "definition will be passed to the standard component factory, "
+                "but linked construction and tracking are not guaranteed."
+             << G4endl;
+    }
+
+  // Link elements are invoked independently in their own entrance frames.
+  // A fresh integral avoids inheriting trajectory or rigidity from a preceding
+  // parser element.
+  BDSBeamlineIntegral elementIntegral(*designParticle);
+  BDSAcceleratorComponent* component = componentFactory->CreateComponent(
+    &element, nullptr, nullptr, elementIntegral);
+  if (!component)
+    {
+      throw BDSException(__METHOD_NAME__,
+                         "BDSIM element \"" + element.name + "\" (" +
+                         GMAD::typestr(element.type) +
+                         ") does not produce a finite accelerator component for BDSLink.");
+    }
+  return component;
+}
+
 G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 {
   BDSGlobalConstants* globalConstants = BDSGlobalConstants::Instance();
@@ -102,12 +158,8 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
   linkBeamline = new BDSBeamline();
   
   auto acceleratorModel = BDSAcceleratorModel::Instance();
-  if (!integral)
-    {
-      if (!designParticle)
-        {throw BDSException(__METHOD_NAME__, "designParticle must be set first");}
-      integral = new BDSBeamlineIntegral(*designParticle);
-    }
+  if (!designParticle)
+    {throw BDSException(__METHOD_NAME__, "designParticle must be set first");}
   for (const auto& element : beamline)
     {
       GMAD::ElementType eType = element.type;
@@ -115,27 +167,20 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
       if (eType == GMAD::ElementType::_LINE || eType == GMAD::ElementType::_REV_LINE)
         {continue;}
       
-      std::set<GMAD::ElementType> acceptedTypes = {GMAD::ElementType::_ECOL,
-						   GMAD::ElementType::_RCOL,
-                           GMAD::ElementType::_BMCOL,
-						   GMAD::ElementType::_JCOL,
-						   GMAD::ElementType::_CRYSTALCOL,
-						   GMAD::ElementType::_ELEMENT};
-      auto search = acceptedTypes.find(eType);
-      if (search == acceptedTypes.end())
-        {throw BDSException(G4String("Unsupported element type for link = " + GMAD::typestr(eType)));}
-
-      // Only need first argument, the rest pertain to beamlines.
-      BDSAcceleratorComponent* component = componentFactory->CreateComponent(&element,
-									     nullptr,
-									     nullptr,
-									     *integral);
+      BDSAcceleratorComponent* component = BuildLinkComponent(element,
+                                                              componentFactory.get());
 
       BDSTiltOffset* to = new BDSTiltOffset(element.offsetX * CLHEP::m,
                                             element.offsetY * CLHEP::m,
                                             element.tilt * CLHEP::rad);
       auto extentTiltOffset = component->GetExtent().TiltOffset(to);
       G4double encompassingRadius = extentTiltOffset.TransverseBoundingRadius();
+      if (eType == GMAD::ElementType::_ELEMENT && element.aper1 > 0)
+        {
+          G4double requestedRadius = element.aper1 * CLHEP::m;
+          if (requestedRadius > encompassingRadius)
+            {encompassingRadius = requestedRadius;}
+        }
       BDSLinkOpaqueBox* opaqueBox = new BDSLinkOpaqueBox(component, to, encompassingRadius);
       
       delete to; // opaqueBox doesn't own it
@@ -170,6 +215,13 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 				   0,
 				   true);
 
+  acceleratorModel->RegisterWorldPV(worldPV);
+  acceleratorModel->RegisterWorldLV(worldLV);
+  acceleratorModel->RegisterWorldSolid(worldSolid);
+  BDSAuxiliaryNavigator::AttachWorldVolumeToNavigator(worldPV);
+  BDSAuxiliaryNavigator::AttachWorldVolumeToNavigatorCL(worldPV);
+  BDSFieldQuery::AttachWorldVolumeToNavigator(worldPV);
+
   // place any defined link elements in input
   for (auto element : *linkBeamline)
     {
@@ -181,7 +233,87 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
       nameToElementIndex[name] = linkID;
     }
 
+  // Non-physical reference trajectories for field-coordinate transforms in
+  // the independently placed link boxes.
+  BDSBeamline* fieldReferenceBeamline = new BDSBeamline();
+  G4double referenceS = 0;
+  G4int referenceIndex = 0;
+  for (auto wrapperElement : *linkBeamline)
+    {
+      auto linkComponent = dynamic_cast<BDSLinkComponent*>(
+        wrapperElement->GetAcceleratorComponent());
+      BDSLinkOpaqueBox* opaque = linkComponent ? linkComponent->Component() : nullptr;
+      if (!opaque)
+        {continue;}
+
+      BDSBeamline localFrames;
+      localFrames.AddComponent(
+        opaque->Component(),
+        new BDSTiltOffset(opaque->OffsetX(), opaque->OffsetY(), opaque->Tilt()));
+      const BDSBeamlineElement* local = localFrames.front();
+
+      G4Transform3D nominalInputToGlobal =
+        (*wrapperElement->GetPlacementTransform()) *
+        G4Transform3D(G4RotationMatrix(), opaque->OffsetToStart());
+      auto frame = [&nominalInputToGlobal](G4RotationMatrix* rotation,
+                                           const G4ThreeVector& position)
+      {
+        return nominalInputToGlobal * G4Transform3D(*rotation, position);
+      };
+      G4Transform3D placementStart =
+        frame(local->GetRotationStart(), local->GetPositionStart());
+      G4Transform3D placementMiddle =
+        frame(local->GetRotationMiddle(), local->GetPositionMiddle());
+      G4Transform3D placementEnd =
+        frame(local->GetRotationEnd(), local->GetPositionEnd());
+      G4Transform3D referenceStart =
+        frame(local->GetReferenceRotationStart(), local->GetReferencePositionStart());
+      G4Transform3D referenceMiddle =
+        frame(local->GetReferenceRotationMiddle(), local->GetReferencePositionMiddle());
+      G4Transform3D referenceEnd =
+        frame(local->GetReferenceRotationEnd(), local->GetReferencePositionEnd());
+
+      BDSBeamlineElement* referenceElement = new BDSBeamlineElement(
+        opaque->Component(),
+        placementStart.getTranslation(),
+        placementMiddle.getTranslation(),
+        placementEnd.getTranslation(),
+        new G4RotationMatrix(placementStart.getRotation()),
+        new G4RotationMatrix(placementMiddle.getRotation()),
+        new G4RotationMatrix(placementEnd.getRotation()),
+        referenceStart.getTranslation(),
+        referenceMiddle.getTranslation(),
+        referenceEnd.getTranslation(),
+        new G4RotationMatrix(referenceStart.getRotation()),
+        new G4RotationMatrix(referenceMiddle.getRotation()),
+        new G4RotationMatrix(referenceEnd.getRotation()),
+        referenceS,
+        referenceS + 0.5*opaque->ArcLength(),
+        referenceS + opaque->ArcLength(),
+        0, 0, 0,
+        new BDSTiltOffset(opaque->OffsetX(), opaque->OffsetY(), opaque->Tilt()),
+        nullptr,
+        referenceIndex);
+      fieldReferenceBeamline->AddBeamlineElement(referenceElement);
+      referenceS += opaque->ArcLength();
+      referenceIndex++;
+    }
+
+  BDSCurvilinearBuilder curvilinearBuilder;
+  BDSBeamlineSet referenceSet;
+  referenceSet.massWorld = fieldReferenceBeamline;
+  referenceSet.curvilinearWorld =
+    curvilinearBuilder.BuildCurvilinearBeamLine1To1(fieldReferenceBeamline, false);
+  referenceSet.curvilinearBridgeWorld = new BDSBeamline();
+  acceleratorModel->RegisterBeamlineSetMain(referenceSet);
+
   return worldPV;
+}
+
+void BDSLinkDetectorConstruction::ConstructSDandField()
+{
+  auto fields = BDSFieldBuilder::Instance()->CreateAndAttachAll();
+  BDSAcceleratorModel::Instance()->RegisterFields(fields);
 }
 
 G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& collimatorName,
@@ -530,9 +662,17 @@ G4int BDSLinkDetectorConstruction::PlaceOneComponent(const BDSBeamlineElement* e
     {return -1;}
   BDSLinkOpaqueBox* el = lc->Component();
   G4Transform3D* placementTransform = element->GetPlacementTransform();
+  el->SetFieldLinkTransform(*placementTransform);
   G4Transform3D elCentreToStart = el->TransformToStart();
-  G4Transform3D globalToStart = elCentreToStart * (*placementTransform);
-  G4int linkID = linkRegistry->Register(el, globalToStart);
+  G4Transform3D globalToStart = (*placementTransform) * elCentreToStart;
+  G4Transform3D globalToOutput = (*placementTransform) * el->TransformToOutput();
+  if (samplerWorldID < 0)
+    {throw BDSException(__METHOD_NAME__, "link sampler parallel world is unavailable");}
+  auto linkSamplerWorld = dynamic_cast<BDSParallelWorldSampler*>(GetParallelWorld(samplerWorldID));
+  if (!linkSamplerWorld)
+    {throw BDSException(__METHOD_NAME__, "link sampler parallel world has the wrong type");}
+  G4int samplerID = el->PlaceOutputSampler(linkSamplerWorld, globalToOutput);
+  G4int linkID = linkRegistry->Register(el, globalToStart, globalToOutput, samplerID);
   
   G4ThreeVector zOffset = G4ThreeVector(0,0,BDSGlobalConstants::Instance()->LengthSafety()+BDSSamplerPlane::ChordLength());
   G4Transform3D samplerPosition = globalToStart * G4Transform3D(G4RotationMatrix(), globalToStart.getRotation()*zOffset);
@@ -548,7 +688,7 @@ G4int BDSLinkDetectorConstruction::PlaceOneComponent(const BDSBeamlineElement* e
       G4String samplerName = originalName + "_in";
       G4double sStart = element->GetSPositionStart();
 
-      G4int samplerID = BDSSamplerRegistry::Instance()->RegisterSampler(samplerName, sampler, samplerPosition, sStart, element);
+      G4int inputSamplerID = BDSSamplerRegistry::Instance()->RegisterSampler(samplerName, sampler, samplerPosition, sStart, element);
 
       G4LogicalVolume* samplerWorldLV = samplerWorld->WorldLV();
       new G4PVPlacement(samplerPosition,
@@ -556,7 +696,7 @@ G4int BDSLinkDetectorConstruction::PlaceOneComponent(const BDSBeamlineElement* e
 			samplerName + "_pv",
 			samplerWorldLV,
 			false,
-			samplerID,
+			inputSamplerID,
 			false);
     }
   return linkID;

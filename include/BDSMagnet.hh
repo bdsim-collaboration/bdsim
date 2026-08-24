@@ -82,7 +82,11 @@ public:
   
   /// Override function as we have different field recipe objects.
   virtual void SetFieldUsePlacementWorldTransform();
-  
+
+  /// Set the explicit local-to-global transform on the vacuum and outer
+  /// fields when this magnet is delegated through BDSLink.
+  virtual void SetFieldLinkTransform(const G4Transform3D& localToGlobal) override;
+
 protected:
   /// Private default constructor to force the use of the supplied one.
   BDSMagnet() = delete;

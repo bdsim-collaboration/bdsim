@@ -252,7 +252,11 @@ int BDSIMLink::Initialise(double minimumKineticEnergy,
     }
   // update rigidity where needed
   construction->SetDesignParticle(designParticle);
-  //BDSFieldFactory::SetDesignParticle(designParticle);
+  // Native analytical fields and their integrators require the reference
+  // particle just like a complete BDSIM model.  Imported maps happened not to
+  // dereference it, which hid this missing link initialisation until native
+  // magnets were delegated.
+  BDSFieldFactory::SetDesignParticle(designParticle);
   
   //auto biasPhysics = BDS::BuildAndAttachBiasWrapper(parser->GetBiasing());
   //if (biasPhysics)//could be nullptr and can't be passed to geant4 like this

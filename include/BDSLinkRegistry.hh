@@ -39,7 +39,9 @@ public:
   ~BDSLinkRegistry();
 
   G4int Register(BDSLinkOpaqueBox*    componentIn,
-		             const G4Transform3D& globalToInputIn);
+		             const G4Transform3D& inputToGlobalIn,
+		             const G4Transform3D& outputToGlobalIn,
+                     G4int               samplerIDIn);
 
   const G4Transform3D& Transform(const std::string& name) const;
   const G4Transform3D& Transform(G4int ID) const;
@@ -50,6 +52,8 @@ public:
   G4bool NoRotation(const std::string& name) const;
   G4bool NoRotation(G4int ID) const;
 
+  G4double InputClearance(G4int ID) const;
+
 private:
 
   struct LinkEntry
@@ -57,7 +61,8 @@ private:
     G4bool            noRotation;  // true if component straight and no rotation is required
     BDSLinkOpaqueBox* component;
     G4Transform3D     transform;
-    G4Transform3D     transformInverse;
+    G4Transform3D     transformInverse; ///< Global to output reference frame.
+    G4double          inputClearance;   ///< Distance upstream of the nominal input plane.
     G4int             id;
   };
 

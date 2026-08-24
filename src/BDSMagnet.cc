@@ -369,3 +369,20 @@ void BDSMagnet::SetFieldUsePlacementWorldTransform()
   if (outerFieldInfo)
     {outerFieldInfo->SetUsePlacementWorldTransform(true);}
 }
+
+void BDSMagnet::SetFieldLinkTransform(const G4Transform3D& localToGlobal)
+{
+  auto setTransform = [&localToGlobal](BDSFieldInfo* info)
+  {
+    if (info)
+      {
+        if (info->ProvideGlobal())
+          {return;}
+        info->SetProvideGlobalTransform(false);
+        info->SetTransform(localToGlobal * info->Transform());
+        info->SetTransformBeamline(G4Transform3D::Identity);
+      }
+  };
+  setTransform(vacuumFieldInfo);
+  setTransform(outerFieldInfo);
+}

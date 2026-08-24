@@ -36,6 +36,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4Version.hh"
 
 #include <algorithm>
+#include <cstdlib>
 #include <fstream>
 #include <istream>
 #include <map>
@@ -108,7 +109,19 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
 
 G4String BDS::GDMLSchemaLocation()
 {
-  G4String result;
+  // A linked host executable is Python rather than bdsim, so executable-
+  // relative lookup cannot find the installed schema in that case.
+  const char* dataDirectory = std::getenv("BDSIM_DATA_DIR");
+  if (dataDirectory)
+    {
+      G4String environmentPath = G4String(dataDirectory) + "/gdml/schema/gdml.xsd";
+      if (FILE *file = fopen(environmentPath.c_str(), "r"))
+        {
+          fclose(file);
+          return environmentPath;
+        }
+    }
+
   G4String bdsimExecPath = BDS::GetBDSIMExecPath();
   G4String localPath = bdsimExecPath + "src-external/gdml/schema/gdml.xsd";
   G4String installPath = bdsimExecPath + "../share/bdsim/gdml/schema/gdml.xsd";
@@ -123,7 +136,11 @@ G4String BDS::GDMLSchemaLocation()
       return installPath;
     }
   else
-   {throw BDSException(__METHOD_NAME__, "ERROR: local GDML schema could not be found!");}
+   {
+     throw BDSException(__METHOD_NAME__,
+                        "ERROR: local GDML schema could not be found. "
+                        "Source the BDSIM environment or set BDSIM_DATA_DIR.");
+   }
 }
 
 BDSGDMLPreprocessor::BDSGDMLPreprocessor()

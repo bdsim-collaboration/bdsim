@@ -34,15 +34,21 @@ BDSLinkRegistry::~BDSLinkRegistry()
 {;}
 
 G4int BDSLinkRegistry::Register(BDSLinkOpaqueBox*    componentIn,
-			       const G4Transform3D& globalToInputIn)
+			       const G4Transform3D& inputToGlobalIn,
+			       const G4Transform3D& outputToGlobalIn,
+                               G4int               samplerIDIn)
 {
-  G4int newID = componentIn->PlaceOutputSampler();
-  G4cout << "New ID " << newID << " for " << componentIn->LinkName() << G4endl;
+  G4cout << "New ID " << samplerIDIn << " for " << componentIn->LinkName() << G4endl;
   G4bool noRotation = !(componentIn->Angled());
-  BDSLinkRegistry::LinkEntry le = {noRotation, componentIn, globalToInputIn, globalToInputIn.inverse(), newID};
+  BDSLinkRegistry::LinkEntry le = {noRotation,
+                                   componentIn,
+                                   inputToGlobalIn,
+                                   outputToGlobalIn.inverse(),
+                                   componentIn->InputClearance(),
+                                   samplerIDIn};
   byName[componentIn->LinkName()] = le;
-  byID[newID] = le;
-  return newID;
+  byID[samplerIDIn] = le;
+  return samplerIDIn;
 }
 
 const G4Transform3D& BDSLinkRegistry::Transform(const std::string& name) const
@@ -95,6 +101,15 @@ G4bool BDSLinkRegistry::NoRotation(G4int ID) const
   auto search = byID.find(ID);
   if (search != byID.end())
     {return search->second.noRotation;}
+  else
+    {throw BDSException(__METHOD_NAME__, "unknown link element ID " + std::to_string(ID));}
+}
+
+G4double BDSLinkRegistry::InputClearance(G4int ID) const
+{
+  auto search = byID.find(ID);
+  if (search != byID.end())
+    {return search->second.inputClearance;}
   else
     {throw BDSException(__METHOD_NAME__, "unknown link element ID " + std::to_string(ID));}
 }

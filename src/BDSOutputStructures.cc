@@ -326,7 +326,8 @@ void BDSOutputStructures::InitialiseMaterialMap()
 G4int BDSOutputStructures::UpdateSamplerStructures()
 {
   G4int result = 0;
-  for (auto const& samplerName : BDSSamplerRegistry::Instance()->GetUniqueNames())
+  auto samplerRegistry = BDSSamplerRegistry::Instance();
+  for (auto const& samplerName : samplerRegistry->GetUniqueNamesPlane())
     {// only put it in if it doesn't exist already
       if (std::find(samplerNames.begin(), samplerNames.end(), samplerName) == samplerNames.end())
 	{
@@ -340,6 +341,9 @@ G4int BDSOutputStructures::UpdateSamplerStructures()
 	  samplerNames.push_back(samplerName);
 	}
     }
+  const auto planeIDs = samplerRegistry->GetSamplerIDsPlane();
+  for (G4int i = 0; i < (G4int)planeIDs.size(); ++i)
+    {samplerIDToIndexPlane[planeIDs[i]] = i;}
   /// TBC - does not do cylinder or spheres
   return result;
 }

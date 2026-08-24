@@ -33,6 +33,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 class BDSBeamline;
 class BDSBeamlineElement;
 class BDSBeamlineIntegral;
+class BDSAcceleratorComponent;
+class BDSComponentFactory;
 class BDSLinkPrimaryGeneratorAction;
 class BDSLinkRegistry;
 class BDSParticleDefinition;
@@ -57,6 +59,7 @@ public:
 
   virtual ~BDSLinkDetectorConstruction();
   virtual G4VPhysicalVolume* Construct();
+  virtual void ConstructSDandField();
 
   /// Interface to append a collimator of jaw style to the linking.
   G4int AddLinkCollimatorJaw(const std::string& collimatorName,
@@ -112,6 +115,11 @@ public:
   inline const BDSBeamline* LinkBeamline() const {return linkBeamline;}
 
  private:
+  /// Build one independently delegated element through the normal BDSIM
+  /// component factory.
+  BDSAcceleratorComponent* BuildLinkComponent(const GMAD::Element& element,
+                                              BDSComponentFactory* componentFactory);
+
   /// Create the worldSolid if it doesn't exist and if not expand it to the extent of the
   /// linkBeamline member. Update worldExtent member also.
   void UpdateWorldSolid();

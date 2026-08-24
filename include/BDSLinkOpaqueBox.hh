@@ -28,6 +28,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSGeometryComponent.hh"
 
 class BDSAcceleratorComponent;
+class BDSBeamline;
+class BDSParallelWorldSampler;
 class BDSSamplerCustom;
 
 /**
@@ -54,22 +56,41 @@ public:
 
   inline const G4ThreeVector& OffsetToStart()    const {return offsetToStart;}
   inline const G4Transform3D& TransformToStart() const {return transformToStart;}
+  inline const G4Transform3D& TransformToOutput() const {return transformToOutput;}
+  inline G4double InputClearance() const {return inputClearance;}
+  inline G4double OutputClearance() const {return outputClearance;}
 
-  /// Place the output sampler
-  G4int PlaceOutputSampler();
-  
+  /// Configure the delegated component field with its fixed world placement.
+  void SetFieldLinkTransform(const G4Transform3D& opaqueToGlobal);
+
+  /// Place the output sampler at the nominal exit in the sampler parallel world.
+  G4int PlaceOutputSampler(BDSParallelWorldSampler* samplerWorld,
+                           const G4Transform3D& outputToGlobal);
+
   /// @{ Accessor
   G4double ArcLength()   const {return component ? component->GetArcLength() : 0.0;}
   G4double ChordLength() const {return component ? component->GetChordLength() : 0.0;}
   G4bool   Angled()      const {return component ? BDS::IsFinite(component->GetAngle()) : false;}
   G4String LinkName()    const {return component ? component->GetName() : "unknown";}
+  BDSAcceleratorComponent* Component() const {return component;}
+  G4double Tilt() const {return tilt;}
+  G4double OffsetX() const {return offsetX;}
+  G4double OffsetY() const {return offsetY;}
   /// @}
 
 private:
   BDSAcceleratorComponent* component;
+  BDSBeamline*             componentBeamline;
   G4double                 outputSamplerRadius;
+  G4double                 inputClearance;
+  G4double                 outputClearance;
+  G4double                 tilt;
+  G4double                 offsetX;
+  G4double                 offsetY;
   G4ThreeVector            offsetToStart;
   G4Transform3D            transformToStart;
+  G4Transform3D            transformToOutput;
+  G4Transform3D            nativeToOpaque;
   BDSSamplerCustom*        sampler;
 };
 

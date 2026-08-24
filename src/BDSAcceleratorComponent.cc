@@ -206,3 +206,21 @@ void BDSAcceleratorComponent::SetFieldUsePlacementWorldTransform()
   if (fieldInfo)
     {fieldInfo->SetUsePlacementWorldTransform(true);}
 }
+
+void BDSAcceleratorComponent::SetFieldLinkTransform(const G4Transform3D& localToGlobal)
+{
+  if (fieldInfo)
+    {
+      // Global fields use the dedicated link curvilinear world, exactly as in
+      // a standalone beam line. Only intrinsically local fields need a fixed
+      // placement transform.
+      if (fieldInfo->ProvideGlobal())
+        {return;}
+      // Supplying the component placement directly avoids asking the
+      // curvilinear navigator for coordinates from an unrelated daughter
+      // volume (which breaks maps that vary in z).
+      fieldInfo->SetProvideGlobalTransform(false);
+      fieldInfo->SetTransform(localToGlobal * fieldInfo->Transform());
+      fieldInfo->SetTransformBeamline(G4Transform3D::Identity);
+    }
+}

@@ -34,14 +34,16 @@ class BDSLinkEventInfo: public BDSEventInfo
 public:
   BDSLinkEventInfo():
     externalParticleIDofPrimary(0),
-    externalParentIDofPrimary(0)
+    externalParentIDofPrimary(0),
+    linkSamplerID(-1)
   {;}
   virtual ~BDSLinkEventInfo(){;}
 
-  void Flush() override {info->Flush(); externalParticleIDofPrimary=0; externalParentIDofPrimary=0;}
+  void Flush() override {info->Flush(); externalParticleIDofPrimary=0; externalParentIDofPrimary=0; linkSamplerID=-1;}
 
   G4int externalParticleIDofPrimary;
   G4int externalParentIDofPrimary;
+  G4int linkSamplerID; ///< Only this output sampler belongs to the selected link element.
 };
 
 #endif

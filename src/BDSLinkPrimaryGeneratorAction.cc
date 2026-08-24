@@ -36,6 +36,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4ParticleGun.hh"
 #include "G4Types.hh"
 
+#include "CLHEP/Units/PhysicalConstants.h"
+
+#include <algorithm>
+#include <cmath>
+
 BDSLinkPrimaryGeneratorAction::BDSLinkPrimaryGeneratorAction(BDSBunch* bunchIn,
 							     int*      currentElementIndexIn,
 							     BDSLinkDetectorConstruction* constructionIn,
@@ -64,6 +69,7 @@ void BDSLinkPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   BDSLinkEventInfo* eventInfo = new BDSLinkEventInfo();
   anEvent->SetUserInformation(eventInfo);
   eventInfo->SetSeedStateAtStart(BDSRandom::GetSeedState());
+  eventInfo->linkSamplerID = *currentElementIndex;
 
   BDSParticleCoordsFull coords;
   try
@@ -88,6 +94,19 @@ void BDSLinkPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   BDSParticleCoordsFullGlobal cg;
   auto lr = construction->LinkRegistry();
   const G4Transform3D tr = lr->Transform(*currentElementIndex);
+  BDSParticleCoordsFull injectionCoords = coords;
+  const G4double inputClearance = lr->InputClearance(*currentElementIndex);
+  if (inputClearance > 0 && std::abs(coords.zp) > 0)
+    {
+      injectionCoords.x -= inputClearance * coords.xp / coords.zp;
+      injectionCoords.y -= inputClearance * coords.yp / coords.zp;
+      const G4double mass = bunch->ParticleDefinition()->Mass();
+      const G4double momentum = std::sqrt(std::max(0.0,
+        coords.totalEnergy*coords.totalEnergy - mass*mass));
+      const G4double beta = momentum / coords.totalEnergy;
+      if (beta > 0)
+        {injectionCoords.T -= inputClearance / (beta * CLHEP::c_light * coords.zp);}
+    }
   if (lr->NoRotation(*currentElementIndex))
     {
       if (debug)
@@ -95,14 +114,15 @@ void BDSLinkPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
           G4cout << "PGA: Coords before " << coords;
           G4cout << "Offset " << tr.getTranslation() << G4endl;
         }
-      BDSParticleCoords cgf = coords.ApplyOffset(tr.getTranslation());
+      BDSParticleCoords cgf = injectionCoords.ApplyOffset(tr.getTranslation());
       cg = BDSParticleCoordsFullGlobal(coords, cgf);
       if (debug)
         {G4cout << "Coords after " << cg.global;}
     }
   else
     {
-      cg = BDSParticleCoordsFullGlobal(coords,(BDSParticleCoords)coords.ApplyTransform(tr));
+      cg = BDSParticleCoordsFullGlobal(coords,
+                                       (BDSParticleCoords)injectionCoords.ApplyTransform(tr));
     }
   
   particleGun->SetParticleDefinition(bunch->ParticleDefinition()->ParticleDefinition());

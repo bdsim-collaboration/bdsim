@@ -108,7 +108,7 @@ void BDSParallelWorldSampler::Construct()
       for (auto element : *beamline)
 	{Place(element, samplerRadius);}
     }
-  
+
   // Now user customised samplers
   std::vector<GMAD::SamplerPlacement> samplerPlacements = BDSParser::Instance()->GetSamplerPlacements();
 
@@ -152,6 +152,50 @@ void BDSParallelWorldSampler::Construct()
 					    checkOverlaps);
       placements.push_back(pl);
     } 
+
+  // Link samplers are known while the mass world is being constructed, before
+  // this parallel world's logical volume exists. Materialise the already
+  // registered placements now, at their exact nominal reference planes.
+  for (const auto& deferred : deferredPlacements)
+    {
+      G4PVPlacement* pl = new G4PVPlacement(deferred.transform,
+                                            deferred.sampler->GetContainerLogicalVolume(),
+                                            deferred.name + "_pv",
+                                            samplerWorldLV,
+                                            false,
+                                            deferred.samplerID,
+                                            checkOverlaps);
+      placements.push_back(pl);
+    }
+
+}
+
+G4int BDSParallelWorldSampler::RegisterSamplerForConstruction(
+  const G4String&      name,
+  BDSSampler*          sampler,
+  const G4Transform3D& transform)
+{
+  G4int samplerID = BDSSamplerRegistry::Instance()->RegisterSampler(
+    name, sampler, transform);
+  if (samplerWorldLV)
+    {
+      // Link elements are normally added lazily after RunManager::Initialize,
+      // so the parallel world already exists. Place their sampler now. During
+      // initial mass-world construction the logical volume is not available
+      // yet and the same placement is deferred until Construct().
+      G4PVPlacement* placement = new G4PVPlacement(
+        transform,
+        sampler->GetContainerLogicalVolume(),
+        name + "_pv",
+        samplerWorldLV,
+        false,
+        samplerID,
+        BDSGlobalConstants::Instance()->CheckOverlaps());
+      placements.push_back(placement);
+    }
+  else
+    {deferredPlacements.push_back({name, sampler, transform, samplerID});}
+  return samplerID;
 }
 
 void BDSParallelWorldSampler::ErrorNonPositive(G4double value,

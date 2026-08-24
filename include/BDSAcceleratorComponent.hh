@@ -163,6 +163,10 @@ public:
   /// be used before Initialise() when the field is registered for construction.
   virtual void SetFieldUsePlacementWorldTransform();
 
+  /// Use a fixed local-to-global transform for a component delegated through
+  /// BDSLink, where no curvilinear parallel world is constructed.
+  virtual void SetFieldLinkTransform(const G4Transform3D& localToGlobal);
+
   /// Access beam pipe information, which is stored in this class to provide
   /// aperture information when making a survey of the beamline consisting of
   /// accelerator components.

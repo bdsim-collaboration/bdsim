@@ -18,12 +18,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSDebug.hh"
 #include "BDSHitSamplerLink.hh"
+#include "BDSLinkEventInfo.hh"
 #include "BDSLinkRegistry.hh"
 #include "BDSParticleCoordsFull.hh"
 #include "BDSPhysicsUtilities.hh"
 #include "BDSSDSamplerLink.hh"
 
 #include "G4DynamicParticle.hh"
+#include "G4Event.hh"
+#include "G4EventManager.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4SDManager.hh"
 #include "G4Step.hh"
@@ -35,7 +38,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "CLHEP/Geometry/Point3D.h"
 #include "CLHEP/Geometry/Vector3D.h"
+#include "CLHEP/Units/PhysicalConstants.h"
 
+#include <cmath>
+#include <limits>
 #include <vector>
 
 BDSSDSamplerLink::BDSSDSamplerLink(const G4String& name):
@@ -103,8 +109,17 @@ G4bool BDSSDSamplerLink::ProcessHits(G4Step* aStep, G4TouchableHistory* /*readOu
   G4int z = pd->GetAtomicNumber();
   G4int a = pd->GetAtomicMass();
 
-  // The copy number from the physical volume is used as our unique sampler ID
-  G4int samplerID = track->GetVolume()->GetCopyNo();
+  // In a parallel world track->GetVolume() is the mass-world volume.  As in
+  // BDSSDSampler, use the pre-step touchable: ProcessHits is called for the
+  // step through the sensitive sampler and its pre-step volume owns the ID.
+  G4StepPoint* preStepPoint = aStep->GetPreStepPoint();
+  G4int samplerID = preStepPoint->GetTouchable()->GetVolume()->GetCopyNo();
+  const G4Event* event = G4EventManager::GetEventManager()->GetConstCurrentEvent();
+  const auto* eventInfo = event ?
+    dynamic_cast<const BDSLinkEventInfo*>(event->GetUserInformation()) : nullptr;
+  if (eventInfo && eventInfo->linkSamplerID >= 0 &&
+      samplerID != eventInfo->linkSamplerID)
+    {return false;}
   //G4cout << "samplerID " << samplerID << G4endl;
 
   // Initialize variables for the local position and direction
@@ -131,12 +146,23 @@ G4bool BDSSDSamplerLink::ProcessHits(G4Step* aStep, G4TouchableHistory* /*readOu
       // The global to local transform is defined in the registry.
       // Cast 3 vector to 'point' to transform position (required to be explicit for * operator)
       localPosition = globalToLocal * (HepGeom::Point3D<G4double>)pos;
-      // Now, if the sampler is infinitely thin, the local z should be 0, but it's finite.
-      // Account for this by purposively setting local z to be 0.
-      localPosition.setZ(0.0);
       // Cast 3 vector to 3 vector to transform vector (required to be explicit for * operator)
       localDirection = globalToLocal * (HepGeom::Vector3D<G4double>)mom;
     }
+
+  // Project the hit from the finite sampler volume boundary to its nominal
+  // centre plane.  The sampler itself is in the parallel world, so this does
+  // not perturb navigation through angled mass-world geometry.
+  if (std::abs(localDirection.z()) > std::numeric_limits<G4double>::epsilon())
+    {
+      const G4double pathToNominal = localPosition.z() / localDirection.z();
+      localPosition.setX(localPosition.x() - localDirection.x()/localDirection.z()*localPosition.z());
+      localPosition.setY(localPosition.y() - localDirection.y()/localDirection.z()*localPosition.z());
+      const G4double beta = energy > 0 ? momentum / energy : 0;
+      if (beta > 0)
+        {T -= pathToNominal / (beta * CLHEP::c_light);}
+    }
+  localPosition.setZ(0.0);
 
   BDSParticleCoordsFull coords(localPosition.x(),
 			       localPosition.y(),
@@ -162,6 +188,10 @@ G4bool BDSSDSamplerLink::ProcessHits(G4Step* aStep, G4TouchableHistory* /*readOu
                                                     nElectrons);
   
   samplerLinkCollection->insert(smpHit);
+  // A link call returns particles at the first output plane it encounters.
+  // Without this, a track in the parallel world can continue into delegated
+  // elements placed later in the link world and create spurious extra hits.
+  track->SetTrackStatus(fStopAndKill);
   return true; // the hit was stored
 }
 

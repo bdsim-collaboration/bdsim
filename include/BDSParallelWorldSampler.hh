@@ -24,6 +24,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "globals.hh"
 #include "G4String.hh"
+#include "G4Transform3D.hh"
 #include "G4VUserParallelWorld.hh"
 
 #include <map>
@@ -65,7 +66,21 @@ public:
   void Place(const BDSBeamlineElement* element,
 	     G4double                  samplerRadius);
 
+  /// Register a sampler during mass-world construction and defer only its
+  /// physical placement until this parallel world is constructed.
+  G4int RegisterSamplerForConstruction(const G4String&      name,
+                                       BDSSampler*          sampler,
+                                       const G4Transform3D& transform);
+
 private:
+  struct DeferredSamplerPlacement
+  {
+    G4String      name;
+    BDSSampler*   sampler;
+    G4Transform3D transform;
+    G4int         samplerID;
+  };
+
   /// Utility function to reduce code.
   void ErrorNonPositive(G4double value,
                         const G4String& variableName,
@@ -83,6 +98,8 @@ private:
   
   /// Cache of the placements to clean up at the end.
   std::vector<G4VPhysicalVolume*> placements;
+  std::vector<DeferredSamplerPlacement> deferredPlacements;
+
   
   G4String suffix; ///< Just the input part of the world name.
   G4VisAttributes* samplerWorldVis; ///< Visualisation attributes for the sampler world.
