@@ -28,6 +28,7 @@ namespace py = pybind11;
 #include "beam.h"
 #include "coolingchannel.h"
 #include "element.h"
+#include "laser.h"
 #include "options.h"
 #include "region.h"
 #include "fastlist.h"
@@ -73,6 +74,7 @@ PYBIND11_MODULE(parser, m) {
       .def("Add_CoolingChannel",[](GMAD::Parser *parser) {parser->Add<GMAD::CoolingChannel, GMAD::FastList<GMAD::CoolingChannel>>(false, std::string("CoolingChannel"));}) // TODO why is the regular template not found
       .def("Add_Crystal",[](GMAD::Parser *parser) {parser->Add<GMAD::Crystal, GMAD::FastList<GMAD::Crystal>>();})
       .def("Add_Field",[](GMAD::Parser *parser) {parser->Add<GMAD::Field, GMAD::FastList<GMAD::Field>>();})
+      .def("Add_Laser",[](GMAD::Parser *parser) {parser->Add<GMAD::Laser, GMAD::FastList<GMAD::Laser>>();})
       .def("Add_Material",[](GMAD::Parser *parser) {parser->Add<GMAD::Material, GMAD::FastList<GMAD::Material>>();})
       .def("Add_Modulator",[](GMAD::Parser *parser) {parser->Add<GMAD::Modulator, GMAD::FastList<GMAD::Modulator>>();})
       .def("Add_NewColour",[](GMAD::Parser *parser) {parser->Add<GMAD::NewColour, GMAD::FastList<GMAD::NewColour>>();})
@@ -92,6 +94,7 @@ PYBIND11_MODULE(parser, m) {
       .def("Add_CoolingChannel",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::CoolingChannel, GMAD::FastList<GMAD::CoolingChannel>>(unique, className);})
       .def("Add_Crystal",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Crystal, GMAD::FastList<GMAD::Crystal>>(unique, className);})
       .def("Add_Field",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Field, GMAD::FastList<GMAD::Field>>(unique, className);})
+      .def("Add_Laser",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Laser, GMAD::FastList<GMAD::Laser>>(unique, className);})
       .def("Add_Material",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Material, GMAD::FastList<GMAD::Material>>(unique, className);})
       .def("Add_Modulator",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::Modulator, GMAD::FastList<GMAD::Modulator>>(unique, className);})
       .def("Add_NewColour",[](GMAD::Parser *parser, bool unique, std::string className) {parser->Add<GMAD::NewColour, GMAD::FastList<GMAD::NewColour>>(unique, className);})
@@ -112,6 +115,7 @@ PYBIND11_MODULE(parser, m) {
       .def("GetGlobal_CoolingChannel",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::CoolingChannel>();}, py::return_value_policy::reference)
       .def("GetGlobal_Crystal",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Crystal>();}, py::return_value_policy::reference)
       .def("GetGlobal_Field",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Field>();}, py::return_value_policy::reference)
+      .def("GetGlobal_Laser",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Laser>();}, py::return_value_policy::reference)
       .def("GetGlobal_Material",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Material>();}, py::return_value_policy::reference)
       .def("GetGlobal_Modulator",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::Modulator>();}, py::return_value_policy::reference)
       .def("GetGlobal_NewColour",[](GMAD::Parser *parser) {return parser->GetGlobalPtr<GMAD::NewColour>();}, py::return_value_policy::reference)
@@ -133,6 +137,7 @@ PYBIND11_MODULE(parser, m) {
       .def("GetList_CoolingChannel",[](GMAD::Parser *parser) {return parser->GetList<GMAD::CoolingChannel, GMAD::FastList<GMAD::CoolingChannel>>();})
       .def("GetList_Crystal",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Crystal, GMAD::FastList<GMAD::Crystal>>();})
       .def("GetList_Field",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Field, GMAD::FastList<GMAD::Field>>();})
+      .def("GetList_Laser",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Laser, GMAD::FastList<GMAD::Laser>>();})
       .def("GetList_Material",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Material, GMAD::FastList<GMAD::Material>>();})
       .def("GetList_Modulator",[](GMAD::Parser *parser) {return parser->GetList<GMAD::Modulator, GMAD::FastList<GMAD::Modulator>>();})
       .def("GetList_NewColour",[](GMAD::Parser *parser) {return parser->GetList<GMAD::NewColour, GMAD::FastList<GMAD::NewColour>>();})
