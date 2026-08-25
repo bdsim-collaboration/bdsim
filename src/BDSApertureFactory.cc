@@ -409,7 +409,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4Str
   productLengthExtra = lengthExtraForBoolean;
   
   // check specialisations - these are more optimal combinations
-  auto key    = MakePair(productApertureIn->apertureType, productApertureOut->apertureType);
+  auto key = MakePair(productApertureIn->apertureType, productApertureOut->apertureType);
 
   // varied specialisations
   if (variedAperture)
@@ -420,50 +420,50 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4Str
           auto mem = search->second;
           return (this->*mem)(thickness);
         }
+      else // no specialisation and different types -> use polygons
+        {
+          Product result;
+          Product inner = CreateTubeByPoints("_inner");
+          result.Extend(inner); // keep track of all solids
+          productLengthExtra = 0;
+          BDSAperture* apInOutside = apertureInInside->Plus(thickness);
+          BDSAperture* apOutOutside = apertureOutInside->Plus(thickness); // must be different from "in" as variedAperture==true
+          productApertureIn = apInOutside; // assign to members for factory action
+          productApertureOut = apOutOutside;
+          Product outer = CreateTubeByPoints("_outer");
+          result.Extend(outer);
+          G4VSolid* product = new G4SubtractionSolid(productName, outer.product, inner.product);
+          result.product = product;
+          delete apInOutside;
+          delete apOutOutside;
+          return result;
+        }
     }
-
-  // constant aperture specialisations
-  auto search = hollowSpecialisations.find(key);
-  if (search != hollowSpecialisations.end())
+  else
     {
-      auto mem = search->second;
-      return (this->*mem)(thickness);
-    }
-
-  // otherwise if not varied, then just subtract an inner from an outer
-  if (!variedAperture)
-    {// use two instances of the same shape but with one expanded to make a subtraction
-      Product result;
-      Product inner = CreateSolid(productName+"_inner", length + productLengthExtra,
-                                  productApertureIn, productApertureOut, normalIn, normalOut, 0);
-      result.Extend(inner); // keep track of all solids
-      productLengthExtra = 0;
-      BDSAperture* apInOutside = apertureInInside->Plus(thickness);
-      Product outer = CreateSolid(productName+"_outer", length, apInOutside,
-                                  apInOutside, normalIn, normalOut, 0);
-      result.Extend(outer);
-      G4VSolid* product = new G4SubtractionSolid(productName, outer.product, inner.product);
-      result.product = product;
-      delete apInOutside;
-      return result;
-    }
-  else // no specialisation and different types -> use polygons
-    {
-      Product result;
-      Product inner = CreateTubeByPoints("_inner");
-      result.Extend(inner); // keep track of all solids
-      productLengthExtra = 0;
-      BDSAperture* apInOutside = apertureInInside->Plus(thickness);
-      BDSAperture* apOutOutside = apertureOutInside->Plus(thickness); // must be different from "in" as variedAperture==true
-      productApertureIn = apInOutside; // assign to members for factory action
-      productApertureOut = apOutOutside;
-      Product outer = CreateTubeByPoints("_outer");
-      result.Extend(outer);
-      G4VSolid* product = new G4SubtractionSolid(productName, outer.product, inner.product);
-      result.product = product;
-      delete apInOutside;
-      delete apOutOutside;
-      return result;
+      // constant aperture specialisations
+      auto search = hollowSpecialisations.find(key);
+      if (search != hollowSpecialisations.end())
+        {
+          auto mem = search->second;
+          return (this->*mem)(thickness);
+        }
+      else
+        {// use two instances of the same shape but with one expanded to make a subtraction
+          Product result;
+          Product inner = CreateSolid(productName+"_inner", length + productLengthExtra,
+                                      productApertureIn, productApertureOut, normalIn, normalOut, 0);
+          result.Extend(inner); // keep track of all solids
+          productLengthExtra = 0;
+          BDSAperture* apInOutside = apertureInInside->Plus(thickness);
+          Product outer = CreateSolid(productName+"_outer", length, apInOutside,
+                                      apInOutside, normalIn, normalOut, 0);
+          result.Extend(outer);
+          G4VSolid* product = new G4SubtractionSolid(productName, outer.product, inner.product);
+          result.product = product;
+          delete apInOutside;
+          return result;
+        }
     }
 }
 
@@ -682,7 +682,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateTubeByPoints(const G4Strin
       nZ += std::ceil(std::abs(dTilt) / 0.2*CLHEP::radian);
     }
 
-  G4VSolid* result = new BDSTube(productName+nameSuffix+"_so", productLength + productLengthExtra,
+  G4VSolid* result = new BDSTube(productName+nameSuffix+"_so", productLength,
                                  startingPoints, finishingPoints, nZ);
   return {result, {}};
 }

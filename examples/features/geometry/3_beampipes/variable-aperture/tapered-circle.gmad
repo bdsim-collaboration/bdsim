@@ -1,0 +1,9 @@
+d1: drift, l=1*m, apertureType="circle", apertureTypeOut="circle", apertureParams={5*cm}, apertureParamsOut={8*cm};
+d2: drift, l=1*m, apertureType="circle", apertureTypeOut="circle", apertureParams={8*cm}, apertureParamsOut={5*cm};
+
+l1: line=(d1, d2);
+use, l1;
+
+beam, particle="e-", momentum=1*GeV;
+
+option, checkOverlaps=1;
