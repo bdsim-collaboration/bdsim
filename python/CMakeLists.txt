@@ -56,17 +56,17 @@ foreach(rootBindingSrc IN ZIP_LISTS rootBindingSrcs)
 endforeach()
 
 install(FILES __init__.py bdsim.py convert.py developer.py
-        DESTINATION lib/python/bdsim
+        DESTINATION lib/bdsim-python/bdsim
         COMPONENT python)
 
 install(FILES ocelot/__init__.py ocelot/bdsim_element.py
-        DESTINATION lib/python/bdsim/ocelot
+        DESTINATION lib/bdsim-python/bdsim/ocelot
         COMPONENT python)
 
 install(FILES rftrack/__init__.py rftrack/bdsim_element.py rftrack/pandas.py
-        DESTINATION lib/python/bdsim/rftrack
+        DESTINATION lib/bdsim-python/bdsim/rftrack
         COMPONENT python)
 
 install(FILES xsuite/__init__.py xsuite/bdsim_element.py
-        DESTINATION lib/python/bdsim/xsuite
+        DESTINATION lib/bdsim-python/bdsim/xsuite
         COMPONENT python)
