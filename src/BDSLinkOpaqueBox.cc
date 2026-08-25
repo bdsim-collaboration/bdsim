@@ -94,6 +94,7 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   if (outputGuardIn)
     {componentBeamline->AddComponent(outputGuardIn);}
   const BDSBeamlineElement* first = componentBeamline->front();
+  const BDSBeamlineElement* last  = componentBeamline->back();
   const BDSBeamlineElement* nominalFirst = componentBeamline->at(nominalStartIndex);
   const BDSBeamlineElement* nominalLast  = componentBeamline->at(nominalEndIndex);
   const G4ThreeVector desiredInput(
@@ -113,6 +114,8 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   transformToOutput = frame(
     nominalLast->GetReferenceRotationEnd(),
     nominalLast->GetReferencePositionEnd());
+  const G4Transform3D trackingOutputFrame = frame(
+    last->GetReferenceRotationEnd(), last->GetReferencePositionEnd());
   offsetToStart = inputFrame.getTranslation();
   const G4double gap                = 10 * CLHEP::cm;
   const G4double opaqueBoxThickness = 10 * CLHEP::mm;
@@ -163,8 +166,19 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   // require face-matched guards.
   if (guardsBuilt)
     {
-      inputClearance = inputGuardLengthIn;
-      outputClearance = outputGuardLengthIn;
+      // Use the frames produced by the ordinary BDSBeamline builder.  Their
+      // separation includes both the guard body and BDSIM's standard
+      // inter-component navigation padding, exactly as in a normal beamline.
+      // The interface compensates this complete field-free distance without
+      // changing the delegated component geometry.
+      const G4Transform3D trackingInputInNominal =
+        inputFrame.inverse() * trackingInputFrame;
+      const G4Transform3D trackingOutputInNominal =
+        transformToOutput.inverse() * trackingOutputFrame;
+      inputClearance = std::max(
+        0.0, -trackingInputInNominal.getTranslation().z());
+      outputClearance = std::max(
+        0.0, trackingOutputInNominal.getTranslation().z());
     }
   else
     {
@@ -304,6 +318,8 @@ std::pair<G4double, G4double> BDSLinkOpaqueBox::FaceClearances(
   const G4Transform3D globalToOutput = outputToGlobal.inverse();
   G4double minimumInputZ = std::numeric_limits<G4double>::max();
   G4double maximumOutputZ = std::numeric_limits<G4double>::lowest();
+  G4double inputFaceRadius = 0;
+  G4double outputFaceRadius = 0;
   for (const auto& native : probe)
     {
       const G4Transform3D localToGlobal(
@@ -318,11 +334,47 @@ std::pair<G4double, G4double> BDSLinkOpaqueBox::FaceClearances(
           maximumOutputZ = std::max(maximumOutputZ, inOutput.z());
         }
     }
+  auto transverseRadiusInFrame = [](const BDSBeamlineElement* native,
+                                    const G4Transform3D&      globalToFrame)
+  {
+    const G4Transform3D localToGlobal(
+      *native->GetRotationMiddle(), native->GetPositionMiddle());
+    G4double result = 0;
+    for (const auto& corner : native->GetExtent().AllBoundaryPoints())
+      {
+        const auto inFrame = globalToFrame * localToGlobal *
+          (HepGeom::Point3D<G4double>)corner;
+        result = std::max(result, std::hypot(inFrame.x(), inFrame.y()));
+      }
+    return result;
+  };
+  inputFaceRadius = transverseRadiusInFrame(first, globalToInput);
+  outputFaceRadius = transverseRadiusInFrame(last, globalToOutput);
+
+  auto faceExcursion = [](const BDSBeamlineElement* native,
+                          const G4Transform3D&      globalToFrame,
+                          const G4ThreeVector&      localNormal,
+                          G4double                  transverseRadius)
+  {
+    const G4ThreeVector normal = globalToFrame.getRotation() *
+      (*native->GetRotationMiddle() * localNormal);
+    if (std::abs(normal.z()) <= std::numeric_limits<G4double>::epsilon())
+      {return std::numeric_limits<G4double>::infinity();}
+    return transverseRadius * normal.perp() / std::abs(normal.z());
+  };
   const G4double margin = 1*CLHEP::cm;
   const G4double input = angledInput ?
-    std::max(0.0, -minimumInputZ) + margin : 0.0;
+    std::max(std::max(0.0, -minimumInputZ),
+             faceExcursion(first,
+                           globalToInput,
+                           first->GetAcceleratorComponent()->InputFaceNormal(),
+                           inputFaceRadius)) + margin : 0.0;
   const G4double output = angledOutput ?
-    std::max(0.0, maximumOutputZ) + margin : 0.0;
+    std::max(std::max(0.0, maximumOutputZ),
+             faceExcursion(last,
+                           globalToOutput,
+                           last->GetAcceleratorComponent()->OutputFaceNormal(),
+                           outputFaceRadius)) + margin : 0.0;
   return {input, output};
 }
 
