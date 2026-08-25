@@ -154,10 +154,12 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
       const auto* child = native->GetAcceleratorComponent();
       const G4bool nativeBend = dynamic_cast<const BDSMagnet*>(child) &&
         BDS::IsFinite(child->GetAngle());
-      const G4bool curvedField = child->HasAField() &&
-        BDS::IsFinite(child->GetAngle());
       protrudingInputFace |= child->AngledInputFace() || nativeBend;
-      protrudingOutputFace |= child->AngledOutputFace() || curvedField;
+      // A finite parallel-world sampler centred exactly on the nominal exit
+      // starts recording on its upstream face.  Keep it beyond every field,
+      // including straight RF cavities and maps, so the complete element and
+      // any exit fringe are tracked before the hit is projected back.
+      protrudingOutputFace |= child->AngledOutputFace() || child->HasAField();
     }
   inputClearance = protrudingInputFace ?
     std::max(0.0, offsetToStart.z() - minimumZ) + 1*CLHEP::cm : 0.0;

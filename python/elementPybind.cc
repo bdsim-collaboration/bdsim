@@ -240,7 +240,11 @@ PYBIND11_MODULE(element, m)
     .def("set_value",[](GMAD::Element& self, std::string name, bool value) {self.set_value<bool>(name, value, true);})
     .def("set_value",[](GMAD::Element& self, std::string name, int value) {self.set_value<int>(name, value, true);})
     .def("set_value",[](GMAD::Element& self, std::string name, long int value) {self.set_value<long int>(name, value, true);})
-    .def("set_value",[](GMAD::Element& self, std::string name, double value) {self.set_value<double>(name, value, true);})
+    .def("set_value",[](GMAD::Element& self, std::string name, double value) {
+      self.set_value<double>(name, value, true);
+      if (name == "angle") {self.angleSet = true;}
+      if (name == "scalingFieldOuter") {self.scalingFieldOuterSet = true;}
+    })
     .def("set_value",[](GMAD::Element& self, std::string name, std::string value) {self.set_value<std::string>(name, value, true);})
     .def("set_value",[](GMAD::Element& self, std::string name, GMAD::Array *value) {self.set_value_array(name,value,true);})
     .def("get_value_array",[](GMAD::Element &self, std::string name) {return self.get_value_array(name);})
@@ -289,7 +293,11 @@ PYBIND11_MODULE(element, m)
     .def("__len__", [](GMAD::Element &self) {return self.AllNames().size();})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, bool value) {self.set_value(key,value, false);})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, int value) {self.set_value(key,value, false);})
-    .def("__setitem__", [](GMAD::Element &self, const std::string& key, double value) {self.set_value(key,value, false);})
+    .def("__setitem__", [](GMAD::Element &self, const std::string& key, double value) {
+      self.set_value(key,value, false);
+      if (key == "angle") {self.angleSet = true;}
+      if (key == "scalingFieldOuter") {self.scalingFieldOuterSet = true;}
+    })
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, const std::string& value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, GMAD::Array *value) {self.set_value(key, value, false);})
     .def("__setitem__", [](GMAD::Element &self, const std::string& key, py::list &value) {

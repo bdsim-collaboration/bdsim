@@ -39,7 +39,10 @@ G4int BDSLinkRegistry::Register(BDSLinkOpaqueBox*    componentIn,
                                G4int               samplerIDIn)
 {
   G4cout << "New ID " << samplerIDIn << " for " << componentIn->LinkName() << G4endl;
-  G4bool noRotation = !(componentIn->Angled());
+  // Compound components such as rbend and RF are represented by a BDSLine,
+  // whose own angle is zero even when its final reference frame is rotated.
+  // The actual output transform is therefore the authoritative test.
+  G4bool noRotation = outputToGlobalIn.getRotation().isIdentity();
   BDSLinkRegistry::LinkEntry le = {noRotation,
                                    componentIn,
                                    inputToGlobalIn,
