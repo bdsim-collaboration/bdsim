@@ -16,6 +16,16 @@ fi
   )
 endfunction()
 
+function(_source_script TEMPLATE_NAME SCRIPT_NAME)
+  set(${TEMPLATE_NAME}
+  "
+# source geant4.sh
+source ${SCRIPT_NAME}
+"
+  PARENT_SCOPE
+  )
+endfunction()
+
 function(_prepend_path TEMPLATE_NAME PATH_VARIABLE PREPEND_VARIABLE)
   # We have to make this section verbatim
   set(${TEMPLATE_NAME}
@@ -43,3 +53,18 @@ _prepend_path(BDSIM_LIB_PATH_SETUP
   ${_libpathname}
   "$BDSIM/lib"
   )
+
+if (Geant4_PREFIX)
+  set(GEANT4_SETUP_SCIPT_SETUP "# source geant4")
+  _source_script(GEANT4_SETUP_SCRIPT
+                 "${Geant4_PREFIX}/bin/geant4.sh")
+endif()
+
+if (USE_PYTHON_BINDINGS)
+  MESSAGE(STATUS "Adding bdsim python to PYTHONPATH")
+  set(BDSIM_PYTHON_PATH_SETUP "# set library path")
+  _append_path(BDSIM_PYTHON_PATH_SETUP
+               PYTHONPATH
+               "$BDSIM/lib/bdsim-python")
+endif()
+
