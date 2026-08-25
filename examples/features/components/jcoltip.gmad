@@ -23,7 +23,8 @@ beam, particle="e+",
       sigmaY = 2*cm;
 
 
-option, storeCollimatorInfo=1,
+option, checkOverlaps=1,
+        storeCollimatorInfo=1,
         storeCollimatorHitsAll=1,
         storeCollimatorHitsLinks=1;
 
