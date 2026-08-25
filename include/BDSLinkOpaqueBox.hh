@@ -27,6 +27,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "BDSGeometryComponent.hh"
 
+#include <utility>
+
 class BDSAcceleratorComponent;
 class BDSBeamline;
 class BDSParallelWorldSampler;
@@ -43,7 +45,11 @@ class BDSLinkOpaqueBox: public BDSGeometryComponent
 public:
   BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponentIn,
                    BDSTiltOffset* tiltOffsetIn,
-                   G4double outputSamplerRadiusIn);
+                   G4double outputSamplerRadiusIn,
+                   BDSAcceleratorComponent* inputGuardIn = nullptr,
+                   BDSAcceleratorComponent* outputGuardIn = nullptr,
+                   G4double inputGuardLengthIn = 0,
+                   G4double outputGuardLengthIn = 0);
   virtual ~BDSLinkOpaqueBox();
 
   /// Default constructor
@@ -59,6 +65,14 @@ public:
   inline const G4Transform3D& TransformToOutput() const {return transformToOutput;}
   inline G4double InputClearance() const {return inputClearance;}
   inline G4double OutputClearance() const {return outputClearance;}
+
+  /// Determine how far a field-free guard must extend beyond the nominal
+  /// input and output planes to contain angled faces completely.  A zero
+  /// value means that the corresponding external face is perpendicular to
+  /// the reference trajectory.
+  static std::pair<G4double, G4double> FaceClearances(
+    BDSAcceleratorComponent* component,
+    const BDSTiltOffset* tiltOffset);
 
   /// Configure the delegated component field with its fixed world placement.
   void SetFieldLinkTransform(const G4Transform3D& opaqueToGlobal);

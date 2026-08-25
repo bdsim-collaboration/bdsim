@@ -49,6 +49,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSSamplerType.hh"
 #include "BDSSDManager.hh"
 #include "BDSTiltOffset.hh"
+#include "BDSUtilities.hh"
 
 #include "parser/element.h"
 #include "parser/elementtype.h"
@@ -64,10 +65,90 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4ChannelingOptrMultiParticleChangeCrossSection.hh"
 #endif
 
+#include <cmath>
 #include <set>
+#include <string>
 #include <vector>
 
 class BDSParticleDefinition;
+
+namespace
+{
+  GMAD::Element LinkGuardDefinition(const GMAD::Element& source,
+                                    const G4String&      name,
+                                    G4double             length)
+  {
+    GMAD::Element guard;
+    guard.type = GMAD::ElementType::_DRIFT;
+    guard.name = name;
+    guard.l = length / CLHEP::m;
+    // Continue the accelerator vacuum and beam pipe through the artificial
+    // tracking margin. The component factory angles the adjacent face from
+    // the delegated element supplied as its previous or next definition.
+    guard.apertureType = source.apertureType;
+    guard.aper1 = source.aper1;
+    guard.aper2 = source.aper2;
+    guard.aper3 = source.aper3;
+    guard.aper4 = source.aper4;
+    guard.beampipeThickness = source.beampipeThickness;
+    guard.beampipeMaterial = source.beampipeMaterial;
+    guard.vacuumMaterial = source.vacuumMaterial;
+    return guard;
+  }
+
+  BDSLinkOpaqueBox* BuildOpaqueBoxWithFaceGuards(
+    BDSAcceleratorComponent* component,
+    const GMAD::Element& element,
+    BDSComponentFactory* componentFactory,
+    const BDSParticleDefinition& designParticle,
+    BDSTiltOffset* tiltOffset,
+    G4double outputSamplerRadius)
+  {
+    auto clearances = BDSLinkOpaqueBox::FaceClearances(component, tiltOffset);
+    // Imported generic geometry cannot advertise a solid face normal through
+    // BDSAcceleratorComponent.  For `element`, e1/e2 are therefore the
+    // explicit interface contract: the external geometry is expected to have
+    // those faces and the ordinary component factory uses the same values to
+    // cut the adjacent guard drifts.
+    if (element.type == GMAD::ElementType::_ELEMENT)
+      {
+        const G4double radius = component->GetExtent().TiltOffset(
+          tiltOffset).TransverseBoundingRadius();
+        const G4double margin = 1*CLHEP::cm;
+        if (BDS::IsFinite(element.e1*CLHEP::rad))
+          {clearances.first = radius*std::abs(std::tan(element.e1*CLHEP::rad)) + margin;}
+        if (BDS::IsFinite(element.e2*CLHEP::rad))
+          {clearances.second = radius*std::abs(std::tan(element.e2*CLHEP::rad)) + margin;}
+      }
+    BDSAcceleratorComponent* inputGuard = nullptr;
+    BDSAcceleratorComponent* outputGuard = nullptr;
+    GMAD::Element inputDefinition;
+    GMAD::Element outputDefinition;
+    if (clearances.first > 0)
+      {
+        inputDefinition = LinkGuardDefinition(
+          element, element.name + "_link_guard_in", clearances.first);
+        BDSBeamlineIntegral guardIntegral(designParticle);
+        inputGuard = componentFactory->CreateComponent(
+          &inputDefinition, nullptr, &element, guardIntegral);
+      }
+    if (clearances.second > 0)
+      {
+        outputDefinition = LinkGuardDefinition(
+          element, element.name + "_link_guard_out", clearances.second);
+        BDSBeamlineIntegral guardIntegral(designParticle);
+        outputGuard = componentFactory->CreateComponent(
+          &outputDefinition, &element, nullptr, guardIntegral);
+      }
+    return new BDSLinkOpaqueBox(component,
+                                tiltOffset,
+                                outputSamplerRadius,
+                                inputGuard,
+                                outputGuard,
+                                clearances.first,
+                                clearances.second);
+  }
+}
 
 BDSLinkDetectorConstruction::BDSLinkDetectorConstruction():
   worldSolid(nullptr),
@@ -181,7 +262,9 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
           if (requestedRadius > encompassingRadius)
             {encompassingRadius = requestedRadius;}
         }
-      BDSLinkOpaqueBox* opaqueBox = new BDSLinkOpaqueBox(component, to, encompassingRadius);
+      BDSLinkOpaqueBox* opaqueBox = BuildOpaqueBoxWithFaceGuards(
+        component, element, componentFactory.get(), *designParticle, to,
+        encompassingRadius);
       
       delete to; // opaqueBox doesn't own it
       opaqueBoxes.push_back(opaqueBox);
@@ -455,7 +538,9 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& colli
                                         el.tilt * CLHEP::rad);
   auto extentTiltOffset = component->GetExtent().TiltOffset(to);
   G4double encompassingRadius = extentTiltOffset.TransverseBoundingRadius();
-  BDSLinkOpaqueBox* opaqueBox = new BDSLinkOpaqueBox(component, to, encompassingRadius);
+  BDSLinkOpaqueBox* opaqueBox = BuildOpaqueBoxWithFaceGuards(
+    component, el, componentFactory.get(), *designParticle, to,
+    encompassingRadius);
   
   // add to beam line
   BDSLinkComponent* comp = new BDSLinkComponent(opaqueBox->GetName(),
@@ -556,7 +641,9 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     BDSTiltOffset* to = new BDSTiltOffset(el.offsetX * CLHEP::m, el.offsetY * CLHEP::m, el.tilt * CLHEP::rad);
     auto extentTiltOffset = component->GetExtent().TiltOffset(to);
     G4double encompassingRadius = extentTiltOffset.TransverseBoundingRadius();
-    BDSLinkOpaqueBox* opaqueBox = new BDSLinkOpaqueBox(component, to, encompassingRadius);
+    BDSLinkOpaqueBox* opaqueBox = BuildOpaqueBoxWithFaceGuards(
+      component, el, componentFactory.get(), *designParticle, to,
+      encompassingRadius);
     
     // Add to beamline
     BDSLinkComponent* comp = new BDSLinkComponent(opaqueBox->GetName(), opaqueBox, opaqueBox->GetExtent().DZ());
@@ -606,7 +693,9 @@ G4int BDSLinkDetectorConstruction::AddLinkElement(GMAD::Element el) {
   BDSTiltOffset* to = new BDSTiltOffset(el.offsetX * CLHEP::m, el.offsetY * CLHEP::m, el.tilt * CLHEP::rad);
   auto extentTiltOffset = component->GetExtent().TiltOffset(to);
   G4double encompassingRadius = extentTiltOffset.TransverseBoundingRadius();
-  BDSLinkOpaqueBox* opaqueBox = new BDSLinkOpaqueBox(component, to, encompassingRadius);
+  BDSLinkOpaqueBox* opaqueBox = BuildOpaqueBoxWithFaceGuards(
+    component, el, componentFactory.get(), *designParticle, to,
+    encompassingRadius);
 
   // Add to beamline
   BDSLinkComponent* comp = new BDSLinkComponent(opaqueBox->GetName(), opaqueBox, opaqueBox->GetExtent().DZ());

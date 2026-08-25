@@ -70,8 +70,8 @@ public:
   static G4String DetermineScalingKey(BDSMagnetType typeIn);
 
   /// @{ Update face normal and also to beam pipe and magnet outer.
-  virtual void SetInputFaceNormal(const G4ThreeVector& input);
-  virtual void SetOutputFaceNormal(const G4ThreeVector& output);
+  virtual void SetInputFaceNormal(const G4ThreeVector& input) override;
+  virtual void SetOutputFaceNormal(const G4ThreeVector& output) override;
   /// @}
 
   /// Accessor to outer material if it exists.
