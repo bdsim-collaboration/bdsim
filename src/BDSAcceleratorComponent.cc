@@ -211,11 +211,14 @@ void BDSAcceleratorComponent::SetFieldLinkTransform(const G4Transform3D& localTo
 {
   if (fieldInfo)
     {
+      // A curved generic component uses BDSIM's link-specific curvilinear
+      // reference world, just as the same component does in a standalone
+      // beam line.  Its field frame must evolve along the reference arc.
+      if (fieldInfo->ProvideGlobal() && BDS::IsFinite(angle))
+        {return;}
       // A delegated link element has one fixed placement and no continuous
-      // mass-world beam line around it.  Convert even fields that normally
-      // request BDSIM's curvilinear global wrapper to that fixed placement;
-      // otherwise global fields attached to generic components can select an
-      // unrelated curvilinear volume and evaluate in the wrong coordinates.
+      // mass-world beam line around it.  Straight global fields and local
+      // fields therefore use the exact fixed component placement.
       fieldInfo->SetProvideGlobalTransform(false);
       fieldInfo->SetTransform(localToGlobal * fieldInfo->Transform());
       fieldInfo->SetTransformBeamline(G4Transform3D::Identity);

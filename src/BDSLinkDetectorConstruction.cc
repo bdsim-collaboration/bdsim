@@ -193,6 +193,9 @@ BDSAcceleratorComponent* BDSLinkDetectorConstruction::BuildLinkComponent(
     GMAD::ElementType::_SEXTUPOLE,
     GMAD::ElementType::_OCTUPOLE,
     GMAD::ElementType::_DECAPOLE,
+    GMAD::ElementType::_MULT,
+    GMAD::ElementType::_THINMULT,
+    GMAD::ElementType::_SOLENOID,
     GMAD::ElementType::_RCOL,
     GMAD::ElementType::_ELEMENT,
     GMAD::ElementType::_HKICKER,
@@ -281,7 +284,7 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
   UpdateWorldSolid();
   
   G4LogicalVolume* worldLV = new G4LogicalVolume(worldSolid,
-						 BDSMaterials::Instance()->GetMaterial("G4_Galactic"),
+						 BDSMaterials::Instance()->GetMaterial(globalConstants->WorldMaterial()),
 						 "world_lv");
 
   G4VisAttributes* debugWorldVis = new G4VisAttributes(*(BDSGlobalConstants::Instance()->ContainerVisAttr()));
@@ -329,57 +332,11 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
       if (!opaque)
         {continue;}
 
-      BDSBeamline localFrames;
-      localFrames.AddComponent(
-        opaque->Component(),
-        new BDSTiltOffset(opaque->OffsetX(), opaque->OffsetY(), opaque->Tilt()));
-      const BDSBeamlineElement* local = localFrames.front();
-
-      G4Transform3D nominalInputToGlobal =
-        (*wrapperElement->GetPlacementTransform()) *
-        G4Transform3D(G4RotationMatrix(), opaque->OffsetToStart());
-      auto frame = [&nominalInputToGlobal](G4RotationMatrix* rotation,
-                                           const G4ThreeVector& position)
-      {
-        return nominalInputToGlobal * G4Transform3D(*rotation, position);
-      };
-      G4Transform3D placementStart =
-        frame(local->GetRotationStart(), local->GetPositionStart());
-      G4Transform3D placementMiddle =
-        frame(local->GetRotationMiddle(), local->GetPositionMiddle());
-      G4Transform3D placementEnd =
-        frame(local->GetRotationEnd(), local->GetPositionEnd());
-      G4Transform3D referenceStart =
-        frame(local->GetReferenceRotationStart(), local->GetReferencePositionStart());
-      G4Transform3D referenceMiddle =
-        frame(local->GetReferenceRotationMiddle(), local->GetReferencePositionMiddle());
-      G4Transform3D referenceEnd =
-        frame(local->GetReferenceRotationEnd(), local->GetReferencePositionEnd());
-
-      BDSBeamlineElement* referenceElement = new BDSBeamlineElement(
-        opaque->Component(),
-        placementStart.getTranslation(),
-        placementMiddle.getTranslation(),
-        placementEnd.getTranslation(),
-        new G4RotationMatrix(placementStart.getRotation()),
-        new G4RotationMatrix(placementMiddle.getRotation()),
-        new G4RotationMatrix(placementEnd.getRotation()),
-        referenceStart.getTranslation(),
-        referenceMiddle.getTranslation(),
-        referenceEnd.getTranslation(),
-        new G4RotationMatrix(referenceStart.getRotation()),
-        new G4RotationMatrix(referenceMiddle.getRotation()),
-        new G4RotationMatrix(referenceEnd.getRotation()),
+      opaque->AppendFieldReferenceElements(
+        fieldReferenceBeamline,
+        *wrapperElement->GetPlacementTransform(),
         referenceS,
-        referenceS + 0.5*opaque->ArcLength(),
-        referenceS + opaque->ArcLength(),
-        0, 0, 0,
-        new BDSTiltOffset(opaque->OffsetX(), opaque->OffsetY(), opaque->Tilt()),
-        nullptr,
         referenceIndex);
-      fieldReferenceBeamline->AddBeamlineElement(referenceElement);
-      referenceS += opaque->ArcLength();
-      referenceIndex++;
     }
 
   BDSCurvilinearBuilder curvilinearBuilder;
@@ -755,6 +712,10 @@ G4int BDSLinkDetectorConstruction::PlaceOneComponent(const BDSBeamlineElement* e
   G4Transform3D elCentreToStart = el->TransformToStart();
   G4Transform3D globalToStart = (*placementTransform) * elCentreToStart;
   G4Transform3D globalToOutput = (*placementTransform) * el->TransformToOutput();
+  // The sampler remains beyond the complete geometry and its navigation
+  // padding, but the state returned to the calling interface is projected
+  // onto the nominal element output plane. Padding is a Geant4 implementation
+  // detail, not an addition to the external element length.
   if (samplerWorldID < 0)
     {throw BDSException(__METHOD_NAME__, "link sampler parallel world is unavailable");}
   auto linkSamplerWorld = dynamic_cast<BDSParallelWorldSampler*>(GetParallelWorld(samplerWorldID));

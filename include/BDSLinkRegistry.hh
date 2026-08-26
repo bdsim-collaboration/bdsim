@@ -62,7 +62,7 @@ private:
     BDSLinkOpaqueBox* component;
     G4Transform3D     transform;
     G4Transform3D     transformInverse; ///< Global to output reference frame.
-    G4double          inputClearance;   ///< Distance upstream of the nominal input plane.
+    G4double          inputClearance;   ///< Artificial upstream distance to compensate.
     G4int             id;
   };
 

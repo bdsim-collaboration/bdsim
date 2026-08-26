@@ -72,9 +72,12 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   outputSamplerRadius(outputSamplerRadiusIn),
   inputClearance(0),
   outputClearance(0),
+  interfacePadding(0),
   tilt(tiltOffsetIn->GetTilt()),
   offsetX(tiltOffsetIn->GetXOffset()),
   offsetY(tiltOffsetIn->GetYOffset()),
+  nominalStartIndex(0),
+  nominalEndIndex(0),
   sampler(nullptr)
 {
   const G4double chordLength = component->GetChordLength();
@@ -84,13 +87,17 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   // AddComponent transparently expands a BDSLine, which keeps RF bodies and
   // their entrance / exit fringes in one delegated link element.
   componentBeamline = new BDSBeamline();
+  // A delegated component retains the normal BDSBeamline navigation gap at
+  // both external boundaries.  These gaps are compensated in the state
+  // exchanged with the calling tracking interface.
+  interfacePadding = BDSBeamline::PaddingLength();
   if (inputGuardIn)
     {componentBeamline->AddComponent(inputGuardIn);}
-  const G4int nominalStartIndex = (G4int)componentBeamline->size();
+  nominalStartIndex = (G4int)componentBeamline->size();
   componentBeamline->AddComponent(
     component,
     new BDSTiltOffset(offsetX, offsetY, tilt));
-  const G4int nominalEndIndex = (G4int)componentBeamline->size() - 1;
+  nominalEndIndex = (G4int)componentBeamline->size() - 1;
   if (outputGuardIn)
     {componentBeamline->AddComponent(outputGuardIn);}
   const BDSBeamlineElement* first = componentBeamline->front();
@@ -159,23 +166,23 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   // that have genuinely left the component can miss a sampler whose radius
   // is exactly equal to the geometry envelope.
   outputSamplerRadius += gap;
-  // Externally the link state is defined on the nominal input and output
-  // planes. Physical guards let Geant4 navigate across protruding angled
-  // faces; the clearances are subsequently removed from the exchanged state.
+  // Physical guards let Geant4 navigate across protruding angled faces.  All
+  // guard and padding clearance is removed from the exchanged state.
   // Retain the previous virtual-clearance path for components that do not
   // require face-matched guards.
+  G4double trackingInputClearance = 0;
   if (guardsBuilt)
     {
       // Use the frames produced by the ordinary BDSBeamline builder.  Their
       // separation includes both the guard body and BDSIM's standard
       // inter-component navigation padding, exactly as in a normal beamline.
-      // The interface compensates this complete field-free distance without
-      // changing the delegated component geometry.
+      // The interface compensates both the guard body and normal padding
+      // without changing the delegated component geometry.
       const G4Transform3D trackingInputInNominal =
         inputFrame.inverse() * trackingInputFrame;
       const G4Transform3D trackingOutputInNominal =
         transformToOutput.inverse() * trackingOutputFrame;
-      inputClearance = std::max(
+      trackingInputClearance = std::max(
         0.0, -trackingInputInNominal.getTranslation().z());
       outputClearance = std::max(
         0.0, trackingOutputInNominal.getTranslation().z());
@@ -193,18 +200,33 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
           // field, including straight RF cavities and maps.
           protrudingOutputFace |= child->AngledOutputFace() || child->HasAField();
         }
-      inputClearance = protrudingInputFace ?
+      trackingInputClearance = protrudingInputFace ?
         std::max(0.0, offsetToStart.z() - minimumZ) + 1*CLHEP::cm : 0.0;
       outputClearance = protrudingOutputFace ?
         std::max(0.0, maximumOutputZ) + 1*CLHEP::cm : 0.0;
+      // Even a straight or field-free delegated component has the same
+      // external navigation gaps as that component in a normal BDSBeamline.
+      trackingInputClearance = std::max(trackingInputClearance, interfacePadding);
+      outputClearance = std::max(outputClearance, interfacePadding);
     }
+  // Backtrack over the complete artificial input distance, including the
+  // ordinary BDSBeamline padding.  The padding remains present in the Geant4
+  // geometry for navigation, but it must not change the externally seen map.
+  // Start a further lengthSafety upstream so the Geant4 primary is never
+  // created exactly on the first guard / component boundary.  This
+  // injection-only distance is also fully compensated.
+  const G4double injectionSafety = BDSGlobalConstants::Instance()->LengthSafety();
+  trackingInputClearance += injectionSafety;
+  inputClearance = trackingInputClearance;
   const G4ThreeVector outputPosition = transformToOutput.getTranslation();
   mx = std::max(mx, std::abs(outputPosition.x()) + outputSamplerRadius);
   my = std::max(my, std::abs(outputPosition.y()) + outputSamplerRadius);
   mz = std::max(mz, std::abs(outputPosition.z()) + outputSamplerRadius);
-  transformToStart = guardsBuilt ? trackingInputFrame :
+  transformToStart = guardsBuilt ?
+    trackingInputFrame * G4Transform3D(
+      G4RotationMatrix(), G4ThreeVector(0, 0, -injectionSafety)) :
     inputFrame * G4Transform3D(
-      G4RotationMatrix(), G4ThreeVector(0, 0, -inputClearance));
+      G4RotationMatrix(), G4ThreeVector(0, 0, -trackingInputClearance));
   G4double mr = std::max({mx, my, outputSamplerRadius});
   G4Box* terminatorBoxOuter = new G4Box(name + "_terminator_box_outer_solid",
 					mr + gap + opaqueBoxThickness,
@@ -246,7 +268,8 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
 			     zsize);
   
   containerLogicalVolume = new G4LogicalVolume(containerSolid,
-					       BDSMaterials::Instance()->GetMaterial("G4_Galactic"),
+					       BDSMaterials::Instance()->GetMaterial(
+						 BDSGlobalConstants::Instance()->WorldMaterial()),
 					       name + "_container_lv");
   containerLogicalVolume->SetVisAttributes(BDSGlobalConstants::Instance()->ContainerVisAttr());
 
@@ -400,6 +423,65 @@ void BDSLinkOpaqueBox::SetFieldLinkTransform(const G4Transform3D& opaqueToGlobal
       child->SetFieldLinkTransform(
         opaqueToGlobal * (dynamic_cast<BDSMagnet*>(child)
                             ? referenceToOpaque : placementToOpaque));
+    }
+}
+
+void BDSLinkOpaqueBox::AppendFieldReferenceElements(
+  BDSBeamline* target,
+  const G4Transform3D& opaqueToGlobal,
+  G4double& referenceS,
+  G4int& referenceIndex) const
+{
+  for (G4int i = nominalStartIndex; i <= nominalEndIndex; ++i)
+    {
+      const BDSBeamlineElement* native = componentBeamline->at(i);
+      auto frame = [this, &opaqueToGlobal](G4RotationMatrix* rotation,
+                                           const G4ThreeVector& position)
+      {
+        return opaqueToGlobal * nativeToOpaque *
+          G4Transform3D(*rotation, position);
+      };
+      const G4Transform3D placementStart =
+        frame(native->GetRotationStart(), native->GetPositionStart());
+      const G4Transform3D placementMiddle =
+        frame(native->GetRotationMiddle(), native->GetPositionMiddle());
+      const G4Transform3D placementEnd =
+        frame(native->GetRotationEnd(), native->GetPositionEnd());
+      const G4Transform3D referenceStart =
+        frame(native->GetReferenceRotationStart(), native->GetReferencePositionStart());
+      const G4Transform3D referenceMiddle =
+        frame(native->GetReferenceRotationMiddle(), native->GetReferencePositionMiddle());
+      const G4Transform3D referenceEnd =
+        frame(native->GetReferenceRotationEnd(), native->GetReferencePositionEnd());
+      const G4double arcLength = native->GetArcLength();
+      const BDSTiltOffset* nativeTilt = native->GetTiltOffset();
+      BDSTiltOffset* tiltCopy = nativeTilt ?
+        new BDSTiltOffset(nativeTilt->GetXOffset(),
+                          nativeTilt->GetYOffset(),
+                          nativeTilt->GetTilt()) : nullptr;
+      target->AddBeamlineElement(new BDSBeamlineElement(
+        native->GetAcceleratorComponent(),
+        placementStart.getTranslation(),
+        placementMiddle.getTranslation(),
+        placementEnd.getTranslation(),
+        new G4RotationMatrix(placementStart.getRotation()),
+        new G4RotationMatrix(placementMiddle.getRotation()),
+        new G4RotationMatrix(placementEnd.getRotation()),
+        referenceStart.getTranslation(),
+        referenceMiddle.getTranslation(),
+        referenceEnd.getTranslation(),
+        new G4RotationMatrix(referenceStart.getRotation()),
+        new G4RotationMatrix(referenceMiddle.getRotation()),
+        new G4RotationMatrix(referenceEnd.getRotation()),
+        referenceS,
+        referenceS + 0.5*arcLength,
+        referenceS + arcLength,
+        0, 0, 0,
+        tiltCopy,
+        nullptr,
+        referenceIndex));
+      referenceS += arcLength;
+      referenceIndex++;
     }
 }
 

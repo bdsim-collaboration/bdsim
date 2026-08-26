@@ -77,6 +77,13 @@ public:
   /// Configure the delegated component field with its fixed world placement.
   void SetFieldLinkTransform(const G4Transform3D& opaqueToGlobal);
 
+  /// Append the native parser-built component frames (rather than a possibly
+  /// angle-less BDSLine wrapper) to the link curvilinear reference beamline.
+  void AppendFieldReferenceElements(BDSBeamline* target,
+                                    const G4Transform3D& opaqueToGlobal,
+                                    G4double& referenceS,
+                                    G4int& referenceIndex) const;
+
   /// Place the output sampler at the nominal exit in the sampler parallel world.
   G4int PlaceOutputSampler(BDSParallelWorldSampler* samplerWorld,
                            const G4Transform3D& outputToGlobal);
@@ -98,9 +105,12 @@ private:
   G4double                 outputSamplerRadius;
   G4double                 inputClearance;
   G4double                 outputClearance;
+  G4double                 interfacePadding;
   G4double                 tilt;
   G4double                 offsetX;
   G4double                 offsetY;
+  G4int                    nominalStartIndex;
+  G4int                    nominalEndIndex;
   G4ThreeVector            offsetToStart;
   G4Transform3D            transformToStart;
   G4Transform3D            transformToOutput;
