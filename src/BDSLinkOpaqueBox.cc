@@ -221,7 +221,12 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   const G4ThreeVector outputPosition = transformToOutput.getTranslation();
   mx = std::max(mx, std::abs(outputPosition.x()) + outputSamplerRadius);
   my = std::max(my, std::abs(outputPosition.y()) + outputSamplerRadius);
-  mz = std::max(mz, std::abs(outputPosition.z()) + outputSamplerRadius);
+  // The sampler radius is purely transverse.  Using it in z needlessly moves
+  // the delegated element far from the world origin (by metres for the usual
+  // 5 m samplerDiameter), which magnifies otherwise avoidable floating-point
+  // differences from an ordinary standalone beam line.
+  mz = std::max(mz,
+                std::abs(outputPosition.z()) + 0.5*BDSSamplerCustom::ChordLength());
   transformToStart = guardsBuilt ?
     trackingInputFrame * G4Transform3D(
       G4RotationMatrix(), G4ThreeVector(0, 0, -injectionSafety)) :

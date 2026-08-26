@@ -344,7 +344,9 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
   referenceSet.massWorld = fieldReferenceBeamline;
   referenceSet.curvilinearWorld =
     curvilinearBuilder.BuildCurvilinearBeamLine1To1(fieldReferenceBeamline, false);
-  referenceSet.curvilinearBridgeWorld = new BDSBeamline();
+  referenceSet.curvilinearBridgeWorld =
+    curvilinearBuilder.BuildCurvilinearBridgeBeamLine(
+      referenceSet.curvilinearWorld);
   acceleratorModel->RegisterBeamlineSetMain(referenceSet);
 
   return worldPV;
