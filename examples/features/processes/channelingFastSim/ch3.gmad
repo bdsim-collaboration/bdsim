@@ -1,0 +1,26 @@
+! Geant4 channeling/ch3: coherent pair production by 100 GeV photons in
+! an oriented W<111> crystal.
+
+w111Pair: crystal, model="fastsim",
+                   material="G4_W",
+                   lattice="<111>",
+                   shape="box",
+                   lengthX=10*mm,
+                   lengthY=10*mm,
+                   lengthZ=0.1*mm,
+                   radiation=1,
+                   coherentPairProduction=1;
+
+radiator: crystalradiator, l=0.1*mm, crystalDefinition="w111Pair";
+flight: drift, l=100*mm, apertureType="circularvacuum", aper1=100*mm;
+line1: line=(radiator, flight);
+use, line1;
+sample, all;
+
+beam, particle="gamma", energy=100*GeV,
+      distrType="gauss",
+      sigmaX=1*mm, sigmaY=1*mm,
+      sigmaXp=1*mrad, sigmaYp=1*mrad;
+
+option, physicsList="completechannellingregular", ngenerate=1, checkOverlaps=1,
+        worldMaterial="G4_Galactic";

@@ -218,6 +218,7 @@ The following elements may be defined
 * `laser`_
 * `gap`_
 * `crystalcol`_
+* `crystalradiator`_
 * `undulator`_
 * `gaborlens`_
 * `transform3d`_
@@ -1889,6 +1890,41 @@ Examples: ::
 
 
 More examples can be found in :code:`bdsim/examples/components` and are described in :ref:`crystal-examples`.
+
+.. _element-crystal-radiator:
+
+crystalradiator
+^^^^^^^^^^^^^^^
+
+``crystalradiator`` constructs a crystal definition as a regular beam-line element.
+Unlike ``crystalcol``, it has no collimator body or aperture and is therefore suitable
+for channeling-radiation targets and positron-source radiators.  It can also be used as
+the ``bdsimElement`` of a :ref:`placements` definition.
+
+.. warning:: The ``completechannelling`` or ``channelling`` physics list must be used
+             for either the legacy or FastSim channeling model to be active.
+
+===================  ==========================================  =======  ========
+Parameter            Description                                 Default  Required
+``l``                Longitudinal length [m]                     0        Yes
+``crystalDefinition`` Name of a separately defined crystal       ""       Yes
+===================  ==========================================  =======  ========
+
+The element length overrides ``lengthZ`` in the crystal definition, ensuring that the
+tracking geometry, survey, placement and beam-line integral all use the same length.
+For example::
+
+  si111: crystal, model="fastsim", material="G4_Si", lattice="(111)",
+          shape="box", lengthX=20*mm, lengthY=20*mm, lengthZ=0.0305*mm,
+          bendingAngleYAxis=0.905*mrad, radiation=1;
+
+  radiator: crystalradiator, l=0.0305*mm, crystalDefinition="si111";
+  line1: line=(radiator);
+  use, line1;
+
+The same element may be placed independently::
+
+  p1: placement, bdsimElement="radiator", x=5*mm, z=1*m;
 
 undulator
 ^^^^^^^^^

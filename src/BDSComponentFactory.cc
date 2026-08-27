@@ -72,6 +72,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSCavityFieldType.hh"
 #include "BDSCavityType.hh"
 #include "BDSCrystalInfo.hh"
+#include "BDSCrystalFactory.hh"
 #include "BDSCrystalType.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
@@ -98,6 +99,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSMuonCoolerBuilder.hh"
 #include "BDSParser.hh"
 #include "BDSParticleDefinition.hh"
+#include "BDSSimpleComponent.hh"
 #include "BDSUtilities.hh"
 
 #include "globals.hh" // geant4 types / globals
@@ -116,6 +118,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <cmath>
 #include <limits>
+#include <set>
 #include <string>
 #include <utility>
 
@@ -401,6 +404,8 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateComponent(Element const* ele
       {component = CreateGap(); break;}
     case ElementType::_CRYSTALCOL:
       {component = CreateCrystalCollimator(); break;}
+    case ElementType::_CRYSTALRADIATOR:
+      {component = CreateCrystalRadiator(); break;}
     case ElementType::_LASERWIREOLD:
       {component = CreateLaser(); break;}
     case ElementType::_SCREEN:
@@ -1922,6 +1927,26 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateCrystalCollimator()
 				   element->crystalAngleYAxisRight*CLHEP::rad));
 }
 
+BDSAcceleratorComponent* BDSComponentFactory::CreateCrystalRadiator()
+{
+  if (!HasSufficientMinimumLength(element))
+    {return nullptr;}
+  if (element->crystalDefinition.empty())
+    {throw BDSException(__METHOD_NAME__, "a crystalradiator requires the \"crystalDefinition\" property");}
+
+  BDSCrystalInfo* info = PrepareCrystalInfo(G4String(element->crystalDefinition));
+  // The beam-line element owns the longitudinal geometry so that its length is
+  // consistent with tracking, survey, placement, and sampler construction.
+  info->lengthZ = element->l * CLHEP::m;
+
+  BDSCrystalFactory factory;
+  BDSCrystal* crystal = factory.CreateCrystal(elementName + "_crystal", info);
+  delete info;
+  return new BDSSimpleComponent(elementName, crystal, element->l * CLHEP::m,
+                                0, G4ThreeVector(0,0,-1), G4ThreeVector(0,0,1),
+                                nullptr, "crystalradiator");
+}
+
 BDSAcceleratorComponent* BDSComponentFactory::CreateLaser()
 {
   if (!HasSufficientMinimumLength(element))
@@ -2773,6 +2798,153 @@ void BDSComponentFactory::PrepareCrystals()
 				     G4double(model.bendingAngleYAxis)*CLHEP::rad,
 				     G4double(model.bendingAngleZAxis)*CLHEP::rad,
 				     G4double(model.miscutAngleY)*CLHEP::rad);
+
+      info->name = model.name;
+      info->model = BDS::LowerCase(G4String(model.model));
+      if (info->model != "legacy" && info->model != "fastsim")
+        {throw BDSException(__METHOD_NAME__, "crystal model must be either \"legacy\" or \"fastsim\"");}
+      info->lattice = model.lattice;
+      if (info->UseFastSim() && info->lattice.empty())
+        {throw BDSException(__METHOD_NAME__, "FastSim crystal \"" + model.name + "\" requires a lattice");}
+      if (!model.fastSimDataPath.empty())
+        {
+          info->fastSimDataPath = BDS::GetFullPath(model.fastSimDataPath, false);
+          if (info->fastSimDataPath.back() != '/')
+            {info->fastSimDataPath += "/";}
+        }
+
+      info->fastSimCUAmplitude = model.fastSimCUAmplitude * CLHEP::m;
+      info->fastSimCUPeriod = model.fastSimCUPeriod * CLHEP::m;
+      info->fastSimCUPhase = model.fastSimCUPhase * CLHEP::rad;
+      if (!model.fastSimCUGeometryFile.empty())
+        {info->fastSimCUGeometryFile = BDS::GetFullPath(model.fastSimCUGeometryFile);}
+      const G4bool hasCUParameters = info->fastSimCUAmplitude > 0 || info->fastSimCUPeriod > 0;
+      if (hasCUParameters &&
+          (info->fastSimCUAmplitude <= 0 || info->fastSimCUPeriod <= 0))
+        {throw BDSException(__METHOD_NAME__, "FastSim crystalline-undulator amplitude and period must both be positive");}
+      if (hasCUParameters && !info->fastSimCUGeometryFile.empty())
+        {throw BDSException(__METHOD_NAME__, "specify either FastSim crystalline-undulator parameters or an imported geometry, not both");}
+      if ((hasCUParameters || !info->fastSimCUGeometryFile.empty()) &&
+          info->bendingAngleYAxis != 0)
+        {throw BDSException(__METHOD_NAME__, "FastSim crystalline-undulator geometry is incompatible with a bent crystal");}
+
+      info->fastSimParticles.assign(model.fastSimParticles.begin(), model.fastSimParticles.end());
+      info->fastSimDefaultLowKineticEnergy = model.fastSimDefaultLowKineticEnergy * CLHEP::GeV;
+      info->fastSimDefaultLindhardAngleHighLimit = model.fastSimDefaultLindhardAngleHighLimit;
+      info->fastSimDefaultHighAngleLimit = model.fastSimDefaultHighAngleLimit * CLHEP::rad;
+      info->fastSimLowEnergyParticles.assign(model.fastSimLowEnergyParticles.begin(),
+                                             model.fastSimLowEnergyParticles.end());
+      for (const auto value : model.fastSimLowEnergyLimits)
+        {info->fastSimLowEnergyLimits.push_back(value * CLHEP::GeV);}
+      info->fastSimLindhardAngleParticles.assign(model.fastSimLindhardAngleParticles.begin(),
+                                                 model.fastSimLindhardAngleParticles.end());
+      info->fastSimLindhardAngleLimits.assign(model.fastSimLindhardAngleLimits.begin(),
+                                              model.fastSimLindhardAngleLimits.end());
+      info->fastSimHighAngleParticles.assign(model.fastSimHighAngleParticles.begin(),
+                                              model.fastSimHighAngleParticles.end());
+      for (const auto value : model.fastSimHighAngleLimits)
+        {info->fastSimHighAngleLimits.push_back(value * CLHEP::rad);}
+      info->fastSimMaxPhotonsPerStep = model.fastSimMaxPhotonsPerStep;
+      if (info->fastSimDefaultLowKineticEnergy < 0 ||
+          info->fastSimDefaultLindhardAngleHighLimit < 0 ||
+          info->fastSimDefaultHighAngleLimit < 0 ||
+          info->fastSimMaxPhotonsPerStep < 1)
+        {throw BDSException(__METHOD_NAME__, "FastSim energy and angular limits must be non-negative and max photons must be positive");}
+
+      auto checkMatchingSizes = [&](std::size_t names, std::size_t values, const G4String& property)
+      {
+        if (names != values)
+          {throw BDSException(__METHOD_NAME__, "FastSim crystal \"" + model.name +
+                              "\" has different particle and value list sizes for " + property);}
+      };
+      checkMatchingSizes(info->fastSimLowEnergyParticles.size(),
+                         info->fastSimLowEnergyLimits.size(), "low kinetic energy");
+      checkMatchingSizes(info->fastSimLindhardAngleParticles.size(),
+                         info->fastSimLindhardAngleLimits.size(), "Lindhard angle");
+      checkMatchingSizes(info->fastSimHighAngleParticles.size(),
+                         info->fastSimHighAngleLimits.size(), "high angle");
+
+      info->radiation = model.radiation;
+      info->radiationSinglePhotonProbabilityLimit = model.radiationSinglePhotonProbabilityLimit;
+      info->radiationSmallTrajectorySteps = model.radiationSmallTrajectorySteps;
+      info->radiationSamplingPhotons = model.radiationSamplingPhotons;
+      info->radiationAngleFactor = model.radiationAngleFactor;
+      info->radiationMinPhotonEnergy = model.radiationMinPhotonEnergy * CLHEP::GeV;
+      info->radiationMaxPhotonEnergy = model.radiationMaxPhotonEnergy * CLHEP::GeV;
+      info->radiationSpectrumBins = model.radiationSpectrumBins;
+      for (const auto value : model.radiationStatisticsMinEnergy)
+        {info->radiationStatisticsMinEnergy.push_back(value * CLHEP::GeV);}
+      for (const auto value : model.radiationStatisticsMaxEnergy)
+        {info->radiationStatisticsMaxEnergy.push_back(value * CLHEP::GeV);}
+      for (const auto value : model.radiationStatisticsMultiple)
+        {
+          if (value < 1 || value != std::floor(value))
+            {throw BDSException(__METHOD_NAME__, "radiationStatisticsMultiple values must be positive integers");}
+          info->radiationStatisticsMultiple.push_back(static_cast<G4int>(value));
+        }
+      if (info->radiationStatisticsMinEnergy.size() != info->radiationStatisticsMaxEnergy.size() ||
+          info->radiationStatisticsMinEnergy.size() != info->radiationStatisticsMultiple.size())
+        {throw BDSException(__METHOD_NAME__, "FastSim crystal \"" + model.name +
+                            "\" has different radiation-statistics list sizes");}
+      info->radiationVirtualCollimator = BDS::LowerCase(G4String(model.radiationVirtualCollimator));
+      info->radiationCollimatorHalfWidthX = model.radiationCollimatorHalfWidthX * CLHEP::rad;
+      info->radiationCollimatorHalfWidthY = model.radiationCollimatorHalfWidthY * CLHEP::rad;
+      info->radiationCollimatorCentreX = model.radiationCollimatorCentreX * CLHEP::rad;
+      info->radiationCollimatorCentreY = model.radiationCollimatorCentreY * CLHEP::rad;
+      if (info->radiation)
+        {
+          if (info->radiationSinglePhotonProbabilityLimit <= 0 ||
+              info->radiationSinglePhotonProbabilityLimit > 1 ||
+              info->radiationSmallTrajectorySteps < 1 ||
+              info->radiationSamplingPhotons < 1 ||
+              info->radiationAngleFactor <= 0 ||
+              info->radiationMinPhotonEnergy <= 0 ||
+              info->radiationMaxPhotonEnergy <= info->radiationMinPhotonEnergy ||
+              info->radiationSpectrumBins < 1)
+            {throw BDSException(__METHOD_NAME__, "invalid Baier-Katkov radiation limits or sampling counts");}
+          const std::set<G4String> collimatorTypes = {"none", "round", "elliptic",
+                                                      "elliptical", "rectangular"};
+          if (collimatorTypes.count(info->radiationVirtualCollimator) == 0)
+            {throw BDSException(__METHOD_NAME__, "unknown radiation virtual collimator \"" +
+                                                 info->radiationVirtualCollimator + "\"");}
+          if (info->radiationVirtualCollimator != "none" &&
+              info->radiationCollimatorHalfWidthX <= 0)
+            {throw BDSException(__METHOD_NAME__, "a radiation virtual collimator requires a positive X half width");}
+          if ((info->radiationVirtualCollimator == "elliptic" ||
+               info->radiationVirtualCollimator == "elliptical" ||
+               info->radiationVirtualCollimator == "rectangular") &&
+              info->radiationCollimatorHalfWidthY <= 0)
+            {throw BDSException(__METHOD_NAME__, "elliptic and rectangular radiation virtual collimators require a positive Y half width");}
+          for (std::size_t i = 0; i < info->radiationStatisticsMinEnergy.size(); ++i)
+            {
+              if (info->radiationStatisticsMinEnergy[i] < info->radiationMinPhotonEnergy ||
+                  info->radiationStatisticsMaxEnergy[i] <= info->radiationStatisticsMinEnergy[i])
+                {throw BDSException(__METHOD_NAME__, "invalid additional radiation-statistics energy range");}
+            }
+        }
+
+      info->coherentPairProduction = model.coherentPairProduction;
+      info->coherentPairProductionIncoherent = model.coherentPairProductionIncoherent;
+      info->coherentPairProductionLowEnergyLimit =
+        model.coherentPairProductionLowEnergyLimit * CLHEP::GeV;
+      info->coherentPairProductionHighAngleLimit =
+        model.coherentPairProductionHighAngleLimit * CLHEP::rad;
+      info->coherentPairProductionKineticEnergyCut =
+        model.coherentPairProductionKineticEnergyCut * CLHEP::GeV;
+      info->coherentPairProductionSamplingPairs = model.coherentPairProductionSamplingPairs;
+      info->coherentPairProductionAngleFactor = model.coherentPairProductionAngleFactor;
+      info->coherentPairProductionTrajectorySteps = model.coherentPairProductionTrajectorySteps;
+      if (info->coherentPairProduction &&
+          (info->coherentPairProductionLowEnergyLimit <= 0 ||
+           info->coherentPairProductionHighAngleLimit <= 0 ||
+           info->coherentPairProductionKineticEnergyCut < 0 ||
+           info->coherentPairProductionSamplingPairs < 1 ||
+           info->coherentPairProductionAngleFactor <= 0 ||
+           info->coherentPairProductionTrajectorySteps < 1))
+        {throw BDSException(__METHOD_NAME__, "invalid coherent pair-production limits or sampling counts");}
+
+      if (!info->UseFastSim() && (info->radiation || info->coherentPairProduction))
+        {throw BDSException(__METHOD_NAME__, "radiation and coherent pair production require model=\"fastsim\"");}
       crystalInfos[model.name] = info;
     }
 
