@@ -4,7 +4,8 @@ add_subdirectory(physicslists)
 add_subdirectory(processes_old)
 add_subdirectory(protonDiffraction)
 add_subdirectory(regions)
-if (G4_MAJOR_VERSION GREATER 10)
+if ((G4_MAJOR_VERSION GREATER 11) OR
+    ((G4_MAJOR_VERSION EQUAL 11) AND (G4_MINOR_VERSION GREATER 1)))
   add_subdirectory(channelingFastSim)
 endif()
 

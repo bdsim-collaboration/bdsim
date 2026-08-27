@@ -2826,7 +2826,7 @@ It is entirely possible to add more shapes to the code. Please contact the devel
 FastSim Crystal Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-FastSim requires Geant4 11.1 or newer and the ``G4CHANNELINGDATA`` data set.  ``lattice``
+FastSim requires Geant4 11.2 or newer and the ``G4CHANNELINGDATA`` data set.  ``lattice``
 is required and uses the Geant4 notation ``(111)`` for planes or ``<111>`` for axes.
 The following parameters expose the public controls of
 ``G4ChannelingFastSimModel`` and its crystal data:
@@ -2857,6 +2857,9 @@ The particle and value lists must have equal sizes.  The parametric and imported
 crystalline-undulator forms are mutually exclusive, and neither can be combined with
 ``bendingAngleYAxis``.
 
+The custom ``fastSimDataPath`` and absolute high-angle controls require Geant4 11.3
+or newer. Imported crystalline-undulator geometry requires Geant4 11.4 or newer.
+
 Baier--Katkov Radiation Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2883,6 +2886,11 @@ Parameter                                      Description
 ``radiationCollimatorCentreX``                 Angular centre X [rad]
 ``radiationCollimatorCentreY``                 Angular centre Y [rad]
 =============================================  ============================================
+
+Geant4 11.2 and 11.3 support only a centred round virtual collimator. BDSIM maps
+``radiationCollimatorHalfWidthX`` to the full angular diameter expected by those
+versions. Offset, elliptic and rectangular virtual collimators require Geant4 11.4
+or newer.
 
 Coherent Pair-Production Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -85,7 +85,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4String.hh"
 #include "G4UImanager.hh"
 #include "G4VDecayChannel.hh"
-#if G4VERSION_NUMBER >= 1110
+#if G4VERSION_NUMBER >= 1120
 #include "G4FastSimulationPhysics.hh"
 #endif
 #if G4VERSION_NUMBER >= 1140
@@ -681,7 +681,7 @@ G4VModularPhysicsList* BDS::ChannellingPhysicsComplete(G4bool useEMD,
 
 void BDS::RegisterChannelingFastSimPhysics(G4VModularPhysicsList* physicsList)
 {
-#if G4VERSION_NUMBER >= 1110
+#if G4VERSION_NUMBER >= 1120
   const auto crystals = BDSParser::Instance()->GetCrystals();
   const auto referencedCrystals = ReferencedCrystalNames();
   G4bool hasFastSimCrystal = false;
