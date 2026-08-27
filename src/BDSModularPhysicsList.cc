@@ -1266,6 +1266,8 @@ void BDSModularPhysicsList::Channelling()
       biasingPhysics->PhysicsBiasAllCharged();
       RegisterPhysics(biasingPhysics);
       constructors.push_back(new BDSPhysicsChannelling());
+
+      BDS::RegisterChannelingFastSimPhysics(this);
       physicsActivated["channelling"] = true;
     }
 }

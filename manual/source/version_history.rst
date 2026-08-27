@@ -31,6 +31,12 @@ to maintain the expected high quality of the code.
 
 New Features
 ------------
+* New :code:`crystalradiator` beam-line element for standalone crystal geometries,
+  including use through placements.
+* Crystal definitions may now select the legacy channeling implementation or
+  :code:`G4ChannelingFastSimModel`.  FastSim channeling, Baier--Katkov radiation,
+  crystalline-undulator geometry, virtual collimators and coherent pair production
+  are configurable from GMAD.
 * New Gabor lens beam line component. Constructed with a radial electric field that would be generated
   with a confined plasma in a Penning-Malmberg trap configuration. The electric and magnetic confinement
   fields are not constructed.
@@ -69,6 +75,10 @@ New Features
 
 **Physics**
 
+* Complete channeling physics lists now install BDSIM cuts and limits whenever
+  :code:`g4PhysicsUseBDSIMCutsAndLimits` is enabled.  This ensures that
+  component limits such as :code:`collimatorsAreInfiniteAbsorbers` also work
+  when the global minimum kinetic energy is zero.
 * New :code:`ionisation` modular physics list for only the ionisation process for the most
   common particles.
 * New :code:`ftf_bic` modular physics list.
