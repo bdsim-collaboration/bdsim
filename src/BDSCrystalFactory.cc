@@ -61,7 +61,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4LogicalCrystalVolume.hh"
 #endif
 
-#if G4VERSION_NUMBER >= 1110
+#if G4VERSION_NUMBER >= 1120
 #include "G4BaierKatkov.hh"
 #include "G4ChannelingFastSimModel.hh"
 #include "G4FastSimulationManager.hh"
@@ -71,7 +71,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace
 {
-#if G4VERSION_NUMBER >= 1110
+#if G4VERSION_NUMBER >= 1120
   struct FastSimCrystalGroup
   {
     explicit FastSimCrystalGroup(const BDSCrystalInfo& recipeIn, G4Region* regionIn):
@@ -131,13 +131,13 @@ void BDSCrystalFactory::CommonConstruction(const G4String&       nameIn,
 #if G4VERSION_NUMBER > 1039
   if (recipe->UseFastSim())
     {
-#if G4VERSION_NUMBER >= 1110
+#if G4VERSION_NUMBER >= 1120
       crystalLV = new G4LogicalVolume(crystalSolid,
                                       recipe->material,
                                       nameIn + "_crystal_lv");
       RegisterFastSim(recipe);
 #else
-      throw BDSException(__METHOD_NAME__, "FastSim crystals require Geant4 11.1 or newer");
+      throw BDSException(__METHOD_NAME__, "FastSim crystals require Geant4 11.2 or newer");
 #endif
     }
   else
@@ -196,7 +196,7 @@ void BDSCrystalFactory::CommonConstruction(const G4String&       nameIn,
 
 void BDSCrystalFactory::RegisterFastSim(const BDSCrystalInfo* recipe)
 {
-#if G4VERSION_NUMBER >= 1110
+#if G4VERSION_NUMBER >= 1120
   G4RegionStore* regionStore = G4RegionStore::GetInstance();
   G4Region* region = regionStore->GetRegion(recipe->FastSimRegionName(), false);
   if (!region)
@@ -217,18 +217,35 @@ void BDSCrystalFactory::RegisterFastSim(const BDSCrystalInfo* recipe)
 
 void BDSCrystalFactory::ConstructFastSimModels()
 {
-#if G4VERSION_NUMBER >= 1110
+#if G4VERSION_NUMBER >= 1120
   for (const auto& groupEntry : fastSimCrystalGroups)
     {
       const BDSCrystalInfo* recipe = &groupEntry.second->recipe;
       G4Region* region = groupEntry.second->region;
       G4ChannelingFastSimModel* model =
         new G4ChannelingFastSimModel(recipe->FastSimModelName(), region);
+#if G4VERSION_NUMBER < 1130
+      if (recipe->fastSimDefaultHighAngleLimit != 0 ||
+          !recipe->fastSimHighAngleParticles.empty())
+        {throw BDSException(__METHOD_NAME__, "absolute FastSim high-angle controls require Geant4 11.3 or newer");}
+#endif
+#if G4VERSION_NUMBER < 1140
+      if (recipe->coherentPairProduction)
+        {throw BDSException(__METHOD_NAME__, "coherent pair production requires Geant4 11.4 or newer");}
+#endif
+#if G4VERSION_NUMBER >= 1130
       model->Input(recipe->material, recipe->lattice, recipe->fastSimDataPath);
+#else
+      if (!recipe->fastSimDataPath.empty())
+        {throw BDSException(__METHOD_NAME__, "a custom FastSim data path requires Geant4 11.3 or newer");}
+      model->Input(recipe->material, recipe->lattice);
+#endif
 
       model->SetDefaultLowKineticEnergyLimit(recipe->fastSimDefaultLowKineticEnergy);
       model->SetDefaultLindhardAngleNumberHighLimit(recipe->fastSimDefaultLindhardAngleHighLimit);
+#if G4VERSION_NUMBER >= 1130
       model->SetDefaultHighAngleLimit(recipe->fastSimDefaultHighAngleLimit);
+#endif
       model->SetMaxPhotonsProducedPerStep(recipe->fastSimMaxPhotonsPerStep);
 
       for (std::size_t i = 0; i < recipe->fastSimLowEnergyParticles.size(); ++i)
@@ -237,9 +254,11 @@ void BDSCrystalFactory::ConstructFastSimModels()
       for (std::size_t i = 0; i < recipe->fastSimLindhardAngleParticles.size(); ++i)
         {model->SetLindhardAngleNumberHighLimit(recipe->fastSimLindhardAngleLimits[i],
                                                 recipe->fastSimLindhardAngleParticles[i]);}
+#if G4VERSION_NUMBER >= 1130
       for (std::size_t i = 0; i < recipe->fastSimHighAngleParticles.size(); ++i)
         {model->SetHighAngleLimit(recipe->fastSimHighAngleLimits[i],
                                   recipe->fastSimHighAngleParticles[i]);}
+#endif
 
       if (recipe->radiation)
         {
@@ -261,6 +280,7 @@ void BDSCrystalFactory::ConstructFastSimModels()
                 recipe->radiationStatisticsMultiple[i]);
             }
 
+#if G4VERSION_NUMBER >= 1140
           if (recipe->radiationVirtualCollimator == "round")
             {
               radiation->SetRoundVirtualCollimator(recipe->radiationCollimatorHalfWidthX,
@@ -287,6 +307,19 @@ void BDSCrystalFactory::ConstructFastSimModels()
               throw BDSException(__METHOD_NAME__, "unknown radiation virtual collimator \"" +
                                   recipe->radiationVirtualCollimator + "\"");
             }
+#else
+          if (recipe->radiationVirtualCollimator == "round")
+            {
+              if (recipe->radiationCollimatorCentreX != 0 ||
+                  recipe->radiationCollimatorCentreY != 0)
+                {throw BDSException(__METHOD_NAME__, "an offset radiation virtual collimator requires Geant4 11.4 or newer");}
+              // Geant4 11.2 and 11.3 expose only a centred circular
+              // collimator whose input is the full angular diameter.
+              radiation->SetVirtualCollimator(2 * recipe->radiationCollimatorHalfWidthX);
+            }
+          else if (recipe->radiationVirtualCollimator != "none")
+            {throw BDSException(__METHOD_NAME__, "elliptic and rectangular radiation virtual collimators require Geant4 11.4 or newer");}
+#endif
         }
 
       auto crystalData = model->GetCrystalData();
@@ -298,8 +331,12 @@ void BDSCrystalFactory::ConstructFastSimModels()
           crystalData->SetMiscutAngle(volumeRecipe.miscutAngleY, logicalVolume);
           if (!volumeRecipe.fastSimCUGeometryFile.empty())
             {
+#if G4VERSION_NUMBER >= 1140
               crystalData->SetCrystallineUndulatorParameters(logicalVolume,
                                                               volumeRecipe.fastSimCUGeometryFile);
+#else
+              throw BDSException(__METHOD_NAME__, "an imported crystalline-undulator geometry requires Geant4 11.4 or newer");
+#endif
             }
           else if (volumeRecipe.fastSimCUAmplitude > 0 && volumeRecipe.fastSimCUPeriod > 0)
             {
