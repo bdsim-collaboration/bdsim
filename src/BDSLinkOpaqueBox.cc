@@ -376,13 +376,13 @@ std::pair<G4double, G4double> BDSLinkOpaqueBox::FaceClearances(
     std::max(std::max(0.0, -minimumInputZ),
              faceExcursion(first,
                            globalToInput,
-                           first->GetAcceleratorComponent()->InputFaceNormal(),
+                           first->GetAcceleratorComponent()->GeometryInputFaceNormal(),
                            inputFaceRadius)) + margin : 0.0;
   const G4double output = angledOutput ?
     std::max(std::max(0.0, maximumOutputZ),
              faceExcursion(last,
                            globalToOutput,
-                           last->GetAcceleratorComponent()->OutputFaceNormal(),
+                           last->GetAcceleratorComponent()->GeometryOutputFaceNormal(),
                            outputFaceRadius)) + margin : 0.0;
   return {input, output};
 }

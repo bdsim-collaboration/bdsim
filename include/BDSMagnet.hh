@@ -74,6 +74,11 @@ public:
   virtual void SetOutputFaceNormal(const G4ThreeVector& output) override;
   /// @}
 
+  /// @{ Actual normals of the constructed beam pipe / magnet outer geometry.
+  virtual G4ThreeVector GeometryInputFaceNormal() const override;
+  virtual G4ThreeVector GeometryOutputFaceNormal() const override;
+  /// @}
+
   /// Accessor to outer material if it exists.
   virtual G4String Material() const;
 

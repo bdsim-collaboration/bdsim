@@ -428,8 +428,8 @@ void BDSParallelWorldSampler::Place(const BDSBeamlineElement* element,
 	  }
         else if (BDS::IsFinite(angle))
 	  {
-	    const auto ipfn = element->GetAcceleratorComponent()->InputFaceNormal();
-	    const auto opfn = element->GetAcceleratorComponent()->OutputFaceNormal();
+	    const auto ipfn = element->GetAcceleratorComponent()->GeometryInputFaceNormal();
+	    const auto opfn = element->GetAcceleratorComponent()->GeometryOutputFaceNormal();
 	    sampler = new BDSSamplerCylinder(name,
 					     samplerRadius,
 					     length,

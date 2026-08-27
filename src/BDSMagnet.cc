@@ -116,16 +116,32 @@ G4String BDSMagnet::DetermineScalingKey(BDSMagnetType typeIn)
 
 void BDSMagnet::SetInputFaceNormal(const G4ThreeVector& input)
 {
-  BDSAcceleratorComponent::SetInputFaceNormal(input);
   if (outer)
     {outer->SetInputFaceNormal(input);}
 }
 
 void BDSMagnet::SetOutputFaceNormal(const G4ThreeVector& output)
 {
-  BDSAcceleratorComponent::SetOutputFaceNormal(output);
   if (outer)
     {outer->SetOutputFaceNormal(output);}
+}
+
+G4ThreeVector BDSMagnet::GeometryInputFaceNormal() const
+{
+  if (outer)
+    {return outer->InputFaceNormal();}
+  if (beampipe)
+    {return BDS::RotateToReferenceFrame(beampipe->InputFaceNormal(), angle);}
+  return BDSAcceleratorComponent::GeometryInputFaceNormal();
+}
+
+G4ThreeVector BDSMagnet::GeometryOutputFaceNormal() const
+{
+  if (outer)
+    {return outer->OutputFaceNormal();}
+  if (beampipe)
+    {return BDS::RotateToReferenceFrame(beampipe->OutputFaceNormal(), -angle);}
+  return BDSAcceleratorComponent::GeometryOutputFaceNormal();
 }
 
 G4String BDSMagnet::Material() const

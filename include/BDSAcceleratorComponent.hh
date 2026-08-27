@@ -177,6 +177,13 @@ public:
   /// pole face rotation this is incoming (0,0,-1). Does not account for tilt.
   inline G4ThreeVector InputFaceNormal()  const {return inputFaceNormal;}
   inline G4ThreeVector OutputFaceNormal() const {return outputFaceNormal;}
+
+  /// @{ Face normals of the constructed geometry.  These differ from the
+  /// beam-line overlap-checking normals for magnets, which intentionally keep
+  /// their historical values.
+  virtual G4ThreeVector GeometryInputFaceNormal()  const {return inputFaceNormal;}
+  virtual G4ThreeVector GeometryOutputFaceNormal() const {return outputFaceNormal;}
+  /// @}
   /// @}
 
   /// @{ Whether the face normal is angled at all w.r.t. the incoming / outgoing reference trajectory.
