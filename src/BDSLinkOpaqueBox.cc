@@ -113,8 +113,6 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   {
     return nativeToOpaque * G4Transform3D(*rotation, position);
   };
-  const G4Transform3D trackingInputFrame = frame(
-    first->GetReferenceRotationStart(), first->GetReferencePositionStart());
   const G4Transform3D inputFrame = frame(
     nominalFirst->GetReferenceRotationStart(),
     nominalFirst->GetReferencePositionStart());
@@ -132,7 +130,6 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   G4double my = 0;
   G4double mz = 0;
   G4Transform3D opaqueToOutput = transformToOutput.inverse();
-  G4double minimumZ = std::numeric_limits<G4double>::max();
   G4double maximumOutputZ = std::numeric_limits<G4double>::lowest();
   for (const auto& native : *componentBeamline)
     {
@@ -146,7 +143,6 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
           mx = std::max(mx, std::abs(transformed.x()));
           my = std::max(my, std::abs(transformed.y()));
           mz = std::max(mz, std::abs(transformed.z()));
-          minimumZ = std::min(minimumZ, transformed.z());
           maximumOutputZ = std::max(maximumOutputZ, inOutput.z());
         }
     }
@@ -170,7 +166,6 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   // guard and padding clearance is removed from the exchanged state.
   // Retain the previous virtual-clearance path for components that do not
   // require face-matched guards.
-  G4double trackingInputClearance = 0;
   if (guardsBuilt)
     {
       // Use the frames produced by the ordinary BDSBeamline builder.  Their
@@ -178,46 +173,35 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
       // inter-component navigation padding, exactly as in a normal beamline.
       // The interface compensates both the guard body and normal padding
       // without changing the delegated component geometry.
-      const G4Transform3D trackingInputInNominal =
-        inputFrame.inverse() * trackingInputFrame;
       const G4Transform3D trackingOutputInNominal =
         transformToOutput.inverse() * trackingOutputFrame;
-      trackingInputClearance = std::max(
-        0.0, -trackingInputInNominal.getTranslation().z());
       outputClearance = std::max(
         0.0, trackingOutputInNominal.getTranslation().z());
     }
   else
     {
-      G4bool protrudingInputFace = false;
       G4bool protrudingOutputFace = false;
       for (const auto& native : *componentBeamline)
         {
           const auto* child = native->GetAcceleratorComponent();
-          protrudingInputFace |= child->AngledInputFace();
           // A finite parallel-world sampler centred exactly on the nominal
           // exit starts recording on its upstream face. Keep it beyond every
           // field, including straight RF cavities and maps.
           protrudingOutputFace |= child->AngledOutputFace() || child->HasAField();
         }
-      trackingInputClearance = protrudingInputFace ?
-        std::max(0.0, offsetToStart.z() - minimumZ) + 1*CLHEP::cm : 0.0;
       outputClearance = protrudingOutputFace ?
         std::max(0.0, maximumOutputZ) + 1*CLHEP::cm : 0.0;
       // Even a straight or field-free delegated component has the same
       // external navigation gaps as that component in a normal BDSBeamline.
-      trackingInputClearance = std::max(trackingInputClearance, interfacePadding);
       outputClearance = std::max(outputClearance, interfacePadding);
     }
-  // Backtrack over the complete artificial input distance, including the
-  // ordinary BDSBeamline padding.  The padding remains present in the Geant4
-  // geometry for navigation, but it must not change the externally seen map.
-  // Start a further lengthSafety upstream so the Geant4 primary is never
-  // created exactly on the first guard / component boundary.  This
-  // injection-only distance is also fully compensated.
+  // Match ordinary BDSIM generation at the nominal reference entrance.  The
+  // guard may extend upstream of this plane for an angled face, but starting
+  // at the guard entrance would track an additional, x-dependent wedge of
+  // field that an ordinary standalone element never sees.  Backstep only by
+  // BDSIM's standard safety distance to avoid creation exactly on a boundary.
   const G4double injectionSafety = BDSGlobalConstants::Instance()->LengthSafety();
-  trackingInputClearance += injectionSafety;
-  inputClearance = trackingInputClearance;
+  inputClearance = injectionSafety;
   const G4ThreeVector outputPosition = transformToOutput.getTranslation();
   mx = std::max(mx, std::abs(outputPosition.x()) + outputSamplerRadius);
   my = std::max(my, std::abs(outputPosition.y()) + outputSamplerRadius);
@@ -227,11 +211,8 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
   // differences from an ordinary standalone beam line.
   mz = std::max(mz,
                 std::abs(outputPosition.z()) + 0.5*BDSSamplerCustom::ChordLength());
-  transformToStart = guardsBuilt ?
-    trackingInputFrame * G4Transform3D(
-      G4RotationMatrix(), G4ThreeVector(0, 0, -injectionSafety)) :
-    inputFrame * G4Transform3D(
-      G4RotationMatrix(), G4ThreeVector(0, 0, -trackingInputClearance));
+  transformToStart = inputFrame * G4Transform3D(
+    G4RotationMatrix(), G4ThreeVector(0, 0, -injectionSafety));
   G4double mr = std::max({mx, my, outputSamplerRadius});
   G4Box* terminatorBoxOuter = new G4Box(name + "_terminator_box_outer_solid",
 					mr + gap + opaqueBoxThickness,
