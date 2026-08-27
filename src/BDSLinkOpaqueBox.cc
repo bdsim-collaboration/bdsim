@@ -59,6 +59,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 #include <limits>
 
+namespace
+{
+  G4bool AngledGeometryFace(const G4ThreeVector& normal,
+                            const G4ThreeVector& reference)
+  {
+    return BDS::IsFinite(normal.cross(reference).mag2());
+  }
+}
+
 BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponentIn,
 				   BDSTiltOffset* tiltOffsetIn,
 				   G4double outputSamplerRadiusIn,
@@ -187,7 +196,9 @@ BDSLinkOpaqueBox::BDSLinkOpaqueBox(BDSAcceleratorComponent* acceleratorComponent
           // A finite parallel-world sampler centred exactly on the nominal
           // exit starts recording on its upstream face. Keep it beyond every
           // field, including straight RF cavities and maps.
-          protrudingOutputFace |= child->AngledOutputFace() || child->HasAField();
+          protrudingOutputFace |= AngledGeometryFace(
+            child->GeometryOutputFaceNormal(), G4ThreeVector(0, 0, 1)) ||
+            child->HasAField();
         }
       outputClearance = protrudingOutputFace ?
         std::max(0.0, maximumOutputZ) + 1*CLHEP::cm : 0.0;
@@ -313,8 +324,10 @@ std::pair<G4double, G4double> BDSLinkOpaqueBox::FaceClearances(
   for (const auto& native : probe)
     {
       const auto* child = native->GetAcceleratorComponent();
-      angledInput  |= child->AngledInputFace();
-      angledOutput |= child->AngledOutputFace();
+      angledInput |= AngledGeometryFace(
+        child->GeometryInputFaceNormal(), G4ThreeVector(0, 0, -1));
+      angledOutput |= AngledGeometryFace(
+        child->GeometryOutputFaceNormal(), G4ThreeVector(0, 0, 1));
     }
   if (!angledInput && !angledOutput)
     {return {0, 0};}
