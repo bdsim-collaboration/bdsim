@@ -6,7 +6,8 @@ RUN /bdsim/venv-bdsim/bin/pip install ipython &&\
     /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymad8.git@develop &&\
     /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pymadx.git@develop &&\
     /bdsim/venv-bdsim/bin/pip install git+https://github.com/bdsim-collaboration/pybdsim.git@develop &&\
-    /bdsim/venv-bdsim/bin/pip install uproot
+    /bdsim/venv-bdsim/bin/pip install uproot && \
+    /bdsim/venv-bdsim/bin/pip install rpyc
 
 # build BDSIM
 RUN source /bdsim/setup.sh && \
@@ -16,6 +17,11 @@ RUN source /bdsim/setup.sh && \
     rm -rfv /usr/local/lib/Geant4-10.7.4/Geant4PackageCache.cmake && \
     cmake ../bdsim -DUSE_PYTHON_BINDINGS=ON -DCMAKE_PREFIX_PATH="$(/bdsim/venv-bdsim/bin/python -m pybind11 --cmakedir)" -DUSE_PLASMA_HDF5=ON -DUSE_HEPMC3=ON  && \
     make -j12 install &&\
+    cd ../ &&\
+    rm -rf bdsim bdsim-build &&\
     echo 'source /usr/local/bin/bdsim.sh' >> /bdsim/setup.sh &&\
+    echo 'export GLIBC_TUNABLES=glibc.rtld.optional_static_tls=2097152' >> /bdsim/setup.sh &&\
     echo 'BDSIM install dir /usr/local/' >> /bdsim/README
-    
+
+# write over entry point
+ENTRYPOINT ["/bin/bash", "-c", "source /bdsim/setup.sh && exec bash"]
