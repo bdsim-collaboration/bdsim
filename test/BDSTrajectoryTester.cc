@@ -55,14 +55,14 @@ int main(int argc, char** argv)
       auto processMap = BDSProcessMap::Instance();
       auto traj = event->Trajectory;
       for (int i = 0; i < traj->n; i++)
-	{
-	  for (int j = 0; j < (int)traj->postProcessTypes[i].size(); j++)
-	    {
-	      int ty = traj->postProcessTypes[i][j];
-	      int st = traj->postProcessSubTypes[i][j];
-	      (*processMap)(ty, st);
-	    }
-	}
+        {
+          for (int j = 0; j < (int)traj->postProcessTypes[i].size(); j++)
+	          {
+              int ty = traj->postProcessTypes[i][j];
+              int st = traj->postProcessSubTypes[i][j];
+              (*processMap)(ty, st);
+            }
+        }
       
       // test each function in the trajectory class
       // trackID 1 is the first track, so the primary
@@ -100,10 +100,14 @@ int main(int argc, char** argv)
       event->Trajectory->primaryProcessPoint(1);
       event->Trajectory->processHistory(1);
       event->Trajectory->parentIsPrimary(1);
+
+      delete dl;
     }
   catch (const BDSException& e)
     {std::cout << e.what() << std::endl;}
   catch (const std::exception& e)
     {std::cout << e.what() << std::endl;}
-  return 0;
+  std::cout << "End of test" << std::endl;
+  std::_Exit(0);
+  // return 0;
 }

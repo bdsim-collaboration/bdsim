@@ -57,12 +57,16 @@ int main(int argc, char** argv)
       // should be first
       TVector3 testPoint3(1.0, 0.7, -504.5); // in m
       FindNearestTest(model, testPoint3);
+
+      delete dl;
     }
   catch (const BDSException& e)
     {std::cout << e.what() << std::endl;}
   catch (const std::exception& e)
     {std::cout << e.what() << std::endl;}
-  return 0;
+  std::cout << "End of test" << std::endl;
+  std::_Exit(0);
+  //return 0;
 }
 
 // define the ostream operator because ROOT doesn't :(

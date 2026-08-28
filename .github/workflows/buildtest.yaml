@@ -17,7 +17,7 @@ jobs:
     container: bdsim/${{ matrix.container }}:latest
      
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         container: [ubuntu24-g4.10.7, ubuntu24-g4.11.0, ubuntu24-g4.11.1, ubuntu24-g4.11.2, ubuntu24-g4.11.3, ubuntu24-g4.11.4,
                     alma9-g4.10.7, alma9-g4.11.0, alma9-g4.11.1, alma9-g4.11.2, alma9-g4.11.3, alma9-g4.11.4]
@@ -63,6 +63,7 @@ jobs:
           
           # build
           mkdir /tmp/bdsim-build
+          mkdir /tmp/bdsim-install
           cd /tmp/bdsim-build
           if [[ "${{ matrix.container }}" == "centos8-g4.10.7" ]]; then
             cmake -DCMAKE_CXX_STANDARD=17 \
@@ -75,6 +76,7 @@ jobs:
                   -DCMAKE_PREFIX_PATH=$PYBIND_CMAKE_PATH \
                   -DUSE_PLASMA_HDF5=ON \
                   -DUSE_HEPMC3=ON \
+                  -DBDSIM_BUILD_TEST_PROGRAMS=ON \
                   "$GITHUB_WORKSPACE"          
           fi
           
@@ -165,6 +167,7 @@ jobs:
                 -DCMAKE_PREFIX_PATH="$(python3 -m pybind11 --cmakedir)" \
                 -DUSE_PLASMA_HDF5=ON \
                 -DUSE_HEPMC3=ON \
+                -DBDSIM_BUILD_TEST_PROGRAMS=ON \
                 "$GITHUB_WORKSPACE"
           make -j${{ steps.cpu-cores.outputs.count }} install
 
