@@ -68,6 +68,7 @@ namespace GMAD {
   template void Parser::Add<CavityModel, FastList<CavityModel> >();
   template void Parser::Add<Crystal, FastList<Crystal> >();
   template void Parser::Add<Field, FastList<Field> >();
+  template void Parser::Add<Laser, FastList<Laser> >();
   template void Parser::Add<Material, FastList<Material> >();
   template void Parser::Add<Modulator, FastList<Modulator> >();
   template void Parser::Add<NewColour, FastList<NewColour> >();

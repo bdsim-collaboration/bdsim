@@ -31,6 +31,7 @@ namespace py = pybind11;
 #include "crystal.h"
 #include "element.h"
 #include "field.h"
+#include "laser.h"
 #include "material.h"
 #include "modulator.h"
 #include "newcolour.h"
@@ -144,6 +145,12 @@ PYBIND11_MODULE(fastlist, m) {
   py::class_<GMAD::FastList<GMAD::Field>>(m,"FastList_Field")
     .def(py::init<>())
     .def("__iter__", [](const GMAD::FastList<GMAD::Field> &s)
+    { return py::make_iterator(s.begin(), s.end()); },
+    py::keep_alive<0,1>());
+
+  py::class_<GMAD::FastList<GMAD::Laser>>(m,"FastList_Laser")
+    .def(py::init<>())
+    .def("__iter__", [](const GMAD::FastList<GMAD::Laser> &s)
     { return py::make_iterator(s.begin(), s.end()); },
     py::keep_alive<0,1>());
 
