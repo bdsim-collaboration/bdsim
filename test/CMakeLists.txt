@@ -12,6 +12,15 @@ set_target_properties(BDSInterpolatorTester PROPERTIES OUTPUT_NAME "BDSInterpola
 target_link_libraries(BDSInterpolatorTester ${BDSIM_LIB_NAME} ${GMAD_LIB_NAME})
 add_test(NAME "tester-interpolator" COMMAND BDSInterpolatorTester)
 
+if (USE_GDML)
+  add_executable(BDSGDMLSchemaTester BDSGDMLSchemaTester.cc)
+  target_link_libraries(BDSGDMLSchemaTester ${BDSIM_LIB_NAME})
+  add_test(NAME "tester-gdml-schema"
+           COMMAND BDSGDMLSchemaTester "${CMAKE_SOURCE_DIR}/src-external")
+  set_tests_properties("tester-gdml-schema" PROPERTIES
+                       ENVIRONMENT "BDSIM_DATA_DIR=${CMAKE_SOURCE_DIR}/src-external")
+endif()
+
 add_executable(BDSLinkTester BDSLinkTester.cc)
 set_target_properties(BDSLinkTester PROPERTIES OUTPUT_NAME "BDSLinkTester" VERSION ${BDSIM_VERSION})
 target_link_libraries(BDSLinkTester ${BDSIM_LIB_NAME} gmad)
