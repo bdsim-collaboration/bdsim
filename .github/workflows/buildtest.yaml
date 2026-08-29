@@ -229,3 +229,46 @@ jobs:
           # run tests          
           cd /tmp/bdsim-build
           ctest -j${{ steps.cpu-cores.outputs.count }} --output-on-failure
+
+      - name: Test bdsim python
+        shell: bash
+        run: |
+          # set up environment
+          source /tmp/geant4-${{ matrix.geant4-version }}/bin/geant4.sh
+          source /tmp/bdsim-install/bin/bdsim.sh     
+
+          # geant4 contains absolute paths (TODO should be removed as duplicate in previous step)
+          if [[ "${{ matrix.geant4-version }}" == "v10.7.4" ]]; then
+            export G4NEUTRONHPDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4NDL4.6"
+            export G4LEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4EMLOW7.13"
+            export G4LEVELGAMMADATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/PhotonEvaporation5.7"
+            export G4RADIOACTIVEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/RadioactiveDecay5.6"
+            export G4PARTICLEXSDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4PARTICLEXS3.1.1"
+            export G4PIIDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4PII1.3"
+            export G4REALSURFACEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/RealSurface2.2"
+            export G4SAIDXSDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4SAIDDATA2.0"
+            export G4ABLADATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4ABLA3.1"
+            export G4INCLDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4INCL1.0"
+            export G4ENSDFSTATEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-10.7.4/data/G4ENSDFSTATE2.3"
+          fi
+
+          if [[ "${{ matrix.geant4-version }}" == "v11.0.4" ]]; then
+            export G4NEUTRONHPDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4NDL4.6"
+            export G4LEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4EMLOW8.0"
+            export G4LEVELGAMMADATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/PhotonEvaporation5.7"
+            export G4RADIOACTIVEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/RadioactiveDecay5.6"
+            export G4PARTICLEXSDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4PARTICLEXS4.0"
+            export G4PIIDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4PII1.3"
+            export G4REALSURFACEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/RealSurface2.2"
+            export G4SAIDXSDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4SAIDDATA2.0"
+            export G4ABLADATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4ABLA3.1"
+            export G4INCLDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4INCL1.0"
+            export G4ENSDFSTATEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4ENSDFSTATE2.3"
+          fi 
+          
+          pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
+          pip install rpyc
+          
+          # run pytest
+          cd examples
+          pytest -v
