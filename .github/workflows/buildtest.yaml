@@ -102,6 +102,7 @@ jobs:
             # set up environment
             source /bdsim/venv-bdsim/bin/activate
             source /bdsim/setup.sh
+            source /bdsim/bdsim-install/bin/bdsim.sh
             
             # install python deps             
             /bdsim/venv-bdsim/bin/pip uninstall pybdsim -y
