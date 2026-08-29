@@ -62,7 +62,8 @@ int main(int argc, char** argv)
     {std::cout << e.what() << std::endl;}
   catch (const std::exception& e)
     {std::cout << e.what() << std::endl;}
-  return 0;
+  std::cout << "End of test" << std::endl;
+  std::_Exit(0);
 }
 
 // define the ostream operator because ROOT doesn't :(
