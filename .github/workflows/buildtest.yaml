@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         container: [ubuntu24-g4.10.7, ubuntu24-g4.11.0, ubuntu24-g4.11.1, ubuntu24-g4.11.2, ubuntu24-g4.11.3, ubuntu24-g4.11.4,
-                    alma9-g4.10.7, alma9-g4.11.0, alma9-g4.11.1, alma9-g4.11.2, alma9-g4.11.3, alma9-g4.11.4]
+                    alma10-g4.10.7, alma10-g4.11.0, alma10-g4.11.1, alma10-g4.11.2, alma10-g4.11.3, alma10-g4.11.4]
     steps:
       - name: Checkout bdsim
         uses: actions/checkout@v4
@@ -100,12 +100,13 @@ jobs:
         shell: bash
         run: |      
             # set up environment
+            source /bdsim/setup.sh
             source /bdsim/venv-bdsim/bin/activate
             
             # install python deps             
-            source /bdsim/bdsim-install/bin/bdsim.sh
             /bdsim/venv-bdsim/bin/pip uninstall pybdsim -y
             /bdsim/venv-bdsim/bin/pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
+            export GLIBC_TUNABLES=glibc.rtld.optional_static_tls=2097152
             
             # run pytest
             cd examples
