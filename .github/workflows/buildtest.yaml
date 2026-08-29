@@ -83,6 +83,7 @@ jobs:
           make -j${{ steps.cpu-cores.outputs.count }} install
 
 
+
       - name: Test bdsim
         shell: bash
         run: |
@@ -93,6 +94,20 @@ jobs:
           # run tests
           cd /tmp/bdsim-build
           ctest -j${{ steps.cpu-cores.outputs.count }} --output-on-failure
+
+
+      - name: Test bdsim python
+        shell: bash
+        run: |
+            # Set upt geant4 and bdsim 
+            source /bdsim/bdsim-install/bin/bdsim.sh
+      
+            # install python deps 
+            source /bdsim/venv-bdsim/bin/activate
+            
+            # run pytest
+            cd examples
+            pytest -v
 
   btmac:
     name: bt mac
