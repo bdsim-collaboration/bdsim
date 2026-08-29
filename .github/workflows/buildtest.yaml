@@ -108,6 +108,7 @@ jobs:
             /bdsim/venv-bdsim/bin/pip uninstall pybdsim -y
             /bdsim/venv-bdsim/bin/pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
             /bdsim/venv-bdsim/bin/pip install rpyc
+            /bdsim/venv-bdsim/bin/pip install pandas
             export GLIBC_TUNABLES=glibc.rtld.optional_static_tls=2097152
             
             # run pytest
@@ -266,8 +267,13 @@ jobs:
             export G4ENSDFSTATEDATA="/tmp/geant4-${{ matrix.geant4-version }}/share/Geant4-11.0.4/data/G4ENSDFSTATE2.3"
           fi 
           
+          # can't seem to find the HepMC3 library on macOS, so add it to the DYLD_LIBRARY_PATH
+          export DYLD_LIBRARY_PATH=/usr/local/lib/:$DYLD_LIBRARY_PATH
+          
           pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
           pip install rpyc
+          pip install rpyc
+          pip install pandas
           
           # run pytest
           cd examples
