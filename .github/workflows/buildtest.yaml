@@ -98,12 +98,14 @@ jobs:
 
       - name: Test bdsim python
         shell: bash
-        run: |
-            # Set upt geant4 and bdsim 
-            source /bdsim/bdsim-install/bin/bdsim.sh
-      
-            # install python deps 
+        run: |      
+            # set up environment
             source /bdsim/venv-bdsim/bin/activate
+            
+            # install python deps             
+            source /bdsim/bdsim-install/bin/bdsim.sh
+            /bdsim/venv-bdsim/bin/pip uninstall pybdsim -y
+            /bdsim/venv-bdsim/bin/pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
             
             # run pytest
             cd examples
