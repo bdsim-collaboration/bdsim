@@ -107,6 +107,7 @@ jobs:
             # install python deps             
             /bdsim/venv-bdsim/bin/pip uninstall pybdsim -y
             /bdsim/venv-bdsim/bin/pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
+            /bdsim/venv-bdsim/bin/pip install rpyc
             export GLIBC_TUNABLES=glibc.rtld.optional_static_tls=2097152
             
             # run pytest
