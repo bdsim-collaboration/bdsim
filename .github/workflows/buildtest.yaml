@@ -100,8 +100,8 @@ jobs:
         shell: bash
         run: |      
             # set up environment
-            source /bdsim/setup.sh
             source /bdsim/venv-bdsim/bin/activate
+            source /bdsim/setup.sh
             
             # install python deps             
             /bdsim/venv-bdsim/bin/pip uninstall pybdsim -y
