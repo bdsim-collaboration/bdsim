@@ -100,8 +100,6 @@ int main(int argc, char** argv)
       event->Trajectory->primaryProcessPoint(1);
       event->Trajectory->processHistory(1);
       event->Trajectory->parentIsPrimary(1);
-
-      delete dl;
     }
   catch (const BDSException& e)
     {std::cout << e.what() << std::endl;}
@@ -109,5 +107,4 @@ int main(int argc, char** argv)
     {std::cout << e.what() << std::endl;}
   std::cout << "End of test" << std::endl;
   std::_Exit(0);
-  // return 0;
 }
