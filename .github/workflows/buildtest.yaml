@@ -109,8 +109,8 @@ jobs:
             /bdsim/venv-bdsim/bin/pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
             /bdsim/venv-bdsim/bin/pip install rpyc
             /bdsim/venv-bdsim/bin/pip install pandas
-            if [[ "${{ matrix.container }}" == *"ubuntu24"* ]]; then
-              export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so
+            if [[ "${{ matrix.container }}" == ubuntu24* ]]; then
+              export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
             fi
             export GLIBC_TUNABLES=glibc.rtld.optional_static_tls=2097152:glibc.rtld.nns=8
             
