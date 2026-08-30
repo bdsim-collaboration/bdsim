@@ -478,46 +478,48 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
 
   if (storeTrajectory && trajCont)
     {
+      // cast all trajectories to BDSTrajectory once
       TrajectoryVector* trajVec = trajCont->GetVector();
+      std::vector<BDSTrajectory*> trajVecBDS;
+      trajVecBDS.reserve(trajVec->size());
+      std::transform(trajVec->begin(), trajVec->end(), std::back_inserter(trajVecBDS),
+                     [](G4VTrajectory* a) { return static_cast<BDSTrajectory*>(a); });
       
-      // build trackID map, depth map
+      // build trackID map
       std::map<int, BDSTrajectory*> trackIDMap;
+      for (auto* tr : trajVecBDS)
+        {trackIDMap[tr->GetTrackID()] = tr;}
+      trackIDMap[0] = nullptr; // primary has no parent
+
+#ifdef BDSDEBUG
+      for (auto* tr : trajVecBDS)
+        {G4cout << tr->GetTrackID() << " " << tr->GetParentID() << G4endl;}
+#endif
+
+      // build depth map
       std::map<BDSTrajectory*, int> depthMap;
-      for (auto iT1 : *trajVec)
+      for (auto* tr : trajVecBDS)
         {
-          BDSTrajectory* traj = static_cast<BDSTrajectory*>(iT1);
-          
-          // fill track ID map
-          trackIDMap[traj->GetTrackID()] = traj;
-          
-          // fill depth map
-          G4int depth = traj->GetParentID() == 0 ? 0 : depthMap.at(trackIDMap.at(traj->GetParentID())) + 1;
-          traj->SetDepth(depth);
-          if (traj->GetParentID() == 0) 
-            {depthMap[traj] = 0;}
-          else
-            {depthMap[traj] = depthMap.at(trackIDMap.at(traj->GetParentID())) + 1;}
-        }
-      
-      // fill parent pointer - this can only be done once the map in the previous loop has been made
-      for (auto iT1 : *trajVec) 
-        {
-          BDSTrajectory* traj = static_cast<BDSTrajectory*>(iT1);
-          // the parent ID may be 0 and therefore it may not be in the map but the [] operator
-          // will default-construct it giving therefore a nullptr
-          traj->SetParent(trackIDMap[iT1->GetParentID()]);
+          G4int depth = 0;
+          BDSTrajectory* ct = tr;
+          // recurse up to a primary trackID and count the number of parents
+          while (ct->GetParentID() != 0)
+            {
+              ct = trackIDMap[ct->GetParentID()];
+              depth++;
+            }
+          depthMap[tr] = depth;
+          tr->SetParent(trackIDMap[tr->GetParentID()]);
         }
       
       // loop over trajectories and determine if it should be stored
       // keep tallies of how many will and won't be stored
       G4int nYes = 0;
       G4int nNo  = 0;
-      for (auto iT1 : *trajVec)
+      for (auto* tr : trajVecBDS)
         {
           std::bitset<BDS::NTrajectoryFilters> filters;
-          
-          BDSTrajectory* traj = static_cast<BDSTrajectory*>(iT1);
-          G4int parentID = traj->GetParentID();
+          G4int parentID = tr->GetParentID();
           
           // always store primaries
           if (parentID == 0)
@@ -529,15 +531,14 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
             }
           
           // check on energy (if energy threshold is not negative)
-          if (trajectoryEnergyThreshold >= 0 &&
-              traj->GetInitialKineticEnergy() > trajectoryEnergyThreshold)
+          if (trajectoryEnergyThreshold >= 0 && tr->GetInitialKineticEnergy() > trajectoryEnergyThreshold)
             {filters[BDSTrajectoryFilter::energyThreshold] = true;}
           
           // check on particle if not empty string
           if (!trajParticleNameToStore.empty() || !trajParticleIDToStore.empty())
             {
-              G4String particleName  = traj->GetParticleName();
-              G4int particleID       = traj->GetPDGEncoding();
+              G4String particleName  = tr->GetParticleName();
+              G4int particleID       = tr->GetPDGEncoding();
               G4String particleIDStr = G4String(std::to_string(particleID));
               std::size_t found1     = trajParticleNameToStore.find(particleName);
               bool        found2     = (std::find(trajParticleIDIntToStore.begin(), trajParticleIDIntToStore.end(), particleID)
@@ -547,12 +548,12 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
             }
           
           // check on trajectory tree depth (trajDepth = 0 means only primaries)
-          if (depthMap[traj] <= trajDepth || storeTrajectoryAll) // all means to infinite trajDepth really
+          if (depthMap[tr] <= trajDepth || storeTrajectoryAll) // all means to infinite trajDepth really
             {filters[BDSTrajectoryFilter::depth] = true;}
           
           // check on coordinates (and TODO momentum)
           // clear out trajectories that don't reach point TrajCutGTZ or greater than TrajCutLTR
-          BDSTrajectoryPoint* trajEndPoint = static_cast<BDSTrajectoryPoint*>(traj->GetPoint(traj->GetPointEntries() - 1));
+          BDSTrajectoryPoint* trajEndPoint = static_cast<BDSTrajectoryPoint*>(tr->GetPoint(tr->GetPointEntries() - 1));
           
           // end point greater than some Z
           if (trajEndPoint->GetPosition().z() > trajectoryCutZ)
@@ -563,8 +564,8 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
             {filters[BDSTrajectoryFilter::maximumR] = true;}
           
           filters.any() ? nYes++ : nNo++;
-          interestingTraj.insert(std::pair<BDSTrajectory*, bool>(traj, filters.any()));
-          trajectoryFilters.insert(std::pair<BDSTrajectory*, std::bitset<BDS::NTrajectoryFilters> >(traj, filters)); 
+          interestingTraj.insert(std::pair<BDSTrajectory*, bool>(tr, filters.any()));
+          trajectoryFilters.insert(std::pair<BDSTrajectory*, std::bitset<BDS::NTrajectoryFilters> >(tr, filters));
         }
       
       // loop over energy hits to connect trajectories
@@ -580,7 +581,7 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
                   double dS = hit->GetSHit();
                   for (const auto& v : trajSRangeToStore)
                     {           
-                      if ( dS >= v.first && dS <= v.second) 
+                      if (dS >= v.first && dS <= v.second)
                         {
                           BDSTrajectory* trajToStore = trackIDMap[hit->GetTrackID()];
                           if (!interestingTraj[trajToStore])
@@ -605,7 +606,7 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
                   double dS = hit->GetSHit();
                   for (const auto& v : trajSRangeToStore)
                     {           
-                      if ( dS >= v.first && dS <= v.second) 
+                      if (dS >= v.first && dS <= v.second)
                         {
                           BDSTrajectory* trajToStore = trackIDMap[hit->GetTrackID()];
                           if (!interestingTraj[trajToStore])
@@ -679,6 +680,7 @@ BDSTrajectoriesToStore* BDSEventAction::IdentifyTrajectoriesForStorage(const G4E
       // Output interesting trajectories
       if (verbose)
         {G4cout << std::left << std::setw(nChar) << "Trajectories for storage: " << nYes << " out of " << nYes + nNo << G4endl;}
+      trajVecBDS.clear(); // does not delete the pointers as just casts
     }
   G4cout.flags(flagsCache);
   return new BDSTrajectoriesToStore(interestingTraj, trajectoryFilters);

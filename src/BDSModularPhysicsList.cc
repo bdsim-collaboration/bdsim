@@ -307,8 +307,7 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   for (const auto& kv : physicsConstructors)
     {incompatible.insert(std::make_pair(kv.first, std::vector<G4String>()));}
   incompatible["annihi_to_mumu"] = {"em_extra"};
-  incompatible["muon"] = {"em_extra"};
-  incompatible["muon_inelastic"] = {"em_extra", "muon"};
+  incompatible["cherenkov"] = {"optical"};
   incompatible["dna"]    = {"dna_1", "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
   incompatible["dna_1"]  = {"dna",   "dna_2", "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
   incompatible["dna_2"]  = {"dna_1", "dna",   "dna_3", "dna_4", "dna_5", "dna_6", "dna_7", "dna_chemistry", "dna_chemistry_1", "dna_chemistry_2", "dna_chemistry_3"};
@@ -342,10 +341,13 @@ BDSModularPhysicsList::BDSModularPhysicsList(const G4String& physicsList):
   incompatible["hadronic_elastic_xs"]   = {"hadronic_elastic",   "hadronic_elastic_d", "hadronic_elastic_h",  "hadronic_elastic_hp",   "hadronic_elastic_lend"};
   incompatible["ion_elastic"] = {"ion_elastic_qmd"};
   incompatible["ionisation"] = {"em", "em_ss", "em_1", "em_2", "em_3", "em_4", "em_livermore"};
+  incompatible["optical"] = {"cherenkov"};
   incompatible["qgsp_bert"]    = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert_hp", "qgsp_bic",     "qgsp_bic_hp"};
   incompatible["qgsp_bert_hp"] = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bic",     "qgsp_bic_hp"};
   incompatible["qgsp_bic"]     = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic_hp"};
   incompatible["qgsp_bic_hp"]  = {"ftfp_bert", "ftfp_bert_hp", "ftf_bic", "qgsp_bert",    "qgsp_bert_hp", "qgsp_bic"};
+  incompatible["muon"] = {"em_extra"};
+  incompatible["muon_inelastic"] = {"em_extra", "muon"};
 
 #if G4VERSION_NUMBER > 1019
   for (const auto& name : {"em", "em_ss", "em_wvi", "em_1", "em_2", "em_3", "em_4"})
@@ -512,6 +514,9 @@ void BDSModularPhysicsList::ConfigurePhysics()
 void BDSModularPhysicsList::ConfigureOptical()
 {
   G4long maxPhotonsPerStep = globals->MaximumPhotonsPerStep();
+  G4double maxBetaChangePerStep = globals->MaximumBetaChangePerStep();
+  if (maxBetaChangePerStep > 100.0)
+    {throw BDSException(__METHOD_NAME__, "the option 'maxBetaChangePerStep' must be less than 100 %");}
 #if G4VERSION_NUMBER < 1079
   // cherenkov turned on with optical even if it's not on as separate list
   opticalPhysics->Configure(G4OpticalProcessIndex::kCerenkov, true);
@@ -524,6 +529,7 @@ void BDSModularPhysicsList::ConfigureOptical()
   opticalPhysics->SetScintillationYieldFactor(globals->ScintYieldFactor());
   if (maxPhotonsPerStep >= 0)
     {opticalPhysics->SetMaxNumPhotonsPerStep(maxPhotonsPerStep);}
+  opticalPhysics->SetMaxBetaChangePerStep(maxBetaChangePerStep);
 #else
   G4OpticalParameters* opticalParameters = G4OpticalParameters::Instance();
   opticalParameters->SetProcessActivation(G4OpticalProcessName(G4OpticalProcessIndex::kCerenkov), true);
@@ -535,6 +541,7 @@ void BDSModularPhysicsList::ConfigureOptical()
   opticalParameters->SetProcessActivation(G4OpticalProcessName(G4OpticalProcessIndex::kWLS), true);
   if (maxPhotonsPerStep >= 0)
     {opticalParameters->SetCerenkovMaxPhotonsPerStep((G4int)maxPhotonsPerStep);}
+  opticalParameters->SetCerenkovMaxBetaChange(maxBetaChangePerStep);
 #endif
 }
 
