@@ -63,9 +63,12 @@ void BDSFieldEMMuonCooler::BuildMagnets(const BDSFieldInfoExtraMuonCooler* info)
                                                           ci.innerRadius,
                                                           ci.radialThickness,
                                                           ci.fullLengthZ,
+                                                          ci.tiltX,
+                                                          ci.tiltY,
+                                                          ci.tiltZ,
                                                           ci.onAxisTolerance,
                                                           ci.nSheets));
-            fieldOffsets.emplace_back(0,0,ci.offsetZ);
+            fieldOffsets.emplace_back(ci.offsetX, ci.offsetY, ci.offsetZ);
           }
         coilField = new BDSFieldMagVectorSum(fields, fieldOffsets);
         break;
@@ -81,8 +84,11 @@ void BDSFieldEMMuonCooler::BuildMagnets(const BDSFieldInfoExtraMuonCooler* info)
                                                           true,
                                                           ci.innerRadius + 0.5*ci.radialThickness,
                                                           ci.fullLengthZ,
+                                                          ci.tiltX,
+                                                          ci.tiltY,
+                                                          ci.tiltZ,
                                                           ci.onAxisTolerance));
-            fieldOffsets.emplace_back(0,0,ci.offsetZ);
+            fieldOffsets.emplace_back(ci.offsetX, ci.offsetY, ci.offsetZ);
           }
         coilField = new BDSFieldMagVectorSum(fields, fieldOffsets);
         break;

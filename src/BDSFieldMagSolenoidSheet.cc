@@ -32,22 +32,26 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 
 BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(BDSMagnetStrength const* strength,
-                                                   G4double radiusIn, G4double toleranceIn):
-  BDSFieldMagSolenoidSheet((*strength)["field"], false, radiusIn, (*strength)["length"], toleranceIn)
+                                                   G4double radiusIn,G4double toleranceIn):
+  BDSFieldMagSolenoidSheet((*strength)["field"], false, radiusIn, (*strength)["length"], 0.0, 0.0, 0.0, toleranceIn)
 {;}
 
 BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
                                                    G4bool   strengthIsCurrent,
                                                    G4double sheetRadius,
                                                    G4double fullLength,
+                                                   G4double tiltXIn,
+                                                   G4double tiltYIn,
+                                                   G4double tiltZIn,
                                                    G4double toleranceIn):
   a(sheetRadius),
   halfLength(0.5*fullLength),
   B0(0.0),
   I(0.0),
   spatialLimit(std::min(1e-5*sheetRadius, 1e-5*fullLength)),
-  normalisation(1.0) ,
-  coilTolerance(toleranceIn)
+  normalisation(1.0),
+  coilTolerance(toleranceIn),
+  hasTilt(BDS::IsFinite(tiltXIn) || BDS::IsFinite(tiltYIn) || BDS::IsFinite(tiltZIn))
 {
   finiteStrength = BDS::IsFinite(std::abs(strength));
   // apply relationship B0 = mu_0 I / 2 a for on-axis rho=0,z=0
@@ -67,15 +71,32 @@ BDSFieldMagSolenoidSheet::BDSFieldMagSolenoidSheet(G4double strength,
   // cylinder sheet. So we evaluate it here then normalise. ~<1% adjustment in magnitude.
   //G4double testBz = OnAxisBz(halfLength, -halfLength);
   //normalisation = B0 / testBz;
+
+  if (hasTilt)
+    {
+      // Build forward rotation matrix (local -> global): apply Rx, then Ry, then Rz.
+      // With CLHEP post-multiply convention (M = M * Ri), build as Rz * Ry * Rx
+      // by calling rotateZ first, rotateY second, rotateX third.
+      rotation.rotateZ(tiltZIn);
+      rotation.rotateY(tiltYIn);
+      rotation.rotateX(tiltXIn);
+      inverseRotation = rotation.inverse();
+    }
 }
 
 G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
                                                  const G4double       /*t*/) const
 {
-  G4double z = position.z();
-  G4double rho = position.perp();
-  G4double phi = position.phi(); // angle about z axis
-   
+  // Rotation angles - to be moved to struct later
+  //G4double rotationX = CLHEP::pi/4; // 45 degrees to put solenoid along z axis
+  //G4double rotationY = 0.0;
+  //G4double rotationZ = 0.0;
+  
+  // Transform position to solenoid's local frame using precomputed inverse rotation.
+  G4ThreeVector localPosition = hasTilt ? inverseRotation * position : position;
+  G4double z = localPosition.z();
+  G4double rho = localPosition.perp();
+  G4double phi = localPosition.phi(); // angle about z axis
   // check if close to current source - function not well-behaved at exactly the rho of
   // the current source or at the boundary of +- halfLength
   if (std::abs(rho - a) < spatialLimit && (std::abs(z) < halfLength+2*spatialLimit))
@@ -129,9 +150,11 @@ G4ThreeVector BDSFieldMagSolenoidSheet::GetField(const G4ThreeVector& position,
     }
   // we have to be consistent with the phi we calculated at the beginning,
   // so unit rho is in the x direction.
-  G4ThreeVector result = G4ThreeVector(Brho,0,Bz)* normalisation;
-  result = result.rotateZ(phi);
-  return result;
+  G4ThreeVector localField = G4ThreeVector(Brho,0,Bz) * normalisation;
+  localField = localField.rotateZ(phi);
+
+  // Transform field back to element frame using precomputed forward rotation.
+  return hasTilt ? rotation * localField : localField;
 }
 
 G4double BDSFieldMagSolenoidSheet::OnAxisBz(G4double zp,

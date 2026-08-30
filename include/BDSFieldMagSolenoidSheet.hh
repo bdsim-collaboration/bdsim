@@ -21,6 +21,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "BDSFieldMag.hh"
 
+#include "G4RotationMatrix.hh"
 #include "G4ThreeVector.hh"
 #include "G4Types.hh"
 
@@ -56,6 +57,9 @@ public:
                            G4bool   strengthIsCurrent,
                            G4double sheetRadius,
                            G4double fullLength,
+                           G4double tiltX,
+                           G4double tiltY,
+                           G4double tiltZ,
                            G4double toleranceIn = 0.0);
   virtual ~BDSFieldMagSolenoidSheet(){;}
 
@@ -80,6 +84,9 @@ private:
   G4double spatialLimit;
   G4double normalisation;
   G4double coilTolerance;
+  G4bool hasTilt;
+  G4RotationMatrix rotation;
+  G4RotationMatrix inverseRotation;
 };
 
 #endif

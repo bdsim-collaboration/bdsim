@@ -2397,6 +2397,9 @@ Parameters for these components can be specified as either:
 - For dipoles, two models exist currently: `dipole` and `dipoleenge`. The `dipole` model is a simple hard-edge dipole field, while the `dipoleenge` model includes Enge-type fringe fields and follows the treatment outlined in: Muratori, B.D. et al (2015) ‘Analytical expressions for fringe fields in multipole magnets’, *Physical Review Special Topics - Accelerators and Beams*, 18(6). https://doi.org/10.1103/physrevstab.18.064001
 - For the RF cavities, a simple RF pillbox (`rfpillbox`) model has been implemented.
 
+**Rotations and Offsets**
+
+Rotations follow the right-hand rule using axis-angle representation applied in XYZ order about the X, Y, and Z axes respectively. The reference frame assumes the solenoid is initially centered at the origin with its axis aligned along the z-direction. The position offsets translate this solenoid center from the origin to an arbitrary location in the coordinate frame of the cooling channel element.
 
 **Table of Parameters**
 
@@ -2414,8 +2417,23 @@ Parameters for these components can be specified as either:
 +------------------------------+-------------------------------+--------------+
 | `coilLengthZ`                | Lengths of coils along Z [m]  | List[Float]  |
 +------------------------------+-------------------------------+--------------+
+| `coilOffsetX`                | X-positions of coil centers   | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `coilOffsetY`                | Y-positions of coil centers   | List[Float]  |
+|                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
 | `coilOffsetZ`                | Z-positions of coil centers   | List[Float]  |
 |                              | [m]                           |              |
++------------------------------+-------------------------------+--------------+
+| `coilTiltX`                  | Tilt angles of coil centers   | List[Float]  |
+|                              | about X axis [rad]            |              |
++------------------------------+-------------------------------+--------------+
+| `coilTiltY`                  | Tilt angles of coil centers   | List[Float]  |
+|                              | about Y axis [rad]            |              |
++------------------------------+-------------------------------+--------------+
+| `coilTiltZ`                  | Tilt angles of coil centers   | List[Float]  |
+|                              | about Z axis [rad]            |              |
 +------------------------------+-------------------------------+--------------+
 | `coilCurrent`                | Currents in [A] (sheet model) | List[Float]  |
 |                              | or densities                  |              |
