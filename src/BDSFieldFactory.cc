@@ -69,6 +69,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSFieldMagZero.hh"
 #include "BDSFieldObjects.hh"
 #include "BDSFieldType.hh"
+#include "BDSFieldEMCircularTM.hh"
+#include "BDSFieldEMAxialStandingApprox.hh"
+#include "BDSFieldEMAxlalFloquetApprox.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSIntegratorCavityFringe.hh"
 #include "BDSIntegratorDecapole.hh"
@@ -897,6 +900,21 @@ BDSFieldObjects* BDSFieldFactory::CreateFieldEM(const BDSFieldInfo& info)
       {field = new BDSFieldGaborLens(info.MagnetStrength()); break;}
     case BDSFieldType::muoncooler:
       {field = CreateMuonCoolerField(info, brho); break;}
+    case BDSFieldType::transversemagnetic:
+      {
+        field = new BDSFieldEMCircularTM(info.MagnetStrength());
+        break;
+      }
+    case BDSFieldType::axialstandingapprox:
+      {
+        field = new BDSFieldEMAxialStandingApprox(info.MagnetStrength());
+        break;
+      }
+    case BDSFieldType::axialfloquetapprox:
+    {
+      field = new BDSFieldEMAxialFloquetApprox(info.MagnetStrength());
+      break;
+    }
     default:
       return nullptr;
       break;

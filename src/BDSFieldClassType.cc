@@ -90,6 +90,9 @@ BDSFieldClassType BDS::DetermineFieldClassType(BDSFieldType fType)
     case BDSFieldType::ebmap4d:
     case BDSFieldType::rfpillbox:
     case BDSFieldType::muoncooler:
+    case BDSFieldType::transversemagnetic:
+    case BDSFieldType::axialstandingapprox:
+    case BDSFieldType::axialfloquetapprox:
       {return BDSFieldClassType::electromagnetic;}
     case BDSFieldType::teleporter:
     case BDSFieldType::rmatrix:
