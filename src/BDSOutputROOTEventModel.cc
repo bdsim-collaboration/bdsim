@@ -165,6 +165,8 @@ void BDSOutputROOTEventModel::Flush()
 
   materialIDToName.clear();
   materialNameToID.clear();
+  subElementIDs.clear();
+  subElementNames.clear();
   
   samplerNamesUnique.clear();
   samplerSPosition.clear();
@@ -429,5 +431,11 @@ void BDSOutputROOTEventModel::Fill(const std::vector<G4int>&                coll
           fillzero();
         }
     }
+  const auto& idToName = BDSPhysicalVolumeInfoRegistry::Instance()->GetSubElementIDToNameMap();
+  for (const auto& entry : idToName)
+  {
+    subElementIDs.push_back(entry.first);
+    subElementNames.push_back(entry.second);
+  }
 }
 #endif

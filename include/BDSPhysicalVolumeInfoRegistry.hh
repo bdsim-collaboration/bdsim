@@ -103,8 +103,21 @@ public:
   /// Access a set of volumes registered for the placement of a beamline element.
   const std::set<G4VPhysicalVolume*>* PVsForBeamlineElement(BDSBeamlineElement* element) const;
 
+  void RegisterSubElementID(G4VPhysicalVolume* pv, const G4String& name);
+
+  G4int GetSubElementID(G4VPhysicalVolume* pv) const;
+
+  G4String GetSubElementName(G4int id) const;
+
+  void PrintSubElementMap() const;
+
+  const std::map<G4int, G4String>& GetSubElementIDToNameMap() const {return subElementIDToName;}
+
+
 private:
   /// Default constructor is private as singleton
+  G4int subElementIDCounter;
+
   BDSPhysicalVolumeInfoRegistry();
 
   /// Check whether a physical volume is registered at all
@@ -136,6 +149,8 @@ private:
   
   std::set<BDSPhysicalVolumeInfo*> pvInfosForDeletion;
 
+  std::map<G4VPhysicalVolume*, G4int>  pvToSubElementID;
+  std::map<G4int, G4String>            subElementIDToName;
   /// This map is kept not for memory management, but for keeping a record of PVs
   /// for each beamline element placed. This information can be written to the output.
   std::map<const BDSBeamlineElement*, std::set<G4VPhysicalVolume*> > pvsForAGivenElement;

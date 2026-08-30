@@ -68,13 +68,19 @@ public:
 
   /// Provide access to last hit.
   virtual G4VHit* last() const;
-  
+
+	virtual void EndOfEvent(G4HCofThisEvent*) override;
+
+	void PrintVolumeHitSummary() const;
+
 private:
   G4bool   storeExtras;     ///< Whether to store extra information.
   G4bool   killedParticleMassAddedToEloss; ///< In the case of a G4Track being deposited
   G4String colName;         ///< Collection name.
   BDSHitsCollectionEnergyDeposition* hits;
   G4int    HCIDe;
+
+	std::map<G4VPhysicalVolume*, std::tuple<G4String, G4int, G4double>> fVolumeHitCount;
 
   /// Navigator for checking points in read out geometry
   BDSAuxiliaryNavigator* auxNavigator;
