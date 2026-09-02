@@ -177,6 +177,9 @@ protected:
   G4bool storePrimaries;
   G4bool storeTrajectory;
   G4bool storePerEventHistos;
+  G4bool storePrimaryFirstHit;
+  G4bool storePrimaryLastHit;
+  G4bool storeSummary;
   /// @}
 
   /// Mapping from complete collection name ("SD/PS") to histogram ID to fill. We have this

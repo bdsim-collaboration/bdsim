@@ -314,6 +314,9 @@ OptionsBase::OptionsBase()
   storeParticleData          = true;
   storePrimaries             = true;
   storePrimaryHistograms     = true;
+  storePrimaryFirstHit       = true;
+  storePrimaryLastHit        = true;
+  storeSummary               = true;
   
   storeTrajectory                = false;
   
