@@ -2,6 +2,7 @@
 # from https://gist.github.com/elentok/5546958
 BDSIM=`dirname ${BASH_SOURCE[0]-$0}`
 BDSIM=`cd $BDSIM && pwd`/..
+export BDSIM_DATA_DIR=$BDSIM/share/bdsim
 
 # set path for executables
 export PATH=$BDSIM/bin:$PATH
@@ -16,4 +17,3 @@ if [ -z "${ROOT_INCLUDE_PATH}" ]; then
 else
     export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH}:@BDSIM_ROOT_INCLUDE_PATH@
 fi
-

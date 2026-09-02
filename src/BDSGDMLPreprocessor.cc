@@ -36,6 +36,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4Version.hh"
 
 #include <algorithm>
+#include <cstdlib>
 #include <fstream>
 #include <istream>
 #include <map>
@@ -108,7 +109,17 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
 
 G4String BDS::GDMLSchemaLocation()
 {
-  G4String result;
+  const char* dataDirectory = std::getenv("BDSIM_DATA_DIR");
+  if (dataDirectory)
+    {
+      G4String configuredPath = G4String(dataDirectory) + "/gdml/schema/gdml.xsd";
+      if (FILE *file = fopen(configuredPath.c_str(), "r"))
+        {
+          fclose(file);
+          return configuredPath;
+        }
+    }
+
   G4String bdsimExecPath = BDS::GetBDSIMExecPath();
   G4String localPath = bdsimExecPath + "src-external/gdml/schema/gdml.xsd";
   G4String installPath = bdsimExecPath + "../share/bdsim/gdml/schema/gdml.xsd";
