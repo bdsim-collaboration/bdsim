@@ -359,6 +359,7 @@ void Options::PublishMembers()
   publish("turnOffMuonDecay",                &Options::turnOffMuonDecay);
   
   // bias options
+  publish("synchrotronRadiationEnergyCut",    &Options::synchrotronRadiationEnergyCut);
   publish("scaleFactorLaser",    &Options::scaleFactorLaser);
   publish("defaultBiasVacuum",   &Options::defaultBiasVacuum);
   publish("defaultBiasMaterial", &Options::defaultBiasMaterial);

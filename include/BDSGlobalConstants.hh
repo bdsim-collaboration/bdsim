@@ -360,6 +360,7 @@ public:
   inline G4String PTCOneTurnMapFileName()    const {return G4String (options.ptcOneTurnMapFileName);}
   inline G4double BackupStepperMomLimit()    const {return G4double(options.backupStepperMomLimit)*CLHEP::rad;}
   inline G4double ScaleFactorLaser()         const {return G4double (options.scaleFactorLaser);}
+  inline G4double SynchrotronRadiationEnergyCut()         const {return G4double (options.synchrotronRadiationEnergyCut);}
 
   // millicharge options
   inline G4bool   EnableMillicharge()        const {return G4bool  (options.enableMillicharge);}

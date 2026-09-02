@@ -285,7 +285,8 @@ int BDSIM::Initialise()
   
   // Muon splitting - optional - should be done *after* biasing to work with it - TBC it's before...
   BDS::BuildMuonBiasing(physList);
-  
+  BDS::BuildSynchrotronRadiaitonEnergyCut(physList);
+
   BDS::RegisterSamplerPhysics(parallelWorldPhysics, physList);
   auto biasPhysics = BDS::BuildAndAttachBiasWrapper(parser->GetBiasing());
   if (biasPhysics)//could be nullptr and can't be passed to geant4 like this
