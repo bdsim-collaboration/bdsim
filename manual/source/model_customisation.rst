@@ -2760,16 +2760,20 @@ certain elements in the beamline, but for now such situations must be avoided.
 Crystals
 --------
 
-To use various crystal components in BDSIM such as :ref:`element-crystal-col`, a crystal definition
+To use various crystal components in BDSIM such as :ref:`element-crystal-col` and
+:ref:`element-crystal-radiator`, a crystal definition
 must first be made. This contains all of the required information to construct the
-crystal. The following parameters are required:
+crystal.  ``model`` selects ``legacy`` (the default and the behaviour in previous
+versions of BDSIM) or ``fastsim``.  The following geometry parameters are common:
 
 +-------------------+------------------------------------------------------------+
 | **Parameter**     | **Description**                                            |
 +===================+============================================================+
+| model             | ``legacy`` or ``fastsim`` (default: ``legacy``)            |
++-------------------+------------------------------------------------------------+
 | material          | Material that the crystal will be composed of              |
 +-------------------+------------------------------------------------------------+
-| data              | Path to data files, including first part of file name      |
+| data              | Legacy potential-data path and filename prefix             |
 +-------------------+------------------------------------------------------------+
 | shape             | Geometry used - one of (box, cylinder, torus)              |
 +-------------------+------------------------------------------------------------+
@@ -2797,6 +2801,8 @@ crystal. The following parameters are required:
 +-------------------+------------------------------------------------------------+
 | bendingAngleZAxis | Angle that the crystal is bent about Z-axis [rad].         |
 +-------------------+------------------------------------------------------------+
+| miscutAngleY      | Miscut angle about Y [rad]                                 |
++-------------------+------------------------------------------------------------+
 
 * (*) Note, the units of metres may seem ridiculous, but the parser is consistently in S.I.
   (or as much as possible). We recommend using units in the parser such as Angstroms.
@@ -2816,6 +2822,97 @@ crystal. The following parameters are required:
 
 It is entirely possible to add more shapes to the code. Please contact the developers
 :ref:`feature-request`.
+
+FastSim Crystal Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+FastSim requires Geant4 11.2 or newer and the ``G4CHANNELINGDATA`` data set.  ``lattice``
+is required and uses the Geant4 notation ``(111)`` for planes or ``<111>`` for axes.
+The following parameters expose the public controls of
+``G4ChannelingFastSimModel`` and its crystal data:
+
+=========================================  ================================================
+Parameter                                  Description
+=========================================  ================================================
+``lattice``                                Crystal planes or axes
+``fastSimDataPath``                        Optional channeling-data directory
+``fastSimParticles``                       Extra particles for FastSim process activation
+``fastSimDefaultLowKineticEnergy``         Default kinetic-energy threshold [GeV]
+``fastSimDefaultLindhardAngleHighLimit``   Default high limit in Lindhard angles
+``fastSimDefaultHighAngleLimit``           Default absolute high-angle limit [rad]
+``fastSimLowEnergyParticles``              Particles with individual energy thresholds
+``fastSimLowEnergyLimits``                 Corresponding thresholds [GeV]
+``fastSimLindhardAngleParticles``          Particles with individual Lindhard limits
+``fastSimLindhardAngleLimits``             Corresponding limits
+``fastSimHighAngleParticles``              Particles with individual absolute limits
+``fastSimHighAngleLimits``                 Corresponding limits [rad]
+``fastSimMaxPhotonsPerStep``               Maximum radiation photons per FastSim step
+``fastSimCUAmplitude``                     Crystalline-undulator amplitude [m]
+``fastSimCUPeriod``                        Crystalline-undulator period [m]
+``fastSimCUPhase``                         Crystalline-undulator phase [rad]
+``fastSimCUGeometryFile``                  Imported undulator-geometry file
+=========================================  ================================================
+
+The particle and value lists must have equal sizes.  The parametric and imported
+crystalline-undulator forms are mutually exclusive, and neither can be combined with
+``bendingAngleYAxis``.
+
+The custom ``fastSimDataPath`` and absolute high-angle controls require Geant4 11.3
+or newer. Imported crystalline-undulator geometry requires Geant4 11.4 or newer.
+
+Baier--Katkov Radiation Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set ``radiation=1`` to activate radiation.  These parameters map directly to
+``G4BaierKatkov``:
+
+=============================================  ============================================
+Parameter                                      Description
+=============================================  ============================================
+``radiationSinglePhotonProbabilityLimit``      Single-photon probability limit
+``radiationSmallTrajectorySteps``              Small trajectory steps per integral
+``radiationSamplingPhotons``                   Monte Carlo photon samples
+``radiationAngleFactor``                       Photon angular-sampling factor
+``radiationMinPhotonEnergy``                   Spectrum minimum [GeV]
+``radiationMaxPhotonEnergy``                   Spectrum maximum [GeV]
+``radiationSpectrumBins``                      Number of logarithmic spectrum bins
+``radiationStatisticsMinEnergy``               Extra-statistics lower energies [GeV]
+``radiationStatisticsMaxEnergy``               Extra-statistics upper energies [GeV]
+``radiationStatisticsMultiple``                Corresponding integer sampling multipliers
+``radiationVirtualCollimator``                 ``none``, ``round``, ``elliptic`` or
+                                               ``rectangular``
+``radiationCollimatorHalfWidthX``              Angular radius or X half-width [rad]
+``radiationCollimatorHalfWidthY``              Y radius or half-width [rad]
+``radiationCollimatorCentreX``                 Angular centre X [rad]
+``radiationCollimatorCentreY``                 Angular centre Y [rad]
+=============================================  ============================================
+
+Geant4 11.2 and 11.3 support only a centred round virtual collimator. BDSIM maps
+``radiationCollimatorHalfWidthX`` to the full angular diameter expected by those
+versions. Offset, elliptic and rectangular virtual collimators require Geant4 11.4
+or newer.
+
+Coherent Pair-Production Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Coherent pair production requires Geant4 11.4 or newer.  Set
+``coherentPairProduction=1`` on a FastSim crystal.  All public configuration controls
+are available:
+
+================================================  ==========================================
+Parameter                                         Description
+================================================  ==========================================
+``coherentPairProductionIncoherent``              Include incoherent scattering
+``coherentPairProductionLowEnergyLimit``          Photon low-energy limit [GeV]
+``coherentPairProductionHighAngleLimit``          Photon high-angle limit [rad]
+``coherentPairProductionKineticEnergyCut``        Produced-particle kinetic cut [GeV]
+``coherentPairProductionSamplingPairs``           Monte Carlo pair samples
+``coherentPairProductionAngleFactor``             Charged-particle angular factor
+``coherentPairProductionTrajectorySteps``         Trajectory steps per particle
+================================================  ==========================================
+
+Examples matching Geant4 ``channeling/ch0``, ``ch1``, ``ch2``, ``ch3`` and ``ch5``
+are provided in ``examples/features/processes/channelingFastSim``.
 
 Examples: ::
 

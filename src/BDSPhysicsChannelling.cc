@@ -32,9 +32,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4MesonConstructor.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4ProcessManager.hh"
+#include "G4ProcessTable.hh"
 
-BDSPhysicsChannelling::BDSPhysicsChannelling():
-  G4VPhysicsConstructor("BDSPhysicsChannelling")
+BDSPhysicsChannelling::BDSPhysicsChannelling(G4bool disableCoulombScatteringIn):
+  G4VPhysicsConstructor("BDSPhysicsChannelling"),
+  disableCoulombScattering(disableCoulombScatteringIn)
 {;}
 
 void BDSPhysicsChannelling::ConstructParticle()
@@ -59,6 +61,19 @@ void BDSPhysicsChannelling::ConstructProcess()
 {
   if (Activated())
     {return;}
+
+  // The Geant4 legacy channeling/ch0 reference configuration combines
+  // G4EmStandardPhysicsSS with channeling and explicitly disables the
+  // standalone Coulomb-scattering process.  Keep this opt-in so existing
+  // BDSIM legacy configurations retain their historical behaviour.
+  if (disableCoulombScattering)
+    {
+      auto processTable = G4ProcessTable::GetProcessTable();
+      const G4int verbosity = processTable->GetVerboseLevel();
+      processTable->SetVerboseLevel(2);
+      processTable->SetProcessActivation("CoulombScat", false);
+      processTable->SetVerboseLevel(verbosity);
+    }
 
   G4Channeling* channelling = new G4Channeling();
   G4AutoDelete::Register(channelling);

@@ -48,6 +48,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <algorithm>
 #include <cmath>
 #include <memory>
+#include <map>
 #include <set>
 #include <vector>
 
@@ -59,6 +60,31 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4ChannelingMaterialData.hh"
 #include "G4LogicalCrystalVolume.hh"
 #endif
+
+#if G4VERSION_NUMBER >= 1120
+#include "G4BaierKatkov.hh"
+#include "G4ChannelingFastSimModel.hh"
+#include "G4FastSimulationManager.hh"
+#include "G4Region.hh"
+#include "G4RegionStore.hh"
+#endif
+
+namespace
+{
+#if G4VERSION_NUMBER >= 1120
+  struct FastSimCrystalGroup
+  {
+    explicit FastSimCrystalGroup(const BDSCrystalInfo& recipeIn, G4Region* regionIn):
+      recipe(recipeIn), region(regionIn) {}
+
+    BDSCrystalInfo recipe;
+    G4Region* region;
+    std::vector<std::pair<G4LogicalVolume*, BDSCrystalInfo>> logicalVolumes;
+  };
+
+  std::map<G4String, std::unique_ptr<FastSimCrystalGroup>> fastSimCrystalGroups;
+#endif
+}
 
 BDSCrystalFactory::BDSCrystalFactory():
   maxStepFactor(1.1),
@@ -103,43 +129,57 @@ void BDSCrystalFactory::CommonConstruction(const G4String&       nameIn,
 
   // only in g4.10.4 onwards do we build the crystal extensions - otherwise regular LV
 #if G4VERSION_NUMBER > 1039
-  G4ExtendedMaterial* crystalMat = new G4ExtendedMaterial(nameIn+"_crystal.material", recipe->material);
-  
-  crystalMat->RegisterExtension(std::unique_ptr<G4CrystalExtension>(new G4CrystalExtension(crystalMat)));
-  G4CrystalExtension* crystalExtension = dynamic_cast<G4CrystalExtension*>(crystalMat->RetrieveExtension("crystal"));
-
-  G4CrystalUnitCell* uCell = new G4CrystalUnitCell(recipe->sizeA,
-						   recipe->sizeB,
-						   recipe->sizeC,
-						   recipe->alpha,
-						   recipe->beta,
-						   recipe->gamma,
-						   recipe->spaceGroup);
-  crystalExtension->SetUnitCell(uCell);
-
-  crystalMat->RegisterExtension(std::unique_ptr<G4ChannelingMaterialData>(new G4ChannelingMaterialData("channeling")));
-
-  G4ChannelingMaterialData* crystalChannelingData = (G4ChannelingMaterialData*)crystalMat->RetrieveExtension("channeling");
-  G4String fileName = BDS::GetFullPath(recipe->data);
-  if (!BDS::FileExists(fileName + "_pot.txt"))
-    {throw BDSException(__METHOD_NAME__, "No such crystal data files beginning with: \"" + fileName + "\"");}
-#ifdef BDSDEBUG
-  G4cout << __METHOD_NAME__ << "Raw data path: " << recipe->data << G4endl;
-  G4cout << __METHOD_NAME__ << "Using crystal data: " << fileName << G4endl;
+  if (recipe->UseFastSim())
+    {
+#if G4VERSION_NUMBER >= 1120
+      crystalLV = new G4LogicalVolume(crystalSolid,
+                                      recipe->material,
+                                      nameIn + "_crystal_lv");
+      RegisterFastSim(recipe);
+#else
+      throw BDSException(__METHOD_NAME__, "FastSim crystals require Geant4 11.2 or newer");
 #endif
-  crystalChannelingData->SetFilename(fileName);
+    }
+  else
+    {
+      G4ExtendedMaterial* crystalMat = new G4ExtendedMaterial(nameIn+"_crystal.material", recipe->material);
   
-  // -ve here due to right handed coordinate system + convention of +ve bending angle bends
-  // away from beam axis. This convention is also implied by when we do a -ve x axis rotation
-  // for cylindrical crystals (including the start and sweep angle).
-  G4double bendingRadius = -recipe->BendingRadiusHorizontal();
-  crystalChannelingData->SetBR(bendingRadius);
+      crystalMat->RegisterExtension(std::unique_ptr<G4CrystalExtension>(new G4CrystalExtension(crystalMat)));
+      G4CrystalExtension* crystalExtension = dynamic_cast<G4CrystalExtension*>(crystalMat->RetrieveExtension("crystal"));
+
+      G4CrystalUnitCell* uCell = new G4CrystalUnitCell(recipe->sizeA,
+                                                       recipe->sizeB,
+                                                       recipe->sizeC,
+                                                       recipe->alpha,
+                                                       recipe->beta,
+                                                       recipe->gamma,
+                                                       recipe->spaceGroup);
+      crystalExtension->SetUnitCell(uCell);
+
+      crystalMat->RegisterExtension(std::unique_ptr<G4ChannelingMaterialData>(new G4ChannelingMaterialData("channeling")));
+
+      G4ChannelingMaterialData* crystalChannelingData = (G4ChannelingMaterialData*)crystalMat->RetrieveExtension("channeling");
+      G4String fileName = BDS::GetFullPath(recipe->data);
+      if (!BDS::FileExists(fileName + "_pot.txt"))
+        {throw BDSException(__METHOD_NAME__, "No such crystal data files beginning with: \"" + fileName + "\"");}
+#ifdef BDSDEBUG
+      G4cout << __METHOD_NAME__ << "Raw data path: " << recipe->data << G4endl;
+      G4cout << __METHOD_NAME__ << "Using crystal data: " << fileName << G4endl;
+#endif
+      crystalChannelingData->SetFilename(fileName);
   
-  crystalLV = new G4LogicalCrystalVolume(crystalSolid,
-					 crystalMat,
-					 nameIn + "_crystal_lv",
-					 nullptr, nullptr, nullptr,
-					 true, 0, 0, 0, recipe->miscutAngleY);
+      // -ve here due to right handed coordinate system + convention of +ve bending angle bends
+      // away from beam axis. This convention is also implied by when we do a -ve x axis rotation
+      // for cylindrical crystals (including the start and sweep angle).
+      G4double bendingRadius = -recipe->BendingRadiusHorizontal();
+      crystalChannelingData->SetBR(bendingRadius);
+  
+      crystalLV = new G4LogicalCrystalVolume(crystalSolid,
+                                             crystalMat,
+                                             nameIn + "_crystal_lv",
+                                             nullptr, nullptr, nullptr,
+                                             true, 0, 0, 0, recipe->miscutAngleY);
+    }
 
   BDSAcceleratorModel::Instance()->VolumeSet("crystals")->insert(crystalLV);
 #else
@@ -152,6 +192,162 @@ void BDSCrystalFactory::CommonConstruction(const G4String&       nameIn,
   
   SetVisAttributes();
   SetUserLimits(recipe->lengthZ);
+}
+
+void BDSCrystalFactory::RegisterFastSim(const BDSCrystalInfo* recipe)
+{
+#if G4VERSION_NUMBER >= 1120
+  G4RegionStore* regionStore = G4RegionStore::GetInstance();
+  G4Region* region = regionStore->GetRegion(recipe->FastSimRegionName(), false);
+  if (!region)
+    {region = new G4Region(recipe->FastSimRegionName());}
+  region->AddRootLogicalVolume(crystalLV);
+
+  auto group = fastSimCrystalGroups.find(recipe->name);
+  if (group == fastSimCrystalGroups.end())
+    {
+      auto newGroup = std::make_unique<FastSimCrystalGroup>(*recipe, region);
+      group = fastSimCrystalGroups.insert(std::make_pair(recipe->name, std::move(newGroup))).first;
+    }
+  group->second->logicalVolumes.emplace_back(crystalLV, *recipe);
+#else
+  (void)recipe;
+#endif
+}
+
+void BDSCrystalFactory::ConstructFastSimModels()
+{
+#if G4VERSION_NUMBER >= 1120
+  for (const auto& groupEntry : fastSimCrystalGroups)
+    {
+      const BDSCrystalInfo* recipe = &groupEntry.second->recipe;
+      G4Region* region = groupEntry.second->region;
+      G4ChannelingFastSimModel* model =
+        new G4ChannelingFastSimModel(recipe->FastSimModelName(), region);
+#if G4VERSION_NUMBER < 1130
+      if (recipe->fastSimDefaultHighAngleLimit != 0 ||
+          !recipe->fastSimHighAngleParticles.empty())
+        {throw BDSException(__METHOD_NAME__, "absolute FastSim high-angle controls require Geant4 11.3 or newer");}
+#endif
+#if G4VERSION_NUMBER < 1140
+      if (recipe->coherentPairProduction)
+        {throw BDSException(__METHOD_NAME__, "coherent pair production requires Geant4 11.4 or newer");}
+#endif
+#if G4VERSION_NUMBER >= 1130
+      model->Input(recipe->material, recipe->lattice, recipe->fastSimDataPath);
+#else
+      if (!recipe->fastSimDataPath.empty())
+        {throw BDSException(__METHOD_NAME__, "a custom FastSim data path requires Geant4 11.3 or newer");}
+      model->Input(recipe->material, recipe->lattice);
+#endif
+
+      model->SetDefaultLowKineticEnergyLimit(recipe->fastSimDefaultLowKineticEnergy);
+      model->SetDefaultLindhardAngleNumberHighLimit(recipe->fastSimDefaultLindhardAngleHighLimit);
+#if G4VERSION_NUMBER >= 1130
+      model->SetDefaultHighAngleLimit(recipe->fastSimDefaultHighAngleLimit);
+#endif
+      model->SetMaxPhotonsProducedPerStep(recipe->fastSimMaxPhotonsPerStep);
+
+      for (std::size_t i = 0; i < recipe->fastSimLowEnergyParticles.size(); ++i)
+        {model->SetLowKineticEnergyLimit(recipe->fastSimLowEnergyLimits[i],
+                                         recipe->fastSimLowEnergyParticles[i]);}
+      for (std::size_t i = 0; i < recipe->fastSimLindhardAngleParticles.size(); ++i)
+        {model->SetLindhardAngleNumberHighLimit(recipe->fastSimLindhardAngleLimits[i],
+                                                recipe->fastSimLindhardAngleParticles[i]);}
+#if G4VERSION_NUMBER >= 1130
+      for (std::size_t i = 0; i < recipe->fastSimHighAngleParticles.size(); ++i)
+        {model->SetHighAngleLimit(recipe->fastSimHighAngleLimits[i],
+                                  recipe->fastSimHighAngleParticles[i]);}
+#endif
+
+      if (recipe->radiation)
+        {
+          model->RadiationModelActivate();
+          G4BaierKatkov* radiation = model->GetRadiationModel();
+          radiation->SetSinglePhotonRadiationProbabilityLimit(
+            recipe->radiationSinglePhotonProbabilityLimit);
+          radiation->SetNSmallTrajectorySteps(recipe->radiationSmallTrajectorySteps);
+          radiation->SetSamplingPhotonsNumber(recipe->radiationSamplingPhotons);
+          radiation->SetRadiationAngleFactor(recipe->radiationAngleFactor);
+          radiation->SetSpectrumEnergyRange(recipe->radiationMinPhotonEnergy,
+                                            recipe->radiationMaxPhotonEnergy,
+                                            recipe->radiationSpectrumBins);
+          for (std::size_t i = 0; i < recipe->radiationStatisticsMinEnergy.size(); ++i)
+            {
+              radiation->AddStatisticsInPhotonEnergyRegion(
+                recipe->radiationStatisticsMinEnergy[i],
+                recipe->radiationStatisticsMaxEnergy[i],
+                recipe->radiationStatisticsMultiple[i]);
+            }
+
+#if G4VERSION_NUMBER >= 1140
+          if (recipe->radiationVirtualCollimator == "round")
+            {
+              radiation->SetRoundVirtualCollimator(recipe->radiationCollimatorHalfWidthX,
+                                                    recipe->radiationCollimatorCentreX,
+                                                    recipe->radiationCollimatorCentreY);
+            }
+          else if (recipe->radiationVirtualCollimator == "elliptic" ||
+                   recipe->radiationVirtualCollimator == "elliptical")
+            {
+              radiation->SetEllipticVirtualCollimator(recipe->radiationCollimatorHalfWidthX,
+                                                       recipe->radiationCollimatorHalfWidthY,
+                                                       recipe->radiationCollimatorCentreX,
+                                                       recipe->radiationCollimatorCentreY);
+            }
+          else if (recipe->radiationVirtualCollimator == "rectangular")
+            {
+              radiation->SetRectangularVirtualCollimator(recipe->radiationCollimatorHalfWidthX,
+                                                          recipe->radiationCollimatorHalfWidthY,
+                                                          recipe->radiationCollimatorCentreX,
+                                                          recipe->radiationCollimatorCentreY);
+            }
+          else if (recipe->radiationVirtualCollimator != "none")
+            {
+              throw BDSException(__METHOD_NAME__, "unknown radiation virtual collimator \"" +
+                                  recipe->radiationVirtualCollimator + "\"");
+            }
+#else
+          if (recipe->radiationVirtualCollimator == "round")
+            {
+              if (recipe->radiationCollimatorCentreX != 0 ||
+                  recipe->radiationCollimatorCentreY != 0)
+                {throw BDSException(__METHOD_NAME__, "an offset radiation virtual collimator requires Geant4 11.4 or newer");}
+              // Geant4 11.2 and 11.3 expose only a centred circular
+              // collimator whose input is the full angular diameter.
+              radiation->SetVirtualCollimator(2 * recipe->radiationCollimatorHalfWidthX);
+            }
+          else if (recipe->radiationVirtualCollimator != "none")
+            {throw BDSException(__METHOD_NAME__, "elliptic and rectangular radiation virtual collimators require Geant4 11.4 or newer");}
+#endif
+        }
+
+      auto crystalData = model->GetCrystalData();
+      for (const auto& volumeEntry : groupEntry.second->logicalVolumes)
+        {
+          G4LogicalVolume* logicalVolume = volumeEntry.first;
+          const BDSCrystalInfo& volumeRecipe = volumeEntry.second;
+          crystalData->SetBendingAngle(volumeRecipe.bendingAngleYAxis, logicalVolume);
+          crystalData->SetMiscutAngle(volumeRecipe.miscutAngleY, logicalVolume);
+          if (!volumeRecipe.fastSimCUGeometryFile.empty())
+            {
+#if G4VERSION_NUMBER >= 1140
+              crystalData->SetCrystallineUndulatorParameters(logicalVolume,
+                                                              volumeRecipe.fastSimCUGeometryFile);
+#else
+              throw BDSException(__METHOD_NAME__, "an imported crystalline-undulator geometry requires Geant4 11.4 or newer");
+#endif
+            }
+          else if (volumeRecipe.fastSimCUAmplitude > 0 && volumeRecipe.fastSimCUPeriod > 0)
+            {
+              crystalData->SetCrystallineUndulatorParameters(volumeRecipe.fastSimCUAmplitude,
+                                                              volumeRecipe.fastSimCUPeriod,
+                                                              volumeRecipe.fastSimCUPhase,
+                                                              logicalVolume);
+            }
+        }
+    }
+#endif
 }
 
 void BDSCrystalFactory::SetVisAttributes()

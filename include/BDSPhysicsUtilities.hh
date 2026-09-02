@@ -128,6 +128,10 @@ namespace BDS
 						    G4bool regular = false,
 						    G4bool em4     = false,
 						    G4bool emss    = false);
+
+  /// Register FastSim channeling and coherent pair-production constructors
+  /// required by FastSim crystal definitions in the parsed model.
+  void RegisterChannelingFastSimPhysics(G4VModularPhysicsList* physicsList);
 #endif
 
   /// Set the range cuts on a physics list. This is split into a separate function to allow it

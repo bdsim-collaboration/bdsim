@@ -24,6 +24,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSModularPhysicsList.hh"
 #include "BDSIonDefinition.hh"
 #include "BDSParticleDefinition.hh"
+#include "BDSParser.hh"
 #if G4VERSION_NUMBER > 1039
 #include "BDSPhysicsChannelling.hh"
 #endif
@@ -36,6 +37,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSUtilities.hh"
 #include "BDSWarning.hh"
 #include "BDSEmStandardPhysicsOp4Channelling.hh" // included with bdsim
+
+#include "parser/crystal.h"
+#include "parser/element.h"
+#include "parser/placement.h"
 
 #include "FTFP_BERT.hh"
 #include "globals.hh"
@@ -80,6 +85,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4String.hh"
 #include "G4UImanager.hh"
 #include "G4VDecayChannel.hh"
+#if G4VERSION_NUMBER >= 1120
+#include "G4FastSimulationPhysics.hh"
+#endif
+#if G4VERSION_NUMBER >= 1140
+#include "G4CoherentPairProductionPhysics.hh"
+#endif
 #if G4VERSION_NUMBER > 1049
 #include "G4ParticleDefinition.hh"
 #include "G4CoupledTransportation.hh"
@@ -91,6 +102,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4HadronicParameters.hh"
 #endif
 
+#include <algorithm>
+#include <vector>
+
 #include "parser/beam.h"
 #include "parser/fastlist.h"
 #include "parser/physicsbiasing.h"
@@ -101,6 +115,47 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <set>
 #include <stdexcept>
 #include <string> // for stoi
+
+namespace
+{
+  void AddReferencedCrystals(const GMAD::Element& element,
+                             std::set<G4String>&  crystalNames)
+  {
+    for (const auto* name : {&element.crystalDefinition,
+                             &element.crystalBoth,
+                             &element.crystalLeft,
+                             &element.crystalRight})
+      {
+        if (!name->empty())
+          {crystalNames.insert(*name);}
+      }
+  }
+
+  std::set<G4String> ReferencedCrystalNames()
+  {
+    std::set<G4String> result;
+    BDSParser* parser = BDSParser::Instance();
+    for (const auto& element : parser->GetBeamline())
+      {AddReferencedCrystals(element, result);}
+
+    for (const auto& placement : parser->GetPlacements())
+      {
+        if (!placement.bdsimElement.empty())
+          {
+            const GMAD::Element* element =
+              parser->GetPlacementElement(placement.bdsimElement);
+            if (element)
+              {AddReferencedCrystals(*element, result);}
+          }
+        if (!placement.sequence.empty())
+          {
+            for (const auto& element : parser->GetSequence(placement.sequence))
+              {AddReferencedCrystals(element, result);}
+          }
+      }
+    return result;
+  }
+}
 
 G4bool BDS::IsIon(const G4ParticleDefinition* particle)
 {
@@ -182,6 +237,17 @@ G4VModularPhysicsList* BDS::BuildPhysics(const G4String& physicsList, G4int verb
           // we don't assign 'result' variable or proceed as that would result in the
           // range cuts being set for a complete physics list that we wouldn't use
           auto r = BDS::ChannellingPhysicsComplete(useEMD, regular, em4, emss);
+          // Complete channelling lists return directly below. Apply the
+          // macro after the reference list has created its command
+          // messengers, but before Geant4 constructs any processes.
+          G4String physicsMacro = g->Geant4PhysicsMacroFileName();
+          if (!physicsMacro.empty())
+            {
+              G4bool setInExecOptions = g->Geant4PhysicsMacroFileNameFromExecOptions();
+              G4String physicsMacroFull = BDS::GetFullPath(physicsMacro, false, setInExecOptions);
+              G4cout << "Applying geant4 physics macro file: " << physicsMacroFull << G4endl;
+              G4UImanager::GetUIpointer()->ApplyCommand("/control/execute " + physicsMacroFull);
+            }
           r->SetVerboseLevel(verbosity);
           return r;
 #else
@@ -573,7 +639,8 @@ G4VModularPhysicsList* BDS::ChannellingPhysicsComplete(G4bool useEMD,
   G4VModularPhysicsList* physlist = new FTFP_BERT();
   physlist->RegisterPhysics(new G4IonElasticPhysics()); // not included by default in FTFP_BERT
   G4GenericBiasingPhysics* biasingPhysics = new G4GenericBiasingPhysics();
-  physlist->RegisterPhysics(new BDSPhysicsChannelling());
+  physlist->RegisterPhysics(new BDSPhysicsChannelling(emss));
+  BDS::RegisterChannelingFastSimPhysics(physlist);
   if (!regular)
     {
       // replace the EM physics in the Geant4 provided FTFP_BERT composite physics list
@@ -597,7 +664,11 @@ G4VModularPhysicsList* BDS::ChannellingPhysicsComplete(G4bool useEMD,
 
   biasingPhysics->PhysicsBiasAllCharged();
   physlist->RegisterPhysics(biasingPhysics);
-  if (BDSGlobalConstants::Instance()->MinimumKineticEnergy() > 0 &&
+  // The cuts-and-limits process is also what enforces component-local
+  // G4UserLimits (for example collimatorsAreInfiniteAbsorbers).  It must be
+  // installed whenever BDSIM limits are enabled, even if the global minimum
+  // kinetic energy is zero.  Keep this consistent with Geant4 reference lists.
+  if (BDSGlobalConstants::Instance()->MinimumKineticEnergy() > 0 ||
       BDSGlobalConstants::Instance()->G4PhysicsUseBDSIMCutsAndLimits())
     {
       G4cout << "\nWARNING - adding cuts and limits physics process to \"COMPLETE\" physics list" << G4endl;
@@ -606,6 +677,61 @@ G4VModularPhysicsList* BDS::ChannellingPhysicsComplete(G4bool useEMD,
       physlist->RegisterPhysics(new BDSPhysicsCutsAndLimits(BDSGlobalConstants::Instance()->ParticlesToExcludeFromCutsAsSet()));
     }
   return physlist;
+}
+
+void BDS::RegisterChannelingFastSimPhysics(G4VModularPhysicsList* physicsList)
+{
+#if G4VERSION_NUMBER >= 1120
+  const auto crystals = BDSParser::Instance()->GetCrystals();
+  const auto referencedCrystals = ReferencedCrystalNames();
+  G4bool hasFastSimCrystal = false;
+  std::vector<G4String> fastSimParticles = {
+    "e-", "e+", "proton", "anti_proton", "mu+", "mu-",
+    "pi+", "pi-", "GenericIon"
+  };
+  for (const auto& crystal : crystals)
+    {
+      if (referencedCrystals.find(crystal.name) == referencedCrystals.end())
+        {continue;}
+      if (BDS::LowerCase(G4String(crystal.model)) != "fastsim")
+        {continue;}
+      hasFastSimCrystal = true;
+      for (const auto& particle : crystal.fastSimParticles)
+        {
+          if (std::find(fastSimParticles.begin(), fastSimParticles.end(), particle) ==
+              fastSimParticles.end())
+            {fastSimParticles.push_back(particle);}
+        }
+
+#if G4VERSION_NUMBER >= 1140
+      if (crystal.coherentPairProduction)
+        {
+          auto pairPhysics = new G4CoherentPairProductionPhysics();
+          pairPhysics->SetNameChannelingModel("crystal_" + crystal.name + "_fastsim_model");
+          pairPhysics->SetNameG4Region("crystal_" + crystal.name + "_fastsim_region");
+          pairPhysics->SetLowEnergyLimit(crystal.coherentPairProductionLowEnergyLimit * CLHEP::GeV);
+          pairPhysics->SetHighAngleLimit(crystal.coherentPairProductionHighAngleLimit * CLHEP::rad);
+          pairPhysics->SetPPKineticEnergyCut(crystal.coherentPairProductionKineticEnergyCut * CLHEP::GeV);
+          pairPhysics->SetSamplingPairsNumber(crystal.coherentPairProductionSamplingPairs);
+          pairPhysics->SetChargeParticleAngleFactor(crystal.coherentPairProductionAngleFactor);
+          pairPhysics->SetNTrajectorySteps(crystal.coherentPairProductionTrajectorySteps);
+          if (crystal.coherentPairProductionIncoherent)
+            {pairPhysics->ActivateIncoherentScattering();}
+          physicsList->RegisterPhysics(pairPhysics);
+        }
+#endif
+    }
+
+  if (hasFastSimCrystal)
+    {
+      auto fastSimulationPhysics = new G4FastSimulationPhysics();
+      for (const auto& particle : fastSimParticles)
+        {fastSimulationPhysics->ActivateFastSimulation(particle);}
+      physicsList->RegisterPhysics(fastSimulationPhysics);
+    }
+#else
+  (void)physicsList;
+#endif
 }
 #endif
 

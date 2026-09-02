@@ -21,6 +21,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iomanip>
 #include <iostream>
+#include <list>
 #include <string>
 
 #include "published.h"
@@ -37,8 +38,11 @@ namespace GMAD
   {
   public:
     std::string name;                 ///< Name of object.
+    std::string model;                ///< "legacy" or "fastsim".
     std::string material;             ///< Material of crystal.
     std::string data;                 ///< Which channelling data to use.
+    std::string lattice;              ///< FastSim lattice, e.g. "(111)" or "<111>".
+    std::string fastSimDataPath;       ///< Optional custom FastSim data directory.
     std::string shape;                ///< Which geometry to create.
     double      lengthX;              ///< X size.
     double      lengthY;              ///< Y size.
@@ -53,6 +57,53 @@ namespace GMAD
     double      bendingAngleYAxis;    ///< Bending angle about Y axis.
     double      bendingAngleZAxis;    ///< Bending angle about Z axis.
     double      miscutAngleY;
+
+    /// FastSim internal crystalline-undulator geometry.
+    double      fastSimCUAmplitude;
+    double      fastSimCUPeriod;
+    double      fastSimCUPhase;
+    std::string fastSimCUGeometryFile;
+
+    /// FastSim model applicability controls.
+    std::list<std::string> fastSimParticles;
+    double                 fastSimDefaultLowKineticEnergy;
+    double                 fastSimDefaultLindhardAngleHighLimit;
+    double                 fastSimDefaultHighAngleLimit;
+    std::list<std::string> fastSimLowEnergyParticles;
+    std::list<double>      fastSimLowEnergyLimits;
+    std::list<std::string> fastSimLindhardAngleParticles;
+    std::list<double>      fastSimLindhardAngleLimits;
+    std::list<std::string> fastSimHighAngleParticles;
+    std::list<double>      fastSimHighAngleLimits;
+    int                    fastSimMaxPhotonsPerStep;
+
+    /// Baier-Katkov radiation controls.
+    bool                   radiation;
+    double                 radiationSinglePhotonProbabilityLimit;
+    int                    radiationSmallTrajectorySteps;
+    int                    radiationSamplingPhotons;
+    double                 radiationAngleFactor;
+    double                 radiationMinPhotonEnergy;
+    double                 radiationMaxPhotonEnergy;
+    int                    radiationSpectrumBins;
+    std::list<double>      radiationStatisticsMinEnergy;
+    std::list<double>      radiationStatisticsMaxEnergy;
+    std::list<double>      radiationStatisticsMultiple;
+    std::string            radiationVirtualCollimator;
+    double                 radiationCollimatorHalfWidthX;
+    double                 radiationCollimatorHalfWidthY;
+    double                 radiationCollimatorCentreX;
+    double                 radiationCollimatorCentreY;
+
+    /// Coherent pair-production controls.
+    bool   coherentPairProduction;
+    bool   coherentPairProductionIncoherent;
+    double coherentPairProductionLowEnergyLimit;
+    double coherentPairProductionHighAngleLimit;
+    double coherentPairProductionKineticEnergyCut;
+    int    coherentPairProductionSamplingPairs;
+    double coherentPairProductionAngleFactor;
+    int    coherentPairProductionTrajectorySteps;
     
     /// Constructor
     Crystal();

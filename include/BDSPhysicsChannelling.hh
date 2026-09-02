@@ -40,12 +40,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 class BDSPhysicsChannelling: public G4VPhysicsConstructor, public BDSSingleUse
 {
 public:
-  BDSPhysicsChannelling();
+  explicit BDSPhysicsChannelling(G4bool disableCoulombScatteringIn = false);
   virtual ~BDSPhysicsChannelling(){;}
   virtual void ConstructParticle();
 
   /// Construct and attach the processes to the relevant particles.
   virtual void ConstructProcess();
+
+private:
+  G4bool disableCoulombScattering;
 };
 #endif
 

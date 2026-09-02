@@ -2343,7 +2343,14 @@ These cannot be used in combination with any other physics processes.
 | **Physics List**          | **Description**                                                           |
 +===========================+===========================================================================+
 | completechannelling       | Modified em option 4 plus channelling as per the Geant4 example           |
-|                           | for crystal channelling. The exact same physics as used in their example. |
+|                           | historically used by BDSIM.                                               |
++---------------------------+---------------------------------------------------------------------------+
+| completechannellingregular| FTFP_BERT electromagnetic physics plus legacy and FastSim channelling.    |
++---------------------------+---------------------------------------------------------------------------+
+| completechannelling       | FTFP_BERT with ``G4EmStandardPhysicsSS``. For legacy crystals the         |
+| regularemss               | standalone ``CoulombScat`` process is disabled, matching Geant4           |
+|                           | ``channeling/ch0``. The GMAD string is                                    |
+|                           | ``completechannellingregularemss``.                                       |
 +---------------------------+---------------------------------------------------------------------------+
 
 .. note:: The range cuts specified with BDSIM options to not apply and cannot be used with a 'complete'
@@ -5350,4 +5357,3 @@ Should the model be designed to scale a field by a factor `N` to account for a f
 then the behaviour of the fringe kick would be the same as the `bdsimmatrix` fringe integrator, as the field scaling
 would counteract the momentum deviation and the bending radius should be calculated as nominal for that magnet. The
 result may not entirely match that if using the `bdsimmatrix` set due to the aforementioned effect of energy spread.
-

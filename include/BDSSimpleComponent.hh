@@ -54,7 +54,8 @@ public:
 		             G4double              angle = 0,
 		             const G4ThreeVector&  inputFaceNormal  = G4ThreeVector(0,0,-1),
 		             const G4ThreeVector&  outputFaceNormal = G4ThreeVector(0,0, 1),
-		             BDSBeamPipeInfo*      beamPipeInfo     = nullptr);
+		             BDSBeamPipeInfo*      beamPipeInfo     = nullptr,
+                             const G4String&       typeIn          = "simpleComponent");
 
   /// Alternate constructor that doesn't use a daughter geometry component.
   /// Face normal (unit) vectors are w.r.t. the incoming / outgoing reference 
@@ -67,7 +68,8 @@ public:
                      const BDSExtent&      extentIn,
 		             const G4ThreeVector&  inputFaceNormal  = G4ThreeVector(0,0,-1),
 		             const G4ThreeVector&  outputFaceNormal = G4ThreeVector(0,0, 1),
-		             BDSBeamPipeInfo*      beamPipeInfo     = nullptr);
+		             BDSBeamPipeInfo*      beamPipeInfo     = nullptr,
+                             const G4String&       typeIn          = "simpleComponent");
 
   /// Default destructor suffices as this calls base class which
   /// clears everything up.

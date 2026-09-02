@@ -56,6 +56,10 @@ public:
   BDSCrystal* CreateCrystal(const G4String&       nameIn,
 			    const BDSCrystalInfo* recipe);
 
+  /// Construct and configure registered FastSim models. Called from
+  /// detector ConstructSDandField after all crystal geometry exists.
+  static void ConstructFastSimModels();
+
 private:
   /// Initialiser and can be used to reset factory pointers after use.
   /// Note, non-virtual as used in constructor.
@@ -64,6 +68,8 @@ private:
   /// Common construction tasks.
   void CommonConstruction(const G4String&       nameIn,
 			  const BDSCrystalInfo* recipe);
+
+  void RegisterFastSim(const BDSCrystalInfo* recipe);
   
   /// build beampipe and register logical volumes
   BDSCrystal* BuildCrystalObject(const BDSCrystalInfo*  recipe,
