@@ -33,6 +33,7 @@ void Laser::clear()
   m2               = 0;
   pulseEnergy      = 0;
   pulseDuration    = 0;
+	 pulseFWHM        = 0;
   w0               = 0;
   sigma0           = 0;
   laserArrivalTime = 0;
@@ -49,6 +50,7 @@ void Laser::PublishMembers()
   publish("m2",                 &Laser::m2);
   publish("pulseEnergy",        &Laser::pulseEnergy);
   publish("pulseDuration",      &Laser::pulseDuration);
+	 publish("pulseFWHM",												 &Laser::pulseFWHM);
   publish("w0",                 &Laser::w0);
   publish("sigma0",             &Laser::sigma0);
   publish("laserArrivalTime",   &Laser::laserArrivalTime);
@@ -66,7 +68,8 @@ void Laser::print()const
 	    << "m2 "                  << m2            << std::endl
 	    << "pulse energy "        << pulseEnergy   << std::endl
 	    << "pulse duration "      << pulseDuration << std::endl
-	    << "w0 "                  << w0            << std::endl
+					<< "pulse FWHM "										<< pulseFWHM << std::endl
+					<< "w0 "                  << w0            << std::endl
 	    << "sigma0 "              << sigma0        << std::endl
         << "laserArrivalTime "    << laserArrivalTime  << std::endl
         << "laserPolarization1 "       << laserPolarization1  << std::endl

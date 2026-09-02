@@ -161,7 +161,7 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       //#################### create array and value for the total laser flux
       G4double photonFluxSum = 0;
       std::vector<G4double> fluxArray;
-
+      G4double intensityBoosted = laser->DopplerShiftedScale(photonUnit.dot(particleBeta),particleGamma);
       std::vector<G4LorentzVector> trajectoryPositions;
 
       for(G4int i = 0;i<=99;i++)
@@ -169,15 +169,15 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
           G4ThreeVector stepPositionGlobal = particlePositionPreStepGlobal+float(i)*(stepMagnitude/100.)*particleMomentumDirectionGlobal;
           G4ThreeVector stepPositionLocal = transform.TransformPoint(stepPositionGlobal);
           G4double particleStepGlobalTime = particleTimePreStepGlobal+((float(i)*(stepMagnitude/100.))/particleVelocity);
-          G4double stepIntensity  = ((laser->Intensity(stepPositionLocal)/photonEnergyLorentz)
-                             * laser->TemporalProfileGaussian(particleStepGlobalTime,stepPositionLocal.z()));
+          G4double stepIntensity  = ((intensityBoosted*intensityBoosted*laser->Intensity(stepPositionLocal)/photonEnergyLorentz)
+                     * laser->TemporalProfileGaussian(particleStepGlobalTime,stepPositionLocal.z()));
           photonFluxSum = photonFluxSum + stepIntensity;
           fluxArray.push_back(stepIntensity);
         }
 
       G4double crossSection = comptonEngine->CrossSection(photonEnergyLorentz,partID);
 
-      G4double stepTime = ((particleTimePostStepGlobal-particleTimePreStepGlobal)*particleGamma)/100.;//divide by 100 for the 100 steps taken
+      G4double stepTime = ((particleTimePostStepGlobal-particleTimePreStepGlobal)/particleGamma)/100.;//divide by 100 for the 100 steps taken
       G4double cumulativeProbability = 1.0 - std::exp(-1.0*crossSection*photonFluxSum*stepTime);
       G4double secondaryStepPosition;
 

@@ -134,9 +134,10 @@ G4VParticleChange* BDSLaserComptonScattering::PostStepDoIt(const G4Track& track,
                          * laser->TemporalProfileGaussian(particleTimePostStepGlobal,particlePositionLocal.z())); // temporal intensity
 
 
-  G4double particleStepTime = (particleTimePostStepGlobal - particleTimePreStepGlobal)*particleGamma;
+  G4double particleStepTime = (particleTimePostStepGlobal - particleTimePreStepGlobal)/particleGamma;
+  G4double intensityBoosted = laser->DopplerShiftedScale(photonUnit.dot(particleBeta),particleGamma);
 
-  G4double scatteringProb = 1.0-std::exp((-crossSection*photonFlux*particleStepTime));
+  G4double scatteringProb = 1.0-std::exp((-crossSection*intensityBoosted*intensityBoosted*photonFlux*particleStepTime));
   const BDSGlobalConstants* g = BDSGlobalConstants::Instance();
   G4double scaleFactor = g->ScaleFactorLaser();
   G4double randomNumber = G4UniformRand();
