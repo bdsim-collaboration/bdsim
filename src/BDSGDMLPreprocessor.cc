@@ -78,7 +78,7 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
   std::ofstream outFile;
   outFile.open(newFile);
 
-  G4String localSchema = BDS::GDMLSchemaLocation();
+  G4String localSchema;
   int i = 0;
   std::regex gdmlTag("\\<gdml");
   std::string line;
@@ -89,6 +89,11 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
 	  if (std::regex_search(line, gdmlTag))
 	    {
 	      std::regex schema("xsi:noNamespaceSchemaLocation=\"(\\S+)\"");
+	      std::smatch schemaMatch;
+	      if (std::regex_search(line, schemaMatch, schema))
+		{localSchema = BDS::GDMLSchemaLocation(schemaMatch[1].str());}
+	      else
+		{localSchema = BDS::GDMLSchemaLocation();}
 	      std::string newLine;
 	      std::string prefix = "xsi:noNamespaceSchemaLocation=\"";
 	      std::regex_replace(std::back_inserter(newLine), line.begin(), line.end(), schema, prefix+localSchema+"\"$2");
@@ -106,8 +111,11 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
   return newFile;
 }
 
-G4String BDS::GDMLSchemaLocation()
+G4String BDS::GDMLSchemaLocation(const G4String& existingSchemaLocation)
 {
+  if (!existingSchemaLocation.empty() && existingSchemaLocation.substr(0,1) == "/")
+    {return existingSchemaLocation;}
+
   G4String result;
   G4String bdsimExecPath = BDS::GetBDSIMExecPath();
   G4String localPath = bdsimExecPath + "src-external/gdml/schema/gdml.xsd";
@@ -280,7 +288,7 @@ void BDSGDMLPreprocessor::ProcessGDMLNode(DOMNamedNodeMap* attributeMap)
 #endif
 	    }
 	  else
-	    {newNodeValue = BDS::GDMLSchemaLocation();}
+	    {newNodeValue = BDS::GDMLSchemaLocation(nodeValue);}
 	  attr->setNodeValue(XMLString::transcode(newNodeValue.c_str()));
 	} 
     }

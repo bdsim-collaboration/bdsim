@@ -37,8 +37,8 @@ namespace BDS
 
   G4String PreprocessGDMLSchemaOnly(const G4String& file);
 
-  /// Get GDML Schema location included with BDSIM.
-  G4String GDMLSchemaLocation();
+  /// Get GDML Schema location provided in the input or included with BDSIM.
+  G4String GDMLSchemaLocation(const G4String& existingSchemaLocation = "");
 }
 
 /**
