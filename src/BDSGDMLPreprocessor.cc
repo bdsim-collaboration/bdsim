@@ -20,6 +20,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSDebug.hh"
 #include "BDSException.hh"
 #include "BDSGDMLPreprocessor.hh"
+#include "BDSGlobalConstants.hh"
 #include "BDSTemporaryFiles.hh"
 #include "BDSUtilities.hh"
 
@@ -113,6 +114,15 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
 
 G4String BDS::GDMLSchemaLocation(const G4String& existingSchemaLocation)
 {
+  G4String configuredLocation = BDSGlobalConstants::Instance()->PreprocessGDMLSchemaLocation();
+  if (!configuredLocation.empty())
+    {
+      configuredLocation = BDS::GetFullPath(configuredLocation);
+      if (!BDS::FileExists(configuredLocation))
+	{throw BDSException(__METHOD_NAME__, "Invalid GDML schema file \"" + configuredLocation + "\"");}
+      return configuredLocation;
+    }
+
   if (!existingSchemaLocation.empty() && existingSchemaLocation.substr(0,1) == "/")
     {return existingSchemaLocation;}
 
@@ -278,7 +288,8 @@ void BDSGDMLPreprocessor::ProcessGDMLNode(DOMNamedNodeMap* attributeMap)
 	{
 	  G4String nodeValue = G4String(XMLString::transcode(attr->getNodeValue()));
 	  G4String newNodeValue;
-	  if (nodeValue.substr(0,2) == "./")
+	  G4String configuredLocation = BDSGlobalConstants::Instance()->PreprocessGDMLSchemaLocation();
+	  if (configuredLocation.empty() && nodeValue.substr(0,2) == "./")
 	    {
 	      G4String remainder = nodeValue.substr(2); // strip off ./
 #if G4VERSION_NUMBER > 1099

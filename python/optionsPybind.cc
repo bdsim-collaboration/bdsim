@@ -136,6 +136,7 @@ PYBIND11_MODULE(options, m) {
 
     .def_readonly("preprocessGDML",&GMAD::OptionsBase::preprocessGDML)
     .def_readonly("preprocessGDMLSchema",&GMAD::OptionsBase::preprocessGDMLSchema)
+    .def_readonly("preprocessGDMLSchemaLocation",&GMAD::OptionsBase::preprocessGDMLSchemaLocation)
 
     .def_readonly("dontSplitSBends",&GMAD::OptionsBase::dontSplitSBends)
 

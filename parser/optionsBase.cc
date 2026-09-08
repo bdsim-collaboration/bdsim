@@ -134,6 +134,7 @@ OptionsBase::OptionsBase()
 
   preprocessGDML       = true;
   preprocessGDMLSchema = true;
+  preprocessGDMLSchemaLocation = "";
 
   // geometry debugging
   // always split sbends into smaller chunks by default
@@ -406,4 +407,3 @@ void OptionsBase::print() const
   std::cout<<"Rayleigh scattering on : " << turnOnRayleighScattering << std::endl;
   std::cout<<"Optical surface on     : " << turnOnOpticalSurface     << std::endl;
 }
-

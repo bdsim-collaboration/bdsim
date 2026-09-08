@@ -341,6 +341,7 @@ public:
   inline G4double CoilHeightFraction()       const {return G4double(options.coilHeightFraction);}
   inline G4bool   PreprocessGDML()           const {return G4bool  (options.preprocessGDML);}
   inline G4bool   PreprocessGDMLSchema()     const {return G4bool  (options.preprocessGDMLSchema);}
+  inline G4String PreprocessGDMLSchemaLocation() const {return G4String(options.preprocessGDMLSchemaLocation);}
   inline G4int    NBinsX()                   const {return G4int   (options.nbinsx);}
   inline G4int    NBinsY()                   const {return G4int   (options.nbinsy);}
   inline G4int    NBinsZ()                   const {return G4int   (options.nbinsz);}
