@@ -38,11 +38,14 @@ PYBIND11_MODULE(elementtype, m) {
     .value("SOLENOID", GMAD::ElementType::_SOLENOID)
     .value("LINE", GMAD::ElementType::_LINE)
     .value("REV_LINE", GMAD::ElementType::_REV_LINE)
+    .value("BMCOL", GMAD::ElementType::_BMCOL)
     .value("ECOL", GMAD::ElementType::_ECOL)
     .value("RCOL", GMAD::ElementType::_RCOL)
-    .value("LASER", GMAD::ElementType::_LASER)
+    .value("LASERWIREOLD", GMAD::ElementType::_LASERWIREOLD)
     .value("MATERIAL", GMAD::ElementType::_MATERIAL)
     .value("RBEND", GMAD::ElementType::_RBEND)
+    .value("GASCAP", GMAD::ElementType::_GASCAP)
+    .value("GASJET", GMAD::ElementType::_GASJET)
     .value("ELEMENT", GMAD::ElementType::_ELEMENT)
     .value("SCREEN", GMAD::ElementType::_SCREEN)
     .value("AWAKESCREEN", GMAD::ElementType::_AWAKESCREEN)
@@ -69,8 +72,12 @@ PYBIND11_MODULE(elementtype, m) {
     .value("CT", GMAD::ElementType::_CT)
     .value("TARGET", GMAD::ElementType::_TARGET)
     .value("RFX", GMAD::ElementType::_RFX)
-    .value("RFY", GMAD::ElementType::_RFY);
+    .value("RFY", GMAD::ElementType::_RFY)
+    .value("MUONCOOLER", GMAD::ElementType::_MUONCOOLER)
+    .value("JCOLTIP", GMAD::ElementType::_JCOLTIP)
+    .value("GABORLENS", GMAD::ElementType::_GABORLENS)
+    .value("LASERWIRE", GMAD::ElementType::_LASERWIRE)
+    .value("LASER", GMAD::ElementType::_LASER);
 }
-
 
 
