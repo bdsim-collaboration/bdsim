@@ -34,7 +34,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "globals.hh"
 #include "G4String.hh"
-#include "G4Version.hh"
 
 #include <algorithm>
 #include <fstream>
@@ -50,18 +49,21 @@ using namespace xercesc;
 
 G4String BDS::PreprocessGDML(const G4String& file,
 			     const G4String& prefix,
-			     G4bool          preprocessSchema)
+			     G4bool          preprocessSchema,
+			     G4bool          detectSchema)
 {
   if (BDS::EndsWith(file, ".gmad"))
     {throw BDSException(__METHOD_NAME__, "trying to read a GMAD file (\"" + file + "\") as a GDML file - check file or change extension.");}
   BDSGDMLPreprocessor processor;
   G4String processedFile = processor.PreprocessFile(file,
-						    prefix,
-						    preprocessSchema);
+					    prefix,
+					    preprocessSchema,
+					    detectSchema);
   return processedFile;
 }
 
-G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
+G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file,
+				       G4bool          detectSchema)
 {
   // open file
   if (BDS::EndsWith(file, ".gmad"))
@@ -79,7 +81,10 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
   std::ofstream outFile;
   outFile.open(newFile);
 
-  G4String localSchema;
+  G4String parentDirectory;
+  G4String filename;
+  BDS::SplitPathAndFileName(file, parentDirectory, filename);
+
   int i = 0;
   std::regex gdmlTag("\\<gdml");
   std::string line;
@@ -91,13 +96,23 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
 	    {
 	      std::regex schema("xsi:noNamespaceSchemaLocation=\"(\\S+)\"");
 	      std::smatch schemaMatch;
+	      G4String localSchema;
 	      if (std::regex_search(line, schemaMatch, schema))
-		{localSchema = BDS::GDMLSchemaLocation(schemaMatch[1].str());}
+		{localSchema = BDS::GDMLSchemaLocation(schemaMatch[1].str(), detectSchema, parentDirectory);}
 	      else
-		{localSchema = BDS::GDMLSchemaLocation();}
+		{localSchema = BDS::GDMLSchemaLocation("", detectSchema, parentDirectory);}
 	      std::string newLine;
 	      std::string prefix = "xsi:noNamespaceSchemaLocation=\"";
-	      std::regex_replace(std::back_inserter(newLine), line.begin(), line.end(), schema, prefix+localSchema+"\"$2");
+	      if (schemaMatch.empty())
+		{
+		  newLine = line;
+		  std::string schemaAttribute = " " + prefix + localSchema + "\"";
+		  newLine.insert(newLine.find("<gdml") + 5, schemaAttribute);
+		  if (newLine.find("xmlns:xsi=") == std::string::npos)
+		    {newLine.insert(newLine.find("<gdml") + 5, " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");}
+		}
+	      else
+		{std::regex_replace(std::back_inserter(newLine), line.begin(), line.end(), schema, prefix+localSchema+"\"$2");}
 	      outFile << newLine;
 	    }
 	  else
@@ -112,19 +127,34 @@ G4String BDS::PreprocessGDMLSchemaOnly(const G4String& file)
   return newFile;
 }
 
-G4String BDS::GDMLSchemaLocation(const G4String& existingSchemaLocation)
+G4String BDS::GDMLSchemaLocation(const G4String& existingSchemaLocation,
+				 G4bool          detectSchema,
+				 const G4String& parentDirectory)
 {
   G4String configuredLocation = BDSGlobalConstants::Instance()->PreprocessGDMLSchemaLocation();
   if (!configuredLocation.empty())
     {
+      if (configuredLocation.find("://") != std::string::npos)
+	{return configuredLocation;}
       configuredLocation = BDS::GetFullPath(configuredLocation);
       if (!BDS::FileExists(configuredLocation))
 	{throw BDSException(__METHOD_NAME__, "Invalid GDML schema file \"" + configuredLocation + "\"");}
       return configuredLocation;
     }
 
-  if (!existingSchemaLocation.empty() && existingSchemaLocation.substr(0,1) == "/")
-    {return existingSchemaLocation;}
+  if (detectSchema && !existingSchemaLocation.empty())
+    {
+      if (existingSchemaLocation.find("://") != std::string::npos)
+	{return existingSchemaLocation;}
+
+      G4String result = existingSchemaLocation;
+      if (result.substr(0,1) != "/")
+	{result = parentDirectory + result;}
+      result = BDS::GetFullPath(result);
+      if (!BDS::FileExists(result))
+	{throw BDSException(__METHOD_NAME__, "Invalid GDML schema file \"" + result + "\"");}
+      return result;
+    }
 
   G4String result;
   G4String bdsimExecPath = BDS::GetBDSIMExecPath();
@@ -165,7 +195,8 @@ BDSGDMLPreprocessor::~BDSGDMLPreprocessor()
 
 G4String BDSGDMLPreprocessor::PreprocessFile(const G4String& file,
                                              const G4String& prefix,
-                                             G4bool preprocessSchema)
+                                             G4bool preprocessSchema,
+                                             G4bool detectSchema)
 {
   G4cout << __METHOD_NAME__ << "Preprocessing GDML file " << file << G4endl;
   
@@ -217,7 +248,7 @@ G4String BDSGDMLPreprocessor::PreprocessFile(const G4String& file,
   DOMElement* docRootNode    = doc->getDocumentElement();
   DOMNodeIterator* docWalker = doc->createNodeIterator(docRootNode, DOMNodeFilter::SHOW_ELEMENT,nullptr,true);
   // map structure and all names used
-  ReadDoc(docWalker, preprocessSchema);
+  ReadDoc(docWalker, preprocessSchema, detectSchema);
 
   // reset iterator
   docWalker->detach();
@@ -250,14 +281,16 @@ G4String BDSGDMLPreprocessor::PreprocessFile(const G4String& file,
 }
 
 void BDSGDMLPreprocessor::ReadDoc(DOMNodeIterator* docIterator,
-				  G4bool processSchema)
+				  G4bool processSchema,
+				  G4bool detectSchema)
 {
   for (DOMNode* currentNode = docIterator->nextNode(); currentNode != 0; currentNode = docIterator->nextNode())
-    {ReadNode(currentNode, processSchema);}
+    {ReadNode(currentNode, processSchema, detectSchema);}
 }
 
 void BDSGDMLPreprocessor::ReadNode(DOMNode* node,
-				   G4bool processSchema)
+				   G4bool processSchema,
+				   G4bool detectSchema)
 {
   if (!node)
     {return;}
@@ -265,7 +298,7 @@ void BDSGDMLPreprocessor::ReadNode(DOMNode* node,
   std::string thisNodeName = XMLString::transcode(node->getNodeName());
   if (thisNodeName == "gdml" && processSchema)
     {// to update location of schema
-      ProcessGDMLNode(node->getAttributes());
+      ProcessGDMLNode(node, detectSchema);
       return;
     }
   auto search = std::find(ignoreNodes.begin(), ignoreNodes.end(), thisNodeName);
@@ -275,33 +308,37 @@ void BDSGDMLPreprocessor::ReadNode(DOMNode* node,
     {ReadAttributes(node->getAttributes());}
 }
 
-void BDSGDMLPreprocessor::ProcessGDMLNode(DOMNamedNodeMap* attributeMap)
+void BDSGDMLPreprocessor::ProcessGDMLNode(DOMNode* node,
+					  G4bool   detectSchema)
 {
+  DOMNamedNodeMap* attributeMap = node->getAttributes();
   if (!attributeMap)
-  {return;}
+    {return;}
 
+  G4bool schemaSpecified = false;
   for (XMLSize_t i = 0; i < attributeMap->getLength(); i++)
     {
       DOMNode* attr = attributeMap->item(i);
       std::string nodeName = XMLString::transcode(attr->getNodeName());
       if (nodeName == "xsi:noNamespaceSchemaLocation")
 	{
+	  schemaSpecified = true;
 	  G4String nodeValue = G4String(XMLString::transcode(attr->getNodeValue()));
-	  G4String newNodeValue;
-	  G4String configuredLocation = BDSGlobalConstants::Instance()->PreprocessGDMLSchemaLocation();
-	  if (configuredLocation.empty() && nodeValue.substr(0,2) == "./")
-	    {
-	      G4String remainder = nodeValue.substr(2); // strip off ./
-#if G4VERSION_NUMBER > 1099
-        newNodeValue = parentDir + remainder;
-#else
-	      newNodeValue = remainder.prepend(parentDir); // prepend parent directory
-#endif
-	    }
-	  else
-	    {newNodeValue = BDS::GDMLSchemaLocation(nodeValue);}
+	  G4String newNodeValue = BDS::GDMLSchemaLocation(nodeValue, detectSchema, parentDir);
 	  attr->setNodeValue(XMLString::transcode(newNodeValue.c_str()));
 	} 
+    }
+
+  if (!schemaSpecified)
+    {
+      DOMElement* element = dynamic_cast<DOMElement*>(node);
+      if (!element)
+	{return;}
+      G4String schemaLocation = BDS::GDMLSchemaLocation("", detectSchema, parentDir);
+      element->setAttribute(XMLString::transcode("xmlns:xsi"),
+			    XMLString::transcode("http://www.w3.org/2001/XMLSchema-instance"));
+      element->setAttribute(XMLString::transcode("xsi:noNamespaceSchemaLocation"),
+			    XMLString::transcode(schemaLocation.c_str()));
     }
 }
 

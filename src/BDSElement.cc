@@ -42,13 +42,15 @@ BDSElement::BDSElement(const G4String& nameIn,
                        std::vector<G4String>* namedVacuumVolumesIn,
                        G4bool          autoColourGeometryIn,
                        G4bool          markAsCollimatorIn,
-                       G4bool          stripOuterVolumeIn):
+                       G4bool          stripOuterVolumeIn,
+                       G4int           detectSchemaIn):
   BDSAcceleratorComponent(nameIn, arcLengthIn, angleIn, markAsCollimatorIn ? "element-collimator" : "element"),
   horizontalWidth(horizontalWidthIn),
   geometryFileName(geometryIn),
   autoColourGeometry(autoColourGeometryIn),
   markAsCollimator(markAsCollimatorIn),
   stripOuterVolume(stripOuterVolumeIn),
+  detectSchema(detectSchemaIn),
   geometry(nullptr)
 {
   if (namedVacuumVolumesIn)
@@ -83,7 +85,9 @@ void BDSElement::BuildContainerLogicalVolume()
                                                            sensitivityToAttach,
                                                            BDSSDType::energydepvacuum,
                                                            stripOuterVolume,
-                                                           userLimits);
+                                                           userLimits,
+                                                           false,
+                                                           detectSchema);
   
   if (!geometry)
     {throw BDSException(__METHOD_NAME__, "Error loading geometry in component \"" + name + "\"");}

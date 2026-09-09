@@ -67,7 +67,8 @@ BDSGeometryExternal* BDSGeometryFactoryGDML::Build(G4String               compon
                                                    G4bool                 makeSensitive,
                                                    BDSSDType              sensitivityType,
                                                    BDSSDType              vacuumSensitivityType,
-                                                   G4UserLimits*          userLimitsToAttachToAllLVs)
+                                                   G4UserLimits*          userLimitsToAttachToAllLVs,
+                                                   G4bool                 detectSchema)
 {
   CleanUp();
 
@@ -77,9 +78,9 @@ BDSGeometryExternal* BDSGeometryFactoryGDML::Build(G4String               compon
   G4bool preprocessGDML       = BDSGlobalConstants::Instance()->PreprocessGDML();
   G4bool preprocessGDMLSchema = BDSGlobalConstants::Instance()->PreprocessGDMLSchema();
   if (preprocessGDML)
-    {processedFile = BDS::PreprocessGDML(fileName, componentName, preprocessGDMLSchema);} // use all in one method
+    {processedFile = BDS::PreprocessGDML(fileName, componentName, preprocessGDMLSchema, detectSchema);} // use all in one method
   else if (preprocessGDMLSchema) // generally don't process the file but process the schema to local copy only
-    {processedFile = BDS::PreprocessGDMLSchemaOnly(fileName);} // use schema only method
+    {processedFile = BDS::PreprocessGDMLSchemaOnly(fileName, detectSchema);} // use schema only method
   else // no processing
     {processedFile = fileName;}
   G4String preprocessNameToStrip = preprocessGDML ? componentName+"_" : "";

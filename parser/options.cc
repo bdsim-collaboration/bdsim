@@ -292,6 +292,7 @@ void Options::PublishMembers()
   publish("buildPoleFaceGeometry", &Options::buildPoleFaceGeometry);
   publish("preprocessGDML",       &Options::preprocessGDML);
   publish("preprocessGDMLSchema", &Options::preprocessGDMLSchema);
+  publish("detectSchema",         &Options::detectSchema);
   publish("preprocessGDMLSchemaLocation", &Options::preprocessGDMLSchemaLocation);
   
   // tunnel options

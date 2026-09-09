@@ -272,6 +272,7 @@ void Element::PublishMembers()
   publish("geometryFile",        &Element::geometryFile);
   publish("geometry",            &Element::geometryFile);
   alternativeNames["geometry"] = "geometryFile"; // backwards compatibility
+  publish("detectSchema",        &Element::detectSchema);
   publish("stripOuterVolume",    &Element::stripOuterVolume);
   publish("autoColour",          &Element::autoColour);
   publish("elementLengthIsArcLength", &Element::elementLengthIsArcLength);
@@ -699,6 +700,7 @@ void Element::flush()
   fieldAll    = "";
 
   geometryFile = "";
+  detectSchema = -1;
   stripOuterVolume = false;
   autoColour   = true;
   elementLengthIsArcLength = false;

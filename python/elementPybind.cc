@@ -200,6 +200,7 @@ PYBIND11_MODULE(element, m)
     .def_readonly("fieldAll", &GMAD::Element::fieldAll)
 
     .def_readonly("geometryFile", &GMAD::Element::geometryFile)
+    .def_readonly("detectSchema", &GMAD::Element::detectSchema)
     .def_readonly("stripOuterVolume", &GMAD::Element::stripOuterVolume)
     .def_readonly("autoColour", &GMAD::Element::autoColour)
 

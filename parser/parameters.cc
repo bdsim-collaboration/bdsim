@@ -200,6 +200,7 @@ Parameters::Parameters()
   setMap["fieldAll"]             = false;
 
   setMap["geometryFile"]   = false;
+  setMap["detectSchema"]   = false;
   setMap["stripOuterVolume"] = false;
   setMap["autoColour"]     = false;
   setMap["elementLengthIsArcLength"] = false;

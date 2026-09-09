@@ -47,7 +47,8 @@ public:
 	     std::vector<G4String>* namedVacuumVolumesIn = nullptr,
 	     G4bool          autoColourGeometryIn        = true,
 	     G4bool          markAsCollimatorIn          = false,
-         G4bool          stripOuterVolume            = false);
+         G4bool          stripOuterVolume            = false,
+         G4int           detectSchemaIn              = -1);
   virtual ~BDSElement(){;}
 
   /// @{ Assignment and copy constructor not implemented nor used
@@ -89,6 +90,7 @@ private:
   G4bool   autoColourGeometry;
   G4bool   markAsCollimator;
   G4bool   stripOuterVolume;
+  G4int    detectSchema;
 
   /// Cache of the constructed geometry.  Used to forward onto various BDSGeometryComponent functions.
   BDSGeometryExternal* geometry;

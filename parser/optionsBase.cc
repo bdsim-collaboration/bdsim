@@ -134,6 +134,7 @@ OptionsBase::OptionsBase()
 
   preprocessGDML       = true;
   preprocessGDMLSchema = true;
+  detectSchema         = false;
   preprocessGDMLSchemaLocation = "";
 
   // geometry debugging
