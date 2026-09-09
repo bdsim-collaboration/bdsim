@@ -126,6 +126,8 @@ std::string GMAD::typestr(ElementType type)
       {return "ct";                  break;}
     case ElementType::_TARGET:
       {return "target";              break;}
+    case ElementType::_CRYSTALRADIATOR:
+      {return "crystalradiator";     break;}
     case ElementType::_RFX:
       {return "rfx";                 break;}
     case ElementType::_RFY:

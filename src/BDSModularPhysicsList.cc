@@ -1266,6 +1266,10 @@ void BDSModularPhysicsList::Channelling()
       biasingPhysics->PhysicsBiasAllCharged();
       RegisterPhysics(biasingPhysics);
       constructors.push_back(new BDSPhysicsChannelling());
+
+#if G4VERSION_NUMBER >= 1120
+      BDS::RegisterChannelingFastSimPhysics(this);
+#endif
       physicsActivated["channelling"] = true;
     }
 }

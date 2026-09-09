@@ -1,0 +1,29 @@
+! Geant4 channeling/ch1: channeling radiation from 855 MeV electrons in
+! a bent Si(111) crystal.
+
+si111Radiating: crystal, model="fastsim",
+                         material="G4_Si",
+                         lattice="(111)",
+                         shape="box",
+                         lengthX=20*mm,
+                         lengthY=20*mm,
+                         lengthZ=0.0305*mm,
+                         bendingAngleYAxis=0.905*mrad,
+                         radiation=1;
+
+radiator: crystalradiator, l=0.0305*mm, crystalDefinition="si111Radiating";
+! The Geant4 reference propagates through a single G4_Galactic world with no
+! beam pipe.  Use a vacuum-only aperture here so particles scattered by the
+! crystal cannot shower in BDSIM's default stainless-steel drift pipe.
+flight: drift, l=5973*mm, apertureType="circularvacuum", aper1=200*mm;
+line1: line=(radiator, flight);
+use, line1;
+sample, all;
+
+beam, particle="e-", kineticEnergy=855*MeV,
+      distrType="gauss",
+      sigmaX=0.07*mm, sigmaY=0.2*mm,
+      sigmaXp=30*urad, sigmaYp=30*urad;
+
+option, physicsList="completechannellingregular", ngenerate=1, checkOverlaps=1,
+        worldMaterial="G4_Galactic";

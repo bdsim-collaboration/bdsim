@@ -31,6 +31,12 @@ to maintain the expected high quality of the code.
 
 New Features
 ------------
+* New :code:`crystalradiator` beam-line element for standalone crystal geometries,
+  including use through placements.
+* Crystal definitions may now select the G4Channeling implementation or
+  :code:`G4ChannelingFastSimModel`.  FastSim channeling, Baier--Katkov radiation,
+  crystalline-undulator geometry, virtual collimators and coherent pair production
+  are configurable from GMAD.
 * New Gabor lens beam line component. Constructed with a radial electric field that would be generated
   with a confined plasma in a Penning-Malmberg trap configuration. The electric and magnetic confinement
   fields are not constructed.

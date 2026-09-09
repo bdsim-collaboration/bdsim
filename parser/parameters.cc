@@ -224,6 +224,7 @@ Parameters::Parameters()
   setMap["crystalLeft"]            = false;
   setMap["crystalRight"]           = false;
   setMap["crystalBoth"]            = false;
+  setMap["crystalDefinition"]      = false;
   setMap["crystalAngleYAxisLeft"]  = false;
   setMap["crystalAngleYAxisRight"] = false;
 
