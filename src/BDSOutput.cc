@@ -820,17 +820,15 @@ void BDSOutput::FillSamplerHitsLink(const BDSHitsCollectionSamplerLink* hits)
   for (G4int i = 0; i < nHits; i++)
     {
       const BDSHitSamplerLink* hit = (*hits)[i];
-      G4int samplerID = hit->samplerID;
-      samplerID += 1; // offset index by one due to primary branch.
-      samplerTrees[samplerID]->Fill(hit, storeSamplerMass, storeSamplerCharge, storeSamplerPolarCoords, storeSamplerIon, storeSamplerRigidity, storeSamplerKineticEnergy);
+      auto samplerIndex = samplerIDToIndexPlane.find(hit->samplerID);
+      if (samplerIndex == samplerIDToIndexPlane.end())
+        {throw BDSException(__METHOD_NAME__, "Sampler ID not found: " + std::to_string(hit->samplerID));}
+      samplerTrees[samplerIndex->second]->Fill(hit, storeSamplerMass, storeSamplerCharge, storeSamplerPolarCoords, storeSamplerIon, storeSamplerRigidity, storeSamplerKineticEnergy);
     }
   // extra information - do only once at the end
-  G4bool firstSampler = true;
-  for (auto& sampler : samplerTrees)
+  if (storeSamplerIon)
     {
-      if (firstSampler) // skip primaries (1st sampler) as it always has extras filled in
-        {firstSampler = false; continue;}
-      if (storeSamplerIon)
+      for (auto& sampler : samplerTrees)
         {sampler->FillIon();}
     }
 }
