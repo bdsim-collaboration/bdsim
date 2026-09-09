@@ -2801,8 +2801,8 @@ void BDSComponentFactory::PrepareCrystals()
 
       info->name = model.name;
       info->model = BDS::LowerCase(G4String(model.model));
-      if (info->model != "legacy" && info->model != "fastsim")
-        {throw BDSException(__METHOD_NAME__, "crystal model must be either \"legacy\" or \"fastsim\"");}
+      if (info->model != "channeling" && info->model != "fastsim")
+        {throw BDSException(__METHOD_NAME__, "crystal model must be either \"channeling\" or \"fastsim\"");}
       info->lattice = model.lattice;
       if (info->UseFastSim() && info->lattice.empty())
         {throw BDSException(__METHOD_NAME__, "FastSim crystal \"" + model.name + "\" requires a lattice");}

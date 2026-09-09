@@ -38,7 +38,7 @@ namespace GMAD
   {
   public:
     std::string name;                 ///< Name of object.
-    std::string model;                ///< "legacy" or "fastsim".
+    std::string model;                ///< "channeling" or "fastsim".
     std::string material;             ///< Material of crystal.
     std::string data;                 ///< Which channelling data to use.
     std::string lattice;              ///< FastSim lattice, e.g. "(111)" or "<111>".

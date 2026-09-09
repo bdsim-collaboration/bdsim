@@ -1902,7 +1902,7 @@ for channeling-radiation targets and positron-source radiators.  It can also be 
 the ``bdsimElement`` of a :ref:`placements` definition.
 
 .. warning:: The ``completechannelling`` or ``channelling`` physics list must be used
-             for either the legacy or FastSim channeling model to be active.
+             for either the G4Channeling or FastSim model to be active.
 
 ===================  ==========================================  =======  ========
 Parameter            Description                                 Default  Required

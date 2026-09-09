@@ -62,10 +62,10 @@ void BDSPhysicsChannelling::ConstructProcess()
   if (Activated())
     {return;}
 
-  // The Geant4 legacy channeling/ch0 reference configuration combines
+  // The Geant4 channeling/ch0 reference configuration combines
   // G4EmStandardPhysicsSS with channeling and explicitly disables the
   // standalone Coulomb-scattering process.  Keep this opt-in so existing
-  // BDSIM legacy configurations retain their historical behaviour.
+  // Other BDSIM configurations retain their historical behaviour.
   if (disableCoulombScattering)
     {
       auto processTable = G4ProcessTable::GetProcessTable();

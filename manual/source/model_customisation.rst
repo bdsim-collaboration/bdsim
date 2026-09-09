@@ -2763,13 +2763,13 @@ Crystals
 To use various crystal components in BDSIM such as :ref:`element-crystal-col` and
 :ref:`element-crystal-radiator`, a crystal definition
 must first be made. This contains all of the required information to construct the
-crystal.  ``model`` selects ``legacy`` (the default and the behaviour in previous
-versions of BDSIM) or ``fastsim``.  The following geometry parameters are common:
+crystal.  ``model`` selects ``channeling`` (the default) or ``fastsim``.  The
+following geometry parameters are common:
 
 +-------------------+------------------------------------------------------------+
 | **Parameter**     | **Description**                                            |
 +===================+============================================================+
-| model             | ``legacy`` or ``fastsim`` (default: ``legacy``)            |
+| model             | ``channeling`` or ``fastsim`` (default: ``channeling``)    |
 +-------------------+------------------------------------------------------------+
 | material          | Material that the crystal will be composed of              |
 +-------------------+------------------------------------------------------------+

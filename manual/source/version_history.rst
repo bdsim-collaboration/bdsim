@@ -33,7 +33,7 @@ New Features
 ------------
 * New :code:`crystalradiator` beam-line element for standalone crystal geometries,
   including use through placements.
-* Crystal definitions may now select the legacy channeling implementation or
+* Crystal definitions may now select the G4Channeling implementation or
   :code:`G4ChannelingFastSimModel`.  FastSim channeling, Baier--Katkov radiation,
   crystalline-undulator geometry, virtual collimators and coherent pair production
   are configurable from GMAD.

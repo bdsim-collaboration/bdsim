@@ -67,7 +67,7 @@ public:
 
   G4Material*    material; ///< Material.
   G4String       name;     ///< Name of the parser crystal definition.
-  G4String       model = "legacy"; ///< "legacy" or "fastsim".
+  G4String       model = "channeling"; ///< "channeling" or "fastsim".
   G4String       data;     ///< Potential data path.
   G4String       lattice;  ///< FastSim lattice.
   G4String       fastSimDataPath; ///< Optional custom FastSim data path.

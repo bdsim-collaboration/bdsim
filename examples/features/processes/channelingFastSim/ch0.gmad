@@ -1,5 +1,5 @@
 ! Geant4 channeling/ch0: 400 GeV protons in a bent Si(220) crystal.
-! This intentionally exercises the unchanged legacy channeling model.
+! This intentionally exercises the unchanged G4Channeling model.
 !
 ! The Geant4 example rotates the physical crystal volume.  Representing the
 ! radiator as a BDSIM placement preserves that geometry exactly.  BDSIM's
@@ -8,7 +8,7 @@
 
 bendingAngle = -1.94*mm / (38.416*m);
 
-si220Legacy: crystal, model="legacy",
+si220Channeling: crystal, model="channeling",
                       material="G4_Si",
                       data="../../components/data/Si220pl",
                       shape="box",
@@ -23,7 +23,7 @@ si220Legacy: crystal, model="legacy",
                       bendingAngleYAxis=bendingAngle;
 
 radiator: crystalradiator, l=1.94*mm,
-          crystalDefinition="si220Legacy";
+          crystalDefinition="si220Channeling";
 
 radiatorPlacement: placement, bdsimElement="radiator",
                    z=10*mm,
@@ -37,6 +37,6 @@ beam, particle="proton", energy=400.938272*GeV,
       distrType="gauss", sigmaXp=13.36*urad, sigmaYp=11.25*urad;
 
 ! Match Geant4 ch0: FTFP_BERT + G4EmStandardPhysicsSS, with CoulombScat
-! disabled by the opt-in legacy channeling constructor.
+! disabled by the opt-in G4Channeling constructor.
 option, physicsList="completechannellingregularemss",
         ngenerate=1, checkOverlaps=1;

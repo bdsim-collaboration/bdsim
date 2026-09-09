@@ -2345,9 +2345,9 @@ These cannot be used in combination with any other physics processes.
 | completechannelling       | Modified em option 4 plus channelling as per the Geant4 example           |
 |                           | historically used by BDSIM.                                               |
 +---------------------------+---------------------------------------------------------------------------+
-| completechannellingregular| FTFP_BERT electromagnetic physics plus legacy and FastSim channelling.    |
+| completechannellingregular| FTFP_BERT electromagnetic physics plus G4Channeling and FastSim.          |
 +---------------------------+---------------------------------------------------------------------------+
-| completechannelling       | FTFP_BERT with ``G4EmStandardPhysicsSS``. For legacy crystals the         |
+| completechannelling       | FTFP_BERT with ``G4EmStandardPhysicsSS``. For G4Channeling crystals the   |
 | regularemss               | standalone ``CoulombScat`` process is disabled, matching Geant4           |
 |                           | ``channeling/ch0``. The GMAD string is                                    |
 |                           | ``completechannellingregularemss``.                                       |

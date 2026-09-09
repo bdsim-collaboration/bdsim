@@ -29,7 +29,7 @@ Crystal::Crystal()
 void Crystal::clear()
 {
   name              = "";
-  model             = "legacy";
+  model             = "channeling";
   material          = "";
   data              = "";
   lattice           = "";
