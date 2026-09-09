@@ -2704,10 +2704,20 @@ void BDSComponentFactory::PrepareLasers()
       else
         {throw BDSException(__METHOD_NAME__, "Neither \"w0\" or \"sigma0\" are defined  \"" + laser.name + "\"");}
       sigma0 *= CLHEP::m;
+
+      G4double pulse = 0;
+      if (BDS::IsFinite(laser.pulseFWHM))
+        {pulse = laser.pulseFWHM/ (2.0*sqrt(2.0*log(2.0)));}
+      else if (BDS::IsFinite(laser.pulseDuration))
+        {pulse = laser.pulseDuration;}
+      else
+        {throw BDSException(__METHOD_NAME__, "Neither \"w0\" or \"sigma0\" are defined  \"" + laser.name + "\"");}
+      pulse *= CLHEP::s;
+
       G4ThreeVector polarization(laser.laserPolarization1,laser.laserPolarization2,laser.laserPolarization3);
       BDSLaser* las = new BDSLaser(laser.wavelength*CLHEP::m,
                                    laser.m2,
-                                   laser.pulseDuration*CLHEP::s,
+                                   pulse,
                                    laser.pulseEnergy*CLHEP::joule,
                                    sigma0,
                                    laser.laserArrivalTime*CLHEP::s,
