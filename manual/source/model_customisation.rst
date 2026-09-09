@@ -2773,7 +2773,7 @@ following geometry parameters are common:
 +-------------------+------------------------------------------------------------+
 | material          | Material that the crystal will be composed of              |
 +-------------------+------------------------------------------------------------+
-| data              | Legacy potential-data path and filename prefix             |
+| data              | ``G4Channeling`` potential-data path and filename prefix    |
 +-------------------+------------------------------------------------------------+
 | shape             | Geometry used - one of (box, cylinder, torus)              |
 +-------------------+------------------------------------------------------------+

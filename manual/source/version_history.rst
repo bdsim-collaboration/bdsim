@@ -75,10 +75,6 @@ New Features
 
 **Physics**
 
-* Complete channeling physics lists now install BDSIM cuts and limits whenever
-  :code:`g4PhysicsUseBDSIMCutsAndLimits` is enabled.  This ensures that
-  component limits such as :code:`collimatorsAreInfiniteAbsorbers` also work
-  when the global minimum kinetic energy is zero.
 * New :code:`ionisation` modular physics list for only the ionisation process for the most
   common particles.
 * New :code:`ftf_bic` modular physics list.
