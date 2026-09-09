@@ -183,6 +183,8 @@ void BDSCrystalFactory::CommonConstruction(const G4String&       nameIn,
 
   BDSAcceleratorModel::Instance()->VolumeSet("crystals")->insert(crystalLV);
 #else
+  if (recipe->UseFastSim())
+    {throw BDSException(__METHOD_NAME__, "FastSim crystals require Geant4 11.2 or newer");}
   // build logical volumes
   crystalLV = new G4LogicalVolume(crystalSolid,
 				  recipe->material,
