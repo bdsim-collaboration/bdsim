@@ -144,6 +144,9 @@ BDSOutput::BDSOutput(const G4String& baseFileNameIn,
   storeModel                 = g->StoreModel();
   storePrimaries             = g->StorePrimaries();
   storePrimaryHistograms     = g->StorePrimaryHistograms();
+  storePrimaryFirstHit       = g->StorePrimaryFirstHit();
+  storePrimaryLastHit        = g->StorePrimaryLastHit();
+  storeSummary               = g->StoreSummary();
   storeSamplerPolarCoords    = g->StoreSamplerPolarCoords();
   storeSamplerCharge         = g->StoreSamplerCharge();
   storeSamplerKineticEnergy  = g->StoreSamplerKineticEnergy();

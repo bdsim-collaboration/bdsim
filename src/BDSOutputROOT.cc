@@ -100,7 +100,8 @@ void BDSOutputROOT::NewFile()
 
   // Branches for event...
   // Event info output
-  theEventOutputTree->Branch("Summary.",   "BDSOutputROOTEventInfo",evtInfo,32000,1);
+  if (storeSummary)
+  {theEventOutputTree->Branch("Summary.",   "BDSOutputROOTEventInfo",evtInfo,32000,1);}
 
   // Build primary structures
   if (storePrimaries)
@@ -123,8 +124,10 @@ void BDSOutputROOT::NewFile()
     }
   if (storeELossWorldContents)
     {theEventOutputTree->Branch("ElossWorldContents.", "BDSOutputROOTEventLossWorld", eLossWorldContents, 4000, 1);}
-  theEventOutputTree->Branch("PrimaryFirstHit.","BDSOutputROOTEventLoss",      pFirstHit,      4000, 2);
-  theEventOutputTree->Branch("PrimaryLastHit.", "BDSOutputROOTEventLoss",      pLastHit,       4000, 2);
+  if (storePrimaryFirstHit)
+    {theEventOutputTree->Branch("PrimaryFirstHit.","BDSOutputROOTEventLoss",      pFirstHit,      4000, 2);}
+  if (storePrimaryLastHit)
+    {theEventOutputTree->Branch("PrimaryLastHit.", "BDSOutputROOTEventLoss",      pLastHit,       4000, 2);}
   if (storeApertureImpacts)
     {theEventOutputTree->Branch("ApertureImpacts.", "BDSOutputROOTEventAperture", apertureImpacts, 4000, 1);}
 

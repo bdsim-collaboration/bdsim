@@ -462,6 +462,9 @@ void Options::PublishMembers()
   publish("storeGeant4Data",                &Options::storeParticleData); // backwards compatibility
   publish("storePrimaries",                 &Options::storePrimaries);
   publish("storePrimaryHistograms",         &Options::storePrimaryHistograms);
+  publish("storePrimaryFirstHit",           &Options::storePrimaryFirstHit);
+  publish("storePrimaryLastHit",            &Options::storePrimaryLastHit);
+  publish("storeSummary",                   &Options::storeSummary);
   publish("writePrimaries",                 &Options::storePrimaries); // backwards compatibility
   
   publish("storeTrajectory",                    &Options::storeTrajectory);

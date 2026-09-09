@@ -3718,6 +3718,16 @@ with the following options.
 | storePrimaries                     | Boolean, true by default. If false, don't fill the Primary branch  |
 |                                    | of the Event tree in the output. Useful to minimise file size.     |
 +------------------------------------+--------------------------------------------------------------------+
+| storePrimaryFirstHit               | Boolean, true by default. If false, don't fill the PrimaryFirstHit |
+|                                    | branch of the Event tree in the output. Useful to minimise file    |
+|                                    | size.                                                              |
++------------------------------------+--------------------------------------------------------------------+
+| storePrimaryLastHit                | Boolean, true by default. If false, don't fill the PrimaryLastHit  |
+|                                    | of the Event tree in the output. Useful to minimise file size.     |
++------------------------------------+--------------------------------------------------------------------+
+| storeSummary                       | Boolean, true by default. If false, don't fill the Summary branch  |
+|                                    | of the Event tree in the output. Useful to minimise file size.     |
++------------------------------------+--------------------------------------------------------------------+
 | storePrimaryHistograms             | Whether to generate summary histograms of the primary first hit    |
 |                                    | and loss point versus S coordinate per event. On by default.       |
 +------------------------------------+--------------------------------------------------------------------+

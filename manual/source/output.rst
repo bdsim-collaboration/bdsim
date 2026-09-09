@@ -141,6 +141,9 @@ When using the option :code:`storeMinimalData=1`, the following options are turn
 * storeParticleData
 * storePrimaries
 * storePrimaryHistograms
+* storePrimaryFirstHit
+* storePrimaryLastHit
+* storeSummary
 * storeTrajectory
 * storeModel
 
