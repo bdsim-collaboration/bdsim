@@ -237,17 +237,6 @@ G4VModularPhysicsList* BDS::BuildPhysics(const G4String& physicsList, G4int verb
           // we don't assign 'result' variable or proceed as that would result in the
           // range cuts being set for a complete physics list that we wouldn't use
           auto r = BDS::ChannellingPhysicsComplete(useEMD, regular, em4, emss);
-          // Complete channelling lists return directly below. Apply the
-          // macro after the reference list has created its command
-          // messengers, but before Geant4 constructs any processes.
-          G4String physicsMacro = g->Geant4PhysicsMacroFileName();
-          if (!physicsMacro.empty())
-            {
-              G4bool setInExecOptions = g->Geant4PhysicsMacroFileNameFromExecOptions();
-              G4String physicsMacroFull = BDS::GetFullPath(physicsMacro, false, setInExecOptions);
-              G4cout << "Applying geant4 physics macro file: " << physicsMacroFull << G4endl;
-              G4UImanager::GetUIpointer()->ApplyCommand("/control/execute " + physicsMacroFull);
-            }
           r->SetVerboseLevel(verbosity);
           return r;
 #else
@@ -664,11 +653,7 @@ G4VModularPhysicsList* BDS::ChannellingPhysicsComplete(G4bool useEMD,
 
   biasingPhysics->PhysicsBiasAllCharged();
   physlist->RegisterPhysics(biasingPhysics);
-  // The cuts-and-limits process is also what enforces component-local
-  // G4UserLimits (for example collimatorsAreInfiniteAbsorbers).  It must be
-  // installed whenever BDSIM limits are enabled, even if the global minimum
-  // kinetic energy is zero.  Keep this consistent with Geant4 reference lists.
-  if (BDSGlobalConstants::Instance()->MinimumKineticEnergy() > 0 ||
+  if (BDSGlobalConstants::Instance()->MinimumKineticEnergy() > 0 &&
       BDSGlobalConstants::Instance()->G4PhysicsUseBDSIMCutsAndLimits())
     {
       G4cout << "\nWARNING - adding cuts and limits physics process to \"COMPLETE\" physics list" << G4endl;
