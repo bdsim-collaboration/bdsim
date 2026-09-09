@@ -77,6 +77,7 @@ public:
   G4String              geometryTypeAndPath;
   G4Colour*             colour;
   G4bool                autoColour;
+  G4int                 detectSchema;
 
   inline G4double MinimumIntersectionRadiusRequired() const {return std::hypot(0.5*horizontalWidth, 0.5*horizontalWidth*vhRatio);}
 };

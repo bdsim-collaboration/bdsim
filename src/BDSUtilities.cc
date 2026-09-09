@@ -38,6 +38,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 #include <cctype>
 #include <cstdlib>
+#include <dlfcn.h>
 #include <functional>
 #include <iostream>
 #include <iterator>
@@ -56,6 +57,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef __APPLE__
 #include <mach-o/dyld.h> // for executable path
 #endif
+
+namespace
+{
+  const G4int bdsimLibraryAnchor = 0;
+}
 
 
 G4bool BDS::non_alpha::operator()(char c)
@@ -207,6 +213,19 @@ std::string BDS::GetBDSIMExecPath()
   std::string::size_type found = bdsimPath.rfind('/'); // find the last '/'
   if (found != std::string::npos)
     {bdsimPath = bdsimPath.substr(0,found+1);} // the path is the bit before that, including the '/'
+  return bdsimPath;
+}
+
+std::string BDS::GetBDSIMLibraryPath()
+{
+  Dl_info libraryInfo;
+  if (dladdr(&bdsimLibraryAnchor, &libraryInfo) == 0 || !libraryInfo.dli_fname)
+    {throw BDSException(__METHOD_NAME__, "Cannot determine BDSIM library path");}
+
+  std::string bdsimPath(libraryInfo.dli_fname);
+  std::string::size_type found = bdsimPath.rfind('/');
+  if (found != std::string::npos)
+    {bdsimPath = bdsimPath.substr(0,found+1);}
   return bdsimPath;
 }
 

@@ -251,6 +251,7 @@ namespace GMAD
     std::string fieldAll;    ///< Field for everything.
     
     std::string geometryFile;     ///< For Element. File for external geometry.
+    int         detectSchema;     ///< Whether to use a schema specified in GDML. -1 means use the global option.
     bool        stripOuterVolume; ///< For Element. Make it an assembly.
     bool        autoColour;       ///< Automagically colour the external geometry.
 

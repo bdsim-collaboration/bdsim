@@ -63,7 +63,8 @@ public:
                                      G4bool                 makeSensitive            = true,
                                      BDSSDType              sensitivityType          = BDSSDType::energydep,
                                      BDSSDType              vacuumSensitivityType    = BDSSDType::energydepvacuum,
-                                     G4UserLimits*          userLimitsToAttachToAllLVs = nullptr) = 0;
+                                     G4UserLimits*          userLimitsToAttachToAllLVs = nullptr,
+                                     G4bool                 detectSchema              = false) = 0;
 
   /// Apply a colour mapping to a set of logical volumes. This applies a colour from the map
   /// if the key value is found as a substring or whole part of the logical volume name. Ie

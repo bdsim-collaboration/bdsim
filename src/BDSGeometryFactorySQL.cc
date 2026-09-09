@@ -153,7 +153,8 @@ BDSGeometryExternal* BDSGeometryFactorySQL::Build(G4String /*componentName*/,
                                                   G4bool                 /*makeSensitive*/,
                                                   BDSSDType              /*sensitivityType*/,
                                                   BDSSDType              /*vacuumSensitivityType*/,
-                                                  G4UserLimits*          /*userLimitsToAttachToAllLVs*/)
+                                                  G4UserLimits*          /*userLimitsToAttachToAllLVs*/,
+                                                  G4bool                 /*detectSchema*/)
 {
   CleanUp();
   

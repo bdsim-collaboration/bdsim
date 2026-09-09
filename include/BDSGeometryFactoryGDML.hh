@@ -63,7 +63,8 @@ public:
                                      G4bool                 makeSensitive            = true,
                                      BDSSDType              sensitivityType          = BDSSDType::energydep,
                                      BDSSDType              vacuumSensitivityType    = BDSSDType::energydepvacuum,
-                                     G4UserLimits*          userLimitsToAttachToAllLVs = nullptr);
+                                     G4UserLimits*          userLimitsToAttachToAllLVs = nullptr,
+                                     G4bool                 detectSchema              = false);
 
   /// Reading a BDSIM colour aux tag. value: "v r g b a" -> bool visible
   /// by reference and return value of rgba. The style is also set by reference.

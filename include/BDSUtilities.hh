@@ -106,6 +106,9 @@ namespace BDS
   /// supports linux/unix and mac OS
   std::string GetBDSIMExecPath();
 
+  /// Returns the path from which the BDSIM library is loaded.
+  std::string GetBDSIMLibraryPath();
+
   /// Get the full absolute directory path where a file can be found.
   /// Option excludeNameFromPath: if true will return only the path without
   /// the filename appended to exclude the filename from path.

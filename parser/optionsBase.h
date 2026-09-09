@@ -166,6 +166,8 @@ namespace GMAD
     /// geometry control
     bool preprocessGDML;
     bool preprocessGDMLSchema;
+    bool detectSchema;
+    std::string preprocessGDMLSchemaLocation;
 
     /// geometry debug, don't split bends into multiple segments
     bool      dontSplitSBends;

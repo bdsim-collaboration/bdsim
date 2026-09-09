@@ -33,12 +33,16 @@ namespace BDS
 {
   G4String PreprocessGDML(const G4String& file,
 			  const G4String& prefix,
-			  G4bool          preprocessSchema = true);
+			  G4bool          preprocessSchema = true,
+			  G4bool          detectSchema     = false);
 
-  G4String PreprocessGDMLSchemaOnly(const G4String& file);
+  G4String PreprocessGDMLSchemaOnly(const G4String& file,
+				    G4bool          detectSchema = false);
 
-  /// Get GDML Schema location included with BDSIM.
-  G4String GDMLSchemaLocation();
+  /// Get GDML Schema location provided in the input or included with BDSIM.
+  G4String GDMLSchemaLocation(const G4String& existingSchemaLocation = "",
+			      G4bool          detectSchema          = false,
+			      const G4String& parentDirectory       = "");
 }
 
 /**
@@ -59,7 +63,8 @@ public:
 
   G4String PreprocessFile(const G4String& file,
 			  const G4String& prefix,
-			  G4bool          preprocessSchema = true);
+			  G4bool          preprocessSchema = true,
+			  G4bool          detectSchema     = false);
 
   /// Prepare the prefixed name. Done in a public static function so the
   /// convention is in only one place.
@@ -67,9 +72,9 @@ public:
 				    const G4String& prefix);
 private:
 
-  void ReadDoc(xercesc::DOMNodeIterator* docIterator, G4bool processSchema);
-  void ReadNode(xercesc::DOMNode* node, G4bool processSchema);
-  void ProcessGDMLNode(xercesc::DOMNamedNodeMap* attributeMap);
+  void ReadDoc(xercesc::DOMNodeIterator* docIterator, G4bool processSchema, G4bool detectSchema);
+  void ReadNode(xercesc::DOMNode* node, G4bool processSchema, G4bool detectSchema);
+  void ProcessGDMLNode(xercesc::DOMNode* node, G4bool detectSchema);
   void ReadAttributes(xercesc::DOMNamedNodeMap* attributeMap);
   void ProcessDoc(xercesc::DOMNodeIterator* dotIterator, const G4String& prefix);
   void ProcessNode(xercesc::DOMNode* node, const G4String& prefix);

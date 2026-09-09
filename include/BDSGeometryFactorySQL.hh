@@ -68,7 +68,8 @@ public:
                                      G4bool                 makeSensitive            = true,
                                      BDSSDType              sensitivityType          = BDSSDType::energydep,
                                      BDSSDType              vacuumSensitivityType    = BDSSDType::energydepvacuum,
-                                     G4UserLimits*          userLimitsToAttachToAllLVs = nullptr);
+                                     G4UserLimits*          userLimitsToAttachToAllLVs = nullptr,
+                                     G4bool                 detectSchema              = false);
 
 protected:
   /// Clean up members.
