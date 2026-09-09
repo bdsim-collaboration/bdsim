@@ -823,9 +823,7 @@ void BDSOutput::FillSamplerHitsLink(const BDSHitsCollectionSamplerLink* hits)
       auto samplerIndex = samplerIDToIndexPlane.find(hit->samplerID);
       if (samplerIndex == samplerIDToIndexPlane.end())
         {throw BDSException(__METHOD_NAME__, "Sampler ID not found: " + std::to_string(hit->samplerID));}
-      samplerTrees[samplerIndex->second]->Fill(hit, storeSamplerMass, storeSamplerCharge,
-                                               storeSamplerPolarCoords, storeSamplerIon,
-                                               storeSamplerRigidity, storeSamplerKineticEnergy);
+      samplerTrees[samplerIndex->second]->Fill(hit, storeSamplerMass, storeSamplerCharge, storeSamplerPolarCoords, storeSamplerIon, storeSamplerRigidity, storeSamplerKineticEnergy);
     }
   // extra information - do only once at the end
   if (storeSamplerIon)
