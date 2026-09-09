@@ -47,8 +47,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <algorithm>
 #include <cmath>
-#include <memory>
 #include <map>
+#include <memory>
 #include <set>
 #include <vector>
 
