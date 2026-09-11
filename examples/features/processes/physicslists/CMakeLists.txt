@@ -122,9 +122,9 @@ else()
   endif()
 endif()
 
-#if (G4_MINOR_VERSION GREATER 1 AND G4_MAJOR_VERSION GREATER 10)
-# (TODO REMOVED)  simple_testing(physics-xray-reflection  "--file=xray_reflection.gmad"   ${OVERLAP_CHECK})
-#endif()
+if (${Geant4_VERSION} VERSION_GREATER 11.3)
+simple_testing(physics-xray-reflection  "--file=xray_reflection.gmad"   ${OVERLAP_CHECK})
+endif()
 
 #aliases
 simple_testing(physics-alias-cerenkov    "--file=alias_cerenkov.gmad"     ${OVERLAP_CHECK})

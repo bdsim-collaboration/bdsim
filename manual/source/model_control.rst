@@ -4821,11 +4821,11 @@ A `scorer` defines a quantity to be recorded. The syntax is: ::
 | maximumKineticEnergy    | No            | Maximum kinetic energy of particles to be      |
 |                         |               | included in scoring (GeV)                      |
 +-------------------------+---------------+------------------------------------------------+
-| minimumTime             | No            | Minimum time coordinate of particles to be     |
-|                         |               | included in scoring (s)                        |
+| minimumTime             | No            | Minimum time (global) coordinate of particles  |
+|                         |               | to be included in scoring (s)                  |
 +-------------------------+---------------+------------------------------------------------+
-| maximumTime             | No            | Maximum time coordinate of particles to be     |
-|                         |               | included in scoring (s)                        |
+| maximumTime             | No            | Maximum time (global) coordinate of particles  |
+|                         |               | to be included in scoring (s)                  |
 +-------------------------+---------------+------------------------------------------------+
 | conversionFactorFile    | No            | File name of conversion factor file to be used |
 |                         |               | in calculation                                 |

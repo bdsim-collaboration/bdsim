@@ -23,6 +23,7 @@ target_link_libraries(BDSSixTrackTester ${BDSIM_LIB_NAME} gmad)
 add_test(NAME "tester-sixtrack" COMMAND BDSSixTrackTester)
 configure_file(somecollimators.dat somecollimators.dat COPYONLY)
 configure_file(lhccrystals.gmad lhccrystals.gmad COPYONLY)
+
 # prepare non-tested visualiser copy
 add_executable(BDSSixTrackTesterVis BDSSixTrackTester.cc)
 set_target_properties(BDSSixTrackTesterVis PROPERTIES OUTPUT_NAME "BDSSixTrackTesterVis" VERSION ${BDSIM_VERSION})

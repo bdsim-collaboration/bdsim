@@ -29,7 +29,12 @@ macro(_run_test test_name input_args)
   separate_arguments(TESTING_ARGS)
   if (BDSIM_GENERATE_REGRESSION_DATA)
     list(APPEND TESTING_ARGS "--outfile=${BDSIM_REGRESSION_PREFIX}-${test_name}")
+  else()
+    if (NOT TESTING_ARGS MATCHES "--outfile") # outfile might already be defined by the test
+      list(APPEND TESTING_ARGS "--outfile=${test_name}")
+    endif()
   endif()
+
   add_test(NAME ${test_name} COMMAND ${bdsimBinary} ${TESTING_PERM_ARGS} ${args} ${TESTING_ARGS})
   # unset TESTING_ARGS so only used for this test
   unset(TESTING_ARGS)
