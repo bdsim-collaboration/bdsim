@@ -366,7 +366,7 @@ void BDSIntegratorDipoleQuadrupole::OneStep(const G4ThreeVector& posIn,
   G4double s1 = s0 + h;
   
   // relies on normalised momenta otherwise this will be nan.
-  zp1 = std::sqrt(1 - xp1*xp1 - yp1*yp1);
+  zp1 = std::sqrt(std::abs(1 - xp1*xp1 - yp1*yp1));
   if (std::isnan(zp1))
     {zp1 = zp;} // ensure not nan
 

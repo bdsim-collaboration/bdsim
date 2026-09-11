@@ -182,7 +182,7 @@ void BDSIntegratorQuadrupole::Stepper(const G4double yIn[],
     {zp1 = zp;} // ensure not nan
 
   // new z position will be projection of h onto the z axis
-  G4double z1 = z0 + std::sqrt(h2 - std::pow(x1-x0,2) - std::pow(y1-y0,2));
+  G4double z1 = z0 + std::sqrt(std::abs(h2 - std::pow(x1-x0,2) - std::pow(y1-y0,2)));
 
   localPos.setX(x1);
   localPos.setY(y1);
