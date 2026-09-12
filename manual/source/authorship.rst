@@ -2,27 +2,27 @@
 Authorship
 ===========
 
-BDSIM was originally started by G.A. Blair around 2001 and has since been
-developed and maintained by a group based at Royal Holloway, University of London ("RHUL").
+BDSIM was originally started by G.A. Blair around 2001 and was
+developed and maintained by a group based at Royal Holloway,
+University of London ("RHUL") fully until 2022. Since 2022,
+contributors at several institutes including RHUL have maintained
+the code as the BDSIM Collaboration.
 
-We also welcome contributions and additions to BDSIM. Please contact us to get
-involved!
+We also welcome contributions and additions to BDSIM. Please
+contact us to get involved!
 
-Current Authors
----------------
+Current BDSIM Collaboration
+---------------------------
 
-* Laurie Nevay (*CERN, lead developer*)
-* Stewart Boogert (*Cockcroft, lead developer*)
+* Laurie Nevay (*CERN, lead developer, RHUL*)
+* Stewart Boogert (*Cockcroft, lead developer, RHUL*)
 * William Shields (*RHUL, lead developer*)
-* Andrey Abramov (*CERN*)
 * Siobhan Alden (*RHUL*)
 * Stephen Gibson (*RHUL*)
-* Cedric Hernalsteens(*CERN*)
 * Fabian Metzger (*CERN*)
-* Eliott Ramoisiaux (*ULB*)
 * Jochem Snuverink (*PSI, RHUL*)
 * Robin Tesse (*ULB*)
-* Stuart Walker (*DESY*)
+* Stuart Walker (*DESY, RHUL*)
 
 
 Past Authors
@@ -45,3 +45,6 @@ Past Authors
 * John Carter (*RHUL*)
 * Ilya Agapov (*RHUL*)
 * Joshua Albrecht (*RHUL*)
+* Andrey Abramov (*CERN, RHUL*)
+* Cedric Hernalsteens(*CERN, ULB*)
+* Eliott Ramoisiaux (*ULB*)
