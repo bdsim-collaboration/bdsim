@@ -33,6 +33,7 @@ from .element import *
 from .elementtype import *
 from .fastlist import *
 from .field import *
+from .laser import *
 from .material import *
 from .modulator import *
 from .newcolour import *
@@ -70,7 +71,7 @@ except :
 bdslink_singleton = None
 
 classes = ['Aperture', 'Atom', 'Beam', 'BLMPlacement', 'CavityModel', 'CoolingChannel', 'Crystal',
-           'Element', 'Field', 'Material', 'Modulator', 'NewColour', 'Options', 'PhysicsBiasing',
+           'Element', 'Field', 'Laser', 'Material', 'Modulator', 'NewColour', 'Options', 'PhysicsBiasing',
            'Placement', 'Query', 'Region', 'SamplerPlacement', 'ScorerMesh', 'Scorer', 'Tunnel']
 
 def install_functions() :

@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -108,7 +107,7 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
   if (std::abs(radiusOfCurvature) < minimumRadiusOfCurvature)
     {
       AdvanceHelixForSpiralling(yIn, bOriginal, h, yOut, yErr);
-      // Update parameters that distchord will be calcualted from from full step info.
+      // Update parameters that distchord will be calculated from full step info.
       SetAngCurve(ang);
       SetRadHelix(rad);
       return;

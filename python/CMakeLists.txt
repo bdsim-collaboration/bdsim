@@ -26,7 +26,7 @@ file(GLOB GMAD_PARSER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cc)
 
 list(APPEND pythonBindingSrcs
         aperture array atom beam blmplacement cavitymodel
-        crystal coolingchannel element elementtype fastlist field material modulator
+        crystal coolingchannel element elementtype fastlist field laser material modulator
         newcolour options parameters parser physicsbiasing placement
         query region samplerplacement scorer scorermesh
         sym_table tunnel)
