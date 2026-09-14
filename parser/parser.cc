@@ -665,7 +665,7 @@ int Parser::add_sampler_partIDSet(std::list<int>* samplerPartIDListIn)
 
 void Parser::add_sampler(const std::string& name, int count, ElementType type, std::string samplerType, std::list<int>* samplerPartIDListIn)
 {
-#ifdef BDSDEBUG 
+#ifdef BDSDEBUG
   std::cout << "inserting sampler " << name;
   if (count>=0)
     {std::cout << "[" << count << "]";}
@@ -675,7 +675,7 @@ void Parser::add_sampler(const std::string& name, int count, ElementType type, s
   (*call_sequence_log) << "Parser::add_sampler(name=" << name
                        << ", count=" << count
                        << ", type=" << type
-                       << ", samplerType=" << ")" << samplerType;
+                       << ", samplerType=" << samplerType << ")" ;
   if(samplerPartIDListIn != nullptr)
   {
     (*call_sequence_log) << " samplerPartIDListIn.size=" << samplerPartIDListIn->size() << std::endl;
