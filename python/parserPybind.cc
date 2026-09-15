@@ -65,7 +65,9 @@ PYBIND11_MODULE(parser, m) {
 
       .def("add_sampler_partIDSet",&GMAD::Parser::add_sampler_partIDSet)
       .def("add_sampler", &GMAD::Parser::add_sampler)
-
+      .def("add_sampler",[](GMAD::Parser &parser, const std::string& name, int count, GMAD::ElementType type, std::string samplerType) {
+        parser.add_sampler(name, count, type, samplerType);
+      })
       .def("Add_Aperture",[](GMAD::Parser *parser) {parser->Add<GMAD::Aperture, GMAD::FastList<GMAD::Aperture>>();})
       .def("Add_Atom",[](GMAD::Parser *parser) {parser->Add<GMAD::Atom, GMAD::FastList<GMAD::Atom>>();})
       .def("Add_BLMPlacement",[](GMAD::Parser *parser) {parser->Add<GMAD::BLMPlacement, GMAD::FastList<GMAD::BLMPlacement>>();})
