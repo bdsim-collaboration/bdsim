@@ -216,6 +216,8 @@ void Parser::ParseFile(FILE *f)
 #endif
 
   fclose(f);
+
+  // std::cout << call_sequence_log->str() << std::endl;
 }
 
 void Parser::Initialise()
@@ -663,7 +665,8 @@ int Parser::add_sampler_partIDSet(std::list<int>* samplerPartIDListIn)
     }
 }
 
-void Parser::add_sampler(const std::string& name, int count, ElementType type, std::string samplerType, std::list<int>* samplerPartIDListIn)
+void Parser::add_sampler(const std::string& name, int count, ElementType type,
+                         std::string samplerType, std::list<int>* samplerPartIDListIn)
 {
 #ifdef BDSDEBUG
   std::cout << "inserting sampler " << name;
@@ -675,13 +678,13 @@ void Parser::add_sampler(const std::string& name, int count, ElementType type, s
   (*call_sequence_log) << "Parser::add_sampler(name=" << name
                        << ", count=" << count
                        << ", type=" << type
-                       << ", samplerType=" << samplerType << ")" ;
+                       << ", samplerType=" << samplerType;
   if(samplerPartIDListIn != nullptr)
   {
-    (*call_sequence_log) << " samplerPartIDListIn.size=" << samplerPartIDListIn->size() << std::endl;
+    (*call_sequence_log) << " samplerPartIDListIn.size=" << samplerPartIDListIn->size() << ")" << std::endl;
   }
   else {
-    (*call_sequence_log) << " samplerPartIDListIn.size=nullptr" << std::endl;
+    (*call_sequence_log) << " samplerPartIDListIn.size=nullptr" << ")" << std::endl;
   }
 
   int particleSetID = add_sampler_partIDSet(samplerPartIDListIn);
