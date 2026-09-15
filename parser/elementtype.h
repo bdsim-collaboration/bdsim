@@ -77,7 +77,8 @@ namespace GMAD
     _JCOLTIP       = 80,
     _GABORLENS     = 81,
     _LASERWIRE     = 82,
-    _LASER         = 83
+    _LASER         = 83,
+    _CRYSTALRADIATOR = 84
   };
 
   /// conversion from enum to string

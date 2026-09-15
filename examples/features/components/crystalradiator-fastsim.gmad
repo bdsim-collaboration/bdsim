@@ -1,0 +1,19 @@
+si111: crystal, model="fastsim",
+                material="G4_Si",
+                lattice="(111)",
+                shape="box",
+                lengthX=20*mm,
+                lengthY=20*mm;
+
+radiator: crystalradiator, l=0.0305*mm, crystalDefinition="si111";
+line1: line=(radiator);
+use, line1;
+
+sample, all;
+
+beam, particle="e-",
+      energy=855*MeV;
+
+option, physicsList="completechannelling",
+        ngenerate=1,
+        checkOverlaps=1;

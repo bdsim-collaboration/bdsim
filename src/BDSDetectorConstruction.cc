@@ -34,6 +34,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSComponentFactory.hh"
 #include "BDSComponentFactoryUser.hh"
 #include "BDSCurvilinearBuilder.hh"
+#include "BDSCrystalFactory.hh"
 #include "BDSDebug.hh"
 #include "BDSDetectorConstruction.hh"
 #include "BDSException.hh"
@@ -1338,6 +1339,7 @@ void BDSDetectorConstruction::BuildPhysicsBias()
 
 void BDSDetectorConstruction::ConstructSDandField()
 {
+  BDSCrystalFactory::ConstructFastSimModels();
   auto flds = BDSFieldBuilder::Instance()->CreateAndAttachAll(); // avoid shadowing 'fields'
   acceleratorModel->RegisterFields(flds);
 
