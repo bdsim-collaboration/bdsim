@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./missing-schema.xsd">
+  <define/>
+  <materials/>
+  <solids>
+    <box name="world" x="200" y="200" z="200" lunit="mm"/>
+  </solids>
+  <structure>
+    <volume name="worldlv">
+      <materialref ref="G4_Galactic"/>
+      <solidref ref="world"/>
+    </volume>
+  </structure>
+  <setup name="Default" version="1.0">
+    <world ref="worldlv"/>
+  </setup>
+</gdml>
