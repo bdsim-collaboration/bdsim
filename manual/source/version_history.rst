@@ -156,6 +156,12 @@ Bug Fixes
 * Document the options :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` as well
   as fix their number type internally.
 * Fix a crash when using :code:`jcoltip` with collimator-specific output options.
+* Fix modular physics list that would accept optical physics and cherenkov physics at the same
+  time which would try to double-register cherenkov physics (Geant4 would refuse).
+* Fix an uncaught exception when trajectory storage was used and optical physics or cherenkov
+  physics was used that would break the assumed ordering of trajectories in Geant4.
+* Fix the cherenkov parameters :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` when
+  used with optical physics, which would previously have no effect.
 
 
 Output Changes
