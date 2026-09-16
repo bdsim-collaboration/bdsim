@@ -68,6 +68,8 @@ BDSLaser::BDSLaser(G4double wavelengthIn,
   polarization(polarizationIn),
   ignoreRayleighRange(ignoreRayleighRangeIn)
 {
+  if(!BDS::IsFinite(wavelengthIn))
+    {throw BDSException(__METHOD_NAME__, "Laser wavelength is zero.");}
   if(!BDS::IsFinite(sigma0In))
     {throw BDSException(__METHOD_NAME__, "Laser waist sigma0 is zero.");}
   peakPower = pulseEnergy / FWHM();
