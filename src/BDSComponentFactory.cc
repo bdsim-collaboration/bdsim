@@ -2701,7 +2701,7 @@ void BDSComponentFactory::PrepareLasers()
       else if (BDS::IsFinite(laser.sigma0))
         {sigma0 = laser.sigma0;}
       else
-        {throw BDSException(__METHOD_NAME__, "Neither \"w0\" or \"sigma0\" are defined  \"" + laser.name + "\"");}
+        {throw BDSException(__METHOD_NAME__, "Neither \"w0\" or \"sigma0\" are defined  in \"" + laser.name + "\"");}
       sigma0 *= CLHEP::m;
 
       G4double pulse = 0;
@@ -2710,7 +2710,7 @@ void BDSComponentFactory::PrepareLasers()
       else if (BDS::IsFinite(laser.pulseDuration))
         {pulse = laser.pulseDuration;}
       else
-        {throw BDSException(__METHOD_NAME__, "Neither \"w0\" or \"sigma0\" are defined  \"" + laser.name + "\"");}
+        {throw BDSException(__METHOD_NAME__, "Neither \"pulseDuration\" or \"pulseFWHM\" are defined  in \"" + laser.name + "\"");}
       pulse *= CLHEP::s;
 
       G4ThreeVector polarization(laser.laserPolarization1,laser.laserPolarization2,laser.laserPolarization3);
