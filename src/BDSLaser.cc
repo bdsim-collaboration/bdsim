@@ -77,7 +77,7 @@ BDSLaser::BDSLaser(G4double wavelengthIn,
 }
 
 BDSLaser::BDSLaser(G4double wavelengthIn):   wavelength(wavelengthIn),
-                                             m2(0),
+                                             m2(1),
                                              pulseDuration(0),
                                              pulseEnergy(0),
                                              sigma0(0),
