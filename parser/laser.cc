@@ -29,10 +29,10 @@ void Laser::clear()
 {
   name             = "";
   wavelength       = 0;
-  m2               = 0;
+  m2               = 1;
   pulseEnergy      = 0;
   pulseDuration    = 0;
-	 pulseFWHM        = 0;
+  pulseFWHM        = 0;
   w0               = 0;
   sigma0           = 0;
   laserArrivalTime = 0;
@@ -49,7 +49,7 @@ void Laser::PublishMembers()
   publish("m2",                 &Laser::m2);
   publish("pulseEnergy",        &Laser::pulseEnergy);
   publish("pulseDuration",      &Laser::pulseDuration);
-	 publish("pulseFWHM",												 &Laser::pulseFWHM);
+  publish("pulseFWHM",												 &Laser::pulseFWHM);
   publish("w0",                 &Laser::w0);
   publish("sigma0",             &Laser::sigma0);
   publish("laserArrivalTime",   &Laser::laserArrivalTime);
