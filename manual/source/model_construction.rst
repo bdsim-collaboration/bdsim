@@ -216,6 +216,8 @@ The following elements may be defined
 * `solenoid`_
 * `wirescanner`_
 * `laser`_
+* `laserwire`_
+* `laserflux`_
 * `gap`_
 * `crystalcol`_
 * `undulator`_
@@ -1789,6 +1791,85 @@ Parameter         Description                                        Default    
 Examples: ::
 
    laserwire: laser, l=1*um, x=1, y=0, z=0, wavelength=532*nm;
+
+
+laserwire
+^^^^^^^^^
+
+`laserwire` defines a section of beam pipe containing a laser pulse that a particle beam can
+Compton scatter from. Unlike `laser`, which acts as a static photon target, `laserwire` couples
+to a `laserflux` object (see below) that describes the physical properties of the laser pulse.
+This is intended for use with laser physics processes, e.g. Compton scattering via:
+``option, physicsList="laser_cumulative_compton_scattering";``.
+
+==================  =================================================================  =======  ========
+Parameter           Description                                                        Default  Required
+==================  =================================================================  =======  ========
+`l`                 Length of drift section around the laser interaction region [m]    0        Yes
+`wireLength`        Length of the laser interaction region [m]                         0        Yes
+`laserBeam`         Name of the `laserflux` object describing the laser pulse          ""       Yes
+`laserOffsetTheta`  Polar angle offset of laser direction w.r.t. beam axis [rad]       0        No
+`laserOffsetPhi`    Azimuthal angle offset of laser direction [rad]                    0        No
+`laserOffsetX`      x offset of laser focus from the centre [m]                        0        No
+`laserOffsetY`      y offset of laser focus from the centre [m]                        0        No
+`laserOffsetZ`      z offset of laser focus from the centre [m]                        0        No
+==================  =================================================================  =======  ========
+
+Notes:
+
+* `laserBeam` must refer to a `laserflux` object defined elsewhere in the input (see `laserflux`_ below).
+* The offsets are with respect to the centre of the element, analogous to `wireOffsetX`, `wireOffsetY`
+  and `wireOffsetZ` for `wirescanner`_.
+* The aperture parameters may also be specified and apply to the beam pipe as for a regular drift.
+
+Examples: ::
+
+   lf1: laserflux, wavelength=532.0*nm, pulseDuration=30.0*ps, pulseEnergy=3*mJ, w0=2*mm;
+
+   l1: laserwire, l=0.1*m, wireLength=10*mm, laserBeam="lf1", laserOffsetTheta=0, laserOffsetPhi=0.5,
+                  laserOffsetX=0*m,laserOffsetY=0*m,laserOffsetZ=0*m;
+
+
+laserflux
+^^^^^^^^^
+
+`laserflux` defines the physical properties of a laser pulse for use with a `laserwire`_ element.
+It is **not** a beamline element and is not placed in a `line`, instead it is defined once and
+referenced by name via the `laserBeam` parameter of a `laserwire`.
+
+====================  ==============================================================================  =======  ========
+Parameter             Description                                                                     Default  Required
+====================  ==============================================================================  =======  ========
+`wavelength`          Laser wavelength [m]                                                            0        Yes
+`pulseEnergy`         Total energy in the laser pulse [J]                                             0        Yes
+`pulseDuration`       Laser pulse temporal width, RMS (sigma) [s]                                     0        Yes/No*
+`pulseFWHM`           Laser pulse temporal width, full width at half max [s]                          0        Yes/No*
+`w0`                  Laser waist size, beam radius at focus [m]                                      0        Yes/No*
+`sigma0`              Laser waist size, RMS width at focus [m]                                        0        Yes/No*
+`m2`                  Beam quality factor                                                             1        No
+`laserArrivalTime`    Time offset of the laser pulse peak relative to the reference arrival time [s]  0        No
+`laserPolarization1`  First Stokes vector component describing laser polarization                     0        No
+`laserPolarization2`  Second Stokes vector component describing laser polarization                    0        No
+`laserPolarization3`  Third Stokes vector component describing laser polarization                     0        No
+====================  ==============================================================================  =======  ========
+
+.. note::
+   \* Either `pulseDuration` or `pulseFWHM` must be specified to set the temporal width of the
+   pulse. If neither is specified, BDSIM will exit with an error. The same goes for `w0` and `sigma0`,
+   which set the laser waist size.
+
+Notes:
+
+* A `laserflux` object has no length or position of its own; its spatial placement relative
+  to the beam is entirely controlled by the `laserOffsetX`, `laserOffsetY`, `laserOffsetZ`,
+  `laserOffsetTheta` and `laserOffsetPhi` parameters of the `laserwire`_ element that
+  references it.
+* Multiple `laserwire` elements may reference the same `laserflux` object if they represent
+  interactions with the same physical laser pulse.
+
+Example: ::
+
+   lf1: laserflux, wavelength=532.0*nm, pulseDuration=30.0*ps, pulseEnergy=3*mJ, w0=2*mm;
 
 
 gap
