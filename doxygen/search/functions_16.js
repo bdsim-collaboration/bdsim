@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['x_0',['x',['../classBDSThreeVector.html#a9c0737720c64e5ef24ed0935b17ba33b',1,'BDSThreeVector::x()'],['../classBDSTwoVector.html#acd6346e085ab5918813457a6186b67af',1,'BDSTwoVector::x()'],['../classBDSFourVector.html#a8965cdeae3edf2c0b5aea3d976e7cd4a',1,'BDSFourVector::x()']]],
+  ['x_0',['x',['../classBDSFourVector.html#a8965cdeae3edf2c0b5aea3d976e7cd4a',1,'BDSFourVector::x()'],['../classBDSThreeVector.html#a9c0737720c64e5ef24ed0935b17ba33b',1,'BDSThreeVector::x()'],['../classBDSTwoVector.html#acd6346e085ab5918813457a6186b67af',1,'BDSTwoVector::x()']]],
   ['xaperture_1',['XAperture',['../classBDSCollimatorBeamMask.html#a878fcf5363f6e4023b7d258a71f6a007',1,'BDSCollimatorBeamMask']]],
-  ['xaperturein_2',['xaperturein',['../classBDSCollimator.html#a3f35f00388beb86fb222657729e8bd06',1,'BDSCollimator::XApertureIn()'],['../classBDSTipCollimator.html#aba434662aad23f72795620a2f4e7d54b',1,'BDSTipCollimator::XApertureIn()']]],
-  ['xapertureout_3',['xapertureout',['../classBDSCollimator.html#a2f9b5e050dabb90ab95064e69baed340',1,'BDSCollimator::XApertureOut()'],['../classBDSTipCollimator.html#a9ca4f4150825667c27c6b79a022c52cc',1,'BDSTipCollimator::XApertureOut()']]],
+  ['xaperturein_2',['XApertureIn',['../classBDSCollimator.html#a3f35f00388beb86fb222657729e8bd06',1,'BDSCollimator']]],
+  ['xapertureout_3',['XApertureOut',['../classBDSCollimator.html#a2f9b5e050dabb90ab95064e69baed340',1,'BDSCollimator']]],
   ['xapertureslit_4',['XApertureSlit',['../classBDSCollimatorBeamMask.html#a5c74bf5013e3baa7f25eda33cb46392f',1,'BDSCollimatorBeamMask']]],
   ['xfromarraycoords_5',['XFromArrayCoords',['../classBDSArray4DCoords.html#ae5d382b77c27960989d9e8bbd8a86520',1,'BDSArray4DCoords']]],
   ['xneg_6',['XNeg',['../classBDSExtent.html#a58ad9e8b027ae0b13bdfcb5a40df9a7d',1,'BDSExtent']]],

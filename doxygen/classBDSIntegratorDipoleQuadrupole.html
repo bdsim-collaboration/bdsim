@@ -339,7 +339,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>Integrator for combined dipole and quadrupolar field. </p>
 <dl class="section author"><dt>Author</dt><dd>Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00039">39</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00038">38</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8e223ab87834ed8084603391c9986b4" name="aa8e223ab87834ed8084603391c9986b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8e223ab87834ed8084603391c9986b4">&#9670;&#160;</a></span>BDSIntegratorDipoleQuadrupole()</h2>
@@ -391,7 +391,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00042">42</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00041">41</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
 
 </div>
 </div>
@@ -418,7 +418,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00080">80</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00079">79</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
 
 </div>
 </div>
@@ -506,11 +506,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Calculate a single step in curvilinear coordinates using dipole quadrupole matrix. Unit momentum is provided as an argument becuase it is already calculated in the Stepper method. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00261">261</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00260">260</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00089">bPrime</a>, and <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00087">nominalBRho</a>.</p>
+<p class="reference">References <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00088">bPrime</a>, and <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00086">nominalBRho</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -577,9 +577,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Check if the quadrupole has finite strength and use drift if not. If finite strength, convert to local curvilinear coordiantes and check for paraxial approximation. If paraxial, use thick quadrupole matrix for transport, else use the G4ClassicalRK4 backup stepper. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">85</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">84</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html">BDSIntegratorDipoleQuadrupole.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSIntegratorDrift_8cc_source.html#l00029">BDSIntegratorDrift::AdvanceDriftMag()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00100">angleForCL</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00105">BDSIntegratorMag::backupStepperMomLimit</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00105">dipole</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00088">eq</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00089">BDSIntegratorMag::eqOfM</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00098">fieldArcLength</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00093">fieldRatio</a>, <a class="el" href="BDSAuxiliaryNavigator_8cc_source.html#l00312">BDSAuxiliaryNavigator::GlobalToCurvilinear()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">BDS::IsFinite()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00322">BDS::IsFiniteStrength()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00103">isScaled</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00099">nominalAngle</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00090">nominalBeta</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00087">nominalBRho</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00096">nominalCharge</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00094">nominalEnergy</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00095">nominalMass</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00067">BDSIntegratorMag::nominalMatrixRelativeMomCut</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00091">nominalRho</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00261">OneStep()</a>, <a class="el" href="BDSStep_8hh_source.html#l00043">BDSStep::PostStepPoint()</a>, <a class="el" href="BDSStep_8hh_source.html#l00042">BDSStep::PreStepPoint()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8hh_source.html#l00095">BDSIntegratorDipoleRodrigues2::RadiusOfHelix()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00102">scaling</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00084">BDSIntegratorMag::SetDistChord()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8cc_source.html#l00047">BDSIntegratorDipoleRodrigues2::SingleStep()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8cc_source.html#l00059">BDSIntegratorDipoleRodrigues2::Stepper()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00101">tilt</a>, <a class="el" href="BDSMagUsualEqRhs_8cc_source.html#l00064">BDSMagUsualEqRhs::TotalEnergy()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00097">unitField</a>, and <a class="el" href="BDSIntegratorMag_8hh_source.html#l00101">BDSIntegratorMag::zeroStrength</a>.</p>
+<p class="reference">References <a class="el" href="BDSIntegratorDrift_8cc_source.html#l00028">BDSIntegratorDrift::AdvanceDriftMag()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00099">angleForCL</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00104">BDSIntegratorMag::backupStepperMomLimit</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00104">dipole</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00087">eq</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00088">BDSIntegratorMag::eqOfM</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00097">fieldArcLength</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00092">fieldRatio</a>, <a class="el" href="BDSAuxiliaryNavigator_8cc_source.html#l00311">BDSAuxiliaryNavigator::GlobalToCurvilinear()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00310">BDS::IsFinite()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00321">BDS::IsFiniteStrength()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00102">isScaled</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00098">nominalAngle</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00089">nominalBeta</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00086">nominalBRho</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00095">nominalCharge</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00093">nominalEnergy</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00094">nominalMass</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00066">BDSIntegratorMag::nominalMatrixRelativeMomCut</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00090">nominalRho</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00260">OneStep()</a>, <a class="el" href="BDSStep_8hh_source.html#l00042">BDSStep::PostStepPoint()</a>, <a class="el" href="BDSStep_8hh_source.html#l00041">BDSStep::PreStepPoint()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8hh_source.html#l00094">BDSIntegratorDipoleRodrigues2::RadiusOfHelix()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00101">scaling</a>, <a class="el" href="BDSIntegratorMag_8hh_source.html#l00083">BDSIntegratorMag::SetDistChord()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8cc_source.html#l00046">BDSIntegratorDipoleRodrigues2::SingleStep()</a>, <a class="el" href="BDSIntegratorDipoleRodrigues2_8cc_source.html#l00058">BDSIntegratorDipoleRodrigues2::Stepper()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00100">tilt</a>, <a class="el" href="BDSMagUsualEqRhs_8cc_source.html#l00063">BDSMagUsualEqRhs::TotalEnergy()</a>, <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00096">unitField</a>, and <a class="el" href="BDSIntegratorMag_8hh_source.html#l00100">BDSIntegratorMag::zeroStrength</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -663,9 +663,9 @@ Here is the call graph for this function:</div>
 
 <p>Angle used for curvilinear transforms. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00100">100</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00099">99</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -691,9 +691,9 @@ Here is the call graph for this function:</div>
 
 <p>Cached magnet property, B field gradient for calculating K1. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00089">89</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00088">88</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00261">OneStep()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00260">OneStep()</a>.</p>
 
 </div>
 </div>
@@ -719,9 +719,9 @@ Here is the call graph for this function:</div>
 
 <p>Backup integrator. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00105">105</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00104">104</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -747,9 +747,9 @@ Here is the call graph for this function:</div>
 
 <p><a class="el" href="classBDSIM.html" title="Interface class to use BDSIM.">BDSIM</a>'s eqRhs class to give access to particle properties. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00088">88</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00087">87</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -775,9 +775,9 @@ Here is the call graph for this function:</div>
 
 <p>Cache of the field arc length. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00097">97</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -803,9 +803,9 @@ Here is the call graph for this function:</div>
 
 <p>Ratio of supplied field to nominal field. Needed for over/underpowered magnets. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00093">93</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00092">92</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -831,9 +831,9 @@ Here is the call graph for this function:</div>
 
 <p>Cache if field is scaled. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00103">103</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00102">102</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -859,9 +859,9 @@ Here is the call graph for this function:</div>
 
 <p>Cache of the field angle. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00099">99</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -887,9 +887,9 @@ Here is the call graph for this function:</div>
 
 <p>Cached nominal relativistic beta of the nominal beam particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00090">90</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00089">89</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -915,9 +915,9 @@ Here is the call graph for this function:</div>
 
 <p>Cached magnet property, nominal magnetic rigidity. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00087">87</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00086">86</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00261">OneStep()</a>, and <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00260">OneStep()</a>, and <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -943,9 +943,9 @@ Here is the call graph for this function:</div>
 
 <p>Nominal beam charge. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00096">96</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00095">95</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -971,9 +971,9 @@ Here is the call graph for this function:</div>
 
 <p>Nominal beam energy. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00094">94</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00093">93</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -999,7 +999,7 @@ Here is the call graph for this function:</div>
 
 <p>Cached magnet property, nominal field strength. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00092">92</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00091">91</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
 </div>
 </div>
@@ -1025,9 +1025,9 @@ Here is the call graph for this function:</div>
 
 <p>Primary particle mass. Needed for recalculating nominal energy with scaling. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00095">95</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00094">94</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -1053,9 +1053,9 @@ Here is the call graph for this function:</div>
 
 <p>Cached magnet property, nominal bending radius. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00091">91</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00090">90</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -1081,9 +1081,9 @@ Here is the call graph for this function:</div>
 
 <p>Cache field scaling factor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00102">102</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00101">101</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -1109,9 +1109,9 @@ Here is the call graph for this function:</div>
 
 <p>Tilt offset transform for field. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00101">101</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00100">100</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -1137,9 +1137,9 @@ Here is the call graph for this function:</div>
 
 <p>Cache of the unit field direction. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00097">97</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html#l00096">96</a> of file <a class="el" href="BDSIntegratorDipoleQuadrupole_8hh_source.html">BDSIntegratorDipoleQuadrupole.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00085">Stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIntegratorDipoleQuadrupole_8cc_source.html#l00084">Stepper()</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1150,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:07 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:48 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

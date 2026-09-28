@@ -1965,7 +1965,7 @@ Examples: ::
 +------------------------------+------------------------------------------------------------------------+
 | cherenkov                    | Provides Cherenkov radiation for all charged particles. Issued by the  |
 |                              | BDSIM physics builder `BDSPhysicsCherenkov` that provides the process  |
-|                              | `G4CherenkovProcess`.                                                  |
+|                              | `G4CherenkovProcess` only.                                             |
 +------------------------------+------------------------------------------------------------------------+
 | decay                        | Provides radioactive decay processes using `G4DecayPhysics`. Crucial   |
 |                              | for pion decay for example.                                            |

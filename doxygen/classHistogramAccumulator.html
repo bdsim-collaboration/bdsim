@@ -174,7 +174,7 @@ Protected Attributes</h2></td></tr>
 <p>Normally, at least 2 entries should be accumulated to calculate the variance and to avoid nans from 1/(n-1), however, in this special case, the bin error is set to 0.</p>
 <dl class="section author"><dt>Author</dt><dd>Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00057">57</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00056">56</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a20e8ea32bb588bc7d9892b6f1b75cead" name="a20e8ea32bb588bc7d9892b6f1b75cead"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20e8ea32bb588bc7d9892b6f1b75cead">&#9670;&#160;</a></span>HistogramAccumulator() <span class="overload">[1/2]</span></h2>
@@ -209,7 +209,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Construct Accumulator based on another histogram of 1,2, or 3 dimensions. Inspects the TH1 (ie base class) instance to get the number of dimensions then uses the next constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00043">43</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00042">42</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
 
 </div>
 </div>
@@ -252,9 +252,9 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Construct accumulator based on another histogram of 1,2 or 3 dimensions. Note, the result name must be different from that of baseHistogram if baseHistogram exists in the currently open file. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00049">49</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00048">48</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">nDimensions</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00119">resultHistName</a>, and <a class="el" href="HistogramAccumulator_8hh_source.html#l00120">resultHistTitle</a>.</p>
+<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00115">nDimensions</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00118">resultHistName</a>, and <a class="el" href="HistogramAccumulator_8hh_source.html#l00119">resultHistTitle</a>.</p>
 
 </div>
 </div>
@@ -282,7 +282,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Destructor deletes mean and variance temporary histograms but leaks result as deleting it would remove it from the open file in ROOT. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00128">128</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00127">127</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
 
 </div>
 </div>
@@ -314,11 +314,11 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classHistogramAccumulatorMerge.html#a449cec857d4cf7962ba4db8f07250c63">HistogramAccumulatorMerge</a>, and <a class="el" href="classHistogramAccumulatorSum.html#a1f6868f46d85c606e25b0323bd417e67">HistogramAccumulatorSum</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00136">136</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00135">135</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="HistogramAccumulator_8cc_source.html#l00343">AccumulateSingleValue()</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00117">n</a>, and <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">nDimensions</a>.</p>
+<p class="reference">References <a class="el" href="HistogramAccumulator_8cc_source.html#l00342">AccumulateSingleValue()</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">n</a>, and <a class="el" href="HistogramAccumulator_8hh_source.html#l00115">nDimensions</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="PerEntryHistogram_8cc_source.html#l00116">PerEntryHistogram::AccumulateCurrentEntry()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="PerEntryHistogram_8cc_source.html#l00115">PerEntryHistogram::AccumulateCurrentEntry()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -417,9 +417,9 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="classHistogramAccumulatorMerge.html#a140bf0b270ab8fd214d6a9015825dccf">HistogramAccumulatorMerge</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00343">343</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00342">342</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00136">Accumulate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00135">Accumulate()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -462,11 +462,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Permit the number of recorded entries to be incremented with zero values, ie just increment n. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00096">96</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00095">95</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00117">n</a>.</p>
+<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">n</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="PerEntryHistogram_8hh_source.html#l00070">PerEntryHistogram::AddNEmptyEntries()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="PerEntryHistogram_8hh_source.html#l00069">PerEntryHistogram::AddNEmptyEntries()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -505,9 +505,9 @@ Here is the caller graph for this function:</div>
 
 <p>Access currently accumulated number of entries. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00099">99</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00098">98</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00117">n</a>.</p>
+<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">n</a>.</p>
 
 </div>
 </div>
@@ -536,7 +536,7 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00092">92</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00091">91</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
 </div>
 </div>
@@ -566,11 +566,11 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="classHistogramAccumulatorSum.html#a9eb1e45dadb1be5461feacff18e14eb3">HistogramAccumulatorSum</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00242">242</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8cc_source.html#l00241">241</a> of file <a class="el" href="HistogramAccumulator_8cc_source.html">HistogramAccumulator.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00117">n</a>, and <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">nDimensions</a>.</p>
+<p class="reference">References <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">n</a>, and <a class="el" href="HistogramAccumulator_8hh_source.html#l00115">nDimensions</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="PerEntryHistogram_8cc_source.html#l00127">PerEntryHistogram::Terminate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="PerEntryHistogram_8cc_source.html#l00126">PerEntryHistogram::Terminate()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -607,7 +607,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00121">121</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00120">120</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
 </div>
 </div>
@@ -633,9 +633,9 @@ Here is the caller graph for this function:</div>
 
 <p>Counter. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00117">117</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">116</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00136">Accumulate()</a>, <a class="el" href="HistogramAccumulatorMerge_8cc_source.html#l00047">HistogramAccumulatorMerge::Accumulate()</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00096">AddNEmptyEntries()</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00099">N()</a>, and <a class="el" href="HistogramAccumulator_8cc_source.html#l00242">Terminate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00135">Accumulate()</a>, <a class="el" href="HistogramAccumulatorMerge_8cc_source.html#l00046">HistogramAccumulatorMerge::Accumulate()</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00095">AddNEmptyEntries()</a>, <a class="el" href="HistogramAccumulator_8hh_source.html#l00098">N()</a>, and <a class="el" href="HistogramAccumulator_8cc_source.html#l00241">Terminate()</a>.</p>
 
 </div>
 </div>
@@ -661,9 +661,9 @@ Here is the caller graph for this function:</div>
 
 <p>Number of dimensions. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00116">116</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00115">115</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00136">Accumulate()</a>, <a class="el" href="HistogramAccumulatorMerge_8cc_source.html#l00047">HistogramAccumulatorMerge::Accumulate()</a>, <a class="el" href="HistogramAccumulator_8cc_source.html#l00049">HistogramAccumulator()</a>, and <a class="el" href="HistogramAccumulator_8cc_source.html#l00242">Terminate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00135">Accumulate()</a>, <a class="el" href="HistogramAccumulatorMerge_8cc_source.html#l00046">HistogramAccumulatorMerge::Accumulate()</a>, <a class="el" href="HistogramAccumulator_8cc_source.html#l00048">HistogramAccumulator()</a>, and <a class="el" href="HistogramAccumulator_8cc_source.html#l00241">Terminate()</a>.</p>
 
 </div>
 </div>
@@ -687,7 +687,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00123">123</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00122">122</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
 </div>
 </div>
@@ -713,9 +713,9 @@ Here is the caller graph for this function:</div>
 
 <p>Name for resultant histogram. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00119">119</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00118">118</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00049">HistogramAccumulator()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00048">HistogramAccumulator()</a>.</p>
 
 </div>
 </div>
@@ -741,9 +741,9 @@ Here is the caller graph for this function:</div>
 
 <p>Title for resultant histogram. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00120">120</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00119">119</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00049">HistogramAccumulator()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="HistogramAccumulator_8cc_source.html#l00048">HistogramAccumulator()</a>.</p>
 
 </div>
 </div>
@@ -769,7 +769,7 @@ Here is the caller graph for this function:</div>
 
 <p>Whether this instance has been finished. </p>
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00118">118</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00117">117</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
 </div>
 </div>
@@ -793,7 +793,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00122">122</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HistogramAccumulator_8hh_source.html#l00121">121</a> of file <a class="el" href="HistogramAccumulator_8hh_source.html">HistogramAccumulator.hh</a>.</p>
 
 </div>
 </div>
@@ -804,7 +804,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:08 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:49 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

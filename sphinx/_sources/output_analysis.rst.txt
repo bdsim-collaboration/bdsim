@@ -31,7 +31,7 @@ data size versus computation time for analysis. The following tools are provided
 |                    |                        |                          | as if they were done in one run of   |
 |                    |                        |                          | rebdsim                              |
 +--------------------+------------------------+--------------------------+--------------------------------------+
-| rebdsimHistoMerge  | BDSIM raw              | REBDSIM                  | Merge per-made per event histograms  |
+| rebdsimHistoMerge  | BDSIM raw              | REBDSIM                  | Merge pre-made per-event histograms  |
 |                    |                        |                          | in BDSIM raw output (e.g. ELoss)     |
 +--------------------+------------------------+--------------------------+--------------------------------------+
 | rebdsimOptics      | BDSIM raw              | REBDSIM                  | Calculate optical functions from raw |

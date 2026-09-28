@@ -49,7 +49,7 @@ var searchData=
   ['nrays_46',['nRays',['../classBDSBunchPtc.html#a93b506ec77019c67bf0c8e00811b0268',1,'BDSBunchPtc']]],
   ['nsamplers_47',['nSamplers',['../classBDSDetectorConstruction.html#aa33a57251a2ba3b8fee4ae7ee16c6449',1,'BDSDetectorConstruction']]],
   ['nsegmentspercircle_48',['nsegmentspercircle',['../classBDSFactoryBase.html#ad59b4621fa5cbe365a1123776062ac4f',1,'BDSFactoryBase::nSegmentsPerCircle'],['../classGMAD_1_1OptionsBase.html#a5ff0b2130830c7a591cbed14507f52fb',1,'GMAD::OptionsBase::nSegmentsPerCircle']]],
-  ['nt_49',['nt',['../classBDSArray4D.html#aff37d3b7bb0eff86fad1f36d3288fd6a',1,'BDSArray4D::nT'],['../classGMAD_1_1Query.html#a9ad029ce4deb1610e27444d2613fac0e',1,'GMAD::Query::nt']]],
+  ['nt_49',['nt',['../classGMAD_1_1Query.html#a9ad029ce4deb1610e27444d2613fac0e',1,'GMAD::Query::nt'],['../classBDSArray4D.html#aff37d3b7bb0eff86fad1f36d3288fd6a',1,'BDSArray4D::nT']]],
   ['ntracks_50',['ntracks',['../classBDSEventAction.html#a7e6da0365306cb9506e5bd1420e34ebb',1,'BDSEventAction::nTracks'],['../classBDSOutputROOTEventInfo.html#a965063b55f96bed25419aa3bac810c8a',1,'BDSOutputROOTEventInfo::nTracks']]],
   ['ntrajectoryfilters_51',['nTrajectoryFilters',['../classBDSOutputROOTEventHeader.html#a4adb6b3bd02ad36016e627cbef59d157',1,'BDSOutputROOTEventHeader']]],
   ['nullstrength_52',['nullStrength',['../classBDSSurvey.html#a4b5b732d61d2d55035e97c2575de4d1e',1,'BDSSurvey']]],
@@ -62,7 +62,7 @@ var searchData=
   ['numberwedges_59',['numberWedges',['../structGMAD_1_1Element.html#a8d3d6eb229e5938cd085ec57139b0b81',1,'GMAD::Element']]],
   ['nummagnets_60',['numMagnets',['../classBDSUndulator.html#a86a441b6a7dfc3a3c83032fedebc7d6c',1,'BDSUndulator']]],
   ['nvariables_61',['nVariables',['../classBDSIntegratorMag.html#ae69541e1918b2056297a00b4cdfe85f7',1,'BDSIntegratorMag']]],
-  ['nx_62',['nx',['../classBDSArray4D.html#ad87cee8358b26b2c29a2731c5b06d09b',1,'BDSArray4D::nX'],['../classGMAD_1_1Query.html#ab390b09b7823caabc2989ffed86f5398',1,'GMAD::Query::nx'],['../classGMAD_1_1ScorerMesh.html#a399d6a5ff1ccbfda2d490894dbb9ef5d',1,'GMAD::ScorerMesh::nx']]],
-  ['ny_63',['ny',['../classGMAD_1_1Query.html#ab1081f52384a4d89f9462ce6c677435d',1,'GMAD::Query::ny'],['../classGMAD_1_1ScorerMesh.html#a19a21c4db9c8bcbe08add2373572f923',1,'GMAD::ScorerMesh::ny'],['../classBDSArray4D.html#a9f9775efc3647de2757becde65e5a967',1,'BDSArray4D::nY']]],
+  ['nx_62',['nx',['../classGMAD_1_1Query.html#ab390b09b7823caabc2989ffed86f5398',1,'GMAD::Query::nx'],['../classGMAD_1_1ScorerMesh.html#a399d6a5ff1ccbfda2d490894dbb9ef5d',1,'GMAD::ScorerMesh::nx'],['../classBDSArray4D.html#ad87cee8358b26b2c29a2731c5b06d09b',1,'BDSArray4D::nX']]],
+  ['ny_63',['ny',['../classBDSArray4D.html#a9f9775efc3647de2757becde65e5a967',1,'BDSArray4D::nY'],['../classGMAD_1_1Query.html#ab1081f52384a4d89f9462ce6c677435d',1,'GMAD::Query::ny'],['../classGMAD_1_1ScorerMesh.html#a19a21c4db9c8bcbe08add2373572f923',1,'GMAD::ScorerMesh::ny']]],
   ['nz_64',['nz',['../classBDSArray4D.html#a6a66887f0117e391d059abf13cee3563',1,'BDSArray4D::nZ'],['../classGMAD_1_1Query.html#a9fd52bb2266ec7a4cb27aa6ccbd09a5c',1,'GMAD::Query::nz'],['../classGMAD_1_1ScorerMesh.html#a4e20fb8aa5789aea60adc356496604b8',1,'GMAD::ScorerMesh::nz']]]
 ];

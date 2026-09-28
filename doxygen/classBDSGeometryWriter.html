@@ -128,7 +128,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="textblock"><p>A class for writing fully constructed geometry from <a class="el" href="classBDSIM.html" title="Interface class to use BDSIM.">BDSIM</a> out to other formats. </p>
 <dl class="section author"><dt>Author</dt><dd>Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8hh_source.html#l00041">41</a> of file <a class="el" href="BDSGeometryWriter_8hh_source.html">BDSGeometryWriter.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8hh_source.html#l00040">40</a> of file <a class="el" href="BDSGeometryWriter_8hh_source.html">BDSGeometryWriter.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a034ce769587ae2141f05467e3f2782a0" name="a034ce769587ae2141f05467e3f2782a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a034ce769587ae2141f05467e3f2782a0">&#9670;&#160;</a></span>BDSGeometryWriter()</h2>
@@ -145,7 +145,7 @@ Static Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00049">49</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00048">48</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
 </div>
 </div>
@@ -164,7 +164,7 @@ Static Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00046">46</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00045">45</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
 </div>
 </div>
@@ -204,11 +204,11 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Recursively add information to the map by reference for each logical volume vis attributes if they exist. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00128">128</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00127">127</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryWriter_8cc_source.html#l00128">AddLVColour()</a>, <a class="el" href="BDSGeometryWriter_8hh_source.html#l00047">auxType</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00097">ColourToVRGBAString()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryWriter_8cc_source.html#l00127">AddLVColour()</a>, <a class="el" href="BDSGeometryWriter_8hh_source.html#l00046">auxType</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00096">ColourToVRGBAString()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00128">AddLVColour()</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00113">PrepareColourInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00127">AddLVColour()</a>, and <a class="el" href="BDSGeometryWriter_8cc_source.html#l00112">PrepareColourInformation()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -283,9 +283,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Return a string with the format "int float float float float" for (bool) visible, (double) rgb, and (double) alpha values separated by a space. e.g. "1 0.2 0.4 0.6 1.0" </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00097">97</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00096">96</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00128">AddLVColour()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00127">AddLVColour()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -343,11 +343,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Dispatch function that matches the geometry type and uses the appropriate member function to write out the geometry </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00052">52</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00051">51</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">WriteToGDML()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryWriter_8cc_source.html#l00067">WriteToGDML()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00148">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00141">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -433,11 +433,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Generate a map of logical volume pointers to output auxiliary structure information for writing out to GDML. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00113">113</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00112">112</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryWriter_8cc_source.html#l00128">AddLVColour()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryWriter_8cc_source.html#l00127">AddLVColour()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">WriteToGDML()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00067">WriteToGDML()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -512,9 +512,9 @@ Here is the caller graph for this function:</div>
 
 <p>Register the auxiliary information with the GDML parser (writer). </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00121">121</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00120">120</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">WriteToGDML()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00067">WriteToGDML()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -575,11 +575,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Write the geometry to specified output filename. The filename should be the filename ending in .gdml. If the supplied volume is nullptr (default), the world volume will be written out. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00068">68</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8cc_source.html#l00067">67</a> of file <a class="el" href="BDSGeometryWriter_8cc_source.html">BDSGeometryWriter.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00171">BDS::DirectoryExists()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00164">BDS::FileExists()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00213">BDS::GetFullPath()</a>, <a class="el" href="BDSGeometryWriter_8cc_source.html#l00113">PrepareColourInformation()</a>, <a class="el" href="BDSGeometryWriter_8cc_source.html#l00121">RegisterVolumeAuxiliaryInformation()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00066">BDS::StrContains()</a>.</p>
+<p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00170">BDS::DirectoryExists()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00163">BDS::FileExists()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00212">BDS::GetFullPath()</a>, <a class="el" href="BDSGeometryWriter_8cc_source.html#l00112">PrepareColourInformation()</a>, <a class="el" href="BDSGeometryWriter_8cc_source.html#l00120">RegisterVolumeAuxiliaryInformation()</a>, and <a class="el" href="BDSUtilities_8cc_source.html#l00065">BDS::StrContains()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00052">ExportGeometry()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00051">ExportGeometry()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -663,9 +663,9 @@ Here is the caller graph for this function:</div>
 
 <p>"bds_vrgba" - short to minimise output file size: "bdsim visibility rgba" </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8hh_source.html#l00047">47</a> of file <a class="el" href="BDSGeometryWriter_8hh_source.html">BDSGeometryWriter.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryWriter_8hh_source.html#l00046">46</a> of file <a class="el" href="BDSGeometryWriter_8hh_source.html">BDSGeometryWriter.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00128">AddLVColour()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryWriter_8cc_source.html#l00127">AddLVColour()</a>.</p>
 
 </div>
 </div>
@@ -676,7 +676,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:06 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:48 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

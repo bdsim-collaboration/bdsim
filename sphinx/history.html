@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Version History &mdash; BDSIM 1.7.7.develop documentation</title>
+  <title>Version History &mdash; BDSIM 1.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/documentation_options.js?v=b51e6972"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -70,7 +70,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Version History</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#planned-development">Planned Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#v1-8-0-2026-xx-xx">v1.8.0 - 2026 / XX / XX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v1-8-0-2026-09-27">v1.8.0 - 2026 / 09 / 27</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-options">New Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#general-updates">General Updates</a></li>
@@ -409,8 +409,8 @@ if you’d like to give us feedback or help in the development.  See <a class="r
 <li><p>Any aperture shape can be used for both the inside and the outside of a collimator.</p></li>
 </ul>
 </section>
-<section id="v1-8-0-2026-xx-xx">
-<h2>v1.8.0 - 2026 / XX / XX<a class="headerlink" href="#v1-8-0-2026-xx-xx" title="Link to this heading"></a></h2>
+<section id="v1-8-0-2026-09-27">
+<h2>v1.8.0 - 2026 / 09 / 27<a class="headerlink" href="#v1-8-0-2026-09-27" title="Link to this heading"></a></h2>
 <p>The BDSIM source code has moved to Github and is available here: <a class="reference external" href="https://github.com/bdsim-collaboration/bdsim">https://github.com/bdsim-collaboration/bdsim</a></p>
 <p>This move was done due to better provision of testing resources and interfaces. All issues
 should now be launched here. A more modern approach of pull-requests is being used and
@@ -430,6 +430,7 @@ filter the particles they can handle themselves.</p></li>
 <li><p>New Gabor lens beam line component. Constructed with a radial electric field that would be generated
 with a confined plasma in a Penning-Malmberg trap configuration. The electric and magnetic confinement
 fields are not constructed.</p></li>
+<li><p><cite>jcol</cite> and <cite>jcoltip</cite> can now cross the mid point.</p></li>
 </ul>
 <p><strong>Analysis</strong></p>
 <ul class="simple">
@@ -462,6 +463,7 @@ and crashes in tracking.</p></li>
 colour of the element in the visualiser will be given by the material.</p></li>
 <li><p>GDML exports from BDSIM now include auxiliary colour information that can be handled by
 pyg4ometry and also be BDSIM if the same file is loaded in again.</p></li>
+<li><p>The colour of the tip in a <cite>jcoltip</cite> is now related to the material.</p></li>
 </ul>
 <p><strong>Physics</strong></p>
 <ul class="simple">
@@ -557,6 +559,12 @@ at the same time as a GDML file loaded elsewhere in the model.</p></li>
 <li><p>Document the options <code class="code docutils literal notranslate"><span class="pre">maximumPhotonsPerStep</span></code> and <code class="code docutils literal notranslate"><span class="pre">maximumBetaChangePerStep</span></code> as well
 as fix their number type internally.</p></li>
 <li><p>Fix a crash when using <code class="code docutils literal notranslate"><span class="pre">jcoltip</span></code> with collimator-specific output options.</p></li>
+<li><p>Fix modular physics list that would accept optical physics and cherenkov physics at the same
+time which would try to double-register cherenkov physics (Geant4 would refuse).</p></li>
+<li><p>Fix an uncaught exception when trajectory storage was used and optical physics or cherenkov
+physics was used that would break the assumed ordering of trajectories in Geant4.</p></li>
+<li><p>Fix the cherenkov parameters <code class="code docutils literal notranslate"><span class="pre">maximumPhotonsPerStep</span></code> and <code class="code docutils literal notranslate"><span class="pre">maximumBetaChangePerStep</span></code> when
+used with optical physics, which would previously have no effect.</p></li>
 </ul>
 </section>
 <section id="output-changes">
@@ -589,7 +597,7 @@ along the beamline.</p></li>
 <td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>BDSOutputROOTEventBeam</p></td>
-<td><p>N</p></td>
+<td><p>Y</p></td>
 <td><p>6</p></td>
 <td><p>7</p></td>
 </tr>
@@ -644,9 +652,9 @@ along the beamline.</p></li>
 <td><p>7</p></td>
 </tr>
 <tr class="row-even"><td><p>BDSOutputROOTEventOptions</p></td>
-<td><p>N</p></td>
+<td><p>Y</p></td>
 <td><p>8</p></td>
-<td><p>8</p></td>
+<td><p>9</p></td>
 </tr>
 <tr class="row-odd"><td><p>BDSOutputROOTEventRunInfo</p></td>
 <td><p>N</p></td>
@@ -691,10 +699,10 @@ along the beamline.</p></li>
 <p>These are no longer included directly with BDSIM but are available through pip. At the time
 of writing, the corresponding versions of each utility are:</p>
 <ul class="simple">
-<li><p>pybdsim v3.3.2</p></li>
-<li><p>pymadx v2.0.1</p></li>
-<li><p>pymad8 v2.0.1</p></li>
-<li><p>pytransport v2.0.1</p></li>
+<li><p>pybdsim v3.9.0</p></li>
+<li><p>pymadx v3.2.1</p></li>
+<li><p>pymad8 v2.0.2</p></li>
+<li><p>pytransport v2.0.2</p></li>
 </ul>
 </section>
 </section>
@@ -4790,7 +4798,7 @@ simpler / increased performance</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Aug 19, 2026.
+      <span class="lastupdated">Last updated on Sep 28, 2026.
       </span></p>
   </div>
 

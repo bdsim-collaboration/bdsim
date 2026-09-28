@@ -362,7 +362,7 @@ Protected Attributes</h2></td></tr>
 <p>NOTE - no derived classes record the 'angle' parameter for <a class="el" href="classBDSAcceleratorComponent.html" title="Abstract class that represents a component of an accelerator.">BDSAcceleratorComponent</a> correctly in the <a class="el" href="classBDSTunnelSection.html" title="Class that represents a section of tunnel.">BDSTunnelSection</a> instances. This is only acceptable as the tunnel beam line is manually made not using the internal accumulation of coordinates of <a class="el" href="classBDSBeamline.html" title="A vector of BDSBeamlineElement instances - a beamline.">BDSBeamline</a>. It's also in part necessary as each tunnel segment doesn't obey the no double bending rule of accerlator components so can't be used with angle and arc length accurately.</p>
 <dl class="section author"><dt>Author</dt><dd>Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00059">59</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00058">58</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac4cab28ba8f34977aff7c1bfbecabbf1" name="ac4cab28ba8f34977aff7c1bfbecabbf1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac4cab28ba8f34977aff7c1bfbecabbf1">&#9670;&#160;</a></span>~BDSTunnelFactoryBase()</h2>
@@ -389,7 +389,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Virtual base destructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00139">139</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00138">138</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -418,9 +418,9 @@ Protected Attributes</h2></td></tr>
 
 <p>protected default constructor so only derived classes can use it </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00043">43</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00042">42</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00059">BDSGlobalConstants::Instance()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -483,9 +483,9 @@ Here is the call graph for this function:</div>
 
 <p>Build logical volumes from solids + materials. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00154">154</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00153">153</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSMaterials_8cc_source.html#l01043">BDSMaterials::GetMaterial()</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, and <a class="el" href="BDSMaterials_8cc_source.html#l00040">BDSMaterials::Instance()</a>.</p>
+<p class="reference">References <a class="el" href="BDSMaterials_8cc_source.html#l01042">BDSMaterials::GetMaterial()</a>, <a class="el" href="BDSGlobalConstants_8cc_source.html#l00059">BDSGlobalConstants::Instance()</a>, and <a class="el" href="BDSMaterials_8cc_source.html#l00039">BDSMaterials::Instance()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -542,11 +542,11 @@ Here is the call graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="classBDSTunnelFactoryRectAboveGround.html#a35915a440f7eed4387fd956bfd289c28">BDSTunnelFactoryRectAboveGround</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00319">319</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00318">318</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00210">cumulativeAngle</a>, and <a class="el" href="BDSFactoryBase_8cc_source.html#l00039">BDSFactoryBase::FactoryBaseCleanUp()</a>.</p>
+<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00209">cumulativeAngle</a>, and <a class="el" href="BDSFactoryBase_8cc_source.html#l00038">BDSFactoryBase::FactoryBaseCleanUp()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryRectAboveGround_8cc_source.html#l00049">BDSTunnelFactoryRectAboveGround::CleanUp()</a>, <a class="el" href="BDSTunnelFactoryCircular_8cc_source.html#l00042">BDSTunnelFactoryCircular::CreateTunnelSection()</a>, <a class="el" href="BDSTunnelFactoryElliptical_8cc_source.html#l00044">BDSTunnelFactoryElliptical::CreateTunnelSection()</a>, <a class="el" href="BDSTunnelFactoryRectangular_8cc_source.html#l00041">BDSTunnelFactoryRectangular::CreateTunnelSection()</a>, <a class="el" href="BDSTunnelFactoryCircular_8cc_source.html#l00161">BDSTunnelFactoryCircular::CreateTunnelSectionAngled()</a>, <a class="el" href="BDSTunnelFactoryElliptical_8cc_source.html#l00217">BDSTunnelFactoryElliptical::CreateTunnelSectionAngled()</a>, and <a class="el" href="BDSTunnelFactoryRectangular_8cc_source.html#l00158">BDSTunnelFactoryRectangular::CreateTunnelSectionAngled()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryRectAboveGround_8cc_source.html#l00048">BDSTunnelFactoryRectAboveGround::CleanUp()</a>, <a class="el" href="BDSTunnelFactoryCircular_8cc_source.html#l00041">BDSTunnelFactoryCircular::CreateTunnelSection()</a>, <a class="el" href="BDSTunnelFactoryElliptical_8cc_source.html#l00043">BDSTunnelFactoryElliptical::CreateTunnelSection()</a>, <a class="el" href="BDSTunnelFactoryRectangular_8cc_source.html#l00040">BDSTunnelFactoryRectangular::CreateTunnelSection()</a>, <a class="el" href="BDSTunnelFactoryCircular_8cc_source.html#l00160">BDSTunnelFactoryCircular::CreateTunnelSectionAngled()</a>, <a class="el" href="BDSTunnelFactoryElliptical_8cc_source.html#l00216">BDSTunnelFactoryElliptical::CreateTunnelSectionAngled()</a>, and <a class="el" href="BDSTunnelFactoryRectangular_8cc_source.html#l00157">BDSTunnelFactoryRectangular::CreateTunnelSectionAngled()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -650,7 +650,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00136">136</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00135">135</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
 </div>
 </div>
@@ -707,11 +707,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>General basic viability tests for input parameters - these are only basic tests and not dependent on the accelerator model, other components or specific tunnel model in the derived factory class </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00117">117</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00116">116</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSFactoryBase_8hh_source.html#l00051">BDSFactoryBase::lengthSafety</a>.</p>
+<p class="reference">References <a class="el" href="BDSFactoryBase_8hh_source.html#l00050">BDSFactoryBase::lengthSafety</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryRectAboveGround_8cc_source.html#l00219">BDSTunnelFactoryRectAboveGround::TestInputParameters()</a>, <a class="el" href="BDSTunnelFactoryCircular_8cc_source.html#l00328">BDSTunnelFactoryCircular::TestInputParameters()</a>, <a class="el" href="BDSTunnelFactorySquare_8cc_source.html#l00082">BDSTunnelFactorySquare::TestInputParameters()</a>, <a class="el" href="BDSTunnelFactoryElliptical_8cc_source.html#l00436">BDSTunnelFactoryElliptical::TestInputParameters()</a>, and <a class="el" href="BDSTunnelFactoryRectangular_8cc_source.html#l00321">BDSTunnelFactoryRectangular::TestInputParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryRectAboveGround_8cc_source.html#l00218">BDSTunnelFactoryRectAboveGround::TestInputParameters()</a>, <a class="el" href="BDSTunnelFactoryCircular_8cc_source.html#l00327">BDSTunnelFactoryCircular::TestInputParameters()</a>, <a class="el" href="BDSTunnelFactorySquare_8cc_source.html#l00081">BDSTunnelFactorySquare::TestInputParameters()</a>, <a class="el" href="BDSTunnelFactoryElliptical_8cc_source.html#l00435">BDSTunnelFactoryElliptical::TestInputParameters()</a>, and <a class="el" href="BDSTunnelFactoryRectangular_8cc_source.html#l00320">BDSTunnelFactoryRectangular::TestInputParameters()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -845,7 +845,7 @@ Here is the caller graph for this function:</div>
 
 <p>Implemented in <a class="el" href="classBDSTunnelFactoryCircular.html#a8ac324cfa45ea4cb8362fdf7f8bd40ef">BDSTunnelFactoryCircular</a>, <a class="el" href="classBDSTunnelFactoryElliptical.html#a26f116a0a9037a891088d3184ad4c578">BDSTunnelFactoryElliptical</a>, <a class="el" href="classBDSTunnelFactoryRectAboveGround.html#acddc31227c6be995db13b701ed00fa73">BDSTunnelFactoryRectAboveGround</a>, <a class="el" href="classBDSTunnelFactoryRectangular.html#a49b0da0f2c2c837398b1cd3530ae6a8e">BDSTunnelFactoryRectangular</a>, and <a class="el" href="classBDSTunnelFactorySquare.html#ab7a021162baf11e62cfe843466f1d971">BDSTunnelFactorySquare</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00087">BDSTunnelFactory::CreateTunnelSection()</a>, and <a class="el" href="BDSTunnelFactorySquare_8cc_source.html#l00036">BDSTunnelFactorySquare::CreateTunnelSection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00086">BDSTunnelFactory::CreateTunnelSection()</a>, and <a class="el" href="BDSTunnelFactorySquare_8cc_source.html#l00035">BDSTunnelFactorySquare::CreateTunnelSection()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -974,7 +974,7 @@ Here is the caller graph for this function:</div>
 
 <p>Implemented in <a class="el" href="classBDSTunnelFactoryCircular.html#ab9e7b538b13a6688371c46844a46e3fd">BDSTunnelFactoryCircular</a>, <a class="el" href="classBDSTunnelFactoryElliptical.html#a6c47e407e582fec32eeaeef060fd9c43">BDSTunnelFactoryElliptical</a>, <a class="el" href="classBDSTunnelFactoryRectAboveGround.html#a99c20b8707bf8e08d981b3f1e879cd10">BDSTunnelFactoryRectAboveGround</a>, <a class="el" href="classBDSTunnelFactoryRectangular.html#a707e9085314c14086a80161e9885fdef">BDSTunnelFactoryRectangular</a>, and <a class="el" href="classBDSTunnelFactorySquare.html#ad1219c83610904a252961a2a5329f9ff">BDSTunnelFactorySquare</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00171">BDSTunnelFactory::CreateTunnelSectionAngled()</a>, <a class="el" href="BDSTunnelFactorySquare_8cc_source.html#l00057">BDSTunnelFactorySquare::CreateTunnelSectionAngled()</a>, and <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00097">CreateTunnelSectionAngledInOut()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00170">BDSTunnelFactory::CreateTunnelSectionAngled()</a>, <a class="el" href="BDSTunnelFactorySquare_8cc_source.html#l00056">BDSTunnelFactorySquare::CreateTunnelSectionAngled()</a>, and <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00096">CreateTunnelSectionAngledInOut()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1106,11 +1106,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Create a tunnel section with an angled input face and flat output face. Note, this is implemented in this base class as a dispatch to the AngledInOut function. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00061">61</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00060">60</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00097">CreateTunnelSectionAngledInOut()</a>.</p>
+<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00096">CreateTunnelSectionAngledInOut()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00107">BDSTunnelFactory::CreateTunnelSectionAngledIn()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00106">BDSTunnelFactory::CreateTunnelSectionAngledIn()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1241,11 +1241,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Calculates the face normal vectors that all construction uses and then passes along to the also public function CreateTunnelSectionAngled. This allows flexibility in the way the tunnel segments are created - whether in a fairly flat 2d approach along the beam line with only bending the horizontal plane (angles) or in 3d (vectors). </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00097">97</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00096">96</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00139">BDS::CalculateFaces()</a>, and <a class="el" href="classBDSTunnelFactoryBase.html#a76cf9bad60a139f8ad368837efa2232d">CreateTunnelSectionAngled()</a>.</p>
+<p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00138">BDS::CalculateFaces()</a>, and <a class="el" href="classBDSTunnelFactoryBase.html#a76cf9bad60a139f8ad368837efa2232d">CreateTunnelSectionAngled()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00061">CreateTunnelSectionAngledIn()</a>, <a class="el" href="BDSTunnelFactory_8cc_source.html#l00149">BDSTunnelFactory::CreateTunnelSectionAngledInOut()</a>, and <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00079">CreateTunnelSectionAngledOut()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00060">CreateTunnelSectionAngledIn()</a>, <a class="el" href="BDSTunnelFactory_8cc_source.html#l00148">BDSTunnelFactory::CreateTunnelSectionAngledInOut()</a>, and <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00078">CreateTunnelSectionAngledOut()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1376,11 +1376,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Create a tunnel section with an angled output face and flat input face. Note, this is implemented in this base class as a dispatch to the AngledInOut function. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00079">79</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00078">78</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00097">CreateTunnelSectionAngledInOut()</a>.</p>
+<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00096">CreateTunnelSectionAngledInOut()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00128">BDSTunnelFactory::CreateTunnelSectionAngledOut()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactory_8cc_source.html#l00127">BDSTunnelFactory::CreateTunnelSectionAngledOut()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1436,9 +1436,9 @@ Here is the caller graph for this function:</div>
 
 <p>Place components in container volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00282">282</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00281">281</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSFactoryBase_8hh_source.html#l00053">BDSFactoryBase::checkOverlaps</a>.</p>
+<p class="reference">References <a class="el" href="BDSFactoryBase_8hh_source.html#l00052">BDSFactoryBase::checkOverlaps</a>.</p>
 
 </div>
 </div>
@@ -1484,9 +1484,9 @@ Here is the caller graph for this function:</div>
 
 <p>Prepare the assembled geometry component. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00219">219</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00218">218</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryComponent_8hh_source.html#l00153">BDSGeometryComponent::RegisterLogicalVolume()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00145">BDSGeometryComponent::RegisterSolid()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00188">BDSGeometryComponent::RegisterVisAttributes()</a>, and <a class="el" href="BDSGeometryComponent_8hh_source.html#l00121">BDSGeometryComponent::SetExtent()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryComponent_8hh_source.html#l00152">BDSGeometryComponent::RegisterLogicalVolume()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00144">BDSGeometryComponent::RegisterSolid()</a>, <a class="el" href="BDSGeometryComponent_8hh_source.html#l00187">BDSGeometryComponent::RegisterVisAttributes()</a>, and <a class="el" href="BDSGeometryComponent_8hh_source.html#l00120">BDSGeometryComponent::SetExtent()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1542,9 +1542,9 @@ Here is the call graph for this function:</div>
 
 <p>Prepare the output <a class="el" href="classBDSTunnelSection.html" title="Class that represents a section of tunnel.">BDSTunnelSection</a> instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00243">243</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00242">242</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00210">cumulativeAngle</a>, <a class="el" href="BDSAcceleratorComponentRegistry_8cc_source.html#l00033">BDSAcceleratorComponentRegistry::Instance()</a>, and <a class="el" href="BDSAcceleratorComponentRegistry_8cc_source.html#l00162">BDSAcceleratorComponentRegistry::RegisterTunnelComponent()</a>.</p>
+<p class="reference">References <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00209">cumulativeAngle</a>, <a class="el" href="BDSAcceleratorComponentRegistry_8cc_source.html#l00032">BDSAcceleratorComponentRegistry::Instance()</a>, and <a class="el" href="BDSAcceleratorComponentRegistry_8cc_source.html#l00161">BDSAcceleratorComponentRegistry::RegisterTunnelComponent()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1587,9 +1587,9 @@ Here is the call graph for this function:</div>
 
 <p>Set the sensitive volumes. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00257">257</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00256">256</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryComponent_8cc_source.html#l00148">BDSGeometryComponent::RegisterSensitiveVolume()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryComponent_8cc_source.html#l00147">BDSGeometryComponent::RegisterSensitiveVolume()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1630,9 +1630,9 @@ Here is the call graph for this function:</div>
 
 <p>Set user limits for all logical volumes in the tunnel section. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00270">270</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00269">269</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00059">BDSGlobalConstants::Instance()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1678,9 +1678,9 @@ Here is the call graph for this function:</div>
 
 <p>Set the visual attributes for each logical volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00183">183</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00182">182</a> of file <a class="el" href="BDSTunnelFactoryBase_8cc_source.html">BDSTunnelFactoryBase.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSColours_8cc_source.html#l00033">BDSColours::Instance()</a>, and <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>.</p>
+<p class="reference">References <a class="el" href="BDSColours_8cc_source.html#l00032">BDSColours::Instance()</a>, and <a class="el" href="BDSGlobalConstants_8cc_source.html#l00059">BDSGlobalConstants::Instance()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1727,7 +1727,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00200">200</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00199">199</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1751,7 +1751,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00195">195</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00194">194</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1776,9 +1776,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>The total angle by which the coordinates turn by (horizontally) after going through the tunnel - only really needed to fulfill <a class="el" href="classBDSAcceleratorComponent.html" title="Abstract class that represents a component of an accelerator.">BDSAcceleratorComponent</a> inheritance - unsed further downstream. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00210">210</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00209">209</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00319">CleanUp()</a>, and <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00243">PrepareTunnelSection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00318">CleanUp()</a>, and <a class="el" href="BDSTunnelFactoryBase_8cc_source.html#l00242">PrepareTunnelSection()</a>.</p>
 
 </div>
 </div>
@@ -1802,7 +1802,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00205">205</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00204">204</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1826,7 +1826,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00204">204</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00203">203</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1850,7 +1850,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00203">203</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00202">202</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1874,7 +1874,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00198">198</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00197">197</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1898,7 +1898,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00199">199</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00198">198</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1922,7 +1922,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00202">202</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00201">201</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1946,7 +1946,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00197">197</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00196">196</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1970,7 +1970,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00192">192</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00191">191</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -1994,7 +1994,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00201">201</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00200">200</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -2018,7 +2018,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00193">193</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00192">192</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -2042,7 +2042,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00196">196</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTunnelFactoryBase_8hh_source.html#l00195">195</a> of file <a class="el" href="BDSTunnelFactoryBase_8hh_source.html">BDSTunnelFactoryBase.hh</a>.</p>
 
 </div>
 </div>
@@ -2053,7 +2053,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:08 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:49 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Model Customisation &mdash; BDSIM 1.7.7.develop documentation</title>
+  <title>Model Customisation &mdash; BDSIM 1.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/documentation_options.js?v=b51e6972"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -82,10 +82,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#materials-and-atoms">Materials and Atoms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#single-element">Single Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-a-single-element">Use a Single Element</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-single-element-material">Custom Single Element Material</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compound-material-by-atoms">Compound Material by Atoms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compound-material-by-mass-fraction">Compound Material by Mass Fraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compound-material">Compound Material</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#by-atoms">By Atoms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#by-mass-fraction">By Mass Fraction</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#predefined-materials">Predefined Materials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vacuum-and-air">Vacuum and Air</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ideal-gases">Ideal gases</a></li>
@@ -1547,8 +1550,8 @@ that are listed in <a class="reference internal" href="#predefined-materials"><s
 material used for that element. It is used differently depending on the element. For example,
 in the case of a magnet, it is used for the yoke and for a collimator for the collimator
 block.</p>
-<section id="single-element">
-<h3>Single Element<a class="headerlink" href="#single-element" title="Link to this heading"></a></h3>
+<section id="use-a-single-element">
+<h3>Use a Single Element<a class="headerlink" href="#use-a-single-element" title="Link to this heading"></a></h3>
 <p>In the case of an element, the chemical symbol can be specified:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rc1</span><span class="p">:</span> <span class="n">rcol</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mf">1.2</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mf">0.6</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"W"</span><span class="p">;</span>
 </pre></div>
@@ -1567,34 +1570,43 @@ command with the following syntax:</p>
 </pre></div>
 </div>
 <table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Parameter</p></td>
-<td><p>Description</p></td>
-<td><p>Default</p></td>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Default</p></th>
 </tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p>Z</p></td>
 <td><p>Atomic number</p></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>A</p></td>
-<td><p>Mass number [g/mol]</p></td>
+<td><p>Mass number</p></td>
+<td><p>g/mol</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>density</p></td>
-<td><p>Density in [g/cm3]</p></td>
+<td><p>Density</p></td>
+<td><p>g/cm3</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>T</p></td>
-<td><p>Temperature in [K]</p></td>
+<td><p>Temperature</p></td>
+<td><p>K</p></td>
 <td><p>300</p></td>
 </tr>
 <tr class="row-even"><td><p>P</p></td>
-<td><p>Pressure [atm]</p></td>
+<td><p>Pressure</p></td>
+<td><p>atm</p></td>
 <td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>state</p></td>
 <td><p>“solid”, “liquid” or “gas”</p></td>
-<td><p>“solid”</p></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1604,8 +1616,10 @@ command with the following syntax:</p>
 </div>
 <p>A compound material can be specified in two manners:</p>
 </section>
-<section id="compound-material-by-atoms">
-<h3>Compound Material by Atoms<a class="headerlink" href="#compound-material-by-atoms" title="Link to this heading"></a></h3>
+<section id="compound-material">
+<h3>Compound Material<a class="headerlink" href="#compound-material" title="Link to this heading"></a></h3>
+<section id="by-atoms">
+<h4>By Atoms<a class="headerlink" href="#by-atoms" title="Link to this heading"></a></h4>
 <p>If the number of atoms of each component in a material unit is known,
 the following syntax can be used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">material</span><span class="o">&gt;</span> <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">=&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">P</span><span class="o">=&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span>
@@ -1614,17 +1628,28 @@ the following syntax can be used:</p>
 </pre></div>
 </div>
 <table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p>Parameter</p></td>
-<td><p>Description</p></td>
-</tr>
 <tr class="row-even"><td><p>density</p></td>
-<td><p>Density in [g/cm3]</p></td>
+<td><p>Density (g/cm3)</p></td>
 </tr>
-<tr class="row-odd"><td><p>components</p></td>
+<tr class="row-odd"><td><p>T</p></td>
+<td><p>Temperature (K)</p></td>
+</tr>
+<tr class="row-even"><td><p>P</p></td>
+<td><p>Pressure (atm)</p></td>
+</tr>
+<tr class="row-odd"><td><p>state</p></td>
+<td><p>“solid”, “liquid”, “gas”</p></td>
+</tr>
+<tr class="row-even"><td><p>components</p></td>
 <td><p>List of symbols for material components</p></td>
 </tr>
-<tr class="row-even"><td><p>componentsWeights</p></td>
+<tr class="row-odd"><td><p>componentsWeights</p></td>
 <td><p>Number of atoms for each component in material unit</p></td>
 </tr>
 </tbody>
@@ -1634,8 +1659,8 @@ the following syntax can be used:</p>
 </pre></div>
 </div>
 </section>
-<section id="compound-material-by-mass-fraction">
-<h3>Compound Material by Mass Fraction<a class="headerlink" href="#compound-material-by-mass-fraction" title="Link to this heading"></a></h3>
+<section id="by-mass-fraction">
+<h4>By Mass Fraction<a class="headerlink" href="#by-mass-fraction" title="Link to this heading"></a></h4>
 <p>On the other hand, if the mass fraction of each component is known, the
 following syntax can be used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">material</span><span class="o">&gt;</span> <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">=&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">P</span><span class="o">=&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span>
@@ -1644,9 +1669,23 @@ following syntax can be used:</p>
 </pre></div>
 </div>
 <table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p>Parameter</p></td>
-<td><p>Description</p></td>
+<tr class="row-even"><td><p>density</p></td>
+<td><p>Density (g/cm3)</p></td>
+</tr>
+<tr class="row-odd"><td><p>T</p></td>
+<td><p>Temperature (K)</p></td>
+</tr>
+<tr class="row-even"><td><p>P</p></td>
+<td><p>Pressure (atm)</p></td>
+</tr>
+<tr class="row-odd"><td><p>state</p></td>
+<td><p>“solid”, “liquid”, “gas”</p></td>
 </tr>
 <tr class="row-even"><td><p>components</p></td>
 <td><p>List of symbols for material components</p></td>
@@ -1693,6 +1732,7 @@ brackets for the list of weights or fractions.</p>
 <span class="n">myNbTi</span>     <span class="p">:</span> <span class="n">matdef</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">5.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">"myNb"</span><span class="p">,</span><span class="s2">"myTi"</span><span class="p">],</span> <span class="n">componentsWeights</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
 </pre></div>
 </div>
+</section>
 </section>
 <section id="predefined-materials">
 <span id="id6"></span><h3>Predefined Materials<a class="headerlink" href="#predefined-materials" title="Link to this heading"></a></h3>
@@ -3575,40 +3615,64 @@ produces the model shown below.</p>
 <td><p>25</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>awakescreen</p></td>
+<tr class="row-odd"><td><p>air</p></td>
+<td><p>240</p></td>
+<td><p>240</p></td>
+<td><p>240</p></td>
+<td><p>0.05</p></td>
+</tr>
+<tr class="row-even"><td><p>awakescreen</p></td>
 <td><p>175</p></td>
 <td><p>196</p></td>
 <td><p>222</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>awakespectrometer</p></td>
+<tr class="row-odd"><td><p>awakespectrometer</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>beampipe</p></td>
+<tr class="row-even"><td><p>beampipe</p></td>
 <td><p>102</p></td>
 <td><p>102</p></td>
 <td><p>102</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>black</p></td>
+<tr class="row-odd"><td><p>black</p></td>
 <td><p>0</p></td>
 <td><p>0</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>blue</p></td>
+<tr class="row-even"><td><p>blue</p></td>
 <td><p>0</p></td>
 <td><p>0</p></td>
 <td><p>255</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>bmcol</p></td>
+<td><p>63</p></td>
+<td><p>102</p></td>
+<td><p>51</p></td>
 <td><p>1</p></td>
 </tr>
 <tr class="row-even"><td><p>brown</p></td>
 <td><p>114</p></td>
 <td><p>63</p></td>
 <td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>capillarygas</p></td>
+<td><p>209</p></td>
+<td><p>25</p></td>
+<td><p>25</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-even"><td><p>capillaryouter</p></td>
+<td><p>63</p></td>
+<td><p>102</p></td>
+<td><p>51</p></td>
 <td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>coil</p></td>
@@ -3677,10 +3741,22 @@ produces the model shown below.</p>
 <td><p>51</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>element</p></td>
+<tr class="row-even"><td><p>electrode</p></td>
+<td><p>175</p></td>
+<td><p>196</p></td>
+<td><p>222</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>element</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>gaborlens</p></td>
+<td><p>54</p></td>
+<td><p>167</p></td>
+<td><p>208</p></td>
 <td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>gap</p></td>
@@ -3695,59 +3771,71 @@ produces the model shown below.</p>
 <td><p>0</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>gray</p></td>
+<tr class="row-odd"><td><p>gold</p></td>
+<td><p>220</p></td>
+<td><p>176</p></td>
+<td><p>71</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>gray</p></td>
 <td><p>127</p></td>
 <td><p>127</p></td>
 <td><p>127</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>green</p></td>
+<tr class="row-odd"><td><p>green</p></td>
 <td><p>0</p></td>
 <td><p>255</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>grey</p></td>
+<tr class="row-even"><td><p>grey</p></td>
 <td><p>127</p></td>
 <td><p>127</p></td>
 <td><p>127</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>hkicker</p></td>
+<tr class="row-odd"><td><p>hkicker</p></td>
 <td><p>76</p></td>
 <td><p>51</p></td>
 <td><p>178</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>iron</p></td>
+<tr class="row-even"><td><p>iron</p></td>
 <td><p>129</p></td>
 <td><p>81</p></td>
 <td><p>74</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>jcol</p></td>
+<tr class="row-odd"><td><p>jcol</p></td>
 <td><p>63</p></td>
 <td><p>102</p></td>
 <td><p>51</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>kapton</p></td>
+<tr class="row-even"><td><p>kapton</p></td>
 <td><p>236</p></td>
 <td><p>96</p></td>
 <td><p>20</p></td>
 <td><p>0.5</p></td>
 </tr>
-<tr class="row-even"><td><p>kicker</p></td>
+<tr class="row-odd"><td><p>kicker</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>lead</p></td>
+<tr class="row-even"><td><p>lead</p></td>
 <td><p>96</p></td>
 <td><p>104</p></td>
 <td><p>115</p></td>
 <td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>lyso</p></td>
+<td><p>230</p></td>
+<td><p>210</p></td>
+<td><p>235</p></td>
+<td><p>0.3</p></td>
 </tr>
 <tr class="row-even"><td><p>magenta</p></td>
 <td><p>255</p></td>
@@ -3755,253 +3843,259 @@ produces the model shown below.</p>
 <td><p>255</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>marker</p></td>
+<tr class="row-odd"><td><p>marble</p></td>
+<td><p>228</p></td>
+<td><p>228</p></td>
+<td><p>228</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>marker</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>multipole</p></td>
+<tr class="row-odd"><td><p>multipole</p></td>
 <td><p>118</p></td>
 <td><p>135</p></td>
 <td><p>153</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>muonspoiler</p></td>
+<tr class="row-even"><td><p>muonspoiler</p></td>
 <td><p>0</p></td>
 <td><p>205</p></td>
 <td><p>208</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>octupole</p></td>
+<tr class="row-odd"><td><p>octupole</p></td>
 <td><p>0</p></td>
 <td><p>153</p></td>
 <td><p>76</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>opaquebox</p></td>
+<tr class="row-even"><td><p>opaquebox</p></td>
 <td><p>51</p></td>
 <td><p>51</p></td>
 <td><p>51</p></td>
 <td><p>0.2</p></td>
 </tr>
-<tr class="row-even"><td><p>paralleltransporter</p></td>
+<tr class="row-odd"><td><p>paralleltransporter</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>quadrupole</p></td>
+<tr class="row-even"><td><p>quadrupole</p></td>
 <td><p>209</p></td>
 <td><p>25</p></td>
 <td><p>25</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>rbend</p></td>
+<tr class="row-odd"><td><p>rbend</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>rcol</p></td>
+<tr class="row-even"><td><p>rcol</p></td>
 <td><p>63</p></td>
 <td><p>102</p></td>
 <td><p>51</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>reallyreallydarkgrey</p></td>
+<tr class="row-odd"><td><p>reallyreallydarkgrey</p></td>
 <td><p>51</p></td>
 <td><p>51</p></td>
 <td><p>51</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>rectangularbend</p></td>
+<tr class="row-even"><td><p>rectangularbend</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>red</p></td>
+<tr class="row-odd"><td><p>red</p></td>
 <td><p>255</p></td>
 <td><p>0</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>rf</p></td>
+<tr class="row-even"><td><p>rf</p></td>
 <td><p>118</p></td>
 <td><p>135</p></td>
 <td><p>153</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>rfcavity</p></td>
+<tr class="row-odd"><td><p>rfcavity</p></td>
 <td><p>118</p></td>
 <td><p>135</p></td>
 <td><p>153</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>rfx</p></td>
+<tr class="row-even"><td><p>rfx</p></td>
 <td><p>118</p></td>
 <td><p>135</p></td>
 <td><p>153</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>rfy</p></td>
+<tr class="row-odd"><td><p>rfy</p></td>
 <td><p>118</p></td>
 <td><p>135</p></td>
 <td><p>153</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>rmatrix</p></td>
+<tr class="row-even"><td><p>rmatrix</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>sbend</p></td>
+<tr class="row-odd"><td><p>sbend</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>screen</p></td>
+<tr class="row-even"><td><p>screen</p></td>
 <td><p>175</p></td>
 <td><p>196</p></td>
 <td><p>222</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>screenframe</p></td>
+<tr class="row-odd"><td><p>screenframe</p></td>
 <td><p>178</p></td>
 <td><p>178</p></td>
 <td><p>178</p></td>
 <td><p>0.4</p></td>
 </tr>
-<tr class="row-odd"><td><p>sectorbend</p></td>
+<tr class="row-even"><td><p>sectorbend</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>sextupole</p></td>
+<tr class="row-odd"><td><p>sextupole</p></td>
 <td><p>255</p></td>
 <td><p>204</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>shield</p></td>
+<tr class="row-even"><td><p>shield</p></td>
 <td><p>138</p></td>
 <td><p>135</p></td>
 <td><p>119</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>soil</p></td>
+<tr class="row-odd"><td><p>soil</p></td>
 <td><p>138</p></td>
 <td><p>90</p></td>
 <td><p>0</p></td>
 <td><p>0.4</p></td>
 </tr>
-<tr class="row-odd"><td><p>solenoid</p></td>
+<tr class="row-even"><td><p>solenoid</p></td>
 <td><p>255</p></td>
 <td><p>139</p></td>
 <td><p>0</p></td>
 <td><p>0.7</p></td>
 </tr>
-<tr class="row-even"><td><p>srfcavity</p></td>
+<tr class="row-odd"><td><p>srfcavity</p></td>
 <td><p>175</p></td>
 <td><p>196</p></td>
 <td><p>222</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>target</p></td>
+<tr class="row-even"><td><p>target</p></td>
 <td><p>63</p></td>
 <td><p>102</p></td>
 <td><p>51</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>thinmultipole</p></td>
+<tr class="row-odd"><td><p>thinmultipole</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>thinrmatrix</p></td>
+<tr class="row-even"><td><p>thinrmatrix</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>229</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>tkicker</p></td>
+<tr class="row-odd"><td><p>tkicker</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>traj_negative</p></td>
+<tr class="row-even"><td><p>traj_negative</p></td>
 <td><p>204</p></td>
 <td><p>0</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>traj_neutral</p></td>
+<tr class="row-odd"><td><p>traj_neutral</p></td>
 <td><p>51</p></td>
 <td><p>178</p></td>
 <td><p>0</p></td>
 <td><p>0.2</p></td>
 </tr>
-<tr class="row-odd"><td><p>traj_positive</p></td>
+<tr class="row-even"><td><p>traj_positive</p></td>
 <td><p>0</p></td>
 <td><p>51</p></td>
 <td><p>229</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>tunnel</p></td>
+<tr class="row-odd"><td><p>tunnel</p></td>
 <td><p>138</p></td>
 <td><p>135</p></td>
 <td><p>119</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>tunnelfloor</p></td>
+<tr class="row-even"><td><p>tunnelfloor</p></td>
 <td><p>127</p></td>
 <td><p>127</p></td>
 <td><p>114</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>undulator</p></td>
+<tr class="row-odd"><td><p>undulator</p></td>
 <td><p>159</p></td>
 <td><p>159</p></td>
 <td><p>159</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>vkicker</p></td>
+<tr class="row-even"><td><p>vkicker</p></td>
 <td><p>186</p></td>
 <td><p>84</p></td>
 <td><p>211</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>warning</p></td>
+<tr class="row-odd"><td><p>warning</p></td>
 <td><p>255</p></td>
 <td><p>19</p></td>
 <td><p>146</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>water</p></td>
+<tr class="row-even"><td><p>water</p></td>
 <td><p>0</p></td>
 <td><p>102</p></td>
 <td><p>204</p></td>
 <td><p>0.5</p></td>
 </tr>
-<tr class="row-even"><td><p>white</p></td>
+<tr class="row-odd"><td><p>white</p></td>
 <td><p>255</p></td>
 <td><p>255</p></td>
 <td><p>255</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>wirescanner</p></td>
+<tr class="row-even"><td><p>wirescanner</p></td>
 <td><p>138</p></td>
 <td><p>135</p></td>
 <td><p>119</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>yellow</p></td>
+<tr class="row-odd"><td><p>yellow</p></td>
 <td><p>255</p></td>
 <td><p>255</p></td>
 <td><p>0</p></td>
@@ -4141,7 +4235,7 @@ in MAD-X with the following</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Aug 19, 2026.
+      <span class="lastupdated">Last updated on Sep 28, 2026.
       </span></p>
   </div>
 

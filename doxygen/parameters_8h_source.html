@@ -83,103 +83,102 @@ $(document).ready(function() { init_codefold(0); });
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* </span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, </span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">University of London 2001 - 2024.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"></span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">This file is part of BDSIM.</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"></span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">BDSIM is free software: you can redistribute it and/or modify </span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">it under the terms of the GNU General Public License as published </span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">by the Free Software Foundation version 3 of the License.</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"></span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">BDSIM is distributed in the hope that it will be useful, but </span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">GNU General Public License for more details.</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"></span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">You should have received a copy of the GNU General Public License</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">along with BDSIM.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifndef PARAMETERS_H</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define PARAMETERS_H</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;element.h&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceGMAD.html">GMAD</a></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">extern</span> <span class="keywordtype">bool</span> willExit;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">class </span>Array;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structGMAD_1_1Parameters.html">   44</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structGMAD_1_1Parameters.html">Parameters</a> : <span class="keyword">public</span> <a class="code hl_struct" href="structGMAD_1_1Element.html">Element</a> {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">   47</a></span>    std::map&lt;std::string,bool&gt; <a class="code hl_variable" href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">setMap</a>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#a5cedbc01a18d48a6def41ab611bee50a">flush</a>();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#a282fa28ff46436673375a80041ab9a80">inherit_properties</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structGMAD_1_1Element.html">Element</a>&amp; e);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit = <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#a396f7894b0b5c3570af4d1bc96e7ea3b">set_value_array</a>(<span class="keyword">const</span> std::string&amp; property, <a class="code hl_class" href="classGMAD_1_1Array.html">Array</a>* value, <span class="keywordtype">bool</span> bExit = <span class="keyword">true</span>); <span class="comment">// TODO keep separate as template calling order</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_function" href="structGMAD_1_1Parameters.html#af4d94ee360ac0157d9065f78797fe9a1">Parameters</a>();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  };</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">This file is part of BDSIM.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"></span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">BDSIM is free software: you can redistribute it and/or modify </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">it under the terms of the GNU General Public License as published </span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">by the Free Software Foundation version 3 of the License.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"></span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">BDSIM is distributed in the hope that it will be useful, but </span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">GNU General Public License for more details.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"></span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">along with BDSIM.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef PARAMETERS_H</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define PARAMETERS_H</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;element.h&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceGMAD.html">GMAD</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">extern</span> <span class="keywordtype">bool</span> willExit;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">class </span>Array;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structGMAD_1_1Parameters.html">   43</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structGMAD_1_1Parameters.html">Parameters</a> : <span class="keyword">public</span> <a class="code hl_struct" href="structGMAD_1_1Element.html">Element</a> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">   46</a></span>    std::map&lt;std::string,bool&gt; <a class="code hl_variable" href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">setMap</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#a5cedbc01a18d48a6def41ab611bee50a">flush</a>();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#a282fa28ff46436673375a80041ab9a80">inherit_properties</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structGMAD_1_1Element.html">Element</a>&amp; e);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#a396f7894b0b5c3570af4d1bc96e7ea3b">set_value_array</a>(<span class="keyword">const</span> std::string&amp; property, <a class="code hl_class" href="classGMAD_1_1Array.html">Array</a>* value, <span class="keywordtype">bool</span> bExit = <span class="keyword">true</span>); <span class="comment">// TODO keep separate as template calling order</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_function" href="structGMAD_1_1Parameters.html#af4d94ee360ac0157d9065f78797fe9a1">Parameters</a>();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  };</div>
 </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">   67</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">Parameters::set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#ifdef BDSDEBUG</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;element&gt; Setting value &quot;</span> &lt;&lt; std::setw(25) &lt;&lt; std::left &lt;&lt; <span class="keyword">property</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// member method can throw runtime_error, catch and exit gracefully</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">try</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_function" href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">Published&lt;Element&gt;::set</a>(<span class="keyword">this</span>,property,value);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::runtime_error&amp;)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// not implemented mad parameters will be ignored</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">if</span> (property == <span class="stringliteral">&quot;harmon&quot;</span> || property == <span class="stringliteral">&quot;lag&quot;</span> || property == <span class="stringliteral">&quot;volt&quot;</span>)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>          {<span class="keywordflow">return</span>;}</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: element&gt; unknown parameter \&quot;&quot;</span> &lt;&lt; <span class="keyword">property</span> &lt;&lt; <span class="stringliteral">&quot;\&quot; with value &quot;</span> &lt;&lt; value  &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        willExit = bExit;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// record property set</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">// property name can be different, so look up in alternate names</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    std::string publishedName = <a class="code hl_function" href="structGMAD_1_1Element.html#a8ef39ade738127beab12e566a3368bc5">getPublishedName</a>(property);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_variable" href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">setMap</a>.at(publishedName) = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">   66</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">Parameters::set_value</a>(std::string property, T value, <span class="keywordtype">bool</span> bExit)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#ifdef BDSDEBUG</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;element&gt; Setting value &quot;</span> &lt;&lt; std::setw(25) &lt;&lt; std::left &lt;&lt; <span class="keyword">property</span> &lt;&lt; value &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// member method can throw runtime_error, catch and exit gracefully</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">try</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_function" href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">Published&lt;Element&gt;::set</a>(<span class="keyword">this</span>,property,value);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::runtime_error&amp;)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// not implemented mad parameters will be ignored</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">if</span> (property == <span class="stringliteral">&quot;harmon&quot;</span> || property == <span class="stringliteral">&quot;lag&quot;</span> || property == <span class="stringliteral">&quot;volt&quot;</span>)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>          {<span class="keywordflow">return</span>;}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: element&gt; unknown parameter \&quot;&quot;</span> &lt;&lt; <span class="keyword">property</span> &lt;&lt; <span class="stringliteral">&quot;\&quot; with value &quot;</span> &lt;&lt; value  &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        willExit = bExit;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>      }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// record property set</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// property name can be different, so look up in alternate names</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    std::string publishedName = <a class="code hl_function" href="structGMAD_1_1Element.html#a8ef39ade738127beab12e566a3368bc5">getPublishedName</a>(property);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_variable" href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">setMap</a>.at(publishedName) = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  }</div>
 </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassGMAD_1_1Array_html"><div class="ttname"><a href="classGMAD_1_1Array.html">GMAD::Array</a></div><div class="ttdoc">Representation of arrays used in tokens.</div><div class="ttdef"><b>Definition</b> <a href="array_8h_source.html#l00040">array.h:40</a></div></div>
-<div class="ttc" id="aclassGMAD_1_1Published_html_acd8e3cc34a66f2902752250cd2a9ff30"><div class="ttname"><a href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">GMAD::Published::set</a></div><div class="ttdeci">void set(C *instance, const std::string &amp;name, double value)</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00101">published.h:101</a></div></div>
-<div class="ttc" id="anamespaceGMAD_html"><div class="ttname"><a href="namespaceGMAD.html">GMAD</a></div><div class="ttdoc">Parser namespace for GMAD language. Combination of Geant4 and MAD.</div><div class="ttdef"><b>Definition</b> <a href="BDSBeamlineIntegral_8hh_source.html#l00026">BDSBeamlineIntegral.hh:27</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Element_html"><div class="ttname"><a href="structGMAD_1_1Element.html">GMAD::Element</a></div><div class="ttdoc">Element class.</div><div class="ttdef"><b>Definition</b> <a href="element_8h_source.html#l00047">element.h:48</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Element_html_a8ef39ade738127beab12e566a3368bc5"><div class="ttname"><a href="structGMAD_1_1Element.html#a8ef39ade738127beab12e566a3368bc5">GMAD::Element::getPublishedName</a></div><div class="ttdeci">std::string getPublishedName(const std::string &amp;name) const</div><div class="ttdoc">returns 'official' member name for property</div><div class="ttdef"><b>Definition</b> <a href="element_8cc_source.html#l00310">element.cc:310</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Parameters_html"><div class="ttname"><a href="structGMAD_1_1Parameters.html">GMAD::Parameters</a></div><div class="ttdoc">Parameters - Element class with booleans.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8h_source.html#l00044">parameters.h:44</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Parameters_html_a137e3014f2b93f34abc2ef3477717475"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">GMAD::Parameters::setMap</a></div><div class="ttdeci">std::map&lt; std::string, bool &gt; setMap</div><div class="ttdoc">Map that holds booleans for every member of element.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8h_source.html#l00047">parameters.h:47</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Parameters_html_a282fa28ff46436673375a80041ab9a80"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a282fa28ff46436673375a80041ab9a80">GMAD::Parameters::inherit_properties</a></div><div class="ttdeci">void inherit_properties(const Element &amp;e)</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00241">parameters.cc:241</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Parameters_html_a396f7894b0b5c3570af4d1bc96e7ea3b"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a396f7894b0b5c3570af4d1bc96e7ea3b">GMAD::Parameters::set_value_array</a></div><div class="ttdeci">void set_value_array(const std::string &amp;property, Array *value, bool bExit=true)</div><div class="ttdoc">Set method for lists.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00266">parameters.cc:266</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Parameters_html_a5cedbc01a18d48a6def41ab611bee50a"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a5cedbc01a18d48a6def41ab611bee50a">GMAD::Parameters::flush</a></div><div class="ttdeci">void flush()</div><div class="ttdoc">Reset the parameters to defaults and setMap.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00233">parameters.cc:233</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Parameters_html_ad50e2f64edb331b9318910a0e09da7a6"><div class="ttname"><a href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">GMAD::Parameters::set_value</a></div><div class="ttdeci">void set_value(std::string property, T value, bool bExit=true)</div><div class="ttdoc">Set method by property name and value.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8h_source.html#l00067">parameters.h:67</a></div></div>
-<div class="ttc" id="astructGMAD_1_1Parameters_html_af4d94ee360ac0157d9065f78797fe9a1"><div class="ttname"><a href="structGMAD_1_1Parameters.html#af4d94ee360ac0157d9065f78797fe9a1">GMAD::Parameters::Parameters</a></div><div class="ttdeci">Parameters()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00031">parameters.cc:31</a></div></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassGMAD_1_1Array_html"><div class="ttname"><a href="classGMAD_1_1Array.html">GMAD::Array</a></div><div class="ttdoc">Representation of arrays used in tokens.</div><div class="ttdef"><b>Definition</b> <a href="array_8h_source.html#l00039">array.h:39</a></div></div>
+<div class="ttc" id="aclassGMAD_1_1Published_html_acd8e3cc34a66f2902752250cd2a9ff30"><div class="ttname"><a href="classGMAD_1_1Published.html#acd8e3cc34a66f2902752250cd2a9ff30">GMAD::Published::set</a></div><div class="ttdeci">void set(C *instance, const std::string &amp;name, double value)</div><div class="ttdef"><b>Definition</b> <a href="published_8h_source.html#l00100">published.h:100</a></div></div>
+<div class="ttc" id="anamespaceGMAD_html"><div class="ttname"><a href="namespaceGMAD.html">GMAD</a></div><div class="ttdoc">Parser namespace for GMAD language. Combination of Geant4 and MAD.</div><div class="ttdef"><b>Definition</b> <a href="BDSBeamlineIntegral_8hh_source.html#l00025">BDSBeamlineIntegral.hh:26</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Element_html"><div class="ttname"><a href="structGMAD_1_1Element.html">GMAD::Element</a></div><div class="ttdoc">Element class.</div><div class="ttdef"><b>Definition</b> <a href="element_8h_source.html#l00046">element.h:47</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Element_html_a8ef39ade738127beab12e566a3368bc5"><div class="ttname"><a href="structGMAD_1_1Element.html#a8ef39ade738127beab12e566a3368bc5">GMAD::Element::getPublishedName</a></div><div class="ttdeci">std::string getPublishedName(const std::string &amp;name) const</div><div class="ttdoc">returns 'official' member name for property</div><div class="ttdef"><b>Definition</b> <a href="element_8cc_source.html#l00309">element.cc:309</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Parameters_html"><div class="ttname"><a href="structGMAD_1_1Parameters.html">GMAD::Parameters</a></div><div class="ttdoc">Parameters - Element class with booleans.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8h_source.html#l00043">parameters.h:43</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Parameters_html_a137e3014f2b93f34abc2ef3477717475"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a137e3014f2b93f34abc2ef3477717475">GMAD::Parameters::setMap</a></div><div class="ttdeci">std::map&lt; std::string, bool &gt; setMap</div><div class="ttdoc">Map that holds booleans for every member of element.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8h_source.html#l00046">parameters.h:46</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Parameters_html_a282fa28ff46436673375a80041ab9a80"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a282fa28ff46436673375a80041ab9a80">GMAD::Parameters::inherit_properties</a></div><div class="ttdeci">void inherit_properties(const Element &amp;e)</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00240">parameters.cc:240</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Parameters_html_a396f7894b0b5c3570af4d1bc96e7ea3b"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a396f7894b0b5c3570af4d1bc96e7ea3b">GMAD::Parameters::set_value_array</a></div><div class="ttdeci">void set_value_array(const std::string &amp;property, Array *value, bool bExit=true)</div><div class="ttdoc">Set method for lists.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00265">parameters.cc:265</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Parameters_html_a5cedbc01a18d48a6def41ab611bee50a"><div class="ttname"><a href="structGMAD_1_1Parameters.html#a5cedbc01a18d48a6def41ab611bee50a">GMAD::Parameters::flush</a></div><div class="ttdeci">void flush()</div><div class="ttdoc">Reset the parameters to defaults and setMap.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00232">parameters.cc:232</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Parameters_html_ad50e2f64edb331b9318910a0e09da7a6"><div class="ttname"><a href="structGMAD_1_1Parameters.html#ad50e2f64edb331b9318910a0e09da7a6">GMAD::Parameters::set_value</a></div><div class="ttdeci">void set_value(std::string property, T value, bool bExit=true)</div><div class="ttdoc">Set method by property name and value.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8h_source.html#l00066">parameters.h:66</a></div></div>
+<div class="ttc" id="astructGMAD_1_1Parameters_html_af4d94ee360ac0157d9065f78797fe9a1"><div class="ttname"><a href="structGMAD_1_1Parameters.html#af4d94ee360ac0157d9065f78797fe9a1">GMAD::Parameters::Parameters</a></div><div class="ttdeci">Parameters()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="parameters_8cc_source.html#l00030">parameters.cc:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:46 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

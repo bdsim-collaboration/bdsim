@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Model Construction &mdash; BDSIM 1.7.7.develop documentation</title>
+  <title>Model Construction &mdash; BDSIM 1.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=106dc6df"></script>
+      <script src="_static/documentation_options.js?v=b51e6972"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -1763,20 +1763,20 @@ particles in this collimator only</p></td>
 <p>Notes:</p>
 <ul class="simple">
 <li><p>The <cite>horizontalWidth</cite> must be greater than 2x <cite>xsize</cite>.</p></li>
-<li><p>To prevent the jaws overlapping with one another, a jaw cannot be constructed that crosses the
-X axis of the element (i.e supplying a negative <cite>xsizeLeft</cite> or <cite>xsizeRight</cite> will not work). Should
-you require this, please offset the element using the element parameters <cite>offsetX</cite> and <cite>offsetY</cite> instead.</p></li>
+<li><p>A positive tilt angle rotates either jaw to the left on the downstream side. So, a positive jawTiltLeft
+increases the left jaw aperture on the downstream side. A positive jawTiltRight decreases the right
+aperture on the downstream side. Left positive and righ negative give diverging jaws.</p></li>
 <li><p>To construct a collimator jaws with one jaw closed (i.e. an offset of 0), the horizontal half aperture
-must be set to 0, with the other jaws half aperture set as appropriate.</p></li>
+(<cite>xsize</cite>) must be set to 0.</p></li>
 <li><p>If <cite>xsize</cite>, <cite>xsizeLeft</cite> and <cite>xsizeRight</cite> are not specified, the collimator will be constructed
 as a box with no aperture.</p></li>
 <li><p>For <strong>only one jaw</strong>, specifying a jaw aperture which is larger than half the <cite>horizontalWidth</cite> value
 will result in that jaw not being constructed. If both jaw apertures are greater than
 half the <cite>horizontalWidth</cite>, no jaws will be built and BDSIM will exit.</p></li>
-<li><p>To preserve the longitudinal dimensions, jaw tilt specified with <cite>jawTiltLeft</cite> or <cite>jawTiltRight</cite> and <cite>xsizeRight</cite>
+<li><p>To preserve the length strictly, jaw tilt specified with <cite>jawTiltLeft</cite> or <cite>jawTiltRight</cite> and <cite>xsizeRight</cite>
 uses parallelepipeds instead of boxes for the collimator jaws. Relative to using angled boxes, this can introduce and
-error in the material traversed by incident particles, which scales as $btan(alpha)$, where b is
-the impact parameter (depth of impact) and $alpha$ is the jaw tilt angle.</p></li>
+error in the material traversed by incident particles, which scales as <span class="math notranslate nohighlight">\(b \tan(\alpha)\)</span>, where b is
+the impact parameter (depth of impact) and <span class="math notranslate nohighlight">\(\alpha\)</span> is the jaw tilt angle.</p></li>
 <li><p>The parameter <cite>minimumKineticEnergy</cite> (GeV by default) may be specified to artificially kill
 particles below this kinetic energy in the collimator. This is useful to match other simulations
 where collimators can be assumed to be infinite absorbers. If this behaviour is required, the
@@ -1886,20 +1886,20 @@ particles in this collimator only</p></td>
 <p>Notes:</p>
 <ul class="simple">
 <li><p>The <cite>horizontalWidth</cite> must be greater than 2x <cite>xsize</cite>.</p></li>
-<li><p>To prevent the jaws overlapping with one another, a jaw cannot be constructed that crosses the
-X axis of the element (i.e supplying a negative <cite>xsizeLeft</cite> or <cite>xsizeRight</cite> will not work). Should
-you require this, please offset the element using the element parameters <cite>offsetX</cite> and <cite>offsetY</cite> instead.</p></li>
+<li><p>A positive tilt angle rotates either jaw to the left on the downstream side. So, a positive jawTiltLeft
+increases the left jaw aperture on the downstream side. A positive jawTiltRight decreases the right
+aperture on the downstream side. Left positive and righ negative give diverging jaws.</p></li>
 <li><p>To construct a collimator jaws with one jaw closed (i.e. an offset of 0), the horizontal half aperture
-must be set to 0, with the other jaws half aperture set as appropriate.</p></li>
+(<cite>xsize</cite>) must be set to 0.</p></li>
 <li><p>If <cite>xsize</cite>, <cite>xsizeLeft</cite> and <cite>xsizeRight</cite> are not specified, the collimator will be constructed
-as a box with no aperture.</p></li>
+as a box with no aperture and a box of the <cite>tipMaterial</cite> placed inside it. It will be around 0.1 microns shorter.</p></li>
 <li><p>For <strong>only one jaw</strong>, specifying a jaw aperture which is larger than half the <cite>horizontalWidth</cite> value
 will result in that jaw not being constructed. If both jaw apertures are greater than
 half the <cite>horizontalWidth</cite>, no jaws will be built and BDSIM will exit.</p></li>
-<li><p>To preserve the longitudinal dimensions, jaw tilt specified with <cite>jawTiltLeft</cite> or <cite>jawTiltRight</cite> and <cite>xsizeRight</cite>
+<li><p>To preserve the length strictly, jaw tilt specified with <cite>jawTiltLeft</cite> or <cite>jawTiltRight</cite> and <cite>xsizeRight</cite>
 uses parallelepipeds instead of boxes for the collimator jaws. Relative to using angled boxes, this can introduce and
-error in the material traversed by incident particles, which scales as $btan(alpha)$, where b is
-the impact parameter (depth of impact) and $alpha$ is the jaw tilt angle.</p></li>
+error in the material traversed by incident particles, which scales as <span class="math notranslate nohighlight">\(b\tan(\alpha)\)</span>, where b is
+the impact parameter (depth of impact) and <span class="math notranslate nohighlight">\(\alpha\)</span> is the jaw tilt angle.</p></li>
 <li><p>The parameter <cite>minimumKineticEnergy</cite> (GeV by default) may be specified to artificially kill
 particles below this kinetic energy in the collimator. This is useful to match other simulations
 where collimators can be assumed to be infinite absorbers. If this behaviour is required, the
@@ -4258,7 +4258,7 @@ as all BLMs use this scorer.</span><a class="headerlink" href="#id16" title="Lin
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Aug 19, 2026.
+      <span class="lastupdated">Last updated on Sep 28, 2026.
       </span></p>
   </div>
 

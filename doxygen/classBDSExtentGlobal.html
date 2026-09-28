@@ -380,7 +380,7 @@ Friends</h2></td></tr>
 <p>Holds both a local extent as a 3D cuboid in local xyz as well as a rotation and translation to give an extent in a different frame.</p>
 <dl class="section author"><dt>Author</dt><dd>Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00043">43</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00042">42</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a53b4d8b4c1bc78c81b8cc92638596319" name="a53b4d8b4c1bc78c81b8cc92638596319"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a53b4d8b4c1bc78c81b8cc92638596319">&#9670;&#160;</a></span>BDSExtentGlobal() <span class="overload">[1/2]</span></h2>
@@ -399,9 +399,9 @@ Friends</h2></td></tr>
 
 <p>Default constructor gives 0 in all extents - typically unphysical. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00036">36</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00035">35</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">ExpandToEncompass()</a>, and <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">TranslateGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">ExpandToEncompass()</a>, and <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">TranslateGlobal()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -475,9 +475,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Constructor with extent in only local frame + transform. We use only the G4Transform3D to avoid ambiguity about active or passive transforms. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00046">46</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00045">45</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtent_8cc_source.html#l00091">BDSExtent::AllBoundaryPoints()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtent_8cc_source.html#l00090">BDSExtent::AllBoundaryPoints()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -515,7 +515,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Constructor with extents already in global frame. The transform here is the transform that the points were created with respect to. It is not applied to the points. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00086">86</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00085">85</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
 </div>
 </div>
@@ -537,11 +537,11 @@ Here is the call graph for this function:</div>
 
 <p>All 8 boundary points of the bounding box. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">89</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">88</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00154">EncompassesGlobal()</a>, and <a class="el" href="BDSBeamline_8cc_source.html#l00810">BDSBeamline::UpdateExtents()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00153">EncompassesGlobal()</a>, and <a class="el" href="BDSBeamline_8cc_source.html#l00809">BDSBeamline::UpdateExtents()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -630,9 +630,9 @@ Here is the caller graph for this function:</div>
 
 <p>The difference in a dimension. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00090">90</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00089">89</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>.</p>
 
 </div>
 </div>
@@ -661,9 +661,9 @@ Here is the caller graph for this function:</div>
 
 <p>The difference in a dimension. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00091">91</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00090">90</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>.</p>
 
 </div>
 </div>
@@ -692,9 +692,9 @@ Here is the caller graph for this function:</div>
 
 <p>The difference in a dimension. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00092">92</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00091">91</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
 </div>
 </div>
@@ -716,11 +716,11 @@ Here is the caller graph for this function:</div>
 
 <p>Return whether the extent encompasses another extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">186</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">185</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">ExtentXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">ExtentYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00068">ExtentZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00065">ExtentXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">ExtentYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">ExtentZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00590">BDSDetectorConstruction::BuildWorld()</a>, and <a class="el" href="BDSExtentGlobal_8cc_source.html#l00197">Encompasses()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00589">BDSDetectorConstruction::BuildWorld()</a>, and <a class="el" href="BDSExtentGlobal_8cc_source.html#l00196">Encompasses()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -770,9 +770,9 @@ Here is the caller graph for this function:</div>
 
 <p>Return whether the extent encompasses multiple other extents. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00197">197</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00196">196</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -826,9 +826,9 @@ Here is the call graph for this function:</div>
 
 <p>Return whether the extent encompasses the point. Similar, but with separate x,y,z coordinates. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00154">154</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00153">153</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">AllBoundaryPointsGlobal()</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">AllBoundaryPointsGlobal()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -860,11 +860,11 @@ Here is the call graph for this function:</div>
 
 <p>Return a copy of this extent but expanded to encompass another global extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">121</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">120</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00036">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00035">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01084">BDSDetectorConstruction::CalculateExtentOfSamplerPlacements()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01104">BDSDetectorConstruction::CalculateExtentOfScorerMeshes()</a>, and <a class="el" href="BDSLinkDetectorConstruction_8cc_source.html#l00496">BDSLinkDetectorConstruction::UpdateWorldSolid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01083">BDSDetectorConstruction::CalculateExtentOfSamplerPlacements()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l01103">BDSDetectorConstruction::CalculateExtentOfScorerMeshes()</a>, and <a class="el" href="BDSLinkDetectorConstruction_8cc_source.html#l00493">BDSLinkDetectorConstruction::UpdateWorldSolid()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -934,11 +934,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00080">80</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00079">79</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00210">GetMaximumExtentAbsolute()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00209">GetMaximumExtentAbsolute()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -991,11 +991,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00077">77</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00076">76</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00210">GetMaximumExtentAbsolute()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00209">GetMaximumExtentAbsolute()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1048,11 +1048,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">66</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00065">65</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1097,11 +1097,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">67</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">66</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1146,11 +1146,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00068">68</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">67</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1187,11 +1187,11 @@ Here is the caller graph for this function:</div>
 
 <p>Get the maximum extent absolute in each dimension. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00210">210</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00209">209</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00080">ExtentNegativeGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00077">ExtentPositiveGlobal()</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00079">ExtentNegativeGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00076">ExtentPositiveGlobal()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSLinkDetectorConstruction_8cc_source.html#l00496">BDSLinkDetectorConstruction::UpdateWorldSolid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSLinkDetectorConstruction_8cc_source.html#l00493">BDSLinkDetectorConstruction::UpdateWorldSolid()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1246,9 +1246,9 @@ Here is the caller graph for this function:</div>
 
 <p>Return the maximum absolute value considering all dimensions. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00146">146</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00145">145</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
 </div>
 </div>
@@ -1268,7 +1268,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00103">103</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00102">102</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
 </div>
 </div>
@@ -1306,9 +1306,9 @@ Here is the caller graph for this function:</div>
 
 <p>Provide a new copy of this extent with an offset applied. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">108</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">107</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00036">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8cc_source.html#l00035">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1348,11 +1348,11 @@ Here is the call graph for this function:</div>
 
 <p>Provide a new copy of this extent with an offset applied. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00117">117</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00116">116</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00117">TranslateGlobal()</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00116">TranslateGlobal()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8hh_source.html#l00117">TranslateGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8hh_source.html#l00116">TranslateGlobal()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1400,9 +1400,9 @@ Here is the caller graph for this function:</div>
 
 <p>Comparison operator for x,y only. Ignores z (length). </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00099">99</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00144">TransverselyLessThanGlobal()</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00143">TransverselyLessThanGlobal()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1442,11 +1442,11 @@ Here is the call graph for this function:</div>
 
 <p>Comparison operator for x,y only. Ignores z (length). </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00097">97</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00096">96</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00144">TransverselyLessThanGlobal()</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00143">TransverselyLessThanGlobal()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8hh_source.html#l00098">TransverselyLessEqualsGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8hh_source.html#l00097">TransverselyLessEqualsGlobal()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1496,9 +1496,9 @@ Here is the caller graph for this function:</div>
 
 <p>Comparison operator for x,y only. Ignores z (length). </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00097">97</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00097">TransverselyGreaterThanGlobal()</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00096">TransverselyGreaterThanGlobal()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1540,11 +1540,11 @@ Here is the call graph for this function:</div>
 
 <p>Comparison operator for x,y only. Ignores z (length). </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00144">144</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00143">143</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8hh_source.html#l00099">TransverselyGreaterEqualsGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00097">TransverselyGreaterThanGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8hh_source.html#l00098">TransverselyGreaterEqualsGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00096">TransverselyGreaterThanGlobal()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1587,9 +1587,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00070">70</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00069">69</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXNegG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">extXNegG</a>.</p>
 
 </div>
 </div>
@@ -1618,9 +1618,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00071">71</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00070">70</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extXPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">extXPosG</a>.</p>
 
 </div>
 </div>
@@ -1649,9 +1649,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00072">72</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00071">71</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYNegG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">extYNegG</a>.</p>
 
 </div>
 </div>
@@ -1680,9 +1680,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00073">73</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00072">72</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extYPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">extYPosG</a>.</p>
 
 </div>
 </div>
@@ -1711,9 +1711,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00074">74</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00073">73</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZNegG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">extZNegG</a>.</p>
 
 </div>
 </div>
@@ -1742,9 +1742,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00075">75</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00074">74</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">extZPosG</a>.</p>
+<p class="reference">References <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">extZPosG</a>.</p>
 
 </div>
 </div>
@@ -1785,7 +1785,7 @@ Here is the caller graph for this function:</div>
 
 <p>Output stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00133">133</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8cc_source.html#l00132">132</a> of file <a class="el" href="BDSExtentGlobal_8cc_source.html">BDSExtentGlobal.cc</a>.</p>
 
 </div>
 </div>
@@ -1812,9 +1812,9 @@ Here is the caller graph for this function:</div>
 
 <p>Extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">135</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00134">134</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00046">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00090">DXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00080">ExtentNegativeGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">ExtentXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00146">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00144">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00070">XNegGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00045">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00089">DXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00079">ExtentNegativeGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00065">ExtentXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00145">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00143">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00069">XNegGlobal()</a>.</p>
 
 </div>
 </div>
@@ -1840,9 +1840,9 @@ Here is the caller graph for this function:</div>
 
 <p>Extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">136</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00135">135</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00046">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00090">DXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00077">ExtentPositiveGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">ExtentXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00146">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00144">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00071">XPosGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00045">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00089">DXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00076">ExtentPositiveGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00065">ExtentXGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00145">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00143">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00070">XPosGlobal()</a>.</p>
 
 </div>
 </div>
@@ -1868,9 +1868,9 @@ Here is the caller graph for this function:</div>
 
 <p>Extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">137</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00136">136</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00046">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00091">DYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00080">ExtentNegativeGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">ExtentYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00146">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00144">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00072">YNegGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00045">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00090">DYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00079">ExtentNegativeGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">ExtentYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00145">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00143">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00071">YNegGlobal()</a>.</p>
 
 </div>
 </div>
@@ -1896,9 +1896,9 @@ Here is the caller graph for this function:</div>
 
 <p>Extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">138</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00137">137</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00046">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00091">DYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00077">ExtentPositiveGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">ExtentYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00146">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00144">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00073">YPosGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00045">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00090">DYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00076">ExtentPositiveGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00066">ExtentYGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00145">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">TranslateGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00143">TransverselyLessThanGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00072">YPosGlobal()</a>.</p>
 
 </div>
 </div>
@@ -1924,9 +1924,9 @@ Here is the caller graph for this function:</div>
 
 <p>Extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">139</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00138">138</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00046">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00092">DZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00080">ExtentNegativeGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00068">ExtentZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00146">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">TranslateGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00074">ZNegGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00045">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00091">DZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00079">ExtentNegativeGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">ExtentZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00145">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">TranslateGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00073">ZNegGlobal()</a>.</p>
 
 </div>
 </div>
@@ -1952,9 +1952,9 @@ Here is the caller graph for this function:</div>
 
 <p>Extent. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00140">140</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00139">139</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00089">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00046">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00092">DZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00186">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00121">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00077">ExtentPositiveGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00068">ExtentZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00146">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00108">TranslateGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00075">ZPosGlobal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSExtentGlobal_8cc_source.html#l00088">AllBoundaryPointsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00045">BDSExtentGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00091">DZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00185">Encompasses()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00120">ExpandToEncompass()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00076">ExtentPositiveGlobal()</a>, <a class="el" href="BDSExtentGlobal_8hh_source.html#l00067">ExtentZGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00145">MaximumAbsGlobal()</a>, <a class="el" href="BDSExtentGlobal_8cc_source.html#l00107">TranslateGlobal()</a>, and <a class="el" href="BDSExtentGlobal_8hh_source.html#l00074">ZPosGlobal()</a>.</p>
 
 </div>
 </div>
@@ -1978,7 +1978,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00132">132</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSExtentGlobal_8hh_source.html#l00131">131</a> of file <a class="el" href="BDSExtentGlobal_8hh_source.html">BDSExtentGlobal.hh</a>.</p>
 
 </div>
 </div>
@@ -1989,7 +1989,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:06 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:48 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

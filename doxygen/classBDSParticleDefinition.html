@@ -242,7 +242,7 @@ Friends</h2></td></tr>
 <p>Bad construction can throw a <a class="el" href="classBDSException.html" title="General exception with possible name of object and message.">BDSException</a>.</p>
 <dl class="section author"><dt>Author</dt><dd>Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00042">42</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00041">41</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a64cca6c5e8356d1340bc07e40eb54b1b" name="a64cca6c5e8356d1340bc07e40eb54b1b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a64cca6c5e8356d1340bc07e40eb54b1b">&#9670;&#160;</a></span>BDSParticleDefinition() <span class="overload">[1/4]</span></h2>
@@ -301,9 +301,9 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor requires G4 particle definition as well as one of total energy, kineticEnergy or momentum. Only 1 of these can be non-zero (will throw exception otherwise). The others are calculated using the mass. The optional ion definition may be supplied to override the charge of the ion. The PDGID should also be supplied in this case too. ffact is typically 1 or -1 to flip the rigidity for convention. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00038">38</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00037">37</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSIonDefinition_8hh_source.html#l00044">BDSIonDefinition::Charge()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">charge</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>, <a class="el" href="BDSIonDefinition_8hh_source.html#l00046">BDSIonDefinition::OverrideCharge()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">particle</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">References <a class="el" href="BDSIonDefinition_8hh_source.html#l00043">BDSIonDefinition::Charge()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">charge</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>, <a class="el" href="BDSIonDefinition_8hh_source.html#l00045">BDSIonDefinition::OverrideCharge()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00136">particle</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -399,9 +399,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Alternative constructor for when we don't have access to the particle table information. G4ParticleDefinition can be updated later. Developer responsibility to ensure this matches the contents of this class. ffact is typically 1 or -1 to flip the rigidity for convention. As before only one of totalEnergy, kineticEnergy or momentum should be specified. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00070">70</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00069">69</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -442,9 +442,9 @@ Here is the call graph for this function:</div>
 
 <p>Copy, move and assignment constructors specified as we have to copy the ionDefinition if it exists. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00145">145</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00144">144</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>.</p>
 
 </div>
 </div>
@@ -474,7 +474,7 @@ Here is the call graph for this function:</div>
 
 <p>Copy, move and assignment constructors specified as we have to copy the ionDefinition if it exists. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00166">166</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00165">165</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
 </div>
 </div>
@@ -493,7 +493,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00210">210</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00209">209</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
 </div>
 </div>
@@ -516,11 +516,11 @@ Here is the call graph for this function:</div>
 
 <p>Utility function to update quantities by adding on dEK (can be negative). </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00267">267</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00266">266</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00151">forwards</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">BDS::IsFinite()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">kineticEnergy</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00150">forwards</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00310">BDS::IsFinite()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">kineticEnergy</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00055">BDSBeamlineIntegral::Integrate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00054">BDSBeamlineIntegral::Integrate()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -595,11 +595,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00107">107</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00106">106</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00148">beta</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00147">beta</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00307">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02893">BDSComponentFactory::EFieldFromElement()</a>, <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00055">BDSBeamlineIntegral::Integrate()</a>, <a class="el" href="BDSComponentFactory_8hh_source.html#l00248">BDSComponentFactory::SetBeta0()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>, <a class="el" href="BDSBunchPtc_8cc_source.html#l00143">BDSBunchPtc::SetOptions()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00112">Velocity()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00324">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02892">BDSComponentFactory::EFieldFromElement()</a>, <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00054">BDSBeamlineIntegral::Integrate()</a>, <a class="el" href="BDSComponentFactory_8hh_source.html#l00247">BDSComponentFactory::SetBeta0()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00081">BDSBunch::SetOptions()</a>, <a class="el" href="BDSBunchPtc_8cc_source.html#l00142">BDSBunchPtc::SetOptions()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00111">Velocity()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -720,11 +720,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00108">108</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00107">107</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00149">brho</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00148">brho</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSFieldFactory_8cc_source.html#l00171">BDSFieldFactory::BDSFieldFactory()</a>, <a class="el" href="BDSComponentFactory_8hh_source.html#l00250">BDSComponentFactory::BRho()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00171">BDSComponentFactory::CreateComponent()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02893">BDSComponentFactory::EFieldFromElement()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00055">BDSBeamlineIntegral::Integrate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSFieldFactory_8cc_source.html#l00170">BDSFieldFactory::BDSFieldFactory()</a>, <a class="el" href="BDSComponentFactory_8hh_source.html#l00249">BDSComponentFactory::BRho()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l00170">BDSComponentFactory::CreateComponent()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l02892">BDSComponentFactory::EFieldFromElement()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00148">BDSIM::Initialise()</a>, and <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00054">BDSBeamlineIntegral::Integrate()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -840,11 +840,11 @@ Here is the caller graph for this function:</div>
 
 <p>Calculate and set lorentz factors. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00261">261</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00260">260</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00148">beta</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00147">gamma</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">mass</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">totalEnergy</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00147">beta</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">gamma</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">mass</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">totalEnergy</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -909,11 +909,11 @@ Here is the caller graph for this function:</div>
 
 <p>Calculate and set momentum based on totalEnergy and mass. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00241">241</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00240">240</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">mass</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">momentum</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">totalEnergy</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">mass</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">momentum</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">totalEnergy</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -979,11 +979,11 @@ Here is the caller graph for this function:</div>
 
 <p>Calculate and set rigidity based on charge and momentum. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00249">249</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00248">248</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00149">brho</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">charge</a>, <a class="el" href="BDSPhysicalConstants_8hh_source.html#l00030">BDS::cOverGeV</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">BDS::IsFinite()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">momentum</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00148">brho</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">charge</a>, <a class="el" href="BDSPhysicalConstants_8hh_source.html#l00029">BDS::cOverGeV</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00310">BDS::IsFinite()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">momentum</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1058,11 +1058,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00102">102</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00101">101</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">charge</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">charge</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00307">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00348">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSLinkPrimaryGeneratorAction_8cc_source.html#l00061">BDSLinkPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSPrimaryGeneratorAction_8cc_source.html#l00095">BDSPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00448">BDSLinkTrackerInterface::GetChargeRatio()</a>, and <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00055">BDSBeamlineIntegral::Integrate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00324">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00365">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSLinkPrimaryGeneratorAction_8cc_source.html#l00060">BDSLinkPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSPrimaryGeneratorAction_8cc_source.html#l00094">BDSPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00465">BDSLinkTrackerInterface::GetChargeRatio()</a>, and <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00054">BDSBeamlineIntegral::Integrate()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1141,9 +1141,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00109">109</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00108">108</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00150">ffact</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00149">ffact</a>.</p>
 
 </div>
 </div>
@@ -1172,9 +1172,9 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00113">113</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00112">112</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00151">forwards</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00150">forwards</a>.</p>
 
 </div>
 </div>
@@ -1203,11 +1203,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00106">106</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00105">105</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00147">gamma</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">gamma</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSComponentFactory_8cc_source.html#l03417">BDSComponentFactory::CalculateGaborLensStrength()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00175">BDSBunch::SetEmittances()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSComponentFactory_8cc_source.html#l03416">BDSComponentFactory::CalculateGaborLensStrength()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00174">BDSBunch::SetEmittances()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1254,11 +1254,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00099">99</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00086">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00089">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00389">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00119">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00122">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00085">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00088">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00388">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00118">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00121">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1323,11 +1323,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00110">110</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00109">109</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBunch_8hh_source.html#l00119">BDSBunch::BeamParticleIsAnIon()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00086">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00089">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00389">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00119">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00122">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBunch_8hh_source.html#l00118">BDSBunch::BeamParticleIsAnIon()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00148">BDSIM::Initialise()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00085">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00088">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00388">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00118">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00121">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1397,11 +1397,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00104">104</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00103">103</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">kineticEnergy</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">kineticEnergy</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00148">BDSIM::Initialise()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00081">BDSBunch::SetOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1492,11 +1492,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00101">101</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00100">100</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">mass</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">mass</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPTCOneTurnMap_8cc_source.html#l00038">BDSPTCOneTurnMap::BDSPTCOneTurnMap()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03417">BDSComponentFactory::CalculateGaborLensStrength()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSLinkPrimaryGeneratorAction_8cc_source.html#l00061">BDSLinkPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSPrimaryGeneratorAction_8cc_source.html#l00095">BDSPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00453">BDSLinkTrackerInterface::GetMassRatio()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00234">BDSBunch::GetNextParticleValid()</a>, and <a class="el" href="BDSBunchUserFile_8cc_source.html#l00305">BDSBunchUserFile&lt; T &gt;::SetOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPTCOneTurnMap_8cc_source.html#l00037">BDSPTCOneTurnMap::BDSPTCOneTurnMap()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03416">BDSComponentFactory::CalculateGaborLensStrength()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>, <a class="el" href="BDSLinkPrimaryGeneratorAction_8cc_source.html#l00060">BDSLinkPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSPrimaryGeneratorAction_8cc_source.html#l00094">BDSPrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00470">BDSLinkTrackerInterface::GetMassRatio()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00233">BDSBunch::GetNextParticleValid()</a>, and <a class="el" href="BDSBunchUserFile_8cc_source.html#l00304">BDSBunchUserFile&lt; T &gt;::SetOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1563,11 +1563,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00105">105</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00104">104</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">momentum</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">momentum</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00307">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSPTCOneTurnMap_8cc_source.html#l00038">BDSPTCOneTurnMap::BDSPTCOneTurnMap()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03417">BDSComponentFactory::CalculateGaborLensStrength()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00324">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSPTCOneTurnMap_8cc_source.html#l00037">BDSPTCOneTurnMap::BDSPTCOneTurnMap()</a>, <a class="el" href="BDSComponentFactory_8cc_source.html#l03416">BDSComponentFactory::CalculateGaborLensStrength()</a>, <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00081">BDSBunch::SetOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1668,11 +1668,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00100">100</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00099">99</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">name</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00140">name</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00149">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00142">BDSIMLink::Initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSIMClass_8cc_source.html#l00148">BDSIM::Initialise()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00141">BDSIMLink::Initialise()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1719,11 +1719,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00111">111</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00110">110</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>, and <a class="el" href="BDSIonDefinition_8hh_source.html#l00047">BDSIonDefinition::NElectrons()</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>, and <a class="el" href="BDSIonDefinition_8hh_source.html#l00046">BDSIonDefinition::NElectrons()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1783,9 +1783,9 @@ Here is the caller graph for this function:</div>
 
 <p>Copy, move and assignment constructors specified as we have to copy the ionDefinition if it exists. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00185">185</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00184">184</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSIonDefinition_8hh_source.html#l00062">BDSIonDefinition::charge</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>.</p>
+<p class="reference">References <a class="el" href="BDSIonDefinition_8hh_source.html#l00061">BDSIonDefinition::charge</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>.</p>
 
 </div>
 </div>
@@ -1814,11 +1814,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00098">98</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00097">97</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">particle</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00136">particle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00700">BDS::FixGeant105ThreshholdsForBeamParticle()</a>, <a class="el" href="BDSLinkPrimaryGeneratorAction_8cc_source.html#l00061">BDSLinkPrimaryGeneratorAction::GeneratePrimaries()</a>, and <a class="el" href="BDSPrimaryGeneratorAction_8cc_source.html#l00095">BDSPrimaryGeneratorAction::GeneratePrimaries()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSPhysicsUtilities_8cc_source.html#l00699">BDS::FixGeant105ThreshholdsForBeamParticle()</a>, <a class="el" href="BDSLinkPrimaryGeneratorAction_8cc_source.html#l00060">BDSLinkPrimaryGeneratorAction::GeneratePrimaries()</a>, and <a class="el" href="BDSPrimaryGeneratorAction_8cc_source.html#l00094">BDSPrimaryGeneratorAction::GeneratePrimaries()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1852,11 +1852,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Safely access the PDG ID of the particle. If the physics table isn't ready then we might not have the G4ParticleDefinition object in the case of an ion. In this case if there's an ion definition return the cache ion PDG ID, else return 0 as default. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00215">215</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00214">214</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionDefinition</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00139">ionPDGID</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">particle</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">ionDefinition</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">ionPDGID</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00136">particle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00307">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00348">BDSLinkTrackerInterface::AddParticle()</a>, and <a class="el" href="BDSOutput_8cc_source.html#l00273">BDSOutput::FillEventPrimaryOnly()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00324">BDSLinkTrackerInterface::AddParticle()</a>, <a class="el" href="BDSLinkTrackerInterface_8cc_source.html#l00365">BDSLinkTrackerInterface::AddParticle()</a>, and <a class="el" href="BDSOutput_8cc_source.html#l00272">BDSOutput::FillEventPrimaryOnly()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1917,11 +1917,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Check in order whether totalEnergy, kineticEnergy or momentum are specified and copy that parameter to the member variable. Then calculate the other two and set them to the member variables. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">99</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">98</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8cc_source.html#l00261">CalculateLorentzFactors()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00241">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00249">CalculateRigidity()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00150">ffact</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00311">BDS::IsFinite()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">kineticEnergy</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">mass</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">momentum</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">name</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">totalEnergy</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8cc_source.html#l00260">CalculateLorentzFactors()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00240">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00248">CalculateRigidity()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00149">ffact</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00310">BDS::IsFinite()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">kineticEnergy</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">mass</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">momentum</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00140">name</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">totalEnergy</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00267">ApplyChangeInKineticEnergy()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00070">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00038">BDSParticleDefinition()</a>, and <a class="el" href="BDSBunchUserFile_8cc_source.html#l00485">BDSBunchUserFile&lt; T &gt;::GetNextParticleLocal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00266">ApplyChangeInKineticEnergy()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00069">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00037">BDSParticleDefinition()</a>, and <a class="el" href="BDSBunchUserFile_8cc_source.html#l00484">BDSBunchUserFile&lt; T &gt;::GetNextParticleLocal()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2001,11 +2001,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00103">103</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00102">102</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">totalEnergy</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">totalEnergy</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBunchUserFile_8cc_source.html#l00485">BDSBunchUserFile&lt; T &gt;::GetNextParticleLocal()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00082">BDSBunch::SetOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBunchUserFile_8cc_source.html#l00484">BDSBunchUserFile&lt; T &gt;::GetNextParticleLocal()</a>, and <a class="el" href="BDSBunch_8cc_source.html#l00081">BDSBunch::SetOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2090,11 +2090,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Update the G4 particle definition member. Developer responsibility to ensure this matches the contents of the class. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00091">91</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00090">90</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">particle</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00136">particle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00086">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00089">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00389">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00119">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00122">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00085">BDSBunchSixTrackLink::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSLinkBunch_8cc_source.html#l00088">BDSLinkBunch::UpdateGeant4ParticleDefinition()</a>, <a class="el" href="BDSBunch_8cc_source.html#l00388">BDSBunch::UpdateIonDefinition()</a>, <a class="el" href="BDSBunchSixTrackLink_8cc_source.html#l00118">BDSBunchSixTrackLink::UpdateIonDefinition()</a>, and <a class="el" href="BDSLinkBunch_8cc_source.html#l00121">BDSLinkBunch::UpdateIonDefinition()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2147,11 +2147,11 @@ Here is the caller graph for this function:</div>
 
 <p>Accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00112">112</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00111">111</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00107">Beta()</a>.</p>
+<p class="reference">References <a class="el" href="BDSParticleDefinition_8hh_source.html#l00106">Beta()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00055">BDSBeamlineIntegral::Integrate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamlineIntegral_8cc_source.html#l00054">BDSBeamlineIntegral::Integrate()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2228,7 +2228,7 @@ Here is the caller graph for this function:</div>
 
 <p>Output stream operator implementation. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00225">225</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8cc_source.html#l00224">224</a> of file <a class="el" href="BDSParticleDefinition_8cc_source.html">BDSParticleDefinition.cc</a>.</p>
 
 </div>
 </div>
@@ -2255,9 +2255,9 @@ Here is the caller graph for this function:</div>
 
 <p>Relativistic beta. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00148">148</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00147">147</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00107">Beta()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00261">CalculateLorentzFactors()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00106">Beta()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00260">CalculateLorentzFactors()</a>.</p>
 
 </div>
 </div>
@@ -2283,9 +2283,9 @@ Here is the caller graph for this function:</div>
 
 <p>Particle rigidity. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00149">149</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00148">148</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00108">BRho()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00249">CalculateRigidity()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00107">BRho()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00248">CalculateRigidity()</a>.</p>
 
 </div>
 </div>
@@ -2311,9 +2311,9 @@ Here is the caller graph for this function:</div>
 
 <p>Particle charge. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">143</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">142</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00038">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00249">CalculateRigidity()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00102">Charge()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00037">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00248">CalculateRigidity()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00101">Charge()</a>.</p>
 
 </div>
 </div>
@@ -2339,9 +2339,9 @@ Here is the caller graph for this function:</div>
 
 <p>Flip factor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00150">150</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00149">149</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00109">FFact()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00108">FFact()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 
 </div>
 </div>
@@ -2367,9 +2367,9 @@ Here is the caller graph for this function:</div>
 
 <p>In case of change of direction. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00151">151</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00150">150</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00267">ApplyChangeInKineticEnergy()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00113">Forwards()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00266">ApplyChangeInKineticEnergy()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00112">Forwards()</a>.</p>
 
 </div>
 </div>
@@ -2395,9 +2395,9 @@ Here is the caller graph for this function:</div>
 
 <p>Relativistic gamma. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00147">147</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">146</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00261">CalculateLorentzFactors()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00106">Gamma()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00260">CalculateLorentzFactors()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00105">Gamma()</a>.</p>
 
 </div>
 </div>
@@ -2423,9 +2423,9 @@ Here is the caller graph for this function:</div>
 
 <p>Optional ion definition. Does own. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">138</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">137</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00145">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00070">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00038">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00099">IonDefinition()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00110">IsAnIon()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00111">NElectrons()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00185">operator=()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00215">PDGID()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00144">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00069">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00037">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00098">IonDefinition()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00109">IsAnIon()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00110">NElectrons()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00184">operator=()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00214">PDGID()</a>.</p>
 
 </div>
 </div>
@@ -2451,9 +2451,9 @@ Here is the caller graph for this function:</div>
 
 <p>Cache this for ions only. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00139">139</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00138">138</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00215">PDGID()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00214">PDGID()</a>.</p>
 
 </div>
 </div>
@@ -2479,9 +2479,9 @@ Here is the caller graph for this function:</div>
 
 <p>Particle kinetic energy. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">145</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">144</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00267">ApplyChangeInKineticEnergy()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00104">KineticEnergy()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00266">ApplyChangeInKineticEnergy()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00103">KineticEnergy()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 
 </div>
 </div>
@@ -2507,9 +2507,9 @@ Here is the caller graph for this function:</div>
 
 <p>Particle mass. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00142">142</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">141</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00261">CalculateLorentzFactors()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00241">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00101">Mass()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00260">CalculateLorentzFactors()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00240">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00100">Mass()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 
 </div>
 </div>
@@ -2535,9 +2535,9 @@ Here is the caller graph for this function:</div>
 
 <p>Particle momentum. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00146">146</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00145">145</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00241">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00249">CalculateRigidity()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00105">Momentum()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00240">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00248">CalculateRigidity()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00104">Momentum()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 
 </div>
 </div>
@@ -2563,9 +2563,9 @@ Here is the caller graph for this function:</div>
 
 <p>Particle name. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00141">141</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00140">140</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00100">Name()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8hh_source.html#l00099">Name()</a>, and <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>.</p>
 
 </div>
 </div>
@@ -2591,9 +2591,9 @@ Here is the caller graph for this function:</div>
 
 <p>Does not own. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00137">137</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00136">136</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00038">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00098">ParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00215">PDGID()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00091">UpdateG4ParticleDefinition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00037">BDSParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8hh_source.html#l00097">ParticleDefinition()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00214">PDGID()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00090">UpdateG4ParticleDefinition()</a>.</p>
 
 </div>
 </div>
@@ -2619,9 +2619,9 @@ Here is the caller graph for this function:</div>
 
 <p>Particle total energy. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00144">144</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSParticleDefinition_8hh_source.html#l00143">143</a> of file <a class="el" href="BDSParticleDefinition_8hh_source.html">BDSParticleDefinition.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00261">CalculateLorentzFactors()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00241">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00099">SetEnergies()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00103">TotalEnergy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSParticleDefinition_8cc_source.html#l00260">CalculateLorentzFactors()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00240">CalculateMomentum()</a>, <a class="el" href="BDSParticleDefinition_8cc_source.html#l00098">SetEnergies()</a>, and <a class="el" href="BDSParticleDefinition_8hh_source.html#l00102">TotalEnergy()</a>.</p>
 
 </div>
 </div>
@@ -2632,7 +2632,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:07 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:49 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

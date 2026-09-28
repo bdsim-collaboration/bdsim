@@ -192,7 +192,7 @@ Static Private Attributes</h2></td></tr>
 <p>A factory that uses the correct derived singleton factory of <a class="el" href="classBDSGeometryFactoryBase.html" title="Base class for external geometry loading factories.">BDSGeometryFactoryBase</a> to construct the required geometry with extents.</p>
 <dl class="section author"><dt>Author</dt><dd>Lawrence Deacon, Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00048">48</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00047">47</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8b475e65f204e87c466e39c15b9ca9b0" name="a8b475e65f204e87c466e39c15b9ca9b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b475e65f204e87c466e39c15b9ca9b0">&#9670;&#160;</a></span>~BDSGeometryFactory()</h2>
@@ -209,7 +209,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00059">59</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00058">58</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
 
 </div>
 </div>
@@ -238,11 +238,11 @@ Static Private Attributes</h2></td></tr>
 
 <p>Private accessor as singleton. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00049">49</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00048">48</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryFactory_8hh_source.html#l00095">gdml</a>, and <a class="el" href="BDSGeometryFactory_8hh_source.html#l00096">sql</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryFactory_8hh_source.html#l00094">gdml</a>, and <a class="el" href="BDSGeometryFactory_8hh_source.html#l00095">sql</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00042">Instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00041">Instance()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -382,11 +382,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Determine the geometry format, load it and build the geometry. Optional suggested length and horizontalWidth are in for some cases where it is not possible to query the geometry file for the extent information. Assign a default sensitivity to every volume recursively. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">86</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00085">85</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="classBDSGeometryFactoryBase.html#abc10691cb902104c37fe3121047d91c3">BDSGeometryFactoryBase::Build()</a>, <a class="el" href="BDSGeometryType_8cc_source.html#l00038">BDS::DetermineGeometryType()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00164">BDS::FileExists()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00068">GetAppropriateFactory()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00213">BDS::GetFullPath()</a>, <a class="el" href="BDSGeometryFactory_8hh_source.html#l00085">registry</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00571">BDS::SplitOnColon()</a>, <a class="el" href="BDSGeometryFactory_8hh_source.html#l00089">storage</a>, and <a class="el" href="BDSGeometryComponent_8cc_source.html#l00263">BDSGeometryComponent::StripOuterAndMakeAssemblyVolume()</a>.</p>
+<p class="reference">References <a class="el" href="classBDSGeometryFactoryBase.html#abc10691cb902104c37fe3121047d91c3">BDSGeometryFactoryBase::Build()</a>, <a class="el" href="BDSGeometryType_8cc_source.html#l00037">BDS::DetermineGeometryType()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00163">BDS::FileExists()</a>, <a class="el" href="BDSGeometryFactory_8cc_source.html#l00067">GetAppropriateFactory()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00212">BDS::GetFullPath()</a>, <a class="el" href="BDSGeometryFactory_8hh_source.html#l00084">registry</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00570">BDS::SplitOnColon()</a>, <a class="el" href="BDSGeometryFactory_8hh_source.html#l00088">storage</a>, and <a class="el" href="BDSGeometryComponent_8cc_source.html#l00262">BDSGeometryComponent::StripOuterAndMakeAssemblyVolume()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00057">BDS::BuildBLMs()</a>, <a class="el" href="BDSElement_8cc_source.html#l00066">BDSElement::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSBeamlinePlacementBuilder_8cc_source.html#l00053">BDS::BuildPlacementGeometry()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00590">BDSDetectorConstruction::BuildWorld()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00088">BDSParallelWorldImportance::BuildWorld()</a>, <a class="el" href="BDSBLMFactory_8cc_source.html#l00070">BDSBLMFactory::CreateBLM()</a>, and <a class="el" href="BDSMagnetOuterFactory_8cc_source.html#l00227">BDSMagnetOuterFactory::CreateExternal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00056">BDS::BuildBLMs()</a>, <a class="el" href="BDSElement_8cc_source.html#l00065">BDSElement::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSBeamlinePlacementBuilder_8cc_source.html#l00052">BDS::BuildPlacementGeometry()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00589">BDSDetectorConstruction::BuildWorld()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00087">BDSParallelWorldImportance::BuildWorld()</a>, <a class="el" href="BDSBLMFactory_8cc_source.html#l00069">BDSBLMFactory::CreateBLM()</a>, and <a class="el" href="BDSMagnetOuterFactory_8cc_source.html#l00226">BDSMagnetOuterFactory::CreateExternal()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -490,11 +490,11 @@ Here is the caller graph for this function:</div>
 
 <p>Get the appropriate geometry factory. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00068">68</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00067">67</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryFactory_8hh_source.html#l00095">gdml</a>, <a class="el" href="BDSGeometryFactory_8hh_source.html#l00096">sql</a>, and <a class="el" href="BDSTypeSafeEnum_8hh_source.html#l00062">BDSTypeSafeEnum&lt; def, inner &gt;::underlying()</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryFactory_8hh_source.html#l00094">gdml</a>, <a class="el" href="BDSGeometryFactory_8hh_source.html#l00095">sql</a>, and <a class="el" href="BDSTypeSafeEnum_8hh_source.html#l00061">BDSTypeSafeEnum&lt; def, inner &gt;::underlying()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BuildGeometry()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00085">BuildGeometry()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -571,11 +571,11 @@ Here is the caller graph for this function:</div>
 
 <p>Singleton accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00042">42</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8cc_source.html#l00041">41</a> of file <a class="el" href="BDSGeometryFactory_8cc_source.html">BDSGeometryFactory.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGeometryFactory_8cc_source.html#l00049">BDSGeometryFactory()</a>, and <a class="el" href="BDSGeometryFactory_8hh_source.html#l00079">instance</a>.</p>
+<p class="reference">References <a class="el" href="BDSGeometryFactory_8cc_source.html#l00048">BDSGeometryFactory()</a>, and <a class="el" href="BDSGeometryFactory_8hh_source.html#l00078">instance</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00057">BDS::BuildBLMs()</a>, <a class="el" href="BDSElement_8cc_source.html#l00066">BDSElement::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSBeamlinePlacementBuilder_8cc_source.html#l00053">BDS::BuildPlacementGeometry()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00590">BDSDetectorConstruction::BuildWorld()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00088">BDSParallelWorldImportance::BuildWorld()</a>, <a class="el" href="BDSBLMFactory_8cc_source.html#l00070">BDSBLMFactory::CreateBLM()</a>, <a class="el" href="BDSMagnetOuterFactory_8cc_source.html#l00227">BDSMagnetOuterFactory::CreateExternal()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00454">BDSIM::~BDSIM()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00414">BDSIMLink::~BDSIMLink()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSBeamlineBLMBuilder_8cc_source.html#l00056">BDS::BuildBLMs()</a>, <a class="el" href="BDSElement_8cc_source.html#l00065">BDSElement::BuildContainerLogicalVolume()</a>, <a class="el" href="BDSBeamlinePlacementBuilder_8cc_source.html#l00052">BDS::BuildPlacementGeometry()</a>, <a class="el" href="BDSDetectorConstruction_8cc_source.html#l00589">BDSDetectorConstruction::BuildWorld()</a>, <a class="el" href="BDSParallelWorldImportance_8cc_source.html#l00087">BDSParallelWorldImportance::BuildWorld()</a>, <a class="el" href="BDSBLMFactory_8cc_source.html#l00069">BDSBLMFactory::CreateBLM()</a>, <a class="el" href="BDSMagnetOuterFactory_8cc_source.html#l00226">BDSMagnetOuterFactory::CreateExternal()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00453">BDSIM::~BDSIM()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00413">BDSIMLink::~BDSIMLink()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -652,9 +652,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00095">95</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00094">94</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00049">BDSGeometryFactory()</a>, and <a class="el" href="BDSGeometryFactory_8cc_source.html#l00068">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00048">BDSGeometryFactory()</a>, and <a class="el" href="BDSGeometryFactory_8cc_source.html#l00067">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -680,9 +680,9 @@ Here is the caller graph for this function:</div>
 
 <p>Singleton instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00079">79</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00078">78</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00042">Instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00041">Instance()</a>.</p>
 
 </div>
 </div>
@@ -707,9 +707,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>A registry of all previously constructed components. We use a map instead of an unordered map because map uses operator&lt; whereas unordered_map uses std::hash(key). Hashing isn't provided for std::pair by default but operator&lt; is, so we use map. Map is pair&lt;file name, component name to be used in&gt; : geometry. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00085">85</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00084">84</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BuildGeometry()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00085">BuildGeometry()</a>.</p>
 
 </div>
 </div>
@@ -735,9 +735,9 @@ Here is the caller graph for this function:</div>
 
 <p>Factory instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00096">96</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00095">95</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00049">BDSGeometryFactory()</a>, and <a class="el" href="BDSGeometryFactory_8cc_source.html#l00068">GetAppropriateFactory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00048">BDSGeometryFactory()</a>, and <a class="el" href="BDSGeometryFactory_8cc_source.html#l00067">GetAppropriateFactory()</a>.</p>
 
 </div>
 </div>
@@ -762,9 +762,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>This is where the geometry components are stored and used to manage the associated memory of the pieces of geometry. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00089">89</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSGeometryFactory_8hh_source.html#l00088">88</a> of file <a class="el" href="BDSGeometryFactory_8hh_source.html">BDSGeometryFactory.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00086">BuildGeometry()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGeometryFactory_8cc_source.html#l00085">BuildGeometry()</a>.</p>
 
 </div>
 </div>
@@ -775,7 +775,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:06 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:48 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

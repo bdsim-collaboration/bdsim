@@ -153,7 +153,7 @@ Static Private Attributes</h2></td></tr>
 <p>Has a separate method to initialise the temporary directory so that it's possible to delete the singleton at the end of the program without having to construct the temporary directory and possibly encountering an error.</p>
 <dl class="section author"><dt>Author</dt><dd>Laurie Nevay </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00041">41</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00040">40</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2a1de17b183d617a37af82785d6fa1dd" name="a2a1de17b183d617a37af82785d6fa1dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a1de17b183d617a37af82785d6fa1dd">&#9670;&#160;</a></span>~BDSTemporaryFiles()</h2>
@@ -170,7 +170,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00097">97</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00096">96</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
 
 </div>
 </div>
@@ -199,11 +199,11 @@ Static Private Attributes</h2></td></tr>
 
 <p>Private default constructor as singleton. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00035">35</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00034">34</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00060">BDSGlobalConstants::Instance()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00081">removeTemporaryFiles</a>, and <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00076">userSpecifiedTemporaryDirectory</a>.</p>
+<p class="reference">References <a class="el" href="BDSGlobalConstants_8cc_source.html#l00059">BDSGlobalConstants::Instance()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00080">removeTemporaryFiles</a>, and <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00075">userSpecifiedTemporaryDirectory</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00130">Instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00129">Instance()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -273,11 +273,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Create a temporary file for use in <a class="el" href="classBDSIM.html" title="Interface class to use BDSIM.">BDSIM</a> based on a currently existing one. A file with the same name but with the file name prefix and suffix in the temporary directory will be returned. It's the caller's responsibility to open this file. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00150">150</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00149">149</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00079">allocatedFiles</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00045">InitialiseTempDir()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00276">BDS::SplitFileAndExtension()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00259">BDS::SplitPathAndFileName()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">temporaryDirectory</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00078">temporaryDirectorySet</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00176">WarnOfNewFile()</a>.</p>
+<p class="reference">References <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00078">allocatedFiles</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00044">InitialiseTempDir()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00275">BDS::SplitFileAndExtension()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00258">BDS::SplitPathAndFileName()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00076">temporaryDirectory</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">temporaryDirectorySet</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00175">WarnOfNewFile()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00138">BDSGDMLPreprocessor::PreprocessFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00137">BDSGDMLPreprocessor::PreprocessFile()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -328,9 +328,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Create a temporary file for use in <a class="el" href="classBDSIM.html" title="Interface class to use BDSIM.">BDSIM</a>. A unique file name will be returned. It's the caller's responsibility to open this file. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00137">137</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00136">136</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00079">allocatedFiles</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00045">InitialiseTempDir()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">temporaryDirectory</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00078">temporaryDirectorySet</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00080">unNamedFileCount</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00176">WarnOfNewFile()</a>.</p>
+<p class="reference">References <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00078">allocatedFiles</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00044">InitialiseTempDir()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00076">temporaryDirectory</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">temporaryDirectorySet</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00079">unNamedFileCount</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00175">WarnOfNewFile()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -374,11 +374,11 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Separate function to initialise temporary directory. This way it can be optionally called in case the temp dir isn't used at all and the singleton is deleted at the end of the program. No point getting error about temp dir upon cleaning up something that wasn't used. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00045">45</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00044">44</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00171">BDS::DirectoryExists()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00191">BDS::GetBDSIMExecPath()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">temporaryDirectory</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00078">temporaryDirectorySet</a>, and <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00076">userSpecifiedTemporaryDirectory</a>.</p>
+<p class="reference">References <a class="el" href="BDSUtilities_8cc_source.html#l00170">BDS::DirectoryExists()</a>, <a class="el" href="BDSUtilities_8cc_source.html#l00190">BDS::GetBDSIMExecPath()</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00076">temporaryDirectory</a>, <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">temporaryDirectorySet</a>, and <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00075">userSpecifiedTemporaryDirectory</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00150">CreateTemporaryFile()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00137">CreateTemporaryFileUnnamed()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00149">CreateTemporaryFile()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00136">CreateTemporaryFileUnnamed()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -433,11 +433,11 @@ Here is the caller graph for this function:</div>
 
 <p>Singleton accessor. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00130">130</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00129">129</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00035">BDSTemporaryFiles()</a>, and <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00074">instance</a>.</p>
+<p class="reference">References <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00034">BDSTemporaryFiles()</a>, and <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00073">instance</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00138">BDSGDMLPreprocessor::PreprocessFile()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00454">BDSIM::~BDSIM()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00414">BDSIMLink::~BDSIMLink()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSGDMLPreprocessor_8cc_source.html#l00137">BDSGDMLPreprocessor::PreprocessFile()</a>, <a class="el" href="BDSIMClass_8cc_source.html#l00453">BDSIM::~BDSIM()</a>, and <a class="el" href="BDSIMLink_8cc_source.html#l00413">BDSIMLink::~BDSIMLink()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -499,9 +499,9 @@ Here is the caller graph for this function:</div>
 
 <p>User feedback that new file has been created. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00176">176</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00175">175</a> of file <a class="el" href="BDSTemporaryFiles_8cc_source.html">BDSTemporaryFiles.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00150">CreateTemporaryFile()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00137">CreateTemporaryFileUnnamed()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00149">CreateTemporaryFile()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00136">CreateTemporaryFileUnnamed()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -542,9 +542,9 @@ Here is the caller graph for this function:</div>
 
 <p>Record of of all files allocated. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00079">79</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00078">78</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00150">CreateTemporaryFile()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00137">CreateTemporaryFileUnnamed()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00149">CreateTemporaryFile()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00136">CreateTemporaryFileUnnamed()</a>.</p>
 
 </div>
 </div>
@@ -570,9 +570,9 @@ Here is the caller graph for this function:</div>
 
 <p>Singleton instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00074">74</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00073">73</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00130">Instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00129">Instance()</a>.</p>
 
 </div>
 </div>
@@ -598,9 +598,9 @@ Here is the caller graph for this function:</div>
 
 <p>Whether to clean up. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00081">81</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00080">80</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00035">BDSTemporaryFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00034">BDSTemporaryFiles()</a>.</p>
 
 </div>
 </div>
@@ -626,9 +626,9 @@ Here is the caller graph for this function:</div>
 
 <p>Directory all files will be placed in. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">77</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00076">76</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00150">CreateTemporaryFile()</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00137">CreateTemporaryFileUnnamed()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00045">InitialiseTempDir()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00149">CreateTemporaryFile()</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00136">CreateTemporaryFileUnnamed()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00044">InitialiseTempDir()</a>.</p>
 
 </div>
 </div>
@@ -654,9 +654,9 @@ Here is the caller graph for this function:</div>
 
 <p>Whether directory has been set and made. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00078">78</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00077">77</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00150">CreateTemporaryFile()</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00137">CreateTemporaryFileUnnamed()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00045">InitialiseTempDir()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00149">CreateTemporaryFile()</a>, <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00136">CreateTemporaryFileUnnamed()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00044">InitialiseTempDir()</a>.</p>
 
 </div>
 </div>
@@ -682,9 +682,9 @@ Here is the caller graph for this function:</div>
 
 <p>Count of unnamed files created. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00080">80</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00079">79</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00137">CreateTemporaryFileUnnamed()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00136">CreateTemporaryFileUnnamed()</a>.</p>
 
 </div>
 </div>
@@ -710,9 +710,9 @@ Here is the caller graph for this function:</div>
 
 <p>Optional user-specified path to try. </p>
 
-<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00076">76</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BDSTemporaryFiles_8hh_source.html#l00075">75</a> of file <a class="el" href="BDSTemporaryFiles_8hh_source.html">BDSTemporaryFiles.hh</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00035">BDSTemporaryFiles()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00045">InitialiseTempDir()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00034">BDSTemporaryFiles()</a>, and <a class="el" href="BDSTemporaryFiles_8cc_source.html#l00044">InitialiseTempDir()</a>.</p>
 
 </div>
 </div>
@@ -723,7 +723,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:08 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:49 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

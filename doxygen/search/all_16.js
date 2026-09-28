@@ -3,7 +3,7 @@ var searchData=
   ['w0_0',['W0',['../classBDSLaser.html#afc8b9af3a6882ba805431d1c1981307e',1,'BDSLaser']]],
   ['warningmissinghistogram_1',['WarningMissingHistogram',['../namespaceRBDS.html#acb02d5841b06199249a7fefc3a6f602a',1,'RBDS']]],
   ['warnofnewfile_2',['WarnOfNewFile',['../classBDSTemporaryFiles.html#af2ed4f2100707d3de17eb2dc3a9d13f9',1,'BDSTemporaryFiles']]],
-  ['wavelength_3',['wavelength',['../classBDSLaser.html#a640ace93680707706600241f47a1f807',1,'BDSLaser::Wavelength()'],['../structGMAD_1_1Element.html#abf8b5e255eb648b48eeacefdb17b1f5e',1,'GMAD::Element::wavelength']]],
+  ['wavelength_3',['wavelength',['../structGMAD_1_1Element.html#abf8b5e255eb648b48eeacefdb17b1f5e',1,'GMAD::Element::wavelength'],['../classBDSLaser.html#a640ace93680707706600241f47a1f807',1,'BDSLaser::Wavelength()']]],
   ['wavenumber_4',['wavenumber',['../classBDSFieldMagUndulator.html#a2472af2984732594830a13beed480c74',1,'BDSFieldMagUndulator']]],
   ['wedgelength_5',['wedgeLength',['../structGMAD_1_1Element.html#a6801b21c25aa5b7850dc29bad1a97e29',1,'GMAD::Element']]],
   ['weight_6',['weight',['../classBDSOutputROOTEventAperture.html#ac9fa6f23f506290832d40b433a6c2920',1,'BDSOutputROOTEventAperture::weight'],['../classBDSOutputROOTEventLoss.html#a4dd00700fed77e8ef012037cbb4af161',1,'BDSOutputROOTEventLoss::weight'],['../classBDSOutputROOTEventLossWorld.html#a9c4a1b73dbf13de617f889773b872ece',1,'BDSOutputROOTEventLossWorld::weight'],['../classBDSSDEnergyDepositionGlobal.html#a4bbeef9bf6215aad1de951806ec0f469',1,'BDSSDEnergyDepositionGlobal::weight']]],

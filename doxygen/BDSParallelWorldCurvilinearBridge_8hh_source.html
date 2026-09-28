@@ -83,59 +83,58 @@ $(document).ready(function() { init_codefold(0); });
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* </span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, </span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">University of London 2001 - 2024.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"></span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">This file is part of BDSIM.</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"></span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">BDSIM is free software: you can redistribute it and/or modify </span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">it under the terms of the GNU General Public License as published </span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">by the Free Software Foundation version 3 of the License.</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"></span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">BDSIM is distributed in the hope that it will be useful, but </span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">GNU General Public License for more details.</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"></span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">You should have received a copy of the GNU General Public License</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">along with BDSIM.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifndef BDSPARALLELWORLDCURVILINEARBRIDGE_H</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define BDSPARALLELWORLDCURVILINEARBRIDGE_H</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;G4String.hh&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;G4VUserParallelWorld.hh&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">class </span>G4VisAttributes;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html">   38</a></span><span class="keyword">class </span><a class="code hl_class" href="classBDSParallelWorldCurvilinearBridge.html">BDSParallelWorldCurvilinearBridge</a>: <span class="keyword">public</span> G4VUserParallelWorld</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classBDSParallelWorldCurvilinearBridge.html#a871fc2aac31b0c88d9805c7dc2fdcaea">BDSParallelWorldCurvilinearBridge</a>(G4String name);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classBDSParallelWorldCurvilinearBridge.html">~BDSParallelWorldCurvilinearBridge</a>();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classBDSParallelWorldCurvilinearBridge.html#a5a4bde89c414fff2f872ff683c36804e">Construct</a>();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html#a871fc2aac31b0c88d9805c7dc2fdcaea">   50</a></span>  <a class="code hl_function" href="classBDSParallelWorldCurvilinearBridge.html#a871fc2aac31b0c88d9805c7dc2fdcaea">BDSParallelWorldCurvilinearBridge</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html#a993249cb64a609f9ec2f183258d661b0">   53</a></span>  G4String <a class="code hl_variable" href="classBDSParallelWorldCurvilinearBridge.html#a993249cb64a609f9ec2f183258d661b0">suffix</a>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html#abc3d03f4b902d3515c90b32110f64968">   56</a></span>  G4VisAttributes* <a class="code hl_variable" href="classBDSParallelWorldCurvilinearBridge.html#abc3d03f4b902d3515c90b32110f64968">clbWorldVis</a>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">This file is part of BDSIM.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"></span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">BDSIM is free software: you can redistribute it and/or modify </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">it under the terms of the GNU General Public License as published </span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">by the Free Software Foundation version 3 of the License.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"></span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">BDSIM is distributed in the hope that it will be useful, but </span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">GNU General Public License for more details.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"></span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">along with BDSIM.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef BDSPARALLELWORLDCURVILINEARBRIDGE_H</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define BDSPARALLELWORLDCURVILINEARBRIDGE_H</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;G4String.hh&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;G4VUserParallelWorld.hh&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">class </span>G4VisAttributes;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html">   37</a></span><span class="keyword">class </span><a class="code hl_class" href="classBDSParallelWorldCurvilinearBridge.html">BDSParallelWorldCurvilinearBridge</a>: <span class="keyword">public</span> G4VUserParallelWorld</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classBDSParallelWorldCurvilinearBridge.html#a871fc2aac31b0c88d9805c7dc2fdcaea">BDSParallelWorldCurvilinearBridge</a>(G4String name);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classBDSParallelWorldCurvilinearBridge.html">~BDSParallelWorldCurvilinearBridge</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classBDSParallelWorldCurvilinearBridge.html#a5a4bde89c414fff2f872ff683c36804e">Construct</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html#a871fc2aac31b0c88d9805c7dc2fdcaea">   49</a></span>  <a class="code hl_function" href="classBDSParallelWorldCurvilinearBridge.html#a871fc2aac31b0c88d9805c7dc2fdcaea">BDSParallelWorldCurvilinearBridge</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html#a993249cb64a609f9ec2f183258d661b0">   52</a></span>  G4String <a class="code hl_variable" href="classBDSParallelWorldCurvilinearBridge.html#a993249cb64a609f9ec2f183258d661b0">suffix</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classBDSParallelWorldCurvilinearBridge.html#abc3d03f4b902d3515c90b32110f64968">   55</a></span>  G4VisAttributes* <a class="code hl_variable" href="classBDSParallelWorldCurvilinearBridge.html#abc3d03f4b902d3515c90b32110f64968">clbWorldVis</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html">BDSParallelWorldCurvilinearBridge</a></div><div class="ttdoc">A parallel world for bridiging curvilinear volumes.</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8hh_source.html#l00038">BDSParallelWorldCurvilinearBridge.hh:39</a></div></div>
-<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html_a5a4bde89c414fff2f872ff683c36804e"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html#a5a4bde89c414fff2f872ff683c36804e">BDSParallelWorldCurvilinearBridge::Construct</a></div><div class="ttdeci">virtual void Construct()</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8cc_source.html#l00044">BDSParallelWorldCurvilinearBridge.cc:44</a></div></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html">BDSParallelWorldCurvilinearBridge</a></div><div class="ttdoc">A parallel world for bridiging curvilinear volumes.</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8hh_source.html#l00037">BDSParallelWorldCurvilinearBridge.hh:38</a></div></div>
+<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html_a5a4bde89c414fff2f872ff683c36804e"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html#a5a4bde89c414fff2f872ff683c36804e">BDSParallelWorldCurvilinearBridge::Construct</a></div><div class="ttdeci">virtual void Construct()</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8cc_source.html#l00043">BDSParallelWorldCurvilinearBridge.cc:43</a></div></div>
 <div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html_a871fc2aac31b0c88d9805c7dc2fdcaea"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html#a871fc2aac31b0c88d9805c7dc2fdcaea">BDSParallelWorldCurvilinearBridge::BDSParallelWorldCurvilinearBridge</a></div><div class="ttdeci">BDSParallelWorldCurvilinearBridge()=delete</div><div class="ttdoc">No default constructor.</div></div>
-<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html_a993249cb64a609f9ec2f183258d661b0"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html#a993249cb64a609f9ec2f183258d661b0">BDSParallelWorldCurvilinearBridge::suffix</a></div><div class="ttdeci">G4String suffix</div><div class="ttdoc">Just the input part of the name.</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8hh_source.html#l00053">BDSParallelWorldCurvilinearBridge.hh:53</a></div></div>
-<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html_abc3d03f4b902d3515c90b32110f64968"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html#abc3d03f4b902d3515c90b32110f64968">BDSParallelWorldCurvilinearBridge::clbWorldVis</a></div><div class="ttdeci">G4VisAttributes * clbWorldVis</div><div class="ttdoc">Visualisation attributes for the world volume.</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8hh_source.html#l00056">BDSParallelWorldCurvilinearBridge.hh:56</a></div></div>
+<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html_a993249cb64a609f9ec2f183258d661b0"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html#a993249cb64a609f9ec2f183258d661b0">BDSParallelWorldCurvilinearBridge::suffix</a></div><div class="ttdeci">G4String suffix</div><div class="ttdoc">Just the input part of the name.</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8hh_source.html#l00052">BDSParallelWorldCurvilinearBridge.hh:52</a></div></div>
+<div class="ttc" id="aclassBDSParallelWorldCurvilinearBridge_html_abc3d03f4b902d3515c90b32110f64968"><div class="ttname"><a href="classBDSParallelWorldCurvilinearBridge.html#abc3d03f4b902d3515c90b32110f64968">BDSParallelWorldCurvilinearBridge::clbWorldVis</a></div><div class="ttdeci">G4VisAttributes * clbWorldVis</div><div class="ttdoc">Visualisation attributes for the world volume.</div><div class="ttdef"><b>Definition</b> <a href="BDSParallelWorldCurvilinearBridge_8hh_source.html#l00055">BDSParallelWorldCurvilinearBridge.hh:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 19 2026 15:50:04 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Sep 28 2026 20:54:45 for BDSIM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
