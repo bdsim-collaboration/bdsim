@@ -57,7 +57,10 @@ struct fieldtypes_def
 	     skewmultipoleouteroctupole, skewmultipoleouterdecapole,
 	     multipoleouterdipole3d,
 	     multipoleouterdipolelhc, multipoleouterquadrupolelhc,
-	     multipoleoutersextupolelhc
+	     multipoleoutersextupolelhc,
+  	     transversemagnetic,
+  	     axialstandingapprox,
+           axialfloquetapprox
   };
 };
 
