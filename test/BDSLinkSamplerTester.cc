@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "BDSBunchSixTrackLink.hh"
+#include "BDSLinkBunch.hh"
 #include "BDSHitSamplerLink.hh"
 #include "BDSIMLink.hh"
 #include "BDSParticleCoordsFull.hh"
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
       return 1;
     }
 
-  BDSBunchSixTrackLink bunch;
+  BDSLinkBunch bunch;
   BDSIMLink link(&bunch);
   std::vector<std::string> arguments = {
     "bdsim",
