@@ -1,0 +1,10 @@
+probe0: rcol, l=1*m, material="G4_Fe", xsize=1*cm, ysize=1*cm,
+        aper1=5*cm;
+probe1: rcol, l=1*m, material="G4_Fe", xsize=1*cm, ysize=1*cm,
+        aper1=5*cm;
+
+line1: line = (probe0, probe1);
+use, line1;
+
+beam, particle="proton", kineticEnergy=100*GeV;
+option, physicsList="g4FTFP_BERT";
