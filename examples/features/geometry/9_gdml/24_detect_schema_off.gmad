@@ -1,0 +1,7 @@
+e1: element, l=0.3*m, geometryFile="gdml:gdmls/schema-detection-missing.gdml";
+l1: line=(e1);
+use, l1;
+
+beam, particle="e-", energy=1*GeV;
+
+option, detectSchema=0;

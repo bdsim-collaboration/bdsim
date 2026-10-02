@@ -244,7 +244,13 @@ BDSMagnetOuter* BDSMagnetOuterFactory::CreateExternal(const G4String&     name,
                                                                             info->autoColour,
                                                                             0, 0,
                                                                             nullptr,
-                                                                            sensitiveOuter);
+                                                                            sensitiveOuter,
+                                                                            BDSSDType::energydep,
+                                                                            BDSSDType::energydepvacuum,
+                                                                            false,
+                                                                            nullptr,
+                                                                            false,
+                                                                            info->detectSchema);
 
   BDSExtent bpExtent = beampipe->GetExtent();
   BDSExtent magInner = geom->GetInnerExtent();

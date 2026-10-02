@@ -38,7 +38,8 @@ BDSMagnetOuterInfo::BDSMagnetOuterInfo():
   coilWidthFraction(0.65),
   coilHeightFraction(0.8),
   geometryTypeAndPath(""),
-  autoColour(true)
+  autoColour(true),
+  detectSchema(-1)
 {
   colour = BDSColours::Instance()->GetColour("default");
 }
@@ -74,5 +75,6 @@ BDSMagnetOuterInfo::BDSMagnetOuterInfo(const G4String&         nameIn,
   coilHeightFraction(coilHeightFractionIn),
   geometryTypeAndPath(geometryTypeAndPathIn),
   colour(colourIn),
-  autoColour(autoColourIn)
+  autoColour(autoColourIn),
+  detectSchema(-1)
 {;}
