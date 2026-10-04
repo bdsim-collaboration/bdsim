@@ -48,8 +48,6 @@ foreach(pythonBindingSrc IN ZIP_LISTS pythonBindingSrcs)
 endforeach()
 
 # version file needs configuring (hence separate build from loop above)
-message(${CMAKE_CURRENT_SOURCE_DIR})
-message(${CMAKE_BINARY_DIR})
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/versionPybind.cc ${CMAKE_BINARY_DIR}/versionPybind.cc @ONLY)
 pybind11_add_module(version ${CMAKE_BINARY_DIR}/versionPybind.cc)
 target_link_libraries(version PUBLIC ${GMAD_LIB_NAME} Python3::Module)
