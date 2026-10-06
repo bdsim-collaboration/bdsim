@@ -143,6 +143,9 @@ public:
   double GetChordLengthOfLinkElement(const std::string& elementName);
   double GetArcLengthOfLinkElement(int beamlineIndex) const;
   double GetArcLengthOfLinkElement(const std::string& elementName);
+  /// Access the arc length using the external link ID
+  /// returned by AddLinkElement().
+  double GetArcLengthOfLinkID(int linkID) const;
   /// @}
 
   BDSBunch* GetBunch() const;
