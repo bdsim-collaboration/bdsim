@@ -35,6 +35,615 @@ namespace py = pybind11;
 #include "BDSSamplerCustom.hh"
 #include "BDSParser.hh"
 
+#include "BDSLinkParticleBatch.hh"
+#include "BDSLinkSamplerParticleBatch.hh"
+
+#include "CLHEP/Units/PhysicalConstants.h"
+#include "CLHEP/Units/SystemOfUnits.h"
+
+#include <cmath>
+#include <limits>
+#include <stdexcept>
+#include <string>
+#include <unordered_set>
+#include <vector>
+#include <unordered_map>
+
+namespace
+{
+  using DoubleArray =
+      py::array_t<double, py::array::c_style | py::array::forcecast>;
+
+  using Int64Array =
+      py::array_t<long long, py::array::c_style | py::array::forcecast>;
+
+  struct RFTrackBunchConversionResult
+  {
+    BDSLinkParticleBatch batch;
+
+    // Maps an RF-Track particle ID to its original bunch index.
+    std::unordered_map<int, std::size_t> rfTrackIndexByParticleID;
+  };
+
+  DoubleArray RequireMatrix(const py::object& object,
+                            py::ssize_t numberOfColumns,
+                            const std::string& description)
+  {
+    DoubleArray array = DoubleArray::ensure(object);
+
+    if (!array)
+      {
+        throw std::runtime_error(
+            description + " is not convertible to a contiguous float64 array");
+      }
+
+    if (array.ndim() != 2 || array.shape(1) != numberOfColumns)
+      {
+        throw std::runtime_error(description + " must have shape (N, " +
+                                 std::to_string(numberOfColumns) + ")");
+      }
+
+    return array;
+  }
+
+  DoubleArray RequireColumn(const py::object& object,
+                            py::ssize_t expectedRows,
+                            const std::string& description)
+  {
+    DoubleArray array = DoubleArray::ensure(object);
+
+    if (!array)
+      {
+        throw std::runtime_error(description +
+                                 " is not convertible to float64");
+      }
+
+    const bool validOneDimensional =
+        array.ndim() == 1 && array.shape(0) == expectedRows;
+
+    const bool validColumn = array.ndim() == 2 &&
+                             array.shape(0) == expectedRows &&
+                             array.shape(1) == 1;
+
+    if (!validOneDimensional && !validColumn)
+      {
+        throw std::runtime_error(description + " has an unexpected shape");
+      }
+
+    return array;
+  }
+
+  BDSLinkParticleBatch ConvertBunch6dCoordinates(const py::object& bunch)
+  {
+    py::object phaseObject =
+        bunch.attr("get_phase_space")("%x %xp %y %yp %t %P", "all");
+
+    DoubleArray phase =
+        RequireMatrix(phaseObject, 6, "RF-Track Bunch6d phase space");
+
+    const py::ssize_t n = phase.shape(0);
+    auto input = phase.unchecked<2>();
+
+    BDSLinkParticleBatch batch;
+
+    batch.x.resize(n);
+    batch.y.resize(n);
+    batch.px.resize(n);
+    batch.py.resize(n);
+    batch.pz.resize(n);
+    batch.t.resize(n);
+    batch.s.assign(n, 0.0);
+    batch.particleID.resize(n);
+    batch.pdgID.assign(n, 0);
+
+    for (py::ssize_t i = 0; i < n; ++i)
+      {
+        const double xMm = input(i, 0);
+        const double xpMrad = input(i, 1);
+        const double yMm = input(i, 2);
+        const double ypMrad = input(i, 3);
+        const double tMmC = input(i, 4);
+        const double pMeVc = input(i, 5);
+
+        const double xpRad = xpMrad * 1.0e-3;
+        const double ypRad = ypMrad * 1.0e-3;
+
+        const double directionNorm =
+            std::sqrt(1.0 + xpRad * xpRad + ypRad * ypRad);
+
+        if (!std::isfinite(directionNorm) || directionNorm <= 0.0 ||
+            !std::isfinite(pMeVc) || pMeVc <= 0.0)
+          {
+            throw std::runtime_error("Invalid RF-Track Bunch6d momentum "
+                                     "at row " +
+                                     std::to_string(i));
+          }
+
+        const double pzMeVc = pMeVc / directionNorm;
+
+        batch.x[i] = xMm;
+        batch.y[i] = yMm;
+        batch.px[i] = xpRad * pzMeVc;
+        batch.py[i] = ypRad * pzMeVc;
+        batch.pz[i] = pzMeVc;
+
+        // RF-Track: mm/c.
+        // CLHEP::c_light: mm/ns.
+        batch.t[i] = tMmC / CLHEP::c_light;
+      }
+
+    return batch;
+  }
+
+  double RFTrackBunchMassMeVc2(const py::object& bunch)
+  {
+    for (const char* methodName : {"get_mass", "get_m0"})
+      {
+        if (!py::hasattr(bunch, methodName))
+          {
+            continue;
+          }
+
+        try
+          {
+            const double mass = py::cast<double>(bunch.attr(methodName)());
+
+            if (std::isfinite(mass) && mass > 0.0)
+              {
+                return mass;
+              }
+          }
+        catch (const py::error_already_set&)
+          {
+            // Try next method
+          }
+      }
+
+    try
+      {
+        DoubleArray masses =
+            RequireColumn(bunch.attr("get_phase_space")("%m", "all"),
+                          py::cast<py::ssize_t>(bunch.attr("size")()),
+                          "RF-Track particle masses");
+
+        const double* data = masses.data();
+
+        if (masses.size() > 0 && std::isfinite(data[0]) && data[0] > 0.0)
+          {
+            return data[0];
+          }
+      }
+    catch (const py::error_already_set&)
+      {
+      }
+
+    throw std::runtime_error("Unable to determine RF-Track bunch mass");
+  }
+
+  BDSLinkParticleBatch ConvertBunch6dTCoordinates(const py::object& bunch)
+  {
+    DoubleArray phase = RequireMatrix(bunch.attr("get_phase_space")(),
+                                      6,
+                                      "RF-Track Bunch6dT phase space");
+
+    const py::ssize_t n = phase.shape(0);
+
+    DoubleArray t0 = RequireColumn(bunch.attr("get_phase_space")("%t0", "all"),
+                                   n,
+                                   "RF-Track Bunch6dT t0");
+
+    const double massMeVc2 = RFTrackBunchMassMeVc2(bunch);
+
+    auto input = phase.unchecked<2>();
+    const double* t0Data = t0.data();
+
+    BDSLinkParticleBatch batch;
+
+    batch.x.resize(n);
+    batch.y.resize(n);
+    batch.px.resize(n);
+    batch.py.resize(n);
+    batch.pz.resize(n);
+    batch.t.resize(n);
+    batch.s.assign(n, 0.0);
+    batch.particleID.resize(n);
+    batch.pdgID.assign(n, 0);
+
+    for (py::ssize_t i = 0; i < n; ++i)
+      {
+        const double xMm = input(i, 0);
+        const double pxMeVc = input(i, 1);
+        const double yMm = input(i, 2);
+        const double pyMeVc = input(i, 3);
+        const double zMm = input(i, 4);
+        const double pzMeVc = input(i, 5);
+        const double t0MmC = t0Data[i];
+
+        const double momentumMeVc =
+            std::sqrt(pxMeVc * pxMeVc + pyMeVc * pyMeVc + pzMeVc * pzMeVc);
+
+        if (!std::isfinite(momentumMeVc) || momentumMeVc <= 0.0)
+          {
+            throw std::runtime_error("Invalid RF-Track Bunch6dT momentum "
+                                     "at row " +
+                                     std::to_string(i));
+          }
+
+        const double totalEnergyMeV =
+            std::sqrt(momentumMeVc * momentumMeVc + massMeVc2 * massMeVc2);
+
+        const double beta = momentumMeVc / totalEnergyMeV;
+
+        const double timeMmC = t0MmC - zMm / beta;
+
+        batch.x[i] = xMm;
+        batch.y[i] = yMm;
+        batch.px[i] = pxMeVc;
+        batch.py[i] = pyMeVc;
+        batch.pz[i] = pzMeVc;
+        batch.t[i] = timeMmC / CLHEP::c_light;
+      }
+
+    return batch;
+  }
+
+  void FillParticleMetadata(const py::object& bunch,
+                            BDSLinkParticleBatch& batch)
+  {
+    const py::ssize_t n = static_cast<py::ssize_t>(batch.Size());
+
+    bool idsExtracted = false;
+
+    try
+      {
+        Int64Array ids =
+            Int64Array::ensure(bunch.attr("get_phase_space")("%id", "all"));
+
+        if (ids && ids.size() == n)
+          {
+            const long long* data = ids.data();
+            std::unordered_set<int> uniqueIDs;
+
+            for (py::ssize_t i = 0; i < n; ++i)
+              {
+                const long long value = data[i];
+
+                if (value < std::numeric_limits<int>::min() ||
+                    value > std::numeric_limits<int>::max())
+                  {
+                    throw std::runtime_error("RF-Track particle ID is outside "
+                                             "the C++ int range");
+                  }
+
+                const int id = static_cast<int>(value);
+
+                if (!uniqueIDs.insert(id).second)
+                  {
+                    throw std::runtime_error(
+                        "RF-Track particle IDs are not unique");
+                  }
+
+                batch.particleID[i] = id;
+              }
+
+            idsExtracted = true;
+          }
+      }
+    catch (const py::error_already_set&)
+      {
+        idsExtracted = false;
+      }
+
+    for (py::ssize_t i = 0; i < n; ++i)
+      {
+        py::object particle = bunch.attr("get_particle")(i);
+
+        if (!idsExtracted)
+          {
+            batch.particleID[i] = py::cast<int>(particle.attr("id"));
+          }
+
+        if (py::hasattr(particle, "pdg_id"))
+          {
+            batch.pdgID[i] = py::cast<int>(particle.attr("pdg_id"));
+          }
+      }
+  }
+
+  BDSLinkParticleBatch
+  RFTrackBunchToBDSLinkParticleBatch(const py::object& bunch,
+                                     const int fallbackPDGID)
+  {
+    if (fallbackPDGID == 0)
+      {
+        throw py::value_error("pdg_id must be non-zero; "
+                              "use 2212 for protons");
+      }
+    if (!py::hasattr(bunch, "get_phase_space") || !py::hasattr(bunch, "size"))
+      {
+        throw std::invalid_argument("Expected an RF-Track Bunch6d or Bunch6dT");
+      }
+
+    const std::string className =
+        py::str(bunch.attr("__class__").attr("__name__"));
+
+    BDSLinkParticleBatch batch;
+
+    if (className == "Bunch6dT")
+      {
+        batch = ConvertBunch6dTCoordinates(bunch);
+      }
+    else if (className == "Bunch6d")
+      {
+        batch = ConvertBunch6dCoordinates(bunch);
+      }
+    else
+      {
+        throw std::invalid_argument("Unsupported RF-Track bunch type \"" +
+                                    className + "\"");
+      }
+
+    FillParticleMetadata(bunch, batch);
+
+    if (batch.pdgID.size() != batch.x.size())
+      {
+        throw py::value_error("Internal error: pdgID and particle arrays "
+                              "have different sizes");
+      }
+
+    for (int& pdgID : batch.pdgID)
+      {
+        if (pdgID == 0)
+          {
+            pdgID = fallbackPDGID;
+          }
+      }
+
+    batch.Validate();
+
+    return batch;
+  }
+
+  RFTrackBunchConversionResult
+  RFTrackBunchToBDSLinkConversionResult(const py::object& bunch,
+                                        int fallbackPDGID)
+  {
+    RFTrackBunchConversionResult conversion;
+
+    conversion.batch = RFTrackBunchToBDSLinkParticleBatch(bunch, fallbackPDGID);
+
+    const std::size_t numberOfParticles = conversion.batch.Size();
+
+    conversion.rfTrackIndexByParticleID.reserve(numberOfParticles);
+
+    for (std::size_t index = 0; index < numberOfParticles; ++index)
+      {
+        const int particleID = conversion.batch.particleID[index];
+
+        const auto insertion =
+            conversion.rfTrackIndexByParticleID.emplace(particleID, index);
+
+        if (!insertion.second)
+          {
+            throw py::value_error("Duplicate RF-Track particle ID " +
+                                  std::to_string(particleID));
+          }
+      }
+
+    return conversion;
+  }
+
+  void RequireFiniteParticleValue(double value,
+                                  const char* quantityName,
+                                  std::size_t particleIndex)
+  {
+    if (!std::isfinite(value))
+      {
+        throw py::value_error("Particle " + std::to_string(particleIndex) +
+                              " has a non-finite " + quantityName + " value");
+      }
+  }
+  RFTrackBunchConversionResult
+  LoadRFTrackBunchIntoTracker(BDSLinkTrackerInterface& trackerInterface,
+                              const py::object& bunch,
+                              int fallbackPDGID)
+  {
+    RFTrackBunchConversionResult conversion =
+        RFTrackBunchToBDSLinkConversionResult(bunch, fallbackPDGID);
+
+    BDSLinkParticleBatch& batch = conversion.batch;
+
+    const std::size_t n = batch.Size();
+
+    if (batch.Empty())
+      {
+        throw py::value_error("Cannot load an empty RF-Track bunch");
+      }
+
+    batch.Validate();
+
+    // Avoid repeating the Geant4 lookup for particles
+    // belonging to the same species.
+    std::unordered_set<int> validatedPDGIDs;
+    validatedPDGIDs.reserve(n);
+
+    for (std::size_t i = 0; i < n; ++i)
+      {
+        RequireFiniteParticleValue(batch.x[i], "x", i);
+
+        RequireFiniteParticleValue(batch.y[i], "y", i);
+
+        RequireFiniteParticleValue(batch.t[i], "t", i);
+
+        RequireFiniteParticleValue(batch.s[i], "s", i);
+
+        RequireFiniteParticleValue(batch.px[i], "px", i);
+
+        RequireFiniteParticleValue(batch.py[i], "py", i);
+
+        RequireFiniteParticleValue(batch.pz[i], "pz", i);
+
+        const double momentumSquared = batch.px[i] * batch.px[i] +
+                                       batch.py[i] * batch.py[i] +
+                                       batch.pz[i] * batch.pz[i];
+
+        if (!std::isfinite(momentumSquared))
+          {
+            throw py::value_error("Particle " + std::to_string(i) +
+                                  " has an invalid momentum magnitude");
+          }
+
+        if (momentumSquared <= 0.0)
+          {
+            throw py::value_error("Particle " + std::to_string(i) +
+                                  " has zero momentum");
+          }
+
+        const int particlePDGID = batch.pdgID[i];
+
+        if (particlePDGID == 0)
+          {
+            throw py::value_error("Particle " + std::to_string(i) +
+                                  " has an undefined PDG ID");
+          }
+
+        const auto insertion = validatedPDGIDs.insert(particlePDGID);
+
+        if (insertion.second)
+          {
+            G4ParticleDefinition* particleDefinition =
+                trackerInterface.GetParticleDefinition(particlePDGID);
+
+            if (!particleDefinition)
+              {
+                throw py::value_error("Particle " + std::to_string(i) +
+                                      " has unknown PDG ID " +
+                                      std::to_string(particlePDGID));
+              }
+
+            G4ParticleDefinition* tableDefinition =
+                G4ParticleTable::GetParticleTable()->FindParticle(
+                    particlePDGID);
+
+            if (!tableDefinition)
+              {
+                throw py::value_error("PDG ID " +
+                                      std::to_string(particlePDGID) +
+                                      " is not available to "
+                                      "BDSLinkTrackerInterface::AddParticle");
+              }
+          }
+      }
+
+    trackerInterface.ClearData();
+
+    trackerInterface.AddParticles(batch.x,
+                                  batch.y,
+                                  batch.px,
+                                  batch.py,
+                                  batch.pz,
+                                  batch.t,
+                                  batch.s,
+                                  batch.particleID,
+                                  batch.pdgID);
+
+    if (trackerInterface.GetBunchLink()->Size() != n)
+      {
+        throw std::runtime_error("BDSIMLink did not load the expected "
+                                 "number of RF-Track particles");
+      }
+
+    return conversion;
+  }
+
+  BDSLinkSamplerParticleBatch BDSLinkSamplerHitsToParticleBatch(
+      const BDSHitsCollectionSamplerLink& samplerHits)
+  {
+    BDSLinkSamplerParticleBatch output;
+
+    const std::size_t n = samplerHits.entries();
+
+    BDSLinkParticleBatch& particles = output.particles;
+
+    particles.x.resize(n);
+    particles.y.resize(n);
+    particles.px.resize(n);
+    particles.py.resize(n);
+    particles.pz.resize(n);
+    particles.t.resize(n);
+    particles.s.resize(n);
+    particles.particleID.resize(n);
+    particles.pdgID.resize(n);
+
+    output.parentID.resize(n);
+    output.trackID.resize(n);
+    output.eventID.resize(n);
+    output.weight.resize(n);
+
+    for (std::size_t i = 0; i < n; ++i)
+      {
+        const BDSHitSamplerLink* hit = samplerHits[i];
+
+        if (!hit)
+          {
+            throw std::runtime_error("Null BDSIM sampler hit at index " +
+                                     std::to_string(i));
+          }
+
+        const double directionNormSquared = hit->coords.xp * hit->coords.xp +
+                                            hit->coords.yp * hit->coords.yp +
+                                            hit->coords.zp * hit->coords.zp;
+
+        if (!std::isfinite(directionNormSquared) || directionNormSquared <= 0.0)
+          {
+            throw std::runtime_error(
+                "Invalid momentum direction in sampler hit " +
+                std::to_string(i));
+          }
+
+        if (!std::isfinite(hit->momentum) || hit->momentum < 0.0)
+          {
+            throw std::runtime_error("Invalid momentum in sampler hit " +
+                                     std::to_string(i));
+          }
+
+        const double inverseDirectionNorm =
+            1.0 / std::sqrt(directionNormSquared);
+
+        particles.x[i] = hit->coords.x;
+
+        particles.y[i] = hit->coords.y;
+
+        particles.px[i] = hit->momentum * hit->coords.xp * inverseDirectionNorm;
+
+        particles.py[i] = hit->momentum * hit->coords.yp * inverseDirectionNorm;
+
+        particles.pz[i] = hit->momentum * hit->coords.zp * inverseDirectionNorm;
+
+        particles.t[i] = hit->coords.T;
+
+        // This is the sampler-local longitudinal coordinate.
+        // It is not the accumulated beamline position.
+        particles.s[i] = hit->coords.s;
+
+        particles.particleID[i] = hit->externalParticleID;
+
+        particles.pdgID[i] = hit->pdgID;
+
+        output.parentID[i] = hit->externalParentID;
+
+        output.trackID[i] = hit->trackID;
+
+        output.eventID[i] = hit->eventID;
+
+        output.weight[i] = hit->coords.weight;
+      }
+
+    output.Validate();
+
+    return output;
+  }
+}
 
 template <typename T>
 T* make_ptr(py::array_t<T> &arr) {
@@ -55,8 +664,10 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
                  py::object particles,
                  float referenceKineticEnergy);
 
-void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface,
-                  py::object particles);
+void TrackRFTrack(
+  BDSLinkTrackerInterface* trackerInterface,
+  int elementIndex,
+  py::object bunch6d);
 
 
 PYBIND11_MODULE(bdslinktrackerinterface, m) {
@@ -191,9 +802,131 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
         float referenceKineticEnergy) {
       TrackXSuite(tracker_interface, iElement, elementName, particles, referenceKineticEnergy);
     })
-    .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
-      TrackRFTrack(tracker_interface, bunch6d);
-    });
+    .def(
+      "_LoadRFTrackBunch",
+      [](BDSLinkTrackerInterface& trackerInterface,
+         const py::object& bunch,
+         int pdgID)
+      {
+        const RFTrackBunchConversionResult conversion =
+          LoadRFTrackBunchIntoTracker(
+            trackerInterface,
+            bunch,
+            pdgID
+          );
+
+        return conversion.batch.Size();
+      },
+      py::arg("bunch"),
+      py::arg("pdg_id")
+    )
+    .def(
+      "_GetSamplerParticleBatch",
+      [](BDSLinkTrackerInterface& trackerInterface)
+      {
+        auto* samplerHits =
+          trackerInterface
+            .GetBDSIMLink()
+            ->SamplerHits();
+
+        if (!samplerHits)
+        {
+          throw std::runtime_error(
+            "No sampler hits are available; "
+            "call BeamOn first"
+          );
+        }
+
+        BDSLinkSamplerParticleBatch output =
+          BDSLinkSamplerHitsToParticleBatch(
+            *samplerHits
+          );
+
+        const BDSLinkParticleBatch& particles =
+          output.particles;
+
+        py::dict result;
+
+        result["x_mm"]          = particles.x;
+        result["y_mm"]          = particles.y;
+        result["px_mevc"]       = particles.px;
+        result["py_mevc"]       = particles.py;
+        result["pz_mevc"]       = particles.pz;
+        result["t_ns"]          = particles.t;
+        result["s_local_mm"]    = particles.s;
+        result["particle_ids"]  = particles.particleID;
+        result["pdg_ids"]       = particles.pdgID;
+        result["parent_ids"]    = output.parentID;
+        result["track_ids"]     = output.trackID;
+        result["event_ids"]     = output.eventID;
+        result["weights"]       = output.weight;
+
+        return result;
+      }
+    )
+    .def(
+      "TrackRFTrack",
+      [](BDSLinkTrackerInterface* trackerInterface,
+         int elementIndex,
+         py::object bunch6d)
+      {
+        TrackRFTrack(
+          trackerInterface,
+          elementIndex,
+          bunch6d
+        );
+      },
+      py::arg("element_index"),
+      py::arg("bunch")
+    );
+
+  m.def(
+    "_ConvertRFTrackBunchToBDSLinkBatch",
+    [](py::object bunch,
+       int pdgID)
+    {
+      const RFTrackBunchConversionResult conversion =
+        RFTrackBunchToBDSLinkConversionResult(
+          bunch,
+          pdgID
+        );
+
+      const BDSLinkParticleBatch& batch =
+        conversion.batch;
+
+      py::dict result;
+
+      result["x_mm"]         = batch.x;
+      result["y_mm"]         = batch.y;
+      result["px_mevc"]      = batch.px;
+      result["py_mevc"]      = batch.py;
+      result["pz_mevc"]      = batch.pz;
+      result["t_ns"]         = batch.t;
+      result["s_mm"]         = batch.s;
+      result["particle_ids"] = batch.particleID;
+      result["pdg_ids"]      = batch.pdgID;
+
+      py::dict indexByParticleID;
+
+      for (
+        const auto& entry :
+        conversion.rfTrackIndexByParticleID
+      )
+        {
+          indexByParticleID[
+            py::int_(entry.first)
+          ] = py::int_(entry.second);
+        }
+
+      result["rftrack_index_by_particle_id"] =
+        indexByParticleID;
+
+      return result;
+    },
+    py::arg("bunch"),
+    py::arg("pdg_id")
+  );
+
 }
 
 void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
@@ -467,116 +1200,263 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
     tracker_interface->ClearData();
 }
 
-void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
+void TrackRFTrack(BDSLinkTrackerInterface* trackerInterface,
+                  int elementIndex,
+                  py::object bunch6d)
+{
+  if (!trackerInterface)
+    {
+      throw std::invalid_argument("BDSLinkTrackerInterface pointer is null");
+    }
+
+  if (elementIndex < 0)
+    {
+      throw py::value_error("element_index must be non-negative");
+    }
+
+  if (!py::hasattr(bunch6d, "S"))
+    {
+      throw py::type_error("TrackRFTrack requires an RF-Track Bunch6d "
+                           "with an S coordinate");
+    }
+
+  const double elementSStartM = py::cast<double>(bunch6d.attr("S"));
+
+  if (!std::isfinite(elementSStartM))
+    {
+      throw py::value_error("RF-Track bunch.S must be finite");
+    }
+
   py::print("TrackRFTrack> Bunch6d::", bunch6d);
-  auto size_method = bunch6d.attr("size");
-  py::print("TrackRFTrack> Bunch6d::size",size_method());
 
-  auto bdsim_link = tracker_interface->GetBDSIMLink();
+  py::print("TrackRFTrack> Bunch6d::size", bunch6d.attr("size")());
 
-  auto refPDG = tracker_interface->GetReferenceParticleDefinition()->PDGID();
-  // clear sampler hits (do this first and not at end as sampler data will
-  // no longer available in python)
-  bdsim_link->ClearSamplerHits();
+  auto* bdsimLink = trackerInterface->GetBDSIMLink();
 
-  int nparticle = bunch6d.attr("size")().cast<int>();
-
-  for(int i = 0; i < nparticle ;i++) {
-    // py::print("TrackRFTrack> ",i);
-
-    auto p = bunch6d.attr("get_particle")(i);
-    auto x = py::cast<double>(p.attr("x"));
-    auto y = py::cast<double>(p.attr("y"));
-    auto p4v = (py::cast<py::array_t<double>>(p.attr("get_four_momentum")())).unchecked<2>();
-    // TODO time needs to calculated wrt to reference particle
-    // auto t = py::cast<double>(p.attr("t"));
-    auto pdgID = py::cast<int>(p.attr("pdg_id")); // initiall this will be zero and add particle will set to reference particle
-
-    tracker_interface->AddParticle(x*CLHEP::mm, y*CLHEP::mm, // x, y
-                                   p4v(1,0), p4v(2,0), p4v(3,0), // px, px, pz
-                                   0, // ct
-                                   0, // s
-                                   i, pdgID); // trackID, parent;
-    if (pdgID == 0) {
-      p.attr("pdg_id") = py::cast(refPDG);
+  if (!bdsimLink)
+    {
+      throw std::runtime_error("BDSIMLink is not available");
     }
-  }
-  bdsim_link->BeamOn(nparticle);
 
-  // loop over sampler hits and update bunch
-  auto sh = bdsim_link->SamplerHits();
+  bdsimLink->SelectLinkElement(elementIndex);
 
-  // set all bunch particles as if they didn't make it (s)
-  //auto endpoint = (*sh)[0]->coords.s;
-  auto endpoint = 0.1;
-  for(int i=0; i<nparticle; i++) {
-    auto p = bunch6d.attr("get_particle")(i);
-    p.attr("S_lost") = py::cast(endpoint);
-  }
+  const double elementArcLengthMm =
+      bdsimLink->GetArcLengthOfLinkID(elementIndex);
 
-
-  auto append_method = bunch6d.attr("append");
-  std::vector<double> new_particle_data = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-  for(std::size_t i=0; i<sh->entries(); i++) {
-    auto h = (*sh)[i];
-    // std::cout << i << " " << h->externalParentID << std::endl;
-    auto externalID = h->externalParentID;
-    auto trackID = h->trackID;
-    auto p = bunch6d.attr("get_particle")(externalID);
-    if(trackID == 1) { // existing partucke
-      p.attr("x") = py::cast(h->coords.x);
-      p.attr("y") = py::cast(h->coords.y);
-      p.attr("xp") = py::cast(h->coords.xp);
-      p.attr("yp") = py::cast(h->coords.yp);
-      p.attr("S_lost") = py::cast(std::nan(""));
-      // TODO colulate absolute T for particle
+  if (!std::isfinite(elementArcLengthMm) || elementArcLengthMm < 0.0)
+    {
+      throw std::runtime_error("Selected BDSIM link element has an "
+                               "invalid arc length");
     }
-    else { // new particle
+  const double samplerSGlobalM = elementSStartM + elementArcLengthMm / CLHEP::m;
 
-      new_particle_data[0] = h->coords.x;
-      new_particle_data[1] = h->coords.xp;
-      new_particle_data[2] = h->coords.y;
-      new_particle_data[3] = h->coords.yp;
-
-      // look up particle mass and charge
-      G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle(h->pdgID);
-      new_particle_data[6] = particle->GetPDGMass();
-      new_particle_data[7] = particle->GetPDGCharge();
-      new_particle_data[8] = py::cast<double>(p.attr("N"))*h->coords.weight;
-
-      // append bdsim generated particle
-      int idx_insert = bunch6d.attr("size")().cast<int>();
-      py::array_t<double> new_particle_arr(new_particle_data.size(), new_particle_data.data());
-      append_method(new_particle_arr);
-
-      // need to set particle as not lost
-      p = bunch6d.attr("get_particle")(idx_insert);
-      p.attr("S_lost") = py::cast(std::nan(""));
-
-      // set particle momentum
-      p.attr("Pc") = py::cast(h->momentum);
-
-      // set particle pdg
-      p.attr("pdg_id") = py::cast(h->pdgID);
-
-      // TODO colulate absolute T for new particles particle
-      // set particle time
-
-      // set created particle lifetime for RF Track
-      auto lifetime = particle->GetPDGLifeTime();
-      auto mass = particle->GetPDGMass();
-      if (lifetime < 0) { // set infinite lifetime
-        p.attr("lifetime") = std::numeric_limits<double>::infinity();
-      }
-      else if(mass > 0) { // need to have non zero mass
-        //vauto boosted_lifetime = h->coords.totalEnergy/mass*lifetime;
-        // auto sampled_lifetime = -boosted_lifetime * std::log(G4UniformRand());
-        // std::cout << lifetime << " " << h->coords.totalEnergy << " " << mass << std::endl;
-        // p.attr("lifetime") = py::cast(boosted_lifetime);
-
-        p.attr("lifetime") = std::numeric_limits<double>::infinity();
-      }
+  if (!std::isfinite(samplerSGlobalM))
+    {
+      throw std::runtime_error("Calculated sampler S position is not finite");
     }
-  }
+  const int fallbackPDGID = trackerInterface->GetReferenceParticlePDG();
+
+  const RFTrackBunchConversionResult conversion =
+      LoadRFTrackBunchIntoTracker(*trackerInterface, bunch6d, fallbackPDGID);
+
+  const BDSLinkParticleBatch& loadedBatch = conversion.batch;
+
+  const auto& rfTrackIndexByParticleID = conversion.rfTrackIndexByParticleID;
+
+  const std::size_t numberLoaded = loadedBatch.Size();
+
+  if (numberLoaded > static_cast<std::size_t>(std::numeric_limits<int>::max()))
+    {
+      throw std::overflow_error("RF-Track bunch contains too many particles "
+                                "for BDSIMLink::BeamOn");
+    }
+
+  const int numberOfParticles = static_cast<int>(numberLoaded);
+
+  bdsimLink->BeamOn(numberOfParticles);
+
+  auto* samplerHits = bdsimLink->SamplerHits();
+
+  if (!samplerHits)
+    {
+      throw std::runtime_error("No BDSIM sampler hit collection is available "
+                               "after BeamOn");
+    }
+
+  const BDSLinkSamplerParticleBatch samplerBatch =
+      BDSLinkSamplerHitsToParticleBatch(*samplerHits);
+
+  const BDSLinkParticleBatch& sampledParticles = samplerBatch.particles;
+
+  // Initially mark every particle as not having reached
+  // the output sampler. The output-sampler position is
+  // used as a temporary loss position until exact BDSIM
+  // loss coordinates are available.
+  for (int i = 0; i < numberOfParticles; ++i)
+    {
+      py::object particle = bunch6d.attr("get_particle")(i);
+
+      particle.attr("S_lost") = py::cast(samplerSGlobalM);
+
+      const int particlePDGID = py::cast<int>(particle.attr("pdg_id"));
+
+      // Record the fallback PDG ID actually used by BDSIM.
+      if (particlePDGID == 0)
+        {
+          particle.attr("pdg_id") = py::cast(fallbackPDGID);
+        }
+    }
+
+  py::object appendMethod = bunch6d.attr("append");
+
+  std::vector<double> newParticleData =
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+
+  for (std::size_t i = 0; i < sampledParticles.Size(); ++i)
+    {
+      const int parentParticleID = samplerBatch.parentID[i];
+
+      const auto parentIndexIterator =
+          rfTrackIndexByParticleID.find(parentParticleID);
+
+      if (parentIndexIterator == rfTrackIndexByParticleID.end())
+        {
+          throw std::runtime_error("Sampler hit refers to unknown RF-Track "
+                                   "parent particle ID " +
+                                   std::to_string(parentParticleID));
+        }
+
+      const std::size_t parentIndex = parentIndexIterator->second;
+
+      py::object particle = bunch6d.attr("get_particle")(parentIndex);
+
+      const int sampledParticleID = sampledParticles.particleID[i];
+
+      const int sampledPDGID = sampledParticles.pdgID[i];
+
+      const bool isPrimary = sampledParticleID == parentParticleID;
+
+      const double pxMeVc = sampledParticles.px[i];
+
+      const double pyMeVc = sampledParticles.py[i];
+
+      const double pzMeVc = sampledParticles.pz[i];
+
+      const double momentumMeVc =
+          std::hypot(std::hypot(pxMeVc, pyMeVc), pzMeVc);
+
+      if (!std::isfinite(momentumMeVc) || momentumMeVc <= 0.0)
+        {
+          throw std::runtime_error("Sampler particle has invalid momentum "
+                                   "at index " +
+                                   std::to_string(i));
+        }
+
+      const double longitudinalDirection = pzMeVc / momentumMeVc;
+
+      if (!std::isfinite(longitudinalDirection) ||
+          std::abs(longitudinalDirection) <=
+              std::numeric_limits<double>::epsilon())
+        {
+          throw std::runtime_error("Sampler particle has a zero or invalid "
+                                   "longitudinal momentum direction at index " +
+                                   std::to_string(i));
+        }
+
+      // RF-Track Bunch6d stores transverse slopes in mrad.
+      const double xpMrad = 1.0e3 * pxMeVc / pzMeVc;
+
+      const double ypMrad = 1.0e3 * pyMeVc / pzMeVc;
+
+      if (isPrimary)
+        {
+          // The primary particle reached
+          // the output sampler.
+          particle.attr("x") = py::cast(sampledParticles.x[i]);
+
+          particle.attr("y") = py::cast(sampledParticles.y[i]);
+
+          particle.attr("xp") = py::cast(xpMrad);
+
+          particle.attr("yp") = py::cast(ypMrad);
+
+          particle.attr("Pc") = py::cast(momentumMeVc);
+
+          particle.attr("S_lost") = py::cast(std::nan(""));
+
+          // Synchronise the RF-Track particle with
+          // the particle species reported by BDSIM.
+          particle.attr("pdg_id") = py::cast(sampledPDGID);
+
+          // TODO: Calculate and update the particle's
+          // absolute time.
+        }
+      else
+        {
+          // Secondary particle produced by BDSIM.
+          newParticleData[0] = sampledParticles.x[i];
+
+          newParticleData[1] = xpMrad;
+
+          newParticleData[2] = sampledParticles.y[i];
+
+          newParticleData[3] = ypMrad;
+
+          G4ParticleDefinition* particleDefinition =
+              G4ParticleTable::GetParticleTable()->FindParticle(sampledPDGID);
+
+          if (!particleDefinition)
+            {
+              throw std::runtime_error(
+                  "Unable to find Geant4 particle with PDG ID " +
+                  std::to_string(sampledPDGID));
+            }
+
+          newParticleData[6] = particleDefinition->GetPDGMass();
+
+          newParticleData[7] = particleDefinition->GetPDGCharge();
+
+          newParticleData[8] =
+              py::cast<double>(particle.attr("N")) * samplerBatch.weight[i];
+
+          const int insertionIndex = bunch6d.attr("size")().cast<int>();
+
+          py::array_t<double> newParticleArray(newParticleData.size(),
+                                               newParticleData.data());
+
+          appendMethod(newParticleArray);
+
+          particle = bunch6d.attr("get_particle")(insertionIndex);
+
+          particle.attr("S_lost") = py::cast(std::nan(""));
+
+          particle.attr("Pc") = py::cast(momentumMeVc);
+
+          particle.attr("pdg_id") = py::cast(sampledPDGID);
+
+          // TODO: Calculate the secondary particle's
+          // absolute time.
+
+          const double lifetime = particleDefinition->GetPDGLifeTime();
+
+          const double mass = particleDefinition->GetPDGMass();
+
+          if (lifetime < 0.0)
+            {
+              // A negative Geant4 lifetime represents
+              // a stable particle.
+              particle.attr("lifetime") =
+                  std::numeric_limits<double>::infinity();
+            }
+          else if (mass > 0.0)
+            {
+              // TODO: Calculate and sample the
+              // relativistically boosted lifetime.
+              particle.attr("lifetime") =
+                  std::numeric_limits<double>::infinity();
+            }
+        }
+    }
+
+  bunch6d.attr("S") = py::cast(samplerSGlobalM);
 }

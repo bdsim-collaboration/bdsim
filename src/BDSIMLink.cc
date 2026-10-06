@@ -505,6 +505,20 @@ double BDSIMLink::GetArcLengthOfLinkElement(int beamlineIndex) const
   return component->ComponentArcLength();
 }
 
+double BDSIMLink::GetArcLengthOfLinkID(int linkID) const
+{
+  const auto indexIterator = linkIDToBeamlineIndex.find(linkID);
+
+  if (indexIterator == linkIDToBeamlineIndex.end())
+    {
+      return -1.0;
+    }
+
+  const int beamlineIndex = indexIterator->second;
+
+  return GetArcLengthOfLinkElement(beamlineIndex);
+}
+
 double BDSIMLink::GetArcLengthOfLinkElement(const std::string& elementName)
 {
   int linkID = GetLinkIndex(elementName);
