@@ -121,7 +121,8 @@ public:
                               double jawTiltLeft = 0.0,
                               double jawTiltRight = 0.0,
                               bool   buildLeftJaw  = true,
-                              bool   buildRightJaw = true);
+                              bool   buildRightJaw = true,
+                              double tipTaperAngle = 0.0);
 
   int AddLinkElement(GMAD::Element &el);
 
