@@ -22,10 +22,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "globals.hh" // geant4 types / globals
 #include "G4Material.hh"
+#include "G4RotationMatrix.hh"
 
 class G4Colour;
 class G4LogicalVolume;
-class G4RotationMatrix;
 class G4VSolid;
 
 /**
