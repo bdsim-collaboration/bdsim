@@ -30,6 +30,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4GenericTrap.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
+#include "G4RotationMatrix.hh"
+#include "G4Trd.hh"
 #include "G4VisAttributes.hh"
 
 #include <cmath>
@@ -58,6 +60,7 @@ BDSCollimator(nameIn, lengthIn, horizontalWidthIn, objectType, collimatorMateria
   xHalfGap(xHalfGapIn),
   jawTiltLeft(leftJawTiltIn),
   jawTiltRight(rightJawTiltIn),
+  tipTaperAngle(0),
   yHalfHeight(yHalfHeightIn),
   buildLeftJaw(buildLeftJawIn),
   buildRightJaw(buildRightJawIn),
@@ -128,6 +131,62 @@ void BDSCollimatorJaw::Calculations()
   vacuumOffset = G4ThreeVector(vacuumCentre, 0, 0);
 }
 
+BDSCollimatorJaw::TaperedBox
+BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
+                                    G4double xHalfGapThisJaw,
+                                    G4int    sign,
+                                    G4double depthInner,
+                                    G4double depthOuter,
+                                    G4double fullDepth,
+                                    G4double halfHeight,
+                                    G4double fullChordLength) const
+{
+  G4double xInner = sign * (xHalfGapThisJaw + depthInner);
+  G4double xOuter = sign * (xHalfGapThisJaw + depthOuter);
+  G4double xCentre = 0.5 * (xInner + xOuter);
+
+  if (!BDS::IsFinite(tipTaperAngle))
+    {
+      // exactly the original, untapered construction
+      G4VSolid* box = new G4Box(solidName,
+                                0.5 * (depthOuter - depthInner) - lengthSafety,
+                                halfHeight - lengthSafety,
+                                fullChordLength * 0.5 - lengthSafety);
+      return TaperedBox{box, G4ThreeVector(xCentre, 0, 0), nullptr};
+    }
+
+  // Half chord length (BDSIM z, the beam direction) as a function of depth
+  // into the jaw: pinned to half of fullChordLength at depth = fullDepth (the
+  // jaw's own outer edge - so the tapered solid never sticks out beyond the
+  // footprint of the equivalent flat box), shrinking linearly towards the
+  // aperture edge as depth decreases.
+  auto halfLengthAtDepth = [&](G4double depth)
+    {return 0.5 * fullChordLength - (fullDepth - depth) / std::tan(tipTaperAngle);};
+
+  G4double dx1 = halfLengthAtDepth(depthInner) - lengthSafety;
+  G4double dx2 = halfLengthAtDepth(depthOuter) - lengthSafety;
+  if (dx1 < 1e-3 || dx2 < 1e-3) // 1um minimum, could also be negative
+    {
+      throw BDSException(__METHOD_NAME__, "tipTaperAngle too large (or the jaw too wide) "
+                         "for \"" + name + "\": the tapered length becomes too small");
+    }
+
+  G4VSolid* trd = new G4Trd(solidName, dx1, dx2,
+                            halfHeight - lengthSafety, halfHeight - lengthSafety,
+                            0.5 * std::abs(depthOuter - depthInner));
+
+  // Swap the solid's own (fixed-length) z axis with the depth (x) axis: a
+  // +90 degree rotation about y sends the solid's local +z to the mother's
+  // -x, and -90 degrees sends it to the mother's +x - verified numerically
+  // against G4Navigator, not just derived on paper, since getting the sign
+  // wrong here would silently mirror the wedge. Depth increases along +x for
+  // the left jaw (sign=+1) and along -x for the right jaw (sign=-1).
+  G4RotationMatrix* rot = new G4RotationMatrix();
+  rot->rotateY((sign > 0 ? -90.0 : 90.0) * CLHEP::deg);
+
+  return TaperedBox{trd, G4ThreeVector(xCentre, 0, 0), rot};
+}
+
 void BDSCollimatorJaw::CheckParameters()
 {
   // BDSCollimator::CheckParameters() <- we replace this and don't call it - 'tapered' is never set
@@ -159,6 +218,14 @@ void BDSCollimatorJaw::CheckParameters()
     {throw BDSException(__METHOD_NAME__, "|jawTiltLeft| is over pi/4 radians for \"" + name + "\"");}
   if (std::abs(jawTiltRight) > 0.5*CLHEP::halfpi)
     {throw BDSException(__METHOD_NAME__, "|jawTiltRight| is over pi/4 radians for \"" + name + "\"");}
+
+  if (BDS::IsFinite(tipTaperAngle))
+    {
+      if (tipTaperAngle <= 0 || tipTaperAngle >= CLHEP::halfpi)
+        {throw BDSException(__METHOD_NAME__, "tipTaperAngle must be in (0, pi/2) radians for \"" + name + "\"");}
+      if ((buildLeftJaw && jawTiltLeft != 0) || (buildRightJaw && jawTiltRight != 0))
+        {throw BDSException(__METHOD_NAME__, "tipTaperAngle cannot be combined with a jaw tilt for \"" + name + "\"");}
+    }
 
   // shift of each jaw face at the ends of the element due to its tilt - tilt is ignored for a
   // jaw that isn't built - uses the half gaps from Calculations(), which is called in the constructor
@@ -214,18 +281,30 @@ void BDSCollimatorJaw::Build()
   if (buildLeftJaw && buildAperture)
     {
       G4VSolid* leftJawSolid = nullptr;
+      G4ThreeVector leftJawPlacementPos = leftJawPos;
+      G4RotationMatrix* leftJawRot = nullptr;
       if (jawTiltLeft != 0)
         {
           // Adjust the length of the parallelepiped to match the inside edges in Z
           // Due to the straight parallelepiped edges, it will never match the volume an angled box,
           // so it is chosen to underestimate the volume, but preserve the jaw x-y cutting plane.
           G4double leftHalfLength = chordLength * 0.5 * std::cos(jawTiltLeft);
-          
+
           leftJawSolid = new G4Para(name + "_leftjaw_solid",
                                     leftJawWidth * 0.5 - lengthSafety,
                                     yHalfHeight - lengthSafety,
                                     leftHalfLength - lengthSafety,
                                     0, jawTiltLeft, 0);
+        }
+      else if (BDS::IsFinite(tipTaperAngle))
+        {
+          G4double leftFullDepth = 0.5 * horizontalWidth - leftJawHalfGap;
+          TaperedBox tb = BuildTaperedJawBox(name + "_leftjaw_solid", leftJawHalfGap, +1,
+                                             leftFullDepth - leftJawWidth, leftFullDepth, leftFullDepth,
+                                             yHalfHeight, chordLength);
+          leftJawSolid = tb.solid;
+          leftJawPlacementPos = tb.position;
+          leftJawRot = tb.rotation;
         }
       else
         {
@@ -234,27 +313,27 @@ void BDSCollimatorJaw::Build()
                                    yHalfHeight - lengthSafety,
                                    chordLength * 0.5 - lengthSafety);
         }
-      
+
       RegisterSolid(leftJawSolid);
-      
+
       G4LogicalVolume* leftJawLV = new G4LogicalVolume(leftJawSolid,       // solid
                                                        collimatorMaterial,    // material
                                                        name + "_leftjaw_lv"); // name
       leftJawLV->SetVisAttributes(collimatorVisAttr);
-      
+
       // user limits - provided by BDSAcceleratorComponent
       leftJawLV->SetUserLimits(collUserLimits);
-      
+
       // register with base class (BDSGeometryComponent)
       RegisterLogicalVolume(leftJawLV);
       // register it in a set of collimator logical volumes
       BDSAcceleratorModel::Instance()->VolumeSet("collimators")->insert(leftJawLV);
       if (sensitiveOuter)
         {RegisterSensitiveVolume(leftJawLV, BDSSDType::collimatorcomplete);}
-      
+
       // place the jaw
-      G4PVPlacement* leftJawPV = new G4PVPlacement(nullptr,              // rotation
-                                                   leftJawPos,              // position
+      G4PVPlacement* leftJawPV = new G4PVPlacement(leftJawRot,              // rotation
+                                                   leftJawPlacementPos,     // position
                                                    leftJawLV,               // its logical volume
                                                    name + "_leftjaw_pv",    // its name
                                                    containerLogicalVolume,  // its mother volume
@@ -266,7 +345,9 @@ void BDSCollimatorJaw::Build()
   if (buildRightJaw && buildAperture)
     {
       G4VSolid* rightJawSolid = nullptr;
-      
+      G4ThreeVector rightJawPlacementPos = rightJawPos;
+      G4RotationMatrix* rightJawRot = nullptr;
+
       if (jawTiltRight != 0)
         {
           // Adjust the length of the parallelepiped to match the inside edges in Z
@@ -280,6 +361,16 @@ void BDSCollimatorJaw::Build()
                                      rightHalfLength - lengthSafety,
                                      0, jawTiltRight, 0);
         }
+      else if (BDS::IsFinite(tipTaperAngle))
+        {
+          G4double rightFullDepth = 0.5 * horizontalWidth - rightJawHalfGap;
+          TaperedBox tb = BuildTaperedJawBox(name + "_rightjaw_solid", rightJawHalfGap, -1,
+                                             rightFullDepth - rightJawWidth, rightFullDepth, rightFullDepth,
+                                             yHalfHeight, chordLength);
+          rightJawSolid = tb.solid;
+          rightJawPlacementPos = tb.position;
+          rightJawRot = tb.rotation;
+        }
       else
         {
           rightJawSolid = new G4Box(name + "_rightjaw_solid",
@@ -289,7 +380,7 @@ void BDSCollimatorJaw::Build()
         }
 
       RegisterSolid(rightJawSolid);
-      
+
       G4LogicalVolume* rightJawLV = new G4LogicalVolume(rightJawSolid,      // solid
                                                         collimatorMaterial,     // material
                                                         name + "_rightjaw_lv"); // name
@@ -299,10 +390,10 @@ void BDSCollimatorJaw::Build()
       BDSAcceleratorModel::Instance()->VolumeSet("collimators")->insert(rightJawLV);
       if (sensitiveOuter)
         {RegisterSensitiveVolume(rightJawLV, BDSSDType::collimatorcomplete);}
-      
+
       // place the jaw
-      G4PVPlacement* rightJawPV = new G4PVPlacement(nullptr,             // rotation
-                                                    rightJawPos,             // position
+      G4PVPlacement* rightJawPV = new G4PVPlacement(rightJawRot,             // rotation
+                                                    rightJawPlacementPos,    // position
                                                     rightJawLV,              // its logical volume
                                                     name + "_rightjaw_pv",   // its name
                                                     containerLogicalVolume,  // its mother volume
