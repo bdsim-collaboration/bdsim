@@ -1630,6 +1630,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateTipJawCollimator()
                                  element->jawTiltLeft*CLHEP::rad,
                                  element->jawTiltRight*CLHEP::rad,
                                  element->tipThickness*CLHEP::m,
+                                 PrepareTipTaperAngle(element),
 				 true,
 				 true,
 				 collimatorMaterial,
@@ -3106,6 +3107,23 @@ G4Material* BDSComponentFactory::PrepareTipMaterial(Element const* el)
     {throw BDSException(__METHOD_NAME__, "element \"" + el->name + "\" has no tip material specified.");}
   else
     {return BDSMaterials::Instance()->GetMaterial(materialName);}
+}
+
+G4double BDSComponentFactory::PrepareTipTaperAngle(Element const* el)
+{
+  G4bool degSet = BDS::IsFinite(el->taperAngleDeg);
+  G4bool radSet = BDS::IsFinite(el->taperAngleRad);
+  if (degSet && radSet)
+    {
+      throw BDSException(__METHOD_NAME__, "element \"" + el->name +
+                         "\" has both taper_angle_deg and taper_angle_rad set - specify only one.");
+    }
+  if (degSet)
+    {return el->taperAngleDeg * CLHEP::degree;}
+  else if (radSet)
+    {return el->taperAngleRad * CLHEP::rad;}
+  else
+    {return 0;}
 }
 
 void BDSComponentFactory::SetFieldDefinitions(Element const* el,
