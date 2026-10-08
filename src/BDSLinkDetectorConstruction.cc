@@ -358,7 +358,8 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
                                                           G4double jawTiltRight,
                                                           G4bool   buildLeftJaw,
                                                           G4bool   buildRightJaw,
-                                                          G4double tipTaperAngle)
+                                                          G4double tipTaperAngle,
+                                                          G4double horizontalWidth)
 {
     auto componentFactory = std::unique_ptr<BDSComponentFactory>(new BDSComponentFactory(nullptr, false));
 
@@ -387,7 +388,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     el.tilt     = rotation / CLHEP::rad;
     el.offsetX  = xOffset / CLHEP::m;
     el.offsetY  = yOffset / CLHEP::m;
-    el.horizontalWidth = 2.0; // m
+    el.horizontalWidth = horizontalWidth > 0 ? horizontalWidth / CLHEP::m : 2.0; // m
     el.jawTiltLeft  = jawTiltLeft; // rad
     el.jawTiltRight = jawTiltRight; // rad
     el.tipThickness = tipThickness / CLHEP::m;

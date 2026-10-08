@@ -601,7 +601,8 @@ int BDSIMLink::AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                        double jawTiltRight,
                                        bool   buildLeftJaw,
                                        bool   buildRightJaw,
-                                       double tipTaperAngle)
+                                       double tipTaperAngle,
+                                       double horizontalWidth)
 {
   G4GeometryManager* gm = G4GeometryManager::GetInstance();
   if (gm->IsGeometryClosed())
@@ -621,7 +622,8 @@ int BDSIMLink::AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                                        jawTiltRight,
                                                        buildLeftJaw,
                                                        buildRightJaw,
-                                                       tipTaperAngle);
+                                                       tipTaperAngle,
+                                                       horizontalWidth);
   // update this class's nameToElementIndex map
   nameToElementIndex = construction->NameToElementIndex();
   linkIDToBeamlineIndex = construction->LinkIDToBeamlineIndex();
