@@ -25,6 +25,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 class G4Colour;
 class G4LogicalVolume;
+class G4RotationMatrix;
 class G4VSolid;
 
 /**
@@ -57,6 +58,34 @@ public:
   inline G4double GetJawTiltRight() const {return jawTiltRight;}
 
 protected:
+  /// Solid and placement for one (optionally tapered) jaw sub-block, as
+  /// returned by BuildTaperedJawBox().
+  struct TaperedBox
+  {
+    G4VSolid*         solid;
+    G4ThreeVector     position;
+    G4RotationMatrix* rotation; ///< nullptr for an untapered (plain box) solid.
+  };
+
+  /// Build one jaw sub-block (the bulk jaw, or - in a derived class - the tip),
+  /// spanning local depth [depthInner, depthOuter] (both >= 0, depthOuter >
+  /// depthInner) measured from the aperture edge of this jaw. 'sign' is +1 for
+  /// the left jaw (depth increases along +x) or -1 for the right jaw (depth
+  /// increases along -x). 'fullDepth' is the depth of the jaw's own outer
+  /// physical edge, where the solid's z-length always equals 'fullChordLength'
+  /// (the nominal, untapered chord length) regardless of tipTaperAngle - this
+  /// guarantees the tapered solid never exceeds the footprint of the
+  /// equivalent flat box. If tipTaperAngle is zero, the returned solid is a
+  /// plain G4Box identical to the original (untapered) construction.
+  TaperedBox BuildTaperedJawBox(const G4String& solidName,
+                                G4double xHalfGapThisJaw,
+                                G4int    sign,
+                                G4double depthInner,
+                                G4double depthOuter,
+                                G4double fullDepth,
+                                G4double halfHeight,
+                                G4double fullChordLength) const;
+
   void Calculations(); ///< Calculate offsets and sizes.
 
   /// Check and update parameters before construction. Called at the start of Build() as
@@ -77,6 +106,7 @@ protected:
   G4double  xHalfGap;        ///< Half gap separation between jaws.
   G4double  jawTiltLeft;     ///< Tilt of jaw 1 (angle in x-z plane)
   G4double  jawTiltRight;    ///< Tilt of jaw 2 (angle in x-z plane)
+  G4double  tipTaperAngle;   ///< Taper angle (rad) of the front and back jaw faces; 0 (default) = flat jaw, as before.
   G4double  yHalfHeight;     ///< Half height of each jaw.
   G4bool    buildLeftJaw;    ///< Build left jaw or not.
   G4bool    buildRightJaw;   ///< Build right jaw or not.
