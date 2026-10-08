@@ -47,6 +47,7 @@ public:
                       G4double    leftJawTiltIn,
                       G4double    rightJawTiltIn,
                       G4double    tipThicknessIn,
+                      G4double    tipTaperAngleIn,
                       G4bool      buildLeftJawIn,
                       G4bool      buildRightJawIn,
                       G4Material* collimatorMaterialIn,
