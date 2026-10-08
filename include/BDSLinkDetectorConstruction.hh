@@ -86,7 +86,8 @@ public:
                                 G4double jawTiltLeft = 0.0,
                                 G4double jawTiltRight = 0.0,
                                 G4bool   buildLeftJaw  = true,
-                                G4bool   buildRightJaw = true);
+                                G4bool   buildRightJaw = true,
+                                G4double tipTaperAngle = 0.0);
   /// Interface to append an element
   G4int AddLinkElement(GMAD::Element el);
 
