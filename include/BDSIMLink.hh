@@ -108,6 +108,7 @@ public:
                            double crystalAngle  = 0,
                            bool   sampleIn      = false);
 
+  /// horizontalWidth is the full width of the collimator; 0 (default) means 2 m.
   int AddLinkCollimatorTipJaw(const std::string& collimatorName,
                               const std::string& materialName,
                               const std::string& tipMaterialName,
@@ -122,7 +123,8 @@ public:
                               double jawTiltRight = 0.0,
                               bool   buildLeftJaw  = true,
                               bool   buildRightJaw = true,
-                              double tipTaperAngle = 0.0);
+                              double tipTaperAngle = 0.0,
+                              double horizontalWidth = 0.0);
 
   int AddLinkElement(GMAD::Element &el);
 
