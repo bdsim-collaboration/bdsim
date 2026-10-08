@@ -218,6 +218,8 @@ namespace GMAD
     ///@{ for jaw collimator with tip
     double tipThickness; ///< tip thickness
     std::string tipMaterial; ///< tip material
+    double taperAngleDeg; ///< jaw taper angle in degrees (jcoltip only)
+    double taperAngleRad; ///< jaw taper angle in radians (jcoltip only)
     ///@}
 
     ///@{ temporary string for bias setting

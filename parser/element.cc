@@ -246,6 +246,8 @@ void Element::PublishMembers()
   // for jaw collimator with tip
   publish("tipThickness",     &Element::tipThickness);
   publish("tipMaterial",      &Element::tipMaterial);
+  publish("taper_angle_deg",  &Element::taperAngleDeg);
+  publish("taper_angle_rad",  &Element::taperAngleRad);
 
   // bias
   publish("bias",                &Element::bias);
@@ -596,6 +598,8 @@ void Element::flush()
   jawTiltLeft = 0;
   jawTiltRight = 0;
   tipThickness = 0;
+  taperAngleDeg = 0;
+  taperAngleRad = 0;
 
   // PWFA
   xsize2 = 0;
