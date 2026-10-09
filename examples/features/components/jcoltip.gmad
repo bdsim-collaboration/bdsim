@@ -32,24 +32,23 @@ col19: jcoltip, l=0.2*m, material="G4_W", tipMaterial="G4_Cu", tipThickness=4*mm
 ! both jaws tilted to the right on downstream side and offset to the left over the mid point
 col20: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=4*mm, horizontalWidth=60.0*cm, xsizeLeft=12*cm,    xsizeRight=-11.9*cm, jawTiltLeft=-0.1, jawTiltRight=-0.1;
 
-! tapered jaws (a wedge, G4Trd, instead of the flat box above): the jaw length
-! along the beam grows with depth beyond the gap, from a short tip near the
-! beam out to the full l at the jaw's outer edge. taper_angle_deg/rad cannot
-! be combined with a jawTilt. horizontalWidth is kept modest here (rather than
-! the 60 cm used above) so a realistic, shallow taper angle stays valid: the
-! tip length shrinks to nothing, and construction fails with a clear
-! exception, once the taper removes more length than l/2 provides.
-col21: jcoltip, l=0.4*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsize=1*cm, taper_angle_deg=12;
+! tapered jaws (a wedge, G4Trd, instead of the flat box above): l is the
+! length of the flat jaw face at the beam, and each jaw grows from there by
+! 2*depth/tan(taper angle), out to its outer edge at horizontalWidth/2. The
+! element is therefore longer than l: here 10 mm + 2*30 mm/tan(12 deg) = 292 mm.
+! taper_angle_deg/rad cannot be combined with a jawTilt.
+col21: jcoltip, l=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsize=1*cm, taper_angle_deg=12;
 
 ! same geometry, taper given in rad instead of deg
-col22: jcoltip, l=0.4*m, material="G4_Cu", tipMaterial="G4_Ta", tipThickness=5*mm, horizontalWidth=8.0*cm, xsize=1*cm, taper_angle_rad=0.20943951;
+col22: jcoltip, l=10*mm, material="G4_Cu", tipMaterial="G4_Ta", tipThickness=5*mm, horizontalWidth=8.0*cm, xsize=1*cm, taper_angle_rad=0.20943951;
 
-! asymmetric jaws, both tapered
-col23: jcoltip, l=0.4*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsizeLeft=1.5*cm, xsizeRight=0.8*cm, taper_angle_deg=12;
+! asymmetric jaws, both tapered: both have the same 10 mm flat face, the
+! deeper (right) jaw sets the element length
+col23: jcoltip, l=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsizeLeft=1.5*cm, xsizeRight=0.8*cm, taper_angle_deg=12;
 
 ! one-sided tapered jaw (xsizeLeft beyond the half width disables the left jaw,
 ! as in col8/col9 above)
-col24: jcoltip, l=0.4*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsizeLeft=2*m, xsizeRight=1*cm, taper_angle_deg=20;
+col24: jcoltip, l=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsizeLeft=2*m, xsizeRight=1*cm, taper_angle_deg=20;
 
 l1: line=(d1, col1, d1, col2, d1, col3, d1, col4, d1, col5, d1, col6, d1, col7, d1, col8, d1, col9, d1, col10, d1, col11, d1, col12, d1, col13);
 l2: line=(d1, col14, d1, col15, d1, col16, d1, col17, d1, col18, d1, col19, d1, col20);
