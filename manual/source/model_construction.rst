@@ -1383,6 +1383,12 @@ The tip thickness and material are defined using `tipThickness` and `tipMaterial
 +------------------------+-----------------------------------+----------------+---------------+
 | `jawTiltRight`         | Right jaw tilt angle [rad]        | 0              | No            |
 +------------------------+-----------------------------------+----------------+---------------+
+| `taper_angle_deg`      | Taper angle of the jaw front and  | 0              | No            |
+|                        | back faces [deg]                  |                |               |
++------------------------+-----------------------------------+----------------+---------------+
+| `taper_angle_rad`      | Taper angle of the jaw front and  | 0              | No            |
+|                        | back faces [rad]                  |                |               |
++------------------------+-----------------------------------+----------------+---------------+
 | `horizontalWidth`      | Outer full width [m]              | 0.5 m          | No            |
 +------------------------+-----------------------------------+----------------+---------------+
 | `colour`               | Name of colour desired for        | ""             | No            |
@@ -1396,6 +1402,12 @@ The tip thickness and material are defined using `tipThickness` and `tipMaterial
 Notes: 
 
 * The `horizontalWidth` must be greater than 2x `xsize`.
+* With `taper_angle_deg` or `taper_angle_rad` (only one of the two), each jaw is a wedge instead
+  of a box: `l` is then the length of the flat jaw face at the beam, and the jaw grows with the depth
+  :math:`d` beyond its aperture as :math:`l + 2d/\tan(\theta)`, out to its outer edge at
+  `horizontalWidth`/2. Both jaws have the same flat length whatever their apertures, and the element
+  is made as long as the deepest jaw, i.e. longer than `l`. The taper applies to the tip and the
+  bulk material alike, and cannot be combined with `jawTiltLeft` or `jawTiltRight`.
 * A positive tilt angle rotates either jaw to the left on the downstream side. So, a positive jawTiltLeft
   increases the left jaw aperture on the downstream side. A positive jawTiltRight decreases the right
   aperture on the downstream side. Left positive and righ negative give diverging jaws.
@@ -1427,6 +1439,9 @@ Examples: ::
 
    ! only left jaw with tip
    j2: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=2*m;
+
+   ! SuperKEKB-like tapered jaws: 10 mm flat face, 12 degree wedge over 37 mm (358 mm long element)
+   j3: jcoltip, l=10*mm, horizontalWidth=90*mm, material="Cu", tipMaterial="W", tipThickness=5*mm, xsize=8*mm, taper_angle_deg=12;
 
 
 
