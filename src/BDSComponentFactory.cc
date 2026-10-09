@@ -1631,6 +1631,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateTipJawCollimator()
                                  element->jawTiltRight*CLHEP::rad,
                                  element->tipThickness*CLHEP::m,
                                  PrepareTipTaperAngle(element),
+                                 element->taperDepth*CLHEP::m,
 				 true,
 				 true,
 				 collimatorMaterial,

@@ -31,7 +31,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4RotationMatrix.hh"
-#include "G4Trd.hh"
+#include "G4ExtrudedSolid.hh"
+#include "G4TwoVector.hh"
 #include "G4VisAttributes.hh"
 
 #include <algorithm>
@@ -63,6 +64,7 @@ BDSCollimator(nameIn, lengthIn, horizontalWidthIn, objectType, collimatorMateria
   jawTiltRight(rightJawTiltIn),
   tipTaperAngle(0),
   taperFlatLength(0),
+  taperDepth(0),
   yHalfHeight(yHalfHeightIn),
   buildLeftJaw(buildLeftJawIn),
   buildRightJaw(buildRightJawIn),
@@ -140,7 +142,8 @@ G4double BDSCollimatorJaw::TaperedLength(G4double flatLength,
                                          G4double xSizeRight,
                                          G4bool   buildLeftJaw,
                                          G4bool   buildRightJaw,
-                                         G4double taperAngle)
+                                         G4double taperAngle,
+                                         G4double taperDepth)
 {
   if (!(taperAngle > 0 && taperAngle < CLHEP::halfpi))
     {return flatLength;}
@@ -156,6 +159,8 @@ G4double BDSCollimatorJaw::TaperedLength(G4double flatLength,
       G4double gap = BDS::IsFinite(xSizeRight) ? xSizeRight : xHalfGap;
       maxDepth = std::max(maxDepth, 0.5*horizontalWidth - gap);
     }
+  if (BDS::IsFinite(taperDepth) && taperDepth > 0)
+    {maxDepth = std::min(maxDepth, taperDepth);}
   return flatLength + 2*maxDepth / std::tan(taperAngle);
 }
 
@@ -184,32 +189,44 @@ BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
 
   // Half chord length (BDSIM z, the beam direction) as a function of depth
   // into the jaw: half the flat length at the jaw edge, growing linearly with
-  // depth. The component is made long enough for the deepest jaw (see
-  // TaperedLength()), so this never exceeds 0.5 * fullChordLength.
+  // depth up to taperDepth (if set), constant beyond. The component is made
+  // long enough for the deepest jaw (see TaperedLength()), so this never
+  // exceeds 0.5 * fullChordLength.
+  G4bool   hasPlateau = BDS::IsFinite(taperDepth);
   auto halfLengthAtDepth = [&](G4double depth)
-    {return 0.5 * taperFlatLength + depth / std::tan(tipTaperAngle);};
-
-  G4double dx1 = halfLengthAtDepth(depthInner) - lengthSafety;
-  G4double dx2 = halfLengthAtDepth(depthOuter) - lengthSafety;
-  if (dx1 < 1e-3 || dx2 < 1e-3) // 1um minimum, could also be negative
     {
-      throw BDSException(__METHOD_NAME__, "tapered jaw length too small for \"" + name + "\"");
-    }
+      G4double taperedDepth = hasPlateau ? std::min(depth, taperDepth) : depth;
+      return 0.5 * taperFlatLength + taperedDepth / std::tan(tipTaperAngle) - lengthSafety;
+    };
 
-  G4VSolid* trd = new G4Trd(solidName, dx1, dx2,
-                            halfHeight - lengthSafety, halfHeight - lengthSafety,
-                            0.5 * std::abs(depthOuter - depthInner));
+  // Profile of the block in the depth (x) - beam (z) plane, relative to xCentre:
+  // along the +z side from the inner to the outer edge (with a kink where the
+  // taper ends, if that is inside this block), then back along the -z side.
+  std::vector<G4double> depths = {depthInner + lengthSafety};
+  if (hasPlateau && taperDepth > depthInner && taperDepth < depthOuter)
+    {depths.push_back(taperDepth);}
+  depths.push_back(depthOuter - lengthSafety);
+  std::vector<G4TwoVector> profile;
+  for (G4double d : depths)
+    {profile.emplace_back(sign * (xHalfGapThisJaw + d) - xCentre, halfLengthAtDepth(d));}
+  for (auto it = depths.rbegin(); it != depths.rend(); ++it)
+    {profile.emplace_back(sign * (xHalfGapThisJaw + *it) - xCentre, -halfLengthAtDepth(*it));}
+  if (halfLengthAtDepth(depths.front()) < 1e-3) // 1um minimum
+    {throw BDSException(__METHOD_NAME__, "tapered jaw length too small for \"" + name + "\"");}
+  if (sign < 0) // keep the polygon clockwise, as G4ExtrudedSolid expects
+    {std::reverse(profile.begin(), profile.end());}
 
-  // Swap the solid's own (fixed-length) z axis with the depth (x) axis: a
-  // +90 degree rotation about y sends the solid's local +z to the mother's
-  // -x, and -90 degrees sends it to the mother's +x - verified numerically
-  // against G4Navigator, not just derived on paper, since getting the sign
-  // wrong here would silently mirror the wedge. Depth increases along +x for
-  // the left jaw (sign=+1) and along -x for the right jaw (sign=-1).
+  G4VSolid* solid = new G4ExtrudedSolid(solidName, profile, halfHeight - lengthSafety,
+                                        G4TwoVector(), 1.0, G4TwoVector(), 1.0);
+
+  // The profile is in the solid's local x-y plane and extruded along its local
+  // z: rotate about x so that local y is along the beam and local z along the
+  // jaw height (the profile is symmetric in z and the extrusion in y, so the
+  // sense of the rotation does not matter).
   G4RotationMatrix* rot = new G4RotationMatrix();
-  rot->rotateY((sign > 0 ? -90.0 : 90.0) * CLHEP::deg);
+  rot->rotateX(90.0 * CLHEP::deg);
 
-  return TaperedBox{trd, G4ThreeVector(xCentre, 0, 0), rot};
+  return TaperedBox{solid, G4ThreeVector(xCentre, 0, 0), rot};
 }
 
 void BDSCollimatorJaw::CheckParameters()
@@ -248,6 +265,8 @@ void BDSCollimatorJaw::CheckParameters()
     {
       if (tipTaperAngle <= 0 || tipTaperAngle >= CLHEP::halfpi)
         {throw BDSException(__METHOD_NAME__, "tipTaperAngle must be in (0, pi/2) radians for \"" + name + "\"");}
+      if (taperDepth < 0)
+        {throw BDSException(__METHOD_NAME__, "taperDepth cannot be negative for \"" + name + "\"");}
       if ((buildLeftJaw && jawTiltLeft != 0) || (buildRightJaw && jawTiltRight != 0))
         {throw BDSException(__METHOD_NAME__, "tipTaperAngle cannot be combined with a jaw tilt for \"" + name + "\"");}
     }
