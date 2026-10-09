@@ -109,6 +109,7 @@ public:
                            bool   sampleIn      = false);
 
   /// horizontalWidth is the full width of the collimator; 0 (default) means 2 m.
+  /// taperDepth is the depth from the jaw edge where the taper ends; 0 tapers the whole jaw.
   int AddLinkCollimatorTipJaw(const std::string& collimatorName,
                               const std::string& materialName,
                               const std::string& tipMaterialName,
@@ -124,7 +125,8 @@ public:
                               bool   buildLeftJaw  = true,
                               bool   buildRightJaw = true,
                               double tipTaperAngle = 0.0,
-                              double horizontalWidth = 0.0);
+                              double horizontalWidth = 0.0,
+                              double taperDepth = 0.0);
 
   int AddLinkElement(GMAD::Element &el);
 
