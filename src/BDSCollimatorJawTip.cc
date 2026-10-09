@@ -47,6 +47,7 @@ BDSCollimatorJawTip::BDSCollimatorJawTip(const G4String&    nameIn,
                                          G4double    rightJawTiltIn,
                                          G4double    tipThicknessIn,
                                          G4double    tipTaperAngleIn,
+                                         G4double    tipTaperDepthIn,
                                          G4bool      buildLeftJawIn,
                                          G4bool      buildRightJawIn,
                                          G4Material* collimatorMaterialIn,
@@ -56,7 +57,7 @@ BDSCollimatorJawTip::BDSCollimatorJawTip(const G4String&    nameIn,
                                          G4Colour*   tipColourIn):
 BDSCollimatorJaw(nameIn,
                  TaperedLength(lengthIn, horizontalWidthIn, xHalfGapIn, xSizeLeftIn, xSizeRightIn,
-                               buildLeftJawIn, buildRightJawIn, tipTaperAngleIn),
+                               buildLeftJawIn, buildRightJawIn, tipTaperAngleIn, tipTaperDepthIn),
                  horizontalWidthIn, xHalfGapIn, yHalfHeightIn, xSizeLeftIn, xSizeRightIn,
                  leftJawTiltIn, rightJawTiltIn, buildLeftJawIn, buildRightJawIn, collimatorMaterialIn,
                  vacuumMaterialIn, colourIn, "jcoltip"),
@@ -66,6 +67,7 @@ BDSCollimatorJaw(nameIn,
 {
   tipTaperAngle = tipTaperAngleIn;
   taperFlatLength = lengthIn;
+  taperDepth = tipTaperDepthIn;
   if (!tipColour)
     {
       G4Colour* defaultTipColour = BDSColours::Instance()->GetColour("collimatorTip");
