@@ -220,6 +220,7 @@ namespace GMAD
     std::string tipMaterial; ///< tip material
     double taperAngleDeg; ///< jaw taper angle in degrees (jcoltip only)
     double taperAngleRad; ///< jaw taper angle in radians (jcoltip only)
+    double taperDepth;    ///< depth from the jaw edge where the taper ends (jcoltip only)
     ///@}
 
     ///@{ temporary string for bias setting
