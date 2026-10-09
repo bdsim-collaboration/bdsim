@@ -50,9 +50,13 @@ col23: jcoltip, l=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm
 ! as in col8/col9 above)
 col24: jcoltip, l=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsizeLeft=2*m, xsizeRight=1*cm, taper_angle_deg=20;
 
+! SuperKEKB-type jaws: the taper ends at taper_depth=37 mm and the remaining 88 mm
+! of the 125 mm deep jaw keep the full 358 mm length
+col25: jcoltip, l=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=266*mm, xsize=8*mm, taper_angle_deg=12, taper_depth=37*mm;
+
 l1: line=(d1, col1, d1, col2, d1, col3, d1, col4, d1, col5, d1, col6, d1, col7, d1, col8, d1, col9, d1, col10, d1, col11, d1, col12, d1, col13);
 l2: line=(d1, col14, d1, col15, d1, col16, d1, col17, d1, col18, d1, col19, d1, col20);
-l3: line=(d1, col21, d1, col22, d1, col23, d1, col24);
+l3: line=(d1, col21, d1, col22, d1, col23, d1, col24, d1, col25);
 ltotal: line=(l1, l2, l3);
 use, ltotal;
 
