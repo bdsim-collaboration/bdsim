@@ -248,6 +248,7 @@ void Element::PublishMembers()
   publish("tipMaterial",      &Element::tipMaterial);
   publish("taper_angle_deg",  &Element::taperAngleDeg);
   publish("taper_angle_rad",  &Element::taperAngleRad);
+  publish("taper_depth",      &Element::taperDepth);
 
   // bias
   publish("bias",                &Element::bias);
@@ -600,6 +601,7 @@ void Element::flush()
   tipThickness = 0;
   taperAngleDeg = 0;
   taperAngleRad = 0;
+  taperDepth = 0;
 
   // PWFA
   xsize2 = 0;
