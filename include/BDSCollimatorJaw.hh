@@ -71,20 +71,32 @@ protected:
   /// spanning local depth [depthInner, depthOuter] (both >= 0, depthOuter >
   /// depthInner) measured from the aperture edge of this jaw. 'sign' is +1 for
   /// the left jaw (depth increases along +x) or -1 for the right jaw (depth
-  /// increases along -x). 'fullDepth' is the depth of the jaw's own outer
-  /// physical edge, where the solid's z-length always equals 'fullChordLength'
-  /// (the nominal, untapered chord length) regardless of tipTaperAngle - this
-  /// guarantees the tapered solid never exceeds the footprint of the
-  /// equivalent flat box. If tipTaperAngle is zero, the returned solid is a
-  /// plain G4Box identical to the original (untapered) construction.
+  /// increases along -x). With a taper, the jaw is taperFlatLength long at its
+  /// edge (depth 0) and grows by 2*depth/tan(tipTaperAngle), so it is the same
+  /// wedge for both jaws whatever their gaps. If tipTaperAngle is zero, the
+  /// returned solid is a plain G4Box of length fullChordLength, identical to
+  /// the original (untapered) construction.
   TaperedBox BuildTaperedJawBox(const G4String& solidName,
                                 G4double xHalfGapThisJaw,
                                 G4int    sign,
                                 G4double depthInner,
                                 G4double depthOuter,
-                                G4double fullDepth,
                                 G4double halfHeight,
                                 G4double fullChordLength) const;
+
+  /// Length of the component for a jaw tapered at taperAngle whose face at
+  /// the beam is flatLength long: flatLength + 2*depth/tan(taperAngle) for the
+  /// deepest jaw built, with jaw gaps and depths worked out as in the
+  /// constructor and Calculations(). Returns flatLength if there is no taper
+  /// (or the angle is invalid, which CheckParameters() then rejects).
+  static G4double TaperedLength(G4double flatLength,
+                                G4double horizontalWidth,
+                                G4double xHalfGap,
+                                G4double xSizeLeft,
+                                G4double xSizeRight,
+                                G4bool   buildLeftJaw,
+                                G4bool   buildRightJaw,
+                                G4double taperAngle);
 
   void Calculations(); ///< Calculate offsets and sizes.
 
@@ -107,6 +119,7 @@ protected:
   G4double  jawTiltLeft;     ///< Tilt of jaw 1 (angle in x-z plane)
   G4double  jawTiltRight;    ///< Tilt of jaw 2 (angle in x-z plane)
   G4double  tipTaperAngle;   ///< Taper angle (rad) of the front and back jaw faces; 0 (default) = flat jaw, as before.
+  G4double  taperFlatLength; ///< With a taper, length of the jaw face at the beam (the element length).
   G4double  yHalfHeight;     ///< Half height of each jaw.
   G4bool    buildLeftJaw;    ///< Build left jaw or not.
   G4bool    buildRightJaw;   ///< Build right jaw or not.

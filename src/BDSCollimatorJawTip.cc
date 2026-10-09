@@ -54,7 +54,10 @@ BDSCollimatorJawTip::BDSCollimatorJawTip(const G4String&    nameIn,
                                          G4Material* vacuumMaterialIn,
                                          G4Colour*   colourIn,
                                          G4Colour*   tipColourIn):
-BDSCollimatorJaw(nameIn, lengthIn, horizontalWidthIn, xHalfGapIn, yHalfHeightIn, xSizeLeftIn, xSizeRightIn,
+BDSCollimatorJaw(nameIn,
+                 TaperedLength(lengthIn, horizontalWidthIn, xHalfGapIn, xSizeLeftIn, xSizeRightIn,
+                               buildLeftJawIn, buildRightJawIn, tipTaperAngleIn),
+                 horizontalWidthIn, xHalfGapIn, yHalfHeightIn, xSizeLeftIn, xSizeRightIn,
                  leftJawTiltIn, rightJawTiltIn, buildLeftJawIn, buildRightJawIn, collimatorMaterialIn,
                  vacuumMaterialIn, colourIn, "jcoltip"),
   tipColour(tipColourIn),
@@ -62,6 +65,7 @@ BDSCollimatorJaw(nameIn, lengthIn, horizontalWidthIn, xHalfGapIn, yHalfHeightIn,
   collimatorTipMaterial(collimatorTipMaterialIn)
 {
   tipTaperAngle = tipTaperAngleIn;
+  taperFlatLength = lengthIn;
   if (!tipColour)
     {
       G4Colour* defaultTipColour = BDSColours::Instance()->GetColour("collimatorTip");
@@ -174,12 +178,10 @@ void BDSCollimatorJawTip::BuildTips()
         }
       else if (BDS::IsFinite(tipTaperAngle))
         {
-          // Same taper law, and the same fullDepth (jaw outer edge), as the
-          // bulk jaw built in BDSCollimatorJaw::Build() - the two solids meet
-          // exactly at depth = tipThickness with no gap or overlap.
-          G4double leftFullDepth = 0.5 * horizontalWidth - leftJawHalfGap;
+          // Same taper law as the bulk jaw built in BDSCollimatorJaw::Build() -
+          // the two solids meet exactly at depth = tipThickness with no gap or overlap.
           TaperedBox tb = BuildTaperedJawBox(name + "_leftjawtip_solid", leftJawHalfGap, +1,
-                                             0, tipThickness, leftFullDepth,
+                                             0, tipThickness,
                                              yHalfHeight, chordLength);
           leftJawTipSolid = tb.solid;
           leftJawTipPlacementPos = tb.position;
@@ -230,9 +232,8 @@ void BDSCollimatorJawTip::BuildTips()
         }
       else if (BDS::IsFinite(tipTaperAngle))
         {
-          G4double rightFullDepth = 0.5 * horizontalWidth - rightJawHalfGap;
           TaperedBox tb = BuildTaperedJawBox(name + "_rightjawtip_solid", rightJawHalfGap, -1,
-                                             0, tipThickness, rightFullDepth,
+                                             0, tipThickness,
                                              yHalfHeight, chordLength);
           rightJawTipSolid = tb.solid;
           rightJawTipPlacementPos = tb.position;

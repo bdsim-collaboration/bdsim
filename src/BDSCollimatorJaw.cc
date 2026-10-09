@@ -34,6 +34,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4Trd.hh"
 #include "G4VisAttributes.hh"
 
+#include <algorithm>
 #include <cmath>
 #include <vector>
 #include <set>
@@ -61,6 +62,7 @@ BDSCollimator(nameIn, lengthIn, horizontalWidthIn, objectType, collimatorMateria
   jawTiltLeft(leftJawTiltIn),
   jawTiltRight(rightJawTiltIn),
   tipTaperAngle(0),
+  taperFlatLength(0),
   yHalfHeight(yHalfHeightIn),
   buildLeftJaw(buildLeftJawIn),
   buildRightJaw(buildRightJawIn),
@@ -131,13 +133,38 @@ void BDSCollimatorJaw::Calculations()
   vacuumOffset = G4ThreeVector(vacuumCentre, 0, 0);
 }
 
+G4double BDSCollimatorJaw::TaperedLength(G4double flatLength,
+                                         G4double horizontalWidth,
+                                         G4double xHalfGap,
+                                         G4double xSizeLeft,
+                                         G4double xSizeRight,
+                                         G4bool   buildLeftJaw,
+                                         G4bool   buildRightJaw,
+                                         G4double taperAngle)
+{
+  if (!(taperAngle > 0 && taperAngle < CLHEP::halfpi))
+    {return flatLength;}
+  // same jaw half gaps as in the constructor and Calculations()
+  G4double maxDepth = 0;
+  if (buildLeftJaw && std::abs(xSizeLeft) <= 0.5*horizontalWidth)
+    {
+      G4double gap = BDS::IsFinite(xSizeLeft) ? xSizeLeft : xHalfGap;
+      maxDepth = std::max(maxDepth, 0.5*horizontalWidth - gap);
+    }
+  if (buildRightJaw && std::abs(xSizeRight) <= 0.5*horizontalWidth)
+    {
+      G4double gap = BDS::IsFinite(xSizeRight) ? xSizeRight : xHalfGap;
+      maxDepth = std::max(maxDepth, 0.5*horizontalWidth - gap);
+    }
+  return flatLength + 2*maxDepth / std::tan(taperAngle);
+}
+
 BDSCollimatorJaw::TaperedBox
 BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
                                     G4double xHalfGapThisJaw,
                                     G4int    sign,
                                     G4double depthInner,
                                     G4double depthOuter,
-                                    G4double fullDepth,
                                     G4double halfHeight,
                                     G4double fullChordLength) const
 {
@@ -156,19 +183,17 @@ BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
     }
 
   // Half chord length (BDSIM z, the beam direction) as a function of depth
-  // into the jaw: pinned to half of fullChordLength at depth = fullDepth (the
-  // jaw's own outer edge - so the tapered solid never sticks out beyond the
-  // footprint of the equivalent flat box), shrinking linearly towards the
-  // aperture edge as depth decreases.
+  // into the jaw: half the flat length at the jaw edge, growing linearly with
+  // depth. The component is made long enough for the deepest jaw (see
+  // TaperedLength()), so this never exceeds 0.5 * fullChordLength.
   auto halfLengthAtDepth = [&](G4double depth)
-    {return 0.5 * fullChordLength - (fullDepth - depth) / std::tan(tipTaperAngle);};
+    {return 0.5 * taperFlatLength + depth / std::tan(tipTaperAngle);};
 
   G4double dx1 = halfLengthAtDepth(depthInner) - lengthSafety;
   G4double dx2 = halfLengthAtDepth(depthOuter) - lengthSafety;
   if (dx1 < 1e-3 || dx2 < 1e-3) // 1um minimum, could also be negative
     {
-      throw BDSException(__METHOD_NAME__, "tipTaperAngle too large (or the jaw too wide) "
-                         "for \"" + name + "\": the tapered length becomes too small");
+      throw BDSException(__METHOD_NAME__, "tapered jaw length too small for \"" + name + "\"");
     }
 
   G4VSolid* trd = new G4Trd(solidName, dx1, dx2,
@@ -300,7 +325,7 @@ void BDSCollimatorJaw::Build()
         {
           G4double leftFullDepth = 0.5 * horizontalWidth - leftJawHalfGap;
           TaperedBox tb = BuildTaperedJawBox(name + "_leftjaw_solid", leftJawHalfGap, +1,
-                                             leftFullDepth - leftJawWidth, leftFullDepth, leftFullDepth,
+                                             leftFullDepth - leftJawWidth, leftFullDepth,
                                              yHalfHeight, chordLength);
           leftJawSolid = tb.solid;
           leftJawPlacementPos = tb.position;
@@ -365,7 +390,7 @@ void BDSCollimatorJaw::Build()
         {
           G4double rightFullDepth = 0.5 * horizontalWidth - rightJawHalfGap;
           TaperedBox tb = BuildTaperedJawBox(name + "_rightjaw_solid", rightJawHalfGap, -1,
-                                             rightFullDepth - rightJawWidth, rightFullDepth, rightFullDepth,
+                                             rightFullDepth - rightJawWidth, rightFullDepth,
                                              yHalfHeight, chordLength);
           rightJawSolid = tb.solid;
           rightJawPlacementPos = tb.position;
