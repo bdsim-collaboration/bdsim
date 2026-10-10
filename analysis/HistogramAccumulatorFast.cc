@@ -167,10 +167,10 @@ TH1* HistogramAccumulatorFast::Terminate()
           {
             mn  = mnCast->At(j);
             var = varCast->At(j);
-            // accumulate N x 0 for missed events all at once - FIX FOR J TO BE GLOBAL HERE
+            // accumulate N x 0 for missed events all at once
             AccumulateNZeros(mn, var, binEventCount[j], n-binEventCount[j], mn2, var2);
-            err2 = n > 1 ? factor*std::sqrt(var) : 0;
-            resCast->Set_BDSBH4D(j, mn);
+            err2 = n > 1 ? factor*std::sqrt(var2) : 0;
+            resCast->Set_BDSBH4D(j, mn2);
             resCast->SetError_BDSBH4D(j, err2);
           }
 #endif
