@@ -16,8 +16,6 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSBH4D.hh"
-#ifndef __ROOTBUILD__
-#endif
 
 #include "TFile.h"
 

@@ -22,7 +22,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef USE_BOOST
 #include <boost/histogram.hpp>
 #include "BDSBH4DTypeDefs.hh"
-
 #endif
 
 #include "Rtypes.h"
@@ -81,5 +80,4 @@ public:
 
   ClassDef(BDSBH4D,1);
 };
-
 #endif

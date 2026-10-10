@@ -55,7 +55,9 @@ BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn,
   h_title(titleIn),
   h_escale(escaleIn),
   h_entries(0)
-{;}
+{
+  fDimension = 4;
+}
 
 BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn, unsigned int nZBinsIn,
 			 double xMinIn, double xMaxIn,
@@ -75,6 +77,7 @@ BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn, unsigned 
   h_ebinsedges(eBinEdgesIn),
   h_entries(0)
 {
+  fDimension = 4;
   if (eBinEdgesIn.size() < 2)
     {throw BDSException(__METHOD_NAME__, "bin edges vector must be at least 2 numbers");}
   h_nebins = (unsigned int)(eBinEdgesIn.size() - 1);
