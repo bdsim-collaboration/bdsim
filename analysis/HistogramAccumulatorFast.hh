@@ -73,6 +73,11 @@ public:
   /// result as deleting it would remove it from the open file in ROOT.
   virtual ~HistogramAccumulatorFast();
 
+  /// @{ No copying as the base class owns the mean and variance histograms.
+  HistogramAccumulatorFast(const HistogramAccumulatorFast&) = delete;
+  HistogramAccumulatorFast& operator=(const HistogramAccumulatorFast&) = delete;
+  /// @}
+
   /// Accumulate from the newValue histogram bins specified by the binsFilled
   /// set of global bin indices.
   virtual void AccumulateBinsThatWereFilledOnly(TH1* newValue, const std::set<Int_t>& binsFilled);
