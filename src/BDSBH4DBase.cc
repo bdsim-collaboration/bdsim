@@ -35,7 +35,9 @@ BDSBH4DBase::BDSBH4DBase():
   h_zmin(0), h_zmax(0),
   h_emin(0), h_emax(0),
   h_entries(0)
-{;}
+{
+  fDimension = 4;
+}
 
 BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn,
 			 unsigned int nZBinsIn, unsigned int nEBinsIn,
