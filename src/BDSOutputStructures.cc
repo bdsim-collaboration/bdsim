@@ -313,7 +313,7 @@ void BDSOutputStructures::TerminateRunHistogramAccumulators()
   for (G4int i = 0; i < (G4int)eventAndRunHistos3D.size(); i++)
     {runHistos->histograms3D.push_back(dynamic_cast<TH3D*>(eventAndRunHistos3D[i].runAccumulator->Terminate()));}
   for (G4int i = 0; i < (G4int)eventAndRunHistos4D.size(); i++)
-    {runHistos->histograms4D.push_back(dynamic_cast<BDSBH4DBase*>(eventAndRunHistos4D[i].runAccumulator->Terminate()));}
+    {runHistos->histograms4D.push_back(static_cast<BDSBH4DBase*>(eventAndRunHistos4D[i].runAccumulator->Terminate()));}
 }
 
 void BDSOutputStructures::InitialiseSamplers()

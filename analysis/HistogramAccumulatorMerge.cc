@@ -142,9 +142,9 @@ void HistogramAccumulatorMerge::Accumulate(TH1* newValue)
     case 4:
       {
 #ifdef USE_BOOST
-        BDSBH4DBase* h1  = dynamic_cast<BDSBH4DBase*>(mean);
-        BDSBH4DBase* h1e = dynamic_cast<BDSBH4DBase*>(variance);
-        BDSBH4DBase* ht  = dynamic_cast<BDSBH4DBase*>(newValue);
+        BDSBH4DBase* h1  = static_cast<BDSBH4DBase*>(mean);
+        BDSBH4DBase* h1e = static_cast<BDSBH4DBase*>(variance);
+        BDSBH4DBase* ht  = static_cast<BDSBH4DBase*>(newValue);
         for (int j = -1; j <= h1->GetNbinsX(); ++j)
           {
             for (int k = -1; k <= h1->GetNbinsY(); ++k)
@@ -174,8 +174,8 @@ void HistogramAccumulatorMerge::Accumulate(TH1* newValue)
     }
   if(nDimensions==4)
     {
-      dynamic_cast<BDSBH4DBase*>(mean)->SetEntries_BDSBH4D((double)newTotalEntries);
-      dynamic_cast<BDSBH4DBase*>(variance)->SetEntries_BDSBH4D((double)newTotalEntries);
+      static_cast<BDSBH4DBase*>(mean)->SetEntries_BDSBH4D((double)newTotalEntries);
+      static_cast<BDSBH4DBase*>(variance)->SetEntries_BDSBH4D((double)newTotalEntries);
     }
   else
     {
