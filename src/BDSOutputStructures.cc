@@ -544,6 +544,8 @@ void BDSOutputStructures::ClearStructuresEventLevel()
   evtInfo->Flush();
   for (auto& erh : eventAndRunHistos1D)
     {erh.binsFilledThisEvent.clear();}
+  for (auto& erh : eventAndRunHistos2D)
+    {erh.binsFilledThisEvent.clear();}
   for (auto& erh : eventAndRunHistos3D)
     {erh.binsFilledThisEvent.clear();}
   for (auto& erh : eventAndRunHistos4D)
