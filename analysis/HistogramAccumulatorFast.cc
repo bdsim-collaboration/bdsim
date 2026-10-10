@@ -47,7 +47,6 @@ HistogramAccumulatorFast::HistogramAccumulatorFast(TH1*               baseHistog
                                                    const std::string& resultHistTitleIn):
   HistogramAccumulator(baseHistogramIn, nDimensionsIn, resultHistNameIn, resultHistTitleIn)
 {
-  std::string binsFilledName = resultHistName + "_Bins_Filled";
   // we work entirely with root's global bin index which means we can do this indexing
   // in 1D and can just use a 1D vector with the same number of total bins or 'cells'.
   // The 4D histogram's TH1D base is never given any bins, so GetNcells() is not valid for it.
