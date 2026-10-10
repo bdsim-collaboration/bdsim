@@ -42,14 +42,14 @@ add_test(NAME "tester-model-tree" COMMAND BDSModelTreeTester "../examples/featur
 
 # histogram accumulators - built twice as they're split across libbdsim (via bdsimAccumulator)
 # and librebdsim, which must not be linked together. Only the libbdsim one tests 4D histograms.
-add_executable(HistogramAccumulatorTester HistogramAccumulatorTester.cc)
-target_link_libraries(HistogramAccumulatorTester ${BDSIM_LIB_NAME})
-add_test(NAME "tester-histogram-accumulators" COMMAND HistogramAccumulatorTester)
+add_executable(BDSHistogramAccumulatorTester BDSHistogramAccumulatorTester.cc)
+target_link_libraries(BDSHistogramAccumulatorTester ${BDSIM_LIB_NAME})
+add_test(NAME "tester-histogram-accumulators" COMMAND BDSHistogramAccumulatorTester)
 
-add_executable(HistogramAccumulatorTesterRebdsim HistogramAccumulatorTester.cc)
-target_compile_definitions(HistogramAccumulatorTesterRebdsim PRIVATE TEST_REBDSIM_ACCUMULATORS)
-target_link_libraries(HistogramAccumulatorTesterRebdsim rebdsim bdsimRootEvent)
-add_test(NAME "tester-histogram-accumulators-rebdsim" COMMAND HistogramAccumulatorTesterRebdsim)
+add_executable(BDSHistogramAccumulatorTesterRebdsim BDSHistogramAccumulatorTester.cc)
+target_compile_definitions(BDSHistogramAccumulatorTesterRebdsim PRIVATE TEST_REBDSIM_ACCUMULATORS)
+target_link_libraries(BDSHistogramAccumulatorTesterRebdsim rebdsim bdsimRootEvent)
+add_test(NAME "tester-histogram-accumulators-rebdsim" COMMAND BDSHistogramAccumulatorTesterRebdsim)
 
 add_executable(TH1SetTest TH1SetTest.cc)
 target_link_libraries(TH1SetTest ${BDSIM_LIB_NAME} ${ROOT_LIBRARIES} rebdsim)
