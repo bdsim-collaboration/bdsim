@@ -40,6 +40,17 @@ set_target_properties(BDSModelTreeTester PROPERTIES OUTPUT_NAME "BDSModelTreeTes
 target_link_libraries(BDSModelTreeTester rebdsim bdsimRootEvent bdsim)
 add_test(NAME "tester-model-tree" COMMAND BDSModelTreeTester "../examples/features/data/sample1.root")
 
+# histogram accumulators - built twice as they're split across libbdsim (via bdsimAccumulator)
+# and librebdsim, which must not be linked together. Only the libbdsim one tests 4D histograms.
+add_executable(HistogramAccumulatorTester HistogramAccumulatorTester.cc)
+target_link_libraries(HistogramAccumulatorTester ${BDSIM_LIB_NAME})
+add_test(NAME "tester-histogram-accumulators" COMMAND HistogramAccumulatorTester)
+
+add_executable(HistogramAccumulatorTesterRebdsim HistogramAccumulatorTester.cc)
+target_compile_definitions(HistogramAccumulatorTesterRebdsim PRIVATE TEST_REBDSIM_ACCUMULATORS)
+target_link_libraries(HistogramAccumulatorTesterRebdsim rebdsim bdsimRootEvent)
+add_test(NAME "tester-histogram-accumulators-rebdsim" COMMAND HistogramAccumulatorTesterRebdsim)
+
 add_executable(TH1SetTest TH1SetTest.cc)
 target_link_libraries(TH1SetTest ${BDSIM_LIB_NAME} ${ROOT_LIBRARIES} rebdsim)
 
