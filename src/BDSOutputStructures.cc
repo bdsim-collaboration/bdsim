@@ -53,6 +53,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "CLHEP/Units/SystemOfUnits.h"
 
 #include <algorithm>
+#include <cmath>
 #include <map>
 #include <memory>
 #include <set>
@@ -187,7 +188,16 @@ void BDSOutputStructures::Fill1DHistogram(G4int histoId,
                                           G4double value,
                                           G4double weight)
 {
-  Int_t globalBinFilled = evtHistos->histograms1D[histoId]->Fill(value, weight);
+  TH1D* h = evtHistos->histograms1D[histoId];
+  Int_t globalBinFilled = h->Fill(value, weight);
+  // ROOT >= 6.40 returns -1 for a fill in the underflow or overflow bin (which is still
+  // filled), so look up the bin. A NaN is not filled at all, so there's nothing to record.
+  if (globalBinFilled < 0)
+    {
+      if (std::isnan(value))
+        {return;}
+      globalBinFilled = h->FindBin(value);
+    }
   eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 
@@ -210,7 +220,15 @@ void BDSOutputStructures::Fill2DHistogram(G4int histoId,
                                           G4double y,
                                           G4double weight)
 {
-  Int_t globalBinFilled = evtHistos->histograms2D[histoId]->Fill(x, y, weight);
+  TH2D* h = evtHistos->histograms2D[histoId];
+  Int_t globalBinFilled = h->Fill(x, y, weight);
+  // see Fill1DHistogram
+  if (globalBinFilled < 0)
+    {
+      if (std::isnan(x) || std::isnan(y))
+        {return;}
+      globalBinFilled = h->FindBin(x, y);
+    }
   eventAndRunHistos2D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 
@@ -236,7 +254,15 @@ void BDSOutputStructures::Fill3DHistogram(G4int    histoId,
                                           G4double z,
                                           G4double weight)
 {
-  Int_t globalBinFilled = evtHistos->histograms3D[histoId]->Fill(x, y, z, weight);
+  TH3D* h = evtHistos->histograms3D[histoId];
+  Int_t globalBinFilled = h->Fill(x, y, z, weight);
+  // see Fill1DHistogram
+  if (globalBinFilled < 0)
+    {
+      if (std::isnan(x) || std::isnan(y) || std::isnan(z))
+        {return;}
+      globalBinFilled = h->FindBin(x, y, z);
+    }
   eventAndRunHistos3D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 

@@ -81,8 +81,11 @@ void HistogramAccumulatorFast::AccumulateBinsThatWereFilledOnly(TH1* newValue, c
     case 2:
     case 3:
     {
+      const Int_t nCells = (Int_t)binEventCount.size();
       for (auto j : binsFilled)
         {
+          if (j < 0 || j >= nCells)
+            {continue;} // protect against out of range global indices
           binEventCount[j] += 1;
           AccumulateSingleValue(mean->GetBinContent(j),
                                 variance->GetBinContent(j),
