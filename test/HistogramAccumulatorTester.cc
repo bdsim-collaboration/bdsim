@@ -72,7 +72,9 @@ namespace
   /// Maximum number of individual bin failures printed per comparison.
   const int maxBinFailuresPrinted = 5;
 
-  bool Close(double a, double b, double relTol = 1e-9, double absTol = 1e-12)
+  /// The accumulators are mathematically exact but the order of floating point operations
+  /// differs between them and the reference, so results agree to ~1e-14 relative, not bitwise.
+  bool Close(double a, double b, double relTol = 1e-12, double absTol = 1e-14)
   {
     double scale = std::max(std::abs(a), std::abs(b));
     return std::abs(a - b) <= std::max(absTol, relTol * scale);

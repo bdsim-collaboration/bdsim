@@ -37,9 +37,9 @@ class TH1;
  * that will accumulate only a given set of bins (by global index). Internally,
  * this class keeps track of which bins were accumulated how many times. In
  * the termination stage, the appropriate number of zeros is added once to
- * each given bin. This gives the exact same numerical result as if zeros
- * had been accumulated each time, i.e. by looping over every bin of every
- * accumulated histogram.
+ * each given bin. This gives the same result as if zeros had been accumulated
+ * each time, i.e. by looping over every bin of every accumulated histogram, to
+ * within floating point rounding (the order of operations is different).
  *
  * This should be significantly faster by the ratio of the typical number of
  * bins filled per event to the total number of bins in a histogram. This can
