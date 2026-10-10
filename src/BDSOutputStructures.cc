@@ -255,7 +255,7 @@ G4int BDSOutputStructures::Create4DHistogram(const G4String& name,
                                               nBinsZ, zMin, zMax,
                                               nBinsE, eMin, eMax);
   TH1* eh = evtHistos->Get4DHistogram(result);
-  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
+  HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, 4, name, title); // 4D histogram reports 1 dimension as it inherits TH1D
   eventAndRunHistos4D.push_back({eh, {}, std::unique_ptr<HistogramAccumulatorFast>(acc)});
   return result;
 }
