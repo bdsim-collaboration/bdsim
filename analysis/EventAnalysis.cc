@@ -131,7 +131,7 @@ void EventAnalysis::Execute()
       BDSBH4DBase::AddDirectory(kTRUE);
       PreparePerEntryHistograms();
       PreparePerEntryHistogramSets();
-      if (nPerEntryHistoDefinitions > 0 || processSamplers) // avoid a useless data-loading loop
+      if (nPerEntryHistoDefinitions > 0 || processSamplers || calculateEventMeanHistos) // avoid a useless data-loading loop
         {Process();}
     }
   SimpleHistograms();
