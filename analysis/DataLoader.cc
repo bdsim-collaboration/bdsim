@@ -359,7 +359,7 @@ void DataLoader::CombineRunHistogramsAndCopyToEventMerged(TFile* outputFile)
       return;
     }
   dir->cd();
-  if (runChain->GetEntries() == 1)
+  if (nRuns == 1)
     {
       runChain->GetEntry(0);
       for (auto hist: run->Histos->Get1DHistograms())
