@@ -18,6 +18,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "HistogramAccumulatorMerge.hh"
 #include "HistogramCombineFromFile.hh"
+#include "RBDSException.hh"
+
+#include "BDSDebug.hh"
 
 #include "BDSOutputROOTEventHistograms.hh"
 
@@ -85,6 +88,13 @@ HistogramCombineFromFile::~HistogramCombineFromFile()
 
 void HistogramCombineFromFile::Accumulate(BDSOutputROOTEventHistograms* hNew)
 {
+  // all inputs must have the same set of histograms as the first one to be combined
+  if (hNew->Get1DHistograms().size() != histograms1d.size() ||
+      hNew->Get2DHistograms().size() != histograms2d.size() ||
+      hNew->Get3DHistograms().size() != histograms3d.size() ||
+      hNew->Get4DHistograms().size() != histograms4d.size())
+    {throw RBDSException(__METHOD_NAME__, "different number of histograms than the first input - cannot combine");}
+
   auto h1i = hNew->Get1DHistograms();
   for (unsigned int i = 0; i < (unsigned int)histograms1d.size(); ++i)
     {histograms1d[i]->Accumulate(h1i[i]);}
