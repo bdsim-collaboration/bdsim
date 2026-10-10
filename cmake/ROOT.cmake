@@ -8,6 +8,12 @@ include_directories(SYSTEM ${ROOT_INCLUDE_DIR})
 # Make Dictionaries
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/root)
 file(GLOB linkHeaders ${CMAKE_CURRENT_SOURCE_DIR}/include/*LinkDef.hh)
+# Extra headers to give rootcling for some dictionaries. These hold classes from the
+# parser that are selected in the LinkDef. Passing them as input headers means they're
+# inlined into the dictionary (-inlineInputHeader) rather than autoloaded at runtime, which
+# fails with "Missing FileEntry for ../parser/beamBase.h" unless ROOT_INCLUDE_PATH is set.
+set(BDSOutputROOTEventBeam_dictExtraHeaders    ${CMAKE_CURRENT_SOURCE_DIR}/parser/beamBase.h)
+set(BDSOutputROOTEventOptions_dictExtraHeaders ${CMAKE_CURRENT_SOURCE_DIR}/parser/optionsBase.h)
 # for loop over link definitions
 foreach(header ${linkHeaders})
   # The BDSBH4D dictionary only carries Boost-based 4D-histogram classes; its
@@ -34,10 +40,10 @@ foreach(header ${linkHeaders})
     COMMAND ${ROOTCINT_EXECUTABLE}
     ARGS -f ${CMAKE_CURRENT_BINARY_DIR}/root/${className}Dict.cc -noIncludePaths -inlineInputHeader
     ${PREPROCESSOR_DEFS}  -I${CMAKE_CURRENT_SOURCE_DIR} -I${CMAKE_CURRENT_SOURCE_DIR}/include -I${CMAKE_CURRENT_SOURCE_DIR}/parser/
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/${className}.hh ${BOOSTINCLUDES} ${header}
+    ${${className}_dictExtraHeaders} ${CMAKE_CURRENT_SOURCE_DIR}/include/${className}.hh ${BOOSTINCLUDES} ${header}
     COMMAND ${CMAKE_COMMAND} -DDICT_FILE=${CMAKE_CURRENT_BINARY_DIR}/root/${className}Dict.cc
     -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FixDictFwdDecls.cmake
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/${className}.hh ${header} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FixDictFwdDecls.cmake
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/${className}.hh ${header} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FixDictFwdDecls.cmake ${${className}_dictExtraHeaders}
     IMPLICIT_DEPENDS CXX ${CMAKE_CURRENT_SOURCE_DIR}/include/${className}.hh ${header}
     COMMENT "Generate ROOT Dictionary for ${className}"
     )
