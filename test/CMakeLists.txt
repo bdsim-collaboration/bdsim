@@ -51,6 +51,10 @@ target_compile_definitions(BDSHistogramAccumulatorTesterRebdsim PRIVATE TEST_REB
 target_link_libraries(BDSHistogramAccumulatorTesterRebdsim rebdsim bdsimRootEvent)
 add_test(NAME "tester-histogram-accumulators-rebdsim" COMMAND BDSHistogramAccumulatorTesterRebdsim)
 
+# timing benchmark of the fast accumulator vs the number of bins - not a test, run by hand
+add_executable(BDSHistogramAccumulatorBenchmark BDSHistogramAccumulatorBenchmark.cc)
+target_link_libraries(BDSHistogramAccumulatorBenchmark bdsimAccumulator ${ROOT_LIBRARIES})
+
 add_executable(TH1SetTest TH1SetTest.cc)
 target_link_libraries(TH1SetTest ${BDSIM_LIB_NAME} ${ROOT_LIBRARIES} rebdsim)
 
