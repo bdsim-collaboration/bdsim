@@ -55,17 +55,20 @@ public:
 	      const std::vector<double>& eBinEdgesIn);
   virtual ~BDSBH4DBase() override = default;
 
-  int GetNbinsX() const final;
-  int GetNbinsY() const final;
-  int GetNbinsZ() const final;
-  int GetNbinsE() const;
+  /// @{ Accessors defined inline so that code using this class (e.g. the histogram
+  /// accumulators) does not need to link against a particular build of it.
+  int GetNbinsX() const final {return static_cast<int>(h_nxbins);}
+  int GetNbinsY() const final {return static_cast<int>(h_nybins);}
+  int GetNbinsZ() const final {return static_cast<int>(h_nzbins);}
+  int GetNbinsE() const {return static_cast<int>(h_nebins);}
+  /// @}
   const char* GetName() const override;
   const char* GetTitle() const override;
   unsigned long GetEntries_BDSBH4D() const;
   
   void SetName(const char*) override;
   void SetTitle(const char*) override;
-  void SetEntries_BDSBH4D(double);
+  void SetEntries_BDSBH4D(double i) {h_entries = static_cast<unsigned long>(i);}
   
   virtual BDSBH4DBase& operator+=(const BDSBH4DBase& other) = 0;
   virtual void Reset_BDSBH4D() = 0;

@@ -82,26 +82,6 @@ BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn, unsigned 
   h_emax   = eBinEdgesIn.back();
 }
 
-int BDSBH4DBase::GetNbinsX() const
-{
-  return static_cast<int>(h_nxbins);
-}
-
-int BDSBH4DBase::GetNbinsY() const
-{
-  return static_cast<int>(h_nybins);
-}
-
-int BDSBH4DBase::GetNbinsZ() const
-{
-  return static_cast<int>(h_nzbins);
-}
-
-int BDSBH4DBase::GetNbinsE() const
-{
-  return static_cast<int>(h_nebins);
-}
-
 const char* BDSBH4DBase::GetName() const
 {
   return h_name.c_str();
@@ -125,9 +105,4 @@ void BDSBH4DBase::SetName(const char* name)
 void BDSBH4DBase::SetTitle(const char* title)
 {
   h_title = std::string(title);
-}
-
-void BDSBH4DBase::SetEntries_BDSBH4D(double i)
-{
-  h_entries = static_cast<unsigned long>(i);
 }
