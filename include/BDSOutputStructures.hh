@@ -18,9 +18,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSOUTPUTSTRUCTURES_H
 #define BDSOUTPUTSTRUCTURES_H
 
+#include "analysis/HistogramAccumulatorFast.hh"
+
 #include "globals.hh"
 
 #include <map>
+#include <memory>
 #include <set>
 #include <string>
 #include <utility>
@@ -50,7 +53,6 @@ class BDSOutputROOTEventSamplerS;
 class BDSOutputROOTEventTrajectory;
 class BDSOutputROOTParticleData;
 class G4Material;
-class HistogramAccumulatorFast;
 class TH1;
 
 /**
@@ -239,7 +241,7 @@ protected:
   {
     TH1* eventHist;
     std::set<Int_t> binsFilledThisEvent;
-    HistogramAccumulatorFast* runAccumulator;
+    std::unique_ptr<HistogramAccumulatorFast> runAccumulator;
   };
 
   /// @{ Cache of run accumulators linked to per-event histograms.

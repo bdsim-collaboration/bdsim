@@ -54,6 +54,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <algorithm>
 #include <map>
+#include <memory>
 #include <set>
 #include <string>
 #include <vector>
@@ -167,8 +168,7 @@ G4int BDSOutputStructures::Create1DHistogram(const G4String& name, const G4Strin
   G4int result = evtHistos->Create1DHistogram(name, title, nbins, xmin, xmax);
   TH1* eh = evtHistos->Get1DHistogram(result);
   HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
-  EventRunHist erh = {eh, {}, acc};
-  eventAndRunHistos1D.push_back(erh);
+  eventAndRunHistos1D.push_back({eh, {}, std::unique_ptr<HistogramAccumulatorFast>(acc)});
   return result;
 }
 
@@ -179,8 +179,7 @@ G4int BDSOutputStructures::Create1DHistogram(const G4String& name,
   G4int result = evtHistos->Create1DHistogram(name, title, edges);
   TH1* eh = evtHistos->Get1DHistogram(result);
   HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
-  EventRunHist erh = {eh, {}, acc};
-  eventAndRunHistos1D.push_back(erh);
+  eventAndRunHistos1D.push_back({eh, {}, std::unique_ptr<HistogramAccumulatorFast>(acc)});
   return result;
 }
 
@@ -202,8 +201,7 @@ G4int BDSOutputStructures::Create2DHistogram(const G4String& name,
                                               nBinsY, yMin, yMax);
   TH1* eh = evtHistos->Get2DHistogram(result);
   HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
-  EventRunHist erh = {eh, {}, acc};
-  eventAndRunHistos2D.push_back(erh);
+  eventAndRunHistos2D.push_back({eh, {}, std::unique_ptr<HistogramAccumulatorFast>(acc)});
   return result;
 }
 
@@ -228,8 +226,7 @@ G4int BDSOutputStructures::Create3DHistogram(const G4String& name,
                                               nBinsZ, zMin, zMax);
   TH1* eh = evtHistos->Get3DHistogram(result);
   HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
-  EventRunHist erh = {eh, {}, acc};
-  eventAndRunHistos3D.push_back(erh);
+  eventAndRunHistos3D.push_back({eh, {}, std::unique_ptr<HistogramAccumulatorFast>(acc)});
   return result;
 }
 
@@ -259,8 +256,7 @@ G4int BDSOutputStructures::Create4DHistogram(const G4String& name,
                                               nBinsE, eMin, eMax);
   TH1* eh = evtHistos->Get4DHistogram(result);
   HistogramAccumulatorFast* acc = new HistogramAccumulatorFast(eh, name, title);
-  EventRunHist erh = {eh, {}, acc};
-  eventAndRunHistos4D.push_back(erh);
+  eventAndRunHistos4D.push_back({eh, {}, std::unique_ptr<HistogramAccumulatorFast>(acc)});
   return result;
 }
 
