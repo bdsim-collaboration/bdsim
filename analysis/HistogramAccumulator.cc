@@ -356,9 +356,18 @@ void HistogramAccumulator::AccumulateSingleValue(double         oldMean,
 
 void HistogramAccumulator::Flush()
 {
-  mean->Reset();
-  variance->Reset();
-  result->Reset();
+  if (nDimensions == 4)
+    {// TH1::Reset() does not reset the boost histogram contents
+      static_cast<BDSBH4DBase*>(mean)->Reset_BDSBH4D();
+      static_cast<BDSBH4DBase*>(variance)->Reset_BDSBH4D();
+      static_cast<BDSBH4DBase*>(result)->Reset_BDSBH4D();
+    }
+  else
+    {
+      mean->Reset();
+      variance->Reset();
+      result->Reset();
+    }
   n = 0;
   terminated = false;
 }

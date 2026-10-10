@@ -50,14 +50,11 @@ HistogramAccumulatorFast::HistogramAccumulatorFast(TH1*               baseHistog
   // we work entirely with root's global bin index which means we can do this indexing
   // in 1D and can just use a 1D vector with the same number of total bins or 'cells'.
   // The 4D histogram's TH1D base is never given any bins, so GetNcells() is not valid for it.
+  // Its own global index similarly includes the under and overflow bins of each axis.
   std::size_t nCells = (std::size_t)baseHistogramIn->GetNcells();
 #ifdef USE_BOOST
   if (nDimensions == 4)
-    {
-      const BDSBH4DBase* h4 = static_cast<const BDSBH4DBase*>(baseHistogramIn);
-      if (h4)
-        {nCells = (std::size_t)h4->h_nxbins * h4->h_nybins * h4->h_nzbins * h4->h_nebins;}
-    }
+    {nCells = (std::size_t)static_cast<const BDSBH4DBase*>(baseHistogramIn)->GetNCells_BDSBH4D();}
 #endif
   binEventCount.resize(nCells); // initialises values to 0
 }
