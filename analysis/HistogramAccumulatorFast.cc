@@ -134,6 +134,10 @@ TH1* HistogramAccumulatorFast::Terminate()
   double var2 = 0;
   double err2 = 0; // temporary variable for standard error on mean
 
+  // if nothing was accumulated, leave the (reset) result empty rather than divide by zero
+  if (n == 0)
+    {return result;}
+
   // note here we set the std to 0 if there's only one entry (ie n = 1) to avoid
   // division by zero and nans
   switch (nDimensions)
