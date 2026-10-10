@@ -386,13 +386,14 @@ void DataLoader::CombineRunHistogramsAndCopyToEventMerged(TFile* outputFile)
   else
     {
       runChain->GetEntry(0);
-      auto* accumulator = new HistogramCombineFromFile(run->Histos);
-      for (int i = 1; i < (int)runChain->GetEntries(); i++)
+      HistogramCombineFromFile accumulator(run->Histos);
+      for (Long64_t i = 1; i < nRuns; i++)
         {
           runChain->GetEntry(i);
-          accumulator->Accumulate(run->Histos);
+          accumulator.Accumulate(run->Histos);
         }
-      accumulator->Terminate();
-      accumulator->Write(dir);
+      accumulator.Terminate();
+      accumulator.Write(dir);
+      // the result histograms are intentionally leaked by the accumulators as they now belong to dir
     }
 }
