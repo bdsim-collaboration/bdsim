@@ -350,6 +350,14 @@ void DataLoader::SetBranchAddress(bool allOn,
 void DataLoader::CombineRunHistogramsAndCopyToEventMerged(TFile* outputFile)
 {
   TDirectory* dir = outputFile->GetDirectory("Event/MergedHistograms");
+  if (!dir)
+    {throw RBDSException(__METHOD_NAME__, "no \"Event/MergedHistograms\" directory in output file");}
+  const Long64_t nRuns = runChain->GetEntries();
+  if (nRuns < 1)
+    {
+      std::cout << __METHOD_NAME__ << "no runs in input - no run histograms to combine" << std::endl;
+      return;
+    }
   dir->cd();
   if (runChain->GetEntries() == 1)
     {
