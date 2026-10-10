@@ -86,9 +86,11 @@ HistogramAccumulator::HistogramAccumulator(TH1*               baseHistogram,
     case 4:
       {
 #ifdef USE_BOOST
-        mean     = dynamic_cast<BDSBH4DBase*>(baseHistogram)->Clone(meanName.c_str());
-        variance = dynamic_cast<BDSBH4DBase*>(baseHistogram)->Clone(variName.c_str());
-        result   = dynamic_cast<BDSBH4DBase*>(baseHistogram)->Clone(resultHistName.c_str());
+        // static_cast is used for 4D histograms throughout as nDimensions guarantees the type and
+        // this avoids depending on the RTTI of a particular library build of BDSBH4DBase.
+        mean     = static_cast<BDSBH4DBase*>(baseHistogram)->Clone(meanName.c_str());
+        variance = static_cast<BDSBH4DBase*>(baseHistogram)->Clone(variName.c_str());
+        result   = static_cast<BDSBH4DBase*>(baseHistogram)->Clone(resultHistName.c_str());
         break;
 #endif
       }
@@ -207,9 +209,9 @@ void HistogramAccumulator::Accumulate(TH1* newValue)
     case 4:
       {
 #ifdef USE_BOOST
-        BDSBH4DBase* h1  = dynamic_cast<BDSBH4DBase*>(mean);
-        BDSBH4DBase* h1e = dynamic_cast<BDSBH4DBase*>(variance);
-        BDSBH4DBase* ht  = dynamic_cast<BDSBH4DBase*>(newValue);
+        BDSBH4DBase* h1  = static_cast<BDSBH4DBase*>(mean);
+        BDSBH4DBase* h1e = static_cast<BDSBH4DBase*>(variance);
+        BDSBH4DBase* ht  = static_cast<BDSBH4DBase*>(newValue);
         for (int j = -1; j <= h1->GetNbinsX(); ++j)
           {
             for (int k = -1; k <= h1->GetNbinsY(); ++k)
@@ -300,10 +302,10 @@ TH1* HistogramAccumulator::Terminate()
     case 4:
       {
 #ifdef USE_BOOST
-        auto histCast = dynamic_cast<BDSBH4DBase*>(result);
-        auto mnCast   = dynamic_cast<BDSBH4DBase*>(mean);
-        auto varCast  = dynamic_cast<BDSBH4DBase*>(variance);
-        auto resCast  = dynamic_cast<BDSBH4DBase*>(result);
+        auto histCast = static_cast<BDSBH4DBase*>(result);
+        auto mnCast   = static_cast<BDSBH4DBase*>(mean);
+        auto varCast  = static_cast<BDSBH4DBase*>(variance);
+        auto resCast  = static_cast<BDSBH4DBase*>(result);
         int nBinsX = histCast->GetNbinsX();
         int nBinsY = histCast->GetNbinsY();
         int nBinsZ = histCast->GetNbinsZ();
@@ -332,7 +334,7 @@ TH1* HistogramAccumulator::Terminate()
       {break;}
     }
   if (nDimensions == 4)
-    {dynamic_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
+    {static_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
   else
     {result->SetEntries((double)n);}
 

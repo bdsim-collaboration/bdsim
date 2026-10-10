@@ -54,7 +54,7 @@ HistogramAccumulatorFast::HistogramAccumulatorFast(TH1*               baseHistog
 #ifdef USE_BOOST
   if (nDimensions == 4)
     {
-      const BDSBH4DBase* h4 = dynamic_cast<const BDSBH4DBase*>(baseHistogramIn);
+      const BDSBH4DBase* h4 = static_cast<const BDSBH4DBase*>(baseHistogramIn);
       if (h4)
         {nCells = (std::size_t)h4->h_nxbins * h4->h_nybins * h4->h_nzbins * h4->h_nebins;}
     }
@@ -97,9 +97,9 @@ void HistogramAccumulatorFast::AccumulateBinsThatWereFilledOnly(TH1* newValue, c
     case 4:
       {
 #ifdef USE_BOOST
-        BDSBH4DBase* h1  = dynamic_cast<BDSBH4DBase*>(mean);
-        BDSBH4DBase* h1e = dynamic_cast<BDSBH4DBase*>(variance);
-        BDSBH4DBase* ht  = dynamic_cast<BDSBH4DBase*>(newValue);
+        BDSBH4DBase* h1  = static_cast<BDSBH4DBase*>(mean);
+        BDSBH4DBase* h1e = static_cast<BDSBH4DBase*>(variance);
+        BDSBH4DBase* ht  = static_cast<BDSBH4DBase*>(newValue);
         const Int_t nCells = (Int_t)binEventCount.size();
         for (auto j : binsFilled)
           {
@@ -157,9 +157,9 @@ TH1* HistogramAccumulatorFast::Terminate()
     case 4:
       {
 #ifdef USE_BOOST
-        auto mnCast = dynamic_cast<BDSBH4DBase*>(mean);
-        auto varCast = dynamic_cast<BDSBH4DBase*>(variance);
-        auto resCast = dynamic_cast<BDSBH4DBase*>(result);
+        auto mnCast = static_cast<BDSBH4DBase*>(mean);
+        auto varCast = static_cast<BDSBH4DBase*>(variance);
+        auto resCast = static_cast<BDSBH4DBase*>(result);
         for (int j = 0; j < (int)binEventCount.size(); j++)
           {
             mn  = mnCast->At(j);
@@ -177,7 +177,7 @@ TH1* HistogramAccumulatorFast::Terminate()
       {break;}
     }
   if(nDimensions==4)
-    {dynamic_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
+    {static_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
   else
     {result->SetEntries((double)n);}
 
