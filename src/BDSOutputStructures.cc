@@ -213,7 +213,7 @@ void BDSOutputStructures::Fill2DHistogram(G4int histoId,
                                           G4double weight)
 {
   Int_t globalBinFilled = evtHistos->histograms2D[histoId]->Fill(x, y, weight);
-  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
+  eventAndRunHistos2D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 
 G4int BDSOutputStructures::Create3DHistogram(const G4String& name,
@@ -240,7 +240,7 @@ void BDSOutputStructures::Fill3DHistogram(G4int    histoId,
                                           G4double weight)
 {
   Int_t globalBinFilled = evtHistos->histograms3D[histoId]->Fill(x, y, z, weight);
-  eventAndRunHistos1D[histoId].binsFilledThisEvent.insert(globalBinFilled);
+  eventAndRunHistos3D[histoId].binsFilledThisEvent.insert(globalBinFilled);
 }
 
 G4int BDSOutputStructures::Create4DHistogram(const G4String& name,
