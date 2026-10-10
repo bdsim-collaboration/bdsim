@@ -274,6 +274,12 @@ void BDSOutputStructures::HistogramMarkEndOfEvent()
 
 void BDSOutputStructures::TerminateRunHistogramAccumulators()
 {
+  // Each accumulator always returns the same result histogram, so clear any
+  // pointers from a previous run to avoid storing duplicates.
+  runHistos->histograms1D.clear();
+  runHistos->histograms2D.clear();
+  runHistos->histograms3D.clear();
+  runHistos->histograms4D.clear();
   for (G4int i = 0; i < (G4int)eventAndRunHistos1D.size(); i++)
     {runHistos->histograms1D.push_back(dynamic_cast<TH1D*>(eventAndRunHistos1D[i].runAccumulator->Terminate()));}
   for (G4int i = 0; i < (G4int)eventAndRunHistos2D.size(); i++)
