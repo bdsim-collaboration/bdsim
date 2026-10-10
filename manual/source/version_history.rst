@@ -11,6 +11,56 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Beam pipe sections to fill gaps between changes in aperture.
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
+v1.9.0 - 2026 / XX / XX
+=======================
+
+* The run level histograms are no longer 'simple histograms' but are now per-event
+  average histograms that are calculated during the simulation. By default, 3D scoring
+  meshes are no longer stored per-event and only the run-level per-event averages are
+  stored.
+
+New Features
+------------
+
+* Run histograms are now per-event average histograms as opposed to simple histograms.
+* rebdsim is now faster as looping over data is only done if required.
+
+
+New Options
+-----------
+
+.. tabularcolumns:: |p{0.30\textwidth}|p{0.70\textwidth}|
+
++-------------------------------------+-------------------------------------------------------+
+| **Option**                          | **Function**                                          |
++=====================================+=======================================================+
+| storeEventLevelHistograms           | Default on. If on, 1D and 2D histograms are stored    |
+|                                     | with each event with that event data only. Applies to |
+|                                     | all possible 1D and 2D histograms.                    |
++-------------------------------------+-------------------------------------------------------+
+| storeEventLevelMeshes               | Default off. If on, 3D and 4D meshes are stored with  |
+|                                     | each event with that event data only. Incurs a very   |
+|                                     | large file size.                                      |
++-------------------------------------+-------------------------------------------------------+
+
+General Updates
+---------------
+
+Bug Fixes
+---------
+
+Output Changes
+--------------
+
+* Run histograms are now per-event average histograms as opposed to simple histograms.
+* Event-level 1D and 2D histograms are still stored by default, but 3D or 4D 'mesh' histograms
+  are no longer stored, by default, at an event level. They are stored at a run-level.
+
+Output Class Versions
+---------------------
+
+* Data Version 11.
+  
 
 v1.8.0 - 2026 / 09 / 27
 =======================

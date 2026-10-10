@@ -308,6 +308,12 @@ endif()
 # And even if the dictionaries are the same compiling with multiple threads will result in building them simultaneously
 add_dependencies(${BDSIM_LIB_NAME} bdsimRootEvent)
 
+# histogram accumulators shared with rebdsim (only depends on ROOT)
+target_link_libraries(${BDSIM_LIB_NAME} bdsimAccumulator)
+if (BDSIM_BUILD_STATIC_LIBS)
+  target_link_libraries(${BDSIM_LIB_NAME_STATIC} bdsimAccumulator)
+endif()
+
 # Install the targets:
 set(executables bdsimExec)
 if (BDSIM_BUILD_STATIC_LIBS)

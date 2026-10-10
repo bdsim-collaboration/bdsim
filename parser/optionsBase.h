@@ -348,6 +348,8 @@ namespace GMAD
     bool        storeElossPreStepKineticEnergy;
     bool        storeElossModelID;
     bool        storeElossPhysicsProcesses;
+    bool        storeEventLevelHistograms;
+    bool        storeEventLevelMeshes;
     bool        storeParticleData;
     bool        storePrimaries;
     bool        storePrimaryHistograms;

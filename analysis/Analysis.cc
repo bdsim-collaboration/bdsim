@@ -50,7 +50,8 @@ Analysis::Analysis(const std::string& treeNameIn,
   histoSum(nullptr),
   debug(debugIn),
   entries(chain->GetEntries()),
-  perEntry(perEntryAnalysis)
+  perEntry(perEntryAnalysis),
+  nPerEntryHistoDefinitions(0)
 {;}
 
 Analysis::~Analysis()
@@ -72,7 +73,8 @@ void Analysis::Execute()
       TH3::AddDirectory(kTRUE);
       BDSBH4DBase::AddDirectory(kTRUE);
       PreparePerEntryHistograms();
-      Process();
+      if (nPerEntryHistoDefinitions > 0) // avoid a useless data-loading loop
+        {Process();}
     }
   SimpleHistograms();
   Terminate();
@@ -102,6 +104,7 @@ void Analysis::PreparePerEntryHistograms()
   if (c)
     {
       const auto& definitions = c->HistogramDefinitionsPerEntry(treeName);
+      nPerEntryHistoDefinitions += (int)definitions.size();
       for (const auto& def : definitions)
         {perEntryHistograms.push_back(new PerEntryHistogram(def, chain));}
     }
@@ -165,7 +168,7 @@ void Analysis::Write(TFile* outputFile)
 void Analysis::FillHistogram(HistogramDef* definition,
                              std::vector<TH1*>* outputHistograms)
 {
-  // ensure new histograms are added to file..
+  // ensure new histograms are added to file.
   // this is crucial for the draw command to work as it finds the histograms by name
   TH1::AddDirectory(kTRUE);
   TH2::AddDirectory(kTRUE);

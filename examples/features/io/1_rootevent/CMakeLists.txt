@@ -50,3 +50,9 @@ simple_testing(io-no-eloss-histos "--file=sc_no_eloss_histograms.gmad --ngenerat
 # scoring map
 simple_testing(io-scoring-map               "--file=sc_scoringmap.gmad"          "")
 simple_fail(io-scoring-map-bad-range        "--file=sc_scoringmap_no_range.gmad" "")
+
+# event-level histogram options
+simple_testing(io-evt-histos-none          "--file=evt-histos-none.gmad" "")
+simple_testing(io-evt-histos-all           "--file=evt-histos-all.gmad" "")
+simple_testing(io-evt-histos-normal-only   "--file=evt-histos-normal-only.gmad" "")
+simple_testing(io-evt-histos-meshes-only   "--file=evt-histos-meshes-only.gmad" "")
