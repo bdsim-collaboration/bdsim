@@ -1239,7 +1239,7 @@ void BDSOutput::CopyFromHistToHist1D(const G4String& sourceName,
     {
       destinationEvt->SetBinContent(destBinIndex, sourceEvt->GetBinContent(index + 1));
       destinationEvt->SetBinError(destBinIndex,   sourceEvt->GetBinError(index + 1));
-      eventAndRunHistos1D[histIndices1D[destinationName]].binsFilledThisEvent.insert(index);
+      eventAndRunHistos1D[histIndices1D[destinationName]].binsFilledThisEvent.insert(destBinIndex);
       destBinIndex++;
     }
 }
