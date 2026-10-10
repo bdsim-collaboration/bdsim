@@ -11,6 +11,56 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Beam pipe sections to fill gaps between changes in aperture.
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
+v1.9.0 - 2026 / XX / XX
+=======================
+
+* The run level histograms are no longer 'simple histograms' but are now per-event
+  average histograms that are calculated during the simulation. By default, 3D scoring
+  meshes are no longer stored per-event and only the run-level per-event averages are
+  stored.
+
+New Features
+------------
+
+* Run histograms are now per-event average histograms as opposed to simple histograms.
+* rebdsim is now faster as looping over data is only done if required.
+
+
+New Options
+-----------
+
+.. tabularcolumns:: |p{0.30\textwidth}|p{0.70\textwidth}|
+
++-------------------------------------+-------------------------------------------------------+
+| **Option**                          | **Function**                                          |
++=====================================+=======================================================+
+| storeEventLevelHistograms           | Default on. If on, 1D and 2D histograms are stored    |
+|                                     | with each event with that event data only. Applies to |
+|                                     | all possible 1D and 2D histograms.                    |
++-------------------------------------+-------------------------------------------------------+
+| storeEventLevelMeshes               | Default off. If on, 3D and 4D meshes are stored with  |
+|                                     | each event with that event data only. Incurs a very   |
+|                                     | large file size.                                      |
++-------------------------------------+-------------------------------------------------------+
+
+General Updates
+---------------
+
+Bug Fixes
+---------
+
+Output Changes
+--------------
+
+* Run histograms are now per-event average histograms as opposed to simple histograms.
+* Event-level 1D and 2D histograms are still stored by default, but 3D or 4D 'mesh' histograms
+  are no longer stored, by default, at an event level. They are stored at a run-level.
+
+Output Class Versions
+---------------------
+
+* Data Version 11.
+  
 
 v1.8.0 - 2026 / 09 / 27
 =======================
@@ -28,10 +78,6 @@ to maintain the expected high quality of the code.
   into the simulation and all particles are sent back. The :code:`protonsAndIonsOnly`
   Boolean flag still works, but by default is false. Any linked tracking code must now
   filter the particles they can handle themselves.
-* The run level histograms are no longer 'simple histograms' but are now per-event
-  average histograms that are calculated during the simulation. By default, 3D scoring
-  meshes are no longer stored per-event and only the run-level per-event averages are
-  stored.
 
 
 New Features
@@ -45,8 +91,6 @@ New Features
 
 * New :code:`CreateEmptyBdskimFile` in the :code:`DataDummyClass` to give this function in pybdsim
   for easy customised skimming in Python.
-* Run histograms are now per-event average histograms as opposed to simple histograms.
-* rebdsim is now faster as looping over data is only done if required.
 
 **Bunch Distributions**
 
@@ -102,14 +146,6 @@ New Options
 |                                     | the beamline such as from accelerator and adjust      |
 |                                     | the design rigidity for normalised fields             |
 |                                     | accordingly.                                          |
-+-------------------------------------+-------------------------------------------------------+
-| storeEventLevelHistograms           | Default on. If on, 1D and 2D histograms are stored    |
-|                                     | with each event with that event data only. Applies to |
-|                                     | all possible 1D and 2D histograms.                    |
-+-------------------------------------+-------------------------------------------------------+
-| storeEventLevelMeshes               | Default off. If on, 3D and 4D meshes are stored with  |
-|                                     | each event with that event data only. Incurs a very   |
-|                                     | large file size.                                      |
 +-------------------------------------+-------------------------------------------------------+
 
 
@@ -190,7 +226,6 @@ Output Changes
   an element (:code:`staEk`) have all been added to the model tree in the output as
   calculated by BDSIM as it now integrates the time and acceleration / decceleration
   along the beamline.
-* Run histograms are now per-event averages.
 
 
 Output Class Versions
