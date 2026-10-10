@@ -23,9 +23,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <boost/histogram.hpp>
 #include "BDSBH4DTypeDefs.hh"
 
-#ifndef __ROOTBUILD__
-#include "BDSHistBinMapper.hh"
-#endif
 #endif
 
 #include "Rtypes.h"
@@ -80,9 +77,6 @@ public:
   double HighBinEdgeAt(int, int, int, int) override;
   void Print_BDSBH4D(bool with_zero_values=true) override;
   void Print_BDSBH4D(int, int, int, int) override;
-#ifndef __ROOTBUILD__
-  BDSHistBinMapper mapper;
-#endif
 #endif
 
   ClassDef(BDSBH4D,1);

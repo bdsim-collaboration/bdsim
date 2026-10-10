@@ -62,6 +62,35 @@ public:
   int GetNbinsZ() const final {return static_cast<int>(h_nzbins);}
   int GetNbinsE() const {return static_cast<int>(h_nebins);}
   /// @}
+
+  /// @{ Global bin index covering every cell including the under and overflow bins of
+  /// each axis. Axis indices are those of boost histogram, i.e. -1 is the underflow bin
+  /// and nBins is the overflow bin. Inline so the same mapping is used irrespective of
+  /// the library build (e.g. with or without __ROOTBUILD__).
+  int GetNCells_BDSBH4D() const {return static_cast<int>((h_nxbins + 2) * (h_nybins + 2) * (h_nzbins + 2) * (h_nebins + 2));}
+  
+  int GlobalBin_BDSBH4D(int x, int y, int z, int e) const
+  {
+    const int nY = static_cast<int>(h_nybins) + 2;
+    const int nZ = static_cast<int>(h_nzbins) + 2;
+    const int nE = static_cast<int>(h_nebins) + 2;
+    return (((x + 1) * nY + (y + 1)) * nZ + (z + 1)) * nE + (e + 1);
+  }
+  
+  void IndicesFromGlobalBin_BDSBH4D(int global, int& x, int& y, int& z, int& e) const
+  {
+    const int nY = static_cast<int>(h_nybins) + 2;
+    const int nZ = static_cast<int>(h_nzbins) + 2;
+    const int nE = static_cast<int>(h_nebins) + 2;
+    e = global % nE - 1;
+    global /= nE;
+    z = global % nZ - 1;
+    global /= nZ;
+    y = global % nY - 1;
+    x = global / nY - 1;
+  }
+  /// @}
+  
   const char* GetName() const override;
   const char* GetTitle() const override;
   unsigned long GetEntries_BDSBH4D() const;

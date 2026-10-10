@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorModel.hh"
+#include "BDSBH4DBase.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineElement.hh"
 #include "BDSBLMRegistry.hh"
@@ -1177,6 +1178,7 @@ void BDSOutput::FillScorerHitsIndividual(const G4String& histogramDefName,
       G4double unit   = BDS::MapGetWithDefault(histIndexToUnits4D, histIndex, 1.0);
       // avoid using [] operator for map as we have no default constructor for BDSHistBinMapper3D
       const BDSHistBinMapper& mapper = scorerCoordinateMaps.at(histogramDefName);
+      BDSBH4DBase* hist = evtHistos->Get4DHistogram(histIndex);
       G4int x,y,z,e;
 #if G4VERSION < 1039
       for (const auto& hit : *hitMap->GetMap())
@@ -1186,8 +1188,10 @@ void BDSOutput::FillScorerHitsIndividual(const G4String& histogramDefName,
         {
           // convert from scorer global index to 4d i,j,k,e index of 4d scorer
           mapper.IJKLFromGlobal(hit.first, x,y,z,e);
-          evtHistos->Set4DHistogramBinContent(histIndex, x, y, z, e - 1, *hit.second / unit); // - 1 to go back to the Boost Histogram indexing (-1 for the underflow bin)
-          eventAndRunHistos4D[histIndex].binsFilledThisEvent.insert(hit.first);
+          e -= 1; // go back to the Boost Histogram indexing (-1 for the underflow bin)
+          evtHistos->Set4DHistogramBinContent(histIndex, x, y, z, e, *hit.second / unit);
+          // the scorer global index is different from the 4D histogram one, so convert it
+          eventAndRunHistos4D[histIndex].binsFilledThisEvent.insert(hist->GlobalBin_BDSBH4D(x, y, z, e));
         }
     }
 }
