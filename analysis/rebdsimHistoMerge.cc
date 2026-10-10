@@ -79,12 +79,15 @@ int main(int argc, char *argv[])
                                                    dl->GetBeamTree(),
                                                    config->PerEntryBeam(),
                                                    debug);
-      
+
+      bool skipCalculateEventMeanHistos = config->AnalyseAllEvents() && dl->DataVersion() > 10;
+      if (skipCalculateEventMeanHistos)
+        {std::cout << "Using pre-made run-level mean histograms." << std::endl;}
       EventAnalysis* evtAnalysis = new EventAnalysis(dl->GetEvent(),
                                                      dl->GetEventTree(),
                                                      config->PerEntryEvent(),
                                                      config->ProcessSamplers(),
-                                                     dl->DataVersion() < 10,
+                                                     !skipCalculateEventMeanHistos,
                                                      debug,
                                                      config->PrintOut(),
                                                      config->PrintModuloFraction(),
@@ -150,7 +153,7 @@ int main(int argc, char *argv[])
       // For the latest data, we copy the run histograms over as these are already
       // the per-event average across the run. The EventAnalysis just doesn't produce
       // them if the data is v10 or above.
-      if (dl->DataVersion() > 9)
+      if (!skipCalculateEventMeanHistos)
         {dl->CombineRunHistogramsAndCopyToEventMerged(outputFile);}
 
       // copy the model over and rename to avoid conflicts with Model directory
