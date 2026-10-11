@@ -1,13 +1,13 @@
-/* 
+/*
 Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
-BDSIM is free software: you can redistribute it and/or modify 
-it under the terms of the GNU General Public License as published 
+BDSIM is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published
 by the Free Software Foundation version 3 of the License.
 
-BDSIM is distributed in the hope that it will be useful, but 
+BDSIM is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -35,8 +35,8 @@ namespace py = pybind11;
 #include "BDSSamplerCustom.hh"
 #include "BDSParser.hh"
 
-#include "BDSLinkParticleBatch.hh"
-#include "BDSLinkSamplerParticleBatch.hh"
+#include "BDSLinkBunchRFTrack.hh"
+#include "BDSHitsCollectionSamplerLinkRFTrack.hh"
 
 #include "CLHEP/Units/PhysicalConstants.h"
 #include "CLHEP/Units/SystemOfUnits.h"
@@ -59,7 +59,7 @@ namespace
 
   struct RFTrackBunchConversionResult
   {
-    BDSLinkParticleBatch batch;
+    BDSLinkBunchRFTrack batch;
 
     // Maps an RF-Track particle ID to its original bunch index.
     std::unordered_map<int, std::size_t> rfTrackIndexByParticleID;
@@ -113,7 +113,7 @@ namespace
     return array;
   }
 
-  BDSLinkParticleBatch ConvertBunch6dCoordinates(const py::object& bunch)
+  BDSLinkBunchRFTrack ConvertBunch6dCoordinates(const py::object& bunch)
   {
     py::object phaseObject =
         bunch.attr("get_phase_space")("%x %xp %y %yp %t %P", "all");
@@ -124,7 +124,7 @@ namespace
     const py::ssize_t n = phase.shape(0);
     auto input = phase.unchecked<2>();
 
-    BDSLinkParticleBatch batch;
+    BDSLinkBunchRFTrack batch;
 
     batch.x.resize(n);
     batch.y.resize(n);
@@ -220,7 +220,7 @@ namespace
     throw std::runtime_error("Unable to determine RF-Track bunch mass");
   }
 
-  BDSLinkParticleBatch ConvertBunch6dTCoordinates(const py::object& bunch)
+  BDSLinkBunchRFTrack ConvertBunch6dTCoordinates(const py::object& bunch)
   {
     DoubleArray phase = RequireMatrix(bunch.attr("get_phase_space")(),
                                       6,
@@ -237,7 +237,7 @@ namespace
     auto input = phase.unchecked<2>();
     const double* t0Data = t0.data();
 
-    BDSLinkParticleBatch batch;
+    BDSLinkBunchRFTrack batch;
 
     batch.x.resize(n);
     batch.y.resize(n);
@@ -288,7 +288,7 @@ namespace
   }
 
   void FillParticleMetadata(const py::object& bunch,
-                            BDSLinkParticleBatch& batch)
+                            BDSLinkBunchRFTrack& batch)
   {
     const py::ssize_t n = static_cast<py::ssize_t>(batch.Size());
 
@@ -350,8 +350,8 @@ namespace
       }
   }
 
-  BDSLinkParticleBatch
-  RFTrackBunchToBDSLinkParticleBatch(const py::object& bunch,
+  BDSLinkBunchRFTrack
+  RFTrackBunchToBDSLinkBunchRFTrack(const py::object& bunch,
                                      const int fallbackPDGID)
   {
     if (fallbackPDGID == 0)
@@ -367,7 +367,7 @@ namespace
     const std::string className =
         py::str(bunch.attr("__class__").attr("__name__"));
 
-    BDSLinkParticleBatch batch;
+    BDSLinkBunchRFTrack batch;
 
     if (className == "Bunch6dT")
       {
@@ -410,7 +410,7 @@ namespace
   {
     RFTrackBunchConversionResult conversion;
 
-    conversion.batch = RFTrackBunchToBDSLinkParticleBatch(bunch, fallbackPDGID);
+    conversion.batch = RFTrackBunchToBDSLinkBunchRFTrack(bunch, fallbackPDGID);
 
     const std::size_t numberOfParticles = conversion.batch.Size();
 
@@ -451,7 +451,7 @@ namespace
     RFTrackBunchConversionResult conversion =
         RFTrackBunchToBDSLinkConversionResult(bunch, fallbackPDGID);
 
-    BDSLinkParticleBatch& batch = conversion.batch;
+    BDSLinkBunchRFTrack& batch = conversion.batch;
 
     const std::size_t n = batch.Size();
 
@@ -556,14 +556,14 @@ namespace
     return conversion;
   }
 
-  BDSLinkSamplerParticleBatch BDSLinkSamplerHitsToParticleBatch(
+  BDSHitsCollectionSamplerLinkRFTrack BDSLinkSamplerHitsToParticleBatch(
       const BDSHitsCollectionSamplerLink& samplerHits)
   {
-    BDSLinkSamplerParticleBatch output;
+    BDSHitsCollectionSamplerLinkRFTrack output;
 
     const std::size_t n = samplerHits.entries();
 
-    BDSLinkParticleBatch& particles = output.particles;
+    BDSLinkBunchRFTrack& particles = output.particles;
 
     particles.x.resize(n);
     particles.y.resize(n);
@@ -837,12 +837,12 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
           );
         }
 
-        BDSLinkSamplerParticleBatch output =
+        BDSHitsCollectionSamplerLinkRFTrack output =
           BDSLinkSamplerHitsToParticleBatch(
             *samplerHits
           );
 
-        const BDSLinkParticleBatch& particles =
+        const BDSLinkBunchRFTrack& particles =
           output.particles;
 
         py::dict result;
@@ -891,7 +891,7 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
           pdgID
         );
 
-      const BDSLinkParticleBatch& batch =
+      const BDSLinkBunchRFTrack& batch =
         conversion.batch;
 
       py::dict result;
@@ -954,7 +954,7 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
     py::array_t<int64_t> at_element = py::cast<py::array_t<int64_t>>(particles.attr("at_element"));
     py::array_t<int64_t> at_turn = py::cast<py::array_t<int64_t>>(particles.attr("at_turn"));
 
-    // fill BDSLinkBunch
+    // fill BDSLinkBunchRFTrack
     auto bunch = tracker_interface->GetBunchLink();
     auto ref = tracker_interface->GetReferenceParticleDefinition();
     // bunch->AddParticle();
@@ -1196,7 +1196,7 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
     }
     std::cout << "ref energy is: " << ref->Momentum() << std::endl;
     std::cout << "ref energy submitted in GeV is: " << referenceKineticEnergy / CLHEP::GeV << std::endl;
-    // clean BDSLinkBunch of particles
+    // clean BDSLinkBunchRFTrack of particles
     tracker_interface->ClearData();
 }
 
@@ -1259,7 +1259,7 @@ void TrackRFTrack(BDSLinkTrackerInterface* trackerInterface,
   const RFTrackBunchConversionResult conversion =
       LoadRFTrackBunchIntoTracker(*trackerInterface, bunch6d, fallbackPDGID);
 
-  const BDSLinkParticleBatch& loadedBatch = conversion.batch;
+  const BDSLinkBunchRFTrack& loadedBatch = conversion.batch;
 
   const auto& rfTrackIndexByParticleID = conversion.rfTrackIndexByParticleID;
 
@@ -1283,10 +1283,10 @@ void TrackRFTrack(BDSLinkTrackerInterface* trackerInterface,
                                "after BeamOn");
     }
 
-  const BDSLinkSamplerParticleBatch samplerBatch =
+  const BDSHitsCollectionSamplerLinkRFTrack samplerBatch =
       BDSLinkSamplerHitsToParticleBatch(*samplerHits);
 
-  const BDSLinkParticleBatch& sampledParticles = samplerBatch.particles;
+  const BDSLinkBunchRFTrack& sampledParticles = samplerBatch.particles;
 
   // Initially mark every particle as not having reached
   // the output sampler. The output-sampler position is

@@ -16,10 +16,10 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef BDSLINKSAMPLERPARTICLEBATCH_H
-#define BDSLINKSAMPLERPARTICLEBATCH_H
+#ifndef BDSHitsCollectionSamplerLinkRFTrack_H
+#define BDSHitsCollectionSamplerLinkRFTrack_H
 
-#include "BDSLinkParticleBatch.hh"
+#include "BDSLinkBunchRFTrack.hh"
 
 #include <cstddef>
 #include <stdexcept>
@@ -33,10 +33,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * Geant4 tracking and statistical-weight information associated with each
  * sampler hit. All arrays must contain one entry per sampler hit.
  */
-struct BDSLinkSamplerParticleBatch
+struct BDSHitsCollectionSamplerLinkRFTrack
 {
   /// Common particle phase-space data and external identifiers.
-  BDSLinkParticleBatch particles;
+  BDSLinkBunchRFTrack particles;
 
   /// Parent, Geant4 track and event identifiers for each sampler hit.
   std::vector<int> parentID;
@@ -62,7 +62,7 @@ struct BDSLinkSamplerParticleBatch
         if (actual != n)
           {
             throw std::runtime_error(
-              "BDSLinkSamplerParticleBatch: field \"" +
+              "BDSHitsCollectionSamplerLinkRFTrack: field \"" +
               name + "\" has size " +
               std::to_string(actual) +
               ", expected " +

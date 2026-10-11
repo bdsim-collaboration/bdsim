@@ -16,8 +16,8 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef BDSLINKPARTICLEBATCH_H
-#define BDSLINKPARTICLEBATCH_H
+#ifndef BDSLinkBunchRFTrack_H
+#define BDSLinkBunchRFTrack_H
 
 #include <cstddef>
 #include <stdexcept>
@@ -31,7 +31,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
  * must have the same size. Coordinates and momenta use the units expected
  * by BDSLinkTrackerInterface::AddParticles().
  */
-struct BDSLinkParticleBatch
+struct BDSLinkBunchRFTrack
 {
   /// Horizontal and vertical positions in mm.
   std::vector<double> x;   // mm
@@ -74,7 +74,7 @@ struct BDSLinkParticleBatch
         if (actual != n)
           {
             throw std::runtime_error(
-              "BDSLinkParticleBatch: field \"" +
+              "BDSLinkBunchRFTrack: field \"" +
               name + "\" has size " +
               std::to_string(actual) +
               ", expected " +

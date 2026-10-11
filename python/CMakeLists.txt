@@ -77,3 +77,8 @@ install(FILES rftrack/__init__.py rftrack/bdsim_element.py rftrack/pandas.py
 install(FILES xsuite/__init__.py xsuite/bdsim_element.py
         DESTINATION lib/bdsim-python/bdsim/xsuite
         COMPONENT python)
+
+# RF-Track interface integration tests
+if(BUILD_TESTING)
+    add_subdirectory(tests/rftrack_interface)
+endif()
