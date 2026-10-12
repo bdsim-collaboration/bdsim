@@ -35,7 +35,7 @@ on changes that don't fit the project's direction.
 ## Development setup
 
 ```bash
-git clone https://github.com/bdsim-collaboration/bdsim.git
+git clone https://github.com/YOUR_GITBUB_USERNAME/bdsim.git
 mkdir bdsim-build
 mkdir bdsim-install
 cd bdsim-build
@@ -46,8 +46,7 @@ make -j$(nproc) install
 Run the tests to confirm everything works:
 
 ```bash
-cd bdsim-build
-ctest -j${nproc}
+ctest -j$(nproc)
 ```
 
 ## Making a change
@@ -56,7 +55,7 @@ ctest -j${nproc}
    `git checkout -b fix-issue-123-description origin/develop`
 2. Make your changes in small, focused commits.
 3. Add or update **tests** found in `examples/`for any behaviour you change.
-4. Update **documentation** and the `manual/source/version_history.md` if the change is user-visible.
+4. Update **documentation** and the `manual/source/version_history.rst` if the change is user-visible.
 5. Run the checks locally (see above).
 6. Push your branch and open a pull request.
 
@@ -66,7 +65,7 @@ Before requesting review, make sure that:
 
 - [ ] Tests pass locally and in CI
 - [ ] New code is covered by tests (both in `examples/` and [regression](https://github.com/bdsim-collaboration/regression))
-- [ ] Docs (`bdsim/manual/source/`) and changelog (`manual/source/version_history.rst`) are updated
+- [ ] Docs (`manual/source/`) and changelog (`manual/source/version_history.rst`) are updated
 - [ ] The manual has been updated
 - [ ] The PR description explains *what* changed and *why*, and links the issue
 - [ ] The PR is focused on one thing (split unrelated changes)
@@ -135,7 +134,7 @@ When running an agent locally:
 ### Licensing and provenance
 
 By submitting a PR you confirm that you have the right to contribute it under
-the project's [GPL-3.0-or-later](LICENSE.txt) license. AI tools can reproduce
+the project's [GPL-3.0-or-later](LICENCE.txt) license. AI tools can reproduce
 existing code, so:
 
 - Don't paste in code you suspect was copied from an incompatible or unknown
