@@ -9,21 +9,21 @@ BDSIM is a C++ package for simulating accelerators using Geant4. Most of the sou
 `src/`, `analysis/`, `convert/`, `interpolator/`, `parser/`, `python/` . Tests in `examples/` and `test/`, 
 Documentation source in `manual/`.
 
-| Contents                                        | Source directory  |
-|-------------------------------------------------|-------------------|
-| Main Geant4 dependent C++ code                  | `src/`            |
-| Main Geant4 dependent C++ headers               | `include/`        |
-| ROOT analysis code                              | `analysis/`       |
-| Comparisons between output C++ code             | `comparator/`     |
-| Interpolator C++ code                           | `comparator/`     |
-| Converter utilities C++ code                    | `convert/`        |
-| Examples and ctest tests                        | `examples/`       |
-| Documentation source sphinx                     | `manual/`         |
-| External or specific extension modules C++ code | `ext/`            |
-| Python bindings with pybind11                   | `python/`         |
-| Parser code to read gmad files                  | `parser/`         |
-| External dependency source                      | `src-external`    |
-| Assorted utilities                              | `utils/`          |
+| Contents                                        | Source directory |
+|-------------------------------------------------|------------------|
+| Main Geant4 dependent C++ code                  | `src/`           |
+| Main Geant4 dependent C++ headers               | `include/`       |
+| ROOT analysis code                              | `analysis/`      |
+| Comparisons between output C++ code             | `comparator/`    |
+| Interpolator C++ code                           | `interpolator/`  |
+| Converter utilities C++ code                    | `convert/`       |
+| Examples and ctest tests                        | `examples/`      |
+| Documentation source sphinx                     | `manual/`        |
+| External or specific extension modules C++ code | `ext/`           |
+| Python bindings with pybind11                   | `python/`        |
+| Parser code to read gmad files                  | `parser/`        |
+| External dependency source                      | `src-external`   |
+| Assorted utilities                              | `utils/`         |
 
 ## Build
 
@@ -31,7 +31,7 @@ Documentation source in `manual/`.
 mkdir agent_build
 mkdir agent_install/
 cd agent_build
-cmake -DCMAKE_INSTALL_PREFIX=../agent_install
+cmake -DCMAKE_INSTALL_PREFIX=../agent_install ../
 make -j$(nproc) install
 ```
 

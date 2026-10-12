@@ -40,7 +40,7 @@ mkdir bdsim-build
 mkdir bdsim-install
 cd bdsim-build
 cmake -DCMAKE_INSTALL_PREFIX=../bdsim-install ../bdsim  
-make -j${nproc} install 
+make -j$(nproc) install 
 ```
 
 Run the tests to confirm everything works:
@@ -53,10 +53,10 @@ ctest -j${nproc}
 ## Making a change
 
 1. **Fork** the repo and create a branch from `develop`:
-   `git checkout -b fix-issue-123-description`
+   `git checkout -b fix-issue-123-description origin/develop`
 2. Make your changes in small, focused commits.
-3. Add or update **tests** found in `bdsim/examples/`for any behaviour you change.
-4. Update **documentation** and the `bdsim/manual/source/version_history.md` if the change is user-visible.
+3. Add or update **tests** found in `examples/`for any behaviour you change.
+4. Update **documentation** and the `manual/source/version_history.md` if the change is user-visible.
 5. Run the checks locally (see above).
 6. Push your branch and open a pull request.
 
@@ -65,8 +65,8 @@ ctest -j${nproc}
 Before requesting review, make sure that:
 
 - [ ] Tests pass locally and in CI
-- [ ] New code is covered by tests (both in `bdsim/examples/` and [regression](https://github.com/bdsim-collaboration/regression))
-- [ ] Docs (`bdsim/manual/source/`) and changelog (`bdsim/manual/source/version_history.rst`) are updated
+- [ ] New code is covered by tests (both in `examples/` and [regression](https://github.com/bdsim-collaboration/regression))
+- [ ] Docs (`bdsim/manual/source/`) and changelog (`manual/source/version_history.rst`) are updated
 - [ ] The manual has been updated
 - [ ] The PR description explains *what* changed and *why*, and links the issue
 - [ ] The PR is focused on one thing (split unrelated changes)
@@ -74,7 +74,8 @@ Before requesting review, make sure that:
 ### Code style
 
 - The code style briefly is 
-  - CamelCase for class names, methods, and variables
+  - UpperCamelCase for class names and member functions 
+  - lowerCamelCase for member variables
   - GNU curly braces for control structures
   - More details can be found in the online [developer documentation](https://bdsim-collaboration.github.io/bdsim/sphinx/dev_styleguide.html)
 
@@ -123,7 +124,7 @@ benefits.
 
 When running an agent locally:
 
-- Work on a **branch in your fork**, never directly on `main`.
+- Work on a **branch in your fork**, never directly on `master` or `develop`.
 - Use the **out-of-source build** described in `AGENTS.md`; don't let the agent
   configure CMake inside the source tree.
 - **Review commands before approving them**, especially anything that deletes

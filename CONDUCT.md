@@ -34,11 +34,11 @@ the project in public.
 
 ## Reporting
 
-If you experience or witness unacceptable behaviour, contact the maintainers
-privately. Reports are handled in confidence, and we
-won't tolerate retaliation against anyone who reports in good faith. If your
-concern involves a maintainer, you can contact another maintainer or leadership at 
-the maintainer's institution.
+If you experience or witness unacceptable behaviour, contact the 
+[maintainers listed in the README](README.md) privately. Reports are 
+handled in confidence, and we won't tolerate retaliation against anyone 
+who reports in good faith. If your concern involves a maintainer, you 
+can contact another maintainer or leadership at the maintainer's institution.
 
 ## Enforcement
 
