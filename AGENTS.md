@@ -5,9 +5,9 @@ contributors, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Project overview
 
-BDSIM is a C++ package for simulating accelerators using Geant4. Most of the source code lives in
-`src/`, `analysis/`, `convert/`, `interpolator/`, `parser/`, `python/` . Tests in `examples/` and `test/`, 
-Documentation source in `manual/`.
+BDSIM is a C++ package for simulating accelerators using Geant4. Most of the source code lives in the
+`src/`, `analysis/`, `convert/`, `interpolator/`, `parser/`, `python/` directories. Tests in `examples/` and `test/` 
+directories. Documentation source in `manual/` directory.
 
 | Contents                                        | Source directory |
 |-------------------------------------------------|------------------|
@@ -68,9 +68,7 @@ make -j$(nproc) install
 
 **Never**
 - Commit secrets, credentials, or large data files
-- Force-push, rewrite history, or push directly to `master`
+- Force-push, rewrite history, or push directly to `develop` or `master`
 
 ## Gotchas
-
-- 
 

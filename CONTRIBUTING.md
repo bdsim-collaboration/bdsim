@@ -35,7 +35,7 @@ on changes that don't fit the project's direction.
 ## Development setup
 
 ```bash
-git clone https://github.com/YOUR_GITBUB_USERNAME/bdsim.git
+git clone https://github.com/YOUR_GITHUB_USERNAME/bdsim.git
 mkdir bdsim-build
 mkdir bdsim-install
 cd bdsim-build
