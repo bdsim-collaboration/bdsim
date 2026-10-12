@@ -3,7 +3,7 @@
 Thanks for your interest in contributing! This guide explains how to report
 problems, propose changes, and get your work merged.
 
-By participating, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
+By participating, you agree to follow our [Code of Conduct](CONDUCT.md).
 
 ## Ways to contribute
 
@@ -40,7 +40,7 @@ mkdir bdsim-build
 mkdir bdsim-install
 cd bdsim-build
 cmake -DCMAKE_INSTALL_PREFIX=../bdsim-install ../bdsim  
-cmake -j${nproc} install 
+make -j${nproc} install 
 ```
 
 Run the tests to confirm everything works:
@@ -56,7 +56,7 @@ ctest -j${nproc}
    `git checkout -b fix-issue-123-description`
 2. Make your changes in small, focused commits.
 3. Add or update **tests** found in `bdsim/examples/`for any behaviour you change.
-4. Update **documentation** and the `CHANGELOG.md` if the change is user-visible.
+4. Update **documentation** and the `bdsim/manual/source/version_history.md` if the change is user-visible.
 5. Run the checks locally (see above).
 6. Push your branch and open a pull request.
 
@@ -134,7 +134,7 @@ When running an agent locally:
 ### Licensing and provenance
 
 By submitting a PR you confirm that you have the right to contribute it under
-the project's [GPL-3.0-or-later](LICENSE) license. AI tools can reproduce
+the project's [GPL-3.0-or-later](LICENSE.txt) license. AI tools can reproduce
 existing code, so:
 
 - Don't paste in code you suspect was copied from an incompatible or unknown
