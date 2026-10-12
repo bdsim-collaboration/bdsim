@@ -19,7 +19,7 @@ directories. Documentation source in `manual/` directory.
 | Converter utilities C++ code                    | `convert/`       |
 | Examples and ctest tests                        | `examples/`      |
 | Documentation source sphinx                     | `manual/`        |
-| External or specific extension modules C++ code | `ext/`           |
+| External or specific extension modules C++ code | `modules/`       |
 | Python bindings with pybind11                   | `python/`        |
 | Parser code to read gmad files                  | `parser/`        |
 | External dependency source                      | `src-external`   |
