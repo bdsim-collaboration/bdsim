@@ -110,7 +110,7 @@ public:
 
   /// horizontalWidth is the full width of the collimator; 0 (default) means 2 m.
   /// taperDepth is the depth from the jaw edge where the taper ends; 0 tapers the whole jaw.
-  /// jawHalfHeight is the half size of the jaws across their plane of motion; 0 (default) means 6 mm.
+  /// jawHalfHeight is the half size of the jaws in the non-collimation plane; 0 (default) means 6 mm.
   int AddLinkCollimatorTipJaw(const std::string& collimatorName,
                               const std::string& materialName,
                               const std::string& tipMaterialName,
