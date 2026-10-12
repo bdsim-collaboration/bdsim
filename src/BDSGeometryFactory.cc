@@ -21,6 +21,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSGeometryExternal.hh"
 #include "BDSGeometryFactory.hh"
 #include "BDSGeometryFactoryBase.hh"
+#include "BDSGlobalConstants.hh"
 #ifdef USE_GDML
 #include "BDSGeometryFactoryGDML.hh"
 #endif
@@ -94,7 +95,8 @@ BDSGeometryExternal* BDSGeometryFactory::BuildGeometry(G4String               co
                                                        BDSSDType              vacuumSensitivityType,
                                                        G4bool                 stripOuterVolumeAndMakeAssembly,
                                                        G4UserLimits*          userLimitsToAttachToAllLVs,
-                                                       G4bool                 dontReloadGeometry)
+                                                       G4bool                 dontReloadGeometry,
+                                                       G4int                  detectSchema)
 {
   std::pair<G4String, G4String> ff = BDS::SplitOnColon(formatAndFileName);
   G4String fileName = BDS::GetFullPath(ff.second);
@@ -133,6 +135,8 @@ BDSGeometryExternal* BDSGeometryFactory::BuildGeometry(G4String               co
   BDSGeometryFactoryBase* factory = GetAppropriateFactory(format);
   if (!factory)
     {return nullptr;}
+
+  G4bool detectSchemaToUse = detectSchema < 0 ? BDSGlobalConstants::Instance()->DetectSchema() : G4bool(detectSchema);
   
   BDSGeometryExternal* result = factory->Build(componentName,
                                                fileName,
@@ -144,7 +148,8 @@ BDSGeometryExternal* BDSGeometryFactory::BuildGeometry(G4String               co
                                                makeSensitive,
                                                sensitivityType,
                                                vacuumSensitivityType,
-                                               userLimitsToAttachToAllLVs);
+                                               userLimitsToAttachToAllLVs,
+                                               detectSchemaToUse);
   
   if (result)
     {

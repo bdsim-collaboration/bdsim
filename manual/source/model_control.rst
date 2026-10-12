@@ -3123,10 +3123,17 @@ described in :ref:`tunnel-geometry`.
 |                                  | loader that cannot load multiple files correctly. On  |
 |                                  | by default. See `temporaryDirectory` option also.     |
 +----------------------------------+-------------------------------------------------------+
-| preprocessGDMLSchema             | Whether to preprocess a copy of the GDML file where   |
-|                                  | the URL of the GDML schema is changed to a local copy |
-|                                  | provided in BDSIM so geometry can be loaded without   |
-|                                  | internet access. On by default.                       |
+| preprocessGDMLSchema             | Whether to preprocess a copy of the GDML file to set  |
+|                                  | the schema location used when loading the geometry.   |
+|                                  | On by default.                                        |
++----------------------------------+-------------------------------------------------------+
+| detectSchema                     | Whether to use a schema specified in each GDML file.  |
+|                                  | If none is specified, the schema provided by BDSIM is |
+|                                  | used. Off by default.                                 |
++----------------------------------+-------------------------------------------------------+
+| preprocessGDMLSchemaLocation     | Optional path to a GDML schema file to use when       |
+|                                  | preprocessing GDML geometry. This takes precedence    |
+|                                  | over the schema specified in the GDML file.           |
 +----------------------------------+-------------------------------------------------------+
 | removeTemporaryFiles             | Whether to delete temporary files (typically gdml)    |
 |                                  | when BDSIM exits (default = true)                     |
@@ -5350,4 +5357,3 @@ Should the model be designed to scale a field by a factor `N` to account for a f
 then the behaviour of the fringe kick would be the same as the `bdsimmatrix` fringe integrator, as the field scaling
 would counteract the momentum deviation and the bending radius should be calculated as nominal for that magnet. The
 result may not entirely match that if using the `bdsimmatrix` set due to the aforementioned effect of energy spread.
-

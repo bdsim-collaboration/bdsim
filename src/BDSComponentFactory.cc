@@ -1314,7 +1314,8 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateElement()
 			 &vacuumBiasVolumeNames,
 			 element->autoColour,
 			 element->markAsCollimator,
-			 element->stripOuterVolume));
+			 element->stripOuterVolume,
+			 element->detectSchema));
 }
 
 BDSAcceleratorComponent* BDSComponentFactory::CreateSolenoid()
@@ -2547,6 +2548,7 @@ BDSMagnetOuterInfo* BDSComponentFactory::PrepareMagnetOuterInfo(const G4String& 
 
   info->colour = PrepareColour(el);
   info->autoColour = el->autoColour;
+  info->detectSchema = el->detectSchema;
   
   return info;
 }

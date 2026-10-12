@@ -68,7 +68,8 @@ public:
                                      BDSSDType              vacuumSensitivityType    = BDSSDType::energydepvacuum,
                                      G4bool                 stripOuterVolumeAndMakeAssembly = false,
                                      G4UserLimits*          userLimitsToAttachToAllLVs      = nullptr,
-                                     G4bool                 dontReloadGeometry       = false);
+                                     G4bool                 dontReloadGeometry       = false,
+                                     G4int                  detectSchema              = -1);
  
 private:
   /// Private accessor as singleton
