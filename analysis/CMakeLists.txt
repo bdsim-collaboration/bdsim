@@ -14,6 +14,16 @@ list(REMOVE_ITEM rebdsimLibSources ${CMAKE_CURRENT_SOURCE_DIR}/rebdsimCombine.cc
 list(REMOVE_ITEM rebdsimLibSources ${CMAKE_CURRENT_SOURCE_DIR}/bdskim.cc)
 list(REMOVE_ITEM rebdsimLibSources ${CMAKE_CURRENT_SOURCE_DIR}/bdsimCombine.cc)
 
+# Histogram accumulators used by both libbdsim and librebdsim. These are built into their
+# own library that only depends on ROOT so that libbdsim does not have to link librebdsim
+# (and therefore libbdsimRootEvent, which has different builds of the same output classes).
+set(accumulatorClasses HistogramAccumulator HistogramAccumulatorFast)
+set(accumulatorLibSources "")
+foreach(className ${accumulatorClasses})
+  list(REMOVE_ITEM rebdsimLibSources ${CMAKE_CURRENT_SOURCE_DIR}/${className}.cc)
+  list(APPEND accumulatorLibSources ${CMAKE_CURRENT_SOURCE_DIR}/${className}.cc)
+endforeach()
+
 if (NOT USE_EVENT_DISPLAY)
   list(REMOVE_ITEM rebdsimLibSources ${CMAKE_CURRENT_SOURCE_DIR}/EventDisplay.cc)
   list(REMOVE_ITEM rebdsimLibLinkDefs ${CMAKE_CURRENT_SOURCE_DIR}/EventDisplayLinkDef.hh)	
@@ -66,12 +76,19 @@ foreach(header ${rebdsimLibLinkDefs})
      # keep list of ROOT pcms
     set(rebdsim_pcms ${rebdsim_pcms} ${CMAKE_CURRENT_BINARY_DIR}/${className}Dict_rdict.pcm)
 
-    set(rebdsimLibSources ${rebdsimLibSources} ${CMAKE_CURRENT_BINARY_DIR}/${className}Dict.cc)
+    if (className IN_LIST accumulatorClasses)
+      list(APPEND accumulatorLibSources ${CMAKE_CURRENT_BINARY_DIR}/${className}Dict.cc)
+    else()
+      set(rebdsimLibSources ${rebdsimLibSources} ${CMAKE_CURRENT_BINARY_DIR}/${className}Dict.cc)
+    endif()
 endforeach()
 
+add_library(bdsimAccumulator SHARED ${accumulatorLibSources})
+target_link_libraries(bdsimAccumulator ${ROOT_LIBRARIES})
+bdsim_install_targets(bdsimAccumulator)
 
 add_library(rebdsim SHARED ${rebdsimLibSources})
-target_link_libraries(rebdsim bdsimRootEvent)
+target_link_libraries(rebdsim bdsimAccumulator bdsimRootEvent)
 if (USE_EVENT_DISPLAY)
     target_link_libraries(rebdsim ${ROOT_EVELIBRARIES})
 endif()

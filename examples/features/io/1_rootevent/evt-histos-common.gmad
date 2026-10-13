@@ -1,0 +1,41 @@
+d1: drift, l=1*m;
+
+! collimator definition
+c1: rcol, l=0.02*m, material="C", xsize=2*mm, ysize=2*mm, horizontalWidth=10*cm;
+c2: rcol, l=0.2*m, material="Cu", xsize=2.6*mm, ysize=2.6*mm, horizontalWidth=10*cm;
+c3: rcol, l=0.2*m, material="W", xsize=2*mm, ysize=3*mm, horizontalWidth=10*cm;
+
+!  a triplet
+d2 : drift,      l=0.5*m;
+fq1: quadrupole, l=0.2*m, k1=7; 
+dq1: quadrupole, l=0.4*m, k1=-4;
+triplet: line = (d1, fq1, d2, dq1, d2, fq1, d1);
+
+! shielding wall
+s1: shield, l=20*cm, material="concrete", xsize=5*cm, ysize=5*cm, horizontalWidth=2*m;
+dl: drift, l=2*m, aper1=10*cm;
+
+l1: line=(d1,c1,d1,c2,d1,triplet,s1,dl,c3,dl);
+use, l1;
+
+beam, particle="e-",
+      energy=10*GeV,
+      distrType="ring",
+      Rmin = 2.2*mm,
+      Rmax = 2.3*mm,
+      sigmaXp=1e-6,
+      sigmaYp=1e-6,
+      sigmaE=1e-5;
+
+option, physicsList="em",
+        defaultRangeCut=10*cm;
+!       minimumKineticEnergy=50*MeV;
+
+option, seed=123;
+option, ngenerate=10;
+option, elossHistoBinWidth=10*cm;
+
+allParticleDose: scorer, type="depositeddose";
+collimatorDose: scorermesh, scoreQuantity="allParticleDose",
+                nx=10, ny=10, nz=5, xsize=10*cm, ysize=10*cm, zsize=0.2*m,
+                referenceElement="c2";
