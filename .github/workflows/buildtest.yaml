@@ -277,7 +277,6 @@ jobs:
           
           pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
           pip install rpyc
-          pip install rpyc
           pip install pandas
           
           # run pytest
