@@ -4,7 +4,8 @@
 brew update
 
 # --force-bottle python as other method fails with link error
-brew install python3.14 pybind11
+brew install python3.14
+pip3.14 install pybind11
 
 # install BDSIM deps
 brew install wget clhep bison xerces-c root hdf5
