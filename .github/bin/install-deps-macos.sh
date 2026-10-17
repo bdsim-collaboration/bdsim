@@ -3,11 +3,8 @@
 # Update brew
 brew update
 
-# --force-bottle python as other method fails with link error
-brew install python pybind11
-
 # install BDSIM deps
-brew install wget clhep bison xerces-c root hdf5
+brew install wget clhep bison xerces-c root hdf5 pybind11
 
 # hepmc3 (with root)
 wget -q http://hepmc.web.cern.ch/hepmc/releases/HepMC3-3.3.1.tar.gz &&\
