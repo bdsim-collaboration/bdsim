@@ -275,9 +275,9 @@ jobs:
           # can't seem to find the HepMC3 library on macOS, so add it to the DYLD_LIBRARY_PATH
           export DYLD_LIBRARY_PATH=/usr/local/lib/:$DYLD_LIBRARY_PATH
           
-          pip install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
-          pip install rpyc
-          pip install pandas
+          pip3.15 install "pybdsim[dev] @ git+https://github.com/bdsim-collaboration/pybdsim.git@develop"
+          pip3.15 install rpyc
+          pip3.16 install pandas
           
           # run pytest
           cd examples
