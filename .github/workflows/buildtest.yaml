@@ -189,7 +189,7 @@ jobs:
           cmake -DCMAKE_INSTALL_PREFIX=/tmp/bdsim-install \
                 -DBISON_EXECUTABLE=$BISON_PATH \
                 -DUSE_PYTHON_BINDINGS=ON \
-                -DPython3_EXECUTABLE=/opt/homebrew/bin/python3.15
+                -DPython3_EXECUTABLE=/opt/homebrew/bin/python3.15 \
                 -DCMAKE_PREFIX_PATH="$(/opt/homebrew/bin/python3.15 -m pybind11 --cmakedir)" \
                 -DUSE_PLASMA_HDF5=ON \
                 -DUSE_HEPMC3=ON \
