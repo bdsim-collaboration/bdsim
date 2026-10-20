@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Version History &mdash; BDSIM 1.8.0 documentation</title>
+  <title>Version History &mdash; BDSIM 1.8.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=b51e6972"></script>
+      <script src="_static/documentation_options.js?v=1166ed6b"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -70,277 +70,281 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Version History</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#planned-development">Planned Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-8-1-2026-10-20">v1.8.1 - 2026 / 10 / 20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-8-0-2026-09-27">v1.8.0 - 2026 / 09 / 27</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-options">New Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#general-updates">General Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#output-changes">Output Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#output-class-versions">Output Class Versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utilities">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-7-2024-01-29">V1.7.7 - 2024 / 01 / 29</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">General Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Output Class Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">General Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Output Class Versions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-6-2023-10-18">V1.7.6 - 2023 / 10 / 18</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-5-2023-10-03">v1.7.5 - 2023 / 10 / 03</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">General Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">General Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-4-2023-08-25">V1.7.4 - 2023 / 08 / 25</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">General Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">General Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-3-2023-08-11">V1.7.3 - 2023 / 08 / 11</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-2-2023-08-11">V1.7.2 - 2023 / 08 / 11</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">General Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">General Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-1-2023-07-20">V1.7.1 - 2023 / 07 / 20</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-0-2023-07-11">V1.7.0 - 2023 / 07 / 11</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">General Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">Output Class Versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">General Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Output Class Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-6-0-2021-06-16">V1.6.0 - 2021 / 06 / 16</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id19">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build-changes">Build Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">Output Class Versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Output Class Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-5-1-2020-12-21">V1.5.1 - 2020 / 12 / 21</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-5-0-2020-12-16">V1.5.0 - 2020 / 12 / 16</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#build-system">Build System</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id27">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">Output Class Versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Output Class Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-4-0-2020-06-08">V1.4.0 - 2020 / 06 / 08</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#expected-changes-to-results">Expected Changes To Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id31">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id33">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id34">Output Class Versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id35">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">Output Class Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-3-3-2019-05-21">V1.3.3 - 2019 / 05 / 21</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id36">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-3-2-2019-04-20">V1.3.2 - 2019 / 04 / 20</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id37">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id40">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-3-1-2019-03-05">V1.3.1 - 2019 / 03 / 05</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id41">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-3-2019-02-27">V1.3 - 2019 / 02 / 27</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id42">Expected Changes To Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id43">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id44">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">Expected Changes To Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">General</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#materials">Materials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#developer-changes">Developer Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id45">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id46">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id47">Output Class Versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id48">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">Output Class Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-2-2018-08-26">V1.2 - 2018 / 08 / 26</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#highlights">Highlights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id49">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id50">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id51">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id52">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id53">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id54">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-1-2018-05-23">V1.1 - 2018 / 05 / 23</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id54">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id55">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id56">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id57">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-0-2018-04-10">V1.0 - 2018 / 04 / 10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id58">Highlights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id59">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id60">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id59">Highlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id60">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id61">Output Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#analysis-changes">Analysis Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id61">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id62">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id63">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id62">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id63">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id64">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-993-2017-12-11">V0.993 - 2017 / 12 / 11</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id64">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id65">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id66">Output Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id67">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id68">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id65">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id66">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id67">Output Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id68">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id69">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-992-2017-07-26">V0.992 - 2017 / 07 / 26</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id69">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id70">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id71">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id72">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id70">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id71">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id72">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id73">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-991-2017-07-04">V0.991 - 2017 / 07 / 04</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id73">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id74">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id75">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id74">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id75">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id76">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-99-2017-06-09">V0.99 - 2017 / 06 / 09</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id76">New Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id77">New Features</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#fields-integrators">Fields &amp; Integrators</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometry">Geometry</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output-analysis">Output &amp; Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id77">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id78">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id79">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id78">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id79">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id80">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-95-2016-11-07">V0.95 - 2016 / 11 / 07</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id80">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id81">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id82">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id83">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id81">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id82">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id83">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id84">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-94-2016-09-13">V0.94 - 2016 / 09 / 13</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id84">New Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id85">New Features</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#analysis">Analysis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id85">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id86">Geometry</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output">Output</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parser">Parser</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#physics">Physics</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id86">Bug Fixes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id87">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id88">Output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id89">Physics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id90">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id87">Bug Fixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id88">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id89">Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id90">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id91">General</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id91">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id92">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-93-2016-08-24">V0.93 - 2016 / 08 / 24</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id92">New Features</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id93">Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id93">New Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id94">Analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build">Build</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id94">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id95">Output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id96">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id97">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id95">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id96">Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id97">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id98">Physics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tracking">Tracking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id98">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id99">General</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id99">Bug Fixes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id100">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id101">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id102">Physics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id103">Tracking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id104">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id100">Bug Fixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id101">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id102">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id103">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id104">Tracking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id105">General</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id105">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id106">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-92-2016-03-29">V0.92 - 2016 / 03 / 29</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id106">New Features</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id107">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id108">Output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id109">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id110">Physics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id107">New Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id108">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id109">Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id110">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id111">Physics</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id111">Bug fixes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id112">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id113">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id114">Physics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id115">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id112">Bug fixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id113">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id114">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id115">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id116">General</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id116">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id117">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-91-2015-12-17">V0.91 - 2015 / 12 / 17</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id117">New Features</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id118">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id119">Output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id120">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id121">Physics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id122">Tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id118">New Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id119">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id120">Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id121">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id122">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id123">Tracking</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id123">Bug fixes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id124">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id125">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id126">Physics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id127">Tracking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id128">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id124">Bug fixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id125">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id126">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id127">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id128">Tracking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id129">General</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id129">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id130">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-9-2015-11-10">V0.9 - 2015 / 11 / 10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id130">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id131">Bug fixes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id132">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id133">Physics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id134">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id135">Tracking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id136">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id131">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id132">Bug fixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id133">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id134">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id135">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id136">Tracking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id137">General</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id137">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id138">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-8-2015-08-10">V0.8 - 2015 / 08 / 10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id138">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id139">Bug fixes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id140">Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id141">Physics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id142">Output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id143">Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id144">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id139">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id140">Bug fixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id141">Geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id142">Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id143">Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id144">Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id145">General</a></li>
 </ul>
 </li>
 </ul>
@@ -348,8 +352,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#v0-702-2015-07-28-hotfix">V0.702 2015 / 07 / 28 - Hotfix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-701-2015-07-02-hotfix">V0.701 2015 / 07 / 02 - Hotfix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-7-2015-06-30">V0.7 - 2015 / 06 / 30</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id145">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id146">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id146">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id147">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-65-2015-04-10">V0.65 - 2015 / 04 / 10</a></li>
@@ -408,6 +412,21 @@ if you’d like to give us feedback or help in the development.  See <a class="r
 <li><p>Beam pipe sections to fill gaps between changes in aperture.</p></li>
 <li><p>Any aperture shape can be used for both the inside and the outside of a collimator.</p></li>
 </ul>
+</section>
+<section id="v1-8-1-2026-10-20">
+<h2>v1.8.1 - 2026 / 10 / 20<a class="headerlink" href="#v1-8-1-2026-10-20" title="Link to this heading"></a></h2>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fix a crash when using collimators, a target and collimator-specific output.</p></li>
+<li><p>Fix compilation with Boost libraries on.</p></li>
+<li><p>Added AGENTS.md, CONDUCT.md and CONTRIBUTING.md for policies.</p></li>
+<li><p>Fix runtime warning print out about Beam and Options from ROOT.</p></li>
+<li><p>Improved description on single-diffraction patch in the manual and added missing links.</p></li>
+<li><p>Python version in the Python bindings.</p></li>
+</ul>
+<p>No change of data version or structures and no new features.</p>
+</section>
 </section>
 <section id="v1-8-0-2026-09-27">
 <h2>v1.8.0 - 2026 / 09 / 27<a class="headerlink" href="#v1-8-0-2026-09-27" title="Link to this heading"></a></h2>
@@ -517,8 +536,8 @@ the past, these would be simply loaded and propagated through to tracking result
 particle in Geant4.</p></li>
 </ul>
 </section>
-<section id="bug-fixes">
-<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
+<section id="id1">
+<h3>Bug Fixes<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix <code class="code docutils literal notranslate"><span class="pre">transform3d</span></code> component applying offsets in a rotate frame that is not
 axis-aligned. It applied the offsets (dx, dy, dz) in the global axis and not the
@@ -710,8 +729,8 @@ of writing, the corresponding versions of each utility are:</p>
 <h2>V1.7.7 - 2024 / 01 / 29<a class="headerlink" href="#v1-7-7-2024-01-29" title="Link to this heading"></a></h2>
 <p>Reminder: the Python utilities (pybdsim, pymadx, pymad8, pytransport) are published and
 updated through pip and are not distributioned with BDSIM itself.</p>
-<section id="id1">
-<h3>New Features<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<section id="id2">
+<h3>New Features<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Introduced X-ray reflection from Geant4 11.2 onwards.</p></li>
 </ul>
@@ -751,8 +770,8 @@ value would be 5 nm. This applies to all surfaces.</p></td>
 </tbody>
 </table>
 </section>
-<section id="id2">
-<h3>General Updates<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>General Updates<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Update copyright year throughout code.</p></li>
 <li><p>Updated format for <code class="code docutils literal notranslate"><span class="pre">makematerialfile</span></code> program for exporting NIST information to pyg4ometry.</p></li>
@@ -761,8 +780,8 @@ value would be 5 nm. This applies to all surfaces.</p></td>
 <li><p>Reduced printout for the visualisation.</p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>Bug Fixes<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Bug Fixes<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Hot-fix for issue #377. A tracking issue appeared in thin elements due to a too small maximum value for the
 relative error, epsilonStep, resulting in incorrect kicks being applied. This occurred only when BDSIM is compiled
 against versions of Geant4 11.0 onwards. The maximum value is now set separately for thick and thin volumes.</p>
@@ -780,13 +799,13 @@ be put into an integer and you may get unexpected rounding errors. e.g. 29.99999
 instead of the 30 that was expected. This has been fixed by rounding to the nearest integer
 only when using a double into a integer parameter.</p>
 </section>
-<section id="id4">
-<h3>Output Changes<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Output Changes<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Only the options have changed which are stored to file also. These are backwards compatible
 and no issues are expected with loading older data.</p>
 </section>
-<section id="id5">
-<h3>Output Class Versions<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Output Class Versions<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data Version 9.</p></li>
 </ul>
@@ -922,8 +941,8 @@ to a value greater than 1 for any file-based input distributions.</p></li>
 </section>
 <section id="v1-7-5-2023-10-03">
 <h2>v1.7.5 - 2023 / 10 / 03<a class="headerlink" href="#v1-7-5-2023-10-03" title="Link to this heading"></a></h2>
-<section id="id6">
-<h3>General Updates<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>General Updates<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The ability to purposively override the (good) default maximum step length in a
 field map is provided in a field definition. Normally, the maximum step length is
@@ -934,8 +953,8 @@ high-energy cases, it is a useful optimisation to increase this length. This mus
 be used with knowledge and caution though.</p></li>
 </ul>
 </section>
-<section id="id7">
-<h3>Bug Fixes<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Bug Fixes<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Weights for primaries were not loaded from file when using a <code class="code docutils literal notranslate"><span class="pre">bdsimsampler</span></code> distribution.
 Previously, they were all weight 1 by default. This affects any second stage simulation where
@@ -949,21 +968,21 @@ as Geant4’s string for this is a little inconsistent.</p></li>
 </section>
 <section id="v1-7-4-2023-08-25">
 <h2>V1.7.4 - 2023 / 08 / 25<a class="headerlink" href="#v1-7-4-2023-08-25" title="Link to this heading"></a></h2>
-<section id="id8">
-<h3>New Features<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>New Features<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Spectra by momentum: <code class="code docutils literal notranslate"><span class="pre">SpectraMomentum</span></code> in rebdsim.</p></li>
 </ul>
 </section>
-<section id="id9">
-<h3>General Updates<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>General Updates<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix manual description of 3D histograms in rebdsim. Should be <code class="code docutils literal notranslate"><span class="pre">z:y:x</span></code> for 3D histogram
 variables. <code class="code docutils literal notranslate"><span class="pre">y:x</span></code> for 2D, and <code class="code docutils literal notranslate"><span class="pre">x</span></code> for 1D histograms.</p></li>
 </ul>
 </section>
-<section id="id10">
-<h3>Bug Fixes<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id11">
+<h3>Bug Fixes<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix S coordinate of primaries in the output if a negative <code class="code docutils literal notranslate"><span class="pre">option,</span> <span class="pre">beamlineS</span></code>
 was used. It would previously always be 0.</p></li>
@@ -982,14 +1001,14 @@ in non-simple (i.e. per-entry average) histograms.</p></li>
 </section>
 <section id="v1-7-2-2023-08-11">
 <h2>V1.7.2 - 2023 / 08 / 11<a class="headerlink" href="#v1-7-2-2023-08-11" title="Link to this heading"></a></h2>
-<section id="id11">
-<h3>General Updates<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id12">
+<h3>General Updates<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Determine extents of any container solid loaded from an external geometry file.</p></li>
 </ul>
 </section>
-<section id="id12">
-<h3>Bug Fixes<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<section id="id13">
+<h3>Bug Fixes<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
 <p><strong>Installation</strong></p>
 <ul class="simple">
 <li><p>Fix compilation when BDSIM is compiled with GDML on but the Geant4 used does not
@@ -1047,8 +1066,8 @@ across the length of the element <code class="code docutils literal notranslate"
 <li><p>File looping is no longer the default for filed-based input distributions. The default behaviour
 is now <strong>to match the length</strong> of the input distribution file.</p></li>
 </ul>
-<section id="id13">
-<h3>New Features<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<section id="id14">
+<h3>New Features<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
 <p>(topics alphabetically)</p>
 <p><strong>Analysis</strong></p>
 <ul class="simple">
@@ -1199,8 +1218,8 @@ hits that would use a lot of disk space.</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">storeSamplerKineticEnergy</span></code> is now on by default.</p></li>
 </ul>
 </section>
-<section id="id14">
-<h3>General Updates<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<section id="id15">
+<h3>General Updates<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The <cite>userfile</cite> distribution now doesn’t count comment lines for <cite>nlinesSkip</cite> - only valid data lines.</p></li>
 <li><p>When using the minimum kinetic energy option, tracks are now stopped in the stacking action
@@ -1250,8 +1269,8 @@ factor is now always print out for feedback.</p></li>
 <li><p>The visualiser command <cite>/bds/beamline/list</cite> now prints the S middle coordinate in metres.</p></li>
 </ul>
 </section>
-<section id="id15">
-<h3>Bug Fixes<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<section id="id16">
+<h3>Bug Fixes<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
 <p>(topics alphabetically)</p>
 <p><strong>Analysis</strong></p>
 <ul>
@@ -1445,8 +1464,8 @@ would pass through and become a proton despite its name.</p></li>
 previous versions of Geant4 for epsilon max / min in all fields.</p></li>
 </ul>
 </section>
-<section id="id16">
-<h3>Output Changes<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<section id="id17">
+<h3>Output Changes<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Add angle of the element in the Model Tree.</p></li>
 <li><p>Add <cite>samplerSPosition</cite> in the Model Tree.</p></li>
@@ -1460,8 +1479,8 @@ is used to save space as it is stored for every step of each trajectory stored.<
 cavity geometry parameters. Default true.</p></li>
 </ul>
 </section>
-<section id="id17">
-<h3>Output Class Versions<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<section id="id18">
+<h3>Output Class Versions<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data Version 8.</p></li>
 </ul>
@@ -1577,8 +1596,8 @@ cavity geometry parameters. Default true.</p></li>
 </tbody>
 </table>
 </section>
-<section id="id18">
-<h3>Utilities<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<section id="id19">
+<h3>Utilities<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
 <p>These are no longer included directly with BDSIM but are available through pip. At the time
 of writing, the corresponding versions of each utility are:</p>
 <ul class="simple">
@@ -1595,8 +1614,8 @@ of writing, the corresponding versions of each utility are:</p>
 <li><p>Public CVMFS build now available. See <a class="reference internal" href="installation.html#cvmfs-build"><span class="std std-ref">CentOS 7 with CVMFS Access</span></a>.</p></li>
 <li><p>HepJames is still the default random number generator, but you can now choose MixMax.</p></li>
 </ul>
-<section id="id19">
-<h3>New Features<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<section id="id20">
+<h3>New Features<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New executable option <code class="code docutils literal notranslate"><span class="pre">--version</span></code> for the bdsim executable that returns the version number.</p></li>
 <li><p>New skimming tool called <code class="code docutils literal notranslate"><span class="pre">bdskim</span></code> is included for skimming raw data. See <a class="reference internal" href="output_analysis.html#bdskim-tool"><span class="std std-ref">bdskim - Skimming Tool</span></a>.</p></li>
@@ -1787,8 +1806,8 @@ with <code class="code docutils literal notranslate"><span class="pre">BDS_</spa
 with the CMake option <code class="code docutils literal notranslate"><span class="pre">BDSIM_BUILD_TEST_PROGRAMS</span></code>.</p></li>
 </ul>
 </section>
-<section id="id20">
-<h3>Bug Fixes<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<section id="id21">
+<h3>Bug Fixes<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The options <code class="code docutils literal notranslate"><span class="pre">defaultBiasVacuum</span></code> and <code class="code docutils literal notranslate"><span class="pre">defaultBiasMaterial</span></code> didn’t work - this has been fixed.
 The biasing wasn’t attached to the volumes.</p></li>
@@ -1861,8 +1880,8 @@ with C++14 or 17 the C++ standard for BDSIM is matched to that rather than the d
 <li><p>Fixed the implementation of <code class="code docutils literal notranslate"><span class="pre">BDSOutputROOTEventModel::findNearestElement</span></code>.</p></li>
 </ul>
 </section>
-<section id="id21">
-<h3>Output Changes<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<section id="id22">
+<h3>Output Changes<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">Event.Trajectory.energyDeposit</span></code> now in GeV - was previously actually MeV, so 1000x bigger value.</p></li>
 <li><p>Trajectory variables <cite>PXPYPZ</cite>, <cite>T</cite>, <cite>preProcessTyps</cite>, <cite>preProcessSubTypes</cite>, <cite>postProcessTypes</cite>,
@@ -1883,8 +1902,8 @@ This was incorrectly used to filter the storage of complete trajectories.</p></l
 of the step represented on the trajectory.</p></li>
 </ul>
 </section>
-<section id="id22">
-<h3>Output Class Versions<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<section id="id23">
+<h3>Output Class Versions<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data Version 7.</p></li>
 </ul>
@@ -1985,8 +2004,8 @@ of the step represented on the trajectory.</p></li>
 </tbody>
 </table>
 </section>
-<section id="id23">
-<h3>Utilities<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<section id="id24">
+<h3>Utilities<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v2.4.0</p></li>
 <li><p>pymadx v1.8.2</p></li>
@@ -2009,8 +2028,8 @@ level due to the calculation of the obscure parameterisation of the solid used i
 <li><p>CMake CXX Standard now used (C++11) instead of individual compiler flags.</p></li>
 </ul>
 </section>
-<section id="id24">
-<h3>New Features<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<section id="id25">
+<h3>New Features<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Scoring meshes and scorers have been introduced that allow 3D scoring meshes to be used and
 created per event 3D histograms for various quantities. Ability to score multiple quantities,
@@ -2136,8 +2155,8 @@ or 2 to allow columnar access (e.g. with <cite>uproot</cite>).</p></td>
 </tbody>
 </table>
 </section>
-<section id="id25">
-<h3>General<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<section id="id26">
+<h3>General<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The maximum step length in a field map is by default now the minimum spatial distance in the field
 map loaded. Previously, it was the full length of the element the field map was attached to. The user
@@ -2167,8 +2186,8 @@ names of the materials and warn if a duplicate is defined. Normally, this would 
 error and result in possibly the other material being found by Geant4.</p></li>
 </ul>
 </section>
-<section id="id26">
-<h3>Bug Fixes<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<section id="id27">
+<h3>Bug Fixes<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Tolerate “-” character in rebdsim input and output file names written inside the analysis configuration
 file. In the past, only the part up to this character was used.</p></li>
@@ -2197,8 +2216,8 @@ this could have produced geometry Geant4 would complain about. Fixed in
 <code class="code docutils literal notranslate"><span class="pre">BDSMagnetOuter::MinimumIntersectionRadius()</span></code>.</p></li>
 </ul>
 </section>
-<section id="id27">
-<h3>Output Changes<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<section id="id28">
+<h3>Output Changes<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
 <p>These are very important changes to take note of:</p>
 <ul class="simple">
 <li><p>A new option <code class="code docutils literal notranslate"><span class="pre">storeMinimalData</span></code> has been introduced that turns off all optional parts of the data
@@ -2228,8 +2247,8 @@ variables have been changed to be unsigned int type.</p></li>
 upcoming skimming program.</p></li>
 </ul>
 </section>
-<section id="id28">
-<h3>Output Class Versions<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<section id="id29">
+<h3>Output Class Versions<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data Version 6.</p></li>
 </ul>
@@ -2338,8 +2357,8 @@ upcoming skimming program.</p></li>
 <li><p>(*) deprecated in favour of the renamed class BDSOutputROOTParticleData</p></li>
 </ul>
 </section>
-<section id="id29">
-<h3>Utilities<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<section id="id30">
+<h3>Utilities<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v2.3.0</p></li>
 <li><p>pymadx v1.8.1</p></li>
@@ -2379,8 +2398,8 @@ both left and right crystals away from the centre of the collimator. Will only a
 as compared to previous behaviour.</p></li>
 </ul>
 </section>
-<section id="id30">
-<h3>New Features<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<section id="id31">
+<h3>New Features<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>BDSIM no longer requires a beam line to be built! You can simply make a placement or even an empty world.</p></li>
 <li><p>Restructured “Model Description” section in the manual as it was growing overly big and difficult to use.</p></li>
@@ -2571,8 +2590,8 @@ as <cite>-\-verbose_G4tracking=X</cite> executable option.</p></td>
 in lowerCamelCase and to make executable options consistent with input gmad options.</p></li>
 </ul>
 </section>
-<section id="id31">
-<h3>General<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<section id="id32">
+<h3>General<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Installation support for AFS has been dropped since this is reaching end of life at CERN and may builds
 there are unmaintained or now on cvmfs.</p></li>
@@ -2621,8 +2640,8 @@ and the length of the element.</p></li>
 when using the element parameter <code class="code docutils literal notranslate"><span class="pre">degraderOffset</span></code>.</p></li>
 </ul>
 </section>
-<section id="id32">
-<h3>Bug Fixes<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<section id="id33">
+<h3>Bug Fixes<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix polarity for dipole yoke fields. The field in the yokes had the opposite polarity to that
 of the beam pipe resulting in particles slightly missing the beam pipe being deflected in the
@@ -2776,8 +2795,8 @@ to avoid large volumes inbetween bends that migh overlap in a sequence of bends.
 <li><p><cite>rcol</cite> no longer warns about the entrance and exit x-y ratio to be the same (only ecol does), which had no effect.</p></li>
 </ul>
 </section>
-<section id="id33">
-<h3>Output Changes<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<section id="id34">
+<h3>Output Changes<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>In the output, <cite>Event.Trajectory.trajectories</cite> is now <cite>Event.Trajectory.XYZ</cite> to better reflect
 what it is.  Similarly, <cite>momenta</cite> is now <cite>PXPYPZ</cite>. Capitals denote the global coordinates.</p></li>
@@ -2815,8 +2834,8 @@ in the case of rebdsim and which files were combined in the case of rebdsimCombi
 <li><p>New variable <code class="code docutils literal notranslate"><span class="pre">nTracks</span></code> in Event.Summary which is the number of tracks created in that event.</p></li>
 </ul>
 </section>
-<section id="id34">
-<h3>Output Class Versions<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<section id="id35">
+<h3>Output Class Versions<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data Version 5.</p></li>
 </ul>
@@ -2917,8 +2936,8 @@ in the case of rebdsim and which files were combined in the case of rebdsimCombi
 </tbody>
 </table>
 </section>
-<section id="id35">
-<h3>Utilities<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<section id="id36">
+<h3>Utilities<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v2.2.0</p></li>
 <li><p>pymadx v1.8.0</p></li>
@@ -2929,8 +2948,8 @@ in the case of rebdsim and which files were combined in the case of rebdsimCombi
 </section>
 <section id="v1-3-3-2019-05-21">
 <h2>V1.3.3 - 2019 / 05 / 21<a class="headerlink" href="#v1-3-3-2019-05-21" title="Link to this heading"></a></h2>
-<section id="id36">
-<h3>Bug Fixes<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<section id="id37">
+<h3>Bug Fixes<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Hot fix for fields not attached to thin elements such as dipole fringes or thin multipoles. This bug
 crept in through a modification to avoid Geant4 getting stuck with strong fields in very narrow gaps
@@ -2942,15 +2961,15 @@ this kind of bugging going unnoticed in future.</p></li>
 </section>
 <section id="v1-3-2-2019-04-20">
 <h2>V1.3.2 - 2019 / 04 / 20<a class="headerlink" href="#v1-3-2-2019-04-20" title="Link to this heading"></a></h2>
-<section id="id37">
-<h3>New Features<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
+<section id="id38">
+<h3>New Features<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Can now use any particle available through the physics list for a beam particle.</p></li>
 <li><p>Generic cross-section biasing can now be used for any particle, including ions.</p></li>
 </ul>
 </section>
-<section id="id38">
-<h3>General<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<section id="id39">
+<h3>General<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Tested with Geant4.10.5.p01</p></li>
 <li><p>Geometry navigators are reset at the beginning of a run now in a similar way to the start of
@@ -2968,8 +2987,8 @@ starting on a volume boundary at the start of the event. This is 1nm so will not
 tracking results. The local coordinates in the output are identically the same.</p></li>
 </ul>
 </section>
-<section id="id39">
-<h3>Bug Fixes<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<section id="id40">
+<h3>Bug Fixes<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix strong recreation when using user file supplied bunch distribution. The file was
 always read from the beginning in the past. Now the correct coordinates will be
@@ -3009,8 +3028,8 @@ rbend back-to-back with another rbend will not have fringe fields in the middle 
 is considered a unique construction. This would result in these not having biasing attached.</p></li>
 </ul>
 </section>
-<section id="id40">
-<h3>Utilities<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<section id="id41">
+<h3>Utilities<a class="headerlink" href="#id41" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v2.1.0</p></li>
 <li><p>pymadx v1.7.1</p></li>
@@ -3021,8 +3040,8 @@ is considered a unique construction. This would result in these not having biasi
 </section>
 <section id="v1-3-1-2019-03-05">
 <h2>V1.3.1 - 2019 / 03 / 05<a class="headerlink" href="#v1-3-1-2019-03-05" title="Link to this heading"></a></h2>
-<section id="id41">
-<h3>Bug Fixes<a class="headerlink" href="#id41" title="Link to this heading"></a></h3>
+<section id="id42">
+<h3>Bug Fixes<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix transform3d element where offsets were not working.</p></li>
 </ul>
@@ -3030,8 +3049,8 @@ is considered a unique construction. This would result in these not having biasi
 </section>
 <section id="v1-3-2019-02-27">
 <h2>V1.3 - 2019 / 02 / 27<a class="headerlink" href="#v1-3-2019-02-27" title="Link to this heading"></a></h2>
-<section id="id42">
-<h3>Expected Changes To Results<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<section id="id43">
+<h3>Expected Changes To Results<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The density of the surrounding air has changed very slightly to that of the standard
 G4_AIR one.</p></li>
@@ -3044,8 +3063,8 @@ option <code class="code docutils literal notranslate"><span class="pre">g4Physi
 effect with a Geant4 reference physics list.</p></li>
 </ul>
 </section>
-<section id="id43">
-<h3>New Features<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<section id="id44">
+<h3>New Features<a class="headerlink" href="#id44" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Support for Geant4.10.5.</p></li>
 <li><p>New environment script in <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-install-dir&gt;/bin/bdsim.sh</span></code> to make running BDSIM easier.</p></li>
@@ -3197,8 +3216,8 @@ than any naturally occurring material (on Earth). The simulation will still proc
 particles below a certain kinetic energy in a collimator.</p></li>
 </ul>
 </section>
-<section id="id44">
-<h3>General<a class="headerlink" href="#id44" title="Link to this heading"></a></h3>
+<section id="id45">
+<h3>General<a class="headerlink" href="#id45" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>All collimators now require a material to be specified and the default copper has
 been removed. This is because it strongly affects the results obtained and defaults
@@ -3274,8 +3293,8 @@ about what sensitivity they want so nothing unexpected can happen.</p></li>
 This is to make the naming more consistent.</p></li>
 </ul>
 </section>
-<section id="id45">
-<h3>Bug Fixes<a class="headerlink" href="#id45" title="Link to this heading"></a></h3>
+<section id="id46">
+<h3>Bug Fixes<a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed reloading user file when reading more particles than defined in the file.</p></li>
 <li><p>Fixed “pt” column in user file for reading particle PDG IDs. The first particle would be read
@@ -3324,8 +3343,8 @@ Info method of TObject. Now renamed to Summary.</p></li>
 sbends to a maximum angle of pi/2, limit the maximum angle of all other dipoles to 2 pi.</p></li>
 </ul>
 </section>
-<section id="id46">
-<h3>Output Changes<a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
+<section id="id47">
+<h3>Output Changes<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>“Info” branch of the Event and Run trees are now “Summary”. This is to avoid conflict with
 ROOT TObject::Info() that could result in broken analysis or range iteration. The DataLoader
@@ -3354,8 +3373,8 @@ the world (and therefore the simulation) respectively.</p></li>
 for that event. These are for convenience and are the integrals of the various Eloss parts.</p></li>
 </ul>
 </section>
-<section id="id47">
-<h3>Output Class Versions<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
+<section id="id48">
+<h3>Output Class Versions<a class="headerlink" href="#id48" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data Version 4.</p></li>
 </ul>
@@ -3451,8 +3470,8 @@ for that event. These are for convenience and are the integrals of the various E
 </tbody>
 </table>
 </section>
-<section id="id48">
-<h3>Utilities<a class="headerlink" href="#id48" title="Link to this heading"></a></h3>
+<section id="id49">
+<h3>Utilities<a class="headerlink" href="#id49" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v2.0.0</p></li>
 <li><p>pymadx v1.7.0</p></li>
@@ -3471,8 +3490,8 @@ for that event. These are for convenience and are the integrals of the various E
 <li><p>Solenoid tracking fixed.</p></li>
 </ul>
 </section>
-<section id="id49">
-<h3>New Features<a class="headerlink" href="#id49" title="Link to this heading"></a></h3>
+<section id="id50">
+<h3>New Features<a class="headerlink" href="#id50" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New options to activate extra models in em_extra physics list.</p></li>
 <li><p>New <code class="code docutils literal notranslate"><span class="pre">crystalcol</span></code> element for channelling crystals.</p></li>
@@ -3497,8 +3516,8 @@ this on, although this is not recommended. Issue #241.</p></li>
 the <cite>includeFringeFields</cite> option.</p></li>
 </ul>
 </section>
-<section id="id50">
-<h3>General<a class="headerlink" href="#id50" title="Link to this heading"></a></h3>
+<section id="id51">
+<h3>General<a class="headerlink" href="#id51" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">outerDiameter</span></code> is now <code class="code docutils literal notranslate"><span class="pre">horizontalWidth</span></code> to better describe its function
 (backwards-compatible). This naming was from a time when BDSIM could only create cylindrical
@@ -3541,8 +3560,8 @@ that was defined by BDSIM.</p></li>
 <li><p>New options for physics processes in em_extra.</p></li>
 </ul>
 </section>
-<section id="id51">
-<h3>Output Changes<a class="headerlink" href="#id51" title="Link to this heading"></a></h3>
+<section id="id52">
+<h3>Output Changes<a class="headerlink" href="#id52" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data v3 incremented from v2.</p></li>
 <li><p>Options class (GMAD::optionsBase) number is incremented in output.</p></li>
@@ -3566,8 +3585,8 @@ the global Cartesian frame.</p></li>
 <li><p>Sampler name now stored in Orbit output from rebdsimOrbit to make sampler matching possible.</p></li>
 </ul>
 </section>
-<section id="id52">
-<h3>Bug Fixes<a class="headerlink" href="#id52" title="Link to this heading"></a></h3>
+<section id="id53">
+<h3>Bug Fixes<a class="headerlink" href="#id53" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed solenoid tracking. The anti-spiralling code in the dipole integrator that is designed
 to stop infinite spiralling of low energy particles in strong fields was causing incorrect
@@ -3615,8 +3634,8 @@ as every other distribution. Coordinates will be different for this distribution
 from the minimum bending radius.</p></li>
 </ul>
 </section>
-<section id="id53">
-<h3>Utilities<a class="headerlink" href="#id53" title="Link to this heading"></a></h3>
+<section id="id54">
+<h3>Utilities<a class="headerlink" href="#id54" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v1.9.0</p></li>
 <li><p>pymadx v1.5.0</p></li>
@@ -3627,21 +3646,21 @@ from the minimum bending radius.</p></li>
 </section>
 <section id="v1-1-2018-05-23">
 <h2>V1.1 - 2018 / 05 / 23<a class="headerlink" href="#v1-1-2018-05-23" title="Link to this heading"></a></h2>
-<section id="id54">
-<h3>New Features<a class="headerlink" href="#id54" title="Link to this heading"></a></h3>
+<section id="id55">
+<h3>New Features<a class="headerlink" href="#id55" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New visualiser command “/bds/beamline/goto name” to move visualiser to view a particular element.</p></li>
 <li><p>Check explicitly on incompatible physics lists that may cause a crash when used together.</p></li>
 </ul>
 </section>
-<section id="id55">
-<h3>General<a class="headerlink" href="#id55" title="Link to this heading"></a></h3>
+<section id="id56">
+<h3>General<a class="headerlink" href="#id56" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Global coordinates are now always stored for primary first hit.</p></li>
 </ul>
 </section>
-<section id="id56">
-<h3>Bug Fixes<a class="headerlink" href="#id56" title="Link to this heading"></a></h3>
+<section id="id57">
+<h3>Bug Fixes<a class="headerlink" href="#id57" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed wrong transforms for finite <cite>S0</cite> in composite beam distribution.</p></li>
 <li><p>Fixed crash when finite <cite>S0</cite> was used with <cite>-\-generatePrimariesOnly</cite> executable option.</p></li>
@@ -3650,8 +3669,8 @@ from the minimum bending radius.</p></li>
 <li><p>Fixed segfault for double deletion when ‘qgsp_bic’ and ‘qgsp_bert’ were attempted to be used together.</p></li>
 </ul>
 </section>
-<section id="id57">
-<h3>Utilities<a class="headerlink" href="#id57" title="Link to this heading"></a></h3>
+<section id="id58">
+<h3>Utilities<a class="headerlink" href="#id58" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v1.6</p></li>
 <li><p>pymadx v1.2</p></li>
@@ -3662,16 +3681,16 @@ from the minimum bending radius.</p></li>
 </section>
 <section id="v1-0-2018-04-10">
 <h2>V1.0 - 2018 / 04 / 10<a class="headerlink" href="#v1-0-2018-04-10" title="Link to this heading"></a></h2>
-<section id="id58">
-<h3>Highlights<a class="headerlink" href="#id58" title="Link to this heading"></a></h3>
+<section id="id59">
+<h3>Highlights<a class="headerlink" href="#id59" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Full support for dipole fringe fields and pole faces in tracking.</p></li>
 <li><p>Full low energy (sub-relativistic) tracking.</p></li>
 <li><p>Validation against PTC for sub-relativistic to high energy.</p></li>
 </ul>
 </section>
-<section id="id59">
-<h3>New Features<a class="headerlink" href="#id59" title="Link to this heading"></a></h3>
+<section id="id60">
+<h3>New Features<a class="headerlink" href="#id60" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Support for Geant4.10.4 - however, this version is unusable as G4ExtrudedSolid is
 broken and used in BDSIM. We recommend Geant4.10.4.p01.</p></li>
@@ -3703,8 +3722,8 @@ analysis with scaling. New tool <cite>rebdsimCombine</cite> for this purpose.</p
 <li><p>New program to convert PTC output in a TFS file to BDSIM output format (<cite>ptc2bdsim</cite>).</p></li>
 </ul>
 </section>
-<section id="id60">
-<h3>Output Changes<a class="headerlink" href="#id60" title="Link to this heading"></a></h3>
+<section id="id61">
+<h3>Output Changes<a class="headerlink" href="#id61" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The ROOT class definition has been incremented to “2” from “1”.</p></li>
 <li><p>Output files now have header structure with software versions.</p></li>
@@ -3734,8 +3753,8 @@ now “Eloss” in <cite>bdsim/analysis/Event.hh</cite>.</p></li>
 at each sampler.</p></li>
 </ul>
 </section>
-<section id="id61">
-<h3>General<a class="headerlink" href="#id61" title="Link to this heading"></a></h3>
+<section id="id62">
+<h3>General<a class="headerlink" href="#id62" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Physics list names are now consistently named with ‘_’ between words. Old list
 names are still supported.</p></li>
@@ -3756,8 +3775,8 @@ to absolute paths.</p></li>
 <li><p>Updated examples for ATF2, LHC. New Diamond machine example.</p></li>
 </ul>
 </section>
-<section id="id62">
-<h3>Bug Fixes<a class="headerlink" href="#id62" title="Link to this heading"></a></h3>
+<section id="id63">
+<h3>Bug Fixes<a class="headerlink" href="#id63" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed magnetic field strength for AWAKE dipole using pure dipole field.</p></li>
 <li><p>User limits are now applied to external geometry.</p></li>
@@ -3789,8 +3808,8 @@ geometry with strong rotations.</p></li>
 distributions.</p></li>
 </ul>
 </section>
-<section id="id63">
-<h3>Utilities<a class="headerlink" href="#id63" title="Link to this heading"></a></h3>
+<section id="id64">
+<h3>Utilities<a class="headerlink" href="#id64" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pybdsim v1.4</p></li>
 <li><p>pymadx v1.1</p></li>
@@ -3801,8 +3820,8 @@ distributions.</p></li>
 </section>
 <section id="v0-993-2017-12-11">
 <h2>V0.993 - 2017 / 12 / 11<a class="headerlink" href="#v0-993-2017-12-11" title="Link to this heading"></a></h2>
-<section id="id64">
-<h3>New Features<a class="headerlink" href="#id64" title="Link to this heading"></a></h3>
+<section id="id65">
+<h3>New Features<a class="headerlink" href="#id65" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Executable option <cite>-\-writeseedstate</cite> is now <cite>-\-writeSeedState</cite>.</p></li>
 <li><p>Executable option <cite>-\-exportgeometryto</cite> is now <cite>-\-exportGeometryTo</cite>.</p></li>
@@ -3819,8 +3838,8 @@ local schema still supported.</p></li>
 is a fault with G4ExtrudedSolid that is used for all poled magnet geometry.</p></li>
 </ul>
 </section>
-<section id="id65">
-<h3>Bug Fixes<a class="headerlink" href="#id65" title="Link to this heading"></a></h3>
+<section id="id66">
+<h3>Bug Fixes<a class="headerlink" href="#id66" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Compilation fixes for compilers with XCode 9.</p></li>
 <li><p>Fixed possible compiler-dependent tracking bug where particle would get stuck in dipole.</p></li>
@@ -3829,24 +3848,24 @@ is a fault with G4ExtrudedSolid that is used for all poled magnet geometry.</p><
 <li><p>Removed temporary files created in current working directory.</p></li>
 </ul>
 </section>
-<section id="id66">
-<h3>Output Changes<a class="headerlink" href="#id66" title="Link to this heading"></a></h3>
+<section id="id67">
+<h3>Output Changes<a class="headerlink" href="#id67" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Options split into options and beam - beam contains all information related to beam definition.</p></li>
 <li><p>Associated output classes and analysis classes added for Beam in output.</p></li>
 <li><p>Removed older output format.</p></li>
 </ul>
 </section>
-<section id="id67">
-<h3>General<a class="headerlink" href="#id67" title="Link to this heading"></a></h3>
+<section id="id68">
+<h3>General<a class="headerlink" href="#id68" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Updated automatic Geant4 from AFS to version 10.3.p01 (latest available).</p></li>
 <li><p>Updated automatic ROOT from AFS to version 6.06.08.</p></li>
 <li><p>Remove support for ROOT v5 and require v6 onward.</p></li>
 </ul>
 </section>
-<section id="id68">
-<h3>Utilities<a class="headerlink" href="#id68" title="Link to this heading"></a></h3>
+<section id="id69">
+<h3>Utilities<a class="headerlink" href="#id69" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Python utilities now use a setup.py compatible with PIP.</p></li>
 <li><p>pybdsim v1.3</p></li>
@@ -3858,8 +3877,8 @@ is a fault with G4ExtrudedSolid that is used for all poled magnet geometry.</p><
 </section>
 <section id="v0-992-2017-07-26">
 <h2>V0.992 - 2017 / 07 / 26<a class="headerlink" href="#v0-992-2017-07-26" title="Link to this heading"></a></h2>
-<section id="id69">
-<h3>New Features<a class="headerlink" href="#id69" title="Link to this heading"></a></h3>
+<section id="id70">
+<h3>New Features<a class="headerlink" href="#id70" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Preparsing for GDML for pygeometry generated geometry - overcomes Geant4’s GDML parser
 deficiency of only allowing one GDML file to be loaded in the whole program.</p></li>
@@ -3869,8 +3888,8 @@ function calculation.</p></li>
 <li><p>Additional materials for LHC tunnel and geometry.</p></li>
 </ul>
 </section>
-<section id="id70">
-<h3>Bug Fixes<a class="headerlink" href="#id70" title="Link to this heading"></a></h3>
+<section id="id71">
+<h3>Bug Fixes<a class="headerlink" href="#id71" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed uncaught exception in analysis DataLoader class construction depending on optional arguments.</p></li>
 <li><p>BDSIM installation no longer dependent on build files - ROOT analysis dictionaries would use
@@ -3884,8 +3903,8 @@ build headers. Issues #197 and #199.</p></li>
 magnets when using the “bdsimtwo” integrator set for dipoles.</p></li>
 </ul>
 </section>
-<section id="id71">
-<h3>General<a class="headerlink" href="#id71" title="Link to this heading"></a></h3>
+<section id="id72">
+<h3>General<a class="headerlink" href="#id72" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Separated field and geometry in rf cavity element.</p></li>
 <li><p>Revised implementation of rf cavity construction for greater flexibility.</p></li>
@@ -3894,8 +3913,8 @@ magnets when using the “bdsimtwo” integrator set for dipoles.</p></li>
 <li><p>Revised construction to allow construction of multiple beam lines dynamically.</p></li>
 </ul>
 </section>
-<section id="id72">
-<h3>Utilities<a class="headerlink" href="#id72" title="Link to this heading"></a></h3>
+<section id="id73">
+<h3>Utilities<a class="headerlink" href="#id73" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.9</p></li>
 <li><p>pybdsim v1.2</p></li>
@@ -3905,8 +3924,8 @@ magnets when using the “bdsimtwo” integrator set for dipoles.</p></li>
 </section>
 <section id="v0-991-2017-07-04">
 <h2>V0.991 - 2017 / 07 / 04<a class="headerlink" href="#v0-991-2017-07-04" title="Link to this heading"></a></h2>
-<section id="id73">
-<h3>Bug Fixes<a class="headerlink" href="#id73" title="Link to this heading"></a></h3>
+<section id="id74">
+<h3>Bug Fixes<a class="headerlink" href="#id74" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed simple histogram weighting with Boolean expressions in rebdsim.</p></li>
 <li><p>Fixed comparator always failing.</p></li>
@@ -3918,14 +3937,14 @@ magnets when using the “bdsimtwo” integrator set for dipoles.</p></li>
 <li><p>Fixed for duplicate run beam on icon in visualiser for Geant4.10.3 onward.</p></li>
 </ul>
 </section>
-<section id="id74">
-<h3>General<a class="headerlink" href="#id74" title="Link to this heading"></a></h3>
+<section id="id75">
+<h3>General<a class="headerlink" href="#id75" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Separated Doxygen cmake into own macro.</p></li>
 </ul>
 </section>
-<section id="id75">
-<h3>Utilities<a class="headerlink" href="#id75" title="Link to this heading"></a></h3>
+<section id="id76">
+<h3>Utilities<a class="headerlink" href="#id76" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.9</p></li>
 <li><p>pybdsim v1.1</p></li>
@@ -3935,8 +3954,8 @@ magnets when using the “bdsimtwo” integrator set for dipoles.</p></li>
 </section>
 <section id="v0-99-2017-06-09">
 <h2>V0.99 - 2017 / 06 / 09<a class="headerlink" href="#v0-99-2017-06-09" title="Link to this heading"></a></h2>
-<section id="id76">
-<h3>New Features<a class="headerlink" href="#id76" title="Link to this heading"></a></h3>
+<section id="id77">
+<h3>New Features<a class="headerlink" href="#id77" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>Parser will expand values from structures when printing. Issue #167.</p></li>
@@ -4002,8 +4021,8 @@ magnets when using the “bdsimtwo” integrator set for dipoles.</p></li>
 </div></blockquote>
 </section>
 </section>
-<section id="id77">
-<h3>Bug Fixes<a class="headerlink" href="#id77" title="Link to this heading"></a></h3>
+<section id="id78">
+<h3>Bug Fixes<a class="headerlink" href="#id78" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>ASCII seed state can be loaded properly. Issue #163.</p></li>
@@ -4028,8 +4047,8 @@ particles to be used in the beam definition.</p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="id78">
-<h3>General<a class="headerlink" href="#id78" title="Link to this heading"></a></h3>
+<section id="id79">
+<h3>General<a class="headerlink" href="#id79" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Sampler_</span></code> prefix was removed from all samplers in rootevent output.</p></li>
@@ -4040,8 +4059,8 @@ particles to be used in the beam definition.</p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="id79">
-<h3>Utilities<a class="headerlink" href="#id79" title="Link to this heading"></a></h3>
+<section id="id80">
+<h3>Utilities<a class="headerlink" href="#id80" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.8</p></li>
 <li><p>pybdsim v1.0</p></li>
@@ -4051,8 +4070,8 @@ particles to be used in the beam definition.</p></li>
 </section>
 <section id="v0-95-2016-11-07">
 <h2>V0.95 - 2016 / 11 / 07<a class="headerlink" href="#v0-95-2016-11-07" title="Link to this heading"></a></h2>
-<section id="id80">
-<h3>New Features<a class="headerlink" href="#id80" title="Link to this heading"></a></h3>
+<section id="id81">
+<h3>New Features<a class="headerlink" href="#id81" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Comparator program introduced for statistical comparison against reference results.</p></li>
 <li><p>rebdsim analysis examples and tests added.</p></li>
@@ -4062,8 +4081,8 @@ particles to be used in the beam definition.</p></li>
 <li><p>Reduced compilation time.</p></li>
 </ul>
 </section>
-<section id="id81">
-<h3>Bug Fixes<a class="headerlink" href="#id81" title="Link to this heading"></a></h3>
+<section id="id82">
+<h3>Bug Fixes<a class="headerlink" href="#id82" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed geometry tolerance issue that would cause Geant4 run-time errors for
 regular geometry for some particularly large spatial size models.</p></li>
@@ -4076,15 +4095,15 @@ regular geometry for some particularly large spatial size models.</p></li>
 <li><p>Fixed negative interaction warnings due to biasing. Issue #141.</p></li>
 </ul>
 </section>
-<section id="id82">
-<h3>General<a class="headerlink" href="#id82" title="Link to this heading"></a></h3>
+<section id="id83">
+<h3>General<a class="headerlink" href="#id83" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Deprecate BDSIM Plank scattering, laserwire calorimeter and Bremsstrahlung
 lead particle biasing.</p></li>
 </ul>
 </section>
-<section id="id83">
-<h3>Utilities<a class="headerlink" href="#id83" title="Link to this heading"></a></h3>
+<section id="id84">
+<h3>Utilities<a class="headerlink" href="#id84" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.7</p></li>
 <li><p>pybdsim v0.9</p></li>
@@ -4095,8 +4114,8 @@ lead particle biasing.</p></li>
 </section>
 <section id="v0-94-2016-09-13">
 <h2>V0.94 - 2016 / 09 / 13<a class="headerlink" href="#v0-94-2016-09-13" title="Link to this heading"></a></h2>
-<section id="id84">
-<h3>New Features<a class="headerlink" href="#id84" title="Link to this heading"></a></h3>
+<section id="id85">
+<h3>New Features<a class="headerlink" href="#id85" title="Link to this heading"></a></h3>
 <section id="analysis">
 <h4>Analysis<a class="headerlink" href="#analysis" title="Link to this heading"></a></h4>
 <ul class="simple">
@@ -4104,8 +4123,8 @@ lead particle biasing.</p></li>
 ROOT event output format using rebdsim.</p></li>
 </ul>
 </section>
-<section id="id85">
-<h4>Geometry<a class="headerlink" href="#id85" title="Link to this heading"></a></h4>
+<section id="id86">
+<h4>Geometry<a class="headerlink" href="#id86" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Tilted dipoles are now supported.</p></li>
 <li><p>The Read-Out geometry has been moved to the Geant4 parallel world scheme.</p></li>
@@ -4148,10 +4167,10 @@ the modular physics list scheme.</p></li>
 </ul>
 </section>
 </section>
-<section id="id86">
-<h3>Bug Fixes<a class="headerlink" href="#id86" title="Link to this heading"></a></h3>
 <section id="id87">
-<h4>Geometry<a class="headerlink" href="#id87" title="Link to this heading"></a></h4>
+<h3>Bug Fixes<a class="headerlink" href="#id87" title="Link to this heading"></a></h3>
+<section id="id88">
+<h4>Geometry<a class="headerlink" href="#id88" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Extent inheritance with BDSGeoemetryComponent was fixed resolving rare overlaps.</p></li>
 <li><p>Poled geometry variable clean up fixed to ensure components from factories aren’t
@@ -4159,21 +4178,21 @@ related to each other - could cause rare crash on exit.</p></li>
 <li><p>Fixed extents and possible overlaps in tunnel ‘rectaboveground’ geometry.</p></li>
 </ul>
 </section>
-<section id="id88">
-<h4>Output<a class="headerlink" href="#id88" title="Link to this heading"></a></h4>
+<section id="id89">
+<h4>Output<a class="headerlink" href="#id89" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Energy deposition coordinates are randomly chosen along the step of the deposition. The
 x,y,z coordinates now match the random point, whereas they were the post step point previously.</p></li>
 </ul>
 </section>
-<section id="id89">
-<h4>Physics<a class="headerlink" href="#id89" title="Link to this heading"></a></h4>
+<section id="id90">
+<h4>Physics<a class="headerlink" href="#id90" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixed an issue that would cause infinite loops with strong process biasing.</p></li>
 </ul>
 </section>
-<section id="id90">
-<h4>General<a class="headerlink" href="#id90" title="Link to this heading"></a></h4>
+<section id="id91">
+<h4>General<a class="headerlink" href="#id91" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Initialisation of variables fixed throughout.</p></li>
 <li><p>Significantly improved compilation speed.</p></li>
@@ -4181,8 +4200,8 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 </ul>
 </section>
 </section>
-<section id="id91">
-<h3>Utilities<a class="headerlink" href="#id91" title="Link to this heading"></a></h3>
+<section id="id92">
+<h3>Utilities<a class="headerlink" href="#id92" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.6</p></li>
 <li><p>pybdsim v0.8</p></li>
@@ -4193,10 +4212,10 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 </section>
 <section id="v0-93-2016-08-24">
 <h2>V0.93 - 2016 / 08 / 24<a class="headerlink" href="#v0-93-2016-08-24" title="Link to this heading"></a></h2>
-<section id="id92">
-<h3>New Features<a class="headerlink" href="#id92" title="Link to this heading"></a></h3>
 <section id="id93">
-<h4>Analysis<a class="headerlink" href="#id93" title="Link to this heading"></a></h4>
+<h3>New Features<a class="headerlink" href="#id93" title="Link to this heading"></a></h3>
+<section id="id94">
+<h4>Analysis<a class="headerlink" href="#id94" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>New analysis tool ‘rebdsim’ replaces robdsim.</p></li>
 <li><p>Analysis directory with event, model, event info and options analysis.</p></li>
@@ -4214,8 +4233,8 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 <li><p>Factorisation of BDSIM’s cmake package finding into <code class="code docutils literal notranslate"><span class="pre">cmake/</span></code>.</p></li>
 </ul>
 </section>
-<section id="id94">
-<h4>Geometry<a class="headerlink" href="#id94" title="Link to this heading"></a></h4>
+<section id="id95">
+<h4>Geometry<a class="headerlink" href="#id95" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Coil geometry introduced to generic library magnets.</p></li>
 <li><p>Overlap checking between magnets with pole face rotations.</p></li>
@@ -4224,8 +4243,8 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 <li><p>Default poled dipole geometry is now a C-shaped magnet with yoke on inside of bend.</p></li>
 </ul>
 </section>
-<section id="id95">
-<h4>Output<a class="headerlink" href="#id95" title="Link to this heading"></a></h4>
+<section id="id96">
+<h4>Output<a class="headerlink" href="#id96" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Switched to rootevent as default and <strong>recommended</strong> format.</p></li>
 <li><p>Include full set of options used in simulation in output.</p></li>
@@ -4238,14 +4257,14 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 <li><p>Write out primary trajectory points.</p></li>
 </ul>
 </section>
-<section id="id96">
-<h4>Parser<a class="headerlink" href="#id96" title="Link to this heading"></a></h4>
+<section id="id97">
+<h4>Parser<a class="headerlink" href="#id97" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Factorised options into optionsBase that is simple structure for easy saving.</p></li>
 </ul>
 </section>
-<section id="id97">
-<h4>Physics<a class="headerlink" href="#id97" title="Link to this heading"></a></h4>
+<section id="id98">
+<h4>Physics<a class="headerlink" href="#id98" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>“Modular physics” list is now the default.</p></li>
 <li><p>Use geant4 helper class for physics lists construction to ensure correct order.</p></li>
@@ -4261,8 +4280,8 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 <li><p>Geant4 Runge-Kutta stepper for quadrupole and sextupole for increased robustness.</p></li>
 </ul>
 </section>
-<section id="id98">
-<h4>General<a class="headerlink" href="#id98" title="Link to this heading"></a></h4>
+<section id="id99">
+<h4>General<a class="headerlink" href="#id99" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Strong recreation for an event by setting seed state issue (#118, #139).</p></li>
 <li><p>A BDSAcceleratorComponent can own an associated end piece(s) (before and after).</p></li>
@@ -4275,44 +4294,44 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 </ul>
 </section>
 </section>
-<section id="id99">
-<h3>Bug Fixes<a class="headerlink" href="#id99" title="Link to this heading"></a></h3>
 <section id="id100">
-<h4>Geometry<a class="headerlink" href="#id100" title="Link to this heading"></a></h4>
+<h3>Bug Fixes<a class="headerlink" href="#id100" title="Link to this heading"></a></h3>
+<section id="id101">
+<h4>Geometry<a class="headerlink" href="#id101" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixed loading for multiple GDML files having conflicting ‘world’ volumes.</p></li>
 <li><p>Reimplementation of pole geometry fixes gaps in poles (issue #110).</p></li>
 </ul>
 </section>
-<section id="id101">
-<h4>Parser<a class="headerlink" href="#id101" title="Link to this heading"></a></h4>
+<section id="id102">
+<h4>Parser<a class="headerlink" href="#id102" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixed issue of parser python interface (issue #133).</p></li>
 </ul>
 </section>
-<section id="id102">
-<h4>Physics<a class="headerlink" href="#id102" title="Link to this heading"></a></h4>
+<section id="id103">
+<h4>Physics<a class="headerlink" href="#id103" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Modular physics lists are truly modular - fixes segfaults (issue #130).</p></li>
 </ul>
 </section>
-<section id="id103">
-<h4>Tracking<a class="headerlink" href="#id103" title="Link to this heading"></a></h4>
+<section id="id104">
+<h4>Tracking<a class="headerlink" href="#id104" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixes for cavity field values (issue #124).</p></li>
 <li><p>Fixed field value transform in sextupoles and above for global / local coordinates.</p></li>
 <li><p>Auxiliary navigator used more routinely for transforms with optional caching.</p></li>
 </ul>
 </section>
-<section id="id104">
-<h4>General<a class="headerlink" href="#id104" title="Link to this heading"></a></h4>
+<section id="id105">
+<h4>General<a class="headerlink" href="#id105" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Issues #115, #127, #129, #131</p></li>
 </ul>
 </section>
 </section>
-<section id="id105">
-<h3>Utilities<a class="headerlink" href="#id105" title="Link to this heading"></a></h3>
+<section id="id106">
+<h3>Utilities<a class="headerlink" href="#id106" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.6</p></li>
 <li><p>pybdsim v0.7</p></li>
@@ -4323,75 +4342,75 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 </section>
 <section id="v0-92-2016-03-29">
 <h2>V0.92 - 2016 / 03 / 29<a class="headerlink" href="#v0-92-2016-03-29" title="Link to this heading"></a></h2>
-<section id="id106">
-<h3>New Features<a class="headerlink" href="#id106" title="Link to this heading"></a></h3>
+<section id="id107">
+<h3>New Features<a class="headerlink" href="#id107" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Samplers are attached at the <em>exit</em> instead of the <em>entrance</em> of an element.</p></li>
 <li><p>Poleface rotations for bends are implemented (issue #100).</p></li>
 <li><p>Geant4 9.6.x versions support has been dropped (issue #111).</p></li>
 <li><p>DUMP element removed (issue #116).</p></li>
 </ul>
-<section id="id107">
-<h4>Geometry<a class="headerlink" href="#id107" title="Link to this heading"></a></h4>
+<section id="id108">
+<h4>Geometry<a class="headerlink" href="#id108" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Samplers are no longer placed in the physical world but in a parallel sampler world.</p></li>
 <li><p>Above ground ‘tunnel’ geometry implemented.</p></li>
 <li><p>Introduced new RF cavity geometry and fields (still in development).</p></li>
 </ul>
 </section>
-<section id="id108">
-<h4>Output<a class="headerlink" href="#id108" title="Link to this heading"></a></h4>
+<section id="id109">
+<h4>Output<a class="headerlink" href="#id109" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>ROOT version 6 support (issue #114).</p></li>
 <li><p>Option to fill ROOT with double or float precision.</p></li>
 </ul>
 </section>
-<section id="id109">
-<h4>Parser<a class="headerlink" href="#id109" title="Link to this heading"></a></h4>
+<section id="id110">
+<h4>Parser<a class="headerlink" href="#id110" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Support for string variable (issue #126).</p></li>
 </ul>
 </section>
-<section id="id110">
-<h4>Physics<a class="headerlink" href="#id110" title="Link to this heading"></a></h4>
+<section id="id111">
+<h4>Physics<a class="headerlink" href="#id111" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Modular physics lists are default (issue #121).</p></li>
 <li><p>Use Geant4 provided synchrotron radiation instead of BDSIM one.</p></li>
 </ul>
 </section>
 </section>
-<section id="id111">
-<h3>Bug fixes<a class="headerlink" href="#id111" title="Link to this heading"></a></h3>
 <section id="id112">
-<h4>Geometry<a class="headerlink" href="#id112" title="Link to this heading"></a></h4>
+<h3>Bug fixes<a class="headerlink" href="#id112" title="Link to this heading"></a></h3>
+<section id="id113">
+<h4>Geometry<a class="headerlink" href="#id113" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Tunnel geometry fixes (issues #88 and #89).</p></li>
 </ul>
 </section>
-<section id="id113">
-<h4>Parser<a class="headerlink" href="#id113" title="Link to this heading"></a></h4>
+<section id="id114">
+<h4>Parser<a class="headerlink" href="#id114" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixed fast list insertion (issue #113).</p></li>
 <li><p>Support for tildes in path names (issue #119).</p></li>
 </ul>
 </section>
-<section id="id114">
-<h4>Physics<a class="headerlink" href="#id114" title="Link to this heading"></a></h4>
+<section id="id115">
+<h4>Physics<a class="headerlink" href="#id115" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Old physics code cleanup (issue #123).</p></li>
 <li><p>Physics biasing properly initialised (issue #84).</p></li>
 </ul>
 </section>
-<section id="id115">
-<h4>General<a class="headerlink" href="#id115" title="Link to this heading"></a></h4>
+<section id="id116">
+<h4>General<a class="headerlink" href="#id116" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>PDF Manual builds on Ubuntu (issue #85).</p></li>
 <li><p>1D Histogram class significantly faster for uneven bin width histograms.</p></li>
 </ul>
 </section>
 </section>
-<section id="id116">
-<h3>Utilities<a class="headerlink" href="#id116" title="Link to this heading"></a></h3>
+<section id="id117">
+<h3>Utilities<a class="headerlink" href="#id117" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.4</p></li>
 <li><p>pybdsim v0.5</p></li>
@@ -4402,27 +4421,27 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 </section>
 <section id="v0-91-2015-12-17">
 <h2>V0.91 - 2015 / 12 / 17<a class="headerlink" href="#v0-91-2015-12-17" title="Link to this heading"></a></h2>
-<section id="id117">
-<h3>New Features<a class="headerlink" href="#id117" title="Link to this heading"></a></h3>
+<section id="id118">
+<h3>New Features<a class="headerlink" href="#id118" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New tests for file IO, coordinate transforms, aperture models, extra optical lattice patterns and general ring examples.</p></li>
 </ul>
-<section id="id118">
-<h4>Geometry<a class="headerlink" href="#id118" title="Link to this heading"></a></h4>
+<section id="id119">
+<h4>Geometry<a class="headerlink" href="#id119" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Race track and octagonal aperture models introduced.</p></li>
 <li><p>New wedged energy degrader component introduced.</p></li>
 </ul>
 </section>
-<section id="id119">
-<h4>Output<a class="headerlink" href="#id119" title="Link to this heading"></a></h4>
+<section id="id120">
+<h4>Output<a class="headerlink" href="#id120" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Optional reduced number of variables in ROOT output - formats now “root” and “rootdetailed” (issue #107)</p></li>
 <li><p>Forced dependency on ROOT</p></li>
 </ul>
 </section>
-<section id="id120">
-<h4>Parser<a class="headerlink" href="#id120" title="Link to this heading"></a></h4>
+<section id="id121">
+<h4>Parser<a class="headerlink" href="#id121" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Parser warns for redefined variable, and exits for usage of undeclared variables (issue #98)</p></li>
 <li><p>Parser reorganised to C++ class structure (issue #77)</p></li>
@@ -4431,23 +4450,23 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 <li><p>Can attach samplers to all elements of one type (i.e. collimators).</p></li>
 </ul>
 </section>
-<section id="id121">
-<h4>Physics<a class="headerlink" href="#id121" title="Link to this heading"></a></h4>
+<section id="id122">
+<h4>Physics<a class="headerlink" href="#id122" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Can attach biasing to any part of any element from parser.</p></li>
 </ul>
 </section>
-<section id="id122">
-<h4>Tracking<a class="headerlink" href="#id122" title="Link to this heading"></a></h4>
+<section id="id123">
+<h4>Tracking<a class="headerlink" href="#id123" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Ability to start bunch from any S-position along accelerator, rather than just at beginning.</p></li>
 </ul>
 </section>
 </section>
-<section id="id123">
-<h3>Bug fixes<a class="headerlink" href="#id123" title="Link to this heading"></a></h3>
 <section id="id124">
-<h4>Geometry<a class="headerlink" href="#id124" title="Link to this heading"></a></h4>
+<h3>Bug fixes<a class="headerlink" href="#id124" title="Link to this heading"></a></h3>
+<section id="id125">
+<h4>Geometry<a class="headerlink" href="#id125" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixed for LHC detailed geometry when beam shield is rotated.</p></li>
 <li><p>Consolidation and improvement of aperture parameter validity testing.</p></li>
@@ -4457,20 +4476,20 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 <li><p>Fixed crashes with zero angle sector bends.</p></li>
 </ul>
 </section>
-<section id="id125">
-<h4>Parser<a class="headerlink" href="#id125" title="Link to this heading"></a></h4>
+<section id="id126">
+<h4>Parser<a class="headerlink" href="#id126" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Multiple command line arguments without space will now be recognised and highlighted.</p></li>
 </ul>
 </section>
-<section id="id126">
-<h4>Physics<a class="headerlink" href="#id126" title="Link to this heading"></a></h4>
+<section id="id127">
+<h4>Physics<a class="headerlink" href="#id127" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Made required version of Geant4 consistent across biasing code.</p></li>
 </ul>
 </section>
-<section id="id127">
-<h4>Tracking<a class="headerlink" href="#id127" title="Link to this heading"></a></h4>
+<section id="id128">
+<h4>Tracking<a class="headerlink" href="#id128" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fields only constructed if non-zero strength used - avoids tracking errors for zero strength components.</p></li>
 <li><p>Fixed several issues with vertical and horizontal kicker construction and tracking.</p></li>
@@ -4481,15 +4500,15 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 <li><p>Fixed teleporter tracking for backwards travelling particles that would get stuck in a loop.</p></li>
 </ul>
 </section>
-<section id="id128">
-<h4>General<a class="headerlink" href="#id128" title="Link to this heading"></a></h4>
+<section id="id129">
+<h4>General<a class="headerlink" href="#id129" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Add CMake protection against Geant4 built with multithreading on (issue #103).</p></li>
 </ul>
 </section>
 </section>
-<section id="id129">
-<h3>Utilities<a class="headerlink" href="#id129" title="Link to this heading"></a></h3>
+<section id="id130">
+<h3>Utilities<a class="headerlink" href="#id130" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.3</p></li>
 <li><p>pybdsim v0.4</p></li>
@@ -4500,8 +4519,8 @@ x,y,z coordinates now match the random point, whereas they were the post step po
 </section>
 <section id="v0-9-2015-11-10">
 <h2>V0.9 - 2015 / 11 / 10<a class="headerlink" href="#v0-9-2015-11-10" title="Link to this heading"></a></h2>
-<section id="id130">
-<h3>New Features<a class="headerlink" href="#id130" title="Link to this heading"></a></h3>
+<section id="id131">
+<h3>New Features<a class="headerlink" href="#id131" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Physics biasing with ability to change cross-section for individual particles
 and processes, as well as attach to a variety of objects</p></li>
@@ -4526,10 +4545,10 @@ magnet outer factory for tight-fitting container volumes.</p></li>
 available with the local Geant4 installation</p></li>
 </ul>
 </section>
-<section id="id131">
-<h3>Bug fixes<a class="headerlink" href="#id131" title="Link to this heading"></a></h3>
 <section id="id132">
-<h4>Geometry<a class="headerlink" href="#id132" title="Link to this heading"></a></h4>
+<h3>Bug fixes<a class="headerlink" href="#id132" title="Link to this heading"></a></h3>
+<section id="id133">
+<h4>Geometry<a class="headerlink" href="#id133" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixed bug where the read-out coordinates would also be offset by the offset
 of the element.</p></li>
@@ -4542,25 +4561,25 @@ of the element.</p></li>
 <li><p>Geometry fixes (issues #76, 94, 95)</p></li>
 </ul>
 </section>
-<section id="id133">
-<h4>Physics<a class="headerlink" href="#id133" title="Link to this heading"></a></h4>
-</section>
 <section id="id134">
-<h4>Parser<a class="headerlink" href="#id134" title="Link to this heading"></a></h4>
+<h4>Physics<a class="headerlink" href="#id134" title="Link to this heading"></a></h4>
+</section>
+<section id="id135">
+<h4>Parser<a class="headerlink" href="#id135" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Occasional material parser segfault fixed (issue #25)</p></li>
 <li><p>Improved syntax checking and to not ignore unknown keywords (issue #71)</p></li>
 <li><p>Element extension fixed (issue #87)</p></li>
 </ul>
 </section>
-<section id="id135">
-<h4>Tracking<a class="headerlink" href="#id135" title="Link to this heading"></a></h4>
+<section id="id136">
+<h4>Tracking<a class="headerlink" href="#id136" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Dipole uses local coordinates and can bend in any direction (issue #78)</p></li>
 </ul>
 </section>
-<section id="id136">
-<h4>General<a class="headerlink" href="#id136" title="Link to this heading"></a></h4>
+<section id="id137">
+<h4>General<a class="headerlink" href="#id137" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Samplers can be attached to occurrence of a duplicated element (issue #47).</p></li>
 <li><p>Output survey updated and fixed (issue #60)</p></li>
@@ -4570,8 +4589,8 @@ of the element.</p></li>
 </ul>
 </section>
 </section>
-<section id="id137">
-<h3>Utilities<a class="headerlink" href="#id137" title="Link to this heading"></a></h3>
+<section id="id138">
+<h3>Utilities<a class="headerlink" href="#id138" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>pymadx v0.2</p></li>
 <li><p>pybdsim v0.3</p></li>
@@ -4582,8 +4601,8 @@ of the element.</p></li>
 </section>
 <section id="v0-8-2015-08-10">
 <h2>V0.8 - 2015 / 08 / 10<a class="headerlink" href="#v0-8-2015-08-10" title="Link to this heading"></a></h2>
-<section id="id138">
-<h3>New Features<a class="headerlink" href="#id138" title="Link to this heading"></a></h3>
+<section id="id139">
+<h3>New Features<a class="headerlink" href="#id139" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Tunnel geometry and flexible tunnel factories for different styles</p></li>
 <li><p>Tunnel read out geometry introduced for coordinates along tunnel axis</p></li>
@@ -4608,10 +4627,10 @@ construction and addition of physics lists without hard-coded names for each
 combination - the user must turn this on explicitly</p></li>
 </ul>
 </section>
-<section id="id139">
-<h3>Bug fixes<a class="headerlink" href="#id139" title="Link to this heading"></a></h3>
 <section id="id140">
-<h4>Geometry<a class="headerlink" href="#id140" title="Link to this heading"></a></h4>
+<h3>Bug fixes<a class="headerlink" href="#id140" title="Link to this heading"></a></h3>
+<section id="id141">
+<h4>Geometry<a class="headerlink" href="#id141" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Geometry overlaps (issues #55 and #58)</p></li>
 <li><p>Transform3d fix (issue #54)</p></li>
@@ -4634,8 +4653,8 @@ geometry overlaps.</p></li>
 <li><p>Improved parser speed.</p></li>
 </ul>
 </section>
-<section id="id141">
-<h4>Physics<a class="headerlink" href="#id141" title="Link to this heading"></a></h4>
+<section id="id142">
+<h4>Physics<a class="headerlink" href="#id142" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>SR radiation fixed in dipole (issue #53).</p></li>
 <li><p>Removed continuous synchrotron radiation, as it traps particles in low step-size
@@ -4645,8 +4664,8 @@ variables from examples - these should be left unset unless the user knows
 their purpose.</p></li>
 </ul>
 </section>
-<section id="id142">
-<h4>Output<a class="headerlink" href="#id142" title="Link to this heading"></a></h4>
+<section id="id143">
+<h4>Output<a class="headerlink" href="#id143" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Changed all transverse output units to <strong>metres</strong> - manual updated accordingly.</p></li>
 <li><p>Changed <cite>z</cite> in ASCII output to <strong>global Z</strong> instead of local z.</p></li>
@@ -4657,16 +4676,16 @@ output.</p></li>
 <li><p>Random number generator seed state not written out when no output is specified.</p></li>
 </ul>
 </section>
-<section id="id143">
-<h4>Parser<a class="headerlink" href="#id143" title="Link to this heading"></a></h4>
+<section id="id144">
+<h4>Parser<a class="headerlink" href="#id144" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Return error if superfluous arguments are present (issue #56).</p></li>
 <li><p>Make parser more robust against duplicate element names (issue #43).</p></li>
 <li><p>Fixed warnings about compiling c as c++ being deprecated behaviour.</p></li>
 </ul>
 </section>
-<section id="id144">
-<h4>General<a class="headerlink" href="#id144" title="Link to this heading"></a></h4>
+<section id="id145">
+<h4>General<a class="headerlink" href="#id145" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Fixed wrong print out warning due to logic error (issue #51).</p></li>
 <li><p>Fixed boundary effects of energy deposition (issue #52).</p></li>
@@ -4690,8 +4709,8 @@ accumulation of BDSTrajectory objects.</p></li>
 </section>
 <section id="v0-7-2015-06-30">
 <h2>V0.7 - 2015 / 06 / 30<a class="headerlink" href="#v0-7-2015-06-30" title="Link to this heading"></a></h2>
-<section id="id145">
-<h3>New Features<a class="headerlink" href="#id145" title="Link to this heading"></a></h3>
+<section id="id146">
+<h3>New Features<a class="headerlink" href="#id146" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Ability to write no output</p></li>
 <li><p>New magnet geometry factories introduced with seven possible magnet types.</p></li>
@@ -4704,8 +4723,8 @@ accumulation of BDSTrajectory objects.</p></li>
 <li><p>Support for all Geant4 visualisers introduced (issue #11).</p></li>
 </ul>
 </section>
-<section id="id146">
-<h3>Bug fixes<a class="headerlink" href="#id146" title="Link to this heading"></a></h3>
+<section id="id147">
+<h3>Bug fixes<a class="headerlink" href="#id147" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed overlapping volumes and tracking errors in beam pipes.</p></li>
 <li><p>Fixes for wrong transverse coordinates for geometry other than cylindrical magnets (issue #30).</p></li>
@@ -4798,7 +4817,7 @@ simpler / increased performance</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Sep 28, 2026.
+      <span class="lastupdated">Last updated on Oct 20, 2026.
       </span></p>
   </div>
 

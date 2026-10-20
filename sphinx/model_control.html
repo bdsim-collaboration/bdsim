@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Model Control &mdash; BDSIM 1.8.0 documentation</title>
+  <title>Model Control &mdash; BDSIM 1.8.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=b51e6972"></script>
+      <script src="_static/documentation_options.js?v=1166ed6b"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -233,9 +233,12 @@
 </li>
 <li><p><a class="reference internal" href="#physics-processes"><span class="std std-ref">Physics Processes</span></a></p>
 <ul>
+<li><p><a class="reference internal" href="#physics-macro-file"><span class="std std-ref">Physics Macro File</span></a></p></li>
 <li><p><a class="reference internal" href="#physics-modular-physics-lists"><span class="std std-ref">Modular Physics Lists</span></a></p></li>
+<li><p><a class="reference internal" href="#physics-em-extra-notes"><span class="std std-ref">em_extra Physics Notes</span></a></p></li>
 <li><p><a class="reference internal" href="#physics-geant4-lists"><span class="std std-ref">Geant4 Reference Physics Lists</span></a></p></li>
 <li><p><a class="reference internal" href="#physics-complete-lists"><span class="std std-ref">Complete Physics Lists</span></a></p></li>
+<li><p><a class="reference internal" href="#physics-proton-diffraction"><span class="std std-ref">Proton Diffraction</span></a></p></li>
 <li><p><a class="reference internal" href="#millicharged-physics"><span class="std std-ref">Millicharged Physics</span></a></p></li>
 </ul>
 </li>
@@ -2823,14 +2826,21 @@ physics list.</p>
 <span id="physics-proton-diffraction"></span><h3>Proton Diffraction<a class="headerlink" href="#proton-diffraction" title="Link to this heading"></a></h3>
 <p>Since Geant4.10.5, target and projectile diffractive outcomes from hadronic interactions have been turned
 off if one of the participants has A &gt; 10. This has the effect that the spectra of high energy protons
-passing through targets of materials above Beryllium in the periodic table have a significantly different
+passing through targets of materials above Beryllium (not including) in the periodic table have a
+significantly different
 spectrum. This is particularly important for particle accelerator applications where diffractive protons
 may go some way through an accelerator due to their very small momentum deviation and cause large energy
 deposits far from the target.</p>
-<p>In the default Geant4, this is therefore quite wrong. Since v11.1 (inclusive) an option has been added
-to <code class="code docutils literal notranslate"><span class="pre">G4HadronicParameters::Instance()</span></code> in Geant4 that allows us to turn back on diffraction. BDSIM
-provides the option <code class="code docutils literal notranslate"><span class="pre">restoreFTPFDiffractionForAGreater10</span></code> to use this. In versions of Geant4 earlier
-than v11.1, this will have no effect and the original Geant4 code must be patched.</p>
+<p>In the default Geant4, this is therefore quite wrong for protons on a larger nuclei. Since v11.1
+(inclusive) an option has been added to <code class="code docutils literal notranslate"><span class="pre">G4HadronicParameters::Instance()</span></code> in Geant4 that
+allows us to turn back on diffraction. BDSIM provides the option <code class="code docutils literal notranslate"><span class="pre">restoreFTPFDiffractionForAGreater10</span></code>
+to use this. In versions of Geant4 earlier than v11.1, this will have no effect and the original
+Geant4 code must be patched.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Geant4, the it is implemented in code as a check of the baryon number or number of nucleons
+in the target nucleus being greater (not equal) than 10.</p>
+</div>
 <p>Example syntax:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">,</span> <span class="n">restoreFTPFDiffractionForAGreater10</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -2843,7 +2853,7 @@ option, physicsList="g4FTFP_BERT";
 option, physicsList="ftfp_bert";
 </pre></div>
 </div>
-<p>A comparison is shown below with this option on and off for a 7TeV proton incident on a 40cm
+<p>A comparison is shown below with this option on and off for a 7 TeV proton incident on a 40 cm
 target of carbon. This example can be found in <code class="code docutils literal notranslate"><span class="pre">bdsim/examples/features/processes/protonDiffraction</span></code>.</p>
 <figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="_images/proton-diffraction-comparison.pdf"><img alt="_images/proton-diffraction-comparison.pdf" src="_images/proton-diffraction-comparison.pdf" style="width: 80%;" />
@@ -5017,8 +5027,9 @@ affect tracking (‘co-planar’ faces).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="p">,</span> <span class="nb">range</span><span class="o">=&lt;</span><span class="n">element_name</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>where <cite>element_name</cite> is the name of the element you wish to sample. Depending on the
-output format chosen, the element name may be recorded in the output (‘rootevent’ output only).</p>
+<p>where <cite>element_name</cite> is the name of the element you wish to sample. This creates a branch
+in the output file with the element name where the information (per-event) is stored for that
+plane.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Samplers <strong>can only</strong> be defined <strong>after</strong> the main sequence has been defined
@@ -6291,7 +6302,7 @@ result may not entirely match that if using the <cite>bdsimmatrix</cite> set due
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Sep 28, 2026.
+      <span class="lastupdated">Last updated on Oct 20, 2026.
       </span></p>
   </div>
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Release Checklist &mdash; BDSIM 1.8.0 documentation</title>
+  <title>Release Checklist &mdash; BDSIM 1.8.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=b51e6972"></script>
+      <script src="_static/documentation_options.js?v=1166ed6b"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -120,21 +120,22 @@
 <span id="dev-release"></span><h1>Release Checklist<a class="headerlink" href="#release-checklist" title="Link to this heading"></a></h1>
 <p>Workflow to make a release from develop. Assume the previous version was X.Y.Z and the current status is
 X.Y.Z.develop and the new version will be A.B.C.</p>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p>Make a vX.Y.Z-rc release candidate branch off of develop. Must end in ‘rc’. Check it out.</p></li>
-<li><p>README.txt
-* ensure the copyright year year1 - year2 -&gt; year2 is this year.
-* update in the General Information section the version number. (Normally, X.Y.Z.develop -&gt; A.B.C)</p></li>
+<li><p>README.txt</p>
+<ul class="simple">
+<li><p>ensure the copyright year year1 - year2 -&gt; year2 is this year.</p></li>
+<li><p>update in the General Information section the version number. (Normally, X.Y.Z.develop -&gt; A.B.C)</p></li>
+</ul>
+</li>
 <li><p>CMakeLists.txt - change major, minor and patch version at the very top.</p></li>
 <li><p>Edit manual/source/version_history.rst for this release. At the end of the release notes, write
 the version number of each of pybdsim, pymadx, pymad8, pytransport (from pypi.org) under “Utilities”.</p></li>
-<li><p>Check data class versions are correct:
-* Git compare each class BDSOutputROOTEvent*.hh between the last tag and master and the code in the current rc branch.
-* Specifically for BDSOutputROOTEventBeam and BDSOutputROOTEventOptions, compare the corresponding files</p>
-<blockquote>
-<div><p>of the parent classes parser/beamBase.h and parser/optionsBase.h have changed.</p>
-</div></blockquote>
+<li><p>Check data class versions are correct:</p>
 <ul class="simple">
+<li><p>Git compare each class BDSOutputROOTEvent*.hh between the last tag and master and the code in the current rc branch.</p></li>
+<li><p>Specifically for BDSOutputROOTEventBeam and BDSOutputROOTEventOptions, compare the corresponding files
+of the parent classes parser/beamBase.h and parser/optionsBase.h have changed.</p></li>
 <li><p>If the data members or order has changed since the last tag in master, increment by 1 the data version in
 each output class header in the ClassDef() at the bottom from the last number in the master version. This
 may have been partially completed by the developer during development.</p></li>
@@ -144,32 +145,36 @@ This can be automated with python manual/data_version_table.py and copying the p
 </ul>
 </li>
 <li><p>Update the main data version number if any data class versions have been incremented. If the data is incremented,
-we must update the example data files.
-* If needed, increment the data version in the source tree <code class="code docutils literal notranslate"><span class="pre">configuration/BDSVersionData.hh</span></code>.
-* Make a commit and ensure the git working directory is clean (otherwise, we will get the ‘dirty’ flag in git).
-* Make a temporary build and install directory.
-* Configure a build of bdsim and set the install directory.
-* In the build tree, edit <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-build-dir&gt;/configuration/BDSVersion.hh</span></code> BDSIM_GIT_VERSION to</p>
-<blockquote>
-<div><p>be the new version (e.g. v1.8.0). Note, any use of cmake after this point will overwrite this back to
-the original text.</p>
-</div></blockquote>
+we must update the example data files.</p>
 <ul class="simple">
+<li><p>If needed, increment the data version in the source tree <code class="code docutils literal notranslate"><span class="pre">configuration/BDSVersionData.hh</span></code>.</p></li>
+<li><p>Make a commit and ensure the git working directory is clean (otherwise, we will get the ‘dirty’ flag in git).</p></li>
+<li><p>Make a temporary build and install directory.</p></li>
+<li><p>Configure a build of bdsim and set the install directory.</p></li>
+<li><p>In the build tree, edit <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-build-dir&gt;/configuration/BDSVersion.hh</span></code> BDSIM_GIT_VERSION to
+be the new version (e.g. v1.8.0). Note, any use of cmake after this point will overwrite this back to
+the original text.</p></li>
 <li><p>Compile and install the build.</p></li>
 <li><p>Source <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim-install-dir&gt;/bin/bdsim.sh</span></code> and then use the build in the following steps.</p></li>
-<li><p>In the source tree:
-- Regenerate data samples in <code class="code docutils literal notranslate"><span class="pre">examples/features/data/</span></code> using regenerateSamples.sh
-- Regenerate data sample <code class="code docutils literal notranslate"><span class="pre">examples/features/beam/userfile/userfile-sample.root</span></code> using regenerateUserFileSample.sh.
-- Regenerate data sample <code class="code docutils literal notranslate"><span class="pre">examples/features/beam/ptc/ptc-sample.root</span></code> using regeneratePtcSample.sh.
-- Commit these new root files.</p></li>
+<li><p>In the source tree:</p>
+<ul>
+<li><p>Regenerate data samples in <code class="code docutils literal notranslate"><span class="pre">examples/features/data/</span></code> using regenerateSamples.sh</p></li>
+<li><p>Regenerate data sample <code class="code docutils literal notranslate"><span class="pre">examples/features/beam/userfile/userfile-sample.root</span></code> using regenerateUserFileSample.sh.</p></li>
+<li><p>Regenerate data sample <code class="code docutils literal notranslate"><span class="pre">examples/features/beam/ptc/ptc-sample.root</span></code> using regeneratePtcSample.sh.</p></li>
+<li><p>Commit these new root files.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Update the colour list table in model_customisation.rst using <code class="code docutils literal notranslate"><span class="pre">bdsim</span> <span class="pre">--colours</span></code> output.</p></li>
-<li><p>Merge release candidate branch back into develop.
-* From the rc branch create a develop-return branch and check it out.
-* In this branch, edit the version number in README to be A.B.C.develop.
-* In CMakeLists.txt edit the program version number to be A B C.develop.
-* Create a pull request from this branch into develop on github.</p></li>
+<li><p>Merge release candidate branch back into develop.</p>
+<ul class="simple">
+<li><p>From the rc branch create a develop-return branch and check it out.</p></li>
+<li><p>In this branch, edit the version number in README to be A.B.C.develop.</p></li>
+<li><p>In CMakeLists.txt edit the program version number to be A B C.develop.</p></li>
+<li><p>Create a pull request from this branch into develop on github.</p></li>
+</ul>
+</li>
 <li><p>Merge release candidate branch into master then delete. (<code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master;</span> <span class="pre">git</span> <span class="pre">merge</span> <span class="pre">--no-ff</span> <span class="pre">v1.X.0-rc</span></code>)</p></li>
 <li><p>Check all tests complete locally given merge before pushing.</p></li>
 <li><p>Tag master branch for version number.</p></li>
@@ -197,7 +202,7 @@ the original text.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Sep 28, 2026.
+      <span class="lastupdated">Last updated on Oct 20, 2026.
       </span></p>
   </div>
 
