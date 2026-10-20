@@ -51,6 +51,7 @@ from .tunnel import *
 from .bdsim import *
 from .convert import *
 from .developer import *
+from .version import *
 
 try :
     from .ocelot import *

@@ -1,0 +1,40 @@
+! scattering plate for mostly em
+! large angular divergence that's gaussian
+! gives gaussian at large statistics
+! gives small cluster at single events that are spatial separated
+! gives around 1-10 sampler (6 mean) hits per event downstream
+! good for relatively sparse histogramming
+! fast to run - 10k events < 30s
+! collimators are included so we can test collimator-specific histograms
+
+g1: gap, l=1*m;
+t1: target, l=3*mm, material="W";
+g2: gap, l=0.2*m;
+c1: jcol, l=0.1*m, xsize=20*cm, material="graphite", horizontalWidth=1*m;
+g3: gap, l=2*m;
+c2: jcol, l=0.1*m, xsize=40*cm, material="Cu", horizontalWidth=2*m;;
+
+l1: line=(g1, t1, g2, c1, g3, c2);
+use, l1;
+
+sample, all;
+
+beam, particle="e+",
+      momentum=10*GeV,
+      distrType="gauss",
+      sigmaX=1*mm,
+      sigmaY=1*mm,
+      sigmaXp=0.1,
+      sigmaYp=0.1;
+
+option, physicsList="em",
+        minimumKineticEnergy=100*MeV,
+        worldMaterial="vacuum";
+
+option, elossHistoBinWidth=10*cm;
+
+option, storeCollimatorInfo=1;
+
+option, seed=123;
+
+option, ngenerate=100;

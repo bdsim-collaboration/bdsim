@@ -12,6 +12,22 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
+v1.8.1 - 2026 / 10 / 20
+=======================
+
+Bug Fixes
+---------
+
+* Fix a crash when using collimators, a target and collimator-specific output.
+* Fix compilation with Boost libraries on.
+* Added AGENTS.md, CONDUCT.md and CONTRIBUTING.md for policies.
+* Fix runtime warning print out about Beam and Options from ROOT.
+* Improved description on single-diffraction patch in the manual and added missing links.
+* Python version in the Python bindings.
+
+No change of data version or structures and no new features.
+  
+
 v1.8.0 - 2026 / 09 / 27
 =======================
 

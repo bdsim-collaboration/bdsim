@@ -98,6 +98,7 @@ protected:
   G4Colour*   colour;             ///< Colour of collimator.
   G4double    minKineticEnergy;   ///< Optional minimum kinetic energy for collimator materials.
   G4bool      circularOuter;      ///< Aperture type of the collimator
+  G4bool      collimatorTypeSensitivity; ///< Whether to use special collimator hits or not.
 };
 
 #endif

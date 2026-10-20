@@ -28,4 +28,6 @@ BDSTarget::BDSTarget(const G4String& nameIn,
 		     G4bool      circularOuterIn):
   BDSCollimator(nameIn, lengthIn, horizontalWidthIn, "target",
                 materialIn, nullptr, 0, 0, 0, 0, colourIn, circularOuterIn)
-{;}
+{
+  collimatorTypeSensitivity = false;
+}
