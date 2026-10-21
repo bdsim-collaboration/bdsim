@@ -357,7 +357,11 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
                                                           G4double jawTiltLeft,
                                                           G4double jawTiltRight,
                                                           G4bool   buildLeftJaw,
-                                                          G4bool   buildRightJaw)
+                                                          G4bool   buildRightJaw,
+                                                          G4double tipTaperAngle,
+                                                          G4double horizontalWidth,
+                                                          G4double taperDepth,
+                                                          G4double jawHalfHeight)
 {
     auto componentFactory = std::unique_ptr<BDSComponentFactory>(new BDSComponentFactory(nullptr, false));
 
@@ -382,14 +386,16 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     el.l        = length / CLHEP::m;
     el.xsizeLeft  = halfApertureLeft / CLHEP::m;
     el.xsizeRight = halfApertureRight / CLHEP::m;
-    el.ysize    = 0.006; // half height
+    el.ysize    = jawHalfHeight > 0 ? jawHalfHeight / CLHEP::m : 0.006; // half height, m
     el.tilt     = rotation / CLHEP::rad;
     el.offsetX  = xOffset / CLHEP::m;
     el.offsetY  = yOffset / CLHEP::m;
-    el.horizontalWidth = 2.0; // m
+    el.horizontalWidth = horizontalWidth > 0 ? horizontalWidth / CLHEP::m : 2.0; // m
     el.jawTiltLeft  = jawTiltLeft; // rad
     el.jawTiltRight = jawTiltRight; // rad
     el.tipThickness = tipThickness / CLHEP::m;
+    el.taperAngleRad = tipTaperAngle; // rad, already in BDSIM/CLHEP units
+    el.taperDepth = taperDepth / CLHEP::m;
 
     if (!buildLeftJaw)
     {

@@ -72,7 +72,11 @@ public:
                              G4double crystalAngle  = 0,
                              G4bool   sampleIn      = false);
 
-  /// Interface to append a tip collimator jaw to the linking.
+  /// Interface to append a tip collimator jaw to the linking. horizontalWidth
+  /// is the full width of the collimator; 0 (default) means 2 m. taperDepth is
+  /// the depth from the jaw edge where the taper ends; 0 tapers the whole jaw.
+  /// jawHalfHeight is the half size of the jaws in the non-collimation plane;
+  /// 0 (default) means 6 mm.
   G4int AddLinkCollimatorTipJaw(const std::string& collimatorName,
                                 const std::string& materialName,
                                 const std::string& tipMaterialName,
@@ -86,7 +90,11 @@ public:
                                 G4double jawTiltLeft = 0.0,
                                 G4double jawTiltRight = 0.0,
                                 G4bool   buildLeftJaw  = true,
-                                G4bool   buildRightJaw = true);
+                                G4bool   buildRightJaw = true,
+                                G4double tipTaperAngle = 0.0,
+                                G4double horizontalWidth = 0.0,
+                                G4double taperDepth = 0.0,
+                                G4double jawHalfHeight = 0.0);
   /// Interface to append an element
   G4int AddLinkElement(GMAD::Element el);
 
