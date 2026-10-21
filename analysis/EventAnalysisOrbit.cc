@@ -45,7 +45,7 @@ EventAnalysisOrbit::EventAnalysisOrbit(Event*   eventIn,
                                        bool     emittanceOnTheFlyIn,
                                        long int eventStartIn,
                                        long int eventEndIn):
-  EventAnalysis(eventIn, chainIn, perEntryAnalysis, processSamplersIn,
+  EventAnalysis(eventIn, chainIn, perEntryAnalysis, processSamplersIn, false,
                 debugIn, printOutIn, printModuloFraction, emittanceOnTheFlyIn,
                 eventStartIn, eventEndIn)
 {;}

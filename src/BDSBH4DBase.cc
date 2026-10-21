@@ -35,7 +35,9 @@ BDSBH4DBase::BDSBH4DBase():
   h_zmin(0), h_zmax(0),
   h_emin(0), h_emax(0),
   h_entries(0)
-{;}
+{
+  fDimension = 4;
+}
 
 BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn,
 			 unsigned int nZBinsIn, unsigned int nEBinsIn,
@@ -53,7 +55,9 @@ BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn,
   h_title(titleIn),
   h_escale(escaleIn),
   h_entries(0)
-{;}
+{
+  fDimension = 4;
+}
 
 BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn, unsigned int nZBinsIn,
 			 double xMinIn, double xMaxIn,
@@ -73,31 +77,12 @@ BDSBH4DBase::BDSBH4DBase(unsigned int nXBinsIn, unsigned int nYBinsIn, unsigned 
   h_ebinsedges(eBinEdgesIn),
   h_entries(0)
 {
+  fDimension = 4;
   if (eBinEdgesIn.size() < 2)
     {throw BDSException(__METHOD_NAME__, "bin edges vector must be at least 2 numbers");}
   h_nebins = (unsigned int)(eBinEdgesIn.size() - 1);
   h_emin   = eBinEdgesIn[0];
   h_emax   = eBinEdgesIn.back();
-}
-
-int BDSBH4DBase::GetNbinsX() const
-{
-  return static_cast<int>(h_nxbins);
-}
-
-int BDSBH4DBase::GetNbinsY() const
-{
-  return static_cast<int>(h_nybins);
-}
-
-int BDSBH4DBase::GetNbinsZ() const
-{
-  return static_cast<int>(h_nzbins);
-}
-
-int BDSBH4DBase::GetNbinsE() const
-{
-  return static_cast<int>(h_nebins);
 }
 
 const char* BDSBH4DBase::GetName() const
@@ -123,9 +108,4 @@ void BDSBH4DBase::SetName(const char* name)
 void BDSBH4DBase::SetTitle(const char* title)
 {
   h_title = std::string(title);
-}
-
-void BDSBH4DBase::SetEntries_BDSBH4D(double i)
-{
-  h_entries = static_cast<unsigned long>(i);
 }
