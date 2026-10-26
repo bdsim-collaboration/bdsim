@@ -274,6 +274,7 @@ namespace GMAD
     ///@}
 
     // biasing options
+    double    synchrotronRadiationEnergyCut;
     double    scaleFactorLaser;
     std::string defaultBiasVacuum;
     std::string defaultBiasMaterial;
