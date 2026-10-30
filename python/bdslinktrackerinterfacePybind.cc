@@ -475,9 +475,8 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
   auto bdsim_link = tracker_interface->GetBDSIMLink();
 
   auto refPDG = tracker_interface->GetReferenceParticleDefinition()->PDGID();
-  // clear sampler hits (do this first and not at end as sampler data will
-  // no longer available in python)
-  bdsim_link->ClearSamplerHits();
+  // Clear data from the previous tracking call.
+  tracker_interface->ClearData();
 
   int nparticle = bunch6d.attr("size")().cast<int>();
 
