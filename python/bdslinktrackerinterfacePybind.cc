@@ -481,22 +481,46 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
 
   int nparticle = bunch6d.attr("size")().cast<int>();
 
+  // Bunch6d phase space: x [mm], xp [mrad], y [mm], yp [mrad], t [mm/c], P [MeV/c].
+  py::object phaseSpaceObject = bunch6d.attr("get_phase_space")("%x %xp %y %yp %t %P", "all");
+  py::array_t<double, py::array::c_style | py::array::forcecast> phaseSpace = py::array_t<double, py::array::c_style | py::array::forcecast>::ensure(phaseSpaceObject);
+
+  if (!phaseSpace || phaseSpace.ndim() != 2 || phaseSpace.shape(0) != nparticle || phaseSpace.shape(1) != 6)
+    {
+      throw py::value_error("Unexpected RF-Track Bunch6d phase-space shape");
+    }
+
+  auto phase = phaseSpace.unchecked<2>();
+
   for(int i = 0; i < nparticle ;i++) {
     // py::print("TrackRFTrack> ",i);
 
     auto p = bunch6d.attr("get_particle")(i);
-    auto x = py::cast<double>(p.attr("x"));
-    auto y = py::cast<double>(p.attr("y"));
-    auto p4v = (py::cast<py::array_t<double>>(p.attr("get_four_momentum")())).unchecked<2>();
-    // TODO time needs to calculated wrt to reference particle
-    // auto t = py::cast<double>(p.attr("t"));
-    auto pdgID = py::cast<int>(p.attr("pdg_id")); // initiall this will be zero and add particle will set to reference particle
+    const double xMm = phase(i, 0);
+    const double xpRad = phase(i, 1) * 1.0e-3;
+    const double yMm = phase(i, 2);
+    const double ypRad = phase(i, 3) * 1.0e-3;
+    const double timeMmC = phase(i, 4);
+    const double momentumMeV = phase(i, 5);
+    const double directionNorm = std::sqrt(1.0 + xpRad*xpRad + ypRad*ypRad);
 
-    tracker_interface->AddParticle(x*CLHEP::mm, y*CLHEP::mm, // x, y
-                                   p4v(1,0), p4v(2,0), p4v(3,0), // px, px, pz
-                                   0, // ct
-                                   0, // s
-                                   i, pdgID); // trackID, parent;
+    if (!std::isfinite(momentumMeV) || momentumMeV <= 0.0 || !std::isfinite(directionNorm))
+      {
+        throw py::value_error("Invalid Bunch6d momentum at particle " + std::to_string(i));
+      }
+
+    const double pzMeV = momentumMeV / directionNorm;
+    const double pxMeV = xpRad * pzMeV;
+    const double pyMeV = ypRad * pzMeV;
+
+    // Convert RF-Track time (mm/c) to BDSIM time (ns).
+    const double tNs = timeMmC * CLHEP::mm / CLHEP::c_light;
+    const int pdgID = py::cast<int>(p.attr("pdg_id"));
+
+    tracker_interface->AddParticle(xMm*CLHEP::mm, yMm*CLHEP::mm,
+                                   pxMeV*CLHEP::MeV, pyMeV*CLHEP::MeV, pzMeV*CLHEP::MeV,
+                                   tNs, 0.0, i, pdgID);
+
     if (pdgID == 0) {
       p.attr("pdg_id") = py::cast(refPDG);
     }
