@@ -695,6 +695,9 @@ repeated header processing during compilation. This can reduce clean build times
 the benefit depends on the compiler and machine. Generated ROOT dictionaries
 are compiled separately to avoid duplicate definitions. Unity builds are disabled
 by default and can be disabled explicitly with :code:`-DCMAKE_UNITY_BUILD=OFF`.
+The number of source files combined can be set with
+:code:`CMAKE_UNITY_BUILD_BATCH_SIZE`. Linux and macOS continuous integration
+builds use the CMake default.
 
 .. _installation-bdsim-config-options:
 

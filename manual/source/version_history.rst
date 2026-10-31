@@ -22,6 +22,8 @@ Bug Fixes
   utility declarations explicitly in link bunch implementations, and using the
   analysis debug header consistently.
 * Guard the curvilinear builder header against repeated inclusion in unity builds.
+* Enable unity builds in the Linux and macOS continuous integration builds, with
+  build parallelism set to the detected number of runner cores.
 
 
 v1.8.1 - 2026 / 10 / 20
