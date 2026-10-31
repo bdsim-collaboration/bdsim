@@ -21,6 +21,7 @@ Bug Fixes
 * Fix unity builds by compiling ROOT dictionaries separately, including physics
   utility declarations explicitly in link bunch implementations, and using the
   analysis debug header consistently.
+* Guard the curvilinear builder header against repeated inclusion in unity builds.
 
 
 v1.8.1 - 2026 / 10 / 20
