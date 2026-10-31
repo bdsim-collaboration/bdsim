@@ -58,6 +58,9 @@ foreach(header ${rebdsimLibLinkDefs})
             IMPLICIT_DEPENDS CXX ${CMAKE_CURRENT_SOURCE_DIR}/${className}.hh ${header}
             COMMENT "Generate ROOT Dictionary for ${className}"
     )
+    # ROOT dictionaries define common helpers and must compile separately in unity builds.
+    set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/${className}Dict.cc
+        PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
     # add arbitrary dependence to make it run at compile time (since DEPENDS at custom_command seems not to work)
     set_property(
             SOURCE ${CMAKE_CURRENT_BINARY_DIR}/${className}Dict.cc

@@ -12,6 +12,17 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
+Unreleased
+==========
+
+Bug Fixes
+---------
+
+* Fix unity builds by compiling ROOT dictionaries separately, including physics
+  utility declarations explicitly in link bunch implementations, and using the
+  analysis debug header consistently.
+
+
 v1.8.1 - 2026 / 10 / 20
 =======================
 
