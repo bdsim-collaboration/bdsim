@@ -193,7 +193,7 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
     })
     .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch) {
       TrackRFTrack(tracker_interface, bunch);
-    },py::arg("bunch"), R"doc(
+    }, py::arg("bunch"), R"doc(
     Track an RF-Track bunch through BDSIM.
 
     Parameters
@@ -231,7 +231,7 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
     Note: Conversion of BDSIM tracking results back to Bunch6dT is not
     yet implemented.
     )doc");
-    }
+}
 
 void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
                             int iElement,
@@ -575,10 +575,14 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch) 
           throw py::value_error("Invalid " + bunchType + " phase space at particle " + std::to_string(i));
         }
 
-      if (isBunch6dT &&
-          (!std::isfinite(phase(i, 6)) || !std::isfinite(phase(i, 7)) || phase(i, 5) <= 0.0))
+      if (isBunch6dT)
         {
-          throw py::value_error("Invalid Bunch6dT momentum or phase space at particle " + std::to_string(i));
+          const double momentumMeV = std::hypot(std::hypot(phase(i, 1), phase(i, 3)), phase(i, 5));
+          if (!std::isfinite(phase(i, 6)) || !std::isfinite(phase(i, 7)) ||
+              phase(i, 5) <= 0.0 || !std::isfinite(momentumMeV))
+            {
+              throw py::value_error("Invalid Bunch6dT momentum or phase space at particle " + std::to_string(i));
+            }
         }
     }
 
@@ -636,16 +640,12 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch) 
           const double t0MmC = phase(i, 6);
           const double massMeV = phase(i, 7);
           const double momentumMeV = std::hypot(std::hypot(pxMeV, pyMeV), pzMeV);
-
-          if (!std::isfinite(momentumMeV))
-            {
-              throw py::value_error("Invalid Bunch6dT momentum at particle " + std::to_string(i));
-            }
           const double totalEnergyMeV = std::sqrt(momentumMeV*momentumMeV + massMeV*massMeV);
           const double deltaZMm = zMaxMm - zMm;
           // Particles not yet created are projected from their creation time rather than bunch.t.
           const double timeMmC = std::max(bunchTimeMmC, t0MmC) + deltaZMm*totalEnergyMeV/pzMeV;
-          // Project transverse coordinates onto the injection plane assuming a field-free drift and that the RF-Track Z axis is aligned with the longitudinal axis of the BDSIM   injection frame.
+          // Project onto the injection plane assuming a field-free drift.
+          // The RF-Track Z axis must be aligned with the BDSIM injection frame.
           xMm += deltaZMm*pxMeV/pzMeV;
           yMm += deltaZMm*pyMeV/pzMeV;
 
