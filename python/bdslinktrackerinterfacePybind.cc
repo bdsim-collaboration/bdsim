@@ -480,8 +480,8 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
 
   int nparticle = bunch6d.attr("size")().cast<int>();
 
-  // Bunch6d phase space: x [mm], xp [mrad], y [mm], yp [mrad], t [mm/c], P [MeV/c].
-  py::object phaseSpaceObject = bunch6d.attr("get_phase_space")("%x %xp %y %yp %t %P", "all");
+  // Bunch6d phase space: x [mm], Px [MeV/c], y [mm], Py [MeV/c], t [mm/c], Pz [MeV/c].
+  py::object phaseSpaceObject = bunch6d.attr("get_phase_space")("%x %Px %y %Py %t %Pz", "all");
   py::array_t<double, py::array::c_style | py::array::forcecast> phaseSpace = py::array_t<double, py::array::c_style | py::array::forcecast>::ensure(phaseSpaceObject);
 
   if (!phaseSpace || phaseSpace.ndim() != 2 || phaseSpace.shape(0) != nparticle || phaseSpace.shape(1) != 6)
@@ -490,7 +490,6 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     }
 
   auto phase = phaseSpace.unchecked<2>();
-  
   // Exclude lost particles while preserving their original RF-Track indices.
   std::vector<int> goodParticleIndices;
   for (int i = 0; i < nparticle; ++i)
@@ -501,31 +500,33 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
           goodParticleIndices.push_back(i);
         }
     }
+
   if (goodParticleIndices.empty())
     {
       return;
     }
-    
+
+  // Validate all surviving particles before adding any to BDSIM. A minimum momentum threshold may be introduced later.
+  for (int i : goodParticleIndices)
+    {
+      if (!std::isfinite(phase(i, 0)) || !std::isfinite(phase(i, 1)) || !std::isfinite(phase(i, 2)) ||
+          !std::isfinite(phase(i, 3)) || !std::isfinite(phase(i, 4)) || !std::isfinite(phase(i, 5)) ||
+          (phase(i, 1) == 0.0 && phase(i, 3) == 0.0 && phase(i, 5) == 0.0))
+        {
+          throw py::value_error("Invalid Bunch6d phase space at particle " + std::to_string(i));
+        }
+    }
+
   for (int i : goodParticleIndices) {
     // py::print("TrackRFTrack> ",i);
 
     auto p = bunch6d.attr("get_particle")(i);
     const double xMm = phase(i, 0);
-    const double xpRad = phase(i, 1) * 1.0e-3;
+    const double pxMeV = phase(i, 1);
     const double yMm = phase(i, 2);
-    const double ypRad = phase(i, 3) * 1.0e-3;
+    const double pyMeV = phase(i, 3);
     const double timeMmC = phase(i, 4);
-    const double momentumMeV = phase(i, 5);
-    const double directionNorm = std::sqrt(1.0 + xpRad*xpRad + ypRad*ypRad);
-
-    if (!std::isfinite(momentumMeV) || momentumMeV <= 0.0 || !std::isfinite(directionNorm))
-      {
-        throw py::value_error("Invalid Bunch6d momentum at particle " + std::to_string(i));
-      }
-
-    const double pzMeV = momentumMeV / directionNorm;
-    const double pxMeV = xpRad * pzMeV;
-    const double pyMeV = ypRad * pzMeV;
+    const double pzMeV = phase(i, 5);
 
     // Convert RF-Track time (mm/c) to BDSIM time (ns).
     const double tNs = timeMmC * CLHEP::mm / CLHEP::c_light;
