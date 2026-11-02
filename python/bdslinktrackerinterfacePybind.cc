@@ -505,6 +505,13 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
 }
 
 void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch) {
+  // The input bunch can be either a Bunch6d or a Bunch6dT.
+  // Bunch6d (tracking in space): particles share the same longitudinal position S,
+  // but can have different arrival times t.
+  // Bunch6dT (tracking in time): particles share the same bunch time,
+  // but can have different longitudinal positions Z and individual creation times t0.
+  // Bunch6dT particles are therefore projected onto a common plane before injection into BDSIM.
+
   py::print("TrackRFTrack> Bunch::", bunch);
   auto size_method = bunch.attr("size");
   py::print("TrackRFTrack> Bunch::size",size_method());
