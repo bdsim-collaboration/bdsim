@@ -7,6 +7,11 @@ configure_file(purefieldplotter.py purefieldplotter.py COPYONLY)
 configure_file(converttobdsim.py converttobdsim.py COPYONLY)
 add_test(NAME "tester-fields" COMMAND BDSFieldTester)
 
+add_executable(BDSBeamlineIntegralTester BDSBeamlineIntegralTester.cc)
+set_target_properties(BDSBeamlineIntegralTester PROPERTIES OUTPUT_NAME "BDSBeamlineIntegralTester" VERSION ${BDSIM_VERSION})
+target_link_libraries(BDSBeamlineIntegralTester ${BDSIM_LIB_NAME} ${GMAD_LIB_NAME})
+add_test(NAME "tester-beamline-integral" COMMAND BDSBeamlineIntegralTester)
+
 add_executable(BDSInterpolatorTester BDSInterpolatorTester.cc)
 set_target_properties(BDSInterpolatorTester PROPERTIES OUTPUT_NAME "BDSInterpolatorTester" VERSION ${BDSIM_VERSION})
 target_link_libraries(BDSInterpolatorTester ${BDSIM_LIB_NAME} ${GMAD_LIB_NAME})

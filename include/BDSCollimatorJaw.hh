@@ -57,6 +57,22 @@ public:
   inline G4double GetJawTiltLeft() const {return jawTiltLeft;}
   inline G4double GetJawTiltRight() const {return jawTiltRight;}
 
+  /// Length of the component for a jaw tapered at taperAngle whose face at
+  /// the beam is flatLength long: flatLength + 2*depth/tan(taperAngle) for the
+  /// deepest jaw built (or taperDepth, if set and smaller), with jaw gaps and
+  /// depths worked out as in the constructor and Calculations(). Returns
+  /// flatLength if there is no taper (or the angle is invalid, which
+  /// CheckParameters() then rejects).
+  static G4double TaperedLength(G4double flatLength,
+                                G4double horizontalWidth,
+                                G4double xHalfGap,
+                                G4double xSizeLeft,
+                                G4double xSizeRight,
+                                G4bool   buildLeftJaw,
+                                G4bool   buildRightJaw,
+                                G4double taperAngle,
+                                G4double taperDepth);
+
 protected:
   /// Solid and placement for one (optionally tapered) jaw sub-block, as
   /// returned by BuildTaperedJawBox().
@@ -85,22 +101,6 @@ protected:
                                 G4double depthOuter,
                                 G4double halfHeight,
                                 G4double fullChordLength) const;
-
-  /// Length of the component for a jaw tapered at taperAngle whose face at
-  /// the beam is flatLength long: flatLength + 2*depth/tan(taperAngle) for the
-  /// deepest jaw built (or taperDepth, if set and smaller), with jaw gaps and
-  /// depths worked out as in the constructor and Calculations(). Returns
-  /// flatLength if there is no taper (or the angle is invalid, which
-  /// CheckParameters() then rejects).
-  static G4double TaperedLength(G4double flatLength,
-                                G4double horizontalWidth,
-                                G4double xHalfGap,
-                                G4double xSizeLeft,
-                                G4double xSizeRight,
-                                G4bool   buildLeftJaw,
-                                G4bool   buildRightJaw,
-                                G4double taperAngle,
-                                G4double taperDepth);
 
   void Calculations(); ///< Calculate offsets and sizes.
 

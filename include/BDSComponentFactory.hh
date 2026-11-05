@@ -200,6 +200,11 @@ public:
   /// default) means no taper. Exits with an exception if both are set.
   static G4double PrepareTipTaperAngle(GMAD::Element const* element);
 
+  /// Length of the jcoltip component built from this element: element->l, extended
+  /// for a tapered jaw (see BDSCollimatorJaw::TaperedLength()). Used so that the
+  /// beam line integral (arc length and synchronous time) matches the geometry.
+  static G4double TipJawCollimatorLength(GMAD::Element const* element);
+
   /// Utility function to check if the combination of horizontal width, angle and length
   /// will result in overlapping entrance and exit faces and therefore whether to abort.
   static void CheckBendLengthAngleWidthCombo(G4double arcLength,

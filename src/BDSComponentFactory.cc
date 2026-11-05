@@ -3127,6 +3127,20 @@ G4double BDSComponentFactory::PrepareTipTaperAngle(Element const* el)
     {return 0;}
 }
 
+G4double BDSComponentFactory::TipJawCollimatorLength(Element const* el)
+{
+  // same arguments as passed to BDSCollimatorJawTip in CreateTipJawCollimator()
+  return BDSCollimatorJaw::TaperedLength(el->l*CLHEP::m,
+                                         PrepareHorizontalWidth(el),
+                                         el->xsize*CLHEP::m,
+                                         el->xsizeLeft*CLHEP::m,
+                                         el->xsizeRight*CLHEP::m,
+                                         true,
+                                         true,
+                                         PrepareTipTaperAngle(el),
+                                         el->taperDepth*CLHEP::m);
+}
+
 void BDSComponentFactory::SetFieldDefinitions(Element const* el,
                                               BDSAcceleratorComponent* component) const
 {

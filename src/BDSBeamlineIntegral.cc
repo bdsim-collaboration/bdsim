@@ -67,6 +67,10 @@ void BDSBeamlineIntegral::Integrate(const GMAD::Element& componentAsDefined)
                                                        field,
                                                        angle);
     }
+  else if (componentAsDefined.type == GMAD::ElementType::_JCOLTIP)
+    {// a tapered jcoltip is built longer than l - use the length of the built component
+      thisComponentArcLength = BDSComponentFactory::TipJawCollimatorLength(&componentAsDefined);
+    }
   arcLength += thisComponentArcLength;
   
   G4double v0 = designParticle.Velocity(); // current velocity at the entrance of element
