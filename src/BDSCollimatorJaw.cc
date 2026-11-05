@@ -171,7 +171,7 @@ BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
                                     G4double depthInner,
                                     G4double depthOuter,
                                     G4double halfHeight,
-                                    G4double fullChordLength) const
+                                    G4double fullChordLength)
 {
   G4double xInner = sign * (xHalfGapThisJaw + depthInner);
   G4double xOuter = sign * (xHalfGapThisJaw + depthOuter);
@@ -223,8 +223,10 @@ BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
   // z: rotate about x so that local y is along the beam and local z along the
   // jaw height (the profile is symmetric in z and the extrusion in y, so the
   // sense of the rotation does not matter).
+  // G4PVPlacement does not take ownership of the rotation, so register it for deletion
   G4RotationMatrix* rot = new G4RotationMatrix();
   rot->rotateX(90.0 * CLHEP::deg);
+  RegisterRotationMatrix(rot);
 
   return TaperedBox{solid, G4ThreeVector(xCentre, 0, 0), rot};
 }

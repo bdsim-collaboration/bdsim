@@ -80,7 +80,7 @@ protected:
   {
     G4VSolid*         solid;
     G4ThreeVector     position;
-    G4RotationMatrix* rotation; ///< nullptr for an untapered (plain box) solid.
+    G4RotationMatrix* rotation; ///< nullptr for an untapered (plain box) solid, else owned by this component.
   };
 
   /// Build one jaw sub-block (the bulk jaw, or - in a derived class - the tip),
@@ -93,14 +93,15 @@ protected:
   /// profile for both jaws whatever their gaps. The block is then a
   /// G4ExtrudedSolid of that profile. If tipTaperAngle is zero, the returned
   /// solid is a plain G4Box of length fullChordLength, identical to the
-  /// original (untapered) construction.
+  /// original (untapered) construction. Any rotation is registered here for
+  /// deletion; the solid must still be registered by the caller.
   TaperedBox BuildTaperedJawBox(const G4String& solidName,
                                 G4double xHalfGapThisJaw,
                                 G4int    sign,
                                 G4double depthInner,
                                 G4double depthOuter,
                                 G4double halfHeight,
-                                G4double fullChordLength) const;
+                                G4double fullChordLength);
 
   void Calculations(); ///< Calculate offsets and sizes.
 
