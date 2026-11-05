@@ -247,6 +247,19 @@ void BDSCollimatorJaw::CheckParameters()
   if (!buildLeftJaw && !buildRightJaw)
     {throw BDSException(__METHOD_NAME__, "no jaws being built for \"" + name + "\"");}
 
+  // checked before the no aperture return below as the closed collimator is a plain block
+  if (BDS::IsFinite(tipTaperAngle))
+    {
+      if (!buildAperture)
+        {throw BDSException(__METHOD_NAME__, "tipTaperAngle cannot be used with a closed (zero aperture) collimator \"" + name + "\"");}
+      if (tipTaperAngle <= 0 || tipTaperAngle >= CLHEP::halfpi)
+        {throw BDSException(__METHOD_NAME__, "tipTaperAngle must be in (0, pi/2) radians for \"" + name + "\"");}
+      if (taperDepth < 0)
+        {throw BDSException(__METHOD_NAME__, "taperDepth cannot be negative for \"" + name + "\"");}
+      if ((buildLeftJaw && jawTiltLeft != 0) || (buildRightJaw && jawTiltRight != 0))
+        {throw BDSException(__METHOD_NAME__, "tipTaperAngle cannot be combined with a jaw tilt for \"" + name + "\"");}
+    }
+
   // the remaining checks only apply to the jaw and vacuum geometry
   if (!buildAperture)
     {return;}
@@ -262,16 +275,6 @@ void BDSCollimatorJaw::CheckParameters()
     {throw BDSException(__METHOD_NAME__, "|jawTiltLeft| is over pi/4 radians for \"" + name + "\"");}
   if (std::abs(jawTiltRight) > 0.5*CLHEP::halfpi)
     {throw BDSException(__METHOD_NAME__, "|jawTiltRight| is over pi/4 radians for \"" + name + "\"");}
-
-  if (BDS::IsFinite(tipTaperAngle))
-    {
-      if (tipTaperAngle <= 0 || tipTaperAngle >= CLHEP::halfpi)
-        {throw BDSException(__METHOD_NAME__, "tipTaperAngle must be in (0, pi/2) radians for \"" + name + "\"");}
-      if (taperDepth < 0)
-        {throw BDSException(__METHOD_NAME__, "taperDepth cannot be negative for \"" + name + "\"");}
-      if ((buildLeftJaw && jawTiltLeft != 0) || (buildRightJaw && jawTiltRight != 0))
-        {throw BDSException(__METHOD_NAME__, "tipTaperAngle cannot be combined with a jaw tilt for \"" + name + "\"");}
-    }
 
   // shift of each jaw face at the ends of the element due to its tilt - tilt is ignored for a
   // jaw that isn't built - uses the half gaps from Calculations(), which is called in the constructor

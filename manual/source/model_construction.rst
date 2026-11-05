@@ -1411,7 +1411,8 @@ Notes:
   `horizontalWidth`/2, or only up to `taper_depth` if set, keeping a constant length beyond it.
   Both jaws have the same flat length whatever their apertures, and the element is made as long
   as the longest jaw, i.e. longer than `l`. The taper applies to the tip and the bulk material
-  alike, and cannot be combined with `jawTiltLeft` or `jawTiltRight`.
+  alike, and cannot be combined with `jawTiltLeft` or `jawTiltRight`, nor used with a closed
+  collimator (`xsize`, `xsizeLeft` and `xsizeRight` all zero).
 * A positive tilt angle rotates either jaw to the left on the downstream side. So, a positive jawTiltLeft
   increases the left jaw aperture on the downstream side. A positive jawTiltRight decreases the right
   aperture on the downstream side. Left positive and righ negative give diverging jaws.
