@@ -20,6 +20,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamline.hh"
 #include "BDSSDCollimator.hh"
 #include "BDSDebug.hh"
+#include "BDSGlobalConstants.hh"
 #include "BDSHitEnergyDeposition.hh"
 #include "BDSPhysicalVolumeInfo.hh"
 #include "BDSPhysicalVolumeInfoRegistry.hh"
@@ -131,11 +132,18 @@ G4bool BDSSDCollimator::ProcessHitsOrdered(G4Step* step,
 	}
     }
   
+  // there may be no energy deposition hit for this step, so also store the track information
+  const G4Track* track = step->GetTrack();
   BDSHitCollimator* hit = new BDSHitCollimator(mwBeamline,
 					       collimatorIndex,
 					       preStepPosLocal,
 					       preStepMomLocal,
 					       totalEnergy,
+					       preStepPoint->GetGlobalTime(),
+					       track->GetWeight(),
+					       track->GetDefinition()->GetPDGEncoding(),
+					       track->GetParentID(),
+					       BDSGlobalConstants::Instance()->TurnsTaken(),
 					       lastHitEDep);
 
   collimatorCollection->insert(hit);

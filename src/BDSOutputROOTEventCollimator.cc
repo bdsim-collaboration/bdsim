@@ -132,35 +132,45 @@ void BDSOutputROOTEventCollimator::Fill(const BDSHitCollimator*                 
   BDSHitEnergyDeposition* eHit = hit->energyDepositionHit;
   if (eHit)
     {
-      G4double eDep = eHit->GetEnergy() / CLHEP::GeV;
-      G4double eW   = eHit->GetEnergyWeighted() / CLHEP::GeV;
-      G4double w    = eHit->GetWeight();
-      
-      totalEnergyDeposited += eW;
-      
+      totalEnergyDeposited += eHit->GetEnergyWeighted() / CLHEP::GeV;
       primaryInteracted = primaryInteracted || eHit->GetParentID() == 0;
+    }
 
-      if (!storeHits)
-        {return;} // skip the rest of this function to avoid storing extra bits
-      
-      energyDeposited.push_back((float)eDep);
+  if (!storeHits)
+    {return;} // skip the rest of this function to avoid storing extra bits
+
+  // Every stored hit must fill every vector so that they all have length n. Use the
+  // energy deposition hit for the step if there is one, else the track information
+  // stored in the collimator hit (there is no energy deposited then).
+  if (eHit)
+    {
+      energyDeposited.push_back((float)(eHit->GetEnergy() / CLHEP::GeV));
       T.push_back((float)(eHit->GetGlobalTime() / CLHEP::ns));
-      weight.push_back((float)w);
+      weight.push_back((float)eHit->GetWeight());
       partID.push_back(eHit->GetPartID());
       parentID.push_back(eHit->GetParentID());
-      G4int tn = eHit->GetTurnsTaken();
-      turn.push_back(tn);
-      // Mark if this is the first primary impact of this turn as there may
-      // be multiple 'hits' inside the collimator for a primary passing through
-      // but we're really interested in the first one. Judge by whether we have
-      // an hits for this turn already. We assume (safely) that the first entry
-      // for a given turn will be the primary.
-      if (parentID.back() == 0)
-	{firstPrimaryHitThisTurn.push_back(turnSet.find(tn) == turnSet.end());}
-      else
-	{firstPrimaryHitThisTurn.push_back(false);} // can't be true
-      turnSet.insert(tn);
+      turn.push_back(eHit->GetTurnsTaken());
     }
+  else
+    {
+      energyDeposited.push_back(0);
+      T.push_back((float)(hit->globalTime / CLHEP::ns));
+      weight.push_back((float)hit->weight);
+      partID.push_back(hit->partID);
+      parentID.push_back(hit->parentID);
+      turn.push_back(hit->turnsTaken);
+    }
+  G4int tn = turn.back();
+  // Mark if this is the first primary impact of this turn as there may
+  // be multiple 'hits' inside the collimator for a primary passing through
+  // but we're really interested in the first one. Judge by whether we have
+  // an hits for this turn already. We assume (safely) that the first entry
+  // for a given turn will be the primary.
+  if (parentID.back() == 0)
+    {firstPrimaryHitThisTurn.push_back(turnSet.find(tn) == turnSet.end());}
+  else
+    {firstPrimaryHitThisTurn.push_back(false);} // can't be true
+  turnSet.insert(tn);
 }
 
 void BDSOutputROOTEventCollimator::FillExtras(G4bool fillIonInfo,
