@@ -76,8 +76,8 @@ G4bool BDSSDCollimator::ProcessHits(G4Step* step, G4TouchableHistory* rOHist)
 }
 
 G4bool BDSSDCollimator::ProcessHitsOrdered(G4Step* step,
-					   G4TouchableHistory* /*rOHist*/,
-					   const std::vector<G4VHit*>& hits)
+                                           G4TouchableHistory* /*rOHist*/,
+                                           const std::vector<G4VHit*>& hits)
 {
   G4VHit* lastHit = nullptr;
   BDSHitEnergyDeposition* lastHitEDep = nullptr;
@@ -117,34 +117,34 @@ G4bool BDSSDCollimator::ProcessHitsOrdered(G4Step* step,
   
       auto beamlineMap = mapping.find(mwBeamline);
       if (beamlineMap != mapping.end())
-	{
-	  const auto& indexMap = beamlineMap->second;
-	  collimatorIndex = indexMap.at(beamlineIndex);
-	}
+        {
+          const auto& indexMap = beamlineMap->second;
+          collimatorIndex = indexMap.at(beamlineIndex);
+        }
       else
-	{// create map for this beam line
-	  std::map<G4int, G4int> indexMap;
-	  std::vector<G4int> collimatorIndices = mwBeamline->GetIndicesOfCollimators();
-	  for (G4int i = 0; i < (G4int)collimatorIndices.size(); i++)
-	    {indexMap[collimatorIndices[i]] = i;}
-	  mapping[mwBeamline] = indexMap;
-	  collimatorIndex = indexMap.at(beamlineIndex); // cl beam line
-	}
+        {// create map for this beam line
+          std::map<G4int, G4int> indexMap;
+          std::vector<G4int> collimatorIndices = mwBeamline->GetIndicesOfCollimators();
+          for (G4int i = 0; i < (G4int)collimatorIndices.size(); i++)
+            {indexMap[collimatorIndices[i]] = i;}
+          mapping[mwBeamline] = indexMap;
+          collimatorIndex = indexMap.at(beamlineIndex); // cl beam line
+        }
     }
   
   // there may be no energy deposition hit for this step, so also store the track information
   const G4Track* track = step->GetTrack();
   BDSHitCollimator* hit = new BDSHitCollimator(mwBeamline,
-					       collimatorIndex,
-					       preStepPosLocal,
-					       preStepMomLocal,
-					       totalEnergy,
-					       preStepPoint->GetGlobalTime(),
-					       track->GetWeight(),
-					       track->GetDefinition()->GetPDGEncoding(),
-					       track->GetParentID(),
-					       BDSGlobalConstants::Instance()->TurnsTaken(),
-					       lastHitEDep);
+                                               collimatorIndex,
+                                               preStepPosLocal,
+                                               preStepMomLocal,
+                                               totalEnergy,
+                                               preStepPoint->GetGlobalTime(),
+                                               track->GetWeight(),
+                                               track->GetDefinition()->GetPDGEncoding(),
+                                               track->GetParentID(),
+                                               BDSGlobalConstants::Instance()->TurnsTaken(),
+                                               lastHitEDep);
 
   collimatorCollection->insert(hit);
   return true;

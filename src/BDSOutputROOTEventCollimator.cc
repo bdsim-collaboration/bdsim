@@ -84,9 +84,9 @@ void BDSOutputROOTEventCollimator::Flush()
 
 #ifndef __ROOTBUILD__
 void BDSOutputROOTEventCollimator::Fill(const BDSHitCollimator*                 hit,
-					const BDSOutputROOTEventCollimatorInfo& info,
-					const std::pair<G4double, G4double>&    differences,
-					G4bool                                  storeHits)
+                                        const BDSOutputROOTEventCollimatorInfo& info,
+                                        const std::pair<G4double, G4double>&    differences,
+                                        G4bool                                  storeHits)
 {
   if (storeHits)
     {
@@ -174,7 +174,7 @@ void BDSOutputROOTEventCollimator::Fill(const BDSHitCollimator*                 
 }
 
 void BDSOutputROOTEventCollimator::FillExtras(G4bool fillIonInfo,
-					      G4bool fillLinks)
+                                              G4bool fillLinks)
 {
   if (!particleTable)
     {return;}
@@ -188,36 +188,36 @@ void BDSOutputROOTEventCollimator::FillExtras(G4bool fillIonInfo,
       if (particleTable->IsIon(pid))
         {
           auto& ionInfo = particleTable->GetIonInfo(pid);
-	  if (fillIonInfo)
-	    {
-	      isIon.push_back(true);
-	      ionA.push_back(ionInfo.a);
-	      ionZ.push_back(ionInfo.z);
-	    }
-	  if (fillLinks)
-	    {
-	      charge.push_back(ionInfo.charge);
-	      mass.push_back((float)ionInfo.mass);
-	      rigidity.push_back((float)ionInfo.rigidity(energy[i], ionInfo.charge));
-	      kineticEnergy.push_back((float)particleTable->KineticEnergy(pid, energy[i]));
-	    }
+          if (fillIonInfo)
+            {
+              isIon.push_back(true);
+              ionA.push_back(ionInfo.a);
+              ionZ.push_back(ionInfo.z);
+            }
+          if (fillLinks)
+            {
+              charge.push_back(ionInfo.charge);
+              mass.push_back((float)ionInfo.mass);
+              rigidity.push_back((float)ionInfo.rigidity(energy[i], ionInfo.charge));
+              kineticEnergy.push_back((float)particleTable->KineticEnergy(pid, energy[i]));
+            }
         }
       else
         {// particle
-	  auto& pInfo = particleTable->GetParticleInfo(pid);
-	  if (fillIonInfo)
-	    {
-	      isIon.push_back(false);
-	      ionA.push_back(0);
-	      ionZ.push_back(0);
-	    }
-	  if (fillLinks)
-	    {
-	      charge.push_back(pInfo.charge);
-	      mass.push_back((float)pInfo.mass);
-	      rigidity.push_back((float)pInfo.rigidity(energy[i], pInfo.charge));
-	      kineticEnergy.push_back((float)particleTable->KineticEnergy(pid, energy[i]));
-	    }
+          auto& pInfo = particleTable->GetParticleInfo(pid);
+          if (fillIonInfo)
+            {
+              isIon.push_back(false);
+              ionA.push_back(0);
+              ionZ.push_back(0);
+            }
+          if (fillLinks)
+            {
+              charge.push_back(pInfo.charge);
+              mass.push_back((float)pInfo.mass);
+              rigidity.push_back((float)pInfo.rigidity(energy[i], pInfo.charge));
+              kineticEnergy.push_back((float)particleTable->KineticEnergy(pid, energy[i]));
+            }
         }
     }
 }
