@@ -15,7 +15,6 @@ beam, particle="proton",
       Rpmin=0.01,
       Rpmax=0.1;
 
-
 option, physicsList="hadronic_elastic",
         minimumKineticEnergy=0.5*GeV;
 
@@ -23,4 +22,4 @@ option, elossHistoBinWidth=1*cm;
 
 option, seed=123;
 
-option, ngenerate=100;
+option, ngenerate=40;
