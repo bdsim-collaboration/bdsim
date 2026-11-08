@@ -696,8 +696,9 @@ the benefit depends on the compiler and machine. Generated ROOT dictionaries
 are compiled separately to avoid duplicate definitions. Unity builds are disabled
 by default and can be disabled explicitly with :code:`-DCMAKE_UNITY_BUILD=OFF`.
 The number of source files combined can be set with
-:code:`CMAKE_UNITY_BUILD_BATCH_SIZE`. Linux and macOS continuous integration
-builds use the CMake default.
+:code:`CMAKE_UNITY_BUILD_BATCH_SIZE`. macOS continuous integration builds enable
+unity builds with the CMake default batch size; Linux continuous integration
+builds disable unity builds to retain coverage of regular compilation.
 
 .. _installation-bdsim-config-options:
 
