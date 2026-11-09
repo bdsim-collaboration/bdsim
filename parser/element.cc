@@ -246,6 +246,7 @@ void Element::PublishMembers()
   // for jaw collimator with tip
   publish("tipThickness",     &Element::tipThickness);
   publish("tipMaterial",      &Element::tipMaterial);
+  publish("tipLength",        &Element::tipLength);
   publish("taper_angle_deg",  &Element::taperAngleDeg);
   publish("taper_angle_rad",  &Element::taperAngleRad);
   publish("taper_depth",      &Element::taperDepth);
@@ -599,6 +600,7 @@ void Element::flush()
   jawTiltLeft = 0;
   jawTiltRight = 0;
   tipThickness = 0;
+  tipLength = 0;
   taperAngleDeg = 0;
   taperAngleRad = 0;
   taperDepth = 0;

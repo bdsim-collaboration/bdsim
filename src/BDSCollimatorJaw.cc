@@ -63,7 +63,7 @@ BDSCollimator(nameIn, lengthIn, horizontalWidthIn, objectType, collimatorMateria
   jawTiltLeft(leftJawTiltIn),
   jawTiltRight(rightJawTiltIn),
   tipTaperAngle(0),
-  taperFlatLength(0),
+  tipLength(0),
   taperDepth(0),
   yHalfHeight(yHalfHeightIn),
   buildLeftJaw(buildLeftJawIn),
@@ -135,35 +135,6 @@ void BDSCollimatorJaw::Calculations()
   vacuumOffset = G4ThreeVector(vacuumCentre, 0, 0);
 }
 
-G4double BDSCollimatorJaw::TaperedLength(G4double flatLength,
-                                         G4double horizontalWidth,
-                                         G4double xHalfGap,
-                                         G4double xSizeLeft,
-                                         G4double xSizeRight,
-                                         G4bool   buildLeftJaw,
-                                         G4bool   buildRightJaw,
-                                         G4double taperAngle,
-                                         G4double taperDepth)
-{
-  if (!(taperAngle > 0 && taperAngle < CLHEP::halfpi))
-    {return flatLength;}
-  // same jaw half gaps as in the constructor and Calculations()
-  G4double maxDepth = 0;
-  if (buildLeftJaw && std::abs(xSizeLeft) <= 0.5*horizontalWidth)
-    {
-      G4double gap = BDS::IsFinite(xSizeLeft) ? xSizeLeft : xHalfGap;
-      maxDepth = std::max(maxDepth, 0.5*horizontalWidth - gap);
-    }
-  if (buildRightJaw && std::abs(xSizeRight) <= 0.5*horizontalWidth)
-    {
-      G4double gap = BDS::IsFinite(xSizeRight) ? xSizeRight : xHalfGap;
-      maxDepth = std::max(maxDepth, 0.5*horizontalWidth - gap);
-    }
-  if (BDS::IsFinite(taperDepth) && taperDepth > 0)
-    {maxDepth = std::min(maxDepth, taperDepth);}
-  return flatLength + 2*maxDepth / std::tan(taperAngle);
-}
-
 BDSCollimatorJaw::TaperedBox
 BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
                                     G4double xHalfGapThisJaw,
@@ -188,15 +159,16 @@ BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
     }
 
   // Half chord length (BDSIM z, the beam direction) as a function of depth
-  // into the jaw: half the flat length at the jaw edge, growing linearly with
-  // depth up to taperDepth (if set), constant beyond. The component is made
-  // long enough for the deepest jaw (see TaperedLength()), so this never
-  // exceeds 0.5 * fullChordLength.
+  // into the jaw: half tipLength at the jaw edge, growing linearly with depth
+  // up to taperDepth (if set), constant beyond. CalculateTaper() makes this
+  // reach 0.5 * fullChordLength for the deepest jaw; it is capped there so
+  // that rounding never takes the jaw outside the container.
   G4bool   hasPlateau = BDS::IsFinite(taperDepth);
   auto halfLengthAtDepth = [&](G4double depth)
     {
       G4double taperedDepth = hasPlateau ? std::min(depth, taperDepth) : depth;
-      return 0.5 * taperFlatLength + taperedDepth / std::tan(tipTaperAngle) - lengthSafety;
+      G4double halfLength = 0.5 * tipLength + taperedDepth / std::tan(tipTaperAngle);
+      return std::min(halfLength, 0.5 * fullChordLength) - lengthSafety;
     };
 
   // Profile of the block in the depth (x) - beam (z) plane, relative to xCentre:
@@ -231,6 +203,51 @@ BDSCollimatorJaw::BuildTaperedJawBox(const G4String& solidName,
   return TaperedBox{solid, G4ThreeVector(xCentre, 0, 0), rot};
 }
 
+void BDSCollimatorJaw::CalculateTaper()
+{
+  if (tipTaperAngle < 0 || tipTaperAngle >= CLHEP::halfpi)
+    {throw BDSException(__METHOD_NAME__, "tipTaperAngle must be in (0, pi/2) radians for \"" + name + "\"");}
+  if (tipLength < 0)
+    {throw BDSException(__METHOD_NAME__, "tipLength cannot be negative for \"" + name + "\"");}
+  if (taperDepth < 0)
+    {throw BDSException(__METHOD_NAME__, "taperDepth cannot be negative for \"" + name + "\"");}
+
+  // the deepest jaw built is the full element length at the end of the taper
+  G4double maxJawDepth = 0;
+  if (buildLeftJaw)
+    {maxJawDepth = std::max(maxJawDepth, 0.5 * horizontalWidth - leftJawHalfGap);}
+  if (buildRightJaw)
+    {maxJawDepth = std::max(maxJawDepth, 0.5 * horizontalWidth - rightJawHalfGap);}
+  if (taperDepth > maxJawDepth)
+    {throw BDSException(__METHOD_NAME__, "taperDepth is greater than the depth of the jaws for \"" + name + "\"");}
+  G4double depth = BDS::IsFinite(taperDepth) ? taperDepth : maxJawDepth;
+
+  // l = tipLength + 2 * depth / tan(tipTaperAngle) - work out the one not given
+  if (!BDS::IsFinite(tipTaperAngle))
+    {
+      if (tipLength >= chordLength)
+        {throw BDSException(__METHOD_NAME__, "tipLength must be shorter than l for \"" + name + "\"");}
+      tipTaperAngle = std::atan(2 * depth / (chordLength - tipLength));
+    }
+  else if (!BDS::IsFinite(tipLength))
+    {
+      tipLength = chordLength - 2 * depth / std::tan(tipTaperAngle);
+      if (tipLength < 1e-3) // 1um minimum, could also be negative
+        {throw BDSException(__METHOD_NAME__, "l is too short for the taper angle and depth of \"" + name + "\"");}
+    }
+  else
+    {
+      G4double taperLength = tipLength + 2 * depth / std::tan(tipTaperAngle);
+      if (std::abs(taperLength - chordLength) > 1e-3) // 1um tolerance
+        {
+          throw BDSException(__METHOD_NAME__, "l = " + std::to_string(chordLength / CLHEP::mm) +
+                             " mm does not match tipLength, the taper angle and depth, which give " +
+                             std::to_string(taperLength / CLHEP::mm) + " mm, for \"" + name +
+                             "\" - specify only two of l, tipLength and the taper angle");
+        }
+    }
+}
+
 void BDSCollimatorJaw::CheckParameters()
 {
   // BDSCollimator::CheckParameters() <- we replace this and don't call it - 'tapered' is never set
@@ -248,16 +265,13 @@ void BDSCollimatorJaw::CheckParameters()
     {throw BDSException(__METHOD_NAME__, "no jaws being built for \"" + name + "\"");}
 
   // checked before the no aperture return below as the closed collimator is a plain block
-  if (BDS::IsFinite(tipTaperAngle))
+  if (BDS::IsFinite(tipTaperAngle) || BDS::IsFinite(tipLength))
     {
       if (!buildAperture)
-        {throw BDSException(__METHOD_NAME__, "tipTaperAngle cannot be used with a closed (zero aperture) collimator \"" + name + "\"");}
-      if (tipTaperAngle <= 0 || tipTaperAngle >= CLHEP::halfpi)
-        {throw BDSException(__METHOD_NAME__, "tipTaperAngle must be in (0, pi/2) radians for \"" + name + "\"");}
-      if (taperDepth < 0)
-        {throw BDSException(__METHOD_NAME__, "taperDepth cannot be negative for \"" + name + "\"");}
+        {throw BDSException(__METHOD_NAME__, "a taper cannot be used with a closed (zero aperture) collimator \"" + name + "\"");}
       if ((buildLeftJaw && jawTiltLeft != 0) || (buildRightJaw && jawTiltRight != 0))
-        {throw BDSException(__METHOD_NAME__, "tipTaperAngle cannot be combined with a jaw tilt for \"" + name + "\"");}
+        {throw BDSException(__METHOD_NAME__, "a taper cannot be combined with a jaw tilt for \"" + name + "\"");}
+      CalculateTaper();
     }
 
   // the remaining checks only apply to the jaw and vacuum geometry
