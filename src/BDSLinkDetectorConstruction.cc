@@ -361,7 +361,8 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
                                                           G4double tipTaperAngle,
                                                           G4double horizontalWidth,
                                                           G4double taperDepth,
-                                                          G4double jawHalfHeight)
+                                                          G4double jawHalfHeight,
+                                                          G4double tipLength)
 {
     auto componentFactory = std::unique_ptr<BDSComponentFactory>(new BDSComponentFactory(nullptr, false));
 
@@ -396,6 +397,7 @@ G4int BDSLinkDetectorConstruction::AddLinkCollimatorTipJaw(const std::string& co
     el.tipThickness = tipThickness / CLHEP::m;
     el.taperAngleRad = tipTaperAngle; // rad, already in BDSIM/CLHEP units
     el.taperDepth = taperDepth / CLHEP::m;
+    el.tipLength = tipLength / CLHEP::m;
 
     if (!buildLeftJaw)
     {
