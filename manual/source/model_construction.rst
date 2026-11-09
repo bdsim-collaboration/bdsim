@@ -1416,6 +1416,8 @@ Notes:
   the deepest jaw, so :math:`l = \mathrm{tipLength} + 2d/\tan(\theta)` with :math:`d` the
   `taper_depth`, or the depth of the deepest jaw if `taper_depth` is not set. Specify `l` and either
   `tipLength` or the taper angle and the other is calculated; if both are given, they must match `l`.
+  Alternatively, `l` may be left out if `tipLength`, the taper angle and `taper_depth` are all given;
+  `l` is then calculated from them when the input is parsed.
   Both jaws have the same `tipLength` and angle whatever their apertures. The taper applies to the
   tip and the bulk material alike, and cannot be combined with `jawTiltLeft` or `jawTiltRight`, nor
   used with a closed collimator (`xsize`, `xsizeLeft` and `xsizeRight` all zero).
@@ -1454,6 +1456,9 @@ Examples: ::
    ! SuperKEKB-type jaws: 10 mm face at the beam, tapered over the first 37 mm (12 degrees), then
    ! 88 mm at the full 358 mm length (125 mm deep jaws, so horizontalWidth = 2*(8 + 125) mm)
    j3: jcoltip, l=358*mm, tipLength=10*mm, horizontalWidth=266*mm, material="Cu", tipMaterial="W", tipThickness=5*mm, xsize=8*mm, taper_depth=37*mm;
+
+   ! the same jaws without l, which is then calculated as 10 mm + 2*37 mm/tan(12 deg) = 358.14 mm
+   j4: jcoltip, tipLength=10*mm, horizontalWidth=266*mm, material="Cu", tipMaterial="W", tipThickness=5*mm, xsize=8*mm, taper_angle_deg=12, taper_depth=37*mm;
 
 
 

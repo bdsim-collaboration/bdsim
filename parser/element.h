@@ -309,6 +309,10 @@ namespace GMAD
                         double samplerRadius,
                         int samplerParticleSetIDIn = -1);
 
+    /// For a tapered jcoltip without l, set l = tipLength + 2*taper_depth/tan(taper angle),
+    /// the full length of the jaw. Exits if l is not given and can't be calculated.
+    void setLengthFromTaper();
+
     ///@{ set method from Parameters structure
     void set(const Parameters& params);
     void set(const Parameters& params,std::string nameIn, ElementType typeIn);

@@ -55,9 +55,13 @@ col24: jcoltip, l=200*mm, tipLength=10*mm, material="G4_Cu", tipMaterial="G4_W",
 ! of the 125 mm deep jaw keep the full 358 mm length: atan(2*37 mm / (358 - 10) mm) = 12 deg
 col25: jcoltip, l=358*mm, tipLength=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=266*mm, xsize=8*mm, taper_depth=37*mm;
 
+! the same jaws given by tipLength, the taper angle and taper_depth instead, without l:
+! l is then calculated as 10 mm + 2*37 mm/tan(12 deg) = 358.14 mm
+col26: jcoltip, tipLength=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=266*mm, xsize=8*mm, taper_angle_deg=12, taper_depth=37*mm;
+
 l1: line=(d1, col1, d1, col2, d1, col3, d1, col4, d1, col5, d1, col6, d1, col7, d1, col8, d1, col9, d1, col10, d1, col11, d1, col12, d1, col13);
 l2: line=(d1, col14, d1, col15, d1, col16, d1, col17, d1, col18, d1, col19, d1, col20);
-l3: line=(d1, col21, d1, col22, d1, col23, d1, col24, d1, col25);
+l3: line=(d1, col21, d1, col22, d1, col23, d1, col24, d1, col25, d1, col26);
 ltotal: line=(l1, l2, l3);
 use, ltotal;
 

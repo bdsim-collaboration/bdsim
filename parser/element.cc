@@ -20,6 +20,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "parameters.h"
 #include "parser.h"
 
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -827,6 +828,30 @@ void Element::setSamplerInfo(std::string samplerTypeIn,
   samplerName   = samplerNameIn;
   samplerRadius = samplerRadiusIn;
   samplerParticleSetID = particleSetIDIn;
+}
+
+void Element::setLengthFromTaper()
+{
+  if (type != ElementType::_JCOLTIP || l > 0)
+    {return;}
+  bool degSet = taperAngleDeg != 0;
+  bool radSet = taperAngleRad != 0;
+  if (tipLength == 0 && !degSet && !radSet)
+    {return;} // not tapered - l is required as for any element
+  if (tipLength <= 0 || degSet == radSet || taperDepth <= 0)
+    {
+      std::cerr << "Error: parser> jcoltip \"" << name << "\": l must be given, or tipLength, taper_depth "
+                << "and one of taper_angle_deg or taper_angle_rad to calculate it" << std::endl;
+      exit(1);
+    }
+  double halfPi = 2.0*std::atan(1);
+  double angle = degSet ? taperAngleDeg * halfPi / 90.0 : taperAngleRad;
+  if (angle <= 0 || angle >= halfPi)
+    {
+      std::cerr << "Error: parser> jcoltip \"" << name << "\": the taper angle must be between 0 and 90 degrees" << std::endl;
+      exit(1);
+    }
+  l = tipLength + 2*taperDepth / std::tan(angle);
 }
 
 void Element::set_value_array(const std::string& property, Array* value, bool bExit)
