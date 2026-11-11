@@ -53,6 +53,9 @@ foreach(header ${linkHeaders})
     ${CMAKE_CURRENT_BINARY_DIR}
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/root/${className}Dict.cc
     )
+  # ROOT dictionaries define common helpers and must compile separately in unity builds.
+  set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/root/${className}Dict.cc
+    PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
   # add arbitrary dependence to make it run at compile time (since DEPENDS at custom_command seems not to work)
   set_property(
     SOURCE ${CMAKE_CURRENT_BINARY_DIR}/root/${className}Dict.cc

@@ -22,16 +22,26 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 G4Allocator<BDSHitCollimator> BDSAllocatorCollimator;
 
 BDSHitCollimator::BDSHitCollimator(const BDSBeamline*   beamlineIn,
-				   G4int                collimatorIndexIn,
-				   const G4ThreeVector& preStepPositionIn,
-				   const G4ThreeVector& preStepMomentumIn,
-				   G4double             totalEnergyIn,
-				   BDSHitEnergyDeposition* energyDepositionHitIn):
+                                   G4int                collimatorIndexIn,
+                                   const G4ThreeVector& preStepPositionIn,
+                                   const G4ThreeVector& preStepMomentumIn,
+                                   G4double             totalEnergyIn,
+                                   G4double             globalTimeIn,
+                                   G4double             weightIn,
+                                   G4int                partIDIn,
+                                   G4int                parentIDIn,
+                                   G4int                turnsTakenIn,
+                                   BDSHitEnergyDeposition* energyDepositionHitIn):
   beamline(beamlineIn),
   collimatorIndex(collimatorIndexIn),
   preStepPosition(preStepPositionIn),
   preStepMomentum(preStepMomentumIn),
   totalEnergy(totalEnergyIn),
+  globalTime(globalTimeIn),
+  weight(weightIn),
+  partID(partIDIn),
+  parentID(parentIDIn),
+  turnsTaken(turnsTakenIn),
   energyDepositionHit(energyDepositionHitIn)
 {;}
 

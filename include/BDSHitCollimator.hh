@@ -44,6 +44,11 @@ public:
 		   const G4ThreeVector& preStepPositionIn,
 		   const G4ThreeVector& preStepMomentumIn,
 		   G4double             totalEnergyIn,
+		   G4double             globalTimeIn,
+		   G4double             weightIn,
+		   G4int                partIDIn,
+		   G4int                parentIDIn,
+		   G4int                turnsTakenIn,
 		   BDSHitEnergyDeposition* energyDepositionHitIn);
 
   /// Note this should not be inline when we use a G4Allocator.
@@ -57,9 +62,15 @@ public:
   G4ThreeVector preStepPosition; ///< Local pre step point (z from centre of object).
   G4ThreeVector preStepMomentum; ///< Local pre step point momentum.
   G4double      totalEnergy;     ///< Total energy of particle.
+  G4double      globalTime;      ///< Pre step point global time.
+  G4double      weight;          ///< Statistical weight of the track.
+  G4int         partID;          ///< PDG ID of the particle.
+  G4int         parentID;        ///< Track ID of the parent of the particle.
+  G4int         turnsTaken;      ///< Turn number of the hit.
 
   /// Pointer to the externally created energy deposition hit for the step in the
-  /// collimator this hit will correspond to.
+  /// collimator this hit will correspond to. Can be nullptr if there was no energy
+  /// deposition hit for the step, in which case the information above is used.
   BDSHitEnergyDeposition* energyDepositionHit;
 };
 
