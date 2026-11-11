@@ -12,19 +12,26 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
-Unreleased
-==========
+v1.8.2 - 2026 / 11 / 11
+=======================
 
 Bug Fixes
 ---------
 
+* Fix a crash when using :code:`option, storeCollimatorHitsLinks=1;`. On the occasion a
+  step would happen with zero energy deposition in a purely elastic interaction, the
+  code would not fill the output uniformly and this would lead to both mismatched
+  data in the output vectors as well as most likely a crash.
 * Fix unity builds by compiling ROOT dictionaries separately, including physics
   utility declarations explicitly in link bunch implementations, and using the
   analysis debug header consistently.
-* Guard the curvilinear builder header against repeated inclusion in unity builds.
 * Enable unity builds only in macOS continuous integration, retaining regular
   builds on Linux for coverage of both build modes. Build parallelism is set to
   the detected number of runner cores.
+* Change the local GDML schema lookup to be relative to the BDSIM shared library instead
+  of the BDSIM executable to aid the Python bindings.
+
+No change of data version or structures and no new features.
 
 
 v1.8.1 - 2026 / 10 / 20

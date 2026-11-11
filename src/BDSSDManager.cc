@@ -261,35 +261,35 @@ G4VSensitiveDetector* BDSSDManager::SensitiveDetector(const BDSSDType sdType,
       {result = terminator; break;}
     case BDSSDType::energydep:
       {
-	if (applyOptions)
-	  {result = generateELossHits ? energyDeposition : nullptr;}
-	else
-	  {result = energyDeposition;}
-	break;
+        if (applyOptions)
+          {result = generateELossHits ? energyDeposition : nullptr;}
+        else
+          {result = energyDeposition;}
+        break;
       }
     case BDSSDType::energydepvacuum:
       {
-	if (applyOptions)
-	  {result = generateELossVacuumHits ? energyDepositionVacuum : nullptr;}
-	else
-	  {result = energyDepositionVacuum;}
-	break;
+        if (applyOptions)
+          {result = generateELossVacuumHits ? energyDepositionVacuum : nullptr;}
+        else
+          {result = energyDepositionVacuum;}
+        break;
       }
     case BDSSDType::energydeptunnel:
       {
-	if (applyOptions)
-	  {result = generateELossTunnelHits ? energyDepositionTunnel : nullptr;}
-	else
-	  {result = energyDepositionTunnel;}
-	break;
+        if (applyOptions)
+          {result = generateELossTunnelHits ? energyDepositionTunnel : nullptr;}
+        else
+          {result = energyDepositionTunnel;}
+        break;
       }
     case BDSSDType::energydepworld:
       {
-	if (applyOptions)
-	  {result = storeELossWorld ? energyDepositionWorld : nullptr;}
-	else
-	  {result = energyDepositionWorld;}
-	break;
+        if (applyOptions)
+          {result = storeELossWorld ? energyDepositionWorld : nullptr;}
+        else
+          {result = energyDepositionWorld;}
+        break;
       }
     case BDSSDType::worldexit:
       {result = worldExit; break;}
@@ -301,71 +301,71 @@ G4VSensitiveDetector* BDSSDManager::SensitiveDetector(const BDSSDType sdType,
 #endif
     case BDSSDType::energydepworldcontents:
       {
-	if (applyOptions)
-	  {result = generateELossWorldContents ? energyDepositionWorldContents : nullptr;}
-	else
-	  {result = energyDepositionWorldContents;}
-	break;
+        if (applyOptions)
+          {result = generateELossWorldContents ? energyDepositionWorldContents : nullptr;}
+        else
+          {result = energyDepositionWorldContents;}
+        break;
       }
     case BDSSDType::collimator:
       {result = collimatorSD; break;}
     case BDSSDType::collimatorcomplete:
       {
-	if (applyOptions)
-	  {// if we're not going to store collimator specific information, just use
-	    // regular energy deposition hits to save memory (collimator hits require
-	    // full energy deposition hits, plus use extra memory themselves).
-	    if (generateCollimatorHits)
-	      {result = collimatorCompleteSD;}
-	    else
-	      {result = energyDeposition;}
-	  }
-	else
-	  {result = collimatorCompleteSD;}
-	break;
+        if (applyOptions)
+          {// if we're not going to store collimator specific information, just use
+            // regular energy deposition hits to save memory (collimator hits require
+            // full energy deposition hits, plus use extra memory themselves).
+            if (generateCollimatorHits)
+              {result = collimatorCompleteSD;}
+            else
+              {result = energyDeposition;}
+          }
+        else
+          {result = collimatorCompleteSD;}
+        break;
       }
     case BDSSDType::apertureimpacts:
       {
-	if (applyOptions)
-	  {result = generateApertureImpacts ? apertureImpacts : nullptr;}
-	else
-	  {result = apertureImpacts;}
-	break;
+        if (applyOptions)
+          {result = generateApertureImpacts ? apertureImpacts : nullptr;}
+        else
+          {result = apertureImpacts;}
+        break;
       }
     case BDSSDType::aperturecomplete:
       {
 #if G4VERSION_NUMBER > 1029
-	if (applyOptions)
-	  {
-	    if (generateApertureImpacts && generateELossHits)
-	      {result = apertureCompleteSD;}
-	    else if (generateApertureImpacts)
-	      {result = apertureImpacts;}
-	  }
-	else
-	  {result = apertureCompleteSD;}
-	break;
+        if (applyOptions)
+          {
+            if (generateApertureImpacts && generateELossHits)
+              {result = apertureCompleteSD;}
+            else if (generateApertureImpacts)
+              {result = apertureImpacts;}
+          }
+        else
+          {result = apertureCompleteSD;}
+        break;
 #else
-	if (applyOptions)
-	  {result = generateApertureImpacts ? apertureImpacts : nullptr;}
-	else
-	  {result = apertureImpacts;}
-	break;
+        if (applyOptions)
+          {result = generateApertureImpacts ? apertureImpacts : nullptr;}
+        else
+          {result = apertureImpacts;}
+        break;
 #endif
       }
     case BDSSDType::thinthing:
       {result = thinThingSD; break;}
     case BDSSDType::wirecomplete:
       {
-	if (applyOptions)
-	  {
-	    result = generateELossHits
-	      ? static_cast<G4VSensitiveDetector*>(wireCompleteSD)
-	      : static_cast<G4VSensitiveDetector*>(thinThingSD);
-	  }
-	else
-	  {result = wireCompleteSD;}
-	break;
+        if (applyOptions)
+          {
+            result = generateELossHits
+              ? static_cast<G4VSensitiveDetector*>(wireCompleteSD)
+              : static_cast<G4VSensitiveDetector*>(thinThingSD);
+          }
+        else
+          {result = wireCompleteSD;}
+        break;
       }
     default:
       {result = nullptr; break;}
@@ -374,7 +374,7 @@ G4VSensitiveDetector* BDSSDManager::SensitiveDetector(const BDSSDType sdType,
 }
 
 void BDSSDManager::RegisterPrimitiveScorerName(const G4String& nameIn,
-					       G4double unit)
+                                               G4double unit)
 {
   primitiveScorerNamesComplete.emplace_back(nameIn);
 
@@ -387,19 +387,19 @@ void BDSSDManager::RegisterPrimitiveScorerName(const G4String& nameIn,
 }
 
 void BDSSDManager::RegisterPrimitiveScorerNames(const std::vector<G4String>& namesIn,
-						const std::vector<G4double>* units)
+                                                const std::vector<G4double>* units)
 {
   if (units)
     {
       if (units->size() != namesIn.size())
-	{throw BDSException(__METHOD_NAME__, "mismatching size of names and units.");}
+        {throw BDSException(__METHOD_NAME__, "mismatching size of names and units.");}
       for (G4int i = 0; i < (G4int)namesIn.size(); i++)
-	{RegisterPrimitiveScorerName(namesIn[i], (*units)[i]);}
+        {RegisterPrimitiveScorerName(namesIn[i], (*units)[i]);}
     }
   else
     {
       for (const auto& name : namesIn)
-	{RegisterPrimitiveScorerName(name);}
+        {RegisterPrimitiveScorerName(name);}
     }
 }
 
