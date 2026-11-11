@@ -20,6 +20,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSException.hh"
 #include "BDSIonDefinition.hh"
 #include "BDSParticleDefinition.hh"
+#include "BDSPhysicsUtilities.hh"
 
 #include "globals.hh"
 #include "G4IonTable.hh"
