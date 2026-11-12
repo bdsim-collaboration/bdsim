@@ -1,11 +1,11 @@
 <map id="BDSHitCollimator" name="BDSHitCollimator">
-<area shape="rect" id="Node000001" title="Snapshot of information for particle passing through a collimator." alt="" coords="2279,8277,2443,8483"/>
+<area shape="rect" id="Node000001" title="Snapshot of information for particle passing through a collimator." alt="" coords="2279,8277,2443,8583"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="2158,7031,2218,7097"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2184,7111,2165,7292,2157,7421,2154,7569,2159,7727,2174,7892,2202,8056,2222,8136,2246,8214,2262,8248,2281,8281,2277,8284,2257,8251,2242,8216,2217,8137,2197,8057,2169,7892,2153,7728,2149,7569,2152,7421,2159,7292,2179,7110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2186,7111,2172,7291,2167,7419,2166,7565,2172,7724,2185,7889,2210,8054,2247,8214,2262,8257,2282,8300,2277,8302,2257,8259,2241,8215,2204,8055,2180,7889,2166,7724,2161,7565,2162,7419,2167,7290,2180,7110"/>
 <area shape="rect" id="Node000060" href="$classBDSHitEnergyDeposition.html" title="Information recorded for a single piece of energy deposition." alt="" coords="2256,7459,2467,8165"/>
 <area shape="poly" id="edge63_Node000060_Node000002" title=" " alt="" coords="2196,7110,2210,7218,2233,7346,2260,7458,2255,7460,2228,7347,2205,7219,2190,7111"/>
 <area shape="rect" id="Node000003" href="$classBDSBeamline.html" title="A vector of BDSBeamlineElement instances &#45; a beamline." alt="" coords="2499,7409,2728,8215"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2539,8216,2518,8255,2491,8290,2458,8321,2454,8317,2487,8287,2514,8252,2535,8214"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2536,8216,2518,8255,2490,8300,2457,8342,2452,8339,2486,8297,2514,8252,2531,8214"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="2512,7024,2699,7104"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2608,7104,2612,7393,2606,7393,2603,7104"/>
 <area shape="rect" id="Node000005" href="$classBDSBeamlineElement.html" title="A class that holds a fully constructed BDSAcceleratorComponent as well as any information relevant to..." alt="" coords="2502,4999,2775,6704"/>

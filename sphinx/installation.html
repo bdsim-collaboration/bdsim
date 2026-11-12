@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; BDSIM 1.8.1 documentation</title>
+  <title>Installation &mdash; BDSIM 1.8.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=1166ed6b"></script>
+      <script src="_static/documentation_options.js?v=269e6701"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -83,6 +83,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#compiling-bdsim">Compiling BDSIM</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-the-build">Configuring the Build</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unity-builds">Unity Builds</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#optional-configuration-options">Optional Configuration Options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#giving-cmake-hints-for-packages">Giving CMake Hints for Packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specifying-a-root-installation">Specifying a ROOT Installation</a></li>
@@ -783,6 +784,20 @@ this command. You can change the installation directory in the above <strong>ccm
 configuration to one that won’t require the <code class="code docutils literal notranslate"><span class="pre">sudo</span></code> command. The variable
 <code class="code docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> should be changed.</p>
 </div>
+<section id="unity-builds">
+<h4>Unity Builds<a class="headerlink" href="#unity-builds" title="Link to this heading"></a></h4>
+<p>With CMake 3.16 or newer, pass <code class="code docutils literal notranslate"><span class="pre">-DCMAKE_UNITY_BUILD=ON</span></code> when configuring
+BDSIM to enable <a class="reference external" href="https://cmake.org/cmake/help/latest/prop_tgt/UNITY_BUILD.html">CMake unity builds</a>.
+Unity builds combine several source files into one translation unit, reducing
+repeated header processing during compilation. This can reduce clean build times;
+the benefit depends on the compiler and machine. Generated ROOT dictionaries
+are compiled separately to avoid duplicate definitions. Unity builds are disabled
+by default and can be disabled explicitly with <code class="code docutils literal notranslate"><span class="pre">-DCMAKE_UNITY_BUILD=OFF</span></code>.
+The number of source files combined can be set with
+<code class="code docutils literal notranslate"><span class="pre">CMAKE_UNITY_BUILD_BATCH_SIZE</span></code>. macOS continuous integration builds enable
+unity builds with the CMake default batch size; Linux continuous integration
+builds disable unity builds to retain coverage of regular compilation.</p>
+</section>
 <section id="optional-configuration-options">
 <span id="installation-bdsim-config-options"></span><h4>Optional Configuration Options<a class="headerlink" href="#optional-configuration-options" title="Link to this heading"></a></h4>
 <p>BDSIM has a few optional configuration options. These can be specified with a value when
@@ -1373,7 +1388,7 @@ required by pyg4ometry.</p></td>
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Oct 20, 2026.
+      <span class="lastupdated">Last updated on Nov 12, 2026.
       </span></p>
   </div>
 

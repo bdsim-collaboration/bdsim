@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Output Analysis &mdash; BDSIM 1.8.1 documentation</title>
+  <title>Output Analysis &mdash; BDSIM 1.8.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=1166ed6b"></script>
+      <script src="_static/documentation_options.js?v=269e6701"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -114,10 +114,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#analysis-in-c-or-root">Analysis in C++ or ROOT</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Raw Data Loading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">REBDSIM Histogram Loading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Looping Over Events</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Sampler Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Raw Data Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">REBDSIM Histogram Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Looping Over Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Sampler Data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output-classes">Output Classes</a></li>
 </ul>
 </li>
@@ -1116,13 +1116,13 @@ output files (i.e. not <cite>rebdsim</cite> output files).</p>
 </div>
 <p><cite>rebdsim</cite> will ‘chain’ the files together to behave as one big file with all of the events.
 This is shown schematically in the figure below.</p>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="_images/multiple_outputs_rebdsim.pdf"><img alt="_images/multiple_outputs_rebdsim.pdf" src="_images/multiple_outputs_rebdsim.pdf" style="width: 100%;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Schematic of strategy for a low volume of data produced from a computationally
 intense simulation. Multiple instances of BDSIM are executed, each producing their
-own output file. These are analysed all at once with <cite>rebdsim</cite>.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+own output file. These are analysed all at once with <cite>rebdsim</cite>.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>This strategy works best for a relatively low number of events and data volume (example
@@ -1139,7 +1139,7 @@ per event, along with the error on the mean for the bin error. A separate tool,
 <cite>rebdsimCombine</cite>, can be used to combine these <cite>rebdsim</cite> output files into one single
 file. This is numerically equivalent to analysing all the data in one execution of
 <cite>rebdsim</cite> but significantly faster. See <a class="reference internal" href="#rebdsim-combine-tool"><span class="std std-ref">rebdsimCombine - Output Combination</span></a> for more details.</p>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="_images/multiple_analyses.pdf"><img alt="_images/multiple_analyses.pdf" src="_images/multiple_analyses.pdf" style="width: 100%;" />
 </a>
 <figcaption>
@@ -1147,7 +1147,7 @@ file. This is numerically equivalent to analysing all the data in one execution 
 BDSIM are executed in a script that then executes <cite>rebdsim</cite> with a suitable
 analysis configuration. Only the output files from <cite>rebdsim</cite> are then combined
 into a final output identical to what would have been produced from analysing
-all data at once, but in vastly reduced time.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+all data at once, but in vastly reduced time.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -1167,21 +1167,25 @@ then we could run many instances of BDSIM on a computer farm. Each job would run
 one single file of raw data with events of interest.</p>
 <p>The total number of events simulated is preserved in the header so we can normalise any result
 correctly later on to get the correct physical rate.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="_images/skimming.pdf"><img alt="_images/skimming.pdf" src="_images/skimming.pdf" style="width: 100%;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Schematic of strategy for a skimming data reduction. Multiple instances of
 BDSIM are executed in a script that then executes <cite>bdskim</cite> with a suitable
 selection file. Only the output files from <cite>bdskim</cite> are then combined
-into a final output.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+into a final output.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <section id="normalisation">
 <h4>Normalisation<a class="headerlink" href="#normalisation" title="Link to this heading"></a></h4>
-<p>If skimming is used, we must know the original number of events simulated so we can
-correctly normalise any results for the original per-event rate. The header in each
-BDSIM and REBDSIM output file contains several numbers that provide this information.</p>
+<p>When using <cite>rebdsim</cite> on a raw output file, the per-event histograms are based only on that
+sample in that file. If this is a subset of original events through skimming or playing
+an input beam distribution with filters, then you must multiply the histogram by the appropriate
+factor to recover the real physical rate per original event.</p>
+<p>To help with this, he header in each BDSIM and REBDSIM output file contains several numbers
+that provide this information listed below. When combining results with <cite>rebdsimCombine</cite> or
+<a href="#id1"><span class="problematic" id="id2">`</span></a>bdsimCombine, these numbers are added up for the new file header.</p>
 <p>The default histograms from rebdsim are per-event normalised. Only “SimpleHistograms”
 are unnormalised.</p>
 <p>These are also documented in <a class="reference internal" href="output.html#output-header-tree"><span class="std std-ref">Header Tree</span></a>.</p>
@@ -1337,8 +1341,7 @@ it will be slightly different. These numbers are purely for illustrative purpose
 entries, where one entry represents one event. The histograms must be multiplied by:</p>
 <div class="math notranslate nohighlight">
 \[\mathrm{scaling} = \frac{5 \times 10 \times 0.01 \times N \times 0.98}{N}\]</div>
-<p>to recover the original rate per proton on target in this simulation. This is done automatically
-by rebdsim. rebdsimCombine just adds together the already correctly normalised histograms.</p>
+<p>to recover the original rate per proton on target in this simulation.</p>
 </section>
 </section>
 </section>
@@ -1673,8 +1676,8 @@ classes provided by the library:</p>
 </div>
 <p>The header (“.hh”) files in <code class="code docutils literal notranslate"><span class="pre">&lt;bdsim&gt;/analysis</span></code> provide the contents and abilities
 of each class.</p>
-<section id="id1">
-<h4>Raw Data Loading<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<section id="id3">
+<h4>Raw Data Loading<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <p>This would of course be fairly tedious to load all the structures in the output. Therefore,
 a data loader class is provided that constructs local instances of all the objects and
 sets the branch address on them (links them to the open file). For example:</p>
@@ -1687,8 +1690,8 @@ sets the branch address on them (links them to the open file). For example:</p>
 </div>
 <p>Here, a file is loaded and by default all data is loaded in the file.</p>
 </section>
-<section id="id2">
-<h4>REBDSIM Histogram Loading<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<section id="id4">
+<h4>REBDSIM Histogram Loading<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
 <p>To load histograms, the user should open the ROOT file and access the histograms directly.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">&gt;</span> <span class="n">TFile</span><span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s2">"output.root"</span><span class="p">);</span>
 <span class="n">root</span><span class="o">&gt;</span> <span class="n">TH1D</span><span class="o">*</span> <span class="n">eloss</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1D</span><span class="o">*</span><span class="p">)</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s2">"Event/MergedHistograms/ElossHisto"</span><span class="p">);</span>
@@ -1696,8 +1699,8 @@ sets the branch address on them (links them to the open file). For example:</p>
 </div>
 <p>It is recommended to use a TBrowser to get the exact names of objects in the file.</p>
 </section>
-<section id="id3">
-<h4>Looping Over Events<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<section id="id5">
+<h4>Looping Over Events<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
 <p>We get access to event by event information through a local event object and the linked
 event tree (here, a chain of all files) provided by the DataLoader class. We can then load
 a particular entry in the tree, which for the Event tree is an individual event:</p>
@@ -1734,8 +1737,8 @@ classes are designed to have the same structure as the output file. Look at
 <p>This would loop over all entries and print the number of energy deposition hits per
 event.</p>
 </section>
-<section id="id4">
-<h4>Sampler Data<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<section id="id6">
+<h4>Sampler Data<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
 <p>Samplers are dynamically added to the output based on the names the user decides in
 their input accelerator model. The names of the samplers can be accessed from the
 DataLoader class:</p>
@@ -1759,7 +1762,7 @@ DataLoader class:</p>
 </section>
 </section>
 <section id="numerical-methods">
-<span id="id5"></span><h2>Numerical Methods<a class="headerlink" href="#numerical-methods" title="Link to this heading"></a></h2>
+<span id="id7"></span><h2>Numerical Methods<a class="headerlink" href="#numerical-methods" title="Link to this heading"></a></h2>
 <p>Algorithms used to accurately calculate quantities are described here. These are
 documented explicitly as a simple implementation of the mathematical formulae
 would result in an inaccurate answer in some cases.</p>
@@ -1826,7 +1829,7 @@ Var\,(x)_{i+1} &amp;= Var\,(x)_{i} + Var\,(x)_{i+1} + (n_{i}\,n_{i+1} \frac{\del
 
   <div role="contentinfo">
     <p>&#169; Copyright Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London, 2001 - 2026.
-      <span class="lastupdated">Last updated on Oct 20, 2026.
+      <span class="lastupdated">Last updated on Nov 12, 2026.
       </span></p>
   </div>
 
