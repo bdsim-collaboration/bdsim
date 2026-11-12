@@ -27,7 +27,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "RebdsimTypes.hh"
 #include "Run.hh"
 
-#include "BDSDebug.hh"
+#include "rebdsim.hh"
 #include "BDSOutputROOTEventAperture.hh"
 #include "BDSOutputROOTEventCollimator.hh"
 #include "BDSOutputROOTEventSampler.hh"

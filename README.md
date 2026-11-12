@@ -2,7 +2,7 @@
 
 ## General Information
 
-BDSIM version 1.8.1 program for radiation transport in accelerators
+BDSIM version 1.8.2 program for radiation transport in accelerators
 
 The official web site is:
 	https://bdsim-collaboration.github.io/web/
@@ -98,6 +98,9 @@ vis/             : default visualisation files
 ## History
 
 ```
+v1.8.2  12.11.26
+v1.8.1  20.10.26
+v1.8.0  27.09.26
 v1.7.7  29.10.23
 v1.7.6  18.10.23
 v1.7.5  03.10.23
