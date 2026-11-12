@@ -7,10 +7,11 @@ Workflow to make a release from develop. Assume the previous version was X.Y.Z a
 X.Y.Z.develop and the new version will be A.B.C.
 
 #. Make a vX.Y.Z-rc release candidate branch off of develop. Must end in 'rc'. Check it out.
-#. README.txt
+#. README.md
    
-   * ensure the copyright year year1 - year2 -> year2 is this year.
-   * update in the General Information section the version number. (Normally, X.Y.Z.develop -> A.B.C)
+   * Ensure the copyright year year1 - year2 -> year2 is this year.
+   * Update in the General Information section the version number. (Normally, X.Y.Z.develop -> A.B.C)
+   * Add the release date in the list at the bottom.
 
 #. CMakeLists.txt - change major, minor and patch version at the very top.
 #. Edit manual/source/version_history.rst for this release. At the end of the release notes, write
