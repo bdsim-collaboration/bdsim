@@ -78,6 +78,11 @@ public:
   /// result as deleting it would remove it from the open file in ROOT.
   virtual ~HistogramAccumulator();
 
+  /// @{ No copying as this class owns the mean and variance histograms.
+  HistogramAccumulator(const HistogramAccumulator&) = delete;
+  HistogramAccumulator& operator=(const HistogramAccumulator&) = delete;
+  /// @}
+
   /// Loop over the bins in a histogram and accumulate that bin from a new
   /// histogram ("newValue"). newValue is assumed to be the exact same as
   /// the baseHistogram the instance of this class was constructed with.
@@ -96,6 +101,9 @@ public:
   
   /// Access currently accumulated number of entries.
   inline unsigned long N() const {return n;}
+
+  /// Empty all contents.
+  virtual void Flush();
 
 protected:
   /// Accumulate a single value into the online mean and variance histograms.

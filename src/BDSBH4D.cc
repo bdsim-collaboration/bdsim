@@ -171,12 +171,17 @@ BDSBH4D<T>* BDSBH4D<T>::Clone(const char* newname) const
 }
 
 template <class T>
-void BDSBH4D<T>::Fill_BDSBH4D(double xValue,
+int BDSBH4D<T>::Fill_BDSBH4D(double xValue,
 			      double yValue,
 			      double zValue,
 			      double eValue)
 {
   h(xValue, yValue, zValue, eValue);
+  int i = h.axis(0).index(xValue);
+  int j = h.axis(1).index(yValue);
+  int k = h.axis(2).index(zValue);
+  int l = h.axis(3).index(eValue);
+  return GlobalBin_BDSBH4D(i, j, k, l);
 }
 
 template <class T>
@@ -186,6 +191,16 @@ void BDSBH4D<T>::Set_BDSBH4D(int x,
 			     int e,
 			     double value)
 {
+  h.at(x, y, z, e) = value;
+}
+
+
+template <class T>
+void BDSBH4D<T>::Set_BDSBH4D(int global,
+                             double value)
+{
+  int x,y,z,e;
+  IndicesFromGlobalBin_BDSBH4D(global, x, y, z, e);
   h.at(x, y, z, e) = value;
 }
 
@@ -200,6 +215,15 @@ void BDSBH4D<T>::SetError_BDSBH4D(int x,
 }
 
 template <class T>
+void BDSBH4D<T>::SetError_BDSBH4D(int global,
+                                  double value)
+{
+  int x,y,z,e;
+  IndicesFromGlobalBin_BDSBH4D(global, x, y, z, e);
+  h_err.at(x, y, z, e) = value;
+}
+
+template <class T>
 void BDSBH4D<T>::Add_BDSBH4D(BDSBH4DBase* otherHistogram)
 {
   auto tmp = dynamic_cast<BDSBH4D<T>*>(otherHistogram);
@@ -209,6 +233,14 @@ void BDSBH4D<T>::Add_BDSBH4D(BDSBH4DBase* otherHistogram)
 template <class T>
 double BDSBH4D<T>::At(int x, int y, int z, int e)
 {
+  return h.at(x, y, z, e);
+}
+
+template <class T>
+double BDSBH4D<T>::At(int global)
+{
+  int x,y,z,e;
+  IndicesFromGlobalBin_BDSBH4D(global, x, y, z, e);
   return h.at(x, y, z, e);
 }
 

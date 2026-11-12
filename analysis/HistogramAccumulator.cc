@@ -86,9 +86,11 @@ HistogramAccumulator::HistogramAccumulator(TH1*               baseHistogram,
     case 4:
       {
 #ifdef USE_BOOST
-        mean     = dynamic_cast<BDSBH4DBase*>(baseHistogram)->Clone(meanName.c_str());
-        variance = dynamic_cast<BDSBH4DBase*>(baseHistogram)->Clone(variName.c_str());
-        result   = dynamic_cast<BDSBH4DBase*>(baseHistogram)->Clone(resultHistName.c_str());
+        // static_cast is used for 4D histograms throughout as nDimensions guarantees the type and
+        // this avoids depending on the RTTI of a particular library build of BDSBH4DBase.
+        mean     = static_cast<BDSBH4DBase*>(baseHistogram)->Clone(meanName.c_str());
+        variance = static_cast<BDSBH4DBase*>(baseHistogram)->Clone(variName.c_str());
+        result   = static_cast<BDSBH4DBase*>(baseHistogram)->Clone(resultHistName.c_str());
         break;
 #endif
       }
@@ -149,7 +151,7 @@ void HistogramAccumulator::Accumulate(TH1* newValue)
         TH1D* h1  = dynamic_cast<TH1D*>(mean);
         TH1D* h1e = dynamic_cast<TH1D*>(variance);
         TH1D* ht  = dynamic_cast<TH1D*>(newValue);
-        for (int j = 0; j <= h1->GetNbinsX() + 1; ++j)
+        for (Int_t j = 0; j <= h1->GetNbinsX() + 1; ++j)
           {
             AccumulateSingleValue(h1->GetBinContent(j),
                                   h1e->GetBinContent(j),
@@ -166,9 +168,9 @@ void HistogramAccumulator::Accumulate(TH1* newValue)
         TH2D* h1  = dynamic_cast<TH2D*>(mean);
         TH2D* h1e = dynamic_cast<TH2D*>(variance);
         TH2D* ht  = dynamic_cast<TH2D*>(newValue);
-        for (int j = 0; j <= h1->GetNbinsX() + 1; ++j)
+        for (Int_t j = 0; j <= h1->GetNbinsX() + 1; ++j)
           {
-            for (int k = 0; k <= h1->GetNbinsY() + 1; ++k)
+            for (Int_t k = 0; k <= h1->GetNbinsY() + 1; ++k)
               {
                 AccumulateSingleValue(h1->GetBinContent(j,k),
                                       h1e->GetBinContent(j,k),
@@ -186,11 +188,11 @@ void HistogramAccumulator::Accumulate(TH1* newValue)
         TH3D* h1  = dynamic_cast<TH3D*>(mean);
         TH3D* h1e = dynamic_cast<TH3D*>(variance);
         TH3D* ht  = dynamic_cast<TH3D*>(newValue);
-        for (int j = 0; j <= h1->GetNbinsX() + 1; ++j)
+        for (Int_t j = 0; j <= h1->GetNbinsX() + 1; ++j)
           {
-            for (int k = 0; k <= h1->GetNbinsY() + 1; ++k)
+            for (Int_t k = 0; k <= h1->GetNbinsY() + 1; ++k)
               {
-                for (int l = 0; l <= h1->GetNbinsZ() + 1; ++l)
+                for (Int_t l = 0; l <= h1->GetNbinsZ() + 1; ++l)
                   {
                     AccumulateSingleValue(h1->GetBinContent(j,k,l),
                                           h1e->GetBinContent(j,k,l),
@@ -207,9 +209,9 @@ void HistogramAccumulator::Accumulate(TH1* newValue)
     case 4:
       {
 #ifdef USE_BOOST
-        BDSBH4DBase* h1  = dynamic_cast<BDSBH4DBase*>(mean);
-        BDSBH4DBase* h1e = dynamic_cast<BDSBH4DBase*>(variance);
-        BDSBH4DBase* ht  = dynamic_cast<BDSBH4DBase*>(newValue);
+        BDSBH4DBase* h1  = static_cast<BDSBH4DBase*>(mean);
+        BDSBH4DBase* h1e = static_cast<BDSBH4DBase*>(variance);
+        BDSBH4DBase* ht  = static_cast<BDSBH4DBase*>(newValue);
         for (int j = -1; j <= h1->GetNbinsX(); ++j)
           {
             for (int k = -1; k <= h1->GetNbinsY(); ++k)
@@ -254,7 +256,7 @@ TH1* HistogramAccumulator::Terminate()
     {
     case 1:
       {
-        for (int j = 0; j <= result->GetNbinsX() + 1; ++j)
+        for (Int_t j = 0; j <= result->GetNbinsX() + 1; ++j)
           {
             mn  = mean->GetBinContent(j);
             var = variance->GetBinContent(j);
@@ -266,9 +268,9 @@ TH1* HistogramAccumulator::Terminate()
       }
     case 2:
       {
-        for (int j = 0; j <= result->GetNbinsX() + 1; ++j)
+        for (Int_t j = 0; j <= result->GetNbinsX() + 1; ++j)
           {
-            for (int k = 0; k <= result->GetNbinsY() + 1; ++k)
+            for (Int_t k = 0; k <= result->GetNbinsY() + 1; ++k)
               {
                 mn  = mean->GetBinContent(j,k);
                 var = variance->GetBinContent(j, k);
@@ -281,11 +283,11 @@ TH1* HistogramAccumulator::Terminate()
       }
     case 3:
       {
-        for (int j = 0; j <= result->GetNbinsX() + 1; ++j)
+        for (Int_t j = 0; j <= result->GetNbinsX() + 1; ++j)
           {
-            for (int k = 0; k <= result->GetNbinsY() + 1; ++k)
+            for (Int_t k = 0; k <= result->GetNbinsY() + 1; ++k)
               {
-                for (int l = 0; l <= result->GetNbinsZ() + 1; ++l)
+                for (Int_t l = 0; l <= result->GetNbinsZ() + 1; ++l)
                   {
                     mn  = mean->GetBinContent(j,k,l);
                     var = variance->GetBinContent(j, k, l);
@@ -300,10 +302,10 @@ TH1* HistogramAccumulator::Terminate()
     case 4:
       {
 #ifdef USE_BOOST
-        auto histCast = dynamic_cast<BDSBH4DBase*>(result);
-        auto mnCast   = dynamic_cast<BDSBH4DBase*>(mean);
-        auto varCast  = dynamic_cast<BDSBH4DBase*>(variance);
-        auto resCast  = dynamic_cast<BDSBH4DBase*>(result);
+        auto histCast = static_cast<BDSBH4DBase*>(result);
+        auto mnCast   = static_cast<BDSBH4DBase*>(mean);
+        auto varCast  = static_cast<BDSBH4DBase*>(variance);
+        auto resCast  = static_cast<BDSBH4DBase*>(result);
         int nBinsX = histCast->GetNbinsX();
         int nBinsY = histCast->GetNbinsY();
         int nBinsZ = histCast->GetNbinsZ();
@@ -331,8 +333,8 @@ TH1* HistogramAccumulator::Terminate()
     default:
       {break;}
     }
-  if(nDimensions==4)
-    {dynamic_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
+  if (nDimensions == 4)
+    {static_cast<BDSBH4DBase*>(result)->SetEntries_BDSBH4D((double)n);}
   else
     {result->SetEntries((double)n);}
 
@@ -350,4 +352,22 @@ void HistogramAccumulator::AccumulateSingleValue(double         oldMean,
 {
   newMean = oldMean + ((x - oldMean) / (double)nEntriesAccumulated);
   newVari = oldVari + ((x - oldMean) * (x - newMean));
+}
+
+void HistogramAccumulator::Flush()
+{
+  if (nDimensions == 4)
+    {// TH1::Reset() does not reset the boost histogram contents
+      static_cast<BDSBH4DBase*>(mean)->Reset_BDSBH4D();
+      static_cast<BDSBH4DBase*>(variance)->Reset_BDSBH4D();
+      static_cast<BDSBH4DBase*>(result)->Reset_BDSBH4D();
+    }
+  else
+    {
+      mean->Reset();
+      variance->Reset();
+      result->Reset();
+    }
+  n = 0;
+  terminated = false;
 }

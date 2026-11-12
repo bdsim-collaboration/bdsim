@@ -150,7 +150,10 @@ public:
   /// spherical sampler. This is done on sets of histograms which is uniquely for spectra.
   void FixCylindricalAndSphericalSamplerVariablesInSets(const std::set<std::string>& allCNames,
                                                         const std::set<std::string>& allSNames);
-  
+
+  /// Return whether the EventStart and EventEnd options are the default full range.
+  bool AnalyseAllEvents() const;
+
  protected:
   /// Private constructor for singleton pattern.
   Config() = delete;

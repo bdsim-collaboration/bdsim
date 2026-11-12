@@ -63,11 +63,14 @@ public:
 
   void Reset_BDSBH4D() override;
   BDSBH4D* Clone(const char*) const override;
-  void Fill_BDSBH4D(double, double, double, double) override;
+  int Fill_BDSBH4D(double, double, double, double) override;
   void Set_BDSBH4D(int, int, int, int, double) override;
+  void Set_BDSBH4D(int global, double value) override;
   void SetError_BDSBH4D(int, int, int, int, double) override;
+  void SetError_BDSBH4D(int global, double value) override;
   void Add_BDSBH4D(BDSBH4DBase*) override;
   double At(int, int, int, int) override;
+  double At(int) override;
   double AtError(int, int, int, int) override;
   double LowBinEdgeAt(int, int, int, int) override;
   double HighBinEdgeAt(int, int, int, int) override;
@@ -77,5 +80,4 @@ public:
 
   ClassDef(BDSBH4D,1);
 };
-
 #endif

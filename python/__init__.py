@@ -53,20 +53,23 @@ from .convert import *
 from .developer import *
 from .version import *
 
-try :
+try:
     from .ocelot import *
-except :
-    print("Could not find ocelot")
+except:
+    pass
+    #print("Could not find ocelot")
 
-try :
+try:
     from .rftrack import *
-except :
-    print("could not find rftrack")
+except:
+    pass
+    #print("Could not find rftrack")
 
-try :
+try:
     from .xsuite import *
-except :
-    print("could not find xsuite")
+except:
+    pass
+    #print("Could not find xsuite")
 
 # singleton bdslink for rftrack, ocelot and xsuite
 bdslink_singleton = None

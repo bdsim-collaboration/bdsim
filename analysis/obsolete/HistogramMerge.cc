@@ -154,7 +154,7 @@ void HistogramMerge::Terminate()
       h1->SetBinContent(j,mean);
       h1->SetBinError(j,std);
     }
-    h1->SetEntries(entries);
+    h1->SetEntries((Double_t)entries);
   }
 
   // loop over 2d histograms
@@ -173,7 +173,7 @@ void HistogramMerge::Terminate()
         h1->SetBinError(j,k,std);
       }
     }
-    h1->SetEntries(entries);
+    h1->SetEntries((Double_t)entries);
   }
 
   // loop over 3d histograms
@@ -195,7 +195,7 @@ void HistogramMerge::Terminate()
 		}
 	    }
 	}
-      h1->SetEntries(entries);
+      h1->SetEntries((Double_t)entries);
     }
 }
 

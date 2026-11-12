@@ -55,26 +55,61 @@ public:
 	      const std::vector<double>& eBinEdgesIn);
   virtual ~BDSBH4DBase() override = default;
 
-  int GetNbinsX() const final;
-  int GetNbinsY() const final;
-  int GetNbinsZ() const final;
-  int GetNbinsE() const;
+  /// @{ Accessors defined inline so that code using this class (e.g. the histogram
+  /// accumulators) does not need to link against a particular build of it.
+  int GetNbinsX() const final {return static_cast<int>(h_nxbins);}
+  int GetNbinsY() const final {return static_cast<int>(h_nybins);}
+  int GetNbinsZ() const final {return static_cast<int>(h_nzbins);}
+  int GetNbinsE() const {return static_cast<int>(h_nebins);}
+  /// @}
+
+  /// @{ Global bin index covering every cell including the under and overflow bins of
+  /// each axis. Axis indices are those of boost histogram, i.e. -1 is the underflow bin
+  /// and nBins is the overflow bin. Inline so the same mapping is used irrespective of
+  /// the library build (e.g. with or without __ROOTBUILD__).
+  int GetNCells_BDSBH4D() const {return static_cast<int>((h_nxbins + 2) * (h_nybins + 2) * (h_nzbins + 2) * (h_nebins + 2));}
+  
+  int GlobalBin_BDSBH4D(int x, int y, int z, int e) const
+  {
+    const int nY = static_cast<int>(h_nybins) + 2;
+    const int nZ = static_cast<int>(h_nzbins) + 2;
+    const int nE = static_cast<int>(h_nebins) + 2;
+    return (((x + 1) * nY + (y + 1)) * nZ + (z + 1)) * nE + (e + 1);
+  }
+  
+  void IndicesFromGlobalBin_BDSBH4D(int global, int& x, int& y, int& z, int& e) const
+  {
+    const int nY = static_cast<int>(h_nybins) + 2;
+    const int nZ = static_cast<int>(h_nzbins) + 2;
+    const int nE = static_cast<int>(h_nebins) + 2;
+    e = global % nE - 1;
+    global /= nE;
+    z = global % nZ - 1;
+    global /= nZ;
+    y = global % nY - 1;
+    x = global / nY - 1;
+  }
+  /// @}
+  
   const char* GetName() const override;
   const char* GetTitle() const override;
   unsigned long GetEntries_BDSBH4D() const;
   
   void SetName(const char*) override;
   void SetTitle(const char*) override;
-  void SetEntries_BDSBH4D(double);
+  void SetEntries_BDSBH4D(double i) {h_entries = static_cast<unsigned long>(i);}
   
   virtual BDSBH4DBase& operator+=(const BDSBH4DBase& other) = 0;
   virtual void Reset_BDSBH4D() = 0;
   BDSBH4DBase* Clone(const char*) const override = 0;
-  virtual void Fill_BDSBH4D(double, double, double, double) = 0;
+  virtual int Fill_BDSBH4D(double, double, double, double) = 0;
   virtual void Set_BDSBH4D(int, int, int, int, double) = 0;
+  virtual void Set_BDSBH4D(int global, double value) = 0;
   virtual void SetError_BDSBH4D(int, int, int, int, double) = 0;
+  virtual void SetError_BDSBH4D(int global, double value) = 0;
   virtual void Add_BDSBH4D(BDSBH4DBase*) = 0;
   virtual double At(int, int, int, int) = 0;
+  virtual double At(int) = 0; ///< Global index access.
   virtual double AtError(int, int, int, int) = 0;
   virtual double LowBinEdgeAt(int, int, int, int) = 0;
   virtual double HighBinEdgeAt(int, int, int, int) = 0;
