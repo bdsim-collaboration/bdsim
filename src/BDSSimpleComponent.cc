@@ -26,8 +26,9 @@ BDSSimpleComponent::BDSSimpleComponent(const G4String&       nameIn,
                                        G4double              angleIn,
                                        const G4ThreeVector&  inputFaceNormalIn,
                                        const G4ThreeVector&  outputFaceNormalIn,
-                                       BDSBeamPipeInfo*      beamPipeInfoIn):
-  BDSAcceleratorComponent(nameIn, arcLengthIn, angleIn, "simpleComponent", beamPipeInfoIn,
+                                       BDSBeamPipeInfo*      beamPipeInfoIn,
+                                       const G4String&       typeIn):
+  BDSAcceleratorComponent(nameIn, arcLengthIn, angleIn, typeIn, beamPipeInfoIn,
                           inputFaceNormalIn, outputFaceNormalIn)
 {
   RegisterDaughter(component);
@@ -46,8 +47,9 @@ BDSSimpleComponent::BDSSimpleComponent(const G4String&       nameIn,
                                        const BDSExtent&      extentIn,
                                        const G4ThreeVector&  inputFaceNormalIn,
                                        const G4ThreeVector&  outputFaceNormalIn,
-                                       BDSBeamPipeInfo*      beamPipeInfoIn):
-  BDSAcceleratorComponent(nameIn, arcLengthIn, angleIn, "simpleComponent", beamPipeInfoIn,
+                                       BDSBeamPipeInfo*      beamPipeInfoIn,
+                                       const G4String&       typeIn):
+  BDSAcceleratorComponent(nameIn, arcLengthIn, angleIn, typeIn, beamPipeInfoIn,
                           inputFaceNormalIn, outputFaceNormalIn)
 {
   SetExtent(extentIn);

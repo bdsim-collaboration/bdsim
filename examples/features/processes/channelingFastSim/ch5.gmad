@@ -1,0 +1,40 @@
+! Geant4 channeling/ch5 hybrid positron source:
+! 2.86 GeV electrons -> 1.5 mm oriented W<111> radiator -> 1 mm gap
+! -> 10.5 mm amorphous W converter.
+
+w111Radiator: crystal, model="fastsim",
+                       material="G4_W",
+                       lattice="<111>",
+                       shape="box",
+                       lengthX=7.5*mm,
+                       lengthY=7.5*mm,
+                       lengthZ=1.5*mm,
+                       fastSimLowEnergyParticles=["e-", "e+"],
+                       fastSimLowEnergyLimits={1*GeV, 1*GeV},
+                       fastSimLindhardAngleParticles=["e-", "e+"],
+                       fastSimLindhardAngleLimits={10, 10},
+                       radiation=1,
+                       radiationSinglePhotonProbabilityLimit=0.25,
+                       radiationSmallTrajectorySteps=10000,
+                       radiationSamplingPhotons=150,
+                       radiationAngleFactor=4,
+                       radiationMinPhotonEnergy=1*MeV,
+                       radiationMaxPhotonEnergy=20*GeV,
+                       radiationSpectrumBins=100;
+
+radiator: crystalradiator, l=1.5*mm, crystalDefinition="w111Radiator";
+separation: drift, l=1*mm, apertureType="circularvacuum", aper1=3*m;
+converter: target, l=10.5*mm, material="G4_W", horizontalWidth=22*mm;
+
+line1: line=(radiator, separation, converter);
+use, line1;
+sample, all;
+
+beam, particle="e-", kineticEnergy=2.86*GeV,
+      distrType="gauss",
+      sigmaX=1*mm, sigmaY=1*mm,
+      sigmaXp=0.893*urad, sigmaYp=0.893*urad,
+      sigmaEk=1e-3;
+
+option, physicsList="completechannellingregular", ngenerate=1, checkOverlaps=1,
+        worldMaterial="G4_Galactic";

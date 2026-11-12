@@ -1,0 +1,45 @@
+! Geant4 channeling/ch2: the configurable FastSim example.  Values below are
+! the defaults explicitly selected by its run.mac.
+
+si111Configurable: crystal, model="fastsim",
+                            material="G4_Si",
+                            lattice="(111)",
+                            shape="box",
+                            lengthX=20*mm,
+                            lengthY=20*mm,
+                            lengthZ=0.0305*mm,
+                            bendingAngleYAxis=0.905*mrad,
+                            fastSimDefaultLowKineticEnergy=200*MeV,
+                            fastSimLowEnergyParticles=["proton", "anti_proton", "pi+", "pi-",
+                                                      "e+", "e-", "mu+", "mu-"],
+                            fastSimLowEnergyLimits={200*MeV, 200*MeV, 200*MeV, 200*MeV,
+                                                    200*MeV, 200*MeV, 200*MeV, 200*MeV},
+                            fastSimDefaultLindhardAngleHighLimit=100,
+                            fastSimLindhardAngleParticles=["proton", "anti_proton", "pi+", "pi-",
+                                                         "e+", "e-", "mu+", "mu-"],
+                            fastSimLindhardAngleLimits={100, 100, 100, 100, 100, 100, 100, 100},
+                            radiation=1,
+                            radiationSmallTrajectorySteps=10000,
+                            radiationSamplingPhotons=150,
+                            radiationAngleFactor=4,
+                            radiationMinPhotonEnergy=1*MeV,
+                            radiationMaxPhotonEnergy=1*GeV,
+                            radiationSpectrumBins=110,
+                            radiationVirtualCollimator="round",
+                            radiationCollimatorHalfWidthX=2.3183*mrad;
+
+radiator: crystalradiator, l=0.0305*mm, crystalDefinition="si111Configurable";
+! Match the material-free flight path of the Geant4 example.  The default
+! BDSIM drift has a stainless-steel beam pipe, which adds downstream photons.
+flight: drift, l=5973*mm, apertureType="circularvacuum", aper1=200*mm;
+line1: line=(radiator, flight);
+use, line1;
+sample, all;
+
+beam, particle="e-", kineticEnergy=855*MeV,
+      distrType="gauss",
+      sigmaX=0.07*mm, sigmaY=0.2*mm,
+      sigmaXp=30*urad, sigmaYp=70*urad;
+
+option, physicsList="completechannellingregular", ngenerate=1, checkOverlaps=1,
+        worldMaterial="G4_Galactic";

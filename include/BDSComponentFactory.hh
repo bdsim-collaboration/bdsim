@@ -289,6 +289,7 @@ private:
   BDSAcceleratorComponent* CreateDegrader();
   BDSAcceleratorComponent* CreateGap();
   BDSAcceleratorComponent* CreateCrystalCollimator();
+  BDSAcceleratorComponent* CreateCrystalRadiator();
   BDSAcceleratorComponent* CreateLaser();
   BDSAcceleratorComponent* CreateScreen();
   BDSAcceleratorComponent* CreateTransform3D();

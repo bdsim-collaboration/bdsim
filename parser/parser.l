@@ -129,6 +129,7 @@ thinrmatrix { return THINRMATRIX;}
 paralleltransporter {return PARALLELTRANSPORTER;}
 rmatrix {return RMATRIX;}
 crystalcol { return CRYSTALCOL; }
+crystalradiator { return CRYSTALRADIATOR; }
 wirescanner { return WIRESCANNER; }
 undulator { return UNDULATOR; }
 usercomponent { return USERCOMPONENT; }
