@@ -284,6 +284,7 @@ private:
   G4LogicalVolume* worldLogicalVolume;
   
   std::vector<BDSFieldQueryInfo*> fieldQueries;
+	G4int subElementIDCounter;
 
   // for developer checks only
 #ifdef BDSCHECKUSERLIMITS
