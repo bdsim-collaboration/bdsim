@@ -139,11 +139,14 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       //########################## Get Laser #####################################
       const BDSLaser* laser = lvv->Laser();
       //######################## Get/Create photon information ##############################
-      G4ThreeVector photonPolarization = laser->Polarization();
+      // Stokes parameters, defined relative to the laser's local x axis - not a spatial vector
+      G4StokesVector photonPolarization(laser->Polarization());
+      G4ThreeVector photonPolarizationAxis(1,0,0);
       G4ThreeVector photonUnit(0,0,1);
 
       // ################ Rotate the photon information to the correct orientation ###########
-      photonPolarization.transform(*rot);
+      // the polarisation reference axis is rotated with the photon direction, the Stokes parameters are not
+      photonPolarizationAxis.transform(*rot);
       particlePolarization.transform(*rot);
       photonUnit.transform(*rot);
       G4double photonEnergy = (CLHEP::h_Planck*CLHEP::c_light)/laser->Wavelength();
@@ -198,7 +201,7 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       aParticleChange.SetNumberOfSecondaries(1);
       comptonEngine->setIncomingElectron(particle4VectorMomentum);
       comptonEngine->setIncomingGamma(photonLorentz);
-      comptonEngine->SetIncomingGammaPolarization(G4StokesVector(photonPolarization));
+      comptonEngine->SetIncomingGammaPolarization(photonPolarization, photonPolarizationAxis);
       comptonEngine->SetIncomingElectronPolarization(G4StokesVector(particlePolarization));
       comptonEngine->PerformCompton(particleBeta,partID);
       G4LorentzVector scatteredGamma = comptonEngine->GetScatteredGamma();
