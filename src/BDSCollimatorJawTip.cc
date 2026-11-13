@@ -24,11 +24,13 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSDebug.hh"
 #include "BDSException.hh"
 #include "BDSSDType.hh"
+#include "BDSUtilities.hh"
 
 #include "G4Box.hh"
 #include "G4Para.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
+#include "G4RotationMatrix.hh"
 #include "G4VisAttributes.hh"
 
 #include <cmath>
@@ -44,6 +46,9 @@ BDSCollimatorJawTip::BDSCollimatorJawTip(const G4String&    nameIn,
                                          G4double    leftJawTiltIn,
                                          G4double    rightJawTiltIn,
                                          G4double    tipThicknessIn,
+                                         G4double    tipLengthIn,
+                                         G4double    tipTaperAngleIn,
+                                         G4double    tipTaperDepthIn,
                                          G4bool      buildLeftJawIn,
                                          G4bool      buildRightJawIn,
                                          G4Material* collimatorMaterialIn,
@@ -58,6 +63,9 @@ BDSCollimatorJaw(nameIn, lengthIn, horizontalWidthIn, xHalfGapIn, yHalfHeightIn,
   tipThickness(tipThicknessIn),
   collimatorTipMaterial(collimatorTipMaterialIn)
 {
+  tipTaperAngle = tipTaperAngleIn;
+  tipLength = tipLengthIn;
+  taperDepth = tipTaperDepthIn;
   if (!tipColour)
     {
       G4Colour* defaultTipColour = BDSColours::Instance()->GetColour("collimatorTip");
@@ -157,6 +165,8 @@ void BDSCollimatorJawTip::BuildTips()
   G4VSolid* leftJawTipSolid = nullptr;
   if (buildLeftJaw && buildAperture)
     {
+      G4ThreeVector leftJawTipPlacementPos = leftJawTipPos;
+      G4RotationMatrix* leftJawTipRot = nullptr;
       if (jawTiltLeft != 0)
         {
           G4double leftHalfLength = chordLength * 0.5 * std::cos(jawTiltLeft);
@@ -165,6 +175,17 @@ void BDSCollimatorJawTip::BuildTips()
                                        yHalfHeight - lengthSafety,
                                        leftHalfLength - lengthSafety,
                                        0, jawTiltLeft, 0);
+        }
+      else if (BDS::IsFinite(tipTaperAngle))
+        {
+          // Same taper law as the bulk jaw built in BDSCollimatorJaw::Build() -
+          // the two solids meet exactly at depth = tipThickness with no gap or overlap.
+          TaperedBox tb = BuildTaperedJawBox(name + "_leftjawtip_solid", leftJawHalfGap, +1,
+                                             0, tipThickness,
+                                             yHalfHeight, chordLength);
+          leftJawTipSolid = tb.solid;
+          leftJawTipPlacementPos = tb.position;
+          leftJawTipRot = tb.rotation;
         }
       else
         {
@@ -184,8 +205,8 @@ void BDSCollimatorJawTip::BuildTips()
         {RegisterSensitiveVolume(leftJawTipLV, BDSSDType::collimatorcomplete);}
 
       // place the tip
-      G4PVPlacement* leftJawTipPV = new G4PVPlacement(nullptr,
-                                                      leftJawTipPos,
+      G4PVPlacement* leftJawTipPV = new G4PVPlacement(leftJawTipRot,
+                                                      leftJawTipPlacementPos,
                                                       leftJawTipLV,
                                                       name + "_leftjawtip_pv",
                                                       containerLogicalVolume,
@@ -198,6 +219,8 @@ void BDSCollimatorJawTip::BuildTips()
   G4VSolid* rightJawTipSolid = nullptr;
   if (buildRightJaw && buildAperture)
     {
+      G4ThreeVector rightJawTipPlacementPos = rightJawTipPos;
+      G4RotationMatrix* rightJawTipRot = nullptr;
       if (jawTiltRight != 0)
         {
           G4double rightHalfLength = chordLength * 0.5 * std::cos(jawTiltRight);
@@ -206,6 +229,15 @@ void BDSCollimatorJawTip::BuildTips()
                                         yHalfHeight - lengthSafety,
                                         rightHalfLength - lengthSafety,
                                         0, jawTiltRight, 0);
+        }
+      else if (BDS::IsFinite(tipTaperAngle))
+        {
+          TaperedBox tb = BuildTaperedJawBox(name + "_rightjawtip_solid", rightJawHalfGap, -1,
+                                             0, tipThickness,
+                                             yHalfHeight, chordLength);
+          rightJawTipSolid = tb.solid;
+          rightJawTipPlacementPos = tb.position;
+          rightJawTipRot = tb.rotation;
         }
       else
         {
@@ -225,8 +257,8 @@ void BDSCollimatorJawTip::BuildTips()
         {RegisterSensitiveVolume(rightJawTipLV, BDSSDType::collimatorcomplete);}
 
       // place the tip
-      G4PVPlacement* rightJawTipPV = new G4PVPlacement(nullptr,
-                                                       rightJawTipPos,
+      G4PVPlacement* rightJawTipPV = new G4PVPlacement(rightJawTipRot,
+                                                       rightJawTipPlacementPos,
                                                        rightJawTipLV,
                                                        name + "_rightjawtip_pv",
                                                        containerLogicalVolume,

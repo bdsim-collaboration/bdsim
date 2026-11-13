@@ -37,6 +37,11 @@ class BDSCollimatorJawTip: public BDSCollimatorJaw
 {
 public:
   BDSCollimatorJawTip() = delete;
+  /// lengthIn is always the full length of the component. For a tapered jaw, give
+  /// tipLengthIn (the length of the jaw face at the beam) or tipTaperAngleIn, or
+  /// both if consistent: lengthIn = tipLengthIn + 2 * depth / tan(tipTaperAngleIn),
+  /// where the depth is tipTaperDepthIn, the depth from the jaw edge where the taper
+  /// ends (beyond it the jaw keeps the full length), or the whole jaw if 0.
   BDSCollimatorJawTip(const G4String& nameIn,
                       G4double    lengthIn,
                       G4double    horizontalWidthIn,
@@ -47,6 +52,9 @@ public:
                       G4double    leftJawTiltIn,
                       G4double    rightJawTiltIn,
                       G4double    tipThicknessIn,
+                      G4double    tipLengthIn,
+                      G4double    tipTaperAngleIn,
+                      G4double    tipTaperDepthIn,
                       G4bool      buildLeftJawIn,
                       G4bool      buildRightJawIn,
                       G4Material* collimatorMaterialIn,

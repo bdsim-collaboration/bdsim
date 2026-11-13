@@ -218,6 +218,10 @@ namespace GMAD
     ///@{ for jaw collimator with tip
     double tipThickness; ///< tip thickness
     std::string tipMaterial; ///< tip material
+    double tipLength;     ///< length of the jaw face at the beam for a tapered jaw (jcoltip only)
+    double taperAngleDeg; ///< jaw taper angle in degrees (jcoltip only)
+    double taperAngleRad; ///< jaw taper angle in radians (jcoltip only)
+    double taperDepth;    ///< depth from the jaw edge where the taper ends (jcoltip only)
     ///@}
 
     ///@{ temporary string for bias setting
@@ -304,6 +308,10 @@ namespace GMAD
                         std::string samplerName,
                         double samplerRadius,
                         int samplerParticleSetIDIn = -1);
+
+    /// For a tapered jcoltip without l, set l = tipLength + 2*taper_depth/tan(taper angle),
+    /// the full length of the jaw. Exits if l is not given and can't be calculated.
+    void setLengthFromTaper();
 
     ///@{ set method from Parameters structure
     void set(const Parameters& params);

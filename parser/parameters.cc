@@ -219,6 +219,10 @@ Parameters::Parameters()
 
   setMap["tipMaterial"] = false;
   setMap["tipThickness"] = false;
+  setMap["tipLength"] = false;
+  setMap["taper_angle_deg"] = false;
+  setMap["taper_angle_rad"] = false;
+  setMap["taper_depth"] = false;
 
   setMap["crystalLeft"]            = false;
   setMap["crystalRight"]           = false;
