@@ -47,6 +47,13 @@ foreach(pythonBindingSrc IN ZIP_LISTS pythonBindingSrcs)
     bdsim_install_python(${pythonBindingSrc_0})
 endforeach()
 
+# version file needs configuring (hence separate build from loop above)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/versionPybind.cc ${CMAKE_BINARY_DIR}/versionPybind.cc @ONLY)
+pybind11_add_module(version ${CMAKE_BINARY_DIR}/versionPybind.cc)
+target_link_libraries(version PUBLIC ${GMAD_LIB_NAME} Python3::Module)
+set_property(TARGET version PROPERTY CXX_VISIBILITY_PRESET "default")
+bdsim_install_python(version)
+
 foreach(rootBindingSrc IN ZIP_LISTS rootBindingSrcs)
     # MESSAGE(STATUS ${rootBindingSrc_0})
     pybind11_add_module(${rootBindingSrc_0} ${CMAKE_CURRENT_SOURCE_DIR}/${rootBindingSrc_0}Pybind.cc)

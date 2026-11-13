@@ -1,21 +1,68 @@
 
 d1: drift, l=0.2*m;
-col1: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsize=2.5*cm;
-col2: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsize=2.5*cm, ysize=5.0*cm;
-col3: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsize=2.5*cm, xsizeLeft=5.0*cm;
-col4: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsize=2.5*cm, xsizeRight=5.0*cm;
-col5: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsize=0*cm, xsizeLeft=2.0*cm;
-col6: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsize=0*cm, xsizeRight=2.0*cm;
-col7: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsize=0*cm;
-col8: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsizeLeft=2*m, xsizeRight=1*cm;
-col9: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsizeRight=2*m, xsizeLeft=1*cm;
-col10: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsizeRight=2*m, xsizeLeft=1*cm, jawTiltLeft=0.05;
-col11: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsizeRight=2*m, xsizeLeft=1*cm, jawTiltRight=0.05;
-col12: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsizeRight=2*m, xsizeLeft=1*cm, jawTiltLeft=-0.05, jawTiltRight=-0.05;
-col13: jcol, l=0.2*m, material="G4_W", horizontalWidth=60.0*cm, xsizeRight=2*cm, xsizeLeft=1*cm, jawTiltLeft=0.05, jawTiltRight=-0.05;
 
-l1: line=(d1, col1, d1, col2, d1, col3, d1, col4, d1, col5, d1, col6, d1, col7, d1, col8, d1, col9, d1, col10, d1, col11, d1, col12, d1, col13);
-use, l1;
+! symmetric aperture
+col1:  jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsize=2.5*cm;
+
+! symmetric aperture, control y size
+col2:  jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsize=2.5*cm, ysize=5.0*cm;
+
+! take the right jaw from the symmetric size and specify the left explicitly
+col3:  jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsize=2.5*cm, xsizeLeft=5.0*cm;
+
+! take the left jaw from the symmetric size and specify the right explicitly
+col4:  jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsize=2.5*cm, xsizeRight=5.0*cm;
+
+! have the right jaw at mid point and specify the left explicitly
+col5:  jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsize=0*cm, xsizeLeft=2.0*cm;
+
+! have the left jaw at mid point and specify the right explicitly
+col6:  jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsize=0*cm, xsizeRight=2.0*cm;
+
+! no jaws - closed block
+col7:  jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsize=0*cm;
+
+! specify left and right explicitly - set left outside so it's not built
+col8:  jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsizeLeft=2*m,  xsizeRight=1*cm;
+
+! specify left and right explicitly - set right outside so it's not build
+col9:  jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsizeLeft=1*cm, xsizeRight=2*m;
+
+! left jaw tilted out on downstream side
+col10: jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsizeLeft=1*cm, xsizeRight=2*m,  jawTiltLeft=0.05;
+
+! right jaw tilted in on downstream side but outside and not built
+col11: jcol, l=0.2*m, material="G4_W" , horizontalWidth=60.0*cm, xsizeLeft=1*cm, xsizeRight=2*m,  jawTiltRight=0.05;
+
+! both jaws tilted to right on downstream side but right jaw outside and not built
+col12: jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsizeLeft=1*cm, xsizeRight=2*m,  jawTiltLeft=-0.05, jawTiltRight=-0.05;
+
+! diverging jaws
+col13: jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsizeLeft=1*cm, xsizeRight=1*cm, jawTiltLeft=0.05,  jawTiltRight=-0.05;
+
+! converging jaws
+col14: jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsizeLeft=1*cm, xsizeRight=1*cm, jawTiltLeft=-0.05,  jawTiltRight=0.05;
+
+! over the mid point parallel jaws
+col15: jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsizeLeft=-10*cm, xsizeRight=12*cm;
+col16: jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsizeLeft=12*cm,  xsizeRight=-10*cm;
+
+! both jaws tilted to the left on downstream side and offset to the right over the mid point
+col17: jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsizeLeft=-11.9*cm, xsizeRight=12*cm,    jawTiltLeft=0.1, jawTiltRight=0.1;
+
+! both jaws tilted to the left on downstream side and offset to the left over the mid point
+col18: jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsizeLeft=12*cm,    xsizeRight=-11.9*cm, jawTiltLeft=0.1, jawTiltRight=0.1;
+
+! both jaws tilted to the right on downstream side and offset to the right over the mid point
+col19: jcol, l=0.2*m, material="G4_W",  horizontalWidth=60.0*cm, xsizeLeft=-11.9*cm, xsizeRight=12*cm,    jawTiltLeft=-0.1, jawTiltRight=-0.1;
+
+! both jaws tilted to the right on downstream side and offset to the left over the mid point
+col20: jcol, l=0.2*m, material="G4_Cu", horizontalWidth=60.0*cm, xsizeLeft=12*cm,    xsizeRight=-11.9*cm, jawTiltLeft=-0.1, jawTiltRight=-0.1;
+
+l1: line=(d1, col1, d1, col2, d1, col3, d1, col4, d1, col5, d1, col6, d1, col7, d1, col8, d1, col9, d1, col10, d1);
+l2: line=(col11, d1, col12, d1, col13, d1, col14, d1, col15, d1, col16, d1, col17, d1, col18, d1, col19, d1, col20, d1);
+ltotal: line=(l1, l2);
+use, ltotal;
 
 beam, particle="e-",
       energy=1*GeV,

@@ -12,7 +12,45 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
-v1.8.0 - 2026 / XX / XX
+v1.8.2 - 2026 / 11 / 12
+=======================
+
+Bug Fixes
+---------
+
+* Fix a crash when using :code:`option, storeCollimatorHitsLinks=1;`. On the occasion a
+  step would happen with zero energy deposition in a purely elastic interaction, the
+  code would not fill the output uniformly and this would lead to both mismatched
+  data in the output vectors as well as most likely a crash.
+* Fix unity builds by compiling ROOT dictionaries separately, including physics
+  utility declarations explicitly in link bunch implementations, and using the
+  analysis debug header consistently.
+* Enable unity builds only in macOS continuous integration, retaining regular
+  builds on Linux for coverage of both build modes. Build parallelism is set to
+  the detected number of runner cores.
+* Change the local GDML schema lookup to be relative to the BDSIM shared library instead
+  of the BDSIM executable to aid the Python bindings.
+
+No change of data version or structures and no new features.
+
+
+v1.8.1 - 2026 / 10 / 20
+=======================
+
+Bug Fixes
+---------
+
+* Fix a crash when using collimators, a target and collimator-specific output.
+* Fix compilation with Boost libraries on.
+* Added AGENTS.md, CONDUCT.md and CONTRIBUTING.md for policies.
+* Fix runtime warning print out about Beam and Options from ROOT.
+* Improved description on single-diffraction patch in the manual and added missing links.
+* Python version in the Python bindings.
+
+No change of data version or structures and no new features.
+  
+
+v1.8.0 - 2026 / 09 / 27
 =======================
 
 The BDSIM source code has moved to Github and is available here: https://github.com/bdsim-collaboration/bdsim
@@ -34,6 +72,7 @@ New Features
 * New Gabor lens beam line component. Constructed with a radial electric field that would be generated
   with a confined plasma in a Penning-Malmberg trap configuration. The electric and magnetic confinement
   fields are not constructed.
+* `jcol` and `jcoltip` can now cross the mid point.
 
 **Analysis**
 
@@ -67,6 +106,7 @@ New Features
   colour of the element in the visualiser will be given by the material.
 * GDML exports from BDSIM now include auxiliary colour information that can be handled by
   pyg4ometry and also be BDSIM if the same file is loaded in again.
+* The colour of the tip in a `jcoltip` is now related to the material.
 
 **Physics**
 
@@ -157,6 +197,12 @@ Bug Fixes
 * Document the options :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` as well
   as fix their number type internally.
 * Fix a crash when using :code:`jcoltip` with collimator-specific output options.
+* Fix modular physics list that would accept optical physics and cherenkov physics at the same
+  time which would try to double-register cherenkov physics (Geant4 would refuse).
+* Fix an uncaught exception when trajectory storage was used and optical physics or cherenkov
+  physics was used that would break the assumed ordering of trajectories in Geant4.
+* Fix the cherenkov parameters :code:`maximumPhotonsPerStep` and :code:`maximumBetaChangePerStep` when
+  used with optical physics, which would previously have no effect.
 
 
 Output Changes
@@ -174,49 +220,49 @@ Output Class Versions
 
 * Data Version 10.
 
-+-----------------------------------+-------------+-----------------+-----------------+
-| **Class**                         | **Changed** | **Old Version** | **New Version** |
-+===================================+=============+=================+=================+
-| BDSOutputROOTEventAperture        | N           | 1               | 1               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventBeam            | N           | 6               | 7               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventCavityInfo      | N           | 1               | 1               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventCollimator      | N           | 1               | 1               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventCollimatorInfo  | N           | 2               | 2               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventCoords          | N           | 3               | 3               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventHeader          | N           | 5               | 5               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventHistograms      | N           | 4               | 4               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventInfo            | N           | 7               | 7               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventLoss            | N           | 5               | 5               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventLossWorld       | N           | 1               | 1               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventModel           | Y           | 6               | 7               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventOptions         | N           | 8               | 8               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventRunInfo         | N           | 3               | 3               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventSampler         | N           | 5               | 5               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventSamplerC        | N           | 1               | 1               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventSamplerS        | N           | 1               | 1               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventTrajectory      | N           | 5               | 5               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTEventTrajectoryPoint | N           | 6               | 6               |
-+-----------------------------------+-------------+-----------------+-----------------+
-| BDSOutputROOTParticleData         | N           | 1               | 1               |
-+-----------------------------------+-------------+-----------------+-----------------+
++-----------------------------------+---------------+-------------------+-------------------+
+| **Class**                         | **Changed**   | **Old Version**   | **New Version**   |
++===================================+===============+===================+===================+
+| BDSOutputROOTEventAperture        | N             | 1                 | 1                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventBeam            | Y             | 6                 | 7                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventCavityInfo      | N             | 1                 | 1                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventCollimator      | N             | 1                 | 1                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventCollimatorInfo  | N             | 2                 | 2                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventCoords          | N             | 3                 | 3                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventHeader          | N             | 5                 | 5                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventHistograms      | N             | 4                 | 4                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventInfo            | N             | 7                 | 7                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventLoss            | N             | 5                 | 5                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventLossWorld       | N             | 1                 | 1                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventModel           | Y             | 6                 | 7                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventOptions         | Y             | 8                 | 9                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventRunInfo         | N             | 3                 | 3                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventSampler         | N             | 5                 | 5                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventSamplerC        | N             | 1                 | 1                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventSamplerS        | N             | 1                 | 1                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventTrajectory      | N             | 5                 | 5                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTEventTrajectoryPoint | N             | 6                 | 6                 |
++-----------------------------------+---------------+-------------------+-------------------+
+| BDSOutputROOTParticleData         | N             | 1                 | 1                 |
++-----------------------------------+---------------+-------------------+-------------------+
 
 
 Utilities
@@ -225,10 +271,10 @@ Utilities
 These are no longer included directly with BDSIM but are available through pip. At the time
 of writing, the corresponding versions of each utility are:
 
-* pybdsim v3.3.2
-* pymadx v2.0.1
-* pymad8 v2.0.1
-* pytransport v2.0.1
+* pybdsim v3.9.0
+* pymadx v3.2.1
+* pymad8 v2.0.2
+* pytransport v2.0.2
 
 
 V1.7.7 - 2024 / 01 / 29

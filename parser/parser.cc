@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -114,7 +113,7 @@ extern FILE *yyin;
 Parser* Parser::instance = nullptr;
 
 Parser::Parser() {
-  (*call_sequence_log) << "Parser::Parser "  << std::endl;
+  (*call_sequence_log) << "Parser::Parser()"  << std::endl;
 
   Initialise();
 }
@@ -142,7 +141,7 @@ Parser* Parser::Instance(const std::string& name)
 
 Parser::~Parser()
 {
-  (*call_sequence_log) << "Parser::~Parser" << std::endl;
+  (*call_sequence_log) << "Parser::~Parser()" << std::endl;
 
   beamline_list.erase();
   // delete allocated lines
@@ -154,7 +153,7 @@ Parser::~Parser()
 
 Parser::Parser(std::string name)
 {
-  (*call_sequence_log) << "Parser::Parser " << name << std::endl;
+  (*call_sequence_log) << "Parser::Parser(" << name << ")" << std::endl;
 
   instance = this;
 #ifdef BDSDEBUG
@@ -187,7 +186,7 @@ Parser::Parser(std::string name)
 
 void Parser::ParseFile(FILE *f)
 {
-  (*call_sequence_log) << "Parser::ParseFile file=" << f << std::endl;
+  (*call_sequence_log) << "Parser::ParseFile(f=" << f << ")" << std::endl;
 
   yyin=f; 
 
@@ -217,11 +216,14 @@ void Parser::ParseFile(FILE *f)
 #endif
 
   fclose(f);
+
+  // std::cout << call_sequence_log->str() << std::endl;
 }
 
 void Parser::Initialise()
 {
-  (*call_sequence_log) << "Parser::Initialise" << std::endl;
+  (*call_sequence_log) << "Parser::Initialise()" << std::endl;
+
   const int reserved = 1;
   // embedded arithmetical functions
   add_func("sqrt",std::sqrt);
@@ -311,17 +313,24 @@ void Parser::Initialise()
 
 void Parser::quit()
 {
+  (*call_sequence_log) << "Parser::quit()" << std::endl;
+
   std::cout << "parsing complete..." << std::endl;
   exit(0);
 }
 
 void Parser::write_table(std::string* name, ElementType type, bool isLine)
 {
-  (*call_sequence_log) << "Parser::write_table name=" << *name
-                       << " type=" << type
-                       << " isLine=" << isLine << std::endl;
+  (*call_sequence_log) << "Parser::write_table(name=" << *name
+                       << ",type=" << type
+                       << ",isLine=" << isLine << ")" << std::endl;
   Element e;
   e.set(params,*name,type);
+
+  (*call_sequence_log) << "Parser::write_table> name=" << e.name << std::endl;
+  (*call_sequence_log) << "Parser::write_table> type=" << e.type << std::endl;
+  (*call_sequence_log) << "Parser::write_table> l=" << e.l << std::endl;
+
   if (isLine)
     {
       e.lst = new std::list<Element>(tmp_list);
@@ -351,7 +360,7 @@ void Parser::expand_line(const std::string& name,
                          const std::string& start,
                          const std::string& end)
 {
-  (*call_sequence_log) << "Parser::expand_line name=" << name << " start=" << start << " end=" << end << std::endl;
+  (*call_sequence_log) << "Parser::expand_line(name=" << name << ",start=" << start << ",end=" << end << ")" << std::endl;
 
   expand_line(beamline_list, name, start, end);
 }
@@ -361,8 +370,8 @@ void Parser::expand_line(FastList<Element>& target,
                          const std::string& start,
                          const std::string& end)
 {
-  (*call_sequence_log) << "Parser::expand_line target=" << target.size() << " name=" << name << " start="
-                       << start << " end=" << end << std::endl;
+  (*call_sequence_log) << "Parser::expand_line(target=" << target.size() << ",name=" << name << ",start="
+                       << start << " end=" << end << ")" << std::endl;
 
   const Element& line = find_element(name);
   if(line.type != ElementType::_LINE && line.type != ElementType::_REV_LINE )
@@ -513,14 +522,14 @@ void Parser::expand_line(FastList<Element>& target,
 }
 
 std::vector<std::string>& Parser::get_sequences() {
-  (*call_sequence_log) << "Parser::get_sequences" << std::endl;
+  (*call_sequence_log) << "Parser::get_sequences()" << std::endl;
 
   return sequences;
 }
 
 const FastList<Element>& Parser::get_sequence(const std::string& name, bool bExit)
 {
-  (*call_sequence_log) << "Parser::get_sequence name=" << name << std::endl;
+  (*call_sequence_log) << "Parser::get_sequence(name=" << name << ")" << std::endl;
 
   // search for previously queried beamlines
   const auto search = expandedSequences.find(name);
@@ -544,12 +553,12 @@ void Parser::set_sampler(const std::string& name,
                          double             samplerRadius,
                          int                particleSetID)
 {
-  (*call_sequence_log) << "Parser::set_sampler name=" << name
-                       << " count=" << count
-                       << " ElementType=" << type
-                       << " samplerType=" << samplerType
-                       << " samplerRadius=" << samplerRadius
-                       << " particleSetID=" << particleSetID << std::endl;
+  (*call_sequence_log) << "Parser::set_sampler(name=" << name
+                       << ", count=" << count
+                       << ", ElementType=" << type
+                       << ", samplerType=" << samplerType
+                       << ", samplerRadius=" << samplerRadius
+                       << ", particleSetID=" << particleSetID << ")" << std::endl;
 
   // if count equal to -2 add to all elements regardless of name
   // typically used for output elements like samplers
@@ -631,7 +640,7 @@ void Parser::set_sampler(const std::string& name,
 
 int Parser::add_sampler_partIDSet(std::list<int>* samplerPartIDListIn)
 {
-  (*call_sequence_log) << "Parser::add_sampler_partIDSet";
+  (*call_sequence_log) << "Parser::add_sampler_partIDSet(samplerPartIDListIn=" << samplerPartIDListIn << ")" << std::endl;
   if(samplerPartIDListIn != nullptr)
   {
     (*call_sequence_log) << " samplerPartIDListIn.size=" << samplerPartIDListIn->size() << std::endl;
@@ -656,25 +665,26 @@ int Parser::add_sampler_partIDSet(std::list<int>* samplerPartIDListIn)
     }
 }
 
-void Parser::add_sampler(const std::string& name, int count, ElementType type, std::string samplerType, std::list<int>* samplerPartIDListIn)
+void Parser::add_sampler(const std::string& name, int count, ElementType type,
+                         std::string samplerType, std::list<int>* samplerPartIDListIn)
 {
-#ifdef BDSDEBUG 
+#ifdef BDSDEBUG
   std::cout << "inserting sampler " << name;
   if (count>=0)
     {std::cout << "[" << count << "]";}
   std::cout << std::endl;
 #endif
 
-  (*call_sequence_log) << "Parser::add_sampler name=" << name
-                       << " count=" << count
-                       << " type=" << type
-                       << " samplerType=" << samplerType;
+  (*call_sequence_log) << "Parser::add_sampler(name=" << name
+                       << ", count=" << count
+                       << ", type=" << type
+                       << ", samplerType=" << samplerType;
   if(samplerPartIDListIn != nullptr)
   {
-    (*call_sequence_log) << " samplerPartIDListIn.size=" << samplerPartIDListIn->size() << std::endl;
+    (*call_sequence_log) << " samplerPartIDListIn.size=" << samplerPartIDListIn->size() << ")" << std::endl;
   }
   else {
-    (*call_sequence_log) << " samplerPartIDListIn.size=nullptr" << std::endl;
+    (*call_sequence_log) << " samplerPartIDListIn.size=nullptr" << ")" << std::endl;
   }
 
   int particleSetID = add_sampler_partIDSet(samplerPartIDListIn);
@@ -683,7 +693,7 @@ void Parser::add_sampler(const std::string& name, int count, ElementType type, s
 
 Element& Parser::find_element(const std::string& element_name)
 {
-  (*call_sequence_log) << "Parser::find_element element_name=" << element_name << std::endl;
+  (*call_sequence_log) << "Parser::find_element(element_name=" << element_name << ")" << std::endl;
 
   std::list<Element>::iterator it = element_list.find(element_name);
   std::list<Element>::const_iterator iterEnd = element_list.end();
@@ -699,7 +709,7 @@ Element& Parser::find_element(const std::string& element_name)
 
 const Element& Parser::find_element(const std::string& element_name)const
 {
-  (*call_sequence_log) << "Parser::find_element element_name=" << element_name << std::endl;
+  (*call_sequence_log) << "Parser::find_element(element_name=" << element_name << ")" << std::endl;
 
   auto search = element_list.find(element_name);
   if (search == element_list.end())
@@ -712,7 +722,7 @@ const Element& Parser::find_element(const std::string& element_name)const
 
 const Element* Parser::find_placement_element_safe(const std::string& element_name) const
 {
-  (*call_sequence_log) << "Parser::find_placement_element_safe element_name=" << element_name << std::endl;
+  (*call_sequence_log) << "Parser::find_placement_element_safe(element_name=" << element_name << ")" << std::endl;
 
   const Element* result = nullptr;
   auto search = placement_elements.find(element_name);
@@ -726,7 +736,7 @@ const Element* Parser::find_placement_element_safe(const std::string& element_na
 
 const Element* Parser::find_element_safe(const std::string& element_name) const
 {
-  (*call_sequence_log) << "Parser::find_element_safe element_name=" << element_name << std::endl;
+  (*call_sequence_log) << "Parser::find_element_safe(element_name=" << element_name << ")" << std::endl;
 
   const Element* result = nullptr;
   auto search = element_list.find(element_name);
@@ -740,8 +750,8 @@ const Element* Parser::find_element_safe(const std::string& element_name) const
 
 double Parser::property_lookup(const std::string& element_name, const std::string& property_name)const
 {
-  (*call_sequence_log) << "Parser::property_lookup element_name=" << element_name
-                       << " property_name=" << property_name << std::endl;
+  (*call_sequence_log) << "Parser::property_lookup(element_name=" << element_name
+                       << ", property_name=" << property_name << ")" << std::endl;
 
   const Element& element = find_element(element_name);
   return element.property_lookup(property_name);
@@ -756,10 +766,10 @@ void Parser::add_element_temp(const std::string& name, int number, bool pushfron
   std::cout << std::endl;
 #endif
 
-  (*call_sequence_log) << "Parser::add_element_temp name=" << name
-                       << " number=" << number
-                       << " pushfront=" << pushfront
-                       << " linetype=" << linetype << std::endl;
+  (*call_sequence_log) << "Parser::add_element_temp(name=" << name
+                       << ", number=" << number
+                       << ", pushfront=" << pushfront
+                       << ", linetype=" << linetype << ")" << std::endl;
 
   // add to temporary element sequence
   Element e;
@@ -785,7 +795,7 @@ int Parser::copy_element_to_params(const std::string& elementName)
   std::cout << "newinstance : VARIABLE -- " << elementName << std::endl;
 #endif
 
-  (*call_sequence_log) << "Parser::copy_element_to_params elementName=" << elementName << std::endl;
+  (*call_sequence_log) << "Parser::copy_element_to_params(elementName=" << elementName << ")" << std::endl;
 
   const Element& element = find_element(elementName);
 
@@ -798,8 +808,8 @@ int Parser::copy_element_to_params(const std::string& elementName)
 
 void Parser::add_func(std::string name, double (*func)(double))
 {
-  (*call_sequence_log) << "Parser::add_func name=" << name
-                       << " func=" << func << std::endl;
+  (*call_sequence_log) << "Parser::add_func(name=" << name
+                       << ", func=" << func << ")" << std::endl;
 
   Symtab *sp=symtab_map.symcreate(name);
   sp->Set(func);
@@ -807,9 +817,9 @@ void Parser::add_func(std::string name, double (*func)(double))
 
 void Parser::add_var(std::string name, double value, int is_reserved)
 {
-  (*call_sequence_log) << "Parser::add_var name=" << name
-                       << " value=" << value
-                       << " is_reserved=" << is_reserved << std::endl;
+  (*call_sequence_log) << "Parser::add_var(name=" << name
+                       << ", value=" << value
+                       << ", is_reserved=" << is_reserved << ")" << std::endl;
 
   Symtab* sp = symtab_map.symcreate(name);
   sp->Set(value,is_reserved);
@@ -817,8 +827,8 @@ void Parser::add_var(std::string name, double value, int is_reserved)
 
 bool Parser::InvalidSymbolName(const std::string& s, std::string& errorReason)
 {
-  (*call_sequence_log) << "Parser::InvalidSymbolName s=" << s
-                       << " errorReason=" << errorReason << std::endl;
+  (*call_sequence_log) << "Parser::InvalidSymbolName(s=" << s
+                       << ", errorReason=" << errorReason << ")" << std::endl;
 
   bool result = false;
   if (options.NameExists(s))
@@ -828,35 +838,35 @@ bool Parser::InvalidSymbolName(const std::string& s, std::string& errorReason)
 
 Symtab * Parser::symcreate(const std::string& s)
 {
-  (*call_sequence_log) << "Parser::symcreate s=" << s << std::endl;
+  (*call_sequence_log) << "Parser::symcreate(s=" << s << ")" << std::endl;
 
   return symtab_map.symcreate(s);
 }
 
 Symtab * Parser::symlook(const std::string& s)
 {
-  (*call_sequence_log) << "Parser::symlook s=" << s << std::endl;
+  (*call_sequence_log) << "Parser::symlook(s=" << s << ")" << std::endl;
 
   return symtab_map.symlook(s);
 }
 
 void Parser::Store(double value)
 {
-  (*call_sequence_log) << "Parser::Store s=" << value << std::endl;
+  (*call_sequence_log) << "Parser::Store(s=" << value << ")" << std::endl;
 
   tmparray.push_front(value);
 }
 
 void Parser::Store(const std::string& name)
 {
-  (*call_sequence_log) << "Parser::Store name=" << name << std::endl;
+  (*call_sequence_log) << "Parser::Store(name=" << name << ")" << std::endl;
 
   tmpstring.push_front(name);
 }
 
 void Parser::FillArray(Array* array)
 {
-  (*call_sequence_log) << "Parser::FillArray array.size=" << array->GetData().size() << std::endl;
+  (*call_sequence_log) << "Parser::FillArray(array.size=" << array->GetData().size() << ")" << std::endl;
 
   array->Copy(tmparray);
   tmparray.clear();
@@ -865,7 +875,7 @@ void Parser::FillArray(Array* array)
 void Parser::FillString(Array* array)
 {
 
-  (*call_sequence_log) << "Parser::FillString array.size=" << array->GetData().size() << std::endl;
+  (*call_sequence_log) << "Parser::FillString(array.size=" << array->GetData().size() << ")" << std::endl;
 
   array->Copy(tmpstring);
   tmpstring.clear();
@@ -873,7 +883,7 @@ void Parser::FillString(Array* array)
 
 void Parser::ClearParams()
 {
-  (*call_sequence_log) << "Parser::ClearParams" << std::endl;
+  (*call_sequence_log) << "Parser::ClearParams()" << std::endl;
 
   params.flush();
   samplerFilters.clear();
@@ -881,7 +891,7 @@ void Parser::ClearParams()
 
 void Parser::Overwrite(const std::string& objectName)
 {
-  (*call_sequence_log) << "Parser::Overwrite objectName=" << objectName << std::endl;
+  (*call_sequence_log) << "Parser::Overwrite(objectName=" << objectName << ")" << std::endl;
 
   // find object and set values
 
@@ -942,7 +952,7 @@ void Parser::Overwrite(const std::string& objectName)
 template <class C>
 bool Parser::FindAndExtend(const std::string& objectName)
 {
-  (*call_sequence_log) << "Parser::FindAndExtend objectName=" << objectName << std::endl;
+  (*call_sequence_log) << "Parser::FindAndExtend(objectName=" << objectName << ")" << std::endl;
 
   GMAD::FastList<C>& fl = GetList<C>();
   auto search = fl.find(objectName);
@@ -957,7 +967,7 @@ bool Parser::FindAndExtend(const std::string& objectName)
 template<class C>
 void Parser::ExtendObject(C& object)
 {
-  (*call_sequence_log) << "Parser::Extend objectName=template<C>" << std::endl;
+  (*call_sequence_log) << "Parser::Extend(<C>object=" << &object << ")" << std::endl;
 
   for (auto& option : extendedNumbers)
     {object.set_value(option.first, option.second);}
@@ -969,22 +979,22 @@ void Parser::ExtendObject(C& object)
 
 void Parser::AddVariable(std::string* name)
 {
-  (*call_sequence_log) << "Parser::AddVariable name=" << *name << std::endl;
+  (*call_sequence_log) << "Parser::AddVariable(name=" << *name << ")" << std::endl;
 
   var_list.push_back(name);
 }
 
-void Parser::PrintBeamline()const
+void Parser::PrintBeamline() const
 {
   beamline_list.print();
 }
 
-void Parser::PrintElements()const
+void Parser::PrintElements() const
 {
   element_list.print();
 }
 
-void Parser::PrintOptions()const
+void Parser::PrintOptions() const
 {
   options.print();
 }
@@ -1060,9 +1070,10 @@ bool Parser::TryPrintingObject(const std::string& objectName) const
   return false;
 }
 
-const FastList<Element>& Parser::GetBeamline()const
+const FastList<Element>& Parser::GetBeamline() const
 {
-  (*call_sequence_log) << "Parser::GetBeamline" << std::endl;
+  (*call_sequence_log) << "Parser::GetBeamline()" << std::endl;
+
   return beamline_list;
 }
 
@@ -1154,7 +1165,6 @@ namespace GMAD {
   template<> Tunnel& Parser::GetGlobal(){return tunnel;}
   template<> Tunnel* Parser::GetGlobalPtr(){return &tunnel;}
   template<> FastList<Tunnel>& Parser::GetList<Tunnel>(){return tunnel_list;}
-
 
   template<>
   void Parser::ExtendValue(const std::string& property, double value)

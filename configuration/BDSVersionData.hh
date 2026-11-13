@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -16,4 +15,4 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#define BDSIM_DATA_VERSION 9
+#define BDSIM_DATA_VERSION 10

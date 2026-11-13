@@ -685,6 +685,21 @@ build. After configuring the installation, you should run::
 	  configuration to one that won't require the :code:`sudo` command. The variable
 	  :code:`CMAKE_INSTALL_PREFIX` should be changed.
   
+Unity Builds
+************
+
+With CMake 3.16 or newer, pass :code:`-DCMAKE_UNITY_BUILD=ON` when configuring
+BDSIM to enable `CMake unity builds <https://cmake.org/cmake/help/latest/prop_tgt/UNITY_BUILD.html>`_.
+Unity builds combine several source files into one translation unit, reducing
+repeated header processing during compilation. This can reduce clean build times;
+the benefit depends on the compiler and machine. Generated ROOT dictionaries
+are compiled separately to avoid duplicate definitions. Unity builds are disabled
+by default and can be disabled explicitly with :code:`-DCMAKE_UNITY_BUILD=OFF`.
+The number of source files combined can be set with
+:code:`CMAKE_UNITY_BUILD_BATCH_SIZE`. macOS continuous integration builds enable
+unity builds with the CMake default batch size; Linux continuous integration
+builds disable unity builds to retain coverage of regular compilation.
+
 .. _installation-bdsim-config-options:
 
 Optional Configuration Options

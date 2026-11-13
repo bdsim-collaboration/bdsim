@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -326,7 +325,8 @@ void BDSOutputStructures::InitialiseMaterialMap()
 G4int BDSOutputStructures::UpdateSamplerStructures()
 {
   G4int result = 0;
-  for (auto const& samplerName : BDSSamplerRegistry::Instance()->GetUniqueNames())
+  auto samplerRegistry = BDSSamplerRegistry::Instance();
+  for (auto const& samplerName : samplerRegistry->GetUniqueNames())
     {// only put it in if it doesn't exist already
       if (std::find(samplerNames.begin(), samplerNames.end(), samplerName) == samplerNames.end())
 	{
@@ -339,6 +339,15 @@ G4int BDSOutputStructures::UpdateSamplerStructures()
 	  samplerTrees.push_back(res);
 	  samplerNames.push_back(samplerName);
 	}
+    }
+
+  const auto planeNames = samplerRegistry->GetUniqueNamesPlane();
+  const auto planeIDs   = samplerRegistry->GetSamplerIDsPlane();
+  for (size_t i = 0; i < planeIDs.size(); ++i)
+    {
+      auto nameIterator = std::find(samplerNames.begin(), samplerNames.end(), planeNames.at(i));
+      if (nameIterator != samplerNames.end())
+        {samplerIDToIndexPlane[planeIDs.at(i)] = (G4int)std::distance(samplerNames.begin(), nameIterator);}
     }
   /// TBC - does not do cylinder or spheres
   return result;

@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -849,15 +848,15 @@ command : STOP         { if(execute) Parser::Instance()->quit(); }
         }
         | CSAMPLE ',' sample_options
         {
-	  if(execute)
-	    {
-	      if(ECHO_GRAMMAR) std::cout << "command -> CSAMPLE" << std::endl;
-	      Parser::Instance()->add_sampler(*($3), element_count, element_type, "cylinder", samplerPartIDList);
-	      element_count = -1;
-	      Parser::Instance()->ClearParams();
-	      delete samplerPartIDList; samplerPartIDList = nullptr;
-	    }
-	}
+            if(execute)
+            {
+              if(ECHO_GRAMMAR) std::cout << "command -> CSAMPLE" << std::endl;
+              Parser::Instance()->add_sampler(*($3), element_count, element_type, "cylinder", samplerPartIDList);
+              element_count = -1;
+              Parser::Instance()->ClearParams();
+              delete samplerPartIDList; samplerPartIDList = nullptr;
+            }
+        }
         | ATOM ',' atom_options // atom
         {
           if(execute)

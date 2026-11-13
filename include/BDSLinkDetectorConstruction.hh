@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -19,8 +18,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSLINKDETECTORCONSTRUCTION_H
 #define BDSLINKDETECTORCONSTRUCTION_H
 #include "BDSBeamline.hh"
-#include "BDSCollimatorJaw.hh"
-#include "BDSCollimatorTipJaw.hh"
 #include "BDSExtent.hh"
 
 #include "G4ThreeVector.hh"
@@ -28,9 +25,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4Version.hh"
 #include "G4VUserDetectorConstruction.hh"
 
+#include <map>
 #include <string>
 
-class BDSBeamline;
 class BDSBeamlineElement;
 class BDSBeamlineIntegral;
 class BDSLinkPrimaryGeneratorAction;

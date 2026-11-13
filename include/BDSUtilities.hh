@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -105,6 +104,9 @@ namespace BDS
   /// Returns path from which BDSIM is executed
   /// supports linux/unix and mac OS
   std::string GetBDSIMExecPath();
+
+  /// Returns the path from which the BDSIM library is loaded.
+  std::string GetBDSIMLibraryPath();
 
   /// Get the full absolute directory path where a file can be found.
   /// Option excludeNameFromPath: if true will return only the path without

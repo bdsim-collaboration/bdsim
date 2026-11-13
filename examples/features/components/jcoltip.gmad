@@ -13,8 +13,29 @@ col11: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=20.0
 col12: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_C", tipThickness=5.0*cm, horizontalWidth=60.0*cm, xsizeRight=2*m, xsizeLeft=1*cm, jawTiltLeft=-0.05, jawTiltRight=-0.05;
 col13: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=10.0*cm, horizontalWidth=60.0*cm, xsizeRight=2*cm, xsizeLeft=1*cm, jawTiltLeft=0.05, jawTiltRight=-0.05;
 
+! converging jaws
+col14: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=4*mm, horizontalWidth=60.0*cm, xsizeLeft=1*cm, xsizeRight=1*cm, jawTiltLeft=-0.05,  jawTiltRight=0.05;
+
+! over the mid point parallel jaws
+col15: jcoltip, l=0.2*m, material="G4_W", tipMaterial="G4_Cu", tipThickness=4*mm,  horizontalWidth=60.0*cm, xsizeLeft=-10*cm, xsizeRight=12*cm;
+col16: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=4*mm, horizontalWidth=60.0*cm, xsizeLeft=12*cm,  xsizeRight=-10*cm;
+
+! both jaws tilted to the left on downstream side and offset to the right over the mid point
+col17: jcoltip, l=0.2*m, material="G4_W", tipMaterial="G4_Cu", tipThickness=4*mm,  horizontalWidth=60.0*cm, xsizeLeft=-11.9*cm, xsizeRight=12*cm,    jawTiltLeft=0.1, jawTiltRight=0.1;
+
+! both jaws tilted to the left on downstream side and offset to the left over the mid point
+col18: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=4*mm, horizontalWidth=60.0*cm, xsizeLeft=12*cm,    xsizeRight=-11.9*cm, jawTiltLeft=0.1, jawTiltRight=0.1;
+
+! both jaws tilted to the right on downstream side and offset to the right over the mid point
+col19: jcoltip, l=0.2*m, material="G4_W", tipMaterial="G4_Cu", tipThickness=4*mm,  horizontalWidth=60.0*cm, xsizeLeft=-11.9*cm, xsizeRight=12*cm,    jawTiltLeft=-0.1, jawTiltRight=-0.1;
+
+! both jaws tilted to the right on downstream side and offset to the left over the mid point
+col20: jcoltip, l=0.2*m, material="G4_Cu", tipMaterial="G4_W", tipThickness=4*mm, horizontalWidth=60.0*cm, xsizeLeft=12*cm,    xsizeRight=-11.9*cm, jawTiltLeft=-0.1, jawTiltRight=-0.1;
+
 l1: line=(d1, col1, d1, col2, d1, col3, d1, col4, d1, col5, d1, col6, d1, col7, d1, col8, d1, col9, d1, col10, d1, col11, d1, col12, d1, col13);
-use, l1;
+l2: line=(d1, col14, d1, col15, d1, col16, d1, col17, d1, col18, d1, col19, d1, col20);
+ltotal: line=(l1, l2);
+use, ltotal;
 
 beam, particle="e+",
       energy=100*GeV,

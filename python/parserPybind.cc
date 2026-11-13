@@ -1,14 +1,13 @@
-/*
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway,
-University of London 2001 - 2024.
+/* 
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
-BDSIM is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published
+BDSIM is free software: you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published 
 by the Free Software Foundation version 3 of the License.
 
-BDSIM is distributed in the hope that it will be useful, but
+BDSIM is distributed in the hope that it will be useful, but 
 WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -66,7 +65,9 @@ PYBIND11_MODULE(parser, m) {
 
       .def("add_sampler_partIDSet",&GMAD::Parser::add_sampler_partIDSet)
       .def("add_sampler", &GMAD::Parser::add_sampler)
-
+      .def("add_sampler",[](GMAD::Parser &parser, const std::string& name, int count, GMAD::ElementType type, std::string samplerType) {
+        parser.add_sampler(name, count, type, samplerType);
+      })
       .def("Add_Aperture",[](GMAD::Parser *parser) {parser->Add<GMAD::Aperture, GMAD::FastList<GMAD::Aperture>>();})
       .def("Add_Atom",[](GMAD::Parser *parser) {parser->Add<GMAD::Atom, GMAD::FastList<GMAD::Atom>>();})
       .def("Add_BLMPlacement",[](GMAD::Parser *parser) {parser->Add<GMAD::BLMPlacement, GMAD::FastList<GMAD::BLMPlacement>>();})

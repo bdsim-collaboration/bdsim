@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -64,7 +63,8 @@ BDSCollimator::BDSCollimator(const G4String& nameIn,
   tapered(false),
   colour(colourIn),
   minKineticEnergy(0),
-  circularOuter(circularOuterIn)
+  circularOuter(circularOuterIn),
+  collimatorTypeSensitivity(true)
 {;}
 
 BDSCollimator::~BDSCollimator()
@@ -209,7 +209,12 @@ void BDSCollimator::Build()
   // register with base class (BDSGeometryComponent)
   RegisterLogicalVolume(collimatorLV);
   if (sensitiveOuter)
-    {RegisterSensitiveVolume(collimatorLV, BDSSDType::collimatorcomplete);}
+    {
+      if (collimatorTypeSensitivity)
+        {RegisterSensitiveVolume(collimatorLV, BDSSDType::collimatorcomplete);}
+      else
+        {RegisterSensitiveVolume(collimatorLV, BDSSDType::energydep);}
+    }
 
   G4PVPlacement* collPV = new G4PVPlacement(colRotate,               // rotation
                                             G4ThreeVector(),         // position

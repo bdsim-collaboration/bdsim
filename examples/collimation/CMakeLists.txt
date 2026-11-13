@@ -6,3 +6,5 @@ simple_testing(example-collimation-hits-minke      "--file=collimation-hits-mink
 simple_testing(example-collimation-hits-ion-minke  "--file=collimation-hits-ion-minke.gmad" ${OVERLAP_CHECK})
 simple_testing(example-collimation-hits-all-minke  "--file=collimation-hits-all-minke.gmad" ${OVERLAP_CHECK})
 
+simple_testing(example-collimation-scatter         "--file=scatter.gmad"                    ${OVERLAP_CHECK})
+

@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -99,6 +98,7 @@ protected:
   G4Colour*   colour;             ///< Colour of collimator.
   G4double    minKineticEnergy;   ///< Optional minimum kinetic energy for collimator materials.
   G4bool      circularOuter;      ///< Aperture type of the collimator
+  G4bool      collimatorTypeSensitivity; ///< Whether to use special collimator hits or not.
 };
 
 #endif

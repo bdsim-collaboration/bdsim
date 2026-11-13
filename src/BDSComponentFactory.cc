@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -27,7 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSCollimatorCrystal.hh"
 #include "BDSCollimatorElliptical.hh"
 #include "BDSCollimatorJaw.hh"
-#include "BDSCollimatorTipJaw.hh"
+#include "BDSCollimatorJawTip.hh"
 #include "BDSCollimatorRectangular.hh"
 #include "BDSCollimatorBeamMask.hh"
 #include "BDSColours.hh"
@@ -1615,7 +1614,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateTipJawCollimator()
     {return nullptr;}
   auto collimatorMaterial = PrepareMaterial(element);
   auto collimatorTipMaterial = PrepareTipMaterial(element);
-  return new BDSCollimatorTipJaw(elementName,
+  return new BDSCollimatorJawTip(elementName,
 				 element->l*CLHEP::m,
 				 PrepareHorizontalWidth(element),
                                  element->xsize*CLHEP::m,

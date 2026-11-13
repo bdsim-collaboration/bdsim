@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -20,8 +19,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamline.hh"
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamlineIntegral.hh"
-#include "BDSCollimatorJaw.hh"
-#include "BDSCollimatorTipJaw.hh"
 #include "BDSComponentFactory.hh"
 #include "BDSCrystalInfo.hh"
 #include "BDSDebug.hh"

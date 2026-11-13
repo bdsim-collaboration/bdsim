@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -89,6 +88,7 @@ BDSColours::BDSColours()
   colours["rfy"]              = colours["rf"];
   colours["srfcavity"]        = new G4Colour(0.69,  0.769, 0.871); // light steel blue
   colours["collimator"]       = new G4Colour(0.25,  0.4,   0.2);   // dark green
+  colours["collimatorTip"]    = new G4Colour(0.12,  0.26,  0.08);  // even darker green
   colours["ecol"]             = colours["collimator"];
   colours["jcol"]             = colours["collimator"];
   colours["rcol"]             = colours["collimator"];

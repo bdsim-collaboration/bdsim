@@ -1,0 +1,25 @@
+d1: drift, l=20*cm, aper1=12*cm;
+c1: ecol, l=10*cm, material="graphite", xsize=10*cm, ysize=10*cm;
+c2: rcol, l=10*cm, material="copper", xsize=8*cm, ysize=8*cm;
+c3: jcol, l=10*cm, material="water", xsize=6*cm, ysize=10*cm, tilt=pi/2;
+
+
+l1: line=(d1, c1, c2, c3);
+use, l1;
+
+beam, particle="proton",
+      momentum=10*GeV,
+      distrType="ring",
+      Rmin=5.5*cm,
+      Rmax=10.5*cm,
+      Rpmin=0.01,
+      Rpmax=0.1;
+
+option, physicsList="hadronic_elastic",
+        minimumKineticEnergy=0.5*GeV;
+
+option, elossHistoBinWidth=1*cm;
+
+option, seed=123;
+
+option, ngenerate=40;

@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -123,7 +122,17 @@ G4String BDS::GDMLSchemaLocation()
       return installPath;
     }
   else
-   {throw BDSException(__METHOD_NAME__, "ERROR: local GDML schema could not be found!");}
+    {
+      G4String bdsimLibraryPath = BDS::GetBDSIMLibraryPath();
+      G4String libraryInstallPath = bdsimLibraryPath + "../share/bdsim/gdml/schema/gdml.xsd";
+      if ( (file = fopen(libraryInstallPath.c_str(), "r")) )
+	{
+	  fclose(file);
+	  return libraryInstallPath;
+	}
+      else
+	{throw BDSException(__METHOD_NAME__, "ERROR: local GDML schema could not be found!");}
+    }
 }
 
 BDSGDMLPreprocessor::BDSGDMLPreprocessor()

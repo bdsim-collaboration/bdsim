@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -29,4 +28,6 @@ BDSTarget::BDSTarget(const G4String& nameIn,
 		     G4bool      circularOuterIn):
   BDSCollimator(nameIn, lengthIn, horizontalWidthIn, "target",
                 materialIn, nullptr, 0, 0, 0, 0, colourIn, circularOuterIn)
-{;}
+{
+  collimatorTypeSensitivity = false;
+}

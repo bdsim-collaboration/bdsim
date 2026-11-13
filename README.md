@@ -1,8 +1,8 @@
-# Beam Delivery Simulation (BDSIM) Copyright (c) Royal Holloway, University of London 2001 - 2024
+# Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 ## General Information
 
-BDSIM version 1.7.7.develop program for radiation transport in accelerators
+BDSIM version 1.8.2.develop program for radiation transport in accelerators
 
 The official web site is:
 	https://bdsim-collaboration.github.io/web/
@@ -22,23 +22,25 @@ Originally started by G.A. Blair. See manual for full authorship.
 ## Installation
 
 Regularly tested on:
-  * OS: Linux (RHEL9, Alma9, Ubuntu 20,22, 24), Mac OS 13 onwards
+  * OS: Linux (Alma10, Ubuntu 24) and Mac OS 15 onwards
   * Architecture: x86_64, ARM64
   * Compiler: GCC 8,9,11,13, Clang 12-15 (fully C++ 11 compliant)
 
 
 ## System requirements:
   * compiler with C++11 support
-  * CMake 3.5 or higher
+  * CMake 3.10 or higher
   * BISON
   * CLHEP (recommended version > 2.3.3.0 - check with Geant4 version)
   * FLEX
-  * Geant4 versions Geant4.10 or greater (10.4.3, 10.7.2, 11.2.0 recommended) or latest patch version recommended of any 10.X version. 
+  * Geant4 versions Geant4.10 or greater (10.7.4, 11.4.0 recommended) or latest patch version recommended of any 10.X version. 
   * ROOT 6
 
 Optional: 
   * OpenGL / QT5 (for interactive visualiser)
+  * VTK for Geant4 VTK visualisation
   * XercesC3 (for GDML)
+  * HepMC3 for HepMC file loading
 
 To compile, see http://www.pp.rhul.ac.uk/bdsim/manual/installation.html
 
@@ -85,6 +87,7 @@ interpolator/    : tool for field map validation
 manual/          : documentation
 modules/         : extra modules for user code
 parser/          : gmad parser
+python/          : python bindings
 src/             : source files
 src-external/    : third party source code
 test/            : various test programs
@@ -95,6 +98,9 @@ vis/             : default visualisation files
 ## History
 
 ```
+v1.8.2  12.11.26
+v1.8.1  20.10.26
+v1.8.0  27.09.26
 v1.7.7  29.10.23
 v1.7.6  18.10.23
 v1.7.5  03.10.23

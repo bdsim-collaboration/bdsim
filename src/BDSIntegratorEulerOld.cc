@@ -1,6 +1,5 @@
 /* 
-Beam Delivery Simulation (BDSIM) Copyright (C) Royal Holloway, 
-University of London 2001 - 2024.
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
 
 This file is part of BDSIM.
 
@@ -104,7 +103,7 @@ void BDSIntegratorEulerOld::AdvanceChord(const G4double       h,
       // presumably cause a very large deflection. This results in nan
       // and bad tracking from Geant4 / a crash. Throw exception that'll
       // be caught higher up and the backup stepper will be used.
-      G4double dz = std::sqrt(h2*(1.-h2*localAMag*localAMag/12)-dx*dx-dy*dy);
+      G4double dz = std::sqrt(std::abs(h2*(1.-h2*localAMag*localAMag/12)-dx*dx-dy*dy));
       if (std::isnan(dz))
 	{throw std::out_of_range("non-paraxial in old euler method");}
       
