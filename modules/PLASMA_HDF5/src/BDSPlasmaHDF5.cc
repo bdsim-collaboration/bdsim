@@ -65,9 +65,9 @@ std::vector<double> BDSPlasmaHDF5::Get1DVector(H5::Group group,
 
   H5::DataSpace dataspace = set.getSpace();
   int rank = dataspace.getSimpleExtentNdims();
-  hsize_t dims[rank];
-  dataspace.getSimpleExtentDims(dims, nullptr);
-  std::vector<double> data(dims[0]);
+  std::vector<hsize_t> dims(rank);
+  dataspace.getSimpleExtentDims(dims.data(), nullptr);
+  std::vector<double>data(dims[0]);
 
   set.read(data.data(), H5::PredType::NATIVE_DOUBLE);
 
@@ -81,8 +81,8 @@ std::vector<double> BDSPlasmaHDF5::Get3DVector(H5::Group group,
 
   H5::DataSpace dataspace = set.getSpace();
   int rank = dataspace.getSimpleExtentNdims();
-  hsize_t dims[rank];
-  dataspace.getSimpleExtentDims(dims, nullptr);
+  std::vector<hsize_t> dims(rank);
+  dataspace.getSimpleExtentDims(dims.data(), nullptr);
   std::vector<double> data(dims[0] * dims[1] * dims[2]);
 
   set.read(data.data(), H5::PredType::NATIVE_DOUBLE);
