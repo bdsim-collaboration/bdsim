@@ -47,9 +47,10 @@ void BDSPlasmaHDF5::CheckHDF5(const G4String filename)
 {
   G4cout << "BDSPlasmaHDF5::CheckHDF5" << G4endl;
   try
-  {
-    H5::H5File *file= new H5::H5File(filename, H5F_ACC_RDWR);
-  }
+    {
+      H5::H5File* file= new H5::H5File(filename, H5F_ACC_RDWR);
+      file->close();
+    }
   catch (H5::FileIException& e)
   {
     std::string msg = "Error on checking file";
