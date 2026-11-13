@@ -1,0 +1,13 @@
+q1: quadrupole, l=0.5*m, k1=0.5, aper1=5*cm;
+s1: sextupole, l=0.5*m, k2=20, aper1=5*cm;
+o1: octupole, l=0.5*m, k3=2000, aper1=5*cm;
+dc1: decapole, l=0.5*m, k4=200000, aper1=5*cm;
+mul1: multipole, l=0.5*m, knl={0, 0.5}, ksl={0, 0}, aper1=5*cm;
+rfx1: rfx, l=0.5*m, gradient=2*MV/m, frequency=0, phase=0, aper1=5*cm;
+rfy1: rfy, l=0.5*m, gradient=2*MV/m, frequency=0, phase=0, aper1=5*cm;
+
+link_line: line=(q1, s1, o1, dc1, mul1, rfx1, rfy1);
+use, link_line;
+
+beam, particle="proton", kineticEnergy=100*GeV;
+option, physicsList="em";

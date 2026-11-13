@@ -28,11 +28,50 @@ add_test(NAME "tester-link-sampler-legacy"
 
 add_executable(BDSLinkFieldTester BDSLinkFieldTester.cc)
 target_link_libraries(BDSLinkFieldTester ${BDSIM_LIB_NAME} gmad)
+add_test(NAME "tester-link-field-construction"
+         COMMAND BDSLinkFieldTester ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_field.gmad probe)
+foreach(element_name q1 s1 o1 dc1 mul1)
+  add_test(NAME "tester-link-field-${element_name}"
+           COMMAND BDSLinkFieldTester
+                   ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_field_elements.gmad
+                   ${element_name} field)
+endforeach()
+add_test(NAME "tester-link-field-rfx1"
+         COMMAND BDSLinkFieldTester
+                 ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_field_elements.gmad
+                 rfx1 field-x)
+add_test(NAME "tester-link-field-rfy1"
+         COMMAND BDSLinkFieldTester
+                 ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_field_elements.gmad
+                 rfy1 field-y)
+add_test(NAME "tester-link-field-rfx-finite-reference"
+         COMMAND BDSLinkFieldTester
+                 ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_field_rf_finite.gmad
+                 rfxf 0.0100012961775 3.90754303226e-06 4.16973161697)
 if (USE_GZSTREAM)
   add_test(NAME "tester-link-field-map"
            COMMAND BDSLinkFieldTester ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_field_map.gmad
                    probe_map 0.00962872616947 -0.00148509279825)
 endif()
+
+add_executable(BDSLinkStraightElementTester BDSLinkStraightElementTester.cc)
+target_link_libraries(BDSLinkStraightElementTester ${BDSIM_LIB_NAME} gmad)
+add_test(NAME "tester-link-straight-drift"
+         COMMAND BDSLinkStraightElementTester
+                 ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_straight_elements.gmad
+                 d1)
+add_test(NAME "tester-link-skip-zero-length-quadrupole"
+         COMMAND BDSLinkStraightElementTester
+                 ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_zero_length_element.gmad
+                 q0 missing)
+
+add_executable(BDSLinkUnsupportedElementTester BDSLinkUnsupportedElementTester.cc)
+target_link_libraries(BDSLinkUnsupportedElementTester ${BDSIM_LIB_NAME} gmad)
+foreach(parameter angle e1 e2)
+  add_test(NAME "tester-link-reject-element-${parameter}"
+           COMMAND BDSLinkUnsupportedElementTester
+                   ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_element_${parameter}.gmad)
+endforeach()
 
 add_executable(BDSSixTrackTester BDSSixTrackTester.cc)
 set_target_properties(BDSSixTrackTester PROPERTIES OUTPUT_NAME "BDSSixTrackTester" VERSION ${BDSIM_VERSION})

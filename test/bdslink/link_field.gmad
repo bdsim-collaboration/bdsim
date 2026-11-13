@@ -1,0 +1,9 @@
+probe: quadrupole, l=0.5*m, k1=0.2,
+       apertureType="circular", aper1=10*cm,
+       outerDiameter=30*cm;
+
+link_line: line = (probe);
+use, link_line;
+
+beam, particle="proton", kineticEnergy=100*GeV;
+option, physicsList="g4FTFP_BERT";
