@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorModel.hh"
+#include "BDSAuxiliaryNavigator.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamlineIntegral.hh"
@@ -25,6 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSException.hh"
 #include "BDSExtent.hh"
 #include "BDSExtentGlobal.hh"
+#include "BDSFieldQuery.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSLinkComponent.hh"
 #include "BDSLinkDetectorConstruction.hh"
@@ -166,6 +168,10 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 				   false,
 				   0,
 				   true);
+
+  // Attach the mass world to the navigation used by fields and field queries.
+  BDSAuxiliaryNavigator::AttachWorldVolumeToNavigator(worldPV);
+  BDSFieldQuery::AttachWorldVolumeToNavigator(worldPV);
 
   // place any defined link elements in input
   for (auto element : *linkBeamline)
