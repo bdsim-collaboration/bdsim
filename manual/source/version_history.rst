@@ -12,6 +12,20 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
+v1.9.0 - 2026 / 12 / XX
+=======================
+
+New Features
+------------
+
+* :code:`BDSIMLink` can track through accepted straight
+  components defined before initialisation, including drifts, straight
+  multipoles, transverse RF elements, and fields independent of local
+  longitudinal position.
+* Accepted straight BDSLink components consistently apply their transverse offsets
+  and tilt inside the component's opaque box.
+
+
 v1.8.2 - 2026 / 11 / 12
 =======================
 

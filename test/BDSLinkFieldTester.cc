@@ -33,10 +33,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 int main(int argc, char** argv)
 {
-  if (argc != 5)
+  if (argc != 3 && argc != 4 && argc != 5 && argc != 6)
     {
       std::cerr << "Usage: BDSLinkFieldTester <gmad-file> <element-name> "
-                << "<map-reference-x-m> <map-reference-xp>" << std::endl;
+                << "[field|field-x|field-y] "
+                << "[reference-x-m reference-xp [input-time-ns]]" << std::endl;
       return 1;
     }
 
@@ -64,6 +65,7 @@ int main(int argc, char** argv)
     }
 
   const G4double kineticEnergy = 100 * CLHEP::GeV;
+  const G4double inputTime = argc == 6 ? std::stod(argv[5]) * CLHEP::ns : 0;
   auto* particle = new BDSParticleDefinition(G4Proton::ProtonDefinition(),
                                              0,
                                              kineticEnergy,
@@ -75,7 +77,7 @@ int main(int argc, char** argv)
                                     0,
                                     0,
                                     1,
-                                    0,
+                                    inputTime,
                                     0,
                                     particle->TotalEnergy(),
                                     1);
@@ -101,14 +103,46 @@ int main(int argc, char** argv)
       std::cerr << "Non-finite transverse sampler coordinates" << std::endl;
       return 1;
     }
-  // Reference values from standalone BDSIM's float sampler for this map.
-  const G4double expectedX = std::stod(argv[3]) * CLHEP::m;
-  const G4double expectedXP = std::stod(argv[4]);
-  if (std::abs(hit->coords.x - expectedX) > 10 * CLHEP::nm ||
-      std::abs(xp - expectedXP) > 1e-9)
+  if (argc == 4)
     {
-      std::cerr << "Field-map tracking differs from standalone BDSIM: x="
-                << hit->coords.x / CLHEP::m << " m, xp=" << xp << std::endl;
+      const std::string check = argv[3];
+      G4bool fieldApplied = false;
+      if (check == "field")
+        {fieldApplied = std::hypot(xp, yp) > 1e-10;}
+      else if (check == "field-x")
+        {fieldApplied = std::abs(xp) > 1e-10;}
+      else if (check == "field-y")
+        {fieldApplied = std::abs(yp) > 1e-10;}
+      else
+        {
+          std::cerr << "Unknown field check: " << check << std::endl;
+          return 1;
+        }
+      if (!fieldApplied)
+        {
+          std::cerr << "No measurable field deflection through " << elementName
+                    << ": xp=" << xp << ", yp=" << yp << std::endl;
+          return 1;
+        }
+    }
+  else if (argc == 5 || argc == 6)
+    {
+      // Reference values from standalone BDSIM's float sampler.
+      const G4double expectedX = std::stod(argv[3]) * CLHEP::m;
+      const G4double expectedXP = std::stod(argv[4]);
+      if (std::abs(hit->coords.x - expectedX) > 10 * CLHEP::nm ||
+          std::abs(xp - expectedXP) > 1e-9)
+        {
+          std::cerr << "Linked tracking for " << elementName
+                    << " differs from standalone BDSIM: x="
+                    << hit->coords.x / CLHEP::m << " m, xp=" << xp << std::endl;
+          return 1;
+        }
+    }
+  else if (xp >= -1e-6 || yp <= 1e-6)
+    {
+      std::cerr << "The quadrupole did not focus and defocus the two planes: xp="
+                << xp << ", yp=" << yp << std::endl;
       return 1;
     }
 

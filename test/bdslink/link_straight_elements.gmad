@@ -1,0 +1,7 @@
+d1: drift, l=0.5*m, aper1=5*cm;
+
+link_line: line = (d1);
+use, link_line;
+
+beam, particle="proton", kineticEnergy=100*GeV;
+option, physicsList="em";
