@@ -26,6 +26,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSException.hh"
 #include "BDSExtent.hh"
 #include "BDSExtentGlobal.hh"
+#include "BDSFieldBuilder.hh"
 #include "BDSFieldQuery.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSLinkComponent.hh"
@@ -185,6 +186,12 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
     }
 
   return worldPV;
+}
+
+void BDSLinkDetectorConstruction::ConstructSDandField()
+{
+  auto fields = BDSFieldBuilder::Instance()->CreateAndAttachAll();
+  BDSAcceleratorModel::Instance()->RegisterFields(fields);
 }
 
 G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& collimatorName,

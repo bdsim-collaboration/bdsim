@@ -1,0 +1,12 @@
+map_field: field, type="bmap2d",
+           magneticFile="bdsim2d:../../examples/features/fields/maps_bdsim/2dboxexample-1T.dat.gz",
+           magneticInterpolator="linear";
+
+probe_map: rcol, l=0.5*m, material="G4_Fe", xsize=4*cm, ysize=4*cm,
+           aper1=10*cm, fieldAll="map_field";
+
+link_line: line = (probe_map);
+use, link_line;
+
+beam, particle="proton", kineticEnergy=100*GeV;
+option, physicsList="em";

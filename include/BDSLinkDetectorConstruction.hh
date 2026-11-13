@@ -55,6 +55,9 @@ public:
   virtual ~BDSLinkDetectorConstruction();
   virtual G4VPhysicalVolume* Construct();
 
+  /// Construct and attach fields registered while building link components.
+  virtual void ConstructSDandField();
+
   /// Interface to append a collimator of jaw style to the linking.
   G4int AddLinkCollimatorJaw(const std::string& collimatorName,
                              const std::string& materialName,

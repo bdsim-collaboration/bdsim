@@ -26,6 +26,14 @@ add_test(NAME "tester-link-sampler-parser-last"
 add_test(NAME "tester-link-sampler-legacy"
          COMMAND BDSLinkSamplerTester ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_sampler_empty.gmad legacy probe)
 
+add_executable(BDSLinkFieldTester BDSLinkFieldTester.cc)
+target_link_libraries(BDSLinkFieldTester ${BDSIM_LIB_NAME} gmad)
+if (USE_GZSTREAM)
+  add_test(NAME "tester-link-field-map"
+           COMMAND BDSLinkFieldTester ${CMAKE_CURRENT_SOURCE_DIR}/bdslink/link_field_map.gmad
+                   probe_map 0.00962872616947 -0.00148509279825)
+endif()
+
 add_executable(BDSSixTrackTester BDSSixTrackTester.cc)
 set_target_properties(BDSSixTrackTester PROPERTIES OUTPUT_NAME "BDSSixTrackTester" VERSION ${BDSIM_VERSION})
 target_link_libraries(BDSSixTrackTester ${BDSIM_LIB_NAME} gmad)
