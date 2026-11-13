@@ -284,6 +284,7 @@ endif()
 get_target_property(binaryname bdsimExec OUTPUT_NAME)
 set(bdsimBinary ${CMAKE_CURRENT_BINARY_DIR}/${binaryname})
 
+# ROOT Event Library
 # Add parser options
 list(APPEND bdsimRootEventSources ${CMAKE_CURRENT_SOURCE_DIR}/parser/optionsBase.cc)
 list(APPEND bdsimRootEventSources ${CMAKE_CURRENT_SOURCE_DIR}/parser/beamBase.cc)
@@ -300,10 +301,14 @@ if (USE_BOOST)
   target_link_libraries(bdsimRootEvent ${BOOST_LIB_NAME})
   target_include_directories(bdsimRootEvent PUBLIC ${Boost_INCLUDE_DIRS})
 endif()
-# Add dependency to make sure bdsimRootEvent is done first
-# This is done because the ROOT dictionary generation needs to be done separately for each of them
-# And even if the dictionaries are the same compiling with multiple threads will result in building them simultaneously
-add_dependencies(${BDSIM_LIB_NAME} bdsimRootEvent)
+# The ROOT dictionaries are generated once by bdsimRootDicts (see cmake/ROOT.cmake) and then
+# compiled separately into each library (bdsimRootEvent with __ROOTBUILD__, i.e. without the
+# Geant4 parts). Generating them first stops parallel builds running rootcling more than once.
+add_dependencies(bdsimRootEvent    bdsimRootDicts)
+add_dependencies(${BDSIM_LIB_NAME} bdsimRootDicts)
+if (BDSIM_BUILD_STATIC_LIBS)
+  add_dependencies(${BDSIM_LIB_NAME_STATIC} bdsimRootDicts)
+endif()
 
 # Install the targets:
 set(executables bdsimExec)
