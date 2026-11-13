@@ -21,9 +21,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSPlasmaHDF5.hh"
 #include "BDSUtilities.hh"
 
-BDSPlasmaHDF5::BDSPlasmaHDF5(G4String mainPathIn,
-                             G4String particlePathIn,
-                             G4String fieldPathIn):
+BDSPlasmaHDF5::BDSPlasmaHDF5(const G4String& mainPathIn,
+                             const G4String& particlePathIn,
+                             const G4String& fieldPathIn):
 mainPath(mainPathIn),
 particlePath(particlePathIn),
 fieldPath(fieldPathIn)
@@ -32,7 +32,7 @@ fieldPath(fieldPathIn)
 BDSPlasmaHDF5::~BDSPlasmaHDF5()
 {;}
 
-void BDSPlasmaHDF5::LoadHDF5(const G4String filename)
+void BDSPlasmaHDF5::LoadHDF5(const G4String& filename)
 {
   G4cout << "BDSPlasmaHDF5::LoadHDF5" << G4endl;
 
@@ -43,7 +43,7 @@ void BDSPlasmaHDF5::LoadHDF5(const G4String filename)
   fields = file->openGroup(mainPath + fieldPath);
 }
 
-void BDSPlasmaHDF5::CheckHDF5(const G4String filename)
+void BDSPlasmaHDF5::CheckHDF5(const G4String& filename)
 {
   G4cout << "BDSPlasmaHDF5::CheckHDF5" << G4endl;
   try
@@ -59,7 +59,7 @@ void BDSPlasmaHDF5::CheckHDF5(const G4String filename)
 }
 
 std::vector<double> BDSPlasmaHDF5::Get1DVector(H5::Group group,
-                                               G4String setName)
+                                               const G4String& setName)
 {
   H5::DataSet set = group.openDataSet(setName);
 
@@ -75,7 +75,7 @@ std::vector<double> BDSPlasmaHDF5::Get1DVector(H5::Group group,
 }
 
 std::vector<double> BDSPlasmaHDF5::Get3DVector(H5::Group group,
-                                               G4String setName)
+                                               const G4String& setName)
 {
   H5::DataSet set = group.openDataSet(setName);
 

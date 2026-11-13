@@ -33,17 +33,17 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 class BDSPlasmaHDF5 {
 public:
-    BDSPlasmaHDF5(G4String mainPath = "/data/0",
-                  G4String particlePath = "/particles/elec_bunch_0",
-                  G4String fieldPath = "/fields");
+    BDSPlasmaHDF5(const G4String& mainPath = "/data/0",
+                  const G4String& particlePath = "/particles/elec_bunch_0",
+                  const G4String& fieldPath = "/fields");
     virtual ~BDSPlasmaHDF5();
 
-    void LoadHDF5(G4String filename);
+    void LoadHDF5(const G4String& filename);
 
-    void CheckHDF5(G4String filename);
+    void CheckHDF5(const G4String& filename);
 
-    std::vector<double> Get1DVector(H5::Group group, G4String setName);
-    std::vector<double> Get3DVector(H5::Group group, G4String setName);
+    std::vector<double> Get1DVector(H5::Group group, const G4String& setName);
+    std::vector<double> Get3DVector(H5::Group group, const G4String& setName);
 
     void TestPrintFirstX();
 
