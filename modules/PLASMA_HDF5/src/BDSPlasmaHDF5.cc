@@ -37,7 +37,7 @@ void BDSPlasmaHDF5::LoadHDF5(const G4String& filename)
   G4cout << "BDSPlasmaHDF5::LoadHDF5" << G4endl;
 
   CheckHDF5(filename);
-  H5::H5File *file= new H5::H5File(filename, H5F_ACC_RDWR);
+  H5::H5File* file = new H5::H5File(filename, H5F_ACC_RDWR);
 
   particles = file->openGroup(mainPath + particlePath);
   fields = file->openGroup(mainPath + fieldPath);
@@ -52,10 +52,10 @@ void BDSPlasmaHDF5::CheckHDF5(const G4String& filename)
       file->close();
     }
   catch (H5::FileIException& e)
-  {
-    std::string msg = "Error on checking file";
-    throw BDSException(__METHOD_NAME__, msg);
-  }
+    {
+      std::string msg = "Error on checking file";
+      throw BDSException(__METHOD_NAME__, msg);
+    }
 }
 
 std::vector<double> BDSPlasmaHDF5::Get1DVector(H5::Group group,
