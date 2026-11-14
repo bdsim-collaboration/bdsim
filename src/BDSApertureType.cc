@@ -39,7 +39,8 @@ std::map<BDSApertureType, std::string>* BDSApertureType::dictionary =
    {BDSApertureType::octagon,     "octagon"},
    {BDSApertureType::clicpcl,     "clicpcl"},
    {BDSApertureType::rhombus,     "rhombus"},
-   {BDSApertureType::points,      "points"}
+   {BDSApertureType::points,      "points"},
+   {BDSApertureType::regularpolygon, "regularpolygon"}
 });	
 
 BDSApertureType BDS::DetermineApertureType(G4String apertureType,
@@ -56,6 +57,7 @@ BDSApertureType BDS::DetermineApertureType(G4String apertureType,
   types["clicpcl"]      = BDSApertureType::clicpcl;
   types["rhombus"]      = BDSApertureType::rhombus;
   types["points"]       = BDSApertureType::points;
+  types["regularpolygon"] = BDSApertureType::regularpolygon;
 
   // alternatives
   types["lhc"]          = BDSApertureType::rectcircle;

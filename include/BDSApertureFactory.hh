@@ -179,6 +179,7 @@ private:
   Product CreateEllipse()     const;
   Product CreateRectCircle()  const;
   Product CreateRectEllipse() const;
+  Product CreateRegularPolygon() const;
   /// @}
 
   /// Utility to make angled solid for intersection when cutting angled faces.

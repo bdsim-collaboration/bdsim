@@ -27,6 +27,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSApertureRectangle.hh"
 #include "BDSApertureRectCircle.hh"
 #include "BDSApertureRectEllipse.hh"
+#include "BDSApertureRegularPolygon.hh"
 #include "BDSApertureRhombus.hh"
 #include "BDSApertureType.hh"
 #include "BDSBeamPipeToApertureType.hh"
@@ -47,6 +48,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4EllipticalTube.hh"
 #include "G4ExtrudedSolid.hh"
 #include "G4IntersectionSolid.hh"
+#include "G4Polyhedra.hh"
 #include "G4String.hh"
 #include "G4SubtractionSolid.hh"
 #include "G4ThreeVector.hh"
@@ -359,6 +361,8 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolid(const G4String&    n
     case BDSApertureType::rhombus:
     case BDSApertureType::points:
       {product = CreateExtrudedSolid(); break;}
+    case BDSApertureType::regularpolygon:
+      {product = CreateRegularPolygon(); break;}
     default:
       {break;}
     }
@@ -637,6 +641,33 @@ BDSApertureFactory::Product BDSApertureFactory::CreateRectEllipse() const
       G4VSolid* ellipseRect = new G4IntersectionSolid(productName, ellipse, rect);
       G4VSolid* product = new G4IntersectionSolid(productName, ellipseRect, cut);
       return {product, {cut, ellipse, rect, ellipseRect}};
+    }
+}
+
+BDSApertureFactory::Product BDSApertureFactory::CreateRegularPolygon() const
+{
+  const BDSApertureRegularPolygon* ap = dynamic_cast<const BDSApertureRegularPolygon*>(productApertureIn);
+  if (!ap)
+    {return {nullptr, {}};}
+  G4double innerRadii[2] = {0, 0};
+  G4double outerRadii[2] = {ap->radius, ap->radius};
+  if (!angledFaces)
+    {
+      G4double zPlanes[2]    = {-0.5*productLength, 0.5*productLength};
+
+      G4VSolid* product = new G4Polyhedra(productName+"_so", ap->polygonTilt, CLHEP::twopi,
+                                          ap->nSides, 2, zPlanes, innerRadii, outerRadii);
+      return {product, {}};
+    }
+  else
+    {
+      G4double maxRadius = ap->RadiusToEncompass();
+      G4VSolid* cut = CutSolid(productName + "_angled_so", 0.5*productLength, maxRadius);
+      G4double zPlanes[2]    = {-productLength, productLength};
+      G4VSolid* polygon = new G4Polyhedra(productName+"_poly_so", ap->polygonTilt, CLHEP::twopi,
+                                          ap->nSides, 2, zPlanes, innerRadii, outerRadii);
+      G4VSolid* product = new G4IntersectionSolid(productName, polygon, cut);
+      return {product, {cut, polygon}};
     }
 }
 
