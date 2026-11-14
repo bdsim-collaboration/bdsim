@@ -2626,15 +2626,15 @@ BDSBeamPipeInfo* BDSComponentFactory::PrepareBeamPipeInfo(Element const* el,
               if (elListMissing)
                 {// update whichever parameters are set
                   std::array<G4double,7> apnum = defaultBeamPipe->aperture->ApertureNumbers();
-                  G4double a1 = BDS::IsFinite(el->aper1) ? el->aper1*CLHEP::m : apnum[0];
-                  G4double a2 = BDS::IsFinite(el->aper2) ? el->aper2*CLHEP::m : apnum[1];
-                  G4double a3 = BDS::IsFinite(el->aper3) ? el->aper3*CLHEP::m : apnum[2];
-                  G4double a4 = BDS::IsFinite(el->aper4) ? el->aper4*CLHEP::m : apnum[3];
+                  G4double a1 = BDS::IsFinite(el->aper1) ? el->aper1*BDSApertureFactory::Units(bpt, 1) : apnum[0];
+                  G4double a2 = BDS::IsFinite(el->aper2) ? el->aper2*BDSApertureFactory::Units(bpt, 2) : apnum[1];
+                  G4double a3 = BDS::IsFinite(el->aper3) ? el->aper3*BDSApertureFactory::Units(bpt, 3) : apnum[2];
+                  G4double a4 = BDS::IsFinite(el->aper4) ? el->aper4*BDSApertureFactory::Units(bpt, 4) : apnum[3];
                   BDSApertureType apt = BDS::ApertureTypeFromBeamPipeType(bpt);
 
                   if (!element->apertureTypeOut.empty())
                     {
-                      std::vector<G4double> aParOut = BDSApertureFactory::ApertureListToVector(element->apertureParamsOut);
+                      std::vector<G4double> aParOut = BDSApertureFactory::ApertureListToVector(element->apertureParamsOut, bpt);
                       apPair = apertureFactory.CreateAperture(apt, a1, a2, a3, a4, 0, 0, 0, 0, el->apertureType,
                                                               element->apertureTypeOut, &aParOut);
                     }

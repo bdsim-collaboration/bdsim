@@ -147,7 +147,15 @@ public:
                                                 const G4ThreeVector* normalOut = nullptr,
                                                 G4double           lengthExtraForBoolean = 0);
 
-  static std::vector<G4double> ApertureListToVector(const std::list<double>& l);
+  static std::vector<G4double> ApertureListToVector(const std::list<double>& l,
+                                                    BDSBeamPipeType bpt);
+
+  /// Give the right units for the i-th aperture parameter for a given type. Note,
+  /// this is the aperture parameter number (1,2,3,4) that is 1-counting.
+  static G4double Units(BDSBeamPipeType bpt,
+                        G4int aperN);
+  static G4double Units(BDSApertureType apt,
+                        G4int aperN);
 
 private:
   G4double CalculateExtraLength(G4double lengthExtraForBoolean);
