@@ -104,10 +104,9 @@ public:
   /// one resultant polygon, therefore a vector is returned.
   std::vector<BDSPolygon*> Subtraction(const BDSPolygon& other) const;
   
-  /// Calculate the intersection of other and this polygons. Throws BDSException
+  /// Calculate the intersection of other and this polygon. Throws BDSException
   /// if no valid intersection found - ie shapes not overlapping.
   BDSPolygon Intersection(const BDSPolygon& other) const;
-  //
   
   /// Resample the polygon and generate a new one using nPoints points.
   BDSPolygon InterpolateWithNPoints(unsigned int nPoints) const;
@@ -138,8 +137,7 @@ public:
   /// Geometric Tools for Computer Graphics by Philip J. Schneider David H. Eberly,
   /// ISBN 1-55860-594-0. Geant4 has a similar one in
   /// G4TessellatedGeometryAlgorithms::IntersectLineAndLineSegment2D, however they've
-  /// parameterised it in a different way that's relative to the first point with gradients
-  /// and don't fully explain their input parameters.
+  /// parameterised it in a different way that's relative to the first point with gradients.
   static G4int SegmentsIntersect(const G4TwoVector& p1,
                                  const G4TwoVector& p2,
                                  const G4TwoVector& q1,

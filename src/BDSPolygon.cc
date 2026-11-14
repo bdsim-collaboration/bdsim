@@ -284,9 +284,7 @@ G4int BDSPolygon::SegmentsIntersect(const G4TwoVector& p1,
 {
   // Algorithm parametrises segments as P(s) = p1 + s*D0 and Q(t) = q1 + t*D1.
   // Use a relative error test to test for parallelism.  This effectively
-  // is a threshold on the angle between D0 and D1.  The threshold
-  // parameter ‘sqrEpsilon’ can be defined in this function or be
-  // available globally.
+  // is a threshold on the angle between D0 and D1.
   G4TwoVector D0       = p2 - p1;
   G4TwoVector D1       = q2 - q1;
   const G4double eps = std::numeric_limits<double>::epsilon() * std::abs(std::max(p1.x(), p1.y()));
@@ -313,9 +311,7 @@ G4int BDSPolygon::SegmentsIntersect(const G4TwoVector& p1,
   kross = E.x() * D0.y() - E.y() * D0.x();
   sqrKross = kross * kross;
   if (sqrKross > sqrEpsilon * sqrLen0 * sqrLenE)
-    {// lines are different
-      return 0;
-    }
+    {return 0;}// lines are different
   
   // lines are the same
   return 2;
@@ -325,13 +321,13 @@ std::list<BDSPolygon::LabelledPoint> BDSPolygon::GenerateLabelled(const BDSPolyg
                                            const BDSPolygon& test,
                                            G4int* nInside)
 {
-  std::list<BDSPolygon::LabelledPoint> testLabelled;
+  std::list<LabelledPoint> testLabelled;
   G4int nIn = 0;
   for (const auto& p : test)
     {
       auto inOut = reference.InsideLabelled(p);
-      nIn += inOut == BDSPolygon::PointIs::in ? 1 : 0;
-      testLabelled.emplace_back(BDSPolygon::LabelledPoint{&p, inOut});
+      nIn += inOut == PointIs::in ? 1 : 0;
+      testLabelled.emplace_back(LabelledPoint{&p, inOut});
     }
   if (nInside)
     {*nInside = nIn;}
@@ -344,8 +340,10 @@ BDSPolygon BDSPolygon::Union(const BDSPolygon& other) const
   GenerateLabelled(*this, other, &nOtherInThis);
   G4int nThisInOther = 0;
   GenerateLabelled(other, *this, &nThisInOther);
-  if (nOtherInThis == (G4int)other.size()) {return BDSPolygon(*this);}
-  if (nThisInOther == (G4int)size())       {return BDSPolygon(other);}
+  if (nOtherInThis == (G4int)other.size())
+    {return BDSPolygon(*this);}
+  if (nThisInOther == (G4int)size())
+    {return BDSPolygon(other);}
   return BooleanTraversal(other, false);
 }
 
@@ -397,7 +395,7 @@ BDSPolygon BDSPolygon::BooleanTraversal(const BDSPolygon& other, bool startInsid
     {std::sort(byEdgeB[j].begin(), byEdgeB[j].end(), [&](G4int a, G4int b){return allISects[a].sB < allISects[b].sB;});}
 
   // Build augmented point lists: original vertices with intersection points inserted
-  // in edge order.  Intersection entries carry a cross-link to their counterpart in
+  // in edge order. Intersection entries carry a cross-link to their counterpart in
   // the other polygon's list.
   enum class PtType {vertex, intersection};
   struct AugPt
@@ -521,8 +519,10 @@ BDSPolygon BDSPolygon::Intersection(const BDSPolygon& other) const
   GenerateLabelled(*this, other, &nOtherInThis);
   G4int nThisInOther = 0;
   GenerateLabelled(other, *this, &nThisInOther);
-  if (nOtherInThis == (G4int)other.size()) {return BDSPolygon(other);}
-  if (nThisInOther == (G4int)size())       {return BDSPolygon(*this);}
+  if (nOtherInThis == (G4int)other.size())
+    {return BDSPolygon(other);}
+  if (nThisInOther == (G4int)size())
+    {return BDSPolygon(*this);}
   return BooleanTraversal(other, true);
 }
 
