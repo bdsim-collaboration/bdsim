@@ -113,7 +113,8 @@ G4int BDSApertureFactory::DefaultNPoints(BDSApertureType apt) const
     {BDSApertureType::octagon, 8},
     {BDSApertureType::clicpcl, nPointsPerTwoPi},
     {BDSApertureType::rhombus, 8},
-    {BDSApertureType::points, 0}
+    {BDSApertureType::points, 0},
+    {BDSApertureType::regularpolygon, 0}
   };
   return npoints.at(apt);
 }
@@ -260,6 +261,8 @@ BDSAperture* BDSApertureFactory::CreateApertureSingle(BDSApertureType at,
         result = new BDSAperturePoints(pointsFile, unitsStr);
         break;
       }
+    case BDSApertureType::regularpolygon:
+      {result = new BDSApertureRegularPolygon(a1, a2, a3);}
     default:
       {break;}
     }

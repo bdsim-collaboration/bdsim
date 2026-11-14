@@ -32,8 +32,9 @@ struct beampipetypes_def
 {
   // if more are added, update BDSBeamPipeToApertureType
   enum type {circular, rectangular, elliptical, lhc,
-	     lhcdetailed, rectellipse, racetrack, octagonal,
-	     circularvacuum, clicpcl, pointsfile, rhombus};
+             lhcdetailed, rectellipse, racetrack, octagonal,
+             circularvacuum, clicpcl, pointsfile, rhombus,
+             regularpolygon};
 };
 
 typedef BDSTypeSafeEnum<beampipetypes_def,int> BDSBeamPipeType;

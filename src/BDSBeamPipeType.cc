@@ -40,7 +40,8 @@ std::map<BDSBeamPipeType, std::string>* BDSBeamPipeType::dictionary =
    {BDSBeamPipeType::octagonal,      "octagonal"},
    {BDSBeamPipeType::circularvacuum, "circularvacuum"},
    {BDSBeamPipeType::clicpcl,        "clicpcl"},
-   {BDSBeamPipeType::rhombus,        "rhombus"}
+   {BDSBeamPipeType::rhombus,        "rhombus"},
+   {BDSBeamPipeType::regularpolygon, "regularpolygon"}
 });	
 
 BDSBeamPipeType BDS::DetermineBeamPipeType(G4String apertureType)
@@ -71,6 +72,7 @@ BDSBeamPipeType BDS::DetermineBeamPipeType(G4String apertureType)
   types["clicpcl"]      = BDSBeamPipeType::clicpcl;
   types["rhombus"]      = BDSBeamPipeType::rhombus;
   types["points"]       = BDSBeamPipeType::pointsfile;
+  types["regularpolygon"] = BDSBeamPipeType::regularpolygon;
 
   apertureType = BDS::LowerCase(apertureType);
 

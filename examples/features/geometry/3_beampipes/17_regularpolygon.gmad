@@ -1,11 +1,12 @@
 d1: drift, l=0.2*m, apertureType="regularpolygon", aper1=3, aper2=3*cm;
 d2: drift, l=0.2*m, apertureType="regularpolygon", aper1=4, aper2=4*cm;
 d3: drift, l=0.2*m, apertureType="regularpolygon", aper1=5, aper2=5*cm, aper3=pi/5;
-d4: drift, l=0.2*m, apertureType="regularpolygon", aper1=5, aper2=5*cm, aper3=pi/5;
+d4: drift, l=0.2*m, apertureType="regularpolygon", aper1=5, aper2=5*cm, aper3=-pi/5;
+d5: drift, l=0.2*m, apertureType="regularpolygon", aper1=10, aper2=10*cm;
 
 sb1: sbend, l=0.3*m, angle=0.1, e1=0.1, apertureType="regularpolygon", aper1=3, aper2=5*cm;
 
-l1: line = (d1, d2, d3, d4, sb1, d1, d3);
+l1: line = (d1, d2, d3, d4, sb1, d1, d3, d5);
 !l1: line=(d2);
 
 use, period = l1;

@@ -36,6 +36,7 @@ static const std::map<BDSBeamPipeType, BDSApertureType> beamPipeToApertureTypes 
     {BDSBeamPipeType::clicpcl, BDSApertureType::clicpcl},
     {BDSBeamPipeType::pointsfile, BDSApertureType::points},
     {BDSBeamPipeType::rhombus, BDSApertureType::rhombus},
+    {BDSBeamPipeType::regularpolygon, BDSApertureType::regularpolygon}
   };
 
 static const std::map<BDSApertureType, BDSBeamPipeType> apertureTypeToBeamPipe =
@@ -48,7 +49,8 @@ static const std::map<BDSApertureType, BDSBeamPipeType> apertureTypeToBeamPipe =
     {BDSApertureType::octagon, BDSBeamPipeType::octagonal},
     {BDSApertureType::clicpcl, BDSBeamPipeType::clicpcl},
     {BDSApertureType::rhombus, BDSBeamPipeType::rhombus},
-    {BDSApertureType::points, BDSBeamPipeType::pointsfile}
+    {BDSApertureType::points, BDSBeamPipeType::pointsfile},
+    {BDSApertureType::regularpolygon, BDSBeamPipeType::regularpolygon}
   };
 
 BDSApertureType BDS::ApertureTypeFromBeamPipeType(BDSBeamPipeType bpt)

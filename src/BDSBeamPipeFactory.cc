@@ -55,6 +55,7 @@ BDSBeamPipeFactoryBase* BDSBeamPipeFactory::GetAppropriateFactory(BDSBeamPipeTyp
       case BDSBeamPipeType::clicpcl:
       case BDSBeamPipeType::pointsfile:
       case BDSBeamPipeType::rhombus:
+      case BDSBeamPipeType::regularpolygon:
         {result = general; break;}
       case BDSBeamPipeType::lhcdetailed:
         {result = lhcdetailed; break;}
