@@ -17,6 +17,7 @@ simple_testing(aperture-pointsfile-triangle "--file=14_pointsfile_triangle.gmad"
 simple_testing(beampipe-vacuum-material-colour  "--file=15_vacuum_is_water.gmad"    ${OVERLAP_CHECK})
 
 simple_testing(aperture-rhombus        "--file=16_rhombus.gmad"        ${OVERLAP_CHECK})
+simple_testing(aperture-regularpolygon "--file=17_regularpolygon.gmad" ${OVERLAP_CHECK})
 
 
 add_subdirectory(variable-aperture)
