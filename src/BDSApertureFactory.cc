@@ -48,7 +48,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4EllipticalTube.hh"
 #include "G4ExtrudedSolid.hh"
 #include "G4IntersectionSolid.hh"
-#include "G4Polyhedra.hh"
 #include "G4String.hh"
 #include "G4SubtractionSolid.hh"
 #include "G4ThreeVector.hh"
@@ -458,9 +457,8 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4Str
       else // no specialisation and different types -> use polygons
         {
           Product result;
-          Product inner = CreateTubeByPoints("_inner");
+          Product inner = CreateTubeByPoints("_inner", true); // force longer for subtraction
           result.Extend(inner); // keep track of all solids
-          productLengthExtra = 0;
           BDSAperture* apInOutside = apertureInInside->Plus(thickness);
           BDSAperture* apOutOutside = apertureOutInside->Plus(thickness); // must be different from "in" as variedAperture==true
           productApertureIn = apInOutside; // assign to members for factory action
@@ -693,7 +691,8 @@ BDSApertureFactory::Product BDSApertureFactory::CreateDifferentEnds() const
     {return CreateTubeByPoints("");}
 }
 
-BDSApertureFactory::Product BDSApertureFactory::CreateTubeByPoints(const G4String& nameSuffix) const
+BDSApertureFactory::Product BDSApertureFactory::CreateTubeByPoints(const G4String& nameSuffix,
+                                                                   G4bool buildLongerForSubraction) const
 {
   unsigned int nPointsIn  = productApertureIn->MinimumNumberOfPoints();
   unsigned int nPointsOut = productApertureOut->MinimumNumberOfPoints();
@@ -717,9 +716,72 @@ BDSApertureFactory::Product BDSApertureFactory::CreateTubeByPoints(const G4Strin
       nZ += std::ceil(std::abs(dTilt) / 0.2*CLHEP::radian);
     }
 
-  G4VSolid* result = new BDSTube(productName+nameSuffix+"_so", productLength,
-                                 startingPoints, finishingPoints, nZ);
-  return {result, {}};
+  if (angledFaces || buildLongerForSubraction)
+    {
+      // Need to project back the polygon - use the untilted (but offset) version
+      // By untilting it, the gradients should be extremely close to what they should perfectly
+      // be. The offset is kept as it might be skewed.
+      BDSTiltOffset inTO = BDSTiltOffset(productApertureIn->tiltOffset);
+      inTO.SetTilt(0);
+      BDSTiltOffset outTO = BDSTiltOffset(productApertureOut->tiltOffset);
+      outTO.SetTilt(0);
+      BDSPolygon sp = productApertureIn->Polygon(nPointsIn, false); // don't apply tilt offset
+      BDSPolygon fp = productApertureOut->Polygon(nPointsOut, false);
+
+      sp = sp.ApplyTiltOffset(inTO);
+      fp = fp.ApplyTiltOffset(outTO);
+      BDSPolygon spExtrapolated(sp); // copy to act as output by &
+      BDSPolygon fpExtrapolated(fp);
+      AdjustPointsForBooleanLength(sp, fp, spExtrapolated, fpExtrapolated, productLength, 0.5*productLengthExtra);
+
+      BDSTiltOffset inTOTilt = BDSTiltOffset(0, 0, productApertureIn->tiltOffset.Tilt());
+      BDSPolygon spExtrapolatedTilted = spExtrapolated.ApplyTiltOffset(inTOTilt);
+      BDSTiltOffset outTOTilt = BDSTiltOffset(0, 0, productApertureOut->tiltOffset.Tilt());
+      BDSPolygon fpExtrapolatedTilted = fpExtrapolated.ApplyTiltOffset(outTOTilt);
+
+      // make longer cone, then intersect with cut tubs
+      BDSTube* tube = new BDSTube(productName+nameSuffix+"_tube_so", productLength+productLengthExtra,
+                                  spExtrapolatedTilted, fpExtrapolatedTilted, nZ);
+      if (!angledFaces)
+        {return {tube, {}};}
+      else
+        {
+          G4double maxRadius = std::max(startingPoints.RadiusToEncompass(), finishingPoints.RadiusToEncompass());
+          G4VSolid* cut = CutSolid(productName+nameSuffix+"_cut_so", productLength, maxRadius);
+          G4VSolid* result = new G4IntersectionSolid(productName+nameSuffix+"_so", tube, cut);
+          return {result, {tube, cut}};
+        }
+    }
+  else
+    {
+      G4VSolid* result = new BDSTube(productName+nameSuffix+"_so", productLength,
+                                     startingPoints, finishingPoints, nZ);
+      return {result, {}};
+    }
+}
+
+void BDSApertureFactory::AdjustPointsForBooleanLength(const BDSPolygon& startingPoints,
+                                                      const BDSPolygon& finishingPoints,
+                                                      BDSPolygon& startingPointsOut,
+                                                      BDSPolygon& finishingPointsOut,
+                                                      G4double fullLength,
+                                                      G4double extensionLengthEachEnd) const
+{
+  if (startingPoints.size() != finishingPoints.size())
+    {throw BDSException(__METHOD_NAME__, "vector sizes must be idential");}
+
+  G4cout << startingPoints << G4endl;
+  G4cout << finishingPoints << G4endl;
+  for (G4int i = 0; i < (G4int)startingPoints.size(); i++)
+    {
+      G4TwoVector m = (finishingPoints[i] - startingPoints[i])/fullLength;
+      G4cout << m << G4endl;
+      startingPointsOut[i] = startingPoints[i] - m*extensionLengthEachEnd;
+      finishingPointsOut[i] = finishingPoints[i] + m*extensionLengthEachEnd;
+    }
+  G4cout << fullLength << " " << extensionLengthEachEnd << G4endl;
+  G4cout << startingPointsOut << G4endl;
+  G4cout << finishingPointsOut << G4endl;
 }
 
 BDSApertureFactory::Product BDSApertureFactory::CreateDifferentEndsCircleToCircle() const

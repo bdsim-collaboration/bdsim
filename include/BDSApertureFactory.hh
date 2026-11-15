@@ -34,6 +34,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <vector>
 
 class BDSAperture;
+class BDSPolygon;
 class G4VSolid;
 
 namespace GMAD
@@ -200,8 +201,25 @@ private:
 
   /// Create a shape with different ends.
   Product CreateDifferentEnds() const;
-  
-  Product CreateTubeByPoints(const G4String& nameSuffix)  const;
+
+  /// Build a BDSTube made of tessellated triangles for any shape to any shape.
+  /// The flag buildLongerForSubraction can be used to force an extra length even
+  /// if there is no angle and the shape is to be used for subtraction. This will
+  /// extrapolate the polygon beyond the shape so that ultimately, it gives the same
+  /// thickness.
+  Product CreateTubeByPoints(const G4String& nameSuffix,
+                             G4bool buildLongerForSubraction = false)  const;
+
+  /// This adjusts the start and finish point polygons based on the 1:1 point
+  /// gradient from beginning to end of the polygons. It assumes each have the
+  /// same number of points, and they start on the same side. For each start and
+  /// finish point a line is extrapolated
+  void AdjustPointsForBooleanLength(const BDSPolygon& startingPoints,
+                                    const BDSPolygon& finishingPoints,
+                                    BDSPolygon& startingPointsOut,
+                                    BDSPolygon& finishingPointsOut,
+                                    G4double fullLength,
+                                    G4double extensionLengthEachEnd) const;
 
   /// @{ Specialisation for particular solids.
   Product CreateDifferentEndsCircleToCircle() const;
@@ -211,6 +229,7 @@ private:
   Product HollowVariedCircleToCircle(G4double thickness) const;
   Product HollowEllipseToEllipse(G4double thickness) const;
   Product HollowRectangleToRectangle(G4double thickness) const;
+  Product HollowVariedRectangleToRectangle(G4double thickness) const;
   Product HollowRectCircleToRectCircle(G4double thickness) const;
   Product HollowRectEllipseToRectEllipse(G4double thickness) const;
   /// @}
