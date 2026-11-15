@@ -416,7 +416,7 @@ G4double BDSApertureFactory::CalculateExtraLength(G4double lengthExtraForBoolean
   return lengthExtraForBoolean;
 }
 
-BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4String&      name,
+BDSApertureFactory::Product BDSApertureFactory::CreateHollowSolid(const G4String&      name,
                                                                      G4double             fullLength,
                                                                      const BDSAperture*   apertureInInside,
                                                                      const BDSAperture*   apertureOutInside,

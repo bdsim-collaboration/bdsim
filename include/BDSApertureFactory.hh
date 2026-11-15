@@ -126,7 +126,7 @@ public:
   /// Create a solid according to an aperture entrance ('in') and exit ('out') with
   /// a constant thickness. The aperture defines the interior edge of the solid. In
   /// effect, a beam pipe on its own; a tube.
-  Product CreateSolidWithInner(const G4String&      name,
+  Product CreateHollowSolid(const G4String&      name,
                                G4double             fullLength,
                                const BDSAperture*   apertureInInside,
                                const BDSAperture*   apertureOutInside,

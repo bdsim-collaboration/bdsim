@@ -59,7 +59,7 @@ BDSBeamPipe* BDSBeamPipeFactoryGeneral::CreateBeamPipe(const G4String& name,
   
   if (!bpi->vacuumOnly)
     {
-      auto bpProduct = fac.CreateSolidWithInner(name+"_pipe", fullLength-2*lengthSafety, apBpInnerIn, apBpInnerOut,
+      auto bpProduct = fac.CreateHollowSolid(name+"_pipe", fullLength-2*lengthSafety, apBpInnerIn, apBpInnerOut,
                                                 bpi->beamPipeThickness, bpi->inputFaceNormal, bpi->outputFaceNormal);
       beamPipeSolid = bpProduct.product;
       allSolids.insert(bpProduct.otherSolids.begin(), bpProduct.otherSolids.end());
