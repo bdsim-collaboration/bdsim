@@ -133,25 +133,25 @@ void BDSSurvey::Write(BDSBeamlineElement* beamlineElement)
     {ty = "unknown";}
   
   survey << std::left << std::setprecision(6) << std::fixed
-	 << setw(20) << ty                                          << " "
-	 << setw(40) << acceleratorComponent->GetName()             << " "
-	 << setw(gp) << sStart                                      << " "
-	 << setw(gp) << sMiddle                                     << " "
-	 << setw(gp) << sEnd                                        << " "
-	 << setw(gp) << acceleratorComponent->GetChordLength()/CLHEP::m   << " "
-	 << setw(gp) << acceleratorComponent->GetArcLength()/CLHEP::m     << " "
-	 << setw(gp) << pos.x()/CLHEP::m                            << " "
-	 << setw(gp) << pos.y()/CLHEP::m                            << " "
-	 << setw(gp) << pos.z()/CLHEP::m                            << " "
-	 << setw(gp) << phi/CLHEP::radian                           << " "
-	 << setw(gp) << theta/CLHEP::radian                         << " "
-	 << setw(gp) << psi/CLHEP::radian                           << " "
-	 << setw(gp) << apNums[0]/CLHEP::m << " "
-	 << setw(gp) << apNums[1]/CLHEP::m << " "
-	 << setw(gp) << apNums[2]/CLHEP::m << " "
-	 << setw(gp) << apNums[3]/CLHEP::m << " " // TBC
-	 << setw(15) << (beamPipeInfo ? beamPipeInfo->beamPipeType : 0)   << " "
-	 << setw(gp) << acceleratorComponent->GetAngle();
+         << setw(20) << ty                                          << " "
+         << setw(40) << acceleratorComponent->GetName()             << " "
+         << setw(gp) << sStart                                      << " "
+         << setw(gp) << sMiddle                                     << " "
+         << setw(gp) << sEnd                                        << " "
+         << setw(gp) << acceleratorComponent->GetChordLength()/CLHEP::m   << " "
+         << setw(gp) << acceleratorComponent->GetArcLength()/CLHEP::m     << " "
+         << setw(gp) << pos.x()/CLHEP::m                            << " "
+         << setw(gp) << pos.y()/CLHEP::m                            << " "
+         << setw(gp) << pos.z()/CLHEP::m                            << " "
+         << setw(gp) << phi/CLHEP::radian                           << " "
+         << setw(gp) << theta/CLHEP::radian                         << " "
+         << setw(gp) << psi/CLHEP::radian                           << " "
+         << setw(gp) << apNums[0]/CLHEP::m << " "
+         << setw(gp) << apNums[1]/CLHEP::m << " "
+         << setw(gp) << apNums[2]/CLHEP::m << " "
+         << setw(gp) << apNums[3]/CLHEP::m << " " // TBC
+         << setw(15) << (beamPipeInfo ? beamPipeInfo->beamPipeType : 0)   << " "
+         << setw(gp) << acceleratorComponent->GetAngle();
 
   BDSMagnetStrength const* st;
   if (BDSMagnet* magCast = dynamic_cast<BDSMagnet*>(acceleratorComponent))

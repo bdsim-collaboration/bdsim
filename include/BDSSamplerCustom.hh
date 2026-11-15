@@ -21,6 +21,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSSampler.hh"
 
 #include "G4String.hh"
+#include "G4Types.hh"
 
 class BDSAperture;
 
