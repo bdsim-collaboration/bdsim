@@ -82,6 +82,7 @@ public:
   
   /// Return a copy with a tilt and offset applied.
   BDSPolygon ApplyTiltOffset(const BDSTiltOffset& to) const;
+
   
   /// Expands the polygon points by 'value' along the direction of the
   /// vertex normal.
@@ -95,6 +96,7 @@ public:
   
   /// Same as above but apply in place to the points in this instance.
   void ScaleByValueInPlace(G4double scale);
+
   
   // Boolean operations
   /// Calculate the union of 'other' polygon with this one and return as a copy.
@@ -126,6 +128,14 @@ public:
   const_reverse_iterator rend()   const {return points.rend();}
   G4bool                 empty()  const {return points.empty();}
   ///@}
+
+  /// @{ Square bracket access to get and set a point (const / non-const).
+  G4TwoVector operator[] (G4int index) const;
+  G4TwoVector& operator[] (G4int index);
+  /// @}
+
+  /// Printer.
+  friend std::ostream& operator<<(std::ostream &out, BDSPolygon const &p);
 
   inline G4TwoVector front() const {return points.front();}
   inline G4TwoVector back()  const {return points.back();}

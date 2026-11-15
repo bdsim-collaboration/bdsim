@@ -627,3 +627,21 @@ G4double BDSPolygon::Determinant(const G4TwoVector& v1,
   G4double det = v1.x()*v2.y() - v2.x()*v1.y();
   return det;
 }
+
+G4TwoVector BDSPolygon::operator[] (G4int index) const
+{
+  return points[index];
+}
+
+G4TwoVector& BDSPolygon::operator[] (G4int index)
+{
+  return points[index];
+}
+
+std::ostream& operator<<(std::ostream& out, BDSPolygon const& p)
+{
+  out << "polygon (" << p.size() << ") : ";
+  for (const auto& pi : p)
+    {out << "(" << pi.x() << "," << pi.y() << ") ";}
+  return out;
+}
