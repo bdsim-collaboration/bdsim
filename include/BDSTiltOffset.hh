@@ -55,7 +55,7 @@ public:
   ///@}
 
   void SetOffsetX(G4double dxIn) {dx = dxIn;}
-  void SetOffsety(G4double dyIn) {dy = dyIn;}
+  void SetOffsetY(G4double dyIn) {dy = dyIn;}
   void SetTilt(G4double tiltIn) {tilt = tiltIn;}
 
   /// More advanced accessor for offset - only in x,y.
