@@ -56,7 +56,7 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
                  float referenceKineticEnergy);
 
 void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface,
-                  py::object particles);
+                  py::object bunch);
 
 
 PYBIND11_MODULE(bdslinktrackerinterface, m) {
@@ -191,9 +191,46 @@ PYBIND11_MODULE(bdslinktrackerinterface, m) {
         float referenceKineticEnergy) {
       TrackXSuite(tracker_interface, iElement, elementName, particles, referenceKineticEnergy);
     })
-    .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
-      TrackRFTrack(tracker_interface, bunch6d);
-    });
+    .def("TrackRFTrack",[](BDSLinkTrackerInterface *tracker_interface, py::object bunch) {
+      TrackRFTrack(tracker_interface, bunch);
+    }, py::arg("bunch"), R"doc(
+    Track an RF-Track bunch through BDSIM.
+
+    Parameters
+    ----------
+    bunch : RF-Track Bunch6d or Bunch6dT
+        The RF-Track bunch to track. Two bunch representations are supported:
+
+        Bunch6d (tracking in space):
+            Particles share the same longitudinal position S, but have
+            individual arrival times t (mm/c). Their phase space is
+            (x, xp, y, yp, t, P), with x and y in mm, transverse slopes
+            xp and yp in mrad, and total momentum P in MeV/c.
+
+        Bunch6dT (tracking in time):
+            Particles share the same bunch time (bunch.t, in mm/c), but
+            have individual longitudinal positions Z. Their phase space
+            is (X, Px, Y, Py, Z, Pz), with positions in mm and momentum
+            components in MeV/c. Each particle also has an individual
+            creation time t0 (mm/c).
+
+    Bunch6d particles can be injected directly into the BDSIM injection
+    plane. Bunch6dT particles must first be projected onto a common plane.
+
+    For Bunch6dT, the injection plane is chosen at the maximum Z of the
+    surviving particles. Since Zmax - Zi >= 0, Pz > 0 is required to
+    propagate particles forward in time towards this plane. The projection
+    assumes a field-free drift and that the RF-Track Z axis is aligned with
+    the longitudinal axis of the BDSIM injection frame.
+
+    For particles not yet created (t0 > bunch.t), propagation starts at
+    their creation time t0. For particles already created (t0 <= bunch.t),
+    propagation starts at bunch.t, since their longitudinal positions
+    already account for their previous propagation.
+
+    Note: Conversion of BDSIM tracking results back to Bunch6dT is not
+    yet implemented.
+    )doc");
 }
 
 void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
@@ -467,55 +504,206 @@ void TrackXSuite(BDSLinkTrackerInterface *tracker_interface,
     tracker_interface->ClearData();
 }
 
-void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d) {
-  py::print("TrackRFTrack> Bunch6d::", bunch6d);
-  auto size_method = bunch6d.attr("size");
-  py::print("TrackRFTrack> Bunch6d::size",size_method());
+void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch) {
+  // The input bunch can be either a Bunch6d or a Bunch6dT.
+  // Bunch6d (tracking in space): particles share the same longitudinal position S,
+  // but can have different arrival times t.
+  // Bunch6dT (tracking in time): particles share the same bunch time,
+  // but can have different longitudinal positions Z and individual creation times t0.
+  // Bunch6dT particles are therefore projected onto a common plane before injection into BDSIM.
+
+  py::print("TrackRFTrack> Bunch::", bunch);
+  auto size_method = bunch.attr("size");
+  py::print("TrackRFTrack> Bunch::size",size_method());
 
   auto bdsim_link = tracker_interface->GetBDSIMLink();
 
   auto refPDG = tracker_interface->GetReferenceParticleDefinition()->PDGID();
-  // clear sampler hits (do this first and not at end as sampler data will
-  // no longer available in python)
-  bdsim_link->ClearSamplerHits();
+  // Clear data from the previous tracking call.
+  tracker_interface->ClearData();
 
-  int nparticle = bunch6d.attr("size")().cast<int>();
+  const int nparticle = bunch.attr("size")().cast<int>();
+  const std::string bunchClassName = py::str(bunch.attr("__class__").attr("__name__"));
+  const bool isBunch6d = bunchClassName == "Bunch6d";
+  const bool isBunch6dT = bunchClassName == "Bunch6dT";
 
-  for(int i = 0; i < nparticle ;i++) {
-    // py::print("TrackRFTrack> ",i);
-
-    auto p = bunch6d.attr("get_particle")(i);
-    auto x = py::cast<double>(p.attr("x"));
-    auto y = py::cast<double>(p.attr("y"));
-    auto p4v = (py::cast<py::array_t<double>>(p.attr("get_four_momentum")())).unchecked<2>();
-    // TODO time needs to calculated wrt to reference particle
-    // auto t = py::cast<double>(p.attr("t"));
-    auto pdgID = py::cast<int>(p.attr("pdg_id")); // initiall this will be zero and add particle will set to reference particle
-
-    tracker_interface->AddParticle(x*CLHEP::mm, y*CLHEP::mm, // x, y
-                                   p4v(1,0), p4v(2,0), p4v(3,0), // px, px, pz
-                                   0, // ct
-                                   0, // s
-                                   i, pdgID); // trackID, parent;
-    if (pdgID == 0) {
-      p.attr("pdg_id") = py::cast(refPDG);
+  if (!isBunch6d && !isBunch6dT)
+    {
+      throw py::type_error("TrackRFTrack expects an RF-Track Bunch6d or Bunch6dT");
     }
-  }
-  bdsim_link->BeamOn(nparticle);
 
+  py::object phaseSpaceObject;
+
+  if (isBunch6d)
+    {
+      phaseSpaceObject = bunch.attr("get_phase_space")("%x %Px %y %Py %t %Pz", "all");
+    }
+  else
+    {
+      phaseSpaceObject = bunch.attr("get_phase_space")("%X %Px %Y %Py %Z %Pz %t0 %m", "all");
+    }
+
+  py::array_t<double, py::array::c_style | py::array::forcecast> phaseSpace = py::array_t<double, py::array::c_style | py::array::forcecast>::ensure(phaseSpaceObject);
+
+  const py::ssize_t expectedColumns = isBunch6d ? 6 : 8;
+
+  if (!phaseSpace || phaseSpace.ndim() != 2 || phaseSpace.shape(0) != nparticle || phaseSpace.shape(1) != expectedColumns)
+    {
+      throw py::value_error("Unexpected RF-Track phase-space shape");
+    }
+
+  auto phase = phaseSpace.unchecked<2>();
+  // Exclude lost particles while preserving their original RF-Track indices.
+  std::vector<int> goodParticleIndices;
+
+  for (int i = 0; i < nparticle; ++i)
+    {
+      py::object p = bunch.attr("get_particle")(i);
+      const double lost = py::cast<double>(p.attr(isBunch6d ? "S_lost" : "t_lost"));
+      if (std::isnan(lost))
+        {
+          goodParticleIndices.push_back(i);
+        }
+    }
+
+  if (goodParticleIndices.empty())
+    {
+      return;
+    }
+
+  // Validate all surviving particles before adding any to BDSIM.
+  for (int i : goodParticleIndices)
+    {
+      if (!std::isfinite(phase(i, 0)) || !std::isfinite(phase(i, 1)) || !std::isfinite(phase(i, 2)) ||
+          !std::isfinite(phase(i, 3)) || !std::isfinite(phase(i, 4)) || !std::isfinite(phase(i, 5)) ||
+          (phase(i, 1) == 0.0 && phase(i, 3) == 0.0 && phase(i, 5) == 0.0))
+        {
+          const std::string bunchType = isBunch6d ? "Bunch6d" : "Bunch6dT";
+          throw py::value_error("Invalid " + bunchType + " phase space at particle " + std::to_string(i));
+        }
+
+      if (isBunch6dT)
+        {
+          const double momentumMeV = std::hypot(std::hypot(phase(i, 1), phase(i, 3)), phase(i, 5));
+          if (!std::isfinite(phase(i, 6)) || !std::isfinite(phase(i, 7)) ||
+              phase(i, 5) <= 0.0 || !std::isfinite(momentumMeV))
+            {
+              throw py::value_error("Invalid Bunch6dT momentum or phase space at particle " + std::to_string(i));
+            }
+        }
+    }
+
+  double zMaxMm = 0.0;
+  double bunchTimeMmC = 0.0;
+
+  // Map the largest RF-Track Z of surviving particles to the BDSIM injection plane (local z=0).
+  if (isBunch6dT)
+    {
+      bunchTimeMmC = py::cast<double>(bunch.attr("t"));
+
+      if (!std::isfinite(bunchTimeMmC))
+        {
+          throw py::value_error("Invalid Bunch6dT bunch time");
+        }
+
+      zMaxMm = phase(goodParticleIndices[0], 4);
+      for (int i : goodParticleIndices)
+        {
+          zMaxMm = std::max(zMaxMm, phase(i, 4));
+        }
+    }
+
+  for (int i : goodParticleIndices)
+    {
+      py::object p = bunch.attr("get_particle")(i);
+
+      double xMm   = 0.0;
+      double yMm   = 0.0;
+      double pxMeV = 0.0;
+      double pyMeV = 0.0;
+      double pzMeV = 0.0;
+      double tNs   = 0.0;
+
+      if (isBunch6d)
+        {
+          xMm   = phase(i, 0);
+          pxMeV = phase(i, 1);
+          yMm   = phase(i, 2);
+          pyMeV = phase(i, 3);
+          const double timeMmC = phase(i, 4);
+          pzMeV = phase(i, 5);
+
+          // Convert RF-Track time (mm/c) to BDSIM time (ns).
+          tNs = timeMmC * CLHEP::mm / CLHEP::c_light;
+        }
+      else
+        {
+          xMm   = phase(i, 0);
+          pxMeV = phase(i, 1);
+          yMm   = phase(i, 2);
+          pyMeV = phase(i, 3);
+          const double zMm = phase(i, 4);
+          pzMeV = phase(i, 5);
+          const double t0MmC = phase(i, 6);
+          const double massMeV = phase(i, 7);
+          const double momentumMeV = std::hypot(std::hypot(pxMeV, pyMeV), pzMeV);
+          const double totalEnergyMeV = std::sqrt(momentumMeV*momentumMeV + massMeV*massMeV);
+          const double deltaZMm = zMaxMm - zMm;
+          // Particles not yet created are projected from their creation time rather than bunch.t.
+          const double timeMmC = std::max(bunchTimeMmC, t0MmC) + deltaZMm*totalEnergyMeV/pzMeV;
+          // Project onto the injection plane assuming a field-free drift.
+          // The RF-Track Z axis must be aligned with the BDSIM injection frame.
+          xMm += deltaZMm*pxMeV/pzMeV;
+          yMm += deltaZMm*pyMeV/pzMeV;
+
+          // RF-Track time is expressed in mm/c.
+          // BDSIM internal time is expressed in ns.
+          tNs = timeMmC * CLHEP::mm / CLHEP::c_light;
+        }
+
+      const int pdgID = py::cast<int>(p.attr("pdg_id"));
+
+      tracker_interface->AddParticle(
+        xMm * CLHEP::mm,
+        yMm * CLHEP::mm,
+        pxMeV * CLHEP::MeV,
+        pyMeV * CLHEP::MeV,
+        pzMeV * CLHEP::MeV,
+        tNs,
+        0.0,
+        i,
+        pdgID
+      );
+
+      if (pdgID == 0)
+        {
+          p.attr("pdg_id") = py::cast(refPDG);
+        }
+    }
+
+  // Primary external IDs are 0, ..., nparticle - 1.
+  // Generated-particle IDs must start after this range.
+  bdsim_link->SetCurrentMaximumExternalParticleID(nparticle - 1);
+
+  bdsim_link->BeamOn(goodParticleIndices.size());
+
+  // Bunch6dT output conversion will be implemented separately.
+  if (isBunch6dT)
+    {
+      return;
+    }
   // loop over sampler hits and update bunch
   auto sh = bdsim_link->SamplerHits();
 
   // set all bunch particles as if they didn't make it (s)
   //auto endpoint = (*sh)[0]->coords.s;
   auto endpoint = 0.1;
-  for(int i=0; i<nparticle; i++) {
-    auto p = bunch6d.attr("get_particle")(i);
+  for (int i : goodParticleIndices) {
+    auto p = bunch.attr("get_particle")(i);
     p.attr("S_lost") = py::cast(endpoint);
   }
 
-
-  auto append_method = bunch6d.attr("append");
+  auto append_method = bunch.attr("append");
   std::vector<double> new_particle_data = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
   for(std::size_t i=0; i<sh->entries(); i++) {
@@ -523,7 +711,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     // std::cout << i << " " << h->externalParentID << std::endl;
     auto externalID = h->externalParentID;
     auto trackID = h->trackID;
-    auto p = bunch6d.attr("get_particle")(externalID);
+    auto p = bunch.attr("get_particle")(externalID);
     if(trackID == 1) { // existing partucke
       p.attr("x") = py::cast(h->coords.x);
       p.attr("y") = py::cast(h->coords.y);
@@ -546,12 +734,12 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
       new_particle_data[8] = py::cast<double>(p.attr("N"))*h->coords.weight;
 
       // append bdsim generated particle
-      int idx_insert = bunch6d.attr("size")().cast<int>();
+      int idx_insert = bunch.attr("size")().cast<int>();
       py::array_t<double> new_particle_arr(new_particle_data.size(), new_particle_data.data());
       append_method(new_particle_arr);
 
       // need to set particle as not lost
-      p = bunch6d.attr("get_particle")(idx_insert);
+      p = bunch.attr("get_particle")(idx_insert);
       p.attr("S_lost") = py::cast(std::nan(""));
 
       // set particle momentum
