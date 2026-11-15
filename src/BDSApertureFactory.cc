@@ -506,6 +506,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateHollowSolid(const G4String
     }
 }
 
+/*
 BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInnerVariableThickness(const G4String&      name,
                                                                                       G4double             fullLength,
                                                                                       const BDSAperture*   apertureInOutside,
@@ -527,6 +528,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInnerVariableThic
   // TBC
   return {nullptr, {}};
 }
+*/
 
 BDSApertureFactory::Product BDSApertureFactory::CreateCircle() const
 {

@@ -137,6 +137,7 @@ public:
   /// Create a solid like a pipe or tube, but where there are 4 shapes to specify. The inner
   /// entrance and exit shapes, and the outer entrance and exit shapes. These outer ones must
   /// be large enough to encompass the inner ones.
+  /*
   Product CreateSolidWithInnerVariableThickness(const G4String& name,
                                                 G4double fullLength,
                                                 const BDSAperture* apertureInOutside,
@@ -146,6 +147,7 @@ public:
                                                 const G4ThreeVector* normalIn  = nullptr,
                                                 const G4ThreeVector* normalOut = nullptr,
                                                 G4double           lengthExtraForBoolean = 0);
+  */
 
   static std::vector<G4double> ApertureListToVector(const std::list<double>& l,
                                                     BDSBeamPipeType bpt);
