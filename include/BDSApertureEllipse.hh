@@ -55,7 +55,7 @@ public:
   /// Note this is true even if the ellipse is rotated.
   G4double  RadiusToEncompass()     const override {return std::max(a,b) + tiltOffset.Radius();}
   BDSExtent Extent()                const override;
-  G4double  MinimumInscribedCircleRadius() const override {return std::min(a, b);}
+  G4double  MaximumInscribedCircleRadius() const override {return std::min(a, b);}
   unsigned int MinimumNumberOfPoints() const override {return nPoints;}
 
   BDSApertureEllipse        operator+ (G4double number) const;

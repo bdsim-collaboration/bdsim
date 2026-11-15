@@ -55,7 +55,7 @@ public:
   void      CheckInfoOK()                    const override;
   G4double  RadiusToEncompass()              const override {return radius;}
   BDSExtent Extent()                         const override;
-  G4double  MinimumInscribedCircleRadius()   const override {return radius*std::cos(CLHEP::twopi / 2*(G4double)nSides);}
+  G4double  MaximumInscribedCircleRadius()   const override {return radius*std::cos(CLHEP::twopi / 2*(G4double)nSides);}
   unsigned int MinimumNumberOfPoints() const override {return nSides;}
 
   BDSApertureRegularPolygon        operator+ (G4double number) const;

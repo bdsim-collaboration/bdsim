@@ -233,9 +233,8 @@ G4double BDSPolygon::RadiusToEncompass() const
   return radiusToEncompass;
 }
 
-G4double BDSPolygon::MinimumInscribedCricleRadius() const
+G4double BDSPolygon::MaximumInscribedCricleRadius() const
 {
-
   if (recalculateRadiusInterior)
     {
       // first find the minimum radius of any point on the polygon

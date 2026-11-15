@@ -67,7 +67,7 @@ public:
   
   BDSExtent Extent() const;           ///< Access the extent.
   G4double RadiusToEncompass() const; ///< Maximum radius of any point with no margin. Dynamically calculated on first access.
-  G4double MinimumInscribedCricleRadius() const;  ///< Minimum radius of a circle that will fit inside the polygon.
+  G4double MaximumInscribedCricleRadius() const;  ///< Maximum radius of a circle that will fit inside the polygon.
 
   /// Return whether the axis-aligned bounding box given by ext lies fully within the polygon.
   G4bool EncompassesExtentXY(const BDSExtent& ext) const;

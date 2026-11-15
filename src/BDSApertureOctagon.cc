@@ -79,10 +79,10 @@ BDSExtent BDSApertureOctagon::Extent() const
   return ExtentOffsetTilt(simpleExtent);
 }
 
-G4double BDSApertureOctagon::MinimumInscribedCircleRadius() const
+G4double BDSApertureOctagon::MaximumInscribedCircleRadius() const
 {
   auto p = Polygon();
-  return p.MinimumInscribedCricleRadius();
+  return p.MaximumInscribedCricleRadius();
 }
 
 BDSApertureOctagon BDSApertureOctagon::operator+ (G4double number) const

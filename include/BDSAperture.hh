@@ -77,7 +77,7 @@ public:
   virtual G4double  RadiusToEncompass()                const = 0;
   virtual BDSExtent Extent()                           const = 0;
   /// Radius of an axis-aligned circle that would fit inside the shape.
-  virtual G4double  MinimumInscribedCircleRadius()     const = 0;
+  virtual G4double  MaximumInscribedCircleRadius()     const = 0;
 
   /// Whether the transverse extent can be encompassed by this aperture instance.
   virtual G4bool  EncompassesXY(const BDSExtent& ext);

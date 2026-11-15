@@ -93,7 +93,7 @@ G4double BDSBeamPipeInfo::IndicativeRadius() const
   return ext.MaximumAbsTransverse();
 }
 
-G4double BDSBeamPipeInfo::MinimumInscribedCircleRadius() const
+G4double BDSBeamPipeInfo::MaximumInscribedCircleRadius() const
 {
-  return aperture->MinimumInscribedCircleRadius();
+  return aperture->MaximumInscribedCircleRadius();
 }

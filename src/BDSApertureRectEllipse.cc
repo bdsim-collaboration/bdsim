@@ -76,7 +76,7 @@ BDSExtent BDSApertureRectEllipse::Extent() const
   return ExtentOffsetTilt(simpleExtent);
 }
 
-G4double BDSApertureRectEllipse::MinimumInscribedCircleRadius() const
+G4double BDSApertureRectEllipse::MaximumInscribedCircleRadius() const
 {
   return std::min({rectangleA, rectangleB, ellipseA, ellipseB});
 }

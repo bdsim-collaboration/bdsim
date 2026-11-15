@@ -55,7 +55,7 @@ public:
   void      CheckInfoOK()                    const override;
   G4double  RadiusToEncompass()              const override {return std::max(ellipseA, ellipseB) + tiltOffset.Radius();}
   BDSExtent Extent()                         const override;
-  G4double  MinimumInscribedCircleRadius()   const override;
+  G4double  MaximumInscribedCircleRadius()   const override;
   unsigned int MinimumNumberOfPoints()       const override {return 24;}
 
   BDSApertureRectEllipse        operator+ (G4double number) const;

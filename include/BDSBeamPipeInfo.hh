@@ -65,7 +65,7 @@ public:
   G4double IndicativeRadius() const;
 
   /// Return an indicative inner extent for the beam pipe vacuum.
-  G4double MinimumInscribedCircleRadius() const;
+  G4double MaximumInscribedCircleRadius() const;
 
   //  Public member for direct access
   /// @{ Necessary members.
