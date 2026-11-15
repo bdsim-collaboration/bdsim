@@ -134,16 +134,17 @@ void BDSShield::BuildBeamPipe()
     {return;}
   
   // check beam pipe fits
-  if ((xSize < (beamPipeInfo->aper1 + beamPipeInfo->beamPipeThickness)) || (ySize < (beamPipeInfo->aper2 + beamPipeInfo->beamPipeThickness)))
+  if (beamPipeInfo->Extent().TransverselyGreaterEquals(BDSExtent(xSize,ySize,0)))
     {
       G4cout << __METHOD_NAME__ << "Shield will not fit around beam pipe - not building beam pipe!" << G4endl << G4endl;
       return;
     }
   
   // construct and place beam pipe
-  auto bp = BDSBeamPipeFactory::Instance()->CreateBeamPipe(name,
-                                                           chordLength - lengthSafety,
-                                                           beamPipeInfo);
+  BDSBeamPipeFactory factory;
+  auto bp = factory.CreateBeamPipe(name,
+							       chordLength - lengthSafety,
+							       beamPipeInfo);
   RegisterDaughter(bp);
 
   G4PVPlacement* bpPV = new G4PVPlacement(nullptr,

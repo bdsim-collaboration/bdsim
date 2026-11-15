@@ -21,7 +21,15 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamPipeFactoryBase.hh"
 #include "BDSBeamPipe.hh"
 
+#include "G4String.hh"
+#include "G4ThreeVector.hh"
+#include "G4Types.hh"
+
+class BDSBeamPipeInfo;
 class G4Material;
+class G4LogicalVolume;
+class G4PVPlacement;
+class G4VSolid;
 
 /**
  * @brief Factory for detailed lhc aperture model beam pipes.
@@ -34,63 +42,53 @@ class BDSBeamPipeFactoryLHCDetailed: public BDSBeamPipeFactoryBase
 public:
   BDSBeamPipeFactoryLHCDetailed();
   virtual ~BDSBeamPipeFactoryLHCDetailed(){;}
+  
+  BDSBeamPipe* CreateBeamPipe(const G4String&   name,
+                              G4double          fullLength,
+                              const BDSBeamPipeInfo* bpi) override;
 
   /// Access cooling pipe information from factory for parameter tests
   G4double GetFullWidthOfCoolingPipe();
 
   /// Clean up extra pointers particular to this factory before use
-  virtual void CleanUp();
-
-  virtual BDSBeamPipe* CreateBeamPipe(const G4String& nameIn,
-				      G4double    lengthIn,
-				      G4double    aper1               = 0,
-				      G4double    aper2               = 0,
-				      G4double    aper3               = 0,
-				      G4double    aper4               = 0,
-				      G4Material* vacuumMaterialIn    = nullptr,
-				      G4double    beamPipeThicknessIn = 0,
-				      G4Material* beamPipeMaterialIn  = nullptr,
-				      const G4String& pointsFileIn    = "",
-				      const G4String& pointsUnitIn    = "");
-  
-  virtual BDSBeamPipe* CreateBeamPipe(const G4String&      nameIn,
-				      G4double             lengthIn,
-				      const G4ThreeVector& inputFaceNormalIn,
-				      const G4ThreeVector& outputFaceNormalIn,
-				      G4double      aper1               = 0,
-				      G4double      aper2               = 0,
-				      G4double      aper3               = 0,
-				      G4double      aper4               = 0,
-				      G4Material*   vacuumMaterialIn    = nullptr,
-				      G4double      beamPipeThicknessIn = 0,
-				      G4Material*   beamPipeMaterialIn  = nullptr,
-				      const G4String& pointsFileIn      = "",
-				      const G4String& pointsUnitIn      = "");
+  void CleanUp() override;
 
 private:
   /// Do the actual clean up of members here in a non-virtual function so it can be
   /// used in the constructor.
   void CleanUpLHCDetailed();
+
+  G4bool AngledFaces(const G4ThreeVector& v1,
+                     const G4ThreeVector& v2);
+
+  BDSBeamPipe* CreateBeamPipeAngled(const G4String&   name,
+                                    G4double          length,
+                                    const BDSBeamPipeInfo* bpi,
+                                    const G4ThreeVector& inputFaceNormalIn,
+                                    const G4ThreeVector& outputFaceNormalIn);
   
   /// only the solids are unique, once we have those, the logical volumes and placement in the
   /// container are the same.  group all this functionality together
-  BDSBeamPipe* CommonFinalConstruction(const G4String& name,
-				       G4Material* vacuumMaterial,
-				       G4Material* beamPipeMaterial,
-				       G4double    length,
-				       G4double    containerRadius);
-  G4double CreateGeneralAngledSolids(const G4String&      name,
-				     G4double             length,
-				     const G4ThreeVector& inputface,
-				     const G4ThreeVector& outputface);
+  BDSBeamPipe* CommonFinalConstruction(const G4String&    name,
+                                       G4Material* vacuumMaterial,
+                                       G4Material* beamPipeMaterial,
+                                       G4double    length,
+                                       G4double    containerRadius);
 
-  virtual void BuildLogicalVolumes(const G4String& nameIn,
-				   G4Material* vacuumMaterialIn,
-				   G4Material* beamPipeMaterialIn);
-  virtual void  SetVisAttributes(G4Material* beamPipeMaterialIn,
-                                 G4Material* vacuumMaterialIn);
-  virtual void  SetUserLimits(G4double length);
-  virtual void  PlaceComponents(const G4String& nameIn);
+  /// The angled ones have degeneracy in the geant4 solids they used so we can avoid code duplication
+  /// by grouping common construction tasks.
+  G4double CreateGeneralAngledSolids(const G4String&      name,
+                                     G4double             length,
+                                     const G4ThreeVector& inputface,
+                                     const G4ThreeVector& outputface);
+
+  void  BuildLogicalVolumes(const G4String&    nameIn,
+                            G4Material* vacuumMaterialIn,
+                            G4Material* beamPipeMaterialIn) override;
+  void  SetVisAttributes(G4Material* beamPipeMaterialIn,
+                         G4Material* bacuumMaterialIn) override;
+  void  SetUserLimits(G4double length) override;
+  void  PlaceComponents(const G4String& nameIn) override;
 
   /// Utility function to initialise the geometry parameters
   void InitialiseGeometricalParameters();
@@ -98,10 +96,10 @@ private:
   /// Calculate the various radii and geometrical parameters for this design
   /// based on the input aperture parameters
   void CalculateGeometricalParameters(G4double aper1,
-				      G4double aper2,
-				      G4double aper3,
-				      G4double beamPipeThickness,
-				      G4double length);
+                                      G4double aper2,
+                                      G4double aper3,
+                                      G4double beamPipeThickness,
+                                      G4double length);
 
   G4VSolid*        copperSkinSolid;
   G4VSolid*        screenSolid;

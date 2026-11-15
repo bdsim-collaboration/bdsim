@@ -15,6 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "BDSAperture.hh"
 #include "BDSBeamPipeInfo.hh"
 #include "BDSGlobalConstants.hh" 
 #include "BDSLaserWire.hh"
@@ -24,11 +25,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4Box.hh"
 #include "G4LogicalVolume.hh"
 
-BDSLaserWire::BDSLaserWire(G4String      nameIn,
-			   G4double      lengthIn,
-			   G4double      wavelengthIn,
-			   G4ThreeVector directionIn):
-  BDSAcceleratorComponent(nameIn, lengthIn, 0, "laserwire"),
+BDSLaserWire::BDSLaserWire(const G4String&      nameIn,
+                           G4double             lengthIn,
+                           G4double             wavelengthIn,
+                           const G4ThreeVector& directionIn,
+                           BDSBeamPipeInfo*     beamPipeInfoIn):
+  BDSAcceleratorComponent(nameIn, lengthIn, 0, "laserwire", beamPipeInfoIn),
   itsLaserDirection(directionIn),
   itsLaserWavelength(wavelengthIn)
 {;}
@@ -38,7 +40,7 @@ BDSLaserWire::~BDSLaserWire()
 
 void BDSLaserWire::BuildContainerLogicalVolume()
 {
-  G4double beamPipeRadius = BDSGlobalConstants::Instance()->DefaultBeamPipeModel()->aper1;
+  G4double beamPipeRadius = beamPipeInfo->IndicativeRadius();
   containerSolid = new G4Box(name +"_container_solid",
 			     beamPipeRadius,
 			     beamPipeRadius,

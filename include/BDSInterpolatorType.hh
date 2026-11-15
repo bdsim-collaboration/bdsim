@@ -56,7 +56,7 @@ namespace BDS
   /// Return true if the type is one containing 'auto'.
   G4bool InterpolatorTypeIsAuto(BDSInterpolatorType typeIn);
 
-  /// Return a specific inteprolator type from the appropriate auto one in combination
+  /// Return a specific interpolator type from the appropriate auto one in combination
   /// with the number of dimensions. e.g. 3, cubicauto -> cubic3d.
   BDSInterpolatorType InterpolatorTypeSpecificFromAuto(G4int               nDimension,
 						       BDSInterpolatorType autoType);

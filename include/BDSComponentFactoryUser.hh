@@ -65,7 +65,7 @@ public:
 
   /// Register a constructor instance by a given name.
   void RegisterComponent(const G4String& componentTypeName,
-			 BDSComponentConstructor* componentConstructor);
+                         BDSComponentConstructor* componentConstructor);
 
   /// Check whether a component can be constructed - ie if the name exists.
   G4bool CanConstructComponentByName(const G4String& componentTypeName) const;

@@ -35,6 +35,23 @@ BDSTiltOffset::BDSTiltOffset(G4double xOffset,
   dx(xOffset), dy(yOffset), tilt(tiltIn)
 {;}
 
+BDSTiltOffset::BDSTiltOffset(const BDSTiltOffset& other):
+  dx(other.dx),
+  dy(other.dy),
+  tilt(other.tilt)
+{;}
+
+BDSTiltOffset& BDSTiltOffset::operator=(const BDSTiltOffset& other) noexcept
+{
+  if (this != &other)
+    {
+      dx = other.dx;
+      dy = other.dy;
+      tilt = other.tilt;
+    }
+  return *this;
+}
+
 std::ostream& operator<< (std::ostream& out, BDSTiltOffset const &to)
 {
   out << to.tilt << " " << to.dx << " " << to.dy;
@@ -57,4 +74,12 @@ G4bool BDSTiltOffset::HasFiniteOffset() const
 G4bool BDSTiltOffset::HasFiniteTilt() const
 {
   return BDS::IsFinite(tilt);
+}
+
+bool operator== (const BDSTiltOffset& lhs, const BDSTiltOffset& rhs)
+{
+  // remember, double == double is wrong
+  bool sameTilt   = BDS::DoublesAreEqual(lhs.tilt, rhs.tilt);
+  bool sameOffset = BDS::DoublesAreEqual(lhs.dx, rhs.dx) && BDS::DoublesAreEqual(lhs.dy, rhs.dy);
+  return sameTilt && sameOffset;
 }

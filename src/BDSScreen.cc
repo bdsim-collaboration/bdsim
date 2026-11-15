@@ -28,11 +28,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <list>
 #include <sstream>
 
-BDSScreen::BDSScreen(G4String         nameIn,  
-		     G4double         chordLengthIn,
-		     BDSBeamPipeInfo* beamPipeInfoIn,
-		     G4TwoVector      sizeIn, //X Y dimensions of screen
-		     G4double         screenAngleIn):
+BDSScreen::BDSScreen(const G4String&   nameIn,
+		     G4double          chordLengthIn,
+		     BDSBeamPipeInfo*  beamPipeInfoIn,
+		     G4TwoVector       sizeIn,
+		     G4double          screenAngleIn):
   BDSDrift(nameIn, chordLengthIn, beamPipeInfoIn),
   size(sizeIn), 
   screenAngle(screenAngleIn),

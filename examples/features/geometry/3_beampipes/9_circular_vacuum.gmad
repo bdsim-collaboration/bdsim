@@ -1,5 +1,5 @@
 d1: drift, l=0.2*m, apertureType="circularvacuum", aper1=2*cm;
-sb1: sbend, l=0.3*m, angle=0.1, e1=0.1, apertureType="circularvacuum";
+sb1: sbend, l=0.3*m, angle=0.1, e1=0.1, apertureType="circularvacuum", aper1=2*cm;
 
 l1: line = (d1, d1, sb1, d1);
 

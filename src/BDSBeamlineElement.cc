@@ -179,7 +179,7 @@ G4ThreeVector BDSBeamlineElement::InputFaceNormal() const
     {return inputFNLocal;}
   else
     {
-      G4ThreeVector inputFNGlobal = inputFNLocal.rotateZ(tiltOffset->GetTilt());
+      G4ThreeVector inputFNGlobal = inputFNLocal.rotateZ(tiltOffset->Tilt());
       return inputFNGlobal;
     }
 }
@@ -191,7 +191,7 @@ G4ThreeVector BDSBeamlineElement::OutputFaceNormal() const
     {return outputFNLocal;}
   else
     {
-      G4ThreeVector outputFNGlobal = outputFNLocal.rotateZ(-tiltOffset->GetTilt());
+      G4ThreeVector outputFNGlobal = outputFNLocal.rotateZ(-tiltOffset->Tilt());
       return outputFNGlobal;
     }
 }

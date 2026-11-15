@@ -83,7 +83,7 @@ BDSSimpleComponent* BDSCurvilinearFactory::CreateCurvilinearVolume(const G4Strin
 
   if (tiltOffset)
     {// could be nullptr
-      G4double tilt = tiltOffset->GetTilt();
+      G4double tilt = tiltOffset->Tilt();
       if (BDS::IsFinite(tilt))
         {// rotate normal faces
           inputface = inputface.rotateZ(tilt);

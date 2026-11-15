@@ -20,9 +20,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "BDSBeamPipeType.hh"
 
-#include "globals.hh"         // geant4 types / globals
+#include "G4Types.hh"
 #include "G4ThreeVector.hh"
 
+class BDSAperture;
 class BDSExtent;
 class G4Material;
 
@@ -39,126 +40,48 @@ class G4Material;
 class BDSBeamPipeInfo
 {
 public:
-  /// Deleted default constructor to ensure one of supplied constructors is used.
+  /// No default constructor to ensure one of supplied constructors is used.
   BDSBeamPipeInfo() = delete;
-  /// extra constructor to assign all members at once.
+  /// Constructor to assign all members at once
   BDSBeamPipeInfo(BDSBeamPipeType beamPipeTypeIn,
-		  G4double        aper1In,
-		  G4double        aper2In,
-		  G4double        aper3In,
-		  G4double        aper4In,
-		  G4Material*     vacuumMaterialIn,
-		  G4double        beamPipeThicknessIn,
-		  G4Material*     beamPipeMaterialIn,
-		  const G4ThreeVector& inputFaceNormalIn  = G4ThreeVector(0,0,-1),
-		  const G4ThreeVector& outputFaceNormalIn = G4ThreeVector(0,0,1),
-      const G4String& pointsFileNameIn = "",
-      const G4String& pointsUnitIn = "mm");
+                  BDSAperture*    apertureIn,
+                  G4Material*     vacuumMaterialIn,
+                  G4double        beamPipeThicknessIn,
+                  G4Material*     beamPipeMaterialIn,
+                  G4bool          vacuumOnly         = false,
+                  BDSAperture*    apertureOutIn      = nullptr,
+                  G4ThreeVector*  inputFaceNormalIn  = nullptr,
+                  G4ThreeVector*  outputFaceNormalIn = nullptr);
 
-  /// Constructor with string descriptors of materials and type. Automatically determined
-  /// using BDSBeamPipeType and BDSMaterials
-  BDSBeamPipeInfo(const G4String&      beamPipeTypeIn,
-		  G4double             aper1In,
-		  G4double             aper2In,
-		  G4double             aper3In,
-		  G4double             aper4In,
-		  const G4String&      vacuumMaterialIn,
-		  G4double             beamPipeThicknessIn,
-		  const G4String&      beamPipeMaterialIn,
-		  const G4ThreeVector& inputFaceNormalIn  = G4ThreeVector(0,0,-1),
-		  const G4ThreeVector& outputFaceNormalIn = G4ThreeVector(0,0,1));
+  BDSBeamPipeInfo(const BDSBeamPipeInfo& other);
+  BDSBeamPipeInfo& operator=(const BDSBeamPipeInfo& other) = delete;
 
-  /// Constructor that allows a default model to be used as backup. Checks on parameter
-  /// validity are done after substituting unset values by values from defaultInfo.
-  BDSBeamPipeInfo(const BDSBeamPipeInfo* defaultInfo,
-		  const G4String&      beamPipeTypeIn,
-		  G4double             aper1In,
-		  G4double             aper2In,
-		  G4double             aper3In,
-		  G4double             aper4In,
-		  const G4String&      vacuumMaterialIn,
-		  G4double             beamPipeThicknessIn,
-		  const G4String&      beamPipeMaterialIn,
-		  const G4ThreeVector& inputFaceNormalIn  = G4ThreeVector(0,0,-1),
-		  const G4ThreeVector& outputFaceNormalIn = G4ThreeVector(0,0,1));
-
-  /// Function to check relevant aperture values are set.  This is really a dispatch function
-  /// for other aperture specific methods below
-  void CheckApertureInfo();
-
-  /// Return a BDSExtent instance for the transverse extents - extent in Z is 0 as this is
-  /// only aperture information. Includes beam pipe thickness.
+  ~BDSBeamPipeInfo();
+  
+  /// This gives the maximal extent of both the entrance and exit faces.
   BDSExtent Extent() const;
-
-  /// Return an extent for just the raw aperture.
-  BDSExtent ExtentInner() const;
-
+  
   /// Return an indicative extent of the beam pipe - typically the maximum of x or y extent.
   G4double IndicativeRadius() const;
 
   /// Return an indicative inner extent for the beam pipe vacuum.
-  G4double IndicativeRadiusInner() const;
+  G4double MaximumInscribedCircleRadius() const;
 
-  /// Return a copy that's shrunk by value margin.
-  BDSBeamPipeInfo ShrinkBy(G4double margin) const;
-
-  ///@{ Public member for direct access
+  //  Public member for direct access
+  /// @{ Necessary members.
   BDSBeamPipeType beamPipeType;
-  G4double        aper1;
-  G4double        aper2;
-  G4double        aper3;
-  G4double        aper4;
-  G4double        aperOffsetX;
-  G4double        aperOffsetY;
+  BDSAperture*    aperture;
   G4Material*     vacuumMaterial;
   G4double        beamPipeThickness;
   G4Material*     beamPipeMaterial;
-  G4ThreeVector   inputFaceNormal;
-  G4ThreeVector   outputFaceNormal;
-  G4String        pointsFileName;
-  G4String        pointsUnit;
+  G4bool          vacuumOnly;
+  /// @}
+
+  /// @{ Optional members.
+  BDSAperture*    apertureOut;
+  G4ThreeVector*  inputFaceNormal;
+  G4ThreeVector*  outputFaceNormal;
   ///@}
-  
-private:
-  /// Parse the type string to extract the file name and the optional units and assign to member variables.
-  void CheckAndSetPointsInfo(const G4String& beamPipeTypeIn);
-  
-  /// Function to check whether a parameter is set (using BDSUtilities BDS::IsFinite() ). If the
-  /// accompanying G4bool setAper1 (for example) is true, the parameter will be checked for
-  /// being set. All parameters required to be checked are checked and appropriate warnings
-  /// printed before exiting if any fail that test.
-  void CheckRequiredParametersSet(G4bool setAper1, G4bool setAper2,
-				  G4bool setAper3, G4bool setAper4);
-  
-  /// Aperture info check for circular aperture.
-  void InfoOKForCircular();
-
-  /// Aperture info check for elliptical aperture.
-  void InfoOKForElliptical();
-
-  /// Aperture info check for rectangular aperture.
-  void InfoOKForRectangular();
-
-  /// Aperture info check for lhc aperture.
-  void InfoOKForLHC();
-
-  /// Aperture info check for lhc detailed aperture.
-  void InfoOKForLHCDetailed();
-
-  /// Aperture info check for rectellipse aperture.
-  void InfoOKForRectEllipse();
-
-  /// Aperture info check for racetrack aperture.
-  void InfoOKForRaceTrack();
-
-  /// Aperture info check for octagonal aperture.
-  void InfoOKForOctagonal();
-
-  /// Aperture info check for CLIC PCL aperture.
-  void InfoOKForClicPCL();
-
-  /// Aperture info check for Rhombus aperture.
-  void InfoOKForRhombus();
 };
 
 #endif

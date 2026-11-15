@@ -23,6 +23,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <functional>  // for all the std::hash business
 #include <iterator>
 #include <map>
+#include <ostream>
 #include <set>
 #include <string>
 #include <unordered_map>

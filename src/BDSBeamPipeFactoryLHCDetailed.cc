@@ -15,10 +15,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "BDSApertureRectCircle.hh"
 #include "BDSBeamPipeFactoryBase.hh"
 #include "BDSBeamPipeFactoryLHCDetailed.hh"
-#include "BDSBeamPipe.hh"
+#include "BDSBeamPipeInfo.hh"
 #include "BDSColours.hh"
+#include "BDSDebug.hh"
+#include "BDSException.hh"
 #include "BDSExtent.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSMaterials.hh"
@@ -39,7 +42,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <cmath>
 #include <set>
-#include <utility>                         // for std::pair
+#include <utility>
 
 BDSBeamPipeFactoryLHCDetailed::BDSBeamPipeFactoryLHCDetailed()
 {
@@ -102,10 +105,10 @@ G4double BDSBeamPipeFactoryLHCDetailed::GetFullWidthOfCoolingPipe()
 }
 
 void BDSBeamPipeFactoryLHCDetailed::CalculateGeometricalParameters(G4double aper1,
-								   G4double aper2,
-								   G4double aper3,
-								   G4double beamPipeThickness,
-								   G4double length)
+                                                                   G4double aper2,
+                                                                   G4double aper3,
+                                                                   G4double beamPipeThickness,
+                                                                   G4double length)
 {
   // vacuum volume
   vacRadius     = aper3;
@@ -162,28 +165,36 @@ void BDSBeamPipeFactoryLHCDetailed::CalculateGeometricalParameters(G4double aper
   if (gapForCoolingPipe < fullWidthOfCoolingPipe + 1*CLHEP::um)
     {buildCoolingPipe = false;}
 }
-  
+
+G4bool BDSBeamPipeFactoryLHCDetailed::AngledFaces(const G4ThreeVector& v1,
+                                                  const G4ThreeVector& v2)
+{
+  G4bool straight = (v1.x() == 0.0) && (v1.y() == 0.0) && (v2.x() == 0.0) && (v2.y() == 0.0);
+  return !straight;
+}
 
 BDSBeamPipe* BDSBeamPipeFactoryLHCDetailed::CreateBeamPipe(const G4String& name,
-							   G4double    length,
-							   G4double    aper1,
-							   G4double    aper2,
-							   G4double    aper3,
-							   G4double    /*aper4*/,
-							   G4Material* vacuumMaterial,
-							   G4double    beamPipeThickness,
-							   G4Material* beamPipeMaterial,
-							   const G4String& /*pointsFileIn*/,
-							   const G4String& /*pointsUnitIn*/)
+                                                           G4double fullLength,
+                                                           const BDSBeamPipeInfo* bpi)
 {
   // clean up after last usage
   CleanUp();
+  G4double length = fullLength;
+  G4ThreeVector v1 = (G4bool)bpi->inputFaceNormal ? *(bpi->inputFaceNormal) : G4ThreeVector(0,0,-1);
+  G4ThreeVector v2 = (G4bool)bpi->outputFaceNormal ? *(bpi->outputFaceNormal) : G4ThreeVector(0,0,1);
+  G4bool angled = AngledFaces(v1, v2);
+  if (angled)
+    {return CreateBeamPipeAngled(name, length, bpi, v1, v2);}
 
+  auto* vacuumMaterial = bpi->vacuumMaterial;
   // we override the material of the beam pipe
-  beamPipeMaterial = BDSMaterials::Instance()->GetMaterial("stainless_steel_316LN_2K");
+  auto* beamPipeMaterial = BDSMaterials::Instance()->GetMaterial("stainless_steel_316LN_2K");
   
   // calculate geometrical parameters
-  CalculateGeometricalParameters(aper1, aper2, aper3, beamPipeThickness, length);
+  BDSApertureRectCircle* ap = dynamic_cast<BDSApertureRectCircle*>(bpi->aperture);
+  if (!ap)
+    {throw BDSException(__METHOD_NAME__, "invalid aperture for LHC style beam pipe.");}
+  CalculateGeometricalParameters(ap->a, ap->b, ap->radius, bpi->beamPipeThickness, length);
 
   // build the solids
   //vacuum cylindrical solid (circular cross-section)
@@ -338,44 +349,41 @@ BDSBeamPipe* BDSBeamPipeFactoryLHCDetailed::CreateBeamPipe(const G4String& name,
   return CommonFinalConstruction(name, vacuumMaterial, beamPipeMaterial, length, containerRadius);
 }
 
-BDSBeamPipe* BDSBeamPipeFactoryLHCDetailed::CreateBeamPipe(const G4String&      name,
-							   G4double             length,
-							   const G4ThreeVector& inputFaceNormalIn,
-							   const G4ThreeVector& outputFaceNormalIn,
-							   G4double      aper1,
-							   G4double      aper2,
-							   G4double      aper3,
-							   G4double      /*aper4*/,
-							   G4Material*   vacuumMaterial,
-							   G4double      beamPipeThickness,
-							   G4Material*   beamPipeMaterial,
-							   const G4String& /*pointsFileIn*/,
-							   const G4String& /*pointsUnitIn*/)
+BDSBeamPipe* BDSBeamPipeFactoryLHCDetailed::CreateBeamPipeAngled(const G4String& name,
+                                                                 G4double length,
+                                                                 const BDSBeamPipeInfo* bpi,
+                                                                 const G4ThreeVector& inputFaceNormalIn,
+                                                                 const G4ThreeVector& outputFaceNormalIn)
 {
   // clean up after last usage
   CleanUp();
 
+  auto* vacuumMaterial = bpi->vacuumMaterial;
+  // we override the material of the beam pipe
+  auto* beamPipeMaterial = BDSMaterials::Instance()->GetMaterial("stainless_steel_316LN_2K");
+
   // calculate geometrical parameters
-  CalculateGeometricalParameters(aper1, aper2, aper3, beamPipeThickness, length);
+  BDSApertureRectCircle* ap = dynamic_cast<BDSApertureRectCircle*>(bpi->aperture);
+  if (!ap)
+    {throw BDSException(__METHOD_NAME__, "invalid aperture for LHC style beam pipe.");}
+  CalculateGeometricalParameters(ap->a, ap->b, ap->radius, bpi->beamPipeThickness, length);
   
   inputFaceNormal  = inputFaceNormalIn;
   outputFaceNormal = outputFaceNormalIn;
   
-  G4double contRadius = CreateGeneralAngledSolids(name, length, inputFaceNormal,
-						  outputFaceNormal);
+  G4double contRadius = CreateGeneralAngledSolids(name, length, inputFaceNormal, outputFaceNormal);
   
-  return CommonFinalConstruction(name, vacuumMaterial, beamPipeMaterial,
-				 length, contRadius);
+  return CommonFinalConstruction(name, vacuumMaterial, beamPipeMaterial, length, contRadius);
 }
 
+
 BDSBeamPipe* BDSBeamPipeFactoryLHCDetailed::CommonFinalConstruction(const G4String& name,
-								    G4Material* vacuumMaterial,
-								    G4Material* beamPipeMaterial,
-								    G4double    length,
-								    G4double    contRadius)
+                                                                    G4Material* vacuumMaterial,
+                                                                    G4Material* beamPipeMaterial,
+                                                                    G4double    length,
+                                                                    G4double    contRadius)
 {
-  BDSBeamPipeFactoryBase::CommonConstruction(name, vacuumMaterial,
-					     beamPipeMaterial, length);
+  BDSBeamPipeFactoryBase::CommonConstruction(name, vacuumMaterial, beamPipeMaterial, length);
 		    
   // record extents
   BDSExtent ext = BDSExtent(contRadius, contRadius, length*0.5);
@@ -389,7 +397,7 @@ BDSBeamPipe* BDSBeamPipeFactoryLHCDetailed::CommonFinalConstruction(const G4Stri
       aPipe->RegisterSensitiveVolume(screenLV, BDSSDType::energydep);
       aPipe->RegisterSensitiveVolume(copperSkinLV, BDSSDType::energydep);
       if (buildCoolingPipe)
-	{aPipe->RegisterSensitiveVolume(coolingPipeLV, BDSSDType::energydep);}
+        {aPipe->RegisterSensitiveVolume(coolingPipeLV, BDSSDType::energydep);}
     }
   
   return aPipe;
@@ -429,7 +437,7 @@ void BDSBeamPipeFactoryLHCDetailed::SetVisAttributes(G4Material* beamPipeMateria
   BDSBeamPipeFactoryBase::SetVisAttributes(beamPipeMaterialIn, vacuumMateiralIn);
 
   // copper skin
-  G4VisAttributes* cuVisAttr   = new G4VisAttributes(*BDSColours::Instance()->GetColour("LHCcopperskin"));
+  G4VisAttributes* cuVisAttr = new G4VisAttributes(*BDSColours::Instance()->GetColour("LHCcopperskin"));
   cuVisAttr->SetForceLineSegmentsPerCircle(nSegmentsPerCircle);
   cuVisAttr->SetVisibility(true);
   allVisAttributes.insert(cuVisAttr);
@@ -521,13 +529,11 @@ void BDSBeamPipeFactoryLHCDetailed::PlaceComponents(const G4String& name)
       allPhysicalVolumes.insert(coolingPipeBottomPV);
     }
 }
-  
-/// the angled ones have degeneracy in the geant4 solids they used so we can avoid code duplication
-/// by grouping common construction tasks
+
 G4double BDSBeamPipeFactoryLHCDetailed::CreateGeneralAngledSolids(const G4String&      name,
-								  G4double             length,
-								  const G4ThreeVector& inputface,
-								  const G4ThreeVector& outputface)
+                                                                  G4double             length,
+                                                                  const G4ThreeVector& inputface,
+                                                                  const G4ThreeVector& outputface)
 { 
   // build the solids
   //vacuum cylindrical solid (circular cross-section)

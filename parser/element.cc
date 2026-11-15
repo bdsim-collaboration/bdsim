@@ -110,11 +110,11 @@ void Element::PublishMembers()
 
   // beampipe information, new aperture model
   publish("beampipeThickness",&Element::beampipeThickness);
+  publish("apertureParams",   &Element::apertureParams);
+  publish("apertureParamsOut",&Element::apertureParamsOut);
   publish("aper1",            &Element::aper1);
   publish("aper",             &Element::aper1);
   alternativeNames["aper"] = "aper1";
-  publish("aperture",         &Element::aper1);
-  alternativeNames["aperture"] = "aper1";
   publish("aperture1",        &Element::aper1);
   alternativeNames["aperture1"] = "aper1";
   publish("beampipeRadius",   &Element::aper1);
@@ -129,8 +129,11 @@ void Element::PublishMembers()
   publish("aperture4",        &Element::aper4);
   alternativeNames["aperture4"] = "aper4";
   publish("apertureType",        &Element::apertureType);
+  publish("apertureTypeOut",     &Element::apertureTypeOut);
   publish("beampipeMaterial",    &Element::beampipeMaterial);
   publish("vacuumMaterial",      &Element::vacuumMaterial);
+  publish("apertureModel",       &Element::apertureModel);
+  publish("apertureModelOut",    &Element::apertureModelOut);
 
   // magnet geometry
   publish("magnetGeometryType",  &Element::magnetGeometryType);
@@ -568,13 +571,18 @@ void Element::flush()
 
   // new aperture model
   beampipeThickness = 0;
+  apertureParams.clear();
+  apertureParamsOut.clear();
   aper1 = 0;
   aper2 = 0;
   aper3 = 0;
   aper4 = 0;
   apertureType = "";
+  apertureTypeOut = "";
   beampipeMaterial = "";
   vacuumMaterial = "";
+  apertureModel = "";
+  apertureModelOut = "";
 
   // magnet geometry
   magnetGeometryType  = "";

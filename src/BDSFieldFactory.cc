@@ -15,6 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "BDSAperture.hh"
 #include "BDSArrayReflectionType.hh"
 #include "BDSBeamPipeInfo.hh"
 #include "BDSDebug.hh"
@@ -168,8 +169,12 @@ BDSFieldFactory* BDSFieldFactory::Instance()
 }
 
 BDSFieldFactory::BDSFieldFactory():
-  useOldMultipoleOuterFields(false)
+  useOldMultipoleOuterFields(false),
+  verbose(false),
+  chordStepMinimumYoke(1),
+  defaultUserLimits(nullptr)
 {
+  defaultUserLimits = BDSGlobalConstants::Instance()->DefaultUserLimits();
   G4double defaultRigidity = std::numeric_limits<double>::max();
   if (designParticle)
     {defaultRigidity = designParticle->BRho();}
@@ -180,6 +185,9 @@ BDSFieldFactory::BDSFieldFactory():
       PrepareFieldDefinitions(BDSParser::Instance()->GetFields(), defaultRigidity);
     }
   useOldMultipoleOuterFields = BDSGlobalConstants::Instance()->UseOldMultipoleOuterFields();
+  verbose = BDSGlobalConstants::Instance()->Verbose();
+  chordStepMinimumYoke = BDSGlobalConstants::Instance()->ChordStepMinimumYoke();
+  ptcOneTurnMapFileName = BDSGlobalConstants::Instance()->PTCOneTurnMapFileName();
 }
 
 BDSFieldFactory::~BDSFieldFactory()
@@ -306,7 +314,6 @@ void BDSFieldFactory::PrepareFieldDefinitions(const std::vector<GMAD::Field>& de
       G4bool ignoreUpdateOfMaximumStepSize = definition.maximumStepLengthOverride > 0;
       if (definition.maximumStepLength > 0 || ignoreUpdateOfMaximumStepSize)
         {// only assign if specified
-          auto defaultUL = BDSGlobalConstants::Instance()->DefaultUserLimits();
           // copy the default and update with the length of the object rather than the default 1m
           G4double limit = G4double(definition.maximumStepLength) * CLHEP::m;
           if (ignoreUpdateOfMaximumStepSize)
@@ -315,14 +322,14 @@ void BDSFieldFactory::PrepareFieldDefinitions(const std::vector<GMAD::Field>& de
               G4cout << __METHOD_NAME__ << "maximumStepLengthOverride set to " << limit << " mm for field definition \""
                      << definition.name << "\" -> careful!" << G4endl;
             }
-          G4UserLimits* ul = BDS::CreateUserLimits(defaultUL, limit, 1.0);
+          G4UserLimits* ul = BDS::CreateUserLimits(defaultUserLimits, limit, 1.0);
           // only specify a user limit object if the step length was specified
-          if (ul != defaultUL)
+          if (ul != defaultUserLimits)
             {fieldLimit = ul;}
         }
       
       BDSMagnetStrength* st = new BDSMagnetStrength();
-      G4double poleTipRadius = BDSGlobalConstants::Instance()->DefaultBeamPipeModel()->aper1;
+      G4double poleTipRadius = 0; // when the definitions are actually used, they must be updated
       if (!definition.fieldParameters.empty())
         {PrepareFieldStrengthFromParameters(st, definition.fieldParameters, poleTipRadius);}
       
@@ -375,7 +382,7 @@ void BDSFieldFactory::PrepareFieldDefinitions(const std::vector<GMAD::Field>& de
         }
       
       info->SetNameOfParserDefinition(G4String(definition.name));
-      if (BDSGlobalConstants::Instance()->Verbose())
+      if (verbose)
         {
           G4cout << "Definition: \"" << definition.name << "\"" << G4endl;
           G4cout << *info << G4endl;
@@ -1081,7 +1088,7 @@ G4MagIntegratorStepper* BDSFieldFactory::CreateIntegratorMag(const BDSFieldInfo&
     case BDSIntegratorType::kickerthin:
       integrator = new BDSIntegratorKickerThin(strength, brho, eqOfM, minimumRadiusOfCurvature); break;
     case BDSIntegratorType::g4rk4minimumstep:
-      integrator = new BDSIntegratorG4RK4MinStep(eqOfM, BDSGlobalConstants::Instance()->ChordStepMinimumYoke()); break;
+      integrator = new BDSIntegratorG4RK4MinStep(eqOfM, chordStepMinimumYoke); break;
     case BDSIntegratorType::rmatrixthin:
       integrator = new BDSIntegratorRMatrixThin(strength, eqOfM, info.BeamPipeRadius()); break;
     case BDSIntegratorType::cavityfringe:
@@ -1240,12 +1247,11 @@ BDSFieldObjects* BDSFieldFactory::CreateTeleporter(const BDSFieldInfo& info)
   G4Mag_EqRhs*     bEqOfMotion = new G4Mag_UsualEqRhs(bGlobalField);
 
   G4MagIntegratorStepper* integrator;
-  auto mapfile = BDSGlobalConstants::Instance()->PTCOneTurnMapFileName(); // TBC - this shouldn't come from global constants
   BDSPTCOneTurnMap* otm = nullptr;
 
-  if (!mapfile.empty())
+  if (!ptcOneTurnMapFileName.empty())
     {
-      otm = new BDSPTCOneTurnMap(mapfile, designParticle);
+      otm = new BDSPTCOneTurnMap(ptcOneTurnMapFileName, designParticle);
       primaryGeneratorAction->RegisterPTCOneTurnMap(otm);
     }
 

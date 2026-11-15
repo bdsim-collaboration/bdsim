@@ -15,17 +15,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "BDSSurvey.hh"
-
 #include "BDSAcceleratorComponent.hh"
+#include "BDSAperture.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamPipeInfo.hh"
 #include "BDSDebug.hh"
 #include "BDSMagnet.hh"
 #include "BDSMagnetStrength.hh"
+#include "BDSSurvey.hh"
 #include "BDSVersion.hh"
 
+#include <array>
 #include <fstream>
 #include <iomanip>
 #include <ctime>
@@ -121,10 +122,16 @@ void BDSSurvey::Write(BDSBeamlineElement* beamlineElement)
   G4ThreeVector pos    = beamlineElement->GetPositionMiddle();
 
   BDSBeamPipeInfo* beamPipeInfo = acceleratorComponent->GetBeamPipeInfo();
-
+  std::array<G4double,7> apNums = {0, 0, 0, 0, 0, 0, 0};
+  if (beamPipeInfo)
+    {
+      BDSAperture* apIn = beamPipeInfo->aperture;
+      apNums = apIn->ApertureNumbers();
+    }
   G4String ty = acceleratorComponent->GetType();
   if (ty.empty())
     {ty = "unknown";}
+  
   survey << std::left << std::setprecision(6) << std::fixed
          << setw(20) << ty                                          << " "
          << setw(40) << acceleratorComponent->GetName()             << " "
@@ -139,10 +146,10 @@ void BDSSurvey::Write(BDSBeamlineElement* beamlineElement)
          << setw(gp) << phi/CLHEP::radian                           << " "
          << setw(gp) << theta/CLHEP::radian                         << " "
          << setw(gp) << psi/CLHEP::radian                           << " "
-         << setw(gp) << (beamPipeInfo ? beamPipeInfo->aper1/CLHEP::m : 0) << " "
-         << setw(gp) << (beamPipeInfo ? beamPipeInfo->aper2/CLHEP::m : 0) << " "
-         << setw(gp) << (beamPipeInfo ? beamPipeInfo->aper3/CLHEP::m : 0) << " "
-         << setw(gp) << (beamPipeInfo ? beamPipeInfo->aper4/CLHEP::m : 0) << " "
+         << setw(gp) << apNums[0]/CLHEP::m << " "
+         << setw(gp) << apNums[1]/CLHEP::m << " "
+         << setw(gp) << apNums[2]/CLHEP::m << " "
+         << setw(gp) << apNums[3]/CLHEP::m << " " // TBC
          << setw(15) << (beamPipeInfo ? beamPipeInfo->beamPipeType : 0)   << " "
          << setw(gp) << acceleratorComponent->GetAngle();
 

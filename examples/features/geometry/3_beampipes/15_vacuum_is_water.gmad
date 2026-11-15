@@ -1,4 +1,4 @@
-d1: drift, l=0.2*m, apertureType="circular", vacuumMaterial="water";
+d1: drift, l=0.2*m, apertureType="circular", aper1=5*cm, vacuumMaterial="water";
 d2: drift, l=0.2*m;
 
 l1: line = (d1, d2, d1);

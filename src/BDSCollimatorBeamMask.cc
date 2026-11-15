@@ -120,10 +120,10 @@ G4String BDSCollimatorBeamMask::Material() const
 
 void BDSCollimatorBeamMask::BuildContainerLogicalVolume()
 {
-  BDSBeamPipeFactory* factory = BDSBeamPipeFactory::Instance();
-  BDSBeamPipe* pipe = factory->CreateBeamPipe(name + "_beampipe",
-                                              chordLength,
-                                              beamPipeInfo);
+  BDSBeamPipeFactory factory;
+  BDSBeamPipe* pipe = factory.CreateBeamPipe(name + "_beampipe",
+                                             chordLength,
+                                             beamPipeInfo);
   RegisterDaughter(pipe);
 
   // make the beam pipe container, this object's container

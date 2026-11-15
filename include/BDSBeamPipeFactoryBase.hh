@@ -32,6 +32,8 @@ class G4PVPlacement;
 class G4UserLimits;
 class G4VSolid;
 
+class BDSBeamPipeInfo;
+
 /**
  * @brief Abstract base class for beampipe factory classes.
  * 
@@ -56,37 +58,10 @@ class G4VSolid;
 class BDSBeamPipeFactoryBase: public BDSFactoryBase
 {
 public:
-  /// create a flat ended beampipe
-  virtual BDSBeamPipe* CreateBeamPipe(const G4String& nameIn,                  // name
-				      G4double    lengthIn,                    // length [mm]
-				      G4double    aper1 = 0,                   // aperture parameter 1
-				      G4double    aper2 = 0,                   // aperture parameter 2
-				      G4double    aper3 = 0,                   // aperture parameter 3
-				      G4double    aper4 = 0,                   // aperture parameter 4
-				      G4Material* vacuumMaterialIn = nullptr,  // vacuum material
-				      G4double    beamPipeThicknessIn = 0,     // beampipe thickness [mm]
-				      G4Material* beamPipeMaterialIn = nullptr,// beampipe material
-				      const G4String& pointsFileIn = "",
-				      const G4String& pointsUnitIn = ""
-				      ) = 0;
-
-  /// Create a beam pipe with angled faces as described by unit normal vectors. The input
-  /// face normal vector must have a negative z component and the output face a positive
-  /// z component.
-  virtual BDSBeamPipe* CreateBeamPipe(const G4String&      nameIn,
-				      G4double             lengthIn,
-				      const G4ThreeVector& inputFaceNormalIn,
-				      const G4ThreeVector& outputFaceNormalIn,
-				      G4double      aper1               = 0,
-				      G4double      aper2               = 0,
-				      G4double      aper3               = 0,
-				      G4double      aper4               = 0,
-				      G4Material*   vacuumMaterialIn    = nullptr,
-				      G4double      beamPipeThicknessIn = 0,
-				      G4Material*   beamPipeMaterialIn  = nullptr,
-				      const G4String& pointsFileIn      = "",
-				      const G4String& pointsUnitIn      = "") = 0;
-
+  virtual BDSBeamPipe* CreateBeamPipe(const G4String&   name,
+                                      G4double          fullLength,
+                                      const BDSBeamPipeInfo* bpi) = 0;
+  
   /// Virtual base destructor
   virtual ~BDSBeamPipeFactoryBase(){;}
 
@@ -101,15 +76,15 @@ protected:
   virtual void CleanUp();
   
   /// finalise beampipe construction
-  void CommonConstruction(const G4String& nameIn,
-			  G4Material* vacuumMaterialIn,
-			  G4Material* beamPipeMaterialIn,
-			  G4double    length);
+  void CommonConstruction(const G4String&    nameIn,
+                          G4Material* vacuumMaterialIn,
+                          G4Material* beamPipeMaterialIn,
+                          G4double    length);
 
   /// build beampipe and register logical volumes
-  BDSBeamPipe* BuildBeamPipeAndRegisterVolumes(BDSExtent extent,
-					       G4double  containerRadius,
-					       G4bool    containerIsCircular = false);
+  BDSBeamPipe* BuildBeamPipeAndRegisterVolumes(const BDSExtent& extent,
+                                               G4double  containerRadius,
+                                               G4bool    containerIsCircular = false);
 
   /// check if a beam pipe volume with angled faces can be constructed
   static void CheckAngledVolumeCanBeBuilt(G4double length,
@@ -121,9 +96,9 @@ protected:
   // methods called by CommonConstruction, can be implemented by derived classes
   
   /// build logical volumes
-  virtual void BuildLogicalVolumes(const G4String& nameIn,
-				   G4Material* vacuumMaterialIn,
-				   G4Material* beamPipeMaterialIn);
+  virtual void BuildLogicalVolumes(const G4String&    nameIn,
+                                   G4Material* vacuumMaterialIn,
+                                   G4Material* beamPipeMaterialIn);
   /// Set visual attributes.
   virtual void SetVisAttributes(G4Material* beamPipeMaterialIn,
                                 G4Material* vacuumMaterialIn);

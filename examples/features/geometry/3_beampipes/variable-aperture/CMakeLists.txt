@@ -1,0 +1,1 @@
+simple_testing(aperture-variable-circle       "--file=tapered-circle.gmad"        ${OVERLAP_CHECK})

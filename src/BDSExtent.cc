@@ -101,11 +101,21 @@ std::vector<G4ThreeVector> BDSExtent::AllBoundaryPoints() const
   return result;
 }
 
+std::vector<G4TwoVector> BDSExtent::AllBoundaryPointsXY() const
+{
+  std::vector<G4TwoVector> result;
+  result.emplace_back(extXNeg, extYNeg);
+  result.emplace_back(extXNeg, extYPos);
+  result.emplace_back(extXPos, extYPos);
+  result.emplace_back(extXPos, extYNeg);
+  return result;
+}
+
 BDSExtent BDSExtent::TiltOffset(const BDSTiltOffset* tiltOffset) const
 {
   if (!tiltOffset)
     {return BDSExtent(*this);}
-  BDSExtent tilted = Tilted(tiltOffset->GetTilt());
+  BDSExtent tilted = Tilted(tiltOffset->Tilt());
   BDSExtent offset = tilted.Translate(tiltOffset->GetOffset());
   return offset;
 }
@@ -234,13 +244,12 @@ BDSExtent BDSExtent::ExpandTransverselyBy(G4double margin) const
 
 void BDSExtent::ExpandToEncompass(const BDSExtent& other)
 {
-  BDSExtent result = BDSExtent(*this);
-  result.extXNeg = std::min(extXNeg, other.extXNeg);
-  result.extYNeg = std::min(extYNeg, other.extYNeg);
-  result.extZNeg = std::min(extZNeg, other.extZNeg);
-  result.extXPos = std::max(extXPos, other.extXPos);
-  result.extYPos = std::max(extYPos, other.extYPos);
-  result.extZPos = std::max(extZPos, other.extZPos);
+  extXNeg = std::min(extXNeg, other.extXNeg);
+  extYNeg = std::min(extYNeg, other.extYNeg);
+  extZNeg = std::min(extZNeg, other.extZNeg);
+  extXPos = std::max(extXPos, other.extXPos);
+  extYPos = std::max(extYPos, other.extYPos);
+  extZPos = std::max(extZPos, other.extZPos);
 }
 namespace BDS
 {

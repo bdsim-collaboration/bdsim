@@ -92,7 +92,7 @@ void BDSOutputROOTEventCavityInfo::Fill(const BDSBeamlineElement* element)
   length        = element->GetChordLength() / CLHEP::m;
   const BDSTiltOffset* to = element->GetTiltOffset();
   if (to)
-    {tilt = to->GetTilt() / CLHEP::rad;}
+    {tilt = to->Tilt() / CLHEP::rad;}
   else
     {tilt    = 0;}
   material = element->GetMaterial();

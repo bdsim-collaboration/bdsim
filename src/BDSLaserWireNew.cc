@@ -18,15 +18,16 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamPipe.hh"
 #include "BDSBeamPipeFactory.hh"
 #include "BDSAcceleratorComponent.hh"
+#include "BDSAperture.hh"
+#include "BDSApertureFactory.hh"
 #include "BDSBeamPipeInfo.hh"
 #include "BDSColours.hh"
 #include "BDSDebug.hh"
+#include "BDSException.hh"
 #include "BDSLaser.hh"
 #include "BDSLaserWireNew.hh"
 #include "BDSLogicalVolumeLaser.hh"
 #include "BDSMaterials.hh"
-#include "BDSUtilities.hh"
-#include "BDSWireScanner.hh"
 
 #include "globals.hh"
 #include "G4Hype.hh"
@@ -36,7 +37,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4ThreeVector.hh"
 #include "G4TwoVector.hh"
 #include "G4VisAttributes.hh"
-#include "BDSException.hh"
 
 BDSLaserWireNew::BDSLaserWireNew(G4String         nameIn,
 				 G4double         lengthIn,
@@ -93,8 +93,8 @@ BDSLaserWireNew::~BDSLaserWireNew()
 
 void BDSLaserWireNew::BuildContainerLogicalVolume()
 {
-  BDSBeamPipeFactory *factory = BDSBeamPipeFactory::Instance();
-  BDSBeamPipe *pipe = factory->CreateBeamPipe(name + "_beampipe",
+  BDSBeamPipeFactory factory;
+  BDSBeamPipe* pipe = factory.CreateBeamPipe(name + "_beampipe",
 					      chordLength,
 					      beamPipeInfo);
   RegisterDaughter(pipe);
@@ -185,15 +185,15 @@ G4VSolid* BDSLaserWireNew::BuildHyperbolicWireSolid()
   wireColour->SetAlpha(0.5);
 
 
-  auto bpf =  BDSBeamPipeFactory::Instance();
-  BDSBeamPipe* intersectionBP = bpf->CreateBeamPipeForVacuumIntersection(name + "_vacuum_intersection",
-									 chordLength,
-									 GetBeamPipeInfo());
-  G4VSolid* vacuumSolid = intersectionBP->GetContainerSolid();
+  BDSAperture* smaller = beamPipeInfo->aperture->Plus(-lengthSafetyLarge);
+  BDSApertureFactory apf;
+  BDSApertureFactory::Product product = apf.CreateSolid(name + "_lw_ap_cut", 2*chordLength, smaller);
+  RegisterSolid(product.otherSolids);
+  G4VSolid* vacuumSolid = product.product;
   // do intersection with vacuumSolid
   RegisterSolid(vacuumSolid);
   
-  G4VSolid* lasersolid = new G4IntersectionSolid(name + "_laserwire_solid",laserwire,vacuumSolid,wireRot,wireOffset);
+  G4VSolid* lasersolid = new G4IntersectionSolid(name + "_laserwire_so",laserwire,vacuumSolid,wireRot,wireOffset);
   
   RegisterSolid(lasersolid);
   

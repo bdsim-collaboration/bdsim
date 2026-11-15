@@ -21,7 +21,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "globals.hh" // geant4 types / globals
 #include "G4ThreeVector.hh"
 #include "G4Transform3D.hh"
+#include "G4TwoVector.hh"
 
+#include <cmath>
 #include <ostream>
 
 /**
@@ -40,19 +42,26 @@ class BDSTiltOffset
 {
 public:
   BDSTiltOffset();
-
   BDSTiltOffset(G4double xOffset,
-		G4double yOffset,
-		G4double tiltIn);
+                G4double yOffset,
+                G4double tiltIn);
+  BDSTiltOffset(const BDSTiltOffset& other);
+  BDSTiltOffset& operator=(const BDSTiltOffset& other) noexcept;
 
-  ///@{ Accessor
-  inline G4double GetXOffset() const {return dx;}
-  inline G4double GetYOffset() const {return dy;}
-  inline G4double GetTilt()    const {return tilt;}
+  ///@{ Accessor.
+  inline G4double OffsetX() const {return dx;}
+  inline G4double OffsetY() const {return dy;}
+  inline G4double Tilt()    const {return tilt;}
   ///@}
 
-  /// More advance accessor for offset - only in x,y.
-  G4ThreeVector GetOffset() const {return G4ThreeVector(dx, dy, 0);}
+  void SetOffsetX(G4double dxIn) {dx = dxIn;}
+  void SetOffsetY(G4double dyIn) {dy = dyIn;}
+  void SetTilt(G4double tiltIn) {tilt = tiltIn;}
+
+  /// More advanced accessor for offset - only in x,y.
+  G4ThreeVector GetOffset()   const {return G4ThreeVector(dx, dy, 0);}
+  G4TwoVector   GetOffset2D() const {return G4TwoVector(dx, dy);}
+  G4double      Radius()      const {return std::hypot(dx,dy);}
 
   /// Get a transform to represent this tilt offset.
   G4Transform3D Transform3D() const;
@@ -60,18 +69,20 @@ public:
   ///@{ Inspector.
   G4bool HasFiniteOffset() const;
   G4bool HasFiniteTilt()   const;
+  G4bool HasTiltOrOffset() const {return HasFiniteTilt() || HasFiniteOffset();}
   ///@}
 
   /// Output stream.
   friend std::ostream& operator<< (std::ostream &out, BDSTiltOffset const &to);
+
+  /// Comparison.
+  friend bool operator== (const BDSTiltOffset& lhs, const BDSTiltOffset& rhs);
+  friend bool operator!= (const BDSTiltOffset& lhs, const BDSTiltOffset& rhs) {return !(lhs == rhs);}
   
 private:
-  /// Horizontal displacement (mm) - note right handed coordinate system
-  G4double dx;
-  /// Vertical displacement (mm)
-  G4double dy;
-  /// Tilt angle (rad) - rotation angle about Z axis
-  G4double tilt;
+  G4double dx; ///< Horizontal displacement (mm) - note right-handed coordinate system
+  G4double dy; ///< Vertical displacement (mm)
+  G4double tilt; ///< Tilt angle (rad) - rotation angle about Z axis
 };
 
 #endif

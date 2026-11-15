@@ -17,7 +17,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorComponentRegistry.hh"
 #include "BDSAcceleratorModel.hh"
-#include "BDSApertureInfo.hh"
+#include "BDSAperture.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineSet.hh"
 #include "BDSDebug.hh"
@@ -139,12 +139,12 @@ void BDSAcceleratorModel::RegisterRegion(BDSRegion* region)
   regionStorage.insert(region);
 }
 
-void BDSAcceleratorModel::RegisterApertures(const std::map<G4String, BDSApertureInfo*>& aperturesIn)
+void BDSAcceleratorModel::RegisterApertures(const std::map<G4String, BDSAperture*>& aperturesIn)
 {
   apertures.insert(aperturesIn.begin(), aperturesIn.end());
 }
 
-BDSApertureInfo* BDSAcceleratorModel::Aperture(G4String name) const
+BDSAperture* BDSAcceleratorModel::Aperture(const G4String& name) const
 {
   auto result = apertures.find(name);
   if (result != apertures.end())

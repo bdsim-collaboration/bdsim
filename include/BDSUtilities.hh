@@ -146,6 +146,10 @@ namespace BDS
   /// Test whether a number is non-zero - ie abs(number) > minimum number
   G4bool NonZero(G4double value);
 
+  /// Test whether two doubles are the same w.r.t. machine precision for
+  /// that specific value.  Like a safe double == double.
+  G4bool DoublesAreEqual(G4double v1, G4double v2);
+
   /// Test if a number is above a certain tolerance for tracking strength
   /// purposes. Currently at 1e-50 as potential can be small and squared. Uses
   /// IsFinite() with 1e-50 as tolerance.
@@ -161,12 +165,24 @@ namespace BDS
   G4int Sign(T val)
   {return G4int((T(0) < val) - (val < T(0)));}
 
-  inline G4String BoolToString(G4bool in)
-  {return in ? "true" : "false";}
+  /// Calculate (recursively) the greatest commong divisor between to numbers. This
+  /// uses Euclid's Algorithm. This is the largest postive integer that divides into
+  /// both numbers. E.g. GCD(12,8) = 4.
+  unsigned int GreatestCommonDivisor(unsigned int a, unsigned int b);
+
+  /// Calculate the lowest common multiple between two numbers.
+  unsigned int LowestCommonMultiple(unsigned int a, unsigned int b);
+
+  /// Return either 'value' or a number greater than value that is the next
+  /// multiple of divisor. Adds the modulo. e.g. (13,4) -> 16
+  unsigned int NextMultiple(unsigned int value, unsigned int divisor);
+
+  /// Return a string version of a bool.
+  inline G4String BoolToString(const G4bool& in) {return in ? "true" : "false";}
   
   /// Print out details of a rotation matrix - the matrix itself, unit vectors.
   /// Optional keyname to identify in output stream
-  void PrintRotationMatrix(G4RotationMatrix* rm, G4String keyName = "unknown");
+  void PrintRotationMatrix(G4RotationMatrix* rm, const G4String& keyName = "unknown");
 
   /// Check if the geant4 environmental variables necessary for a run are set
   G4bool Geant4EnvironmentIsSet();

@@ -1,4 +1,4 @@
-d1: drift, l=0.2*m, apertureType="circular", beampipeThickness=2*mm;
+d1: drift, l=0.2*m, apertureType="circular", aper1=5*cm, beampipeThickness=2*mm;
 d2: drift, l=0.2*m;
 
 l1: line = (d1, d2, d1);

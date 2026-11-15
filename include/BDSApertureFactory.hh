@@ -1,0 +1,280 @@
+/* 
+Beam Delivery Simulation (BDSIM) Copyright (C) BDSIM Collaboration, 2001 - 2026.
+
+This file is part of BDSIM.
+
+BDSIM is free software: you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published 
+by the Free Software Foundation version 3 of the License.
+
+BDSIM is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#ifndef BDSAPERTUREFACTORY_H
+#define BDSAPERTUREFACTORY_H
+#include "BDSApertureType.hh"
+#include "BDSBeamPipeType.hh"
+
+#include "G4String.hh"
+#include "G4ThreeVector.hh"
+#include "G4TwoVector.hh"
+#include "G4Types.hh"
+
+#include <list>
+#include <map>
+#include <utility>
+#include <set>
+#include <utility>
+#include <vector>
+
+class BDSAperture;
+class BDSPolygon;
+class G4VSolid;
+
+namespace GMAD
+{
+  class Aperture;
+  struct Element;
+  class SamplerPlacement;
+}
+
+/**
+ * @brief Main interface for building basic shapes described by apertures.
+ *
+ * One part of the factory builds aperture definitions. The other builds either full
+ * or hollow solids.
+ *
+ * For the aperture definitions, two are given: one for the incoming edge and one for
+ * the outgoing edge. The second may be a nullptr, in which case the first is constant.
+ * 
+ * @author Laurie Nevay
+ */
+
+class BDSApertureFactory
+{
+public:
+  BDSApertureFactory();
+  explicit BDSApertureFactory(G4double nPointsPerTwoPiIn);
+  ~BDSApertureFactory();
+
+  /// Create an aperture from a parser element definition but fall back to a default model.
+  std::pair<BDSAperture*, BDSAperture*> CreateAperture(BDSBeamPipeType bpt,
+                                                       const GMAD::Element& el,
+                                                       G4bool useElementVariables) const;
+
+  /// Create it from a complete parser object.
+  BDSAperture* CreateAperture(const GMAD::Aperture& ap) const;
+
+  /// From a sampler definition.
+  BDSAperture* CreateAperture(const GMAD::SamplerPlacement& sp) const;
+
+  /// Full explicit constructor for a single instance that is used by many of the above.
+  BDSAperture* CreateApertureSingle(BDSApertureType at,
+                                    G4double        a1,
+                                    G4double        a2,
+                                    G4double        a3,
+                                    G4double        a4,
+                                    G4double        tilt = 0,
+                                    G4double        offsetX = 0,
+                                    G4double        offsetY = 0,
+                                    unsigned int    nPoints = 0,
+                                    const G4String& pointsFileAndString = "") const;
+
+  /// Full explicit constructor for double instance that is used by many of the above.
+  std::pair<BDSAperture*, BDSAperture*> CreateAperture(BDSApertureType at,
+                                                       G4double        a1,
+                                                       G4double        a2,
+                                                       G4double        a3,
+                                                       G4double        a4,
+                                                       G4double        tilt = 0,
+                                                       G4double        offsetX = 0,
+                                                       G4double        offsetY = 0,
+                                                       unsigned int    nPoints = 0,
+                                                       const G4String& pointsFileAndString = "",
+                                                       const G4String& apertureTypeOut = "",
+                                                       const std::vector<G4double>* apertureOut = nullptr) const;
+
+  /// Return type to give both the final solid but any transient solids on the way.
+  struct Product
+  {
+    G4VSolid* product;
+    std::set<G4VSolid*> otherSolids;
+
+    void Extend(const Product& other)
+    {
+      otherSolids.insert(other.product);
+      otherSolids.insert(other.otherSolids.begin(), other.otherSolids.end());
+    }
+  };
+
+  /// Create any aperture shape with flat ends. The apertureOut is optionally
+  /// for defining the possibly different aperture shape at the output end.
+  Product CreateSolid(const G4String&    name,
+                      G4double           fullLength,
+                      const BDSAperture* apertureIn,
+                      const BDSAperture* apertureOut = nullptr,
+                      const G4ThreeVector* normalIn  = nullptr,
+                      const G4ThreeVector* normalOut = nullptr,
+                      G4double           lengthExtraForBoolean = 0);
+  
+  /// Create a solid according to an aperture entrance ('in') and exit ('out') with
+  /// a constant thickness. The aperture defines the interior edge of the solid. In
+  /// effect, a beam pipe on its own; a tube.
+  Product CreateHollowSolid(const G4String&      name,
+                               G4double             fullLength,
+                               const BDSAperture*   apertureInInside,
+                               const BDSAperture*   apertureOutInside,
+                               G4double             thickness,
+                               const G4ThreeVector* normalIn,
+                               const G4ThreeVector* normalOut,
+                               G4double             lengthExtraForBoolean = 0);
+  
+  /// Create a solid like a pipe or tube, but where there are 4 shapes to specify. The inner
+  /// entrance and exit shapes, and the outer entrance and exit shapes. These outer ones must
+  /// be large enough to encompass the inner ones.
+  /*
+  Product CreateSolidWithInnerVariableThickness(const G4String& name,
+                                                G4double fullLength,
+                                                const BDSAperture* apertureInOutside,
+                                                const BDSAperture* apertureInInside,
+                                                const BDSAperture* apertureOutOutside = nullptr,
+                                                const BDSAperture* apertureOutInside  = nullptr,
+                                                const G4ThreeVector* normalIn  = nullptr,
+                                                const G4ThreeVector* normalOut = nullptr,
+                                                G4double           lengthExtraForBoolean = 0);
+  */
+
+  static std::vector<G4double> ApertureListToVector(const std::list<double>& l,
+                                                    BDSBeamPipeType bpt);
+
+  /// Give the right units for the i-th aperture parameter for a given type. Note,
+  /// this is the aperture parameter number (1,2,3,4) that is 1-counting.
+  static G4double Units(BDSBeamPipeType bpt,
+                        G4int aperN);
+  static G4double Units(BDSApertureType apt,
+                        G4int aperN);
+
+private:
+  G4double CalculateExtraLength(G4double lengthExtraForBoolean);
+
+  /// Default level of detail for each shape.
+  G4int DefaultNPoints(BDSApertureType apt) const;
+
+  /// Calculate the length on one side of a solid that is required for the
+  /// Boolean operation for a given angle from the perpendicular.
+  G4double RequiredLengthForBoolean(G4double angle, G4double radius) const;
+
+  /// Check N points > 0 and throw an exception if not.
+  void CheckNPoints(int nPoints,
+                    const G4String& typeName,
+                    const G4String& objectName) const;
+
+
+  /// Return whether the input and output normal vectors are different from 0,0,-1
+  /// and 0,0,1, i.e. one or both faces are angled.
+  G4bool AngledFaces(const G4ThreeVector& v1, const G4ThreeVector& v2);
+  
+  void ParsePointsFileAndUnits(const G4String& beamPipeType,
+                               G4String& pointsFileName,
+                               G4String& pointsUnit) const;
+  
+  /// @{ Flat-faced construction function.
+  Product CreateCircle()      const;
+  Product CreateRectangle()   const;
+  Product CreateEllipse()     const;
+  Product CreateRectCircle()  const;
+  Product CreateRectEllipse() const;
+  /// @}
+
+  /// Utility to make angled solid for intersection when cutting angled faces.
+  /// Makes use of members assumed to be set for current factory product.
+  G4VSolid* CutSolid(const G4String& name,
+                     G4double halfLength,
+                     G4double radiusToEncompass) const;
+
+  /// Create a solid as an extruded solid
+  Product CreateExtrudedSolid() const;
+
+  /// Create a shape with different ends.
+  Product CreateDifferentEnds() const;
+
+  /// Build a BDSTube made of tessellated triangles for any shape to any shape.
+  /// The flag buildLongerForSubraction can be used to force an extra length even
+  /// if there is no angle and the shape is to be used for subtraction. This will
+  /// extrapolate the polygon beyond the shape so that ultimately, it gives the same
+  /// thickness.
+  Product CreateTubeByPoints(const G4String& nameSuffix,
+                             G4bool buildLongerForSubraction = false)  const;
+
+  /// This adjusts the start and finish point polygons based on the 1:1 point
+  /// gradient from beginning to end of the polygons. It assumes each have the
+  /// same number of points, and they start on the same side. For each start and
+  /// finish point a line is extrapolated
+  void AdjustPointsForBooleanLength(const BDSPolygon& startingPoints,
+                                    const BDSPolygon& finishingPoints,
+                                    BDSPolygon& startingPointsOut,
+                                    BDSPolygon& finishingPointsOut,
+                                    G4double fullLength,
+                                    G4double extensionLengthEachEnd) const;
+
+  /// @{ Specialisation for a solid shape from two sizes of the shape end to end. No tilt or offset.
+  Product CreateDifferentEndsCircleToCircle() const;
+  Product CreateDifferentEndsRectangleToRectangle() const;
+  /// @}
+  /// @{ Specialisation for a hollow shape but same type and size end to end. No tilt or offset.
+  Product HollowCircleToCircle(G4double thickness) const;
+  Product HollowEllipseToEllipse(G4double thickness) const;
+  Product HollowRectangleToRectangle(G4double thickness) const;
+  Product HollowRectCircleToRectCircle(G4double thickness) const;
+  Product HollowRectEllipseToRectEllipse(G4double thickness) const;
+  /// @}
+  /// @{ Specialisations for hollow shape with different sizes at each end. No tilt or offset.
+  Product HollowVariedCircleToCircle(G4double thickness) const;
+  Product HollowVariedRectangleToRectangle(G4double thickness) const;
+  ///@}
+
+  G4double nPointsPerTwoPi;
+
+  /// Ratio of radii used for an intersection solid - greater than 1 and defined arbitrarily.
+  const G4double intersectionRadiusRatio;
+
+  /// @{ Cache of input variable to simplify function arguments.
+  G4String           productName;
+  G4double           productLength;
+  const BDSAperture* productApertureIn;
+  const BDSAperture* productApertureOut;
+  G4double           productLengthExtra;
+  G4ThreeVector      productNormalIn;
+  G4ThreeVector      productNormalOut;
+  G4bool             angledFaces;
+  /// @}
+
+  /// Create a pair where the two values are in order. We do this so we can access
+  /// a map of unique pairs.
+  std::pair<BDSApertureType, BDSApertureType> MakePair(BDSApertureType a1,
+                                                       BDSApertureType a2) const;
+
+  /// Typedef for function pointers to simplify syntax.
+  typedef Product(BDSApertureFactory::*Constructor)(void) const;
+
+  /// Map of unique aperture type pairs to member function pointers.
+  std::map<std::pair<BDSApertureType, BDSApertureType>, Constructor> specialisations;
+
+  /// Typedef for function pointers to simplify syntax.
+  typedef Product(BDSApertureFactory::*HollowConstructor)(G4double) const;
+
+  /// Map of unique aperture type pairs to member function pointers for hollow constructors.
+  std::map<std::pair<BDSApertureType, BDSApertureType>, HollowConstructor> hollowSpecialisations;
+
+  /// Map of unique aperture type pairs to member function pointers for hollow constructors.
+  std::map<std::pair<BDSApertureType, BDSApertureType>, HollowConstructor> hollowVariedSpecialisations;
+};
+
+
+
+#endif

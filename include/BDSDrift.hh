@@ -18,9 +18,10 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSDRIFT_H
 #define BDSDRIFT_H
 
-#include "globals.hh"
-
 #include "BDSAcceleratorComponent.hh"
+
+#include "G4String.hh"
+#include "G4Types.hh"
 
 class BDSBeamPipeInfo;
 
@@ -37,9 +38,9 @@ class BDSBeamPipeInfo;
 class BDSDrift: public BDSAcceleratorComponent
 {
 public:
-  BDSDrift(G4String         name, 
-	   G4double         length,
-	   BDSBeamPipeInfo* beamPipeInfo);
+  BDSDrift(G4String         name,
+           G4double         length,
+           BDSBeamPipeInfo* beamPipeInfo);
   virtual ~BDSDrift();
 
   /// Override base class version and return beam pipe material if it exists.

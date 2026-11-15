@@ -109,13 +109,18 @@ namespace GMAD
 
     ///@{ beampipe information, new aperture model
     double beampipeThickness;
+    std::list<double> apertureParams;
+    std::list<double> apertureParamsOut;
     double aper1;
     double aper2;
     double aper3;
     double aper4;
     std::string apertureType;
+    std::string apertureTypeOut;
     std::string beampipeMaterial;
     std::string vacuumMaterial;
+    std::string apertureModel;
+    std::string apertureModelOut;
     ///@}
   
     // magnet geometry

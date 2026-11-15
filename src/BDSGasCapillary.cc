@@ -119,8 +119,8 @@ G4String BDSGasCapillary::ElectrodeMaterial() const
 
 void BDSGasCapillary::BuildContainerLogicalVolume()
 {
-  BDSBeamPipeFactory* factory = BDSBeamPipeFactory::Instance();
-  BDSBeamPipe* pipe = factory->CreateBeamPipe(name + "_beampipe",
+  BDSBeamPipeFactory factory;
+  BDSBeamPipe* pipe = factory.CreateBeamPipe(name + "_beampipe",
                                               chordLength,
                                               beamPipeInfo);
   RegisterDaughter(pipe);

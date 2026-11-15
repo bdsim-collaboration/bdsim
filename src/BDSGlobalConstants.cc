@@ -15,12 +15,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "BDSAperture.hh"
+#include "BDSApertureFactory.hh"
 #include "BDSBeamPipeInfo.hh"
+#include "BDSBeamPipeToApertureType.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSFieldInfo.hh"
 #include "BDSIntegratorSetType.hh"
+#include "BDSMaterials.hh"
 #include "BDSOutputType.hh"
 #include "BDSPTCOneTurnMap.hh"
 #include "BDSParser.hh"
@@ -81,39 +85,26 @@ BDSGlobalConstants::BDSGlobalConstants(const GMAD::Options& opt):
   curvilinearDiameter = 5*CLHEP::m;
   curvilinearDiameterShrunkForBends = false;
 
-  // beam pipe
-  defaultBeamPipeModel = new BDSBeamPipeInfo(options.apertureType,
-					     options.aper1 * CLHEP::m,
-					     options.aper2 * CLHEP::m,
-					     options.aper3 * CLHEP::m,
-					     options.aper4 * CLHEP::m,
-					     options.vacMaterial,
-					     options.beampipeThickness * CLHEP::m,
-					     options.beampipeMaterial);
-  
-  // magnet geometry
-  G4double horizontalWidth = options.horizontalWidth * CLHEP::m;
-  if (horizontalWidth < 2*(defaultBeamPipeModel->beamPipeThickness + defaultBeamPipeModel->aper1))
-    {
-      G4cerr << __METHOD_NAME__ << "Error: option \"horizontalWidth\" " << horizontalWidth
-	     << " must be greater than 2x (\"aper1\" + \"beamPipeThickness\") ("
-	     << defaultBeamPipeModel->aper1 << " + " << defaultBeamPipeModel->beamPipeThickness << ")" << G4endl;
-      throw BDSException(__METHOD_NAME__,"error in beam pipe defaults");
-    }
+  defaultAperture.apertureType = options.apertureType;
+  defaultAperture.aper1 = options.aper1;
+  defaultAperture.aper2 = options.aper2;
+  defaultAperture.aper3 = options.aper3;
+  defaultAperture.aper4 = options.aper4;
+
   magnetGeometryType = BDS::DetermineMagnetGeometryType(options.magnetGeometryType);
 
   // tunnel
   tunnelInfo = new BDSTunnelInfo(options.tunnelType,
-				 options.tunnelThickness     * CLHEP::m,
-				 options.tunnelSoilThickness * CLHEP::m,
-				 options.tunnelMaterial,
-				 options.soilMaterial,
-				 options.buildTunnelFloor,
-				 options.tunnelFloorOffset   * CLHEP::m,
-				 options.tunnelAper1         * CLHEP::m,
-				 options.tunnelAper2         * CLHEP::m,
-				 options.storeElossTunnel,
-				 options.tunnelVisible);
+                                 options.tunnelThickness     * CLHEP::m,
+                                 options.tunnelSoilThickness * CLHEP::m,
+                                 options.tunnelMaterial,
+                                 options.soilMaterial,
+                                 options.buildTunnelFloor,
+                                 options.tunnelFloorOffset   * CLHEP::m,
+                                 options.tunnelAper1         * CLHEP::m,
+                                 options.tunnelAper2         * CLHEP::m,
+                                 options.storeElossTunnel,
+                                 options.tunnelVisible);
   
   // defaults - parameters of the laserwire process
   itsLaserwireWavelength = 0.532 * CLHEP::micrometer;
@@ -327,8 +318,7 @@ G4int BDSGlobalConstants::PrintModuloTurns() const
 }
 
 BDSGlobalConstants::~BDSGlobalConstants()
-{  
-  delete defaultBeamPipeModel;
+{
   delete tunnelInfo;
   delete defaultUserLimits;
   delete defaultUserLimitsTunnel;

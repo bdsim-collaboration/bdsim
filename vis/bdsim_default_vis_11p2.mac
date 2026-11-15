@@ -1,6 +1,6 @@
 # this will open the default visualiser in the build of Geant4
 # or the one set by the environmental variable
-/vis/open
+/vis/open VtkQt
 #/vis/open OGLSQt 600x600-0+0
 #/vis/open OGLSX
 #/vis/open DAWNFILE

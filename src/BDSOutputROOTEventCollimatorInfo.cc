@@ -74,9 +74,9 @@ void BDSOutputROOTEventCollimatorInfo::Fill(const BDSBeamlineElement* element)
   const BDSTiltOffset* to = element->GetTiltOffset();
   if (to)
     {
-      tilt = to->GetTilt() / CLHEP::rad;
-      offsetX = to->GetXOffset() / CLHEP::m;
-      offsetY = to->GetYOffset() / CLHEP::m;
+      tilt = to->Tilt() / CLHEP::rad;
+      offsetX = to->OffsetX() / CLHEP::m;
+      offsetY = to->OffsetY() / CLHEP::m;
     }
   else
     {
