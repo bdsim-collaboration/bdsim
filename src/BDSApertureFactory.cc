@@ -51,6 +51,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4String.hh"
 #include "G4SubtractionSolid.hh"
 #include "G4ThreeVector.hh"
+#include "G4Trd.hh"
 #include "G4Tubs.hh"
 #include "G4TwoVector.hh"
 #include "G4Types.hh"
@@ -79,10 +80,13 @@ BDSApertureFactory::BDSApertureFactory(G4double nPointsPerTwoPiIn):
   productLengthExtra(0),
   angledFaces(false)
 {
+  // For a solid shape from two sizes of the shape end to end. No tilt or offset.
   specialisations = {
-    {MakePair(BDSApertureType::circle, BDSApertureType::circle), &BDSApertureFactory::CreateDifferentEndsCircleToCircle}
+    {MakePair(BDSApertureType::circle, BDSApertureType::circle), &BDSApertureFactory::CreateDifferentEndsCircleToCircle},
+    {MakePair(BDSApertureType::rectangle, BDSApertureType::rectangle), &BDSApertureFactory::CreateDifferentEndsRectangleToRectangle}
   };
-  
+
+  // Hollow shape but same type and size end to end. No tilt or offset.
   hollowSpecialisations = {
     {MakePair(BDSApertureType::circle, BDSApertureType::circle), &BDSApertureFactory::HollowCircleToCircle},
     {MakePair(BDSApertureType::ellipse, BDSApertureType::ellipse), &BDSApertureFactory::HollowEllipseToEllipse},
@@ -91,8 +95,10 @@ BDSApertureFactory::BDSApertureFactory(G4double nPointsPerTwoPiIn):
     {MakePair(BDSApertureType::rectellipse, BDSApertureType::rectellipse), &BDSApertureFactory::HollowRectEllipseToRectEllipse},
   };
 
+  // Hollow shape with different sizes at each end. No tilt or offset.
   hollowVariedSpecialisations = {
     {MakePair(BDSApertureType::circle, BDSApertureType::circle), &BDSApertureFactory::HollowVariedCircleToCircle},
+    {MakePair(BDSApertureType::rectangle, BDSApertureType::rectangle), &BDSApertureFactory::HollowVariedRectangleToRectangle},
   };
 }
 
@@ -432,6 +438,8 @@ BDSApertureFactory::Product BDSApertureFactory::CreateHollowSolid(const G4String
   if (!apertureInInside)
     {throw BDSException(__METHOD_NAME__, "no aperture specified.");}
   G4bool variedAperture = (G4bool)apertureOutInside && apertureOutInside != apertureInInside;
+  if (variedAperture && !apertureOutInside)
+    {throw BDSException(__METHOD_NAME__, "no exit aperture specified.");}
   
   productName        = name;
   productLength      = fullLength;
@@ -787,7 +795,10 @@ BDSApertureFactory::Product BDSApertureFactory::CreateDifferentEndsCircleToCircl
   if (angledFaces)
     {
       // make longer cone, then intersect with cut tubs
-      G4Cons* cons = new G4Cons(productName+"_base_cons_so", 0, ap1->radius, 0, ap2->radius,
+      G4double m = (ap2->radius - ap1->radius)/productLength;
+      G4double rIn = ap1->radius - 0.5*m*productLengthExtra;
+      G4double rOut = ap2->radius + 0.5*m*productLengthExtra;
+      G4Cons* cons = new G4Cons(productName+"_base_cons_so", 0, rIn, 0, rOut,
                                 0.5*(productLength + productLengthExtra), 0, CLHEP::twopi);
       G4double maxRadius = std::max(ap1->radius, ap2->radius);
       G4VSolid* cut = CutSolid(productName+"_cut_so", productLength, maxRadius);
@@ -799,6 +810,33 @@ BDSApertureFactory::Product BDSApertureFactory::CreateDifferentEndsCircleToCircl
       product = new G4Cons(productName+"_so", 0, ap1->radius, 0, ap2->radius,
                            0.5*productLength, 0, CLHEP::twopi);
       return {product, {}};
+    }
+}
+
+BDSApertureFactory::Product BDSApertureFactory::CreateDifferentEndsRectangleToRectangle() const
+{
+  const BDSApertureRectangle* ap1 = dynamic_cast<const BDSApertureRectangle*>(productApertureIn);
+  const BDSApertureRectangle* ap2 = dynamic_cast<const BDSApertureRectangle*>(productApertureOut);
+  if (!ap1 || !ap2)
+    {return {nullptr, {}};}
+  if (!angledFaces)
+    {// note there should be zero tilt or offset to get here
+      G4VSolid* product = new G4Trd(productName+"_so", ap1->a, ap2->a, ap1->b, ap2->b, 0.5*productLength);
+      return {product, {}};
+    }
+  else
+    {// angled
+      BDSPolygon pIn = ap1->Polygon(4, false);
+      BDSPolygon pOut = ap2->Polygon(4, false);
+      BDSPolygon pInA(pIn);
+      BDSPolygon pOutA(pOut);
+      AdjustPointsForBooleanLength(pIn, pOut, pInA, pOutA, productLength, 0.5*productLengthExtra);
+      G4VSolid* outer = new G4Trd(productName+"_base_trd_so", pInA[0].x(), pOutA[0].x(),
+                                  pInA[0].y(), pOutA[0].y(), 0.5*(productLength+productLengthExtra));
+      G4double maxRadius = std::max(ap1->RadiusToEncompass(), ap2->RadiusToEncompass());
+      G4VSolid* cut = CutSolid(productName + "_cut_so", 0.5*productLength, maxRadius);
+      G4VSolid* product = new G4IntersectionSolid(productName+"_so", outer, cut);
+      return {product, {outer, cut}};
     }
 }
 
@@ -818,31 +856,6 @@ BDSApertureFactory::Product BDSApertureFactory::HollowCircleToCircle(G4double th
       G4VSolid* product = new G4CutTubs(productName+"_so", ap->radius, ap->radius + thickness,
                                         0.5*productLength, 0, CLHEP::twopi,
                                         productNormalIn, productNormalOut);
-      return {product, {}};
-    }
-}
-
-BDSApertureFactory::Product BDSApertureFactory::HollowVariedCircleToCircle(G4double thickness) const
-{
-  const BDSApertureCircle* ap1 = dynamic_cast<const BDSApertureCircle*>(productApertureIn);
-  const BDSApertureCircle* ap2 = dynamic_cast<const BDSApertureCircle*>(productApertureOut);
-  if (!ap1 || !ap2)
-    {return {nullptr, {}};}
-  if (angledFaces)
-    {
-      // make longer cone, then intersect with cut tubs
-      G4Cons* cons = new G4Cons(productName+"_base_cons_so", ap1->radius, ap1->radius+thickness,
-                                ap2->radius, ap2->radius+thickness,
-                                0.5*(productLength + productLengthExtra), 0, CLHEP::twopi);
-      G4double maxRadius = std::max(ap1->radius, ap2->radius);
-      G4VSolid* cut = CutSolid(productName+"_cut_so", productLength, maxRadius);
-      G4VSolid* product = new G4IntersectionSolid(productName+"_so", cons, cut);
-      return {product, {cons, cut}};
-    }
-  else
-    {
-      G4VSolid* product = new G4Cons(productName+"_so", ap1->radius, ap1->radius+thickness, ap2->radius,
-                                     ap2->radius+thickness, 0.5*productLength, 0, CLHEP::twopi);
       return {product, {}};
     }
 }
@@ -986,6 +999,76 @@ BDSApertureFactory::Product BDSApertureFactory::HollowRectEllipseToRectEllipse(G
       G4VSolid* product = new G4IntersectionSolid(productName+"_so", straight, cut);
 
       return {product, {ellipseInside, rectInside, inner, ellipseOutside, rectOutside, outer, straight, cut}};
+    }
+}
+
+BDSApertureFactory::Product BDSApertureFactory::HollowVariedCircleToCircle(G4double thickness) const
+{
+  const BDSApertureCircle* ap1 = dynamic_cast<const BDSApertureCircle*>(productApertureIn);
+  const BDSApertureCircle* ap2 = dynamic_cast<const BDSApertureCircle*>(productApertureOut);
+  if (!ap1 || !ap2)
+    {return {nullptr, {}};}
+  if (angledFaces)
+    {
+      // make longer cone, then intersect with cut tubs
+      G4Cons* cons = new G4Cons(productName+"_base_cons_so", ap1->radius, ap1->radius+thickness,
+                                ap2->radius, ap2->radius+thickness,
+                                0.5*(productLength + productLengthExtra), 0, CLHEP::twopi);
+      G4double maxRadius = std::max(ap1->radius, ap2->radius);
+      G4VSolid* cut = CutSolid(productName+"_cut_so", productLength, maxRadius);
+      G4VSolid* product = new G4IntersectionSolid(productName+"_so", cons, cut);
+      return {product, {cons, cut}};
+    }
+  else
+    {
+      G4VSolid* product = new G4Cons(productName+"_so", ap1->radius, ap1->radius+thickness, ap2->radius,
+                                     ap2->radius+thickness, 0.5*productLength, 0, CLHEP::twopi);
+      return {product, {}};
+    }
+}
+
+BDSApertureFactory::Product BDSApertureFactory::HollowVariedRectangleToRectangle(G4double thickness) const
+{
+  const BDSApertureRectangle* ap1 = dynamic_cast<const BDSApertureRectangle*>(productApertureIn);
+  const BDSApertureRectangle* ap2 = dynamic_cast<const BDSApertureRectangle*>(productApertureOut);
+  if (!ap1 || !ap2)
+    {return {nullptr, {}};}
+  BDSPolygon pIn = ap1->Polygon(4, false);
+  BDSPolygon pOut = ap2->Polygon(4, false);
+  G4double t = thickness;
+  if (!angledFaces)
+    {// note there should be zero tilt or offset to get here
+      BDSPolygon pInA(pIn);
+      BDSPolygon pOutA(pOut);
+      AdjustPointsForBooleanLength(pIn, pOut, pInA, pOutA, productLength, 0.5*productLengthExtra);
+
+      G4VSolid* inner = new G4Trd(productName+"_inner_so", pInA[0].x(), pOutA[0].x(), pInA[0].y(), pOutA[0].y(),
+                                  0.5*(productLength+productLengthExtra));
+
+      G4VSolid* outer = new G4Trd(productName+"_outer_so", ap1->a + t, ap2->a + t,
+                                  ap1->b + t, ap2->b + t, 0.5*productLength);
+      G4VSolid* product = new G4SubtractionSolid(productName+"_so", outer, inner);
+      return {product, {inner, outer}};
+    }
+  else
+    {
+      BDSPolygon pInA(pIn);
+      BDSPolygon pOutA(pOut);
+      AdjustPointsForBooleanLength(pIn, pOut, pInA, pOutA, productLength, 0.6*productLengthExtra);
+      G4VSolid* inner = new G4Trd(productName+"_inner_so", pInA[0].x(), pOutA[0].x(), pInA[0].y(), pOutA[0].y(),
+                                  0.5*(productLength+1.2*productLengthExtra));
+      BDSPolygon pInB(pIn);
+      BDSPolygon pOutB(pOut);
+      AdjustPointsForBooleanLength(pIn, pOut, pInB, pOutB, productLength, 0.5*productLengthExtra);
+      G4VSolid* outer = new G4Trd(productName+"_outer_so", pInB[0].x() + t, pOutB[0].x() + t,
+                                  pInB[0].y() + t, pOutB[0].y() + t, 0.5*(productLength+productLengthExtra));
+
+      G4VSolid* part1 = new G4SubtractionSolid(productName+"_straight_so", outer, inner);
+
+      G4double maxRadius = std::max(ap1->RadiusToEncompass(), ap2->RadiusToEncompass());
+      G4VSolid* cut = CutSolid(productName + "_cut_so", 0.5*productLength, maxRadius);
+      G4VSolid* product = new G4IntersectionSolid(productName+"_so", part1, cut);
+      return {product, {inner, outer, part1, cut}};
     }
 }
 

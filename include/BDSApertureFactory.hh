@@ -182,7 +182,7 @@ private:
                                G4String& pointsFileName,
                                G4String& pointsUnit) const;
   
-  /// @{ Flat faced construction function.
+  /// @{ Flat-faced construction function.
   Product CreateCircle()      const;
   Product CreateRectangle()   const;
   Product CreateEllipse()     const;
@@ -221,18 +221,21 @@ private:
                                     G4double fullLength,
                                     G4double extensionLengthEachEnd) const;
 
-  /// @{ Specialisation for particular solids.
+  /// @{ Specialisation for a solid shape from two sizes of the shape end to end. No tilt or offset.
   Product CreateDifferentEndsCircleToCircle() const;
+  Product CreateDifferentEndsRectangleToRectangle() const;
   /// @}
-  /// @{ Specialisation for particular solids for hollow solid.
+  /// @{ Specialisation for a hollow shape but same type and size end to end. No tilt or offset.
   Product HollowCircleToCircle(G4double thickness) const;
-  Product HollowVariedCircleToCircle(G4double thickness) const;
   Product HollowEllipseToEllipse(G4double thickness) const;
   Product HollowRectangleToRectangle(G4double thickness) const;
-  Product HollowVariedRectangleToRectangle(G4double thickness) const;
   Product HollowRectCircleToRectCircle(G4double thickness) const;
   Product HollowRectEllipseToRectEllipse(G4double thickness) const;
   /// @}
+  /// @{ Specialisations for hollow shape with different sizes at each end. No tilt or offset.
+  Product HollowVariedCircleToCircle(G4double thickness) const;
+  Product HollowVariedRectangleToRectangle(G4double thickness) const;
+  ///@}
 
   G4double nPointsPerTwoPi;
 
