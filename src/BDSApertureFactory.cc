@@ -346,7 +346,7 @@ G4bool BDSApertureFactory::AngledFaces(const G4ThreeVector& v1,
 }
 
 BDSApertureFactory::Product BDSApertureFactory::CreateSolid(const G4String&    name,
-                                                            G4double           length,
+                                                            G4double           fullLength,
                                                             const BDSAperture* apertureIn,
                                                             const BDSAperture* apertureOut,
                                                             const G4ThreeVector* normalIn,
@@ -363,7 +363,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolid(const G4String&    n
   G4bool variedAperture = (G4bool)apertureOut ? apertureOut != apertureIn : false;
 
   productName        = name;
-  productLength      = length;
+  productLength      = fullLength;
   productApertureIn  = apertureIn;
   productApertureOut = apertureOut;
 
@@ -419,7 +419,7 @@ G4double BDSApertureFactory::CalculateExtraLength(G4double lengthExtraForBoolean
 }
 
 BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4String&      name,
-                                                                     G4double             length,
+                                                                     G4double             fullLength,
                                                                      const BDSAperture*   apertureInInside,
                                                                      const BDSAperture*   apertureOutInside,
                                                                      G4double             thickness,
@@ -436,7 +436,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4Str
   G4bool variedAperture = (G4bool)apertureOutInside && apertureOutInside != apertureInInside;
   
   productName        = name;
-  productLength      = length;
+  productLength      = fullLength;
   productApertureIn  = apertureInInside;
   productApertureOut = variedAperture ? apertureOutInside : apertureInInside;
 
@@ -486,12 +486,12 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4Str
       else
         {// use two instances of the same shape but with one expanded to make a subtraction
           Product result;
-          Product inner = CreateSolid(productName+"_inner", length + productLengthExtra,
+          Product inner = CreateSolid(productName+"_inner", fullLength + productLengthExtra,
                                       productApertureIn, productApertureOut, normalIn, normalOut, 0);
           result.Extend(inner); // keep track of all solids
           productLengthExtra = 0;
           BDSAperture* apInOutside = apertureInInside->Plus(thickness);
-          Product outer = CreateSolid(productName+"_outer", length, apInOutside,
+          Product outer = CreateSolid(productName+"_outer", fullLength, apInOutside,
                                       apInOutside, normalIn, normalOut, 0);
           result.Extend(outer);
           G4VSolid* product = new G4SubtractionSolid(productName, outer.product, inner.product);
@@ -503,7 +503,7 @@ BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInner(const G4Str
 }
 
 BDSApertureFactory::Product BDSApertureFactory::CreateSolidWithInnerVariableThickness(const G4String&      name,
-                                                                                      G4double             length,
+                                                                                      G4double             fullLength,
                                                                                       const BDSAperture*   apertureInOutside,
                                                                                       const BDSAperture*   apertureInInside,
                                                                                       const BDSAperture*   apertureOutOutside,
@@ -773,7 +773,6 @@ BDSApertureFactory::Product BDSApertureFactory::HollowVariedCircleToCircle(G4dou
   const BDSApertureCircle* ap2 = dynamic_cast<const BDSApertureCircle*>(productApertureOut);
   if (!ap1 || !ap2)
     {return {nullptr, {}};}
-  G4VSolid* product;
   if (angledFaces)
     {
       // make longer cone, then intersect with cut tubs
@@ -782,13 +781,13 @@ BDSApertureFactory::Product BDSApertureFactory::HollowVariedCircleToCircle(G4dou
                                 0.5*(productLength + productLengthExtra), 0, CLHEP::twopi);
       G4double maxRadius = std::max(ap1->radius, ap2->radius);
       G4VSolid* cut = CutSolid(productName+"_cut_so", productLength, maxRadius);
-      product = new G4IntersectionSolid(productName+"_so", cons, cut);
+      G4VSolid* product = new G4IntersectionSolid(productName+"_so", cons, cut);
       return {product, {cons, cut}};
     }
   else
     {
-      product = new G4Cons(productName+"_so", ap1->radius, ap1->radius+thickness, ap2->radius,
-                           ap2->radius+thickness, 0.5*productLength, 0, CLHEP::twopi);
+      G4VSolid* product = new G4Cons(productName+"_so", ap1->radius, ap1->radius+thickness, ap2->radius,
+                                     ap2->radius+thickness, 0.5*productLength, 0, CLHEP::twopi);
       return {product, {}};
     }
 }

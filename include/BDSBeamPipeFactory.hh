@@ -42,7 +42,7 @@ public:
   ~BDSBeamPipeFactory();
   
   BDSBeamPipe* CreateBeamPipe(const G4String& name,
-                              G4double length,
+                              G4double fullLength,
                               BDSBeamPipeInfo* bpi);
 
 private:

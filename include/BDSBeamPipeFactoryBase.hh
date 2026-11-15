@@ -59,7 +59,7 @@ class BDSBeamPipeFactoryBase: public BDSFactoryBase
 {
 public:
   virtual BDSBeamPipe* CreateBeamPipe(const G4String&   name,
-                                      G4double          length,
+                                      G4double          fullLength,
                                       const BDSBeamPipeInfo* bpi) = 0;
   
   /// Virtual base destructor

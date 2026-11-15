@@ -115,7 +115,7 @@ public:
   /// Create any aperture shape with flat ends. The apertureOut is optionally
   /// for defining the possibly different aperture shape at the output end.
   Product CreateSolid(const G4String&    name,
-                      G4double           length,
+                      G4double           fullLength,
                       const BDSAperture* apertureIn,
                       const BDSAperture* apertureOut = nullptr,
                       const G4ThreeVector* normalIn  = nullptr,
@@ -126,7 +126,7 @@ public:
   /// a constant thickness. The aperture defines the interior edge of the solid. In
   /// effect, a beam pipe on its own; a tube.
   Product CreateSolidWithInner(const G4String&      name,
-                               G4double             length,
+                               G4double             fullLength,
                                const BDSAperture*   apertureInInside,
                                const BDSAperture*   apertureOutInside,
                                G4double             thickness,
@@ -138,7 +138,7 @@ public:
   /// entrance and exit shapes, and the outer entrance and exit shapes. These outer ones must
   /// be large enough to encompass the inner ones.
   Product CreateSolidWithInnerVariableThickness(const G4String& name,
-                                                G4double length,
+                                                G4double fullLength,
                                                 const BDSAperture* apertureInOutside,
                                                 const BDSAperture* apertureInInside,
                                                 const BDSAperture* apertureOutOutside = nullptr,

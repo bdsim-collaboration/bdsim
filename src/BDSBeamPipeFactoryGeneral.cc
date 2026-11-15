@@ -33,7 +33,7 @@ BDSBeamPipeFactoryGeneral::BDSBeamPipeFactoryGeneral()
 {;}
 
 BDSBeamPipe* BDSBeamPipeFactoryGeneral::CreateBeamPipe(const G4String& name,
-                                                       G4double length,
+                                                       G4double fullLength,
                                                        const BDSBeamPipeInfo* bpi)
 {
   CleanUp();
@@ -51,7 +51,7 @@ BDSBeamPipe* BDSBeamPipeFactoryGeneral::CreateBeamPipe(const G4String& name,
   BDSAperture* apContSubOut = variedAperture ? apVacOut->Plus(containerThickness + lengthSafety) : apContSubIn;
   
   BDSApertureFactory fac;
-  auto vacProduct = fac.CreateSolid(name+"_vac", length-lengthSafety, apVacIn, apVacOut,
+  auto vacProduct = fac.CreateSolid(name+"_vac", fullLength-2*lengthSafety, apVacIn, apVacOut,
                                     bpi->inputFaceNormal, bpi->outputFaceNormal);
   vacuumSolid = vacProduct.product;
   allSolids.insert(vacProduct.otherSolids.begin(), vacProduct.otherSolids.end());
@@ -59,7 +59,7 @@ BDSBeamPipe* BDSBeamPipeFactoryGeneral::CreateBeamPipe(const G4String& name,
   
   if (!bpi->vacuumOnly)
     {
-      auto bpProduct = fac.CreateSolidWithInner(name+"_pipe", length-lengthSafety, apBpInnerIn, apBpInnerOut,
+      auto bpProduct = fac.CreateSolidWithInner(name+"_pipe", fullLength-2*lengthSafety, apBpInnerIn, apBpInnerOut,
                                                 bpi->beamPipeThickness, bpi->inputFaceNormal, bpi->outputFaceNormal);
       beamPipeSolid = bpProduct.product;
       allSolids.insert(bpProduct.otherSolids.begin(), bpProduct.otherSolids.end());
@@ -68,19 +68,19 @@ BDSBeamPipe* BDSBeamPipeFactoryGeneral::CreateBeamPipe(const G4String& name,
     {delete apBpInnerOut;}
   delete apBpInnerIn;
   
-  auto contProduct = fac.CreateSolid(name + "_cont", length, apContIn, apContOut,
+  auto contProduct = fac.CreateSolid(name + "_cont", fullLength, apContIn, apContOut,
 				                             bpi->inputFaceNormal, bpi->outputFaceNormal);
   containerSolid = contProduct.product;
   allSolids.insert(contProduct.otherSolids.begin(), contProduct.otherSolids.end());
   
-  auto contSubProduct = fac.CreateSolid(name+"_cont_sub", 1.5*length, apContSubIn, apContSubOut, nullptr, nullptr);
+  auto contSubProduct = fac.CreateSolid(name+"_cont_sub", 1.5*fullLength, apContSubIn, apContSubOut, nullptr, nullptr);
   containerSubtractionSolid = contSubProduct.product;
   allSolids.insert(contSubProduct.otherSolids.begin(), contSubProduct.otherSolids.end());
   
-  CommonConstruction(name, bpi->vacuumMaterial, bpi->beamPipeMaterial, length);
+  CommonConstruction(name, bpi->vacuumMaterial, bpi->beamPipeMaterial, fullLength);
   
   BDSExtent et = std::max(apContIn->Extent(), apContOut->Extent());
-  BDSExtent ext = BDSExtent(et.XNeg(), et.XPos(), et.YNeg(), et.YPos(), -0.5*length, 0.5*length);
+  BDSExtent ext = BDSExtent(et.XNeg(), et.XPos(), et.YNeg(), et.YPos(), -0.5*fullLength, 0.5*fullLength);
   G4bool simpleCircular = !variedAperture && apVacIn->Circular();
   G4double cr = std::max(apContIn->RadiusToEncompass(), apContOut->RadiusToEncompass());
 

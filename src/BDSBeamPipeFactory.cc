@@ -69,9 +69,9 @@ BDSBeamPipeFactoryBase* BDSBeamPipeFactory::GetAppropriateFactory(BDSBeamPipeTyp
 }
 
 BDSBeamPipe* BDSBeamPipeFactory::CreateBeamPipe(const G4String&  name,
-                                                G4double         length,
+                                                G4double         fullLength,
                                                 BDSBeamPipeInfo*  bpi)
 {
   BDSBeamPipeFactoryBase* factory = GetAppropriateFactory(bpi->beamPipeType);
-  return factory->CreateBeamPipe(name, length, bpi);
+  return factory->CreateBeamPipe(name, fullLength, bpi);
 }

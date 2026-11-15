@@ -174,12 +174,12 @@ G4bool BDSBeamPipeFactoryLHCDetailed::AngledFaces(const G4ThreeVector& v1,
 }
 
 BDSBeamPipe* BDSBeamPipeFactoryLHCDetailed::CreateBeamPipe(const G4String& name,
-                                                           G4double length,
+                                                           G4double fullLength,
                                                            const BDSBeamPipeInfo* bpi)
 {
   // clean up after last usage
   CleanUp();
-
+  G4double length = fullLength;
   G4ThreeVector v1 = (G4bool)bpi->inputFaceNormal ? *(bpi->inputFaceNormal) : G4ThreeVector(0,0,-1);
   G4ThreeVector v2 = (G4bool)bpi->outputFaceNormal ? *(bpi->outputFaceNormal) : G4ThreeVector(0,0,1);
   G4bool angled = AngledFaces(v1, v2);
