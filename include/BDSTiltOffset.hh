@@ -54,6 +54,10 @@ public:
   inline G4double Tilt()    const {return tilt;}
   ///@}
 
+  void SetOffsetX(G4double dxIn) {dx = dxIn;}
+  void SetOffsety(G4double dyIn) {dy = dyIn;}
+  void SetTilt(G4double tiltIn) {tilt = tiltIn;}
+
   /// More advanced accessor for offset - only in x,y.
   G4ThreeVector GetOffset()   const {return G4ThreeVector(dx, dy, 0);}
   G4TwoVector   GetOffset2D() const {return G4TwoVector(dx, dy);}
