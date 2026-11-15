@@ -18,11 +18,12 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BDSDRIFT_H
 #define BDSDRIFT_H
 
-#include "globals.hh"
-
 #include "BDSAcceleratorComponent.hh"
 
-class BDSBeamPipeInfo2;
+#include "G4String.hh"
+#include "G4Types.hh"
+
+class BDSBeamPipeInfo;
 
 /**
  * @brief A piece of vacuum beam pipe.
