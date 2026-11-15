@@ -2170,7 +2170,7 @@ BDSAcceleratorComponent* BDSComponentFactory::CreateGaborLens()
   if (!HasSufficientMinimumLength(element))
     {return nullptr;}
   // force circular vacuum volume
-  auto ap = new BDSApertureCircle(BDSApertureType::circle, element->aper1*CLHEP::m);
+  auto ap = new BDSApertureCircle(element->aper1*CLHEP::m);
   G4double thickness = BDS::IsFinite(element->beampipeThickness) ? element->beampipeThickness*CLHEP::m : defaultBeamPipe->beamPipeThickness;
   auto* bpi = new BDSBeamPipeInfo(BDSBeamPipeType::circularvacuum, ap, PrepareVacuumMaterial(element),
                                   thickness, PrepareMaterial(element), true);
