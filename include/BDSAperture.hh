@@ -101,7 +101,7 @@ public:
   
   /// Generate a set of x,y points to represent the aperture. Number == 0 means minimal
   /// number of points which will be at least 3.
-  BDSPolygon Polygon(unsigned int nPointsIn = 0) const;
+  BDSPolygon Polygon(unsigned int nPointsIn = 0, G4bool applyTiltOffset=true) const;
   
   /// Protected interface - no protection over the value of nPoints used. This should therefore
   /// be called from the public Polygon() function that will check the value.

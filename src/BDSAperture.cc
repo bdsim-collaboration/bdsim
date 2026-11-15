@@ -134,7 +134,8 @@ void BDSAperture::AddPointsOnLineUpTo(std::vector<G4TwoVector>& vec,
     {vec.push_back(start + i*diff);}
 }
 
-BDSPolygon BDSAperture::Polygon(unsigned int nPointsIn) const
+BDSPolygon BDSAperture::Polygon(unsigned int nPointsIn,
+                                G4bool applyTiltOffset) const
 {
   unsigned int mnp = MinimumNumberOfPoints();
   unsigned int rnp = RecommendedNumberOfPoints();
@@ -145,5 +146,8 @@ BDSPolygon BDSAperture::Polygon(unsigned int nPointsIn) const
       throw BDSException(__METHOD_NAME__, msg);
     }
   BDSPolygon r = PolygonNPoints(np);
-  return r.ApplyTiltOffset(tiltOffset);
+  if (applyTiltOffset)
+    {return r.ApplyTiltOffset(tiltOffset);}
+  else
+    {return r;}
 }
