@@ -68,6 +68,17 @@ BDSTube::BDSTube(const G4String& nameIn,
                  unsigned int    numberOfSuggestedZSections):
   G4TessellatedSolid(nameIn)
 {
+#ifdef BDSDEBUG
+  G4cout << "BDSTube " << nameIn << " dZneg: " << dZNegative << " dZpos: " << dZPositive << G4endl;
+  G4cout << "Incoming polygon: ";
+  for (auto p : startingPoints)
+    {G4cout << "(" << p.x() << "," << p.y() << ")";}
+  G4cout << G4endl;
+  for (auto p : finishingPoints)
+    {G4cout << "(" << p.x() << "," << p.y() << ")";}
+  G4cout << G4endl;
+#endif
+
   // checks
   // full length must be > 0
   if (dZPositive <= dZNegative)
@@ -130,7 +141,7 @@ void BDSTube::RegularConstruction(const std::vector<G4double>&    z,
           if (j == limit)
             {j = 0;}
 
-          G4TwoVector ii[2] = {sp[i],fp[i]}; // TBC
+          G4TwoVector ii[2] = {sp[i],fp[i]};
           G4TwoVector jj[2] = {sp[j],fp[j]};
           G4TwoVector si = BDS::Linear1D(ii, (G4double)zi   * dzNorm);
           G4TwoVector sj = BDS::Linear1D(jj, (G4double)zi   * dzNorm);
@@ -184,6 +195,7 @@ void BDSTube::SubMultipleConstruction(G4double dZNegative,
         {// for each starting point (fewer)
           for (unsigned int fi = 0; fi < factor; fi++)
             {// one triangle from starting point to each end point multiple
+              // The tessellated solid owns the facets.
               G4TriangularFacet* f = new G4TriangularFacet(G4TV(sp[si].x(),      sp[si].y(),      za),
                                                            G4TV(fp[si+fi].x(),   fp[si+fi].y(),   zb),
                                                            G4TV(fp[si+fi+1].x(), fp[si+fi+1].y(), zb),
@@ -206,7 +218,6 @@ void BDSTube::SubMultipleConstruction(G4double dZNegative,
               AddFacet(f);
             }
         }
-
     }
 
   // start face polygons

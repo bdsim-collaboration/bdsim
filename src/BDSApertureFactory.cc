@@ -53,7 +53,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4ThreeVector.hh"
 #include "G4Tubs.hh"
 #include "G4TwoVector.hh"
-#include "G4TwoVector.hh"
 #include "G4Types.hh"
 #include "G4VSolid.hh"
 
@@ -770,18 +769,12 @@ void BDSApertureFactory::AdjustPointsForBooleanLength(const BDSPolygon& starting
   if (startingPoints.size() != finishingPoints.size())
     {throw BDSException(__METHOD_NAME__, "vector sizes must be idential");}
 
-  G4cout << startingPoints << G4endl;
-  G4cout << finishingPoints << G4endl;
   for (G4int i = 0; i < (G4int)startingPoints.size(); i++)
     {
       G4TwoVector m = (finishingPoints[i] - startingPoints[i])/fullLength;
-      G4cout << m << G4endl;
       startingPointsOut[i] = startingPoints[i] - m*extensionLengthEachEnd;
       finishingPointsOut[i] = finishingPoints[i] + m*extensionLengthEachEnd;
     }
-  G4cout << fullLength << " " << extensionLengthEachEnd << G4endl;
-  G4cout << startingPointsOut << G4endl;
-  G4cout << finishingPointsOut << G4endl;
 }
 
 BDSApertureFactory::Product BDSApertureFactory::CreateDifferentEndsCircleToCircle() const
