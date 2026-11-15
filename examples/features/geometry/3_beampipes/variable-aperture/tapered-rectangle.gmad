@@ -1,4 +1,4 @@
-d1: drift, l=1*m, apertureType="rectangle", apertureTypeOut="rectangle", apertureParams={5*cm, 10*cm}, apertureParamsOut={8*cm, 20*cm};
+d1: drift, l=10*cm, apertureType="rectangle", apertureTypeOut="rectangle", apertureParams={5*cm, 10*cm}, apertureParamsOut={8*cm, 20*cm};
 d2: drift, l=1*m, apertureType="rectangle", apertureTypeOut="rectangle", apertureParams={8*cm, 3*cm}, apertureParamsOut={5*cm, 1*cm};
 
 l1: line=(d1, d2);
