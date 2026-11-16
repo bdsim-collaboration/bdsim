@@ -514,9 +514,9 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch6d
     const double timeMmC = phase(i, 4);
     const double momentumMeV = phase(i, 5);
     const double directionNorm = std::sqrt(1.0 + xpRad*xpRad + ypRad*ypRad);
-    pzMeV = momentumMeV / directionNorm;
-    pxMeV = xpRad * pzMeV;
-    pyMeV = ypRad * pzMeV;
+    const double pzMeV = momentumMeV / directionNorm;
+    const double pxMeV = xpRad * pzMeV;
+    const double pyMeV = ypRad * pzMeV;
 
     // Convert RF-Track time (mm/c) to BDSIM time (ns).
     const double tNs = timeMmC * CLHEP::mm / CLHEP::c_light;
