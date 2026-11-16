@@ -62,10 +62,10 @@ public:
   G4double ScatteredEnergy(G4double theta);
   G4double PolarizationCrossSectionMaxPhi(G4double theta,G4double EP);
 private:
-  /// Rotation from the frame the cross-section is evaluated in (incoming photon along +z,
-  /// phi measured from +x) to the electron rest frame. The theory x axis is chosen along the
-  /// photon polarisation reference axis, so the photon Stokes parameters are the same in both.
-  G4RotationMatrix TheoryToRestFrameRotation() const;
+  /// Rotation from the electron rest frame to the frame the cross-section is evaluated in (incoming
+  /// photon along +z, phi measured from +x). The theory x axis is chosen along the photon
+  /// polarisation reference axis, so the photon Stokes parameters are the same in both.
+  G4RotationMatrix RestToTheoryFrameRotation() const;
 
   G4LorentzVector incomingGamma;
   G4LorentzVector scatteredGamma;

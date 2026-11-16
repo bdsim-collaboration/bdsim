@@ -67,16 +67,16 @@ G4double BDSComptonScatteringEngine::CrossSection(G4double photonEnergyIn, G4int
 void BDSComptonScatteringEngine::PerformCompton(const G4ThreeVector& boost,G4int partIn)
 {
   SetParticle(partIn);
-  G4RotationMatrix theoryToRest = TheoryToRestFrameRotation();
+  G4RotationMatrix restToTheory = RestToTheoryFrameRotation();
   // the cross-section is evaluated with the photon along +z and phi measured from +x. The theory
   // x axis is the photon polarisation reference axis so only the electron polarisation is rotated
-  electronPolarizationTheory = G4StokesVector(theoryToRest.inverse() * incomingElectronPolarization);
+  electronPolarizationTheory = G4StokesVector(restToTheory * incomingElectronPolarization);
 
   G4double theta = MCMCTheta();
   G4double scatteredGammaEnergy = ScatteredEnergy(theta);
   G4double phi = MCPhi(theta,scatteredGammaEnergy);
   G4ThreeVector scatteredGammaUnitVector(std::sin(theta)*std::cos(phi), std::sin(theta)*std::sin(phi), std::cos(theta));
-  scatteredGammaUnitVector.transform(theoryToRest);
+  scatteredGammaUnitVector.transform(restToTheory.inverse());
   scatteredGamma.setVect(scatteredGammaUnitVector * scatteredGammaEnergy);
   scatteredGamma.setE(scatteredGammaEnergy);
   G4ThreeVector scatteredElectronVector(incomingGamma.vect()-scatteredGamma.vect());
@@ -86,7 +86,7 @@ void BDSComptonScatteringEngine::PerformCompton(const G4ThreeVector& boost,G4int
   scatteredGamma.boost(boost);
 }
 
-G4RotationMatrix BDSComptonScatteringEngine::TheoryToRestFrameRotation() const
+G4RotationMatrix BDSComptonScatteringEngine::RestToTheoryFrameRotation() const
 {
   G4ThreeVector zAxis = incomingGamma.vect().unit();
   // remove any component along the photon direction - the reference axis should already be transverse
@@ -97,9 +97,10 @@ G4RotationMatrix BDSComptonScatteringEngine::TheoryToRestFrameRotation() const
   xAxis = xAxis.unit();
   G4ThreeVector yAxis = zAxis.cross(xAxis);
 
-  G4RotationMatrix theoryToRest;
-  theoryToRest.rotateAxes(xAxis, yAxis, zAxis); // columns are the theory axes in the rest frame
-  return theoryToRest;
+  // rows are the theory axes in the rest frame, so each theory component is a dot product with one axis
+  G4RotationMatrix restToTheory;
+  restToTheory.setRows(xAxis, yAxis, zAxis);
+  return restToTheory;
 }
 
 G4double BDSComptonScatteringEngine::MCMCTheta()
