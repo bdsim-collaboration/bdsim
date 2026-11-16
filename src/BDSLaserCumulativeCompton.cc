@@ -127,10 +127,10 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       G4ThreeVector stepVector = particlePositionPostStepGlobal-particlePositionPreStepGlobal;
       G4double  stepMagnitude = stepVector.mag();
 
-      //#################### Get rotation and translation matrices for global to laser coordinates ############################
+      //#################### Get transforms between global and laser coordinates ############################
 
-      const G4RotationMatrix* rot = track.GetTouchable()->GetRotation();
-      const G4AffineTransform transform = track.GetTouchable()->GetHistory()->GetTopTransform();
+      const G4AffineTransform transform = track.GetTouchable()->GetHistory()->GetTopTransform(); // global to laser
+      const G4AffineTransform localToGlobal = transform.Inverse();
 
       // ############### Need local pre step points to step through laser ###############
       G4ThreeVector particlePositionLocal = transform.TransformPoint(particlePositionPreStepGlobal);
@@ -141,14 +141,11 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       //######################## Get/Create photon information ##############################
       // Stokes parameters, defined relative to the laser's local x axis - not a spatial vector
       G4StokesVector photonPolarization(laser->Polarization());
-      G4ThreeVector photonPolarizationAxis(1,0,0);
-      G4ThreeVector photonUnit(0,0,1);
-
-      // ################ Rotate the photon information to the correct orientation ###########
-      // the polarisation reference axis is rotated with the photon direction, the Stokes parameters are not
-      photonPolarizationAxis.transform(*rot);
-      particlePolarization.transform(*rot);
-      photonUnit.transform(*rot);
+      // ################ Rotate the photon information from laser to global coordinates ###########
+      // the polarisation reference axis is rotated with the photon direction, the Stokes parameters are not.
+      // the particle polarisation is already in global coordinates so is not transformed.
+      G4ThreeVector photonPolarizationAxis = localToGlobal.TransformAxis(G4ThreeVector(1,0,0));
+      G4ThreeVector photonUnit = localToGlobal.TransformAxis(G4ThreeVector(0,0,1));
       G4double photonEnergy = (CLHEP::h_Planck*CLHEP::c_light)/laser->Wavelength();
 
       // ################ Create a Lorentz Vector for the photon for easy boosting #################
