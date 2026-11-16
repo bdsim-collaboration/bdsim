@@ -155,6 +155,12 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       // ################ boost to rest frame #################
       photonLorentz.boost(-1.0*particleBeta);
       particle4VectorMomentum.boost(-particleBeta);
+
+      // boost the polarisation 4-vector (0, axis) and gauge fix it (subtract a multiple of the photon
+      // 4-momentum) so that it is again purely spatial and transverse to the rest frame photon
+      G4LorentzVector photonPolarization4Vector(photonPolarizationAxis, 0);
+      photonPolarization4Vector.boost(-1.0*particleBeta);
+      photonPolarizationAxis = photonPolarization4Vector.vect() - (photonPolarization4Vector.t()/photonLorentz.t())*photonLorentz.vect();
       G4double photonEnergyLorentz = photonLorentz.e();
 
       //#################### create array and value for the total laser flux
