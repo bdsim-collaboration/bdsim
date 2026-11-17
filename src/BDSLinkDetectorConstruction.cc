@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorModel.hh"
+#include "BDSAuxiliaryNavigator.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamlineIntegral.hh"
@@ -25,6 +26,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSException.hh"
 #include "BDSExtent.hh"
 #include "BDSExtentGlobal.hh"
+#include "BDSFieldBuilder.hh"
+#include "BDSFieldQuery.hh"
 #include "BDSGlobalConstants.hh"
 #include "BDSLinkComponent.hh"
 #include "BDSLinkDetectorConstruction.hh"
@@ -41,6 +44,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSSamplerType.hh"
 #include "BDSSDManager.hh"
 #include "BDSTiltOffset.hh"
+#include "BDSUtilities.hh"
 
 #include "parser/element.h"
 #include "parser/elementtype.h"
@@ -111,12 +115,30 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 
       if (eType == GMAD::ElementType::_LINE || eType == GMAD::ElementType::_REV_LINE)
         {continue;}
+
+      if (eType == GMAD::ElementType::_ELEMENT &&
+          (BDS::NonZero(element.angle) ||
+           BDS::NonZero(element.e1)    ||
+           BDS::NonZero(element.e2)))
+        {
+          throw BDSException("BDSLink supports only straight element definitions; "
+                             "angle, e1 and e2 must be zero for element \"" +
+                             element.name + "\"");
+        }
       
       std::set<GMAD::ElementType> acceptedTypes = {GMAD::ElementType::_ECOL,
 						   GMAD::ElementType::_RCOL,
                            GMAD::ElementType::_BMCOL,
 						   GMAD::ElementType::_JCOL,
 						   GMAD::ElementType::_CRYSTALCOL,
+						   GMAD::ElementType::_QUAD,
+						   GMAD::ElementType::_SEXTUPOLE,
+						   GMAD::ElementType::_OCTUPOLE,
+						   GMAD::ElementType::_DECAPOLE,
+						   GMAD::ElementType::_MULT,
+						   GMAD::ElementType::_RFX,
+						   GMAD::ElementType::_RFY,
+						   GMAD::ElementType::_DRIFT,
 						   GMAD::ElementType::_ELEMENT};
       auto search = acceptedTypes.find(eType);
       if (search == acceptedTypes.end())
@@ -127,6 +149,8 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 									     nullptr,
 									     nullptr,
 									     *integral);
+      if (!component)
+        {continue;}
 
       BDSTiltOffset* to = new BDSTiltOffset(element.offsetX * CLHEP::m,
                                             element.offsetY * CLHEP::m,
@@ -167,6 +191,10 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
 				   0,
 				   true);
 
+  // Attach the mass world to the navigation used by fields and field queries.
+  BDSAuxiliaryNavigator::AttachWorldVolumeToNavigator(worldPV);
+  BDSFieldQuery::AttachWorldVolumeToNavigator(worldPV);
+
   // place any defined link elements in input
   for (auto element : *linkBeamline)
     {
@@ -179,6 +207,12 @@ G4VPhysicalVolume* BDSLinkDetectorConstruction::Construct()
     }
 
   return worldPV;
+}
+
+void BDSLinkDetectorConstruction::ConstructSDandField()
+{
+  auto fields = BDSFieldBuilder::Instance()->CreateAndAttachAll();
+  BDSAcceleratorModel::Instance()->RegisterFields(fields);
 }
 
 G4int BDSLinkDetectorConstruction::AddLinkCollimatorJaw(const std::string& collimatorName,
