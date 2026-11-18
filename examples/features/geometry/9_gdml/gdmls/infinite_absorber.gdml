@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+	<define>
+		<position name="absorber_pos" x="30" y="0" z="0" unit="mm"/>
+		<position name="block_pos" x="-30" y="0" z="0" unit="mm"/>
+	</define>
+	<materials/>
+	<solids>
+		<box name="block" x="40" y="40" z="100" lunit="mm"/>
+		<box name="world" x="300" y="300" z="400" lunit="mm"/>
+	</solids>
+	<structure>
+		<!-- kills every particle entering it -->
+		<volume name="absorberlv">
+			<materialref ref="G4_Cu"/>
+			<solidref ref="block"/>
+			<auxiliary auxtype="bdsim_infiniteabsorber" auxvalue="1"/>
+		</volume>
+		<!-- normal copper -->
+		<volume name="blocklv">
+			<materialref ref="G4_Cu"/>
+			<solidref ref="block"/>
+		</volume>
+		<volume name="worldlv">
+			<materialref ref="G4_Galactic"/>
+			<solidref ref="world"/>
+			<physvol name="absorberpv">
+				<volumeref ref="absorberlv"/>
+				<positionref ref="absorber_pos"/>
+			</physvol>
+			<physvol name="blockpv">
+				<volumeref ref="blocklv"/>
+				<positionref ref="block_pos"/>
+			</physvol>
+		</volume>
+	</structure>
+	<setup name="Default" version="1.0">
+		<world ref="worldlv"/>
+	</setup>
+</gdml>

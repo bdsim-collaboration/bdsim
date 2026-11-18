@@ -1,0 +1,26 @@
+! Two identical copper blocks loaded from GDML. The block at positive x has the
+! auxiliary tag bdsim_infiniteabsorber and kills every particle entering it,
+! depositing its kinetic energy where it enters. The block at negative x is
+! normal copper and develops a shower.
+
+d1: drift, l=0.5*m, aper1=5*cm;
+blocks: element, l=0.4*m, geometryFile="gdml:gdmls/infinite_absorber.gdml";
+d2: drift, l=1*m, aper1=5*cm;
+
+l1: line=(d1,blocks,d2);
+use, l1;
+
+! flat in x across both blocks
+beam, particle="e-",
+      energy=1*GeV,
+      distrType="square",
+      envelopeX=4*cm,
+      envelopeXp=0,
+      envelopeY=1*cm,
+      envelopeYp=0,
+      envelopeT=0,
+      envelopeE=0;
+
+option, physicsList="em",
+	seed=123,
+	ngenerate=20;
