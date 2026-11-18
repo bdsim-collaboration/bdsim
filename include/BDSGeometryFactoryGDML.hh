@@ -69,6 +69,9 @@ public:
   static std::array<G4double, 4> VRGBAStringAndUnitToColourAndStyle(const G4String& value,
                                                                     G4bool& visible);
 
+  /// GDML auxiliary type to flag a logical volume as an infinite absorber.
+  const static G4String auxTypeInfiniteAbsorber;
+
 protected:
   /// Use the GDML preprocessing scheme to prepare the preprocessed volume names.
   virtual G4String PreprocessedName(const G4String& objectName,
@@ -78,6 +81,14 @@ private:
   std::map<G4String, G4Colour*> BuildColourMap(const std::set<G4LogicalVolume*>& lvsGDML,
                                                G4GDMLParser* parser,
                                                const G4String& componentName);
+
+  /// Attach user limits with an infinite minimum kinetic energy to all logical volumes
+  /// with the auxiliary tag auxTypeInfiniteAbsorber and value 1. The user limits are
+  /// copied from userLimits. Returns the new user limits or nullptr if no volume is tagged.
+  G4UserLimits* ApplyInfiniteAbsorbers(const std::set<G4LogicalVolume*>& lvsGDML,
+                                       G4GDMLParser*       parser,
+                                       const G4UserLimits* userLimits,
+                                       const G4String&     componentName);
 
   /// Create a temporary file in the current working directory (even though the geometry file
   /// may not exist there) and create a copy of the input geometry file line by line, but replacing

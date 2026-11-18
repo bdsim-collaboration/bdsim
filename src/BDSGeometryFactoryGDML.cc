@@ -43,6 +43,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <limits>
 #include <set>
 #include <sstream>
 #include <string>
@@ -52,6 +53,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 class G4VisAttributes;
 class G4VSolid;
 
+const G4String BDSGeometryFactoryGDML::auxTypeInfiniteAbsorber = "bdsim_infiniteabsorber";
 
 BDSGeometryFactoryGDML::BDSGeometryFactoryGDML()
 {;}
@@ -188,6 +190,44 @@ std::map<G4String, G4Colour*> BDSGeometryFactoryGDML::BuildColourMap(const std::
         }
     }
   return result;
+}
+
+G4UserLimits* BDSGeometryFactoryGDML::ApplyInfiniteAbsorbers(const std::set<G4LogicalVolume*>& lvsGDML,
+                                                             G4GDMLParser*       parser,
+                                                             const G4UserLimits* userLimits,
+                                                             const G4String&     componentName)
+{
+  G4UserLimits* absorberUL = nullptr;
+  G4int nAbsorbers = 0;
+  for (auto lv : lvsGDML)
+    {
+      auto auxInfo = parser->GetVolumeAuxiliaryInformation(lv);
+      for (const auto& af : auxInfo)
+        {
+          if (af.type != auxTypeInfiniteAbsorber)
+            {continue;}
+          if (af.value == "0")
+            {continue;}
+          if (af.value != "1")
+            {
+              BDS::Warning(__METHOD_NAME__, "invalid value \"" + af.value + "\" for auxiliary type \""
+                           + auxTypeInfiniteAbsorber + "\" of logical volume " + lv->GetName()
+                           + " - should be 1 or 0, ignoring");
+              continue;
+            }
+          if (!absorberUL)
+            {
+              absorberUL = new G4UserLimits(*userLimits);
+              absorberUL->SetType(componentName + "_infinite_absorber");
+              absorberUL->SetUserMinEkine(std::numeric_limits<double>::max());
+            }
+          lv->SetUserLimits(absorberUL);
+          nAbsorbers++;
+        }
+    }
+  if (nAbsorbers > 0)
+    {G4cout << __METHOD_NAME__ << nAbsorbers << " logical volume(s) in \"" << componentName << "\" are infinite absorbers" << G4endl;}
+  return absorberUL;
 }
 
 std::array<G4double, 4> BDSGeometryFactoryGDML::VRGBAStringAndUnitToColourAndStyle(const G4String& value,
