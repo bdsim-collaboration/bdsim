@@ -2325,6 +2325,15 @@ The format should be: ::
 where :code:`v` is a 1 or 0 for visible or not. :code:`r g b a` are double values for the
 normalised red green blue and alpha colour components. These should range from 0 to 1 (inclusive).
 
+Auxiliary Infinite Absorber Information
+***************************************
+
+A volume can be made an infinite absorber (all particles entering it are killed) with: ::
+
+  <auxiliary auxtype="bdsim_infiniteabsorber" auxvalue="1"/>
+
+See :ref:`gdml-infinite-absorber` for details.
+
 
 Creating GDML Geometry
 **********************
