@@ -118,6 +118,7 @@ BDSGeometryExternal* BDSGeometryFactoryGDML::Build(G4String               compon
   
   G4UserLimits* ul = userLimitsToAttachToAllLVs ? userLimitsToAttachToAllLVs : BDSGlobalConstants::Instance()->DefaultUserLimits();
   ApplyUserLimits(lvsGDML, ul);
+  G4UserLimits* absorberUL = ApplyInfiniteAbsorbers(lvsGDML, parser, ul, componentName);
   
   // make sure container is visible - Geant4 always makes the container invisible.
   G4Colour* c = BDSColourFromMaterial::Instance()->GetColour(containerLV->GetMaterial(), preprocessNameToStrip);
@@ -135,6 +136,8 @@ BDSGeometryExternal* BDSGeometryFactoryGDML::Build(G4String               compon
   result->RegisterLogicalVolume(lvsGDML);
   result->RegisterPhysicalVolume(pvsGDML);
   result->RegisterVisAttributes(visesGDML);
+  if (absorberUL)
+    {result->RegisterUserLimits(absorberUL);}
   result->RegisterVacuumVolumes(GetVolumes(lvsGDML, namedVacuumVolumes, preprocessGDML, componentName));
 
   if (makeSensitive)
