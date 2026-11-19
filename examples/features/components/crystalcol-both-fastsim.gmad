@@ -1,0 +1,25 @@
+! One FastSim definition used for both jaws.  BDSCollimatorCrystal reverses the
+! left bending angle; the shared FastSim model retains per-volume geometry data.
+
+si111Both: crystal, model="fastsim",
+                   material="G4_Si",
+                   lattice="(111)",
+                   shape="box",
+                   lengthX=0.5*mm,
+                   lengthY=10*mm,
+                   lengthZ=4*mm,
+                   bendingAngleYAxis=50*urad;
+
+col1: crystalcol, l=10*mm,
+      apertureType="rectangular", aper1=10*cm, aper2=10*cm,
+      crystalBoth="si111Both",
+      crystalAngleYAxisLeft=0,
+      crystalAngleYAxisRight=0,
+      xsize=2*mm;
+
+line1: line=(col1);
+use, line1;
+sample, all;
+
+beam, particle="proton", energy=400*GeV;
+option, physicsList="completechannelling", ngenerate=1, checkOverlaps=1;
