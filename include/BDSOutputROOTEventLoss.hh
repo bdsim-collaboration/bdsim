@@ -50,7 +50,8 @@ public:
   std::vector<int>          parentID;///< ParentID that created the deposit
   
   std::vector<int>          modelID; ///< Geometry model index
-	std::vector<int> 					subElementID;
+  std::vector<int>          subElementID;      ///< Local volume index within the element (-1 if unknown)
+  std::vector<int>          subElementModelID; ///< Model tree index of that element (-1 if unknown)
   std::vector<int>          turn;    ///< Turn number
 
   /// @{ Local coordinate
@@ -103,7 +104,7 @@ public:
   bool storePhysicsProcesses = false;
 #endif
 
-  ClassDef(BDSOutputROOTEventLoss,5);
+  ClassDef(BDSOutputROOTEventLoss,6);
 };
 
 #endif
