@@ -1383,6 +1383,18 @@ The tip thickness and material are defined using `tipThickness` and `tipMaterial
 +------------------------+-----------------------------------+----------------+---------------+
 | `jawTiltRight`         | Right jaw tilt angle [rad]        | 0              | No            |
 +------------------------+-----------------------------------+----------------+---------------+
+| `tipLength`            | Length of the tapered jaw face at | 0              | No            |
+|                        | the beam [m]                      |                |               |
++------------------------+-----------------------------------+----------------+---------------+
+| `taper_angle_deg`      | Taper angle of the jaw front and  | 0              | No            |
+|                        | back faces [deg]                  |                |               |
++------------------------+-----------------------------------+----------------+---------------+
+| `taper_angle_rad`      | Taper angle of the jaw front and  | 0              | No            |
+|                        | back faces [rad]                  |                |               |
++------------------------+-----------------------------------+----------------+---------------+
+| `taper_depth`          | Depth from the jaw edge where the | 0              | No            |
+|                        | taper ends (0: whole jaw) [m]     |                |               |
++------------------------+-----------------------------------+----------------+---------------+
 | `horizontalWidth`      | Outer full width [m]              | 0.5 m          | No            |
 +------------------------+-----------------------------------+----------------+---------------+
 | `colour`               | Name of colour desired for        | ""             | No            |
@@ -1396,6 +1408,19 @@ The tip thickness and material are defined using `tipThickness` and `tipMaterial
 Notes: 
 
 * The `horizontalWidth` must be greater than 2x `xsize`.
+* With `tipLength` or a taper angle (`taper_angle_deg` or `taper_angle_rad`, only one of the two),
+  each jaw is a wedge instead of a box. The jaw face at the beam is `tipLength` long and the jaw
+  grows with the depth :math:`d` beyond its aperture as :math:`\mathrm{tipLength} + 2d/\tan(\theta)`,
+  out to its outer edge at `horizontalWidth`/2, or only up to `taper_depth` if set, keeping a
+  constant length beyond it. `l` is always the full length of the element, which is the length of
+  the deepest jaw, so :math:`l = \mathrm{tipLength} + 2d/\tan(\theta)` with :math:`d` the
+  `taper_depth`, or the depth of the deepest jaw if `taper_depth` is not set. Specify `l` and either
+  `tipLength` or the taper angle and the other is calculated; if both are given, they must match `l`.
+  Alternatively, `l` may be left out if `tipLength`, the taper angle and `taper_depth` are all given;
+  `l` is then calculated from them when the input is parsed.
+  Both jaws have the same `tipLength` and angle whatever their apertures. The taper applies to the
+  tip and the bulk material alike, and cannot be combined with `jawTiltLeft` or `jawTiltRight`, nor
+  used with a closed collimator (`xsize`, `xsizeLeft` and `xsizeRight` all zero).
 * A positive tilt angle rotates either jaw to the left on the downstream side. So, a positive jawTiltLeft
   increases the left jaw aperture on the downstream side. A positive jawTiltRight decreases the right
   aperture on the downstream side. Left positive and righ negative give diverging jaws.
@@ -1427,6 +1452,13 @@ Examples: ::
 
    ! only left jaw with tip
    j2: jcoltip, l=1*m, horizontalWidth=1*m, material="Cu", tipMaterial="W", tipThickness=1*cm, xsizeLeft=1*cm, xsizeRight=2*m;
+
+   ! SuperKEKB-type jaws: 10 mm face at the beam, tapered over the first 37 mm (12 degrees), then
+   ! 88 mm at the full 358 mm length (125 mm deep jaws, so horizontalWidth = 2*(8 + 125) mm)
+   j3: jcoltip, l=358*mm, tipLength=10*mm, horizontalWidth=266*mm, material="Cu", tipMaterial="W", tipThickness=5*mm, xsize=8*mm, taper_depth=37*mm;
+
+   ! the same jaws without l, which is then calculated as 10 mm + 2*37 mm/tan(12 deg) = 358.14 mm
+   j4: jcoltip, tipLength=10*mm, horizontalWidth=266*mm, material="Cu", tipMaterial="W", tipThickness=5*mm, xsize=8*mm, taper_angle_deg=12, taper_depth=37*mm;
 
 
 

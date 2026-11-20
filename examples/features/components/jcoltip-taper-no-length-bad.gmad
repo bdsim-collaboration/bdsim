@@ -1,0 +1,12 @@
+d1: drift, l=0.2*m;
+! no l and no taper_depth, so l cannot be calculated from tipLength and the taper angle - should fail
+col1: jcoltip, tipLength=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=8.0*cm, xsize=1*cm, taper_angle_deg=12;
+
+lat: line=(d1, col1, d1);
+use, lat;
+
+beam, particle="e+",
+      energy=7*GeV;
+
+option, checkOverlaps=1,
+        ngenerate=1;

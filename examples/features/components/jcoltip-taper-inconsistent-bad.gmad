@@ -1,0 +1,13 @@
+d1: drift, l=0.2*m;
+! l, tipLength and the taper angle are all given but do not match: 10 mm + 2*37 mm/tan(12 deg)
+! is 358.14 mm, not 358 mm - only two of the three should be given, so this should fail
+col1: jcoltip, l=358*mm, tipLength=10*mm, material="G4_Cu", tipMaterial="G4_W", tipThickness=5*mm, horizontalWidth=266*mm, xsize=8*mm, taper_angle_deg=12, taper_depth=37*mm;
+
+lat: line=(d1, col1, d1);
+use, lat;
+
+beam, particle="e+",
+      energy=7*GeV;
+
+option, checkOverlaps=1,
+        ngenerate=1;
