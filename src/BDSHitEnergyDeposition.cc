@@ -42,10 +42,14 @@ BDSHitEnergyDeposition::BDSHitEnergyDeposition(G4double energyIn,
 					       G4double stepLength,
 					       G4int    beamlineIndex,
 					       G4int    postStepProcessType,
-					       G4int    postStepProcessSubType):
+					       G4int    postStepProcessSubType,
+					       G4int    subElementIDIn,
+					       G4int    subElementModelIDIn):
   energy(energyIn),
   sHit(sHitIn),
   weight(weightIn),
+  subElementID(subElementIDIn),
+  subElementModelID(subElementModelIDIn),
   extra(nullptr)
 {
   if (storeExtras)
