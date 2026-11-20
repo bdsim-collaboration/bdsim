@@ -140,6 +140,7 @@ void BDSOutputROOTEventLoss::Fill(const BDSHitEnergyDeposition* hit)
     {modelID.push_back(hit->GetBeamlineIndex());}
 
   subElementID.push_back(hit->GetSubElementID());
+  subElementModelID.push_back(hit->GetSubElementModelID());
 
   if (storeLocal)
     {
@@ -197,6 +198,7 @@ void BDSOutputROOTEventLoss::Fill(const BDSOutputROOTEventLoss* other)
   postStepProcessType  = other->postStepProcessType;
   postStepProcessSubType = other->postStepProcessSubType;
   subElementID           = other->subElementID;
+  subElementModelID      = other->subElementModelID;
 }
 
 void BDSOutputROOTEventLoss::Flush()
@@ -225,4 +227,5 @@ void BDSOutputROOTEventLoss::FlushLocal()
   postStepProcessType.clear();
   postStepProcessSubType.clear();
   subElementID.clear();
+  subElementModelID.clear();
 }

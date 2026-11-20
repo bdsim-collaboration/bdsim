@@ -38,7 +38,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4VPhysicalVolume.hh"
 #include "G4VTouchable.hh"
 #include "Randomize.hh"
-#include <map>
+
 
 BDSSDEnergyDeposition::BDSSDEnergyDeposition(const G4String& name,
                                              G4bool          storeExtrasIn,
@@ -116,22 +116,6 @@ G4bool BDSSDEnergyDeposition::ProcessHits(G4Step* aStep,
   G4double y = eDepPosLocal.y();
   G4double z = eDepPosLocal.z();
 
-  G4VPhysicalVolume* preStepPV = aStep->GetPreStepPoint()->GetPhysicalVolume();
-  if (preStepPV)
-  {
-    auto it = fVolumeHitCount.find(preStepPV);
-    if (it == fVolumeHitCount.end())
-    {
-      G4cout << "New volume: "
-             << std::setw(40) << std::left << preStepPV->GetName()
-             << "  address: " << preStepPV
-             << G4endl;
-      fVolumeHitCount[preStepPV] = {preStepPV->GetName(), 1, energy};
-    }
-    else
-    {std::get<1>(it->second)++;
-	 std::get<2>(it->second) += energy;}
-  }
   // Just as the energy deposition is attributed to a uniformly random
   // point between the preStep and the postStep positions, attribute the
   // deposition to random time between preStep and postStep times,
@@ -200,9 +184,11 @@ G4bool BDSSDEnergyDeposition::ProcessHits(G4Step* aStep,
   
   G4int postStepProcessType    = -1;
   G4int postStepProcessSubType = -1;
-  G4int subElementID = -1;
-  if (preStepPV)
-  {subElementID = BDSPhysicalVolumeInfoRegistry::Instance()->GetSubElementID(preStepPV);}
+  // sub-element ID is local to the element whose info gave the S and beamline index
+  G4VPhysicalVolume* preStepPV = preStepPoint->GetPhysicalVolume();
+  G4int subElementID = theInfo ? theInfo->GetSubElementID(preStepPV) : -1;
+  // Model tree index of that element; -1 whenever the sub-element is unknown so the pair is both valid or both -1
+  G4int subElementModelID = subElementID >= 0 ? theInfo->GetBeamlineMassWorldIndex() : -1;
   if (storeExtras)
     {// physics processes
       const G4StepPoint* postPoint = aStep->GetPostStepPoint();
@@ -231,7 +217,8 @@ G4bool BDSSDEnergyDeposition::ProcessHits(G4Step* aStep,
                                                            beamlineIndex,
                                                            postStepProcessType,
                                                            postStepProcessSubType,
-														   subElementID);
+                                                           subElementID,
+                                                           subElementModelID);
   
   // don't worry, won't add 0 energy tracks as filtered at top by if statement
   hits->insert(hit);
@@ -316,6 +303,10 @@ G4bool BDSSDEnergyDeposition::ProcessHitsTrack(const G4Track* track,
     }
   G4double sHit = sBefore; // duplicate
 
+  // sub-element ID of the volume the killed track was in, local to its element
+  G4int subElementID = theInfo ? theInfo->GetSubElementID(track->GetVolume()) : -1;
+  G4int subElementModelID = subElementID >= 0 ? theInfo->GetBeamlineMassWorldIndex() : -1;
+
   G4int turnsTaken = BDSGlobalConstants::Instance()->TurnsTaken();
 
   G4int postStepProcessType    = -1;
@@ -352,7 +343,8 @@ G4bool BDSSDEnergyDeposition::ProcessHitsTrack(const G4Track* track,
                                                            beamlineIndex,
                                                            postStepProcessType,
                                                            postStepProcessSubType,
-														   -1);
+                                                           subElementID,
+                                                           subElementModelID);
   
   // don't worry, won't add 0 energy tracks as filtered at top by if statement
   hits->insert(hit);
@@ -364,30 +356,4 @@ G4VHit* BDSSDEnergyDeposition::last() const
 {
   BDSHitEnergyDeposition* lastHit = hits->GetVector()->back();
   return dynamic_cast<G4VHit*>(lastHit);
-}
-
-void BDSSDEnergyDeposition::EndOfEvent(G4HCofThisEvent*)
-{
-}
-
-void BDSSDEnergyDeposition::PrintVolumeHitSummary() const
-{
-  if (fVolumeHitCount.empty())
-    {return;}
-  G4cout << "\n--- Energy Deposition Volume Summary (All Events) ---" << G4endl;
-  G4cout << std::setw(40) << std::left << "Volume Name"
-         << std::setw(20) << "Address"
-         << std::setw(10) << "Hits"
-         << std::setw(20) << "Total Energy (GeV)"
-         << G4endl;
-  G4cout << std::string(90, '-') << G4endl;
-  for (const auto& entry : fVolumeHitCount)
-    {
-      G4cout << std::setw(40) << std::left << std::get<0>(entry.second)
-             << std::setw(20) << entry.first
-             << std::setw(10) << std::get<1>(entry.second)
-             << std::setw(20) << std::get<2>(entry.second) / CLHEP::GeV
-             << G4endl;
-    }
-  G4cout << std::string(90, '-') << G4endl;
 }
