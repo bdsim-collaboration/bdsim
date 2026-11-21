@@ -102,13 +102,9 @@ protected:
   G4Mag_EqRhs* eqOfM;
 
 private:
-  /// Private default constructor to force use of provided one.
-  BDSIntegratorDipoleRodrigues2() = delete;
-
   /// The minimum tolerable radius of curvature before we decide the particle is
-  /// spiralling and should be treated differently.
+  /// spiraling and should be treated differently.
   G4double minimumRadiusOfCurvature;
-
 };
 
 #endif

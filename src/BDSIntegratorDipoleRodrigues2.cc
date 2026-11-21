@@ -16,13 +16,11 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSIntegratorDipoleRodrigues2.hh"
-#include "BDSMagnetStrength.hh"
 #include "BDSUtilities.hh"
 
-#include "globals.hh"
-#include "G4ClassicalRK4.hh"
 #include "G4Mag_EqRhs.hh"
 #include "G4ThreeVector.hh"
+#include "G4Types.hh"
 
 #include "CLHEP/Units/SystemOfUnits.h"
 
@@ -106,10 +104,18 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
   const G4double radiusOfCurvature = rad;
   if (std::abs(radiusOfCurvature) < minimumRadiusOfCurvature)
     {
+      /*
+      backupStepper->Stepper(yIn, dydx, h, yOut, yErr);
+      // DistChord() returns rad*(1-cos(ang/2)), so ang = pi gives exactly the backup's chord.
+      SetRadHelix(backupStepper->DistChord());
+      SetAngCurve(CLHEP::pi);
+      return;
+      */
       AdvanceHelixForSpiralling(yIn, bOriginal, h, yOut, yErr);
-      // Update parameters that distchord will be calculated from full step info.
-      SetAngCurve(ang);
-      SetRadHelix(rad);
+      // Keep the angle and radius from the nudged helix just taken so distchord
+      // describes the actual step. Guard against nan as above.
+      if (std::isnan(GetRadHelix()))
+        {SetRadHelix(h / GetAngCurve());}
       return;
     }
 
