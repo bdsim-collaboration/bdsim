@@ -147,7 +147,7 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
   for (G4int i = 0; i < 6; i++)
     {yErr[i] = std::abs(yOut[i] - yTemp2[i]);}
 
-  // Update parameters that distchord will be calcualted from from full step info.
+  // Update parameters that distchord will be calculated from full step info.
   SetAngCurve(ang);
   SetRadHelix(rad);
 }
