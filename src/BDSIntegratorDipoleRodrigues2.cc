@@ -27,23 +27,23 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 
 BDSIntegratorDipoleRodrigues2::BDSIntegratorDipoleRodrigues2(G4Mag_EqRhs* eqOfMIn,
-							     G4double     minimumRadiusOfCurvatureIn):
+                                                             G4double     minimumRadiusOfCurvatureIn):
   G4MagHelicalStepper(eqOfMIn),
   eqOfM(eqOfMIn),
   minimumRadiusOfCurvature(minimumRadiusOfCurvatureIn)
 {;}
 
 void BDSIntegratorDipoleRodrigues2::DumbStepper(const G4double yIn[6],
-						G4ThreeVector  field,
-						G4double       stepLength,
-						G4double       yOut[6])
+                                                G4ThreeVector  field,
+                                                G4double       stepLength,
+                                                G4double       yOut[6])
 {
   AdvanceHelix(yIn, field, stepLength, yOut);
 }
 
 void BDSIntegratorDipoleRodrigues2::SingleStep(const G4double  yIn[6],
-					       const G4double& h,
-					       G4double        yOut[6])
+                                               const G4double& h,
+                                               G4double        yOut[6])
 {
   G4double bO[6]; // original location field value - must be 6 long
   eqOfM->GetFieldValue(yIn, bO);
@@ -54,10 +54,10 @@ void BDSIntegratorDipoleRodrigues2::SingleStep(const G4double  yIn[6],
 }
 
 void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
-					    const G4double[] /*dydx*/,
-					    G4double         h,
-					    G4double         yOut[6],
-					    G4double         yErr[6])
+                                            const G4double[] /*dydx*/,
+                                            G4double         h,
+                                            G4double         yOut[6],
+                                            G4double         yErr[6])
 {
   // overwrite any previous rad and helix to avoid contaminating this step
   FudgeDistChordToZero();
@@ -126,10 +126,10 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
     {
       // set error to be low - required
       for (G4int i = 0; i < 3; i++)
-	{
-	  yErr[i]   = 1e-20;
-	  yErr[i+3] = 1e-40;
-	}
+        {
+          yErr[i]   = 1e-20;
+          yErr[i+3] = 1e-40;
+        }
       SetAngCurve(ang);
       SetRadHelix(rad); // must update these for distchord
       return;
@@ -142,7 +142,7 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
 
   // resample field at midway point (although if pure dipole, this is
   // unnecessary) - could go outside the range of the field though
-  G4double bM[6]; // mid point location field value - must be 6 long
+  G4double bM[6]; // mid-point location field value - must be 6 long
   GetEquationOfMotion()->GetFieldValue(yTemp, bM);
   G4ThreeVector bMid = G4ThreeVector(bM[0],bM[1],bM[2]);
 
@@ -159,10 +159,10 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
 }
 
 void BDSIntegratorDipoleRodrigues2::AdvanceHelixForSpiralling(const G4double        yIn[6],
-							      const G4ThreeVector&  field,
-							      const G4double&       h,
-							      G4double              yOut[6],
-							      G4double              yErr[6])
+                                                              const G4ThreeVector&  field,
+                                                              const G4double&       h,
+                                                              G4double              yOut[6],
+                                                              G4double              yErr[6])
 {
   G4ThreeVector fieldUnit = field.unit();
 
