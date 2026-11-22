@@ -536,10 +536,13 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch) 
 
   if (isBunch6d)
     {
+      // Bunch6d: x [mm], xp [mrad], y [mm], yp [mrad], t [mm/c], P [MeV/c].
       phaseSpaceObject = bunch.attr("get_phase_space")("%x %xp %y %yp %t %P", "all");
     }
   else
     {
+      // Bunch6dT: X [mm], Px [MeV/c], Y [mm], Py [MeV/c],
+      // Z [mm], Pz [MeV/c], t0 [mm/c], m [MeV/c^2].
       phaseSpaceObject = bunch.attr("get_phase_space")("%X %Px %Y %Py %Z %Pz %t0 %m", "all");
     }
 
@@ -590,6 +593,7 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch) 
       if (isBunch6dT)
         {
           const double momentumMeV = std::hypot(std::hypot(phase(i, 1), phase(i, 3)), phase(i, 5));
+
           if (!std::isfinite(phase(i, 6)) || !std::isfinite(phase(i, 7)) ||
               phase(i, 5) <= 0.0 || !std::isfinite(momentumMeV))
             {
@@ -632,24 +636,18 @@ void TrackRFTrack(BDSLinkTrackerInterface *tracker_interface, py::object bunch) 
       if (isBunch6d)
         {
           xMm = phase(i, 0);
-          const double xpRad = phase(i, 1) * 1.0e-3;
           yMm = phase(i, 2);
+          const double xpRad = phase(i, 1) * 1.0e-3;
           const double ypRad = phase(i, 3) * 1.0e-3;
           const double timeMmC = phase(i, 4);
           const double momentumMeV = phase(i, 5);
-          const double directionNorm = std::sqrt(1.0 + xpRad*xpRad + ypRad*ypRad);
-
-          if (!std::isfinite(momentumMeV) || momentumMeV <= 0.0 || !std::isfinite(directionNorm))
-            {
-              throw py::value_error("Invalid Bunch6d momentum at particle " + std::to_string(i));
-            }
-
+          // Compute momentum components from transverse slopes and total momentum.
+          const double directionNorm = std::hypot(1.0, std::hypot(xpRad, ypRad));
           pzMeV = momentumMeV / directionNorm;
           pxMeV = xpRad * pzMeV;
           pyMeV = ypRad * pzMeV;
 
-          // RF-Track time is expressed in mm/c.
-          // BDSIM internal time is expressed in ns.
+          // Convert RF-Track time (mm/c) to BDSIM time (ns).
           tNs = timeMmC * CLHEP::mm / CLHEP::c_light;
         }
       else
