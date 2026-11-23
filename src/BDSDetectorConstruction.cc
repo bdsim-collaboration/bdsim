@@ -932,7 +932,7 @@ G4Transform3D BDSDetectorConstruction::CreatePlacementTransform(const GMAD::Plac
       G4ThreeVector offset = G4ThreeVector();
       if (placementExtent)
 	{offset = SideToLocalOffset(placement, beamLine, *placementExtent);}
-    //hello space test
+
       G4Transform3D beamlinePart = beamLine->GetGlobalEuclideanTransform(placement.s * CLHEP::m,
 									 placement.x * CLHEP::m + offset.x(),
 									 placement.y * CLHEP::m + offset.y());
