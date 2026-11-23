@@ -101,7 +101,10 @@ void BDSPhysicalVolumeInfo::RegisterSubElementsFromMassWorld()
     {return;}
   BDSBeamlineElement* massElement = *(beamlineMassWorld->begin() + beamlineMassWorldIndex);
   // only the curvilinear volume built 1:1 for this element is named <element>_cl_<index>
-  if (name != massElement->GetName() + "_cl_" + std::to_string(beamlineMassWorldIndex))
+  G4String expectedName = massElement->GetName();
+  expectedName += "_cl_";
+  expectedName += std::to_string(beamlineMassWorldIndex);
+  if (name.compare(expectedName) != 0)
     {return;}
   const auto* massPVs = BDSPhysicalVolumeInfoRegistry::Instance()->PVsForBeamlineElement(massElement);
   if (!massPVs)
