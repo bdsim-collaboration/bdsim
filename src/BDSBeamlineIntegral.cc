@@ -102,6 +102,10 @@ void BDSBeamlineIntegral::Integrate(const GMAD::Element& componentAsDefined)
               dEk = particleCharge * eField * thisComponentArcLength * transitTimeFactor;
               break;
             }
+          case BDSCavityFieldType::axialstandingapprox:
+            {
+              //dEk = particleCharge *;
+            }
           default:
             {break;}
           }
