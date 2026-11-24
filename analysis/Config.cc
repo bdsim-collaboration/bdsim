@@ -584,6 +584,13 @@ void Config::FixCylindricalAndSphericalSamplerVariablesInSets(const std::set<std
     }
 }
 
+bool Config::AnalyseAllEvents() const
+{
+  int start = GetOptionNumber("eventstart");
+  int stop = GetOptionNumber("eventend");
+  return start == 0 && stop == -1;
+}
+
 void Config::CheckValidTreeName(std::string& treeName) const
 {
   // check it has a point at the end (simple mistake)

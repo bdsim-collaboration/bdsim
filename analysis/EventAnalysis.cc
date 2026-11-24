@@ -50,6 +50,7 @@ EventAnalysis::EventAnalysis():
   printModulo(1),
   processSamplers(false),
   emittanceOnTheFly(false),
+  calculateEventMeanHistos(false),
   eventStart(0),
   eventEnd(-1),
   nEventsToProcess(0)
@@ -59,6 +60,7 @@ EventAnalysis::EventAnalysis(Event*   eventIn,
                              TChain*  chainIn,
                              bool     perEntryAnalysis,
                              bool     processSamplersIn,
+                             bool     calculateEventMeanHistosIn,
                              bool     debugIn,
                              bool     printOutIn,
                              double   printModuloFraction,
@@ -72,6 +74,7 @@ EventAnalysis::EventAnalysis(Event*   eventIn,
   printModulo(1),
   processSamplers(processSamplersIn),
   emittanceOnTheFly(emittanceOnTheFlyIn),
+  calculateEventMeanHistos(calculateEventMeanHistosIn),
   eventStart(eventStartIn),
   eventEnd(eventEndIn),
   nEventsToProcess(eventEndIn - eventStartIn)
@@ -128,7 +131,8 @@ void EventAnalysis::Execute()
       BDSBH4DBase::AddDirectory(kTRUE);
       PreparePerEntryHistograms();
       PreparePerEntryHistogramSets();
-      Process();
+      if (nPerEntryHistoDefinitions > 0 || processSamplers || calculateEventMeanHistos) // avoid a useless data-loading loop
+        {Process();}
     }
   SimpleHistograms();
   Terminate();
@@ -187,10 +191,13 @@ void EventAnalysis::Process()
         }
 
       // merge histograms stored per event in the output
-      if (firstLoop)
-        {histoSum = new HistogramMeanFromFile(event->Histos);}
-      else
-        {histoSum->Accumulate(event->Histos);}
+      if (calculateEventMeanHistos)
+        {
+          if (firstLoop)
+            {histoSum = new HistogramMeanFromFile(event->Histos);}
+          else
+            {histoSum->Accumulate(event->Histos);}
+        }
 
       // per event histograms
       AccumulatePerEntryHistograms(i);
@@ -385,6 +392,7 @@ void EventAnalysis::PreparePerEntryHistogramSets()
   if (c)
     {
       auto setDefinitions  = c->EventHistogramSetDefinitionsPerEntry();
+      nPerEntryHistoDefinitions += (int)setDefinitions.size();
       for (const auto& def : setDefinitions)
         {perEntryHistogramSets.push_back(ConstructPerEntryHistogramSet(def, event, chain));}
     }

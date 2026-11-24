@@ -1,0 +1,33 @@
+t1: target, l=3*cm, material="Cu";
+g1: gap, l=3*cm;
+d1: dump, l=1*cm, horizontalWidth=3*m;
+l1: line=(t1,g1,t1,d1);
+use, l1;
+
+beam, particle="e-",
+      momentum=10*GeV,
+      distrType="square",
+      envelopeX=10*cm,
+      envelopeY=10*cm;
+
+sample, range=t1;
+
+option, physicsList="em",
+        elossHistoBinWidth=2*mm;
+
+option, seed=123;
+
+option, ngenerate=3;
+
+allParticleDose: scorer, type="depositeddose";
+fineMesh: scorermesh, scoreQuantity="allParticleDose",
+          nx=1000, ny=1000, nz=30, xsize=30*cm, ysize=30*cm, zsize=9*cm,
+          referenceElement="g1";
+
+
+coarseMesh: scorermesh, scoreQuantity="allParticleDose",
+            nx=10, ny=10, nz=1, xsize=30*cm, ysize=30*cm, zsize=9*cm,
+            referenceElement="g1";
+
+option, storeEventLevelMeshes=0,
+        storeEventLevelHistograms=0;
