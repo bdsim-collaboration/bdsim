@@ -198,6 +198,17 @@ void Parser::ParseFile(FILE *f)
     {yyparse();}
   
   expand_sequences();
+
+  // calculate lengths that depend on other parameters now that all elements are complete
+  for (auto& e : beamline_list)
+    {e.setLengthFromTaper();}
+  for (auto& sequence : expandedSequences)
+    {
+      for (auto& e : *sequence.second)
+        {e.setLengthFromTaper();}
+    }
+  for (auto& e : placement_elements)
+    {e.setLengthFromTaper();}
 #ifdef BDSDEBUG
   std::cout << "gmad_parser> finished to parsing file" << std::endl;
 #endif

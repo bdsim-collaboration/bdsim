@@ -195,6 +195,11 @@ public:
   /// Try and get a tipmaterial and exit if no such material.
   static G4Material* PrepareTipMaterial(GMAD::Element const* element);
 
+  /// Combine Element::taperAngleDeg and Element::taperAngleRad into a single
+  /// angle in radians. At most one of the two may be set (non-zero); 0 (the
+  /// default) means no taper. Exits with an exception if both are set.
+  static G4double PrepareTipTaperAngle(GMAD::Element const* element);
+
   /// Utility function to check if the combination of horizontal width, angle and length
   /// will result in overlapping entrance and exit faces and therefore whether to abort.
   static void CheckBendLengthAngleWidthCombo(G4double arcLength,
