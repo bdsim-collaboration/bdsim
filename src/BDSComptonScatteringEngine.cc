@@ -67,19 +67,16 @@ G4double BDSComptonScatteringEngine::CrossSection(G4double photonEnergyIn, G4int
 void BDSComptonScatteringEngine::PerformCompton(const G4ThreeVector& boost,G4int partIn)
 {
   SetParticle(partIn);
+  G4RotationMatrix restToTheory = RestToTheoryFrameRotation();
+  // the cross-section is evaluated with the photon along +z and phi measured from +x. The theory
+  // x axis is the photon polarisation reference axis so only the electron polarisation is rotated
+  electronPolarizationTheory = G4StokesVector(restToTheory * incomingElectronPolarization);
+
   G4double theta = MCMCTheta();
   G4double scatteredGammaEnergy = ScatteredEnergy(theta);
   G4double phi = MCPhi(theta,scatteredGammaEnergy);
   G4ThreeVector scatteredGammaUnitVector(std::sin(theta)*std::cos(phi), std::sin(theta)*std::sin(phi), std::cos(theta));
-  if(incomingGamma.x()<=1e9&&incomingGamma.y()<=1e9)
-    {
-      scatteredGammaUnitVector.rotate(0,CLHEP::pi,0);
-    }
-  else
-    {
-      G4RotationMatrix* rot = CalculateRotation();
-      scatteredGammaUnitVector.transform(*rot);
-    }
+  scatteredGammaUnitVector.transform(restToTheory.inverse());
   scatteredGamma.setVect(scatteredGammaUnitVector * scatteredGammaEnergy);
   scatteredGamma.setE(scatteredGammaEnergy);
   G4ThreeVector scatteredElectronVector(incomingGamma.vect()-scatteredGamma.vect());
@@ -87,6 +84,23 @@ void BDSComptonScatteringEngine::PerformCompton(const G4ThreeVector& boost,G4int
   scatteredElectron.setVect(scatteredElectronVector);
   scatteredElectron.boost(boost);
   scatteredGamma.boost(boost);
+}
+
+G4RotationMatrix BDSComptonScatteringEngine::RestToTheoryFrameRotation() const
+{
+  G4ThreeVector zAxis = incomingGamma.vect().unit();
+  // remove any component along the photon direction - the reference axis should already be transverse
+  G4ThreeVector xAxis = incomingGammaPolarizationAxis - incomingGammaPolarizationAxis.dot(zAxis)*zAxis;
+  // no reference axis set (unpolarised photon) - any transverse axis will do
+  if (xAxis.mag2() < 1e-20)
+    {xAxis = zAxis.orthogonal();}
+  xAxis = xAxis.unit();
+  G4ThreeVector yAxis = zAxis.cross(xAxis);
+
+  // rows are the theory axes in the rest frame, so each theory component is a dot product with one axis
+  G4RotationMatrix restToTheory;
+  restToTheory.setRows(xAxis, yAxis, zAxis);
+  return restToTheory;
 }
 
 G4double BDSComptonScatteringEngine::MCMCTheta()
@@ -107,22 +121,6 @@ G4double BDSComptonScatteringEngine::KleinNishinaDifferential(G4double theta)
 }
 
 
-G4RotationMatrix* BDSComptonScatteringEngine::CalculateRotation()
-{
-    G4ThreeVector theoryIncomingPhoton (0,0,1);
-    G4ThreeVector crossProduct = theoryIncomingPhoton.cross(incomingGamma.vect().unit());
-    G4double dotProduct = theoryIncomingPhoton.dot(incomingGamma.vect().unit());
-    G4double multiplier = 1.0/(1.0+dotProduct);
-    G4RotationMatrix* identity = new G4RotationMatrix;
-    G4ThreeVector vrow1 (1, -1*crossProduct.z(),crossProduct.y());
-    G4ThreeVector vrow2 (crossProduct.z(),1,-1.0*crossProduct.x());
-    G4ThreeVector vrow3 (-1.0*crossProduct.y(), crossProduct.x(),1);
-    G4ThreeVector v2row1 (multiplier*(-crossProduct.y()*crossProduct.y()-crossProduct.z()*crossProduct.z()), multiplier*crossProduct.x()*crossProduct.y(),multiplier*crossProduct.x()*crossProduct.z());
-    G4ThreeVector v2row2 (multiplier*crossProduct.x()*crossProduct.y(),multiplier*(-crossProduct.x()*crossProduct.x()-crossProduct.z()*crossProduct.z()),multiplier*crossProduct.y()*crossProduct.z());
-    G4ThreeVector v2row3 (multiplier*crossProduct.x()*crossProduct.z(), multiplier*crossProduct.y()*crossProduct.z(),multiplier*(-crossProduct.x()*crossProduct.x()-crossProduct.y()*crossProduct.y()));
-    identity->setRows(vrow1+v2row1,vrow2+v2row2,vrow3+v2row3);
-    return identity;
-}
 G4double BDSComptonScatteringEngine::ScatteredEnergy(G4double theta)
 {
     return incomingGamma.e()/(1+(incomingGamma.e()/particleMass)*(1-std::cos(theta)));
@@ -152,8 +150,8 @@ G4double BDSComptonScatteringEngine::PolarizationCrossSectionPhi(G4double theta,
     G4double first = 1.0+std::cos(theta)*std::cos(theta)+(E0-Ep1)*(1.0-std::cos(theta));
     G4double second = std::sin(theta)*std::sin(theta)*(incomingGammaPolarization.p1()*std::cos(phi)+incomingGammaPolarization.p2()*std::sin(phi));
     G4double third = -1.0*incomingGammaPolarization.p3()*(1.0-std::cos(theta))*
-        (Ep1*std::sin(theta)*(incomingElectronPolarization.p1()*std::cos(phi)+incomingElectronPolarization.p2()*std::sin(phi))
-        +incomingElectronPolarization.p3()*std::cos(theta)*(E0+Ep1));
+        (Ep1*std::sin(theta)*(electronPolarizationTheory.p1()*std::cos(phi)+electronPolarizationTheory.p2()*std::sin(phi))
+        +electronPolarizationTheory.p3()*std::cos(theta)*(E0+Ep1));
     return constants*(first+second+third);
 
 }
@@ -161,10 +159,10 @@ G4double BDSComptonScatteringEngine::PolarizationCrossSectionPhi(G4double theta,
 G4double BDSComptonScatteringEngine::PolarizationCrossSectionMaxPhi(G4double theta ,G4double Ep)
 {
   G4double Ep1 = Ep/particleMass;
-  G4double numer = -incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep1*std::sin(theta)*incomingElectronPolarization.p2() -
+  G4double numer = -incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep1*std::sin(theta)*electronPolarizationTheory.p2() -
                         std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p2();
   G4double denom = std::sin(theta)*std::sin(theta)*incomingGammaPolarization.p1()+
-                    incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep1*std::sin(theta)*incomingElectronPolarization.p1();
+                    incomingGammaPolarization.p3()*(1.0-std::cos(theta))*Ep1*std::sin(theta)*electronPolarizationTheory.p1();
   G4double phiVal = std::atan2(numer, denom);
   if (phiVal<0)
     {phiVal+=CLHEP::pi;}

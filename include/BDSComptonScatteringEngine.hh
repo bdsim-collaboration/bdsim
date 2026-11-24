@@ -45,20 +45,36 @@ public:
   inline G4LorentzVector GetScatteredElectron()  {return scatteredElectron;};
   G4double KleinNishinaDifferential(G4double theta);
   G4double MCMCTheta();
-  G4RotationMatrix* CalculateRotation();
-  inline void SetIncomingGammaPolarization(G4StokesVector incomingGammaPolarizationIn) {incomingGammaPolarization=incomingGammaPolarizationIn;}
+
+  /// Set the Stokes parameters of the incoming photon. These are not a spatial vector: xi1 and xi2
+  /// are linear polarisation relative to referenceAxisIn and xi3 is circular polarisation. The
+  /// reference axis must be in the same frame as the incoming photon momentum (the electron rest
+  /// frame) and transverse to it, e.g. the laser polarisation 4-vector boosted and gauge fixed.
+  inline void SetIncomingGammaPolarization(const G4StokesVector& incomingGammaPolarizationIn,
+                                           const G4ThreeVector& referenceAxisIn)
+  {
+    incomingGammaPolarization = incomingGammaPolarizationIn;
+    incomingGammaPolarizationAxis = referenceAxisIn;
+  }
   inline void SetIncomingElectronPolarization(G4StokesVector incomingElectronPolarizationIn) {incomingElectronPolarization=incomingElectronPolarizationIn;}
   G4double MCPhi(G4double theta, G4double scatteredEnergy);
   G4double PolarizationCrossSectionPhi(G4double theta, G4double phi, G4double scatteredEnergy);
   G4double ScatteredEnergy(G4double theta);
   G4double PolarizationCrossSectionMaxPhi(G4double theta,G4double EP);
 private:
+  /// Rotation from the electron rest frame to the frame the cross-section is evaluated in (incoming
+  /// photon along +z, phi measured from +x). The theory x axis is chosen along the photon
+  /// polarisation reference axis, so the photon Stokes parameters are the same in both.
+  G4RotationMatrix RestToTheoryFrameRotation() const;
+
   G4LorentzVector incomingGamma;
   G4LorentzVector scatteredGamma;
   G4LorentzVector incomingElectron;
   G4LorentzVector scatteredElectron;
   G4StokesVector incomingGammaPolarization;
+  G4ThreeVector  incomingGammaPolarizationAxis;
   G4StokesVector incomingElectronPolarization;
+  G4StokesVector electronPolarizationTheory; ///< incomingElectronPolarization in the theory frame.
   G4StokesVector outgoingGammaPolarization;
   G4StokesVector outgoingElectronPolarization;
   G4double particleMass;

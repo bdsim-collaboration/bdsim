@@ -127,10 +127,10 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       G4ThreeVector stepVector = particlePositionPostStepGlobal-particlePositionPreStepGlobal;
       G4double  stepMagnitude = stepVector.mag();
 
-      //#################### Get rotation and translation matrices for global to laser coordinates ############################
+      //#################### Get transforms between global and laser coordinates ############################
 
-      const G4RotationMatrix* rot = track.GetTouchable()->GetRotation();
-      const G4AffineTransform transform = track.GetTouchable()->GetHistory()->GetTopTransform();
+      const G4AffineTransform transform = track.GetTouchable()->GetHistory()->GetTopTransform(); // global to laser
+      const G4AffineTransform localToGlobal = transform.Inverse();
 
       // ############### Need local pre step points to step through laser ###############
       G4ThreeVector particlePositionLocal = transform.TransformPoint(particlePositionPreStepGlobal);
@@ -139,13 +139,13 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       //########################## Get Laser #####################################
       const BDSLaser* laser = lvv->Laser();
       //######################## Get/Create photon information ##############################
-      G4ThreeVector photonPolarization = laser->Polarization();
-      G4ThreeVector photonUnit(0,0,1);
-
-      // ################ Rotate the photon information to the correct orientation ###########
-      photonPolarization.transform(*rot);
-      particlePolarization.transform(*rot);
-      photonUnit.transform(*rot);
+      // Stokes parameters, defined relative to the laser's local x axis - not a spatial vector
+      G4StokesVector photonPolarization(laser->Polarization());
+      // ################ Rotate the photon information from laser to global coordinates ###########
+      // the polarisation reference axis is rotated with the photon direction, the Stokes parameters are not.
+      // the particle polarisation is already in global coordinates so is not transformed.
+      G4ThreeVector photonPolarizationAxis = localToGlobal.TransformAxis(G4ThreeVector(1,0,0));
+      G4ThreeVector photonUnit = localToGlobal.TransformAxis(G4ThreeVector(0,0,1));
       G4double photonEnergy = (CLHEP::h_Planck*CLHEP::c_light)/laser->Wavelength();
 
       // ################ Create a Lorentz Vector for the photon for easy boosting #################
@@ -155,6 +155,12 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       // ################ boost to rest frame #################
       photonLorentz.boost(-1.0*particleBeta);
       particle4VectorMomentum.boost(-particleBeta);
+
+      // boost the polarisation 4-vector (0, axis) and gauge fix it (subtract a multiple of the photon
+      // 4-momentum) so that it is again purely spatial and transverse to the rest frame photon
+      G4LorentzVector photonPolarization4Vector(photonPolarizationAxis, 0);
+      photonPolarization4Vector.boost(-1.0*particleBeta);
+      photonPolarizationAxis = photonPolarization4Vector.vect() - (photonPolarization4Vector.t()/photonLorentz.t())*photonLorentz.vect();
       G4double photonEnergyLorentz = photonLorentz.e();
 
       //#################### create array and value for the total laser flux
@@ -198,7 +204,7 @@ G4VParticleChange* BDSLaserCumulativeCompton::PostStepDoIt(const G4Track& track,
       aParticleChange.SetNumberOfSecondaries(1);
       comptonEngine->setIncomingElectron(particle4VectorMomentum);
       comptonEngine->setIncomingGamma(photonLorentz);
-      comptonEngine->SetIncomingGammaPolarization(G4StokesVector(photonPolarization));
+      comptonEngine->SetIncomingGammaPolarization(photonPolarization, photonPolarizationAxis);
       comptonEngine->SetIncomingElectronPolarization(G4StokesVector(particlePolarization));
       comptonEngine->PerformCompton(particleBeta,partID);
       G4LorentzVector scatteredGamma = comptonEngine->GetScatteredGamma();
