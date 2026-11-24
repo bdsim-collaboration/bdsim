@@ -838,7 +838,8 @@ void BDSDetectorConstruction::PlaceBeamlineInWorld(BDSBeamline*          beamlin
 								     element->GetSPositionMiddle(),
 								     element->GetIndex(),
 								     beamline);
-	  
+	  theinfo->RegisterSubElementsFromMassWorld();
+
 	  BDSPhysicalVolumeInfoRegistry::Instance()->RegisterInfo(pvs, theinfo, true);
         }
       if (registerPlacementNamesForOutput)

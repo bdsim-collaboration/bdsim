@@ -191,6 +191,9 @@ public:
 
   std::map<short int, std::string> materialIDToName;
   std::map<std::string, short int> materialNameToID;
+
+  /// Per element (same index as componentName): sub-element names, indexed by subElementID.
+  std::vector<std::vector<std::string>> subElementNames;
   
   std::vector<std::string> samplerNamesUnique;
   std::vector<double>      samplerSPosition;
@@ -199,7 +202,7 @@ public:
   std::map<std::string, double> samplerCRadius;
   std::map<std::string, double> samplerSRadius;
 
-  ClassDef(BDSOutputROOTEventModel, 7);
+  ClassDef(BDSOutputROOTEventModel, 8);
 };
 
 #endif

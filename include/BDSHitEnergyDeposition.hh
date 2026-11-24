@@ -54,7 +54,9 @@ public:
 			 G4double stepLengthIn         = 0,
 			 G4int    beamlineIndexIn      = -1,
 			 G4int    postStepProcessType  = -1,
-			 G4int    postStepProcessSubType = -1);
+			 G4int    postStepProcessSubType = -1,
+			 G4int    subElementIDIn         = -1,
+			 G4int    subElementModelIDIn    = -1);
 
   /// Note this should not be inline when we use a G4Allocator.
   virtual ~BDSHitEnergyDeposition();
@@ -66,6 +68,8 @@ public:
   inline G4double GetWeight()          const {return weight;} 
   inline G4double GetSHit()            const {return sHit;}
   inline G4double GetEnergyWeighted()  const {return weight * energy;}
+  inline G4int    GetSubElementID()    const {return subElementID;}
+  inline G4int    GetSubElementModelID() const {return subElementModelID;}
   
   /// @{ Accessor for extra piece of information.
   inline G4double GetPreStepKineticEnergy() const {return extra ? extra->preStepKineticEnergy : 0;}
@@ -101,6 +105,9 @@ private:
   G4double sHit;
 
   G4double weight;
+
+  G4int    subElementID;      ///< Local volume index within the element (-1 if unknown)
+  G4int    subElementModelID; ///< Model tree index of the element subElementID belongs to
 
   BDSHitEnergyDepositionExtra* extra;
 };

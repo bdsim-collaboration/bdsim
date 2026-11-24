@@ -21,7 +21,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "G4String.hh"
 #include "globals.hh" // geant4 types / globals
 
+#include <map>
+#include <vector>
+
 class BDSBeamline;
+class G4VPhysicalVolume;
 
 /**
  * @brief A class holding any information pertaining to a particular physical
@@ -73,6 +77,29 @@ public:
   inline BDSBeamline* GetBeamlineMassWorld() const {return beamlineMassWorld;}
   inline G4int        GetBeamlineMassWorldIndex() const {return beamlineMassWorldIndex;}
   /// @}
+
+  /// Register a volume as a sub-element of this element. IDs are 0..N-1 in
+  /// registration order. Registering the same volume again returns its existing
+  /// ID. A nullptr is ignored and returns -1.
+  G4int RegisterSubElement(G4VPhysicalVolume* pv);
+
+  /// Sub-element ID of a volume in this element, or -1 if not registered here.
+  G4int GetSubElementID(const G4VPhysicalVolume* pv) const;
+
+  /// Name of a sub-element by ID, or an empty string if unknown.
+  G4String GetSubElementName(G4int id) const;
+
+  /// Number of registered sub-elements.
+  inline G4int NumberOfSubElements() const {return (G4int)subElementNames.size();}
+
+  /// Register pv and every volume inside it, at any depth (depth first, parent
+  /// before daughters). Volumes already registered keep their ID. nullptr is ignored.
+  void RegisterSubElementsRecursively(G4VPhysicalVolume* pv);
+
+  /// Find the mass-world element this info corresponds to and register all of its
+  /// volumes (any depth) as sub-elements. Does nothing if there is no matching
+  /// mass-world element, e.g. curvilinear bridge or start / end sections.
+  void RegisterSubElementsFromMassWorld();
   
 private:
   BDSPhysicalVolumeInfo();
@@ -87,6 +114,11 @@ private:
   BDSBeamline* beamlineMassWorld;
   /// Corresponding mass world beam line index - also may be the same as beamlineIndex.
   G4int        beamlineMassWorldIndex;
+
+  /// Local sub-element ID for each volume in this element.
+  std::map<const G4VPhysicalVolume*, G4int> subElementIDs;
+  /// Sub-element names, indexed by sub-element ID.
+  std::vector<G4String> subElementNames;
 };
 
 
