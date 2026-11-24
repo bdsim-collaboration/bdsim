@@ -15,6 +15,6 @@ beam, particle="e-",
 
 s1: samplerplacement, referenceElement="d1",
 		      referenceElementNumber=1,
-		      x=-20*cm, y=-1*cm, z=30*cm,
+		      x=-20*cm, y=-1*cm, s=30*cm,
     		      axisAngle=1, axisY=1, angle=pi/4,
 		      aper1=10*cm, aper2=5*cm, shape="rectangular";

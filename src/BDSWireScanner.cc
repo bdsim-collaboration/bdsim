@@ -16,9 +16,11 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorComponent.hh"
+#include "BDSAperture.hh"
 #include "BDSColours.hh"
 #include "BDSDebug.hh"
 #include "BDSException.hh"
+#include "BDSExtent.hh"
 #include "BDSBeamPipe.hh"
 #include "BDSBeamPipeFactory.hh"
 #include "BDSBeamPipeInfo.hh"
@@ -60,28 +62,22 @@ BDSWireScanner::BDSWireScanner(const G4String&      nameIn,
   if (wireLength <= 0)
     {throw BDSException(__METHOD_NAME__, "Error: wire for \"" + name + "\" must be > 0.");}
 
-  // check whether the beam pipe will fit transversely (ignores presumably very small
-  // wire diameter). work out end points off wire including length and offset in x,y.
-  G4TwoVector offsetXY = G4TwoVector(wireOffset.x(), wireOffset.y());
-  G4TwoVector tipTop = G4TwoVector(0, 0.5*wireLength);
-  tipTop.rotate(wireAngle);
-  G4TwoVector tipBot = G4TwoVector(tipTop);
-  tipBot.rotate(CLHEP::pi);
-  tipTop += offsetXY;
-  tipBot += offsetXY;
-  G4double innerRadius = beamPipeInfo->IndicativeRadiusInner();
-  if (tipTop.mag() > innerRadius || tipBot.mag() > innerRadius)
-    {throw BDSException(__METHOD_NAME__, "wire for \"" + name + "\" is too big to fit in beam pipe give offsets.");}
+  BDSExtent wire = BDSExtent(0, 0.5*wireLength, 0);
+  wire = wire.Tilted(wireAngle);
+  wire = wire.Translate(wireOffset.x(), wireOffset.y(), 0);
+  G4bool fits = beamPipeInfo->aperture->EncompassesXY(wire);
+  if (!fits)
+    {throw BDSException(__METHOD_NAME__, "wire for \"" + name + "\" is too big to fit in beam pipe given offsets.");}
   if (!wireColour)
     {wireColour = BDSColours::Instance()->GetColour("wirescanner");}
 }
 
 void BDSWireScanner::BuildContainerLogicalVolume()
 {
-  BDSBeamPipeFactory* factory = BDSBeamPipeFactory::Instance();
-  BDSBeamPipe* pipe = factory->CreateBeamPipe(name + "_beampipe",
-					      chordLength,
-					      beamPipeInfo);
+  BDSBeamPipeFactory factory;
+  BDSBeamPipe* pipe = factory.CreateBeamPipe(name + "_beampipe",
+					     chordLength,
+					     beamPipeInfo);
   RegisterDaughter(pipe);
   
   // make the beam pipe container, this object's container

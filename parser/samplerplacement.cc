@@ -53,6 +53,8 @@ void SamplerPlacement::clear()
   sweepAnglePhi = -1;   // -1 to flag we should use 2pi later when we have units
   startAngleTheta = 0;
   sweepAngleTheta = -1; // -1 to flag we should use 2pi later when we have units
+  tilt  = 0;
+  nPoints = 0;
   partID.clear();
   partIDSetID = -1;
 }
@@ -86,6 +88,8 @@ void SamplerPlacement::PublishMembers()
   publish("sweepAnglePhi", &SamplerPlacement::sweepAnglePhi);
   publish("startAngleTheta", &SamplerPlacement::startAngleTheta);
   publish("sweepAngleTheta", &SamplerPlacement::sweepAngleTheta);
+  publish("tilt",          &SamplerPlacement::tilt);
+  publish("nPoints",       &SamplerPlacement::nPoints);
   publish("partID",        &SamplerPlacement::partID);
   // partIDSetID is for internal use only - not published
 }
@@ -99,17 +103,17 @@ void SamplerPlacement::print()const
 	    << "referenceElementNumber" << referenceElementNumber << std::endl
 	    << "s"              << s             << std::endl
 	    << "x "             << x             << std::endl
-    	    << "y "             << y             << std::endl
-    	    << "z "             << z             << std::endl
-    	    << "phi "           << phi           << std::endl
-    	    << "theta "         << theta         << std::endl
-    	    << "psi "           << psi           << std::endl
-    	    << "axisX "         << axisX         << std::endl
-    	    << "axisY "         << axisY         << std::endl
-    	    << "axisZ "         << axisZ         << std::endl
-    	    << "angle "         << angle         << std::endl
+    	<< "y "             << y             << std::endl
+    	<< "z "             << z             << std::endl
+    	<< "phi "           << phi           << std::endl
+    	<< "theta "         << theta         << std::endl
+        << "psi "           << psi           << std::endl
+        << "axisX "         << axisX         << std::endl
+        << "axisY "         << axisY         << std::endl
+        << "axisZ "         << axisZ         << std::endl
+        << "angle "         << angle         << std::endl
 	    << "axisAngle "     << axisAngle     << std::endl
-    	    << "apertureMode "  << apertureModel << std::endl
+        << "apertureMode "  << apertureModel << std::endl
 	    << "shape "         << shape         << std::endl
 	    << "aper1 "         << aper1         << std::endl
 	    << "aper2 "         << aper2         << std::endl
@@ -119,6 +123,8 @@ void SamplerPlacement::print()const
 	    << "sweepAnglePhi " << sweepAnglePhi << std::endl
 	    << "startAngleTheta " << startAngleTheta << std::endl
 	    << "sweepAngleTheta " << sweepAngleTheta << std::endl
+	    << "tilt "          << tilt          << std::endl
+	    << "nPoints "       << nPoints       << std::endl
 	    << "partID list {";
   for (auto v : partID)
     {std::cout << v << ", ";}

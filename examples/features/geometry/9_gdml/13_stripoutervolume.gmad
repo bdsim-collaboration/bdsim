@@ -1,4 +1,4 @@
-d1: drift,l=67*cm;
+d1: drift,l=67*cm, aper1=2.5*cm;
 l1: line=(d1,d1,d1,d1,d1,ele,d1,d1);
 ele: element, l=0.6*m, geometryFile="gdml:gdmls/ln.gdml", stripOuterVolume=1;
 !ele: element, l=1.5*m, geometryFile="gdml:gdmls/ln.gdml", stripOuterVolume=0;

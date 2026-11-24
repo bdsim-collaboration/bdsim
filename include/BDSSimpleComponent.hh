@@ -22,6 +22,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "globals.hh" // geant4 types / globals
 
+class BDSBeamPipeInfo;
 class BDSExtent;
 class BDSGeometryComponent;
 

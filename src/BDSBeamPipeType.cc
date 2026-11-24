@@ -40,7 +40,8 @@ std::map<BDSBeamPipeType, std::string>* BDSBeamPipeType::dictionary =
    {BDSBeamPipeType::octagonal,      "octagonal"},
    {BDSBeamPipeType::circularvacuum, "circularvacuum"},
    {BDSBeamPipeType::clicpcl,        "clicpcl"},
-   {BDSBeamPipeType::rhombus,        "rhombus"}
+   {BDSBeamPipeType::rhombus,        "rhombus"},
+   {BDSBeamPipeType::regularpolygon, "regularpolygon"}
 });	
 
 BDSBeamPipeType BDS::DetermineBeamPipeType(G4String apertureType)
@@ -59,6 +60,19 @@ BDSBeamPipeType BDS::DetermineBeamPipeType(G4String apertureType)
   types["clicpcl"]        = BDSBeamPipeType::clicpcl;
   types["pointsfile"]     = BDSBeamPipeType::pointsfile; // added only so the error print out will be correct
   types["rhombus"]        = BDSBeamPipeType::rhombus;
+
+  // aperture types
+  types["circle"]       = BDSBeamPipeType::circular;
+  types["ellipse"]      = BDSBeamPipeType::elliptical;
+  types["rectangle"]    = BDSBeamPipeType::rectangular;
+  types["rectcircle"]   = BDSBeamPipeType::lhc;
+  types["rectellipse"]  = BDSBeamPipeType::rectellipse;
+  types["racetrack"]    = BDSBeamPipeType::racetrack;
+  types["octagon"]      = BDSBeamPipeType::octagonal;
+  types["clicpcl"]      = BDSBeamPipeType::clicpcl;
+  types["rhombus"]      = BDSBeamPipeType::rhombus;
+  types["points"]       = BDSBeamPipeType::pointsfile;
+  types["regularpolygon"] = BDSBeamPipeType::regularpolygon;
 
   apertureType = BDS::LowerCase(apertureType);
 

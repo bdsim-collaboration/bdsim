@@ -17,7 +17,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef BDSCOMPONENTFACTORY_H
 #define BDSCOMPONENTFACTORY_H
-
+#include "BDSApertureFactory.hh"
+#include "BDSBeamPipeType.hh"
 #include "BDSBeamlineIntegral.hh"
 #include "BDSFieldType.hh"
 #include "BDSMagnetGeometryType.hh"
@@ -33,7 +34,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "CLHEP/Units/PhysicalConstants.h"
 
+#include <list>
 #include <map>
+#include <vector>
 
 class G4Colour;
 class G4Material;
@@ -111,17 +114,15 @@ public:
   /// from the curvilinear coordinates for the tilt and offset of the magnet.
   static G4Transform3D CreateFieldTransform(GMAD::Element const* el);
 
-  /// Prepare the recipe for a piece of beam pipe. Static and public so it can be used by
-  /// SBendBuilder.
-  static BDSBeamPipeInfo* PrepareBeamPipeInfo(GMAD::Element const* el,
-					      const G4ThreeVector& inputFaceNormal  = G4ThreeVector(0,0,-1),
-					      const G4ThreeVector& outputFaceNormal = G4ThreeVector(0,0,1));
+  BDSBeamPipeInfo* PrepareBeamPipeInfoStraight(GMAD::Element const* el) const;
 
-  /// Interface to other PrepareBeamPipeInfo() for convenience to avoid preparing
-  /// face normal vectors repeatedly.
-  static BDSBeamPipeInfo* PrepareBeamPipeInfo(GMAD::Element const* el,
-					      G4double angleIn,
-					      G4double angleOut);
+  BDSBeamPipeInfo* PrepareBeamPipeInfo(GMAD::Element const* el,
+                                       const G4ThreeVector& inputFaceNormalIn  = G4ThreeVector(0,0,-1),
+                                       const G4ThreeVector& outputFaceNormalIn = G4ThreeVector(0,0,1)) const;
+  
+  BDSBeamPipeInfo* PrepareBeamPipeInfo(GMAD::Element const* el,
+                                       G4double angleIn,
+                                       G4double angleOut) const;
 
   /// Determine which side the yoke of an asymmetric bend should go on based on the angle
   /// of the bend and the overriding setting in the element.
@@ -149,14 +150,14 @@ public:
   /// Prepare the recipe for magnet outer geometry for an element. This uses a
   /// strength instance which (we assume) represents the element. Evenly splits angle
   /// between input and output faces.
-  static BDSMagnetOuterInfo* PrepareMagnetOuterInfo(const G4String&          elementNameIn,
+  BDSMagnetOuterInfo* PrepareMagnetOuterInfo(const G4String&          elementNameIn,
 						    const GMAD::Element*     el,
 						    const BDSMagnetStrength* st,
 						    const BDSBeamPipeInfo*   beamPipe,
 						    G4double defaultHorizontalWidth    = -1,
 						    G4double defaultVHRatio            = 1.0,
 						    G4double defaultCoilWidthFraction  = -1,
-						    G4double defaultCoilHeightFraction = -1);
+						    G4double defaultCoilHeightFraction = -1) const;
 
   /// Determine the magnet geometry type. If not specified or the global option to ignore
   /// local magnet geometry definitions is on, then the global default is used
@@ -165,7 +166,7 @@ public:
   /// Prepare the recipe for magnet outer geometry with full control of the angled faces
   /// and which side the yoke is on. The angle in and out are the face angles relative
   /// to a chord for a straight section of outer magnet geometry.
-  static BDSMagnetOuterInfo* PrepareMagnetOuterInfo(const G4String&        elementNameIn,
+  BDSMagnetOuterInfo* PrepareMagnetOuterInfo(const G4String&        elementNameIn,
 						    const GMAD::Element*   el,
 						    const G4double         angleIn,
 						    const G4double         angleOut,
@@ -174,7 +175,7 @@ public:
 						    G4double       defaultHorizontalWidth    = -1,
 						    G4double       defaultVHRatio            = -1,
 						    G4double       defaultCoilWidthFraction  = -1,
-						    G4double       defaultCoilHeightFraction = -1);
+						    G4double       defaultCoilHeightFraction = -1) const;
 
   /// Checks if colour is specified for element, else uses the default for that element type.
   /// If the optional material is given and also element->autoColour is true then the material
@@ -233,12 +234,13 @@ public:
 private:
   /// No default constructor
   BDSComponentFactory() = delete;
-
+  BDSApertureFactory apertureFactory;
   BDSComponentFactoryUser* userComponentFactory; ///< User component factory if any.
   G4double lengthSafety;      ///< Length safety from global constants.
   G4double thinElementLength; ///< Length of a thin element.
   G4bool includeFringeFields; ///< Cache of whether to include fringe fields.
   G4bool yokeFields;          ///< Cache of whether to include yoke magnetic fields.
+  BDSBeamPipeInfo* defaultBeamPipe;
   BDSModulatorInfo* defaultModulator; ///< Default modulator for all components.
   BDSBeamlineIntegral* integralUpToThisComponent; ///< To save passing it through many functions arguments.
   G4double synchronousTAtMiddleOfThisComponent;
@@ -331,10 +333,17 @@ private:
 
   /// Test the component length is sufficient for practical construction.
   G4bool HasSufficientMinimumLength(GMAD::Element const* el,
-				    G4bool               printWarning = true);
+                                    G4bool               printWarning = true);
 
   /// Prepare the vacuum material from the element or resort to default in options.
   G4Material* PrepareVacuumMaterial(GMAD::Element const* el) const;
+
+  /// Search the prepared apertures and if found return a copy. Will return nullptr
+  /// if none found.
+  BDSAperture* FindApertureModel(const G4String& apertureModelName) const;
+
+  /// Prepare all aperture definitions from the parser.
+  void PrepareApertures();
   
   /// Prepare all RF cavity models in the component factory. Kept here and copies delivered.
   /// This class deletes them upon destruction.
@@ -391,14 +400,12 @@ private:
   /// Prepare magnet strength for rmatrix
   BDSMagnetStrength* PrepareMagnetStrengthForRMatrix(GMAD::Element const* el) const;
 
-  /// Map of cavity model info instances by name
+  /// @{ Map of prepared objects by name
+  std::map<G4String, BDSAperture*> apertures;
   std::map<G4String, BDSCavityInfo*> cavityInfos;
-
-  /// Maps of crystal info instances by name.
   std::map<G4String, BDSCrystalInfo*> crystalInfos;
-
-  /// Map of laser instances by name. Owned by this class.
   std::map<G4String, BDSLaser*> lasers;
+  /// @}
 
   /// Local copy of reference to integrator set to use.
   const BDSIntegratorSet* integratorSet;

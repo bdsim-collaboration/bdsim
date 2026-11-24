@@ -37,7 +37,6 @@ class G4MaterialPropertiesTable;
 class BDSMaterials
 {
 public:
-
   /// Singleton pattern access
   static BDSMaterials* Instance();
   ~BDSMaterials(); 

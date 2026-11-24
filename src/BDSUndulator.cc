@@ -24,7 +24,6 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSException.hh"
 #include "BDSFieldBuilder.hh"
 #include "BDSFieldInfo.hh"
-#include "BDSGlobalConstants.hh"
 #include "BDSMaterials.hh"
 #include "BDSSDType.hh"
 #include "BDSUndulator.hh"
@@ -59,7 +58,7 @@ BDSUndulator::BDSUndulator(const G4String&  nameIn,
   material(materialIn)
 {
   if (vacuumFieldInfo)
-    {vacuumFieldInfo->SetBeamPipeRadius(beamPipeInfoIn->IndicativeRadius());}
+    {vacuumFieldInfo->SetBeamPipeRadius(beamPipeInfoIn->Extent().MaximumAbsTransverse());} // TBC
 }
 
 BDSUndulator::~BDSUndulator()
@@ -79,12 +78,13 @@ void BDSUndulator::BuildContainerLogicalVolume()
   // can now cast num magnets to integer as above check should catch if it isn't an integer.
   numMagnets = (G4int)(2*chordLength/undulatorPeriod);
 
-  G4double beampipeThickness = BDSGlobalConstants::Instance()->DefaultBeamPipeModel()->beamPipeThickness;
+  G4double beampipeThickness = beamPipeInfo->beamPipeThickness;
   if (!BDS::IsFinite(undulatorGap))
     {
       G4cout << __METHOD_NAME__ << "\"undulatorGap\" = 0 -> using 2x beam pipe height." << G4endl;
       undulatorGap = 2*(bp.DY() +  2*beampipeThickness);
     }
+
   if (undulatorGap < (bp.DY() + 2*beampipeThickness + lengthSafetyLarge))
     {throw BDSException(__METHOD_NAME__, "\"undulatorGap\" for element: \"" + name + "\" smaller than beam pipe aperture.");}
   
@@ -120,9 +120,9 @@ void BDSUndulator::BuildContainerLogicalVolume()
 void BDSUndulator::Build()
 {
   BDSAcceleratorComponent::Build();
-
-  BDSBeamPipeFactory* factory = BDSBeamPipeFactory::Instance();
-  BDSBeamPipe* pipe = factory->CreateBeamPipe(name, chordLength, beamPipeInfo);
+  
+  BDSBeamPipeFactory factory;
+  BDSBeamPipe* pipe = factory.CreateBeamPipe(name, chordLength, beamPipeInfo);
   RegisterDaughter(pipe);
 
   G4double singleMagnetLength = (undulatorPeriod * 0.5) - lengthSafetyLarge;

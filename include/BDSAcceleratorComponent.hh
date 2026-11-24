@@ -100,6 +100,9 @@ public:
 			  const G4ThreeVector& inputFaceNormalIn  = G4ThreeVector(0,0,-1),
 			  const G4ThreeVector& outputFaceNormalIn = G4ThreeVector(0,0, 1),
 			  BDSFieldInfo*        fieldInfoIn        = nullptr);
+  BDSAcceleratorComponent() = delete;
+  BDSAcceleratorComponent(const BDSAcceleratorComponent& other) = delete;
+  BDSAcceleratorComponent& operator=(const BDSAcceleratorComponent& other) = delete;
   
   virtual ~BDSAcceleratorComponent();
 
@@ -285,16 +288,6 @@ protected:
   BDSFieldInfo* fieldInfo; ///< Recipe for field that could overlay this whole component.
   
 private:
-  /// Private default constructor to force use of provided constructors, which
-  /// ensure an object meets the requirements for the rest of the construction
-  /// and placement machinery in BDSIM
-  BDSAcceleratorComponent() = delete;
-
-  /// @{ Assignment and copy constructor not implemented nor used
-  BDSAcceleratorComponent& operator=(const BDSAcceleratorComponent&) = delete;
-  BDSAcceleratorComponent(BDSAcceleratorComponent&) = delete;
-  /// @}
-
   //A vector containing the physical volumes in the accelerator component- to be used for geometric importance sampling etc.
 
   /// Boolean record of whether this component has been already initialised.

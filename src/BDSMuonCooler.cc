@@ -268,7 +268,7 @@ void BDSMuonCooler::BuildCavities()
       if (dZ >= 1*CLHEP::mm)
         {
           G4ThreeVector position = {0,0,zB-0.5*dZ};
-          beampipeInfos.emplace_back(DriftSpec{beamPipeTemplate,position});
+          beampipeInfos.emplace_back(DriftSpec{beamPipeTemplate, position});
         }
     }
   

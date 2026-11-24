@@ -42,6 +42,10 @@ namespace GMAD
     double      aper2;
     double      aper3;
     double      aper4;
+    double      tilt;
+    double      offsetX;
+    double      offsetY;
+    int         nPoints;
     
     /// Constructor.
     Aperture();

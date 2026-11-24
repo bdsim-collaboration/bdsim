@@ -94,8 +94,8 @@ G4String BDSGasJet::Material() const
 
 void BDSGasJet::BuildContainerLogicalVolume()
 {
-  BDSBeamPipeFactory* factory = BDSBeamPipeFactory::Instance();
-  BDSBeamPipe* pipe = factory->CreateBeamPipe(name + "_beampipe",
+  BDSBeamPipeFactory factory;
+  BDSBeamPipe* pipe = factory.CreateBeamPipe(name + "_beampipe",
                                               chordLength,
                                               beamPipeInfo);
   RegisterDaughter(pipe);

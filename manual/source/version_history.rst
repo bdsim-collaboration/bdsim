@@ -101,6 +101,7 @@ New Features
 
 **General**
 
+* Default beam pipe radius is now 5 cm with a 2 mm thicknes.
 * :code:`autoColour=1` now works for all collimators and target elements. If turned on, the
   colour of the element in the visualiser will be given by the material.
 * GDML exports from BDSIM now include auxiliary colour information that can be handled by

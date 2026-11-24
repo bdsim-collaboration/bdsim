@@ -52,4 +52,14 @@ add_test(NAME "tester-model-tree" COMMAND BDSModelTreeTester "../examples/featur
 add_executable(TH1SetTest TH1SetTest.cc)
 target_link_libraries(TH1SetTest ${BDSIM_LIB_NAME} ${ROOT_LIBRARIES} rebdsim)
 
+add_executable(BDSPolygonTester BDSPolygonTester.cc)
+set_target_properties(BDSPolygonTester PROPERTIES OUTPUT_NAME "BDSPolygonTester")
+target_link_libraries(BDSPolygonTester ${BDSIM_LIB_NAME})
+add_test(NAME "tester-polygon" COMMAND BDSPolygonTester)
+
+add_executable(BDSExtentTester BDSExtentTester.cc)
+set_target_properties(BDSExtentTester PROPERTIES OUTPUT_NAME "BDSExtentTester")
+target_link_libraries(BDSExtentTester ${BDSIM_LIB_NAME})
+add_test(NAME "tester-extent" COMMAND BDSExtentTester)
+
 add_subdirectory(TrackingTestFiles)

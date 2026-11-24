@@ -19,6 +19,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef __ROOTBUILD__
 #include "BDSAcceleratorModel.hh"
+#include "BDSAperture.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineElement.hh"
 #include "BDSBeamPipeInfo.hh"
@@ -314,9 +315,9 @@ void BDSOutputROOTEventModel::Fill(const std::vector<G4int>&                coll
       BDSTiltOffset* to = (*i)->GetTiltOffset();
       if (to)
         {
-          tilt.push_back((float)(to->GetTilt() / CLHEP::rad));
-          offsetX.push_back((float)(to->GetXOffset() / CLHEP::m));
-          offsetY.push_back((float)(to->GetYOffset() / CLHEP::m));
+          tilt.push_back((float)(to->Tilt() / CLHEP::rad));
+          offsetX.push_back((float)(to->OffsetX() / CLHEP::m));
+          offsetY.push_back((float)(to->OffsetY() / CLHEP::m));
         }
       else
         {
@@ -332,11 +333,20 @@ void BDSOutputROOTEventModel::Fill(const std::vector<G4int>&                coll
       
       // beam pipe
       BDSBeamPipeInfo* beampipeinfo = (*i)->GetBeamPipeInfo();
+      
+      if (beampipeinfo)
+        {
+          BDSAperture* apIn  = beampipeinfo->aperture;
+          std::array<G4double,7> apInNums = apIn->ApertureNumbers();
+          beamPipeAper1.push_back(apInNums[0] / CLHEP::m);
+          beamPipeAper2.push_back(apInNums[1] / CLHEP::m);
+          beamPipeAper3.push_back(apInNums[2] / CLHEP::m);
+          beamPipeAper4.push_back(apInNums[3] / CLHEP::m);
+          //BDSAperture* apOut = beampipeinfo->apertureOut;
+          //if (apOut)
+          //{;} //TBC
+        }
       beamPipeType.push_back(beampipeinfo  ? beampipeinfo->beamPipeType.ToString() : "");
-      beamPipeAper1.push_back(beampipeinfo ? beampipeinfo->aper1 / CLHEP::m : 0);
-      beamPipeAper2.push_back(beampipeinfo ? beampipeinfo->aper2 / CLHEP::m : 0);
-      beamPipeAper3.push_back(beampipeinfo ? beampipeinfo->aper3 / CLHEP::m : 0);
-      beamPipeAper4.push_back(beampipeinfo ? beampipeinfo->aper4 / CLHEP::m : 0);
       
       // associated material if any
       const auto accComp = (*i)->GetAcceleratorComponent();

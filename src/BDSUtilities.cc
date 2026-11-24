@@ -142,7 +142,7 @@ G4int BDS::CalculateOrientation(G4double angle)
 }
 
 std::pair<G4ThreeVector,G4ThreeVector> BDS::CalculateFaces(G4double angleIn,
-							   G4double angleOut)
+                                                           G4double angleOut)
 {
   /// orientation -1,0,1 value - always use |angle| with trigonometric and then
   /// multiply by this factor, 0 by default
@@ -337,6 +337,11 @@ G4bool BDS::NonZero(G4double value)
   return std::abs(value) > std::numeric_limits<double>::min();
 }
 
+G4bool BDS::DoublesAreEqual(G4double v1, G4double v2)
+{
+  return std::abs(v1 - v2) <= std::numeric_limits<double>::epsilon() * std::abs(v1);
+}
+
 G4bool BDS::IsFiniteStrength(G4double value)
 {
   return IsFinite(value, 1e-50);
@@ -360,7 +365,7 @@ G4bool BDS::IsInteger(const char* ch, int& convertedInteger)
     {return false;}
   
   char * p;
-  convertedInteger = std::strtol(ch, &p, 10);
+  convertedInteger = (int)std::strtol(ch, &p, 10);
   
   return (*p == 0);
 }
@@ -379,7 +384,25 @@ G4bool BDS::IsNumber(const char* ch, double& convertedNumber)
   return (*p == 0);
 }
 
-void BDS::PrintRotationMatrix(G4RotationMatrix* rm, G4String keyName)
+unsigned int BDS::GreatestCommonDivisor(unsigned int a, unsigned int b)
+{
+  if (a == 0) 
+    {return b;}
+  else
+    {return BDS::GreatestCommonDivisor(b % a, a);}
+}
+
+unsigned int BDS::LowestCommonMultiple(unsigned int a, unsigned int b)
+{
+  return a * b / BDS::GreatestCommonDivisor(a, b);
+}
+
+unsigned int BDS::NextMultiple(unsigned int value, unsigned int divisor)
+{
+  return value + value % divisor;
+}
+
+void BDS::PrintRotationMatrix(G4RotationMatrix* rm, const G4String& keyName)
 {
   G4cout << "Rotation matrix - reference: \"" << keyName << "\"" << *rm << G4endl;
   G4cout << "unit x -> " << G4ThreeVector(1,0,0).transform(*rm) << G4endl;

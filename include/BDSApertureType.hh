@@ -19,7 +19,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #define BDSAPERTURETYPE_H
 
 #include "BDSTypeSafeEnum.hh"
-#include "globals.hh"         // geant4 globals / types
+#include "G4String.hh"
 
 /**
  * @brief Type definition for aperture - used for comparison
@@ -30,9 +30,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 struct aperturetypes_def
 {
-  enum type {circular, rectangular, elliptical, lhc,
-	     lhcdetailed, rectellipse, racetrack, octagonal,
-	     circularvacuum, clicpcl};
+  enum type {circle, rectangle, ellipse, rectcircle,
+	     rectellipse, racetrack, octagon, clicpcl, rhombus,
+	     points, regularpolygon};
 };
 
 typedef BDSTypeSafeEnum<aperturetypes_def,int> BDSApertureType;
@@ -40,7 +40,7 @@ typedef BDSTypeSafeEnum<aperturetypes_def,int> BDSApertureType;
 namespace BDS
 {
   /// function that gives corresponding enum value for string (case-insensitive)
-  BDSApertureType DetermineApertureType(G4String apertureType);
+  BDSApertureType DetermineApertureType(G4String apertureType, G4bool tolerateBeamPipeType=true);
 }
 
 #endif

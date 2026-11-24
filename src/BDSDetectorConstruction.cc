@@ -18,7 +18,8 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSAcceleratorComponent.hh"
 #include "BDSAcceleratorComponentRegistry.hh"
 #include "BDSAcceleratorModel.hh"
-#include "BDSApertureInfo.hh"
+#include "BDSAperture.hh"
+#include "BDSApertureFactory.hh"
 #include "BDSAuxiliaryNavigator.hh"
 #include "BDSBeamline.hh"
 #include "BDSBeamlineBLMBuilder.hh"
@@ -182,7 +183,7 @@ void BDSDetectorConstruction::UpdateSamplerDiameterAndCountSamplers()
         {nSamplers++;}
       
       G4double length = blElement.l;
-      G4double angle  = blElement.angle;
+      G4double angle  = std::abs(blElement.angle);
       if (!BDS::IsFinite(length))
         {continue;} // avoid divide by 0
       G4double ratio  = angle / length;
@@ -313,15 +314,11 @@ void BDSDetectorConstruction::InitialiseRegions()
 
 void BDSDetectorConstruction::InitialiseApertures()
 {
-  std::map<G4String, BDSApertureInfo*> apertures;
+  std::map<G4String, BDSAperture*> apertures;
+  BDSApertureFactory fac;
   for (const GMAD::Aperture& a : BDSParser::Instance()->GetApertures())
     {
-      BDSApertureInfo* ap = new BDSApertureInfo(a.apertureType,
-						a.aper1 * CLHEP::m,
-						a.aper2 * CLHEP::m,
-						a.aper3 * CLHEP::m,
-						a.aper4 * CLHEP::m,
-						a.name);
+      BDSAperture* ap = fac.CreateAperture(a);
       apertures[a.name] = ap;
     }
   acceleratorModel->RegisterApertures(apertures);
@@ -1050,26 +1047,20 @@ BDSExtent BDSDetectorConstruction::CalculateExtentOfSamplerPlacement(const GMAD:
   BDSExtent apertureExtent;
   if (sp.apertureModel.empty())
     {
-      if (sp.samplerType == "plane")
-      {
-        BDSApertureInfo aperture = BDSApertureInfo(sp.shape,
-                                                   sp.aper1 * CLHEP::m,
-                                                   sp.aper2 * CLHEP::m,
-                                                   sp.aper3 * CLHEP::m,
-                                                   sp.aper4 * CLHEP::m,
-                                                   sp.name);
-        apertureExtent = aperture.Extent();
-      }
-      else if (sp.samplerType == "cylinder" || sp.samplerType == "cylinderforward") // we ignore the possibility of only a part-cylinder
-        {apertureExtent = BDSExtent(sp.aper1*CLHEP::m, sp.aper1*CLHEP::m, sp.aper2*CLHEP::m);}
-      else if (sp.samplerType == "sphere" || sp.samplerType == "sphereforward") //  we ignore the possibility of only a part-sphere
-        {apertureExtent = BDSExtent(sp.aper1*CLHEP::m, sp.aper1*CLHEP::m, sp.aper1*CLHEP::m);}
-      else
-        {throw BDSException(__METHOD_NAME__, "unknown samplerType \"" + sp.samplerType + "\" in samplerplacement \"" + sp.name + "\"");}
+      BDSApertureFactory fac;
+      BDSAperture* aperture;
+      try
+        {aperture = fac.CreateAperture(sp);}
+      catch (BDSException& e)
+        {
+          e.AppendToMessage("\nProblem in samplerplacement \""+sp.name+"\"");
+          throw e;
+        }
+      apertureExtent = aperture->Extent();
     }
   else
     {
-      BDSApertureInfo* aperture = BDSAcceleratorModel::Instance()->Aperture(sp.apertureModel);
+      BDSAperture* aperture = BDSAcceleratorModel::Instance()->Aperture(sp.apertureModel);
       apertureExtent = aperture->Extent();
     }
   

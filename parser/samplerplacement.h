@@ -65,6 +65,8 @@ namespace GMAD
     double aper2;
     double aper3;
     double aper4;
+    double tilt;
+    int    nPoints;
     
     double startAnglePhi;
     double sweepAnglePhi;

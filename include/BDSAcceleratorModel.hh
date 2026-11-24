@@ -28,7 +28,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include <set>
 #include <vector>
 
-class BDSApertureInfo;
+class BDSAperture;
 class BDSBeamline;
 class BDSFieldObjects;
 class BDSLinkComponent;
@@ -118,17 +118,18 @@ public:
   void RegisterRegion(BDSRegion* region);
 
   /// Register a single aperture.
-  inline void RegisterAperture(const G4String& name, BDSApertureInfo* apertureIn) {apertures[name] = apertureIn;}
+  inline void RegisterAperture(const G4String& name, BDSAperture* apertureIn) {apertures[name] = apertureIn;}
   
   /// Register a map of apertures with associated names.
-  void RegisterApertures(const std::map<G4String, BDSApertureInfo*>& aperturesIn);
+  void RegisterApertures(const std::map<G4String, BDSAperture*>& aperturesIn);
 
-  /// Access an aperture definition. Will exit if not found. Note, we use pointers as
-  /// we purposively don't provide a default constructor for BDSApertureInfo.
-  BDSApertureInfo*  Aperture(G4String name) const;
+  /// Access an aperture definition. Will throw an exception if not found. Note,
+  /// we use pointers as we purposively don't provide a default constructor for BDSAperture
+  /// as required by an std::map.
+  BDSAperture* Aperture(const G4String& name) const;
 
-  /// Access region information. Will exit if not found.
-  G4Region*         Region(const G4String& name) const;
+  /// Access region information. Will throw an exception if not found.
+  G4Region* Region(const G4String& name) const;
 
   /// Returns pointer to a set of logical volumes. If no set by that name exits, create it.
   std::set<G4LogicalVolume*>* VolumeSet(const G4String& name);
@@ -201,12 +202,12 @@ private:
   std::vector<BDSFieldObjects*>         fields;    ///< All field objects.
   std::map<G4String, BDSRegion*>        regions;
   std::set<BDSRegion*>                  regionStorage; ///< Unique storage of regions.
-  std::map<G4String, BDSApertureInfo*>  apertures; ///< All apertures.
-  
+  std::map<G4String, BDSAperture*>  apertures; ///< All apertures.
+
   /// Placements for parallel world field volumes for geometry placements (the placement beam line). These
   /// contain lvs and transforms to place in a parallel world when it's built for the coordinate look ups.
   std::vector<BDSPlacementToMake>       placementFieldPlacements;
-
+   
   std::map<G4String, std::set<G4LogicalVolume*>* > volumeRegistries; ///< All volume registries.
 
   /// @{ Scorer histogram definitions cached from construction here to be used in output creation.

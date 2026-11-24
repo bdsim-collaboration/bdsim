@@ -16,7 +16,6 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSAcceleratorModel.hh"
-#include "BDSBeamPipeInfo.hh"
 #include "BDSCollimator.hh"
 #include "BDSColours.hh"
 #include "BDSDebug.hh"

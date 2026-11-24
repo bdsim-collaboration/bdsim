@@ -47,6 +47,7 @@ class BDSPrimaryGeneratorAction;
 class G4EquationOfMotion;
 class G4MagIntegratorStepper;
 class G4Mag_EqRhs;
+class G4UserLimits;
 
 /**
  * @brief Factory that produces fields and their associated objects.
@@ -204,5 +205,9 @@ private:
   static BDSPrimaryGeneratorAction* primaryGeneratorAction;
   
   G4bool useOldMultipoleOuterFields;
+  G4bool verbose;
+  G4double chordStepMinimumYoke;
+  G4String ptcOneTurnMapFileName;
+  G4UserLimits* defaultUserLimits;
 };
 #endif

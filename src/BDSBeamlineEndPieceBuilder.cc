@@ -95,8 +95,8 @@ BDSBeamline* BDS::BuildEndPieceBeamline(const BDSBeamline* beamline,
                       BDSExtent extPipe  = inspectedElement->GetAcceleratorComponent()->GetExtent();
                       G4double  tiltPipe = inspectedElement->GetTilt();
                       if (accComponentTO) // could be nullptr
-                        {extPipe = extPipe.Tilted(accComponentTO->GetTilt() - tiltPipe);}
-                      if (extPipe.TransverselyGreaterThan(endPieceInnerExtent))
+                        {extPipe = extPipe.Tilted(accComponentTO->Tilt() - tiltPipe);}
+                      if (!extPipe.TransverselyGreaterThan(endPieceInnerExtent))
                         {
                           keepGoing             = false;
                           if (inspectedElementType != "element")
@@ -141,7 +141,7 @@ BDSBeamline* BDS::BuildEndPieceBeamline(const BDSBeamline* beamline,
 
           // Now check if the coil volumes will overlap
           // This check is only done on before, as something can always be naturally added
-          // afterwards - this just sets a precedence of after over before.
+          // afterwards - this just sets a precedent of after over before.
           if (placeBefore && !endPieces->empty() ) // only look backwards if we have already placed an end piece
             {
               // endPieces is a beam line of only end pieces
@@ -204,8 +204,8 @@ BDSBeamline* BDS::BuildEndPieceBeamline(const BDSBeamline* beamline,
                       BDSExtent extPipe  = inspectedElement->GetAcceleratorComponent()->GetExtent();
                       G4double  tiltPipe = inspectedElement->GetTilt();
                       if (accComponentTO) // could be nullptr
-                        {extPipe = extPipe.Tilted(accComponentTO->GetTilt() - tiltPipe);}
-                      if (extPipe.TransverselyGreaterThan(endPieceInnerExtent))
+                        {extPipe = extPipe.Tilted(accComponentTO->Tilt() - tiltPipe);}
+                      if (!extPipe.TransverselyGreaterThan(endPieceInnerExtent))
                         {
                           keepGoing            = false;
                           if (inspectedElementType != "element")

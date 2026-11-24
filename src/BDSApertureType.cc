@@ -30,34 +30,58 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 template<>
 std::map<BDSApertureType, std::string>* BDSApertureType::dictionary =
   new std::map<BDSApertureType, std::string> ({
-   {BDSApertureType::circular,       "circular"},
-   {BDSApertureType::elliptical,     "elliptical"},
-   {BDSApertureType::lhc,            "lhc"},
-   {BDSApertureType::lhcdetailed,    "lhcdetailed"},
-   {BDSApertureType::rectangular,    "rectangular"},
-   {BDSApertureType::rectellipse,    "rectellipse"},
-   {BDSApertureType::racetrack,      "racetrack"},
-   {BDSApertureType::octagonal,      "octagonal"},
-   {BDSApertureType::circularvacuum, "circularvacuum"},
-   {BDSApertureType::clicpcl,        "clicpcl"}
+   {BDSApertureType::circle,      "circle"},
+   {BDSApertureType::ellipse,     "ellipse"},
+   {BDSApertureType::rectangle,   "rectangle"},
+   {BDSApertureType::rectcircle,  "rectcircle"},
+   {BDSApertureType::rectellipse, "rectellipse"},
+   {BDSApertureType::racetrack,   "racetrack"},
+   {BDSApertureType::octagon,     "octagon"},
+   {BDSApertureType::clicpcl,     "clicpcl"},
+   {BDSApertureType::rhombus,     "rhombus"},
+   {BDSApertureType::points,      "points"},
+   {BDSApertureType::regularpolygon, "regularpolygon"}
 });	
 
-BDSApertureType BDS::DetermineApertureType(G4String apertureType)
+BDSApertureType BDS::DetermineApertureType(G4String apertureType,
+                                           G4bool tolerateBeamPipeType)
 {
   std::map<G4String, BDSApertureType> types;
-  types["circular"]       = BDSApertureType::circular;
-  types["elliptical"]     = BDSApertureType::elliptical;
-  types["rectangular"]    = BDSApertureType::rectangular;
-  types["lhc"]            = BDSApertureType::lhc;
-  types["lhcscreen"]      = BDSApertureType::lhc; // shortcut for madx compatability
-  types["lhcdetailed"]    = BDSApertureType::lhcdetailed;
-  types["rectellipse"]    = BDSApertureType::rectellipse;
-  types["racetrack"]      = BDSApertureType::racetrack;
-  types["octagonal"]      = BDSApertureType::octagonal;
-  types["circularvacuum"] = BDSApertureType::circularvacuum;
-  types["clicpcl"]        = BDSApertureType::clicpcl;
+  types["circle"]       = BDSApertureType::circle;
+  types["ellipse"]      = BDSApertureType::ellipse;
+  types["rectangle"]    = BDSApertureType::rectangle;
+  types["rectcircle"]   = BDSApertureType::rectcircle;
+  types["rectellipse"]  = BDSApertureType::rectellipse;
+  types["racetrack"]    = BDSApertureType::racetrack;
+  types["octagon"]      = BDSApertureType::octagon;
+  types["clicpcl"]      = BDSApertureType::clicpcl;
+  types["rhombus"]      = BDSApertureType::rhombus;
+  types["points"]       = BDSApertureType::points;
+  types["regularpolygon"] = BDSApertureType::regularpolygon;
 
+  // alternatives
+  types["lhc"]          = BDSApertureType::rectcircle;
+
+  if (tolerateBeamPipeType)
+    {
+      types["circular"]       = BDSApertureType::circle;
+      types["elliptical"]     = BDSApertureType::ellipse;
+      types["rectangular"]    = BDSApertureType::rectangle;
+      types["lhc"]            = BDSApertureType::rectcircle;
+      types["lhcscreen"]      = BDSApertureType::rectcircle; // shortcut for madx compatability
+      types["lhcdetailed"]    = BDSApertureType::rectcircle;
+      types["rectellipse"]    = BDSApertureType::rectellipse;
+      types["racetrack"]      = BDSApertureType::racetrack;
+      types["octagonal"]      = BDSApertureType::octagon;
+      types["circularvacuum"] = BDSApertureType::circle;
+      types["clicpcl"]        = BDSApertureType::clicpcl;
+      types["rhombus"]        = BDSApertureType::rhombus;
+    }
+  
   apertureType = BDS::LowerCase(apertureType);
+
+  if (BDS::StrContains(apertureType, "pointsfile"))
+    {return BDSApertureType::points;}
 
   auto result = types.find(apertureType);
   if (result == types.end())
@@ -65,7 +89,7 @@ BDSApertureType BDS::DetermineApertureType(G4String apertureType)
       G4String msg = "\"" + apertureType + "\" is not a valid apertureType\n";
       msg += "Available geometry types are:\n";
       for (const auto& it : types)
-	{msg += "\"" + it.first + "\"\n";}
+        {msg += "\"" + it.first + "\"\n";}
       throw BDSException(__METHOD_NAME__, msg);
     }
   

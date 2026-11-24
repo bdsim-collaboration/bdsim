@@ -24,12 +24,16 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "globals.hh" // geant4 types / globals
 #include "G4ThreeVector.hh"
+#include "G4TwoVector.hh"
 
 class BDSParticleCoords;
 class BDSTiltOffset;
 
 /**
- * @brief Holder for +- extents in 3 dimensions.
+ * @brief Holder for +- extents in 3 dimensions. An axis-aligned bounding box.
+ *
+ * Rotation and translation provided but this class still provides an
+ * axis-aligned bounding box set of extents that may be asymmetric.
  * 
  * @author Laurie Nevay
  */
@@ -41,19 +45,19 @@ public:
   BDSExtent();
   /// Construct with pairs of extents
   BDSExtent(const std::pair<G4double, G4double>& extXIn,
-	    const std::pair<G4double, G4double>& extYIn,
-	    const std::pair<G4double, G4double>& extZIn);
+            const std::pair<G4double, G4double>& extYIn,
+            const std::pair<G4double, G4double>& extZIn);
   /// Construct with individual extents
   BDSExtent(G4double extXNegIn, G4double extXPosIn,
-	    G4double extYNegIn, G4double extYPosIn,
-	    G4double extZNegIn, G4double extZPosIn);
+            G4double extYNegIn, G4double extYPosIn,
+            G4double extZNegIn, G4double extZPosIn);
   /// Symmetric variant - assumed to be +/- same amount
   BDSExtent(G4double extXIn, G4double extYIn, G4double extZIn);
   /// Threevectors of positive and negative extents
   BDSExtent(G4ThreeVector extInNeg, G4ThreeVector extInPos);
   /// Symmetric from three vector.
   explicit BDSExtent(G4ThreeVector extIn);
-	    
+
   virtual ~BDSExtent();
 
   /// @{ Accessor
@@ -68,15 +72,13 @@ public:
   inline G4double ZNeg() const {return extZNeg;}
   inline G4double ZPos() const {return extZPos;}
   
-  inline G4ThreeVector ExtentPositive() const
-  {return G4ThreeVector(extXPos, extYPos, extZPos);}
-
-  inline G4ThreeVector ExtentNegative() const
-  {return G4ThreeVector(extXNeg, extYNeg, extZNeg);}
+  inline G4ThreeVector ExtentPositive() const {return G4ThreeVector(extXPos, extYPos, extZPos);}
+  inline G4ThreeVector ExtentNegative() const {return G4ThreeVector(extXNeg, extYNeg, extZNeg);}
 
   /// All 8 boundary points of the bounding box.
   std::vector<G4ThreeVector> AllBoundaryPoints() const;
-  /// @}
+  /// Return XNeg, XPos, YNeg, YPos boundary box.
+  std::vector<G4TwoVector> AllBoundaryPointsXY() const;
 
   /// @{ The difference in a dimension.
   inline G4double DX() const {return extXPos - extXNeg;}
@@ -98,7 +100,7 @@ public:
 
   /// @{ Comparison operator for x,y only. Ignores z (length).
   inline G4bool TransverselyLessThan(const BDSExtent& r) const;
-  inline G4bool TransverselyGreaterThan(const BDSExtent& r)   const {return !(this->TransverselyLessThan(r));}
+  inline G4bool TransverselyGreaterThan(const BDSExtent& r)   const {return r.TransverselyLessThan(*this);}
   inline G4bool TransverselyLessEquals(const BDSExtent& r)    const {return !(this->TransverselyGreaterThan(r));}
   inline G4bool TransverselyGreaterEquals(const BDSExtent& r) const {return !(this->TransverselyLessThan(r));}
   /// @}
@@ -112,8 +114,8 @@ public:
 
   /// Return whether the extent encompasses the point.  Similar, but with separate x,y,z coordinates.
   G4bool Encompasses(G4double x,
-		     G4double y,
-		     G4double z) const {return Encompasses(G4ThreeVector(x,y,z));}
+                     G4double y,
+                     G4double z) const {return Encompasses(G4ThreeVector(x,y,z));}
 
   G4bool Encompasses(const BDSParticleCoords& coords) const;
   

@@ -22,6 +22,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "BDSAcceleratorComponent.hh"
 
+class BDSBeamPipeInfo;
 class G4Colour;
 class G4Material;
 class G4VSolid;

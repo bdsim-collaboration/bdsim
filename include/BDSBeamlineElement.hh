@@ -41,6 +41,8 @@ namespace CLHEP {
 typedef CLHEP::HepRotation G4RotationMatrix;
 class G4VPhysicalVolume;
 
+class BDSBeamPipeInfo;
+
 /**
  * @brief A class that holds a fully constructed BDSAcceleratorComponent
  * as well as any information relevant to its position within the beamline.
@@ -154,7 +156,7 @@ public:
   /// @}
   
   /// Convenience accessor.
-  inline G4double GetTilt() const {return tiltOffset ? tiltOffset->GetTilt() : 0.0;}
+  inline G4double GetTilt() const {return tiltOffset ? tiltOffset->Tilt() : 0.0;}
   
   ///@{ Reassign the end variable as required when applying a transform
   inline void SetReferencePositionEnd(G4ThreeVector     newReferencePositionEnd);

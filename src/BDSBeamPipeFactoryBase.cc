@@ -73,7 +73,8 @@ void BDSBeamPipeFactoryBase::CommonConstruction(const G4String& nameIn,
                                                 G4double    length)
 {
   allSolids.insert(vacuumSolid);
-  allSolids.insert(beamPipeSolid);
+  if (beamPipeSolid)
+    {allSolids.insert(beamPipeSolid);}
   /// build logical volumes
   BuildLogicalVolumes(nameIn, vacuumMaterialIn, beamPipeMaterialIn);
   /// set visual attributes
@@ -89,33 +90,37 @@ void BDSBeamPipeFactoryBase::BuildLogicalVolumes(const G4String& nameIn,
                                                  G4Material* beamPipeMaterialIn)
 {
   // build the logical volumes
-  vacuumLV   = new G4LogicalVolume(vacuumSolid,
-                                   vacuumMaterialIn,
-                                   nameIn + "_vacuum_lv");
+  vacuumLV = new G4LogicalVolume(vacuumSolid,
+                                 vacuumMaterialIn,
+                                 nameIn + "_vac_lv");
+  allLogicalVolumes.insert(vacuumLV);
   
-  beamPipeLV = new G4LogicalVolume(beamPipeSolid,
-                                   beamPipeMaterialIn,
-                                   nameIn + "_beampipe_lv");
-
+  if (beamPipeSolid)
+    {
+      beamPipeLV = new G4LogicalVolume(beamPipeSolid,
+                                       beamPipeMaterialIn,
+                                       nameIn + "_bp_lv");
+      allLogicalVolumes.insert(beamPipeLV);
+    }
   G4Material* emptyMaterial = BDSMaterials::Instance()->GetMaterial(BDSGlobalConstants::Instance()->EmptyMaterial());
   containerLV = new G4LogicalVolume(containerSolid,
                                     emptyMaterial,
-                                    nameIn + "_container_lv");
-  allLogicalVolumes.insert(vacuumLV);
-  allLogicalVolumes.insert(beamPipeLV);
+                                    nameIn + "_cont_lv");
 }
 
 void BDSBeamPipeFactoryBase::SetVisAttributes(G4Material* beamPipeMaterialIn,
                                               G4Material* vacuumMaterialIn)
 {
-  auto cfm = BDSColourFromMaterial::Instance();
-  G4Colour* c = cfm->GetColourWithDefault(beamPipeMaterialIn, BDSColours::Instance()->GetColour("beampipe"));
-  G4VisAttributes* pipeVisAttr = new G4VisAttributes(*c);
-  pipeVisAttr->SetVisibility(true);
-  pipeVisAttr->SetForceLineSegmentsPerCircle(nSegmentsPerCircle);
-  allVisAttributes.insert(pipeVisAttr);
-  beamPipeLV->SetVisAttributes(pipeVisAttr);
-
+  auto* cfm = BDSColourFromMaterial::Instance();
+  if (beamPipeLV)
+    {
+      G4Colour* c = cfm->GetColourWithDefault(beamPipeMaterialIn, BDSColours::Instance()->GetColour("beampipe"));
+      G4VisAttributes* pipeVisAttr = new G4VisAttributes(*c);
+      pipeVisAttr->SetVisibility(true);
+      pipeVisAttr->SetForceLineSegmentsPerCircle(nSegmentsPerCircle);
+      allVisAttributes.insert(pipeVisAttr);
+      beamPipeLV->SetVisAttributes(pipeVisAttr);
+    } 
   if (vacuumMaterialIn->GetDensity() > (1e-3*CLHEP::gram/CLHEP::cm3))
     {
       G4Colour* cv = cfm->GetColour(vacuumMaterialIn);
@@ -127,7 +132,7 @@ void BDSBeamPipeFactoryBase::SetVisAttributes(G4Material* beamPipeMaterialIn,
     }
   else
     {vacuumLV->SetVisAttributes(BDSGlobalConstants::Instance()->ContainerVisAttr());}
-
+  
   containerLV->SetVisAttributes(BDSGlobalConstants::Instance()->ContainerVisAttr());
 }
 
@@ -140,15 +145,18 @@ void BDSBeamPipeFactoryBase::SetUserLimits(G4double length)
     {allUserLimits.insert(ul);}
   vacuumLV->SetUserLimits(ul);
   containerLV->SetUserLimits(ul);
-  
-  G4UserLimits* beamPipeUL = ul;
-  if (BDSGlobalConstants::Instance()->BeamPipeIsInfiniteAbsorber())
-    {// new beam pipe user limits, copy from updated default user limits above
-      beamPipeUL = new G4UserLimits(*ul);
-      beamPipeUL->SetUserMinEkine(std::numeric_limits<double>::max());
-      allUserLimits.insert(beamPipeUL);
+
+  if (beamPipeLV)
+    {
+      G4UserLimits* beamPipeUL = ul;
+      if (BDSGlobalConstants::Instance()->BeamPipeIsInfiniteAbsorber())
+        {// new beam pipe user limits, copy from updated default user limits above
+          beamPipeUL = new G4UserLimits(*ul);
+          beamPipeUL->SetUserMinEkine(std::numeric_limits<double>::max());
+          allUserLimits.insert(beamPipeUL);
+        }
+      beamPipeLV->SetUserLimits(beamPipeUL);
     }
-  beamPipeLV->SetUserLimits(beamPipeUL);
 }
 
 void BDSBeamPipeFactoryBase::PlaceComponents(const G4String& nameIn)
@@ -159,25 +167,28 @@ void BDSBeamPipeFactoryBase::PlaceComponents(const G4String& nameIn)
   vacuumPV = new G4PVPlacement(nullptr,                  // no rotation
                                G4ThreeVector(),          // position
                                vacuumLV,                 // lv to be placed
-                               nameIn + "_vacuum_pv",    // name
+                               nameIn + "_vac_pv",       // name
                                containerLV,              // mother lv to be placed in
                                false,                    // no boolean operation
                                0,                        // copy number
                                checkOverlaps);           // whether to check overlaps
-  
-  beamPipePV = new G4PVPlacement(nullptr,                      // no rotation
-                                 G4ThreeVector(),              // position
-                                 beamPipeLV,                   // lv to be placed
-                                 nameIn + "_beampipe_pipe_pv", // name
-                                 containerLV,                  // mother lv to be placed in
-                                 false,                        // no boolean operation
-                                 0,                            // copy number
-                                 checkOverlaps);               // whether to check overlaps
   allPhysicalVolumes.insert(vacuumPV);
-  allPhysicalVolumes.insert(beamPipePV);
+  
+  if (beamPipeLV)
+    {
+      beamPipePV = new G4PVPlacement(nullptr,                      // no rotation
+                                     G4ThreeVector(),              // position
+                                     beamPipeLV,                   // lv to be placed
+                                     nameIn + "_bp_pv",            // name
+                                     containerLV,                  // mother lv to be placed in
+                                     false,                        // no boolean operation
+                                     0,                            // copy number
+                                     checkOverlaps);               // whether to check overlaps
+      allPhysicalVolumes.insert(beamPipePV);
+    }
 }
 
-BDSBeamPipe* BDSBeamPipeFactoryBase::BuildBeamPipeAndRegisterVolumes(BDSExtent extent,
+BDSBeamPipe* BDSBeamPipeFactoryBase::BuildBeamPipeAndRegisterVolumes(const BDSExtent& extent,
                                                                      G4double  containerRadius,
                                                                      G4bool    containerIsCircular)
 {  
@@ -186,7 +197,7 @@ BDSBeamPipe* BDSBeamPipeFactoryBase::BuildBeamPipeAndRegisterVolumes(BDSExtent e
                                        containerSubtractionSolid,
                                        vacuumLV,containerIsCircular,containerRadius,
                                        inputFaceNormal, outputFaceNormal);
-
+  
   // register objects
   aPipe->RegisterSolid(allSolids);
   aPipe->RegisterLogicalVolume(allLogicalVolumes); //using geometry component base class method

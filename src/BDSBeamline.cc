@@ -354,7 +354,7 @@ void BDSBeamline::AddSingleComponent(BDSAcceleratorComponent* component,
       G4ThreeVector rotationAxisOfBendEnd = rotationAxisOfBend; // a copy
       if (hasFiniteTilt)
         {
-          G4double tilt = tiltOffset->GetTilt();
+          G4double tilt = tiltOffset->Tilt();
           G4RotationMatrix rotationAxisRM = G4RotationMatrix();
           rotationAxisRM.rotateZ(tilt);
           rotationAxisOfBend.transform(rotationAxisRM);
@@ -371,7 +371,7 @@ void BDSBeamline::AddSingleComponent(BDSAcceleratorComponent* component,
   // add the tilt to the rotation matrices (around z axis)
   if (hasFiniteTilt)
     {
-      G4double tilt = tiltOffset->GetTilt();
+      G4double tilt = tiltOffset->Tilt();
 
       // transform a unit z vector with the rotation matrices to get the local axes
       // of rotation to apply the tilt.
