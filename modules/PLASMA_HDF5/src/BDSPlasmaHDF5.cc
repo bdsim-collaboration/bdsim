@@ -21,9 +21,9 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSPlasmaHDF5.hh"
 #include "BDSUtilities.hh"
 
-BDSPlasmaHDF5::BDSPlasmaHDF5(G4String mainPathIn,
-                             G4String particlePathIn,
-                             G4String fieldPathIn):
+BDSPlasmaHDF5::BDSPlasmaHDF5(const G4String& mainPathIn,
+                             const G4String& particlePathIn,
+                             const G4String& fieldPathIn):
 mainPath(mainPathIn),
 particlePath(particlePathIn),
 fieldPath(fieldPathIn)
@@ -32,41 +32,42 @@ fieldPath(fieldPathIn)
 BDSPlasmaHDF5::~BDSPlasmaHDF5()
 {;}
 
-void BDSPlasmaHDF5::LoadHDF5(const G4String filename)
+void BDSPlasmaHDF5::LoadHDF5(const G4String& filename)
 {
   G4cout << "BDSPlasmaHDF5::LoadHDF5" << G4endl;
 
   CheckHDF5(filename);
-  H5::H5File *file= new H5::H5File(filename, H5F_ACC_RDWR);
+  H5::H5File* file = new H5::H5File(filename, H5F_ACC_RDWR);
 
   particles = file->openGroup(mainPath + particlePath);
   fields = file->openGroup(mainPath + fieldPath);
 }
 
-void BDSPlasmaHDF5::CheckHDF5(const G4String filename)
+void BDSPlasmaHDF5::CheckHDF5(const G4String& filename)
 {
-  G4cout << "BDSPlasmaHDF5::CheckHDF5" << G4endl;
+  //G4cout << "BDSPlasmaHDF5::CheckHDF5" << G4endl;
   try
-  {
-    H5::H5File *file= new H5::H5File(filename, H5F_ACC_RDWR);
-  }
+    {
+      H5::H5File* file= new H5::H5File(filename, H5F_ACC_RDWR);
+      file->close();
+    }
   catch (H5::FileIException& e)
-  {
-    std::string msg = "Error on checking file";
-    throw BDSException(__METHOD_NAME__, msg);
-  }
+    {
+      std::string msg = "Error on checking file";
+      throw BDSException(__METHOD_NAME__, msg);
+    }
 }
 
 std::vector<double> BDSPlasmaHDF5::Get1DVector(H5::Group group,
-                                               G4String setName)
+                                               const G4String& setName)
 {
   H5::DataSet set = group.openDataSet(setName);
 
   H5::DataSpace dataspace = set.getSpace();
   int rank = dataspace.getSimpleExtentNdims();
-  hsize_t dims[rank];
-  dataspace.getSimpleExtentDims(dims, nullptr);
-  std::vector<double> data(dims[0]);
+  std::vector<hsize_t> dims(rank);
+  dataspace.getSimpleExtentDims(dims.data(), nullptr);
+  std::vector<double>data(dims[0]);
 
   set.read(data.data(), H5::PredType::NATIVE_DOUBLE);
 
@@ -74,14 +75,14 @@ std::vector<double> BDSPlasmaHDF5::Get1DVector(H5::Group group,
 }
 
 std::vector<double> BDSPlasmaHDF5::Get3DVector(H5::Group group,
-                                               G4String setName)
+                                               const G4String& setName)
 {
   H5::DataSet set = group.openDataSet(setName);
 
   H5::DataSpace dataspace = set.getSpace();
   int rank = dataspace.getSimpleExtentNdims();
-  hsize_t dims[rank];
-  dataspace.getSimpleExtentDims(dims, nullptr);
+  std::vector<hsize_t> dims(rank);
+  dataspace.getSimpleExtentDims(dims.data(), nullptr);
   std::vector<double> data(dims[0] * dims[1] * dims[2]);
 
   set.read(data.data(), H5::PredType::NATIVE_DOUBLE);
