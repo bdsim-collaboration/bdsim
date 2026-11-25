@@ -16,9 +16,12 @@ Model Control
     
 * :ref:`physics-processes`
 
+  - :ref:`physics-macro-file`
   - :ref:`physics-modular-physics-lists`
+  - :ref:`physics-em-extra-notes`
   - :ref:`physics-geant4-lists`
   - :ref:`physics-complete-lists`
+  - :ref:`physics-proton-diffraction`
   - :ref:`millicharged-physics`
 
 * :ref:`physics-biasing`
@@ -2356,15 +2359,20 @@ Proton Diffraction
 
 Since Geant4.10.5, target and projectile diffractive outcomes from hadronic interactions have been turned
 off if one of the participants has A > 10. This has the effect that the spectra of high energy protons
-passing through targets of materials above Beryllium in the periodic table have a significantly different
+passing through targets of materials above Beryllium (not including) in the periodic table have a
+significantly different
 spectrum. This is particularly important for particle accelerator applications where diffractive protons
 may go some way through an accelerator due to their very small momentum deviation and cause large energy
 deposits far from the target.
 
-In the default Geant4, this is therefore quite wrong. Since v11.1 (inclusive) an option has been added
-to :code:`G4HadronicParameters::Instance()` in Geant4 that allows us to turn back on diffraction. BDSIM
-provides the option :code:`restoreFTPFDiffractionForAGreater10` to use this. In versions of Geant4 earlier
-than v11.1, this will have no effect and the original Geant4 code must be patched.
+In the default Geant4, this is therefore quite wrong for protons on a larger nuclei. Since v11.1
+(inclusive) an option has been added to :code:`G4HadronicParameters::Instance()` in Geant4 that
+allows us to turn back on diffraction. BDSIM provides the option :code:`restoreFTPFDiffractionForAGreater10`
+to use this. In versions of Geant4 earlier than v11.1, this will have no effect and the original
+Geant4 code must be patched.
+
+.. note:: In Geant4, the it is implemented in code as a check of the baryon number or number of nucleons
+          in the target nucleus being greater (not equal) than 10.
 
 Example syntax: ::
 
@@ -2381,7 +2389,7 @@ This only has an effect when the FTFP hadronic model is used. i.e. with: ::
 
  
 
-A comparison is shown below with this option on and off for a 7TeV proton incident on a 40cm
+A comparison is shown below with this option on and off for a 7 TeV proton incident on a 40 cm
 target of carbon. This example can be found in :code:`bdsim/examples/features/processes/protonDiffraction`.
 
 .. figure:: figures/proton-diffraction-comparison.pdf
@@ -4230,8 +4238,9 @@ They are defined using the following syntax::
 
   sample, range=<element_name>;
 
-where `element_name` is the name of the element you wish to sample. Depending on the
-output format chosen, the element name may be recorded in the output ('rootevent' output only).
+where `element_name` is the name of the element you wish to sample. This creates a branch
+in the output file with the element name where the information (per-event) is stored for that
+plane.
 
 .. note:: Samplers **can only** be defined **after** the main sequence has been defined
 	  using the **use** command (see :ref:`the-use-command`). Failure to do

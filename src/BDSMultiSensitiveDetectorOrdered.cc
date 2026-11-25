@@ -65,18 +65,18 @@ void BDSMultiSensitiveDetectorOrdered::PrintAll()
 }
 
 G4bool BDSMultiSensitiveDetectorOrdered::ProcessHits(G4Step* step,
-						     G4TouchableHistory* /*row*/)
+                                                     G4TouchableHistory* /*row*/)
 {
   std::vector<G4VHit*> hits;
   G4bool result = true;
   for (auto sd : sensitiveDetectors)
     {
-      // here we don't use Hit() as that calls the default ProcessHits 
+      // here we don't use Hit() as that calls the default ProcessHits
       G4bool sdStored = sd->HitOrdered(step, hits);
       if (sdStored)
-	{hits.push_back(sd->last());}
+        {hits.push_back(sd->last());}
       else
-	{hits.push_back(nullptr);} // there was no lastHit as not stored
+        {hits.push_back(nullptr);} // there was no lastHit as not stored
       result &= sdStored;
     }
   return result;

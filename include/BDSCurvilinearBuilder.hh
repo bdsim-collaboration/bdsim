@@ -15,6 +15,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
+#ifndef BDSCURVILINEARBUILDER_H
+#define BDSCURVILINEARBUILDER_H
+
 #include "BDSBeamlineElement.hh"
 #include "BDSUtilities.hh"
 
@@ -142,3 +145,5 @@ private:
 
 inline G4bool BDSCurvilinearBuilder::Angled(BDSBeamlineElement const* const element) const
 {return BDS::IsFinite(element->GetAngle());}
+
+#endif

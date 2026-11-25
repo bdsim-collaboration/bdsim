@@ -1015,9 +1015,14 @@ correctly later on to get the correct physical rate.
 Normalisation
 *************
 
-If skimming is used, we must know the original number of events simulated so we can
-correctly normalise any results for the original per-event rate. The header in each
-BDSIM and REBDSIM output file contains several numbers that provide this information.
+When using `rebdsim` on a raw output file, the per-event histograms are based only on that
+sample in that file. If this is a subset of original events through skimming or playing
+an input beam distribution with filters, then you must multiply the histogram by the appropriate
+factor to recover the real physical rate per original event.
+
+To help with this, he header in each BDSIM and REBDSIM output file contains several numbers
+that provide this information listed below. When combining results with `rebdsimCombine` or
+`bdsimCombine, these numbers are added up for the new file header.
 
 The default histograms from rebdsim are per-event normalised. Only "SimpleHistograms"
 are unnormalised.
@@ -1105,8 +1110,7 @@ entries, where one entry represents one event. The histograms must be multiplied
 
    \mathrm{scaling} = \frac{5 \times 10 \times 0.01 \times N \times 0.98}{N}
 
-to recover the original rate per proton on target in this simulation. This is done automatically
-by rebdsim. rebdsimCombine just adds together the already correctly normalised histograms.
+to recover the original rate per proton on target in this simulation.
 
 
 .. _output-user-analysis:
