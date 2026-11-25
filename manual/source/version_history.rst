@@ -12,6 +12,16 @@ if you'd like to give us feedback or help in the development.  See :ref:`support
 * Any aperture shape can be used for both the inside and the outside of a collimator.
 
 
+v1.8.3 - 2026 / 11 / 27
+=======================
+
+Bug Fixes
+---------
+
+* Fix a segfault when querying a field map that is overlaid on a replica volume.
+* Fix a field query that is queried in time. It would take the number of points from y and not t.
+
+
 v1.8.2 - 2026 / 11 / 12
 =======================
 
