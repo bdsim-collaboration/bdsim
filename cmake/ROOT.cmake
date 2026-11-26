@@ -68,3 +68,9 @@ foreach(header ${linkHeaders})
   set(root_files ${root_files} ${CMAKE_CURRENT_SOURCE_DIR}/src/${className}.cc)
   set(root_dicts ${root_dicts} ${CMAKE_CURRENT_BINARY_DIR}/root/${className}Dict.cc)
 endforeach()
+
+# A single target owns the dictionary generation. The generated Dict.cc files are compiled
+# into both libbdsim (Geant4 side) and libbdsimRootEvent (with __ROOTBUILD__), so without
+# this the rootcling rules would be owned by neither, which can race in parallel builds
+# and stops CMake knowing which target produces the installed _rdict.pcm files.
+add_custom_target(bdsimRootDicts DEPENDS ${root_dicts} ${root_pcms})
