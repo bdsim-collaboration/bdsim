@@ -1048,7 +1048,7 @@ G4MagIntegratorStepper* BDSFieldFactory::CreateIntegratorMag(const BDSFieldInfo&
                                                              G4Mag_EqRhs*             eqOfM,
                                                              const BDSMagnetStrength* strength)
 {
-  const G4double minimumRadiusOfCurvature = 10*CLHEP::cm;
+  const G4double minimumRadiusOfCurvature = BDSGlobalConstants::Instance()->MinimumRadiusOfCurvature();
   G4double                      brho = info.BRho();
   G4MagIntegratorStepper* integrator = nullptr;
   // these ones can only be used for magnetic field

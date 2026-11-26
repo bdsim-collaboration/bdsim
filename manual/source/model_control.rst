@@ -3314,11 +3314,12 @@ Tracking integrator sets are described in detail in :ref:`integrator-sets` and
 |                                  | tunnel sections will be killed and the energy         |
 |                                  | deposition recorded at that location [GeV]            |
 +----------------------------------+-------------------------------------------------------+
-| minimumRadiusOfCurvature         | Minimum tolerable radius of curvature of a particle,  |
-|                                  | below which, the energy will be decreased by 2% on    |
-|                                  | each use of the integrators to prevent infinite       |
-|                                  | loops - should be just greater than width of beam     |
-|                                  | pipe [m].                                             |
+| minimumRadiusOfCurvature         | Minimum tolerable radius of curvature of a particle   |
+|                                  | in a magnetic field. Below this, the momentum is      |
+|                                  | nudged along the field direction (1% per mm of step)  |
+|                                  | so the particle progresses along its helix axis and   |
+|                                  | does not loop indefinitely - should be just greater   |
+|                                  | than the width of the beam pipe (default 0.1) [m].    |
 +----------------------------------+-------------------------------------------------------+
 | minimumRange                     | A particle that would not travel this range           |
 |                                  | (a distance) in the current material will be cut [m]  |

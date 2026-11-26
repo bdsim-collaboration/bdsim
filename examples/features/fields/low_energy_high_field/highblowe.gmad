@@ -12,5 +12,8 @@ use, l1;
 
 beam, particle="proton",
       energy=6*TeV,
-      E0=0.940*GeV,
+      P0=0.1*GeV,
       S0=0.5*m;
+
+
+option, maximumStepLength=0.11*mm;

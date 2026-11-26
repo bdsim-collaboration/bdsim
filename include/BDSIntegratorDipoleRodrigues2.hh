@@ -32,7 +32,7 @@ class G4Mag_EqRhs;
  * @brief Exact helix through pure dipole field.
  *
  * Integrator based on G4MagHelicalStepper that provides required
- * tracking througha pure magnetic field, but is a pure virtual class.
+ * tracking through a pure magnetic field, but is a pure virtual class.
  * 
  * This class implements the required Stepper method that uses the provided
  * AdvanceHelix method from the base class.
@@ -52,43 +52,44 @@ class G4Mag_EqRhs;
 class BDSIntegratorDipoleRodrigues2: public G4MagHelicalStepper, public BDSIntegratorDrift
 {
 public:
+  BDSIntegratorDipoleRodrigues2() = delete;
   BDSIntegratorDipoleRodrigues2(G4Mag_EqRhs* eqOfMIn,
-				G4double     minimumRadiusOfCurvature);
+                                G4double     minimumRadiusOfCurvature);
 
   virtual ~BDSIntegratorDipoleRodrigues2(){;}
 
   /// Required to be provided by base class, but apparently should never be
-  /// called by the driver.  Simply calls AdvanceHelix.
+  /// called by the driver. Simply calls AdvanceHelix.
   virtual void DumbStepper(const G4double yIn[6],
-			   G4ThreeVector  field,
-			   G4double       stepLength,
-			   G4double       yOut[6]);
+                           G4ThreeVector  field,
+                           G4double       stepLength,
+                           G4double       yOut[6]);
 
   /// Perform a single step. Useful for other integrators that want to use this
   /// one to estimate the radius of curvature in the field, in which case, no need
-  /// for usual two step calculation, nor error calculation.
+  /// for usual two-step calculation, nor error calculation.
   void SingleStep(const G4double  yIn[6],
-		  const G4double& h,
-		  G4double        yOut[6]);
+                  const G4double& h,
+                  G4double        yOut[6]);
 
   /// Calculate output coordinates.  Decide if particle is spiralling or not.
   /// Nominally calculate two half steps and compare to one full step for error
   /// estimation.
   virtual void Stepper(const G4double  yIn[6],   ///< Input coordinates x,y,z,px,py,pz,t
-		       const G4double  dydx[],   ///< Partial differentials at yInput
-		       G4double        h,        ///< Length of trajectory to calculate
-		       G4double        yOut[6],  ///< Output array
-		       G4double        yErr[6]); ///< Output error array
+                       const G4double  dydx[],   ///< Partial differentials at yInput
+                       G4double        h,        ///< Length of trajectory to calculate
+                       G4double        yOut[6],  ///< Output array
+                       G4double        yErr[6]); ///< Output error array
 
   virtual G4int IntegratorOrder() const {return 1;}
 
   /// Variation of AdvanceHelix specifically to deal with particles that are likely to
-  /// be spiralling in the magnetic field.
+  /// be spiraling in the magnetic field.
   void AdvanceHelixForSpiralling(const G4double       yIn[6],
-				 const G4ThreeVector& field,
-				 const G4double&      h,
-				 G4double             yOut[6],
-				 G4double             yErr[6]);
+                                 const G4ThreeVector& field,
+                                 const G4double&      h,
+                                 G4double             yOut[6],
+                                 G4double             yErr[6]);
 
   /// Public accessor for protected variable in base class.
   inline G4double RadiusOfHelix() const {return GetRadHelix();}
@@ -102,13 +103,9 @@ protected:
   G4Mag_EqRhs* eqOfM;
 
 private:
-  /// Private default constructor to force use of provided one.
-  BDSIntegratorDipoleRodrigues2() = delete;
-
   /// The minimum tolerable radius of curvature before we decide the particle is
-  /// spiralling and should be treated differently.
+  /// spiraling and should be treated differently.
   G4double minimumRadiusOfCurvature;
-
 };
 
 #endif

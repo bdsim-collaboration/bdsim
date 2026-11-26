@@ -16,36 +16,34 @@ You should have received a copy of the GNU General Public License
 along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "BDSIntegratorDipoleRodrigues2.hh"
-#include "BDSMagnetStrength.hh"
 #include "BDSUtilities.hh"
 
-#include "globals.hh"
-#include "G4ClassicalRK4.hh"
 #include "G4Mag_EqRhs.hh"
 #include "G4ThreeVector.hh"
+#include "G4Types.hh"
 
 #include "CLHEP/Units/SystemOfUnits.h"
 
 #include <cmath>
 
 BDSIntegratorDipoleRodrigues2::BDSIntegratorDipoleRodrigues2(G4Mag_EqRhs* eqOfMIn,
-							     G4double     minimumRadiusOfCurvatureIn):
+                                                             G4double     minimumRadiusOfCurvatureIn):
   G4MagHelicalStepper(eqOfMIn),
   eqOfM(eqOfMIn),
   minimumRadiusOfCurvature(minimumRadiusOfCurvatureIn)
 {;}
 
 void BDSIntegratorDipoleRodrigues2::DumbStepper(const G4double yIn[6],
-						G4ThreeVector  field,
-						G4double       stepLength,
-						G4double       yOut[6])
+                                                G4ThreeVector  field,
+                                                G4double       stepLength,
+                                                G4double       yOut[6])
 {
   AdvanceHelix(yIn, field, stepLength, yOut);
 }
 
 void BDSIntegratorDipoleRodrigues2::SingleStep(const G4double  yIn[6],
-					       const G4double& h,
-					       G4double        yOut[6])
+                                               const G4double& h,
+                                               G4double        yOut[6])
 {
   G4double bO[6]; // original location field value - must be 6 long
   eqOfM->GetFieldValue(yIn, bO);
@@ -56,10 +54,10 @@ void BDSIntegratorDipoleRodrigues2::SingleStep(const G4double  yIn[6],
 }
 
 void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
-					    const G4double[] /*dydx*/,
-					    G4double         h,
-					    G4double         yOut[6],
-					    G4double         yErr[6])
+                                            const G4double[] /*dydx*/,
+                                            G4double         h,
+                                            G4double         yOut[6],
+                                            G4double         yErr[6])
 {
   // overwrite any previous rad and helix to avoid contaminating this step
   FudgeDistChordToZero();
@@ -106,10 +104,18 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
   const G4double radiusOfCurvature = rad;
   if (std::abs(radiusOfCurvature) < minimumRadiusOfCurvature)
     {
+      /*
+      backupStepper->Stepper(yIn, dydx, h, yOut, yErr);
+      // DistChord() returns rad*(1-cos(ang/2)), so ang = pi gives exactly the backup's chord.
+      SetRadHelix(backupStepper->DistChord());
+      SetAngCurve(CLHEP::pi);
+      return;
+      */
       AdvanceHelixForSpiralling(yIn, bOriginal, h, yOut, yErr);
-      // Update parameters that distchord will be calculated from full step info.
-      SetAngCurve(ang);
-      SetRadHelix(rad);
+      // Keep the angle and radius from the nudged helix just taken so distchord
+      // describes the actual step. Guard against nan as above.
+      if (std::isnan(GetRadHelix()))
+        {SetRadHelix(h / GetAngCurve());}
       return;
     }
 
@@ -120,10 +126,10 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
     {
       // set error to be low - required
       for (G4int i = 0; i < 3; i++)
-	{
-	  yErr[i]   = 1e-20;
-	  yErr[i+3] = 1e-40;
-	}
+        {
+          yErr[i]   = 1e-20;
+          yErr[i+3] = 1e-40;
+        }
       SetAngCurve(ang);
       SetRadHelix(rad); // must update these for distchord
       return;
@@ -136,7 +142,7 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
 
   // resample field at midway point (although if pure dipole, this is
   // unnecessary) - could go outside the range of the field though
-  G4double bM[6]; // mid point location field value - must be 6 long
+  G4double bM[6]; // mid-point location field value - must be 6 long
   GetEquationOfMotion()->GetFieldValue(yTemp, bM);
   G4ThreeVector bMid = G4ThreeVector(bM[0],bM[1],bM[2]);
 
@@ -147,16 +153,16 @@ void BDSIntegratorDipoleRodrigues2::Stepper(const G4double   yIn[6],
   for (G4int i = 0; i < 6; i++)
     {yErr[i] = std::abs(yOut[i] - yTemp2[i]);}
 
-  // Update parameters that distchord will be calcualted from from full step info.
+  // Update parameters that distchord will be calculated from full step info.
   SetAngCurve(ang);
   SetRadHelix(rad);
 }
 
 void BDSIntegratorDipoleRodrigues2::AdvanceHelixForSpiralling(const G4double        yIn[6],
-							      const G4ThreeVector&  field,
-							      const G4double&       h,
-							      G4double              yOut[6],
-							      G4double              yErr[6])
+                                                              const G4ThreeVector&  field,
+                                                              const G4double&       h,
+                                                              G4double              yOut[6],
+                                                              G4double              yErr[6])
 {
   G4ThreeVector fieldUnit = field.unit();
 
@@ -168,21 +174,21 @@ void BDSIntegratorDipoleRodrigues2::AdvanceHelixForSpiralling(const G4double    
       return;
     }
 
-  G4double momMag = G4ThreeVector(yIn[3], yIn[4], yIn[5]).mag();
-  
-  // Artificially change momentum to be along field direction.
-  G4ThreeVector    momNew = fieldUnit*momMag;
+  G4ThreeVector mom = G4ThreeVector(yIn[3], yIn[4], yIn[5]);
+  G4double momMag = mom.mag();
+  // Nudge proportional to the step length (1% per mm) so one step of h is
+  // consistent with two steps of h/2, as the chord finder and locator expect.
+  G4ThreeVector momNew = mom + fieldUnit*(0.01*(h/CLHEP::mm)*momMag);
+  momNew = momNew.unit() * momMag;
 
-  // Create updated array for tracking.
-  G4double yModified[7];
+  G4double yIn2[7];
   for (G4int i = 0; i < 3; i++)
     {
-      yModified[i]     = yIn[i];    // position stays the same
-      yModified[i + 3] = momNew[i]; // update momentum
+      yIn2[i] = yIn[i];        // position stays the same
+      yIn2[i + 3] = momNew[i]; // update momentum
     }
 
-  // Simply advance as a drift along this vector.
-  AdvanceDriftMag(yModified, h, yOut, yErr);
+  AdvanceHelix(yIn2, field, h, yOut); // first step
 
   // set error to be low - required
   for (G4int i = 0; i < 3; i++)

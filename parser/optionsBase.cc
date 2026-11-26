@@ -268,7 +268,7 @@ OptionsBase::OptionsBase()
   stopSecondaries          = false;
   killNeutrinos            = false;
   killedParticlesMassAddedToEloss = false;
-  minimumRadiusOfCurvature = 0.05; // 5cm - typical aperture
+  minimumRadiusOfCurvature = 0.1; // 10cm - just greater than a typical aperture.
 
   // hit generation
   sensitiveOuter       = true;
