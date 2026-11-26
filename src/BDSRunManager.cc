@@ -23,6 +23,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSFieldQuery.hh"
 #include "BDSPrimaryGeneratorAction.hh"
 
+#include "G4GeometryManager.hh"
 #include "G4UImanager.hh"
 
 #include "CLHEP/Random/Random.h"
@@ -53,8 +54,12 @@ void BDSRunManager::Initialize()
       const auto& fieldQueries = detectorConstruction->FieldQueries();
       if (!fieldQueries.empty())
         {
+          // Geometry must be closed so voxels exist, otherwise navigating replicas segfaults.
+          G4GeometryManager* gm = G4GeometryManager::GetInstance();
+          gm->CloseGeometry();
           BDSFieldQuery querier;
           querier.QueryFields(fieldQueries);
+          gm->OpenGeometry();
         }
     }
   if (const auto primaryGeneratorAction = dynamic_cast<BDSPrimaryGeneratorAction*>(userPrimaryGeneratorAction))

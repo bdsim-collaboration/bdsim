@@ -130,7 +130,7 @@ void BDSFieldQuery::QueryField(const BDSFieldQueryInfo* query)
   CheckNStepsAndRange(query->zInfo, "z", query->name);
   
   G4double tMin    = query->tInfo.min;
-  G4double nStepsT = query->yInfo.n == 1 ? 1 : (G4double)query->tInfo.n-1;
+  G4double nStepsT = query->tInfo.n == 1 ? 1 : (G4double)query->tInfo.n-1;
   G4double tStep   = (query->tInfo.max - query->tInfo.min) / nStepsT;
   if (std::isnan(tStep))
     {tStep = 1.0;}
