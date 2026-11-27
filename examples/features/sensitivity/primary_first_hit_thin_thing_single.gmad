@@ -1,0 +1,19 @@
+! A single wire scanner (a 'thin thing') with no other material in the beam line.
+! The only primary first hit possible is on the wire, so PrimaryFirstHit should be at the wire.
+
+d1: drift, l=20*cm;
+ws: wirescanner, l=4*cm, wireDiameter=5*um, wireLength=5*cm, material="G4_W", aper1=5*cm;
+d2: drift, l=1*m;
+
+l1: line=(d1, ws, d2);
+use, l1;
+
+beam, particle="proton",
+      momentum=10*GeV;
+
+option, physicsList="em",
+        minimumKineticEnergy=0.5*GeV;
+
+option, seed=123;
+
+option, ngenerate=20;

@@ -1,0 +1,21 @@
+! Three wire scanners ('thin things') in series, so each primary has multiple thin hits.
+! PrimaryFirstHit should be the earliest of these, i.e. on the first wire (ws1).
+
+d1: drift, l=20*cm;
+ws1: wirescanner, l=4*cm, wireDiameter=5*mm, wireLength=5*cm, material="G4_W", aper1=5*cm;
+ws2: wirescanner, l=4*cm, wireDiameter=5*mm, wireLength=5*cm, material="G4_W", aper1=5*cm;
+ws3: wirescanner, l=4*cm, wireDiameter=5*mm, wireLength=5*cm, material="G4_W", aper1=5*cm;
+d2: drift, l=1*m;
+
+l1: line=(d1, ws1, d1, ws2, d1, ws3, d2);
+use, l1;
+
+beam, particle="proton",
+      momentum=10*GeV;
+
+option, physicsList="em",
+        minimumKineticEnergy=0.5*GeV;
+
+option, seed=123;
+
+option, ngenerate=20;

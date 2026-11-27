@@ -9,3 +9,7 @@ simple_testing(sensitivity-coll-l1-em    "--file=collimator_hits_level_1_em.gmad
 simple_testing(sensitivity-coll-l2-em    "--file=collimator_hits_level_2_em.gmad"   "")
 simple_testing(sensitivity-coll-l3-em    "--file=collimator_hits_level_3_em.gmad"   "")
 simple_testing(sensitivity-coll-l4-em    "--file=collimator_hits_level_4_em.gmad"   "")
+
+simple_testing(sensitivity-primary-first-hit-thin-thing            "--file=primary_first_hit_thin_thing.gmad"            "")
+simple_testing(sensitivity-primary-first-hit-thin-thing-single     "--file=primary_first_hit_thin_thing_single.gmad"     "")
+simple_testing(sensitivity-primary-first-hit-thin-thing-multiple   "--file=primary_first_hit_thin_thing_multiple.gmad"   "")
