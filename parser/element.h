@@ -271,6 +271,7 @@ namespace GMAD
     std::string crystalLeft;
     std::string crystalRight;
     std::string crystalBoth;
+    std::string crystalDefinition; ///< Crystal recipe for a crystalradiator.
     double      crystalAngleYAxisLeft;
     double      crystalAngleYAxisRight;
 

@@ -1,0 +1,16 @@
+! An unused definition must not require a FastSim region or model.
+w111Unused: crystal, model="fastsim",
+                    material="G4_W",
+                    lattice="<111>",
+                    shape="box",
+                    lengthX=1*mm,
+                    lengthY=1*mm,
+                    lengthZ=0.1*mm,
+                    coherentPairProduction=1;
+
+d1: drift, l=1*mm;
+line1: line=(d1);
+use, line1;
+
+beam, particle="gamma", energy=100*GeV;
+option, physicsList="completechannelling", ngenerate=1;

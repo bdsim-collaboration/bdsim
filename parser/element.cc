@@ -291,6 +291,7 @@ void Element::PublishMembers()
   publish("crystalLeft",            &Element::crystalLeft);
   publish("crystalRight",           &Element::crystalRight);
   publish("crystalBoth",            &Element::crystalBoth);
+  publish("crystalDefinition",      &Element::crystalDefinition);
   publish("crystalAngleYAxisLeft" , &Element::crystalAngleYAxisLeft);
   publish("crystalAngleYAxisRight", &Element::crystalAngleYAxisRight);
 
@@ -716,6 +717,7 @@ void Element::flush()
   crystalLeft            = "";
   crystalRight           = "";
   crystalBoth            = "";
+  crystalDefinition      = "";
   crystalAngleYAxisLeft  = 0;
   crystalAngleYAxisRight = 0;
 
