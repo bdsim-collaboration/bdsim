@@ -113,11 +113,15 @@ BDSHitThinThing::ResolvePossibleEarlierThinHits(const std::vector<const BDSTraje
       // reduce multiple hits to the earliest one in the beam line for the 'first' hit
       std::vector<const BDSTrajectoryPointHit*> result;
       for (auto& primaryPoints : hitsPerPrimary)
-	{
-	  auto& points = primaryPoints.second;
-	  std::sort(points.begin(), points.end(), TrajPointComp);
-	  result.push_back(points[0]);
-	}
+        {
+          auto& points = primaryPoints.second;
+          std::sort(points.begin(), points.end(), TrajPointComp);
+          result.push_back(points[0]);
+          
+          // Only the earliest is kept and returned, so delete the others.
+          for (std::size_t i = 1; i < points.size(); i++)
+            {delete points[i];}
+        }
       return result;
     }
 }
