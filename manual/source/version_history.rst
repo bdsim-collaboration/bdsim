@@ -20,6 +20,9 @@ Bug Fixes
 
 * Fix a segfault when querying a field map that is overlaid on a replica volume.
 * Fix a field query that is queried in time. It would take the number of points from y and not t.
+* Fix memory leak for hits from multiple 'thin' things such as wire scanners in the same beamline.
+* Fix primary first hit S location in case of combination of real interaction and thin-thing interaction afterwards.
+* Do not apply biasing calculation (even ratio 1.0) to unbiased processes.
 
 
 v1.8.2 - 2026 / 11 / 12
