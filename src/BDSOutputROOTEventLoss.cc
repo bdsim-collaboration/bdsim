@@ -52,7 +52,8 @@ BDSOutputROOTEventLoss::BDSOutputROOTEventLoss(bool storeTurnIn,
 					       bool storeTimeIn,
 					       bool storeStepLengthIn,
 					       bool storePreStepKineticEnergyIn,
-					       bool storePhysicsProcessesIn):
+				       bool storePhysicsProcessesIn,
+				       bool storeSubElementIDIn):
   n(0),
   storeTurn(storeTurnIn),
   storeLinks(storeLinksIn),
@@ -62,7 +63,8 @@ BDSOutputROOTEventLoss::BDSOutputROOTEventLoss(bool storeTurnIn,
   storeTime(storeTimeIn),
   storeStepLength(storeStepLengthIn),
   storePreStepKineticEnergy(storePreStepKineticEnergyIn),
-  storePhysicsProcesses(storePhysicsProcessesIn)
+  storePhysicsProcesses(storePhysicsProcessesIn),
+  storeSubElementID(storeSubElementIDIn)
 {
   Flush();
 }
@@ -138,7 +140,13 @@ void BDSOutputROOTEventLoss::Fill(const BDSHitEnergyDeposition* hit)
   
   if (storeModelID)
     {modelID.push_back(hit->GetBeamlineIndex());}
-  
+
+  if (storeSubElementID)
+    {
+      subElementID.push_back(hit->GetSubElementID());
+      subElementModelID.push_back(hit->GetSubElementModelID());
+    }
+
   if (storeLocal)
     {
       x.push_back( (float) (hit->Getx() / CLHEP::m));
@@ -194,6 +202,8 @@ void BDSOutputROOTEventLoss::Fill(const BDSOutputROOTEventLoss* other)
   preStepKineticEnergy = other->preStepKineticEnergy;
   postStepProcessType  = other->postStepProcessType;
   postStepProcessSubType = other->postStepProcessSubType;
+  subElementID           = other->subElementID;
+  subElementModelID      = other->subElementModelID;
 }
 
 void BDSOutputROOTEventLoss::Flush()
@@ -221,4 +231,6 @@ void BDSOutputROOTEventLoss::FlushLocal()
   preStepKineticEnergy.clear();
   postStepProcessType.clear();
   postStepProcessSubType.clear();
+  subElementID.clear();
+  subElementModelID.clear();
 }

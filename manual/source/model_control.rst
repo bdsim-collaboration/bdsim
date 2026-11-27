@@ -3697,6 +3697,10 @@ with the following options.
 |                                    | was in. If `storeElossLinks` is on, this will be on irrespective   |
 |                                    | of this option.                                                    |
 +------------------------------------+--------------------------------------------------------------------+
+| storeElossSubElementID             | Store per-hit sub-element IDs in the energy deposition output.     |
+|                                    | This includes both `subElementID` and `subElementModelID`.         |
+|                                    | Default off.                                                       |
++------------------------------------+--------------------------------------------------------------------+
 | storeElossPhysicsProcesses         | Store the post step process ID and sub-ID for the step.            |
 +------------------------------------+--------------------------------------------------------------------+
 | storeElossTime                     | The time since the start of the event will be stored for each point|

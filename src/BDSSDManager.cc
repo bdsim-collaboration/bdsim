@@ -87,6 +87,7 @@ BDSSDManager::BDSSDManager()
   generateELossTunnelHits  = g->StoreELossTunnel() || g->StoreELossTunnelHistograms();
 
   G4bool killedParticleMassAddedToEloss = g->KilledParticlesMassAddedToEloss();
+  G4bool storeELossSubElementID = g->StoreELossSubElementID();
 
   generateELossWorldContents = g->UseImportanceSampling() || g->StoreELossWorldContents() || g->StoreELossWorldContentsIntegral();
   
@@ -152,16 +153,20 @@ BDSSDManager::BDSSDManager()
   terminator = new BDSSDTerminator("terminator");
   SDMan->AddNewDetector(terminator);
 
-  energyDeposition = new BDSSDEnergyDeposition("general", storeELossExtras, killedParticleMassAddedToEloss);
+  energyDeposition = new BDSSDEnergyDeposition("general", storeELossExtras, killedParticleMassAddedToEloss,
+                                                storeELossSubElementID);
   SDMan->AddNewDetector(energyDeposition);
 
-  energyDepositionFull = new BDSSDEnergyDeposition("general_full", true, killedParticleMassAddedToEloss);
+  energyDepositionFull = new BDSSDEnergyDeposition("general_full", true, killedParticleMassAddedToEloss,
+                                                    storeELossSubElementID);
   SDMan->AddNewDetector(energyDepositionFull);
   
-  energyDepositionVacuum = new BDSSDEnergyDeposition("vacuum", storeELossExtras, killedParticleMassAddedToEloss);
+  energyDepositionVacuum = new BDSSDEnergyDeposition("vacuum", storeELossExtras, killedParticleMassAddedToEloss,
+                                                      storeELossSubElementID);
   SDMan->AddNewDetector(energyDepositionVacuum);
 
-  energyDepositionTunnel = new BDSSDEnergyDeposition("tunnel", storeELossExtras, killedParticleMassAddedToEloss);
+  energyDepositionTunnel = new BDSSDEnergyDeposition("tunnel", storeELossExtras, killedParticleMassAddedToEloss,
+                                                      storeELossSubElementID);
   SDMan->AddNewDetector(energyDepositionTunnel);
 
   energyDepositionWorld = new BDSSDEnergyDepositionGlobal("worldLoss", killedParticleMassAddedToEloss);

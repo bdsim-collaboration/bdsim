@@ -42,7 +42,8 @@ class BDSSDEnergyDeposition: public BDSSensitiveDetector
 public:
   BDSSDEnergyDeposition(const G4String& name,
 			G4bool          storeExtrasIn,
-			G4bool          killedParticleMassAddedToElossIn = false);
+			G4bool          killedParticleMassAddedToElossIn = false,
+			G4bool          storeSubElementIDIn = false);
   virtual ~BDSSDEnergyDeposition();
   
   /// assignment and copy constructor not implemented nor used
@@ -70,6 +71,7 @@ public:
   
 private:
   G4bool   storeExtras;     ///< Whether to store extra information.
+  G4bool   storeSubElementID; ///< Whether to store sub-element IDs on hits.
   G4bool   killedParticleMassAddedToEloss; ///< In the case of a G4Track being deposited
   G4String colName;         ///< Collection name.
   BDSHitsCollectionEnergyDeposition* hits;

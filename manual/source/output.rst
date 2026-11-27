@@ -696,6 +696,9 @@ One entry in the model tree represents one beam line.
 +---------------------+--------------------------+--------------------------------------------------------------+
 | placementName       | std::vector<std::string> | Unique name for each placement                               |
 +---------------------+--------------------------+--------------------------------------------------------------+
+| subElementNames     | vector<vector<string>>   | Names of physical volumes within each element, indexed by    |
+|                     |                          | `subElementID`; outer index matches `componentName`.         |
++---------------------+--------------------------+--------------------------------------------------------------+
 | componentType       | std::vector<std::string> | Beamline component type; "drift", "sbend", etc.              |
 +---------------------+--------------------------+--------------------------------------------------------------+
 | length              | std::vector<float>       | Component length (m)                                         |
@@ -1222,6 +1225,12 @@ Extra information can be recorded but this typically dominates the output file s
 | parentID               | std::vector<int>      | (optional) Track ID of the parent particle                        |
 +------------------------+-----------------------+-------------------------------------------------------------------+
 | modelID                | std::vector<int>      | (optional) Index in model tree for where deposition occurred      |
++------------------------+-----------------------+-------------------------------------------------------------------+
+| subElementID           | std::vector<int>      | (optional) Index of the physical volume within its beamline       |
+|                        |                       | element. Decode with its paired ID and `Model.subElementNames`.   |
++------------------------+-----------------------+-------------------------------------------------------------------+
+| subElementModelID      | std::vector<int>      | (optional) Model tree index of the element containing the         |
+|                        |                       | physical volume.                                                  |
 +------------------------+-----------------------+-------------------------------------------------------------------+
 | turn                   | std::vector<int>      | (optional) Turn in circular machine on which hit occurred         |
 +------------------------+-----------------------+-------------------------------------------------------------------+

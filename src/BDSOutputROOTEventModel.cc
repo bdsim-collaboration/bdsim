@@ -24,6 +24,7 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 #include "BDSBeamPipeInfo.hh"
 #include "BDSMagnet.hh"
 #include "BDSMagnetStrength.hh"
+#include "BDSPhysicalVolumeInfo.hh"
 #include "BDSPhysicalVolumeInfoRegistry.hh"
 #include "BDSSamplerRegistry.hh"
 
@@ -164,6 +165,7 @@ void BDSOutputROOTEventModel::Flush()
 
   materialIDToName.clear();
   materialNameToID.clear();
+  subElementNames.clear();
   
   samplerNamesUnique.clear();
   samplerSPosition.clear();
@@ -387,6 +389,18 @@ void BDSOutputROOTEventModel::Fill(const std::vector<G4int>&                coll
       // always push it back even if an empty vector
       pvName.push_back(localPVNames);
       pvNameWPointer.push_back(localPVNamesWPointer);
+
+      // sub-element names, numbered exactly as the element's info numbers them
+      std::vector<std::string> localSubElementNames;
+      if (setOfPVs)
+        {
+          BDSPhysicalVolumeInfo subElements(0);
+          for (auto pv : *setOfPVs)
+            {subElements.RegisterSubElementsRecursively(pv);}
+          for (G4int id = 0; id < subElements.NumberOfSubElements(); id++)
+            {localSubElementNames.push_back(subElements.GetSubElementName(id));}
+        }
+      subElementNames.push_back(localSubElementNames);
 
       midT.push_back((float)(*i)->GetSynchronousTMiddle()/CLHEP::ns);
       staP.push_back((float)(*i)->GetStartMomentum()/CLHEP::GeV);

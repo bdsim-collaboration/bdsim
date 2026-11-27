@@ -309,6 +309,7 @@ OptionsBase::OptionsBase()
   storeElossStepLength       = false;
   storeElossPreStepKineticEnergy = false;
   storeElossModelID          = false;
+  storeElossSubElementID     = false;
   storeElossPhysicsProcesses = false;
   storeParticleData          = true;
   storePrimaries             = true;
