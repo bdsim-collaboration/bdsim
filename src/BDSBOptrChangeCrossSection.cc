@@ -171,6 +171,11 @@ G4VBiasingOperation* BDSBOptrChangeCrossSection::ProposeOccurenceBiasingOperatio
   // get the operation that was proposed to the process in the previous step:
   G4VBiasingOperation* previousOperation = callingProcess->GetPreviousOccurenceBiasingOperation();
   
+  // Don't propose an operation for processes that aren't biased. The default value
+  // will be 0 for any process that's not biased (default copied from parser definition of flag).
+  if (fPrimaryScale[callingProcess] == 0)
+    {return nullptr;}
+
   // check for only scaling primary
   if ( fPrimaryScale[callingProcess] == 2 && track->GetParentID() != 0 )
     {return nullptr;}

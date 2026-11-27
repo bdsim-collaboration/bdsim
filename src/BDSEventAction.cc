@@ -391,7 +391,11 @@ void BDSEventAction::EndOfEventAction(const G4Event* evt)
       if (verboseThisEvent)
 	{G4cout << std::left << std::setw(nChar) << "Trajectories: " << trajCont->size() << G4endl;}
       for (auto p : primaryTrajectoriesCache)
-        {primaryLosses.push_back(new BDSTrajectoryPointHit(p.second, p.second->LastPoint()));}
+        {
+          // The last point is only made when the track stops, so it's absent if the event was aborted.
+          if (p.second->LastPoint())
+            {primaryLosses.push_back(new BDSTrajectoryPointHit(p.second, p.second->LastPoint()));}
+        }
     }
   std::vector<const BDSTrajectoryPrimary*> primaryTrajectories;
   for (auto kv : primaryTrajectoriesCache)

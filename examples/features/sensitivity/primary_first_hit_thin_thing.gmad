@@ -1,0 +1,20 @@
+! The primary first hits the target, then passes through the wire scanner (a 'thin thing').
+! PrimaryFirstHit should always be in the target and not on the wire or at the end of the line.
+
+d1: drift, l=20*cm;
+t1: target, l=1*cm, material="G4_Cu";
+ws: wirescanner, l=4*cm, wireDiameter=5*mm, wireLength=5*cm, material="G4_W", aper1=5*cm;
+d2: drift, l=1*m;
+
+l1: line=(d1, t1, d1, ws, d2);
+use, l1;
+
+beam, particle="proton",
+      momentum=10*GeV;
+
+option, physicsList="em",
+        minimumKineticEnergy=0.5*GeV;
+
+option, seed=123;
+
+option, ngenerate=20;
