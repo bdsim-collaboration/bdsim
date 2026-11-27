@@ -89,7 +89,8 @@ public:
                          bool storeTimeIn,
 			 bool storeStepLengthIn,
 			 bool storePreStepKineticEnergyIn,
-			 bool storePhysicsProcessesIn);
+			 bool storePhysicsProcessesIn,
+			 bool storeSubElementIDIn = false);
   void Fill(const BDSTrajectoryPointHit* hit);
   void Fill(const BDSHitEnergyDeposition* hit);
 
@@ -102,6 +103,7 @@ public:
   bool storeStepLength = false; ///< Whether to store step length.
   bool storePreStepKineticEnergy = false; ///< Whether to store pre step kinetic energy.
   bool storePhysicsProcesses = false;
+  bool storeSubElementID = false; ///< Whether to write sub-element IDs per hit.
 #endif
 
   ClassDef(BDSOutputROOTEventLoss,6);

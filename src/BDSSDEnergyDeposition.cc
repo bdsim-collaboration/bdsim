@@ -42,9 +42,11 @@ along with BDSIM.  If not, see <http://www.gnu.org/licenses/>.
 
 BDSSDEnergyDeposition::BDSSDEnergyDeposition(const G4String& name,
                                              G4bool          storeExtrasIn,
-                                             G4bool          killedParticleMassAddedToElossIn):
+                                             G4bool          killedParticleMassAddedToElossIn,
+                                             G4bool          storeSubElementIDIn):
   BDSSensitiveDetector("energy_counter/"+name),
   storeExtras(storeExtrasIn),
+  storeSubElementID(storeSubElementIDIn),
   killedParticleMassAddedToEloss(killedParticleMassAddedToElossIn),
   colName(name),
   hits(nullptr),
@@ -186,7 +188,7 @@ G4bool BDSSDEnergyDeposition::ProcessHits(G4Step* aStep,
   G4int postStepProcessSubType = -1;
   // sub-element ID is local to the element whose info gave the S and beamline index
   G4VPhysicalVolume* preStepPV = preStepPoint->GetPhysicalVolume();
-  G4int subElementID = theInfo ? theInfo->GetSubElementID(preStepPV) : -1;
+  G4int subElementID = storeSubElementID && theInfo ? theInfo->GetSubElementID(preStepPV) : -1;
   // Model tree index of that element; -1 whenever the sub-element is unknown so the pair is both valid or both -1
   G4int subElementModelID = subElementID >= 0 ? theInfo->GetBeamlineMassWorldIndex() : -1;
   if (storeExtras)
@@ -304,7 +306,7 @@ G4bool BDSSDEnergyDeposition::ProcessHitsTrack(const G4Track* track,
   G4double sHit = sBefore; // duplicate
 
   // sub-element ID of the volume the killed track was in, local to its element
-  G4int subElementID = theInfo ? theInfo->GetSubElementID(track->GetVolume()) : -1;
+  G4int subElementID = storeSubElementID && theInfo ? theInfo->GetSubElementID(track->GetVolume()) : -1;
   G4int subElementModelID = subElementID >= 0 ? theInfo->GetBeamlineMassWorldIndex() : -1;
 
   G4int turnsTaken = BDSGlobalConstants::Instance()->TurnsTaken();

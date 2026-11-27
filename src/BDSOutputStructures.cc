@@ -73,6 +73,7 @@ BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
   G4bool storePreStepKineticEnergy = globals->StoreELossPreStepKineticEnergy();
   G4bool storeModelID    = globals->StoreELossModelID();
   G4bool storeELPhysics  = globals->StoreELossPhysicsProcesses();
+  G4bool storeSubElementID = globals->StoreELossSubElementID();
   // store the model id if either modelID requested or store links
   storeModelID = storeModelID || storeLinks;
 
@@ -84,13 +85,13 @@ BDSOutputStructures::BDSOutputStructures(const BDSGlobalConstants* globals):
 
   eLoss       = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
 					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+					   storePreStepKineticEnergy, storeELPhysics, storeSubElementID);
   eLossVacuum = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
 					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+					   storePreStepKineticEnergy, storeELPhysics, storeSubElementID);
   eLossTunnel = new BDSOutputROOTEventLoss(storeTurn, storeLinks, storeModelID, storeLocal,
 					   storeGlobal, storeTime, storeStepLength,
-					   storePreStepKineticEnergy, storeELPhysics);
+					   storePreStepKineticEnergy, storeELPhysics, storeSubElementID);
   eLossWorld         = new BDSOutputROOTEventLossWorld();
   eLossWorldExit     = new BDSOutputROOTEventLossWorld();
   eLossWorldContents = new BDSOutputROOTEventLossWorld();

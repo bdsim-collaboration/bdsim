@@ -52,7 +52,8 @@ BDSOutputROOTEventLoss::BDSOutputROOTEventLoss(bool storeTurnIn,
 					       bool storeTimeIn,
 					       bool storeStepLengthIn,
 					       bool storePreStepKineticEnergyIn,
-					       bool storePhysicsProcessesIn):
+				       bool storePhysicsProcessesIn,
+				       bool storeSubElementIDIn):
   n(0),
   storeTurn(storeTurnIn),
   storeLinks(storeLinksIn),
@@ -62,7 +63,8 @@ BDSOutputROOTEventLoss::BDSOutputROOTEventLoss(bool storeTurnIn,
   storeTime(storeTimeIn),
   storeStepLength(storeStepLengthIn),
   storePreStepKineticEnergy(storePreStepKineticEnergyIn),
-  storePhysicsProcesses(storePhysicsProcessesIn)
+  storePhysicsProcesses(storePhysicsProcessesIn),
+  storeSubElementID(storeSubElementIDIn)
 {
   Flush();
 }
@@ -139,8 +141,11 @@ void BDSOutputROOTEventLoss::Fill(const BDSHitEnergyDeposition* hit)
   if (storeModelID)
     {modelID.push_back(hit->GetBeamlineIndex());}
 
-  subElementID.push_back(hit->GetSubElementID());
-  subElementModelID.push_back(hit->GetSubElementModelID());
+  if (storeSubElementID)
+    {
+      subElementID.push_back(hit->GetSubElementID());
+      subElementModelID.push_back(hit->GetSubElementModelID());
+    }
 
   if (storeLocal)
     {

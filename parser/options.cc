@@ -455,6 +455,8 @@ void Options::PublishMembers()
   publish("storeELossPreStepKineticEnergy", &Options::storeElossPreStepKineticEnergy);
   publish("storeElossModelID",              &Options::storeElossModelID);
   publish("storeELossModelID",              &Options::storeElossModelID);
+  publish("storeElossSubElementID",         &Options::storeElossSubElementID);
+  publish("storeELossSubElementID",         &Options::storeElossSubElementID);
   publish("storeElossPhysicsProcesses",     &Options::storeElossPhysicsProcesses);
   publish("storeELossPhysicsProcesses",     &Options::storeElossPhysicsProcesses);
   publish("storeParticleData",              &Options::storeParticleData);
