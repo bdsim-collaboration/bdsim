@@ -96,7 +96,10 @@ BDSHitThinThing::ResolvePossibleEarlierThinHits(const std::vector<const BDSTraje
 	  hitsPerPrimary[hit->trackID].push_back(hit->GetNewTrajectoryPointHit());
 	}
       for (auto p : primaryTrajectoryHits)
-	{hitsPerPrimary[p->GetTrackID()].push_back(new BDSTrajectoryPointHit(p, p->LastPoint()));}
+        {
+          if (p->FirstHit())
+            {hitsPerPrimary[p->GetTrackID()].push_back(new BDSTrajectoryPointHit(p, p->FirstHit()));}
+        }
       
       // use a lambda function to compare contents of pointers and not pointers themselves
       auto TrajPointComp = [](const BDSTrajectoryPointHit* a, const BDSTrajectoryPointHit* b)
