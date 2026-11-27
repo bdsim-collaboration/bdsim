@@ -260,10 +260,22 @@ The main interface is the class :code:`BDSIMLink` that is used in place of
 :code:`BDSIM` (from `BDSIMClass.hh`). It is recommended to look through the
 header for the interface. It uses a simplified geometry construction
 of BDSIM with Geant4 user actions defined in classes that begin with :code:`BDSLink*`.
-The interface was written (currently) only for collimators with the minimal interface
+The interface was written initially for collimators with the minimal interface
 required. The initial implementation is made for SixTrack and is perhaps not ideal. The output
-writing is broken and the CMake option :code:`USE_SIXTRACK_LINK=ON` should be used.
+writing is broken and the CMake option :code:`USE_SIXTRACKLINK=ON` should be used.
 
-* Only passive (i.e. with no fields) components can be used.
+* Tracking is supported for accepted straight components in the parser
+  beam line before :code:`BDSIMLink` is initialised. This includes drifts,
+  straight multipoles, transverse RF elements, and assigned fields that
+  do not depend on local longitudinal position, such as :code:`bmap2d` maps in
+  :math:`x,y`.
+  Generic :code:`element` definitions must have zero :code:`angle`, :code:`e1`, and
+  :code:`e2`; non-zero values are rejected until curved link components are supported.
+  The :code:`offsetX`, :code:`offsetY`, and :code:`tilt` parameters are applied to
+  each accepted straight component inside its own opaque box. The same convention is
+  used for collimators added through :code:`AddLinkCollimatorJaw`.
+  Component lines, curved elements, maps that depend on local :math:`z`, and fields
+  on elements added after initialisation with :code:`AddLinkElement` are not
+  supported.
 * A bunch may be tracked through one element at once, breaking the usual loop
   of one particle through all beam line elements.

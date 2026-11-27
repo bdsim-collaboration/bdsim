@@ -21,6 +21,16 @@ Bug Fixes
 * Fix a segfault when querying a field map that is overlaid on a replica volume.
 * Fix a field query that is queried in time. It would take the number of points from y and not t.
 
+New Features
+------------
+
+* :code:`BDSIMLink` can track through accepted straight
+  components defined before initialisation, including drifts, straight
+  multipoles, transverse RF elements, and fields independent of local
+  longitudinal position.
+* Accepted straight BDSLink components consistently apply their transverse offsets
+  and tilt inside the component's opaque box.
+
 
 v1.8.2 - 2026 / 11 / 12
 =======================

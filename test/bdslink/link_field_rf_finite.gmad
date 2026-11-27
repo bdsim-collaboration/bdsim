@@ -1,0 +1,12 @@
+dpre: drift, l=1.25*m, aper1=5*cm;
+rfxf: rfx, l=0.5*m, gradient=2*MV/m, frequency=400*MHz,
+      phase=0.3, aper1=5*cm;
+
+link_line: line=(dpre, rfxf);
+use, link_line;
+sample, range=dpre;
+sample, range=rfxf;
+
+beam, particle="proton", kineticEnergy=100*GeV, distrType="reference",
+      X0=1*cm, Y0=2*mm, T0=0;
+option, physicsList="em", ngenerate=1;

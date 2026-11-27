@@ -1,0 +1,7 @@
+q0: quadrupole, l=0, k1=1, aper1=5*cm;
+
+link_line: line=(q0);
+use, link_line;
+
+beam, particle="proton", kineticEnergy=100*GeV;
+option, physicsList="em";

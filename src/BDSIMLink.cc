@@ -251,7 +251,7 @@ int BDSIMLink::Initialise(double minimumKineticEnergy,
     }
   // update rigidity where needed
   construction->SetDesignParticle(designParticle);
-  //BDSFieldFactory::SetDesignParticle(designParticle);
+  BDSFieldFactory::SetDesignParticle(designParticle);
   
   //auto biasPhysics = BDS::BuildAndAttachBiasWrapper(parser->GetBiasing());
   //if (biasPhysics)//could be nullptr and can't be passed to geant4 like this

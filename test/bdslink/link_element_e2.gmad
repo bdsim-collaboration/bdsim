@@ -1,0 +1,6 @@
+probe: element, l=0.5*m, e2=0.1;
+link_line: line = (probe);
+use, link_line;
+
+beam, particle="proton", kineticEnergy=100*GeV;
+option, physicsList="em";
