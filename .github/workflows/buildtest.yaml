@@ -1,6 +1,9 @@
 name: bdsim
 
 on:
+  schedule:
+    - cron: "0 2 * * *"   # every night at 02:00 UTC
+
   workflow_dispatch:
   pull_request:
     branches:
