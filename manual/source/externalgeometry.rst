@@ -53,6 +53,27 @@ An example can be found in :code:`examples/features/geometry/9_gdml/14_gdml_colo
 .. note:: This is not a Geant4 standard and is custom information the user must supply in their
 	  GDML file and therefore it is only convention we agree on for the tag and the contents.
 
+.. _gdml-infinite-absorber:
+
+GDML Infinite Absorbers
+^^^^^^^^^^^^^^^^^^^^^^^
+
+A logical volume can be made an infinite absorber with the following auxiliary tag in its
+:code:`<volume>` tag: ::
+
+  <auxiliary auxtype="bdsim_infiniteabsorber" auxvalue="1"/>
+
+Any particle entering the volume is killed and its kinetic energy is recorded as deposited
+there, as for beam pipes with :code:`option, beamPipeIsInfiniteAbsorber=1;`. This is useful,
+for example, to make the walls of an imported vacuum chamber black while keeping its exact
+shape. The :code:`auxvalue` should be 1 (absorber) or 0 (normal volume); other values are
+ignored with a warning.
+
+This is implemented with a minimum kinetic energy in the user limits of the volume, so particles
+listed in :code:`option, particlesToExcludeFromCuts` are not killed.
+
+An example can be found in :code:`examples/features/geometry/9_gdml/24_gdml_infinite_absorber.gmad`.
+
 Mokka
 -----
 
